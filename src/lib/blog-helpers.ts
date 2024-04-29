@@ -7,8 +7,7 @@ import type {
   Heading3,
   RichText,
   Column,
-  Post,
-  Person,
+  Page,
 } from "./notion-interfaces";
 import { pathJoin } from "./utils";
 
@@ -299,20 +298,22 @@ export const parseYouTubeVideoId = (url: URL): string => {
   return "";
 };
 
-export const importCoverImage = async (post: Post, images: any) => {
-  if (post.Cover) {
-    const url = new URL(post.Cover!.Url);
-
-    const slug = post.Slug;
+export const importCoverImage = async (page: Page, images: any) => {
+  console.log("\nAll images");
+  if (page.Cover) {
+    const url = new URL(page.Cover!.Url);
+    const slug = page.Slug;
 
     const dir = "/src/assets/notion/" + url.pathname.split("/").slice(-2)[0];
     const imageName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
 
     const imageNameWithSlug = addSlugToName(imageName, slug);
-    const imagePath = `${dir}/${imageNameWithSlug}`;
+    const imagePath = `${dir}${imageNameWithSlug}`;
+    console.log(imagePath);
 
     try {
       const image = (await images[imagePath]()).default;
+      console.dir(image);
       return image;
     } catch (error) {
       // Block is null or undefined
@@ -326,13 +327,13 @@ export const importCoverImage = async (post: Post, images: any) => {
   }
 };
 
-export function removePostFromPosts(posts: Post[], post: Post) {
+export function removePostFromPosts(posts: Page[], post: Page) {
   return posts.filter(function (currentPost) {
     return currentPost.PageId !== post.PageId;
   });
 }
 
-export function filterPostsByTags(posts: Post[], post: Post) {
+export function filterPostsByTags(posts: Page[], post: Page) {
   return posts.filter((p) =>
     post.Tags.some((tag) => p.Tags.some((pTag) => pTag.name === tag.name))
   );
@@ -354,14 +355,4 @@ export function addSlugToName(name: string, slug: string): string {
   } else {
     return name;
   }
-}
-
-export function getPersonPhotoPath(person: Person) {
-  const url = new URL(person.Photo!.Url);
-
-  const dir = "/src/assets/notion/" + url.pathname.split("/").slice(-2)[0];
-  const imageName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
-
-  const imagePath = `${dir}/${imageName}`;
-  return imagePath;
 }

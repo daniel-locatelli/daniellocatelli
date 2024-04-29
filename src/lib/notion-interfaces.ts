@@ -3,33 +3,46 @@ export interface Database {
   Description: string;
   Icon: FileObject | Emoji | null;
   Cover: FileObject | null;
+  Id: string;
+  Pages: Page[];
 }
 
-export interface Post {
-  PageId: string;
-  Title: string;
-  Description: string;
-  Authors: SelectProperty[];
-  Icon: FileObject | Emoji | null;
+export interface Page {
   Cover: FileObject | null;
   CoverAlt: string;
-  Slug: string;
-  PublishDate: string;
-  Tags: SelectProperty[];
-}
-
-export interface Person {
-  PageId: string;
+  Description_en: string;
+  Description_de: string;
+  Description_pt: string;
   Icon: FileObject | Emoji | null;
   Name: string;
-  Title: string;
-  Description: string;
-  LinkedIn: URL;
-  Email: string;
-  Cover: FileObject | null;
-  CoverAlt: string;
-  Photo: FileObject | null;
-  Team: boolean;
+  PageId: string;
+  Slug: string;
+  Tags: SelectProperty[];
+  Active?: boolean;
+  Authors?: SelectProperty[];
+  Apps?: SelectProperty[];
+  Category?: string;
+  City?: SelectProperty[];
+  Client?: string;
+  Country?: string;
+  DateStart?: string;
+  DateEnd?: string;
+  Disclosed?: boolean | null;
+  Event?: string;
+  Format?: string;
+  Instagram?: string;
+  Level?: string;
+  Link?: string;
+  LinkedIn?: string;
+  Name_de?: string;
+  Name_pt?: string;
+  OfficialName?: string;
+  Organization?: string;
+  Photo?: FileObject | null;
+  Place?: string;
+  References?: string;
+  Team?: SelectProperty[];
+  Title?: string;
 }
 
 export interface Block {

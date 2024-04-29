@@ -1,6 +1,6 @@
 // Query a database response
 // https://developers.notion.com/reference/post-database-query
-export interface QueryDatabaseResponse {
+export interface QueryDatabase {
   object: string;
   results: PageObject[];
   next_cursor: null | string;
@@ -63,7 +63,7 @@ export interface Emoji {
 }
 
 interface Parent {
-  type: "database_id" | "page_id" | "block_id";
+  type: "database_id" | "page_id" | "block_id" | "workspace";
   database_id?: string;
   page_id?: string;
   block_id?: string;
@@ -129,22 +129,24 @@ interface Equation {
 
 // Database object
 // https://developers.notion.com/reference/database
-interface DatabaseObject {
-  object: string;
+export interface DatabaseObject {
+  object: "database";
   id: string;
+  cover: FileObject | null;
+  icon: FileObject | Emoji | null;
   created_time: string;
   created_by: UserObject;
-  last_edited_time: string;
   last_edited_by: UserObject;
+  last_edited_time: string;
   title: RichTextObject[];
   description: RichTextObject[];
-  icon: FileObject | Emoji | null;
-  cover: FileObject | null;
   properties: DatabaseProperties;
   parent: Parent;
   url: string;
   archived: boolean;
+  in_trash: boolean;
   is_inline: boolean;
+  public_url: string | null;
 }
 
 interface DatabaseProperties {

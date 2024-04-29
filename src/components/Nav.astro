@@ -1,22 +1,61 @@
 ---
+import type { Page } from "../lib/notion-interfaces";
+import { getAllDatabases } from "../lib/notion/client";
 
+let pagesDatabase = (await getAllDatabases("Pages"))[0];
+let pages: Page[];
+pages = pagesDatabase.Pages;
 ---
 
 <nav>
-  <div class="options">
-    <a aria-label="Go to Homepage" href="/" data-astro-prefetch>Homepage</a>
-    <a aria-label="Go to Projects page" href="/projects" data-astro-prefetch
-      >Team</a
-    >
-    <a aria-label="Go to Teaching page" href="/teaching" data-astro-prefetch
-      >Our Work</a
-    >
-    <a aria-label="Go to Education page" href="/education" data-astro-prefetch
-      >Toolbox</a
-    >
-  </div>
-  <input type="checkbox" id="menu" class="checkbox visuallyHidden" />
-  <label for="menu"> </label>
+  {
+    pages.map((page: Page) => {
+      return (
+        <a
+          aria-label={`Go to ${page.Name}`}
+          href={page.Slug === "Homepage" ? "/" : page.Slug}
+          data-astro-prefetch
+        >
+          {page.Name}
+        </a>
+      );
+    })
+  }
 </nav>
 
-<style></style>
+<style>
+  nav {
+    display: flex;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  a {
+    counter-increment: option;
+    display: flex;
+    justify-content: start;
+    /* background: var(--text-main); */
+    /* color: var(--background-body); */
+    font-family: var(--font-family-secondary);
+    font-size: 1.2rem;
+    border-radius: 4px;
+    padding: 4px 15px;
+    text-decoration: none;
+    height: 36px;
+    width: 100%;
+  }
+
+  .options:has(~ .checkbox:checked) {
+    transform: translate(-5px, 0);
+    -webkit-transform: translate(-5px, 0);
+  }
+
+  @media (max-width: 420px) {
+    a {
+      font-size: 1rem;
+      border-radius: 4px;
+      padding: 2px 10px;
+      text-decoration: none;
+      height: 30px;
+    }
+  }
+</style>

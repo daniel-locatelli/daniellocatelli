@@ -1,10 +1,10 @@
 ---
-import type { Post, SelectProperty } from "../../lib/notion-interfaces.ts";
+import type { Page, SelectProperty } from "../../lib/notion-interfaces.ts";
 import { getTagLink } from "../../lib/blog-helpers.ts";
 import "../../styles/notion-color.css";
 
 export interface Props {
-  post: Post;
+  post: Page;
   enableLink?: boolean;
 }
 

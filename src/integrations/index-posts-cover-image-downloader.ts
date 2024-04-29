@@ -1,16 +1,19 @@
 import type { AstroIntegration } from "astro";
 import {
-  getDatabase,
   downloadFile,
   downloadPublicImage,
+  getAllDatabases,
 } from "../lib/notion/client";
+import type { Database } from "../lib/notion-interfaces";
 
 export default (): AstroIntegration => ({
   name: "cover-image-downloader",
   hooks: {
     "astro:build:start": async () => {
       // console.log("\nStarting downloading cover image");
-      const database = await getDatabase();
+      let databases: Array<Database>;
+      databases = await getAllDatabases();
+      const database = databases[0];
 
       if (!database.Cover || database.Cover.Type !== "file") {
         console.log("\nNo cover found");

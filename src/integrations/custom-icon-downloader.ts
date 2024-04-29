@@ -1,12 +1,14 @@
 import type { AstroIntegration } from "astro";
-import type { FileObject } from "../lib/notion-interfaces";
-import { getDatabase, downloadFile } from "../lib/notion/client";
+import type { Database, FileObject } from "../lib/notion-interfaces";
+import { downloadFile, getAllDatabases } from "../lib/notion/client";
 
 export default (): AstroIntegration => ({
   name: "custom-icon-downloader",
   hooks: {
     "astro:build:start": async () => {
-      const database = await getDatabase();
+      let databases: Array<Database>;
+      databases = await getAllDatabases();
+      const database = databases[0];
 
       if (!database.Icon || database.Icon.Type !== "file") {
         return Promise.resolve();

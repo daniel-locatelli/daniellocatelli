@@ -1,10 +1,10 @@
 ---
 import {
-  type Post,
+  type Page,
   type Emoji,
   type FileObject,
 } from "../../../lib/notion-interfaces.ts";
-import { getPostByPageId } from "../../../lib/notion/client";
+import { getPageById } from "../../../lib/notion/client";
 import { getPostLink } from "../../../lib/blog-helpers.ts";
 import "../../../styles/notion-color.css";
 import arrow from "../../../assets/icon-arrow-link.svg";
@@ -13,13 +13,13 @@ export interface Props {
   pageId: string;
 }
 
-type PossiblyPost = Post | null;
+type PossiblyPost = Page | null;
 
 const { pageId } = Astro.props;
 
 let post: PossiblyPost = null;
 if (pageId) {
-  post = await getPostByPageId(pageId);
+  post = await getPageById(pageId);
 }
 ---
 

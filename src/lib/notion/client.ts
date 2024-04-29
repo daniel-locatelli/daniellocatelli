@@ -15,7 +15,7 @@ import type * as responses from "./responses";
 import type * as requestParams from "./request-params";
 import type {
   Database,
-  Post as Page,
+  Page as Page,
   Block,
   Paragraph,
   Heading1,
@@ -52,52 +52,60 @@ import type {
   LinkToPage,
   Mention,
   Reference,
-  Person,
 } from "../notion-interfaces";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import { Client, APIResponseError } from "@notionhq/client";
 import { addSlugToName, returnImageNameAsJpg } from "../blog-helpers";
+import type { DatabaseObject } from "./responses";
+import type { SearchResponse } from "@notionhq/client/build/src/api-endpoints";
+import { simplifyStringForSlug } from "../utils";
 
 const notion = new Client({
   auth: NOTION_API_SECRET,
 });
 
-let postsCache: Page[] | null = null;
-let dbCache: Database | null = null;
+interface PagesCacheObject {
+  [key: string]: any;
+}
+
+// let pagesCache: Page[] | null = null;
+var pagesCache: PagesCacheObject = {};
+let databaseCache: Database | null = null;
+let databasesCache: Database[] | null = null;
 
 const numberOfRetry = 2;
 
-export async function getAllDatabases(filter?: string) {
+export async function getAllDatabases(filter?: string): Promise<Database[]> {
+  if (databasesCache !== null) {
+    return Promise.resolve(databasesCache);
+  }
   const params: requestParams.SearchByTitle = {
     query: filter || "",
     filter: {
       value: "database",
       property: "object",
     },
-    sort: {
-      direction: "ascending",
-      timestamp: "last_edited_time",
-    },
   };
-  const response = await notion.search(params);
-  // console.log(response);
-  return response;
+
+  let response: SearchResponse;
+  response = await notion.search(params);
+  let databaseObjectArray: Array<DatabaseObject>;
+  databaseObjectArray = response.results as Array<DatabaseObject>;
+
+  databasesCache = await Promise.all(
+    databaseObjectArray.map(
+      async (databaseObject) => await _buildDatabase(databaseObject)
+    )
+  );
+
+  return databasesCache;
 }
 
-export async function getAllPages(specificId?: string): Promise<Page[]> {
-  if (postsCache !== null) {
-    return Promise.resolve(postsCache);
-  }
-
-  let databaseId: string;
-  if (specificId) {
-    databaseId = specificId;
-  } else {
-    databaseId = DATABASE_ID;
-  }
-
-  // console.log(databaseId);
-  console.log("\n===== Getting all pages =====");
+export async function getDatabasePages(
+  databaseId: string,
+  databaseTitle: string
+): Promise<Page[]> {
+  // console.log("\n===== Getting all pages =====");
   const params: requestParams.QueryDatabase = {
     database_id: databaseId,
     // filter: {
@@ -132,7 +140,7 @@ export async function getAllPages(specificId?: string): Promise<Page[]> {
         try {
           return (await notion.databases.query(
             params as any // eslint-disable-line @typescript-eslint/no-explicit-any
-          )) as responses.QueryDatabaseResponse;
+          )) as responses.QueryDatabase;
         } catch (error: unknown) {
           if (error instanceof APIResponseError) {
             if (error.status && error.status >= 400 && error.status < 500) {
@@ -156,147 +164,108 @@ export async function getAllPages(specificId?: string): Promise<Page[]> {
     params["start_cursor"] = res.next_cursor as string;
   }
 
-  postsCache = results
+  return results
     .filter((pageObject) => _validPageObject(pageObject))
-    .map((pageObject) => _buildPost(pageObject));
-  return postsCache;
+    .map((pageObject) => _buildPage(pageObject, databaseTitle));
 }
 
-let peopleCache: Person[] | null = null;
-
-export async function getAllPeople(): Promise<Person[]> {
-  if (peopleCache !== null) {
-    return Promise.resolve(peopleCache);
-  }
-
-  // console.log("\n===== Getting all people =====");
-  const params: requestParams.QueryDatabase = {
-    database_id: PEOPLE_DB_ID,
-    page_size: 100,
-    sorts: [
-      {
-        property: "Order",
-        direction: "ascending",
-      },
-    ],
-  };
-
-  let results: responses.PageObject[] = [];
-  while (true) {
-    const res = await retry(
-      async (bail) => {
-        try {
-          return (await notion.databases.query(
-            params as any // eslint-disable-line @typescript-eslint/no-explicit-any
-          )) as responses.QueryDatabaseResponse;
-        } catch (error: unknown) {
-          if (error instanceof APIResponseError) {
-            if (error.status && error.status >= 400 && error.status < 500) {
-              bail(error);
-            }
-          }
-          throw error;
-        }
-      },
-      {
-        retries: numberOfRetry,
-      }
-    );
-    results = results.concat(res.results);
-    // console.dir(results);
-
-    if (!res.has_more) {
-      break;
-    }
-
-    params["start_cursor"] = res.next_cursor as string;
-  }
-
-  peopleCache = results
-    .filter((pageObject) => _validPersonObject(pageObject))
-    .map((pageObject) => _buildPerson(pageObject));
-  return peopleCache;
-}
-
-export async function getPosts(pageSize = 10): Promise<Page[]> {
-  const allPosts = await getAllPages();
+export async function getPages(
+  pageSize = 10,
+  databaseId: string,
+  databaseTitle: string
+): Promise<Page[]> {
+  const allPosts = await getDatabasePages(databaseId, databaseTitle);
   return allPosts.slice(0, pageSize);
 }
 
-export async function getPostBySlug(slug: string): Promise<Page | null> {
-  const allPosts = await getAllPages();
+export async function getPageBySlug(
+  slug: string,
+  databaseId: string,
+  databaseTitle: string
+): Promise<Page | null> {
+  const allPosts = await getDatabasePages(databaseId, databaseTitle);
   return allPosts.find((post) => post.Slug === slug) || null;
 }
 
-export async function getPostByPageId(pageId: string): Promise<Page | null> {
-  const allPosts = await getAllPages();
-  return allPosts.find((post) => post.PageId === pageId) || null;
+// Continue here
+export async function getPageById(pageId: string): Promise<Page | null> {
+  const allDatabases = await getAllDatabases();
+  let page: Page | undefined;
+  page = allDatabases
+    .map((database) =>
+      database.Pages.find((page: Page) => page.PageId === pageId)
+    )
+    .find((page) => page !== undefined);
+  return page !== undefined ? page : null;
 }
 
-export async function getPostsByTag(
+export async function getPagesByTag(
   tagName: string,
-  pageSize = 10
+  pageSize = 10,
+  databaseId: string,
+  databaseTitle: string
 ): Promise<Page[]> {
   if (!tagName) return [];
 
-  const allPosts = await getAllPages();
+  const allPosts = await getDatabasePages(databaseId, databaseTitle);
   return allPosts
     .filter((post) => post.Tags.find((tag) => tag.name === tagName))
     .slice(0, pageSize);
 }
 
+// This was used on the old version with just one blog
 // page starts from 1 not 0
-export async function getPostsByPage(page: number): Promise<Page[]> {
-  if (page < 1) {
-    return [];
-  }
+// export async function getPostsByPage(page: number): Promise<Page[]> {
+//   if (page < 1) {
+//     return [];
+//   }
 
-  const allPosts = await getAllPages();
+//   const allPosts = await getDatabasePages();
 
-  const startIndex = (page - 1) * NUMBER_OF_POSTS_PER_PAGE;
-  const endIndex = startIndex + NUMBER_OF_POSTS_PER_PAGE;
+//   const startIndex = (page - 1) * NUMBER_OF_POSTS_PER_PAGE;
+//   const endIndex = startIndex + NUMBER_OF_POSTS_PER_PAGE;
 
-  return allPosts.slice(startIndex, endIndex);
-}
+//   return allPosts.slice(startIndex, endIndex);
+// }
 
 // page starts from 1 not 0
-export async function getPostsByTagAndPage(
-  tagName: string,
-  page: number
-): Promise<Page[]> {
-  if (page < 1) {
-    return [];
-  }
+// export async function getPostsByTagAndPage(
+//   tagName: string,
+//   page: number
+// ): Promise<Page[]> {
+//   if (page < 1) {
+//     return [];
+//   }
 
-  const allPosts = await getAllPages();
-  const posts = allPosts.filter((post) =>
-    post.Tags.find((tag) => tag.name === tagName)
-  );
+//   const allPosts = await getDatabasePages();
+//   const posts = allPosts.filter((post) =>
+//     post.Tags.find((tag) => tag.name === tagName)
+//   );
 
-  const startIndex = (page - 1) * NUMBER_OF_POSTS_PER_PAGE;
-  const endIndex = startIndex + NUMBER_OF_POSTS_PER_PAGE;
+//   const startIndex = (page - 1) * NUMBER_OF_POSTS_PER_PAGE;
+//   const endIndex = startIndex + NUMBER_OF_POSTS_PER_PAGE;
 
-  return posts.slice(startIndex, endIndex);
-}
+//   return posts.slice(startIndex, endIndex);
+// }
 
-export async function getNumberOfPages(): Promise<number> {
-  const allPosts = await getAllPages();
-  return (
-    Math.floor(allPosts.length / NUMBER_OF_POSTS_PER_PAGE) +
-    (allPosts.length % NUMBER_OF_POSTS_PER_PAGE > 0 ? 1 : 0)
-  );
-}
+// export async function getNumberOfPages(): Promise<number> {
+//   const allPosts = await getDatabasePages();
+//   return (
+//     Math.floor(allPosts.length / NUMBER_OF_POSTS_PER_PAGE) +
+//     (allPosts.length % NUMBER_OF_POSTS_PER_PAGE > 0 ? 1 : 0)
+//   );
+// }
 
-export async function getNumberOfPagesByTag(tagName: string): Promise<number> {
-  const allPosts = await getAllPages();
-  const posts = allPosts.filter((post) =>
-    post.Tags.find((tag) => tag.name === tagName)
-  );
-  return (
-    Math.floor(posts.length / NUMBER_OF_POSTS_PER_PAGE) +
-    (posts.length % NUMBER_OF_POSTS_PER_PAGE > 0 ? 1 : 0)
-  );
-}
+// export async function getNumberOfPagesByTag(tagName: string): Promise<number> {
+//   const allPosts = await getDatabasePages();
+//   const posts = allPosts.filter((post) =>
+//     post.Tags.find((tag) => tag.name === tagName)
+//   );
+//   return (
+//     Math.floor(posts.length / NUMBER_OF_POSTS_PER_PAGE) +
+//     (posts.length % NUMBER_OF_POSTS_PER_PAGE > 0 ? 1 : 0)
+//   );
+// }
 
 export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
   let results: responses.BlockObject[] = [];
@@ -428,8 +397,11 @@ export async function getBlock(blockId: string): Promise<Block> {
   return _buildBlock(res);
 }
 
-export async function getAllTags(): Promise<SelectProperty[]> {
-  const allPosts = await getAllPages();
+export async function getAllDatabaseTags(
+  databaseId: string,
+  databaseTitle: string
+): Promise<SelectProperty[]> {
+  const allPosts = await getDatabasePages(databaseId, databaseTitle);
 
   const tagNames: string[] = [];
   return allPosts
@@ -455,6 +427,7 @@ async function checkFileExists(file: fs.PathLike) {
   }
 }
 
+// This works only for amazon hosted photos, have to addapt if it is Notion's
 export async function downloadFile(url: URL, slug: string) {
   let res!: AxiosResponse;
   try {
@@ -468,35 +441,36 @@ export async function downloadFile(url: URL, slug: string) {
     console.log("\nError requesting image\n" + error);
     return Promise.resolve();
   }
-  // console.log("\n===== Starting File Download =====");
+  console.log("\n===== Starting File Download =====");
 
   if (!res || res.status != 200) {
     console.log(res);
     return Promise.resolve();
   }
 
-  // console.log("1 - Getting folder path...");
+  console.log("1 - Getting folder path...");
   const dir = "./src/assets/notion/" + url.pathname.split("/").slice(-2)[0];
-  // console.log("2 - Folder path is: " + dir);
-  // console.log("3 - Checking if folder exists...");
+  console.log("1.5 - url is:" + url);
+  console.log("2 - Folder path is: " + dir);
+  console.log("3 - Checking if folder exists...");
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
-    // console.log("4 - It did not exists, folder was created.");
+    console.log("4 - It did not exists, folder was created.");
   } else {
-    // console.log("4 - Folder already exists.");
+    console.log("4 - Folder already exists.");
   }
 
-  // console.log("5 - Getting file name");
+  console.log("5 - Getting file name");
   const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
-  // console.log("5 - File name is: " + fileName);
+  console.log("5 - File name is: " + fileName);
   const fileNameWithSlug = addSlugToName(fileName, slug);
-  // console.log("6 - File name with slug is: " + fileNameWithSlug);
+  console.log("6 - File name with slug is: " + fileNameWithSlug);
 
-  const filepath = `${dir}/${fileNameWithSlug}`;
-  // console.log("7 - Full file path is: " + filepath);
+  const filepath = `${dir}${fileNameWithSlug}`;
+  console.log("7 - Full file path is: " + filepath);
 
   if (fs.existsSync(filepath)) {
-    // console.log(`File already exists:\n${filepath}`);
+    console.log(`File already exists:\n${filepath}`);
     return;
   }
 
@@ -509,7 +483,7 @@ export async function downloadFile(url: URL, slug: string) {
     stream = stream.pipe(rotate);
   }
   try {
-    // console.log(`Downloading file:\n${filepath}`);
+    console.log(`Downloading file:\n${filepath}`);
     return pipeline(stream, new ExifTransformer(), writeStream);
   } catch (error) {
     console.log("\nError while downloading file\n" + error);
@@ -579,75 +553,75 @@ export async function downloadPublicImage(url: URL, slug: string) {
   }
 }
 
-export async function getDatabase(): Promise<Database> {
-  if (dbCache !== null) {
-    return Promise.resolve(dbCache);
-  }
+// export async function getDatabase(): Promise<Database> {
+//   if (databaseCache !== null) {
+//     return Promise.resolve(databaseCache);
+//   }
 
-  const params: requestParams.RetrieveDatabase = {
-    database_id: DATABASE_ID,
-  };
+//   const params: requestParams.RetrieveDatabase = {
+//     database_id: DATABASE_ID,
+//   };
 
-  const res = await retry(
-    async (bail) => {
-      try {
-        return (await notion.databases.retrieve(
-          params as any // eslint-disable-line @typescript-eslint/no-explicit-any
-        )) as responses.RetrieveDatabaseResponse;
-      } catch (error: unknown) {
-        if (error instanceof APIResponseError) {
-          if (error.status && error.status >= 400 && error.status < 500) {
-            bail(error);
-          }
-        }
-        throw error;
-      }
-    },
-    {
-      retries: numberOfRetry,
-    }
-  );
+//   const res = await retry(
+//     async (bail) => {
+//       try {
+//         return (await notion.databases.retrieve(
+//           params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+//         )) as responses.RetrieveDatabaseResponse;
+//       } catch (error: unknown) {
+//         if (error instanceof APIResponseError) {
+//           if (error.status && error.status >= 400 && error.status < 500) {
+//             bail(error);
+//           }
+//         }
+//         throw error;
+//       }
+//     },
+//     {
+//       retries: numberOfRetry,
+//     }
+//   );
 
-  let icon: FileObject | Emoji | null = null;
-  if (res.icon) {
-    if (res.icon.type === "emoji" && "emoji" in res.icon) {
-      icon = {
-        Type: res.icon.type,
-        Emoji: res.icon.emoji,
-      };
-    } else if (res.icon.type === "external" && "external" in res.icon) {
-      icon = {
-        Type: res.icon.type,
-        Url: res.icon.external?.url || "",
-      };
-    } else if (res.icon.type === "file" && "file" in res.icon) {
-      icon = {
-        Type: res.icon.type,
-        Url: res.icon.file?.url || "",
-      };
-    }
-  }
+//   let icon: FileObject | Emoji | null = null;
+//   if (res.icon) {
+//     if (res.icon.type === "emoji" && "emoji" in res.icon) {
+//       icon = {
+//         Type: res.icon.type,
+//         Emoji: res.icon.emoji,
+//       };
+//     } else if (res.icon.type === "external" && "external" in res.icon) {
+//       icon = {
+//         Type: res.icon.type,
+//         Url: res.icon.external?.url || "",
+//       };
+//     } else if (res.icon.type === "file" && "file" in res.icon) {
+//       icon = {
+//         Type: res.icon.type,
+//         Url: res.icon.file?.url || "",
+//       };
+//     }
+//   }
 
-  let cover: FileObject | null = null;
-  if (res.cover) {
-    cover = {
-      Type: res.cover.type,
-      Url: res.cover.external?.url || res.cover.file?.url || "",
-    };
-  }
+//   let cover: FileObject | null = null;
+//   if (res.cover) {
+//     cover = {
+//       Type: res.cover.type,
+//       Url: res.cover.external?.url || res.cover.file?.url || "",
+//     };
+//   }
 
-  const database: Database = {
-    Title: res.title.map((richText) => richText.plain_text).join(""),
-    Description: res.description
-      .map((richText) => richText.plain_text)
-      .join(""),
-    Icon: icon,
-    Cover: cover,
-  };
+//   const database: Database = {
+//     Title: res.title.map((richText) => richText.plain_text).join(""),
+//     Description: res.description
+//       .map((richText) => richText.plain_text)
+//       .join(""),
+//     Icon: icon,
+//     Cover: cover,
+//   };
 
-  dbCache = database;
-  return database;
-}
+//   databaseCache = database;
+//   return database;
+// }
 
 function _buildBlock(blockObject: responses.BlockObject): Block {
   const block: Block = {
@@ -1111,73 +1085,76 @@ async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
 
 function _validPageObject(pageObject: responses.PageObject): boolean {
   const prop = pageObject.properties;
-  return !!prop.Title.title && prop.Title.title.length > 0;
+  return !!prop.Name.title && prop.Name.title.length > 0;
 }
 
-function _validPersonObject(pageObject: responses.PageObject): boolean {
-  const prop = pageObject.properties;
-  return (
-    !!prop.Name.title &&
-    prop.Name.title.length > 0 &&
-    !!prop.Title.rich_text &&
-    prop.Title.rich_text.length > 0
-  );
-}
-
-function _buildPost(pageObject: responses.PageObject): Page {
-  const prop = pageObject.properties;
-
+async function _buildDatabase(
+  databaseObject: DatabaseObject
+): Promise<Database> {
   let icon: FileObject | Emoji | null = null;
-  if (pageObject.icon) {
-    if (pageObject.icon.type === "emoji" && "emoji" in pageObject.icon) {
-      icon = {
-        Type: pageObject.icon.type,
-        Emoji: pageObject.icon.emoji,
-      };
-    } else if (
-      pageObject.icon.type === "external" &&
-      "external" in pageObject.icon
+  if (databaseObject.icon) {
+    if (
+      databaseObject.icon.type === "emoji" &&
+      "emoji" in databaseObject.icon
     ) {
       icon = {
-        Type: pageObject.icon.type,
-        Url: pageObject.icon.external?.url || "",
+        Type: databaseObject.icon.type,
+        Emoji: databaseObject.icon.emoji,
+      };
+    } else if (
+      databaseObject.icon.type === "external" &&
+      "external" in databaseObject.icon
+    ) {
+      icon = {
+        Type: databaseObject.icon.type,
+        Url: databaseObject.icon.external?.url || "",
       };
     }
   }
 
   let cover: FileObject | null = null;
-  if (pageObject.cover) {
+  if (databaseObject.cover) {
     cover = {
-      Type: pageObject.cover.type,
-      Url: pageObject.cover.external?.url || pageObject.cover.file?.url || "",
+      Type: databaseObject.cover.type,
+      Url:
+        databaseObject.cover.external?.url ||
+        databaseObject.cover.file?.url ||
+        "",
     };
   }
 
-  const post: Page = {
-    PageId: pageObject.id,
-    Title: prop.Title.title
-      ? prop.Title.title.map((richText) => richText.plain_text).join("")
-      : "",
-    Authors: prop.Authors.multi_select ? prop.Authors.multi_select : [],
-    Slug: prop.Page.select ? prop.Page.select.name : "",
-    Icon: icon,
+  let description =
+    databaseObject.description && databaseObject.description.length > 0
+      ? databaseObject.description
+          .map((richText) => richText.plain_text)
+          .join("")
+      : "";
+
+  let title = databaseObject.title
+    ? databaseObject.title.map((richText) => richText.plain_text).join("")
+    : "";
+
+  let databaseId = databaseObject.id;
+
+  let pages: Page[] | [] = [];
+  pages = await getDatabasePages(databaseId, title);
+
+  const database: Database = {
     Cover: cover,
-    CoverAlt: prop.CoverAlt.rich_text
-      ? prop.CoverAlt.rich_text.map((richText) => richText.plain_text).join("")
-      : "",
-    PublishDate: prop.PublishDate.date ? prop.PublishDate.date.start : "",
-    Tags: prop.Tags.multi_select ? prop.Tags.multi_select : [],
-    Description:
-      prop.Description.rich_text && prop.Description.rich_text.length > 0
-        ? prop.Description.rich_text
-            .map((richText) => richText.plain_text)
-            .join("")
-        : "",
+    Description: description,
+    Icon: icon,
+    Title: title,
+    Id: databaseId,
+    Pages: pages,
   };
 
-  return post;
+  return database;
 }
-function _buildPerson(pageObject: responses.PageObject): Person {
+
+function _buildPage(
+  pageObject: responses.PageObject,
+  databaseTitle: string
+): Page {
   const prop = pageObject.properties;
 
   let icon: FileObject | Emoji | null = null;
@@ -1207,56 +1184,148 @@ function _buildPerson(pageObject: responses.PageObject): Person {
   }
 
   let photo: FileObject | null = null;
-  try {
-    if (prop.Photo.files && prop.Photo.files.length > 0) {
-      if (prop.Photo.files[0].external) {
-        photo = {
-          Type: prop.Photo.type,
-          Url: prop.Photo.files[0].external.url,
-        };
-      } else if (prop.Photo.files[0].file) {
-        photo = {
-          Type: prop.Photo.files[0].type,
-          Url: prop.Photo.files[0].file.url,
-          ExpiryTime: prop.Photo.files[0].file.expiry_time,
-        };
-      }
+
+  if (prop.Photo && prop.Photo.files && prop.Photo.files.length > 0) {
+    if (prop.Photo.files[0].external) {
+      photo = {
+        Type: prop.Photo.type,
+        Url: prop.Photo.files[0].external.url,
+      };
+    } else if (prop.Photo.files[0].file) {
+      photo = {
+        Type: prop.Photo.files[0].type,
+        Url: prop.Photo.files[0].file.url,
+        ExpiryTime: prop.Photo.files[0].file.expiry_time,
+      };
     }
-  } catch (error) {
-    console.log("\nError while getting a person's photo\n" + error);
   }
 
-  // console.log(prop.LinkedIn.url);
-  const person: Person = {
-    PageId: pageObject.id,
-    Icon: icon,
-    Name: prop.Name.title // Name of person, Title of page
-      ? prop.Name.title.map((richText) => richText.plain_text).join("")
-      : "",
-    Title: prop.Title.rich_text // Title of person (example: Prof., M.Sc., etc.)
-      ? prop.Title.rich_text.map((richText) => richText.plain_text).join("")
-      : "",
-    Description:
-      prop.Description.rich_text && prop.Description.rich_text.length > 0
-        ? prop.Description.rich_text
+  const name = prop.Name.title
+    ? prop.Name.title.map((richText) => richText.plain_text).join("")
+    : "";
+
+  const slug = name === "Homepage" ? "/" : simplifyStringForSlug(name);
+
+  const databaseTitleSlug = simplifyStringForSlug(databaseTitle);
+
+  const page: Page = {
+    Cover: cover,
+    CoverAlt:
+      prop.CoverAlt && prop.CoverAlt.rich_text
+        ? prop.CoverAlt.rich_text
             .map((richText) => richText.plain_text)
             .join("")
         : "",
-    LinkedIn:
-      prop.LinkedIn.url && prop.LinkedIn.url.length > 0
-        ? new URL(prop.LinkedIn.url)
-        : new URL(""),
-    Email:
-      prop.Email.email && prop.Email.email.length > 0 ? prop.Email.email : "",
+    Description_en:
+      prop.Description_en.rich_text && prop.Description_en.rich_text.length > 0
+        ? prop.Description_en.rich_text
+            .map((richText) => richText.plain_text)
+            .join("")
+        : "",
+    Description_de:
+      prop.Description_de.rich_text && prop.Description_de.rich_text.length > 0
+        ? prop.Description_de.rich_text
+            .map((richText) => richText.plain_text)
+            .join("")
+        : "",
+    Description_pt:
+      prop.Description_pt.rich_text && prop.Description_pt.rich_text.length > 0
+        ? prop.Description_pt.rich_text
+            .map((richText) => richText.plain_text)
+            .join("")
+        : "",
+    Icon: icon,
+    Name: name,
+    PageId: pageObject.id,
+    Slug: databaseTitleSlug !== "pages" ? `${databaseTitleSlug}/${slug}` : slug,
+    Tags: prop.Tags.multi_select ? prop.Tags.multi_select : [],
+    Active: prop.Active ? prop.Active.checkbox : undefined,
+    Authors:
+      prop.Authors && prop.Authors.multi_select
+        ? prop.Authors.multi_select
+        : [],
+    Apps: prop.Apps && prop.Apps.multi_select ? prop.Apps.multi_select : [],
+    Category:
+      prop.Category && prop.Category.select && prop.Category.select.name
+        ? prop.Category.select.name
+        : "",
+    City: prop.City && prop.City.multi_select ? prop.City.multi_select : [],
+    Client:
+      prop.Client && prop.Client.select && prop.Client.select.name
+        ? prop.Client.select.name
+        : "",
+    Country:
+      prop.Country && prop.Country.select && prop.Country.select.name
+        ? prop.Country.select.name
+        : "",
+    DateStart: prop.Date && prop.Date.date ? prop.Date.date.start : "",
+    DateEnd:
+      prop.Date && prop.Date.date && prop.Date.date.end
+        ? prop.Date.date.end
+        : "",
+    Disclosed: prop.Disclosed ? prop.Disclosed.checkbox : undefined,
+    Event:
+      prop.Event && prop.Event.select && prop.Event.select.name
+        ? prop.Event.select.name
+        : "",
+    Format:
+      prop.Format && prop.Format.select && prop.Format.select.name
+        ? prop.Format.select.name
+        : "",
+    Instagram: prop.Instagram && prop.Instagram.url ? prop.Instagram.url : "",
+    Level:
+      prop.Level && prop.Level.select && prop.Level.select.name
+        ? prop.Level.select.name
+        : "",
+    Link: prop.Link && prop.Link.url ? prop.Link.url : "",
+    LinkedIn: prop.LinkedIn && prop.LinkedIn.url ? prop.LinkedIn.url : "",
+    Name_de:
+      prop.Name_de &&
+      prop.Name_de.rich_text &&
+      prop.Name_de.rich_text.length > 0
+        ? prop.Name_de.rich_text.map((richText) => richText.plain_text).join("")
+        : "",
+    Name_pt:
+      prop.Name_pt &&
+      prop.Name_pt.rich_text &&
+      prop.Name_pt.rich_text.length > 0
+        ? prop.Name_pt.rich_text.map((richText) => richText.plain_text).join("")
+        : "",
+    OfficialName:
+      prop.OfficialName &&
+      prop.OfficialName.rich_text &&
+      prop.OfficialName.rich_text.length > 0
+        ? prop.OfficialName.rich_text
+            .map((richText) => richText.plain_text)
+            .join("")
+        : "",
+    Organization:
+      prop.Organization &&
+      prop.Organization.select &&
+      prop.Organization.select.name
+        ? prop.Organization.select.name
+        : "",
     Photo: photo,
-    Team: prop.Team.checkbox ? prop.Team.checkbox : false,
-    Cover: cover,
-    CoverAlt: prop.CoverAlt.rich_text
-      ? prop.CoverAlt.rich_text.map((richText) => richText.plain_text).join("")
-      : "",
+    Place:
+      prop.Place && prop.Place.select && prop.Place.select.name
+        ? prop.Place.select.name
+        : "",
+    References:
+      prop.References &&
+      prop.References.rich_text &&
+      prop.References.rich_text.length > 0
+        ? prop.References.rich_text
+            .map((richText) => richText.plain_text)
+            .join("")
+        : "",
+    Team: prop.Team && prop.Team.multi_select ? prop.Team.multi_select : [],
+    Title:
+      prop.Title && prop.Title.rich_text && prop.Title.rich_text.length > 0
+        ? prop.Title.rich_text.map((richText) => richText.plain_text).join("")
+        : "",
   };
 
-  return person;
+  return page;
 }
 
 function _buildRichText(richTextObject: responses.RichTextObject): RichText {

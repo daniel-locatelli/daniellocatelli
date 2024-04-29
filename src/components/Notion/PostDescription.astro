@@ -1,15 +1,15 @@
 ---
-import { type Post } from "../../lib/notion-interfaces.ts";
+import { type Page } from "../../lib/notion-interfaces.ts";
 
 export interface Props {
-  post: Post;
+  post: Page;
 }
 
 const { post } = Astro.props;
 ---
 
 <div class="post-excerpt">
-  <p>{post.Description ? post.Description : ""}</p>
+  <p>{post.Description_en ? post.Description_en : ""}</p>
 </div>
 
 <style>

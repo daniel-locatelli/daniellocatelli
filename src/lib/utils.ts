@@ -18,3 +18,19 @@ export function formatDate(date: Date): string {
 
   return new Date(date).toLocaleDateString("en-DE", options);
 }
+
+function removeDiacritics(string: string) {
+  return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+export function simplifyStringForSlug(string: string) {
+  // Remove diacritics
+  let stringWithoutDiacritics = removeDiacritics(string);
+
+  // Remove special characters and replace spaces with hyphens
+  let simplifiedString = stringWithoutDiacritics
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[-\s]+/g, "-");
+  return simplifiedString;
+}

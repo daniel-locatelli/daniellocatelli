@@ -2,14 +2,14 @@
 import {
   type Emoji,
   type FileObject,
-  type Post,
+  type Page,
 } from "../../lib/notion-interfaces.ts";
 import { getPostLink } from "../../lib/blog-helpers.ts";
 import NoContents from "./NoContents.astro";
 
 export interface Props {
   heading: string;
-  posts: Post[];
+  posts: Page[];
 }
 
 const { heading, posts } = Astro.props;
@@ -22,7 +22,7 @@ const { heading, posts } = Astro.props;
       <NoContents contents={posts} />
     ) : (
       <ul>
-        {posts.map((post: Post) => (
+        {posts.map((post: Page) => (
           <li>
             <a
               href={getPostLink(post.Slug)}

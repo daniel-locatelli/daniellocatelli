@@ -1,11 +1,11 @@
 ---
-import { type Post } from "../../lib/notion-interfaces.ts";
+import { type Page } from "../../lib/notion-interfaces.ts";
 import { getNavLink, getPostLink } from "../../lib/blog-helpers.ts";
 import PostTags from "./PostTags.astro";
 
 export interface Props {
-  prevPost: Post;
-  nextPost: Post;
+  prevPost: Page;
+  nextPost: Page;
 }
 
 const { prevPost, nextPost } = Astro.props;

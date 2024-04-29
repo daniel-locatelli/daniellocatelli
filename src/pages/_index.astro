@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import {
   SITE_TITLE,
   SITE_DESCRIPTION,
@@ -8,13 +7,12 @@ import {
   SITE_HEROIMAGEALT,
 } from "../consts";
 import { getAllDatabases } from "../lib/notion/client";
-import { getAllPages } from "../lib/notion/client";
+import { getDatabasePages } from "../lib/notion/client";
 import { getStaticFilePath } from "../lib/blog-helpers";
-import { formatDate } from "../lib/utils";
+import { formatDate, simplifyStringForSlug } from "../lib/utils";
+import type { Page } from "../lib/notion-interfaces";
 
-const databases = await getAllDatabases("Page");
-const database_pages_id = databases.results[0].id;
-const pages = await getAllPages(database_pages_id);
+const databases = await getAllDatabases();
 ---
 
 <Layout
@@ -26,20 +24,23 @@ const pages = await getAllPages(database_pages_id);
   <main>
     <h1>Daniel Locatelli</h1>
     {
-      pages.map((page, index) => {
-        const href = getStaticFilePath(page.Slug);
-        return (
-          <>
-            <a href={href} class="card-link" data-astro-prefetch>
-              <div class="card">
-                <div class="card-text">
-                  <h3 class="title" transition:name={page.Slug + "-title"}>
-                    {page.Title}
-                  </h3>
-                  <p class="description">{page.Description}</p>
-                  <p class="date">{formatDate(new Date(page.PublishDate))}</p>
-                </div>
-                {/* <div>
+      // pages.map((page, index) => {
+      //   const href = getStaticFilePath(page.Slug);
+      //   return (
+      //     <>
+      //       <a href={href} class="card-link" data-astro-prefetch>
+      //         <div class="card">
+      //           <div class="card-text">
+      //             <h3 class="name" transition:name={page.Slug + "-title"}>
+      //               {page.Name}
+      //             </h3>
+      //             <p class="description">{page.Description_en}</p>
+      {
+        /* <p class="date">{formatDate(new Date(page.DateStart!))}</p> */
+      }
+    }
+    {
+      /* <div>
                   {image && (
                     <Image
                       class="cover"
@@ -52,15 +53,12 @@ const pages = await getAllPages(database_pages_id);
                       }
                     />
                   )}
-                </div> */}
-              </div>
-            </a>
-          </>
-        );
-      })
+                </div> */
     }
   </main>
 </Layout>
+
+); ) }
 
 <style>
   main {

@@ -2,12 +2,12 @@
 import {
   type Emoji,
   type FileObject,
-  type Post,
+  type Page,
 } from "../../lib/notion-interfaces.ts";
 import { getPostLink } from "../../lib/blog-helpers.ts";
 
 export interface Props {
-  post: Post;
+  post: Page;
   enableLink?: boolean;
 }
 

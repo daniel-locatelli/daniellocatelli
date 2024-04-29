@@ -1,16 +1,16 @@
 ---
-import { type Post } from "../../lib/notion-interfaces.ts";
+import { type Page } from "../../lib/notion-interfaces.ts";
 import { getDateStr } from "../../lib/blog-helpers.ts";
 
 export interface Props {
-  post: Post;
+  post: Page;
 }
 
 const { post } = Astro.props;
 ---
 
 <div class="post-date">
-  {post.PublishDate ? getDateStr(post.PublishDate) : ""}
+  {post.DateStart ? getDateStr(post.DateStart) : ""}
 </div>
 
 <style>
