@@ -75,12 +75,13 @@ let databasesCache: Database[] | null = null;
 
 const numberOfRetry = 2;
 
-export async function getAllDatabases(filter?: string): Promise<Database[]> {
+export async function getAllDatabases(): Promise<Database[]> {
+  console.log("\n===== Getting databases =====");
   if (databasesCache !== null) {
     return Promise.resolve(databasesCache);
   }
+
   const params: requestParams.SearchByTitle = {
-    query: filter || "",
     filter: {
       value: "database",
       property: "object",
@@ -92,13 +93,25 @@ export async function getAllDatabases(filter?: string): Promise<Database[]> {
   let databaseObjectArray: Array<DatabaseObject>;
   databaseObjectArray = response.results as Array<DatabaseObject>;
 
-  databasesCache = await Promise.all(
-    databaseObjectArray.map(
-      async (databaseObject) => await _buildDatabase(databaseObject)
-    )
-  );
+  try {
+    databasesCache = await Promise.all(
+      databaseObjectArray.map(
+        async (databaseObject) => await _buildDatabase(databaseObject)
+      )
+    );
+    return databasesCache;
+  } catch (error) {
+    console.error("Error building databases: ", error);
+    throw error;
+  }
+}
 
-  return databasesCache;
+export async function getDatabaseByName(
+  databaseName: string
+): Promise<Database | undefined> {
+  let databases = await getAllDatabases();
+  let database = databases.find((database) => database.Title === databaseName);
+  return database;
 }
 
 export async function getDatabasePages(
@@ -427,7 +440,6 @@ async function checkFileExists(file: fs.PathLike) {
   }
 }
 
-// This works only for amazon hosted photos, have to addapt if it is Notion's
 export async function downloadFile(url: URL, slug: string) {
   let res!: AxiosResponse;
   try {
@@ -441,36 +453,36 @@ export async function downloadFile(url: URL, slug: string) {
     console.log("\nError requesting image\n" + error);
     return Promise.resolve();
   }
-  console.log("\n===== Starting File Download =====");
+  // console.log("\n===== Starting File Download =====");
 
   if (!res || res.status != 200) {
     console.log(res);
     return Promise.resolve();
   }
 
-  console.log("1 - Getting folder path...");
+  // console.log("1 - Getting folder path...");
   const dir = "./src/assets/notion/" + url.pathname.split("/").slice(-2)[0];
-  console.log("1.5 - url is:" + url);
-  console.log("2 - Folder path is: " + dir);
-  console.log("3 - Checking if folder exists...");
+  // console.log("1.5 - url is:" + url);
+  // console.log("2 - Folder path is: " + dir);
+  // console.log("3 - Checking if folder exists...");
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
-    console.log("4 - It did not exists, folder was created.");
+    // console.log("4 - It did not exists, folder was created.");
   } else {
-    console.log("4 - Folder already exists.");
+    // console.log("4 - Folder already exists.");
   }
 
-  console.log("5 - Getting file name");
+  // console.log("5 - Getting file name");
   const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
-  console.log("5 - File name is: " + fileName);
+  // console.log("5 - File name is: " + fileName);
   const fileNameWithSlug = addSlugToName(fileName, slug);
-  console.log("6 - File name with slug is: " + fileNameWithSlug);
+  // console.log("6 - File name with slug is: " + fileNameWithSlug);
 
-  const filepath = `${dir}${fileNameWithSlug}`;
-  console.log("7 - Full file path is: " + filepath);
+  const filepath = `${dir}/${fileNameWithSlug}`;
+  // console.log("7 - Full file path is: " + filepath);
 
   if (fs.existsSync(filepath)) {
-    console.log(`File already exists:\n${filepath}`);
+    // console.log(`File already exists:\n${filepath}`);
     return;
   }
 
@@ -483,7 +495,7 @@ export async function downloadFile(url: URL, slug: string) {
     stream = stream.pipe(rotate);
   }
   try {
-    console.log(`Downloading file:\n${filepath}`);
+    // console.log(`Downloading file:\n${filepath}`);
     return pipeline(stream, new ExifTransformer(), writeStream);
   } catch (error) {
     console.log("\nError while downloading file\n" + error);
@@ -1088,9 +1100,26 @@ function _validPageObject(pageObject: responses.PageObject): boolean {
   return !!prop.Name.title && prop.Name.title.length > 0;
 }
 
+function _validDatabase(databaseObject: DatabaseObject): boolean {
+  if (databaseObject.title && databaseObject.description && databaseObject.id) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 async function _buildDatabase(
   databaseObject: DatabaseObject
 ): Promise<Database> {
+  let title: string;
+  try {
+    title = databaseObject.title
+      ? databaseObject.title.map((richText) => richText.plain_text).join("")
+      : "";
+  } catch (error) {
+    console.error("Error building a database: no title found", error);
+    throw error;
+  }
   let icon: FileObject | Emoji | null = null;
   if (databaseObject.icon) {
     if (
@@ -1130,14 +1159,15 @@ async function _buildDatabase(
           .join("")
       : "";
 
-  let title = databaseObject.title
-    ? databaseObject.title.map((richText) => richText.plain_text).join("")
-    : "";
-
   let databaseId = databaseObject.id;
 
   let pages: Page[] | [] = [];
-  pages = await getDatabasePages(databaseId, title);
+  try {
+    pages = await getDatabasePages(databaseId, title);
+  } catch (error) {
+    console.error("Error getting pages from a database:", error);
+    throw error;
+  }
 
   const database: Database = {
     Cover: cover,
@@ -1148,6 +1178,7 @@ async function _buildDatabase(
     Pages: pages,
   };
 
+  console.log("Built database " + database.Title);
   return database;
 }
 
@@ -1156,6 +1187,18 @@ function _buildPage(
   databaseTitle: string
 ): Page {
   const prop = pageObject.properties;
+  if (
+    !prop.hasOwnProperty("Name") ||
+    !prop.hasOwnProperty("CoverAlt") ||
+    !prop.hasOwnProperty("Description_en") ||
+    !prop.hasOwnProperty("Description_de") ||
+    !prop.hasOwnProperty("Description_pt") ||
+    !prop.hasOwnProperty("Tags")
+  ) {
+    throw new Error(
+      "Database does not have one of the mandatory columns: Name(Aa), CoverAlt(text), Description_en(text), Description_de(text), Description_pt(text), Tags(Multi-select)"
+    );
+  }
 
   let icon: FileObject | Emoji | null = null;
   if (pageObject.icon) {
@@ -1176,15 +1219,37 @@ function _buildPage(
   }
 
   let cover: FileObject | null = null;
-  if (pageObject.cover) {
-    cover = {
-      Type: pageObject.cover.type,
-      Url: pageObject.cover.external?.url || pageObject.cover.file?.url || "",
-    };
+  try {
+    if (pageObject.cover) {
+      cover = {
+        Type: pageObject.cover.type,
+        Url: pageObject.cover.external?.url || pageObject.cover.file?.url || "",
+      };
+    }
+  } catch (error) {
+    console.error("Error building a page while getting the cover", error);
+    throw error;
+  }
+
+  let coverAlt: string | null = null;
+  try {
+    if (prop.CoverAlt) {
+      coverAlt =
+        prop.CoverAlt && prop.CoverAlt.rich_text
+          ? prop.CoverAlt.rich_text
+              .map((richText) => richText.plain_text)
+              .join("")
+          : "";
+    }
+  } catch (error) {
+    console.error(
+      "Error building a page while getting the cover alt text",
+      error
+    );
+    throw error;
   }
 
   let photo: FileObject | null = null;
-
   if (prop.Photo && prop.Photo.files && prop.Photo.files.length > 0) {
     if (prop.Photo.files[0].external) {
       photo = {
@@ -1210,12 +1275,7 @@ function _buildPage(
 
   const page: Page = {
     Cover: cover,
-    CoverAlt:
-      prop.CoverAlt && prop.CoverAlt.rich_text
-        ? prop.CoverAlt.rich_text
-            .map((richText) => richText.plain_text)
-            .join("")
-        : "",
+    CoverAlt: coverAlt,
     Description_en:
       prop.Description_en.rich_text && prop.Description_en.rich_text.length > 0
         ? prop.Description_en.rich_text

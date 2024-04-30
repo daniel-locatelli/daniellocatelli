@@ -1,5 +1,5 @@
 export interface SearchByTitle {
-  query: string;
+  query?: string;
   filter?: {
     value: "page" | "database";
     property: "object";

@@ -8,6 +8,9 @@ import {
 } from "../consts";
 import { getAllDatabases } from "../lib/notion/client";
 import type { Page } from "../lib/notion-interfaces";
+import { importCoverImage } from "../lib/blog-helpers";
+import { Image } from "astro:assets";
+import Nav from "../components/layout/Nav.astro";
 
 export async function getStaticPaths() {
   const databases = await getAllDatabases();
@@ -34,6 +37,16 @@ interface Props {
 
 const { subpage: slug } = Astro.params;
 const { subpage } = Astro.props;
+
+// Getting images dynamically with import.meta.glob()
+// It only accepts string literals
+// https://docs.astro.build/en/recipes/dynamically-importing-images/
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
+);
+
+// Cover image
+const image = await importCoverImage(subpage, images);
 ---
 
 <Layout
@@ -42,35 +55,33 @@ const { subpage } = Astro.props;
   image={SITE_HEROIMAGE}
   imageAlt={SITE_HEROIMAGEALT}
 >
-  <main>
-    <h1>Daniel Locatelli</h1>
-
-    <div class="card">
-      <div class="card-text">
-        <h3 class="name" transition:name={subpage.Slug + "-title"}>
-          {subpage.Name}
-        </h3>
-        <p class="description">{subpage.Description_en}</p>
-        {/* <p class="date">{formatDate(new Date(page.DateStart!))}</p> */}
-      </div>
-      {
-        /* <div>
-                  {image && (
-                    <Image
-                      class="cover"
-                      transition:name={post.Slug + "-image"}
-                      src={image}
-                      alt={post.CoverAlt}
-                      widths={[300, 400, 500]}
-                      sizes={
-                        "(max-width: 300px) 300px, (max-width: 400px) 400px, (max-width: 500px) 500px"
-                      }
-                    />
-                  )}
-                </div> */
-      }
+  <div class="card">
+    <div class="card-text">
+      <h3 class="name" transition:name={subpage.Slug + "-title"}>
+        {subpage.Name}
+      </h3>
+      <p class="description">{subpage.Description_en}</p>
+      {/* <p class="date">{formatDate(new Date(page.DateStart!))}</p> */}
     </div>
-  </main>
+    {
+      (
+        <div>
+          {image && (
+            <Image
+              class="cover"
+              transition:name={subpage.Slug + "-image"}
+              src={image}
+              alt={subpage.CoverAlt}
+              widths={[300, 400, 500]}
+              sizes={
+                "(max-width: 300px) 300px, (max-width: 400px) 400px, (max-width: 500px) 500px"
+              }
+            />
+          )}
+        </div>
+      )
+    }
+  </div>
 </Layout>
 
 <style>

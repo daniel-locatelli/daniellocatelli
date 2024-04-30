@@ -301,14 +301,14 @@ export const parseYouTubeVideoId = (url: URL): string => {
 export const importCoverImage = async (page: Page, images: any) => {
   console.log("\nAll images");
   if (page.Cover) {
-    const url = new URL(page.Cover!.Url);
+    const url = new URL(page.Cover.Url);
     const slug = page.Slug;
 
     const dir = "/src/assets/notion/" + url.pathname.split("/").slice(-2)[0];
     const imageName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
 
     const imageNameWithSlug = addSlugToName(imageName, slug);
-    const imagePath = `${dir}${imageNameWithSlug}`;
+    const imagePath = `${dir}/${imageNameWithSlug}`;
     console.log(imagePath);
 
     try {
@@ -350,7 +350,11 @@ export function returnImageNameAsJpg(url: URL) {
 
 export function addSlugToName(name: string, slug: string): string {
   if (!name.includes(slug)) {
-    const newName = slug + "_" + name;
+    let slugEdited = slug;
+    if (slug.includes("/")) {
+      slugEdited = slug.replace("/", "_");
+    }
+    const newName = slugEdited + "_" + name;
     return newName;
   } else {
     return name;

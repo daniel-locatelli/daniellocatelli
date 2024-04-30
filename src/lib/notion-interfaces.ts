@@ -9,7 +9,7 @@ export interface Database {
 
 export interface Page {
   Cover: FileObject | null;
-  CoverAlt: string;
+  CoverAlt: string | null;
   Description_en: string;
   Description_de: string;
   Description_pt: string;

@@ -1,5 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/layout/Header.astro";
+import { ENABLE_LIGHTBOX, REFERENCES } from "../server-constants";
 
 export interface Props {
   title: string;
@@ -11,7 +13,6 @@ export interface Props {
 const { title, description, image, imageAlt } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <BaseHead
@@ -21,7 +22,43 @@ const { title, description, image, imageAlt } = Astro.props;
       imageAlt={imageAlt}
     />
   </head>
-  <body>
-    <slot />
+  <body class="print:max-w-full screen:max-w-3xl">
+    <Header />
+    <main id="main" class="lg:w-[125%]">
+      <slot />
+    </main>
+    <script type="module">
+      // Listen for beforeprint event to open all details elements
+      window.addEventListener('beforeprint', function () {
+        document.querySelectorAll('details').forEach(function (detail) {
+            detail.setAttribute('open', true);
+            detail.dataset.wasOpen = 'true'; // Mark it as opened by the script
+        });
+      });
+
+      // Optional: Listen for afterprint event to close all details elements
+      // that were opened by the script
+      window.addEventListener('afterprint', function () {
+        document.querySelectorAll('details').forEach(function (detail) {
+            if (detail.dataset.wasOpen) {
+                detail.removeAttribute('open');
+                delete detail.dataset.wasOpen; // Clean up
+            }
+        });
+      });
+    </script>
+    {
+      ENABLE_LIGHTBOX && (
+        <script type="module">
+          import 'https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js';
+
+          window.addEventListener('load', () => {
+            const lightbox = GLightbox({
+              selector: '.mediaglightbox, .fileglightbox, .embedglightbox'
+            });
+          });
+        </script>
+      )
+    }
   </body>
 </html>

@@ -1,8 +1,8 @@
 ---
-import type { Page } from "../lib/notion-interfaces";
-import { getAllDatabases } from "../lib/notion/client";
+import type { Page } from "../../lib/notion-interfaces";
+import { getDatabaseByName } from "../../lib/notion/client";
 
-let pagesDatabase = (await getAllDatabases("Pages"))[0];
+let pagesDatabase = (await getDatabaseByName("Pages"))!;
 let pages: Page[];
 pages = pagesDatabase.Pages;
 ---
@@ -10,10 +10,11 @@ pages = pagesDatabase.Pages;
 <nav>
   {
     pages.map((page: Page) => {
+      console.log(page.Slug);
       return (
         <a
           aria-label={`Go to ${page.Name}`}
-          href={page.Slug === "Homepage" ? "/" : page.Slug}
+          href={page.Slug}
           data-astro-prefetch
         >
           {page.Name}
