@@ -1,30 +1,32 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import {
   SITE_TITLE,
   SITE_DESCRIPTION,
   SITE_HEROIMAGE,
   SITE_HEROIMAGEALT,
 } from "../consts";
-import { getAllDatabases } from "../lib/notion/client";
+import {
+  getAllBlocksByBlockId,
+  getAllDatabases,
+  getDatabaseByName,
+} from "../lib/notion/client";
 import type { Page } from "../lib/notion-interfaces";
 import { importCoverImage } from "../lib/blog-helpers";
 import { Image } from "astro:assets";
-import Nav from "../components/layout/Nav.astro";
+import Base from "@/layouts/Base.astro";
+import PostBody from "@/components/Notion/PostBody.astro";
 
 export async function getStaticPaths() {
   const databases = await getAllDatabases();
 
   const paths = databases.flatMap((database) =>
     // The main pages are in the other file
-    database.Pages.filter((subpage) => database.Title !== "Pages").map(
-      (subpage) => ({
-        params: {
-          subpage: subpage.Slug === "home" ? undefined : subpage.Slug,
-        },
-        props: { subpage: subpage },
-      })
-    )
+    database.Pages.filter(() => database.Title !== "Pages").map((subpage) => ({
+      params: {
+        subpage: subpage.Slug === "home" ? undefined : subpage.Slug,
+      },
+      props: { subpage: subpage },
+    }))
   );
   console.dir(paths);
 
@@ -38,6 +40,8 @@ interface Props {
 const { subpage: slug } = Astro.params;
 const { subpage } = Astro.props;
 
+const [blocks] = await Promise.all([getAllBlocksByBlockId(subpage.PageId)]);
+
 // Getting images dynamically with import.meta.glob()
 // It only accepts string literals
 // https://docs.astro.build/en/recipes/dynamically-importing-images/
@@ -49,99 +53,36 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 const image = await importCoverImage(subpage, images);
 ---
 
-<Layout
-  title={SITE_TITLE}
-  description={SITE_DESCRIPTION}
-  image={SITE_HEROIMAGE}
-  imageAlt={SITE_HEROIMAGEALT}
->
-  <div class="card">
-    <div class="card-text">
-      <h3 class="name" transition:name={subpage.Slug + "-title"}>
-        {subpage.Name}
-      </h3>
-      <p class="description">{subpage.Description_en}</p>
-      {/* <p class="date">{formatDate(new Date(page.DateStart!))}</p> */}
-    </div>
-    {
-      (
-        <div>
-          {image && (
-            <Image
-              class="cover"
-              transition:name={subpage.Slug + "-image"}
-              src={image}
-              alt={subpage.CoverAlt}
-              widths={[300, 400, 500]}
-              sizes={
-                "(max-width: 300px) 300px, (max-width: 400px) 400px, (max-width: 500px) 500px"
-              }
-            />
-          )}
-        </div>
-      )
-    }
-  </div>
-</Layout>
-
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    color: white;
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  .astro-a {
-    position: absolute;
-    top: -32px;
-    left: 50%;
-    transform: translatex(-50%);
-    width: 220px;
-    height: auto;
-    z-index: -1;
-  }
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    margin-bottom: 1em;
-  }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    margin-bottom: 2rem;
-    border: 1px solid rgba(var(--accent-light), 25%);
-    background: linear-gradient(
-      rgba(var(--accent-dark), 66%),
-      rgba(var(--accent-dark), 33%)
-    );
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-  .instructions code {
-    font-size: 0.8em;
-    font-weight: bold;
-    background: rgba(var(--accent-light), 12%);
-    color: rgb(var(--accent-light));
-    border-radius: 4px;
-    padding: 0.3em 0.4em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent-light));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 2rem;
-    padding: 0;
-  }
-</style>
+<Base meta={{ title: subpage.Name }}>
+  <section>
+    <h1 class="title mb-6">{subpage.Name}</h1>
+    <p class="mb-4">
+      <PostBody blocks={blocks} slug={slug!} />
+    </p>
+  </section>
+  <!-- <section class="mt-16">
+    <h2 class="title mb-4 text-xl">Technologies</h2>
+    <dl class="space-y-4">
+      {
+        cactusTech.map(({ desc, href, title }) => (
+          <div class="flex flex-col gap-2 md:flex-row">
+            <dt>
+              <span class="flex">
+                <a
+                  class="cactus-link"
+                  href={href}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {title}
+                </a>
+                :
+              </span>
+            </dt>
+            <dd>{desc}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section> -->
+</Base>

@@ -3,39 +3,34 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root,
+  :root[data-theme="light"] {
     color-scheme: light;
-    --theme-bg: 249 249 249;
-    --theme-text: 34 39 42;
-    --theme-link: 85 123 118;
-    --theme-accent: 203 41 65;
-    --theme-accent-2: 17 17 17;
-    --theme-quote: 203 41 65;
+    /* https://tailwindcss.com/docs/customizing-colors#using-css-variables */
+    --theme-bg: 0deg 0% 98%;
+    --theme-link: 172deg 18% 41%;
+    --theme-text: 203deg 11% 15%;
+    --theme-accent: 351deg 66% 48%;
+    --theme-accent-2: 0deg 0% 7%;
+    --theme-quote: 351deg 66% 48%;
   }
 
-  :root.dark {
+  :root[data-theme="dark"] {
     color-scheme: dark;
-    --theme-bg: 28 30 32;
-    --theme-text: 255 255 255;
-    --theme-link: 199 200 203;
-    --theme-accent: 41 188 136;
-    --theme-accent-2: 237 237 237;
-    --theme-quote: 205 254 183;
+    --theme-bg: 210deg 6% 12%;
+    --theme-link: 330deg 49% 67%;
+    --theme-text: 220deg 3% 79%;
+    --theme-accent: 159deg 64% 45%;
+    --theme-accent-2: 0deg 0% 93%;
+    --theme-quote: 102deg 100% 86%;
   }
 
   html {
     @apply scroll-smooth;
   }
 
-  html body {
-    @apply mx-auto flex min-h-screen max-w-3xl flex-col bg-bgColor px-8 pt-8 text-textColor antialiased overflow-x-hidden;
-  }
-
-  * {
-    @apply scroll-mt-10;
-  }
-  pre {
-    @apply rounded-md p-4 font-mono;
+  body {
+    @apply mx-auto flex min-h-screen max-w-3xl flex-col bg-bgColor px-8 pt-16 font-mono text-sm font-normal text-textColor antialiased;
   }
 }
 

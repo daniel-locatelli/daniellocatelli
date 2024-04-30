@@ -278,7 +278,7 @@ export const parseYouTubeVideoId = (url: URL): string => {
   if (!isYouTubeURL(url)) return "";
 
   if (url.hostname === "youtu.be") {
-    return url.pathname.split("/")[1];
+    return url.pathname.split("/")[1]!;
   } else if (url.pathname === "/watch") {
     return url.searchParams.get("v") || "";
   } else {
@@ -291,7 +291,7 @@ export const parseYouTubeVideoId = (url: URL): string => {
       elements[1] === "embed" ||
       elements[1] === "live"
     ) {
-      return elements[2];
+      return elements[2]!;
     }
   }
 
@@ -305,7 +305,7 @@ export const importCoverImage = async (page: Page, images: any) => {
     const slug = page.Slug;
 
     const dir = "/src/assets/notion/" + url.pathname.split("/").slice(-2)[0];
-    const imageName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
+    const imageName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]!);
 
     const imageNameWithSlug = addSlugToName(imageName, slug);
     const imagePath = `${dir}/${imageNameWithSlug}`;
@@ -341,7 +341,7 @@ export function filterPostsByTags(posts: Page[], post: Page) {
 
 export function returnImageNameAsJpg(url: URL) {
   const fileNameExtension = decodeURIComponent(
-    url.pathname.split("/").slice(-1)[0]
+    url.pathname.split("/").slice(-1)[0]!
   );
   const fileName = fileNameExtension.split(".")[0];
   const fileNameConverted = fileName + ".jpg";

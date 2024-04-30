@@ -1,47 +1,61 @@
 ---
+import type { Page } from "src/lib/notion-interfaces";
 import Search from "../Search.astro";
-import { getNavLink } from "../../lib/blog-helpers";
-import { Icon } from "astro-iconify";
-import { getTextToAstroIcon } from "../../lib/style-helpers";
-import ThemeIcon from "../ThemeIcons.astro";
-import type { Page } from "../../lib/notion-interfaces";
-import { getDatabaseByName } from "../../lib/notion/client";
+import ThemeToggle from "../ThemeToggle.astro";
+import { getDatabaseByName } from "src/lib/notion/client";
 
 let pagesDatabase = (await getDatabaseByName("Pages"))!;
 let pages: Page[];
 pages = pagesDatabase.Pages;
 
 const url = new URL(Astro.request.url);
-
-// let customIconURL: string = "";
-// if (siteInfo.logo && siteInfo.logo.Type === "file") {
-//   try {
-//     customIconURL = filePath(new URL(siteInfo.logo.Url));
-//   } catch (err) {
-//     console.log("Invalid DB custom icon URL");
-//   }
-// }
-
-const rss_path = getNavLink("/rss.xml");
 ---
 
 <header
+  class="group relative mb-20 flex items-center sm:ps-[4.5rem]"
   id="main-header"
-  class="group relative screen:mb-16 print mb-8 flex w-full items-center justify-between sm:ps-[4.5rem] lg:-ml-[25%] lg:w-[150%]"
 >
   <div class="flex sm:flex-col">
+    <a
+      aria-current={url.pathname === "/" ? "page" : false}
+      class="inline-flex items-center grayscale hover:filter-none sm:relative sm:inline-block"
+      href="/"
+    >
+      <svg
+        aria-hidden="true"
+        class="me-3 h-10 w-6 sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-20 sm:w-12"
+        fill="none"
+        focusable="false"
+        viewBox="0 0 272 480"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>Logo</title>
+        <path
+          d="M181.334 93.333v-40L226.667 80v40l-45.333-26.667ZM136.001 53.333 90.667 26.667v426.666L136.001 480V53.333Z"
+          fill="#B04304"></path>
+        <path
+          d="m136.001 119.944 45.333-26.667 45.333 26.667-45.333 26.667-45.333-26.667ZM90.667 26.667 136.001 0l45.333 26.667-45.333 26.666-45.334-26.666ZM181.334 53.277l45.333-26.666L272 53.277l-45.333 26.667-45.333-26.667ZM0 213.277l45.333-26.667 45.334 26.667-45.334 26.667L0 213.277ZM136 239.944l-45.333-26.667v53.333L136 239.944Z"
+          fill="#FF5D01"></path>
+        <path
+          d="m136 53.333 45.333-26.666v120L226.667 120V80L272 53.333V160l-90.667 53.333v240L136 480V306.667L45.334 360V240l45.333-26.667v53.334L136 240V53.333Z"
+          fill="#53C68C"></path>
+        <path d="M45.334 240 0 213.334v120L45.334 360V240Z" fill="#B04304"
+        ></path>
+      </svg>
+      <span class="text-xl font-bold sm:text-2xl">Daniel Locatelli</span>
+    </a>
     <nav
-      id="navigation-menu"
-      class="print:hidden md absolute -inset-x-4 top-14 hidden flex-col items-end rounded-md bg-bgColor/90 py-2 text-base text-accent shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:-ms-4 sm:mt-1 sm:flex sm:flex-row sm:items-center sm:rounded-none sm:py-0 sm:text-sm sm:shadow-none sm:backdrop-blur-none lg:text-base"
       aria-label="Main menu"
+      class="absolute -inset-x-4 top-14 hidden flex-col items-end gap-y-4 rounded-md bg-bgColor/[.85] py-4 text-accent shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:-ms-4 sm:mt-1 sm:flex sm:flex-row sm:items-center sm:divide-dashed sm:divide-accent sm:rounded-none sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none"
+      id="navigation-menu"
     >
       {
         pages.map((page) => (
           <a
-            href={page.Slug}
-            class="px-4 py-4 underline-offset-4 sm:py-0 sm:hover:underline sm:hover:decoration-wavy sm:hover:decoration-accent-2/40 w-full sm:w-auto text-right sm:text-left"
             aria-current={url.pathname === page.Slug ? "page" : false}
+            class="px-4 py-4 underline-offset-2 sm:py-0 sm:hover:underline"
             data-astro-prefetch
+            href={page.Slug}
           >
             {page.Name}
           </a>
@@ -49,109 +63,80 @@ const rss_path = getNavLink("/rss.xml");
       }
     </nav>
   </div>
-  <div class="flex flex-row print:hidden">
-    <div
-      class="h-10 w-10 items-center justify-center rounded-md p-1.5 hover:text-accent"
+  <Search />
+  <ThemeToggle />
+  <mobile-button>
+    <button
+      aria-expanded="false"
+      aria-haspopup="menu"
+      aria-label="Open main menu"
+      class="group relative ms-4 h-7 w-7 sm:invisible sm:hidden"
+      id="toggle-navigation-menu"
+      type="button"
     >
-      <a href={rss_path}
-        ><Icon
-          name={getTextToAstroIcon("rss")}
-          class="h-7 w-7 hover:text-accent"
-          aria-label="Open RSS Link"
-        /></a
+      <svg
+        aria-hidden="true"
+        class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0"
+        fill="none"
+        focusable="false"
+        id="line-svg"
+        stroke="currentColor"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
       >
-    </div>
-    <Search />
-    <ThemeIcon />
-    <mobile-button>
-      <button
-        id="toggle-navigation-menu"
-        class="group relative ms-4 h-7 w-7 sm:invisible sm:hidden"
-        type="button"
-        aria-label="Open main menu"
-        aria-expanded="false"
-        aria-haspopup="menu"
+        <path
+          d="M3.75 9h16.5m-16.5 6.75h16.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+      <svg
+        aria-hidden="true"
+        class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 text-accent opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100"
+        class="text-accent"
+        fill="none"
+        focusable="false"
+        id="cross-svg"
+        stroke="currentColor"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          id="line-svg"
-          class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0"
-          aria-hidden="true"
-          focusable="false"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 9h16.5m-16.5 6.75h16.5"></path>
-        </svg>
-        <svg
-          id="cross-svg"
-          class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 text-accent opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100"
-          class="text-accent"
-          aria-hidden="true"
-          focusable="false"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-    </mobile-button>
-  </div>
+        <path
+          d="M6 18L18 6M6 6l12 12"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </mobile-button>
 </header>
 
 <script>
+  import { toggleClass } from "@/utils";
+
   class MobileNavBtn extends HTMLElement {
+    private headerEl: HTMLElement;
+    private menuOpen: boolean;
+    private mobileButtonEl: HTMLButtonElement;
+
+    toggleMobileMenu = () => {
+      toggleClass(this.headerEl, "menu-open");
+      this.menuOpen = !this.menuOpen;
+      this.mobileButtonEl.setAttribute(
+        "aria-expanded",
+        this.menuOpen.toString()
+      );
+    };
+
     constructor() {
       super();
+      this.headerEl = document.getElementById("main-header")!;
+      this.mobileButtonEl = this.querySelector("button") as HTMLButtonElement;
+      this.menuOpen = false;
 
-      const mobileButtonEl = document.getElementById("toggle-navigation-menu");
-      let menuOpen = false;
-
-      function toggleMobileMenu() {
-        const headerEl = document.getElementById("main-header")!;
-        headerEl.classList.toggle("menu-open");
-        menuOpen = !menuOpen;
-        mobileButtonEl!.setAttribute("aria-expanded", menuOpen.toString());
-      }
-
-      mobileButtonEl!.addEventListener("click", () => toggleMobileMenu());
+      this.mobileButtonEl.addEventListener("click", this.toggleMobileMenu);
     }
   }
 
   customElements.define("mobile-button", MobileNavBtn);
-
-  document.addEventListener("DOMContentLoaded", function () {
-    var toggleButton = document.getElementById("toggle-navigation-menu");
-
-    document.addEventListener("click", function (event: MouseEvent) {
-      var navMenu = document.getElementById("navigation-menu");
-      var mainHeader = document.getElementById("main-header");
-
-      // Check if the click is on the toggle button or a descendant of it
-      var isClickInsideToggleButton = toggleButton!.contains(
-        event.target as HTMLElement
-      );
-
-      if (!isClickInsideToggleButton && event.target instanceof Node) {
-        var isClickInsideNav = navMenu!.contains(event.target);
-
-        if (!isClickInsideNav && mainHeader) {
-          // If the click is outside the navMenu and mainHeader exists, remove 'menu-open' attribute
-          mainHeader.classList.remove("menu-open");
-          toggleButton!.setAttribute("aria-expanded", "false");
-        }
-      }
-    });
-  });
 </script>

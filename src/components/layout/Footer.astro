@@ -1,0 +1,35 @@
+---
+import { siteConfig } from "@/site-config";
+import type { Page } from "src/lib/notion-interfaces";
+import { getDatabaseByName } from "src/lib/notion/client";
+
+let pagesDatabase = (await getDatabaseByName("Pages"))!;
+let pages: Page[];
+pages = pagesDatabase.Pages;
+
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-20 text-center align-top font-semibold text-gray-600 dark:text-gray-400 sm:flex-row sm:justify-between sm:text-xs"
+>
+  <div class="me-0 sm:me-4">
+    &copy; {siteConfig.author}
+    {year}
+  </div>
+  <nav
+    aria-label="More on this site"
+    class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
+  >
+    {
+      pages.map((page) => (
+        <a
+          class="px-4 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+          href={page.Slug}
+        >
+          {page.Name}
+        </a>
+      ))
+    }
+  </nav>
+</footer>

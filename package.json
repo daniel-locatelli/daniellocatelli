@@ -17,6 +17,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@notionhq/client": "^2.2.15",
     "@pagefind/default-ui": "^1.1.0",
+    "@tailwindcss/typography": "^0.5.13",
     "astro": "^4.7.0",
     "astro-iconify": "^1.2.0",
     "async-retry": "^1.3.3",

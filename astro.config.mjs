@@ -4,6 +4,7 @@ import AllFilesDownloader from "./src/integrations/all-files-downloader";
 import CustomIconDownloader from "./src/integrations/custom-icon-downloader";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import icon from "astro-icon";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -28,7 +29,14 @@ const getSite = function () {
 export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
-  integrations: [sitemap(), AllFilesDownloader(), tailwind()],
+  integrations: [
+    sitemap(),
+    AllFilesDownloader(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    icon(),
+  ],
   // CustomIconDownloader(),
   prefetch: true,
 });
