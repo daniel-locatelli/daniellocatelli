@@ -1,41 +1,92 @@
 ---
-import * as interfaces from "../../../lib/notion-interfaces.ts";
 import {
+  addSlugToName,
   isYouTubeURL,
   parseYouTubeVideoId,
 } from "../../../lib/blog-helpers.ts";
 import Caption from "./Caption.astro";
+import type { Block } from "../../../lib/notion-interfaces.ts";
 
 export interface Props {
-  block: interfaces.Block;
+  block: Block;
+  slug: string;
 }
 
-const { block } = Astro.props;
+const { block, slug } = Astro.props;
 
 let url: URL;
 try {
-  url = new URL(block.Video!.External?.Url!);
-} catch (err) {
-  console.log(err);
+  if (block.Video!.External) {
+    url = new URL(block.Video!.External?.Url!);
+  } else if (block.Video!.File) {
+    url = new URL(block.Video!.File!.Url);
+  }
+} catch (error) {
+  console.log("Invalid file URL\n" + error);
+}
+
+let video: any;
+let videoExtension: string;
+// Getting images dynamically with import.meta.glob()
+// It only accepts string literals
+// https://docs.astro.build/en/recipes/dynamically-importing-images/
+if (block.Video!.File) {
+  try {
+    const dir = "/public/notion/" + url!.pathname.split("/").slice(-2)[0];
+    const videoName = decodeURIComponent(url!.pathname.split("/").slice(-1)[0]);
+    videoExtension = videoName.split(".")[1];
+    const videoNameWithSlug = addSlugToName(videoName, slug);
+    video = `${dir}/${videoNameWithSlug}`;
+  } catch (error) {
+    console.log("Error while getting image for astro component:" + error);
+  }
+}
+
+function getFirstLine(text: string) {
+  const lines = text.split(/\n/);
+  if (!lines.length) {
+    return "";
+  }
+  return lines[0];
+}
+
+let altText: string;
+if (block.Image && block.Image.Caption[0]) {
+  altText = getFirstLine(block.Image?.Caption[0].Text!.Content);
+} else {
+  altText = block.Type;
 }
 ---
 
-<div class="video">
-  <div>
-    {
-      isYouTubeURL(url!) && (
-        <iframe
-          src={`https://www.youtube.com/embed/${parseYouTubeVideoId(url!)}`}
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        />
-      )
-    }
-  </div>
-  <Caption richTexts={block.Video!.Caption} />
-</div>
+{
+  block.Image?.External && (
+    <div class="video">
+      <div>
+        {isYouTubeURL(url!) && (
+          <iframe
+            src={`https://www.youtube.com/embed/${parseYouTubeVideoId(url!)}`}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          />
+        )}
+      </div>
+      <Caption richTexts={block.Video!.Caption} />
+    </div>
+  )
+}
+{
+  block.Video?.File && (
+    <div class="video">
+      <video class="rounded-lg" controls>
+        <source src={video} type={"video/" + videoExtension!} />
+        Your browser does not support the video tag.
+      </video>
+      <Caption richTexts={block.Video!.Caption} />
+    </div>
+  )
+}
 
 <style>
   .video div:first-child {

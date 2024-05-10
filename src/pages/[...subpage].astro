@@ -1,11 +1,5 @@
 ---
 import {
-  SITE_TITLE,
-  SITE_DESCRIPTION,
-  SITE_HEROIMAGE,
-  SITE_HEROIMAGEALT,
-} from "../consts";
-import {
   getAllBlocksByBlockId,
   getAllDatabases,
   getDatabaseByName,
@@ -22,13 +16,11 @@ export async function getStaticPaths() {
   const paths = databases.flatMap((database) =>
     // The main pages are in the other file
     database.Pages.filter(() => database.Title !== "Pages").map((subpage) => ({
-      params: {
-        subpage: subpage.Slug === "home" ? undefined : subpage.Slug,
-      },
+      params: { subpage: subpage.Slug },
       props: { subpage: subpage },
     }))
   );
-  console.dir(paths);
+  // console.dir(paths);
 
   return paths;
 }
@@ -51,9 +43,19 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
 // Cover image
 const image = await importCoverImage(subpage, images);
+console.log(subpage.Title);
 ---
 
 <Base meta={{ title: subpage.Name }}>
+  {
+    image && (
+      <Image
+        src={image}
+        alt={subpage.CoverAlt}
+        transition:name={slug + "-image"}
+      />
+    )
+  }
   <section>
     <h1 class="title mb-6">{subpage.Name}</h1>
     <p class="mb-4">

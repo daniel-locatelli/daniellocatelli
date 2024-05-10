@@ -1,11 +1,27 @@
 ---
 import type { HTMLTag, Polymorphic } from "astro/types";
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 import FormattedDate from "./FormattedDate.astro";
+import type { Database, Page } from "src/lib/notion-interfaces";
+import { importCoverImage } from "src/lib/blog-helpers";
 
-const { as: Tag = "div", post, withDesc = false } = Astro.props;
+interface Props {
+  databases: Database[];
+  slug: string;
+}
+
+const { databases, slug } = Astro.props;
+
 // const postDate = post.data.updatedDate ?? post.data.publishDate;
+
+// Getting images dynamically with import.meta.glob()
+// It only accepts string literals
+// https://docs.astro.build/en/recipes/dynamically-importing-images/
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
+);
 ---
 
 <!-- <FormattedDate
@@ -16,6 +32,37 @@ const { as: Tag = "div", post, withDesc = false } = Astro.props;
   <a class="cactus-link" data-astro-prefetch href={`/posts/${post.slug}/`}>
     {post.data.title}
   </a>
-</Tag> -->{
+</Tag> --><!-- {
   withDesc && <q class="line-clamp-3 block italic">{post.data.description}</q>
+} -->{
+  databases! !== undefined &&
+    databases.map((db) => {
+      return (
+        <section aria-label="Blog post list" class="mt-6">
+          <ul class="space-y-4">
+            {db.Pages.map(async (page) => {
+              let image = await importCoverImage(page, images);
+              return (
+                <article class="flex flex-col bg-clip-border">
+                  <h1 class="text-2xl dark:text-white">{db.Title}</h1>
+                  <h2 class="text-2xl dark:text-white">{page.Name}</h2>
+                  <div class="flex justify-between gap-1 mb-1">
+                    <a class="flex" href={page.Slug}>
+                      {image && (
+                        <Image
+                          class="rounded-lg object-cover h-80"
+                          src={image}
+                          alt={page.CoverAlt}
+                          transition:name={page.Slug + "-image"}
+                        />
+                      )}
+                    </a>
+                  </div>
+                </article>
+              );
+            })}
+          </ul>
+        </section>
+      );
+    })
 }

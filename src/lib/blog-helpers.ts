@@ -299,7 +299,7 @@ export const parseYouTubeVideoId = (url: URL): string => {
 };
 
 export const importCoverImage = async (page: Page, images: any) => {
-  console.log("\nAll images");
+  // console.log("\nAll images");
   if (page.Cover) {
     const url = new URL(page.Cover.Url);
     const slug = page.Slug;
@@ -313,7 +313,7 @@ export const importCoverImage = async (page: Page, images: any) => {
 
     try {
       const image = (await images[imagePath]()).default;
-      console.dir(image);
+      // console.dir(image);
       return image;
     } catch (error) {
       // Block is null or undefined

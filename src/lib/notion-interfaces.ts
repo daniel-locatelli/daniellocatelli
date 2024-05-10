@@ -25,6 +25,7 @@ export interface Page {
   City?: SelectProperty[];
   Client?: string;
   Country?: string;
+  DatabasesRef?: SelectProperty[];
   DateStart?: string;
   DateEnd?: string;
   Disclosed?: boolean | null;
@@ -134,6 +135,7 @@ export interface Video {
   Caption: RichText[];
   Type: string;
   External?: External;
+  File?: FileObject;
 }
 
 export interface File {

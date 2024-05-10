@@ -4,13 +4,7 @@ import axios, { type AxiosResponse } from "axios";
 import sharp from "sharp";
 import retry from "async-retry";
 import ExifTransformer from "exif-be-gone";
-import {
-  NOTION_API_SECRET,
-  DATABASE_ID,
-  NUMBER_OF_POSTS_PER_PAGE,
-  REQUEST_TIMEOUT_MS,
-  PEOPLE_DB_ID,
-} from "../../server-constants";
+import { NOTION_API_SECRET, REQUEST_TIMEOUT_MS } from "../../server-constants";
 import type * as responses from "./responses";
 import type * as requestParams from "./request-params";
 import type {
@@ -68,15 +62,12 @@ interface PagesCacheObject {
   [key: string]: any;
 }
 
-// let pagesCache: Page[] | null = null;
-var pagesCache: PagesCacheObject = {};
-let databaseCache: Database | null = null;
 let databasesCache: Database[] | null = null;
 
 const numberOfRetry = 2;
 
 export async function getAllDatabases(): Promise<Database[]> {
-  console.log("\n===== Getting databases =====");
+  // console.log("\n===== Getting databases =====");
   if (databasesCache !== null) {
     return Promise.resolve(databasesCache);
   }
@@ -108,10 +99,16 @@ export async function getAllDatabases(): Promise<Database[]> {
 
 export async function getDatabaseByName(
   databaseName: string
-): Promise<Database | undefined> {
+): Promise<Database> {
   let databases = await getAllDatabases();
-  let database = databases.find((database) => database.Title === databaseName);
-  return database;
+  let database: Database;
+  try {
+    database = databases.find((database) => database.Title === databaseName)!;
+    return database;
+  } catch (error) {
+    console.error("Error getting database by name: ", error);
+    throw error;
+  }
 }
 
 export async function getDatabasePages(
@@ -121,30 +118,34 @@ export async function getDatabasePages(
   // console.log("\n===== Getting all pages =====");
   const params: requestParams.QueryDatabase = {
     database_id: databaseId,
-    // filter: {
-    //   and: [
-    //     {
-    //       property: "Status",
-    //       status: {
-    //         equals: "Live",
-    //       },
-    //     },
-    //     {
-    //       property: "PublishDate",
-    //       date: {
-    //         on_or_before: new Date().toISOString(),
-    //       },
-    //     },
-    //   ],
-    // },
-    // sorts: [
-    //   {
-    //     property: "PublishDate",
-    //     direction: "descending",
-    //   },
-    // ],
+    filter: {
+      and: [
+        {
+          property: "Status",
+          status: {
+            equals: "Live",
+          },
+        },
+      ],
+    },
+    sorts: [],
     page_size: 100,
   };
+
+  // Check if the Date property exists in the database schema
+  const databaseSchema = await notion.databases.retrieve({
+    database_id: databaseId,
+  });
+
+  const datePropertyExists = databaseSchema.properties.hasOwnProperty("Date");
+
+  if (datePropertyExists) {
+    // If Date property exists, add sorting by Date
+    params.sorts!.push({
+      property: "Date",
+      direction: "descending",
+    });
+  }
 
   let results: responses.PageObject[] = [];
   while (true) {
@@ -440,7 +441,7 @@ async function checkFileExists(file: fs.PathLike) {
   }
 }
 
-export async function downloadFile(url: URL, slug: string) {
+export async function downloadImage(url: URL, slug: string) {
   let res!: AxiosResponse;
   try {
     res = await axios({
@@ -453,7 +454,7 @@ export async function downloadFile(url: URL, slug: string) {
     console.log("\nError requesting image\n" + error);
     return Promise.resolve();
   }
-  // console.log("\n===== Starting File Download =====");
+  console.log("\n===== Starting File Download =====");
 
   if (!res || res.status != 200) {
     console.log(res);
@@ -482,7 +483,7 @@ export async function downloadFile(url: URL, slug: string) {
   // console.log("7 - Full file path is: " + filepath);
 
   if (fs.existsSync(filepath)) {
-    // console.log(`File already exists:\n${filepath}`);
+    console.log(`File already exists:\n${filepath}`);
     return;
   }
 
@@ -495,7 +496,7 @@ export async function downloadFile(url: URL, slug: string) {
     stream = stream.pipe(rotate);
   }
   try {
-    // console.log(`Downloading file:\n${filepath}`);
+    console.log(`Downloading file:\n${filepath}`);
     return pipeline(stream, new ExifTransformer(), writeStream);
   } catch (error) {
     console.log("\nError while downloading file\n" + error);
@@ -517,7 +518,7 @@ export async function downloadPublicImage(url: URL, slug: string) {
     console.log("\nError requesting image\n" + error);
     return Promise.resolve();
   }
-  // console.log("\n===== Starting Public Image Download =====");
+  console.log("\n===== Starting Public Image Download =====");
 
   if (!res || res.status != 200) {
     console.log(res);
@@ -539,7 +540,7 @@ export async function downloadPublicImage(url: URL, slug: string) {
   const filepath = `${dir}/${fileNameWithSlug}`;
 
   if (fs.existsSync(filepath)) {
-    // console.log(`File already exists:\n${filepath}`);
+    console.log(`File already exists:\n${filepath}`);
     return;
   }
 
@@ -555,11 +556,59 @@ export async function downloadPublicImage(url: URL, slug: string) {
     );
   }
   try {
-    // console.log(`Downloading file:\n${filepath}`);
+    console.log(`Downloading file:\n${filepath}`);
     // console.log("9 - Downloading file");
     return pipeline(stream, new ExifTransformer(), writeStream);
   } catch (error) {
     console.log("\nError while downloading file\n" + error);
+    writeStream.end();
+    return Promise.resolve();
+  }
+}
+
+export async function downloadVideo(url: URL, slug: string) {
+  let res;
+  try {
+    res = await axios({
+      method: "get",
+      url: url.toString(),
+      timeout: REQUEST_TIMEOUT_MS,
+      responseType: "stream",
+    });
+  } catch (error) {
+    console.log("\nError requesting video\n" + error);
+    return Promise.resolve();
+  }
+  console.log("\n===== Starting Video Download =====");
+
+  if (!res || res.status !== 200) {
+    console.log(res);
+    return Promise.resolve();
+  }
+
+  const dir = "./public/notion/" + url.pathname.split("/").slice(-2)[0];
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+
+  const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
+  const fileNameWithSlug = addSlugToName(fileName, slug);
+
+  const filepath = `${dir}/${fileNameWithSlug}`;
+
+  if (fs.existsSync(filepath)) {
+    console.log(`File already exists:\n${filepath}`);
+    return;
+  }
+
+  const writeStream = createWriteStream(filepath);
+
+  try {
+    console.log(`Downloading video:\n${filepath}`);
+    return pipeline(res.data, writeStream);
+  } catch (error) {
+    console.log("\nError while downloading video\n" + error);
     writeStream.end();
     return Promise.resolve();
   }
@@ -724,6 +773,15 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
           blockObject.video.external
         ) {
           video.External = { Url: blockObject.video.external.url };
+        } else if (
+          blockObject.video.type === "file" &&
+          blockObject.video.file
+        ) {
+          video.File = {
+            Type: blockObject.video.type,
+            Url: blockObject.video.file.url,
+            ExpiryTime: blockObject.video.file.expiry_time,
+          };
         }
         block.Video = video;
       }
@@ -1178,7 +1236,6 @@ async function _buildDatabase(
     Pages: pages,
   };
 
-  console.log("Built database " + database.Title);
   return database;
 }
 
@@ -1318,6 +1375,10 @@ function _buildPage(
       prop.Country && prop.Country.select && prop.Country.select.name
         ? prop.Country.select.name
         : "",
+    DatabasesRef:
+      prop.DatabasesRef && prop.DatabasesRef.multi_select
+        ? prop.DatabasesRef.multi_select
+        : [],
     DateStart: prop.Date && prop.Date.date ? prop.Date.date.start : "",
     DateEnd:
       prop.Date && prop.Date.date && prop.Date.date.end

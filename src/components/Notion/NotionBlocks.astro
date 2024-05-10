@@ -5,29 +5,29 @@ import {
   isAmazonURL,
   buildURLToHTMLMap,
 } from "../../lib/blog-helpers.ts";
-import Paragraph from "./blocks/Paragraph.astro";
+import Bookmark from "./blocks/Bookmark.astro";
+import BulletedListItems from "./blocks/BulletedListItems.astro";
+import Callout from "./blocks/Callout.astro";
+import Code from "./blocks/Code.astro";
+import ColumnList from "./blocks/ColumnList.astro";
+import Divider from "./blocks/Divider.astro";
+import Equation from "./blocks/Equation.astro";
+import Embed from "./blocks/Embed.astro";
+import File from "./blocks/File.astro";
 import Heading1 from "./blocks/Heading1.astro";
 import Heading2 from "./blocks/Heading2.astro";
 import Heading3 from "./blocks/Heading3.astro";
-import TableOfContents from "./blocks/TableOfContents.astro";
-import NotionImage from "./blocks/NotionImage.astro";
-import Video from "./blocks/Video.astro";
-import Code from "./blocks/Code.astro";
-import Quote from "./blocks/Quote.astro";
-import Equation from "./blocks/Equation.astro";
-import Callout from "./blocks/Callout.astro";
-import Embed from "./blocks/Embed.astro";
-import Bookmark from "./blocks/Bookmark.astro";
-import Divider from "./blocks/Divider.astro";
-import Table from "./blocks/Table.astro";
-import ColumnList from "./blocks/ColumnList.astro";
-import BulletedListItems from "./blocks/BulletedListItems.astro";
-import NumberedListItems from "./blocks/NumberedListItems.astro";
-import ToDo from "./blocks/ToDo.astro";
-import SyncedBlock from "./blocks/SyncedBlock.astro";
-import Toggle from "./blocks/Toggle.astro";
-import File from "./blocks/File.astro";
 import LinkToPage from "./blocks/LinkToPage.astro";
+import NotionImage from "./blocks/NotionImage.astro";
+import NumberedListItems from "./blocks/NumberedListItems.astro";
+import Paragraph from "./blocks/Paragraph.astro";
+import Quote from "./blocks/Quote.astro";
+import SyncedBlock from "./blocks/SyncedBlock.astro";
+import TableOfContents from "./blocks/TableOfContents.astro";
+import Table from "./blocks/Table.astro";
+import ToDo from "./blocks/ToDo.astro";
+import Toggle from "./blocks/Toggle.astro";
+import Video from "./blocks/Video.astro";
 
 export interface Props {
   blocks: Block[];
@@ -136,7 +136,7 @@ const bookmarkURLMap = await buildURLToHTMLMap(bookmarkURLs);
       case "image":
         return <NotionImage block={block} slug={slug} />;
       case "video":
-        return <Video block={block} />;
+        return <Video block={block} slug={slug} />;
       case "code":
         return <Code block={block} />;
       case "quote":
@@ -174,7 +174,7 @@ const bookmarkURLMap = await buildURLToHTMLMap(bookmarkURLs);
       case "toggle":
         return <Toggle block={block} headings={headings} slug={slug} />;
       case "file":
-        console.dir(block);
+        // console.dir(block);
         return <File block={block} />;
       case "link_to_page":
         return <LinkToPage block={block} />;
