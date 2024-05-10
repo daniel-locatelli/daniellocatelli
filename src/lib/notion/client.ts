@@ -9,7 +9,7 @@ import type * as responses from "./responses";
 import type * as requestParams from "./request-params";
 import type {
   Database,
-  Page as Page,
+  Page,
   Block,
   Paragraph,
   Heading1,
@@ -461,26 +461,16 @@ export async function downloadImage(url: URL, slug: string) {
     return Promise.resolve();
   }
 
-  // console.log("1 - Getting folder path...");
   const dir = "./src/assets/notion/" + url.pathname.split("/").slice(-2)[0];
-  // console.log("1.5 - url is:" + url);
-  // console.log("2 - Folder path is: " + dir);
-  // console.log("3 - Checking if folder exists...");
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
-    // console.log("4 - It did not exists, folder was created.");
   } else {
-    // console.log("4 - Folder already exists.");
   }
 
-  // console.log("5 - Getting file name");
   const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
-  // console.log("5 - File name is: " + fileName);
   const fileNameWithSlug = addSlugToName(fileName, slug);
-  // console.log("6 - File name with slug is: " + fileNameWithSlug);
 
   const filepath = `${dir}/${fileNameWithSlug}`;
-  // console.log("7 - Full file path is: " + filepath);
 
   if (fs.existsSync(filepath)) {
     console.log(`File already exists:\n${filepath}`);
@@ -557,7 +547,6 @@ export async function downloadPublicImage(url: URL, slug: string) {
   }
   try {
     console.log(`Downloading file:\n${filepath}`);
-    // console.log("9 - Downloading file");
     return pipeline(stream, new ExifTransformer(), writeStream);
   } catch (error) {
     console.log("\nError while downloading file\n" + error);
@@ -598,7 +587,7 @@ export async function downloadVideo(url: URL, slug: string) {
   const filepath = `${dir}/${fileNameWithSlug}`;
 
   if (fs.existsSync(filepath)) {
-    console.log(`File already exists:\n${filepath}`);
+    console.log(`Video already exists:\n${filepath}`);
     return;
   }
 
@@ -1330,6 +1319,21 @@ function _buildPage(
 
   const databaseTitleSlug = simplifyStringForSlug(databaseTitle);
 
+  let fullName: string | null = null;
+  try {
+    if (prop.FullName) {
+      fullName =
+        prop.FullName && prop.FullName.rich_text
+          ? prop.FullName.rich_text
+              .map((richText) => richText.plain_text)
+              .join("")
+          : "";
+    }
+  } catch (error) {
+    console.error("Error building a page while getting the full name", error);
+    throw error;
+  }
+
   const page: Page = {
     Cover: cover,
     CoverAlt: coverAlt,
@@ -1393,6 +1397,7 @@ function _buildPage(
       prop.Format && prop.Format.select && prop.Format.select.name
         ? prop.Format.select.name
         : "",
+    FullName: fullName,
     Instagram: prop.Instagram && prop.Instagram.url ? prop.Instagram.url : "",
     Level:
       prop.Level && prop.Level.select && prop.Level.select.name

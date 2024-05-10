@@ -309,7 +309,7 @@ export const importCoverImage = async (page: Page, images: any) => {
 
     const imageNameWithSlug = addSlugToName(imageName, slug);
     const imagePath = `${dir}/${imageNameWithSlug}`;
-    console.log(imagePath);
+    // console.log(imagePath);
 
     try {
       const image = (await images[imagePath]()).default;

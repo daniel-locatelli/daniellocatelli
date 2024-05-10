@@ -11,7 +11,7 @@ import { extractTargetBlocks } from "../lib/blog-helpers";
 import type { Database } from "../lib/notion-interfaces";
 
 // https://developers.notion.com/reference/request-limits
-const MAX_REQUESTS_PER_SECOND = 3;
+const MAX_REQUESTS_PER_SECOND = 2;
 
 const downloadQueue: any[] = [];
 

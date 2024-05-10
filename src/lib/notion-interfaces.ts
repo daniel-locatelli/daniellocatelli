@@ -31,6 +31,7 @@ export interface Page {
   Disclosed?: boolean | null;
   Event?: string;
   Format?: string;
+  FullName?: string | null;
   Instagram?: string;
   Level?: string;
   Link?: string;
