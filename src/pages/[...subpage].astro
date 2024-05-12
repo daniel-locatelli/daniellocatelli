@@ -50,6 +50,7 @@ const image = await importCoverImage(subpage, images);
   {
     image && (
       <Image
+        class="rounded-md object-cover h-80 mb-4"
         src={image}
         alt={subpage.CoverAlt}
         transition:name={slug + "-image"}
@@ -57,34 +58,9 @@ const image = await importCoverImage(subpage, images);
     )
   }
   <section>
-    <h1 class="title mb-6">{subpage.Name}</h1>
-    <p class="mb-4">
+    <h1 class="title mb-6 font-heading text-center">{subpage.Name}</h1>
+    <p class="mb-4 font-body">
       <PostBody blocks={blocks} slug={slug!} />
     </p>
   </section>
-  <!-- <section class="mt-16">
-    <h2 class="title mb-4 text-xl">Technologies</h2>
-    <dl class="space-y-4">
-      {
-        cactusTech.map(({ desc, href, title }) => (
-          <div class="flex flex-col gap-2 md:flex-row">
-            <dt>
-              <span class="flex">
-                <a
-                  class="cactus-link"
-                  href={href}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {title}
-                </a>
-                :
-              </span>
-            </dt>
-            <dd>{desc}</dd>
-          </div>
-        ))
-      }
-    </dl>
-  </section> -->
 </Base>

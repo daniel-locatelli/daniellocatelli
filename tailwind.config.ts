@@ -35,7 +35,7 @@ export default {
         sans: [...fontFamily.sans],
         serif: [...fontFamily.serif],
         heading: ["Poiret One", ...fontFamily.sans],
-        body: ["Poppins Light", ...fontFamily.sans],
+        body: ["Poppins ExtraLight", ...fontFamily.sans],
       },
       transitionProperty: {
         height: "height",

@@ -20,13 +20,18 @@ const url = new URL(Astro.request.url);
 ---
 
 <header class="group relative mb-4 flex items-center" id="main-header">
-  <div class="flex sm:flex-col grow">
+  <div class="flex grow">
     <a
       aria-current={url.pathname === "/" ? "page" : false}
       class="inline-flex items-center hover:filter-none sm:relative sm:inline-block"
       href="/"
     >
-      <Image src={logo} alt="Daniel Locatelli logo" class="inline" width="60" />
+      <Image
+        src={logo}
+        alt="Daniel Locatelli logo"
+        class="inline mix-blend-difference"
+        width="60"
+      />
     </a>
     <nav
       aria-label="Main menu"

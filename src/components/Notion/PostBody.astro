@@ -10,12 +10,6 @@ export interface Props {
 const { blocks, slug } = Astro.props;
 ---
 
-<div class="post-body">
+<div class="">
   <NotionBlocks blocks={blocks} slug={slug} isRoot={true} />
 </div>
-
-<style>
-  .post-body {
-    padding: 0.5rem 0;
-  }
-</style>

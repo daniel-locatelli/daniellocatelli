@@ -53,49 +53,5 @@ databases = await Promise.all(
 ---
 
 <Base meta={{ title: page.Name }}>
-  <!-- <section>
-    <h1 class="title mb-2">{page.Name}</h1>
-    <p class="mb-2">
-      <PostBody blocks={blocks} slug={slug!} />
-    </p>
-  </section> -->
   <PostPreview databases={databases} />
-  <!-- <section aria-label="Blog post list" class="mt-6">
-    <h2 class="title mb-4 text-xl">Posts</h2>
-    <ul class="space-y-4">
-      {
-        database.Pages.map((page) => (
-          <li class="flex flex-col gap-x-2 sm:flex-row">
-            {page.Name}
-            {/* <PostPreview post={p} /> */}
-          </li>
-        ))
-      }
-    </ul>
-  </section> -->
-  <!-- <section class="mt-16">
-    <h2 class="title mb-4 text-xl">Technologies</h2>
-    <dl class="space-y-4">
-      {
-        cactusTech.map(({ desc, href, title }) => (
-          <div class="flex flex-col gap-2 md:flex-row">
-            <dt>
-              <span class="flex">
-                <a
-                  class="cactus-link"
-                  href={href}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {title}
-                </a>
-                :
-              </span>
-            </dt>
-            <dd>{desc}</dd>
-          </div>
-        ))
-      }
-    </dl>
-  </section> -->
 </Base>

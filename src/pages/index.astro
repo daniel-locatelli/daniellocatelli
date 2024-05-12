@@ -43,11 +43,17 @@ databases = await Promise.all(
   <body class="m-0 p-0">
     <main id="main">
       <div class="absolute grid grid-cols-2 grid-rows-2 h-screen w-screen">
-        <Image
+        <a
+          href="https://linkedin.com/daniel-locatelli"
           class="fixed z-20 mix-blend-difference top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          src={logo}
-          alt=""
-        />
+        >
+          <Image
+            class=""
+            src={logo}
+            alt="Daniel Locatelli logo"
+            title="Click to go to my LinkedIn"
+          />
+        </a>
         {
           otherPages.map(async (page) => {
             let databases: Database[];
@@ -81,7 +87,7 @@ databases = await Promise.all(
                   />
                 </div>
                 <div class="absolute flex h-2/3 items-center">
-                  <h3 class="p-8 text-black text-center font-body text-2xl">
+                  <h3 class="p-8 text-black text-center font-body text-2xl text-balance">
                     {page.ShortDescription_en}
                   </h3>
                 </div>
