@@ -24,18 +24,21 @@ const processQueue = async () => {
     const startTime = Date.now();
     const tasks = [];
 
-    while (
-      Date.now() - startTime < 1000 &&
-      downloadQueue.length > 0 &&
-      tasks.length < MAX_REQUESTS_PER_SECOND
-    ) {
-      tasks.push(downloadQueue.shift()());
+    for (let i = 0; i < downloadQueue.length; i++) {
+      const timeSinceStart = Date.now() - startTime;
+      if (timeSinceStart < 1000 && tasks.length < MAX_REQUESTS_PER_SECOND) {
+        tasks.push(downloadQueue.shift()());
+      } else {
+        break;
+      }
     }
 
-    // Wait until 1 second has elapsed
-    await new Promise((resolve) =>
-      setTimeout(resolve, 1000 - (Date.now() - startTime))
-    );
+    // Wait until remaining time in the second elapses (if any)
+    if (tasks.length > 0) {
+      await new Promise((resolve) =>
+        setTimeout(resolve, 1000 - (Date.now() - startTime))
+      );
+    }
 
     // Execute tasks concurrently
     await Promise.all(tasks);
