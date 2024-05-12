@@ -71,10 +71,7 @@ const blocks = rawBlocks.reduce((arr, block: Block, i: number) => {
     return arr.concat(list);
   }
 
-  const prevList: List = {
-    Type: block.Type,
-    ListItems: arr[arr.length - 1],
-  };
+  const prevList = arr[arr.length - 1];
 
   if (
     (isBulletedListItem && prevList.Type !== "bulleted_list") ||
@@ -157,7 +154,9 @@ const bookmarkURLMap = await buildURLToHTMLMap(bookmarkURLs);
       case "column_list":
         return <ColumnList block={block} headings={headings} slug={slug} />;
       case "bulleted_list":
-        return <BulletedListItems block={block} headings={headings} />;
+        return (
+          <BulletedListItems block={block} headings={headings} slug={slug} />
+        );
       case "numbered_list":
         return (
           <NumberedListItems
