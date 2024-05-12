@@ -1,0 +1,125 @@
+---
+import { getDatabaseByName } from "../lib/notion/client";
+import type { Database, Page } from "../lib/notion-interfaces";
+import { importCoverImage } from "src/lib/blog-helpers";
+import BaseHead from "@/components/BaseHead.astro";
+import { siteConfig } from "@/site-config";
+import { Image } from "astro:assets";
+import logo from "../assets/logo-dl.svg";
+import { titleToSlug } from "src/lib/utils";
+
+interface Props {
+  page: Page;
+}
+
+let pagesDatabase = await getDatabaseByName("Pages");
+const homepage = pagesDatabase.Pages.find((page) => page.Name === "Homepage")!;
+const otherPages: Page[] = pagesDatabase.Pages.filter(
+  (page) => page.Name !== "Homepage"
+);
+
+// const [blocks] = await Promise.all([getAllBlocksByBlockId(page.PageId)]);
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
+);
+
+// Cover image
+const coverImage = await importCoverImage(homepage, images);
+
+let databases: Database[];
+
+databases = await Promise.all(
+  homepage.DatabasesRef!.map(async (db) => await getDatabaseByName(db.name!))
+);
+---
+
+<html lang={siteConfig.lang}>
+  <head>
+    <BaseHead
+      description={homepage.Description_en}
+      ogImage={coverImage}
+      title="Home"
+    />
+  </head>
+  <body class="m-0 p-0">
+    <main id="main">
+      <div class="absolute grid grid-cols-2 grid-rows-2 h-screen w-screen">
+        <Image
+          class="fixed z-20 mix-blend-difference top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          src={logo}
+          alt=""
+        />
+        {
+          otherPages.map(async (page) => {
+            let databases: Database[];
+            databases = await Promise.all(
+              page.DatabasesRef!.map(
+                async (db) => await getDatabaseByName(db.name!)
+              )
+            );
+            let mergedPages: Page[] = [];
+            for (const database of databases) {
+              mergedPages = mergedPages.concat(database.Pages);
+            }
+            mergedPages = mergedPages.slice(0, 5);
+            // Import cover from database
+            const coverImage = await importCoverImage(page, images);
+            return (
+              <a href={page.Slug} class="relative flex">
+                <div class="relative z-10 bg-black flex justify-center transition hover:opacity-0">
+                  <h2
+                    class="z-20 absolute opacity-0 text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-6xl transition-opacity ease-in duration-500 pointer-events-none"
+                    data-replace="{ 'opacity-0': 'opacity-100' }"
+                  >
+                    {page.Name}
+                  </h2>
+                  <Image
+                    class="object-cover opacity-0 transition ease-in duration-1000"
+                    data-replace="{ 'opacity-0': 'opacity-40' }"
+                    src={coverImage}
+                    alt={page.CoverAlt}
+                    transition:name={page.Slug + "-image"}
+                  />
+                </div>
+                <div class="absolute flex h-2/3 items-center">
+                  <h3 class="p-8 text-black text-center font-body text-2xl">
+                    {page.ShortDescription_en}
+                  </h3>
+                </div>
+                <div class="absolute bottom-0 h-1/3 bg-white flex justify-center">
+                  {mergedPages.map(async (page) => {
+                    const image = await importCoverImage(page, images);
+                    return (
+                      <Image
+                        class="object-cover w-1/5"
+                        src={image}
+                        alt=""
+                        height={300}
+                      />
+                    );
+                  })}
+                </div>
+              </a>
+            );
+          })
+        }
+      </div>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var replacers = document.querySelectorAll("[data-replace]");
+        for (var i = 0; i < replacers.length; i++) {
+          let element = replacers[i] as HTMLElement;
+          let replaceClasses = JSON.parse(
+            element.dataset.replace!.replace(/'/g, '"')
+          );
+          Object.keys(replaceClasses).forEach(function (key) {
+            replacers[i].classList.remove(key);
+            replacers[i].classList.add(replaceClasses[key]);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

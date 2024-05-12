@@ -11,7 +11,10 @@ import { extractTargetBlocks } from "../lib/blog-helpers";
 import type { Database } from "../lib/notion-interfaces";
 
 // https://developers.notion.com/reference/request-limits
-const MAX_REQUESTS_PER_SECOND = 2;
+// This is not working yet, re-do the processQueue
+// First it is not really working with time
+// Secondly if file already exists, it should not count
+const MAX_REQUESTS_PER_SECOND = 3;
 
 const downloadQueue: any[] = [];
 

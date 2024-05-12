@@ -43,6 +43,7 @@ export interface Page {
   Photo?: FileObject | null;
   Place?: string;
   References?: string;
+  ShortDescription_en?: string | null;
   Team?: SelectProperty[];
   Title?: string;
 }

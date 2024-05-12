@@ -52,7 +52,7 @@ import { Client, APIResponseError } from "@notionhq/client";
 import { addSlugToName, returnImageNameAsJpg } from "../blog-helpers";
 import type { DatabaseObject } from "./responses";
 import type { SearchResponse } from "@notionhq/client/build/src/api-endpoints";
-import { simplifyStringForSlug } from "../utils";
+import { titleToSlug } from "../utils";
 
 const notion = new Client({
   auth: NOTION_API_SECRET,
@@ -128,7 +128,12 @@ export async function getDatabasePages(
         },
       ],
     },
-    sorts: [],
+    sorts: [
+      {
+        property: "Name",
+        direction: "ascending",
+      },
+    ],
     page_size: 100,
   };
 
@@ -542,7 +547,7 @@ export async function downloadPublicImage(url: URL, slug: string) {
     stream = stream.pipe(sharp().resize({ width: 800 }).rotate());
   } else {
     stream = stream.pipe(
-      sharp().resize({ width: 800 }).jpeg().flatten({ background: "#222222" })
+      sharp().resize({ width: 800 }).jpeg().flatten({ background: "#000000" })
     );
   }
   try {
@@ -1315,9 +1320,9 @@ function _buildPage(
     ? prop.Name.title.map((richText) => richText.plain_text).join("")
     : "";
 
-  const slug = name === "Homepage" ? "/" : simplifyStringForSlug(name);
+  const slug = name === "Homepage" ? "/" : titleToSlug(name);
 
-  const databaseTitleSlug = simplifyStringForSlug(databaseTitle);
+  const databaseTitleSlug = titleToSlug(databaseTitle);
 
   let fullName: string | null = null;
   try {
@@ -1325,6 +1330,21 @@ function _buildPage(
       fullName =
         prop.FullName && prop.FullName.rich_text
           ? prop.FullName.rich_text
+              .map((richText) => richText.plain_text)
+              .join("")
+          : "";
+    }
+  } catch (error) {
+    console.error("Error building a page while getting the full name", error);
+    throw error;
+  }
+
+  let shortDescription_en: string | null = null;
+  try {
+    if (prop.ShortDescription_en) {
+      shortDescription_en =
+        prop.ShortDescription_en && prop.ShortDescription_en.rich_text
+          ? prop.ShortDescription_en.rich_text
               .map((richText) => richText.plain_text)
               .join("")
           : "";
@@ -1444,6 +1464,7 @@ function _buildPage(
             .map((richText) => richText.plain_text)
             .join("")
         : "",
+    ShortDescription_en: shortDescription_en,
     Team: prop.Team && prop.Team.multi_select ? prop.Team.multi_select : [],
     Title:
       prop.Title && prop.Title.rich_text && prop.Title.rich_text.length > 0

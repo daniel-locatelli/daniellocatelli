@@ -44,8 +44,12 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
               let image = await importCoverImage(page, images);
               return (
                 <article class="flex flex-col bg-clip-border">
-                  <h1 class="text-2xl dark:text-white">{db.Title}</h1>
-                  <h2 class="text-2xl dark:text-white">{page.Name}</h2>
+                  <h2 class="text-2xl dark:text-white font-heading">
+                    {db.Title}
+                  </h2>
+                  <h2 class="text-2xl dark:text-white font-heading">
+                    {page.Name}
+                  </h2>
                   <div class="flex justify-between gap-1 mb-1">
                     <a class="flex" href={page.Slug}>
                       {image && (

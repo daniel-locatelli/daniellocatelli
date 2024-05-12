@@ -300,6 +300,7 @@ export const parseYouTubeVideoId = (url: URL): string => {
 
 export const importCoverImage = async (page: Page, images: any) => {
   // console.log("\nAll images");
+  // console.dir(page.Cover);
   if (page.Cover) {
     const url = new URL(page.Cover.Url);
     const slug = page.Slug;

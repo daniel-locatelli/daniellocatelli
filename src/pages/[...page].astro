@@ -7,7 +7,6 @@ import {
 import type { Database, Page } from "../lib/notion-interfaces";
 import PostBody from "../components/Notion/PostBody.astro";
 import Base from "@/layouts/Base.astro";
-import SocialList from "@/components/SocialList.astro";
 import { importCoverImage } from "src/lib/blog-helpers";
 import PostPreview from "@/components/PostPreview.astro";
 import { Image } from "astro:assets";
@@ -15,11 +14,13 @@ import { Image } from "astro:assets";
 export async function getStaticPaths() {
   const databases = await getAllDatabases();
   const paths = databases.flatMap((database) =>
-    database.Pages.filter(() => database.Title === "Pages").map((page) => ({
+    database.Pages.filter(
+      (page: Page) => page.Name !== "Homepage" && database.Title === "Pages"
+    ).map((page: Page) => ({
       params: {
-        page: page.Slug === "home" ? undefined : page.Slug,
+        page: page.Slug,
       },
-      props: { page: page },
+      props: { page },
     }))
   );
   return paths;

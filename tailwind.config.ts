@@ -34,6 +34,8 @@ export default {
         // Add any custom fonts here
         sans: [...fontFamily.sans],
         serif: [...fontFamily.serif],
+        heading: ["Poiret One", ...fontFamily.sans],
+        body: ["Poppins Light", ...fontFamily.sans],
       },
       transitionProperty: {
         height: "height",
@@ -61,7 +63,7 @@ export default {
               "@apply cactus-link": "",
             },
             strong: {
-              fontWeight: "700",
+              fontWeight: "300",
             },
             code: {
               border: "1px dotted #666",
@@ -77,7 +79,7 @@ export default {
               borderBottomWidth: "none",
             },
             "thead th": {
-              fontWeight: "700",
+              fontWeight: "300",
               borderBottom: "1px dashed #666",
             },
             "tbody tr": {
@@ -107,7 +109,7 @@ export default {
           css: {
             code: {
               fontSize: theme("fontSize.sm")[0],
-              fontWeight: "400",
+              fontWeight: "300",
             },
           },
         },

@@ -23,7 +23,7 @@ function removeDiacritics(string: string) {
   return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-export function simplifyStringForSlug(string: string) {
+export function titleToSlug(string: string) {
   // Remove diacritics
   let stringWithoutDiacritics = removeDiacritics(string);
 

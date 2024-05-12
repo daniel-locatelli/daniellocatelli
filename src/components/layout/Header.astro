@@ -3,6 +3,8 @@ import type { Page } from "src/lib/notion-interfaces";
 import Search from "../Search.astro";
 import ThemeToggle from "../ThemeToggle.astro";
 import { getDatabaseByName } from "src/lib/notion/client";
+import { Image } from "astro:assets";
+import logo from "../../assets/logo-dl.svg";
 
 let pagesDatabase = (await getDatabaseByName("Pages"))!;
 let pages: Page[];
@@ -17,33 +19,14 @@ pages.sort((a, b) => {
 const url = new URL(Astro.request.url);
 ---
 
-<header
-  class="group relative mb-4 flex items-center sm:ps-[4.5rem]"
-  id="main-header"
->
+<header class="group relative mb-4 flex items-center" id="main-header">
   <div class="flex sm:flex-col grow">
     <a
       aria-current={url.pathname === "/" ? "page" : false}
       class="inline-flex items-center hover:filter-none sm:relative sm:inline-block"
       href="/"
     >
-      <svg
-        aria-hidden="true"
-        class="me-3 h-10 w-6 mix-blend-exclusion sm:absolute sm:start-[-4.5rem] sm:me-0 sm:h-16 sm:w-12"
-        fill="none"
-        focusable="false"
-        viewBox="0 0 60 60"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <title>Logo</title>
-        <path
-          d="M1.07658 0.232361C0.524291 0.232361 0.0765762 0.680076 0.0765762 1.23236C0.0765762 1.78465 0.524291 2.23236 1.07658 2.23236L38.2081 2.23236L2.5719 60H4.92183L40.8511 1.75739C41.0414 1.44889 41.0499 1.06156 40.8732 0.745037C40.6966 0.428515 40.3625 0.232363 40 0.232363L1.07658 0.232361Z"
-          fill="#EEE"></path>
-        <path
-          d="M58.9234 60C59.4757 60 59.9234 59.5523 59.9234 59C59.9234 58.4477 59.4757 58 58.9234 58L21.7919 58L57.4281 0.232361L55.0782 0.23236L19.1489 58.475C18.9586 58.7835 18.9501 59.1708 19.1268 59.4873C19.3034 59.8038 19.6375 60 20 60L58.9234 60Z"
-          fill="#EEE"></path>
-      </svg>
-      <span class="text-xl sm:text-3xl">Daniel Locatelli</span>
+      <Image src={logo} alt="Daniel Locatelli logo" class="inline" width="60" />
     </a>
     <nav
       aria-label="Main menu"
@@ -56,7 +39,7 @@ const url = new URL(Astro.request.url);
             aria-current={url.pathname === page.Slug ? "page" : false}
             class="px-4 py-4 underline-offset-2 sm:py-0 sm:hover:underline"
             data-astro-prefetch
-            href={page.Slug}
+            href={page.Name === "Homepage" ? "/" : Astro.site + page.Slug}
             title={page.FullName}
           >
             {page.Name}
