@@ -23,6 +23,3 @@ pnpm-debug.log*
 # Notion images
 public/notion/*/
 src/assets/notion/*/
-
-# Old scripts folder
-scripts/
