@@ -9,7 +9,9 @@ export const PEOPLE_DB_ID =
   import.meta.env.PEOPLE_DB_ID || process.env.PEOPLE_DB_ID || "";
 
 export const CUSTOM_DOMAIN =
-  import.meta.env.CUSTOM_DOMAIN || process.env.CUSTOM_DOMAIN || ""; // <- Set your custom domain if you have. e.g. alpacat.com
+  import.meta.env.CUSTOM_DOMAIN ||
+  process.env.CUSTOM_DOMAIN ||
+  "daniellocatelli.com"; // <- Set your custom domain if you have. e.g. alpacat.com
 export const BASE_PATH =
   import.meta.env.BASE_PATH || process.env.BASE_PATH || ""; // <- Set sub directory path if you want. e.g. /docs/
 

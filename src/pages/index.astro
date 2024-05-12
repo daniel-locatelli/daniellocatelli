@@ -18,8 +18,6 @@ const otherPages: Page[] = pagesDatabase.Pages.filter(
   (page) => page.Name !== "Homepage"
 );
 
-// const [blocks] = await Promise.all([getAllBlocksByBlockId(page.PageId)]);
-
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
 );
