@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import { CUSTOM_DOMAIN, BASE_PATH } from "./src/server-constants";
 import AllFilesDownloader from "./src/integrations/all-files-downloader";
-import CustomIconDownloader from "./src/integrations/custom-icon-downloader";
+// import CustomIconDownloader from "./src/integrations/custom-icon-downloader";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";

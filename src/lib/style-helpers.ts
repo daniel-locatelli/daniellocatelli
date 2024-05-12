@@ -6,7 +6,7 @@ export const getNotionColorToTailwindColor = (s: string) => {
   const kebabCase = s.replaceAll("_", "-");
 
   // Unified mapping of custom colors to Tailwind classes for text and background colors
-  const colorMap = {
+  const colorMap: { [key: string]: string } = {
     // Text color classes
     gray: "text-ngray-txt-light dark:text-ngray-txt-dark",
     brown: "text-nbrown-txt-light dark:text-nbrown-txt-dark",
@@ -46,7 +46,7 @@ export const getNotionColorToTailwindColorForBorder = (s: string) => {
   const kebabCase = s.replaceAll("_", "-");
 
   // Unified mapping of custom colors to Tailwind classes for text and background colors
-  const colorMap = {
+  const colorMap: { [key: string]: string } = {
     // Background color classes
     "gray-background": "border-gray-200 dark:border-gray-900",
     "brown-background": "border-amber-200 dark:border-amber-900", // No exact brown in Tailwind, using amber
@@ -131,7 +131,7 @@ export const isNotionIconURL = (url: string): boolean => {
 };
 
 export const getTextToAstroIcon = (text: string) => {
-  const textIconMap = {
+  const textIconMap: { [key: string]: string } = {
     "🗓️": "mdi:calendar-blank",
     download: "mdi:download-circle",
     "copy-code": "ic:twotone-content-copy",
