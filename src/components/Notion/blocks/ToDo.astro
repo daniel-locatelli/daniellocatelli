@@ -10,17 +10,12 @@ import NotionBlocks from "../NotionBlocks.astro";
 import "../../../styles/notion-color.css";
 
 export interface Props {
-  block: Block;
+  blockList: List;
   headings: Block[];
   slug: string;
 }
 
-const { block, headings, slug } = Astro.props;
-
-const blockList: List = {
-  Type: block.Type,
-  ListItems: [block],
-};
+const { blockList, headings, slug } = Astro.props;
 ---
 
 <div class="to-do">

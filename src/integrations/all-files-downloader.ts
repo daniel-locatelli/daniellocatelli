@@ -14,7 +14,7 @@ import type { Database } from "../lib/notion-interfaces";
 // This is not working yet, re-do the processQueue
 // First it is not really working with time
 // Secondly if file already exists, it should not count
-const MAX_REQUESTS_PER_SECOND = 1;
+const MAX_REQUESTS_PER_SECOND = 3;
 
 const downloadQueue: any[] = [];
 

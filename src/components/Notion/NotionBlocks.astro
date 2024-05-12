@@ -45,60 +45,89 @@ const {
   headings: rawHeadings = [],
 } = Astro.props;
 
-const blocks = rawBlocks.reduce((arr, block: Block, i: number) => {
-  const isBulletedListItem = block.Type === "bulleted_list_item";
-  const isNumberedListItem = block.Type === "numbered_list_item";
-  const isToDo = block.Type === "to_do";
+const blocks = rawBlocks.reduce(
+  (arr: (Block | List)[], block: Block, i: number) => {
+    const isBulletedListItem = block.Type === "bulleted_list_item";
+    const isNumberedListItem = block.Type === "numbered_list_item";
+    const isToDo = block.Type === "to_do";
 
-  if (!isBulletedListItem && !isNumberedListItem && !isToDo) {
-    return arr.concat(block);
-  }
+    if (!isBulletedListItem && !isNumberedListItem && !isToDo) {
+      return arr.concat(block);
+    }
 
-  let listType = "";
-  if (isBulletedListItem) {
-    listType = "bulleted_list";
-  } else if (isNumberedListItem) {
-    listType = "numbered_list";
-  } else {
-    listType = "to_do_list";
-  }
+    let listType = "";
+    if (isBulletedListItem) {
+      listType = "bulleted_list";
+    } else if (isNumberedListItem) {
+      listType = "numbered_list";
+    } else {
+      listType = "to_do_list";
+    }
 
-  if (i === 0) {
-    const list: List = {
-      Type: listType,
-      ListItems: [block],
-    };
-    return arr.concat(list);
-  }
+    if (i === 0) {
+      const list: List = {
+        Type: listType,
+        ListItems: [block],
+      };
+      return arr.concat(list);
+    }
 
-  const prevList = arr[arr.length - 1];
+    const prevList = arr[arr.length - 1];
 
-  if (
-    (isBulletedListItem && prevList.Type !== "bulleted_list") ||
-    (isNumberedListItem && prevList.Type !== "numbered_list") ||
-    (isToDo && prevList.Type !== "to_do_list")
-  ) {
-    const list: List = {
-      Type: listType,
-      ListItems: [block],
-    };
-    return arr.concat(list);
-  }
+    if (
+      (isBulletedListItem && prevList.Type !== "bulleted_list") ||
+      (isNumberedListItem && prevList.Type !== "numbered_list") ||
+      (isToDo && prevList.Type !== "to_do_list")
+    ) {
+      const list: List = {
+        Type: listType,
+        ListItems: [block],
+      };
+      return arr.concat(list);
+    }
 
-  prevList.ListItems.push(block);
+    if (isList(prevList)) {
+      // 'prevList' is of type 'List'
+      prevList.ListItems.push(block);
+    } else {
+      // 'prevList' is not of type 'List', create a new list
+      const list: List = {
+        Type: listType,
+        ListItems: [block],
+      };
+      arr.push(list);
+    }
 
-  return arr;
-}, []);
+    return arr;
+  },
+  []
+);
+
+// Type guard function to check if an object is of type 'List'
+function isList(obj: any): obj is List {
+  return obj && obj.Type && obj.ListItems !== undefined;
+}
+
+// Type guard function to check if an object is of type 'Block'
+function isBlock(obj: any): obj is Block {
+  return obj && obj.Id !== undefined && obj.Type !== undefined;
+}
 
 let headings = rawHeadings;
 if (isRoot) {
-  headings = blocks.filter((b: Block) =>
-    ["heading_1", "heading_2", "heading_3"].includes(b.Type)
-  );
+  headings = blocks.filter((b): b is Block => {
+    // Type guard to ensure 'b' is of type 'Block'
+    return (
+      isBlock(b) && ["heading_1", "heading_2", "heading_3"].includes(b.Type)
+    );
+  });
 }
 
 const bookmarkURLs = blocks
-  .filter((b: Block) => ["bookmark", "link_preview", "embed"].includes(b.Type))
+  .filter(
+    (b): b is Block =>
+      isBlock(b) && ["bookmark", "link_preview", "embed"].includes(b.Type)
+  )
   .map((b: Block) => {
     const urlString = (b.Bookmark || b.LinkPreview || b.Embed)!.Url;
 
@@ -118,65 +147,87 @@ const bookmarkURLMap = await buildURLToHTMLMap(bookmarkURLs);
 ---
 
 {
-  blocks.map((block: Block) => {
+  blocks.map((block: Block | List) => {
     switch (block.Type) {
       case "paragraph":
-        return <Paragraph block={block} headings={headings} slug={slug} />;
+        return (
+          <Paragraph block={block as Block} headings={headings} slug={slug} />
+        );
       case "heading_1":
-        return <Heading1 block={block} headings={headings} slug={slug} />;
+        return (
+          <Heading1 block={block as Block} headings={headings} slug={slug} />
+        );
       case "heading_2":
-        return <Heading2 block={block} headings={headings} slug={slug} />;
+        return (
+          <Heading2 block={block as Block} headings={headings} slug={slug} />
+        );
       case "heading_3":
-        return <Heading3 block={block} headings={headings} slug={slug} />;
+        return (
+          <Heading3 block={block as Block} headings={headings} slug={slug} />
+        );
       case "table_of_contents":
-        return <TableOfContents block={block} headings={headings} />;
+        return <TableOfContents block={block as Block} headings={headings} />;
       case "image":
-        return <NotionImage block={block} slug={slug} />;
+        return <NotionImage block={block as Block} slug={slug} />;
       case "video":
-        return <Video block={block} slug={slug} />;
+        return <Video block={block as Block} slug={slug} />;
       case "code":
-        return <Code block={block} />;
+        return <Code block={block as Block} />;
       case "quote":
-        return <Quote block={block} headings={headings} slug={slug} />;
+        return <Quote block={block as Block} headings={headings} slug={slug} />;
       case "equation":
-        return <Equation block={block} />;
+        return <Equation block={block as Block} />;
       case "callout":
-        return <Callout block={block} headings={headings} slug={slug} />;
+        return (
+          <Callout block={block as Block} headings={headings} slug={slug} />
+        );
       case "embed":
-        return <Embed block={block} urlMap={bookmarkURLMap} />;
+        return <Embed block={block as Block} urlMap={bookmarkURLMap} />;
       case "bookmark":
       case "link_preview":
-        return <Bookmark block={block} urlMap={bookmarkURLMap} />;
+        return <Bookmark block={block as Block} urlMap={bookmarkURLMap} />;
       case "divider":
         return <Divider />;
       case "table":
-        return <Table block={block} />;
+        return <Table block={block as Block} />;
       case "column_list":
-        return <ColumnList block={block} headings={headings} slug={slug} />;
+        return (
+          <ColumnList block={block as Block} headings={headings} slug={slug} />
+        );
       case "bulleted_list":
         return (
-          <BulletedListItems block={block} headings={headings} slug={slug} />
+          <BulletedListItems
+            blockList={block as List}
+            headings={headings}
+            slug={slug}
+          />
         );
       case "numbered_list":
         return (
           <NumberedListItems
-            block={block}
+            blockList={block as List}
             level={level}
             headings={headings}
             slug={slug}
           />
         );
       case "to_do_list":
-        return <ToDo block={block} headings={headings} slug={slug} />;
+        return (
+          <ToDo blockList={block as List} headings={headings} slug={slug} />
+        );
       case "synced_block":
-        return <SyncedBlock block={block} headings={headings} slug={slug} />;
+        return (
+          <SyncedBlock block={block as Block} headings={headings} slug={slug} />
+        );
       case "toggle":
-        return <Toggle block={block} headings={headings} slug={slug} />;
+        return (
+          <Toggle block={block as Block} headings={headings} slug={slug} />
+        );
       case "file":
         // console.dir(block);
-        return <File block={block} />;
+        return <File block={block as Block} />;
       case "link_to_page":
-        return <LinkToPage block={block} />;
+        return <LinkToPage block={block as Block} />;
     }
     return null;
   })

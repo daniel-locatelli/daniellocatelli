@@ -10,20 +10,15 @@ import NotionBlocks from "../NotionBlocks.astro";
 import "../../../styles/notion-color.css";
 
 export interface Props {
-  block: Block;
+  blockList: List;
   level: number;
   headings: Block[];
   slug: string;
 }
 
-const { block, level, headings, slug } = Astro.props;
+const { blockList, level, headings, slug } = Astro.props;
 
 const listTypes = ["i", "1", "a"];
-
-const blockList: List = {
-  Type: block.Type,
-  ListItems: [block],
-};
 ---
 
 <ol type!={listTypes[level % 3]}>
