@@ -6,6 +6,7 @@ import BaseHead from "@/components/BaseHead.astro";
 import { siteConfig } from "@/site-config";
 import { Image } from "astro:assets";
 import logo from "../assets/logo-dl.svg";
+import arrowRight from "../assets/arrow-right.svg";
 import { titleToSlug } from "src/lib/utils";
 
 interface Props {
@@ -50,7 +51,7 @@ databases = await Promise.all(
           class="fixed z-20 p-4 mix-blend-difference top-0 md:top-1/2 md:left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2"
         >
           <Image
-            class="h-10 w-12 md:h-auto"
+            class="h-10 w-12 md:h-20 md:w-24"
             src={logo}
             alt="Daniel Locatelli logo"
             title="Click to go to my LinkedIn"
@@ -72,7 +73,10 @@ databases = await Promise.all(
             // Import cover from database
             const coverImage = await importCoverImage(page, images);
             return (
-              <a href={Astro.site + page.Slug} class="relative flex">
+              <a
+                href={Astro.site + page.Slug}
+                class="relative flex h-1/4 md:h-auto"
+              >
                 <div class="relative z-10 bg-black flex justify-center transition hover:opacity-0 duration-500">
                   <h2
                     class="z-20 absolute opacity-0 text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-3xl md:text-6xl transition ease-in duration-500 pointer-events-none"
@@ -88,10 +92,17 @@ databases = await Promise.all(
                     transition:name={page.Slug + "-image"}
                   />
                 </div>
-                <div class="absolute flex h-2/3 items-center">
-                  <h3 class="p-8 text-black text-center font-body text-lg text-balance">
+                <div class="absolute flex flex-col justify-evenly h-2/3 items-center">
+                  <h3 class="md:px-8 text-black text-center font-body text-lg text-balance">
                     {page.ShortDescription_en}
                   </h3>
+                  <div class="flex flex-col justify-center">
+                    <Image
+                      src={arrowRight}
+                      alt={"Go to " + page.Name}
+                      class="h-4 w-4"
+                    />
+                  </div>
                 </div>
                 <div class="absolute bottom-0 h-1/3 bg-white flex justify-center">
                   {mergedPages.map(async (page) => {
