@@ -7,7 +7,6 @@ import { siteConfig } from "@/site-config";
 import { Image } from "astro:assets";
 import logo from "../assets/logo-dl.svg";
 import arrowRight from "../assets/arrow-right.svg";
-import { titleToSlug } from "src/lib/utils";
 
 interface Props {
   page: Page;
@@ -44,7 +43,7 @@ databases = await Promise.all(
   <body class="m-0 p-0">
     <main id="main">
       <div
-        class="absolute flex flex-col md:grid md:grid-cols-2 md:grid-rows-2 h-screen"
+        class="absolute flex flex-col md:grid md:grid-cols-2 md:grid-rows-2 h-svh"
       >
         <a
           href="https://www.linkedin.com/in/daniel-locatelli/"
@@ -72,12 +71,13 @@ databases = await Promise.all(
             mergedPages = mergedPages.slice(0, 5);
             // Import cover from database
             const coverImage = await importCoverImage(page, images);
+            // link not on the cover/title, but just on the description
             return (
-              <a
-                href={Astro.site + page.Slug}
-                class="relative flex h-1/4 md:h-auto"
+              <div
+                class="relative flex h-1/4 md:h-auto group"
+                id="image-container"
               >
-                <div class="relative z-10 bg-black flex justify-center transition hover:opacity-0 duration-500">
+                <div class="relative z-10 bg-black flex justify-center transition duration-500 group-hover:hidden">
                   <h2
                     class="z-20 absolute opacity-0 text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-3xl md:text-6xl transition ease-in duration-500 pointer-events-none"
                     data-replace="{ 'opacity-0': 'opacity-100' }"
@@ -92,32 +92,37 @@ databases = await Promise.all(
                     transition:name={page.Slug + "-image"}
                   />
                 </div>
-                <div class="absolute flex flex-col justify-evenly h-2/3 items-center">
-                  <h3 class="md:px-8 text-black text-center font-body text-lg text-balance">
-                    {page.ShortDescription_en}
-                  </h3>
-                  <div class="flex flex-col justify-center">
-                    <Image
-                      src={arrowRight}
-                      alt={"Go to " + page.Name}
-                      class="h-4 w-4"
-                    />
-                  </div>
-                </div>
-                <div class="absolute bottom-0 h-1/3 bg-white flex justify-center">
-                  {mergedPages.map(async (page) => {
-                    const image = await importCoverImage(page, images);
-                    return (
+                <a
+                  href={Astro.site + page.Slug}
+                  class="absolute z-0 inset-0 w-full h-full"
+                >
+                  <div class="relative flex flex-col justify-evenly h-full items-center">
+                    <h3 class="px-4 md:px-8 text-black text-center font-body text-lg md:text-3xl text-balance">
+                      {page.ShortDescription_en}
+                    </h3>
+                    <div class="flex flex-col justify-center">
                       <Image
-                        class="object-cover w-1/5"
-                        src={image}
-                        alt=""
-                        height={300}
+                        src={arrowRight}
+                        alt={"Go to " + page.Name}
+                        class="h-8 w-8"
                       />
-                    );
-                  })}
-                </div>
-              </a>
+                    </div>
+                  </div>
+                  {/* <div class="relative bottom-0 h-1/3 bg-white flex justify-center">
+                    {mergedPages.map(async (page) => {
+                      const image = await importCoverImage(page, images);
+                      return (
+                        <Image
+                          class="object-cover w-1/5"
+                          src={image}
+                          alt=""
+                          height={300}
+                        />
+                      );
+                    })}
+                  </div> */}
+                </a>
+              </div>
             );
           })
         }
@@ -135,6 +140,19 @@ databases = await Promise.all(
             replacers[i].classList.remove(key);
             replacers[i].classList.add(replaceClasses[key]);
           });
+        }
+      });
+
+      let imageTapped = false;
+      const imageContainer = document.querySelector("#image-container")!;
+      imageContainer.addEventListener("click", (event) => {
+        if (!imageTapped) {
+          imageTapped = true;
+          // Prevent default behavior on first tap
+          event.preventDefault();
+        } else {
+          // Allow link navigation on second tap
+          imageTapped = false;
         }
       });
     </script>
