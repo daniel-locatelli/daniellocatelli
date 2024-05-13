@@ -19,7 +19,7 @@ pages.sort((a, b) => {
 const url = new URL(Astro.request.url);
 ---
 
-<header class="group relative mb-4 flex items-center" id="main-header">
+<header class="group relative mb-4 px-4 flex items-center" id="main-header">
   <div class="flex grow">
     <a
       aria-current={url.pathname === "/" ? "page" : false}
@@ -42,7 +42,7 @@ const url = new URL(Astro.request.url);
         pages.map((page) => (
           <a
             aria-current={url.pathname === page.Slug ? "page" : false}
-            class="px-4 py-4 underline-offset-2 sm:py-0 sm:hover:underline"
+            class="px-12 py-4 underline-offset-2 sm:py-0 sm:hover:underline"
             data-astro-prefetch
             href={page.Name === "Homepage" ? "/" : Astro.site + page.Slug}
             title={page.FullName}
