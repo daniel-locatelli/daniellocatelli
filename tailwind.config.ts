@@ -22,7 +22,6 @@ export default {
   },
   theme: {
     extend: {
-      screen: ['100vh', '100dvh'],
       colors: {
         bgColor: "hsl(var(--theme-bg) / <alpha-value>)",
         textColor: "hsl(var(--theme-text) / <alpha-value>)",
