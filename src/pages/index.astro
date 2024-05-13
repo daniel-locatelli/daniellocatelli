@@ -72,7 +72,7 @@ databases = await Promise.all(
             // Import cover from database
             const coverImage = await importCoverImage(page, images);
             return (
-              <a href={page.Slug} class="relative flex">
+              <a href={Astro.site + page.Slug} class="relative flex">
                 <div class="relative z-10 bg-black flex justify-center transition hover:opacity-0 duration-500">
                   <h2
                     class="z-20 absolute opacity-0 text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-3xl md:text-6xl transition ease-in duration-500 pointer-events-none"
