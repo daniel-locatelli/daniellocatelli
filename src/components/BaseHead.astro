@@ -12,7 +12,9 @@ const titleSeparator = "•";
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(
-  ogImage ? ogImage : "/social-card.png",
+  ogImage
+    ? ogImage
+    : "/notion/bb763bcc-d542-40dd-a824-26284f427162/master-thesis_daniel-locatelli_nils-opgenorth.jpg",
   Astro.url
 ).href;
 ---

@@ -64,7 +64,7 @@ interface PagesCacheObject {
 
 let databasesCache: Database[] | null = null;
 
-const numberOfRetry = 2;
+const numberOfRetry = 20;
 
 export async function getAllDatabases(): Promise<Database[]> {
   // console.log("\n===== Getting databases =====");
@@ -146,7 +146,7 @@ export async function getDatabasePages(
 
   if (datePropertyExists) {
     // If Date property exists, add sorting by Date
-    params.sorts!.push({
+    params.sorts!.unshift({
       property: "Date",
       direction: "descending",
     });

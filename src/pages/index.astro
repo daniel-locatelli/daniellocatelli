@@ -24,21 +24,11 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
 // Cover image
 const coverImage = await importCoverImage(homepage, images);
-
-let databases: Database[];
-
-databases = await Promise.all(
-  homepage.DatabasesRef!.map(async (db) => await getDatabaseByName(db.name!))
-);
 ---
 
 <html lang={siteConfig.lang}>
   <head>
-    <BaseHead
-      description={homepage.Description_en}
-      ogImage={coverImage}
-      title="Home"
-    />
+    <BaseHead description={homepage.Description_en} title="Home" />
   </head>
   <body class="m-0 p-0">
     <main id="main">
@@ -50,14 +40,15 @@ databases = await Promise.all(
           class="fixed z-20 p-4 mix-blend-difference top-0 md:top-1/2 md:left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2"
         >
           <Image
-            class="h-10 w-12 md:h-20 md:w-24"
+            class="md:h-20 md:w-24"
             src={logo}
             alt="Daniel Locatelli logo"
             title="Click to go to my LinkedIn"
+            width="50"
           />
         </a>
         {
-          otherPages.map(async (page) => {
+          otherPages.map(async (page, index) => {
             let databases: Database[];
             databases = await Promise.all(
               page.DatabasesRef!.map(
@@ -74,10 +65,18 @@ databases = await Promise.all(
             // link not on the cover/title, but just on the description
             return (
               <div
-                class="relative flex h-1/4 md:h-auto group"
+                class="
+            relative
+            flex
+            h-1
+            4
+            md:h-auto"
                 id="image-container"
               >
-                <div class="relative z-10 bg-black flex justify-center transition duration-500 group-hover:hidden">
+                <div
+                  class="relative z-10 bg-black flex justify-center transition duration-500"
+                  id="cover"
+                >
                   <h2
                     class="z-20 absolute opacity-0 text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-3xl md:text-6xl transition ease-in duration-500 pointer-events-none"
                     data-replace="{ 'opacity-0': 'opacity-100' }"
@@ -95,32 +94,20 @@ databases = await Promise.all(
                 <a
                   href={Astro.site + page.Slug}
                   class="absolute z-0 inset-0 w-full h-full"
+                  id="link"
                 >
                   <div class="relative flex flex-col justify-evenly h-full items-center">
-                    <h3 class="px-4 md:px-8 text-black text-center font-body text-lg md:text-3xl text-balance">
+                    <h3 class="px-6 md:px-10 text-black text-center font-body text-lg md:text-3xl text-balance">
                       {page.ShortDescription_en}
                     </h3>
                     <div class="flex flex-col justify-center">
                       <Image
                         src={arrowRight}
                         alt={"Go to " + page.Name}
-                        class="h-8 w-8"
+                        class="h-5 w-5 md:h-8 md:w-8"
                       />
                     </div>
                   </div>
-                  {/* <div class="relative bottom-0 h-1/3 bg-white flex justify-center">
-                    {mergedPages.map(async (page) => {
-                      const image = await importCoverImage(page, images);
-                      return (
-                        <Image
-                          class="object-cover w-1/5"
-                          src={image}
-                          alt=""
-                          height={300}
-                        />
-                      );
-                    })}
-                  </div> */}
                 </a>
               </div>
             );
@@ -128,33 +115,6 @@ databases = await Promise.all(
         }
       </div>
     </main>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var replacers = document.querySelectorAll("[data-replace]");
-        for (var i = 0; i < replacers.length; i++) {
-          let element = replacers[i] as HTMLElement;
-          let replaceClasses = JSON.parse(
-            element.dataset.replace!.replace(/'/g, '"')
-          );
-          Object.keys(replaceClasses).forEach(function (key) {
-            replacers[i].classList.remove(key);
-            replacers[i].classList.add(replaceClasses[key]);
-          });
-        }
-      });
-
-      let imageTapped = false;
-      const imageContainer = document.querySelector("#image-container")!;
-      imageContainer.addEventListener("click", (event) => {
-        if (!imageTapped) {
-          imageTapped = true;
-          // Prevent default behavior on first tap
-          event.preventDefault();
-        } else {
-          // Allow link navigation on second tap
-          imageTapped = false;
-        }
-      });
-    </script>
+    <script src="./homeScripts.ts"></script>
   </body>
 </html>
