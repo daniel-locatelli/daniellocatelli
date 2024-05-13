@@ -75,7 +75,7 @@ databases = await Promise.all(
               <a href={Astro.site + page.Slug} class="relative flex">
                 <div class="relative z-10 bg-black flex justify-center transition hover:opacity-0 duration-500">
                   <h2
-                    class="z-20 absolute opacity-0 text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-2xl md:text-6xl transition ease-in duration-500 pointer-events-none"
+                    class="z-20 absolute opacity-0 text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-3xl md:text-6xl transition ease-in duration-500 pointer-events-none"
                     data-replace="{ 'opacity-0': 'opacity-100' }"
                   >
                     {page.Name}
@@ -89,7 +89,7 @@ databases = await Promise.all(
                   />
                 </div>
                 <div class="absolute flex h-2/3 items-center">
-                  <h3 class="p-8 text-black text-center font-body text-2xl text-balance">
+                  <h3 class="p-8 text-black text-center font-body text-lg text-balance">
                     {page.ShortDescription_en}
                   </h3>
                 </div>
