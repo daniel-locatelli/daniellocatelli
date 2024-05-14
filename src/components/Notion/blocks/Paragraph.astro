@@ -14,7 +14,12 @@ export interface Props {
 const { block, headings, slug } = Astro.props;
 ---
 
-<p class:list={[snakeToKebab(block.Paragraph!.Color), "px-4"]}>
+<p
+  class:list={[
+    snakeToKebab(block.Paragraph!.Color),
+    "px-4 sm:max-w-xl mb-4 text-base font-body",
+  ]}
+>
   {
     block.Paragraph!.RichTexts.map((richText: interfaces.RichText) => (
       <RichText richText={richText} />
@@ -33,10 +38,6 @@ const { block, headings, slug } = Astro.props;
 
 <style>
   p {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    line-height: 1.2;
-    min-height: 1.2rem;
     -webkit-hyphens: auto;
     -webkit-hyphenate-limit-lines: 2;
     -webkit-hyphenate-limit-after: 5;

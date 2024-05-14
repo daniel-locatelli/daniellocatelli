@@ -7,6 +7,7 @@ import { siteConfig } from "@/site-config";
 import { Image } from "astro:assets";
 import logo from "../assets/logo-dl.svg";
 import arrowRight from "../assets/arrow-right.svg";
+import Footer from "@/components/layout/Footer.astro";
 
 interface Props {
   page: Page;
@@ -28,7 +29,7 @@ const coverImage = await importCoverImage(homepage, images);
 
 <html lang={siteConfig.lang}>
   <head>
-    <BaseHead description={homepage.Description_en} title="Home" />
+    <BaseHead description={homepage.Description_en} title={homepage.Name} />
   </head>
   <body class="m-0 p-0 h-svh h-screen">
     <main id="main h-full">
@@ -37,7 +38,7 @@ const coverImage = await importCoverImage(homepage, images);
       >
         <a
           href="https://www.linkedin.com/in/daniel-locatelli/"
-          class="fixed z-20 p-4 mix-blend-difference top-0 md:top-1/2 md:left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2"
+          class="fixed z-30 p-4 mix-blend-difference top-0 md:top-1/2 md:left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2"
         >
           <Image
             class="md:h-20 md:w-24"
@@ -106,7 +107,7 @@ const coverImage = await importCoverImage(homepage, images);
                   id="link"
                 >
                   <div class="relative flex flex-col justify-evenly h-full items-center">
-                    <h3 class="px-6 md:px-10 text-black text-center font-body text-lg md:text-3xl text-balance">
+                    <h3 class="px-6 md:px-10 text-black text-center font-light font-body text-lg md:text-3xl text-balance">
                       {page.ShortDescription_en}
                     </h3>
                     <div class="flex flex-col justify-center">
@@ -124,6 +125,7 @@ const coverImage = await importCoverImage(homepage, images);
         }
       </div>
     </main>
+    <Footer />
     <script src="../lib/homeScripts.ts"></script>
   </body>
 </html>

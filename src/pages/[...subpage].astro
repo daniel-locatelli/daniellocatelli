@@ -58,8 +58,10 @@ const image = await importCoverImage(subpage, images);
     )
   }
   <section>
-    <h1 class="title mb-6 font-heading text-center">{subpage.Name}</h1>
-    <p class="mb-4 font-body">
+    <h1 class="title mb-4 font-heading font-light text-center">
+      {subpage.Name}
+    </h1>
+    <p class="mb-6 font-body">
       <PostBody blocks={blocks} slug={slug!} />
     </p>
   </section>

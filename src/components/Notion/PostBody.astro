@@ -10,6 +10,6 @@ export interface Props {
 const { blocks, slug } = Astro.props;
 ---
 
-<div class="">
+<div class="flex flex-col justify-center items-center">
   <NotionBlocks blocks={blocks} slug={slug} isRoot={true} />
 </div>
