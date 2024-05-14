@@ -37,10 +37,10 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
                         {page.Name}
                       </h2>
                     </div>
-                    <div class="absolute flex justify-between w-full h-svh h-screen">
+                    <div class="absolute flex justify-between h-full w-full">
                       {image && (
                         <Image
-                          class="object-cover w-full"
+                          class="object-cover h-full w-full"
                           src={image}
                           alt={page.CoverAlt}
                           transition:name={page.Slug + "-image"}
