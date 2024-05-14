@@ -3,18 +3,19 @@
 @tailwind utilities;
 
 @layer base {
-  :root,
+  /* :root,
   :root[data-theme="light"] {
     color-scheme: light;
-    /* https://tailwindcss.com/docs/customizing-colors#using-css-variables */
     --theme-bg: 0deg 0% 98%;
     --theme-link: 172deg 18% 41%;
     --theme-text: 203deg 11% 15%;
     --theme-accent: 351deg 66% 48%;
     --theme-accent-2: 0deg 0% 7%;
     --theme-quote: 351deg 66% 48%;
-  }
+  } */
 
+  :root,
+  :root[data-theme="light"],
   :root[data-theme="dark"] {
     color-scheme: dark;
     --theme-bg: black;

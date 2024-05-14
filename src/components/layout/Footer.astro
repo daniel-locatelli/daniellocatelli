@@ -19,17 +19,26 @@ const year = new Date().getFullYear();
   </div>
   <nav
     aria-label="More on this site"
-    class="flex md:gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
+    class="flex flex-col sm:flex-row sm:divide-x sm:divide-gray-500"
   >
     {
       pages.map((page) => (
         <a
-          class="px-1 md:px-4 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
-          href={page.Slug}
+          class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+          href={page.Name === "Homepage" ? "/" : Astro.site + page.Slug}
+          title={page.FullName}
         >
           {page.Name}
         </a>
       ))
     }
+    <a
+      class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+      data-astro-prefetch
+      href="/daniel-locatelli-cv.pdf"
+      title="Daniel Locatelli's CV"
+    >
+      CV
+    </a>
   </nav>
 </footer>
