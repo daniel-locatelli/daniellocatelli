@@ -31,7 +31,11 @@ const socialImageURL = new URL(
 <link href="/favicon.ico" rel="icon" sizes="any" />
 <link href="/icon.svg" rel="icon" type="image/svg+xml" />
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
-<link href="/manifest.webmanifest" rel="manifest" />
+<link
+  href="/manifest.webmanifest"
+  rel="manifest"
+  crossorigin="use-credentials"
+/>
 <link href={canonicalURL} rel="canonical" />
 
 {/* Primary Meta Tags */}
@@ -72,12 +76,12 @@ const socialImageURL = new URL(
 <link href="/sitemap-index.xml" rel="sitemap" />
 
 {/* RSS auto-discovery */}
-<link
+<!-- <link
   href="/rss.xml"
   rel="alternate"
   title={siteConfig.title}
   type="application/rss+xml"
-/>
+/> -->
 
 {/* Webmentions */}
 {
