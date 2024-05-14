@@ -9,6 +9,8 @@ import { importCoverImage } from "../lib/blog-helpers";
 import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
 import PostBody from "@/components/Notion/PostBody.astro";
+import RichText from "@/components/Notion/blocks/RichText.astro";
+import * as interfaces from "../lib/notion-interfaces.ts";
 
 export async function getStaticPaths() {
   const databases = await getAllDatabases();
@@ -50,7 +52,7 @@ const image = await importCoverImage(subpage, images);
   {
     image && (
       <Image
-        class="md:rounded-md object-cover h-80 mb-4"
+        class="md:rounded-md object-cover h-96 mb-4"
         src={image}
         alt={subpage.CoverAlt}
         transition:name={slug + "-image"}
@@ -59,10 +61,20 @@ const image = await importCoverImage(subpage, images);
   }
   <section class="flex flex-col justify-center items-center font-body">
     <div class="sm:max-w-xl">
-      <h1 class="title mb-4 font-heading font-light">
+      <h1 class="title mb-4 font-heading font-light text-balance">
         {subpage.Name}
       </h1>
-      <table class="text-left table-auto border-separate border-spacing-x-1">
+      <table
+        class="text-left table-auto border-separate border-spacing-x-4 [&>*]:align-text-top"
+      >
+        {
+          subpage.DateStart && (
+            <tr>
+              <th class="font-body font-bold">Date</th>
+              <td>{subpage.DateStart}</td>
+            </tr>
+          )
+        }
         {
           subpage.Authors && subpage.Authors?.length > 0 && (
             <tr>
@@ -156,13 +168,41 @@ const image = await importCoverImage(subpage, images);
           )
         }
         {
-          subpage.Link !== undefined && (
+          subpage.Link !== "" && (
             <tr>
               <th>Link</th>
               <td>
                 <a class="hover:underline" href={subpage.Link}>
                   {subpage.Link}
                 </a>
+              </td>
+            </tr>
+          )
+        }
+        {
+          subpage.Apps && subpage.Apps.length > 0 && (
+            <tr>
+              <th>Apps</th>
+              <td>
+                {subpage.Apps.map((member, index) => {
+                  if (index === 0) {
+                    return <span>{member.name}</span>;
+                  } else {
+                    return <span>, {member.name}</span>;
+                  }
+                })}
+              </td>
+            </tr>
+          )
+        }
+        {
+          subpage.References !== undefined && (
+            <tr>
+              <th>References</th>
+              <td>
+                {subpage.References.map((richText: interfaces.RichText) => (
+                  <RichText richText={richText} />
+                ))}
               </td>
             </tr>
           )

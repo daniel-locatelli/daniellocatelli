@@ -1468,10 +1468,8 @@ function _buildPage(
       prop.References &&
       prop.References.rich_text &&
       prop.References.rich_text.length > 0
-        ? prop.References.rich_text
-            .map((richText) => richText.plain_text)
-            .join("")
-        : "",
+        ? prop.References.rich_text.map(_buildRichText)
+        : [],
     ShortDescription_en: shortDescription_en,
     Team: prop.Team && prop.Team.multi_select ? prop.Team.multi_select : [],
     Title:

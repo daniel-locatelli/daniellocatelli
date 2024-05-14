@@ -38,17 +38,17 @@ const coverImage = await importCoverImage(homepage, images);
       >
         <a
           href="https://www.linkedin.com/in/daniel-locatelli/"
-          class="fixed z-30 p-4 mix-blend-difference top-0 md:top-1/2 md:left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2"
+          class="fixed h-20 w-24 md:h-40 md:w-48 z-30 p-4 mix-blend-difference top-0 md:top-1/2 md:left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2"
         >
           <Image
+            class="w-full"
             src={logo}
             alt="Daniel Locatelli logo"
             title="Click to go to my LinkedIn"
-            width="50"
           />
         </a>
         {
-          otherPages.map(async (page, index) => {
+          otherPages.map(async (page) => {
             let databases: Database[];
             databases = await Promise.all(
               page.DatabasesRef!.map(
@@ -101,7 +101,7 @@ const coverImage = await importCoverImage(homepage, images);
                   />
                 </div>
                 <a
-                  href={Astro.site + page.Slug}
+                  href={"/" + page.Slug}
                   class="absolute z-0 inset-0 w-full h-full bg-white"
                   id="link"
                 >

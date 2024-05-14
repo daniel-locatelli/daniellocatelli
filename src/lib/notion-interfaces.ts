@@ -44,7 +44,7 @@ export interface Page {
   Organization?: string;
   Photo?: FileObject | null;
   Place?: string;
-  References?: string;
+  References?: RichText[];
   ShortDescription_en?: string | null;
   Team?: SelectProperty[] | null;
   Title?: string;
