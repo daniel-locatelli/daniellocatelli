@@ -196,7 +196,7 @@ const image = await importCoverImage(subpage, images);
           )
         }
         {
-          subpage.References !== undefined && (
+          subpage.References !== undefined && subpage.References.length > 0 && (
             <tr>
               <th>References</th>
               <td>
