@@ -1427,7 +1427,10 @@ function _buildPage(
       prop.Level && prop.Level.select && prop.Level.select.name
         ? prop.Level.select.name
         : "",
-    Link: prop.Link && prop.Link.url ? prop.Link.url : "",
+    Link:
+      prop.Link && prop.Link.rich_text && prop.Link.rich_text.length > 0
+        ? prop.Link.rich_text.map(_buildRichText)
+        : [],
     LinkedIn: prop.LinkedIn && prop.LinkedIn.url ? prop.LinkedIn.url : "",
     Manager:
       prop.Manager && prop.Manager.multi_select

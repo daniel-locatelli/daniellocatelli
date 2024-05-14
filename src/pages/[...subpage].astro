@@ -61,7 +61,7 @@ const image = await importCoverImage(subpage, images);
   }
   <section class="flex flex-col justify-center items-center font-body">
     <div class="sm:max-w-xl">
-      <h1 class="title mb-4 font-heading font-light text-balance">
+      <h1 class="title mb-4 font-heading font-light text-balance px-2 md:px-0">
         {subpage.Name}
       </h1>
       <table
@@ -168,13 +168,13 @@ const image = await importCoverImage(subpage, images);
           )
         }
         {
-          subpage.Link !== "" && (
+          subpage.Link !== undefined && subpage.Link.length > 0 && (
             <tr>
               <th>Link</th>
               <td>
-                <a class="hover:underline" href={subpage.Link}>
-                  {subpage.Link}
-                </a>
+                {subpage.Link.map((richText: interfaces.RichText) => (
+                  <RichText richText={richText} />
+                ))}
               </td>
             </tr>
           )
