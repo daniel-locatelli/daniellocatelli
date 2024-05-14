@@ -27,7 +27,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
             {db.Pages.map(async (page) => {
               let image = await importCoverImage(page, images);
               return (
-                <article class="relative flex flex-col bg-clip-border h-[100svh] h-screen w-full">
+                <article class="relative flex flex-col bg-clip-border h-svh h-screen w-full">
                   <a
                     class="flex transition w-full h-full opacity-80 hover:opacity-100"
                     href={Astro.site + page.Slug}

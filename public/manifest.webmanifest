@@ -2,7 +2,7 @@
   "name": "Daniel Locatelli",
   "short_name": "DL",
   "description": "My digital office on computional design",
-  "theme_color": "#2bbc8a",
+  "theme_color": "#000",
   "background_color": "#000",
   "display": "standalone",
   "orientation": "portrait",

@@ -20,10 +20,10 @@ const url = new URL(Astro.request.url);
 ---
 
 <header
-  class="group relative my-4 px-4 flex justify-center items-center"
+  class="group relative my-4 px-4 flex justify-between sm:justify-center items-center"
   id="main-header"
 >
-  <div class="flex max-w-3xl">
+  <div class="flex sm:max-w-4xl">
     <a
       aria-current={url.pathname === "/" ? "page" : false}
       class="inline-flex items-center hover:filter-none sm:relative sm:inline-block"
@@ -45,7 +45,7 @@ const url = new URL(Astro.request.url);
         pages.map((page) => (
           <a
             aria-current={url.pathname === page.Slug ? "page" : false}
-            class="px-4 py-4 underline-offset-2 sm:py-0 sm:hover:underline"
+            class="px-12 sm:px-4 py-4 underline-offset-2 sm:py-0 sm:hover:underline"
             data-astro-prefetch
             href={page.Name === "Homepage" ? "/" : Astro.site + page.Slug}
             title={page.FullName}
@@ -54,6 +54,14 @@ const url = new URL(Astro.request.url);
           </a>
         ))
       }
+      <a
+        class="px-12 sm:px-4 py-4 underline-offset-2 sm:py-0 sm:hover:underline"
+        data-astro-prefetch
+        href="/daniel-locatelli-cv.pdf"
+        title="Daniel Locatelli's CV"
+      >
+        CV
+      </a>
     </nav>
   </div>
   <!-- <Search />
