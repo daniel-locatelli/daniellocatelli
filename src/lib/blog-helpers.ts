@@ -276,7 +276,6 @@ export const isYouTubeURL = (url: URL): boolean => {
 // - https://youtube.com/live/uOLwqWlpKbA
 export const parseYouTubeVideoId = (url: URL): string => {
   if (!isYouTubeURL(url)) return "";
-
   if (url.hostname === "youtu.be") {
     return url.pathname.split("/")[1]!;
   } else if (url.pathname === "/watch") {

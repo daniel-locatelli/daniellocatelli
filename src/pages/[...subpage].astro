@@ -64,7 +64,7 @@ const image = await importCoverImage(subpage, images);
       </h1>
       <table class="text-left table-auto border-separate border-spacing-x-1">
         {
-          subpage.Authors && (
+          subpage.Authors && subpage.Authors?.length > 0 && (
             <tr>
               {subpage.Authors.length === 1 ? (
                 <th>Author</th>
@@ -92,7 +92,7 @@ const image = await importCoverImage(subpage, images);
           )
         }
         {
-          subpage.Director && (
+          subpage.Director && subpage.Director.length > 0 && (
             <tr>
               {subpage.Director.length === 1 ? (
                 <th>Director</th>
@@ -112,7 +112,7 @@ const image = await importCoverImage(subpage, images);
           )
         }
         {
-          subpage.Manager && (
+          subpage.Manager && subpage.Manager.length > 0 && (
             <tr>
               {subpage.Manager.length === 1 ? (
                 <th>Manager</th>
@@ -132,7 +132,7 @@ const image = await importCoverImage(subpage, images);
           )
         }
         {
-          subpage.Team && (
+          subpage.Team && subpage.Team.length > 0 && (
             <tr>
               <th>Team</th>
               <td>
@@ -148,7 +148,15 @@ const image = await importCoverImage(subpage, images);
           )
         }
         {
-          subpage.Link && (
+          subpage.Place !== "" && (
+            <tr>
+              <th>Place</th>
+              <td>{subpage.Place}</td>
+            </tr>
+          )
+        }
+        {
+          subpage.Link !== undefined && (
             <tr>
               <th>Link</th>
               <td>
