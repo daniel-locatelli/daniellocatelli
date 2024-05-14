@@ -75,6 +75,9 @@ export default {
             hr: {
               borderTopStyle: "dashed",
             },
+            th: {
+              fontWeight: "light",
+            },
             thead: {
               borderBottomWidth: "none",
             },

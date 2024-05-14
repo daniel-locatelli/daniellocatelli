@@ -19,15 +19,16 @@ export interface Page {
   Slug: string;
   Tags: SelectProperty[];
   Active?: boolean;
-  Authors?: SelectProperty[];
-  Apps?: SelectProperty[];
+  Authors?: SelectProperty[] | null;
+  Apps?: SelectProperty[] | null;
   Category?: string;
-  City?: SelectProperty[];
+  City?: SelectProperty[] | null;
   Client?: string;
   Country?: string;
-  DatabasesRef?: SelectProperty[];
+  DatabasesRef?: SelectProperty[] | null;
   DateStart?: string;
   DateEnd?: string;
+  Director?: SelectProperty[] | null;
   Disclosed?: boolean | null;
   Event?: string;
   Format?: string;
@@ -36,6 +37,7 @@ export interface Page {
   Level?: string;
   Link?: string;
   LinkedIn?: string;
+  Manager?: SelectProperty[] | null;
   Name_de?: string;
   Name_pt?: string;
   OfficialName?: string;
@@ -44,7 +46,7 @@ export interface Page {
   Place?: string;
   References?: string;
   ShortDescription_en?: string | null;
-  Team?: SelectProperty[];
+  Team?: SelectProperty[] | null;
   Title?: string;
 }
 

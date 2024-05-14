@@ -57,12 +57,112 @@ const image = await importCoverImage(subpage, images);
       />
     )
   }
-  <section>
-    <h1 class="title mb-4 font-heading font-light text-center">
-      {subpage.Name}
-    </h1>
-    <p class="mb-6 font-body">
-      <PostBody blocks={blocks} slug={slug!} />
-    </p>
+  <section class="flex flex-col justify-center items-center font-body">
+    <div class="sm:max-w-xl">
+      <h1 class="title mb-4 font-heading font-light">
+        {subpage.Name}
+      </h1>
+      <table class="text-left table-auto border-separate border-spacing-x-1">
+        {
+          subpage.Authors && (
+            <tr>
+              {subpage.Authors.length === 1 ? (
+                <th>Author</th>
+              ) : (
+                <th>Authors</th>
+              )}
+              <td>
+                {subpage.Authors.map((author, index) => {
+                  if (index === 0) {
+                    return <span>{author.name}</span>;
+                  } else {
+                    return <span>, {author.name}</span>;
+                  }
+                })}
+              </td>
+            </tr>
+          )
+        }
+        {
+          subpage.Client && (
+            <tr>
+              <th>Client</th>
+              <td>{subpage.Client}</td>
+            </tr>
+          )
+        }
+        {
+          subpage.Director && (
+            <tr>
+              {subpage.Director.length === 1 ? (
+                <th>Director</th>
+              ) : (
+                <th>Directors</th>
+              )}
+              <td>
+                {subpage.Director.map((director, index) => {
+                  if (index === 0) {
+                    return <span>{director.name}</span>;
+                  } else {
+                    return <span>, {director.name}</span>;
+                  }
+                })}
+              </td>
+            </tr>
+          )
+        }
+        {
+          subpage.Manager && (
+            <tr>
+              {subpage.Manager.length === 1 ? (
+                <th>Manager</th>
+              ) : (
+                <th>Managers</th>
+              )}
+              <td>
+                {subpage.Manager.map((manager, index) => {
+                  if (index === 0) {
+                    return <span>{manager.name}</span>;
+                  } else {
+                    return <span>, {manager.name}</span>;
+                  }
+                })}
+              </td>
+            </tr>
+          )
+        }
+        {
+          subpage.Team && (
+            <tr>
+              <th>Team</th>
+              <td>
+                {subpage.Team.map((member, index) => {
+                  if (index === 0) {
+                    return <span>{member.name}</span>;
+                  } else {
+                    return <span>, {member.name}</span>;
+                  }
+                })}
+              </td>
+            </tr>
+          )
+        }
+        {
+          subpage.Link && (
+            <tr>
+              <th>Link</th>
+              <td>
+                <a class="hover:underline" href={subpage.Link}>
+                  {subpage.Link}
+                </a>
+              </td>
+            </tr>
+          )
+        }
+      </table>
+      <div class="my-6">
+        <PostBody blocks={blocks} slug={slug!} />
+      </div>
+    </div>
   </section>
 </Base>

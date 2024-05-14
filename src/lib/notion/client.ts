@@ -1408,6 +1408,10 @@ function _buildPage(
       prop.Date && prop.Date.date && prop.Date.date.end
         ? prop.Date.date.end
         : "",
+    Director:
+      prop.Director && prop.Director.multi_select
+        ? prop.Director.multi_select
+        : [],
     Disclosed: prop.Disclosed ? prop.Disclosed.checkbox : undefined,
     Event:
       prop.Event && prop.Event.select && prop.Event.select.name
@@ -1425,6 +1429,10 @@ function _buildPage(
         : "",
     Link: prop.Link && prop.Link.url ? prop.Link.url : "",
     LinkedIn: prop.LinkedIn && prop.LinkedIn.url ? prop.LinkedIn.url : "",
+    Manager:
+      prop.Manager && prop.Manager.multi_select
+        ? prop.Manager.multi_select
+        : [],
     Name_de:
       prop.Name_de &&
       prop.Name_de.rich_text &&

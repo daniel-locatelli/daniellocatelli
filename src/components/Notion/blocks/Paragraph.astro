@@ -17,7 +17,7 @@ const { block, headings, slug } = Astro.props;
 <p
   class:list={[
     snakeToKebab(block.Paragraph!.Color),
-    "px-4 sm:max-w-xl mb-4 text-base font-body",
+    "mb-4 text-base font-body",
   ]}
 >
   {
@@ -61,11 +61,5 @@ const { block, headings, slug } = Astro.props;
     hyphenate-limit-lines: 2;
     hyphenate-limit-last: always;
     hyphenate-limit-zone: 8%;
-  }
-
-  @media (max-width: 625px) {
-    p {
-      font-size: 1.1rem;
-    }
   }
 </style>

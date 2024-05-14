@@ -34,39 +34,3 @@
     @apply mx-auto flex min-h-screen max-w-3xl flex-col bg-bgColor px-8 pt-16 font-mono text-sm font-normal text-textColor antialiased;
   }
 }
-
-h1 {
-  font-size: 4rem;
-}
-
-h2 {
-  font-size: 2.65rem;
-}
-
-h3 {
-  font-size: 1.6rem;
-}
-
-h4 {
-  font-size: 1.4rem;
-}
-
-h5 {
-  font-size: 1.2rem;
-}
-
-h6 {
-  font-size: 1.1rem;
-}
-
-@media (max-width: 1280px) {
-}
-
-@media (max-width: 920px) {
-}
-
-@media (max-width: 625px) {
-}
-
-@media (max-width: 420px) {
-}
