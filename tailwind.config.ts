@@ -40,6 +40,16 @@ export default {
       transitionProperty: {
         height: "height",
       },
+      // that is animation class
+      animation: {
+        fade: "fadeIn 1000ms ease-in",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // Remove above once tailwindcss exposes theme type
