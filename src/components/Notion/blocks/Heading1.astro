@@ -39,7 +39,7 @@ const id = buildHeadingId(block.Heading1!);
     </details>
   ) : (
     <a href={`#${id}`} id={id}>
-      <h3 class="px-4">
+      <h3 class="my-2 px-2 md:px-0 font-body w-full">
         {block.Heading1!.RichTexts.map((richText: interfaces.RichText) => (
           <RichText richText={richText} />
         ))}
@@ -49,17 +49,6 @@ const id = buildHeadingId(block.Heading1!);
 }
 
 <style>
-  h3 {
-    margin: 1.1em 0 0.3em;
-    color: var(--fg);
-    font-size: 1.8rem;
-  }
-  @media (max-width: 640px) {
-    h3 {
-      font-size: 1.3rem;
-    }
-  }
-
   .toggle {
     margin: 2rem 0 0;
   }
