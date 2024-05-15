@@ -1427,6 +1427,10 @@ function _buildPage(
         : "",
     FullName: fullName,
     Instagram: prop.Instagram && prop.Instagram.url ? prop.Instagram.url : "",
+    Language:
+      prop.Language && prop.Language.multi_select
+        ? prop.Language.multi_select
+        : [],
     Level:
       prop.Level && prop.Level.select && prop.Level.select.name
         ? prop.Level.select.name

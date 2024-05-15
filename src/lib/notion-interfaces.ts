@@ -36,6 +36,7 @@ export interface Page {
   FullName?: string | null;
   Instagram?: string;
   Level?: string;
+  Language?: SelectProperty[] | null;
   Link?: RichText[];
   LinkedIn?: string;
   Manager?: SelectProperty[] | null;

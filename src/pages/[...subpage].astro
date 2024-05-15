@@ -52,7 +52,7 @@ const image = await importCoverImage(subpage, images);
   {
     image && (
       <Image
-        class="md:rounded-md object-cover h-96 mb-4"
+        class="md:rounded-md object-cover h-96 w-full mb-4"
         src={image}
         alt={subpage.CoverAlt}
         transition:name={slug + "-image"}
@@ -180,6 +180,26 @@ const image = await importCoverImage(subpage, images);
             <tr>
               <th>Place</th>
               <td>{subpage.Place}</td>
+            </tr>
+          )
+        }
+        {
+          subpage.Language && subpage.Language.length > 0 && (
+            <tr>
+              {subpage.Language.length === 1 ? (
+                <th>Language</th>
+              ) : (
+                <th>Languages</th>
+              )}
+              <td>
+                {subpage.Language.map((manager, index) => {
+                  if (index === 0) {
+                    return <span>{manager.name}</span>;
+                  } else {
+                    return <span>, {manager.name}</span>;
+                  }
+                })}
+              </td>
             </tr>
           )
         }
