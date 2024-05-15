@@ -1408,6 +1408,10 @@ function _buildPage(
       prop.Date && prop.Date.date && prop.Date.date.end
         ? prop.Date.date.end
         : "",
+    Development:
+      prop.Development && prop.Development.multi_select
+        ? prop.Development.multi_select
+        : [],
     Director:
       prop.Director && prop.Director.multi_select
         ? prop.Director.multi_select

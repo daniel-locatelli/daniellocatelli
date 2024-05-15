@@ -28,6 +28,7 @@ export interface Page {
   DatabasesRef?: SelectProperty[] | null;
   DateStart?: string;
   DateEnd?: string;
+  Development?: SelectProperty[] | null;
   Director?: SelectProperty[] | null;
   Disclosed?: boolean | null;
   Event?: string;
