@@ -20,7 +20,7 @@ const url = new URL(Astro.request.url);
 ---
 
 <header
-  class="fixed w-full top-0 z-40 bg-black/[.5] backdrop-blur group py-4 px-4 flex justify-between sm:justify-center sm:items-center"
+  class="fixed w-full top-0 z-40 bg-black/[.5] backdrop-blur group py-2 px-4 flex justify-between sm:justify-center sm:items-center"
   id="main-header"
 >
   <div class="flex w-full sm:max-w-3xl">
@@ -65,7 +65,7 @@ const url = new URL(Astro.request.url);
   </div>
   <!-- <Search />
   <ThemeToggle /> -->
-  <mobile-button>
+  <mobile-button class="flex items-center h-10">
     <button
       aria-expanded="false"
       aria-haspopup="menu"
