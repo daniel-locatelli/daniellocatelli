@@ -20,7 +20,7 @@ const id = buildHeadingId(block.Heading1!);
     <details class="toggle">
       <summary>
         <a href={`#${id}`} id={id}>
-          <h3 class="my-2 px-2 md:px-0 text-base font-body w-full">
+          <h3 class="my-2 px-2 md:px-0 font-body w-full">
             {block.Heading1!.RichTexts.map((richText: interfaces.RichText) => (
               <RichText richText={richText} />
             ))}
