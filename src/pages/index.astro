@@ -76,15 +76,11 @@ const coverImage = await importCoverImage(homepage, images);
                   class="relative z-10 bg-black flex justify-center transition duration-500"
                   id="cover"
                 >
-                  <h2
-                    class="z-20 absolute opacity-0 text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-3xl md:text-6xl transition ease-in duration-500 pointer-events-none"
-                    data-replace="{ 'opacity-0': 'opacity-100' }"
-                  >
+                  <h2 class="z-20 absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-3xl md:text-6xl transition ease-in duration-500 pointer-events-none">
                     {page.Name}
                   </h2>
                   <Image
-                    class="object-cover opacity-0 transition ease-in duration-1000"
-                    data-replace="{ 'opacity-0': 'opacity-85' }"
+                    class="object-cover transition ease-in duration-1000"
                     src={coverImage}
                     alt={page.CoverAlt}
                     transition:name={page.Slug + "-image"}
