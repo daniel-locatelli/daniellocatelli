@@ -48,7 +48,7 @@ const processQueue = async () => {
 export default (): AstroIntegration => ({
   name: "all-files-downloader",
   hooks: {
-    "astro:config:setup": async () => {
+    "astro:build:start": async () => {
       let databases: Array<Database>;
       databases = await getAllDatabases();
 
