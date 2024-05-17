@@ -10,6 +10,11 @@ import Base from "@/layouts/Base.astro";
 import { importCoverImage } from "src/lib/blog-helpers";
 import PostPreview from "@/components/PostPreview.astro";
 import { Image } from "astro:assets";
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+import { siteConfig } from "@/site-config";
+import type { SiteMeta } from "@/types";
+import BaseHead from "@/components/BaseHead.astro";
 
 export async function getStaticPaths() {
   const databases = await getAllDatabases();
@@ -52,6 +57,28 @@ databases = await Promise.all(
 );
 ---
 
-<Base meta={{ title: page.Name }}>
-  <PostPreview databases={databases} />
-</Base>
+<html lang={siteConfig.lang}>
+  <head>
+    <BaseHead
+      articleDate={page.DateStart}
+      description={page.Description_en}
+      ogImage={coverImage}
+      title={page.Name}
+    />
+  </head>
+  <body class="p-0 m-0 max-w-full h-full">
+    <!-- <ThemeProvider /> -->
+    <!-- <SkipLink /> -->
+    <Header />
+    <main id="main">
+      <PostPreview databases={databases} />
+    </main>
+    <Footer />
+    <style>
+      html {
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+      }
+    </style>
+  </body>
+</html>
