@@ -52,7 +52,7 @@ const image = await importCoverImage(subpage, images);
   {
     image && (
       <Image
-        class="md:rounded-md object-cover h-96 w-full mb-4"
+        class="md:rounded-md object-cover h-72 md:h-96 w-full mb-4"
         src={image}
         alt={subpage.CoverAlt}
         transition:name={slug + "-image"}
