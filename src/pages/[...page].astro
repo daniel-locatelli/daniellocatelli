@@ -48,6 +48,8 @@ let databases: Database[];
 databases = await Promise.all(
   page.DatabasesRef!.map(async (db) => await getDatabaseByName(db.name!))
 );
+
+let test = "Radom Raisting by AR Ingenieure";
 ---
 
 <html lang={siteConfig.lang}>

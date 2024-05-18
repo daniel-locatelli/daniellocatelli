@@ -40,26 +40,10 @@ const coverImage = await importCoverImage(homepage, images);
           href="/"
           class="fixed h-20 w-24 md:h-40 md:w-48 z-30 p-4 mix-blend-difference top-0 md:top-1/2 md:left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2"
         >
-          <Image
-            class="w-full"
-            src={logo}
-            alt="Daniel Locatelli logo"
-            title="Click to go to my LinkedIn"
-          />
+          <Image class="w-full" src={logo} alt="Daniel Locatelli logo" />
         </a>
         {
           otherPages.map(async (page) => {
-            let databases: Database[];
-            databases = await Promise.all(
-              page.DatabasesRef!.map(
-                async (db) => await getDatabaseByName(db.name!)
-              )
-            );
-            let mergedPages: Page[] = [];
-            for (const database of databases) {
-              mergedPages = mergedPages.concat(database.Pages);
-            }
-            mergedPages = mergedPages.slice(0, 5);
             // Import cover from database
             const coverImage = await importCoverImage(page, images);
             // link not on the cover/title, but just on the description
@@ -72,8 +56,9 @@ const coverImage = await importCoverImage(homepage, images);
             md:h-auto"
                 id="image-container"
               >
-                <div
-                  class="relative z-10 bg-black flex justify-center"
+                <a
+                  href={"/" + page.Slug}
+                  class="relative z-10 bg-black flex justify-center transition duration-700"
                   id="cover"
                 >
                   <h2 class="z-20 absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-3xl md:text-6xl pointer-events-none animate-fade">
@@ -95,7 +80,7 @@ const coverImage = await importCoverImage(homepage, images);
                     ]}
                     sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${coverImage.width}px`}
                   />
-                </div>
+                </a>
                 <a
                   href={"/" + page.Slug}
                   class="absolute z-0 inset-0 w-full h-full bg-white"

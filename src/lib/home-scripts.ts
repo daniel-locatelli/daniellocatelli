@@ -23,14 +23,14 @@ const isTouchDevice = "ontouchstart" in document.documentElement;
 
 touchObjectsArray.forEach((touchObject) => {
   if (isTouchDevice) {
-    touchObject.ImageContainer.addEventListener("click", function () {
+    touchObject.ImageContainer.addEventListener("touchstart", function (event) {
+      event.preventDefault();
       if (touchObject.Visible) {
         touchObjectsArray.forEach((touchObject) => {
           touchObject.CoverElement.style.opacity = "1";
           touchObject.Visible = true;
         });
         // First tap, change opacity of image
-        // event.preventDefault();
         touchObject.CoverElement.style.opacity = "0";
         touchObject.Visible = false;
       } else {
@@ -40,12 +40,10 @@ touchObjectsArray.forEach((touchObject) => {
     });
   } else {
     touchObject.ImageContainer.addEventListener("mouseenter", function () {
-      touchObject.CoverElement.style.opacity = "0";
-      touchObject.LinkElement.style.zIndex = "20";
+      touchObject.CoverElement.classList.add("opacity-0");
     });
     touchObject.ImageContainer.addEventListener("mouseleave", function () {
-      touchObject.CoverElement.style.opacity = "1";
-      touchObject.LinkElement.style.zIndex = "0";
+      touchObject.CoverElement.classList.remove("opacity-0");
     });
   }
 });
