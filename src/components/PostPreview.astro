@@ -23,11 +23,11 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     databases.map((db) => {
       return (
         <section aria-label={db.Title} class="relative w-full">
-          <ul class="relative space-y-0 w-full snap-y">
+          <ul class="relative space-y-0 w-full">
             {db.Pages.map(async (page) => {
               let image = await importCoverImage(page, images);
               return (
-                <article class="relative flex flex-col bg-clip-border h-svh h-screen w-full snap-start">
+                <article class="relative flex flex-col bg-clip-border h-vh h-screen w-full snap-start">
                   <a
                     class="flex transition w-full h-full"
                     href={"/" + page.Slug}
