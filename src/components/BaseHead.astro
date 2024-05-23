@@ -31,9 +31,27 @@ const socialImageURL = new URL(
 <title>{siteTitle}</title>
 
 {/* Icons / Favicon */}
-<link href="/icon.svg" rel="icon" type="image/svg+xml" />
-<!-- <link href="/favicon.ico" rel="icon" sizes="any" /> -->
-<link href="/apple-touch-icon.png" rel="apple-touch-icon" />
+<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+<link
+  rel="apple-touch-icon"
+  sizes="180x180"
+  href="/apple-touch-icon.png?v=1.0"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="32x32"
+  href="/favicon-32x32.png?v=1.0"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  sizes="16x16"
+  href="/favicon-16x16.png?v=1.0"
+/>
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=1.0" color="#000000" />
+<link rel="shortcut icon" href="/favicon.ico?v=1.0" />
+<link href="/favicon.ico" rel="icon" sizes="any" />
 <link
   href="/manifest.webmanifest"
   rel="manifest"
@@ -47,7 +65,8 @@ const socialImageURL = new URL(
 <meta content={siteConfig.author} name="author" />
 
 {/* Theme Colour */}
-<meta content="" name="theme-color" />
+<meta content="#000000" name="theme-color" />
+<meta content="#000000" name="msapplication-TileColor" />
 
 {/* Open Graph / Facebook */}
 <meta content={articleDate ? "article" : "website"} property="og:type" />
