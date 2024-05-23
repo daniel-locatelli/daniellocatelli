@@ -23,7 +23,7 @@ const isTouchDevice = "ontouchstart" in document.documentElement;
 
 touchObjectsArray.forEach((touchObject) => {
   if (isTouchDevice) {
-    touchObject.ImageContainer.addEventListener("touchstart", function (event) {
+    touchObject.ImageContainer.addEventListener("touchend", function (event) {
       event.preventDefault();
       if (touchObject.Visible) {
         touchObjectsArray.forEach((touchObject) => {
