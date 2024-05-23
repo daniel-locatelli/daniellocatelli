@@ -31,80 +31,64 @@ const coverImage = await importCoverImage(homepage, images);
   <head>
     <BaseHead description={homepage.Description_en} title={homepage.Name} />
   </head>
-  <body class="m-0 p-0 min-h-svh min-h-screen">
-    <main id="main h-full">
-      <div
-        class="absolute flex flex-col md:grid md:grid-cols-2 md:grid-rows-2 h-full"
+  <body class="m-0 p-0 h-full min-w-full">
+    <main
+      class="relative grid grid-rows-4 md:grid-cols-2 md:grid-rows-2 min-h-screen max-h-screen w-full overflow-hidden"
+    >
+      <a
+        href="/"
+        class="fixed h-20 w-24 md:h-40 md:w-48 z-30 p-4 mix-blend-difference top-0 md:top-1/2 md:left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2"
       >
-        <a
-          href="/"
-          class="fixed h-20 w-24 md:h-40 md:w-48 z-30 p-4 mix-blend-difference top-0 md:top-1/2 md:left-1/2 transform md:-translate-x-1/2 md:-translate-y-1/2"
-        >
-          <Image class="w-full" src={logo} alt="Daniel Locatelli logo" />
-        </a>
-        {
-          otherPages.map(async (page) => {
-            // Import cover from database
-            const coverImage = await importCoverImage(page, images);
-            // link not on the cover/title, but just on the description
-            return (
-              <div
-                class="
-            relative
-            flex
-            h-1/4
-            md:h-auto"
-                id="image-container"
+        <Image class="w-full" src={logo} alt="Daniel Locatelli logo" />
+      </a>
+      {
+        otherPages.map(async (page) => {
+          // Import cover from database
+          const coverImage = await importCoverImage(page, images);
+          // link not on the cover/title, but just on the description
+          return (
+            <div class="relative" id="image-container">
+              <a
+                href={"/" + page.Slug}
+                class="relative z-10 bg-black flex justify-center transition duration-700 h-full"
+                id="cover"
               >
-                <a
-                  href={"/" + page.Slug}
-                  class="relative z-10 bg-black flex justify-center transition duration-700"
-                  id="cover"
-                >
-                  <h2 class="z-20 absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-3xl md:text-6xl pointer-events-none animate-fade">
-                    {page.Name}
-                  </h2>
-                  <Image
-                    class="object-cover animate-fade"
-                    src={coverImage}
-                    alt={page.CoverAlt}
-                    transition:name={page.Slug + "-image"}
-                    widths={[
-                      300,
-                      700,
-                      1000,
-                      1280,
-                      1400,
-                      1600,
-                      coverImage.width,
-                    ]}
-                    sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${coverImage.width}px`}
-                  />
-                </a>
-                <a
-                  href={"/" + page.Slug}
-                  class="absolute z-0 inset-0 w-full h-full bg-white"
-                  id="link"
-                >
-                  <div class="relative flex flex-col justify-evenly h-full items-center">
-                    <h3 class="px-6 md:px-10 text-black text-center font-light font-body text-lg md:text-3xl text-balance">
-                      {page.ShortDescription_en}
-                    </h3>
-                    <div class="flex flex-col justify-center">
-                      <Image
-                        src={arrowRight}
-                        alt={"Go to " + page.Name}
-                        class="h-5 w-5 md:h-8 md:w-8"
-                      />
-                    </div>
+                <h2 class="z-20 absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-heading text-3xl md:text-6xl pointer-events-none animate-fade">
+                  {page.Name}
+                </h2>
+                <Image
+                  class="object-cover animate-fade"
+                  src={coverImage}
+                  alt={page.CoverAlt}
+                  transition:name={page.Slug + "-image"}
+                  widths={[300, 700, 1000, 1280, 1400, 1600, coverImage.width]}
+                  sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${coverImage.width}px`}
+                />
+              </a>
+              <a
+                href={"/" + page.Slug}
+                class="absolute z-0 inset-0 w-full h-full bg-white"
+                id="link"
+              >
+                <div class="relative flex flex-col justify-evenly h-full items-center">
+                  <h3 class="px-6 md:px-10 text-black text-center font-light font-body text-lg md:text-3xl text-balance">
+                    {page.ShortDescription_en}
+                  </h3>
+                  <div class="flex flex-col justify-center">
+                    <Image
+                      src={arrowRight}
+                      alt={"Go to " + page.Name}
+                      class="h-5 w-5 md:h-8 md:w-8"
+                    />
                   </div>
-                </a>
-              </div>
-            );
-          })
-        }
-      </div>
+                </div>
+              </a>
+            </div>
+          );
+        })
+      }
     </main>
+    <Footer />
     <script src="../lib/home-scripts.ts"></script>
   </body>
 </html>

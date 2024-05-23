@@ -64,7 +64,7 @@ interface PagesCacheObject {
 
 let databasesCache: Database[] | null = null;
 
-const numberOfRetry = 20;
+const numberOfRetry = 3;
 
 export async function getAllDatabases(): Promise<Database[]> {
   // console.log("\n===== Getting databases =====");
