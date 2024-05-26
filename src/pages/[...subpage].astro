@@ -48,10 +48,12 @@ const image = await importCoverImage(subpage, images);
 // console.log(subpage.Title);
 
 let coverUrl = "";
-if (subpage.Cover) {
-  const url = new URL(subpage.Cover.Url);
-  const path = url.pathname.split("/");
-  coverUrl = `/notion/${path[2]}/${path[3]}`;
+if (homepage.Cover) {
+  const url = new URL(homepage.Cover.Url);
+  const dir = "/notion/" + url.pathname.split("/").slice(-2)[0];
+  const fileNameConverted = returnImageNameAsJpg(url);
+  const fileNameWithSlug = addSlugToName(fileNameConverted, homepage.Slug);
+  coverUrl = `${dir}/${fileNameWithSlug}`;
 }
 ---
 

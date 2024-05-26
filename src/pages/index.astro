@@ -1,7 +1,11 @@
 ---
 import { getDatabaseByName } from "../lib/notion/client";
 import type { Database, Page } from "../lib/notion-interfaces";
-import { importCoverImage } from "src/lib/blog-helpers";
+import {
+  addSlugToName,
+  importCoverImage,
+  returnImageNameAsJpg,
+} from "src/lib/blog-helpers";
 import BaseHead from "@/components/BaseHead.astro";
 import { siteConfig } from "@/site-config";
 import { Image } from "astro:assets";
@@ -25,13 +29,15 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
 // Cover image
 const coverImage = await importCoverImage(homepage, images);
+
 let coverUrl = "";
 if (homepage.Cover) {
   const url = new URL(homepage.Cover.Url);
-  const path = url.pathname.split("/");
-  coverUrl = `/notion/${path[2]}/${path[3]}`;
+  const dir = "/notion/" + url.pathname.split("/").slice(-2)[0];
+  const fileNameConverted = returnImageNameAsJpg(url);
+  const fileNameWithSlug = addSlugToName(fileNameConverted, homepage.Slug);
+  coverUrl = `${dir}/${fileNameWithSlug}`;
 }
-console.dir(coverUrl);
 ---
 
 <html lang={siteConfig.lang}>

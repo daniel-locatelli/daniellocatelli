@@ -5,7 +5,11 @@ import {
   getDatabaseByName,
 } from "../lib/notion/client";
 import type { Database, Page } from "../lib/notion-interfaces";
-import { importCoverImage } from "src/lib/blog-helpers";
+import {
+  addSlugToName,
+  importCoverImage,
+  returnImageNameAsJpg,
+} from "src/lib/blog-helpers";
 import PostPreview from "@/components/PostPreview.astro";
 import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
@@ -52,8 +56,10 @@ databases = await Promise.all(
 let coverUrl = "";
 if (page.Cover) {
   const url = new URL(page.Cover.Url);
-  const path = url.pathname.split("/");
-  coverUrl = `/notion/${path[2]}/${path[3]}`;
+  const dir = "/notion/" + url.pathname.split("/").slice(-2)[0];
+  const fileNameConverted = returnImageNameAsJpg(url);
+  const fileNameWithSlug = addSlugToName(fileNameConverted, page.Slug);
+  coverUrl = `${dir}/${fileNameWithSlug}`;
 }
 ---
 
