@@ -46,9 +46,23 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 // Cover image
 const image = await importCoverImage(subpage, images);
 // console.log(subpage.Title);
+
+let coverUrl = "";
+if (subpage.Cover) {
+  const url = new URL(subpage.Cover.Url);
+  const path = url.pathname.split("/");
+  coverUrl = `/notion/${path[2]}/${path[3]}`;
+}
 ---
 
-<Base meta={{ title: subpage.Name }}>
+<Base
+  meta={{
+    title: subpage.Name,
+    description: subpage.Description_en,
+    coverImage: coverUrl,
+    coverAlt: subpage.CoverAlt || "Cover image",
+  }}
+>
   {
     image && (
       <Image

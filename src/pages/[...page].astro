@@ -55,15 +55,15 @@ if (page.Cover) {
   const path = url.pathname.split("/");
   coverUrl = `/notion/${path[2]}/${path[3]}`;
 }
-console.dir(coverUrl);
 ---
 
 <html lang={siteConfig.lang}>
   <head>
     <BaseHead
+      title={page.Name}
       description={page.Description_en}
       coverImage={coverUrl}
-      title={page.Name}
+      coverAlt={page.CoverAlt || "Cover image"}
     />
   </head>
   <body class="p-0 m-0 max-w-full h-full">
