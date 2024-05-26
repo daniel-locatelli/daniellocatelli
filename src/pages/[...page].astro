@@ -49,15 +49,20 @@ databases = await Promise.all(
   page.DatabasesRef!.map(async (db) => await getDatabaseByName(db.name!))
 );
 
-let test = "Radom Raisting by AR Ingenieure";
+let coverUrl = "";
+if (page.Cover) {
+  const url = new URL(page.Cover.Url);
+  const path = url.pathname.split("/");
+  coverUrl = `/notion/${path[2]}/${path[3]}`;
+}
+console.dir(coverUrl);
 ---
 
 <html lang={siteConfig.lang}>
   <head>
     <BaseHead
-      articleDate={page.DateStart}
       description={page.Description_en}
-      ogImage={coverImage}
+      coverImage={coverUrl}
       title={page.Name}
     />
   </head>

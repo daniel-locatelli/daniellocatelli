@@ -25,11 +25,22 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
 // Cover image
 const coverImage = await importCoverImage(homepage, images);
+let coverUrl = "";
+if (homepage.Cover) {
+  const url = new URL(homepage.Cover.Url);
+  const path = url.pathname.split("/");
+  coverUrl = `/notion/${path[2]}/${path[3]}`;
+}
+console.dir(coverUrl);
 ---
 
 <html lang={siteConfig.lang}>
   <head>
-    <BaseHead description={homepage.Description_en} title={homepage.Name} />
+    <BaseHead
+      description={homepage.Description_en}
+      title={homepage.Name}
+      coverImage={coverUrl}
+    />
   </head>
   <body class="m-0 p-0 h-full min-w-full">
     <main

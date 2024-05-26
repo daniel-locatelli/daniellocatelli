@@ -349,7 +349,7 @@ export function returnImageNameAsJpg(url: URL) {
 }
 
 export function addSlugToName(name: string, slug: string): string {
-  if (!name.includes(slug)) {
+  if (!name.includes(slug) && slug !== "/") {
     let slugEdited = slug;
     if (slug.includes("/")) {
       slugEdited = slug.replace("/", "_");
