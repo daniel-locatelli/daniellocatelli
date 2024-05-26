@@ -54,7 +54,7 @@ const image = await importCoverImage(subpage, images);
 let coverUrl = "";
 if (subpage.Cover) {
   const url = new URL(subpage.Cover.Url);
-  const dir = "/notion/" + url.pathname.split("/").slice(-2)[0];
+  const dir = "notion/" + url.pathname.split("/").slice(-2)[0];
   const fileNameConverted = returnImageNameAsJpg(url);
   const fileNameWithSlug = addSlugToName(fileNameConverted, subpage.Slug);
   coverUrl = `${dir}/${fileNameWithSlug}`;
