@@ -2,6 +2,11 @@
 import { siteConfig } from "@/site-config";
 import type { Page } from "src/lib/notion-interfaces";
 import { getDatabaseByName } from "src/lib/notion/client";
+import { Image } from "astro:assets";
+import instagramLogo from "../../assets/instagram-logo.svg";
+import linkedinLogo from "../../assets/linkedin-logo.svg";
+import githubLogo from "../../assets/github-logo.svg";
+import youtubeLogo from "../../assets/youtube-logo.svg";
 
 let pagesDatabase = (await getDatabaseByName("Pages"))!;
 let pages: Page[];
@@ -11,15 +16,71 @@ const year = new Date().getFullYear();
 ---
 
 <footer
-  class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-6 pt-6 text-center align-top sm:flex-row sm:justify-between sm:text-xs snap-start"
+  class="flex flex-col sm:space-y-0 mt-auto w-full items-center justify-center pb-6 pt-6 text-center align-top sm:flex-row sm:justify-between sm:text-xs snap-start"
 >
-  <div class="ml-1 me-0 sm:me-4 font-body">
-    &copy; {siteConfig.author}
-    {year}
+  <div
+    class="flex flex-col justify-center items-center sm:flex-row order-2 sm:order-1 h-full space-y-4 sm:space-y-0"
+  >
+    <div class="sm:ml-1 me-0 sm:me-4 font-body order-2 sm:order-1 pt-3 sm:pt-0">
+      &copy; {siteConfig.author}
+      {year}
+    </div>
+    <address
+      class="flex justify-center space-x-6 h-4 order-1 sm:order-2 w-full sm:w-auto"
+    >
+      <a
+        href="https://www.linkedin.com/in/daniel-locatelli/"
+        target="_blank"
+        title="Check my LinkedIn."
+        class="flex"
+      >
+        <Image
+          src={linkedinLogo}
+          alt="LinkedIn logo."
+          class="inline mix-blend-difference h-full w-auto"
+        />
+      </a>
+      <a
+        href="https://github.com/daniel-locatelli"
+        target="_blank"
+        title="Check my GitHub."
+        class="flex"
+      >
+        <Image
+          src={githubLogo}
+          alt="GitHub logo."
+          class="inline mix-blend-difference h-full w-auto"
+        />
+      </a>
+      <a
+        href="https://www.instagram.com/arquitetolocatelli/"
+        target="_blank"
+        title="Check my Instagram."
+        class="flex"
+      >
+        <Image
+          src={instagramLogo}
+          alt="Instagram logo."
+          class="inline mix-blend-difference h-full w-auto"
+        />
+      </a>
+      <a
+        href="https://www.youtube.com/@ArquitetoLocatelli"
+        target="_blank"
+        title="Check my YouTube channel."
+        class="flex"
+      >
+        <Image
+          src={youtubeLogo}
+          alt="YouTube logo."
+          class="inline mix-blend-difference h-full w-auto"
+        />
+      </a>
+    </address>
   </div>
   <nav
     aria-label="More on this site"
-    class="flex flex-col sm:flex-row font-body"
+    class="flex flex-col sm:flex-row font-body order-1 sm:order-2 sm:mr-2"
   >
     {
       pages.map((page) => (
@@ -32,45 +93,5 @@ const year = new Date().getFullYear();
         </a>
       ))
     }
-    <a
-      class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
-      data-astro-prefetch
-      href="https://github.com/daniel-locatelli"
-      title="Check my GitHub"
-    >
-      GitHub
-    </a>
-    <a
-      class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
-      data-astro-prefetch
-      href="https://www.linkedin.com/in/daniel-locatelli/"
-      title="Check my LinkedIn"
-    >
-      LinkedIn
-    </a>
-    <a
-      class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
-      data-astro-prefetch
-      href="https://www.instagram.com/arquitetolocatelli/"
-      title="Check my Instagram"
-    >
-      Instagram
-    </a>
-    <a
-      class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
-      data-astro-prefetch
-      href="UCZaPGijCZXYPrwR5ABcFf2w"
-      title="Check my YouTube"
-    >
-      YouTube
-    </a>
-    <a
-      class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
-      data-astro-prefetch
-      href="/documents/daniel-locatelli-cv.pdf"
-      title="Open my CV as a PDF"
-    >
-      CV
-    </a>
   </nav>
 </footer>
