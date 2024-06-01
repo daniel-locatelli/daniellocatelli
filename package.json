@@ -29,7 +29,6 @@
     "metascraper-description": "^5.45.0",
     "metascraper-image": "^5.45.0",
     "metascraper-title": "^5.45.0",
-    "prismjs": "^1.29.0",
     "sharp": "^0.33.3",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
@@ -42,7 +41,6 @@
     "@types/metascraper-description": "^5.14.5",
     "@types/metascraper-image": "^5.14.5",
     "@types/metascraper-title": "^5.14.5",
-    "@types/prismjs": "^1.26.3",
     "astro-icon": "^1.1.0",
     "prettier-plugin-astro": "^0.13.0"
   }

@@ -1,0 +1,120 @@
+---
+import { Code } from "astro:components";
+import * as interfaces from "../../../lib/notion-interfaces";
+import Caption from "./Caption.astro";
+import { notionLangToShiki } from "src/lib/utils";
+
+export interface Props {
+  block: interfaces.Block;
+}
+
+const { block } = Astro.props;
+
+const code = block
+  .Code!.RichTexts.map(
+    (richText: interfaces.RichText) => richText.Text!.Content
+  )
+  .join("");
+const notionLanguage = block.Code!.Language.toLowerCase();
+const language = notionLangToShiki(notionLanguage);
+// const language = notionLanguage === "arduino" ? "cpp" : notionLanguage;
+---
+
+<div class="code w-full mb-1 relative">
+  <div class="rounded-sm">
+    <div class="absolute top-0 right-0">
+      <button
+        class="copy py-1 px-1 bg-zinc-600 rounded-sm cursor-pointer"
+        data-code={"```" + language + "\n" + code + "```"}
+      >
+        <img src="/assets/clipboard.svg" alt="Copy" class="h-4 w-10 svg-icon" />
+      </button>
+    </div>
+    {
+      /* prettier-ignore */
+      language === 'mermaid' ? (
+        <pre class="rounded mermaid p-4">{code}</pre>
+      ) : (
+ 
+          <Code code={code} lang={language} class="rounded whitespace-pre-wrap p-4 overflow-auto break-normal leading-6 tabular-nums text-left no-hyphens bg-slate-900 text-sky-600" />
+      )
+    }
+  </div>
+  <Caption richTexts={block.Code!.Caption} />
+</div>
+
+<script>
+  document.querySelectorAll("button.copy").forEach((button) => {
+    button.addEventListener("click", (ev) => {
+      const imgTag = button.querySelector(".svg-icon");
+      const code = (ev.currentTarget as HTMLElement).getAttribute("data-code");
+      navigator.clipboard.writeText(code!);
+      if (imgTag) {
+        imgTag.setAttribute("src", "/assets/clipboard-checked.svg");
+        setTimeout(() => {
+          imgTag.setAttribute("src", "/assets/clipboard.svg");
+        }, 1000);
+      }
+    });
+  });
+</script>
+
+<script>
+  import mermaid from "mermaid";
+  mermaid.initialize({ startOnLoad: true, theme: "neutral" });
+</script>
+
+<style>
+  /* .code {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.6rem;
+  } */
+  /* .code > div {
+    background: rgb(60, 60, 60);
+    border-radius: var(--radius);
+  } */
+  /* .code > div div {
+    display: flex;
+    justify-content: flex-end;
+  } */
+  /* .code button.copy {
+    display: block;
+    width: 4rem;
+    border: 0;
+    border-radius: var(--radius);
+    background-color: rgba(227, 226, 224, 0.5);
+    color: var(--fg);
+    line-height: 1.2rem;
+    cursor: pointer;
+  } */
+  /* .code pre {
+    display: block;
+    overflow: auto;
+    padding: 0.8rem 2rem 2rem;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    white-space: pre;
+    width: 100px;
+    min-width: 100%;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      height: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgb(211, 209, 203);
+    }
+    &::-webkit-scrollbar-track {
+      background: rgb(237, 236, 233);
+    }
+  } */
+  /* .code pre.mermaid {
+    padding: 2rem;
+  } */
+  /* .code pre code {
+    color: var(--fg);
+    padding: 0;
+    background: rgb(247, 246, 243) !important;
+    border-radius: 0;
+  } */
+</style>
