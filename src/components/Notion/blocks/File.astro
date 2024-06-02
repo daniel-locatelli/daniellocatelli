@@ -19,7 +19,7 @@ try {
 const filename = decodeURIComponent(url!.pathname.split("/").slice(-1)[0]);
 ---
 
-<div class="file">
+<div class="file flex h-full w-full rounded-sm">
   <div>
     {
       url! && (
@@ -27,38 +27,22 @@ const filename = decodeURIComponent(url!.pathname.split("/").slice(-1)[0]);
           href={block.File!.External ? url.toString() : filePath(url)}
           target="_blank"
           rel="noopener noreferrer"
+          class="flex justify-center items-center space-x-1 hover:text-green-300"
         >
-          <img
-            src="https://www.notion.so/icons/document_gray.svg"
-            alt="File icon in a file block"
-          />{" "}
-          {filename}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 64 64"
+            class="h-5 w-5"
+          >
+            <path
+              d="m54,41v15H10v-15h6v9h32v-9h6Zm-6-10.76l-4.24-4.24-8.76,8.76V6h-6v28.76l-8.76-8.76-4.24,4.24,16,16,16-16Z"
+              fill="currentColor"
+            />
+          </svg>
+          <span>{filename}</span>
         </a>
       )
     }
   </div>
   <Caption richTexts={block.File!.Caption} />
 </div>
-
-<style>
-  .file {
-  }
-
-  .file a {
-    display: block;
-    padding: 0.5rem 0.2rem 0.4rem;
-    border-radius: var(--radius);
-    color: var(--fg);
-    font-weight: 500;
-    line-height: 1.4rem;
-  }
-  .file a:hover {
-    background-color: #eee;
-  }
-
-  .file a img {
-    width: 1.3rem;
-    height: 1.3rem;
-    vertical-align: sub;
-  }
-</style>

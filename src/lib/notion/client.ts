@@ -560,7 +560,7 @@ export async function downloadPublicImage(url: URL, slug: string) {
   }
 }
 
-export async function downloadFile(url: URL, slug: string) {
+export async function downloadVideo(url: URL, slug: string) {
   let res;
   try {
     res = await axios({
@@ -590,6 +590,53 @@ export async function downloadFile(url: URL, slug: string) {
   const fileNameWithSlug = addSlugToName(fileName, slug);
 
   const filepath = `${dir}/${fileNameWithSlug}`;
+
+  if (fs.existsSync(filepath)) {
+    console.log(`File already exists:\n${filepath}`);
+    return;
+  }
+
+  const writeStream = createWriteStream(filepath);
+
+  try {
+    console.log(`Downloading file:\n${filepath}`);
+    return pipeline(res.data, writeStream);
+  } catch (error) {
+    console.log("\nError while downloading file\n" + error);
+    writeStream.end();
+    return Promise.resolve();
+  }
+}
+
+export async function downloadFile(url: URL) {
+  let res;
+  try {
+    res = await axios({
+      method: "get",
+      url: url.toString(),
+      timeout: REQUEST_TIMEOUT_MS,
+      responseType: "stream",
+    });
+  } catch (error) {
+    console.log("\nError requesting file\n" + error);
+    return Promise.resolve();
+  }
+  console.log("\n===== Starting File Download =====");
+
+  if (!res || res.status !== 200) {
+    console.log(res);
+    return Promise.resolve();
+  }
+
+  const dir = "./public/notion/" + url.pathname.split("/").slice(-2)[0];
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+
+  const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
+
+  const filepath = `${dir}/${fileName}`;
 
   if (fs.existsSync(filepath)) {
     console.log(`File already exists:\n${filepath}`);

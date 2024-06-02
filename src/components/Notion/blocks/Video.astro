@@ -81,7 +81,7 @@ if (block.Image && block.Image.Caption[0]) {
 {
   block.Video?.File && (
     <div class="w-full">
-      <video class="rounded-lg" controls>
+      <video title={altText} class="rounded-lg" controls>
         <source src={video} type={"video/" + videoExtension!} />
         Your browser does not support the video tag.
       </video>
