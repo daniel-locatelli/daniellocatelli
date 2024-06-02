@@ -5,7 +5,7 @@ import {
   getAllBlocksByBlockId,
   getBlock,
   getAllDatabases,
-  downloadVideo,
+  downloadFile,
 } from "../lib/notion/client";
 import { extractTargetBlocks } from "../lib/blog-helpers";
 import type { Database } from "../lib/notion-interfaces";
@@ -159,10 +159,9 @@ export default (): AstroIntegration => ({
                       downloadQueue.push(async () => {
                         await downloadImage(url, slug);
                       });
-                    } else if (type === "file") {
-                    } else if (type === "video") {
+                    } else if (type === "video" || type === "file") {
                       downloadQueue.push(async () => {
-                        await downloadVideo(url, slug);
+                        await downloadFile(url, slug);
                       });
                     }
                   })

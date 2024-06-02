@@ -560,7 +560,7 @@ export async function downloadPublicImage(url: URL, slug: string) {
   }
 }
 
-export async function downloadVideo(url: URL, slug: string) {
+export async function downloadFile(url: URL, slug: string) {
   let res;
   try {
     res = await axios({
@@ -570,10 +570,10 @@ export async function downloadVideo(url: URL, slug: string) {
       responseType: "stream",
     });
   } catch (error) {
-    console.log("\nError requesting video\n" + error);
+    console.log("\nError requesting file\n" + error);
     return Promise.resolve();
   }
-  console.log("\n===== Starting Video Download =====");
+  console.log("\n===== Starting File Download =====");
 
   if (!res || res.status !== 200) {
     console.log(res);
@@ -592,17 +592,17 @@ export async function downloadVideo(url: URL, slug: string) {
   const filepath = `${dir}/${fileNameWithSlug}`;
 
   if (fs.existsSync(filepath)) {
-    console.log(`Video already exists:\n${filepath}`);
+    console.log(`File already exists:\n${filepath}`);
     return;
   }
 
   const writeStream = createWriteStream(filepath);
 
   try {
-    console.log(`Downloading video:\n${filepath}`);
+    console.log(`Downloading file:\n${filepath}`);
     return pipeline(res.data, writeStream);
   } catch (error) {
-    console.log("\nError while downloading video\n" + error);
+    console.log("\nError while downloading file\n" + error);
     writeStream.end();
     return Promise.resolve();
   }
