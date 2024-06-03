@@ -22,6 +22,9 @@ export default {
   },
   theme: {
     extend: {
+      spacing: {
+        "128": "32rem",
+      },
       colors: {
         bgColor: "hsl(var(--theme-bg) / <alpha-value>)",
         textColor: "hsl(var(--theme-text) / <alpha-value>)",
