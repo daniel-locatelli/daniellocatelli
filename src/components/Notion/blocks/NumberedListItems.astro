@@ -26,7 +26,12 @@ const listTypes = ["i", "1", "a"];
     blockList.ListItems.filter(
       (b: Block) => b.Type === "numbered_list_item"
     ).map((b: Block) => (
-      <li class={snakeToKebab(b.NumberedListItem!.Color)}>
+      <li
+        class:list={[
+          snakeToKebab(b.NumberedListItem!.Color),
+          "my-2 px-2 md:px-0 text-base font-body w-full",
+        ]}
+      >
         {b.NumberedListItem!.RichTexts.map((richText: RichText) => (
           <NotionRichText richText={richText} />
         ))}
@@ -42,9 +47,3 @@ const listTypes = ["i", "1", "a"];
     ))
   }
 </ol>
-
-<style>
-  ol {
-    font-size: 1rem;
-  }
-</style>
