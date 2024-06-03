@@ -72,7 +72,7 @@ if (subpage.Cover) {
   {
     image && (
       <Image
-        class="md:rounded-md object-cover h-72 md:h-96 w-full mb-4"
+        class="md:rounded-md object-cover h-72 md:h-96 w-full mb-8"
         src={image}
         alt={subpage.CoverAlt}
         transition:name={slug + "-image"}
@@ -82,7 +82,7 @@ if (subpage.Cover) {
   <section class="flex flex-col justify-center items-center font-body">
     <div class="sm:max-w-2xl">
       <h1
-        class="title mb-4 font-heading font-light text-balance px-2 md:px-0 text-4xl"
+        class="title mb-8 font-heading font-light text-balance px-2 md:px-0 text-4xl"
       >
         {subpage.Name}
       </h1>
@@ -266,7 +266,7 @@ if (subpage.Cover) {
           )
         }
       </table>
-      <div class="my-6">
+      <div class="my-8">
         <PostBody blocks={blocks} slug={slug!} />
       </div>
     </div>
