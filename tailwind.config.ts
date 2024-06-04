@@ -37,7 +37,7 @@ export default {
         // Add any custom fonts here
         sans: [...fontFamily.sans],
         serif: [...fontFamily.serif],
-        heading: ["Poiret One", ...fontFamily.sans],
+        title: ["Poiret One", ...fontFamily.sans],
         body: ["Poppins Light", ...fontFamily.sans],
       },
       transitionProperty: {

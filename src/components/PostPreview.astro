@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-import type { Database, Page } from "src/lib/notion-interfaces";
+import type { Database } from "src/lib/notion-interfaces";
 import { importCoverImage } from "src/lib/blog-helpers";
 
 interface Props {
@@ -33,7 +33,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
                     href={"/" + page.Slug}
                   >
                     <div class="absolute flex flex-col z-10 w-full h-full text-center justify-center transition">
-                      <h2 class="p-2 text-3xl md:text-5xl text-white dark:text-white font-heading text-balance bg-black/60">
+                      <h2 class="p-2 text-3xl md:text-5xl text-white dark:text-white font-title text-balance bg-black/60">
                         {page.Name}
                       </h2>
                     </div>

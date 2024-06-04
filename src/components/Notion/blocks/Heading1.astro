@@ -20,7 +20,7 @@ const id = buildHeadingId(block.Heading1!);
     <details class="toggle w-full">
       <summary class="w-full">
         <a href={`#${id}`} id={id} class="w-full">
-          <h2 class="my-2 px-2 md:px-0 font-heading font-light w-full text-3xl">
+          <h2 class="mt-4 px-2 md:px-0 w-full text-3xl">
             {block.Heading1!.RichTexts.map((richText: interfaces.RichText) => (
               <RichText richText={richText} />
             ))}
@@ -39,7 +39,7 @@ const id = buildHeadingId(block.Heading1!);
     </details>
   ) : (
     <a href={`#${id}`} id={id} class="w-full">
-      <h2 class="my-2 px-2 md:px-0 font-heading font-light w-full text-3xl">
+      <h2 class="mt-4 px-2 md:px-0 w-full text-3xl">
         {block.Heading1!.RichTexts.map((richText: interfaces.RichText) => (
           <RichText richText={richText} />
         ))}

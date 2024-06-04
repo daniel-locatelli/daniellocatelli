@@ -19,12 +19,17 @@ export interface Props {
 const { blockList, headings, slug } = Astro.props;
 ---
 
-<ul class="list-pill">
+<ul class="pl-5 list-disc">
   {
     blockList.ListItems.filter(
       (b: Block) => b.Type === "bulleted_list_item"
     ).map((b: Block) => (
-      <li class={snakeToKebab(b.BulletedListItem!.Color)}>
+      <li
+        class:list={[
+          snakeToKebab(b.BulletedListItem!.Color),
+          "my-2 px-2 md:px-0 text-base font-body w-full",
+        ]}
+      >
         {b.BulletedListItem!.RichTexts.map((richText: RichText) => (
           <NotionRichText richText={richText} />
         ))}
@@ -39,16 +44,3 @@ const { blockList, headings, slug } = Astro.props;
     ))
   }
 </ul>
-
-<style>
-  ul {
-    font-size: 1.3rem;
-    margin-bottom: 0.25rem;
-  }
-
-  @media (max-width: 625px) {
-    ul {
-      font-size: 0.9rem;
-    }
-  }
-</style>
