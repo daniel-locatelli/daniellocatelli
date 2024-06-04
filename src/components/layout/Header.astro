@@ -41,17 +41,20 @@ const url = new URL(Astro.request.url);
       id="navigation-menu"
     >
       {
-        pages.map((page) => (
-          <a
-            aria-current={url.pathname === page.Slug ? "page" : false}
-            class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
-            data-astro-prefetch
-            href={page.Name === "Homepage" ? "/" : "/" + page.Slug}
-            title={page.FullName}
-          >
-            {page.Name === "Homepage" ? "Home" : page.Name}
-          </a>
-        ))
+        pages.map(
+          (page) =>
+            page.Name !== "Homepage" && (
+              <a
+                aria-current={url.pathname === page.Slug ? "page" : false}
+                class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+                data-astro-prefetch
+                href={"/" + page.Slug}
+                title={page.FullName}
+              >
+                {page.Name}
+              </a>
+            )
+        )
       }
       <!-- <a
         class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"

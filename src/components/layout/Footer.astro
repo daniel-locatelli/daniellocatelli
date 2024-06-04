@@ -89,7 +89,7 @@ const year = new Date().getFullYear();
           href={page.Name === "Homepage" ? "/" : "/" + page.Slug}
           title={page.FullName}
         >
-          {page.Name}
+          {page.Name === "Homepage" ? "Home" : page.Name}
         </a>
       ))
     }
