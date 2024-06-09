@@ -24,7 +24,7 @@ I have been using Notion both professionally and on my personal stuff for a whil
 - Astro builds the static website, taking full advantage of the image optimization features.
 - The website is hosted on Cloudflare.
 
-
+<!--
 ## Notion as CMS
 ### Database structure
 ![Pages database](https://github.com/daniel-locatelli/daniellocatelli/assets/15069239/356f4c18-b62b-4616-a1f9-b06a8d9df5e1)
@@ -39,4 +39,4 @@ I have been using Notion both professionally and on my personal stuff for a whil
 ## Cloudflare
 ### Settings
 ### Connecting to Notion API
-
+-->
