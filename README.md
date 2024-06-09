@@ -13,7 +13,12 @@
 This website was developed using the [Astro](https://astro.build/) framework and [Notion](https://www.notion.so/) as a CMS.
 
 ## Credits
-- Special credit to [Hiroki Toyokawa](https://github.com/otoyo) to make the [astro-notion-blog](https://github.com/otoyo/astro-notion-blog) open source. Although the repo now diverged significantly, it all started there.
+Special credit to [Hiroki Toyokawa](https://github.com/otoyo) to make the [astro-notion-blog](https://github.com/otoyo/astro-notion-blog) open source. <br/> Although the repo now diverged significantly, it all started there.
 
 ## Concept
-I have been using Notion both professionally and on my personal stuff for a while. So, the idea of keeping it all organized on the same platform felt like a no-brainer. Also, this was a great opportunity for me to learn the Astro framework and how to work with APIs.
+I have been using Notion both professionally and on my personal stuff for a while. So, keeping it all organized on the same platform felt like a no-brainer. Also, this was a great opportunity to learn the Astro framework and how to work with APIs.
+
+## Workflow
+- Notion as a CMS: I have an opinionated set of databases on Notion, where I create all the pages and subpages.
+![Pages database](https://github.com/daniel-locatelli/daniellocatelli/assets/15069239/2e0fb099-1af7-4788-8d1c-ab33f582114d)
+- A custom Astro integration queries these databases, automatically downloads the files, saves them at src/assets/notion, and saves a jpg version of the database cover image at public/notion to be used as og-image.
