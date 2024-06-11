@@ -3,6 +3,6 @@
 
 export const SITE_TITLE = "Daniel Locatelli";
 export const SITE_DESCRIPTION =
-  "Welcome to my digital portfolio Check my latest work with Computational design, software development, AEC industry solutions.";
+  "Explore my digital portfolio featuring my latest work and research in computational design, software development, and AEC industry solutions.";
 export const SITE_HEROIMAGE = "";
 export const SITE_HEROIMAGEALT = "";
