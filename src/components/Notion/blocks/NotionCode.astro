@@ -60,7 +60,14 @@ const language = notionLangToShiki(notionLanguage);
 
 <script>
   import mermaid from "mermaid";
-  mermaid.initialize({ startOnLoad: true, theme: "neutral" });
+  mermaid.initialize({ startOnLoad: false, theme: "dark" });
+  function init() {
+    mermaid.run();
+  }
+
+  init();
+
+  document.addEventListener("astro:page-load", init);
 </script>
 
 <style>
