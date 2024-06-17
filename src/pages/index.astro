@@ -1,6 +1,6 @@
 ---
 import { getDatabaseByName } from "../lib/notion/client";
-import type { Database, Page } from "../lib/notion-interfaces";
+import type { Page } from "../lib/notion-interfaces";
 import {
   addSlugToName,
   importCoverImage,
@@ -28,7 +28,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 // Cover image
-const coverImage = await importCoverImage(homepage, images);
+// const coverImage = await importCoverImage(homepage, images);
 
 let coverUrl = "";
 if (homepage.Cover) {

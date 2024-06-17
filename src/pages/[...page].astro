@@ -1,9 +1,5 @@
 ---
-import {
-  getAllBlocksByBlockId,
-  getAllDatabases,
-  getDatabaseByName,
-} from "../lib/notion/client";
+import { getAllDatabases, getDatabaseByName } from "../lib/notion/client";
 import type { Database, Page } from "../lib/notion-interfaces";
 import {
   addSlugToName,
@@ -45,7 +41,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 // Cover image
-const coverImage = await importCoverImage(page, images);
+// const coverImage = await importCoverImage(page, images);
 
 let databases: Database[];
 
