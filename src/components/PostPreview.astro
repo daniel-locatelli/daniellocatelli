@@ -44,6 +44,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
                           src={image}
                           alt={page.CoverAlt}
                           transition:name={page.Slug + "-image"}
+                          loading="eager"
                           widths={[
                             300,
                             700,

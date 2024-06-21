@@ -1,9 +1,5 @@
 ---
-import {
-  getAllBlocksByBlockId,
-  getAllDatabases,
-  getDatabaseByName,
-} from "../lib/notion/client";
+import { getAllBlocksByBlockId, getAllDatabases } from "../lib/notion/client";
 import type { Page } from "../lib/notion-interfaces";
 import {
   addSlugToName,
@@ -76,6 +72,7 @@ if (subpage.Cover) {
         src={image}
         alt={subpage.CoverAlt}
         transition:name={slug + "-image"}
+        loading="eager"
       />
     )
   }

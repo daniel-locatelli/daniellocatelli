@@ -1,11 +1,7 @@
 ---
 import { getAllDatabases, getDatabaseByName } from "../lib/notion/client";
 import type { Database, Page } from "../lib/notion-interfaces";
-import {
-  addSlugToName,
-  importCoverImage,
-  returnImageNameAsJpg,
-} from "src/lib/blog-helpers";
+import { addSlugToName, returnImageNameAsJpg } from "src/lib/blog-helpers";
 import PostPreview from "@/components/PostPreview.astro";
 import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
@@ -36,9 +32,9 @@ const { page } = Astro.props;
 // Getting images dynamically with import.meta.glob()
 // It only accepts string literals
 // https://docs.astro.build/en/recipes/dynamically-importing-images/
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
-);
+// const images = import.meta.glob<{ default: ImageMetadata }>(
+//   "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
+// );
 
 // Cover image
 // const coverImage = await importCoverImage(page, images);
