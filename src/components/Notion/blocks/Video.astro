@@ -32,7 +32,7 @@ let videoExtension: string;
 // https://docs.astro.build/en/recipes/dynamically-importing-images/
 if (block.Video!.File) {
   try {
-    const dir = "/notion/" + url!.pathname.split("/").slice(-2)[0];
+    const dir = "/media/" + url!.pathname.split("/").slice(-2)[0];
     const videoName = decodeURIComponent(url!.pathname.split("/").slice(-1)[0]);
     videoExtension = videoName.split(".")[1];
     const videoNameWithSlug = addSlugToName(videoName, slug);

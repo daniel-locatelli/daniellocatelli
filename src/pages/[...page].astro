@@ -48,7 +48,7 @@ databases = await Promise.all(
 let coverUrl = "";
 if (page.Cover) {
   const url = new URL(page.Cover.Url);
-  const dir = "notion/" + url.pathname.split("/").slice(-2)[0];
+  const dir = "media/" + url.pathname.split("/").slice(-2)[0];
   const fileNameConverted = returnImageNameAsJpg(url);
   const fileNameWithSlug = addSlugToName(fileNameConverted, page.Slug);
   coverUrl = `${dir}/${fileNameWithSlug}`;

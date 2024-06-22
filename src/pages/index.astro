@@ -33,7 +33,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 let coverUrl = "";
 if (homepage.Cover) {
   const url = new URL(homepage.Cover.Url);
-  const dir = "notion/" + url.pathname.split("/").slice(-2)[0];
+  const dir = "media/" + url.pathname.split("/").slice(-2)[0];
   const fileNameConverted = returnImageNameAsJpg(url);
   const fileNameWithSlug = addSlugToName(fileNameConverted, homepage.Slug);
   coverUrl = `${dir}/${fileNameWithSlug}`;
