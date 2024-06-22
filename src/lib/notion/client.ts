@@ -520,7 +520,7 @@ export async function downloadPublicImage(url: URL, slug: string) {
     return Promise.resolve();
   }
 
-  const dir = "./public/notion/" + url.pathname.split("/").slice(-2)[0];
+  const dir = "./public/media/" + url.pathname.split("/").slice(-2)[0];
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   } else {
@@ -580,7 +580,7 @@ export async function downloadVideo(url: URL, slug: string) {
     return Promise.resolve();
   }
 
-  const dir = "./public/notion/" + url.pathname.split("/").slice(-2)[0];
+  const dir = "./public/media/" + url.pathname.split("/").slice(-2)[0];
 
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
@@ -628,7 +628,7 @@ export async function downloadFile(url: URL) {
     return Promise.resolve();
   }
 
-  const dir = "./public/notion/" + url.pathname.split("/").slice(-2)[0];
+  const dir = "./public/media/" + url.pathname.split("/").slice(-2)[0];
 
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
