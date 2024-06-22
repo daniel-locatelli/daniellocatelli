@@ -45,7 +45,7 @@ export default {
       },
       // that is animation class
       animation: {
-        fade: "fadeIn 1000ms ease-in",
+        fade: "fadeIn 500ms ease-in",
       },
       keyframes: {
         fadeIn: {

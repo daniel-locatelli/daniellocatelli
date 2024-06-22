@@ -4,7 +4,7 @@
   "description": "My digital office on computional design",
   "theme_color": "#000",
   "background_color": "#000",
-  "start_url": "https://daniellocatelli.com/",
+  "start_url": "https://daniellocatelli.com",
   "icons": [
     {
       "src": "/android-chrome-192x192.png?v=1.0",

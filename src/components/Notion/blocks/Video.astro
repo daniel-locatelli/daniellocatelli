@@ -1,7 +1,7 @@
 ---
 import {
-  addSlugToName,
   isYouTubeURL,
+  modifyFileName,
   parseYouTubeVideoId,
 } from "../../../lib/blog-helpers.ts";
 import Caption from "./Caption.astro";
@@ -35,7 +35,9 @@ if (block.Video!.File) {
     const dir = "/media/" + url!.pathname.split("/").slice(-2)[0];
     const videoName = decodeURIComponent(url!.pathname.split("/").slice(-1)[0]);
     videoExtension = videoName.split(".")[1];
-    const videoNameWithSlug = addSlugToName(videoName, slug);
+    const videoNameWithSlug = modifyFileName(videoName, {
+      newBeginning: slug + "_",
+    });
     video = `${dir}/${videoNameWithSlug}`;
   } catch (error) {
     console.log("Error while getting image for astro component:" + error);

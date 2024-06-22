@@ -298,8 +298,6 @@ export const parseYouTubeVideoId = (url: URL): string => {
 };
 
 export const importCoverImage = async (page: Page, images: any) => {
-  // console.log("\nAll images");
-  // console.dir(page.Cover);
   if (page.Cover) {
     const url = new URL(page.Cover.Url);
     const slug = page.Slug;
@@ -307,13 +305,13 @@ export const importCoverImage = async (page: Page, images: any) => {
     const dir = "/src/assets/notion/" + url.pathname.split("/").slice(-2)[0];
     const imageName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]!);
 
-    const imageNameWithSlug = addSlugToName(imageName, slug);
+    const imageNameWithSlug = modifyFileName(imageName, {
+      newBeginning: slug + "_",
+    });
     const imagePath = `${dir}/${imageNameWithSlug}`;
-    // console.log(imagePath);
 
     try {
       const image = (await images[imagePath]()).default;
-      // console.dir(image);
       return image;
     } catch (error) {
       // Block is null or undefined
@@ -339,24 +337,55 @@ export function filterPostsByTags(posts: Page[], post: Page) {
   );
 }
 
-export function returnImageNameAsJpg(url: URL) {
-  const fileNameExtension = decodeURIComponent(
-    url.pathname.split("/").slice(-1)[0]!
-  );
-  const fileName = fileNameExtension.split(".")[0];
-  const fileNameConverted = fileName + ".jpg";
-  return fileNameConverted;
+export function urlToFileName(url: URL) {
+  let fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]!);
+  return fileName;
 }
 
-export function addSlugToName(name: string, slug: string): string {
-  if (!name.includes(slug) && slug !== "/") {
-    let slugEdited = slug;
-    if (slug.includes("/")) {
-      slugEdited = slug.replace("/", "_");
-    }
-    const newName = slugEdited + "_" + name;
-    return newName;
-  } else {
-    return name;
-  }
+interface ModifyFileNameOptions {
+  newBeginning?: string;
+  newEnd?: string;
+  newExtension?: string;
 }
+
+export function modifyFileName(
+  fileName: string,
+  options: ModifyFileNameOptions = {}
+): string {
+  const { newBeginning = "", newEnd = "", newExtension = "" } = options;
+
+  let dotIndex = fileName.lastIndexOf(".");
+
+  if (dotIndex === -1) {
+    return newBeginning + fileName + newEnd;
+  }
+
+  let name = fileName.substring(0, dotIndex);
+  let extension = fileName.substring(dotIndex);
+
+  if (newExtension) {
+    extension = "." + newExtension;
+  }
+
+  if (!name.includes(newBeginning) && newBeginning !== "/") {
+    let newBeginningEdited = newBeginning;
+    if (newBeginning.includes("/")) {
+      newBeginningEdited = newBeginning.replace("/", "_");
+    }
+    return newBeginningEdited + name + newEnd + extension;
+  }
+  return name + newEnd + extension;
+}
+
+// export function addSlugToName(name: string, slug: string): string {
+//   if (!name.includes(slug) && slug !== "/") {
+//     let slugEdited = slug;
+//     if (slug.includes("/")) {
+//       slugEdited = slug.replace("/", "_");
+//     }
+//     const newName = slugEdited + "_" + name;
+//     return newName;
+//   } else {
+//     return name;
+//   }
+// }

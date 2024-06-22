@@ -26,6 +26,7 @@ export type SiteMeta = {
   coverImage?: string | undefined;
   coverAlt?: string | undefined;
   articleDate?: string | undefined;
+  viewTransition?: boolean;
 };
 
 /** Webmentions */

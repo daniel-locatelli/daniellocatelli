@@ -1,12 +1,16 @@
 ---
 import { getAllDatabases, getDatabaseByName } from "../lib/notion/client";
 import type { Database, Page } from "../lib/notion-interfaces";
-import { addSlugToName, returnImageNameAsJpg } from "src/lib/blog-helpers";
-import PostPreview from "@/components/PagePreview.astro";
+import {
+  importCoverImage,
+  modifyFileName,
+  urlToFileName,
+} from "src/lib/blog-helpers";
 import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
 import { siteConfig } from "@/site-config";
 import BaseHead from "@/components/BaseHead.astro";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const databases = await getAllDatabases();
@@ -36,23 +40,47 @@ const { page } = Astro.props;
 //   "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
 // );
 
-// Cover image
-// const coverImage = await importCoverImage(page, images);
-
 let databases: Database[];
 
 databases = await Promise.all(
   page.DatabasesRef!.map(async (db) => await getDatabaseByName(db.name!))
 );
 
+let coverList: string[][] = [[], []];
+
+databases.map((db, index) => {
+  db.Pages.map((page) => {
+    let coverUrlBg = "";
+    if (page.Cover) {
+      const url = new URL(page.Cover.Url);
+      const dir = "media/" + url.pathname.split("/").slice(-2)[0];
+      const fileNameConverted = urlToFileName(url);
+      const fileNameBgWithSlug = modifyFileName(fileNameConverted, {
+        newBeginning: page.Slug + "_",
+        newEnd: "-bg",
+        newExtension: "jpg",
+      });
+      coverUrlBg = `/${dir}/${fileNameBgWithSlug}`;
+      coverList[index].push(coverUrlBg);
+    }
+  });
+});
+
 let coverUrl = "";
 if (page.Cover) {
   const url = new URL(page.Cover.Url);
   const dir = "media/" + url.pathname.split("/").slice(-2)[0];
-  const fileNameConverted = returnImageNameAsJpg(url);
-  const fileNameWithSlug = addSlugToName(fileNameConverted, page.Slug);
+  const fileNameConverted = urlToFileName(url);
+  const fileNameWithSlug = modifyFileName(fileNameConverted, {
+    newBeginning: page.Slug + "_",
+    newExtension: "jpg",
+  });
   coverUrl = `${dir}/${fileNameWithSlug}`;
 }
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
+);
 ---
 
 <html lang={siteConfig.lang}>
@@ -62,12 +90,85 @@ if (page.Cover) {
       description={page.Description_en}
       coverImage={coverUrl}
       coverAlt={page.CoverAlt || "Cover image"}
+      viewTransition={true}
     />
+    <link rel="preload" href={coverList[0][0]} as="image" />
   </head>
   <body class="p-0 m-0 max-w-full h-full">
     <Header />
     <main id="main">
-      <PostPreview databases={databases} />
+      <div class="relative flex flex-col">
+        {
+          databases.map((db, indexDb) => {
+            return (
+              <section aria-label={db.Title} class="relative w-full">
+                <ul class="relative space-y-0 w-full">
+                  {db.Pages.map(async (page, indexPages) => {
+                    let image = await importCoverImage(page, images);
+                    return (
+                      <article class="relative flex flex-col bg-clip-border h-vh h-screen w-full snap-start overflow-hidden">
+                        <a
+                          class="flex transition w-full h-full"
+                          href={"/" + page.Slug}
+                          data-astro-prefetch
+                        >
+                          <div class="absolute z-20 flex flex-col z-10 w-full h-full text-center justify-center transition">
+                            <h2 class="p-2 text-3xl md:text-5xl text-white dark:text-white font-title text-balance bg-black/60">
+                              {page.Name}
+                            </h2>
+                          </div>
+                          <div class="absolute flex justify-between h-full w-full">
+                            {image && indexDb === 0 && indexPages === 0 ? (
+                              <Image
+                                class="absolute z-10 object-cover object-center h-full w-full animate-fade"
+                                src={image}
+                                alt={page.CoverAlt}
+                                transition:name={page.PageId + "-image"}
+                                loading="eager"
+                                widths={[
+                                  300,
+                                  700,
+                                  1000,
+                                  1280,
+                                  1400,
+                                  1600,
+                                  image.width,
+                                ]}
+                                sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${image.width}px`}
+                              />
+                            ) : (
+                              <Image
+                                class="absolute z-10 object-cover object-center h-full w-full animate-fade"
+                                src={image}
+                                alt={page.CoverAlt}
+                                transition:name={page.Slug + "-image"}
+                                widths={[
+                                  300,
+                                  700,
+                                  1000,
+                                  1280,
+                                  1400,
+                                  1600,
+                                  image.width,
+                                ]}
+                                sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${image.width}px`}
+                              />
+                            )}
+                            <div
+                              class="absolute z-0 flex justify-between h-full w-full bg-cover bg-center blur-3xl"
+                              style={`background-image: url(${coverList[indexDb][indexPages]})`}
+                            />
+                          </div>
+                        </a>
+                      </article>
+                    );
+                  })}
+                </ul>
+              </section>
+            );
+          })
+        }
+      </div>
     </main>
     <Footer />
     <style>

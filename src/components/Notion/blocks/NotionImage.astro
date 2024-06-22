@@ -1,8 +1,8 @@
 ---
+import { modifyFileName } from "src/lib/blog-helpers";
 import { type Block } from "../../../lib/notion-interfaces.ts";
 import Caption from "./Caption.astro";
 import { Image } from "astro:assets";
-import { addSlugToName } from "../../../lib/blog-helpers";
 
 export interface Props {
   block: Block;
@@ -35,7 +35,9 @@ if (block.Image!.File) {
     const dir = "/src/assets/notion/" + url!.pathname.split("/").slice(-2)[0];
     const imageName = decodeURIComponent(url!.pathname.split("/").slice(-1)[0]);
     imageExtension = imageName.split(".")[1];
-    const imageNameWithSlug = addSlugToName(imageName, slug);
+    const imageNameWithSlug = modifyFileName(imageName, {
+      newBeginning: slug + "_",
+    });
     const imagePath = `${dir}/${imageNameWithSlug}`;
     // The result from images is an array of objects that have file paths as keys
     // so you need to use the full image path to get the image-object.
@@ -63,13 +65,6 @@ if (block.Image && block.Image.Caption[0]) {
   altText = getFirstLine(block.Image?.Caption[0].Text!.Content);
 } else {
   altText = block.Type;
-}
-
-if (block.Image!.External) {
-  console.log("block.Image!.External");
-}
-if (block.Image!.File) {
-  console.log("block.Image!.File");
 }
 ---
 

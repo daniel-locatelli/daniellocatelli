@@ -28,7 +28,9 @@ const {
       coverImage={coverImage}
       coverAlt={coverAlt}
       title={title}
+      viewTransition={true}
     />
+    <slot name="after-head" />
   </head>
   <body class="p-0 m-0 max-w-full h-full">
     <Header />

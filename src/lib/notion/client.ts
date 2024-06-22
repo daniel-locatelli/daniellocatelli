@@ -49,7 +49,7 @@ import type {
 } from "../notion-interfaces";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import { Client, APIResponseError } from "@notionhq/client";
-import { addSlugToName, returnImageNameAsJpg } from "../blog-helpers";
+import { modifyFileName, urlToFileName } from "../blog-helpers";
 import type { DatabaseObject } from "./responses";
 import type { SearchResponse } from "@notionhq/client/build/src/api-endpoints";
 import { titleToSlug } from "../utils";
@@ -473,7 +473,9 @@ export async function downloadImage(url: URL, slug: string) {
   }
 
   const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
-  const fileNameWithSlug = addSlugToName(fileName, slug);
+  const fileNameWithSlug = modifyFileName(fileName, {
+    newBeginning: slug + "_",
+  });
 
   const filepath = `${dir}/${fileNameWithSlug}`;
 
@@ -527,35 +529,57 @@ export async function downloadPublicImage(url: URL, slug: string) {
   }
 
   // Changing file extension
-  const fileNameConverted = returnImageNameAsJpg(url);
+  const fileNameFromUrl = urlToFileName(url);
+
+  const fileNameWithSlug = modifyFileName(fileNameFromUrl, {
+    newBeginning: slug + "_",
+    newExtension: "jpg",
+  });
+  const fileNameBgWithSlug = modifyFileName(fileNameFromUrl, {
+    newBeginning: slug + "_",
+    newEnd: "-bg",
+    newExtension: "jpg",
+  });
 
   // One of the places I add the slug to the image name
-  const fileNameWithSlug = addSlugToName(fileNameConverted, slug);
 
-  const filepath = `${dir}/${fileNameWithSlug}`;
+  const imagePath = `${dir}/${fileNameWithSlug}`;
+  const imageBgPath = `${dir}/${fileNameBgWithSlug}`;
 
-  if (fs.existsSync(filepath)) {
-    console.log(`File already exists:\n${filepath}`);
+  if (fs.existsSync(imagePath) && fs.existsSync(imageBgPath)) {
+    console.log(`Image already exists:\n${imagePath}`);
+    console.log(`Image already exists:\n${imageBgPath}`);
     return;
   }
 
-  const writeStream = createWriteStream(filepath);
+  const writeStream = createWriteStream(imagePath);
+  const writeStreamBg = createWriteStream(imageBgPath);
 
   let stream = res.data;
+  let streamBg = res.data;
 
   if (res.headers["content-type"] === "image/jpeg") {
     stream = stream.pipe(sharp().resize({ width: 800 }).rotate());
+    streamBg = streamBg.pipe(sharp().resize({ width: 20 }).rotate());
   } else {
     stream = stream.pipe(
       sharp().resize({ width: 800 }).jpeg().flatten({ background: "#000000" })
     );
+    streamBg = streamBg.pipe(
+      sharp().resize({ width: 20 }).jpeg().flatten({ background: "#000000" })
+    );
   }
   try {
-    console.log(`Downloading file:\n${filepath}`);
-    return pipeline(stream, new ExifTransformer(), writeStream);
+    console.log(`Downloading file:\n${imagePath}`);
+    console.log(`Downloading file:\n${imageBgPath}`);
+    return (
+      pipeline(stream, new ExifTransformer(), writeStream),
+      pipeline(streamBg, new ExifTransformer(), writeStreamBg)
+    );
   } catch (error) {
     console.log("\nError while downloading file\n" + error);
     writeStream.end();
+    writeStreamBg.end();
     return Promise.resolve();
   }
 }
@@ -587,7 +611,9 @@ export async function downloadVideo(url: URL, slug: string) {
   }
 
   const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
-  const fileNameWithSlug = addSlugToName(fileName, slug);
+  const fileNameWithSlug = modifyFileName(fileName, {
+    newBeginning: slug + "_",
+  });
 
   const filepath = `${dir}/${fileNameWithSlug}`;
 

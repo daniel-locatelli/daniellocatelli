@@ -2,9 +2,9 @@
 import { getAllBlocksByBlockId, getAllDatabases } from "../lib/notion/client";
 import type { Page } from "../lib/notion-interfaces";
 import {
-  addSlugToName,
   importCoverImage,
-  returnImageNameAsJpg,
+  modifyFileName,
+  urlToFileName,
 } from "../lib/blog-helpers";
 import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
@@ -48,12 +48,22 @@ const image = await importCoverImage(subpage, images);
 // console.log(subpage.Title);
 
 let coverUrl = "";
+let coverUrlBg = "";
 if (subpage.Cover) {
   const url = new URL(subpage.Cover.Url);
   const dir = "media/" + url.pathname.split("/").slice(-2)[0];
-  const fileNameConverted = returnImageNameAsJpg(url);
-  const fileNameWithSlug = addSlugToName(fileNameConverted, subpage.Slug);
+  const fileNameConverted = urlToFileName(url);
+  const fileNameWithSlug = modifyFileName(fileNameConverted, {
+    newBeginning: subpage.Slug + "_",
+    newExtension: "jpg",
+  });
+  const fileNameBgWithSlug = modifyFileName(fileNameConverted, {
+    newBeginning: subpage.Slug + "_",
+    newEnd: "-bg",
+    newExtension: "jpg",
+  });
   coverUrl = `${dir}/${fileNameWithSlug}`;
+  coverUrlBg = `/${dir}/${fileNameBgWithSlug}`;
 }
 ---
 
@@ -65,15 +75,23 @@ if (subpage.Cover) {
     coverAlt: subpage.CoverAlt || "Cover image",
   }}
 >
+  <Fragment slot="after-head">
+    <link rel="preload" href={coverUrlBg} as="image" />
+  </Fragment>
   {
     image && (
-      <Image
-        class="md:rounded-md object-cover h-72 md:h-128 w-full mb-8"
-        src={image}
-        alt={subpage.CoverAlt}
-        transition:name={slug + "-image"}
-        loading="eager"
-      />
+      <div class="relative overflow-hidden h-72 md:h-128 w-full mb-8">
+        <Image
+          class="absolute z-10 object-cover object-center h-full w-full"
+          src={image}
+          alt={subpage.CoverAlt}
+          transition:name={subpage.PageId + "-image"}
+        />
+        <div
+          class="absolute h-full w-full bg-center bg-cover blur-lg"
+          style={`background-image: url(${coverUrlBg})`}
+        />
+      </div>
     )
   }
   <section class="flex flex-col justify-center items-center font-body">
