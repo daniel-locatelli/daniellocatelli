@@ -2,7 +2,7 @@
 import { getAllDatabases, getDatabaseByName } from "../lib/notion/client";
 import type { Database, Page } from "../lib/notion-interfaces";
 import { addSlugToName, returnImageNameAsJpg } from "src/lib/blog-helpers";
-import PostPreview from "@/components/PostPreview.astro";
+import PostPreview from "@/components/PagePreview.astro";
 import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
 import { siteConfig } from "@/site-config";
@@ -65,8 +65,6 @@ if (page.Cover) {
     />
   </head>
   <body class="p-0 m-0 max-w-full h-full">
-    <!-- <ThemeProvider /> -->
-    <!-- <SkipLink /> -->
     <Header />
     <main id="main">
       <PostPreview databases={databases} />
