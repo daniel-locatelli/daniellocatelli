@@ -19,30 +19,28 @@ try {
 const filename = decodeURIComponent(url!.pathname.split("/").slice(-1)[0]);
 ---
 
-<div class="file flex h-full w-full rounded-sm">
-  <div>
-    {
-      url! && (
-        <a
-          href={block.File!.External ? url.toString() : filePath(url)}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex justify-center items-center space-x-1 hover:text-green-300"
+<div class="file flex h-full w-full rounded-sm pb-6">
+  {
+    url! && (
+      <a
+        href={block.File!.External ? url.toString() : filePath(url)}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex justify-center items-center space-x-1 hover:text-green-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 64 64"
+          class="h-5 w-5"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 64 64"
-            class="h-5 w-5"
-          >
-            <path
-              d="m54,41v15H10v-15h6v9h32v-9h6Zm-6-10.76l-4.24-4.24-8.76,8.76V6h-6v28.76l-8.76-8.76-4.24,4.24,16,16,16-16Z"
-              fill="currentColor"
-            />
-          </svg>
-          <span>{filename}</span>
-        </a>
-      )
-    }
-  </div>
+          <path
+            d="m54,41v15H10v-15h6v9h32v-9h6Zm-6-10.76l-4.24-4.24-8.76,8.76V6h-6v28.76l-8.76-8.76-4.24,4.24,16,16,16-16Z"
+            fill="currentColor"
+          />
+        </svg>
+        <span>{filename}</span>
+      </a>
+    )
+  }
   <Caption richTexts={block.File!.Caption} />
 </div>

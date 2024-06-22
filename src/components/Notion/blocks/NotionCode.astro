@@ -19,7 +19,7 @@ const notionLanguage = block.Code!.Language.toLowerCase();
 const language = notionLangToShiki(notionLanguage);
 ---
 
-<div class="code overflow-x-hidden max-w-full w-full mb-1 relative">
+<div class="code overflow-x-hidden max-w-full w-full mb-1 relative pb-6">
   <div class="rounded-sm">
     <div class="absolute top-0 right-0">
       <button
@@ -69,58 +69,3 @@ const language = notionLangToShiki(notionLanguage);
 
   document.addEventListener("astro:page-load", init);
 </script>
-
-<style>
-  /* .code {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.6rem;
-  } */
-  /* .code > div {
-    background: rgb(60, 60, 60);
-    border-radius: var(--radius);
-  } */
-  /* .code > div div {
-    display: flex;
-    justify-content: flex-end;
-  } */
-  /* .code button.copy {
-    display: block;
-    width: 4rem;
-    border: 0;
-    border-radius: var(--radius);
-    background-color: rgba(227, 226, 224, 0.5);
-    color: var(--fg);
-    line-height: 1.2rem;
-    cursor: pointer;
-  } */
-  /* .code pre {
-    display: block;
-    overflow: auto;
-    padding: 0.8rem 2rem 2rem;
-    font-size: 0.9rem;
-    line-height: 1.2rem;
-    white-space: pre;
-    width: 100px;
-    min-width: 100%;
-    overflow-x: auto;
-    &::-webkit-scrollbar {
-      height: 10px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: rgb(211, 209, 203);
-    }
-    &::-webkit-scrollbar-track {
-      background: rgb(237, 236, 233);
-    }
-  } */
-  /* .code pre.mermaid {
-    padding: 2rem;
-  } */
-  /* .code pre code {
-    color: var(--fg);
-    padding: 0;
-    background: rgb(247, 246, 243) !important;
-    border-radius: 0;
-  } */
-</style>

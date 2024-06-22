@@ -68,11 +68,11 @@ if (block.Image && block.Image.Caption[0]) {
 }
 ---
 
-<figure class="image">
+<figure>
   {
-    // if it has valid url, is a downloaded file and is not svg
+    // if it has valid url, is a downloaded file and is not a svg
     url! && block.Image!.File && imageExtension! !== "svg" && (
-      <div>
+      <div class="pb-6">
         <div>
           <Image
             src={image}
@@ -87,9 +87,9 @@ if (block.Image && block.Image.Caption[0]) {
     )
   }
   {
-    // if it has valid url, is a downloaded file and is not svg
+    // if it has valid url, is a downloaded file and is a svg
     url! && block.Image!.File && imageExtension! === "svg" && (
-      <div>
+      <div class="pb-6">
         <div>
           <Image src={image} alt={altText} class="md:rounded-md mb-1" />
         </div>
@@ -99,7 +99,7 @@ if (block.Image && block.Image.Caption[0]) {
   }
   {
     url! && block.Image!.External && (
-      <div>
+      <div class="pb-6">
         <div>
           <Image
             src={url!.href}
