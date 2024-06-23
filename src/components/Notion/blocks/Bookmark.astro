@@ -41,11 +41,11 @@ try {
   url! && (
     <>
       {isAmazonURL(url) ? (
-        <div class="no-metadata pb-6">
+        <div class="no-metadata mb-6">
           <a href={url.toString()}>{url.toString()}</a>
         </div>
       ) : (
-        <div class="bookmark border rounded-sm border-neutral-600 pb-6">
+        <div class="bookmark border rounded-sm border-neutral-600 mb-6">
           <a href={url.toString()} target="_blank" rel="noopener noreferrer">
             <div>
               <div>{metadata && metadata.title}</div>
