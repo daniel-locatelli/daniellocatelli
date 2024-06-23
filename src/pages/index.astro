@@ -70,7 +70,7 @@ otherPages.map((page) => {
     />
     {
       coverList.map((coverUrlBg) => {
-        <link rel="preload" href={coverUrlBg} as="image" />;
+        return <link rel="preload" href={coverUrlBg} as="image" />;
       })
     }
   </head>

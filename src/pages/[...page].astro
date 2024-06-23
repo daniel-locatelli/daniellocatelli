@@ -92,7 +92,13 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
       coverAlt={page.CoverAlt || "Cover image"}
       viewTransition={true}
     />
-    <link rel="preload" href={coverList[0][0]} as="image" />
+    {
+      coverList.map((list) => {
+        return list.map((cover) => {
+          return <link rel="preload" href={cover} as="image" />;
+        });
+      })
+    }
   </head>
   <body class="p-0 m-0 max-w-full h-full">
     <Header />
@@ -155,7 +161,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
                               />
                             )}
                             <div
-                              class="absolute z-0 w-full h-full bg-cover bg-center blur-3xl"
+                              class="absolute z-0 w-full h-full bg-cover bg-center blur-xl"
                               style={`background-image: url(${coverList[indexDb][indexPages]})`}
                             />
                           </div>
