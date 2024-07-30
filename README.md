@@ -27,15 +27,16 @@ I have been using Notion both professionally and on my personal stuff for a whil
 ## Notion structure
 Notion API already comes with some basic data, like page ID, page cover, and page icon. Which were extended using an interface so I could have my own opinionated types.
 ### Pages database
-This database contains the subpages' information. For example, the "Projects" item refers to the page https://daniellocatelli.com/projects. The only exception is the "Homepage," which refers to the root https://daniellocatelli.com/
-|  Name  |CoverAlt|Local|Description_en|Description_de|Description_pt|Status|DatabaseRef|FullName |ShortDescription_en|Tags|
-|--------|--------|-----|--------------|--------------|--------------|------|-----------|---------|-------------------|----|
-|Homepage|alt text|en|english|german|portuguese|status|references|full name|placeholder|tags|
-|Projects |alt text|en|english|german|portuguese|status|references|full name|placeholder|tags|
-|Publications|alt text|en|english|german|portuguese|status|references|full name|placeholder|tags|
-|Teaching|alt text|en|english|german|portuguese|status|references|full name|placeholder|tags|
-|Strategies|alt text|en|english|german|portuguese|status|references|full name|placeholder|tags|
-|Blog|alt text|en|english|german|portuguese|status|references|full name|placeholder|tags|
+This database contains the pages' information. For example, the "Projects" item refers to the page https://daniellocatelli.com/projects. The only exception is the "Homepage," which refers to the root https://daniellocatelli.com/
+
+**Schema:**
+|Name|CoverAlt|Local|Description_en|Description_de|Description_pt|Status|DatabaseRef|FullName|ShortDescription_en|Tags|
+|----|--------|-----|--------------|--------------|--------------|------|-----------|--------|-------------------|----|
+|string|string|string|string|string|string|Live/In progress/Not started|SelectProperty[]|string|string|SelectProperty[]|
+
+Pages: Homepage, Projects, Teaching, Strategies, Publications (In progress), Blog (Not started)
+
+### 
 
 
 <!--
