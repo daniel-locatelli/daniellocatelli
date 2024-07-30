@@ -49,7 +49,7 @@ Pages: Homepage, Projects, Teaching, Strategies, Publications (In progress), Blo
 - [x] `ShortDescription_en`: It was necessary to have a really short description for the Homepage. And because I wanted to keep the OG description, I created this new one.
 - [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
 
-The `SelectProperty` is a Notion type for tags with ```id: string; name: string; color: string;```
+The `SelectProperty` is a Notion type for tags with ``` id: string; name: string; color: string; ```
 
 ### Subpages as Notion databases
 As mentioned above, the `DatabaseRef` is a connection to subpage databases.
@@ -65,7 +65,7 @@ Think of a notion database just as a SQL table.
 |SelectProperty[]|string|string|string|string|string|string|string|status|SelectProperty[]|
 
 - [x] `Name`: The name of the page will be used to generate the slug for the page.
-- [x] `CoverAlt`: This will be the alt text used for the cover image, both on OG (shareable links) and on the Homepage.
+- [x] `CoverAlt`: This will be the alt text used for the cover image of OG and on the page.
 - [x] `Description_en`: this is the OG description of the page.
 - [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
 - [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
@@ -77,7 +77,27 @@ Think of a notion database just as a SQL table.
 #### Projects schema
 |Category|City|CoverAlt|Date|Description_en|Description_de|Description_pt|Disclosed|Link|Client|Authors|Director|Manager|Development|Place|Status|Team|Files|Tags|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|string|SelectProperty[]|string|string|string|string|string|boolean|RichText[]|string|SelectProperty[]|SelectProperty[]|SelectProperty[]|SelectProperty[]|string|status|SelectProperty[]|
 
+- [ ] `Category`: same as tags, but to have a unique general category. It's still not implemented.
+- [x] `City`: project metadata.
+- [x] `CoverAlt`: This will be the alt text used for the cover image of OG and on the page.
+- [x] `Date`: project metadata.
+- [x] `Description_en`: this is the OG description of the page.
+- [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
+- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
+- [ ] `Disclosed`: whether the project can display sensitive information. This way, I can also store undisclosed projects on the same database.
+- [x] `Link`: project metadata, an official or relevant link to the project.
+- [x] `Client`: project metadata.
+- [x] `Authors`: project metadata.
+- [x] `Director`: project metadata.
+- [x] `Manager`: project metadata.
+- [x] `Development`: project metadata, who was the developer.
+- [x] `Place`: project metadata, online or in person.
+- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
+- [x] `Team`: project metadata.
+- [ ] `Files`: the idea is to have some files in the project metadata at the beginning. Not yet implemented.
+- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
 
 <!--
 ## Notion as CMS
