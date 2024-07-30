@@ -24,6 +24,14 @@ I have been using Notion both professionally and on my personal stuff for a whil
 - Astro builds the static website, taking full advantage of the image optimization features.
 - The website is hosted on Cloudflare.
 
+## Notion structure
+Notion API already comes with some basic data, like page ID, page cover, and page icon. Which were extended using an interface so I could have my own opinionated types.
+### Pages database
+This database contains the subpages' information. For example, the "Projects" item refers to the page https://daniellocatelli.com/projects. The only exception is the "Homepage," which refers to the root https://daniellocatelli.com/
+|  Name  |   CoverAlt  | Local | Description_en | Description_de | Description_pt |    Status    | DatabaseRef |  FullName   | ShortDescription_en |    Tags     |
+|--------|-------------|-------|----------------|----------------|----------------|--------------|-------------|-------------|---------------------|-------------|
+|Homepage| placeholder |  en   |  placeholder   |   placeholder  |  placeholder   | placeholder  | placeholder | placeholder |     placeholder     | placeholder |
+
 <!--
 ## Notion as CMS
 ### Database structure
