@@ -61,6 +61,18 @@ Think of a notion database just as a SQL table.
 
 #### Computational Design Strategies schema
 |Apps|CoverAlt|Description_en|Description_de|Description_pt|Name_de|Name_pt|References|Status|Tags|
+|---|---|---|---|---|---|---|---|---|---|
+|SelectProperty[]|string|string|string|string|string|string|string|status|SelectProperty[]|
+
+- [x] `Name`: The name of the page will be used to generate the slug for the page.
+- [x] `CoverAlt`: This will be the alt text used for the cover image, both on OG (shareable links) and on the Homepage.
+- [x] `Description_en`: this is the OG description of the page.
+- [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
+- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
+- [ ] `Name_de`: this is the German OG title. The issue of internationalization isn't clear.
+- [ ] `Name_pt`: this is the Portuguese OG title. The issue of internationalization isn't clear.
+- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
+- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
 
 
 <!--
