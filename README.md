@@ -119,6 +119,22 @@ Think of a notion database just as a SQL table.
 - [ ] `Name_de`: this is the German OG title. The issue of internationalization isn't clear.
 - [ ] `Name_pt`: this is the Portuguese OG title. The issue of internationalization isn't clear.
 
+#### Research schema
+|CoverAlt|Date|Description_en|Description_de|Description_pt|Link|Authors|Place|Status|Tags|
+|--|--|--|--|--|--|--|--|--|--|
+|string|string|string|string|string|RichText[]|SelectProperty[]|string|status|SelectProperty[]|
+
+- [x] `CoverAlt`: This will be the alt text used for the cover image of OG and on the page.
+- [x] `Date`: research metadata.
+- [x] `Description_en`: this is the OG description of the page.
+- [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
+- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
+- [x] `Link`: research metadata, an official or relevant link to the project.
+- [x] `Authors`: research metadata.
+- [x] `Place`: research metadata.
+- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
+- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
+
 <!--
 ## Notion as CMS
 ### Database structure
