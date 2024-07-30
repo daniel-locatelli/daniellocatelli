@@ -54,10 +54,13 @@ The `SelectProperty` is a Notion type for tags with ```id: string; name: string;
 ### Subpages as Notion databases
 As mentioned above, the `DatabaseRef` is a connection to subpage databases.
 For example, the page 'Strategies' has in the `DatabaseRef` 'Computational Design Strategies,' while the page 'Research' has in the `DatabaseRef` 'Research' and 'Publications.'
+
 This way, I can organize each category in their own databases with a unique schema. Something similar to what we would do with an SQL database.
 
+Think of a notion database just as a SQL table.
+
 #### Computational Design Strategies schema
-|Apps|CoverAlt|Description_en|Description_de|Description_pt
+|Apps|CoverAlt|Description_en|Description_de|Description_pt|Name_de|Name_pt|References|Status|Tags|
 
 
 <!--
