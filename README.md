@@ -74,6 +74,10 @@ Think of a notion database just as a SQL table.
 - [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
 - [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
 
+#### Projects schema
+|Category|City|CoverAlt|Date|Description_en|Description_de|Description_pt|Disclosed|Link|Client|Authors|Director|Manager|Development|Place|Status|Team|Files|Tags|
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+
 
 <!--
 ## Notion as CMS
