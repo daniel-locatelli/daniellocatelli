@@ -49,11 +49,11 @@ Pages: Homepage, Projects, Teaching, Strategies, Publications (In progress), Blo
 - [x] `ShortDescription_en`: It was necessary to have a really short description for the Homepage. And because I wanted to keep the OG description, I created this new one.
 - [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
 
-The `SelectProperty` is a Notion type for tags with id: string; name: string; color: string;
+The `SelectProperty` is a Notion type for tags with ```id: string; name: string; color: string;```
 
 ### Subpages as Notion databases
-One of the columns of the page's schema is the `DatabaseRef`. This is a connection to subpage databases.
-For example, the page `Strategies` connects to the subpage database `Computational Design Strategies`.
+As mentioned above, the `DatabaseRef` is a connection to subpage databases.
+For example, the page 'Strategies' has in the `DatabaseRef` 'Computational Design Strategies,' while the page 'Research' has in the `DatabaseRef` 'Research' and 'Publications.'
 This way, I can organize each category in their own databases with a unique schema. Something similar to what we would do with an SQL database.
 
 #### Computational Design Strategies schema
