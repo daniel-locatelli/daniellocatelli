@@ -37,18 +37,19 @@ This database contains the pages' information. For example, the 'Projects' item 
 
 Pages: Homepage, Projects, Teaching, Strategies, Publications (In progress), Blog (Not started)
 
-[x] `Name`: The name of the page will be used to generate the slug for the page. Except for the homepage, which stays: https://daniellocatelli.com/.
-[x] `CoverAlt`: This will be the alt text used for the cover image, both on OG (shareable links) and on the Homepage.
-[] `Local`: Is still not in use. The issue of internationalization isn't clear.
-[x] `Description_en`: this is the OG description of the page.
-[] `Description_de`: this is the OG description of the page in German. The issue of internationalization isn't clear.
-[] `Description_pt`: this is the OG description of the page in Portuguese. The issue of internationalization isn't clear.
-[x] `Status`: column defines whether the page is online (Live) or not.
-[x] `DatabaseRef`: The items listed here point to the subpage databases. They are used to create full-screen cards on the page with links to the subpages.
-[x] `FullName`: This column was created to have a longer name for the page. It is used in the head and footer links.
-[x] `ShortDescription_en`: It was necessary to have a really short description for the Homepage. And because I wanted to keep the OG description, I created this new one.
-[] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented. 
-The `SelectProperty` type as arrays is Notion's specific schema for tags.
+- [x] `Name`: The name of the page will be used to generate the slug for the page. Except for the homepage, which stays: https://daniellocatelli.com/.
+- [x] `CoverAlt`: This will be the alt text used for the cover image, both on OG (shareable links) and on the Homepage.
+- [ ] `Local`: Is still not in use. The issue of internationalization isn't clear.
+- [x] `Description_en`: this is the OG description of the page.
+- [ ] `Description_de`: This is the German OG description of the page. The issue of internationalization isn't clear.
+- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
+- [x] `Status`: column defines whether the page is online (Live) or not.
+- [x] `DatabaseRef`: The items listed here point to the subpage databases. They are used to create full-screen cards on the page with links to the subpages.
+- [x] `FullName`: This column was created to have a longer name for the page. It is used in the head and footer links.
+- [x] `ShortDescription_en`: It was necessary to have a really short description for the Homepage. And because I wanted to keep the OG description, I created this new one.
+- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
+
+The `SelectProperty` is a Notion type for tags with id: string; name: string; color: string;
 
 ### Subpages as Notion databases
 One of the columns of the page's schema is the `DatabaseRef`. This is a connection to subpage databases.
