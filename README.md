@@ -77,7 +77,7 @@ Think of a notion database just as a SQL table.
 #### Projects schema
 |Category|City|CoverAlt|Date|Description_en|Description_de|Description_pt|Disclosed|Link|Client|Authors|Director|Manager|Development|Place|Status|Team|Files|Tags|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|string|SelectProperty[]|string|string|string|string|string|boolean|RichText[]|string|SelectProperty[]|SelectProperty[]|SelectProperty[]|SelectProperty[]|string|status|SelectProperty[]|
+|string|SelectProperty[]|string|string|string|string|string|boolean|RichText[]|string|SelectProperty[]|SelectProperty[]|SelectProperty[]|SelectProperty[]|string|status|SelectProperty[]|file|SelectProperty[]|
 
 - [ ] `Category`: same as tags, but to have a unique general category. It's still not implemented.
 - [x] `City`: project metadata.
@@ -93,11 +93,31 @@ Think of a notion database just as a SQL table.
 - [x] `Director`: project metadata.
 - [x] `Manager`: project metadata.
 - [x] `Development`: project metadata, who was the developer.
-- [x] `Place`: project metadata, online or in person.
+- [x] `Place`: project metadata.
 - [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
 - [x] `Team`: project metadata.
 - [ ] `Files`: the idea is to have some files in the project metadata at the beginning. Not yet implemented.
 - [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
+
+#### Publications schema
+|City|CoverAlt|Date|Description_en|Description_de|Description_pt|Link|Authors|Place|Status|Language|Tags|Name_de|Name_pt|
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|SelectProperty[]|string|string|string|string|string|RichText[]|SelectProperty[]|string|status|SelectProperty[]|string|string|string|
+
+- [x] `City`: publication metadata.
+- [x] `CoverAlt`: This will be the alt text used for the cover image of OG and on the page.
+- [x] `Date`: publication metadata.
+- [x] `Description_en`: this is the OG description of the page.
+- [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
+- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
+- [x] `Link`: publication metadata, an official or relevant link to the project.
+- [x] `Authors`: publication metadata.
+- [x] `Place`: publication metadata.
+- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
+- [x] `Language`: publication metadata.
+- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
+- [ ] `Name_de`: this is the German OG title. The issue of internationalization isn't clear.
+- [ ] `Name_pt`: this is the Portuguese OG title. The issue of internationalization isn't clear.
 
 <!--
 ## Notion as CMS
