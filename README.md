@@ -135,6 +135,26 @@ Think of a notion database just as a SQL table.
 - [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
 - [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
 
+#### Teaching schema
+|CoverAlt|Date|Description_en|Description_de|Description_pt|Link|Team|Place|Status|Tags|City|Event|Format|Language|
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+|string|string|string|string|string|RichText[]|SelectProperty[]|string|status|SelectProperty[]|SelectProperty[]|string|string|SelectProperty[]|
+
+- [x] `CoverAlt`: This will be the alt text used for the cover image of OG and on the page.
+- [x] `Date`: teaching metadata.
+- [x] `Description_en`: this is the OG description of the page.
+- [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
+- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
+- [x] `Link`: teaching metadata, an official or relevant link to the project.
+- [x] `Authors`: teaching metadata.
+- [x] `Place`: teaching metadata.
+- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
+- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
+- [x] `City`: teaching metadata.
+- [ ] `Event`: teaching metadata.
+- [ ] `Format`: teaching metadata.
+- [x] `Language`: teaching metadata.
+
 <!--
 ## Notion as CMS
 ### Database structure
