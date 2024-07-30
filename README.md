@@ -25,18 +25,22 @@ I have been using Notion both professionally and on my personal stuff for a whil
 - The website is hosted on Cloudflare.
 
 ## Notion structure
-Notion API already comes with some basic data, like page ID, page cover, and page icon. Which were extended using an interface so I could have my own opinionated types.
-### Pages database
-This database contains the pages' information. For example, the "Projects" item refers to the page https://daniellocatelli.com/projects. The only exception is the "Homepage," which refers to the root https://daniellocatelli.com/
+Notion API already comes with some basic data, like page ID, page cover, and page icon. These were extended using an interface so I could have my own opinionated types.
+
+### Pages as Notion databases
+This database contains the pages' information. For example, the `Projects` item refers to the page https://daniellocatelli.com/projects. The only exception is the "Homepage," which refers to the root https://daniellocatelli.com/
 
 **Schema:**
 |Name|CoverAlt|Local|Description_en|Description_de|Description_pt|Status|DatabaseRef|FullName|ShortDescription_en|Tags|
 |----|--------|-----|--------------|--------------|--------------|------|-----------|--------|-------------------|----|
-|string|string|string|string|string|string|Live/In progress/Not started|SelectProperty[]|string|string|SelectProperty[]|
+|string|string|string|string|string|string|Live / In progress / Not started|SelectProperty[]|string|string|SelectProperty[]|
 
 Pages: Homepage, Projects, Teaching, Strategies, Publications (In progress), Blog (Not started)
 
-### 
+### Subpages as Notion database
+One of the columns of the page's schema is the `DatabaseRef`. This is a connection to subpage databases.
+For example, the page `Strategies` connects to the subpage database `Computational Design Strategies`.
+This way, I can organize everything in their own databases.
 
 
 <!--
