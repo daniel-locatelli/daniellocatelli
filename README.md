@@ -26,7 +26,7 @@ I have been using Notion both professionally and on my personal stuff for a whil
 - [Rhino](https://www.rhino3d.com/) to generate drawings
 
 ## Workflow
-- Notion as a CMS: I have an opinionated set of [databases on Notion](#notion-structures), where I create all the pages and subpages.
+- Notion as a CMS: I have an opinionated set of [databases on Notion](#notion-structure), where I create all the pages and subpages.
 - A custom Astro integration queries these databases at the beginning of every build using [Notion API](https://developers.notion.com/). Then it automatically downloads the files, saves them at `src/assets/notion`, and saves a jpg version of the database cover at `public/notion` to be used as og-image. The download only happens if the file does not yet exist. And the requests follow [Notion API request limits](https://developers.notion.com/reference/request-limits).
 - Astro builds the static website, taking full advantage of the image optimization features.
 - The website is hosted on Cloudflare.
