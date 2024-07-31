@@ -27,17 +27,17 @@ I have been using Notion both professionally and on my personal stuff for a whil
 
 ## Workflow
 - Notion as a CMS: I have an opinionated set of [databases on Notion](#notion-structure), where I create all the pages and subpages.
-- A custom Astro integration queries these databases at the beginning of every build using [Notion API](https://developers.notion.com/). Then it automatically downloads the files, saves them at `src/assets/notion`, and saves a jpg version of the database cover at `public/notion` to be used as og-image. The download only happens if the file does not yet exist. And the requests follow [Notion API request limits](https://developers.notion.com/reference/request-limits).
+- A custom Astro integration queries these databases at the beginning of every build using [Notion API](https://developers.notion.com/). Then it automatically downloads the files, saves them at `src/assets/notion`, and saves a jpg version of the database cover at `public/media` to be used as og-image. The download only happens if the file does not yet exist. And the requests follow [Notion API request limits](https://developers.notion.com/reference/request-limits).
 - Astro builds the static website, taking full advantage of the image optimization features.
 - The website is hosted on Cloudflare.
 
 ## Notion structure
 Notion API already comes with some basic data, like page ID, page cover, and page icon. These were extended using an interface so I could have my own opinionated types.
 
-### Pages as Notion databases
+### 1. Pages as Notion databases
 This database contains the pages' information. For example, the 'Projects' item refers to the page https://daniellocatelli.com/projects. The only exception is the "Homepage," which refers to the root https://daniellocatelli.com/
 
-**Schema:**
+#### 1.1. Pages Schema
 |Name|CoverAlt|Local|Description_en|Description_de|Description_pt|Status|DatabaseRef|FullName|ShortDescription_en|Tags|
 |----|--------|-----|--------------|--------------|--------------|------|-----------|--------|-------------------|----|
 |string|string|string|string|string|string|status|SelectProperty[]|string|string|SelectProperty[]|
@@ -58,15 +58,15 @@ Pages: Homepage, Projects, Teaching, Strategies, Publications (In progress), Blo
 
 The `SelectProperty` is a Notion type for tags with ``` id: string; name: string; color: string; ```
 
-### Subpages as Notion databases
-As mentioned above, the `DatabaseRef` is a connection to subpage databases.
+### 2. Subpages as Notion databases
+As mentioned above, the `DatabaseRef` connects to subpage databases.
 For example, the page 'Strategies' has in the `DatabaseRef` 'Computational Design Strategies,' while the page 'Research' has in the `DatabaseRef` 'Research' and 'Publications.'
 
 This way, I can organize each category in their own databases with a unique schema. Something similar to what we would do with an SQL database.
 
 Think of a notion database just as a SQL table.
 
-#### Computational Design Strategies schema
+#### 2.1. Computational Design Strategies schema
 |Apps|CoverAlt|Description_en|Description_de|Description_pt|Name_de|Name_pt|References|Status|Tags|
 |---|---|---|---|---|---|---|---|---|---|
 |SelectProperty[]|string|string|string|string|string|string|string|status|SelectProperty[]|
@@ -81,7 +81,7 @@ Think of a notion database just as a SQL table.
 - [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
 - [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
 
-#### Projects schema
+#### 2.2. Projects schema
 |Category|City|CoverAlt|Date|Description_en|Description_de|Description_pt|Disclosed|Link|Client|Authors|Director|Manager|Development|Place|Status|Team|Files|Tags|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |string|SelectProperty[]|string|string|string|string|string|boolean|RichText[]|string|SelectProperty[]|SelectProperty[]|SelectProperty[]|SelectProperty[]|string|status|SelectProperty[]|file|SelectProperty[]|
@@ -106,7 +106,7 @@ Think of a notion database just as a SQL table.
 - [ ] `Files`: the idea is to have some files in the project metadata at the beginning. Not yet implemented.
 - [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
 
-#### Publications schema
+#### 2.3. Publications schema
 |City|CoverAlt|Date|Description_en|Description_de|Description_pt|Link|Authors|Place|Status|Language|Tags|Name_de|Name_pt|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |SelectProperty[]|string|string|string|string|string|RichText[]|SelectProperty[]|string|status|SelectProperty[]|string|string|string|
@@ -126,7 +126,7 @@ Think of a notion database just as a SQL table.
 - [ ] `Name_de`: this is the German OG title. The issue of internationalization isn't clear.
 - [ ] `Name_pt`: this is the Portuguese OG title. The issue of internationalization isn't clear.
 
-#### Research schema
+#### 2.4. Research schema
 |CoverAlt|Date|Description_en|Description_de|Description_pt|Link|Authors|Place|Status|Tags|
 |--|--|--|--|--|--|--|--|--|--|
 |string|string|string|string|string|RichText[]|SelectProperty[]|string|status|SelectProperty[]|
@@ -142,7 +142,7 @@ Think of a notion database just as a SQL table.
 - [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
 - [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
 
-#### Teaching schema
+#### 2.5. Teaching schema
 |CoverAlt|Date|Description_en|Description_de|Description_pt|Link|Team|Place|Status|Tags|City|Event|Format|Language|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |string|string|string|string|string|RichText[]|SelectProperty[]|string|status|SelectProperty[]|SelectProperty[]|string|string|SelectProperty[]|
