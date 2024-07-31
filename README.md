@@ -31,7 +31,7 @@ I have been using Notion both professionally and on my personal stuff for a whil
 - Astro builds the static website, taking full advantage of the image optimization features.
 - The website is hosted on Cloudflare.
 
-## [Notion structure](#notion-structure)
+## Notion structure
 Notion API already comes with some basic data, like page ID, page cover, and page icon. These were extended using an interface so I could have my own opinionated types.
 
 ### Pages as Notion databases
