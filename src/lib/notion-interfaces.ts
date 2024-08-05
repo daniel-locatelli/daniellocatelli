@@ -9,13 +9,13 @@ export interface Database {
 
 export interface Page {
   Cover: FileObject | null;
+  Icon: FileObject | Emoji | null;
+  PageId: string;
   CoverAlt: string | null;
   Description_en: string;
   Description_de: string;
   Description_pt: string;
-  Icon: FileObject | Emoji | null;
   Name: string;
-  PageId: string;
   Slug: string;
   Tags: SelectProperty[];
   Active?: boolean;

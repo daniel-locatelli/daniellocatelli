@@ -1,0 +1,38 @@
+---
+import { siteConfig } from "@/site-config";
+import BaseHead from "@/components/BaseHead.astro";
+import phyllotaxis from "../assets/notion/10ac74a5-a6a4-4524-9d84-cd9a01fb4abb/computational-design-strategies_phyllotaxis_phyllotaxis-widescreen.svg";
+---
+
+<html lang={siteConfig.lang}>
+  <head>
+    <BaseHead description="CS50 Cover" title="CS50 Cover" />
+  </head>
+  <body class="m-0 p-0 h-full min-w-full overflow-hidden">
+    <main
+      class="flex flex-col min-h-screen max-h-screen w-full overflow-hidden items-end justify-center p-6 bg-zinc-900"
+    >
+      <img
+        class="absolute z-0 w-full overflow-hidden opacity-20 scale-150"
+        src={phyllotaxis.src}
+        alt="any"
+      />
+      <div
+        class="flex flex-col items-end pb-14 z-10 mix-blend-difference bg-blend-difference"
+      >
+        <h1 class="text-8xl">Daniel Locatelli</h1>
+        <h2 class="text-5xl">Computational Designer Portfolio</h2>
+      </div>
+      <div class="flex flex-col items-end pb-16">
+        <p>Name</p>
+        <h3 class="text-5xl">Daniel Nunes Locatelli</h3>
+        <p>GitHub</p>
+        <h3 class="text-5xl">@daniel-locatelli</h3>
+        <p>edX</p>
+        <h3 class="text-5xl">@daniel_locatelli</h3>
+      </div>
+      <h3 class="text-5xl">Munich Germany</h3>
+      <h3 class="text-5xl">05-08-2024</h3>
+    </main>
+  </body>
+</html>

@@ -10,7 +10,7 @@ const { articleDate, description, coverImage, coverAlt, title } = Astro.props;
 
 const titleSeparator = "•";
 const siteTitle =
-  title === "Homepage"
+  title === siteConfig.title
     ? siteConfig.title
     : `${title} ${titleSeparator} ${siteConfig.title}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
