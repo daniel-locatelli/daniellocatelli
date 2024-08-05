@@ -20,6 +20,7 @@ I have been using Notion both professionally and on my personal stuff for a whil
 
 ## Tech stack
 - [Astro](https://docs.astro.build/en/concepts/why-astro/) web framework
+- [Tailwind](https://tailwindcss.com/) CSS framework
 - [Notion](https://www.notion.so/) as a content management service
 - [Cloudflare](https://www.cloudflare.com/) to deploy and host the website
 - [Figma](https://www.figma.com/) to sketch layout ideas and prepare SVG files
