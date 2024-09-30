@@ -117,7 +117,7 @@ const locale = "pt";
                 <ul class="relative space-y-0 w-full">
                   {db.Pages.map(async (page, indexPages) => {
                     if (page.Locale === "pt") {
-                      // console.log(page.Slug);
+                      console.log(page.Slug);
                       let image = await importCoverImage(page, images);
                       return (
                         <article class="relative flex flex-col bg-clip-border h-vh h-screen w-full snap-start overflow-hidden">

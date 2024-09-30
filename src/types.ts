@@ -6,6 +6,7 @@ export type SiteConfig = {
     locale: string | string[] | undefined;
     options: Intl.DateTimeFormatOptions;
   };
+  whatsapp: string;
   webmentions?: {
     link: string;
     pingback?: string;
