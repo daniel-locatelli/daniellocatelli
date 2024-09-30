@@ -36,7 +36,7 @@ if (block.Video!.File) {
     const videoName = decodeURIComponent(url!.pathname.split("/").slice(-1)[0]);
     videoExtension = videoName.split(".")[1];
     const videoNameWithSlug = modifyFileName(videoName, {
-      newBeginning: slug + "_",
+      // newBeginning: slug + "_",
     });
     video = `${dir}/${videoNameWithSlug}`;
   } catch (error) {

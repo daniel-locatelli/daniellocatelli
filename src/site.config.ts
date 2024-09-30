@@ -7,13 +7,9 @@ export const siteConfig: SiteConfig = {
   title: "Daniel Locatelli",
   // Meta property used as the default description meta property
   description: "An opinionated starter theme for Astro",
-  // HTML lang property, found in src/layouts/Base.astro L:18
-  lang: "en-DE",
-  // Meta property, found in src/components/BaseHead.astro L:42
-  ogLocale: "en_DE",
   // Date.prototype.toLocaleDateString() parameters, found in src/utils/date.ts.
   date: {
-    locale: "en-DE",
+    locale: "en",
     options: {
       day: "numeric",
       month: "short",

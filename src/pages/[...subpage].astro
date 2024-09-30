@@ -12,17 +12,22 @@ import PostBody from "@/components/Notion/PostBody.astro";
 import RichText from "@/components/Notion/blocks/RichText.astro";
 import * as interfaces from "../lib/notion-interfaces.ts";
 
+const locale = "en";
+
 export async function getStaticPaths() {
+  const locale = "en";
+
   const databases = await getAllDatabases();
 
   const paths = databases.flatMap((database) =>
     // The main pages are in the other file
-    database.Pages.filter(() => database.Title !== "Pages").map((subpage) => ({
+    database.Pages.filter(
+      (subpage) => database.Title !== "Pages" && subpage.Locale === locale
+    ).map((subpage) => ({
       params: { subpage: subpage.Slug },
       props: { subpage: subpage },
     }))
   );
-  // console.dir(paths);
 
   return paths;
 }
@@ -32,7 +37,7 @@ interface Props {
 }
 
 const { subpage: slug } = Astro.params;
-const { subpage } = Astro.props;
+const { subpage } = Astro.props as Props;
 
 const [blocks] = await Promise.all([getAllBlocksByBlockId(subpage.PageId)]);
 
@@ -54,11 +59,11 @@ if (subpage.Cover) {
   const dir = "media/" + url.pathname.split("/").slice(-2)[0];
   const fileNameConverted = urlToFileName(url);
   const fileNameWithSlug = modifyFileName(fileNameConverted, {
-    newBeginning: subpage.Slug + "_",
+    // newBeginning: subpage.Slug.split("/").pop() + "_",
     newExtension: "jpg",
   });
   const fileNameBgWithSlug = modifyFileName(fileNameConverted, {
-    newBeginning: subpage.Slug + "_",
+    // newBeginning: subpage.Slug.split("/").pop() + "_",
     newEnd: "-bg",
     newExtension: "jpg",
   });
@@ -70,9 +75,11 @@ if (subpage.Cover) {
 <Base
   meta={{
     title: subpage.Name,
-    description: subpage.Description_en,
+    description: subpage.Description,
     coverImage: coverUrl,
     coverAlt: subpage.CoverAlt || "Cover image",
+    locale: locale,
+    slug: slug,
   }}
 >
   <Fragment slot="after-head">

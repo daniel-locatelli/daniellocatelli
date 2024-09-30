@@ -36,7 +36,7 @@ if (block.Image!.File) {
     const imageName = decodeURIComponent(url!.pathname.split("/").slice(-1)[0]);
     imageExtension = imageName.split(".")[1];
     const imageNameWithSlug = modifyFileName(imageName, {
-      newBeginning: slug + "_",
+      // newBeginning: slug + "_",
     });
     const imagePath = `${dir}/${imageNameWithSlug}`;
     // The result from images is an array of objects that have file paths as keys

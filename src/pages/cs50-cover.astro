@@ -1,12 +1,18 @@
 ---
-import { siteConfig } from "@/site-config";
 import BaseHead from "@/components/BaseHead.astro";
-import phyllotaxis from "../assets/notion/10ac74a5-a6a4-4524-9d84-cd9a01fb4abb/computational-design-strategies_phyllotaxis_phyllotaxis-widescreen.svg";
+import phyllotaxis from "../assets/notion/10ac74a5-a6a4-4524-9d84-cd9a01fb4abb/phyllotaxis-widescreen.svg";
+
+const locale = "en";
 ---
 
-<html lang={siteConfig.lang}>
+<html lang={locale}>
   <head>
-    <BaseHead description="CS50 Cover" title="CS50 Cover" />
+    <BaseHead
+      description="CS50 Cover"
+      title="CS50 Cover"
+      locale={locale}
+      slug="/cs50-cover"
+    />
   </head>
   <body class="m-0 p-0 h-full min-w-full overflow-hidden">
     <main

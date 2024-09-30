@@ -459,7 +459,7 @@ export async function downloadImage(url: URL, slug: string) {
     console.log("\nError requesting image\n" + error);
     return Promise.resolve();
   }
-  console.log("\n===== Starting File Download =====");
+  console.log("\n===== Starting Image Download =====");
 
   if (!res || res.status != 200) {
     console.log(res);
@@ -474,7 +474,7 @@ export async function downloadImage(url: URL, slug: string) {
 
   const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
   const fileNameWithSlug = modifyFileName(fileName, {
-    newBeginning: slug + "_",
+    // newBeginning: slug.split("/").pop() + "_",
   });
 
   const filepath = `${dir}/${fileNameWithSlug}`;
@@ -532,11 +532,11 @@ export async function downloadPublicImage(url: URL, slug: string) {
   const fileNameFromUrl = urlToFileName(url);
 
   const fileNameWithSlug = modifyFileName(fileNameFromUrl, {
-    newBeginning: slug + "_",
+    // newBeginning: slug.split("/").pop() + "_",
     newExtension: "jpg",
   });
   const fileNameBgWithSlug = modifyFileName(fileNameFromUrl, {
-    newBeginning: slug + "_",
+    // newBeginning: slug.split("/").pop() + "_",
     newEnd: "-bg",
     newExtension: "jpg",
   });
@@ -612,7 +612,7 @@ export async function downloadVideo(url: URL, slug: string) {
 
   const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
   const fileNameWithSlug = modifyFileName(fileName, {
-    newBeginning: slug + "_",
+    // newBeginning: slug.split("/").pop() + "_",
   });
 
   const filepath = `${dir}/${fileNameWithSlug}`;
@@ -660,6 +660,9 @@ export async function downloadFile(url: URL) {
     fs.mkdirSync(dir);
   }
 
+  //// Check if this is working. Maybe it is creating repetitions
+  //// computational-design-strategies-metaball_metaball-widescreen-bg.jpg
+  //// metaball_metaball-widescreen-bg.jpg
   const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
 
   const filepath = `${dir}/${fileName}`;
@@ -1313,14 +1316,13 @@ function _buildPage(
   const prop = pageObject.properties;
   if (
     !prop.hasOwnProperty("Name") ||
+    !prop.hasOwnProperty("Name_en") ||
     !prop.hasOwnProperty("CoverAlt") ||
-    !prop.hasOwnProperty("Description_en") ||
-    !prop.hasOwnProperty("Description_de") ||
-    !prop.hasOwnProperty("Description_pt") ||
+    !prop.hasOwnProperty("Description") ||
     !prop.hasOwnProperty("Tags")
   ) {
     throw new Error(
-      "Database does not have one of the mandatory columns: Name(Aa), CoverAlt(text), Description_en(text), Description_de(text), Description_pt(text), Tags(Multi-select)"
+      "Database does not have one of the mandatory columns: Name(Aa), CoverAlt(text), Description(text), Tags(Multi-select)"
     );
   }
 
@@ -1389,35 +1391,26 @@ function _buildPage(
     }
   }
 
-  const name = prop.Name.title
-    ? prop.Name.title.map((richText) => richText.plain_text).join("")
-    : "";
+  const name_en =
+    prop.Name_en && prop.Name_en.rich_text && prop.Name_en.rich_text.length > 0
+      ? prop.Name_en.rich_text.map((richText) => richText.plain_text).join("")
+      : "";
 
-  const slug = name === "Homepage" ? "/" : titleToSlug(name);
+  const slug = name_en === "Homepage" ? "/" : titleToSlug(name_en);
 
   const databaseTitleSlug = titleToSlug(databaseTitle);
 
-  let fullName: string | null = null;
-  try {
-    if (prop.FullName) {
-      fullName =
-        prop.FullName && prop.FullName.rich_text
-          ? prop.FullName.rich_text
-              .map((richText) => richText.plain_text)
-              .join("")
-          : "";
-    }
-  } catch (error) {
-    console.error("Error building a page while getting the full name", error);
-    throw error;
-  }
+  const locale =
+    prop.Locale && prop.Locale.select && prop.Locale.select.name
+      ? prop.Locale.select.name
+      : "en";
 
-  let shortDescription_en: string | null = null;
+  let ShortDescription: string | null = null;
   try {
-    if (prop.ShortDescription_en) {
-      shortDescription_en =
-        prop.ShortDescription_en && prop.ShortDescription_en.rich_text
-          ? prop.ShortDescription_en.rich_text
+    if (prop.ShortDescription) {
+      ShortDescription =
+        prop.ShortDescription && prop.ShortDescription.rich_text
+          ? prop.ShortDescription.rich_text
               .map((richText) => richText.plain_text)
               .join("")
           : "";
@@ -1430,26 +1423,49 @@ function _buildPage(
   const page: Page = {
     Cover: cover,
     CoverAlt: coverAlt,
-    Description_en:
-      prop.Description_en.rich_text && prop.Description_en.rich_text.length > 0
-        ? prop.Description_en.rich_text
+    CoverAlt_de:
+      prop.CoverAlt_de &&
+      prop.CoverAlt_de.rich_text &&
+      prop.CoverAlt_de.rich_text.length > 0
+        ? prop.CoverAlt_de.rich_text
+            .map((richText) => richText.plain_text)
+            .join("")
+        : "",
+    CoverAlt_pt:
+      prop.CoverAlt_pt &&
+      prop.CoverAlt_pt.rich_text &&
+      prop.CoverAlt_pt.rich_text.length > 0
+        ? prop.CoverAlt_pt.rich_text
+            .map((richText) => richText.plain_text)
+            .join("")
+        : "",
+    Description:
+      prop.Description.rich_text && prop.Description.rich_text.length > 0
+        ? prop.Description.rich_text
             .map((richText) => richText.plain_text)
             .join("")
         : "",
     Description_de:
-      prop.Description_de.rich_text && prop.Description_de.rich_text.length > 0
+      prop.Description_de &&
+      prop.Description_de.rich_text &&
+      prop.Description_de.rich_text.length > 0
         ? prop.Description_de.rich_text
             .map((richText) => richText.plain_text)
             .join("")
         : "",
     Description_pt:
-      prop.Description_pt.rich_text && prop.Description_pt.rich_text.length > 0
+      prop.Description_pt &&
+      prop.Description_pt.rich_text &&
+      prop.Description_pt.rich_text.length > 0
         ? prop.Description_pt.rich_text
             .map((richText) => richText.plain_text)
             .join("")
         : "",
     Icon: icon,
-    Name: name,
+    Name:
+      prop.Name.title && prop.Name.title && prop.Name.title.length > 0
+        ? prop.Name.title.map((richText) => richText.plain_text).join("")
+        : "",
     PageId: pageObject.id,
     Slug: databaseTitleSlug !== "pages" ? `${databaseTitleSlug}/${slug}` : slug,
     Tags: prop.Tags.multi_select ? prop.Tags.multi_select : [],
@@ -1498,12 +1514,15 @@ function _buildPage(
       prop.Format && prop.Format.select && prop.Format.select.name
         ? prop.Format.select.name
         : "",
-    FullName: fullName,
     Instagram: prop.Instagram && prop.Instagram.url ? prop.Instagram.url : "",
     Language:
       prop.Language && prop.Language.multi_select
         ? prop.Language.multi_select
         : [],
+    Locale:
+      prop.Locale && prop.Locale.select && prop.Locale.select.name
+        ? prop.Locale.select.name
+        : "en",
     Level:
       prop.Level && prop.Level.select && prop.Level.select.name
         ? prop.Level.select.name
@@ -1517,6 +1536,12 @@ function _buildPage(
       prop.Manager && prop.Manager.multi_select
         ? prop.Manager.multi_select
         : [],
+    Name_en:
+      prop.Name_en &&
+      prop.Name_en.rich_text &&
+      prop.Name_en.rich_text.length > 0
+        ? prop.Name_en.rich_text.map((richText) => richText.plain_text).join("")
+        : "",
     Name_de:
       prop.Name_de &&
       prop.Name_de.rich_text &&
@@ -1528,14 +1553,6 @@ function _buildPage(
       prop.Name_pt.rich_text &&
       prop.Name_pt.rich_text.length > 0
         ? prop.Name_pt.rich_text.map((richText) => richText.plain_text).join("")
-        : "",
-    OfficialName:
-      prop.OfficialName &&
-      prop.OfficialName.rich_text &&
-      prop.OfficialName.rich_text.length > 0
-        ? prop.OfficialName.rich_text
-            .map((richText) => richText.plain_text)
-            .join("")
         : "",
     Organization:
       prop.Organization &&
@@ -1554,7 +1571,23 @@ function _buildPage(
       prop.References.rich_text.length > 0
         ? prop.References.rich_text.map(_buildRichText)
         : [],
-    ShortDescription_en: shortDescription_en,
+    ShortDescription: ShortDescription,
+    ShortDescription_de:
+      prop.ShortDescription_de &&
+      prop.ShortDescription_de.rich_text &&
+      prop.ShortDescription_de.rich_text.length > 0
+        ? prop.ShortDescription_de.rich_text
+            .map((richText) => richText.plain_text)
+            .join("")
+        : "",
+    ShortDescription_pt:
+      prop.ShortDescription_pt &&
+      prop.ShortDescription_pt.rich_text &&
+      prop.ShortDescription_pt.rich_text.length > 0
+        ? prop.ShortDescription_pt.rich_text
+            .map((richText) => richText.plain_text)
+            .join("")
+        : "",
     Team: prop.Team && prop.Team.multi_select ? prop.Team.multi_select : [],
     Title:
       prop.Title && prop.Title.rich_text && prop.Title.rich_text.length > 0

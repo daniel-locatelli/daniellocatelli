@@ -306,7 +306,7 @@ export const importCoverImage = async (page: Page, images: any) => {
     const imageName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]!);
 
     const imageNameWithSlug = modifyFileName(imageName, {
-      newBeginning: slug + "_",
+      // newBeginning: slug + "_",
     });
     const imagePath = `${dir}/${imageNameWithSlug}`;
 

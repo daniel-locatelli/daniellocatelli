@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from "@/site-config";
 import { getDatabaseByName } from "../lib/notion/client";
 import type { Page } from "../lib/notion-interfaces";
 import {
@@ -7,11 +8,11 @@ import {
   urlToFileName,
 } from "src/lib/blog-helpers";
 import BaseHead from "@/components/BaseHead.astro";
-import { siteConfig } from "@/site-config";
 import { Image } from "astro:assets";
 import logo from "../assets/logo-dl.svg";
 import arrowRight from "../assets/arrow-right.svg";
 import Footer from "@/components/layout/Footer.astro";
+import profilePhoto from "../assets/daniel-locatelli.png";
 
 interface Props {
   page: Page;
@@ -35,10 +36,18 @@ if (homepage.Cover) {
   const url = new URL(homepage.Cover.Url);
   const dir = "media/" + url.pathname.split("/").slice(-2)[0];
   const fileNameConverted = urlToFileName(url);
+  console.log("fileNameConverted");
+  console.log(fileNameConverted);
   const fileNameWithSlug = modifyFileName(fileNameConverted, {
-    newBeginning: homepage.Slug + "_",
+    // newBeginning: homepage.Slug.split("/").pop() + "_",
+    newExtension: "jpg",
   });
+  console.log("fileNameWithSlug");
+  console.log(fileNameWithSlug);
   coverUrl = `${dir}/${fileNameWithSlug}`;
+  console.log("coverUrl");
+  console.log(coverUrl);
+  console.log("=======");
 }
 
 let coverList: string[] = [];
@@ -49,24 +58,34 @@ otherPages.map((page) => {
     const url = new URL(page.Cover.Url);
     const dir = "media/" + url.pathname.split("/").slice(-2)[0];
     const fileNameConverted = urlToFileName(url);
+    console.log("fileNameConverted");
+    console.log(fileNameConverted);
     const fileNameBgWithSlug = modifyFileName(fileNameConverted, {
-      newBeginning: page.Slug + "_",
+      // newBeginning: page.Slug.split("/").pop() + "_",
       newEnd: "-bg",
       newExtension: "jpg",
     });
+    console.log("fileNameBgWithSlug");
+    console.log(fileNameBgWithSlug);
     coverUrlBg = `${dir}/${fileNameBgWithSlug}`;
+    console.log("coverUrlBg");
+    console.log(coverUrlBg);
     coverList.push(coverUrlBg);
   }
 });
+
+const locale = "en";
 ---
 
-<html lang={siteConfig.lang}>
+<html lang={locale}>
   <head>
     <BaseHead
-      description={homepage.Description_en}
-      title="Daniel Locatelli"
+      description={homepage.Description}
+      title={siteConfig.title}
       coverImage={coverUrl}
       coverAlt={homepage.CoverAlt || "Cover image"}
+      locale={locale}
+      slug="/"
     />
     {
       coverList.map((coverUrlBg) => {
@@ -74,12 +93,12 @@ otherPages.map((page) => {
       })
     }
   </head>
-  <body class="m-0 p-0 h-full min-w-full">
+  <body class="m-0 p-0 h-full min-w-full snap-mandatory snap-y">
     <main
-      class="relative grid grid-rows-4 md:grid-cols-2 md:grid-rows-2 min-h-svh min-h-screen max-h-svh max-h-screen w-full overflow-hidden"
+      class="relative grid grid-rows-4 md:grid-cols-2 md:grid-rows-2 min-h-svh min-h-screen max-h-svh max-h-screen w-full overflow-hidden snap-center"
     >
       <a
-        href="/"
+        href="/#about"
         class="absolute h-20 w-24 z-30 p-4 mix-blend-difference top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
       >
         <Image
@@ -127,7 +146,7 @@ otherPages.map((page) => {
               >
                 <div class="relative flex flex-col justify-center h-full items-center">
                   <h2 class="p-6 md:p-10 text-black text-center font-light font-body text-lg md:text-4xl text-balance">
-                    {page.ShortDescription_en}
+                    {page.ShortDescription}
                   </h2>
                   <div class="flex flex-col justify-center">
                     <Image
@@ -143,7 +162,65 @@ otherPages.map((page) => {
         })
       }
     </main>
-    <Footer />
+    <section
+      id="about"
+      class="flex flex-col min-h-screen justify-center snap-center"
+    >
+      <div class="flex flex-col md:flex-row justify-center items-center">
+        <Image
+          class="h-56 w-56 mb-4 md:mb-0 md:h-80 md:w-80 rounded-full md:mr-12"
+          src={profilePhoto}
+          alt="Daniel Locatelli profile photo"
+          loading="eager"
+        />
+        <div class="px-8">
+          <h1
+            class="text-center md:text-left font-title text-3xl md:text-6xl mb-2 md:mb-6 pointer-events-none animate-fade"
+          >
+            Daniel Locatelli
+          </h1>
+          <p
+            class="text-center md:text-left text-xl md:text-3xl font-body mb-4"
+          >
+            Specialized AECO Software Solutions
+          </p>
+          <p class="text-l font-body">My Expertise:</p>
+          <ul
+            class="text-l text-balance font-body list-disc md:list-inside mb-4 [&>*]:mt-2"
+          >
+            <li>Custom plugins that seamlessly integrate with your tools</li>
+            <li>Scalable web apps that can be accessed anywhere</li>
+            <li>
+              Optimized workflows leveraging computational design and
+              engineering
+            </li>
+          </ul>
+          <a
+            href="https://wa.me/message/D7VUYQWPBUWHG1"
+            class="flex md:inline-block text-xl justify-center md:justify-start font-body py-3 px-5 rounded-md bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-green-400 to-green-500 text-black hover:shadow-[3px_3px_rgba(0,_98,_90,_0.4),_7px_7px_rgba(0,_98,_90,_0.3),_11px_11px_rgba(0,_98,_90,_0.2)] transition"
+            target="_blank">Let's talk</a
+          >
+        </div>
+      </div>
+      <!-- <p class="text-xl font-body w-1/2 self-center">
+        With over 9 years of experience in computational design and engineering,
+        I've already collaborated with offices like <a
+          class="underline"
+          href="https://markobrajovic.com">Atelier Marko Brajovic</a
+        >, <a class="underline" href="https://art-engineering.net"
+          >ArtEngineering</a
+        > and <a class="underline" href="https://buildsystems.de"
+          >BuildSystems</a
+        >. Let's transform your AEC workflows together.
+      </p> -->
+    </section>
+    <Footer locale={locale} />
+    <style>
+      html {
+        scroll-snap-type: y proximity;
+        overflow-y: scroll;
+      }
+    </style>
     <script src="../lib/home-scripts.ts"></script>
   </body>
 </html>

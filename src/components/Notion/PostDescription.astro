@@ -9,7 +9,7 @@ const { post } = Astro.props;
 ---
 
 <div class="post-excerpt">
-  <p>{post.Description_en ? post.Description_en : ""}</p>
+  <p>{post.Description ? post.Description : ""}</p>
 </div>
 
 <style>

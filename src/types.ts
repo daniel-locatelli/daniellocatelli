@@ -2,8 +2,6 @@ export type SiteConfig = {
   author: string;
   title: string;
   description: string;
-  lang: string;
-  ogLocale: string;
   date: {
     locale: string | string[] | undefined;
     options: Intl.DateTimeFormatOptions;
@@ -26,6 +24,8 @@ export type SiteMeta = {
   coverImage?: string | undefined;
   coverAlt?: string | undefined;
   articleDate?: string | undefined;
+  locale: string;
+  slug: string;
   viewTransition?: boolean;
 };
 

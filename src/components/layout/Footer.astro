@@ -13,6 +13,11 @@ let pages: Page[];
 pages = pagesDatabase.Pages;
 
 const year = new Date().getFullYear();
+
+export interface Props {
+  locale: string;
+}
+const { locale } = Astro.props as Props;
 ---
 
 <footer
@@ -83,15 +88,55 @@ const year = new Date().getFullYear();
     class="flex flex-col sm:flex-row font-body order-1 sm:order-2 sm:mr-2"
   >
     {
-      pages.map((page) => (
+      pages.map((page) =>
+        page.Name === "Homepage" ? (
+          <a
+            class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+            href={locale === "en" ? "/" : "/" + locale + "/"}
+            title="Homepage"
+          >
+            Home
+          </a>
+        ) : (
+          <a
+            class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+            href={locale === "en" ? page.Slug : "/" + locale + "/" + page.Slug}
+            title="Homepage"
+          >
+            {locale === "en" ? page.Name : page.Name_pt}
+          </a>
+        )
+      )
+    }
+    {
+      locale === "en" && (
         <a
           class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
-          href={page.Name === "Homepage" ? "/" : "/" + page.Slug}
-          title={page.FullName}
+          href={"/#about"}
         >
-          {page.Name === "Homepage" ? "Home" : page.Name}
+          About
         </a>
-      ))
+      )
+    }
+    {
+      locale === "de" && (
+        <a
+          class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+          href={"/de/#about"}
+        >
+          Über
+        </a>
+      )
+    }
+    {
+      locale === "pt" && (
+        <a
+          class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+          href={"/pt/#about"}
+        >
+          Sobre
+        </a>
+      )
     }
   </nav>
 </footer>

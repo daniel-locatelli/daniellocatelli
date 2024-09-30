@@ -3,6 +3,7 @@ import type { Page } from "src/lib/notion-interfaces";
 import { getDatabaseByName } from "src/lib/notion/client";
 import { Image } from "astro:assets";
 import logo from "../../assets/logo-dl.svg";
+import globe from "../../assets/globe.svg";
 
 let pagesDatabase = (await getDatabaseByName("Pages"))!;
 let pages: Page[];
@@ -15,6 +16,12 @@ pages.sort((a, b) => {
 });
 
 const url = new URL(Astro.request.url);
+
+export interface Props {
+  locale: string;
+  slug: string;
+}
+const { locale, slug } = Astro.props as Props;
 ---
 
 <header
@@ -25,7 +32,7 @@ const url = new URL(Astro.request.url);
     <a
       aria-current={url.pathname === "/" ? "page" : false}
       class="inline-flex items-center sm:relative sm:inline-block h-10 w-12"
-      href="/"
+      href={locale === "en" ? "/" : "/" + locale}
     >
       <Image
         src={logo}
@@ -47,26 +54,66 @@ const url = new URL(Astro.request.url);
                 aria-current={url.pathname === page.Slug ? "page" : false}
                 class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
                 data-astro-prefetch
-                href={"/" + page.Slug}
-                title={page.FullName}
+                href={
+                  locale === "en"
+                    ? "/" + page.Slug
+                    : "/" + locale + "/" + page.Slug
+                }
+                title={page.Name}
               >
-                {page.Name}
+                {locale === "en" && page.Name}
+                {locale === "de" && page.Name_de}
+                {locale === "pt" && page.Name_pt}
               </a>
             )
         )
       }
-      <!-- <a
+      {
+        locale === "en" && (
+          <a
+            class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+            href={"/#about"}
+          >
+            About
+          </a>
+        )
+      }
+      {
+        locale === "de" && (
+          <a
+            class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+            href={"/de/#about"}
+          >
+            Über
+          </a>
+        )
+      }
+      {
+        locale === "pt" && (
+          <a
+            class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+            href={"/pt/#about"}
+          >
+            Sobre
+          </a>
+        )
+      }
+
+      <a
+        title={locale === "en" ? "Mudar para Português" : "Change to English"}
+        href={locale === "en" ? "/pt/" + slug : "/" + slug}
         class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
-        data-astro-prefetch
-        href="/documents/daniel-locatelli-cv.pdf"
-        title="Daniel Locatelli's CV"
       >
-        CV
-      </a> -->
+        <Image
+          src={globe}
+          alt="Daniel Locatelli logo"
+          loading={"eager"}
+          class="inline mix-blend-difference"
+        />
+        <div class="inline">{locale}</div>
+      </a>
     </nav>
   </div>
-  <!-- <Search />
-  <ThemeToggle /> -->
   <mobile-button class="flex items-center h-10">
     <button
       aria-expanded="false"

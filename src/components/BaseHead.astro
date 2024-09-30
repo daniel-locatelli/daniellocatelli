@@ -6,7 +6,8 @@ import "../styles/fonts.css";
 
 type Props = SiteMeta;
 
-const { articleDate, description, coverImage, coverAlt, title } = Astro.props;
+const { articleDate, description, coverImage, coverAlt, title, locale } =
+  Astro.props;
 
 const titleSeparator = "•";
 const siteTitle =
@@ -59,6 +60,22 @@ const socialImageURL = new URL(
 />
 <link href={canonicalURL} rel="canonical" />
 
+{/* Preload font */}
+<link
+  rel="preload"
+  href="/fonts/PoiretOne-Regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/Poppins-Light.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
 {/* Primary Meta Tags */}
 <meta content={siteTitle} name="title" />
 <meta content={description} name="description" />
@@ -74,7 +91,7 @@ const socialImageURL = new URL(
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:site_name" content={siteConfig.title} />
-<meta property="og:locale" content={siteConfig.ogLocale} />
+<meta property="og:locale" content={locale} />
 <meta property="og:image" content={socialImageURL} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="675" />
