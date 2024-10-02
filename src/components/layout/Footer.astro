@@ -7,6 +7,7 @@ import instagramLogo from "../../assets/instagram-logo.svg";
 import linkedinLogo from "../../assets/linkedin-logo.svg";
 import githubLogo from "../../assets/github-logo.svg";
 import youtubeLogo from "../../assets/youtube-logo.svg";
+import globe from "../../assets/globe.svg";
 
 let pagesDatabase = (await getDatabaseByName("Pages"))!;
 let pages: Page[];
@@ -16,8 +17,11 @@ const year = new Date().getFullYear();
 
 export interface Props {
   locale: string;
+  slug: string;
 }
-const { locale } = Astro.props as Props;
+const { locale, slug } = Astro.props as Props;
+
+console.log(slug)
 ---
 
 <footer
@@ -138,5 +142,18 @@ const { locale } = Astro.props as Props;
         </a>
       )
     }
+    <a
+      title={locale === "en" ? "Mudar para Português" : "Change to English"}
+      href={locale === "en" ? "/pt/" + slug : "/" + slug}
+      class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+    >
+      <Image
+        src={globe}
+        alt="Daniel Locatelli logo"
+        loading={"eager"}
+        class="inline mix-blend-difference"
+      />
+      <div class="inline">{locale}</div>
+    </a>
   </nav>
 </footer>

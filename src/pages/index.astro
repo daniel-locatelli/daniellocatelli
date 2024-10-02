@@ -14,10 +14,6 @@ import arrowRight from "../assets/arrow-right.svg";
 import Footer from "@/components/layout/Footer.astro";
 import profilePhoto from "../assets/daniel-locatelli.png";
 
-interface Props {
-  page: Page;
-}
-
 let pagesDatabase = await getDatabaseByName("Pages");
 const homepage = pagesDatabase.Pages.find((page) => page.Name === "Homepage")!;
 const otherPages: Page[] = pagesDatabase.Pages.filter(
@@ -36,18 +32,11 @@ if (homepage.Cover) {
   const url = new URL(homepage.Cover.Url);
   const dir = "media/" + url.pathname.split("/").slice(-2)[0];
   const fileNameConverted = urlToFileName(url);
-  console.log("fileNameConverted");
-  console.log(fileNameConverted);
   const fileNameWithSlug = modifyFileName(fileNameConverted, {
     // newBeginning: homepage.Slug.split("/").pop() + "_",
     newExtension: "jpg",
   });
-  console.log("fileNameWithSlug");
-  console.log(fileNameWithSlug);
   coverUrl = `${dir}/${fileNameWithSlug}`;
-  console.log("coverUrl");
-  console.log(coverUrl);
-  console.log("=======");
 }
 
 let coverList: string[] = [];
@@ -58,18 +47,12 @@ otherPages.map((page) => {
     const url = new URL(page.Cover.Url);
     const dir = "media/" + url.pathname.split("/").slice(-2)[0];
     const fileNameConverted = urlToFileName(url);
-    console.log("fileNameConverted");
-    console.log(fileNameConverted);
     const fileNameBgWithSlug = modifyFileName(fileNameConverted, {
       // newBeginning: page.Slug.split("/").pop() + "_",
       newEnd: "-bg",
       newExtension: "jpg",
     });
-    console.log("fileNameBgWithSlug");
-    console.log(fileNameBgWithSlug);
     coverUrlBg = `${dir}/${fileNameBgWithSlug}`;
-    console.log("coverUrlBg");
-    console.log(coverUrlBg);
     coverList.push(coverUrlBg);
   }
 });
@@ -202,19 +185,8 @@ const locale = "en";
           >
         </div>
       </div>
-      <!-- <p class="text-xl font-body w-1/2 self-center">
-        With over 9 years of experience in computational design and engineering,
-        I've already collaborated with offices like <a
-          class="underline"
-          href="https://markobrajovic.com">Atelier Marko Brajovic</a
-        >, <a class="underline" href="https://art-engineering.net"
-          >ArtEngineering</a
-        > and <a class="underline" href="https://buildsystems.de"
-          >BuildSystems</a
-        >. Let's transform your AEC workflows together.
-      </p> -->
     </section>
-    <Footer locale={locale} />
+    <Footer locale={locale} slug="" />
     <style>
       html {
         scroll-snap-type: y proximity;
