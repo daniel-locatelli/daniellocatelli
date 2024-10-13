@@ -10,7 +10,7 @@ const getSite = function () {
   if (CUSTOM_DOMAIN) {
     return new URL(BASE_PATH, `https://${CUSTOM_DOMAIN}`).toString();
   }
-  if (process.env.CF_PAGES && CF_PAGES_BRANCH !== "main") {
+  if (process.env.CF_PAGES && process.env.CF_PAGES_BRANCH !== "main") {
     if (process.env.CF_PAGES_BRANCH !== "main") {
       return new URL(BASE_PATH, process.env.CF_PAGES_URL).toString();
     }
@@ -19,7 +19,7 @@ const getSite = function () {
     // It is when the site is only on CF pages
     return new URL(
       BASE_PATH,
-      `https://${new URL(process.env.CF_PAGES_URL).host.split(".").slice(1).join(".")}`
+      `https://${new URL(process.env.CF_PAGES_URL!).host.split(".").slice(1).join(".")}`
     ).toString();
   }
   return new URL(BASE_PATH, "http://localhost:4321").toString();
