@@ -17,7 +17,7 @@ export const BASE_PATH =
 
 export const REQUEST_TIMEOUT_MS = parseInt(
   import.meta.env.REQUEST_TIMEOUT_MS || "20000",
-  20
+  10
 );
 
 export const NUMBER_OF_POSTS_PER_PAGE = 10;
