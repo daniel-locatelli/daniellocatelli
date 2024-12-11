@@ -86,31 +86,31 @@ if (subpage.Cover) {
   </Fragment>
   {
     image && (
-      <div class="relative overflow-hidden h-72 md:h-128 w-full mb-8">
+      <div class="relative mb-8 h-72 w-full overflow-hidden md:h-128">
         <Image
-          class="absolute z-10 object-cover object-center h-full w-full animate-fade"
+          class="absolute z-10 h-full w-full animate-fade object-cover object-center"
           src={image}
           alt={subpage.CoverAlt}
           transition:name={subpage.PageId + "-image"}
         />
         <div
-          class="absolute h-full w-full bg-center bg-cover blur-lg"
+          class="absolute h-full w-full bg-cover bg-center blur-lg"
           style={`background-image: url(${coverUrlBg})`}
         />
       </div>
     )
   }
   <section
-    class="flex flex-col max-w-full w-full justify-center items-center font-body"
+    class="flex w-full max-w-full flex-col items-center justify-center font-body"
   >
-    <div class="max-w-full w-full overflow-x-hidden sm:max-w-2xl">
+    <div class="w-full max-w-full overflow-x-hidden sm:max-w-2xl">
       <h1
-        class="title mb-8 font-title font-normal text-balance px-2 md:px-0 text-4xl"
+        class="title mb-8 text-balance px-2 font-title text-4xl font-normal md:px-0"
       >
         {subpage.Name}
       </h1>
       <table
-        class="text-left table-auto border-separate border-spacing-x-4 [&>*]:align-text-top"
+        class="table-auto border-separate border-spacing-x-4 text-left [&>*]:align-text-top"
       >
         {
           subpage.DateStart && (

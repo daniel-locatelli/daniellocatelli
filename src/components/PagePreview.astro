@@ -23,24 +23,24 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     databases.map((db) => {
       return (
         <section aria-label={db.Title} class="relative w-full">
-          <ul class="relative space-y-0 w-full">
+          <ul class="relative w-full space-y-0">
             {db.Pages.map(async (page, index) => {
               let image = await importCoverImage(page, images);
               return (
-                <article class="relative flex flex-col bg-clip-border h-vh h-screen w-full snap-start">
+                <article class="h-vh relative flex h-screen w-full snap-start flex-col bg-clip-border">
                   <a
-                    class="flex transition w-full h-full"
+                    class="flex h-full w-full transition"
                     href={"/" + page.Slug}
                   >
-                    <div class="absolute flex flex-col z-10 w-full h-full text-center justify-center transition">
-                      <h2 class="p-2 text-3xl md:text-5xl text-white dark:text-white font-title text-balance bg-black/60">
+                    <div class="absolute z-10 flex h-full w-full flex-col justify-center text-center transition">
+                      <h2 class="text-balance bg-black/60 p-2 font-title text-3xl text-white dark:text-white md:text-5xl">
                         {page.Name}
                       </h2>
                     </div>
-                    <div class="absolute flex justify-between h-full w-full">
+                    <div class="absolute flex h-full w-full justify-between">
                       {image && index === 0 ? (
                         <Image
-                          class="object-cover h-full w-full"
+                          class="h-full w-full object-cover"
                           src={image}
                           alt={page.CoverAlt}
                           transition:name={page.Slug + "-image"}
@@ -58,7 +58,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
                         />
                       ) : (
                         <Image
-                          class="object-cover h-full w-full"
+                          class="h-full w-full object-cover"
                           src={image}
                           alt={page.CoverAlt}
                           transition:name={page.Slug + "-image"}

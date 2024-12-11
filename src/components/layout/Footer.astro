@@ -21,21 +21,21 @@ export interface Props {
 }
 const { locale, slug } = Astro.props as Props;
 
-console.log(slug)
+console.log(slug);
 ---
 
 <footer
-  class="flex flex-col sm:space-y-0 mt-auto w-full items-center justify-center pb-6 pt-6 text-center align-top sm:flex-row sm:justify-between sm:text-xs snap-start"
+  class="mt-auto flex w-full snap-start flex-col items-center justify-center pb-6 pt-6 text-center align-top sm:flex-row sm:justify-between sm:space-y-0 sm:text-xs"
 >
   <div
-    class="flex flex-col justify-center items-center sm:flex-row order-2 sm:order-1 h-full space-y-6 sm:space-y-0"
+    class="order-2 flex h-full flex-col items-center justify-center space-y-6 sm:order-1 sm:flex-row sm:space-y-0"
   >
-    <div class="sm:ml-1 me-0 sm:me-6 font-body order-2 sm:order-1 pt-6 sm:pt-0">
+    <div class="order-2 me-0 pt-6 font-body sm:order-1 sm:me-6 sm:ml-1 sm:pt-0">
       &copy; {siteConfig.author}
       {year}
     </div>
     <address
-      class="flex justify-center items-center space-x-7 order-1 sm:order-2 w-full sm:w-auto"
+      class="order-1 flex w-full items-center justify-center space-x-7 sm:order-2 sm:w-auto"
     >
       <a
         href="https://www.linkedin.com/in/daniel-locatelli/"
@@ -46,7 +46,7 @@ console.log(slug)
         <Image
           src={linkedinLogo}
           alt="LinkedIn logo."
-          class="inline mix-blend-difference h-4 w-auto"
+          class="inline h-4 w-auto mix-blend-difference"
         />
       </a>
       <a
@@ -58,7 +58,7 @@ console.log(slug)
         <Image
           src={githubLogo}
           alt="GitHub logo."
-          class="inline mix-blend-difference h-4 w-auto"
+          class="inline h-4 w-auto mix-blend-difference"
         />
       </a>
       <a
@@ -70,7 +70,7 @@ console.log(slug)
         <Image
           src={instagramLogo}
           alt="Instagram logo."
-          class="inline mix-blend-difference h-4 w-auto"
+          class="inline h-4 w-auto mix-blend-difference"
         />
       </a>
       <a
@@ -82,20 +82,20 @@ console.log(slug)
         <Image
           src={youtubeLogo}
           alt="YouTube logo."
-          class="inline mix-blend-difference h-5 w-auto"
+          class="inline h-5 w-auto mix-blend-difference"
         />
       </a>
     </address>
   </div>
   <nav
     aria-label="More on this site"
-    class="flex flex-col sm:flex-row font-body order-1 sm:order-2 sm:mr-2"
+    class="order-1 flex flex-col font-body sm:order-2 sm:mr-2 sm:flex-row"
   >
     {
       pages.map((page) =>
         page.Name === "Homepage" ? (
           <a
-            class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+            class="py-2 sm:px-3 sm:py-0 sm:hover:text-textColor sm:hover:underline"
             href={locale === "en" ? "/" : "/" + locale + "/"}
             title="Homepage"
           >
@@ -103,7 +103,7 @@ console.log(slug)
           </a>
         ) : (
           <a
-            class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+            class="py-2 sm:px-3 sm:py-0 sm:hover:text-textColor sm:hover:underline"
             href={locale === "en" ? page.Slug : "/" + locale + "/" + page.Slug}
             title="Homepage"
           >
@@ -115,7 +115,7 @@ console.log(slug)
     {
       locale === "en" && (
         <a
-          class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+          class="py-2 sm:px-3 sm:py-0 sm:hover:text-textColor sm:hover:underline"
           href={"/#about"}
         >
           About
@@ -125,7 +125,7 @@ console.log(slug)
     {
       locale === "de" && (
         <a
-          class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+          class="py-2 sm:px-3 sm:py-0 sm:hover:text-textColor sm:hover:underline"
           href={"/de/#about"}
         >
           Über
@@ -135,7 +135,7 @@ console.log(slug)
     {
       locale === "pt" && (
         <a
-          class="sm:px-3 py-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+          class="py-2 sm:px-3 sm:py-0 sm:hover:text-textColor sm:hover:underline"
           href={"/pt/#about"}
         >
           Sobre
@@ -145,7 +145,7 @@ console.log(slug)
     <a
       title={locale === "en" ? "Mudar para Português" : "Change to English"}
       href={locale === "en" ? "/pt/" + slug : "/" + slug}
-      class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+      class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
     >
       <Image
         src={globe}

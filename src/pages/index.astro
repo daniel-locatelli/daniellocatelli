@@ -76,13 +76,13 @@ const locale = "en";
       })
     }
   </head>
-  <body class="m-0 p-0 h-full min-w-full snap-mandatory snap-y">
+  <body class="snap-mandatory snap-y m-0 h-full min-w-full p-0">
     <main
-      class="relative grid grid-rows-4 md:grid-cols-2 md:grid-rows-2 min-h-svh min-h-screen max-h-svh max-h-screen w-full overflow-hidden snap-center"
+      class="relative grid max-h-screen max-h-svh min-h-screen min-h-svh w-full snap-center grid-rows-4 overflow-hidden md:grid-cols-2 md:grid-rows-2"
     >
       <a
         href="/#about"
-        class="absolute h-20 w-24 z-30 p-4 mix-blend-difference top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        class="absolute left-1/2 top-1/2 z-30 h-20 w-24 -translate-x-1/2 -translate-y-1/2 transform p-4 mix-blend-difference"
       >
         <Image
           class="w-full"
@@ -99,21 +99,21 @@ const locale = "en";
           return (
             <div class="relative overflow-hidden" id="image-container">
               <div
-                class="absolute z-10 bg-black flex justify-between h-full w-full bg-cover bg-center scale-125 blur-lg"
+                class="absolute z-10 flex h-full w-full scale-125 justify-between bg-black bg-cover bg-center blur-lg"
                 style={`background-image: url(${coverList[index]})`}
                 id="background"
               />
               <a
                 href={"/" + page.Slug}
-                class="relative z-20 flex justify-center transition duration-700 h-full"
+                class="relative z-20 flex h-full justify-center transition duration-700"
                 id="cover"
                 data-astro-prefetch
               >
-                <h1 class="z-30 absolute text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference font-title text-3xl md:text-6xl pointer-events-none animate-fade">
+                <h1 class="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2 transform animate-fade font-title text-3xl text-white mix-blend-difference md:text-6xl">
                   {page.Name}
                 </h1>
                 <Image
-                  class="object-cover object-center animate-fade"
+                  class="animate-fade object-cover object-center"
                   src={coverImage}
                   alt={page.CoverAlt}
                   transition:name={page.Slug + "-image"}
@@ -124,11 +124,11 @@ const locale = "en";
               </a>
               <a
                 href={"/" + page.Slug}
-                class="absolute z-0 inset-0 w-full h-full bg-black"
+                class="absolute inset-0 z-0 h-full w-full bg-black"
                 id="link"
               >
-                <div class="relative flex flex-col justify-center h-full items-center">
-                  <h2 class="p-6 md:p-10 text-white text-center font-light font-body text-lg md:text-3xl text-balance">
+                <div class="relative flex h-full flex-col items-center justify-center">
+                  <h2 class="text-balance p-6 text-center font-body text-lg font-light text-white md:p-10 md:text-3xl">
                     {page.ShortDescription}
                   </h2>
                   <div class="flex flex-col justify-center">
@@ -147,29 +147,29 @@ const locale = "en";
     </main>
     <section
       id="about"
-      class="flex flex-col min-h-screen justify-center snap-center"
+      class="flex min-h-screen snap-center flex-col justify-center"
     >
-      <div class="flex flex-col md:flex-row justify-center items-center">
+      <div class="flex flex-col items-center justify-center md:flex-row">
         <Image
-          class="h-56 w-56 mb-4 md:mb-0 md:h-80 md:w-80 rounded-full md:mr-12"
+          class="mb-4 h-56 w-56 rounded-full md:mb-0 md:mr-12 md:h-80 md:w-80"
           src={profilePhoto}
           alt="Daniel Locatelli profile photo"
           loading="eager"
         />
         <div class="px-8">
           <h1
-            class="text-center md:text-left font-title text-3xl md:text-6xl mb-2 md:mb-6 pointer-events-none animate-fade"
+            class="pointer-events-none mb-2 animate-fade text-center font-title text-3xl md:mb-6 md:text-left md:text-6xl"
           >
             Daniel Locatelli
           </h1>
           <p
-            class="text-center md:text-left text-xl md:text-3xl font-body mb-4"
+            class="mb-4 text-center font-body text-xl md:text-left md:text-3xl"
           >
             Specialized AECO Software Solutions
           </p>
           <p class="text-l font-body">My Expertise:</p>
           <ul
-            class="text-l text-balance font-body list-disc md:list-inside mb-4 [&>*]:mt-2"
+            class="text-l mb-4 list-disc text-balance font-body md:list-inside [&>*]:mt-2"
           >
             <li>Custom plugins that seamlessly integrate with your tools</li>
             <li>Scalable web apps that can be accessed anywhere</li>
@@ -180,7 +180,7 @@ const locale = "en";
           </ul>
           <a
             href={siteConfig.whatsapp}
-            class="flex md:inline-block text-base justify-center md:justify-start font-body py-2 px-5 rounded-md bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-green-400 to-green-500 text-black hover:shadow-[3px_3px_rgba(0,_98,_90,_0.4),_7px_7px_rgba(0,_98,_90,_0.3),_11px_11px_rgba(0,_98,_90,_0.2)] transition"
+            class="flex justify-center rounded-md bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-green-400 to-green-500 px-5 py-2 font-body text-base text-black transition hover:shadow-[3px_3px_rgba(0,_98,_90,_0.4),_7px_7px_rgba(0,_98,_90,_0.3),_11px_11px_rgba(0,_98,_90,_0.2)] md:inline-block md:justify-start"
             target="_blank">Let's talk</a
           >
         </div>

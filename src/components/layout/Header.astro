@@ -25,13 +25,13 @@ const { locale, slug } = Astro.props as Props;
 ---
 
 <header
-  class="fixed w-full top-0 z-40 bg-black/[.5] backdrop-blur group py-2 px-4 flex justify-between sm:justify-center sm:items-center"
+  class="group fixed top-0 z-40 flex w-full justify-between bg-black/[.5] px-4 py-2 backdrop-blur sm:items-center sm:justify-center"
   id="main-header"
 >
   <div class="flex w-full sm:max-w-3xl">
     <a
       aria-current={url.pathname === "/" ? "page" : false}
-      class="inline-flex items-center sm:relative sm:inline-block h-10 w-12"
+      class="inline-flex h-10 w-12 items-center sm:relative sm:inline-block"
       href={locale === "en" ? "/" : "/" + locale}
     >
       <Image
@@ -43,7 +43,7 @@ const { locale, slug } = Astro.props as Props;
     </a>
     <nav
       aria-label="Main menu"
-      class="relative grow hidden flex-col items-end pt-6 group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:mt-1 sm:flex sm:flex-row sm:items-center sm:py-0 font-body text-lg sm:text-base sm:justify-around"
+      class="relative hidden grow flex-col items-end pt-6 font-body text-lg group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:mt-1 sm:flex sm:flex-row sm:items-center sm:justify-around sm:py-0 sm:text-base"
       id="navigation-menu"
     >
       {
@@ -52,7 +52,7 @@ const { locale, slug } = Astro.props as Props;
             page.Name !== "Homepage" && (
               <a
                 aria-current={url.pathname === page.Slug ? "page" : false}
-                class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+                class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
                 data-astro-prefetch
                 href={
                   locale === "en"
@@ -71,7 +71,7 @@ const { locale, slug } = Astro.props as Props;
       {
         locale === "en" && (
           <a
-            class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+            class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
             href={"/#about"}
           >
             About
@@ -81,7 +81,7 @@ const { locale, slug } = Astro.props as Props;
       {
         locale === "de" && (
           <a
-            class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+            class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
             href={"/de/#about"}
           >
             Über
@@ -91,7 +91,7 @@ const { locale, slug } = Astro.props as Props;
       {
         locale === "pt" && (
           <a
-            class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+            class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
             href={"/pt/#about"}
           >
             Sobre
@@ -102,7 +102,7 @@ const { locale, slug } = Astro.props as Props;
       <a
         title={locale === "en" ? "Mudar para Português" : "Change to English"}
         href={locale === "en" ? "/pt/" + slug : "/" + slug}
-        class="sm:px-3 py-3 underline-offset-2 sm:py-0 sm:hover:underline"
+        class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
       >
         <Image
           src={globe}
@@ -114,7 +114,7 @@ const { locale, slug } = Astro.props as Props;
       </a>
     </nav>
   </div>
-  <mobile-button class="flex items-center h-10">
+  <mobile-button class="flex h-10 items-center">
     <button
       aria-expanded="false"
       aria-haspopup="menu"
