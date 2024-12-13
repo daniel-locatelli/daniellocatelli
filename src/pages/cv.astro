@@ -19,7 +19,9 @@ const skillProgramming = await db.select().from(SkillProgramming);
     slug: "cv",
   }}
 >
-  <Container class="relative flex flex-col gap-8 text-base [&_h2]:text-3xl">
+  <Container
+    class="relative flex flex-col gap-8 font-body text-base [&_h2]:text-3xl"
+  >
     <div class="flex gap-6 pt-28">
       <Image
         src={profilePhoto}
@@ -28,7 +30,7 @@ const skillProgramming = await db.select().from(SkillProgramming);
       />
       <div class="flex flex-col justify-center gap-2">
         <div class="flex flex-col gap-2">
-          <h1 class="text-6xl">Daniel Locatelli</h1>
+          <h1 class="font-title text-7xl">Daniel Locatelli</h1>
           <p class="text-2xl">AECO Software developer</p>
         </div>
         <div class="flex gap-2 text-sm">

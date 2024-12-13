@@ -472,8 +472,16 @@ export async function downloadImage(url: URL) {
       stream = stream.pipe(rotate);
     }
 
-    console.log(`Downloading file:\n${filepath}`);
-    return pipeline(stream, new ExifTransformer(), writeStream);
+    try {
+      console.log(`Downloading file:\n${filepath}`);
+      await pipeline(stream, new ExifTransformer(), writeStream);
+      return Promise.resolve();
+    } catch (error) {
+      console.log("\nError while downloading file\n" + error);
+      writeStream.end();
+      fs.unlink(filepath, () => {}); // Remove partial file
+      return Promise.resolve();
+    }
   } catch (error) {
     console.log("\nError requesting image\n" + error);
     return Promise.resolve();
@@ -481,34 +489,13 @@ export async function downloadImage(url: URL) {
 }
 
 export async function downloadPublicImage(url: URL) {
-  let res!: AxiosResponse;
-  try {
-    res = await axios({
-      method: "get",
-      url: url.toString(),
-      timeout: REQUEST_TIMEOUT_MS,
-      responseType: "stream",
-    });
-  } catch (error) {
-    console.log("\nError requesting image\n" + error);
-    return Promise.resolve();
-  }
-  console.log("\n===== Starting Public Image Download =====");
-
-  if (!res || res.status != 200) {
-    console.log(res);
-    return Promise.resolve();
-  }
-
   const dir = "./public/media/" + url.pathname.split("/").slice(-2)[0];
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
-  } else {
   }
 
   // Changing file extension
   const fileNameFromUrl = urlToFileName(url);
-
   const fileNameWithSlug = modifyFileName(fileNameFromUrl, {
     newExtension: "jpg",
   });
@@ -524,61 +511,78 @@ export async function downloadPublicImage(url: URL) {
   if (fs.existsSync(imagePath) && fs.existsSync(imageBgPath)) {
     console.log(`Image already exists:\n${imagePath}`);
     console.log(`Image already exists:\n${imageBgPath}`);
-    return;
-  }
-
-  const writeStream = createWriteStream(imagePath);
-  const writeStreamBg = createWriteStream(imageBgPath);
-
-  let stream = res.data;
-  let streamBg = res.data;
-
-  if (res.headers["content-type"] === "image/jpeg") {
-    stream = stream.pipe(sharp().resize({ width: 800 }).rotate());
-    streamBg = streamBg.pipe(sharp().resize({ width: 20 }).rotate());
-  } else {
-    stream = stream.pipe(
-      sharp().resize({ width: 800 }).jpeg().flatten({ background: "#000000" }),
-    );
-    streamBg = streamBg.pipe(
-      sharp().resize({ width: 20 }).jpeg().flatten({ background: "#000000" }),
-    );
-  }
-  try {
-    console.log(`Downloading file:\n${imagePath}`);
-    console.log(`Downloading file:\n${imageBgPath}`);
-    return (
-      pipeline(stream, new ExifTransformer(), writeStream),
-      pipeline(streamBg, new ExifTransformer(), writeStreamBg)
-    );
-  } catch (error) {
-    console.log("\nError while downloading file\n" + error);
-    writeStream.end();
-    writeStreamBg.end();
     return Promise.resolve();
   }
-}
 
-export async function downloadVideo(url: URL) {
-  let res;
   try {
-    res = await axios({
+    const res = await axios({
       method: "get",
       url: url.toString(),
       timeout: REQUEST_TIMEOUT_MS,
       responseType: "stream",
     });
+
+    console.log("\n===== Starting Public Image Download =====");
+
+    if (!res || res.status != 200) {
+      console.log(res);
+      return Promise.resolve();
+    }
+
+    const writeStream = createWriteStream(imagePath);
+    const writeStreamBg = createWriteStream(imageBgPath);
+
+    let stream = res.data;
+    let streamBg = res.data;
+
+    const isJpeg = res.headers["content-type"] === "image/jpeg";
+
+    stream = stream.pipe(
+      isJpeg
+        ? sharp().resize({ width: 800 }).rotate()
+        : sharp()
+            .resize({ width: 800 })
+            .jpeg()
+            .flatten({ background: "#000000" }),
+    );
+
+    streamBg = streamBg.pipe(
+      isJpeg
+        ? sharp().resize({ width: 20 }).rotate()
+        : sharp()
+            .resize({ width: 20 })
+            .jpeg()
+            .flatten({ background: "#000000" }),
+    );
+
+    try {
+      console.log(`Downloading files:\n${imagePath}\n${imageBgPath}`);
+
+      // Use Promise.all to handle both pipelines concurrently
+      await Promise.all([
+        pipeline(stream, new ExifTransformer(), writeStream),
+        pipeline(streamBg, new ExifTransformer(), writeStreamBg),
+      ]);
+
+      return Promise.resolve();
+    } catch (error) {
+      console.log("\nError while downloading files\n" + error);
+      writeStream.end();
+      writeStreamBg.end();
+
+      // Remove partial files
+      fs.unlink(imagePath, () => {});
+      fs.unlink(imageBgPath, () => {});
+
+      return Promise.resolve();
+    }
   } catch (error) {
-    console.log("\nError requesting file\n" + error);
+    console.log("\nError requesting image\n" + error);
     return Promise.resolve();
   }
-  console.log("\n===== Starting File Download =====");
+}
 
-  if (!res || res.status !== 200) {
-    console.log(res);
-    return Promise.resolve();
-  }
-
+export async function downloadVideo(url: URL) {
   const dir = "./public/media/" + url.pathname.split("/").slice(-2)[0];
 
   if (!fs.existsSync(dir)) {
@@ -586,25 +590,44 @@ export async function downloadVideo(url: URL) {
   }
 
   const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
-  const fileNameWithSlug = modifyFileName(fileName, {
-    // newBeginning: slug.split("/").pop() + "_",
-  });
+  const fileNameWithSlug = modifyFileName(fileName);
 
   const filepath = `${dir}/${fileNameWithSlug}`;
 
   if (fs.existsSync(filepath)) {
     console.log(`File already exists:\n${filepath}`);
-    return;
+    return Promise.resolve();
   }
 
-  const writeStream = createWriteStream(filepath);
-
   try {
-    console.log(`Downloading file:\n${filepath}`);
-    return pipeline(res.data, writeStream);
+    const res = await axios({
+      method: "get",
+      url: url.toString(),
+      timeout: REQUEST_TIMEOUT_MS,
+      responseType: "stream",
+    });
+
+    console.log("\n===== Starting File Download =====");
+
+    if (!res || res.status !== 200) {
+      console.log(res);
+      return Promise.resolve();
+    }
+
+    const writeStream = createWriteStream(filepath);
+
+    try {
+      console.log(`Downloading file:\n${filepath}`);
+      await pipeline(res.data, writeStream);
+      return Promise.resolve();
+    } catch (error) {
+      console.log("\nError while downloading file\n" + error);
+      writeStream.end();
+      fs.unlink(filepath, () => {}); // Remove partial file
+      return Promise.resolve();
+    }
   } catch (error) {
-    console.log("\nError while downloading file\n" + error);
-    writeStream.end();
+    console.log("\nError requesting file\n" + error);
     return Promise.resolve();
   }
 }
