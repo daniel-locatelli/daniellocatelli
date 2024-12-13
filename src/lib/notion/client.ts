@@ -607,6 +607,55 @@ export async function downloadVideo(url: URL) {
       responseType: "stream",
     });
 
+    console.log("\n===== Starting Video Download =====");
+
+    if (!res || res.status !== 200) {
+      console.log(res);
+      return Promise.resolve();
+    }
+
+    const writeStream = createWriteStream(filepath);
+
+    try {
+      console.log(`Downloading video:\n${filepath}`);
+      await pipeline(res.data, writeStream);
+      return Promise.resolve();
+    } catch (error) {
+      console.log("\nError while downloading video\n" + error);
+      writeStream.end();
+      fs.unlink(filepath, () => {}); // Remove partial file
+      return Promise.resolve();
+    }
+  } catch (error) {
+    console.log("\nError requesting file\n" + error);
+    return Promise.resolve();
+  }
+}
+
+export async function downloadFile(url: URL) {
+  const dir = "./public/media/" + url.pathname.split("/").slice(-2)[0];
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+
+  const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
+  const filepath = `${dir}/${fileName}`;
+
+  if (fs.existsSync(filepath)) {
+    console.log(`File already exists:\n${filepath}`);
+    return Promise.resolve();
+  }
+
+  let res;
+  try {
+    res = await axios({
+      method: "get",
+      url: url.toString(),
+      timeout: REQUEST_TIMEOUT_MS,
+      responseType: "stream",
+    });
+
     console.log("\n===== Starting File Download =====");
 
     if (!res || res.status !== 200) {
@@ -628,56 +677,6 @@ export async function downloadVideo(url: URL) {
     }
   } catch (error) {
     console.log("\nError requesting file\n" + error);
-    return Promise.resolve();
-  }
-}
-
-export async function downloadFile(url: URL) {
-  let res;
-  try {
-    res = await axios({
-      method: "get",
-      url: url.toString(),
-      timeout: REQUEST_TIMEOUT_MS,
-      responseType: "stream",
-    });
-  } catch (error) {
-    console.log("\nError requesting file\n" + error);
-    return Promise.resolve();
-  }
-  console.log("\n===== Starting File Download =====");
-
-  if (!res || res.status !== 200) {
-    console.log(res);
-    return Promise.resolve();
-  }
-
-  const dir = "./public/media/" + url.pathname.split("/").slice(-2)[0];
-
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
-  }
-
-  //// Check if this is working. Maybe it is creating repetitions
-  //// computational-design-strategies-metaball_metaball-widescreen-bg.jpg
-  //// metaball_metaball-widescreen-bg.jpg
-  const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
-
-  const filepath = `${dir}/${fileName}`;
-
-  if (fs.existsSync(filepath)) {
-    console.log(`File already exists:\n${filepath}`);
-    return;
-  }
-
-  const writeStream = createWriteStream(filepath);
-
-  try {
-    console.log(`Downloading file:\n${filepath}`);
-    return pipeline(res.data, writeStream);
-  } catch (error) {
-    console.log("\nError while downloading file\n" + error);
-    writeStream.end();
     return Promise.resolve();
   }
 }
