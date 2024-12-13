@@ -63,7 +63,6 @@ let databasesCache: Database[] | null = null;
 const numberOfRetry = 3;
 
 export async function getAllDatabases(): Promise<Database[]> {
-  // console.log("\n===== Getting databases =====");
   if (databasesCache !== null) {
     return Promise.resolve(databasesCache);
   }
@@ -111,7 +110,6 @@ export async function getDatabasePages(
   databaseId: string,
   databaseTitle: string,
 ): Promise<Page[]> {
-  // console.log("\n===== Getting all pages =====");
   const params: requestParams.QueryDatabase = {
     database_id: databaseId,
     filter: {
@@ -170,7 +168,6 @@ export async function getDatabasePages(
       },
     );
     results = results.concat(res.results);
-    // console.dir(results);
 
     if (!res.has_more) {
       break;
@@ -227,60 +224,6 @@ export async function getPagesByTag(
     .filter((post) => post.Tags.find((tag) => tag.name === tagName))
     .slice(0, pageSize);
 }
-
-// This was used on the old version with just one blog
-// page starts from 1 not 0
-// export async function getPostsByPage(page: number): Promise<Page[]> {
-//   if (page < 1) {
-//     return [];
-//   }
-
-//   const allPosts = await getDatabasePages();
-
-//   const startIndex = (page - 1) * NUMBER_OF_POSTS_PER_PAGE;
-//   const endIndex = startIndex + NUMBER_OF_POSTS_PER_PAGE;
-
-//   return allPosts.slice(startIndex, endIndex);
-// }
-
-// page starts from 1 not 0
-// export async function getPostsByTagAndPage(
-//   tagName: string,
-//   page: number
-// ): Promise<Page[]> {
-//   if (page < 1) {
-//     return [];
-//   }
-
-//   const allPosts = await getDatabasePages();
-//   const posts = allPosts.filter((post) =>
-//     post.Tags.find((tag) => tag.name === tagName)
-//   );
-
-//   const startIndex = (page - 1) * NUMBER_OF_POSTS_PER_PAGE;
-//   const endIndex = startIndex + NUMBER_OF_POSTS_PER_PAGE;
-
-//   return posts.slice(startIndex, endIndex);
-// }
-
-// export async function getNumberOfPages(): Promise<number> {
-//   const allPosts = await getDatabasePages();
-//   return (
-//     Math.floor(allPosts.length / NUMBER_OF_POSTS_PER_PAGE) +
-//     (allPosts.length % NUMBER_OF_POSTS_PER_PAGE > 0 ? 1 : 0)
-//   );
-// }
-
-// export async function getNumberOfPagesByTag(tagName: string): Promise<number> {
-//   const allPosts = await getDatabasePages();
-//   const posts = allPosts.filter((post) =>
-//     post.Tags.find((tag) => tag.name === tagName)
-//   );
-//   return (
-//     Math.floor(posts.length / NUMBER_OF_POSTS_PER_PAGE) +
-//     (posts.length % NUMBER_OF_POSTS_PER_PAGE > 0 ? 1 : 0)
-//   );
-// }
 
 export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
   let results: responses.BlockObject[] = [];
