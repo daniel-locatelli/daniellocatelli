@@ -16,8 +16,6 @@ export default (): AstroIntegration => ({
   name: "all-files-downloader",
   hooks: {
     "astro:build:start": async () => {
-      const limit = pLimit(3);
-
       let databases: Array<Database>;
       databases = await getAllDatabases();
 
@@ -34,21 +32,14 @@ export default (): AstroIntegration => ({
             const url = new URL(page.Cover.Url);
 
             // Wrap tasks with concurrency limit
-            downloadTasks.push(
-              limit(async () => {
-                await Promise.all([
-                  downloadImage(url),
-                  downloadPublicImage(url),
-                ]);
-              }),
-            );
+            downloadTasks.push(downloadImage(url));
+            downloadTasks.push(downloadPublicImage(url));
           } catch (error) {
             console.log("Invalid cover image URL:", error);
           }
         });
       });
 
-      // Download blocks content
       // Process block contents
       for (const database of databases) {
         if (database.Title.length === 0) continue;
@@ -89,11 +80,11 @@ export default (): AstroIntegration => ({
 
                 let downloadTask: Promise<void>;
                 if (resolvedBlock.Image) {
-                  downloadTask = limit(() => downloadImage(url));
+                  downloadTask = downloadImage(url);
                 } else if (resolvedBlock.File) {
-                  downloadTask = limit(() => downloadFile(url));
+                  downloadTask = downloadFile(url);
                 } else if (resolvedBlock.Video) {
-                  downloadTask = limit(() => downloadVideo(url));
+                  downloadTask = downloadVideo(url);
                 } else {
                   continue;
                 }
