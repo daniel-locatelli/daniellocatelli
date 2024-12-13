@@ -434,55 +434,48 @@ export async function getAllDatabaseTags(
 }
 
 export async function downloadImage(url: URL) {
-  let res!: AxiosResponse;
+  const dir = "./src/assets/notion/" + url.pathname.split("/").slice(-2)[0];
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+
+  const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
+  const fileNameWithSlug = modifyFileName(fileName, {});
+  const filepath = `${dir}/${fileNameWithSlug}`;
+
+  if (fs.existsSync(filepath)) {
+    console.log(`File already exists:\n${filepath}`);
+    return Promise.resolve();
+  }
+
   try {
-    res = await axios({
+    const res = await axios({
       method: "get",
       url: url.toString(),
       timeout: REQUEST_TIMEOUT_MS,
       responseType: "stream",
     });
-  } catch (error) {
-    console.log("\nError requesting image\n" + error);
-    return Promise.resolve();
-  }
-  console.log("\n===== Starting Image Download =====");
 
-  if (!res || res.status != 200) {
-    console.log(res);
-    return Promise.resolve();
-  }
+    if (!res || res.status != 200) {
+      console.log(res);
+      return Promise.resolve();
+    }
 
-  const dir = "./src/assets/notion/" + url.pathname.split("/").slice(-2)[0];
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
-  } else {
-  }
+    console.log("\n===== Starting Image Download =====");
 
-  const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
-  const fileNameWithSlug = modifyFileName(fileName, {});
+    const writeStream = createWriteStream(filepath);
+    const rotate = sharp().rotate();
 
-  const filepath = `${dir}/${fileNameWithSlug}`;
+    let stream = res.data;
 
-  if (fs.existsSync(filepath)) {
-    console.log(`File already exists:\n${filepath}`);
-    return;
-  }
+    if (res.headers["content-type"] === "image/jpeg") {
+      stream = stream.pipe(rotate);
+    }
 
-  const writeStream = createWriteStream(filepath);
-  const rotate = sharp().rotate();
-
-  let stream = res.data;
-
-  if (res.headers["content-type"] === "image/jpeg") {
-    stream = stream.pipe(rotate);
-  }
-  try {
     console.log(`Downloading file:\n${filepath}`);
     return pipeline(stream, new ExifTransformer(), writeStream);
   } catch (error) {
-    console.log("\nError while downloading file\n" + error);
-    writeStream.end();
+    console.log("\nError requesting image\n" + error);
     return Promise.resolve();
   }
 }
@@ -517,17 +510,14 @@ export async function downloadPublicImage(url: URL) {
   const fileNameFromUrl = urlToFileName(url);
 
   const fileNameWithSlug = modifyFileName(fileNameFromUrl, {
-    // newBeginning: slug.split("/").pop() + "_",
     newExtension: "jpg",
   });
   const fileNameBgWithSlug = modifyFileName(fileNameFromUrl, {
-    // newBeginning: slug.split("/").pop() + "_",
     newEnd: "-bg",
     newExtension: "jpg",
   });
 
   // One of the places I add the slug to the image name
-
   const imagePath = `${dir}/${fileNameWithSlug}`;
   const imageBgPath = `${dir}/${fileNameBgWithSlug}`;
 
