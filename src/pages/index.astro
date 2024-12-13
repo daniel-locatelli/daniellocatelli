@@ -24,9 +24,6 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
 );
 
-// Cover image
-// const coverImage = await importCoverImage(homepage, images);
-
 let coverUrl = "";
 if (homepage.Cover) {
   const url = new URL(homepage.Cover.Url);
@@ -48,7 +45,6 @@ otherPages.map((page) => {
     const dir = "media/" + url.pathname.split("/").slice(-2)[0];
     const fileNameConverted = urlToFileName(url);
     const fileNameBgWithSlug = modifyFileName(fileNameConverted, {
-      // newBeginning: page.Slug.split("/").pop() + "_",
       newEnd: "-bg",
       newExtension: "jpg",
     });

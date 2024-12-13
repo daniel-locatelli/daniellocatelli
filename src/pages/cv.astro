@@ -1,0 +1,103 @@
+---
+import Base from "@/layouts/Base.astro";
+import profilePhoto from "@/assets/daniel-locatelli.png";
+import { Image } from "astro:assets";
+import Container from "@/components/Container.astro";
+---
+
+<Base
+  meta={{
+    title: "Daniel Locatelli CV",
+    description:
+      "Check my full CV, including work, education, lectures, publications, certificates, and more.",
+    coverAlt: "Daniel Locatelli's profile photo.",
+    coverImage: "@/assets/daniel-locatelli.png",
+    locale: "en",
+    slug: "cv",
+  }}
+>
+  <Container>
+    <div>
+      <Image
+        src={profilePhoto}
+        alt="Daniel Locatelli's profile photo."
+        class="size-60 rounded-full"
+      />
+      <div>
+        <div>
+          <h1>Daniel Locatelli</h1>
+          <p>AEC Software developer</p>
+        </div>
+        <div>
+          <p>quote</p>
+          <address>Adress</address>
+        </div>
+      </div>
+    </div>
+    <section>
+      <h2>Summary</h2>
+      <p>Text</p>
+    </section>
+    <section>
+      <h2>Work Experience</h2>
+      <div>
+        <p>date</p>
+        <div>
+          <h3>Work title</h3>
+          <p>Work place</p>
+          <ul>
+            <li>Work item description</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Education</h2>
+      <div>
+        <p>date</p>
+        <div>
+          <h3>Education title</h3>
+          <p>Education place</p>
+          <p>Education description</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Publication</h2>
+      <div>
+        <p>date</p>
+        <div>
+          <h3>Publication title</h3>
+          <p>Location</p>
+          <p>Authors</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>My Lecture, Talks and Workshops</h2>
+      <div>
+        <p>date</p>
+        <div>
+          <h3>Title</h3>
+          <p>Location</p>
+          <p>Description</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Certificates</h2>
+      <div>
+        <p>date</p>
+        <div>
+          <h3>Title</h3>
+          <p>Location</p>
+          <p>Description</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2></h2>
+    </section>
+  </Container>
+</Base>

@@ -29,10 +29,7 @@ export default (): AstroIntegration => ({
       }
 
       // console.log("\nDownloading cover image");
-      return (
-        downloadImage(url, "database-cover"),
-        downloadPublicImage(url, "database-cover")
-      );
+      return downloadImage(url), downloadPublicImage(url);
     },
   },
 });

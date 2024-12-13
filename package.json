@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/db": "^0.14.3",
     "@astrojs/prism": "^3.2.0",
     "@astrojs/rss": "^4.0.10",
     "@astrojs/sitemap": "^3.2.1",
@@ -46,7 +47,7 @@
     "@types/node": "^22.7.2",
     "astro-icon": "^1.1.0",
     "prettier": "^3.4.2",
-    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.9"
   }
 }

@@ -37,7 +37,7 @@ const processQueue = async () => {
     // Wait until remaining time in the second elapses (if any)
     if (tasks.length > 0) {
       await new Promise((resolve) =>
-        setTimeout(resolve, 1000 - (Date.now() - startTime))
+        setTimeout(resolve, 1000 - (Date.now() - startTime)),
       );
     }
 
@@ -78,11 +78,11 @@ export default (): AstroIntegration => ({
 
             // Add the download task to the queue
             downloadQueue.push(async () => {
-              await downloadImage(url, slug);
-              await downloadPublicImage(url, slug);
+              await downloadImage(url);
+              await downloadPublicImage(url);
             });
           });
-        })
+        }),
       );
 
       // Download blocks content
@@ -134,7 +134,7 @@ export default (): AstroIntegration => ({
                     let type!: string;
                     try {
                       url = new URL(
-                        (block.Image || block.File || block.Video)!.File!.Url
+                        (block.Image || block.File || block.Video)!.File!.Url,
                       );
                       if (block.Image) {
                         type = "image";
@@ -151,14 +151,14 @@ export default (): AstroIntegration => ({
                       url,
                       type,
                     });
-                  })
+                  }),
                 )
                 .map((promise) =>
                   promise.then(async ({ url, type }) => {
                     if (type === "image") {
                       // Add the download task to the queue
                       downloadQueue.push(async () => {
-                        await downloadImage(url, slug);
+                        await downloadImage(url);
                       });
                     } else if (type === "file") {
                       downloadQueue.push(async () => {
@@ -166,14 +166,14 @@ export default (): AstroIntegration => ({
                       });
                     } else if (type === "video") {
                       downloadQueue.push(async () => {
-                        await downloadVideo(url, slug);
+                        await downloadVideo(url);
                       });
                     }
-                  })
-                )
+                  }),
+                ),
             );
           });
-        })
+        }),
       );
 
       // Process any remaining tasks in the queue

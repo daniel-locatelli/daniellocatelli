@@ -14,12 +14,6 @@ import arrowRight from "../../assets/arrow-right.svg";
 import Footer from "@/components/layout/Footer.astro";
 import profilePhoto from "../../assets/daniel-locatelli.png";
 
-interface Props {
-  page: Page;
-}
-
-const { page } = Astro.props as Props;
-
 let pagesDatabase = await getDatabaseByName("Pages");
 const homepage = pagesDatabase.Pages.find((page) => page.Name === "Homepage")!;
 const otherPages: Page[] = pagesDatabase.Pages.filter(

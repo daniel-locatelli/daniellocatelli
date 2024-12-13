@@ -58,10 +58,6 @@ const notion = new Client({
   auth: NOTION_API_SECRET,
 });
 
-interface PagesCacheObject {
-  [key: string]: any;
-}
-
 let databasesCache: Database[] | null = null;
 
 const numberOfRetry = 3;
@@ -87,8 +83,8 @@ export async function getAllDatabases(): Promise<Database[]> {
   try {
     databasesCache = await Promise.all(
       databaseObjectArray.map(
-        async (databaseObject) => await _buildDatabase(databaseObject)
-      )
+        async (databaseObject) => await _buildDatabase(databaseObject),
+      ),
     );
     return databasesCache;
   } catch (error) {
@@ -98,7 +94,7 @@ export async function getAllDatabases(): Promise<Database[]> {
 }
 
 export async function getDatabaseByName(
-  databaseName: string
+  databaseName: string,
 ): Promise<Database> {
   let databases = await getAllDatabases();
   let database: Database;
@@ -113,7 +109,7 @@ export async function getDatabaseByName(
 
 export async function getDatabasePages(
   databaseId: string,
-  databaseTitle: string
+  databaseTitle: string,
 ): Promise<Page[]> {
   // console.log("\n===== Getting all pages =====");
   const params: requestParams.QueryDatabase = {
@@ -158,7 +154,7 @@ export async function getDatabasePages(
       async (bail) => {
         try {
           return (await notion.databases.query(
-            params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+            params as any, // eslint-disable-line @typescript-eslint/no-explicit-any
           )) as responses.QueryDatabase;
         } catch (error: unknown) {
           if (error instanceof APIResponseError) {
@@ -171,7 +167,7 @@ export async function getDatabasePages(
       },
       {
         retries: numberOfRetry,
-      }
+      },
     );
     results = results.concat(res.results);
     // console.dir(results);
@@ -191,7 +187,7 @@ export async function getDatabasePages(
 export async function getPages(
   pageSize = 10,
   databaseId: string,
-  databaseTitle: string
+  databaseTitle: string,
 ): Promise<Page[]> {
   const allPosts = await getDatabasePages(databaseId, databaseTitle);
   return allPosts.slice(0, pageSize);
@@ -200,7 +196,7 @@ export async function getPages(
 export async function getPageBySlug(
   slug: string,
   databaseId: string,
-  databaseTitle: string
+  databaseTitle: string,
 ): Promise<Page | null> {
   const allPosts = await getDatabasePages(databaseId, databaseTitle);
   return allPosts.find((post) => post.Slug === slug) || null;
@@ -212,7 +208,7 @@ export async function getPageById(pageId: string): Promise<Page | null> {
   let page: Page | undefined;
   page = allDatabases
     .map((database) =>
-      database.Pages.find((page: Page) => page.PageId === pageId)
+      database.Pages.find((page: Page) => page.PageId === pageId),
     )
     .find((page) => page !== undefined);
   return page !== undefined ? page : null;
@@ -222,7 +218,7 @@ export async function getPagesByTag(
   tagName: string,
   pageSize = 10,
   databaseId: string,
-  databaseTitle: string
+  databaseTitle: string,
 ): Promise<Page[]> {
   if (!tagName) return [];
 
@@ -301,7 +297,7 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
         async (bail) => {
           try {
             return (await notion.blocks.children.list(
-              params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+              params as any, // eslint-disable-line @typescript-eslint/no-explicit-any
             )) as responses.RetrieveBlockChildrenResponse;
           } catch (error: unknown) {
             if (error instanceof APIResponseError) {
@@ -314,7 +310,7 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
         },
         {
           retries: numberOfRetry,
-        }
+        },
       );
 
       results = results.concat(res.results);
@@ -397,7 +393,7 @@ export async function getBlock(blockId: string): Promise<Block> {
     async (bail) => {
       try {
         return (await notion.blocks.retrieve(
-          params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+          params as any, // eslint-disable-line @typescript-eslint/no-explicit-any
         )) as responses.RetrieveBlockResponse;
       } catch (error: unknown) {
         if (error instanceof APIResponseError) {
@@ -410,7 +406,7 @@ export async function getBlock(blockId: string): Promise<Block> {
     },
     {
       retries: numberOfRetry,
-    }
+    },
   );
 
   return _buildBlock(res);
@@ -418,7 +414,7 @@ export async function getBlock(blockId: string): Promise<Block> {
 
 export async function getAllDatabaseTags(
   databaseId: string,
-  databaseTitle: string
+  databaseTitle: string,
 ): Promise<SelectProperty[]> {
   const allPosts = await getDatabasePages(databaseId, databaseTitle);
 
@@ -433,20 +429,11 @@ export async function getAllDatabaseTags(
       return acc;
     }, [] as SelectProperty[])
     .sort((a: SelectProperty, b: SelectProperty) =>
-      a.name.localeCompare(b.name)
+      a.name.localeCompare(b.name),
     );
 }
 
-async function checkFileExists(file: fs.PathLike) {
-  try {
-    await fs.promises.access(file, fs.constants.F_OK);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-export async function downloadImage(url: URL, slug: string) {
+export async function downloadImage(url: URL) {
   let res!: AxiosResponse;
   try {
     res = await axios({
@@ -473,9 +460,7 @@ export async function downloadImage(url: URL, slug: string) {
   }
 
   const fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]);
-  const fileNameWithSlug = modifyFileName(fileName, {
-    // newBeginning: slug.split("/").pop() + "_",
-  });
+  const fileNameWithSlug = modifyFileName(fileName, {});
 
   const filepath = `${dir}/${fileNameWithSlug}`;
 
@@ -502,7 +487,7 @@ export async function downloadImage(url: URL, slug: string) {
   }
 }
 
-export async function downloadPublicImage(url: URL, slug: string) {
+export async function downloadPublicImage(url: URL) {
   let res!: AxiosResponse;
   try {
     res = await axios({
@@ -563,10 +548,10 @@ export async function downloadPublicImage(url: URL, slug: string) {
     streamBg = streamBg.pipe(sharp().resize({ width: 20 }).rotate());
   } else {
     stream = stream.pipe(
-      sharp().resize({ width: 800 }).jpeg().flatten({ background: "#000000" })
+      sharp().resize({ width: 800 }).jpeg().flatten({ background: "#000000" }),
     );
     streamBg = streamBg.pipe(
-      sharp().resize({ width: 20 }).jpeg().flatten({ background: "#000000" })
+      sharp().resize({ width: 20 }).jpeg().flatten({ background: "#000000" }),
     );
   }
   try {
@@ -584,7 +569,7 @@ export async function downloadPublicImage(url: URL, slug: string) {
   }
 }
 
-export async function downloadVideo(url: URL, slug: string) {
+export async function downloadVideo(url: URL) {
   let res;
   try {
     res = await axios({
@@ -1095,7 +1080,7 @@ async function _getTableRows(blockId: string): Promise<TableRow[]> {
         async (bail) => {
           try {
             return (await notion.blocks.children.list(
-              params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+              params as any, // eslint-disable-line @typescript-eslint/no-explicit-any
             )) as responses.RetrieveBlockChildrenResponse;
           } catch (error: unknown) {
             if (error instanceof APIResponseError) {
@@ -1108,7 +1093,7 @@ async function _getTableRows(blockId: string): Promise<TableRow[]> {
         },
         {
           retries: numberOfRetry,
-        }
+        },
       );
 
       results = results.concat(res.results);
@@ -1160,7 +1145,7 @@ async function _getColumns(blockId: string): Promise<Column[]> {
         async (bail) => {
           try {
             return (await notion.blocks.children.list(
-              params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+              params as any, // eslint-disable-line @typescript-eslint/no-explicit-any
             )) as responses.RetrieveBlockChildrenResponse;
           } catch (error: unknown) {
             if (error instanceof APIResponseError) {
@@ -1173,7 +1158,7 @@ async function _getColumns(blockId: string): Promise<Column[]> {
         },
         {
           retries: numberOfRetry,
-        }
+        },
       );
 
       results = results.concat(res.results);
@@ -1198,7 +1183,7 @@ async function _getColumns(blockId: string): Promise<Column[]> {
       };
 
       return column;
-    })
+    }),
   );
 }
 
@@ -1213,7 +1198,7 @@ async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
       originalBlock = await getBlock(block.SyncedBlock.SyncedFrom.BlockId);
     } catch (err) {
       console.log(
-        `Could not retrieve the original synced_block. error: ${err}`
+        `Could not retrieve the original synced_block. error: ${err}`,
       );
       return [];
     }
@@ -1228,16 +1213,8 @@ function _validPageObject(pageObject: responses.PageObject): boolean {
   return !!prop.Name.title && prop.Name.title.length > 0;
 }
 
-function _validDatabase(databaseObject: DatabaseObject): boolean {
-  if (databaseObject.title && databaseObject.description && databaseObject.id) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 async function _buildDatabase(
-  databaseObject: DatabaseObject
+  databaseObject: DatabaseObject,
 ): Promise<Database> {
   let title: string;
   try {
@@ -1311,7 +1288,7 @@ async function _buildDatabase(
 
 function _buildPage(
   pageObject: responses.PageObject,
-  databaseTitle: string
+  databaseTitle: string,
 ): Page {
   const prop = pageObject.properties;
   if (
@@ -1322,7 +1299,7 @@ function _buildPage(
     !prop.hasOwnProperty("Tags")
   ) {
     throw new Error(
-      "Database does not have one of the mandatory columns: Name(Aa), CoverAlt(text), Description(text), Tags(Multi-select)"
+      "Database does not have one of the mandatory columns: Name(Aa), CoverAlt(text), Description(text), Tags(Multi-select)",
     );
   }
 
@@ -1370,7 +1347,7 @@ function _buildPage(
   } catch (error) {
     console.error(
       "Error building a page while getting the cover alt text",
-      error
+      error,
     );
     throw error;
   }
@@ -1399,11 +1376,6 @@ function _buildPage(
   const slug = name_en === "Homepage" ? "/" : titleToSlug(name_en);
 
   const databaseTitleSlug = titleToSlug(databaseTitle);
-
-  const locale =
-    prop.Locale && prop.Locale.select && prop.Locale.select.name
-      ? prop.Locale.select.name
-      : "en";
 
   let ShortDescription: string | null = null;
   try {

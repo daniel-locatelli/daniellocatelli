@@ -6,6 +6,8 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 
+import db from "@astrojs/db";
+
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
     return new URL(BASE_PATH, `https://${CUSTOM_DOMAIN}`).toString();
@@ -29,14 +31,9 @@ const getSite = function () {
 export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
-  integrations: [
-    sitemap(),
-    AllFilesDownloader(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    icon(),
-  ],
+  integrations: [sitemap(), AllFilesDownloader(), tailwind({
+    applyBaseStyles: false,
+  }), icon(), db()],
   // CustomIconDownloader(),
   prefetch: true,
 });
