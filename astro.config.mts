@@ -5,7 +5,6 @@ import AllFilesDownloader from "./src/integrations/all-files-downloader";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-
 import db from "@astrojs/db";
 
 const getSite = function () {
@@ -21,7 +20,7 @@ const getSite = function () {
     // It is when the site is only on CF pages
     return new URL(
       BASE_PATH,
-      `https://${new URL(process.env.CF_PAGES_URL!).host.split(".").slice(1).join(".")}`
+      `https://${new URL(process.env.CF_PAGES_URL!).host.split(".").slice(1).join(".")}`,
     ).toString();
   }
   return new URL(BASE_PATH, "http://localhost:4321").toString();
@@ -31,9 +30,14 @@ const getSite = function () {
 export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
-  integrations: [sitemap(), AllFilesDownloader(), tailwind({
-    applyBaseStyles: false,
-  }), icon(), db()],
-  // CustomIconDownloader(),
+  integrations: [
+    db(),
+    sitemap(),
+    AllFilesDownloader(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    icon(),
+  ],
   prefetch: true,
 });

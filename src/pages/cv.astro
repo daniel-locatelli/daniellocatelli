@@ -3,40 +3,62 @@ import Base from "@/layouts/Base.astro";
 import profilePhoto from "@/assets/daniel-locatelli.png";
 import { Image } from "astro:assets";
 import Container from "@/components/Container.astro";
+import { db, SkillProgramming } from "astro:db";
+
+const skillProgramming = await db.select().from(SkillProgramming);
 ---
 
 <Base
   meta={{
     title: "Daniel Locatelli CV",
     description:
-      "Check my full CV, including work, education, lectures, publications, certificates, and more.",
+      "This is my full CV, including work, education, lectures, publications, certificates, and more.",
     coverAlt: "Daniel Locatelli's profile photo.",
     coverImage: "@/assets/daniel-locatelli.png",
     locale: "en",
     slug: "cv",
   }}
 >
-  <Container>
-    <div>
+  <Container class="relative flex flex-col gap-8 text-base [&_h2]:text-3xl">
+    <div class="flex gap-6 pt-28">
       <Image
         src={profilePhoto}
         alt="Daniel Locatelli's profile photo."
-        class="size-60 rounded-full"
+        class="h-52 w-52 rounded-full"
       />
-      <div>
-        <div>
-          <h1>Daniel Locatelli</h1>
-          <p>AEC Software developer</p>
+      <div class="flex flex-col justify-center gap-2">
+        <div class="flex flex-col gap-2">
+          <h1 class="text-6xl">Daniel Locatelli</h1>
+          <p class="text-2xl">AECO Software developer</p>
         </div>
-        <div>
-          <p>quote</p>
-          <address>Adress</address>
+        <div class="flex gap-2 text-sm">
+          <p>
+            Architecture is a transdisciplinary field, and its future lies in
+            using computational, co-designed, cybernetic techniques combined
+            with vernacular eco-friendly materials.
+          </p>
+          <address>
+            <a href="mailto:architect.locatelli@gmail.com"
+              >architect.locatelli@gmail.com</a
+            >
+            +49 178 324-0834<br />
+            Munich, Germany <br />
+          </address>
         </div>
       </div>
     </div>
     <section>
       <h2>Summary</h2>
       <p>Text</p>
+    </section>
+    <section>
+      <h2>Technical Skills</h2>
+      <table>
+        <tr class="flex gap-2"
+          ><th>Programming:</th>
+          {skillProgramming.map(({ name, level }) => <td>{name}</td>)}
+        </tr>
+      </table>
     </section>
     <section>
       <h2>Work Experience</h2>
@@ -95,7 +117,6 @@ import Container from "@/components/Container.astro";
         </div>
       </div>
     </section>
-
     <section>
       <h2></h2>
     </section>
