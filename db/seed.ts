@@ -1,7 +1,12 @@
 import {
   db,
+  Education,
   Experience,
-  ExperienceTask,
+  ExperienceItems,
+  Person,
+  PersonToPublications,
+  Publications,
+  Scholarships,
   SkillDatabases,
   SkillDesign,
   SkillFrameworks,
@@ -149,7 +154,8 @@ export default async function seed() {
       location: "Brazil",
     },
   ]);
-  await db.insert(ExperienceTask).values([
+
+  await db.insert(ExperienceItems).values([
     {
       id: "BS1",
       experienceId: "BS",
@@ -252,5 +258,266 @@ export default async function seed() {
       locale: "en",
       text: "Development of an automatized cutting pattern workflow for membranes.",
     },
+    {
+      id: "ICD/ITKE1",
+      experienceId: "ICD/ITKE",
+      locale: "en",
+      text: "Conducted natural fiber structural tests with Marta Gil Pérez.",
+    },
+    {
+      id: "ICD/ITKE2",
+      experienceId: "ICD/ITKE",
+      locale: "en",
+      text: "Carbon fiber winding research of Christoph Schlopschnat.",
+    },
+    {
+      id: "ICD/ITKE3",
+      experienceId: "ICD/ITKE",
+      locale: "en",
+      text: "Contributed to the computational design of a self-curving timber tower with Dylan Wood (similar to Urbach Tower).",
+    },
+    {
+      id: "ICD/ITKE4",
+      experienceId: "ICD/ITKE",
+      locale: "en",
+      text: "Assisted the ICD website migration with Tobias Schwinn.",
+    },
+    {
+      id: "AMB1",
+      experienceId: "AMB",
+      locale: "en",
+      text: "Executed CAD, BIM, and algorithmic modeling for diverse architectural projects.",
+    },
+    {
+      id: "AMB2",
+      experienceId: "AMB",
+      locale: "en",
+      text: "Managed project communications and supplier relationships.",
+    },
+    {
+      id: "AMB3",
+      experienceId: "AMB",
+      locale: "en",
+      text: "Developed conceptual designs and high-quality renderings.",
+    },
+    {
+      id: "AMB4",
+      experienceId: "AMB",
+      locale: "en",
+      text: "Led prototyping and digital fabrication initiatives.",
+    },
+    {
+      id: "CSULB1",
+      experienceId: "CSULB",
+      locale: "en",
+      text: "Gained hands-on experience in project management.",
+    },
+    {
+      id: "CSULB2",
+      experienceId: "CSULB",
+      locale: "en",
+      text: "Conducted construction site inspections.",
+    },
+    {
+      id: "CSULB3",
+      experienceId: "CSULB",
+      locale: "en",
+      text: "Gained BIM modeling skills.",
+    },
+    {
+      id: "CSULB4",
+      experienceId: "CSULB",
+      locale: "en",
+      text: "Completed Safety and Health Training.",
+    },
+    {
+      id: "ICBUSP1",
+      experienceId: "ICBUSP",
+      locale: "en",
+      text: "Created conceptual designs for scientific communications.",
+    },
+    {
+      id: "ICBUSP2",
+      experienceId: "ICBUSP",
+      locale: "en",
+      text: "Managed design project workflows.",
+    },
+    {
+      id: "ICBUSP3",
+      experienceId: "ICBUSP",
+      locale: "en",
+      text: "Organized and supported academic competition preparations.",
+    },
+  ]);
+
+  await db.insert(Education).values([
+    {
+      id: "ITECH",
+      locale: "en",
+      dateIn: new Date("2019-10"),
+      dateOut: new Date("2021-10"),
+      title: "Master of Sciences",
+      institution: "ITECH University of Stuttgart",
+      location: "Stuttgart, Germany",
+    },
+    {
+      id: "FAUUSP",
+      locale: "en",
+      dateIn: new Date("2010-01"),
+      dateOut: new Date("2016-12"),
+      title: "Bachelor of Architecture and Urbanism",
+      institution: "FAUUSP",
+      location: "São Paulo, Brazil",
+    },
+    {
+      id: "AU/CADC",
+      locale: "en",
+      dateIn: new Date("2014-01"),
+      dateOut: new Date("2014-12"),
+      title: "Architecture Exchange Student",
+      institution: "Auburn University – CADC",
+      location: "Auburn, USA",
+    },
+    {
+      id: "AU/IEP",
+      locale: "en",
+      dateIn: new Date("2013-08"),
+      dateOut: new Date("2013-12"),
+      title: "Intensive English Program",
+      institution: "Auburn University",
+      location: "Auburn, USA",
+    },
+  ]);
+
+  await db.insert(ExperienceItems).values([
+    {
+      id: "ITECH1",
+      experienceId: "ITECH",
+      locale: "en",
+      text: "Thesis: Building Across Scales: A Robotic Timber Fabrication System for On-Site Press Gluing",
+    },
+    {
+      id: "ITECH2",
+      experienceId: "ITECH",
+      locale: "en",
+      text: "Supervisors: Prof. Achim Menges, Prof. Jan Knippers",
+    },
+    {
+      id: "FAUUSP1",
+      experienceId: "FAUUSP",
+      locale: "en",
+      text: "Thesis: Architecture + Biomimetics + Algorithm",
+    },
+    {
+      id: "FAUUSP2",
+      experienceId: "FAUUSP",
+      locale: "en",
+      text: "Supervisor: Prof. Arthur Lara",
+    },
+  ]);
+
+  await db.insert(Scholarships).values([
+    {
+      id: "IntCDC",
+      locale: "en",
+      dateIn: new Date("2021-03"),
+      dateOut: new Date("2021-10"),
+      title: "IntCDC Master’s Thesis Grant 2021",
+      institution: "Cluster of Excellence – IntCDC",
+      description:
+        "The Grant encourages excellent master’s students to realize a first step toward a prospective academic career.",
+    },
+    {
+      id: "CsF",
+      locale: "en",
+      dateIn: new Date("2013-08"),
+      dateOut: new Date("2014-12"),
+      title: "Science without Borders",
+      institution: "Brazilian Federal Government",
+      description:
+        "Fully funded scholarships for the top Brazilian students. One year at Auburn University, USA.",
+    },
+  ]);
+
+  await db.insert(Publications).values([
+    {
+      id: "ACJ2024",
+      locale: "en",
+      date: new Date("2024-09"),
+      title:
+        "Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings",
+      publisher: "Automation in Construction journal",
+    },
+    {
+      id: "CDRF2023",
+      locale: "en",
+      date: new Date("2023-06"),
+      title:
+        "Feedback-Based Design Method for Spatially-Informed and Structurally-Performative Column Placement in Multi-Story Construction",
+      publisher: "CDRF 2023",
+      location: "Beijing, China",
+    },
+    {
+      id: "ECAADE2020",
+      locale: "en",
+      date: new Date("2020-06"),
+      title: "Life Lamp: Connecting Design and People Through Emotion",
+      publisher: "ECAADE 2020 Anthropologic",
+      location: "Berlin, Germany",
+    },
+    {
+      id: "CDS",
+      locale: "en",
+      date: new Date("2020-02"),
+      title: "Computational Design Strategies",
+      publisher: "Self-published",
+    },
+    {
+      id: "SiGradi2018",
+      locale: "en",
+      date: new Date("2018-11"),
+      title: "Computational Design Strategies",
+      publisher: "SiGradi 2018 Technopolitics",
+      location: "São Carlos, Brazil",
+    },
+    {
+      id: "IASS2017",
+      locale: "en",
+      date: new Date("2017-09"),
+      title: "Algorithmic design for traditional bobbin lace methods",
+      publisher: "IASS 2017",
+      location: "Hamburg, Germany",
+    },
+  ]);
+
+  await db
+    .insert(Person)
+    .values([
+      { id: "Daniel Nunes Locatelli" },
+      { id: "Nils Opgenorth" },
+      { id: "Samuel Leder" },
+      { id: "Hans Jakob Wagner" },
+      { id: "Achim Menges" },
+      { id: "Ekin Sila Sahin" },
+      { id: "Luis Orozco" },
+      { id: "Anna Krtschil" },
+      { id: "Hans Jakob Wagner" },
+      { id: "Jan Knippers" },
+      { id: "Leonardo Prazeres" },
+      { id: "Guilherme Giantini" },
+      { id: "Vitor Curti" },
+      { id: "Carlos Augusto Requena" },
+      { id: "Arthur Hunold Lara" },
+      { id: "Ruy Marcelo de Oliveira Pauletti" },
+      { id: "Thiago H Omena" },
+      { id: "Adalberto de Paula" },
+    ]);
+
+  await db.insert(PersonToPublications).values([
+    { publication: "ACJ2024", author: "Nils Opgenorth", order: 1 },
+    { publication: "ACJ2024", author: "Daniel Nunes Locatelli", order: 2 },
+    { publication: "ACJ2024", author: "Samuel Leder", order: 3 },
+    { publication: "ACJ2024", author: "Hans Jakob Wagner", order: 4 },
+    { publication: "ACJ2024", author: "Achim Menges", order: 5 },
   ]);
 }
