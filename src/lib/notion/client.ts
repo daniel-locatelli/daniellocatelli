@@ -53,9 +53,16 @@ import { modifyFileName, urlToFileName } from "../blog-helpers";
 import type { DatabaseObject } from "./responses";
 import type { SearchResponse } from "@notionhq/client/build/src/api-endpoints";
 import { titleToSlug } from "../utils";
+import rateLimit from "axios-rate-limit";
 
 const notion = new Client({
   auth: NOTION_API_SECRET,
+});
+
+// Create a rate-limited instance of Axios
+const http = rateLimit(axios.create(), {
+  maxRequests: 3, // Maximum number of requests
+  perMilliseconds: 1000, // Time frame in milliseconds (1 second)
 });
 
 let databasesCache: Database[] | null = null;
@@ -392,7 +399,7 @@ export async function downloadImage(url: URL) {
   }
 
   try {
-    const res = await axios({
+    const res = await http({
       method: "get",
       url: url.toString(),
       timeout: REQUEST_TIMEOUT_MS,
@@ -458,7 +465,7 @@ export async function downloadPublicImage(url: URL) {
   }
 
   try {
-    const res = await axios({
+    const res = await http({
       method: "get",
       url: url.toString(),
       timeout: REQUEST_TIMEOUT_MS,
@@ -543,7 +550,7 @@ export async function downloadVideo(url: URL) {
   }
 
   try {
-    const res = await axios({
+    const res = await http({
       method: "get",
       url: url.toString(),
       timeout: REQUEST_TIMEOUT_MS,
@@ -592,7 +599,7 @@ export async function downloadFile(url: URL) {
 
   let res;
   try {
-    res = await axios({
+    res = await http({
       method: "get",
       url: url.toString(),
       timeout: REQUEST_TIMEOUT_MS,
