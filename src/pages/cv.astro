@@ -3,9 +3,65 @@ import Base from "@/layouts/Base.astro";
 import profilePhoto from "@/assets/daniel-locatelli.png";
 import { Image } from "astro:assets";
 import Container from "@/components/Container.astro";
-import { db, SkillProgramming } from "astro:db";
+import {
+  db,
+  eq,
+  Experience,
+  ExperienceTask,
+  SkillDatabases,
+  SkillDesign,
+  SkillFrameworks,
+  SkillProgramming,
+  SkillSpecialized,
+  Summary,
+} from "astro:db";
 
-const skillProgramming = await db.select().from(SkillProgramming);
+const getMonthYear = (date: Date): string => {
+  const month =
+    date.getMonth() < 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  const year = date.getFullYear();
+  return `${month}.${year}`;
+};
+
+const skillProgramming = await db
+  .select()
+  .from(SkillProgramming)
+  .where(eq(SkillProgramming.locale, "en"));
+const skillFrameworks = await db
+  .select()
+  .from(SkillFrameworks)
+  .where(eq(SkillFrameworks.locale, "en"));
+const skillDatabases = await db
+  .select()
+  .from(SkillDatabases)
+  .where(eq(SkillDatabases.locale, "en"));
+const skillDesign = await db
+  .select()
+  .from(SkillDesign)
+  .where(eq(SkillDesign.locale, "en"));
+const skillSpecialized = await db
+  .select()
+  .from(SkillSpecialized)
+  .where(eq(SkillSpecialized.locale, "en"));
+const summary = await db
+  .selectDistinct({ text: Summary.text })
+  .from(Summary)
+  .where(eq(Summary.locale, "en"));
+
+const experience = await db
+  .select()
+  .from(Experience)
+  .where(eq(Experience.locale, "en"));
+
+const tasksByExperienceId = await Promise.all(
+  experience.map(async ({ id }) => {
+    const tasks = await db
+      .select()
+      .from(ExperienceTask)
+      .where(eq(ExperienceTask.experienceId, id));
+    return { id, tasks };
+  })
+);
 ---
 
 <Base
@@ -20,26 +76,26 @@ const skillProgramming = await db.select().from(SkillProgramming);
   }}
 >
   <Container
-    class="relative flex flex-col gap-8 font-body text-base [&_h2]:text-3xl"
+    class="[&_h3]: relative flex flex-col gap-4 font-body text-base [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h3]:text-lg [&_h4]:text-lg [&_h4]:text-zinc-400"
   >
     <div class="flex gap-6 pt-28">
       <Image
         src={profilePhoto}
         alt="Daniel Locatelli's profile photo."
-        class="h-52 w-52 rounded-full"
+        class="h-36 w-36 rounded-full"
       />
       <div class="flex flex-col justify-center gap-2">
         <div class="flex flex-col gap-2">
-          <h1 class="font-title text-7xl">Daniel Locatelli</h1>
-          <p class="text-2xl">AECO Software developer</p>
+          <h1 class="font-title text-5xl">Daniel Locatelli</h1>
+          <p class="text-xl">AECO Software developer</p>
         </div>
-        <div class="flex gap-2 text-sm">
-          <p>
-            Architecture is a transdisciplinary field, and its future lies in
-            using computational, co-designed, cybernetic techniques combined
-            with vernacular eco-friendly materials.
+        <div class="flex gap-5 text-sm">
+          <p class="text-balance text-xs">
+            "Architecture is a transdisciplinary field, its future lies in using
+            computational, co-designed techniques combined with vernacular
+            eco-friendly materials".
           </p>
-          <address>
+          <address class="text-xs">
             <a href="mailto:architect.locatelli@gmail.com"
               >architect.locatelli@gmail.com</a
             >
@@ -51,29 +107,114 @@ const skillProgramming = await db.select().from(SkillProgramming);
     </div>
     <section>
       <h2>Summary</h2>
-      <p>Text</p>
+      <p class="text-pretty">{summary[0].text}</p>
     </section>
     <section>
       <h2>Technical Skills</h2>
-      <table>
-        <tr class="flex gap-2"
-          ><th>Programming:</th>
-          {skillProgramming.map(({ name, level }) => <td>{name}</td>)}
+      <table class="table-auto [&_th]:pr-4 [&_th]:text-right">
+        <tr>
+          <th>Programming</th>
+          <td>
+            {
+              skillProgramming.map(({ id, name }) =>
+                id === skillProgramming.length ? `${name}` : `${name}, `
+              )
+            }
+          </td>
+        </tr>
+        <tr>
+          <th>Frameworks</th>
+          <td>
+            {
+              skillFrameworks.map(({ id, name }) =>
+                id === skillFrameworks.length ? `${name}` : `${name}, `
+              )
+            }
+          </td>
+        </tr>
+        <tr>
+          <th>Databases</th>
+          <td>
+            {
+              skillDatabases.map(({ id, name }) =>
+                id === skillDatabases.length ? `${name}` : `${name}, `
+              )
+            }
+          </td>
+        </tr>
+        <tr>
+          <th>Design Tools</th>
+          <td>
+            {
+              skillDesign.map(({ id, name }) =>
+                id === skillDesign.length ? `${name}` : `${name}, `
+              )
+            }
+          </td>
+        </tr>
+        <tr>
+          <th>Specialized Skills</th>
+          <td>
+            {
+              skillSpecialized.map(({ id, name }) =>
+                id === skillSpecialized.length ? `${name}` : `${name}, `
+              )
+            }
+          </td>
         </tr>
       </table>
     </section>
-    <section>
+    <section
+      class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-400"
+    >
       <h2>Work Experience</h2>
-      <div>
-        <p>date</p>
-        <div>
-          <h3>Work title</h3>
-          <p>Work place</p>
-          <ul>
-            <li>Work item description</li>
-          </ul>
-        </div>
-      </div>
+      {
+        experience.map(
+          async ({
+            id,
+            dateIn,
+            dateOut,
+            title,
+            company,
+            companyNote,
+            location,
+          }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                <time datetime={dateOut.toDateString()}>
+                  {getMonthYear(dateOut)}
+                </time>
+                <time datetime={dateIn.toDateString()}>
+                  {getMonthYear(dateIn)}
+                </time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>
+                  {company} | {location}
+                </h4>
+                {companyNote ? (
+                  <p class="mb-1 ml-1 text-xs text-zinc-400">
+                    <sup>⤷</sup>
+                    {companyNote}
+                  </p>
+                ) : (
+                  ""
+                )}
+                <ul>
+                  {tasksByExperienceId
+                    .find((taskObj) => taskObj.id === id)
+                    ?.tasks.map((task) => (
+                      <li>{task.text}</li>
+                    ))}
+                </ul>
+              </div>
+            </div>
+          )
+        )
+      }
     </section>
     <section>
       <h2>Education</h2>
