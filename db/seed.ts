@@ -50,7 +50,8 @@ export default async function seed() {
   await db.insert(SkillFrameworks).values([
     { id: 1, name: "Astro", level: "Advanced", locale: "en" },
     { id: 2, name: "React", level: "Advanced", locale: "en" },
-    { id: 3, name: "Angular", level: "Advanced", locale: "en" },
+    { id: 3, name: "Tailwind", level: "Advanced", locale: "en" },
+    { id: 4, name: "Angular", level: "Intermediate", locale: "en" },
   ]);
 
   await db.insert(SkillDatabases).values([
@@ -98,6 +99,7 @@ export default async function seed() {
       company: "BuildSystems GmbH",
       companyNote: "Previously the startup Urban Scale Timber",
       location: "Munich, Germany",
+      link: "https://buildsystems.de/",
     },
     {
       id: "UST",
@@ -108,6 +110,7 @@ export default async function seed() {
       company: "Urban Scale Timber, Flügge Funding",
       companyNote: "The startup is now BuildSystems GmbH",
       location: "Munich, Germany",
+      link: "https://urbanscaletimber.com/",
     },
     {
       id: "AE",
@@ -117,6 +120,7 @@ export default async function seed() {
       title: "Computational Architect",
       company: "ArtEngineering GmbH",
       location: "Schorndorf, Germany",
+      link: "https://art-engineering.net/",
     },
     {
       id: "AR",
@@ -126,6 +130,7 @@ export default async function seed() {
       title: "Computational Architect",
       company: "Alfred Rein Ingenieure GmbH",
       location: "Stuttgart, Germany",
+      link: "https://www.ar-ingenieure.com/",
     },
     {
       id: "ICD/ITKE",
@@ -135,6 +140,7 @@ export default async function seed() {
       title: "Research Assistant",
       company: "ICD/ITKE University of Stuttgart",
       location: "Stuttgart, Germany",
+      link: "https://www.icd.uni-stuttgart.de/",
     },
     {
       id: "AMB",
@@ -145,6 +151,7 @@ export default async function seed() {
       titleNote: "Intern until December 2016",
       company: "Atelier Marko Brajovic",
       location: "São Paulo, Brazil",
+      link: "https://markobrajovic.com/en",
     },
     {
       id: "CSULB",
@@ -154,6 +161,7 @@ export default async function seed() {
       title: "On-the-job Training",
       company: "California State University Long Beach",
       location: "Long Beach, USA",
+      link: "https://www.csulb.edu/college-of-engineering",
     },
     {
       id: "ICBUSP",
@@ -163,6 +171,7 @@ export default async function seed() {
       title: "Graphic Designer",
       company: "Biomedical Science Institute - University of São Paulo",
       location: "Brazil",
+      link: "https://ww3.icb.usp.br/",
     },
   ]);
 
@@ -372,6 +381,7 @@ export default async function seed() {
       title: "Master of Sciences",
       institution: "ITECH University of Stuttgart",
       location: "Stuttgart, Germany",
+      link: "https://www.itech.uni-stuttgart.de/",
     },
     {
       id: "FAUUSP",
@@ -381,6 +391,7 @@ export default async function seed() {
       title: "Bachelor of Architecture and Urbanism",
       institution: "FAUUSP",
       location: "São Paulo, Brazil",
+      link: "https://www.fau.usp.br/",
     },
     {
       id: "AU/CADC",
@@ -390,15 +401,17 @@ export default async function seed() {
       title: "Architecture Exchange Student",
       institution: "Auburn University – CADC",
       location: "Auburn, USA",
+      link: "https://cadc.auburn.edu/",
     },
     {
-      id: "AU/IEP",
+      id: "AU/ESL",
       locale: "en",
       startDate: new Date("2013-08"),
       endDate: new Date("2013-12"),
       title: "Intensive English Program",
-      institution: "Auburn University",
+      institution: "Auburn Global",
       location: "Auburn, USA",
+      link: "https://global.auburn.edu/english/",
     },
   ]);
 
@@ -442,6 +455,7 @@ export default async function seed() {
       institution: "Cluster of Excellence – IntCDC",
       description:
         "The Grant encourages excellent master’s students to realize a first step toward a prospective academic career.",
+      link: "https://www.intcdc.uni-stuttgart.de/supporting-structures/early-career-and-education/grants-awards-overview/master-thesis-award-2021-1/",
     },
     {
       id: "CsF",
@@ -452,6 +466,7 @@ export default async function seed() {
       institution: "Brazilian Federal Government",
       description:
         "Fully funded scholarships for the top Brazilian students. One year at Auburn University, USA.",
+      link: "https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/ciencia-sem-fronteiras",
     },
   ]);
 
@@ -463,6 +478,7 @@ export default async function seed() {
       title:
         "Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings",
       publisher: "Automation in Construction journal",
+      link: "https://www.sciencedirect.com/science/article/pii/S0926580524005107",
     },
     {
       id: "CDRF2023",
@@ -472,6 +488,7 @@ export default async function seed() {
         "Feedback-Based Design Method for Spatially-Informed and Structurally-Performative Column Placement in Multi-Story Construction",
       publisher: "CDRF 2023",
       location: "Beijing, China",
+      link: "https://link.springer.com/chapter/10.1007/978-981-99-8405-3_5",
     },
     {
       id: "ECAADE2020",
@@ -480,6 +497,7 @@ export default async function seed() {
       title: "Life Lamp: Connecting Design and People Through Emotion",
       publisher: "ECAADE 2020 Anthropologic",
       location: "Berlin, Germany",
+      link: "/projects/life-lamp-by-estudio-guto-requena-for-decimal/",
     },
     {
       id: "CDS",
@@ -487,14 +505,16 @@ export default async function seed() {
       date: new Date("2020-02"),
       title: "Computational Design Strategies",
       publisher: "Self-published",
+      link: "/publications/computational-design-strategies/",
     },
     {
       id: "SiGradi2018",
       locale: "en",
       date: new Date("2018-11"),
-      title: "Computational Design Strategies",
+      title: "High-Low as expression of the Brazilian digital fabrication",
       publisher: "SiGradi 2018 Technopolitics",
       location: "São Carlos, Brazil",
+      link: "/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/",
     },
     {
       id: "IASS2017",
@@ -503,6 +523,7 @@ export default async function seed() {
       title: "Algorithmic design for traditional bobbin lace methods",
       publisher: "IASS 2017",
       location: "Hamburg, Germany",
+      link: "/publications/algorithmic-design-for-traditional-bobbin-lace-methods/",
     },
   ]);
 
@@ -594,6 +615,7 @@ export default async function seed() {
       title: "CS50's Introduction to Databases with SQL",
       issuer: "Harvard University & edX.org",
       location: "Online",
+      link: "https://cs50.harvard.edu/certificates/581eaf67-0711-4c95-be9e-d4ec37eeeac1",
     },
     {
       id: "CS50CS2024",
@@ -601,6 +623,7 @@ export default async function seed() {
       date: new Date("2024-07"),
       title: "CS50's Introduction to Computer Science",
       issuer: "Harvard University & edX.org",
+      link: "https://cs50.harvard.edu/certificates/d05f22b7-5ebd-4433-9b12-ba626504cc2f",
     },
     {
       id: "MITX6001x2018",
@@ -609,6 +632,7 @@ export default async function seed() {
       title: "Intro to Computer Science and Programming Using Python",
       issuer: "MITX & edX.org",
       credentialId: "6.00.1x",
+      link: "https://courses.edx.org/certificates/f471f7bf0c46443cb32b66fd3988e0e3",
     },
     {
       id: "RevitArch2015-2016",
@@ -617,6 +641,7 @@ export default async function seed() {
       title: "Revit Architecture Certified Professional Exam",
       issuer: "Autodesk University Brazil 2016",
       location: "São Paulo, Brazil",
+      link: "https://www.credly.com/badges/0fbad904-5c7b-4739-b679-3b4d33be0f07",
     },
     {
       id: "CALOSHASafety2013",
@@ -641,6 +666,7 @@ export default async function seed() {
       location: "São Paulo, Brazil",
       description:
         "This workshop connected natural design approaches like material computation and biomimetics with computational design.",
+      link: "/teaching/models-bynature-10/",
     },
     {
       id: "TensegritySeminar2018",
@@ -651,9 +677,10 @@ export default async function seed() {
       location: "Paraty, Brazil",
       description:
         "The team that formed the Atelier Marko Brajovic got together to develop a tensegrity collectively.",
+      link: "https://markobrajovic.com/en/all/atelier-by-nature",
     },
     {
-      id: "AdaptiveGrasshopperWorkshop2018",
+      id: "AdaptiveWorkshop2018",
       locale: "en",
       startDate: new Date("2018-06"),
       title: "Adaptive Grasshopper Workshop",
@@ -661,9 +688,10 @@ export default async function seed() {
       location: "Barra do Bugres, Brazil",
       description:
         'Workshop about the computational design strategy "Exoskeleton."',
+      link: "/teaching/adaptive-grasshopper-workshop/",
     },
     {
-      id: "GrasshopperKangarooWorkshop2017",
+      id: "KangarooWorkshop2017",
       locale: "en",
       startDate: new Date("2017-04"),
       title: "Grasshopper & Kangaroo Workshop",
@@ -672,7 +700,7 @@ export default async function seed() {
       description: "Workshop about spring systems to simulate cloth behavior.",
     },
     {
-      id: "PrivateRevitLessons2017",
+      id: "RevitLessons2017",
       locale: "en",
       startDate: new Date("2017-02"),
       title: "Private Revit Lessons",
@@ -692,6 +720,7 @@ export default async function seed() {
         "Multiskalares Roboterfertigungssystem für die Vor-Ort-Pressklebung im mehrgeschossigen Holzbau",
       organization: "Forum Holzbau",
       location: "Stuttgart, Germany",
+      link: "https://www.icd.uni-stuttgart.de/news/Multiskalares-Roboterfertigungssystem-fuer-Vor-Ort-Pressklebung-im-mehrgeschossigen-Holzbau/",
     },
     {
       id: "GraphisoftX2023",
@@ -700,6 +729,7 @@ export default async function seed() {
       title: "Vision Nachhaltigkeit",
       organization: "Graphisoft X",
       location: "Online",
+      link: "https://www.youtube.com/watch?v=baVNIbWtMQo",
     },
     {
       id: "UFT2023",
@@ -708,6 +738,7 @@ export default async function seed() {
       title: "Arquitetura Computacional",
       organization: "Architecture and Urbanism course at UFT",
       location: "Online",
+      link: "https://sites.google.com/mail.uft.edu.br/semanau23/programa%C3%A7%C3%A3o/sexta-1011?authuser=0#h.rx3nv64mjv6q",
     },
     {
       id: "Siemens2023",
@@ -716,6 +747,7 @@ export default async function seed() {
       title: "Feasibility of sustainable construction",
       organization: "Siemens RIE Munich Conference",
       location: "Munich, Germany",
+      link: "https://ecosystem.siemens.com/researchandinnovation/rie-munich-conference-digitalization-low-code-engineering-in-industry",
     },
     {
       id: "IFPR2023",
@@ -748,6 +780,7 @@ export default async function seed() {
       title: "Computational Design: Strategies",
       organization: "PUC Minas",
       location: "Online",
+      link: "https://youtu.be/J303rzg7y0U",
     },
     {
       id: "IFRO2019",
@@ -756,6 +789,7 @@ export default async function seed() {
       title: "Architecture + Biomimetics + Algorithm",
       organization: "Architecture and Urbanism Course at IFRO",
       location: "Vilhena, Brazil",
+      link: "https://portal.ifro.edu.br/vilhena/noticias/8153-palestra-arquitetura-biomimetica-e-algoritmo-e-realizada-em-vilhena",
     },
     {
       id: "SEBRAE2019",
@@ -772,6 +806,7 @@ export default async function seed() {
       title: "Parametric Design Inspired byNature",
       organization: "Semana Design Rio 2018",
       location: "Rio de Janeiro, Brazil",
+      link: "https://revistacasaejardim.globo.com/Casa-e-Jardim/Eventos/Semana-Design-Rio/noticia/2018/09/semana-design-rio-chega-6-edicao-no-mam-entre-os-dias-13-e-1609.html",
     },
     {
       id: "Tatil2018",

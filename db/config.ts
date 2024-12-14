@@ -62,6 +62,7 @@ const Experience = defineTable({
     company: column.text(),
     companyNote: column.text({ optional: true }),
     location: column.text(),
+    link: column.text(),
   },
 });
 
@@ -85,6 +86,7 @@ const Education = defineTable({
     title: column.text(),
     institution: column.text(),
     location: column.text(),
+    link: column.text(),
   },
 });
 
@@ -108,6 +110,7 @@ const Scholarships = defineTable({
     title: column.text(),
     institution: column.text(),
     description: column.text(),
+    link: column.text(),
   },
 });
 
@@ -119,6 +122,7 @@ const Publications = defineTable({
     title: column.text(),
     publisher: column.text(),
     location: column.text({ optional: true }),
+    link: column.text(),
   },
 });
 
@@ -151,6 +155,7 @@ const Certifications = defineTable({
     validUntil: column.date({ optional: true }),
     credentialId: column.text({ optional: true }),
     skills: column.text({ optional: true }),
+    link: column.text({ optional: true }),
   },
 });
 
@@ -164,6 +169,7 @@ const Tutoring = defineTable({
     organization: column.text(),
     location: column.text(),
     description: column.text({ optional: true }),
+    link: column.text({ optional: true }),
   },
 });
 
@@ -175,6 +181,7 @@ const TalksAndLectures = defineTable({
     title: column.text(),
     organization: column.text(),
     location: column.text(),
+    link: column.text({ optional: true }),
   },
 });
 
