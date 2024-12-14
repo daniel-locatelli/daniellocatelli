@@ -213,7 +213,7 @@ const markoBrajovicWorks = await db
     <section id="technical-skills">
       <h2>Technical Skills</h2>
       <table
-        class="table-auto [&_td]:leading-5 [&_th]:pr-4 [&_th]:text-right [&_th]:align-top"
+        class="table-auto [&_td]:leading-5 [&_th]:pr-2 sm:[&_th]:pr-4 [&_th]:text-right [&_th]:align-top"
       >
         <tr>
           <th>Programming</th>
@@ -285,7 +285,7 @@ const markoBrajovicWorks = await db
             link,
           }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 <time datetime={endDate.toDateString()}>
                   {getMonthYear(endDate)}
@@ -366,7 +366,7 @@ const markoBrajovicWorks = await db
             link,
           }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 <time datetime={endDate.toDateString()}>
                   {getMonthYear(endDate)}
@@ -427,7 +427,7 @@ const markoBrajovicWorks = await db
             link,
           }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 <time datetime={endDate.toDateString()}>
                   {getMonthYear(endDate)}
@@ -472,7 +472,7 @@ const markoBrajovicWorks = await db
         publications.map(
           async ({ id, date, title, publisher, location, link }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
                 <div class="grow border-r" />
@@ -531,7 +531,7 @@ const markoBrajovicWorks = await db
       {
         certifications.map(async ({ date, title, issuer, location, link }) => (
           <div class="group flex">
-            <div class="mx-6 flex flex-col items-center font-sans">
+            <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
               <div class="timeline-top" />
               <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
               <div class="grow border-r" />
@@ -577,7 +577,7 @@ const markoBrajovicWorks = await db
             link,
           }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -628,7 +628,7 @@ const markoBrajovicWorks = await db
         talksAndLectures.map(
           async ({ date, title, organization, location, link }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
                 <div class="grow border-r" />
@@ -678,7 +678,7 @@ const markoBrajovicWorks = await db
             link
           }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -734,7 +734,7 @@ const markoBrajovicWorks = await db
             link
           }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -784,7 +784,7 @@ const markoBrajovicWorks = await db
         buildSystemsWorks.map(
           async ({ title, startDate, endDate, category, description, link }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -836,7 +836,7 @@ const markoBrajovicWorks = await db
             link
           }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -889,7 +889,7 @@ const markoBrajovicWorks = await db
             link
           }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -946,7 +946,7 @@ const markoBrajovicWorks = await db
             link
           }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -1003,7 +1003,7 @@ const markoBrajovicWorks = await db
             link
           }) => (
             <div class="group flex">
-              <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="mx-3 sm:mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
