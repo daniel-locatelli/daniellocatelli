@@ -1,9 +1,12 @@
 ---
 import Base from "@/layouts/Base.astro";
-import profilePhoto from "@/assets/daniel-locatelli.png";
+import profilePhoto from "@/assets/daniel-locatelli-v2.png";
 import { Image } from "astro:assets";
 import Container from "@/components/Container.astro";
 import {
+  AlfredReinWorks,
+  ArtEngineeringWorks,
+  BuildSystemsWorks,
   db,
   EducationItems,
   eq,
@@ -25,6 +28,7 @@ import { Tutoring } from "astro:db";
 import { TalksAndLectures } from "astro:db";
 import { CoursesAttended } from "astro:db";
 import { FreelanceWorks } from "astro:db";
+import { IcdItkeWorks } from "astro:db";
 
 const getMonthYear = (date: Date): string => {
   const month =
@@ -132,6 +136,26 @@ const freelanceWorks = await db
   .select()
   .from(FreelanceWorks)
   .where(eq(FreelanceWorks.locale, "en"));
+
+const buildSystemsWorks = await db
+  .select()
+  .from(BuildSystemsWorks)
+  .where(eq(BuildSystemsWorks.locale, "en"));
+
+const artEngineeringWorks = await db
+  .select()
+  .from(ArtEngineeringWorks)
+  .where(eq(ArtEngineeringWorks.locale, "en"));
+
+const alfredReinWorks = await db
+  .select()
+  .from(AlfredReinWorks)
+  .where(eq(AlfredReinWorks.locale, "en"));
+
+const icdItkeWorks = await db
+  .select()
+  .from(IcdItkeWorks)
+  .where(eq(IcdItkeWorks.locale, "en"));
 ---
 
 <Base
@@ -148,29 +172,29 @@ const freelanceWorks = await db
   <Container
     class="[&_h3]: relative flex flex-col gap-4 font-body text-base [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h3]:text-lg [&_h4]:text-lg [&_h4]:text-zinc-400"
   >
-    <div class="flex gap-6 pt-28">
+    <div class="flex flex-col gap-6 pt-20 sm:flex-row sm:pt-28">
       <Image
         src={profilePhoto}
         alt="Daniel Locatelli's profile photo."
-        class="h-36 w-36 rounded-full"
+        class="rounded-full sm:size-36"
       />
       <div class="flex flex-col justify-center gap-2">
         <div class="flex flex-col gap-2">
           <h1 class="font-title text-5xl">Daniel Locatelli</h1>
           <p class="text-xl">AECO Software developer</p>
         </div>
-        <div class="flex gap-5 text-sm">
-          <p class="text-balance text-xs">
+        <div class="flex flex-col gap-5 text-sm sm:flex-row">
+          <p class="text-pretty sm:text-xs">
             "Architecture is a transdisciplinary field, its future lies in using
             computational, co-designed techniques combined with vernacular
             eco-friendly materials".
           </p>
-          <address class="text-xs">
+          <address class="flex flex-col sm:text-xs">
             <a href="mailto:architect.locatelli@gmail.com"
               >architect.locatelli@gmail.com</a
             >
-            +49 178 324-0834<br />
-            Munich, Germany <br />
+            <span> +49 178 324-0834 </span>
+            <span> Munich, Germany </span>
           </address>
         </div>
       </div>
@@ -181,7 +205,9 @@ const freelanceWorks = await db
     </section>
     <section id="technical-skills">
       <h2>Technical Skills</h2>
-      <table class="table-auto [&_th]:pr-4 [&_th]:text-right">
+      <table
+        class="table-auto [&_td]:leading-5 [&_th]:pr-4 [&_th]:text-right [&_th]:align-top"
+      >
         <tr>
           <th>Programming</th>
           <td>
@@ -502,27 +528,232 @@ const freelanceWorks = await db
           )
         )
       }
-      <section id="freelance-works">
-        <h2>Freelance Works</h2>
-        {
-          freelanceWorks.map(async ({ date, title, location, description }) => (
+    </section>
+    <section id="freelance-works">
+      <h2>Freelance Works</h2>
+      {
+        freelanceWorks.map(
+          async ({
+            title,
+            startDate,
+            endDate,
+            category,
+            location,
+            description,
+          }) => (
             <div class="group flex">
               <div class="mx-6 flex flex-col items-center font-sans">
                 <div class="h-[18px] border-r" />
-                <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
                 <div class="grow border-r" />
               </div>
               <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                 <h3 class="mb-0">{title}</h3>
                 <h4>
-                  {category} | {location}
+                  {category}
+                  {location ? ` | ${location}` : ""}
                 </h4>
                 <p class="text-pretty text-sm text-zinc-400">{description}</p>
               </div>
             </div>
-          ))
-        }
-      </section>
+          )
+        )
+      }
+    </section>
+    <section id="buildsystems-works">
+      <h2>BuildSystems Works</h2>
+      {
+        buildSystemsWorks.map(
+          async ({ title, startDate, endDate, category, description }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>{category}</h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </div>
+            </div>
+          )
+        )
+      }
+    </section>
+    <section id="artengineering-works">
+      <h2>ArtEngineering Works</h2>
+      {
+        artEngineeringWorks.map(
+          async ({
+            title,
+            startDate,
+            endDate,
+            category,
+            location,
+            description,
+          }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>
+                  {category} {location ? ` | ${location}` : ""}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </div>
+            </div>
+          )
+        )
+      }
+    </section>
+    <section id="alfred-rein-works">
+      <h2>Alfred Rein Ingenieure Works</h2>
+      {
+        alfredReinWorks.map(
+          async ({
+            title,
+            startDate,
+            endDate,
+            category,
+            location,
+            description,
+          }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>
+                  {category} {location ? ` | ${location}` : ""}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </div>
+            </div>
+          )
+        )
+      }
+    </section>
+    <section id="research-assistant-works">
+      <h2>Research Assistant Works</h2>
+      {
+        icdItkeWorks.map(
+          async ({
+            title,
+            startDate,
+            endDate,
+            category,
+            location,
+            description,
+          }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>
+                  {category} {location ? ` | ${location}` : ""}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </div>
+            </div>
+          )
+        )
+      }
+    </section>
+    <section id="atelier-marko-brajovic-works">
+      <h2>Atelier Marko Brajovic Works</h2>
+      {
+        icdItkeWorks.map(
+          async ({
+            title,
+            startDate,
+            endDate,
+            category,
+            location,
+            description,
+          }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>
+                  {category} {location ? ` | ${location}` : ""}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </div>
+            </div>
+          )
+        )
+      }
     </section>
   </Container>
 </Base>

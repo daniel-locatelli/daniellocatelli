@@ -198,8 +198,9 @@ export const FreelanceWorks = defineTable({
     title: column.text(),
     startDate: column.date(),
     endDate: column.date({ optional: true }),
-    description: column.text(),
+    category: column.text(),
     location: column.text({ optional: true }),
+    description: column.text(),
   },
 });
 
@@ -211,7 +212,6 @@ export const BuildSystemsWorks = defineTable({
     startDate: column.date(),
     endDate: column.date({ optional: true }),
     category: column.text(),
-    type: column.text(),
     description: column.text(),
   },
 });
@@ -256,7 +256,7 @@ export const IcdItkeWorks = defineTable({
   },
 });
 
-export const MarkoBraiovicWorks = defineTable({
+export const MarkoBrajovicWorks = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
     locale: column.text(),
@@ -295,6 +295,6 @@ export default defineDb({
     ArtEngineeringWorks,
     AlfredReinWorks,
     IcdItkeWorks,
-    MarkoBraiovicWorks,
+    MarkoBrajovicWorks,
   },
 });
