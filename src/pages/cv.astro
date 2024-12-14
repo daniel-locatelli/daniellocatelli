@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import Container from "@/components/Container.astro";
 import {
   db,
+  EducationItems,
   eq,
   Experience,
   ExperienceItems,
@@ -15,6 +16,15 @@ import {
   SkillSpecialized,
   Summary,
 } from "astro:db";
+import { Education } from "astro:db";
+import { Scholarships } from "astro:db";
+import { Publications } from "astro:db";
+import { PersonToPublications } from "astro:db";
+import { Certifications } from "astro:db";
+import { Tutoring } from "astro:db";
+import { TalksAndLectures } from "astro:db";
+import { CoursesAttended } from "astro:db";
+import { FreelanceWorks } from "astro:db";
 
 const getMonthYear = (date: Date): string => {
   const month =
@@ -62,6 +72,66 @@ const itemsByExperienceId = await Promise.all(
     return { id, items: items };
   })
 );
+
+const education = await db
+  .select()
+  .from(Education)
+  .where(eq(Education.locale, "en"));
+
+const itemsByEducationId = await Promise.all(
+  education.map(async ({ id }) => {
+    const items = await db
+      .select()
+      .from(EducationItems)
+      .where(eq(EducationItems.educationId, id));
+    return { id, items: items };
+  })
+);
+
+const scholarships = await db
+  .select()
+  .from(Scholarships)
+  .where(eq(Scholarships.locale, "en"));
+
+const publications = await db
+  .select()
+  .from(Publications)
+  .where(eq(Publications.locale, "en"));
+
+const personByPublicationId = await Promise.all(
+  publications.map(async ({ id }) => {
+    const items = await db
+      .select()
+      .from(PersonToPublications)
+      .where(eq(PersonToPublications.publicationId, id));
+    return { id, items: items };
+  })
+);
+
+const certifications = await db
+  .select()
+  .from(Certifications)
+  .where(eq(Certifications.locale, "en"));
+
+const tutoring = await db
+  .select()
+  .from(Tutoring)
+  .where(eq(Tutoring.locale, "en"));
+
+const talksAndLectures = await db
+  .select()
+  .from(TalksAndLectures)
+  .where(eq(TalksAndLectures.locale, "en"));
+
+const coursesAttended = await db
+  .select()
+  .from(CoursesAttended)
+  .where(eq(CoursesAttended.locale, "en"));
+
+const freelanceWorks = await db
+  .select()
+  .from(FreelanceWorks)
+  .where(eq(FreelanceWorks.locale, "en"));
 ---
 
 <Base
@@ -105,11 +175,11 @@ const itemsByExperienceId = await Promise.all(
         </div>
       </div>
     </div>
-    <section>
+    <section id="summary">
       <h2>Summary</h2>
       <p class="text-pretty">{summary[0].text}</p>
     </section>
-    <section>
+    <section id="technical-skills">
       <h2>Technical Skills</h2>
       <table class="table-auto [&_th]:pr-4 [&_th]:text-right">
         <tr>
@@ -165,6 +235,7 @@ const itemsByExperienceId = await Promise.all(
       </table>
     </section>
     <section
+      id="work-experience"
       class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-400"
     >
       <h2>Work Experience</h2>
@@ -172,8 +243,8 @@ const itemsByExperienceId = await Promise.all(
         experience.map(
           async ({
             id,
-            dateIn,
-            dateOut,
+            startDate,
+            endDate,
             title,
             company,
             companyNote,
@@ -182,11 +253,11 @@ const itemsByExperienceId = await Promise.all(
             <div class="group flex">
               <div class="mx-6 flex flex-col items-center font-sans">
                 <div class="h-[18px] border-r" />
-                <time datetime={dateOut.toDateString()}>
-                  {getMonthYear(dateOut)}
+                <time datetime={endDate.toDateString()}>
+                  {getMonthYear(endDate)}
                 </time>
-                <time datetime={dateIn.toDateString()}>
-                  {getMonthYear(dateIn)}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
                 </time>
                 <div class="grow border-r" />
               </div>
@@ -216,52 +287,242 @@ const itemsByExperienceId = await Promise.all(
         )
       }
     </section>
-    <section>
+    <section
+      id="education"
+      class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-400"
+    >
       <h2>Education</h2>
-      <div>
-        <p>date</p>
-        <div>
-          <h3>Education title</h3>
-          <p>Education place</p>
-          <p>Education description</p>
-        </div>
-      </div>
+      {
+        education.map(
+          async ({ id, startDate, endDate, title, institution, location }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                <time datetime={endDate.toDateString()}>
+                  {getMonthYear(endDate)}
+                </time>
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>
+                  {institution} | {location}
+                </h4>
+                <ul>
+                  {itemsByEducationId
+                    .find((itemObj) => itemObj.id === id)
+                    ?.items.map((item) => (
+                      <li>{item.text}</li>
+                    ))}
+                </ul>
+              </div>
+            </div>
+          )
+        )
+      }
     </section>
-    <section>
-      <h2>Publication</h2>
-      <div>
-        <p>date</p>
-        <div>
-          <h3>Publication title</h3>
-          <p>Location</p>
-          <p>Authors</p>
-        </div>
-      </div>
+    <section id="scholarships">
+      <h2>Scholarships</h2>
+      {
+        scholarships.map(
+          async ({ startDate, endDate, title, institution, description }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                <time datetime={endDate.toDateString()}>
+                  {getMonthYear(endDate)}
+                </time>
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>{institution}</h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </div>
+            </div>
+          )
+        )
+      }
     </section>
-    <section>
-      <h2>My Lecture, Talks and Workshops</h2>
-      <div>
-        <p>date</p>
-        <div>
-          <h3>Title</h3>
-          <p>Location</p>
-          <p>Description</p>
-        </div>
-      </div>
+    <section id="publications">
+      <h2>Publications</h2>
+      {
+        publications.map(async ({ id, date, title, publisher, location }) => (
+          <div class="group flex">
+            <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="h-[18px] border-r" />
+              <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
+              <div class="grow border-r" />
+            </div>
+            <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+              <h3 class="mb-0">{title}</h3>
+              <h4>
+                {publisher}
+                {location ? `| ${location}` : ""}
+              </h4>
+              <p class="flex flex-wrap text-sm text-zinc-400">
+                {personByPublicationId
+                  .find((itemObj) => itemObj.id === id)
+                  ?.items.map((item, index, array) => (
+                    <span class="mr-1 text-nowrap">
+                      {index + 1 === array.length
+                        ? item.personId
+                        : `${item.personId}, `}
+                    </span>
+                  ))}
+              </p>
+            </div>
+          </div>
+        ))
+      }
     </section>
-    <section>
-      <h2>Certificates</h2>
-      <div>
-        <p>date</p>
-        <div>
-          <h3>Title</h3>
-          <p>Location</p>
-          <p>Description</p>
-        </div>
-      </div>
+    <section id="certifications">
+      <h2>Certifications</h2>
+      {
+        certifications.map(async ({ id, date, title, issuer, location }) => (
+          <div class="group flex">
+            <div class="mx-6 flex flex-col items-center font-sans">
+              <div class="h-[18px] border-r" />
+              <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
+              <div class="grow border-r" />
+            </div>
+            <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+              <h3 class="mb-0">{title}</h3>
+              <h4>
+                {issuer}
+                {location ? `| ${location}` : ""}
+              </h4>
+            </div>
+          </div>
+        ))
+      }
     </section>
-    <section>
-      <h2></h2>
+    <section id="tutoring">
+      <h2>Tutoring</h2>
+      {
+        tutoring.map(
+          async ({
+            startDate,
+            endDate,
+            title,
+            organization,
+            location,
+            description,
+          }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>
+                  {organization} | {location}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </div>
+            </div>
+          )
+        )
+      }
+    </section>
+    <section id="talks-and-lectures">
+      <h2>Talks and Lectures</h2>
+      {
+        talksAndLectures.map(
+          async ({ date, title, organization, location }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>
+                  {organization} | {location}
+                </h4>
+              </div>
+            </div>
+          )
+        )
+      }
+    </section>
+    <section id="courses-attended">
+      <h2>Courses Attended</h2>
+      {
+        coursesAttended.map(
+          async ({
+            startDate,
+            endDate,
+            title,
+            organization,
+            location,
+            instructor,
+          }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>
+                  {organization} | {location}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{instructor}</p>
+              </div>
+            </div>
+          )
+        )
+      }
+      <section id="freelance-works">
+        <h2>Freelance Works</h2>
+        {
+          freelanceWorks.map(async ({ date, title, location, description }) => (
+            <div class="group flex">
+              <div class="mx-6 flex flex-col items-center font-sans">
+                <div class="h-[18px] border-r" />
+                <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
+                <div class="grow border-r" />
+              </div>
+              <div class="w-full rounded-xl px-6 py-4 group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0">{title}</h3>
+                <h4>
+                  {category} | {location}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </section>
     </section>
   </Container>
 </Base>

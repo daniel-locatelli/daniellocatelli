@@ -55,8 +55,8 @@ const Experience = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
     locale: column.text(),
-    dateIn: column.date(),
-    dateOut: column.date(),
+    startDate: column.date(),
+    endDate: column.date(),
     title: column.text(),
     titleNote: column.text({ optional: true }),
     company: column.text(),
@@ -80,8 +80,8 @@ const Education = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
     locale: column.text(),
-    dateIn: column.date(),
-    dateOut: column.date(),
+    startDate: column.date(),
+    endDate: column.date(),
     title: column.text(),
     institution: column.text(),
     location: column.text(),
@@ -103,8 +103,8 @@ const Scholarships = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
     locale: column.text(),
-    dateIn: column.date(),
-    dateOut: column.date(),
+    startDate: column.date(),
+    endDate: column.date(),
     title: column.text(),
     institution: column.text(),
     description: column.text(),
@@ -130,13 +130,142 @@ const Person = defineTable({
 
 const PersonToPublications = defineTable({
   columns: {
-    publication: column.text({
+    publicationId: column.text({
       references: () => Publications.columns.id,
     }),
-    author: column.text({
+    personId: column.text({
       references: () => Person.columns.id,
     }),
     order: column.number(),
+  },
+});
+
+const Certifications = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    locale: column.text(),
+    date: column.date(),
+    title: column.text(),
+    issuer: column.text(),
+    location: column.text({ optional: true }),
+    validUntil: column.date({ optional: true }),
+    credentialId: column.text({ optional: true }),
+    skills: column.text({ optional: true }),
+  },
+});
+
+const Tutoring = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    locale: column.text(),
+    startDate: column.date(),
+    endDate: column.date({ optional: true }),
+    title: column.text(),
+    organization: column.text(),
+    location: column.text(),
+    description: column.text({ optional: true }),
+  },
+});
+
+const TalksAndLectures = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    locale: column.text(),
+    date: column.date(),
+    title: column.text(),
+    organization: column.text(),
+    location: column.text(),
+  },
+});
+
+const CoursesAttended = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    locale: column.text(),
+    startDate: column.date(),
+    endDate: column.date({ optional: true }),
+    title: column.text(),
+    organization: column.text(),
+    location: column.text(),
+    instructor: column.text(),
+  },
+});
+
+export const FreelanceWorks = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    locale: column.text(),
+    title: column.text(),
+    startDate: column.date(),
+    endDate: column.date({ optional: true }),
+    description: column.text(),
+    location: column.text({ optional: true }),
+  },
+});
+
+export const BuildSystemsWorks = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    locale: column.text(),
+    title: column.text(),
+    startDate: column.date(),
+    endDate: column.date({ optional: true }),
+    category: column.text(),
+    type: column.text(),
+    description: column.text(),
+  },
+});
+
+export const ArtEngineeringWorks = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    locale: column.text(),
+    title: column.text(),
+    startDate: column.date(),
+    endDate: column.date({ optional: true }),
+    category: column.text(),
+    location: column.text({ optional: true }),
+    description: column.text(),
+  },
+});
+
+export const AlfredReinWorks = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    locale: column.text(),
+    title: column.text(),
+    startDate: column.date(),
+    endDate: column.date({ optional: true }),
+    category: column.text(),
+    location: column.text({ optional: true }),
+    description: column.text(),
+  },
+});
+
+export const IcdItkeWorks = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    locale: column.text(),
+    title: column.text(),
+    startDate: column.date(),
+    endDate: column.date({ optional: true }),
+    category: column.text(),
+    type: column.text(),
+    location: column.text({ optional: true }),
+    description: column.text(),
+  },
+});
+
+export const MarkoBraiovicWorks = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    locale: column.text(),
+    title: column.text(),
+    startDate: column.date(),
+    endDate: column.date({ optional: true }),
+    category: column.text(),
+    location: column.text({ optional: true }),
+    description: column.text(),
   },
 });
 
@@ -157,5 +286,15 @@ export default defineDb({
     Publications,
     Person,
     PersonToPublications,
+    Certifications,
+    Tutoring,
+    TalksAndLectures,
+    CoursesAttended,
+    FreelanceWorks,
+    BuildSystemsWorks,
+    ArtEngineeringWorks,
+    AlfredReinWorks,
+    IcdItkeWorks,
+    MarkoBraiovicWorks,
   },
 });
