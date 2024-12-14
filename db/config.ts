@@ -195,6 +195,7 @@ const CoursesAttended = defineTable({
     organization: column.text(),
     location: column.text(),
     instructor: column.text(),
+    link: column.text({ optional: true }),
   },
 });
 
@@ -208,6 +209,7 @@ export const FreelanceWorks = defineTable({
     category: column.text(),
     location: column.text({ optional: true }),
     description: column.text(),
+    link: column.text({ optional: true }),
   },
 });
 
@@ -220,6 +222,7 @@ export const BuildSystemsWorks = defineTable({
     endDate: column.date({ optional: true }),
     category: column.text(),
     description: column.text(),
+    link: column.text({ optional: true }),
   },
 });
 
@@ -233,6 +236,7 @@ export const ArtEngineeringWorks = defineTable({
     category: column.text(),
     location: column.text({ optional: true }),
     description: column.text(),
+    link: column.text({ optional: true }),
   },
 });
 
@@ -246,6 +250,7 @@ export const AlfredReinWorks = defineTable({
     category: column.text(),
     location: column.text({ optional: true }),
     description: column.text(),
+    link: column.text({ optional: true }),
   },
 });
 
@@ -260,6 +265,7 @@ export const IcdItkeWorks = defineTable({
     type: column.text(),
     location: column.text({ optional: true }),
     description: column.text(),
+    link: column.text({ optional: true }),
   },
 });
 
@@ -273,6 +279,7 @@ export const MarkoBrajovicWorks = defineTable({
     category: column.text(),
     location: column.text({ optional: true }),
     description: column.text(),
+    link: column.text({ optional: true }),
   },
 });
 

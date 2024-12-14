@@ -675,6 +675,7 @@ const markoBrajovicWorks = await db
             organization,
             location,
             instructor,
+            link
           }) => (
             <div class="group flex">
               <div class="mx-6 flex flex-col items-center font-sans">
@@ -691,6 +692,21 @@ const markoBrajovicWorks = await db
                 </time>
                 <div class="grow border-r" />
               </div>
+              {link ? (
+              <a href={link} class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0 flex">
+                  <span class="grow">{title} </span>
+                  <Icon
+                    name="mdi:external-link"
+                    class="mt-2 size-3 shrink-0 print:hidden"
+                  />
+                </h3>
+                <h4>
+                  {organization} | {location}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{instructor}</p>
+              </a>
+              ) : (
               <div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                 <h3 class="mb-0">{title}</h3>
                 <h4>
@@ -698,6 +714,7 @@ const markoBrajovicWorks = await db
                 </h4>
                 <p class="text-pretty text-sm text-zinc-400">{instructor}</p>
               </div>
+                ) }
             </div>
           )
         )
@@ -714,6 +731,7 @@ const markoBrajovicWorks = await db
             category,
             location,
             description,
+            link
           }) => (
             <div class="group flex">
               <div class="mx-6 flex flex-col items-center font-sans">
@@ -730,7 +748,23 @@ const markoBrajovicWorks = await db
                 </time>
                 <div class="grow border-r" />
               </div>
-              <div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+              {link ? (
+                <a href={link} class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                  <h3 class="mb-0 flex">
+                    <span class="grow">{title} </span>
+                    <Icon
+                      name="mdi:external-link"
+                      class="mt-2 size-3 shrink-0 print:hidden"
+                    />
+                  </h3>
+                <h4>
+                  {category}
+                  {location ? ` | ${location}` : ""}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </a>
+            ) : (
+            <div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                 <h3 class="mb-0">{title}</h3>
                 <h4>
                   {category}
@@ -738,6 +772,7 @@ const markoBrajovicWorks = await db
                 </h4>
                 <p class="text-pretty text-sm text-zinc-400">{description}</p>
               </div>
+            )}
             </div>
           )
         )
@@ -747,7 +782,7 @@ const markoBrajovicWorks = await db
       <h2>BuildSystems Works</h2>
       {
         buildSystemsWorks.map(
-          async ({ title, startDate, endDate, category, description }) => (
+          async ({ title, startDate, endDate, category, description, link }) => (
             <div class="group flex">
               <div class="mx-6 flex flex-col items-center font-sans">
                 <div class="timeline-top" />
@@ -763,11 +798,25 @@ const markoBrajovicWorks = await db
                 </time>
                 <div class="grow border-r" />
               </div>
-              <div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+              {link ? (
+                <a href={link} class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                  <h3 class="mb-0 flex">
+                    <span class="grow">{title} </span>
+                    <Icon
+                      name="mdi:external-link"
+                      class="mt-2 size-3 shrink-0 print:hidden"
+                    />
+                  </h3>
+                <h4>{category}</h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </a>
+            ) : (
+            <div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                 <h3 class="mb-0">{title}</h3>
                 <h4>{category}</h4>
                 <p class="text-pretty text-sm text-zinc-400">{description}</p>
               </div>
+            )}
             </div>
           )
         )
@@ -784,6 +833,7 @@ const markoBrajovicWorks = await db
             category,
             location,
             description,
+            link
           }) => (
             <div class="group flex">
               <div class="mx-6 flex flex-col items-center font-sans">
@@ -800,13 +850,26 @@ const markoBrajovicWorks = await db
                 </time>
                 <div class="grow border-r" />
               </div>
-              <div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+              {link ? (<a href={link} class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0 flex">
+                    <span class="grow">{title} </span>
+                    <Icon
+                      name="mdi:external-link"
+                      class="mt-2 size-3 shrink-0 print:hidden"
+                    />
+                  </h3>
+                <h4>
+                  {category} {location ? ` | ${location}` : ""}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </a>) : (<div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                 <h3 class="mb-0">{title}</h3>
                 <h4>
                   {category} {location ? ` | ${location}` : ""}
                 </h4>
                 <p class="text-pretty text-sm text-zinc-400">{description}</p>
-              </div>
+              </div>)}
+              
             </div>
           )
         )
@@ -823,6 +886,7 @@ const markoBrajovicWorks = await db
             category,
             location,
             description,
+            link
           }) => (
             <div class="group flex">
               <div class="mx-6 flex flex-col items-center font-sans">
@@ -839,6 +903,21 @@ const markoBrajovicWorks = await db
                 </time>
                 <div class="grow border-r" />
               </div>
+              {link ? (
+              <a href={link} class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                  <h3 class="mb-0 flex">
+                    <span class="grow">{title} </span>
+                    <Icon
+                      name="mdi:external-link"
+                      class="mt-2 size-3 shrink-0 print:hidden"
+                    />
+                  </h3>
+                <h4>
+                  {category} {location ? ` | ${location}` : ""}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </a>
+              ) : (
               <div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                 <h3 class="mb-0">{title}</h3>
                 <h4>
@@ -846,6 +925,8 @@ const markoBrajovicWorks = await db
                 </h4>
                 <p class="text-pretty text-sm text-zinc-400">{description}</p>
               </div>
+              )}
+
             </div>
           )
         )
@@ -862,6 +943,7 @@ const markoBrajovicWorks = await db
             category,
             location,
             description,
+            link
           }) => (
             <div class="group flex">
               <div class="mx-6 flex flex-col items-center font-sans">
@@ -878,13 +960,30 @@ const markoBrajovicWorks = await db
                 </time>
                 <div class="grow border-r" />
               </div>
-              <div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+              {link ? (
+              <a href={link} class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0 flex">
+                  <span class="grow">{title} </span>
+                  <Icon
+                    name="mdi:external-link"
+                    class="mt-2 size-3 shrink-0 print:hidden"
+                  />
+                </h3>
+                <h4>
+                  {category} {location ? ` | ${location}` : ""}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </a>
+            ) : (
+            <div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                 <h3 class="mb-0">{title}</h3>
                 <h4>
                   {category} {location ? ` | ${location}` : ""}
                 </h4>
                 <p class="text-pretty text-sm text-zinc-400">{description}</p>
               </div>
+            )}
+              
             </div>
           )
         )
@@ -901,6 +1000,7 @@ const markoBrajovicWorks = await db
             category,
             location,
             description,
+            link
           }) => (
             <div class="group flex">
               <div class="mx-6 flex flex-col items-center font-sans">
@@ -917,6 +1017,21 @@ const markoBrajovicWorks = await db
                 </time>
                 <div class="grow border-r" />
               </div>
+              {link ? (
+              <a href={link} class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <h3 class="mb-0 flex">
+                  <span class="grow">{title} </span>
+                  <Icon
+                    name="mdi:external-link"
+                    class="mt-2 size-3 shrink-0 print:hidden"
+                  />
+                </h3>
+                <h4>
+                  {category} {location ? ` | ${location}` : ""}
+                </h4>
+                <p class="text-pretty text-sm text-zinc-400">{description}</p>
+              </a>
+              ) : (
               <div class="item-block w-full rounded-xl group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                 <h3 class="mb-0">{title}</h3>
                 <h4>
@@ -924,11 +1039,34 @@ const markoBrajovicWorks = await db
                 </h4>
                 <p class="text-pretty text-sm text-zinc-400">{description}</p>
               </div>
+              )}
             </div>
           )
         )
       }
     </section>
+
   </Container>
 </Base>
+
+<style>
+  /* Reset default margins */
+  @page {
+      margin: 1cm;
+      /* Add page number in bottom-center */
+      @bottom-center {
+          content: counter(page) " / " counter(pages);
+          font-size: 10pt;
+          margin-bottom: 2rem;
+      }
+  }
+  /* Ensure page numbers are printed */
+  @media print {
+      /* Reset some potential print-blocking styles */
+      body * {
+          visibility: visible;
+      }
+  }
+</style>
+
 

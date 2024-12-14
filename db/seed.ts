@@ -852,6 +852,7 @@ export default async function seed() {
       organization: "Harvard University",
       location: "Online",
       instructor: "Carter Zenke",
+      link: "https://cs50.harvard.edu/sql/2024/",
     },
     {
       id: "CS50CS2023",
@@ -862,6 +863,7 @@ export default async function seed() {
       organization: "Harvard University",
       location: "Online",
       instructor: "David J. Malan",
+      link: "https://cs50.harvard.edu/x/2024/",
     },
     {
       id: "DigitalFuturesIntelligence2020",
@@ -873,6 +875,7 @@ export default async function seed() {
       location: "Online",
       instructor:
         "Neil Leach, Antoine Picon, Sanford Kwinter, and Marrikka Trotter",
+      link: "https://www.youtube.com/playlist?list=PLtuu5idZ57EVGDYgGdw72QxwXtPb_5bgq",
     },
     {
       id: "WikiHouseSIGraDi2018",
@@ -882,6 +885,7 @@ export default async function seed() {
       organization: "SIGraDi 2018",
       location: "São Carlos, Brazil",
       instructor: "Gonçalo Castro Henriques, and Andrés Passaro",
+      link: "http://sigradi2018.iau.usp.br/index.php/wiki-house-geracao-e-construcao-digital-material/index.html",
     },
     {
       id: "IASSOptimization2017",
@@ -892,6 +896,7 @@ export default async function seed() {
       organization: "IASS 2017",
       location: "Hamburg, Germany",
       instructor: "Thomas Wortmann and Judyta Cichocka",
+      link: "https://discourse.mcneel.com/t/thomas-wortmann-judyta-cichocka-and-adrian-krezlik-iass-2017-pre-symposium-master-class-september-22-24-hamburg-germany/45849",
     },
     {
       id: "FILEParametricDesign2017",
@@ -901,6 +906,7 @@ export default async function seed() {
       organization: "FILE Festival",
       location: "São Paulo, Brazil",
       instructor: "Henrique Stabile",
+      link: "https://file.org.br/workshops/portugues-workshop-file-sao-paulo-2017/",
     },
     {
       id: "RhinoDayGalapagos2016",
@@ -995,6 +1001,7 @@ export default async function seed() {
       category: "Computational Design",
       description:
         "Concept by Estudio Guto Requena for Decimal. Computational designer responsible for the program.",
+      link: "/projects/life-lamp-by-estudio-guto-requena-for-decimal/",
     },
     {
       id: 2,
@@ -1038,6 +1045,7 @@ export default async function seed() {
       category: "Web development",
       description:
         "Developed BuildSystems website in Astro, leveraging Notion API to use Notion as a CMS.",
+      link: "https://buildsystems.de",
     },
     {
       id: 2,
@@ -1048,6 +1056,7 @@ export default async function seed() {
       category: "Web development",
       description:
         "Develoed the web app KfW Funding Calculator, using Angular and PostgreSQL.",
+      link: "https://app.buildsystems.de",
     },
     {
       id: 3,
@@ -1105,14 +1114,6 @@ export default async function seed() {
       description:
         "Development of a Grasshopper configurator to create building envelopes.",
     },
-    {
-      id: 9,
-      locale: "en",
-      title: "Building Configurator",
-      startDate: new Date("2023-01"),
-      category: "Computational design",
-      description: "Improvements on their early building configurator.",
-    },
   ]);
 
   // ArtEngineeringWorks table
@@ -1126,6 +1127,7 @@ export default async function seed() {
       location: "Qatar desert",
       description:
         "Art installations by Olafur Eliasson. Detailing of steel structure.",
+      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10162/5",
     },
     {
       id: 2,
@@ -1135,16 +1137,7 @@ export default async function seed() {
       category: "Sculpture",
       location: "In front of Stedelijk Museum Amsterdam",
       description: "Technical and fabrication drawings.",
-    },
-    {
-      id: 3,
-      locale: "en",
-      title: "Wood research",
-      startDate: new Date("2022-08"),
-      category: "Research",
-      location: "Internal",
-      description:
-        "Researching cutting-edge technology in wood for the office.",
+      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10166/3",
     },
     {
       id: 4,
@@ -1164,6 +1157,7 @@ export default async function seed() {
       location: "Azabudai Hills Gallery, Tokyo, Japan",
       description:
         "Sculpture by Olafur Eliasson. Aiding the detailing and prototyping; logistics for transportation.",
+      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10169/0",
     },
     {
       id: 6,
@@ -1175,6 +1169,7 @@ export default async function seed() {
       location: "Buffalo AKG Art Museum, Buffalo, USA",
       description:
         "By Studio Other Spaces. Parametric detailing and automated digital fabrication workflow.",
+      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10165/4",
     },
     {
       id: 7,
@@ -1196,6 +1191,7 @@ export default async function seed() {
       location: "Louis Vuitton, Paris, France",
       description:
         "Seven-meters-tall steel sculpture by Katharina Grosse. Computational form-fitting using developable surfaces.",
+      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10160/8",
     },
     {
       id: 9,
@@ -1206,6 +1202,7 @@ export default async function seed() {
       location: "Donum Estate, Sonoma, USA",
       description:
         "Vertical Panorama Pavilion by Studio Other Spaces. Wine-tasting space. Aiding the detailing.",
+      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10160/8",
     },
   ]);
 
@@ -1243,6 +1240,15 @@ export default async function seed() {
     {
       id: 4,
       locale: "en",
+      title: "Wood research",
+      startDate: new Date("2022-08"),
+      category: "Research",
+      location: "Internal",
+      description: "Researching cutting-edge technology for wood construction.",
+    },
+    {
+      id: 5,
+      locale: "en",
       title: "Membranaustausch",
       startDate: new Date("2021-07"),
       category: "Water retention",
@@ -1250,7 +1256,7 @@ export default async function seed() {
       description: "Mechanical drawings and rendering of the facade.",
     },
     {
-      id: 5,
+      id: 6,
       locale: "en",
       title: "MVV Überdachung Vorplatz",
       startDate: new Date("2021-07"),
@@ -1259,7 +1265,7 @@ export default async function seed() {
       description: "Form-finding of membrane structures using Kangaroo 2.",
     },
     {
-      id: 6,
+      id: 7,
       locale: "en",
       title: "Automatic cutting pattern",
       startDate: new Date("2021-02"),
@@ -1269,7 +1275,7 @@ export default async function seed() {
       description: "Development of automatized cutting patterns for membranes.",
     },
     {
-      id: 7,
+      id: 8,
       locale: "en",
       title: "Radom Raisting",
       startDate: new Date("2021-03"),
@@ -1277,9 +1283,10 @@ export default async function seed() {
       category: "Inflatable dome",
       location: "Raisting, Germany",
       description: "Simulation of the deployment and collision avoidance.",
+      link: "https://www.ar-ingenieure.com/projects/radom-raisting",
     },
     {
-      id: 8,
+      id: 9,
       locale: "en",
       title: "Neubau Parkhaus Swissprintersarea",
       startDate: new Date("2021-01"),
@@ -1288,7 +1295,7 @@ export default async function seed() {
       description: "Mechanical drawings and rendering of the facade.",
     },
     {
-      id: 9,
+      id: 10,
       locale: "en",
       title: "Witterungsschutz Römermauer",
       startDate: new Date("2021-01"),
@@ -1298,7 +1305,7 @@ export default async function seed() {
         "Project coordination, membrane cover integrating the landscape.",
     },
     {
-      id: 10,
+      id: 11,
       locale: "en",
       title: "Mechanical Bridge",
       startDate: new Date("2021-01"),
@@ -1319,7 +1326,9 @@ export default async function seed() {
       category: "Structural Test",
       type: "Full-scale",
       location: "ICD CCL, Stuttgart, Germany",
-      description: "Helped with the load tests of the livMatS pavilion.",
+      description:
+        "Conducted natural fiber structural tests with Marta Gil Pérez for the livMatS pavilion.",
+      link: "https://www.archdaily.com/966168/livmats-pavilion-icd-itke-university-of-stuttgart",
     },
     {
       id: 2,
@@ -1331,6 +1340,7 @@ export default async function seed() {
       type: "Online",
       location: null,
       description: "Migration of ICD's website to the new template in OpenCMS.",
+      link: "https://www.icd.uni-stuttgart.de/",
     },
     {
       id: 3,
@@ -1341,7 +1351,8 @@ export default async function seed() {
       type: "Research",
       location: "ICD, Stuttgart, Germany",
       description:
-        "Investigation of digital twins for small scale carbon fibre winding.",
+        "Investigation of digital twins for small scale carbon fibre winding. Collaboration with Christoph Schlopschnat.",
+      link: "https://www.icd.uni-stuttgart.de/research/research-projects/leichtbau-bw-innovation-challenge/",
     },
     {
       id: 4,
@@ -1351,7 +1362,6 @@ export default async function seed() {
       endDate: new Date("2020-04"),
       category: "Computational Design",
       type: "Archived",
-      location: null,
       description:
         "Computational designer for a project similar to the Urbach Tower.",
     },
@@ -1368,6 +1378,7 @@ export default async function seed() {
       category: "Parametric set and interior design",
       location: "Ibirapuera bienal pavilion, São Paulo, Brazil",
       description: "Architect in charge of design and supervision.",
+      link: "https://markobrajovic.com/pt-br/all/blastu-2019",
     },
     {
       id: 2,
@@ -1376,7 +1387,8 @@ export default async function seed() {
       startDate: new Date("2019-06"),
       category: "Scenic design",
       location: "Pinacoteca de São Paulo, São Paulo, Brazil",
-      description: "Architect in charge of the design and set-up follow-up.",
+      description: "Architect in charge of the satge design and trophy.",
+      link: "https://markobrajovic.com/pt-br/all/premio-casa-e-jardim-2019",
     },
     {
       id: 3,
@@ -1406,6 +1418,7 @@ export default async function seed() {
       category: "Architectural Design",
       location: "Paris, France",
       description: "Architect in charge of the parametric façade.",
+      link: "https://markobrajovic.com/pt-br/all/embraer-pavilion",
     },
     {
       id: 6,
@@ -1424,6 +1437,7 @@ export default async function seed() {
       category: "Augmented Reality Sculpture",
       location: "T3 International Airport, São Paulo, Brazil",
       description: "Computational design support.",
+      link: "https://markobrajovic.com/pt-br/all/o-primeiro-sopro",
     },
     {
       id: 8,
@@ -1444,6 +1458,7 @@ export default async function seed() {
       category: "Exhibition",
       location: "MIS - Museu da Imagem e do Som, São Paulo, Brazil",
       description: "Artistic renderings.",
+      link: "https://markobrajovic.com/pt-br/all/hitchcock-bastidores-do-suspense",
     },
     {
       id: 10,
@@ -1454,6 +1469,7 @@ export default async function seed() {
       category: "Parametric design",
       location: "Meca Festival, Itinerant",
       description: "Parametric design, production, and supervision.",
+      link: "https://markobrajovic.com/pt-br/all/palco-e-bar-heineken",
     },
     {
       id: 11,
@@ -1464,6 +1480,7 @@ export default async function seed() {
       category: "Interactive Installation",
       location: "Red Bull Station, São Paulo, Brazil",
       description: "Design, arduino programming, production, and supervision.",
+      link: "https://markobrajovic.com/pt-br/all/air-guitar-sp-on-air",
     },
     {
       id: 12,
@@ -1473,6 +1490,7 @@ export default async function seed() {
       category: "Installation",
       location: "Tidelli showroom, São Paulo, Brazil",
       description: "Assembly supervision.",
+      link: "https://markobrajovic.com/pt-br/all/wave",
     },
     {
       id: 13,
@@ -1483,6 +1501,7 @@ export default async function seed() {
       category: "Interior Design",
       location: "São Paulo, Brazil",
       description: "Architect in charge of design and production",
+      link: "https://markobrajovic.com/pt-br/all/restaurante-homa",
     },
     {
       id: 14,
@@ -1502,6 +1521,7 @@ export default async function seed() {
       category: "House Design",
       location: "Paraty, Brazil",
       description: "Architect in charge of detailing and supplier contact.",
+      link: "https://www.archdaily.com/977525/casa-asha-release-atelier-marko-brajovic",
     },
     {
       id: 16,
@@ -1512,6 +1532,7 @@ export default async function seed() {
       location: "Expo Revestir 2016, São Paulo, Brazil",
       description:
         "Responsible for the form-find of the final shape and extracting the documentation necessary for production.",
+      link: "https://markobrajovic.com/pt-br/all/o3-pavilhao",
     },
     {
       id: 17,
@@ -1532,6 +1553,7 @@ export default async function seed() {
       location: "Pier Mauá, Rio de Janeiro, Brazil",
       description:
         "Intern in charge of the code to extract the documentation necessary for production.",
+      link: "https://markobrajovic.com/pt-br/all/parada-coca-cola",
     },
     {
       id: 19,
@@ -1542,6 +1564,7 @@ export default async function seed() {
       location: "São Paulo Fashion Week, São Paulo, Brazil",
       description:
         "Designing, coding, and producing a tensegrity light sculpture.",
+      link: "https://markobrajovic.com/pt-br/all/taste-the-fashion",
     },
     {
       id: 20,
