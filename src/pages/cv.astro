@@ -177,7 +177,7 @@ const markoBrajovicWorks = await db
   }}
 >
   <Container
-    class="relative flex flex-col gap-4 font-body text-base print:gap-2 print:text-sm print:text-black [&_.item-block]:rounded-xl [&_.item-block]:px-6 [&_.item-block]:py-4 [&_.item-block]:print:break-inside-avoid [&_.item-block]:print:px-2 [&_.item-block]:print:py-1 [&_.timeline-top]:h-[18px] [&_.timeline]:mt-[18px] [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 hover:[&_a]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg [&_h4]:text-lg [&_h4]:text-zinc-400"
+    class="relative flex flex-col gap-4 font-body text-base print:gap-2 print:text-sm print:text-black [&_.item-text]:rounded-xl [&_.item-text]:px-6 [&_.item-text]:py-4 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-1 [&_.timeline-top]:h-[17px] [&_.timeline-top]:border-r [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 hover:[&_a]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg [&_h4]:text-lg [&_h4]:text-zinc-400"
   >
     <div class="flex flex-col gap-6 pt-20 sm:flex-row sm:pt-28 print:pt-2">
       <Image
@@ -284,8 +284,8 @@ const markoBrajovicWorks = await db
             location,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 <time datetime={endDate.toDateString()}>
                   {getMonthYear(endDate)}
@@ -298,7 +298,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -327,7 +327,7 @@ const markoBrajovicWorks = await db
                   </ul>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">{title}</h3>
                   <h4>
                     <a href={link}>{company}</a> | {location}
@@ -370,8 +370,8 @@ const markoBrajovicWorks = await db
             location,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 <time datetime={endDate.toDateString()}>
                   {getMonthYear(endDate)}
@@ -384,7 +384,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -405,7 +405,7 @@ const markoBrajovicWorks = await db
                   </ul>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">{title}</h3>
                   <h4>
                     <a href={link}>{institution}</a> | {location}
@@ -436,8 +436,8 @@ const markoBrajovicWorks = await db
             description,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 <time datetime={endDate.toDateString()}>
                   {getMonthYear(endDate)}
@@ -450,7 +450,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -463,7 +463,7 @@ const markoBrajovicWorks = await db
                   <p class="text-pretty text-sm text-zinc-400">{description}</p>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">
                     <a href={link}>{title}</a>
                   </h3>
@@ -481,8 +481,8 @@ const markoBrajovicWorks = await db
       {
         publications.map(
           async ({ id, date, title, publisher, location, link }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
                 <div class="timeline" />
@@ -490,7 +490,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -516,7 +516,7 @@ const markoBrajovicWorks = await db
                   </p>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">
                     <a href={link}>{title}</a>
                   </h3>
@@ -546,8 +546,8 @@ const markoBrajovicWorks = await db
       <h2>Certifications</h2>
       {
         certifications.map(async ({ date, title, issuer, location, link }) => (
-          <div class="group flex">
-            <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+          <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+            <div class="timeline-wrapper">
               <div class="timeline-top" />
               <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
               <div class="timeline" />
@@ -555,7 +555,7 @@ const markoBrajovicWorks = await db
             {link ? (
               <a
                 href={link}
-                class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
               >
                 <h3 class="mb-0 flex">
                   <span class="grow">{title} </span>
@@ -570,7 +570,7 @@ const markoBrajovicWorks = await db
                 </h4>
               </a>
             ) : (
-              <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+              <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                 <h3 class="mb-0">{title}</h3>
                 <h4>
                   {issuer}
@@ -595,8 +595,8 @@ const markoBrajovicWorks = await db
             description,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -613,7 +613,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -628,7 +628,7 @@ const markoBrajovicWorks = await db
                   <p class="text-pretty text-sm text-zinc-400">{description}</p>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">{title}</h3>
                   <h4>
                     {organization} | {location}
@@ -646,8 +646,8 @@ const markoBrajovicWorks = await db
       {
         talksAndLectures.map(
           async ({ date, title, organization, location, link }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
                 <div class="timeline" />
@@ -655,7 +655,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -669,7 +669,7 @@ const markoBrajovicWorks = await db
                   </h4>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">
                     <span class="grow">{title} </span>
                   </h3>
@@ -696,8 +696,8 @@ const markoBrajovicWorks = await db
             instructor,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -714,7 +714,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -729,7 +729,7 @@ const markoBrajovicWorks = await db
                   <p class="text-pretty text-sm text-zinc-400">{instructor}</p>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">{title}</h3>
                   <h4>
                     {organization} | {location}
@@ -755,8 +755,8 @@ const markoBrajovicWorks = await db
             description,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -773,7 +773,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -789,7 +789,7 @@ const markoBrajovicWorks = await db
                   <p class="text-pretty text-sm text-zinc-400">{description}</p>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">{title}</h3>
                   <h4>
                     {category}
@@ -815,8 +815,8 @@ const markoBrajovicWorks = await db
             description,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -833,7 +833,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -846,7 +846,7 @@ const markoBrajovicWorks = await db
                   <p class="text-pretty text-sm text-zinc-400">{description}</p>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">{title}</h3>
                   <h4>{category}</h4>
                   <p class="text-pretty text-sm text-zinc-400">{description}</p>
@@ -870,8 +870,8 @@ const markoBrajovicWorks = await db
             description,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -888,7 +888,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -903,7 +903,7 @@ const markoBrajovicWorks = await db
                   <p class="text-pretty text-sm text-zinc-400">{description}</p>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">{title}</h3>
                   <h4>
                     {category} {location ? ` | ${location}` : ""}
@@ -929,8 +929,8 @@ const markoBrajovicWorks = await db
             description,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -947,7 +947,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -962,7 +962,7 @@ const markoBrajovicWorks = await db
                   <p class="text-pretty text-sm text-zinc-400">{description}</p>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">{title}</h3>
                   <h4>
                     {category} {location ? ` | ${location}` : ""}
@@ -988,8 +988,8 @@ const markoBrajovicWorks = await db
             description,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -1006,7 +1006,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -1021,7 +1021,7 @@ const markoBrajovicWorks = await db
                   <p class="text-pretty text-sm text-zinc-400">{description}</p>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">{title}</h3>
                   <h4>
                     {category} {location ? ` | ${location}` : ""}
@@ -1047,8 +1047,8 @@ const markoBrajovicWorks = await db
             description,
             link,
           }) => (
-            <div class="group flex">
-              <div class="mx-3 flex flex-col items-center font-sans sm:mx-6">
+            <div class="group grid grid-cols-[100px_minmax(100px,_1fr)]">
+              <div class="timeline-wrapper">
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
@@ -1065,7 +1065,7 @@ const markoBrajovicWorks = await db
               {link ? (
                 <a
                   href={link}
-                  class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
+                  class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]"
                 >
                   <h3 class="mb-0 flex">
                     <span class="grow">{title} </span>
@@ -1080,7 +1080,7 @@ const markoBrajovicWorks = await db
                   <p class="text-pretty text-sm text-zinc-400">{description}</p>
                 </a>
               ) : (
-                <div class="item-block group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
+                <div class="item-text group-odd:bg-[rgb(16,16,16)] group-even:bg-[rgb(22,22,22)]">
                   <h3 class="mb-0">{title}</h3>
                   <h4>
                     {category} {location ? ` | ${location}` : ""}
