@@ -30,7 +30,7 @@ import {
 export default async function seed() {
   await db.insert(Summary).values([
     {
-      text: "Software developer with a robust interdisciplinary background spanning architectural design, computational technologies, and software engineering. Proven track record of bridging creative and technical domains, with expertise in web development, algorithmic design, and data visualization. Multilingual professional fluent in English, intermediate German and native Portuguese, passionate about leveraging interdisciplinary skills to solve complex problems through technology.",
+      text: "Software developer with a robust interdisciplinary background spanning architectural design, computational technologies, and software engineering. Proven track record of bridging creative and technical domains, with expertise in web development, computational design, and data visualization. Multilingual professional fluent in English, intermediate German and native Portuguese, passionate about leveraging interdisciplinary skills to solve complex problems through technology.",
       locale: "en",
     },
     {
@@ -287,13 +287,13 @@ export default async function seed() {
       id: "ICD/ITKE2",
       experienceId: "ICD/ITKE",
       locale: "en",
-      text: "Carbon fiber winding research of Christoph Schlopschnat.",
+      text: "Carbon fiber winding research with Christoph Schlopschnat.",
     },
     {
       id: "ICD/ITKE3",
       experienceId: "ICD/ITKE",
       locale: "en",
-      text: "Contributed to the computational design of a self-curving timber tower with Dylan Wood (similar to Urbach Tower).",
+      text: "Computational design of a self-curving timber tower with Dylan Wood.",
     },
     {
       id: "ICD/ITKE4",
@@ -306,7 +306,7 @@ export default async function seed() {
       id: "AMB1",
       experienceId: "AMB",
       locale: "en",
-      text: "Executed CAD, BIM, and algorithmic modeling for diverse architectural projects.",
+      text: "Executed CAD, BIM, and computational modeling for architectural projects.",
     },
     {
       id: "AMB2",
@@ -368,7 +368,7 @@ export default async function seed() {
       id: "ICBUSP3",
       experienceId: "ICBUSP",
       locale: "en",
-      text: "Organized and supported academic competition preparations.",
+      text: "Organized and supported academic competitions.",
     },
   ]);
 
@@ -428,6 +428,12 @@ export default async function seed() {
       educationId: "ITECH",
       locale: "en",
       text: "Supervisors: Prof. Achim Menges, Prof. Jan Knippers",
+    },
+    {
+      id: "ITECH3",
+      educationId: "ITECH",
+      locale: "en",
+      text: "Advisors: Hans Jakob Wagner, Samuel Leder",
     },
 
     // FAUUSP
