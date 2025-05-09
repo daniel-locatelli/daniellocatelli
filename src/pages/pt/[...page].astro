@@ -49,6 +49,7 @@ let coverList: string[][] = [[], []];
 
 databases.map((db, index) => {
   db.Pages.map((page) => {
+    console.log(page.Name);
     let coverUrlBg = "";
     if (page.Cover) {
       const url = new URL(page.Cover.Url);

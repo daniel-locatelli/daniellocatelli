@@ -3,7 +3,6 @@ import { CUSTOM_DOMAIN, BASE_PATH } from "./src/server-constants";
 import AllFilesDownloader from "./src/integrations/all-files-downloader";
 // import CustomIconDownloader from "./src/integrations/custom-icon-downloader";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import db from "@astrojs/db";
 
@@ -31,12 +30,9 @@ export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
   integrations: [
-    db(),
+    // db(),
     sitemap(),
     AllFilesDownloader(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
     icon(),
   ],
   prefetch: true,
