@@ -49,6 +49,6 @@
   }
 
   body {
-    @apply text-textColor mx-auto flex min-h-screen max-w-3xl flex-col px-8 pt-16 font-mono text-sm font-normal antialiased;
+    @apply mx-auto flex min-h-screen max-w-3xl flex-col px-8 pt-16 font-mono text-sm font-normal antialiased;
   }
 }

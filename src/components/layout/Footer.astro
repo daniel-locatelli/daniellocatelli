@@ -23,12 +23,12 @@ const { locale, slug } = Astro.props as Props;
 ---
 
 <footer
-  class="mt-auto flex w-full snap-start flex-col items-center justify-center pb-6 pt-6 text-center align-top sm:flex-row sm:justify-between sm:space-y-0 sm:text-xs print:hidden"
+  class="mt-auto flex w-full snap-start flex-col items-center justify-center pt-6 pb-6 text-center align-top sm:flex-row sm:justify-between sm:space-y-0 sm:text-xs print:hidden"
 >
   <div
     class="order-2 flex h-full flex-col items-center justify-center space-y-6 sm:order-1 sm:flex-row sm:space-y-0"
   >
-    <div class="order-2 me-0 pt-6 font-body sm:order-1 sm:me-6 sm:ml-1 sm:pt-0">
+    <div class="font-body order-2 me-0 pt-6 sm:order-1 sm:me-6 sm:ml-1 sm:pt-0">
       &copy; {siteConfig.author}
       {year}
     </div>
@@ -87,13 +87,13 @@ const { locale, slug } = Astro.props as Props;
   </div>
   <nav
     aria-label="More on this site"
-    class="order-1 flex flex-col font-body sm:order-2 sm:mr-2 sm:flex-row"
+    class="font-body order-1 flex flex-col sm:order-2 sm:mr-2 sm:flex-row"
   >
     {
       pages.map((page) =>
         page.Name === "Homepage" ? (
           <a
-            class="py-2 sm:px-3 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+            class="py-2 sm:px-3 sm:py-0 sm:hover:underline"
             href={locale === "en" ? "/" : "/" + locale + "/"}
             title="Homepage"
           >
@@ -101,7 +101,7 @@ const { locale, slug } = Astro.props as Props;
           </a>
         ) : (
           <a
-            class="py-2 sm:px-3 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+            class="py-2 sm:px-3 sm:py-0 sm:hover:underline"
             href={locale === "en" ? page.Slug : "/" + locale + "/" + page.Slug}
             title="Homepage"
           >
@@ -112,30 +112,21 @@ const { locale, slug } = Astro.props as Props;
     }
     {
       locale === "en" && (
-        <a
-          class="py-2 sm:px-3 sm:py-0 sm:hover:text-textColor sm:hover:underline"
-          href={"/#about"}
-        >
+        <a class="py-2 sm:px-3 sm:py-0 sm:hover:underline" href={"/#about"}>
           About
         </a>
       )
     }
     {
       locale === "de" && (
-        <a
-          class="py-2 sm:px-3 sm:py-0 sm:hover:text-textColor sm:hover:underline"
-          href={"/de/#about"}
-        >
+        <a class="py-2 sm:px-3 sm:py-0 sm:hover:underline" href={"/de/#about"}>
           Über
         </a>
       )
     }
     {
       locale === "pt" && (
-        <a
-          class="py-2 sm:px-3 sm:py-0 sm:hover:text-textColor sm:hover:underline"
-          href={"/pt/#about"}
-        >
+        <a class="py-2 sm:px-3 sm:py-0 sm:hover:underline" href={"/pt/#about"}>
           Sobre
         </a>
       )
