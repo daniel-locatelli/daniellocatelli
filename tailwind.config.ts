@@ -1,25 +1,13 @@
 import type { Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
+  darkMode: ["class", '[data-theme="dark"]'],
   content: [
     "./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}",
     "!./src/pages/og-image/[slug].png.ts",
   ],
-  darkMode: ["class", '[data-theme="dark"]'],
-  corePlugins: {
-    // disable aspect ratio as per docs -> @tailwindcss/aspect-ratio
-    aspectRatio: false,
-    // disable some core plugins as they are included in the css, even when unused
-    touchAction: false,
-    ringOffsetWidth: false,
-    ringOffsetColor: false,
-    scrollSnapType: false,
-    borderOpacity: false,
-    textOpacity: false,
-    fontVariantNumeric: false,
-  },
   theme: {
     extend: {
       spacing: {
@@ -35,10 +23,10 @@ export default {
       },
       fontFamily: {
         // Add any custom fonts here
-        sans: [...fontFamily.sans],
-        serif: [...fontFamily.serif],
-        title: ["Poiret One", ...fontFamily.sans],
-        body: ["Poppins Light", ...fontFamily.sans],
+        sans: [...defaultTheme.fontFamily.sans],
+        serif: [...defaultTheme.fontFamily.serif],
+        title: ["Poiret One", ...defaultTheme.fontFamily.sans],
+        body: ["Poppins Light", ...defaultTheme.fontFamily.sans],
       },
       transitionProperty: {
         height: "height",
@@ -57,19 +45,6 @@ export default {
       // @ts-ignore
       // Remove above once tailwindcss exposes theme type
       typography: (theme) => ({
-        cactus: {
-          css: {
-            "--tw-prose-body": theme("colors.textColor / 1"),
-            "--tw-prose-headings": theme("colors.accent-2 / 1"),
-            "--tw-prose-links": theme("colors.textColor / 1"),
-            "--tw-prose-bold": theme("colors.textColor / 1"),
-            "--tw-prose-bullets": theme("colors.textColor / 1"),
-            "--tw-prose-quotes": theme("colors.quote / 1"),
-            "--tw-prose-code": theme("colors.textColor / 1"),
-            "--tw-prose-hr": "0.5px dashed #666",
-            "--tw-prose-th-borders": "#666",
-          },
-        },
         DEFAULT: {
           css: {
             a: {
@@ -118,14 +93,6 @@ export default {
                   content: "']'",
                 },
               },
-            },
-          },
-        },
-        sm: {
-          css: {
-            code: {
-              fontSize: theme("fontSize.sm")[0],
-              fontWeight: "300",
             },
           },
         },
