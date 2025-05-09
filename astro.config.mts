@@ -5,6 +5,7 @@ import AllFilesDownloader from "./src/integrations/all-files-downloader";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import db from "@astrojs/db";
+import tailwindcss from "@tailwindcss/vite";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -36,4 +37,7 @@ export default defineConfig({
     icon(),
   ],
   prefetch: true,
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

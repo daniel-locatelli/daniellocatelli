@@ -94,18 +94,17 @@ export default {
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/aspect-ratio"),
-    plugin(function ({ addComponents }) {
-      addComponents({
-        ".cactus-link": {
-          "@apply underline underline-offset-2": {},
-          "&:hover": {
-            "@apply decoration-link decoration-2": {},
-          },
-        },
-        ".title": {
-          "@apply text-2xl font-semibold text-accent-2": {},
-        },
-      });
-    }),
   ],
 } satisfies Config;
+// corePlugins: {
+//   // disable aspect ratio as per docs -> @tailwindcss/aspect-ratio
+//   aspectRatio: false,
+//   // disable some core plugins as they are included in the css, even when unused
+//   touchAction: false,
+//   ringOffsetWidth: false,
+//   ringOffsetColor: false,
+//   scrollSnapType: false,
+//   borderOpacity: false,
+//   textOpacity: false,
+//   fontVariantNumeric: false,
+// },
