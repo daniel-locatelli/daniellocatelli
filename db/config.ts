@@ -199,7 +199,7 @@ const CoursesAttended = defineTable({
   },
 });
 
-export const FreelanceWorks = defineTable({
+const FreelanceWorks = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
     locale: column.text(),
@@ -213,7 +213,7 @@ export const FreelanceWorks = defineTable({
   },
 });
 
-export const BuildSystemsWorks = defineTable({
+const BuildSystemsWorks = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
     locale: column.text(),
@@ -226,21 +226,7 @@ export const BuildSystemsWorks = defineTable({
   },
 });
 
-export const ArtEngineeringWorks = defineTable({
-  columns: {
-    id: column.number({ primaryKey: true }),
-    locale: column.text(),
-    title: column.text(),
-    startDate: column.date(),
-    endDate: column.date({ optional: true }),
-    category: column.text(),
-    location: column.text({ optional: true }),
-    description: column.text(),
-    link: column.text({ optional: true }),
-  },
-});
-
-export const AlfredReinWorks = defineTable({
+const ArtEngineeringWorks = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
     locale: column.text(),
@@ -254,7 +240,21 @@ export const AlfredReinWorks = defineTable({
   },
 });
 
-export const IcdItkeWorks = defineTable({
+const AlfredReinWorks = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    locale: column.text(),
+    title: column.text(),
+    startDate: column.date(),
+    endDate: column.date({ optional: true }),
+    category: column.text(),
+    location: column.text({ optional: true }),
+    description: column.text(),
+    link: column.text({ optional: true }),
+  },
+});
+
+const IcdItkeWorks = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
     locale: column.text(),
@@ -269,7 +269,7 @@ export const IcdItkeWorks = defineTable({
   },
 });
 
-export const MarkoBrajovicWorks = defineTable({
+const MarkoBrajovicWorks = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
     locale: column.text(),

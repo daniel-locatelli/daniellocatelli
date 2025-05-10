@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import plugin from "tailwindcss/plugin";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
@@ -17,7 +16,7 @@ export default {
         // Add any custom fonts here
         sans: [...defaultTheme.fontFamily.sans],
         serif: [...defaultTheme.fontFamily.serif],
-        title: ["Poiret One", ...defaultTheme.fontFamily.sans],
+        title: [...defaultTheme.fontFamily.sans],
         body: ["Poppins Light", ...defaultTheme.fontFamily.sans],
       },
       transitionProperty: {

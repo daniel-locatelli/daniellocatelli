@@ -8,17 +8,8 @@ export const siteConfig: SiteConfig = {
   // Meta property used as the default description meta property
   description: "An opinionated starter theme for Astro",
   // Date.prototype.toLocaleDateString() parameters, found in src/utils/date.ts.
-  date: {
-    locale: "en",
-    options: {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    },
-  },
+  email: "architect.locatelli@gmail.com",
+  github: "https://github.com/daniel-locatelli",
+  linkedin: "https://www.linkedin.com/in/daniellocatelli",
   whatsapp: "https://wa.me/message/MFRZO3U7RABUM1",
-  webmentions: {
-    // Webmention.io API endpoint. Get your own here: https://webmention.io/, and follow this blog post: https://astro-cactus.chriswilliams.dev/posts/webmentions/
-    link: "",
-  },
 };

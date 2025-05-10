@@ -1,16 +1,10 @@
 export type SiteConfig = {
+  [x: string]: string;
   author: string;
   title: string;
   description: string;
-  date: {
-    locale: string | string[] | undefined;
-    options: Intl.DateTimeFormatOptions;
-  };
+  email: string;
   whatsapp: string;
-  webmentions?: {
-    link: string;
-    pingback?: string;
-  };
 };
 
 export type PaginationLink = {
