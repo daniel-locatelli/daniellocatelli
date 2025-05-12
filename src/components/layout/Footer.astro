@@ -19,6 +19,13 @@ export interface Props {
   locale: string;
   slug: string;
 }
+
+const whatsAppUrl = siteConfig.whatsapp; // Get WhatsApp URL from siteConfig
+const emailAddress = siteConfig.email;
+const linkedInUrl = siteConfig.linkedin;
+const githubUrl = siteConfig.github;
+const instagramUrl = siteConfig.instagram;
+
 const { locale, slug } = Astro.props as Props;
 ---
 
@@ -36,7 +43,7 @@ const { locale, slug } = Astro.props as Props;
       class="order-1 flex w-full items-center justify-center space-x-7 sm:order-2 sm:w-auto"
     >
       <a
-        href="https://www.linkedin.com/in/daniel-locatelli/"
+        href={linkedInUrl}
         target="_blank"
         title="Check my LinkedIn."
         class="flex"
@@ -47,12 +54,7 @@ const { locale, slug } = Astro.props as Props;
           class="inline h-4 w-auto mix-blend-difference"
         />
       </a>
-      <a
-        href="https://github.com/daniel-locatelli"
-        target="_blank"
-        title="Check my GitHub."
-        class="flex"
-      >
+      <a href={githubUrl} target="_blank" title="Check my GitHub." class="flex">
         <Image
           src={githubLogo}
           alt="GitHub logo."
@@ -60,7 +62,7 @@ const { locale, slug } = Astro.props as Props;
         />
       </a>
       <a
-        href="https://www.instagram.com/architectlocatelli/"
+        href={instagramUrl}
         target="_blank"
         title="Check my Instagram."
         class="flex"
@@ -71,7 +73,7 @@ const { locale, slug } = Astro.props as Props;
           class="inline h-4 w-auto mix-blend-difference"
         />
       </a>
-      <a
+      <!-- <a
         href="https://www.youtube.com/@ArchitectLocatelli"
         target="_blank"
         title="Check my YouTube channel."
@@ -82,7 +84,7 @@ const { locale, slug } = Astro.props as Props;
           alt="YouTube logo."
           class="inline h-5 w-auto mix-blend-difference"
         />
-      </a>
+      </a> -->
     </address>
   </div>
   <nav

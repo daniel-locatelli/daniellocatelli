@@ -1,6 +1,5 @@
 import fs, { createWriteStream } from "node:fs";
 import { pipeline } from "node:stream/promises";
-import axios from "axios";
 import sharp from "sharp";
 import retry from "async-retry";
 import ExifTransformer from "exif-be-gone";
@@ -53,16 +52,18 @@ import { modifyFileName, urlToFileName } from "../blog-helpers";
 import type { DatabaseObject } from "./responses";
 import type { SearchResponse } from "@notionhq/client/build/src/api-endpoints";
 import { titleToSlug } from "../utils";
+import axios from "axios";
 import rateLimit from "axios-rate-limit";
+
+const client = axios.create();
+// Use type assertion to resolve the conflicting types
+const http = rateLimit(client as any, {
+  maxRequests: 3,
+  perMilliseconds: 1000,
+});
 
 const notion = new Client({
   auth: NOTION_API_SECRET,
-});
-
-// Create a rate-limited instance of Axios
-const http = rateLimit(axios.create(), {
-  maxRequests: 3, // Maximum number of requests
-  perMilliseconds: 1000, // Time frame in milliseconds (1 second)
 });
 
 let databasesCache: Database[] | null = null;

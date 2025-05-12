@@ -1,5 +1,5 @@
 ---
-import { Icon } from "../../node_modules/astro-iconify";
+import { Icon } from "astro-icon/components";
 
 /** 
 	Uses https://www.astroicon.dev/getting-started/
@@ -27,7 +27,7 @@ const socialLinks: {
       socialLinks.map(({ friendlyName, isWebmention, link, name }) => (
         <li class="flex">
           <a
-            class="inline-block p-1 sm:hover:text-link"
+            class="sm:hover:text-link inline-block p-1"
             href={link}
             rel={`noopener noreferrer ${isWebmention ? "me authn" : ""}`}
             target="_blank"

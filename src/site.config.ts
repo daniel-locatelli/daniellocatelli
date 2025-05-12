@@ -12,4 +12,5 @@ export const siteConfig: SiteConfig = {
   github: "https://github.com/daniel-locatelli",
   linkedin: "https://www.linkedin.com/in/daniellocatelli",
   whatsapp: "https://wa.me/message/MFRZO3U7RABUM1",
+  instagram: "https://www.instagram.com/architectlocatelli",
 };

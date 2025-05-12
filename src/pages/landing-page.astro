@@ -1,10 +1,7 @@
 ---
 import { siteConfig } from "@/site-config"; // Assuming this file exists and is configured
-import BaseHead from "@/components/BaseHead.astro";
 import { Image } from "astro:assets";
 import logo from "../assets/logo-dl.svg"; // Your logo
-import arrowRight from "../assets/arrow-right.svg"; // Arrow icon
-import Footer from "@/components/layout/Footer.astro"; // Your Footer component
 import profilePhoto from "../assets/daniel-locatelli-v1.png"; // Your profile photo
 import WhatsApp from "../assets/digital-glyph-white.svg"; // WhatsApp icon (white version for dark BGs)
 import Base from "@/layouts/Base.astro";
@@ -58,7 +55,7 @@ const services = [
 
 const projects = [
   {
-    title: "BuildSystems Toolbox (KfW Funding Calculator)",
+    title: "BuildSystems Funding Calculator",
     context: "BuildSystems GmbH",
     challenge:
       "Simplify complex KfW funding simulations for sustainable housing for real estate developers and homeowners.",
@@ -68,8 +65,8 @@ const projects = [
       "TypeScript, Angular, ng2-charts, Supabase, PostgreSQL, HTML, CSS.",
     impact:
       "Empowers users to make informed financial decisions for sustainable building, facilitating energy-efficient construction practices.",
-    imageUrl: "/images/buildsystems-toolbox.jpg", // Replace with actual path
-    githubUrl: "https://github.com/build-systems/toolbox",
+    imageUrl: "/assets/kfw-foerdertool-von-buildsystems_large.webp", // to be changed
+    link: "/projects/kfw-funding-calculator-by-buildsystems",
   },
   {
     title: "BuildSystems Plugin for Grasshopper/Rhino3D",
@@ -81,8 +78,8 @@ const projects = [
     technologies: "C#, RhinoCommon, Grasshopper API.",
     impact:
       "Enables designers to perform critical feasibility and sustainability analyses directly within their design environment, promoting informed decision-making.",
-    imageUrl: "/images/buildsystems-gh-plugin.jpg", // Replace with actual path
-    githubUrl: "https://github.com/build-systems/build-systems-gh",
+    imageUrl: "/assets/buildsystems-plugin.png", // Replace with actual path
+    link: "https://github.com/build-systems/build-systems-gh",
   },
   {
     title: "Research: Automatic Column Placement",
@@ -96,7 +93,7 @@ const projects = [
     impact:
       "Presents a novel approach to automating and optimizing structural design, potentially leading to efficient material use and improved building performance.",
     imageUrl: "/images/column-placement.jpg", // Replace with actual path
-    githubUrl: null,
+    link: null,
   },
 ];
 
@@ -115,6 +112,7 @@ const whatsAppUrl = siteConfig.whatsapp; // Get WhatsApp URL from siteConfig
 const emailAddress = siteConfig.email;
 const linkedInUrl = siteConfig.linkedin;
 const githubUrl = siteConfig.github;
+const instagramUrl = siteConfig.instagram;
 
 // Placeholder for coverList if Notion logic is not active for this page
 const coverList: string[] = [];
@@ -122,7 +120,7 @@ const coverList: string[] = [];
 
 <Base
   meta={{
-    title: "CV",
+    title: "Daniel Locatelli",
     description:
       "This is my full CV, including work, education, lectures, publications, certificates, and more.",
     coverAlt: "Daniel Locatelli's profile photo.",
@@ -200,7 +198,7 @@ const coverList: string[] = [];
           href={whatsAppUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-4 rounded-lg bg-gradient-to-r from-green-500 to-green-600 px-8 py-3 text-lg text-white transition hover:from-green-600 hover:to-green-700 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:outline-none"
+          class="inline-flex items-center gap-4 rounded-lg bg-gradient-to-r from-green-600 to-green-700 px-8 py-3 text-lg text-white transition hover:from-green-700 hover:to-green-800 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
         >
           Request a quote
           <Image src={WhatsApp} alt="WhatsApp Icon" class="size-5" />
@@ -220,7 +218,7 @@ const coverList: string[] = [];
                     name={service.icon}
                     class="size-7 shrink-0 print:hidden"
                   />
-                  <h3 class="font-title flex items-center font-semibold text-gray-100">
+                  <h3 class="font-title flex items-center text-gray-100">
                     {service.title}
                   </h3>
                 </div>
@@ -240,7 +238,7 @@ const coverList: string[] = [];
           <h2 class="">The Architect-Programmer Advantage</h2>
         </div>
         <div
-          class="font-body mx-auto max-w-4xl space-y-6 rounded-xl bg-zinc-800 p-10 text-lg leading-relaxed text-white shadow-xl"
+          class="font-body mx-auto max-w-4xl space-y-6 rounded-xl bg-zinc-800 p-10 text-lg leading-relaxed shadow-xl"
         >
           <p>
             My unique strength lies at the intersection of architecture and
@@ -264,17 +262,15 @@ const coverList: string[] = [];
 
     <section id="projects" class="py-16 text-gray-100 md:py-24">
       <div class="container mx-auto px-6">
-        <h2
-          class="font-title mb-16 text-center text-3xl font-bold text-gray-800 md:text-4xl"
-        >
+        <h2 class="font-title mb-16 text-center text-3xl md:text-4xl">
           Portfolio Highlights
         </h2>
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid gap-8">
           {
             projects.map((project) => (
               <div class="flex flex-col overflow-hidden rounded-xl bg-zinc-800 shadow-lg transition-shadow duration-300 hover:shadow-xl">
                 <Image
-                  src={project.imageUrl || "/placeholder-project.jpg"}
+                  src={project.imageUrl}
                   alt={`Screenshot of ${project.title}`}
                   width={600}
                   height={400}
@@ -282,36 +278,40 @@ const coverList: string[] = [];
                   class="h-56 w-full object-cover"
                 />
                 <div class="font-body flex flex-grow flex-col p-6">
-                  <h3 class="font-title mb-1 text-xl font-semibold text-gray-900">
+                  <h3 class="font-title mb-1 text-xl font-semibold text-gray-100">
                     {project.title}
                   </h3>
-                  <p class="mb-2 text-xs font-medium tracking-wider text-green-600 uppercase">
+                  <a
+                    href="https://buildsystem.de"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mb-2 text-xs font-medium tracking-wider text-green-500 uppercase"
+                  >
                     {project.context}
-                  </p>
-                  <p class="mb-3 text-sm text-gray-500">
+                  </a>
+                  <p class="mb-3 text-sm text-gray-200">
                     <strong>Tech:</strong> {project.technologies}
                   </p>
-                  <p class="mb-2 text-sm text-gray-700">
-                    <strong class="text-gray-800">Challenge:</strong>{" "}
+                  <p class="mb-2 text-sm text-gray-300">
+                    <strong class="text-gray-100">Challenge:</strong>{" "}
                     {project.challenge}
                   </p>
-                  <p class="mb-4 text-sm leading-relaxed text-gray-700">
-                    <strong class="text-gray-800">Impact:</strong>{" "}
+                  <p class="mb-4 text-sm leading-relaxed text-gray-200">
+                    <strong class="text-gray-100">Impact:</strong>{" "}
                     {project.impact}
                   </p>
                   <div class="mt-auto border-t border-gray-200 pt-3">
-                    {project.githubUrl && (
+                    {project.link && (
                       <a
-                        href={project.githubUrl}
+                        href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="group inline-flex items-center text-sm font-medium text-green-600 transition duration-300 hover:text-green-700"
+                        class="group inline-flex items-center text-sm font-medium text-green-600 transition duration-300 hover:text-green-500"
                       >
-                        View on GitHub{" "}
-                        <Image
-                          src={arrowRight}
-                          alt="Arrow right"
-                          class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+                        <span class="pr-1">View the full article</span>
+                        <Icon
+                          name="mdi:arrow-right"
+                          class="size-4 shrink-0 print:hidden"
                         />
                       </a>
                     )}
@@ -327,53 +327,53 @@ const coverList: string[] = [];
     <section id="expertise" class="py-16 text-white md:py-24">
       <div class="container mx-auto px-6">
         <h2
-          class="font-title mb-16 text-center text-3xl font-bold text-gray-800 md:text-4xl"
+          class="font-title mb-16 text-center text-3xl font-bold text-gray-100 md:text-4xl"
         >
           Technical Expertise & Computational Strategies
         </h2>
         <div
           class="font-body mx-auto max-w-5xl rounded-xl border border-gray-200 bg-zinc-800 p-10 shadow-xl"
         >
-          <p class="mb-10 text-center text-lg leading-relaxed text-gray-600">
+          <p class="mb-10 text-center text-lg leading-relaxed text-gray-100">
             Leveraging a comprehensive tech stack and advanced computational
             strategies to tackle demanding AECO software challenges. My
             capabilities span full-stack development, ensuring robust and
             scalable solutions.
           </p>
           <div
-            class="grid grid-cols-1 gap-x-10 gap-y-8 text-gray-700 md:grid-cols-2"
+            class="grid grid-cols-1 gap-x-10 gap-y-8 text-gray-200 md:grid-cols-2"
           >
             <div>
               <h4
-                class="font-title mb-4 border-b-2 border-green-400 pb-2 text-2xl font-semibold text-gray-800"
+                class="font-title mb-4 border-b-2 border-green-400 pb-2 text-2xl font-semibold text-gray-100"
               >
                 Key Technologies
               </h4>
               <ul class="mt-4 space-y-2 text-sm">
                 <li>
-                  <strong class="font-medium text-gray-800">Languages:</strong>
+                  <strong class="font-medium text-gray-100">Languages:</strong>
                   {technicalSkills.languages}
                 </li>
                 <li>
-                  <strong class="font-medium text-gray-800"
+                  <strong class="font-medium text-gray-100"
                     >Frameworks/Libs:</strong
                   >
                   {technicalSkills.frameworks}
                 </li>
                 <li>
-                  <strong class="font-medium text-gray-800"
+                  <strong class="font-medium text-gray-100"
                     >Web Tech & Databases:</strong
                   >
                   {technicalSkills.webTech}
                 </li>
                 <li>
-                  <strong class="font-medium text-gray-800"
+                  <strong class="font-medium text-gray-100"
                     >AECO Software/APIs:</strong
                   >
                   {technicalSkills.aecoSoftware}
                 </li>
                 <li>
-                  <strong class="font-medium text-gray-800"
+                  <strong class="font-medium text-gray-100"
                     >Dev Tools & Design:</strong
                   >
                   {technicalSkills.tools}
@@ -382,7 +382,7 @@ const coverList: string[] = [];
             </div>
             <div>
               <h4
-                class="font-title mb-4 border-b-2 border-green-400 pb-2 text-2xl font-semibold text-gray-800"
+                class="font-title mb-4 border-b-2 border-green-400 pb-2 text-2xl font-semibold text-gray-100"
               >
                 Computational Strategies
               </h4>
@@ -391,7 +391,7 @@ const coverList: string[] = [];
                 including:
               </p>
               <p
-                class="rounded-md border border-green-200 bg-zinc-800 p-3 text-xs text-green-800"
+                class="rounded-md border border-green-200 bg-zinc-800 p-3 text-xs text-balance text-green-500"
               >
                 {technicalSkills.computationalStrategies}
               </p>
@@ -404,23 +404,19 @@ const coverList: string[] = [];
     <section id="testimonials" class="bg-zinc-800 py-16 md:py-24">
       <div class="container mx-auto px-6">
         <h2
-          class="font-title mb-12 text-center text-3xl font-bold text-gray-800 md:text-4xl"
+          class="font-title mb-12 text-center text-3xl font-bold text-gray-200 md:text-4xl"
         >
           What Clients & Collaborators Say
         </h2>
         <div class="font-body mx-auto max-w-3xl text-center">
-          <p class="text-lg text-gray-600 italic">
+          <p class="text-lg text-gray-400 italic">
             "Building trust through proven success. Testimonials coming soon."
-          </p>
-          <p class="mt-2 text-sm text-gray-500">
-            (As outlined in the planning document, actively seeking testimonials
-            from past clients and collaborators.)
           </p>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="bg-zinc-800 py-20 text-white md:py-28">
+    <section id="contact" class="mb-12 bg-zinc-800 py-20 text-white md:py-28">
       <div class="container mx-auto px-6 text-center">
         <h2 class="font-title mb-6 text-3xl font-bold md:text-4xl lg:text-5xl">
           Ready to Elevate Your AECO Projects?
@@ -432,40 +428,31 @@ const coverList: string[] = [];
           transform your challenges into innovative software solutions.
         </p>
         <div
-          class="mb-12 flex flex-col items-center justify-center space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6"
+          class="mb-8 flex flex-col items-center justify-center space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6"
         >
           <a
             href={whatsAppUrl}
             target="_blank"
             rel="noopener noreferrer"
             title="Contact Daniel Locatelli on WhatsApp"
-            class="inline-flex items-center gap-3 rounded-lg bg-gradient-to-r from-green-500 to-green-600 px-8 py-3 text-lg font-semibold text-white transition hover:from-green-600 hover:to-green-700 hover:shadow-[0px_5px_20px_rgba(72,187,120,0.5)] focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:outline-none"
+            class="inline-flex items-center gap-3 rounded-lg bg-gradient-to-r from-green-500 to-green-600 px-8 py-3 text-lg text-white transition hover:from-green-600 hover:to-green-700 hover:shadow-[0px_5px_20px_rgba(72,187,120,0.5)] focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:outline-none"
           >
             <Image src={WhatsApp} alt="WhatsApp Icon" class="h-5 w-5" />
-            Let's Talk (WhatsApp)
+            Let's Talk
           </a>
           <a
             href={`mailto:${emailAddress}`}
             title="Email Daniel Locatelli"
-            class="inline-flex items-center gap-3 rounded-lg border-2 border-green-400 px-8 py-3 text-lg font-semibold text-green-400 transition hover:bg-green-400 hover:text-gray-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
+            class="inline-flex items-center gap-3 rounded-lg border-2 border-green-400 px-8 py-3 text-lg text-green-400 transition hover:bg-green-400 hover:text-gray-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
           >
+            <Icon
+              name="mdi:email-outline"
+              class="size-7 shrink-0 print:hidden"
+            />
             Send an Email
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-5 w-5"
-              ><path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
-              ></path></svg
-            >
           </a>
         </div>
-        <div class="mt-16">
+        <div class="mt-12">
           <p class="font-body mb-3 text-gray-400">Connect with me on:</p>
           <div class="flex justify-center space-x-6">
             <a
@@ -475,7 +462,7 @@ const coverList: string[] = [];
               title="Daniel Locatelli on LinkedIn"
               class="text-gray-300 transition duration-300 hover:text-green-400"
             >
-              LinkedIn
+              <Icon name="mdi:linkedin" class="size-7 shrink-0 print:hidden" />
             </a>
             <a
               href={githubUrl}
@@ -484,7 +471,16 @@ const coverList: string[] = [];
               title="Daniel Locatelli on GitHub"
               class="text-gray-300 transition duration-300 hover:text-green-400"
             >
-              GitHub
+              <Icon name="mdi:github" class="size-7 shrink-0 print:hidden" />
+            </a>
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Daniel Locatelli on GitHub"
+              class="text-gray-300 transition duration-300 hover:text-green-400"
+            >
+              <Icon name="mdi:instagram" class="size-7 shrink-0 print:hidden" />
             </a>
           </div>
         </div>

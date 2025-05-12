@@ -87,7 +87,7 @@ export default defineConfig({
     "/computational-design-strategies/skeletal-mesh-exoskeleton-skeleton-fattener":
       "https://archcompute.com/en/strategies/parametric-systems/marching-cubes/",
     "/computational-design-strategies/stress-lines-isostatic-line-principal-stress-vector-field":
-      "",
+      "https://archcompute.com/en/strategies/engineering/stress-lines/",
     "/computational-design-strategies/voronoi-diagram":
       "https://archcompute.com/en/strategies/natural-patterns/voronoi-diagram/",
     "/computational-design-strategies/waffle-structure":
@@ -145,7 +145,7 @@ export default defineConfig({
     "/pt/computational-design-strategies/skeletal-mesh-exoskeleton-skeleton-fattener":
       "https://archcompute.com/pt-br/strategies/parametric-systems/marching-cubes/",
     "/pt/computational-design-strategies/stress-lines-isostatic-line-principal-stress-vector-field":
-      "",
+      "https://archcompute.com/pt-br/strategies/engineering/stress-lines/",
     "/pt/computational-design-strategies/voronoi-diagram":
       "https://archcompute.com/pt-br/strategies/natural-patterns/voronoi-diagram/",
     "/pt/computational-design-strategies/waffle-structure":
