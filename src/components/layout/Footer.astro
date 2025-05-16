@@ -73,7 +73,8 @@ const { locale, slug } = Astro.props as Props;
           class="inline h-4 w-auto mix-blend-difference"
         />
       </a>
-      <!-- <a
+      {
+        /*<a
         href="https://www.youtube.com/@ArchitectLocatelli"
         target="_blank"
         title="Check my YouTube channel."
@@ -84,7 +85,8 @@ const { locale, slug } = Astro.props as Props;
           alt="YouTube logo."
           class="inline h-5 w-auto mix-blend-difference"
         />
-      </a> -->
+      </a>*/
+      }
     </address>
   </div>
   <nav
@@ -110,27 +112,6 @@ const { locale, slug } = Astro.props as Props;
             {locale === "en" ? page.Name : page.Name_pt}
           </a>
         )
-      )
-    }
-    {
-      locale === "en" && (
-        <a class="py-2 sm:px-3 sm:py-0 sm:hover:underline" href={"/#about"}>
-          About
-        </a>
-      )
-    }
-    {
-      locale === "de" && (
-        <a class="py-2 sm:px-3 sm:py-0 sm:hover:underline" href={"/de/#about"}>
-          Über
-        </a>
-      )
-    }
-    {
-      locale === "pt" && (
-        <a class="py-2 sm:px-3 sm:py-0 sm:hover:underline" href={"/pt/#about"}>
-          Sobre
-        </a>
       )
     }
     <a

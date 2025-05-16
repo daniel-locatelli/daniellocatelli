@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 116.03 125">
+  <!-- Generator: Adobe Illustrator 29.5.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 137)  -->
+  <defs>
+    <linearGradient id="angular-linear-gradient" x1="72.65" y1="43.52" x2="116.28" y2="42.65"
+      gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e847a3" />
+      <stop offset=".26" stop-color="#da5af7" />
+      <stop offset=".34" stop-color="#dd57f6" />
+      <stop offset=".56" stop-color="#b848f4" />
+      <stop offset="1" stop-color="#8842f6" />
+    </linearGradient>
+    <linearGradient id="angular-linear-gradient1" x1="27.77" y1="107.09" x2="88.02" y2="105.88"
+      xlink:href="#angular-linear-gradient" />
+    <linearGradient id="angular-linear-gradient2" x1="41.77" y1="52.51" x2="73.34" y2="51.88"
+      xlink:href="#angular-linear-gradient" />
+    <linearGradient id="angular-linear-gradient3" x1=".46" y1="43.61" x2="44.91" y2="42.72"
+      xlink:href="#angular-linear-gradient" />
+    <linearGradient id="angular-linear-gradient4" x1="-2084.62" y1="590.93" x2="-2084.66" y2="590.35"
+      gradientTransform="translate(184075.39 72628.49) scale(88.28 -122.82)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e03440" stop-opacity=".2" />
+      <stop offset=".28" stop-color="#e03440" stop-opacity=".62" />
+      <stop offset="1" stop-color="#e03440" />
+    </linearGradient>
+  </defs>
+  <polygon points="116.03 20.48 111.84 86.27 71.78 0 116.03 20.48" style="fill: url(#angular-linear-gradient);" />
+  <polygon points="88.28 105.55 58.01 122.82 27.74 105.55 33.9 90.63 82.12 90.63 88.28 105.55"
+    style="fill: url(#angular-linear-gradient1);" />
+  <polygon points="58.01 32.75 73.87 71.31 42.15 71.31 58.01 32.75" style="fill: url(#angular-linear-gradient2);" />
+  <polygon points="4.15 86.27 0 20.48 44.25 0 4.15 86.27" style="fill: url(#angular-linear-gradient3);" />
+  <path
+    d="M88.28,105.55l-30.27,17.27-30.27-17.27,6.16-14.92h48.22l6.16,14.92ZM58.01,32.75l15.86,38.56h-31.72s15.86-38.56,15.86-38.56ZM4.15,86.27L0,20.48,44.25,0,4.15,86.27Z"
+    style="fill: url(#angular-linear-gradient4);" />
+</svg>

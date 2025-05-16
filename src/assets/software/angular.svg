@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="angular-linear-gradient" x1="-245.95" y1="469.29" x2="-245.74" y2="469.4"
+      gradientTransform="translate(62985 127231.28) scale(256 -270.98)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e40035" />
+      <stop offset=".24" stop-color="#f60a48" />
+      <stop offset=".35" stop-color="#f20755" />
+      <stop offset=".49" stop-color="#dc087d" />
+      <stop offset=".74" stop-color="#9717e7" />
+      <stop offset="1" stop-color="#6c00f5" />
+    </linearGradient>
+    <linearGradient id="angular-linear-gradient1" x1="-245.92" y1="469.45" x2="-245.78" y2="469.29"
+      gradientTransform="translate(62985 127231.28) scale(256 -270.98)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff31d9" />
+      <stop offset="1" stop-color="#ff5be1" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <path
+    d="M87.79,23.34l-2.73,42.85L58.97,10l28.82,13.34ZM69.72,78.75l-19.72,11.25-19.72-11.25,4.01-9.72h31.41l4.01,9.72ZM50,31.33l10.33,25.12h-20.66l10.33-25.12ZM14.91,66.19l-2.7-42.85,28.82-13.34-26.12,56.19Z"
+    style="fill: url(#angular-linear-gradient);" />
+  <path
+    d="M87.79,23.34l-2.73,42.85L58.97,10l28.82,13.34ZM69.72,78.75l-19.72,11.25-19.72-11.25,4.01-9.72h31.41l4.01,9.72ZM50,31.33l10.33,25.12h-20.66l10.33-25.12ZM14.91,66.19l-2.7-42.85,28.82-13.34-26.12,56.19Z"
+    style="fill: url(#angular-linear-gradient1);" />
+</svg>

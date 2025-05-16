@@ -7,6 +7,10 @@ import WhatsApp from "../assets/digital-glyph-white.svg"; // WhatsApp icon (whit
 import Base from "@/layouts/Base.astro";
 import Container from "@/components/Container.astro";
 import { Icon } from "astro-icon/components";
+import buildSystemsCalculator from "@/assets/iphone-pro-calculator-mockup-2.png";
+import buildSystemsPluginCover from "@/assets/grasshopper-macbook.png";
+import artEngineeringCommonSkies from "@/assets/common-sky-01.jpg";
+import SkillsMap from "@/components/SkillsMap.astro";
 
 // Static data derived from the PDF for the landing page content
 const pageTitleFromPdf =
@@ -24,31 +28,31 @@ const services = [
   {
     title: "Plugin Development",
     description:
-      "Bespoke tools (Rhino/Grasshopper, Revit, AutoCAD) to automate tasks, integrate specialized analyses, or extend a software capability.",
+      "Bespoke tools to automate tasks, integrate specialized analyses, or extend a software capability. Expert in C# for Rhino/Grasshopper, Revit and AutoCAD.",
     icon: "ph:puzzle-piece",
   },
   {
     title: "Web Applications",
     description:
-      "Web-based solutions like project management dashboards, data visualization platforms, collaborative tools, and financial simulators.",
+      "Web-based solutions for project management, collaborative tools, financial simulators and 3D visualization. Focused in React, Astro and PostgreSQL.",
     icon: "ph:cursor-click",
   },
   {
     title: "Computational Design",
     description:
-      "Applying advanced computational design strategies to streamline and enhance AECO processes, improving efficiency in design, analysis, and documentation.",
+      "Applying advanced computational design strategies to streamline and enhance AEC processes, improving efficiency in design, analysis, and documentation.",
     icon: "ph:buildings",
   },
   {
     title: "Data Visualization",
     description:
-      "Creating dashboards to better understand, interpret, and act upon complex project data.",
+      "Creating dashboards to better understand, interpret, and act upon complex project data. From web-native dashboards to enterprise Power BI frameworks. ",
     icon: "ph:chart-line-up",
   },
   {
     title: "Digital Fabrication",
     description:
-      "Developing software for fabrication machinery, optimizing designs for digital manufacturing, and providing expert consultation.",
+      "Developing grasshopper scripts for automatic fabrication data extraction of complex parametric designs for digital manufacture.",
     icon: "ph:resize",
   },
 ];
@@ -57,43 +61,31 @@ const projects = [
   {
     title: "BuildSystems Funding Calculator",
     context: "BuildSystems GmbH",
-    challenge:
-      "Simplify complex KfW funding simulations for sustainable housing for real estate developers and homeowners.",
-    solution:
-      "Scalable web application with user-friendly forms and interactive charts for simulating funding scenarios.",
+    description:
+      "Web application with user-friendly forms and interactive charts for simulating funding scenarios for housing through the national German bank KfW.",
     technologies:
       "TypeScript, Angular, ng2-charts, Supabase, PostgreSQL, HTML, CSS.",
-    impact:
-      "Empowers users to make informed financial decisions for sustainable building, facilitating energy-efficient construction practices.",
-    imageUrl: "/assets/kfw-foerdertool-von-buildsystems_large.webp", // to be changed
+
+    imageUrl: buildSystemsCalculator, // to be changed
     link: "/projects/kfw-funding-calculator-by-buildsystems",
   },
   {
     title: "BuildSystems Plugin for Grasshopper/Rhino3D",
     context: "BuildSystems GmbH",
-    challenge:
-      "Provide architects/planners with integrated tools in Rhino/Grasshopper for early-stage feasibility analysis and Life Cycle Assessment (LCA).",
-    solution:
-      "Grasshopper plugin with 'Urban Level Tools' (city legislation, fire protection) and 'LCA Tools' (Ökobaudat integration for GWP, PENRT).",
-    technologies: "C#, RhinoCommon, Grasshopper API.",
-    impact:
-      "Enables designers to perform critical feasibility and sustainability analyses directly within their design environment, promoting informed decision-making.",
-    imageUrl: "/assets/buildsystems-plugin.png", // Replace with actual path
-    link: "https://github.com/build-systems/build-systems-gh",
+    description:
+      "Grasshopper plugin that enables designers to perform critical feasibility and sustainability analyses directly within their design environment, promoting informed decision-making.",
+    technologies: "C#, RhinoCommon, Grasshopper API, JSON.",
+    imageUrl: buildSystemsPluginCover, // Replace with actual path
+    link: "projects/buildsystems-plugin-for-grasshopper",
   },
   {
-    title: "Research: Automatic Column Placement",
-    context: "Academic research, University of Stuttgart.",
-    challenge:
-      "Develop an efficient method for placing structural columns in complex multi-story buildings during early design, integrating spatial and structural criteria.",
-    solution:
-      "Feedback-based computational method integrating circle packing, spring system, and structural engineering simulations in a single script.",
-    technologies:
-      "Algorithmic scripting (Python/C#), computational geometry, structural analysis.",
-    impact:
-      "Presents a novel approach to automating and optimizing structural design, potentially leading to efficient material use and improved building performance.",
-    imageUrl: "/images/column-placement.jpg", // Replace with actual path
-    link: null,
+    title: "Data Extraction for Digital Fabrication",
+    context: "ArtEngineering GmbH",
+    description:
+      "Support on the digital fabrication of Common Sky using Grasshopper and Sandbox Topology. Focused on geometry processing and automation of fabrication workflows.",
+    technologies: "Scripting in Grasshopper/Rhino3D.",
+    imageUrl: artEngineeringCommonSkies, // Replace with actual path
+    link: "/projects/common-sky-by-artengineering-for-studio-other-spaces",
   },
 ];
 
@@ -122,15 +114,15 @@ const coverList: string[] = [];
   meta={{
     title: "Daniel Locatelli",
     description:
-      "This is my full CV, including work, education, lectures, publications, certificates, and more.",
+      "Welcome to my digital office. Here, you will find my work, research, and teachings on architecture, biomimetics, computational design, and software development for the AEC industry.",
     coverAlt: "Daniel Locatelli's profile photo.",
-    coverImage: "@/assets/daniel-locatelli.png",
+    coverImage: "@/assets/daniel-locatelli-v1.png",
     locale: "en",
-    slug: "cv",
+    slug: "landing-page",
   }}
 >
   <Container
-    class="font-body relative mt-16 flex flex-col gap-4 text-base [&_h2]:mb-4 [&_h2]:text-3xl [&_h3]:text-xl [&_h4]:text-lg [&_h4]:text-zinc-400 [&_section]:mt-16"
+    class="font-body [&_h1]:font-title [&_h2]:font-title relative mt-16 flex flex-col gap-4 text-base [&_h2]:mb-4 [&_h2]:text-3xl [&_h3]:text-xl [&_h4]:text-lg [&_h4]:text-zinc-400 [&_section]:mt-16"
   >
     <!-- <header class="font-body sticky top-0 z-50 bg-white shadow-md">
       <nav
@@ -181,16 +173,16 @@ const coverList: string[] = [];
         <Image
           src={profilePhoto}
           alt="Daniel Locatelli"
-          class="mx-auto mb-8 h-36 w-36 rounded-full border-4 border-gray-200 shadow-xl md:h-44 md:w-44"
+          class="mx-auto mb-8 h-36 w-36 rounded-full border-4 border-gray-200 md:h-44 md:w-44"
         />
-        <h1 class="font-title mb-6 text-2xl font-bold sm:text-3xl md:text-4xl">
+        <h1 class="mb-6 text-2xl font-bold sm:text-3xl md:text-4xl">
           <p>Hi,</p>
           <p>I'm Daniel,</p>
           <p>software engineer.</p>
         </h1>
         <p class="font-body mx-auto mb-10 max-w-3xl text-balance">
           As a research associate at the Munich University of Applied Sciences,
-          I specialize in developing custom plugins, web applications, and
+          I&nbsp;specialize in developing plugins, web applications, and
           computational design solutions for architecture, engineering, and
           construction (AEC).
         </p>
@@ -206,7 +198,7 @@ const coverList: string[] = [];
       </div>
     </section>
 
-    <section id="services" class="">
+    <section id="services">
       <div class="container mx-auto">
         <h2 class="text-center">My Service Offerings</h2>
         <div class="flex flex-col gap-2">
@@ -218,7 +210,7 @@ const coverList: string[] = [];
                     name={service.icon}
                     class="size-7 shrink-0 print:hidden"
                   />
-                  <h3 class="font-title flex items-center text-gray-100">
+                  <h3 class="flex items-center text-gray-100">
                     {service.title}
                   </h3>
                 </div>
@@ -232,37 +224,36 @@ const coverList: string[] = [];
       </div>
     </section>
 
-    <section id="about" class="">
+    <section id="about">
       <div class="container mx-auto">
         <div class="text-center">
-          <h2 class="">The Architect-Programmer Advantage</h2>
+          <h2 class="">The Architect-Programmer</h2>
         </div>
         <div
-          class="font-body mx-auto max-w-4xl space-y-6 rounded-xl bg-zinc-800 p-10 text-lg leading-relaxed shadow-xl"
+          class="font-body rounded-xlp-10 mx-auto max-w-4xl space-y-6 text-lg leading-relaxed shadow-xl"
         >
-          <p>
-            My unique strength lies at the intersection of architecture and
-            software development. With a Master of Science from the University
-            of Stuttgart and recognition like the IntCDC Master's Thesis Grant
-            2021 for "Building Across Scales", I possess a deep, nuanced
-            understanding of AECO domain challenges.
+          <p class="text-center">
+            My strength lies at the intersection of architecture and software
+            development. Before becoming a software developer, I spent five
+            years working as an architect. With a Master of Science from the
+            University of Stuttgart and experience as a computational designer
+            at two German engineering offices and one tech startup, I bring a
+            deep, nuanced understanding of the challenges in the AEC domain.
           </p>
-          <p>
-            This architectural insight is coupled with robust full-stack
-            development expertise. I don't just write code; I design and build
-            software solutions that are tailored to the needs of architects,
-            engineers, and construction professionals because I understand your
-            world. The result? More intuitive, effective, and innovative tools
-            that seamlessly integrate into your workflows and directly address
-            your project goals.
+          <p class="text-center">
+            This architectural insight is paired with strong full-stack
+            development skills. I don’t just write code—I design and build
+            software tailored to the needs of architects, engineers, and
+            construction professionals. I understand your workflows, pain
+            points, and goals because I’ve lived them.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="py-16 text-gray-100 md:py-24">
+    <section id="projects">
       <div class="container mx-auto px-6">
-        <h2 class="font-title mb-16 text-center text-3xl md:text-4xl">
+        <h2 class="mb-16 text-center text-3xl md:text-4xl">
           Portfolio Highlights
         </h2>
         <div class="grid gap-8">
@@ -272,13 +263,10 @@ const coverList: string[] = [];
                 <Image
                   src={project.imageUrl}
                   alt={`Screenshot of ${project.title}`}
-                  width={600}
-                  height={400}
-                  format="webp"
                   class="h-56 w-full object-cover"
                 />
                 <div class="font-body flex flex-grow flex-col p-6">
-                  <h3 class="font-title mb-1 text-xl font-semibold text-gray-100">
+                  <h3 class="mb-1 text-xl font-semibold text-gray-100">
                     {project.title}
                   </h3>
                   <a
@@ -289,16 +277,11 @@ const coverList: string[] = [];
                   >
                     {project.context}
                   </a>
+                  <p class="mb-2 text-sm text-gray-300">
+                    {project.description}
+                  </p>
                   <p class="mb-3 text-sm text-gray-200">
                     <strong>Tech:</strong> {project.technologies}
-                  </p>
-                  <p class="mb-2 text-sm text-gray-300">
-                    <strong class="text-gray-100">Challenge:</strong>{" "}
-                    {project.challenge}
-                  </p>
-                  <p class="mb-4 text-sm leading-relaxed text-gray-200">
-                    <strong class="text-gray-100">Impact:</strong>{" "}
-                    {project.impact}
                   </p>
                   <div class="mt-auto border-t border-gray-200 pt-3">
                     {project.link && (
@@ -324,101 +307,39 @@ const coverList: string[] = [];
       </div>
     </section>
 
-    <section id="expertise" class="py-16 text-white md:py-24">
+    <section id="testimonials">
       <div class="container mx-auto px-6">
-        <h2
-          class="font-title mb-16 text-center text-3xl font-bold text-gray-100 md:text-4xl"
-        >
-          Technical Expertise & Computational Strategies
-        </h2>
-        <div
-          class="font-body mx-auto max-w-5xl rounded-xl border border-gray-200 bg-zinc-800 p-10 shadow-xl"
-        >
-          <p class="mb-10 text-center text-lg leading-relaxed text-gray-100">
-            Leveraging a comprehensive tech stack and advanced computational
-            strategies to tackle demanding AECO software challenges. My
-            capabilities span full-stack development, ensuring robust and
-            scalable solutions.
-          </p>
-          <div
-            class="grid grid-cols-1 gap-x-10 gap-y-8 text-gray-200 md:grid-cols-2"
-          >
-            <div>
-              <h4
-                class="font-title mb-4 border-b-2 border-green-400 pb-2 text-2xl font-semibold text-gray-100"
-              >
-                Key Technologies
-              </h4>
-              <ul class="mt-4 space-y-2 text-sm">
-                <li>
-                  <strong class="font-medium text-gray-100">Languages:</strong>
-                  {technicalSkills.languages}
-                </li>
-                <li>
-                  <strong class="font-medium text-gray-100"
-                    >Frameworks/Libs:</strong
-                  >
-                  {technicalSkills.frameworks}
-                </li>
-                <li>
-                  <strong class="font-medium text-gray-100"
-                    >Web Tech & Databases:</strong
-                  >
-                  {technicalSkills.webTech}
-                </li>
-                <li>
-                  <strong class="font-medium text-gray-100"
-                    >AECO Software/APIs:</strong
-                  >
-                  {technicalSkills.aecoSoftware}
-                </li>
-                <li>
-                  <strong class="font-medium text-gray-100"
-                    >Dev Tools & Design:</strong
-                  >
-                  {technicalSkills.tools}
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4
-                class="font-title mb-4 border-b-2 border-green-400 pb-2 text-2xl font-semibold text-gray-100"
-              >
-                Computational Strategies
-              </h4>
-              <p class="mt-4 mb-3 text-sm">
-                Proficient in a wide array of computational design strategies
-                including:
-              </p>
-              <p
-                class="rounded-md border border-green-200 bg-zinc-800 p-3 text-xs text-balance text-green-500"
-              >
-                {technicalSkills.computationalStrategies}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="testimonials" class="bg-zinc-800 py-16 md:py-24">
-      <div class="container mx-auto px-6">
-        <h2
-          class="font-title mb-12 text-center text-3xl font-bold text-gray-200 md:text-4xl"
-        >
-          What Clients & Collaborators Say
-        </h2>
+        <h2 class="mb-12 text-center text-3xl md:text-4xl">What Clients Say</h2>
         <div class="font-body mx-auto max-w-3xl text-center">
-          <p class="text-lg text-gray-400 italic">
+          <p class="back:text-gray-400 text-lg text-red-400 italic">
             "Building trust through proven success. Testimonials coming soon."
           </p>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="mb-12 bg-zinc-800 py-20 text-white md:py-28">
+    <section id="expertise">
+      <div class="container mx-auto px-6">
+        <h2 class="mb-16 text-center text-3xl text-gray-100 md:text-4xl">
+          Map of Knowledge
+        </h2>
+        <div
+          class="font-body mx-auto flex max-w-5xl flex-col items-center rounded-xl bg-zinc-800 p-10 shadow-xl"
+        >
+          <p
+            class="mb-10 text-center text-lg leading-relaxed text-balance text-gray-100"
+          >
+            I’m constantly learning the latest tools to ensure I’m building the
+            right system for each task.
+          </p>
+          <SkillsMap />
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20">
       <div class="container mx-auto px-6 text-center">
-        <h2 class="font-title mb-6 text-3xl font-bold md:text-4xl lg:text-5xl">
+        <h2 class="mb-6 text-3xl font-bold md:text-4xl lg:text-5xl">
           Ready to Elevate Your AECO Projects?
         </h2>
         <p
@@ -437,7 +358,7 @@ const coverList: string[] = [];
             title="Contact Daniel Locatelli on WhatsApp"
             class="inline-flex items-center gap-3 rounded-lg bg-gradient-to-r from-green-500 to-green-600 px-8 py-3 text-lg text-white transition hover:from-green-600 hover:to-green-700 hover:shadow-[0px_5px_20px_rgba(72,187,120,0.5)] focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:outline-none"
           >
-            <Image src={WhatsApp} alt="WhatsApp Icon" class="h-5 w-5" />
+            <Image src={WhatsApp} alt="WhatsApp Icon" class="size-5" />
             Let's Talk
           </a>
           <a
@@ -447,7 +368,7 @@ const coverList: string[] = [];
           >
             <Icon
               name="mdi:email-outline"
-              class="size-7 shrink-0 print:hidden"
+              class="size-5 shrink-0 print:hidden"
             />
             Send an Email
           </a>

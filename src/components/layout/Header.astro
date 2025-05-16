@@ -25,13 +25,13 @@ const { locale, slug } = Astro.props as Props;
 ---
 
 <header
-  class="group print:hidden fixed top-0 z-40 flex w-full justify-between bg-black/[.5] px-4 py-2 backdrop-blur sm:items-center sm:justify-center"
+  class="group fixed top-0 z-40 flex w-full justify-between bg-black/[.5] px-4 py-2 backdrop-blur sm:items-center sm:justify-center print:hidden"
   id="main-header"
 >
   <div class="flex w-full sm:max-w-3xl">
     <a
       aria-current={url.pathname === "/" ? "page" : false}
-      class="inline-flex h-10 w-12 items-center sm:relative sm:inline-block"
+      class="inline-flex h-10 w-12 items-center sm:relative sm:inline-block sm:justify-between"
       href={locale === "en" ? "/" : "/" + locale}
     >
       <Image
@@ -43,61 +43,33 @@ const { locale, slug } = Astro.props as Props;
     </a>
     <nav
       aria-label="Main menu"
-      class="relative hidden grow flex-col items-end pt-6 font-body text-lg group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:mt-1 sm:flex sm:flex-row sm:items-center sm:justify-around sm:py-0 sm:text-base"
+      class="font-body relative hidden grow flex-col items-end pt-6 text-lg group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:mt-1 sm:flex sm:flex-row sm:items-center sm:justify-end sm:gap-4 sm:py-0 sm:text-base"
       id="navigation-menu"
     >
-      {
-        pages.map(
-          (page) =>
-            page.Name !== "Homepage" && (
-              <a
-                aria-current={url.pathname === page.Slug ? "page" : false}
-                class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
-                data-astro-prefetch
-                href={
-                  locale === "en"
-                    ? "/" + page.Slug
-                    : "/" + locale + "/" + page.Slug
-                }
-                title={page.Name}
-              >
-                {locale === "en" && page.Name}
-                {locale === "de" && page.Name_de}
-                {locale === "pt" && page.Name_pt}
-              </a>
-            )
-        )
-      }
-      {
-        locale === "en" && (
-          <a
-            class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
-            href={"/#about"}
-          >
-            About
-          </a>
-        )
-      }
-      {
-        locale === "de" && (
-          <a
-            class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
-            href={"/de/#about"}
-          >
-            Über
-          </a>
-        )
-      }
-      {
-        locale === "pt" && (
-          <a
-            class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
-            href={"/pt/#about"}
-          >
-            Sobre
-          </a>
-        )
-      }
+      <div>
+        {
+          pages.map(
+            (page) =>
+              page.Name !== "Homepage" && (
+                <a
+                  aria-current={url.pathname === page.Slug ? "page" : false}
+                  class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
+                  data-astro-prefetch
+                  href={
+                    locale === "en"
+                      ? "/" + page.Slug
+                      : "/" + locale + "/" + page.Slug
+                  }
+                  title={page.Name}
+                >
+                  {locale === "en" && page.Name}
+                  {locale === "de" && page.Name_de}
+                  {locale === "pt" && page.Name_pt}
+                </a>
+              )
+          )
+        }
+      </div>
 
       <a
         title={locale === "en" ? "Mudar para Português" : "Change to English"}
@@ -141,7 +113,7 @@ const { locale, slug } = Astro.props as Props;
       </svg>
       <svg
         aria-hidden="true"
-        class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 text-accent opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100"
+        class="text-accent absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100"
         class="text-accent"
         fill="none"
         focusable="false"
