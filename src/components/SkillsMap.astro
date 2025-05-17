@@ -1,16 +1,8 @@
 ---
 import AutoCad from "../assets/software/autocad.svg";
 import Sketchup from "../assets/software/sketchup.svg";
-import ThreeDSMax from "../assets/software/3ds-max.svg";
-import VRay from "../assets/software/v-ray.svg";
-import Keyshot from "../assets/software/keyshot.svg";
-import Twinmotion from "../assets/software/twinmotion.svg";
-import Lumion from "../assets/software/lumion.svg";
 import Revit from "../assets/software/revit.svg";
-import GreenBuildingStudio from "../assets/software/green-building-studio.svg";
-import Ecotect from "../assets/software/ecotect.svg";
-import Flow from "../assets/software/flow.svg";
-import CFD from "../assets/software/cfd.svg";
+import Civil3D from "../assets/software/civil3d.svg";
 import Dynamo from "../assets/software/dynamo.svg";
 import Grasshopper from "../assets/software/grasshopper3d.svg";
 import Firefly from "../assets/software/firefly.svg";
@@ -20,8 +12,6 @@ import Galapagos from "../assets/software/galapagos.svg";
 import Ladybug from "../assets/software/ladybug-tools.svg";
 import Culebra from "../assets/software/culebra.svg";
 import Karamba from "../assets/software/karamba3d.svg";
-import Arduino from "../assets/software/arduino.svg";
-import RaspberryPi from "../assets/software/raspberry-pi.svg";
 import Python from "../assets/software/python.svg";
 import CSharp from "../assets/software/c-sharp.svg";
 import HTML from "../assets/software/html-5.svg";
@@ -41,330 +31,448 @@ import Sofistik from "../assets/software/sofistik.svg";
 
 <div id="chart-container">
   <!-- CAD -->
-  <div class="section group transition duration-200 hover:bg-zinc-700">
+  <div class="section group bg-zinc-700">
     <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.7] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-12 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none"
+      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-25 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none"
     >
-      CAD
+      CAD & BIM
     </div>
     <div class="section-content">
       <!-- CAD Subsection -->
-      <div class="node-container">
-        <div class="node">
-          <AutoCad class="inline-block cursor-pointer rounded bg-white" />
-          <div class="node-label">AutoCAD</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
+      <div class="flex items-center justify-around py-4">
+        <a
+          href="https://www.sketchup.com/en"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group/sketchup node gap-1"
+        >
           <Sketchup class="inline-block cursor-pointer rounded bg-white" />
-          <div class="node-label">SketchUp</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
-          <ThreeDSMax class="inline-block cursor-pointer rounded bg-white" />
-          <div class="node-label">3ds Max</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Rendering Section -->
-  <div class="section group transition duration-200 hover:bg-zinc-700">
-    <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.7] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-21 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none"
-    >
-      Rendering
-    </div>
-    <div class="section-content">
-      <div class="node-container">
-        <div class="node">
-          <VRay class="inline-block cursor-pointer rounded bg-[#2f58a8]" />
-          <div class="node-label">V-Ray</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
-          <Keyshot class="inline-block cursor-pointer rounded bg-white" />
-          <div class="node-label">KeyShot</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
-          <Twinmotion class="inline-block cursor-pointer rounded bg-black" />
-          <div class="node-label">Twinmotion</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
-          <Lumion
-            class="inline-block cursor-pointer rounded brightness-125 grayscale filter transition duration-200 ease-in-out group-hover:bg-[#2C5486] group-hover:brightness-100 group-hover:grayscale-0"
-          />
-          <div class="node-label">Lumion</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BIM Section -->
-  <div class="section group transition duration-200 hover:bg-zinc-700">
-    <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.7] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-52 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
-    >
-      BIM & Environmental Analysis
-    </div>
-    <div class="section-content">
-      <div class="node-container">
-        <div class="node">
-          <Revit
-            class="inline-block cursor-pointer rounded brightness-150 grayscale filter transition duration-200 ease-in-out group-hover:bg-white group-hover:brightness-100 group-hover:grayscale-0"
-          />
-          <div class="node-label">Revit</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
-          <GreenBuildingStudio
-            class="inline-block cursor-pointer rounded brightness-200 grayscale filter transition duration-200 ease-in-out group-hover:bg-white group-hover:brightness-100 group-hover:grayscale-0"
-          />
-          <div class="node-label">Green Building Studio</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
-          <Ecotect
-            class="m inline-block cursor-pointer rounded grayscale filter transition duration-200 ease-in-out group-hover:bg-white group-hover:grayscale-0"
-          />
-          <div class="node-label">Ecotect</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
-          <Flow
-            class="inline-block cursor-pointer rounded brightness-150 grayscale filter transition duration-200 ease-in-out group-hover:bg-white group-hover:brightness-100 group-hover:grayscale-0"
-          />
-          <div class="node-label">Flow Design</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
-          <CFD
-            class="inline-block cursor-pointer rounded grayscale filter transition duration-200 ease-in-out group-hover:bg-white group-hover:grayscale-0"
-          />
-          <div class="node-label">CFD</div>
-        </div>
+          <div
+            class="h-0 text-center text-xs opacity-0 group-hover/sketchup:opacity-100"
+          >
+            SketchUp
+          </div>
+        </a>
+        <a
+          href="https://www.autodesk.com/products/autocad/overview"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group/autocad node gap-1"
+        >
+          <AutoCad class="inline-block cursor-pointer rounded bg-white" />
+          <div
+            class="h-0 text-center text-xs opacity-0 group-hover/autocad:opacity-100"
+          >
+            AutoCAD
+          </div>
+        </a>
+        <a
+          href="https://www.autodesk.com/products/civil-3d/overview"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group/civil3d node gap-1"
+        >
+          <Civil3D class="inline-block cursor-pointer rounded bg-white" />
+          <div
+            class="h-0 text-center text-xs opacity-0 group-hover/civil3d:opacity-100"
+          >
+            Civil&nbsp;3D
+          </div>
+        </a>
+        <a
+          href="https://www.autodesk.com/products/revit/overview"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group/revit node gap-1"
+        >
+          <Revit class="inline-block cursor-pointer rounded bg-white" />
+          <div
+            class="h-0 text-center text-xs opacity-0 group-hover/revit:opacity-100"
+          >
+            Revit
+          </div>
+        </a>
       </div>
     </div>
   </div>
 
   <!-- Computational Design Section -->
-  <div class="section group transition duration-200 hover:bg-zinc-700">
+  <div class="section group bg-zinc-700">
     <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.7] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-40 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
+      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-40 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
     >
       Computational Design
     </div>
     <div class="section-content">
-      <div class="node-container">
-        <div class="node">
+      <div class="flex items-center justify-around py-4">
+        <a
+          href="https://dynamobim.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="node group/dynamo gap-1"
+        >
           <Dynamo class="inline-block cursor-pointer rounded bg-white" />
-          <div class="node-label">Dynamo</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
+          <div
+            class="h-0 text-center text-xs opacity-0 group-hover/dynamo:opacity-100"
+          >
+            Dynamo
+          </div>
+        </a>
+        <a
+          href="https://en.wikipedia.org/wiki/Grasshopper_3D"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="node group/grasshopper gap-1"
+        >
           <Grasshopper
             class="inline-block cursor-pointer rounded bg-[#579141]"
           />
-          <div class="node-label">Grasshopper</div>
-        </div>
+          <div
+            class="h-0 text-center text-xs opacity-0 group-hover/grasshopper:opacity-100"
+          >
+            Grasshopper
+          </div>
+        </a>
       </div>
-
       <div class="subsection">
         <div class="subsection-title">Grasshopper Add-ons</div>
-        <div class="node-container">
-          <div class="node">
+        <div class="flex items-center justify-around py-4">
+          <a
+            href="https://www.fireflyexperiments.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/firefly gap-1"
+          >
             <Firefly class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Firefly</div>
-          </div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/firefly:opacity-100"
+            >
+              Firefly
+            </div>
+          </a>
+          <a
+            href="https://kangaroo3d.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/kangaroo gap-1"
+          >
             <Kangaroo class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Kangaroo</div>
-          </div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/kangaroo:opacity-100"
+            >
+              Kangaroo
+            </div>
+          </a>
+          <a
+            href="https://www.grasshopper3d.com/group/galapagos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/galapagos gap-1"
+          >
             <Galapagos class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Galapagos</div>
-          </div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/galapagos:opacity-100"
+            >
+              Galapagos
+            </div>
+          </a>
+          <a
+            href="https://www.giuliopiacentino.com/weaverbird/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/weaverbird gap-1"
+          >
             <Weaverbird class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Weaverbird</div>
-          </div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/weaverbird:opacity-100"
+            >
+              Weaverbird
+            </div>
+          </a>
+          <a
+            href="https://www.ladybug.tools/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/ladybug gap-1"
+          >
             <Ladybug class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Ladybug Tools</div>
-          </div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/ladybug:opacity-100"
+            >
+              Ladybug Tools
+            </div>
+          </a>
+          <a
+            href="https://www.complicitmatter.com/culebra-net/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/culebra gap-1"
+          >
             <Culebra class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Culebra2</div>
-          </div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/culebra:opacity-100"
+            >
+              Culebra
+            </div>
+          </a>
+          <a
+            href="https://karamba3d.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/karamba gap-1"
+          >
             <Karamba class="g inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Karamba3D</div>
-          </div>
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/karamba:opacity-100"
+            >
+              Karamba3D
+            </div>
+          </a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- FEA Section -->
-  <div class="section group transition duration-200 hover:bg-zinc-700">
+  <div class="section group bg-zinc-700">
     <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.7] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-41 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
+      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-41 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
     >
       Finite Element Analysis
     </div>
     <div class="section-content">
-      <div class="node-container">
-        <div class="node">
+      <div class="flex items-center justify-around py-4">
+        <a
+          href="https://www.dlubal.com/en/products/rfem-fea-software/rfem/what-is-rfem"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="node group/refm gap-1"
+        >
           <RFEM class="inline-block cursor-pointer rounded bg-white" />
-          <div class="node-label">RFEM</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
+          <div
+            class="h-0 text-center text-xs opacity-0 group-hover/refm:opacity-100"
+          >
+            RFEM
+          </div>
+        </a>
+        <a
+          href="https://www.sofistik.com/en/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="node group/sofistik gap-1"
+        >
           <Sofistik class="inline-block cursor-pointer rounded bg-white" />
-          <div class="node-label">SOFiSTiK</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Hardware Section -->
-  <div class="section group transition duration-200 hover:bg-zinc-700">
-    <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.7] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-20 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
-    >
-      Hardware
-    </div>
-    <div class="section-content">
-      <div class="node-container">
-        <div class="node">
-          <Arduino class="inline-block cursor-pointer rounded bg-white" />
-          <div class="node-label">Arduino</div>
-        </div>
-        <div class="arrow">→</div>
-        <div class="node">
-          <RaspberryPi class="inline-block cursor-pointer rounded bg-white" />
-          <div class="node-label">Raspberry Pi</div>
-        </div>
+          <div
+            class="h-0 text-center text-xs opacity-0 group-hover/sofistik:opacity-100"
+          >
+            SOFiSTiK
+          </div>
+        </a>
       </div>
     </div>
   </div>
 
   <!-- Programming Section -->
-  <div class="section group transition duration-200 hover:bg-zinc-700">
+  <div class="section group bg-zinc-700">
     <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.7] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-26 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
+      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-26 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
     >
       Programming
     </div>
     <div class="section-content">
       <div class="subsection">
         <div class="subsection-title">Languages</div>
-        <div class="node-container">
-          <div class="node">
-            <Python class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Python</div>
-          </div>
-          <div class="arrow">→</div>
-          <div class="node">
-            <CSharp class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">C#</div>
-          </div>
-          <div class="arrow">→</div>
-          <div
-            class="flex items-center gap-2 rounded-xl border border-dashed bg-zinc-600 p-4"
+        <div class="flex items-center justify-around py-4">
+          <a
+            href="https://www.python.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/python gap-1"
           >
-            <div class="node">
+            <Python class="inline-block cursor-pointer rounded bg-white" />
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/python:opacity-100"
+            >
+              Python
+            </div>
+          </a>
+          <a
+            href="https://dotnet.microsoft.com/en-us/languages/csharp"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/csharp gap-1"
+          >
+            <CSharp class="inline-block cursor-pointer rounded bg-white" />
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/csharp:opacity-100"
+            >
+              C#
+            </div>
+          </a>
+          <div
+            class="group/webdev flex items-center gap-8 rounded-xl border border-dashed bg-zinc-600 px-8 py-6"
+          >
+            <a
+              href="https://html.spec.whatwg.org/multipage/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="node gap-1"
+            >
               <HTML class="inline-block cursor-pointer" />
-              <div class="node-label">HTML</div>
-            </div>
-            <div class="arrow">+</div>
-            <div class="node">
+              <div
+                class="h-0 text-center text-xs opacity-0 group-hover/webdev:opacity-100"
+              >
+                HTML
+              </div>
+            </a>
+            <a
+              href="https://www.w3.org/Style/CSS/Overview.en.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="node gap-1"
+            >
               <CSS class="inline-block cursor-pointer" />
-              <div class="node-label">CSS</div>
-            </div>
-            <div class="arrow">+</div>
-            <div class="node">
+              <div
+                class="h-0 text-center text-xs opacity-0 group-hover/webdev:opacity-100"
+              >
+                CSS
+              </div>
+            </a>
+            <a
+              href="https://en.wikipedia.org/wiki/JavaScript"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="node gap-1"
+            >
               <JavascriptLogo class="inline-block cursor-pointer" />
-              <div class="node-label">JS</div>
-            </div>
+              <div
+                class="h-0 text-center text-xs opacity-0 group-hover/webdev:opacity-100"
+              >
+                JavaScript
+              </div>
+            </a>
           </div>
         </div>
       </div>
 
       <div class="subsection">
         <div class="subsection-title">Frameworks</div>
-        <div class="node-container">
-          <div class="node">
+        <div class="flex items-center justify-around py-4">
+          <a
+            href="https://palletsprojects.com/projects/flask/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/flask gap-1"
+          >
             <FlaskLogo class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Flask</div>
-          </div>
-          <div class="arrow">→</div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/flask:opacity-100"
+            >
+              Flask
+            </div>
+          </a>
+          <a
+            href="https://angular.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/angular gap-1"
+          >
             <AngularLogo class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Angular</div>
-          </div>
-          <div class="arrow">→</div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/angular:opacity-100"
+            >
+              Angular
+            </div>
+          </a>
+          <a
+            href="https://astro.build/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/astro gap-1"
+          >
             <AstroLogo class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">Astro</div>
-          </div>
-          <div class="arrow">→</div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/astro:opacity-100"
+            >
+              Astro
+            </div>
+          </a>
+          <a
+            href="https://react.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/react gap-1"
+          >
             <ReactLogo class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">React</div>
-          </div>
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/react:opacity-100"
+            >
+              React
+            </div>
+          </a>
         </div>
       </div>
       <div class="subsection">
         <div class="subsection-title">Databases</div>
-        <div class="node-container">
-          <div class="node">
+        <div class="flex items-center justify-around py-4">
+          <a
+            href="https://en.wikipedia.org/wiki/Comma-separated_values"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/excel gap-1"
+          >
             <ExcelLogo class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">CSV</div>
-          </div>
-          <div class="arrow">→</div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/excel:opacity-100"
+            >
+              CSV
+            </div>
+          </a>
+          <a
+            href="https://www.mongodb.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/mongo gap-1"
+          >
             <MongoDB class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">JSON</div>
-          </div>
-          <div class="arrow">→</div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/mongo:opacity-100"
+            >
+              NoSQL
+            </div>
+          </a>
+          <a
+            href="https://sqlite.org/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/sqlite gap-1"
+          >
             <SQLite class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">SQLite</div>
-          </div>
-          <div class="arrow">→</div>
-          <div class="node">
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/sqlite:opacity-100"
+            >
+              SQLite
+            </div>
+          </a>
+          <a
+            href="https://www.postgresql.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="node group/postgresql gap-1"
+          >
             <PostgreSQL class="inline-block cursor-pointer rounded bg-white" />
-            <div class="node-label">PostgreSQL</div>
-          </div>
+            <div
+              class="h-0 text-center text-xs opacity-0 group-hover/postgresql:opacity-100"
+            >
+              PostgreSQL
+            </div>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- <script>
-        // Optional: Add some interactivity
-        document.addEventListener('DOMContentLoaded', function() {
-            const nodes = document.querySelectorAll('.node');
-            
-            nodes.forEach(node => {
-                node.addEventListener('click', function() {
-                    // Add active class to clicked node
-                    nodes.forEach(n => n.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Get the software name
-                    const softwareName = this.querySelector('.node-label').textContent;
-                    console.log(`Selected: ${softwareName}`);
-                    
-                    // Here you could add additional functionality like showing details
-                    // about the selected software
-                });
-            });
-        });
-    </script> -->
 <style>
   #chart-container {
     width: 100%;
@@ -392,8 +500,8 @@ import Sofistik from "../assets/software/sofistik.svg";
   .section-content {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 0.5rem 0;
+    gap: 2.5rem;
+    padding: 1.5rem 0;
   }
 
   .subsection {
@@ -413,13 +521,6 @@ import Sofistik from "../assets/software/sofistik.svg";
     border-radius: 0.25rem;
   }
 
-  .node-container {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    align-items: center;
-  }
-
   .node {
     display: flex;
     flex-direction: column;
@@ -435,45 +536,5 @@ import Sofistik from "../assets/software/sofistik.svg";
   .node:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px var(--shadow-color);
-  }
-
-  .node-label {
-    font-size: 0.8rem;
-    text-align: center;
-    height: 0;
-    opacity: 0;
-  }
-
-  .arrow {
-    font-size: 1.5rem;
-    color: var(--line-color);
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .section-connector {
-    display: flex;
-    justify-content: center;
-    margin: 0.5rem 0;
-  }
-
-  .connector-line {
-    width: 2px;
-    height: 30px;
-    background-color: var(--line-color);
-  }
-
-  .connector-arrow {
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid var(--line-color);
-  }
-
-  @media (max-width: 768px) {
-    .tech-chart {
-      min-width: 100%;
-    }
   }
 </style>
