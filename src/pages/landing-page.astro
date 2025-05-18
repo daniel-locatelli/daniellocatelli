@@ -95,7 +95,7 @@ const projects = [
 
 const recommendations = [
   {
-    text: "Mr. Locatelli impressed with outstanding technical expertise, technological versatility, and initiative, making a significant contribution to the development of innovative software and web solutions at BuildSystems and exceeding our expectations in every respect.",
+    text: "Daniel Locatelli impressed with his technical expertise, technological versatility, and initiative, making a significant contribution to the development of innovative software and web solutions at BuildSystems and exceeding our expectations in every respect.",
     author: "Martin Bittmann",
     context: "BuildSystems GmbH",
     position: "Founder",
@@ -148,7 +148,7 @@ const coverList: string[] = [];
           <Image
             src={profilePhoto}
             alt="Daniel Locatelli"
-            class="order-1 h-36 w-36 rounded-full border-3 border-zinc-200 md:order-2 md:h-44 md:w-44"
+            class="order-1 h-30 w-30 rounded-full border-3 border-zinc-200 md:order-2 md:h-44 md:w-44"
           />
           <h1
             class="order-2 text-2xl font-bold sm:text-3xl md:order-1 md:text-4xl"
@@ -160,31 +160,37 @@ const coverList: string[] = [];
         </div>
 
         <p class="font-body max-w-xl">
-          As a research associate at the Munich University of Applied Sciences,
-          I&nbsp;specialize in developing plugins, web applications, and
-          computational design solutions for architecture, engineering, and
+          As a part-time research associate at the Munich University of Applied
+          Sciences, I&nbsp;specialize in developing plugins, web applications,
+          and computational design solutions for architecture, engineering, and
           construction (AEC).
         </p>
-        <div class="flex items-center gap-2">
+        <div
+          class="flex flex-col items-center gap-4 md:flex-row md:gap-2 md:text-sm"
+        >
           <a
             href={whatsAppUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex w-fit items-center gap-3 rounded-lg bg-gradient-to-r from-green-600 to-green-700 px-8 py-3 text-lg text-white transition hover:from-green-700 hover:to-green-800 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
+            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border-1 border-green-400 bg-gradient-to-r from-green-700 to-green-800 px-8 py-3 text-white transition hover:from-green-800 hover:to-green-900 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none md:w-fit"
           >
+            <Image
+              src={WhatsApp}
+              alt="WhatsApp Icon"
+              class="size-5 md:size-4"
+            />
             Request a quote
-            <Image src={WhatsApp} alt="WhatsApp Icon" class="size-5" />
           </a>
           <a
             href={`mailto:${emailAddress}`}
             title="Email Daniel Locatelli"
-            class="inline-flex w-fit items-center gap-3 rounded-lg border-1 border-green-400 px-8 py-3 text-lg text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none"
+            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border-1 border-green-400 px-8 py-3 text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none md:w-fit"
           >
             <Icon
               name="mdi:email-outline"
-              class="size-5 shrink-0 print:hidden"
+              class="size-5 md:size-4 print:hidden"
             />
-            Send an Email
+            <span> Send an Email </span>
           </a>
         </div>
       </div>
@@ -206,7 +212,7 @@ const coverList: string[] = [];
                     {service.title}
                   </h3>
                 </div>
-                <p class="font-body leading-relaxed text-zinc-200">
+                <p class="font-body leading-relaxed text-pretty text-zinc-200">
                   {service.description}
                 </p>
               </div>
@@ -218,23 +224,23 @@ const coverList: string[] = [];
 
     <section id="about">
       <div class="container mx-auto">
-        <div class="text-center">
-          <h2 class="">The Architect-Programmer</h2>
-        </div>
+        <h2 class="text-center">Architect + Programmer</h2>
         <div
-          class="font-body rounded-xlp-10 mx-auto max-w-4xl space-y-6 text-center text-lg leading-relaxed shadow-xl"
+          class="font-body mx-auto max-w-4xl space-y-6 px-8 text-lg leading-relaxed"
         >
           <p>
             With a background in architecture and a Master of Science from the
-            ITECH program at the University of Stuttgart, coupled with five
+            ITECH program at the University of Stuttgart, coupled with ten
             years' experience that encompassed computational design at German
             engineering offices, I possess a deep understanding of AEC
             challenges.
           </p>
           <p>
             I apply this insight through strong full-stack development skills to
-            build software tailored for AEC professionals, having a firsthand
-            understanding of their workflows and needs.
+            build software tailored for AEC professionals. I don't just write
+            code; I design and build software solutions that are tailored to the
+            needs of architects, engineers, and construction professionals
+            because I understand your world.
           </p>
         </div>
       </div>
@@ -255,7 +261,7 @@ const coverList: string[] = [];
                   class="h-56 w-full object-cover"
                 />
                 <div class="font-body flex flex-grow flex-col p-6">
-                  <h3 class="mb-1 text-xl font-semibold text-zinc-100">
+                  <h3 class="mb-1 text-xl font-semibold text-balance text-zinc-100">
                     {project.title}
                   </h3>
                   <a
@@ -266,7 +272,7 @@ const coverList: string[] = [];
                   >
                     {project.context}
                   </a>
-                  <p class="mb-2 text-sm text-zinc-300">
+                  <p class="mb-2 text-sm text-pretty text-zinc-300">
                     {project.description}
                   </p>
                   <p class="mb-3 text-sm text-zinc-200">
@@ -304,8 +310,8 @@ const coverList: string[] = [];
         {
           recommendations.map((rec) => (
             <div>
-              <Icon name="mdi:format-quote-open" class="size-16" />
-              <blockquote class="relative flex flex-col gap-3 rounded-r-xl border-l-2 border-green-600 pr-6 pl-10">
+              <Icon name="mdi:format-quote-open" class="ml-4 size-12" />
+              <blockquote class="relative flex flex-col gap-3 rounded-r-xl border-l-2 border-green-600 pr-6 pl-6">
                 <p class="text-lg text-pretty italic">{rec.text}</p>
                 <a
                   href={rec.contextLink}
@@ -366,19 +372,19 @@ const coverList: string[] = [];
             target="_blank"
             rel="noopener noreferrer"
             title="Contact Daniel Locatelli on WhatsApp"
-            class="inline-flex items-center gap-3 rounded-lg bg-gradient-to-r from-green-500 to-green-600 px-8 py-3 text-lg text-white transition hover:from-green-600 hover:to-green-700 hover:shadow-[0px_5px_20px_rgba(72,187,120,0.5)] focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:outline-none"
+            class="inline-flex items-center gap-3 rounded-lg bg-gradient-to-r from-green-500 to-green-600 px-8 py-3 text-white transition hover:from-green-600 hover:to-green-700 hover:shadow-[0px_5px_20px_rgba(72,187,120,0.5)] focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:outline-none"
           >
-            <Image src={WhatsApp} alt="WhatsApp Icon" class="size-5" />
+            <Image src={WhatsApp} alt="WhatsApp Icon" class="size-4" />
             Let's Talk
           </a>
           <a
             href={`mailto:${emailAddress}`}
             title="Email Daniel Locatelli"
-            class="inline-flex items-center gap-3 rounded-lg border-1 border-green-400 px-8 py-3 text-lg text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none"
+            class="inline-flex items-center gap-3 rounded-lg border-1 border-green-400 px-8 py-3 text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none"
           >
             <Icon
               name="mdi:email-outline"
-              class="size-5 shrink-0 print:hidden"
+              class="size-4 shrink-0 print:hidden"
             />
             Send an Email
           </a>

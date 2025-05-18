@@ -31,89 +31,89 @@ import Sofistik from "../assets/software/sofistik.svg";
 
 <div id="chart-container">
   <!-- CAD -->
-  <div class="section group bg-zinc-700">
+  <div class="section group">
     <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-25 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none"
+      class="absolute top-0 left-5 z-10 flex h-7 w-25 -translate-y-3.5 items-center justify-center rounded-sm bg-zinc-800 px-2 pb-1 font-sans text-sm filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:h-7 group-hover:w-25 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:left-0 md:h-full md:w-full md:translate-0 md:rounded-2xl md:bg-black/[.8] md:text-2xl"
     >
       CAD & BIM
     </div>
-    <div class="section-content">
-      <!-- CAD Subsection -->
-      <div class="flex items-center justify-around py-4">
-        <a
-          href="https://www.sketchup.com/en"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group/sketchup node gap-1"
+    <!-- CAD Subsection -->
+    <div
+      class="grid grid-cols-2 items-center justify-around gap-4 py-4 md:flex md:py-10"
+    >
+      <a
+        href="https://www.sketchup.com/en"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group/sketchup flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+      >
+        <Sketchup class="inline-block w-10 cursor-pointer rounded bg-white" />
+        <div
+          class="text-center text-xs group-hover/sketchup:opacity-100 md:h-0 md:opacity-0"
         >
-          <Sketchup class="inline-block cursor-pointer rounded bg-white" />
-          <div
-            class="h-0 text-center text-xs opacity-0 group-hover/sketchup:opacity-100"
-          >
-            SketchUp
-          </div>
-        </a>
-        <a
-          href="https://www.autodesk.com/products/autocad/overview"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group/autocad node gap-1"
+          SketchUp
+        </div>
+      </a>
+      <a
+        href="https://www.autodesk.com/products/autocad/overview"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group/autocad flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+      >
+        <AutoCad class="inline-block w-10 cursor-pointer rounded bg-white" />
+        <div
+          class="text-center text-xs group-hover/autocad:opacity-100 md:h-0 md:opacity-0"
         >
-          <AutoCad class="inline-block cursor-pointer rounded bg-white" />
-          <div
-            class="h-0 text-center text-xs opacity-0 group-hover/autocad:opacity-100"
-          >
-            AutoCAD
-          </div>
-        </a>
-        <a
-          href="https://www.autodesk.com/products/civil-3d/overview"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group/civil3d node gap-1"
+          AutoCAD
+        </div>
+      </a>
+      <a
+        href="https://www.autodesk.com/products/civil-3d/overview"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group/civil3d flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+      >
+        <Civil3D class="inline-block w-10 cursor-pointer rounded bg-white" />
+        <div
+          class="text-center text-xs group-hover/civil3d:opacity-100 md:h-0 md:opacity-0"
         >
-          <Civil3D class="inline-block cursor-pointer rounded bg-white" />
-          <div
-            class="h-0 text-center text-xs opacity-0 group-hover/civil3d:opacity-100"
-          >
-            Civil&nbsp;3D
-          </div>
-        </a>
-        <a
-          href="https://www.autodesk.com/products/revit/overview"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group/revit node gap-1"
+          Civil&nbsp;3D
+        </div>
+      </a>
+      <a
+        href="https://www.autodesk.com/products/revit/overview"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group/revit flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+      >
+        <Revit class="inline-block w-10 cursor-pointer rounded bg-white" />
+        <div
+          class="text-center text-xs group-hover/revit:opacity-100 md:h-0 md:opacity-0"
         >
-          <Revit class="inline-block cursor-pointer rounded bg-white" />
-          <div
-            class="h-0 text-center text-xs opacity-0 group-hover/revit:opacity-100"
-          >
-            Revit
-          </div>
-        </a>
-      </div>
+          Revit
+        </div>
+      </a>
     </div>
   </div>
 
   <!-- Computational Design Section -->
-  <div class="section group bg-zinc-700">
+  <div class="section group">
     <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-40 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
+      class="absolute top-0 left-5 z-10 flex h-7 w-42 -translate-y-3.5 items-center justify-center rounded-sm bg-zinc-800 px-2 pb-1 font-sans text-sm filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:h-7 group-hover:w-42 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:left-0 md:h-full md:w-full md:translate-0 md:rounded-2xl md:bg-black/[.8] md:text-2xl"
     >
       Computational Design
     </div>
-    <div class="section-content">
-      <div class="flex items-center justify-around py-4">
+    <div class="flex flex-col items-center justify-around gap-12 py-4 md:py-10">
+      <div class="flex w-full items-center justify-around">
         <a
           href="https://dynamobim.org/"
           target="_blank"
           rel="noopener noreferrer"
-          class="node group/dynamo gap-1"
+          class="group/dynamo flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
         >
-          <Dynamo class="inline-block cursor-pointer rounded bg-white" />
+          <Dynamo class="inline-block w-10 cursor-pointer rounded bg-white" />
           <div
-            class="h-0 text-center text-xs opacity-0 group-hover/dynamo:opacity-100"
+            class="text-center text-xs group-hover/dynamo:opacity-100 md:h-0 md:opacity-0"
           >
             Dynamo
           </div>
@@ -122,43 +122,34 @@ import Sofistik from "../assets/software/sofistik.svg";
           href="https://en.wikipedia.org/wiki/Grasshopper_3D"
           target="_blank"
           rel="noopener noreferrer"
-          class="node group/grasshopper gap-1"
+          class="group/grasshopper flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
         >
           <Grasshopper
-            class="inline-block cursor-pointer rounded bg-[#579141]"
+            class="inline-block w-10 cursor-pointer rounded bg-[#579141]"
           />
           <div
-            class="h-0 text-center text-xs opacity-0 group-hover/grasshopper:opacity-100"
+            class="text-center text-xs group-hover/grasshopper:opacity-100 md:h-0 md:opacity-0"
           >
             Grasshopper
           </div>
         </a>
       </div>
-      <div class="subsection">
-        <div class="subsection-title">Grasshopper Add-ons</div>
-        <div class="flex items-center justify-around py-4">
-          <a
-            href="https://www.fireflyexperiments.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="node group/firefly gap-1"
-          >
-            <Firefly class="inline-block cursor-pointer rounded bg-white" />
-            <div
-              class="h-0 text-center text-xs opacity-0 group-hover/firefly:opacity-100"
-            >
-              Firefly
-            </div>
-          </a>
+      <div class="relative rounded-lg border border-dashed border-white p-4">
+        <div class="absolute -top-3 h-6 rounded bg-zinc-800 px-2 pt-1 text-xs">
+          Grasshopper Add-ons
+        </div>
+        <div class="flex flex-wrap items-center justify-around gap-4 py-4">
           <a
             href="https://kangaroo3d.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/kangaroo gap-1"
+            class="group/kangaroo flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <Kangaroo class="inline-block cursor-pointer rounded bg-white" />
+            <Kangaroo
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/kangaroo:opacity-100"
+              class="text-center text-xs group-hover/kangaroo:opacity-100 md:h-0 md:opacity-0"
             >
               Kangaroo
             </div>
@@ -167,11 +158,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://www.grasshopper3d.com/group/galapagos"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/galapagos gap-1"
+            class="group/galapagos flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <Galapagos class="inline-block cursor-pointer rounded bg-white" />
+            <Galapagos
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/galapagos:opacity-100"
+              class="text-center text-xs group-hover/galapagos:opacity-100 md:h-0 md:opacity-0"
             >
               Galapagos
             </div>
@@ -180,11 +173,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://www.giuliopiacentino.com/weaverbird/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/weaverbird gap-1"
+            class="group/weaverbird flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <Weaverbird class="inline-block cursor-pointer rounded bg-white" />
+            <Weaverbird
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/weaverbird:opacity-100"
+              class="text-center text-xs group-hover/weaverbird:opacity-100 md:h-0 md:opacity-0"
             >
               Weaverbird
             </div>
@@ -193,11 +188,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://www.ladybug.tools/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/ladybug gap-1"
+            class="group/ladybug flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <Ladybug class="inline-block cursor-pointer rounded bg-white" />
+            <Ladybug
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/ladybug:opacity-100"
+              class="text-center text-xs group-hover/ladybug:opacity-100 md:h-0 md:opacity-0"
             >
               Ladybug Tools
             </div>
@@ -206,11 +203,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://www.complicitmatter.com/culebra-net/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/culebra gap-1"
+            class="group/culebra flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <Culebra class="inline-block cursor-pointer rounded bg-white" />
+            <Culebra
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/culebra:opacity-100"
+              class="text-center text-xs group-hover/culebra:opacity-100 md:h-0 md:opacity-0"
             >
               Culebra
             </div>
@@ -219,11 +218,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://karamba3d.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/karamba gap-1"
+            class="group/karamba flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <Karamba class="g inline-block cursor-pointer rounded bg-white" />
+            <Karamba
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/karamba:opacity-100"
+              class="text-center text-xs group-hover/karamba:opacity-100 md:h-0 md:opacity-0"
             >
               Karamba3D
             </div>
@@ -236,7 +237,7 @@ import Sofistik from "../assets/software/sofistik.svg";
   <!-- FEA Section -->
   <div class="section group bg-zinc-700">
     <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-41 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
+      class="absolute top-0 left-0 z-10 hidden h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 pb-1 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-7 group-hover:w-43 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:flex"
     >
       Finite Element Analysis
     </div>
@@ -246,11 +247,11 @@ import Sofistik from "../assets/software/sofistik.svg";
           href="https://www.dlubal.com/en/products/rfem-fea-software/rfem/what-is-rfem"
           target="_blank"
           rel="noopener noreferrer"
-          class="node group/refm gap-1"
+          class="group/refm flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
         >
-          <RFEM class="inline-block cursor-pointer rounded bg-white" />
+          <RFEM class="inline-block w-10 cursor-pointer rounded bg-white" />
           <div
-            class="h-0 text-center text-xs opacity-0 group-hover/refm:opacity-100"
+            class="text-center text-xs group-hover/refm:opacity-100 md:h-0 md:opacity-0"
           >
             RFEM
           </div>
@@ -259,11 +260,11 @@ import Sofistik from "../assets/software/sofistik.svg";
           href="https://www.sofistik.com/en/"
           target="_blank"
           rel="noopener noreferrer"
-          class="node group/sofistik gap-1"
+          class="group/sofistik flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
         >
-          <Sofistik class="inline-block cursor-pointer rounded bg-white" />
+          <Sofistik class="inline-block w-10 cursor-pointer rounded bg-white" />
           <div
-            class="h-0 text-center text-xs opacity-0 group-hover/sofistik:opacity-100"
+            class="text-center text-xs group-hover/sofistik:opacity-100 md:h-0 md:opacity-0"
           >
             SOFiSTiK
           </div>
@@ -275,7 +276,7 @@ import Sofistik from "../assets/software/sofistik.svg";
   <!-- Programming Section -->
   <div class="section group bg-zinc-700">
     <div
-      class="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-6 group-hover:w-26 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:py-1 group-hover:text-sm group-hover:backdrop-blur-none"
+      class="absolute top-0 left-0 z-10 hidden h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 pb-1 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-7 group-hover:w-28 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:flex"
     >
       Programming
     </div>
@@ -287,11 +288,11 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://www.python.org/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/python gap-1"
+            class="group/python flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <Python class="inline-block cursor-pointer rounded bg-white" />
+            <Python class="inline-block w-10 cursor-pointer rounded bg-white" />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/python:opacity-100"
+              class="text-center text-xs group-hover/python:opacity-100 md:h-0 md:opacity-0"
             >
               Python
             </div>
@@ -300,11 +301,11 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://dotnet.microsoft.com/en-us/languages/csharp"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/csharp gap-1"
+            class="group/csharp flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <CSharp class="inline-block cursor-pointer rounded bg-white" />
+            <CSharp class="inline-block w-10 cursor-pointer rounded bg-white" />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/csharp:opacity-100"
+              class="text-center text-xs group-hover/csharp:opacity-100 md:h-0 md:opacity-0"
             >
               C#
             </div>
@@ -316,11 +317,11 @@ import Sofistik from "../assets/software/sofistik.svg";
               href="https://html.spec.whatwg.org/multipage/"
               target="_blank"
               rel="noopener noreferrer"
-              class="node gap-1"
+              class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
             >
-              <HTML class="inline-block cursor-pointer" />
+              <HTML class="inline-block w-10 cursor-pointer" />
               <div
-                class="h-0 text-center text-xs opacity-0 group-hover/webdev:opacity-100"
+                class="text-center text-xs group-hover/webdev:opacity-100 md:h-0 md:opacity-0"
               >
                 HTML
               </div>
@@ -329,11 +330,11 @@ import Sofistik from "../assets/software/sofistik.svg";
               href="https://www.w3.org/Style/CSS/Overview.en.html"
               target="_blank"
               rel="noopener noreferrer"
-              class="node gap-1"
+              class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
             >
-              <CSS class="inline-block cursor-pointer" />
+              <CSS class="inline-block w-10 cursor-pointer" />
               <div
-                class="h-0 text-center text-xs opacity-0 group-hover/webdev:opacity-100"
+                class="text-center text-xs group-hover/webdev:opacity-100 md:h-0 md:opacity-0"
               >
                 CSS
               </div>
@@ -342,11 +343,11 @@ import Sofistik from "../assets/software/sofistik.svg";
               href="https://en.wikipedia.org/wiki/JavaScript"
               target="_blank"
               rel="noopener noreferrer"
-              class="node gap-1"
+              class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
             >
-              <JavascriptLogo class="inline-block cursor-pointer" />
+              <JavascriptLogo class="inline-block w-10 cursor-pointer" />
               <div
-                class="h-0 text-center text-xs opacity-0 group-hover/webdev:opacity-100"
+                class="text-center text-xs group-hover/webdev:opacity-100 md:h-0 md:opacity-0"
               >
                 JavaScript
               </div>
@@ -362,11 +363,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://palletsprojects.com/projects/flask/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/flask gap-1"
+            class="group/flask flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <FlaskLogo class="inline-block cursor-pointer rounded bg-white" />
+            <FlaskLogo
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/flask:opacity-100"
+              class="text-center text-xs group-hover/flask:opacity-100 md:h-0 md:opacity-0"
             >
               Flask
             </div>
@@ -375,11 +378,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://angular.dev/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/angular gap-1"
+            class="group/angular flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <AngularLogo class="inline-block cursor-pointer rounded bg-white" />
+            <AngularLogo
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/angular:opacity-100"
+              class="text-center text-xs group-hover/angular:opacity-100 md:h-0 md:opacity-0"
             >
               Angular
             </div>
@@ -388,11 +393,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://astro.build/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/astro gap-1"
+            class="group/astro flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <AstroLogo class="inline-block cursor-pointer rounded bg-white" />
+            <AstroLogo
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/astro:opacity-100"
+              class="text-center text-xs group-hover/astro:opacity-100 md:h-0 md:opacity-0"
             >
               Astro
             </div>
@@ -401,11 +408,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://react.dev/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/react gap-1"
+            class="group/react flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <ReactLogo class="inline-block cursor-pointer rounded bg-white" />
+            <ReactLogo
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/react:opacity-100"
+              class="text-center text-xs group-hover/react:opacity-100 md:h-0 md:opacity-0"
             >
               React
             </div>
@@ -419,11 +428,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://en.wikipedia.org/wiki/Comma-separated_values"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/excel gap-1"
+            class="group/excel flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <ExcelLogo class="inline-block cursor-pointer rounded bg-white" />
+            <ExcelLogo
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/excel:opacity-100"
+              class="text-center text-xs group-hover/excel:opacity-100 md:h-0 md:opacity-0"
             >
               CSV
             </div>
@@ -432,11 +443,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://www.mongodb.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/mongo gap-1"
+            class="group/mongo flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <MongoDB class="inline-block cursor-pointer rounded bg-white" />
+            <MongoDB
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/mongo:opacity-100"
+              class="text-center text-xs group-hover/mongo:opacity-100 md:h-0 md:opacity-0"
             >
               NoSQL
             </div>
@@ -445,11 +458,11 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://sqlite.org/index.html"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/sqlite gap-1"
+            class="group/sqlite flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <SQLite class="inline-block cursor-pointer rounded bg-white" />
+            <SQLite class="inline-block w-10 cursor-pointer rounded bg-white" />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/sqlite:opacity-100"
+              class="text-center text-xs group-hover/sqlite:opacity-100 md:h-0 md:opacity-0"
             >
               SQLite
             </div>
@@ -458,11 +471,13 @@ import Sofistik from "../assets/software/sofistik.svg";
             href="https://www.postgresql.org/"
             target="_blank"
             rel="noopener noreferrer"
-            class="node group/postgresql gap-1"
+            class="group/postgresql flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
-            <PostgreSQL class="inline-block cursor-pointer rounded bg-white" />
+            <PostgreSQL
+              class="inline-block w-10 cursor-pointer rounded bg-white"
+            />
             <div
-              class="h-0 text-center text-xs opacity-0 group-hover/postgresql:opacity-100"
+              class="text-center text-xs group-hover/postgresql:opacity-100 md:h-0 md:opacity-0"
             >
               PostgreSQL
             </div>
@@ -480,7 +495,7 @@ import Sofistik from "../assets/software/sofistik.svg";
 
   .section {
     position: relative;
-    margin: 1rem 0;
+    margin: 2rem 0;
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
@@ -497,21 +512,6 @@ import Sofistik from "../assets/software/sofistik.svg";
     border-radius: 0.25rem;
   }
 
-  .section-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    padding: 1.5rem 0;
-  }
-
-  .subsection {
-    position: relative;
-    border: 1px dashed;
-    border-color: white;
-    border-radius: 6px;
-    padding: 1rem;
-  }
-
   .subsection-title {
     font-size: 0.8rem;
     position: absolute;
@@ -519,22 +519,5 @@ import Sofistik from "../assets/software/sofistik.svg";
     background-color: var(--color-zinc-800);
     padding: 0 0.5rem;
     border-radius: 0.25rem;
-  }
-
-  .node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition:
-      transform 0.2s,
-      box-shadow 0.2s;
-    min-width: 30px;
-    width: 40px;
-    cursor: default;
-  }
-
-  .node:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px var(--shadow-color);
   }
 </style>
