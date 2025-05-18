@@ -52,7 +52,7 @@ const services = [
   {
     title: "Digital Fabrication",
     description:
-      "Developing grasshopper scripts for automatic fabrication data extraction of complex parametric designs for digital manufacture.",
+      "Creating Grasshopper scripts to automatically extract manufacturing data from complex, parametric 3D designs for digital fabrication.",
     icon: "ph:resize",
   },
 ];
@@ -61,45 +61,63 @@ const projects = [
   {
     title: "BuildSystems Funding Calculator",
     context: "BuildSystems GmbH",
+    contextLink: "https://buildsystems.de",
     description:
       "Web application with user-friendly forms and interactive charts for simulating funding scenarios for housing through the national German bank KfW.",
     technologies:
       "TypeScript, Angular, ng2-charts, Supabase, PostgreSQL, HTML, CSS.",
 
     imageUrl: buildSystemsCalculator, // to be changed
-    link: "/projects/kfw-funding-calculator-by-buildsystems",
+    internalLink: "/projects/kfw-funding-calculator-by-buildsystems",
   },
   {
     title: "BuildSystems Plugin for Grasshopper/Rhino3D",
     context: "BuildSystems GmbH",
+    contextLink: "https://buildsystems.de",
     description:
       "Grasshopper plugin that enables designers to perform critical feasibility and sustainability analyses directly within their design environment, promoting informed decision-making.",
     technologies: "C#, RhinoCommon, Grasshopper API, JSON.",
     imageUrl: buildSystemsPluginCover, // Replace with actual path
-    link: "projects/buildsystems-plugin-for-grasshopper",
+    internalLink: "/projects/buildsystems-plugin-for-grasshopper",
   },
   {
     title: "Data Extraction for Digital Fabrication",
     context: "ArtEngineering GmbH",
+    contextLink: "https://art-engineering.net",
     description:
       "Support on the digital fabrication of Common Sky using Grasshopper and Sandbox Topology. Focused on geometry processing and automation of fabrication workflows.",
     technologies: "Scripting in Grasshopper/Rhino3D.",
     imageUrl: artEngineeringCommonSkies, // Replace with actual path
-    link: "/projects/common-sky-by-artengineering-for-studio-other-spaces",
+    internalLink:
+      "/projects/common-sky-by-artengineering-for-studio-other-spaces",
   },
 ];
 
-const technicalSkills = {
-  languages: "TypeScript, C#, Python, JavaScript",
-  frameworks: "Angular, Astro, React (familiar)",
-  webTech: "HTML, CSS, Tailwind CSS, Supabase, PostgreSQL",
-  aecoSoftware: "Rhino/Grasshopper (API), Revit (familiar), BIM",
-  tools: "Git/GitHub, Figma (familiar)",
-  computationalStrategies:
-    "Agent-Based Modeling, Cellular Automata, Dynamic Relaxation, L-Systems, Voronoi diagrams, and many more.",
-};
+const recommendations = [
+  {
+    text: "Mr. Locatelli impressed with outstanding technical expertise, technological versatility, and initiative, making a significant contribution to the development of innovative software and web solutions at BuildSystems and exceeding our expectations in every respect.",
+    author: "Martin Bittmann",
+    context: "BuildSystems GmbH",
+    position: "Founder",
+    contextLink: "https://buildsystems.de",
+  },
+  {
+    text: "Mr. Locatelli displayed a combination of technical, strategic, and interpersonal skills, making him an invaluable team member and a highly recommended professional.",
+    author: "Herwig Bretis",
+    context: "ArtEngineering GmbH",
+    position: "Managing director and proprietor",
+    contextLink: "https://art-engineering.net/index.php/ge/cv_herwig_bretis",
+  },
 
-const locale = "en"; // Use siteConfig locale or default to 'en'
+  {
+    text: "Mr. Locatelli distinguished himself as a talented and creative designer, making significant contributions through advanced computational design and innovative membrane form-finding solutions, consistently exceeding expectations.",
+    author: "Alfred Rein",
+    context: "Alfred Rein Ingenieure GmbH",
+    position: "Managing Director",
+    contextLink: "https://www.ar-ingenieure.com/",
+  },
+];
+
 const whatsAppUrl = siteConfig.whatsapp; // Get WhatsApp URL from siteConfig
 const emailAddress = siteConfig.email;
 const linkedInUrl = siteConfig.linkedin;
@@ -124,77 +142,51 @@ const coverList: string[] = [];
   <Container
     class="font-body [&_h1]:font-title [&_h2]:font-title relative mt-16 flex flex-col gap-4 text-base [&_h2]:mb-4 [&_h2]:text-3xl [&_h3]:text-xl [&_h4]:text-lg [&_h4]:text-zinc-400 [&_section]:mt-16"
   >
-    <!-- <header class="font-body sticky top-0 z-50 bg-white shadow-md">
-      <nav
-        class="container mx-auto flex items-center justify-between px-6 py-4"
-      >
-        <a href="/" class="flex items-center" title="Homepage">
+    <section id="hero" class="flex justify-center p-8">
+      <div class="flex shrink flex-col gap-10">
+        <div class="flex max-w-xl shrink items-end justify-between">
           <Image
-            src={logo}
-            alt="Daniel Locatelli Logo"
-            class="mr-3 h-10 w-auto"
+            src={profilePhoto}
+            alt="Daniel Locatelli"
+            class="order-1 h-36 w-36 rounded-full border-3 border-zinc-200 md:order-2 md:h-44 md:w-44"
           />
-          <span class="font-title text-2xl font-semibold text-gray-800"
-            >Daniel Locatelli</span
+          <h1
+            class="order-2 text-2xl font-bold sm:text-3xl md:order-1 md:text-4xl"
           >
-        </a>
-        <div class="space-x-2 md:space-x-4">
-          <a
-            href="#services"
-            class="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-green-600"
-            >Services</a
-          >
-          <a
-            href="#about"
-            class="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-green-600"
-            >About</a
-          >
-          <a
-            href="#projects"
-            class="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:text-green-600"
-            >Projects</a
-          >
-          <a
-            href={whatsAppUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Contact via WhatsApp"
-            class="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-green-400 to-green-500 px-4 py-2 text-sm font-medium text-white transition hover:from-green-500 hover:to-green-600 hover:shadow-[0px_4px_10px_rgba(0,128,0,0.3)]"
-          >
-            Let's talk
-            <Image src={WhatsApp} alt="" class="h-4 w-4" />
-          </a>
+            <p>Hi,</p>
+            <p>I'm Daniel,</p>
+            <p>software engineer.</p>
+          </h1>
         </div>
-      </nav>
-    </header> -->
 
-    <section id="hero">
-      <div class="container mx-auto">
-        <Image
-          src={profilePhoto}
-          alt="Daniel Locatelli"
-          class="mx-auto mb-8 h-36 w-36 rounded-full border-4 border-gray-200 md:h-44 md:w-44"
-        />
-        <h1 class="mb-6 text-2xl font-bold sm:text-3xl md:text-4xl">
-          <p>Hi,</p>
-          <p>I'm Daniel,</p>
-          <p>software engineer.</p>
-        </h1>
-        <p class="font-body mx-auto mb-10 max-w-3xl text-balance">
+        <p class="font-body max-w-xl">
           As a research associate at the Munich University of Applied Sciences,
           I&nbsp;specialize in developing plugins, web applications, and
           computational design solutions for architecture, engineering, and
           construction (AEC).
         </p>
-        <a
-          href={whatsAppUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-4 rounded-lg bg-gradient-to-r from-green-600 to-green-700 px-8 py-3 text-lg text-white transition hover:from-green-700 hover:to-green-800 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
-        >
-          Request a quote
-          <Image src={WhatsApp} alt="WhatsApp Icon" class="size-5" />
-        </a>
+        <div class="flex items-center gap-2">
+          <a
+            href={whatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex w-fit items-center gap-3 rounded-lg bg-gradient-to-r from-green-600 to-green-700 px-8 py-3 text-lg text-white transition hover:from-green-700 hover:to-green-800 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none"
+          >
+            Request a quote
+            <Image src={WhatsApp} alt="WhatsApp Icon" class="size-5" />
+          </a>
+          <a
+            href={`mailto:${emailAddress}`}
+            title="Email Daniel Locatelli"
+            class="inline-flex w-fit items-center gap-3 rounded-lg border-1 border-green-400 px-8 py-3 text-lg text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none"
+          >
+            <Icon
+              name="mdi:email-outline"
+              class="size-5 shrink-0 print:hidden"
+            />
+            Send an Email
+          </a>
+        </div>
       </div>
     </section>
 
@@ -204,17 +196,17 @@ const coverList: string[] = [];
         <div class="flex flex-col gap-2">
           {
             services.map((service) => (
-              <div class="flex flex-col gap-2 rounded-xl bg-zinc-800 p-8 shadow-lg transition-shadow duration-300 hover:shadow-xl">
+              <div class="flex flex-col gap-2 rounded-xl bg-zinc-900 p-8 shadow-lg transition-shadow duration-300 hover:shadow-xl">
                 <div class="flex items-center gap-3">
                   <Icon
                     name={service.icon}
                     class="size-7 shrink-0 print:hidden"
                   />
-                  <h3 class="flex items-center text-gray-100">
+                  <h3 class="flex items-center text-zinc-100">
                     {service.title}
                   </h3>
                 </div>
-                <p class="font-body leading-relaxed text-gray-200">
+                <p class="font-body leading-relaxed text-zinc-200">
                   {service.description}
                 </p>
               </div>
@@ -230,66 +222,63 @@ const coverList: string[] = [];
           <h2 class="">The Architect-Programmer</h2>
         </div>
         <div
-          class="font-body rounded-xlp-10 mx-auto max-w-4xl space-y-6 text-lg leading-relaxed shadow-xl"
+          class="font-body rounded-xlp-10 mx-auto max-w-4xl space-y-6 text-center text-lg leading-relaxed shadow-xl"
         >
-          <p class="text-center">
-            My strength lies at the intersection of architecture and software
-            development. Before becoming a software developer, I spent five
-            years working as an architect. With a Master of Science from the
-            University of Stuttgart and experience as a computational designer
-            at two German engineering offices and one tech startup, I bring a
-            deep, nuanced understanding of the challenges in the AEC domain.
+          <p>
+            With a background in architecture and a Master of Science from the
+            ITECH program at the University of Stuttgart, coupled with five
+            years' experience that encompassed computational design at German
+            engineering offices, I possess a deep understanding of AEC
+            challenges.
           </p>
-          <p class="text-center">
-            This architectural insight is paired with strong full-stack
-            development skills. I don’t just write code—I design and build
-            software tailored to the needs of architects, engineers, and
-            construction professionals. I understand your workflows, pain
-            points, and goals because I’ve lived them.
+          <p>
+            I apply this insight through strong full-stack development skills to
+            build software tailored for AEC professionals, having a firsthand
+            understanding of their workflows and needs.
           </p>
         </div>
       </div>
     </section>
 
     <section id="projects">
-      <div class="container mx-auto px-6">
+      <div class="container mx-auto">
         <h2 class="mb-16 text-center text-3xl md:text-4xl">
           Portfolio Highlights
         </h2>
         <div class="grid gap-8">
           {
             projects.map((project) => (
-              <div class="flex flex-col overflow-hidden rounded-xl bg-zinc-800 shadow-lg transition-shadow duration-300 hover:shadow-xl">
+              <div class="flex flex-col overflow-hidden rounded-xl bg-zinc-900 shadow-lg transition-shadow duration-300 hover:shadow-xl">
                 <Image
                   src={project.imageUrl}
                   alt={`Screenshot of ${project.title}`}
                   class="h-56 w-full object-cover"
                 />
                 <div class="font-body flex flex-grow flex-col p-6">
-                  <h3 class="mb-1 text-xl font-semibold text-gray-100">
+                  <h3 class="mb-1 text-xl font-semibold text-zinc-100">
                     {project.title}
                   </h3>
                   <a
-                    href="https://buildsystem.de"
+                    href={project.contextLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="mb-2 text-xs font-medium tracking-wider text-green-500 uppercase"
                   >
                     {project.context}
                   </a>
-                  <p class="mb-2 text-sm text-gray-300">
+                  <p class="mb-2 text-sm text-zinc-300">
                     {project.description}
                   </p>
-                  <p class="mb-3 text-sm text-gray-200">
+                  <p class="mb-3 text-sm text-zinc-200">
                     <strong>Tech:</strong> {project.technologies}
                   </p>
-                  <div class="mt-auto border-t border-gray-200 pt-3">
-                    {project.link && (
+                  <div class="mt-auto border-t border-zinc-200 pt-3">
+                    {project.internalLink && (
                       <a
-                        href={project.link}
+                        href={project.internalLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="group inline-flex items-center text-sm font-medium text-green-600 transition duration-300 hover:text-green-500"
+                        class="group inline-flex items-center text-sm font-medium text-green-500 transition duration-300 hover:text-green-600"
                       >
                         <span class="pr-1">View the full article</span>
                         <Icon
@@ -307,31 +296,52 @@ const coverList: string[] = [];
       </div>
     </section>
 
-    <section id="testimonials">
-      <div class="container mx-auto px-6">
-        <h2 class="mb-12 text-center text-3xl md:text-4xl">What Clients Say</h2>
-        <div class="font-body mx-auto max-w-3xl text-center">
-          <p class="back:text-gray-400 text-lg text-red-400 italic">
-            "Building trust through proven success. Testimonials coming soon."
-          </p>
-        </div>
+    <section id="testimonials" class="py-16 text-zinc-200">
+      <h2 class="mb-12 text-center text-3xl md:text-4xl">
+        Summary of Recommendations
+      </h2>
+      <div class="container mx-auto flex flex-col gap-12">
+        {
+          recommendations.map((rec) => (
+            <div>
+              <Icon name="mdi:format-quote-open" class="size-16" />
+              <blockquote class="relative flex flex-col gap-3 rounded-r-xl border-l-2 border-green-600 pr-6 pl-10">
+                <p class="text-lg text-pretty italic">{rec.text}</p>
+                <a
+                  href={rec.contextLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex w-fit gap-2 hover:text-green-600"
+                >
+                  <div>
+                    <p class="font-bold">{rec.author}</p>
+                    <p class="flex gap-2">
+                      <span>{rec.context}</span>
+                      <Icon name="mdi:external-link" class="size-3" />
+                    </p>
+                  </div>
+                </a>
+              </blockquote>
+            </div>
+          ))
+        }
       </div>
     </section>
 
     <section id="expertise">
       <div class="container mx-auto px-6">
-        <h2 class="mb-16 text-center text-3xl text-gray-100 md:text-4xl">
+        <h2 class="mb-16 text-center text-3xl text-zinc-100 md:text-4xl">
           Map of Knowledge
         </h2>
-        <div
-          class="font-body mx-auto flex max-w-5xl flex-col items-center rounded-xl bg-zinc-800 p-10 shadow-xl"
+        <p
+          class="mb-6 text-center text-lg leading-relaxed text-balance text-zinc-100"
         >
-          <p
-            class="mb-10 text-center text-lg leading-relaxed text-balance text-gray-100"
-          >
-            I’m constantly learning the latest tools to ensure I’m building the
-            right system for each task.
-          </p>
+          I’m constantly learning the latest tools to ensure I’m building the
+          right system for each task.
+        </p>
+        <div
+          class="font-body mx-auto flex max-w-5xl flex-col items-center rounded-xl bg-zinc-900 p-10 shadow-xl"
+        >
           <SkillsMap />
         </div>
       </div>
@@ -340,10 +350,10 @@ const coverList: string[] = [];
     <section id="contact" class="py-20">
       <div class="container mx-auto px-6 text-center">
         <h2 class="mb-6 text-3xl font-bold md:text-4xl lg:text-5xl">
-          Ready to Elevate Your AECO Projects?
+          Ready to elevate your AEC projects?
         </h2>
         <p
-          class="font-body mx-auto mb-10 max-w-2xl text-lg text-gray-300 md:text-xl"
+          class="font-body mx-auto mb-10 max-w-2xl text-lg text-zinc-300 md:text-xl"
         >
           Let's discuss how my expertise as an architect-programmer can
           transform your challenges into innovative software solutions.
@@ -364,7 +374,7 @@ const coverList: string[] = [];
           <a
             href={`mailto:${emailAddress}`}
             title="Email Daniel Locatelli"
-            class="inline-flex items-center gap-3 rounded-lg border-2 border-green-400 px-8 py-3 text-lg text-green-400 transition hover:bg-green-400 hover:text-gray-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
+            class="inline-flex items-center gap-3 rounded-lg border-1 border-green-400 px-8 py-3 text-lg text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none"
           >
             <Icon
               name="mdi:email-outline"
@@ -373,15 +383,15 @@ const coverList: string[] = [];
             Send an Email
           </a>
         </div>
-        <div class="mt-12">
-          <p class="font-body mb-3 text-gray-400">Connect with me on:</p>
+        <div class="mt-12 space-y-3">
+          <p class="font-body text-zinc-400">Connect with me on:</p>
           <div class="flex justify-center space-x-6">
             <a
               href={linkedInUrl}
               target="_blank"
               rel="noopener noreferrer"
               title="Daniel Locatelli on LinkedIn"
-              class="text-gray-300 transition duration-300 hover:text-green-400"
+              class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon name="mdi:linkedin" class="size-7 shrink-0 print:hidden" />
             </a>
@@ -390,7 +400,7 @@ const coverList: string[] = [];
               target="_blank"
               rel="noopener noreferrer"
               title="Daniel Locatelli on GitHub"
-              class="text-gray-300 transition duration-300 hover:text-green-400"
+              class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon name="mdi:github" class="size-7 shrink-0 print:hidden" />
             </a>
@@ -399,11 +409,12 @@ const coverList: string[] = [];
               target="_blank"
               rel="noopener noreferrer"
               title="Daniel Locatelli on GitHub"
-              class="text-gray-300 transition duration-300 hover:text-green-400"
+              class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon name="mdi:instagram" class="size-7 shrink-0 print:hidden" />
             </a>
           </div>
+          <p>architect.locatelli@gmail.com</p>
         </div>
       </div>
     </section>

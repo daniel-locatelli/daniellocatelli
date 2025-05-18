@@ -24,6 +24,49 @@ export interface Props {
 const { locale, slug } = Astro.props as Props;
 ---
 
+<!-- <header class="font-body sticky top-0 z-50 bg-white shadow-md">
+      <nav
+        class="container mx-auto flex items-center justify-between px-6 py-4"
+      >
+        <a href="/" class="flex items-center" title="Homepage">
+          <Image
+            src={logo}
+            alt="Daniel Locatelli Logo"
+            class="mr-3 h-10 w-auto"
+          />
+          <span class="font-title text-2xl font-semibold text-zinc-800"
+            >Daniel Locatelli</span
+          >
+        </a>
+        <div class="space-x-2 md:space-x-4">
+          <a
+            href="#services"
+            class="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 hover:text-green-600"
+            >Services</a
+          >
+          <a
+            href="#about"
+            class="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 hover:text-green-600"
+            >About</a
+          >
+          <a
+            href="#projects"
+            class="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 hover:text-green-600"
+            >Projects</a
+          >
+          <a
+            href={whatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Contact via WhatsApp"
+            class="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-green-400 to-green-500 px-4 py-2 text-sm font-medium text-white transition hover:from-green-500 hover:to-green-600 hover:shadow-[0px_4px_10px_rgba(0,128,0,0.3)]"
+          >
+            Let's talk
+            <Image src={WhatsApp} alt="" class="h-4 w-4" />
+          </a>
+        </div>
+      </nav>
+    </header> -->
 <header
   class="group fixed top-0 z-40 flex w-full justify-between bg-black/[.5] px-4 py-2 backdrop-blur sm:items-center sm:justify-center print:hidden"
   id="main-header"
