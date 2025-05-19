@@ -91,6 +91,15 @@ export default async function seed() {
 
   await db.insert(Experience).values([
     {
+      id: "HM",
+      locale: "en",
+      startDate: new Date("2025-02"),
+      title: "Research Associate",
+      company: "Munich University of Applied Sciences ",
+      location: "Munich, Germany",
+      link: "https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html",
+    },
+    {
       id: "BS",
       locale: "en",
       startDate: new Date("2024-01"),
@@ -176,6 +185,13 @@ export default async function seed() {
   ]);
 
   await db.insert(ExperienceItems).values([
+    // HM
+    {
+      id: "HM1",
+      experienceId: "HM",
+      locale: "en",
+      text: "Research on standards, data formats and tools to generate building components (buildups), with a special focus for timber technology. Foundations to develop the app DOKwood.",
+    },
     // BS
     {
       id: "BS1",

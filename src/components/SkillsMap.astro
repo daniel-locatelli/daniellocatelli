@@ -29,69 +29,53 @@ import RFEM from "../assets/software/rfem.svg";
 import Sofistik from "../assets/software/sofistik.svg";
 ---
 
-<div id="chart-container">
+<div id="chart-container" class="w-full">
   <!-- CAD -->
   <div class="section group">
     <div
-      class="absolute top-0 left-5 z-10 flex h-7 w-25 -translate-y-3.5 items-center justify-center rounded-sm bg-zinc-800 px-2 pb-1 font-sans text-sm filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:h-7 group-hover:w-25 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:left-0 md:h-full md:w-full md:translate-0 md:rounded-2xl md:bg-black/[.8] md:text-2xl"
+      class="absolute top-0 z-10 flex items-center justify-center pb-1 font-sans filter backdrop-blur transition-all duration-200 ease-in-out will-change-[top,left,width] group-hover:left-5 group-hover:h-7 group-hover:w-25 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:left-0 md:h-full md:w-full md:translate-0 md:rounded-2xl md:bg-black/[.8] md:text-2xl [@media(hover:none)]:left-5 [@media(hover:none)]:h-7 [@media(hover:none)]:w-auto [@media(hover:none)]:-translate-y-3.5 [@media(hover:none)]:rounded-sm [@media(hover:none)]:bg-zinc-800 [@media(hover:none)]:[@media(hover:none)]:px-2 [@media(hover:none)]:pb-1 [@media(hover:none)]:text-sm [@media(hover:none)]:backdrop-blur-none"
     >
       CAD & BIM
     </div>
     <!-- CAD Subsection -->
     <div
-      class="grid grid-cols-2 items-center justify-around gap-4 py-4 md:flex md:py-10"
+      class="grid w-full grid-cols-4 items-center justify-around gap-4 py-4 md:py-10"
     >
       <a
         href="https://www.sketchup.com/en"
         target="_blank"
         rel="noopener noreferrer"
-        class="group/sketchup flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+        class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
       >
         <Sketchup class="inline-block w-10 cursor-pointer rounded bg-white" />
-        <div
-          class="text-center text-xs group-hover/sketchup:opacity-100 md:h-0 md:opacity-0"
-        >
-          SketchUp
-        </div>
+        <div class="text-center text-xs">SketchUp</div>
       </a>
       <a
         href="https://www.autodesk.com/products/autocad/overview"
         target="_blank"
         rel="noopener noreferrer"
-        class="group/autocad flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+        class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
       >
         <AutoCad class="inline-block w-10 cursor-pointer rounded bg-white" />
-        <div
-          class="text-center text-xs group-hover/autocad:opacity-100 md:h-0 md:opacity-0"
-        >
-          AutoCAD
-        </div>
+        <div class="text-center text-xs">AutoCAD</div>
       </a>
       <a
         href="https://www.autodesk.com/products/civil-3d/overview"
         target="_blank"
         rel="noopener noreferrer"
-        class="group/civil3d flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+        class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
       >
         <Civil3D class="inline-block w-10 cursor-pointer rounded bg-white" />
-        <div
-          class="text-center text-xs group-hover/civil3d:opacity-100 md:h-0 md:opacity-0"
-        >
-          Civil&nbsp;3D
-        </div>
+        <div class="text-center text-xs">Civil&nbsp;3D</div>
       </a>
       <a
         href="https://www.autodesk.com/products/revit/overview"
         target="_blank"
         rel="noopener noreferrer"
-        class="group/revit flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+        class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
       >
         <Revit class="inline-block w-10 cursor-pointer rounded bg-white" />
-        <div
-          class="text-center text-xs group-hover/revit:opacity-100 md:h-0 md:opacity-0"
-        >
-          Revit
-        </div>
+        <div class="text-center text-xs">Revit</div>
       </a>
     </div>
   </div>
@@ -99,7 +83,7 @@ import Sofistik from "../assets/software/sofistik.svg";
   <!-- Computational Design Section -->
   <div class="section group">
     <div
-      class="absolute top-0 left-5 z-10 flex h-7 w-42 -translate-y-3.5 items-center justify-center rounded-sm bg-zinc-800 px-2 pb-1 font-sans text-sm filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:h-7 group-hover:w-42 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:left-0 md:h-full md:w-full md:translate-0 md:rounded-2xl md:bg-black/[.8] md:text-2xl"
+      class="absolute top-0 z-10 flex items-center justify-center pb-1 font-sans filter backdrop-blur transition-all duration-200 ease-in-out will-change-[top,left,width] group-hover:left-5 group-hover:h-7 group-hover:w-42 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:left-0 md:h-full md:w-full md:translate-0 md:rounded-2xl md:bg-black/[.8] md:text-2xl [@media(hover:none)]:left-5 [@media(hover:none)]:h-7 [@media(hover:none)]:w-auto [@media(hover:none)]:-translate-y-3.5 [@media(hover:none)]:rounded-sm [@media(hover:none)]:bg-zinc-800 [@media(hover:none)]:[@media(hover:none)]:px-2 [@media(hover:none)]:pb-1 [@media(hover:none)]:text-sm [@media(hover:none)]:backdrop-blur-none"
     >
       Computational Design
     </div>
@@ -109,125 +93,97 @@ import Sofistik from "../assets/software/sofistik.svg";
           href="https://dynamobim.org/"
           target="_blank"
           rel="noopener noreferrer"
-          class="group/dynamo flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+          class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
         >
           <Dynamo class="inline-block w-10 cursor-pointer rounded bg-white" />
-          <div
-            class="text-center text-xs group-hover/dynamo:opacity-100 md:h-0 md:opacity-0"
-          >
-            Dynamo
-          </div>
+          <div class="text-center text-xs">Dynamo</div>
         </a>
         <a
           href="https://en.wikipedia.org/wiki/Grasshopper_3D"
           target="_blank"
           rel="noopener noreferrer"
-          class="group/grasshopper flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+          class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
         >
           <Grasshopper
             class="inline-block w-10 cursor-pointer rounded bg-[#579141]"
           />
-          <div
-            class="text-center text-xs group-hover/grasshopper:opacity-100 md:h-0 md:opacity-0"
-          >
-            Grasshopper
-          </div>
+          <div class="text-center text-xs">Grasshopper</div>
         </a>
       </div>
-      <div class="relative rounded-lg border border-dashed border-white p-4">
+      <div
+        class="relative w-full rounded-lg border border-dashed border-white p-4"
+      >
         <div class="absolute -top-3 h-6 rounded bg-zinc-800 px-2 pt-1 text-xs">
-          Grasshopper Add-ons
+          Add-ons
         </div>
-        <div class="flex flex-wrap items-center justify-around gap-4 py-4">
+        <div
+          class="grid w-full grid-cols-3 items-center justify-around gap-4 py-4 md:flex"
+        >
           <a
             href="https://kangaroo3d.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/kangaroo flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <Kangaroo
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/kangaroo:opacity-100 md:h-0 md:opacity-0"
-            >
-              Kangaroo
-            </div>
+            <div class="text-center text-xs">Kangaroo</div>
           </a>
           <a
             href="https://www.grasshopper3d.com/group/galapagos"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/galapagos flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <Galapagos
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/galapagos:opacity-100 md:h-0 md:opacity-0"
-            >
-              Galapagos
-            </div>
+            <div class="text-center text-xs">Galapagos</div>
           </a>
           <a
             href="https://www.giuliopiacentino.com/weaverbird/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/weaverbird flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <Weaverbird
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/weaverbird:opacity-100 md:h-0 md:opacity-0"
-            >
-              Weaverbird
-            </div>
+            <div class="text-center text-xs">Weaverbird</div>
           </a>
           <a
             href="https://www.ladybug.tools/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/ladybug flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <Ladybug
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/ladybug:opacity-100 md:h-0 md:opacity-0"
-            >
-              Ladybug Tools
-            </div>
+            <div class="text-center text-xs">Ladybug Tools</div>
           </a>
           <a
             href="https://www.complicitmatter.com/culebra-net/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/culebra flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <Culebra
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/culebra:opacity-100 md:h-0 md:opacity-0"
-            >
-              Culebra
-            </div>
+            <div class="text-center text-xs">Culebra</div>
           </a>
           <a
             href="https://karamba3d.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/karamba flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <Karamba
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/karamba:opacity-100 md:h-0 md:opacity-0"
-            >
-              Karamba3D
-            </div>
+            <div class="text-center text-xs">Karamba3D</div>
           </a>
         </div>
       </div>
@@ -235,84 +191,79 @@ import Sofistik from "../assets/software/sofistik.svg";
   </div>
 
   <!-- FEA Section -->
-  <div class="section group bg-zinc-700">
+  <div class="section group">
     <div
-      class="absolute top-0 left-0 z-10 hidden h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 pb-1 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-7 group-hover:w-43 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:flex"
+      class="absolute top-0 z-10 flex items-center justify-center font-sans filter backdrop-blur transition-all duration-200 ease-in-out will-change-[top,left,width] group-hover:left-5 group-hover:h-7 group-hover:w-43 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:left-0 md:h-full md:w-full md:translate-0 md:rounded-2xl md:bg-black/[.8] md:text-2xl [@media(hover:none)]:left-5 [@media(hover:none)]:h-7 [@media(hover:none)]:w-auto [@media(hover:none)]:-translate-y-3.5 [@media(hover:none)]:rounded-sm [@media(hover:none)]:bg-zinc-800 [@media(hover:none)]:[@media(hover:none)]:px-2 [@media(hover:none)]:pb-1 [@media(hover:none)]:text-sm [@media(hover:none)]:backdrop-blur-none"
     >
       Finite Element Analysis
     </div>
-    <div class="section-content">
-      <div class="flex items-center justify-around py-4">
+    <div class="flex flex-col items-center justify-around gap-12 py-4 md:py-10">
+      <div class="flex w-full items-center justify-around">
         <a
           href="https://www.dlubal.com/en/products/rfem-fea-software/rfem/what-is-rfem"
           target="_blank"
           rel="noopener noreferrer"
-          class="group/refm flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+          class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
         >
           <RFEM class="inline-block w-10 cursor-pointer rounded bg-white" />
-          <div
-            class="text-center text-xs group-hover/refm:opacity-100 md:h-0 md:opacity-0"
-          >
-            RFEM
-          </div>
+          <div class="text-center text-xs">RFEM</div>
         </a>
         <a
           href="https://www.sofistik.com/en/"
           target="_blank"
           rel="noopener noreferrer"
-          class="group/sofistik flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+          class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
         >
           <Sofistik class="inline-block w-10 cursor-pointer rounded bg-white" />
-          <div
-            class="text-center text-xs group-hover/sofistik:opacity-100 md:h-0 md:opacity-0"
-          >
-            SOFiSTiK
-          </div>
+          <div class="text-center text-xs">SOFiSTiK</div>
         </a>
       </div>
     </div>
   </div>
 
   <!-- Programming Section -->
-  <div class="section group bg-zinc-700">
+  <div class="section group">
     <div
-      class="absolute top-0 left-0 z-10 hidden h-full w-full items-center justify-center rounded-2xl bg-black/[.8] px-2 pb-1 font-sans text-2xl filter backdrop-blur transition-all duration-200 ease-in-out group-hover:left-5 group-hover:flex group-hover:h-7 group-hover:w-28 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:flex"
+      class="absolute top-0 z-10 flex items-center justify-center font-sans filter backdrop-blur transition-all duration-200 ease-in-out will-change-[top,left,width] group-hover:left-5 group-hover:h-7 group-hover:w-28 group-hover:-translate-y-3.5 group-hover:rounded-sm group-hover:bg-zinc-800 group-hover:text-sm group-hover:backdrop-blur-none md:left-0 md:h-full md:w-full md:translate-0 md:rounded-2xl md:bg-black/[.8] md:text-2xl [@media(hover:none)]:left-5 [@media(hover:none)]:h-7 [@media(hover:none)]:w-auto [@media(hover:none)]:-translate-y-3.5 [@media(hover:none)]:rounded-sm [@media(hover:none)]:bg-zinc-800 [@media(hover:none)]:[@media(hover:none)]:px-2 [@media(hover:none)]:pb-1 [@media(hover:none)]:text-sm [@media(hover:none)]:backdrop-blur-none"
     >
       Programming
     </div>
-    <div class="section-content">
-      <div class="subsection">
-        <div class="subsection-title">Languages</div>
-        <div class="flex items-center justify-around py-4">
+    <div class="flex flex-col items-center justify-around gap-12 py-4 md:py-10">
+      <div
+        class="relative w-full rounded-lg border border-dashed border-white p-4"
+      >
+        <div
+          class="absolute -top-3 left-3 h-6 rounded bg-zinc-800 px-2 pt-1 text-xs"
+        >
+          Languages
+        </div>
+        <div class="flex flex-wrap items-center justify-around gap-8 py-4">
           <a
             href="https://www.python.org/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/python flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <Python class="inline-block w-10 cursor-pointer rounded bg-white" />
-            <div
-              class="text-center text-xs group-hover/python:opacity-100 md:h-0 md:opacity-0"
-            >
-              Python
-            </div>
+            <div class="text-center text-xs">Python</div>
           </a>
           <a
             href="https://dotnet.microsoft.com/en-us/languages/csharp"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/csharp flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <CSharp class="inline-block w-10 cursor-pointer rounded bg-white" />
-            <div
-              class="text-center text-xs group-hover/csharp:opacity-100 md:h-0 md:opacity-0"
-            >
-              C#
-            </div>
+            <div class="text-center text-xs">C#</div>
           </a>
           <div
-            class="group/webdev flex items-center gap-8 rounded-xl border border-dashed bg-zinc-600 px-8 py-6"
+            class="relative flex w-full items-center justify-around rounded-xl border border-dashed py-6 md:w-fit md:justify-between md:gap-8 md:px-8"
           >
+            <div
+              class="absolute -top-3 left-3 h-6 rounded bg-zinc-800 px-2 pt-1 text-xs"
+            >
+              Web development
+            </div>
             <a
               href="https://html.spec.whatwg.org/multipage/"
               target="_blank"
@@ -320,11 +271,7 @@ import Sofistik from "../assets/software/sofistik.svg";
               class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
             >
               <HTML class="inline-block w-10 cursor-pointer" />
-              <div
-                class="text-center text-xs group-hover/webdev:opacity-100 md:h-0 md:opacity-0"
-              >
-                HTML
-              </div>
+              <div class="text-center text-xs">HTML</div>
             </a>
             <a
               href="https://www.w3.org/Style/CSS/Overview.en.html"
@@ -333,11 +280,7 @@ import Sofistik from "../assets/software/sofistik.svg";
               class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
             >
               <CSS class="inline-block w-10 cursor-pointer" />
-              <div
-                class="text-center text-xs group-hover/webdev:opacity-100 md:h-0 md:opacity-0"
-              >
-                CSS
-              </div>
+              <div class="text-center text-xs">CSS</div>
             </a>
             <a
               href="https://en.wikipedia.org/wiki/JavaScript"
@@ -346,141 +289,121 @@ import Sofistik from "../assets/software/sofistik.svg";
               class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
             >
               <JavascriptLogo class="inline-block w-10 cursor-pointer" />
-              <div
-                class="text-center text-xs group-hover/webdev:opacity-100 md:h-0 md:opacity-0"
-              >
-                JavaScript
-              </div>
+              <div class="text-center text-xs">JavaScript</div>
             </a>
           </div>
         </div>
       </div>
 
-      <div class="subsection">
-        <div class="subsection-title">Frameworks</div>
-        <div class="flex items-center justify-around py-4">
+      <div
+        class="relative flex w-full items-center justify-around rounded-xl border border-dashed py-6 md:px-8"
+      >
+        <div
+          class="absolute -top-3 left-3 h-6 rounded bg-zinc-800 px-2 pt-1 text-xs"
+        >
+          Frameworks
+        </div>
+        <div
+          class="grid w-full grid-cols-4 items-center justify-around py-4 md:py-10"
+        >
           <a
             href="https://palletsprojects.com/projects/flask/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/flask flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <FlaskLogo
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/flask:opacity-100 md:h-0 md:opacity-0"
-            >
-              Flask
-            </div>
+            <div class="text-center text-xs">Flask</div>
           </a>
           <a
             href="https://angular.dev/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/angular flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <AngularLogo
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/angular:opacity-100 md:h-0 md:opacity-0"
-            >
-              Angular
-            </div>
+            <div class="text-center text-xs">Angular</div>
           </a>
           <a
             href="https://astro.build/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/astro flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <AstroLogo
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/astro:opacity-100 md:h-0 md:opacity-0"
-            >
-              Astro
-            </div>
+            <div class="text-center text-xs">Astro</div>
           </a>
           <a
             href="https://react.dev/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/react flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <ReactLogo
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/react:opacity-100 md:h-0 md:opacity-0"
-            >
-              React
-            </div>
+            <div class="text-center text-xs">React</div>
           </a>
         </div>
       </div>
-      <div class="subsection">
-        <div class="subsection-title">Databases</div>
-        <div class="flex items-center justify-around py-4">
+      <div
+        class="relative flex w-full items-center justify-around rounded-xl border border-dashed py-6 md:px-8"
+      >
+        <div
+          class="absolute -top-3 left-3 h-6 rounded bg-zinc-800 px-2 pt-1 text-xs"
+        >
+          Databases
+        </div>
+        <div
+          class="grid w-full grid-cols-4 items-center justify-around py-4 md:py-10"
+        >
           <a
             href="https://en.wikipedia.org/wiki/Comma-separated_values"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/excel flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <ExcelLogo
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/excel:opacity-100 md:h-0 md:opacity-0"
-            >
-              CSV
-            </div>
+            <div class="text-center text-xs">CSV</div>
           </a>
           <a
             href="https://www.mongodb.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/mongo flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <MongoDB
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/mongo:opacity-100 md:h-0 md:opacity-0"
-            >
-              NoSQL
-            </div>
+            <div class="text-center text-xs">NoSQL</div>
           </a>
           <a
             href="https://sqlite.org/index.html"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/sqlite flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <SQLite class="inline-block w-10 cursor-pointer rounded bg-white" />
-            <div
-              class="text-center text-xs group-hover/sqlite:opacity-100 md:h-0 md:opacity-0"
-            >
-              SQLite
-            </div>
+            <div class="text-center text-xs">SQLite</div>
           </a>
           <a
             href="https://www.postgresql.org/"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/postgresql flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
+            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
           >
             <PostgreSQL
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
-            <div
-              class="text-center text-xs group-hover/postgresql:opacity-100 md:h-0 md:opacity-0"
-            >
-              PostgreSQL
-            </div>
+            <div class="text-center text-xs">PostgreSQL</div>
           </a>
         </div>
       </div>
@@ -489,10 +412,6 @@ import Sofistik from "../assets/software/sofistik.svg";
 </div>
 
 <style>
-  #chart-container {
-    width: 100%;
-  }
-
   .section {
     position: relative;
     margin: 2rem 0;
@@ -500,22 +419,13 @@ import Sofistik from "../assets/software/sofistik.svg";
     flex-direction: column;
     border-radius: 1rem;
     border: 1px dashed white;
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .section-title {
     font-size: 0.85rem;
     position: absolute;
     top: -0.75rem;
-    background-color: var(--color-zinc-800);
-    padding: 0 0.5rem;
-    border-radius: 0.25rem;
-  }
-
-  .subsection-title {
-    font-size: 0.8rem;
-    position: absolute;
-    top: -0.65rem;
     background-color: var(--color-zinc-800);
     padding: 0 0.5rem;
     border-radius: 0.25rem;

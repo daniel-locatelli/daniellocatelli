@@ -56,7 +56,7 @@ const Experience = defineTable({
     id: column.text({ primaryKey: true }),
     locale: column.text(),
     startDate: column.date(),
-    endDate: column.date(),
+    endDate: column.date({ optional: true }),
     title: column.text(),
     titleNote: column.text({ optional: true }),
     company: column.text(),

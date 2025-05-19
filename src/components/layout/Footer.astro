@@ -33,14 +33,16 @@ const { locale, slug } = Astro.props as Props;
   class="mt-auto flex w-full snap-start flex-col items-center justify-center pt-6 pb-6 text-center align-top sm:flex-row sm:justify-between sm:space-y-0 sm:text-xs print:hidden"
 >
   <div
-    class="order-2 flex h-full flex-col items-center justify-center space-y-6 sm:order-1 sm:flex-row sm:space-y-0"
+    class="order-2 flex flex-col items-center justify-center space-y-6 sm:order-1 sm:flex-row sm:space-y-0"
   >
-    <div class="font-body order-2 me-0 pt-6 sm:order-1 sm:me-6 sm:ml-1 sm:pt-0">
+    <div
+      class="font-body order-2 flex items-center pt-6 sm:order-1 sm:me-6 sm:ml-1 sm:pt-0"
+    >
       &copy; {siteConfig.author}
       {year}
     </div>
     <address
-      class="order-1 flex w-full items-center justify-center space-x-7 sm:order-2 sm:w-auto"
+      class="order-1 mt-6 flex w-full items-center justify-center space-x-7 sm:order-2 sm:mt-0 sm:w-auto"
     >
       <a
         href={linkedInUrl}
@@ -114,6 +116,7 @@ const { locale, slug } = Astro.props as Props;
         )
       )
     }
+    <a href="/cv" class="py-2 sm:px-3 sm:py-0 sm:hover:underline">CV</a>
     <a
       title={locale === "en" ? "Mudar para Português" : "Change to English"}
       href={locale === "en" ? "/pt/" + slug : "/" + slug}
@@ -121,7 +124,7 @@ const { locale, slug } = Astro.props as Props;
     >
       <Image
         src={globe}
-        alt="Daniel Locatelli logo"
+        alt="Globe to change the locale (language)"
         loading={"eager"}
         class="inline mix-blend-difference"
       />

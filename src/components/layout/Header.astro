@@ -4,6 +4,9 @@ import { getDatabaseByName } from "src/lib/notion/client";
 import { Image } from "astro:assets";
 import logo from "../../assets/logo-dl.svg";
 import globe from "../../assets/globe.svg";
+import WhatsApp from "@/assets/digital-glyph-white.svg";
+import { siteConfig } from "@/site-config";
+import { Icon } from "astro-icon/components";
 
 let pagesDatabase = (await getDatabaseByName("Pages"))!;
 let pages: Page[];
@@ -22,53 +25,13 @@ export interface Props {
   slug: string;
 }
 const { locale, slug } = Astro.props as Props;
+
+const whatsAppUrl = siteConfig.whatsapp;
+const emailAddress = siteConfig.email;
 ---
 
-<!-- <header class="font-body sticky top-0 z-50 bg-white shadow-md">
-      <nav
-        class="container mx-auto flex items-center justify-between px-6 py-4"
-      >
-        <a href="/" class="flex items-center" title="Homepage">
-          <Image
-            src={logo}
-            alt="Daniel Locatelli Logo"
-            class="mr-3 h-10 w-auto"
-          />
-          <span class="font-title text-2xl font-semibold text-zinc-800"
-            >Daniel Locatelli</span
-          >
-        </a>
-        <div class="space-x-2 md:space-x-4">
-          <a
-            href="#services"
-            class="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 hover:text-green-600"
-            >Services</a
-          >
-          <a
-            href="#about"
-            class="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 hover:text-green-600"
-            >About</a
-          >
-          <a
-            href="#projects"
-            class="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 hover:text-green-600"
-            >Projects</a
-          >
-          <a
-            href={whatsAppUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Contact via WhatsApp"
-            class="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-green-400 to-green-500 px-4 py-2 text-sm font-medium text-white transition hover:from-green-500 hover:to-green-600 hover:shadow-[0px_4px_10px_rgba(0,128,0,0.3)]"
-          >
-            Let's talk
-            <Image src={WhatsApp} alt="" class="h-4 w-4" />
-          </a>
-        </div>
-      </nav>
-    </header> -->
 <header
-  class="group fixed top-0 z-40 flex w-full justify-between bg-black/[.5] px-4 py-2 backdrop-blur sm:items-center sm:justify-center print:hidden"
+  class="group fixed top-0 z-40 flex w-full justify-between bg-black/[.5] px-4 py-2 backdrop-blur sm:items-center sm:justify-center print:hidden [.menu-open]:h-screen [.menu-open]:bg-black/[.9]"
   id="main-header"
 >
   <div class="flex w-full sm:max-w-3xl">
@@ -86,34 +49,36 @@ const { locale, slug } = Astro.props as Props;
     </a>
     <nav
       aria-label="Main menu"
-      class="font-body relative hidden grow flex-col items-end pt-6 text-lg group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:mt-1 sm:flex sm:flex-row sm:items-center sm:justify-end sm:gap-4 sm:py-0 sm:text-base"
+      class="font-body relative z-50 hidden grow flex-col items-center pt-16 text-xl group-[.menu-open]:flex sm:static sm:mt-1 sm:flex sm:flex-row sm:justify-end sm:gap-4 sm:py-0 sm:text-base"
       id="navigation-menu"
     >
-      <div>
-        {
-          pages.map(
-            (page) =>
-              page.Name !== "Homepage" && (
-                <a
-                  aria-current={url.pathname === page.Slug ? "page" : false}
-                  class="py-3 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
-                  data-astro-prefetch
-                  href={
-                    locale === "en"
-                      ? "/" + page.Slug
-                      : "/" + locale + "/" + page.Slug
-                  }
-                  title={page.Name}
-                >
-                  {locale === "en" && page.Name}
-                  {locale === "de" && page.Name_de}
-                  {locale === "pt" && page.Name_pt}
-                </a>
-              )
-          )
-        }
-      </div>
-
+      {
+        pages.map(
+          (page) =>
+            page.Name !== "Homepage" && (
+              <a
+                aria-current={url.pathname === page.Slug ? "page" : false}
+                class="flex w-full items-center justify-center border-b border-white py-3 underline-offset-2 sm:w-auto sm:border-none sm:px-3 sm:py-0 sm:hover:underline"
+                data-astro-prefetch
+                href={
+                  locale === "en"
+                    ? "/" + page.Slug
+                    : "/" + locale + "/" + page.Slug
+                }
+                title={page.Name}
+              >
+                {locale === "en" && page.Name}
+                {locale === "de" && page.Name_de}
+                {locale === "pt" && page.Name_pt}
+              </a>
+            )
+        )
+      }
+      <a
+        href="/cv"
+        class="flex w-full items-center justify-center border-b border-white py-3 underline-offset-2 sm:w-auto sm:border-none sm:px-3 sm:py-0 sm:hover:underline"
+        >CV</a
+      >
       <a
         title={locale === "en" ? "Mudar para Português" : "Change to English"}
         href={locale === "en" ? "/pt/" + slug : "/" + slug}
@@ -127,8 +92,28 @@ const { locale, slug } = Astro.props as Props;
         />
         <div class="inline">{locale}</div>
       </a>
+      <a
+        href={whatsAppUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-lg border-1 border-green-400 bg-gradient-to-r from-green-700 to-green-800 px-4 py-3 text-base text-white transition hover:from-green-800 hover:to-green-900 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none sm:hidden md:w-fit"
+      >
+        <Image src={WhatsApp} alt="WhatsApp Icon" class="size-5 md:size-4" />
+        {locale === "en" && "Request a quote"}
+        {locale === "pt" && "Faça um orçamento"}
+      </a>
+      <a
+        href={`mailto:${emailAddress}`}
+        title="Email Daniel Locatelli"
+        class="mt-4 inline-flex w-full items-center justify-center gap-3 rounded-lg border-1 border-green-400 px-4 py-3 text-base text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none md:w-fit"
+      >
+        <Icon name="mdi:email-outline" class="size-5 md:size-4" />
+        {locale === "en" && "Send an Email"}
+        {locale === "pt" && "Envie um Email"}
+      </a>
     </nav>
   </div>
+
   <mobile-button class="flex h-10 items-center">
     <button
       aria-expanded="false"

@@ -177,7 +177,7 @@ const markoBrajovicWorks = await db
   }}
 >
   <Container
-    class="font-body relative flex flex-col gap-4 text-base print:gap-2 print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-4 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-1 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-[17px] [&_.timeline-top]:border-r [&_.timeline-top]:print:h-3 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 hover:[&_a]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg [&_h4]:text-lg [&_h4]:text-zinc-400"
+    class="font-body relative flex flex-col gap-4 text-base print:gap-2 print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-4 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-1 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-[17px] [&_.timeline-top]:border-r [&_.timeline-top]:print:h-3 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg [&_h4]:text-lg [&_h4]:text-zinc-400"
   >
     <div class="flex flex-col gap-6 pt-20 sm:flex-row sm:pt-28 print:pt-2">
       <Image
@@ -188,12 +188,12 @@ const markoBrajovicWorks = await db
       <div class="flex flex-col justify-center gap-2">
         <div class="flex flex-col gap-2">
           <h1 class="font-title text-5xl">Daniel Locatelli</h1>
-          <p class="text-xl">AECO Software developer</p>
+          <p class="text-xl">AEC Software developer</p>
         </div>
         <div class="flex flex-col gap-5 text-sm sm:flex-row">
           <p class="text-pretty sm:text-xs sm:text-balance">
             "Architecture is a transdisciplinary field, its future lies in using
-            computational, co-designed techniques combined with vernacular
+            computational, co-design techniques combined with vernacular
             eco-friendly materials".
           </p>
           <address class="flex flex-col sm:text-xs">
@@ -287,9 +287,13 @@ const markoBrajovicWorks = await db
             <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                <time datetime={endDate.toDateString()}>
-                  {getMonthYear(endDate)}
-                </time>
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  <span>Current</span>
+                )}
                 <time datetime={startDate.toDateString()}>
                   {getMonthYear(startDate)}
                 </time>
