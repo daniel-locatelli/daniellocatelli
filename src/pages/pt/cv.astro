@@ -48,7 +48,7 @@ const getMonthYear = (date: Date): string => {
   return `${month}.${year}`;
 };
 
-const locale = "en";
+const locale = "pt";
 
 const summary = await db
   .selectDistinct({ text: Summary.text })
@@ -213,10 +213,10 @@ const works = await db
   meta={{
     title: "CV",
     description:
-      "This is my full CV, including work, education, lectures, publications, certificates, and more.",
-    coverAlt: "Daniel Locatelli's profile photo.",
+      "Este é meu CV completo, incluindo trabalho, educação, palestras, publicações, certificados e mais.",
+    coverAlt: "Foto de perfil de Daniel Locatelli.",
     coverImage: "@/assets/daniel-locatelli.png",
-    locale: "en",
+    locale: "pt",
     slug: "cv",
   }}
 >
@@ -226,41 +226,41 @@ const works = await db
     <div class="flex flex-col gap-6 pt-20 sm:flex-row sm:pt-28 print:pt-2">
       <Image
         src={profilePhoto}
-        alt="Daniel Locatelli's profile photo."
+        alt="Foto de perfil de Daniel Locatelli."
         class="rounded-full sm:size-36"
       />
       <div class="flex flex-col justify-center gap-2">
         <div class="flex flex-col gap-2">
           <h1 class="font-title text-5xl">Daniel Locatelli</h1>
-          <p class="text-xl">AEC Software developer</p>
+          <p class="text-xl">Desenvolvedor de software AEC</p>
         </div>
         <div class="flex flex-col gap-5 text-sm sm:flex-row">
           <p class="text-pretty sm:text-xs sm:text-balance">
-            "Architecture is a transdisciplinary field, its future lies in using
-            computational, co-design techniques combined with vernacular
-            eco-friendly materials".
+            "A arquitetura é um campo transdisciplinar, seu futuro está no uso
+            de técnicas computacionais e co-design combinadas com materiais
+            ecológicos vernaculares."
           </p>
           <address class="flex flex-col sm:text-xs">
             <a href="mailto:architect.locatelli@gmail.com"
               >architect.locatelli@gmail.com</a
             >
             <span> +49 178 324-0834 </span>
-            <span> Munich, Germany </span>
+            <span> Munique, Alemanha </span>
           </address>
         </div>
       </div>
     </div>
     <section id="summary">
-      <h2>Summary</h2>
+      <h2>Resumo</h2>
       <p class="text-pretty">{summary[0].text}</p>
     </section>
     <section id="technical-skills">
-      <h2>Technical Skills</h2>
+      <h2>Habilidades Técnicas</h2>
       <table
         class="table-auto [&_td]:leading-5 [&_th]:pr-2 [&_th]:text-right [&_th]:align-top sm:[&_th]:pr-4"
       >
         <tr>
-          <th>Programming</th>
+          <th>Programação</th>
           <td>
             {
               skillProgramming.map(
@@ -292,7 +292,7 @@ const works = await db
           </td>
         </tr>
         <tr>
-          <th>Databases</th>
+          <th>Bancos de Dados</th>
           <td>
             {
               skillDatabases.map(
@@ -305,7 +305,7 @@ const works = await db
           </td>
         </tr>
         <tr>
-          <th>Design Tools</th>
+          <th>Ferramentas de Design</th>
           <td>
             {
               skillDesign.map(
@@ -318,7 +318,7 @@ const works = await db
           </td>
         </tr>
         <tr>
-          <th>Specialized Skills</th>
+          <th>Habilidades Especializadas</th>
           <td>
             {
               skillSpecialized.map(
@@ -342,7 +342,7 @@ const works = await db
       id="work-experience"
       class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-400"
     >
-      <h2>Work Experience</h2>
+      <h2>Experiência Profissional</h2>
       {
         experience.map(
           async ({
@@ -357,7 +357,7 @@ const works = await db
                     {getMonthYear(endDate)}
                   </time>
                 ) : (
-                  <span>Current</span>
+                  <span>Atual</span>
                 )}
                 <time datetime={startDate.toDateString()}>
                   {getMonthYear(startDate)}
@@ -429,7 +429,7 @@ const works = await db
       id="education"
       class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-400"
     >
-      <h2>Education</h2>
+      <h2>Educação</h2>
       {
         education.map(
           async ({
@@ -444,7 +444,7 @@ const works = await db
                     {getMonthYear(endDate)}
                   </time>
                 ) : (
-                  <span>Current</span>
+                  <span>Atual</span>
                 )}
 
                 <time datetime={startDate.toDateString()}>
@@ -500,7 +500,7 @@ const works = await db
       }
     </section>
     <section id="scholarships">
-      <h2>Scholarships</h2>
+      <h2>Bolsas</h2>
       {
         scholarships.map(
           async ({
@@ -515,7 +515,7 @@ const works = await db
                     {getMonthYear(endDate)}
                   </time>
                 ) : (
-                  <span>Current</span>
+                  <span>Atual</span>
                 )}
                 <time datetime={startDate.toDateString()}>
                   {getMonthYear(startDate)}
@@ -556,7 +556,7 @@ const works = await db
       }
     </section>
     <section id="publications">
-      <h2>Publications</h2>
+      <h2>Publicações</h2>
       {
         publications.map(
           async ({
@@ -629,7 +629,7 @@ const works = await db
       }
     </section>
     <section id="certifications">
-      <h2>Certifications</h2>
+      <h2>Certificados</h2>
       {
         certifications.map(
           async ({
@@ -672,7 +672,7 @@ const works = await db
       }
     </section>
     <section id="tutoring">
-      <h2>Tutoring</h2>
+      <h2>Tutoria</h2>
       {
         tutoring.map(
           async ({
@@ -732,7 +732,7 @@ const works = await db
       }
     </section>
     <section id="talks-and-lectures">
-      <h2>Talks and Lectures</h2>
+      <h2>Palestras</h2>
       {
         talksAndLectures.map(
           async ({
@@ -779,7 +779,7 @@ const works = await db
       }
     </section>
     <section id="courses-attended">
-      <h2>Courses Attended</h2>
+      <h2>Cursos Realizados</h2>
       {
         coursesAttended.map(
           async ({
@@ -837,7 +837,7 @@ const works = await db
       }
     </section>
     <section id="works">
-      <h2>Works</h2>
+      <h2>Projetos</h2>
       {
         works.map(async ({ Works: work, WorksTranslations: translation }) => (
           <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">

@@ -1,4 +1,6 @@
 import { column, defineDb, defineTable } from "astro:db";
+import { link } from "fs";
+import { title } from "process";
 
 const Summary = defineTable({
   columns: {
@@ -9,8 +11,13 @@ const Summary = defineTable({
 
 const SkillProgramming = defineTable({
   columns: {
-    id: column.number({ primaryKey: true }),
-    name: column.text(),
+    id: column.text({ primaryKey: true }),
+  },
+});
+
+const SkillProgrammingTranslations = defineTable({
+  columns: {
+    skillId: column.text({ references: () => SkillProgramming.columns.id }),
     level: column.text(),
     locale: column.text(),
   },
@@ -18,8 +25,13 @@ const SkillProgramming = defineTable({
 
 const SkillFrameworks = defineTable({
   columns: {
-    id: column.number({ primaryKey: true }),
-    name: column.text(),
+    id: column.text({ primaryKey: true }),
+  },
+});
+
+const SkillFrameworksTranslations = defineTable({
+  columns: {
+    skillId: column.text({ references: () => SkillFrameworks.columns.id }),
     level: column.text(),
     locale: column.text(),
   },
@@ -27,8 +39,13 @@ const SkillFrameworks = defineTable({
 
 const SkillDatabases = defineTable({
   columns: {
-    id: column.number({ primaryKey: true }),
-    name: column.text(),
+    id: column.text({ primaryKey: true }),
+  },
+});
+
+const SkillDatabasesTranslations = defineTable({
+  columns: {
+    skillId: column.text({ references: () => SkillDatabases.columns.id }),
     level: column.text(),
     locale: column.text(),
   },
@@ -36,8 +53,13 @@ const SkillDatabases = defineTable({
 
 const SkillDesign = defineTable({
   columns: {
-    id: column.number({ primaryKey: true }),
-    name: column.text(),
+    id: column.text({ primaryKey: true }),
+  },
+});
+
+const SkillDesignTranslations = defineTable({
+  columns: {
+    skillId: column.text({ references: () => SkillDesign.columns.id }),
     level: column.text(),
     locale: column.text(),
   },
@@ -46,23 +68,41 @@ const SkillDesign = defineTable({
 const SkillSpecialized = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
-    name: column.text(),
+    title: column.text(),
+  },
+});
+
+const SkillSpecializedTranslations = defineTable({
+  columns: {
+    skillId: column.number({
+      references: () => SkillSpecialized.columns.id,
+    }),
     locale: column.text(),
+    title: column.text(),
+    description: column.text({ optional: true }),
   },
 });
 
 const Experience = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
-    locale: column.text(),
     startDate: column.date(),
     endDate: column.date({ optional: true }),
+    link: column.text(),
+  },
+});
+
+const ExperienceTranslations = defineTable({
+  columns: {
+    experienceId: column.text({
+      references: () => Experience.columns.id,
+    }),
+    locale: column.text(),
     title: column.text(),
     titleNote: column.text({ optional: true }),
     company: column.text(),
     companyNote: column.text({ optional: true }),
     location: column.text(),
-    link: column.text(),
   },
 });
 
@@ -80,13 +120,21 @@ const ExperienceItems = defineTable({
 const Education = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
-    locale: column.text(),
     startDate: column.date(),
-    endDate: column.date(),
+    endDate: column.date({ optional: true }),
+    link: column.text(),
+  },
+});
+
+const EducatonTranslations = defineTable({
+  columns: {
+    educationId: column.text({
+      references: () => Education.columns.id,
+    }),
+    locale: column.text(),
     title: column.text(),
     institution: column.text(),
     location: column.text(),
-    link: column.text(),
   },
 });
 
@@ -104,25 +152,42 @@ const EducationItems = defineTable({
 const Scholarships = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
-    locale: column.text(),
     startDate: column.date(),
-    endDate: column.date(),
+    endDate: column.date({ optional: true }),
+    link: column.text(),
+  },
+});
+
+const ScholarshipsTranslations = defineTable({
+  columns: {
+    scholarshipId: column.text({
+      references: () => Scholarships.columns.id,
+    }),
+    locale: column.text(),
     title: column.text(),
     institution: column.text(),
+    location: column.text({ optional: true }),
     description: column.text(),
-    link: column.text(),
   },
 });
 
 const Publications = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
-    locale: column.text(),
     date: column.date(),
+    link: column.text(),
+  },
+});
+
+const PublicationsTranslations = defineTable({
+  columns: {
+    publicationId: column.text({
+      references: () => Publications.columns.id,
+    }),
+    locale: column.text(),
     title: column.text(),
     publisher: column.text(),
     location: column.text({ optional: true }),
-    link: column.text(),
   },
 });
 
@@ -147,138 +212,110 @@ const PersonToPublications = defineTable({
 const Certifications = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
-    locale: column.text(),
     date: column.date(),
-    title: column.text(),
-    issuer: column.text(),
-    location: column.text({ optional: true }),
     validUntil: column.date({ optional: true }),
     credentialId: column.text({ optional: true }),
-    skills: column.text({ optional: true }),
     link: column.text({ optional: true }),
+  },
+});
+
+const CertificationsTranslations = defineTable({
+  columns: {
+    certificationId: column.text({
+      references: () => Certifications.columns.id,
+    }),
+    locale: column.text(),
+    title: column.text(),
+    issuer: column.text(),
+    skills: column.text({ optional: true }),
   },
 });
 
 const Tutoring = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
-    locale: column.text(),
     startDate: column.date(),
     endDate: column.date({ optional: true }),
+    link: column.text({ optional: true }),
+  },
+});
+
+const TutoringTranslations = defineTable({
+  columns: {
+    tutoringId: column.text({
+      references: () => Tutoring.columns.id,
+    }),
+    locale: column.text(),
     title: column.text(),
     organization: column.text(),
+    description: column.text(),
     location: column.text(),
-    description: column.text({ optional: true }),
-    link: column.text({ optional: true }),
   },
 });
 
 const TalksAndLectures = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
-    locale: column.text(),
     date: column.date(),
+    link: column.text({ optional: true }),
+  },
+});
+
+const TalksAndLecturesTranslations = defineTable({
+  columns: {
+    talkId: column.text({
+      references: () => TalksAndLectures.columns.id,
+    }),
+    locale: column.text(),
     title: column.text(),
     organization: column.text(),
     location: column.text(),
-    link: column.text({ optional: true }),
   },
 });
 
 const CoursesAttended = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
-    locale: column.text(),
     startDate: column.date(),
     endDate: column.date({ optional: true }),
-    title: column.text(),
-    organization: column.text(),
-    location: column.text(),
     instructor: column.text(),
     link: column.text({ optional: true }),
   },
 });
 
-const FreelanceWorks = defineTable({
+const CoursesAttendedTranslations = defineTable({
   columns: {
-    id: column.number({ primaryKey: true }),
+    courseId: column.text({
+      references: () => CoursesAttended.columns.id,
+    }),
     locale: column.text(),
     title: column.text(),
+    organization: column.text(),
+    location: column.text(),
+  },
+});
+
+const Works = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
     startDate: column.date(),
     endDate: column.date({ optional: true }),
-    category: column.text(),
-    location: column.text({ optional: true }),
-    description: column.text(),
     link: column.text({ optional: true }),
   },
 });
 
-const BuildSystemsWorks = defineTable({
+const WorksTranslations = defineTable({
   columns: {
-    id: column.number({ primaryKey: true }),
+    workId: column.text({
+      references: () => Works.columns.id,
+    }),
     locale: column.text(),
+    company: column.text(),
     title: column.text(),
-    startDate: column.date(),
-    endDate: column.date({ optional: true }),
-    category: column.text(),
-    description: column.text(),
-    link: column.text({ optional: true }),
-  },
-});
-
-const ArtEngineeringWorks = defineTable({
-  columns: {
-    id: column.number({ primaryKey: true }),
-    locale: column.text(),
-    title: column.text(),
-    startDate: column.date(),
-    endDate: column.date({ optional: true }),
-    category: column.text(),
-    location: column.text({ optional: true }),
-    description: column.text(),
-    link: column.text({ optional: true }),
-  },
-});
-
-const AlfredReinWorks = defineTable({
-  columns: {
-    id: column.number({ primaryKey: true }),
-    locale: column.text(),
-    title: column.text(),
-    startDate: column.date(),
-    endDate: column.date({ optional: true }),
-    category: column.text(),
-    location: column.text({ optional: true }),
-    description: column.text(),
-    link: column.text({ optional: true }),
-  },
-});
-
-const IcdItkeWorks = defineTable({
-  columns: {
-    id: column.number({ primaryKey: true }),
-    locale: column.text(),
-    title: column.text(),
-    startDate: column.date(),
-    endDate: column.date({ optional: true }),
-    category: column.text(),
-    type: column.text(),
-    location: column.text({ optional: true }),
-    description: column.text(),
-    link: column.text({ optional: true }),
-  },
-});
-
-const MarkoBrajovicWorks = defineTable({
-  columns: {
-    id: column.number({ primaryKey: true }),
-    locale: column.text(),
-    title: column.text(),
-    startDate: column.date(),
-    endDate: column.date({ optional: true }),
-    category: column.text(),
-    location: column.text({ optional: true }),
-    description: column.text(),
+    location: column.text(),
+    description: column.text({ optional: true }),
+    category: column.text({ optional: true }),
+    note: column.text({ optional: true }),
     link: column.text({ optional: true }),
   },
 });
@@ -288,27 +325,36 @@ export default defineDb({
   tables: {
     Summary,
     SkillProgramming,
+    SkillProgrammingTranslations,
     SkillFrameworks,
+    SkillFrameworksTranslations,
     SkillDatabases,
+    SkillDatabasesTranslations,
     SkillDesign,
+    SkillDesignTranslations,
     SkillSpecialized,
+    SkillSpecializedTranslations,
     Experience,
+    ExperienceTranslations,
     ExperienceItems,
     Education,
+    EducatonTranslations,
     EducationItems,
     Scholarships,
+    ScholarshipsTranslations,
     Publications,
+    PublicationsTranslations,
     Person,
     PersonToPublications,
     Certifications,
+    CertificationsTranslations,
     Tutoring,
+    TutoringTranslations,
     TalksAndLectures,
+    TalksAndLecturesTranslations,
     CoursesAttended,
-    FreelanceWorks,
-    BuildSystemsWorks,
-    ArtEngineeringWorks,
-    AlfredReinWorks,
-    IcdItkeWorks,
-    MarkoBrajovicWorks,
+    CoursesAttendedTranslations,
+    Works,
+    WorksTranslations,
   },
 });
