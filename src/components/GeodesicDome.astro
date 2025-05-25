@@ -1,0 +1,492 @@
+---
+// GeodesicDome.astro
+// Props for customization
+export interface Props {
+  height?: string;
+  showControls?: boolean;
+  showInfo?: boolean;
+  initialSubdivisions?: number;
+}
+
+const {
+  height = "300px",
+  showControls = true,
+  showInfo = true,
+  initialSubdivisions = 2,
+} = Astro.props;
+---
+
+<div class="geodesic-dome-container" style={`height: ${height}`}>
+  <div class="canvas-container" id="geodesic-canvas"></div>
+
+  {
+    showControls && (
+      <div class="controls-panel">
+        <h3>Geodesic Dome Controls</h3>
+
+        <div class="control-group">
+          <label for="subdivisions">
+            Subdivisions: <span id="subdiv-value">{initialSubdivisions}</span>
+          </label>
+          <input
+            type="range"
+            id="subdivisions"
+            class="slider"
+            min="0"
+            max="4"
+            value={initialSubdivisions}
+          />
+          <div class="help-text">More subdivisions = smoother dome</div>
+        </div>
+
+        <div class="control-group">
+          <div class="checkbox-group">
+            <input type="checkbox" id="wireframe" class="checkbox" />
+            <label for="wireframe">Wireframe Mode</label>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    showInfo && (
+      <div class="info-panel">
+        <h4>About Geodesic Domes</h4>
+        <p>
+          A geodesic dome is a spherical structure composed of triangular
+          elements. It was popularized by architect Buckminster Fuller. The dome
+          distributes structural stress evenly, making it incredibly strong and
+          efficient.
+        </p>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .geodesic-dome-container {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(135deg, #111 0%, #222 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .canvas-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .controls-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    min-width: 250px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  .controls-panel h3 {
+    margin: 0 0 15px 0;
+    color: #10b981;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .control-group {
+    margin-bottom: 15px;
+  }
+
+  .control-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+
+  .slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: #374151;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #10b981;
+    cursor: pointer;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #10b981;
+    cursor: pointer;
+    border: none;
+  }
+
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .checkbox {
+    width: 16px;
+    height: 16px;
+    accent-color: #10b981;
+  }
+
+  .help-text {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 5px;
+  }
+
+  .info-panel {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    max-width: 300px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  .info-panel h4 {
+    margin: 0 0 10px 0;
+    color: #10b981;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .info-panel p {
+    margin: 0;
+    font-size: 12px;
+    color: #d1d5db;
+    line-height: 1.4;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .controls-panel {
+      position: relative;
+      top: 0;
+      left: 0;
+      margin: 10px;
+      min-width: auto;
+    }
+
+    .info-panel {
+      position: relative;
+      bottom: 0;
+      right: 0;
+      margin: 10px;
+      max-width: none;
+    }
+  }
+</style>
+
+<script>
+  // Declare THREE as a global variable to avoid TypeScript errors
+  declare global {
+    const THREE: any;
+  }
+
+  interface ComponentOptions {
+    initialSubdivisions?: number;
+    autoRotate?: boolean;
+  }
+
+  // Import Three.js as a module
+  import * as THREE from "three";
+
+  (() => {
+    class GeodesicDomeComponent {
+      private container: HTMLElement;
+      private scene: any;
+      private camera: any;
+      private renderer: any;
+      private dome: any;
+      private animationId: number | null;
+      private resizeObserver: ResizeObserver | null;
+      private subdivisions: number;
+      private wireframe: boolean;
+      private autoRotate: boolean;
+      private mouseX: number;
+      private mouseY: number;
+      private targetRotationX: number;
+      private targetRotationY: number;
+
+      constructor(container: HTMLElement, options: ComponentOptions = {}) {
+        this.container = container;
+        this.scene = null;
+        this.camera = null;
+        this.renderer = null;
+        this.dome = null;
+        this.animationId = null;
+        this.resizeObserver = null;
+
+        // Options from Astro props
+        this.subdivisions = options.initialSubdivisions || 2;
+        this.wireframe = false;
+        this.autoRotate = options.autoRotate !== false;
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.targetRotationX = 0;
+        this.targetRotationY = 0;
+
+        this.init();
+        this.setupControls();
+        this.animate();
+      }
+
+      private init(): void {
+        // Scene
+        this.scene = new THREE.Scene();
+        this.scene.background = new THREE.Color(0x0f172a);
+
+        // Camera
+        const rect = this.container.getBoundingClientRect();
+        this.camera = new THREE.PerspectiveCamera(
+          75,
+          rect.width / rect.height,
+          0.1,
+          1000
+        );
+        this.camera.position.set(0, 0, 6);
+
+        // Renderer
+        this.renderer = new THREE.WebGLRenderer({
+          antialias: true,
+          alpha: true,
+        });
+        this.renderer.setSize(rect.width, rect.height);
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        this.container.appendChild(this.renderer.domElement);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+        this.scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(10, 10, 5);
+        directionalLight.castShadow = true;
+        directionalLight.shadow.mapSize.width = 2048;
+        directionalLight.shadow.mapSize.height = 2048;
+        this.scene.add(directionalLight);
+
+        const pointLight = new THREE.PointLight(0x10b981, 0.5, 100);
+        pointLight.position.set(-5, 5, -5);
+        this.scene.add(pointLight);
+
+        // Create dome
+        this.createDome();
+
+        // Ground
+        const groundGeometry = new THREE.PlaneGeometry(20, 20);
+        const groundMaterial = new THREE.MeshPhongMaterial({
+          color: 0x1e293b,
+          transparent: true,
+          opacity: 0.3,
+        });
+        const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -2;
+        ground.receiveShadow = true;
+        this.scene.add(ground);
+
+        // Event listeners
+        this.resizeObserver = new ResizeObserver(() => this.onResize());
+        this.resizeObserver.observe(this.container);
+
+        this.container.addEventListener("mousemove", (e: MouseEvent) =>
+          this.onMouseMove(e)
+        );
+      }
+
+      private createDome(): void {
+        if (this.dome) {
+          this.scene.remove(this.dome);
+        }
+
+        const geometry = new THREE.IcosahedronGeometry(2, this.subdivisions);
+
+        let material: any;
+        if (this.wireframe) {
+          material = new THREE.MeshBasicMaterial({
+            color: 0x10b981,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.9,
+          });
+        } else {
+          material = new THREE.MeshPhongMaterial({
+            color: 0x4a90e2,
+            transparent: true,
+            opacity: 0.8,
+            side: THREE.DoubleSide,
+          });
+        }
+
+        this.dome = new THREE.Mesh(geometry, material);
+        this.dome.castShadow = true;
+        this.dome.receiveShadow = true;
+
+        // Add wireframe overlay for solid mode
+        if (!this.wireframe) {
+          const wireframeGeometry = geometry.clone();
+          const wireframeMaterial = new THREE.MeshBasicMaterial({
+            color: 0x10b981,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3,
+          });
+          const wireframeMesh = new THREE.Mesh(
+            wireframeGeometry,
+            wireframeMaterial
+          );
+          this.dome.add(wireframeMesh);
+        }
+
+        this.scene.add(this.dome);
+      }
+
+      private setupControls(): void {
+        const subdivisionsSlider = document.getElementById(
+          "subdivisions"
+        ) as HTMLInputElement;
+        const subdivValue = document.getElementById(
+          "subdiv-value"
+        ) as HTMLSpanElement;
+        const wireframeCheckbox = document.getElementById(
+          "wireframe"
+        ) as HTMLInputElement;
+        const autoRotateCheckbox = document.getElementById(
+          "autoRotate"
+        ) as HTMLInputElement;
+        const mouseHelp = document.getElementById("mouse-help") as HTMLElement;
+
+        if (subdivisionsSlider) {
+          subdivisionsSlider.addEventListener("input", (e: Event) => {
+            const target = e.target as HTMLInputElement;
+            this.subdivisions = parseInt(target.value);
+            if (subdivValue)
+              subdivValue.textContent = this.subdivisions.toString();
+            this.createDome();
+          });
+        }
+
+        if (wireframeCheckbox) {
+          wireframeCheckbox.addEventListener("change", (e: Event) => {
+            const target = e.target as HTMLInputElement;
+            this.wireframe = target.checked;
+            this.createDome();
+          });
+        }
+
+        if (autoRotateCheckbox) {
+          autoRotateCheckbox.addEventListener("change", (e: Event) => {
+            const target = e.target as HTMLInputElement;
+            this.autoRotate = target.checked;
+            this.container.style.cursor = this.autoRotate ? "default" : "grab";
+            if (mouseHelp) {
+              mouseHelp.textContent = this.autoRotate
+                ? "Disable auto-rotate to control with mouse"
+                : "Move mouse to rotate dome";
+            }
+          });
+        }
+      }
+
+      private onMouseMove(event: MouseEvent): void {
+        if (!this.autoRotate) {
+          const rect = this.container.getBoundingClientRect();
+          this.mouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+          this.mouseY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+          this.targetRotationX = this.mouseY * 0.5;
+          this.targetRotationY = this.mouseX * 0.5;
+        }
+      }
+
+      private onResize(): void {
+        const rect = this.container.getBoundingClientRect();
+        this.camera.aspect = rect.width / rect.height;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(rect.width, rect.height);
+      }
+
+      private animate(): void {
+        this.animationId = requestAnimationFrame(() => this.animate());
+
+        // if (this.dome) {
+        //   if (this.autoRotate) {
+        //     this.dome.rotation.y += 0.005;
+        //     this.dome.rotation.x = Math.sin(Date.now() * 0.001) * 0.1;
+        //   } else {
+        //     this.dome.rotation.x +=
+        //       (this.targetRotationX - this.dome.rotation.x) * 0.05;
+        //     this.dome.rotation.y +=
+        //       (this.targetRotationY - this.dome.rotation.y) * 0.05;
+        //   }
+        // }
+
+        this.renderer.render(this.scene, this.camera);
+      }
+
+      public dispose(): void {
+        if (this.animationId) {
+          cancelAnimationFrame(this.animationId);
+        }
+        if (this.resizeObserver) {
+          this.resizeObserver.disconnect();
+        }
+        if (this.renderer) {
+          this.renderer.dispose();
+        }
+      }
+    }
+
+    // Initialize the component
+    const container = document.getElementById("geodesic-canvas") as HTMLElement;
+    if (container) {
+      const subdivisionsInput = document.getElementById(
+        "subdivisions"
+      ) as HTMLInputElement;
+      const autoRotateInput = document.getElementById(
+        "autoRotate"
+      ) as HTMLInputElement;
+
+      const geodesicDome = new GeodesicDomeComponent(container, {
+        initialSubdivisions: subdivisionsInput
+          ? parseInt(subdivisionsInput.value)
+          : 2,
+        autoRotate: autoRotateInput ? autoRotateInput.checked : true,
+      });
+
+      // Cleanup on page navigation
+      document.addEventListener("astro:before-preparation", () => {
+        geodesicDome.dispose();
+      });
+    }
+    // No catch needed since import is static
+  })();
+</script>
