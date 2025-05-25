@@ -40,6 +40,7 @@ import {
   WorksTranslations,
 } from "astro:db";
 import { Icon } from "astro-icon/components";
+import { siteConfig } from "@/site-config";
 
 const getMonthYear = (date: Date): string => {
   const month =
@@ -207,6 +208,8 @@ const works = await db
   .from(Works)
   .leftJoin(WorksTranslations, eq(Works.id, WorksTranslations.workId))
   .where(eq(WorksTranslations.locale, locale));
+
+const emailAddress = siteConfig.email;
 ---
 
 <Base
@@ -241,9 +244,7 @@ const works = await db
             ecológicos vernaculares."
           </p>
           <address class="flex flex-col sm:text-xs">
-            <a href="mailto:architect.locatelli@gmail.com"
-              >architect.locatelli@gmail.com</a
-            >
+            <a href={"mailto:" + emailAddress}>{emailAddress}</a>
             <span> +49 178 324-0834 </span>
             <span> Munique, Alemanha </span>
           </address>

@@ -137,9 +137,9 @@ const instagramUrl = siteConfig.instagram;
           <h1
             class="order-2 text-2xl font-bold tracking-wide sm:text-3xl md:order-1 md:space-y-2 md:text-4xl"
           >
-            <p>Prazer</p>
-            <p>Daniel Locatelli,</p>
-            <p>Engenheiro de software para AEC.</p>
+            <p>Prazer,</p>
+            <p>Daniel Locatelli</p>
+            <p>Engenheiro de software</p>
           </h1>
         </div>
         <p class="font-body max-w-xl text-balance">
@@ -235,7 +235,7 @@ const instagramUrl = siteConfig.instagram;
                 <Image
                   src={project.imageUrl}
                   alt={`Screenshot of ${project.title}`}
-                  class="h-56 w-full object-cover"
+                  class="h-80 w-full object-cover"
                 />
                 <div class="font-body flex flex-grow flex-col p-6">
                   <h3 class="mb-1 text-xl font-semibold text-balance text-zinc-100">
@@ -280,9 +280,7 @@ const instagramUrl = siteConfig.instagram;
     </section>
 
     <section id="testimonials" class="py-16 text-zinc-200">
-      <h2 class="mb-12 text-center text-3xl md:text-4xl">
-        Resumo de recomendações
-      </h2>
+      <h2 class="mb-12 text-center text-3xl md:text-4xl">Recomendações</h2>
       <div class="container mx-auto flex flex-col gap-12">
         {
           recommendations.map((rec) => (
