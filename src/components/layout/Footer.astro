@@ -75,20 +75,6 @@ const { locale, slug } = Astro.props as Props;
           class="inline h-4 w-auto mix-blend-difference"
         />
       </a>
-      {
-        /*<a
-        href="https://www.youtube.com/@ArchitectLocatelli"
-        target="_blank"
-        title="Check my YouTube channel."
-        class="flex"
-      >
-        <Image
-          src={youtubeLogo}
-          alt="YouTube logo."
-          class="inline h-5 w-auto mix-blend-difference"
-        />
-      </a>*/
-      }
     </address>
   </div>
   <nav
@@ -116,7 +102,6 @@ const { locale, slug } = Astro.props as Props;
         )
       )
     }
-    <a href="/cv" class="py-2 sm:px-3 sm:py-0 sm:hover:underline">CV</a>
     <a
       title={locale === "en" ? "Mudar para Português" : "Change to English"}
       href={locale === "en" ? "/pt/" + slug : "/" + slug}
