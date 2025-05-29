@@ -3,204 +3,27 @@
 // Props for customization
 export interface Props {
   height?: string;
-  showControls?: boolean;
-  showInfo?: boolean;
   initialSubdivisions?: number;
 }
 
-const {
-  height = "300px",
-  showControls = true,
-  showInfo = true,
-  initialSubdivisions = 2,
-} = Astro.props;
+const { height = "180px" } = Astro.props;
 ---
 
 <div class="geodesic-dome-container" style={`height: ${height}`}>
   <div class="canvas-container" id="geodesic-canvas"></div>
-
-  {
-    showControls && (
-      <div class="controls-panel">
-        <h3>Geodesic Dome Controls</h3>
-
-        <div class="control-group">
-          <label for="subdivisions">
-            Subdivisions: <span id="subdiv-value">{initialSubdivisions}</span>
-          </label>
-          <input
-            type="range"
-            id="subdivisions"
-            class="slider"
-            min="0"
-            max="4"
-            value={initialSubdivisions}
-          />
-          <div class="help-text">More subdivisions = smoother dome</div>
-        </div>
-
-        <div class="control-group">
-          <div class="checkbox-group">
-            <input type="checkbox" id="wireframe" class="checkbox" />
-            <label for="wireframe">Wireframe Mode</label>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  {
-    showInfo && (
-      <div class="info-panel">
-        <h4>About Geodesic Domes</h4>
-        <p>
-          A geodesic dome is a spherical structure composed of triangular
-          elements. It was popularized by architect Buckminster Fuller. The dome
-          distributes structural stress evenly, making it incredibly strong and
-          efficient.
-        </p>
-      </div>
-    )
-  }
 </div>
 
 <style>
   .geodesic-dome-container {
     position: relative;
     width: 100%;
-    background: linear-gradient(135deg, #111 0%, #222 100%);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
   .canvas-container {
     width: 100%;
     height: 100%;
-  }
-
-  .controls-panel {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: rgba(15, 23, 42, 0.9);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-    min-width: 250px;
-    border: 1px solid rgba(16, 185, 129, 0.2);
-  }
-
-  .controls-panel h3 {
-    margin: 0 0 15px 0;
-    color: #10b981;
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  .control-group {
-    margin-bottom: 15px;
-  }
-
-  .control-group label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    font-weight: 500;
-  }
-
-  .slider {
-    width: 100%;
-    height: 8px;
-    border-radius: 4px;
-    background: #374151;
-    outline: none;
-    -webkit-appearance: none;
-    cursor: pointer;
-  }
-
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #10b981;
-    cursor: pointer;
-  }
-
-  .slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #10b981;
-    cursor: pointer;
-    border: none;
-  }
-
-  .checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .checkbox {
-    width: 16px;
-    height: 16px;
-    accent-color: #10b981;
-  }
-
-  .help-text {
-    font-size: 12px;
-    color: #9ca3af;
-    margin-top: 5px;
-  }
-
-  .info-panel {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(15, 23, 42, 0.9);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-    max-width: 300px;
-    border: 1px solid rgba(16, 185, 129, 0.2);
-  }
-
-  .info-panel h4 {
-    margin: 0 0 10px 0;
-    color: #10b981;
-    font-size: 14px;
-    font-weight: bold;
-  }
-
-  .info-panel p {
-    margin: 0;
-    font-size: 12px;
-    color: #d1d5db;
-    line-height: 1.4;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .controls-panel {
-      position: relative;
-      top: 0;
-      left: 0;
-      margin: 10px;
-      min-width: auto;
-    }
-
-    .info-panel {
-      position: relative;
-      bottom: 0;
-      right: 0;
-      margin: 10px;
-      max-width: none;
-    }
   }
 </style>
 
@@ -210,117 +33,103 @@ const {
     const THREE: any;
   }
 
-  interface ComponentOptions {
-    initialSubdivisions?: number;
-    autoRotate?: boolean;
-  }
-
   // Import Three.js as a module
   import * as THREE from "three";
+  import { LineMaterial } from "three/addons/lines/LineMaterial.js";
+  import { Wireframe } from "three/addons/lines/Wireframe.js";
+  import { WireframeGeometry2 } from "three/addons/lines/WireframeGeometry2.js";
 
   (() => {
+    interface FaceData {
+      normal: THREE.Vector3;
+      center: THREE.Vector3;
+      vertexIndices: number[];
+    }
+
     class GeodesicDomeComponent {
       private container: HTMLElement;
-      private scene: any;
-      private camera: any;
-      private renderer: any;
+      private rect: DOMRect;
+      private scene: THREE.Scene;
+      private camera: THREE.PerspectiveCamera;
+      private renderer: THREE.WebGLRenderer;
       private dome: any;
       private animationId: number | null;
       private resizeObserver: ResizeObserver | null;
-      private subdivisions: number;
-      private wireframe: boolean;
-      private autoRotate: boolean;
-      private mouseX: number;
-      private mouseY: number;
-      private targetRotationX: number;
-      private targetRotationY: number;
 
-      constructor(container: HTMLElement, options: ComponentOptions = {}) {
+      // Explosion properties
+      private originalPositions: Float32Array | null = null;
+      private faceData: FaceData[] = [];
+      private explosionAmount: number = 0;
+      private isExploding: boolean = false;
+
+      // Inertia state
+      private targetExplosion: number = 0;
+      private currentExplosion: number = 0;
+      private targetRotation: number = 0;
+      private currentRotation: number = 0;
+      private velocityExplosion: number = 0;
+      private velocityRotation: number = 0;
+
+      constructor(container: HTMLElement) {
         this.container = container;
-        this.scene = null;
-        this.camera = null;
-        this.renderer = null;
+        this.rect = this.container.getBoundingClientRect();
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(
+          75,
+          this.rect.width / this.rect.height,
+          0.1,
+          1000
+        );
+        this.renderer = new THREE.WebGLRenderer({
+          antialias: true,
+          alpha: true,
+        });
         this.dome = null;
         this.animationId = null;
         this.resizeObserver = null;
 
-        // Options from Astro props
-        this.subdivisions = options.initialSubdivisions || 2;
-        this.wireframe = false;
-        this.autoRotate = options.autoRotate !== false;
-        this.mouseX = 0;
-        this.mouseY = 0;
-        this.targetRotationX = 0;
-        this.targetRotationY = 0;
-
         this.init();
-        this.setupControls();
         this.animate();
       }
 
       private init(): void {
         // Scene
-        this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0x0f172a);
+        this.camera.position.set(0, 0, 8);
 
-        // Camera
-        const rect = this.container.getBoundingClientRect();
-        this.camera = new THREE.PerspectiveCamera(
-          75,
-          rect.width / rect.height,
-          0.1,
-          1000
-        );
-        this.camera.position.set(0, 0, 6);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
+        this.renderer.setClearColor(0x000000, 0.0);
 
-        // Renderer
-        this.renderer = new THREE.WebGLRenderer({
-          antialias: true,
-          alpha: true,
-        });
-        this.renderer.setSize(rect.width, rect.height);
+        this.renderer.setSize(this.rect.width, this.rect.height);
         this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         this.container.appendChild(this.renderer.domElement);
 
         // Lighting
-        const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+        const ambientLight = new THREE.AmbientLight(0x111111, 0.5);
         this.scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-        directionalLight.position.set(10, 10, 5);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        directionalLight.position.set(12, 10, 10);
         directionalLight.castShadow = true;
-        directionalLight.shadow.mapSize.width = 2048;
-        directionalLight.shadow.mapSize.height = 2048;
+        directionalLight.shadow.mapSize.width = 1024;
+        directionalLight.shadow.mapSize.height = 1024;
+        directionalLight.shadow.radius = 10;
         this.scene.add(directionalLight);
 
-        const pointLight = new THREE.PointLight(0x10b981, 0.5, 100);
+        const pointLight = new THREE.PointLight(0xffffff, 0.5, 100);
         pointLight.position.set(-5, 5, -5);
         this.scene.add(pointLight);
 
         // Create dome
         this.createDome();
-
-        // Ground
-        const groundGeometry = new THREE.PlaneGeometry(20, 20);
-        const groundMaterial = new THREE.MeshPhongMaterial({
-          color: 0x1e293b,
-          transparent: true,
-          opacity: 0.3,
-        });
-        const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-        ground.rotation.x = -Math.PI / 2;
-        ground.position.y = -2;
-        ground.receiveShadow = true;
-        this.scene.add(ground);
+        this.setupScrollAnimation();
 
         // Event listeners
         this.resizeObserver = new ResizeObserver(() => this.onResize());
         this.resizeObserver.observe(this.container);
 
-        this.container.addEventListener("mousemove", (e: MouseEvent) =>
-          this.onMouseMove(e)
-        );
+        // Add click event to toggle explosion
+        this.container.addEventListener("click", () => this.toggleExplosion());
       }
 
       private createDome(): void {
@@ -328,103 +137,129 @@ const {
           this.scene.remove(this.dome);
         }
 
-        const geometry = new THREE.IcosahedronGeometry(2, this.subdivisions);
+        let geometry: THREE.BufferGeometry = new THREE.IcosahedronGeometry(
+          3,
+          2
+        );
 
-        let material: any;
-        if (this.wireframe) {
-          material = new THREE.MeshBasicMaterial({
-            color: 0x10b981,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.9,
-          });
-        } else {
-          material = new THREE.MeshPhongMaterial({
-            color: 0x4a90e2,
-            transparent: true,
-            opacity: 0.8,
-            side: THREE.DoubleSide,
-          });
+        // Ensure geometry is non-indexed so each face has unique vertices
+        if (geometry.index) {
+          geometry = geometry.toNonIndexed();
         }
+
+        // Store original positions and calculate face data for explosion
+        this.originalPositions = new Float32Array(
+          geometry.attributes.position.array
+        );
+        this.calculateFaceData(geometry);
+
+        const material = new THREE.MeshPhongMaterial({
+          color: 0x444444,
+          transparent: true,
+          opacity: 1,
+          side: THREE.DoubleSide,
+        });
 
         this.dome = new THREE.Mesh(geometry, material);
         this.dome.castShadow = true;
         this.dome.receiveShadow = true;
 
         // Add wireframe overlay for solid mode
-        if (!this.wireframe) {
-          const wireframeGeometry = geometry.clone();
-          const wireframeMaterial = new THREE.MeshBasicMaterial({
-            color: 0x10b981,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.3,
-          });
-          const wireframeMesh = new THREE.Mesh(
-            wireframeGeometry,
-            wireframeMaterial
-          );
-          this.dome.add(wireframeMesh);
-        }
+        const wireframeGeometry = new WireframeGeometry2(geometry);
+        const lineMaterial = new LineMaterial({
+          color: 0x05df72,
+          linewidth: 1, // Note: linewidth > 1 doesn't work on most platforms
+        });
+        const wireframeMesh = new Wireframe(wireframeGeometry, lineMaterial);
+        wireframeMesh.scale.set(1.01, 1.01, 1.01); // Slightly larger to avoid z-fighting
+        this.dome.add(wireframeMesh);
 
         this.scene.add(this.dome);
       }
 
-      private setupControls(): void {
-        const subdivisionsSlider = document.getElementById(
-          "subdivisions"
-        ) as HTMLInputElement;
-        const subdivValue = document.getElementById(
-          "subdiv-value"
-        ) as HTMLSpanElement;
-        const wireframeCheckbox = document.getElementById(
-          "wireframe"
-        ) as HTMLInputElement;
-        const autoRotateCheckbox = document.getElementById(
-          "autoRotate"
-        ) as HTMLInputElement;
-        const mouseHelp = document.getElementById("mouse-help") as HTMLElement;
+      private calculateFaceData(geometry: THREE.BufferGeometry): void {
+        const positions = geometry.attributes.position.array as Float32Array;
+        this.faceData = [];
 
-        if (subdivisionsSlider) {
-          subdivisionsSlider.addEventListener("input", (e: Event) => {
-            const target = e.target as HTMLInputElement;
-            this.subdivisions = parseInt(target.value);
-            if (subdivValue)
-              subdivValue.textContent = this.subdivisions.toString();
-            this.createDome();
-          });
-        }
+        // For non-indexed geometry, each 3 consecutive vertices form a face
+        for (let i = 0; i < positions.length; i += 9) {
+          const a = i;
+          const b = i + 3;
+          const c = i + 6;
 
-        if (wireframeCheckbox) {
-          wireframeCheckbox.addEventListener("change", (e: Event) => {
-            const target = e.target as HTMLInputElement;
-            this.wireframe = target.checked;
-            this.createDome();
-          });
-        }
+          const v1 = new THREE.Vector3(
+            positions[a],
+            positions[a + 1],
+            positions[a + 2]
+          );
+          const v2 = new THREE.Vector3(
+            positions[b],
+            positions[b + 1],
+            positions[b + 2]
+          );
+          const v3 = new THREE.Vector3(
+            positions[c],
+            positions[c + 1],
+            positions[c + 2]
+          );
 
-        if (autoRotateCheckbox) {
-          autoRotateCheckbox.addEventListener("change", (e: Event) => {
-            const target = e.target as HTMLInputElement;
-            this.autoRotate = target.checked;
-            this.container.style.cursor = this.autoRotate ? "default" : "grab";
-            if (mouseHelp) {
-              mouseHelp.textContent = this.autoRotate
-                ? "Disable auto-rotate to control with mouse"
-                : "Move mouse to rotate dome";
-            }
-          });
+          const center = new THREE.Vector3()
+            .add(v1)
+            .add(v2)
+            .add(v3)
+            .divideScalar(3);
+
+          const edge1 = new THREE.Vector3().subVectors(v2, v1);
+          const edge2 = new THREE.Vector3().subVectors(v3, v1);
+          const normal = new THREE.Vector3()
+            .crossVectors(edge1, edge2)
+            .normalize();
+
+          // Vertex indices for non-indexed geometry are just the vertex numbers
+          const vertexIndices = [i / 3, i / 3 + 1, i / 3 + 2];
+
+          this.faceData.push({ normal, center, vertexIndices });
         }
       }
 
-      private onMouseMove(event: MouseEvent): void {
-        if (!this.autoRotate) {
-          const rect = this.container.getBoundingClientRect();
-          this.mouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-          this.mouseY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-          this.targetRotationX = this.mouseY * 0.5;
-          this.targetRotationY = this.mouseX * 0.5;
+      private explodeGeometry(amount: number): void {
+        if (!this.dome || !this.originalPositions) return;
+
+        const geometry = this.dome.geometry as THREE.BufferGeometry;
+        const positions = geometry.attributes.position.array as Float32Array;
+
+        // Reset to original positions
+        positions.set(this.originalPositions);
+
+        // Apply explosion effect to each face
+        this.faceData.forEach(({ normal, vertexIndices }) => {
+          const displacement = normal.clone().multiplyScalar(amount);
+
+          vertexIndices.forEach((vertexIndex) => {
+            const offset = vertexIndex * 3;
+            positions[offset] += displacement.x;
+            positions[offset + 1] += displacement.y;
+            positions[offset + 2] += displacement.z;
+          });
+        });
+
+        // Update geometry
+        geometry.attributes.position.needsUpdate = true;
+        geometry.computeVertexNormals();
+
+        // Update wireframe as well
+        if (this.dome.children.length > 0) {
+          const wireframeMesh = this.dome.children[0] as any;
+          if (wireframeMesh && wireframeMesh.geometry) {
+            wireframeMesh.geometry.dispose();
+            const newWireframeGeometry = new WireframeGeometry2(geometry);
+            wireframeMesh.geometry = newWireframeGeometry;
+          }
         }
+      }
+
+      private toggleExplosion(): void {
+        this.isExploding = !this.isExploding;
       }
 
       private onResize(): void {
@@ -434,21 +269,41 @@ const {
         this.renderer.setSize(rect.width, rect.height);
       }
 
+      private setupScrollAnimation(): void {
+        window.addEventListener("scroll", () => {
+          const rect = this.container.getBoundingClientRect();
+          const windowHeight =
+            window.innerHeight || document.documentElement.clientHeight;
+          // Map: top of page = max, bottom = min
+          const domeTop = rect.top;
+          const domeBottom = rect.bottom;
+          // percent: 1 at top, 0 at bottom
+          let percent = 1 - Math.max(0, Math.min(domeBottom / windowHeight, 1));
+          this.targetExplosion = percent * 1.75;
+          this.targetRotation = percent * Math.PI; // 0 to 180deg
+        });
+      }
+
       private animate(): void {
         this.animationId = requestAnimationFrame(() => this.animate());
-
-        // if (this.dome) {
-        //   if (this.autoRotate) {
-        //     this.dome.rotation.y += 0.005;
-        //     this.dome.rotation.x = Math.sin(Date.now() * 0.001) * 0.1;
-        //   } else {
-        //     this.dome.rotation.x +=
-        //       (this.targetRotationX - this.dome.rotation.x) * 0.05;
-        //     this.dome.rotation.y +=
-        //       (this.targetRotationY - this.dome.rotation.y) * 0.05;
-        //   }
-        // }
-
+        // Inertia and spring-back (even more slack)
+        const spring = 0.005;
+        const damping = 0.9;
+        // Explosion inertia
+        const explosionDelta = this.targetExplosion - this.currentExplosion;
+        this.velocityExplosion =
+          this.velocityExplosion * damping + explosionDelta * spring;
+        this.currentExplosion += this.velocityExplosion;
+        // Rotation inertia
+        const rotDelta = this.targetRotation - this.currentRotation;
+        this.velocityRotation =
+          this.velocityRotation * damping + rotDelta * spring;
+        this.currentRotation += this.velocityRotation;
+        // Apply
+        if (this.dome) {
+          this.dome.rotation.y = this.currentRotation;
+        }
+        this.explodeGeometry(this.currentExplosion);
         this.renderer.render(this.scene, this.camera);
       }
 
@@ -468,19 +323,7 @@ const {
     // Initialize the component
     const container = document.getElementById("geodesic-canvas") as HTMLElement;
     if (container) {
-      const subdivisionsInput = document.getElementById(
-        "subdivisions"
-      ) as HTMLInputElement;
-      const autoRotateInput = document.getElementById(
-        "autoRotate"
-      ) as HTMLInputElement;
-
-      const geodesicDome = new GeodesicDomeComponent(container, {
-        initialSubdivisions: subdivisionsInput
-          ? parseInt(subdivisionsInput.value)
-          : 2,
-        autoRotate: autoRotateInput ? autoRotateInput.checked : true,
-      });
+      const geodesicDome = new GeodesicDomeComponent(container);
 
       // Cleanup on page navigation
       document.addEventListener("astro:before-preparation", () => {
