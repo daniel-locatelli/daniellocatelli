@@ -351,14 +351,26 @@ export default async function seed() {
       id: "HM1",
       experienceId: "HM",
       locale: "en",
-      text: "Research on standards, data formats and tools to generate building components (buildups), with a special focus for timber technology. Foundations to develop the app DOKwood.",
+      text: "Research on standards, databases and modeling tools with focus on timber technology. Foundations to develop the app DOKwood.",
+    },
+    {
+      id: "HM1-pt",
+      experienceId: "HM",
+      locale: "pt",
+      text: "Pesquisa sobre normas técnicas, bancos de dados e ferramentas de modelagem com foco em tecnologia madeireira. Fundamentos para o desenvolvimento do aplicativo DOKwood.",
     },
     // BS
     {
       id: "BS1",
       experienceId: "BS",
       locale: "en",
-      text: "Developed a Funding Calculator for new constructions and renovations in Germany. The web app was built with the Angular framework and PostgreSQL. It delivers a seamless UX and provide real-time financial modeling capabilities.",
+      text: "Development of a Funding Calculator for new constructions and renovations in Germany. The web app was built with the Angular framework and PostgreSQL. It delivers a seamless UX and provide real-time financial modeling capabilities.",
+    },
+    {
+      id: "BS1-pt",
+      experienceId: "BS",
+      locale: "pt",
+      text: "Desenvolvimento de uma Calculadora de Financiamento para construções e reformas na Alemanha. O aplicativo web foi construído com o framework Angular e PostgreSQL. Proporciona uma experiência de usuário fluida e oferece capacidades de modelagem financeira em tempo real.",
     },
     {
       id: "BS2",
@@ -366,12 +378,24 @@ export default async function seed() {
       locale: "en",
       text: "Architected and implemented BuildSystems' website using Astro framework, leveraging Notion API to use Notion as a content management system (CMS).",
     },
+    {
+      id: "BS2-pt",
+      experienceId: "BS",
+      locale: "pt",
+      text: "Desenvolvimento e implementação do website da BuildSystems utilizando o framework Astro, com integração da API do Notion para usar sua interface como sistema de gerenciamento de conteúdo (CMS).",
+    },
     // UST
     {
       id: "UST1",
       experienceId: "UST",
       locale: "en",
-      text: "Developed a specialized toolbox in C# for Grasshopper in conjunction with an object model (schema) and ontology.",
+      text: "Development of a specialized toolbox in C# for Grasshopper in conjunction with an object model (schema).",
+    },
+    {
+      id: "UST1-pt",
+      experienceId: "UST",
+      locale: "pt",
+      text: "Desenvolvimento uma toolbox especializada em C# para Grasshopper em conjunto com um modelo de objetos (esquema).",
     },
     {
       id: "UST2",
@@ -380,10 +404,22 @@ export default async function seed() {
       text: "UI/UX prototype for the web app Circular Component Creator.",
     },
     {
+      id: "UST2-pt",
+      experienceId: "UST",
+      locale: "pt",
+      text: "Protótipo de UI/UX para o aplicativo web Circular Component Creator.",
+    },
+    {
       id: "UST3",
       experienceId: "UST",
       locale: "en",
-      text: "Created data visualizations using Power BI for decision-making.",
+      text: "Data visualizations using Power BI for decision-making.",
+    },
+    {
+      id: "UST3-pt",
+      experienceId: "UST",
+      locale: "pt",
+      text: "Visualização de dados usando Power BI para tomada de decisão.",
     },
     {
       id: "UST4",
@@ -392,10 +428,22 @@ export default async function seed() {
       text: "Development of a timber component configurator with EPD data.",
     },
     {
+      id: "UST4-pt",
+      experienceId: "UST",
+      locale: "pt",
+      text: "Desenvolvimento de um configurador de componentes de madeira com dados EPD.",
+    },
+    {
       id: "UST5",
       experienceId: "UST",
       locale: "en",
       text: "Development of a tool for urban analysis.",
+    },
+    {
+      id: "UST5-pt",
+      experienceId: "UST",
+      locale: "pt",
+      text: "Desenvolvimento de uma ferramenta para análise urbana.",
     },
     // AE
     {
@@ -405,10 +453,22 @@ export default async function seed() {
       text: "Conducted algorithmic modeling and structural analysis of complex spatial structures and artworks.",
     },
     {
+      id: "AE1-pt",
+      experienceId: "AE",
+      locale: "pt",
+      text: "Modelagem algorítmica e análise estrutural de estruturas espaciais complexas e obras de arte.",
+    },
+    {
       id: "AE2",
       experienceId: "AE",
       locale: "en",
       text: "Developed design-to-production automated workflows.",
+    },
+    {
+      id: "AE2-pt",
+      experienceId: "AE",
+      locale: "pt",
+      text: "Desenvolvimento de fluxos de trabalho automatizados do design à produção.",
     },
     {
       id: "AE3",
@@ -417,16 +477,34 @@ export default async function seed() {
       text: "Aiding on structural analysis of complex spatial structures.",
     },
     {
+      id: "AE3-pt",
+      experienceId: "AE",
+      locale: "pt",
+      text: "Auxiliou na análise estrutural de estruturas espaciais complexas.",
+    },
+    {
       id: "AE4",
       experienceId: "AE",
       locale: "en",
       text: "Preparing meticulous technical documentation.",
     },
     {
+      id: "AE4-pt",
+      experienceId: "AE",
+      locale: "pt",
+      text: "Preparação de documentação técnica meticulosa.",
+    },
+    {
       id: "AE5",
       experienceId: "AE",
       locale: "en",
       text: "Creating precise engineering drawings and production plans.",
+    },
+    {
+      id: "AE5-pt",
+      experienceId: "AE",
+      locale: "pt",
+      text: "Criação de desenhos de engenharia precisos e planos de produção.",
     },
     // AR
     {
@@ -436,22 +514,46 @@ export default async function seed() {
       text: "Received honorable mention in the competition 'Witterungsschutz Römermauer' from the city of Wiesbaden.",
     },
     {
+      id: "AR1-pt",
+      experienceId: "AR",
+      locale: "pt",
+      text: "Menção honrosa no concurso 'Witterungsschutz Römermauer' da cidade de Wiesbaden.",
+    },
+    {
       id: "AR2",
       experienceId: "AR",
       locale: "en",
       text: "Specialized in computational form finding of tensile structures.",
     },
     {
+      id: "AR2-pt",
+      experienceId: "AR",
+      locale: "pt",
+      text: "Especializado em form finding computacional de estruturas tensionadas.",
+    },
+    {
       id: "AR3",
       experienceId: "AR",
       locale: "en",
-      text: "Simulated the deployment of a innovative inflatable membrane structure.",
+      text: "Simulated the deployment of an inflatable membrane structure.",
+    },
+    {
+      id: "AR3-pt",
+      experienceId: "AR",
+      locale: "pt",
+      text: "Simulação e implantação de uma estrutura de membrana inflável.",
     },
     {
       id: "AR4",
       experienceId: "AR",
       locale: "en",
       text: "Development of an automatized cutting pattern workflow for membranes.",
+    },
+    {
+      id: "AR4-pt",
+      experienceId: "AR",
+      locale: "pt",
+      text: "Desenvolvimento de um fluxo automatizado de padrões de corte para membranas.",
     },
     // ICD/ITKE
     {
@@ -461,10 +563,22 @@ export default async function seed() {
       text: "Conducted natural fiber structural tests with Marta Gil Pérez.",
     },
     {
+      id: "ICD/ITKE1-pt",
+      experienceId: "ICD/ITKE",
+      locale: "pt",
+      text: "Realização de testes estruturais com fibras naturais com Marta Gil Pérez.",
+    },
+    {
       id: "ICD/ITKE2",
       experienceId: "ICD/ITKE",
       locale: "en",
       text: "Carbon fiber winding research with Christoph Schlopschnat.",
+    },
+    {
+      id: "ICD/ITKE2-pt",
+      experienceId: "ICD/ITKE",
+      locale: "pt",
+      text: "Pesquisa de bobinamento de fibra de carbono com Christoph Schlopschnat.",
     },
     {
       id: "ICD/ITKE3",
@@ -473,10 +587,22 @@ export default async function seed() {
       text: "Computational design of a self-curving timber tower with Dylan Wood.",
     },
     {
+      id: "ICD/ITKE3-pt",
+      experienceId: "ICD/ITKE",
+      locale: "pt",
+      text: "Design computacional de uma torre de madeira auto-curvante com Dylan Wood.",
+    },
+    {
       id: "ICD/ITKE4",
       experienceId: "ICD/ITKE",
       locale: "en",
       text: "Assisted the ICD website migration with Tobias Schwinn.",
+    },
+    {
+      id: "ICD/ITKE4-pt",
+      experienceId: "ICD/ITKE",
+      locale: "pt",
+      text: "Auxílio na migração do site do ICD com Tobias Schwinn.",
     },
     // AMB
     {
@@ -486,10 +612,22 @@ export default async function seed() {
       text: "Executed CAD, BIM, and computational modeling for architectural projects.",
     },
     {
+      id: "AMB1-pt",
+      experienceId: "AMB",
+      locale: "pt",
+      text: "Modelagem CAD, BIM e computacional para projetos arquitetônicos.",
+    },
+    {
       id: "AMB2",
       experienceId: "AMB",
       locale: "en",
       text: "Managed project communications and supplier relationships.",
+    },
+    {
+      id: "AMB2-pt",
+      experienceId: "AMB",
+      locale: "pt",
+      text: "Gerenciamento de projetos e relacionamento com fornecedores.",
     },
     {
       id: "AMB3",
@@ -498,10 +636,22 @@ export default async function seed() {
       text: "Developed conceptual designs and high-quality renderings.",
     },
     {
+      id: "AMB3-pt",
+      experienceId: "AMB",
+      locale: "pt",
+      text: "Desenvolvimento de projetos conceituais e renderizações de alta qualidade.",
+    },
+    {
       id: "AMB4",
       experienceId: "AMB",
       locale: "en",
       text: "Led prototyping and digital fabrication initiatives.",
+    },
+    {
+      id: "AMB4-pt",
+      experienceId: "AMB",
+      locale: "pt",
+      text: "Liderança em iniciativas de prototipagem e fabricação digital.",
     },
     // CSULB
     {
@@ -511,10 +661,22 @@ export default async function seed() {
       text: "Gained hands-on experience in project management.",
     },
     {
+      id: "CSULB1-pt",
+      experienceId: "CSULB",
+      locale: "pt",
+      text: "Experiência prática em gerenciamento de projetos.",
+    },
+    {
       id: "CSULB2",
       experienceId: "CSULB",
       locale: "en",
       text: "Conducted construction site inspections.",
+    },
+    {
+      id: "CSULB2-pt",
+      experienceId: "CSULB",
+      locale: "pt",
+      text: "Realização de inspeções em canteiros de obras.",
     },
     {
       id: "CSULB3",
@@ -523,10 +685,22 @@ export default async function seed() {
       text: "Gained BIM modeling skills.",
     },
     {
+      id: "CSULB3-pt",
+      experienceId: "CSULB",
+      locale: "pt",
+      text: "Desenvolvimento de habilidades em modelagem BIM.",
+    },
+    {
       id: "CSULB4",
       experienceId: "CSULB",
       locale: "en",
       text: "Completed Safety and Health Training.",
+    },
+    {
+      id: "CSULB4-pt",
+      experienceId: "CSULB",
+      locale: "pt",
+      text: "Treinamento em Segurança do trabalho e Saúde.",
     },
     // ICBUSP
     {
@@ -536,16 +710,34 @@ export default async function seed() {
       text: "Created conceptual designs for scientific communications.",
     },
     {
+      id: "ICBUSP1-pt",
+      experienceId: "ICBUSP",
+      locale: "pt",
+      text: "Criação de projetos conceituais para comunicações científicas.",
+    },
+    {
       id: "ICBUSP2",
       experienceId: "ICBUSP",
       locale: "en",
       text: "Managed design project workflows.",
     },
     {
+      id: "ICBUSP2-pt",
+      experienceId: "ICBUSP",
+      locale: "pt",
+      text: "Gestão de fluxos de trabalho para projetos de design.",
+    },
+    {
       id: "ICBUSP3",
       experienceId: "ICBUSP",
       locale: "en",
       text: "Organized and supported academic competitions.",
+    },
+    {
+      id: "ICBUSP3-pt",
+      experienceId: "ICBUSP",
+      locale: "pt",
+      text: "Organização e apoio de competições acadêmicas.",
     },
   ]);
 
@@ -808,7 +1000,7 @@ export default async function seed() {
       publicationId: "CDS",
       locale: "pt",
       title: "Estratégias de Design Computacional",
-      publisher: "Auto-publicado",
+      publisher: "Autopublicado",
     },
     {
       publicationId: "CDS",
@@ -1049,7 +1241,7 @@ export default async function seed() {
       tutoringId: "ModelsByNature2019",
       locale: "pt",
       title: "Models byNature 1.0 & 2.0",
-      organization: "Auto-organizado",
+      organization: "Daniel Locatelli",
       location: "São Paulo, Brasil",
       description:
         "Esse workshop conectou abordagens de design natural como computação de materiais e biomimética com design computacional.",
@@ -1058,7 +1250,7 @@ export default async function seed() {
       tutoringId: "ModelsByNature2019",
       locale: "en",
       title: "Models byNature 1.0 & 2.0",
-      organization: "Self-organized",
+      organization: "Daniel Locatelli",
       location: "São Paulo, Brazil",
       description:
         "This workshop connected natural design approaches like material computation and biomimetics with computational design.",

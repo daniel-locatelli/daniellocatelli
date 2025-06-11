@@ -38,6 +38,7 @@ import {
   CoursesAttendedTranslations,
   Works,
   WorksTranslations,
+  and,
 } from "astro:db";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@/site-config";
@@ -115,7 +116,12 @@ const itemsByExperienceId = await Promise.all(
     const items = await db
       .select()
       .from(ExperienceItems)
-      .where(eq(ExperienceItems.experienceId, exp.id));
+      .where(
+        and(
+          eq(ExperienceItems.experienceId, exp.id),
+          eq(ExperienceItems.locale, locale)
+        )
+      );
     return { id: exp.id, items: items };
   })
 );

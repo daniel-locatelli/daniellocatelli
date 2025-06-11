@@ -21,7 +21,7 @@ import {
   ExperienceTranslations,
   ExperienceItems,
   Education,
-  EducatonTranslations,
+  EducatonTranslations as EducationTranslations,
   EducationItems,
   Scholarships,
   ScholarshipsTranslations,
@@ -38,6 +38,7 @@ import {
   CoursesAttendedTranslations,
   Works,
   WorksTranslations,
+  and,
 } from "astro:db";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@/site-config";
@@ -115,7 +116,12 @@ const itemsByExperienceId = await Promise.all(
     const items = await db
       .select()
       .from(ExperienceItems)
-      .where(eq(ExperienceItems.experienceId, exp.id));
+      .where(
+        and(
+          eq(ExperienceItems.experienceId, exp.id),
+          eq(ExperienceItems.locale, locale)
+        )
+      );
     return { id: exp.id, items: items };
   })
 );
@@ -124,10 +130,10 @@ const education = await db
   .select()
   .from(Education)
   .leftJoin(
-    EducatonTranslations,
-    eq(Education.id, EducatonTranslations.educationId)
+    EducationTranslations,
+    eq(Education.id, EducationTranslations.educationId)
   )
-  .where(eq(EducatonTranslations.locale, locale));
+  .where(eq(EducationTranslations.locale, locale));
 
 const itemsByEducationId = await Promise.all(
   education.map(async ({ Education: edu }) => {
