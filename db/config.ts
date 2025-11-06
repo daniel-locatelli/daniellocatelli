@@ -1,6 +1,4 @@
 import { column, defineDb, defineTable } from "astro:db";
-import { link } from "fs";
-import { title } from "process";
 
 const Summary = defineTable({
   columns: {
