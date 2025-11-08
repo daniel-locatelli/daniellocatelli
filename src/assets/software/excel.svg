@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100">
-  <!-- Generator: Adobe Illustrator 29.5.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 137)  -->
   <g>
-    <path d="M86.51,16.87h-28.94v-6.82l-47.57,7.35v64.36l47.57,8.19v-10.11h28.94c1.92,0,3.48-1.4,3.48-3.13V20c0-1.73-1.56-3.13-3.48-3.13h0ZM86.97,77.23h-29.5l-.05-5.4h7.11v-6.29h-7.16l-.03-3.72h7.19v-6.29h-7.25l-.03-3.72h7.28v-6.29h-7.31v-3.72h7.31v-6.29h-7.31v-3.72h7.31v-6.29h-7.31v-5.71h29.75v57.4h0Z" style="fill: #20744b; fill-rule: evenodd;"/>
-    <rect x="68.53" y="25.54" width="12.35" height="6.29" style="fill: #20744b;"/>
-    <rect x="68.53" y="35.54" width="12.35" height="6.29" style="fill: #20744b;"/>
-    <rect x="68.53" y="45.55" width="12.35" height="6.29" style="fill: #20744b;"/>
-    <rect x="68.53" y="55.55" width="12.35" height="6.29" style="fill: #20744b;"/>
-    <rect x="68.53" y="65.55" width="12.35" height="6.29" style="fill: #20744b;"/>
+    <path
+      d="M86.51,16.87h-28.94v-6.82l-47.57,7.35v64.36l47.57,8.19v-10.11h28.94c1.92,0,3.48-1.4,3.48-3.13V20c0-1.73-1.56-3.13-3.48-3.13h0ZM86.97,77.23h-29.5l-.05-5.4h7.11v-6.29h-7.16l-.03-3.72h7.19v-6.29h-7.25l-.03-3.72h7.28v-6.29h-7.31v-3.72h7.31v-6.29h-7.31v-3.72h7.31v-6.29h-7.31v-5.71h29.75v57.4h0Z"
+      style="fill: #20744b; fill-rule: evenodd;" />
+    <rect x="68.53" y="25.54" width="12.35" height="6.29" style="fill: #20744b;" />
+    <rect x="68.53" y="35.54" width="12.35" height="6.29" style="fill: #20744b;" />
+    <rect x="68.53" y="45.55" width="12.35" height="6.29" style="fill: #20744b;" />
+    <rect x="68.53" y="55.55" width="12.35" height="6.29" style="fill: #20744b;" />
+    <rect x="68.53" y="65.55" width="12.35" height="6.29" style="fill: #20744b;" />
   </g>
-  <polygon points="22.42 36.07 28.55 35.72 32.41 46.32 36.96 35.29 43.09 34.94 35.65 49.98 43.09 65.06 36.61 64.63 32.23 53.13 27.85 64.19 21.9 63.66 28.81 50.34 22.42 36.07" style="fill: #fff; fill-rule: evenodd;"/>
+  <polygon
+    points="22.42 36.07 28.55 35.72 32.41 46.32 36.96 35.29 43.09 34.94 35.65 49.98 43.09 65.06 36.61 64.63 32.23 53.13 27.85 64.19 21.9 63.66 28.81 50.34 22.42 36.07"
+    style="fill: #fff; fill-rule: evenodd;" />
 </svg>
