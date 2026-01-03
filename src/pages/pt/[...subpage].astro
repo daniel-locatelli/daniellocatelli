@@ -119,7 +119,7 @@ if (subpage.Cover) {
         {
           subpage.DateStart && (
             <tr>
-              <th class="font-body font-bold">Date</th>
+              <th class="font-body font-bold">Data</th>
               <td>{subpage.DateStart}</td>
             </tr>
           )
@@ -128,9 +128,9 @@ if (subpage.Cover) {
           subpage.Authors && subpage.Authors?.length > 0 && (
             <tr>
               {subpage.Authors.length === 1 ? (
-                <th>Author</th>
+                <th>Autor</th>
               ) : (
-                <th>Authors</th>
+                <th>Autores</th>
               )}
               <td>
                 {subpage.Authors.map((author, index) => {
@@ -147,7 +147,7 @@ if (subpage.Cover) {
         {
           subpage.Client && (
             <tr>
-              <th>Client</th>
+              <th>Cliente</th>
               <td>{subpage.Client}</td>
             </tr>
           )
@@ -156,9 +156,9 @@ if (subpage.Cover) {
           subpage.Director && subpage.Director.length > 0 && (
             <tr>
               {subpage.Director.length === 1 ? (
-                <th>Director</th>
+                <th>Diretor</th>
               ) : (
-                <th>Directors</th>
+                <th>Diretores</th>
               )}
               <td>
                 {subpage.Director.map((director, index) => {
@@ -176,9 +176,9 @@ if (subpage.Cover) {
           subpage.Manager && subpage.Manager.length > 0 && (
             <tr>
               {subpage.Manager.length === 1 ? (
-                <th>Manager</th>
+                <th>Gerente</th>
               ) : (
-                <th>Managers</th>
+                <th>Gerentes</th>
               )}
               <td>
                 {subpage.Manager.map((manager, index) => {
@@ -195,7 +195,7 @@ if (subpage.Cover) {
         {
           subpage.Team && subpage.Team.length > 0 && (
             <tr>
-              <th>Team</th>
+              <th>Equipe</th>
               <td class="text-balance">
                 {subpage.Team.map((member, index) => {
                   if (index === 0) {
@@ -211,7 +211,7 @@ if (subpage.Cover) {
         {
           subpage.Development && subpage.Development.length > 0 && (
             <tr>
-              <th>Development</th>
+              <th>Desenvolvimento</th>
               <td>
                 {subpage.Development.map((manager, index) => {
                   if (index === 0) {
@@ -227,7 +227,7 @@ if (subpage.Cover) {
         {
           subpage.Place !== "" && (
             <tr>
-              <th>Place</th>
+              <th>Lugar</th>
               <td>{subpage.Place}</td>
             </tr>
           )
@@ -236,9 +236,9 @@ if (subpage.Cover) {
           subpage.Language && subpage.Language.length > 0 && (
             <tr>
               {subpage.Language.length === 1 ? (
-                <th>Language</th>
+                <th>Idioma</th>
               ) : (
-                <th>Languages</th>
+                <th>Idiomas</th>
               )}
               <td>
                 {subpage.Language.map((manager, index) => {
@@ -283,7 +283,7 @@ if (subpage.Cover) {
         {
           subpage.References !== undefined && subpage.References.length > 0 && (
             <tr>
-              <th>References</th>
+              <th>Referências</th>
               <td>
                 {subpage.References.map((richText: interfaces.RichText) => (
                   <RichText richText={richText} />
