@@ -53,4 +53,16 @@ const { block } = Astro.props;
   .table td {
     font-weight: normal;
   }
+  td, th {
+  border: 1px solid #333;
+  padding: 8px;
+  }
+  tr:nth-child(even){background-color: #222;}
+  tr:hover {background-color: #333;}
+  th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: #05df72;
+}
 </style>
