@@ -45,24 +45,26 @@ const { block } = Astro.props;
 
 <style>
   .table {
-  }
-  .table table {
-    margin: 0.6rem 0;
+    border-collapse: separate;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #333;
+    border-spacing: 0;
   }
   .table th,
   .table td {
     font-weight: normal;
   }
   td, th {
-  border: 1px solid #333;
-  padding: 8px;
+    padding: 10px;
   }
   tr:nth-child(even){background-color: #222;}
   tr:hover {background-color: #333;}
   th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  color: #05df72;
-}
+    background-color: #000;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: #05df72;
+  }
 </style>
