@@ -39,11 +39,11 @@ import {
 export default async function seed() {
   await db.insert(Summary).values([
     {
-      text: "Software developer with a robust interdisciplinary background, ranging from architectural design to software engineering. Proven track record of bridging creative and technical domains, with expertise in web development, computational design, and data visualization. Multilingual professional fluent in English, intermediate in German, and a native speaker of Portuguese, passionate about leveraging interdisciplinary skills to solve complex problems through technology.",
+      text: "Software engineer and computational design researcher specializing in timber construction. Expertise in bridging design and engineering through C#/.NET, Python. M.Sc. from ITECH (University of Stuttgart) with a focus on multi-scalar robotic systems for engineered timber. Trilingual professional (English, German, and Portuguese) dedicated to solving complex structural problems through scalable software and data-driven fabrication.",
       locale: "en",
     },
     {
-      text: "Desenvolvedor de software com sólida formação interdisciplinar, do design arquitetônico à engenharia de software. Histórico comprovado de unir domínios criativos e técnicos, com expertise em desenvolvimento web, design algorítmico e visualização de dados. Profissional multilíngue, fluente em inglês, com português nativo e alemão intermediário, apaixonado por resolver problemas complexos por meio da tecnologia.",
+      text: "Engenheiro de software e pesquisador de design computacional especializado em construção em madeira. Possui expertise em integrar design e engenharia através de C#/.NET e Python. Mestre pelo ITECH (Universidade de Stuttgart) com foco em sistemas robóticos multiescalares para madeira engenheirada. Profissional trilíngue (inglês, alemão e português) dedicado a solucionar problemas estruturais complexos através de software escalável e fabricação orientada por dados.",
       locale: "pt",
     },
   ]);
@@ -53,7 +53,7 @@ export default async function seed() {
     .values([
       { id: "HTML" },
       { id: "CSS" },
-      { id: "JavaScript" },
+      { id: "TypeScript" },
       { id: "Python" },
       { id: "C#" },
     ]);
@@ -62,9 +62,9 @@ export default async function seed() {
     { skillId: "HTML", locale: "pt", level: "Avançado" },
     { skillId: "HTML", locale: "en", level: "Advanced" },
     { skillId: "CSS", locale: "pt", level: "Avançado" },
-    { skillId: "CSS", locale: "en", level: "Avançado" },
-    { skillId: "JavaScript", locale: "pt", level: "Avançado" },
-    { skillId: "JavaScript", locale: "en", level: "Avançado" },
+    { skillId: "CSS", locale: "en", level: "Advanced" },
+    { skillId: "TypeScript", locale: "pt", level: "Avançado" },
+    { skillId: "TypeScript", locale: "en", level: "Advanced" },
     { skillId: "Python", locale: "pt", level: "Intermediário" },
     { skillId: "Python", locale: "en", level: "Intermediate" },
     { skillId: "C#", locale: "pt", level: "Intermediário" },
@@ -75,20 +75,23 @@ export default async function seed() {
     .insert(SkillFrameworks)
     .values([
       { id: "Astro" },
-      { id: "React" },
       { id: "Tailwind" },
-      { id: "Angular" },
+      { id: "React" },
+      { id: "TanStack Start" },
+      { id: "Flask" },
     ]);
 
   await db.insert(SkillFrameworksTranslations).values([
     { skillId: "Astro", level: "Avançado", locale: "pt" },
     { skillId: "Astro", level: "Advanced", locale: "en" },
-    { skillId: "React", level: "Avançado", locale: "pt" },
-    { skillId: "React", level: "Advanced", locale: "en" },
     { skillId: "Tailwind", level: "Avançado", locale: "pt" },
     { skillId: "Tailwind", level: "Advanced", locale: "en" },
-    { skillId: "Angular", level: "Intermediário", locale: "pt" },
-    { skillId: "Angular", level: "Intermediate", locale: "en" },
+    { skillId: "React", level: "Avançado", locale: "pt" },
+    { skillId: "React", level: "Advanced", locale: "en" },
+    { skillId: "TanStack Start", level: "Intermediário", locale: "pt" },
+    { skillId: "TanStack Start", level: "Intermediate", locale: "en" },
+    { skillId: "Flask", level: "Intermediário", locale: "pt" },
+    { skillId: "Flask", level: "Intermediate", locale: "en" },
   ]);
 
   await db
@@ -240,7 +243,7 @@ export default async function seed() {
       locale: "pt",
       title: "Arquiteto Computacional",
       company: "Urban Scale Timber, Flügge Funding",
-      companyNote: "O startup agora é BuildSystems GmbH",
+      companyNote: "A startup agora é BuildSystems GmbH",
       location: "Munique, Alemanha",
     },
     {
@@ -348,6 +351,30 @@ export default async function seed() {
   await db.insert(ExperienceItems).values([
     // HM
     {
+      id: "HM3",
+      experienceId: "HM",
+      locale: "en",
+      text: "Development of a Revit plugin (C#/.NET) to import buildups from DOKwood into Revit as System Families.",
+    },
+    {
+      id: "HM3-pt",
+      experienceId: "HM",
+      locale: "pt",
+      text: "Desenvolvimento de um plugin para Revit (C#/.NET) para importar elementos construtivos do app DOKwood para o Revit como famílias do sistema.",
+    },
+    {
+      id: "HM2",
+      experienceId: "HM",
+      locale: "en",
+      text: "Development of a bSDD (building Smart Data Dictionary) to consolidate a semantic data model for DOKwood.",
+    },
+    {
+      id: "HM2-pt",
+      experienceId: "HM",
+      locale: "pt",
+      text: "Desenvolvimento de um bSDD (building Smart Data Dictionary) para consolidar um modelo de dados semântico para o DOKwood.",
+    },
+    {
       id: "HM1",
       experienceId: "HM",
       locale: "en",
@@ -389,13 +416,13 @@ export default async function seed() {
       id: "UST1",
       experienceId: "UST",
       locale: "en",
-      text: "Development of a specialized toolbox in C# for Grasshopper in conjunction with an object model (schema).",
+      text: "Development of a plugin in C#/.NET for Grasshopper in conjunction with a semantic data model (schema).",
     },
     {
       id: "UST1-pt",
       experienceId: "UST",
       locale: "pt",
-      text: "Desenvolvimento uma toolbox especializada em C# para Grasshopper em conjunto com um modelo de objetos (esquema).",
+      text: "Desenvolvimento um plugin em C#/.NET para Grasshopper em conjunto com um modelo de dados semântico (schema).",
     },
     {
       id: "UST2",
@@ -450,13 +477,13 @@ export default async function seed() {
       id: "AE1",
       experienceId: "AE",
       locale: "en",
-      text: "Conducted algorithmic modeling and structural analysis of complex spatial structures and artworks.",
+      text: "Conducted algorithmic modeling and finite element analysis of complex spatial structures and artworks.",
     },
     {
       id: "AE1-pt",
       experienceId: "AE",
       locale: "pt",
-      text: "Modelagem algorítmica e análise estrutural de estruturas espaciais complexas e obras de arte.",
+      text: "Modelagem algorítmica e análise de elementos finitos de estruturas espaciais complexas e obras de arte.",
     },
     {
       id: "AE2",

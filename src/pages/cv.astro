@@ -62,7 +62,7 @@ const skillProgramming = await db
   .from(SkillProgramming)
   .leftJoin(
     SkillProgrammingTranslations,
-    eq(SkillProgramming.id, SkillProgrammingTranslations.skillId)
+    eq(SkillProgramming.id, SkillProgrammingTranslations.skillId),
   )
   .where(eq(SkillProgrammingTranslations.locale, locale));
 
@@ -71,7 +71,7 @@ const skillFrameworks = await db
   .from(SkillFrameworks)
   .leftJoin(
     SkillFrameworksTranslations,
-    eq(SkillFrameworks.id, SkillFrameworksTranslations.skillId)
+    eq(SkillFrameworks.id, SkillFrameworksTranslations.skillId),
   )
   .where(eq(SkillFrameworksTranslations.locale, locale));
 
@@ -80,7 +80,7 @@ const skillDatabases = await db
   .from(SkillDatabases)
   .leftJoin(
     SkillDatabasesTranslations,
-    eq(SkillDatabases.id, SkillDatabasesTranslations.skillId)
+    eq(SkillDatabases.id, SkillDatabasesTranslations.skillId),
   )
   .where(eq(SkillDatabasesTranslations.locale, locale));
 
@@ -89,7 +89,7 @@ const skillDesign = await db
   .from(SkillDesign)
   .leftJoin(
     SkillDesignTranslations,
-    eq(SkillDesign.id, SkillDesignTranslations.skillId)
+    eq(SkillDesign.id, SkillDesignTranslations.skillId),
   )
   .where(eq(SkillDesignTranslations.locale, locale));
 
@@ -98,7 +98,7 @@ const skillSpecialized = await db
   .from(SkillSpecialized)
   .leftJoin(
     SkillSpecializedTranslations,
-    eq(SkillSpecialized.id, SkillSpecializedTranslations.skillId)
+    eq(SkillSpecialized.id, SkillSpecializedTranslations.skillId),
   )
   .where(eq(SkillSpecializedTranslations.locale, locale));
 
@@ -107,7 +107,7 @@ const experience = await db
   .from(Experience)
   .leftJoin(
     ExperienceTranslations,
-    eq(Experience.id, ExperienceTranslations.experienceId)
+    eq(Experience.id, ExperienceTranslations.experienceId),
   )
   .where(eq(ExperienceTranslations.locale, locale));
 
@@ -119,11 +119,11 @@ const itemsByExperienceId = await Promise.all(
       .where(
         and(
           eq(ExperienceItems.experienceId, exp.id),
-          eq(ExperienceItems.locale, locale)
-        )
+          eq(ExperienceItems.locale, locale),
+        ),
       );
     return { id: exp.id, items: items };
-  })
+  }),
 );
 
 const education = await db
@@ -131,7 +131,7 @@ const education = await db
   .from(Education)
   .leftJoin(
     EducatonTranslations,
-    eq(Education.id, EducatonTranslations.educationId)
+    eq(Education.id, EducatonTranslations.educationId),
   )
   .where(eq(EducatonTranslations.locale, locale));
 
@@ -142,7 +142,7 @@ const itemsByEducationId = await Promise.all(
       .from(EducationItems)
       .where(eq(EducationItems.educationId, edu.id));
     return { id: edu.id, items: items };
-  })
+  }),
 );
 
 const scholarships = await db
@@ -150,7 +150,7 @@ const scholarships = await db
   .from(Scholarships)
   .leftJoin(
     ScholarshipsTranslations,
-    eq(Scholarships.id, ScholarshipsTranslations.scholarshipId)
+    eq(Scholarships.id, ScholarshipsTranslations.scholarshipId),
   )
   .where(eq(ScholarshipsTranslations.locale, locale));
 
@@ -159,7 +159,7 @@ const publications = await db
   .from(Publications)
   .leftJoin(
     PublicationsTranslations,
-    eq(Publications.id, PublicationsTranslations.publicationId)
+    eq(Publications.id, PublicationsTranslations.publicationId),
   )
   .where(eq(PublicationsTranslations.locale, locale));
 
@@ -170,7 +170,7 @@ const personByPublicationId = await Promise.all(
       .from(PersonToPublications)
       .where(eq(PersonToPublications.publicationId, pub.id));
     return { id: pub.id, items: items };
-  })
+  }),
 );
 
 const certifications = await db
@@ -178,36 +178,18 @@ const certifications = await db
   .from(Certifications)
   .leftJoin(
     CertificationsTranslations,
-    eq(Certifications.id, CertificationsTranslations.certificationId)
+    eq(Certifications.id, CertificationsTranslations.certificationId),
   )
   .where(eq(CertificationsTranslations.locale, locale));
-
-const tutoring = await db
-  .select()
-  .from(Tutoring)
-  .leftJoin(
-    TutoringTranslations,
-    eq(Tutoring.id, TutoringTranslations.tutoringId)
-  )
-  .where(eq(TutoringTranslations.locale, locale));
 
 const talksAndLectures = await db
   .select()
   .from(TalksAndLectures)
   .leftJoin(
     TalksAndLecturesTranslations,
-    eq(TalksAndLectures.id, TalksAndLecturesTranslations.talkId)
+    eq(TalksAndLectures.id, TalksAndLecturesTranslations.talkId),
   )
   .where(eq(TalksAndLecturesTranslations.locale, locale));
-
-const coursesAttended = await db
-  .select()
-  .from(CoursesAttended)
-  .leftJoin(
-    CoursesAttendedTranslations,
-    eq(CoursesAttended.id, CoursesAttendedTranslations.courseId)
-  )
-  .where(eq(CoursesAttendedTranslations.locale, locale));
 
 const works = await db
   .select()
@@ -216,6 +198,32 @@ const works = await db
   .where(eq(WorksTranslations.locale, locale));
 
 const emailAddress = siteConfig.email;
+
+const filteredExperience = experience.filter(
+  (exp) => exp.Experience.startDate.getFullYear() >= 2019,
+);
+
+const filteredEducation = education.filter(
+  (edu) => edu.Education.endDate.getFullYear() >= 2016,
+);
+
+const filteredPublications = publications.filter(
+  (pub) =>
+    pub.Publications.date.getFullYear() >= 2023,
+); 
+
+const filteredCertifications = certifications.filter(
+  (cert) =>
+    cert.Certifications.date.getFullYear() >= 2018,
+);
+
+const filteredTalksAndLectures = talksAndLectures.filter(
+  (tl) =>
+    tl.TalksAndLectures.date.getFullYear() >= 2023,
+);
+
+
+
 ---
 
 <Base
@@ -230,7 +238,7 @@ const emailAddress = siteConfig.email;
   }}
 >
   <Container
-    class="font-body relative flex flex-col gap-4 text-base print:gap-2 print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-4 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-1 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-[17px] [&_.timeline-top]:border-r [&_.timeline-top]:print:h-3 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg [&_h4]:text-lg [&_h4]:text-zinc-400"
+    class="font-body relative flex flex-col gap-4 text-base print:gap-2 print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-4 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-1 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-[17px] [&_.timeline-top]:border-r [&_.timeline-top]:print:h-3 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg [&_h4]:text-lg [&_h4]:text-zinc-300"
   >
     <div class="flex flex-col gap-6 pt-20 sm:flex-row sm:pt-28 print:pt-2">
       <Image
@@ -239,15 +247,43 @@ const emailAddress = siteConfig.email;
         class="rounded-full p-8 sm:size-36 sm:p-0"
       />
       <div class="flex flex-col justify-center gap-2">
-        <div class="flex flex-col gap-2">
-          <h1 class="font-title text-5xl">Daniel Locatelli</h1>
-          <p class="text-xl">AEC Software developer</p>
+        <div class="flex">
+          <div class="flex flex-col gap-2">
+            <h1 class="font-title text-5xl">Daniel Locatelli</h1>
+            <p class="text-xl">AEC Software developer</p>
+          </div>
+          <div class="flex h-full grow items-end justify-end gap-3 sm:gap-2">
+            <a
+              href="https://www.linkedin.com/in/daniel-locatelli/"
+              class="align-middle underline"
+            >
+              <Icon
+                name="mdi:linkedin"
+                class="inline-block size-5 align-middle"
+              />
+            </a>
+            <a href="https://github.com/daniel-locatelli">
+              <Icon
+                name="mdi:github"
+                class="inline-block size-5 align-middle"
+              />
+            </a>
+            <a
+              href="https://instagram.com/architectlocatelli"
+              class="align-middle underline"
+            >
+              <Icon
+                name="mdi:instagram"
+                class="inline-block size-5 align-middle"
+              />
+            </a>
+          </div>
         </div>
         <div class="flex flex-col gap-5 text-sm sm:flex-row">
           <p class="text-pretty sm:text-xs sm:text-balance">
-            "Architecture is a transdisciplinary field, its future lies in using
-            computational, co-design techniques combined with vernacular
-            eco-friendly materials".
+            "Architecture is a transdisciplinary field; its future lies in the
+            application of computational co-design to vernacular materials to
+            achieve a circular construction system."
           </p>
           <address class="flex flex-col sm:text-xs">
             <a href={"mailto:" + emailAddress}>{emailAddress}</a>
@@ -264,7 +300,7 @@ const emailAddress = siteConfig.email;
     <section id="technical-skills">
       <h2>Technical Skills</h2>
       <table
-        class="table-auto [&_td]:leading-5 [&_th]:pr-2 [&_th]:text-right [&_th]:align-top sm:[&_th]:pr-4"
+        class="table-auto [&_td]:leading-5 [&_th]:pr-2 [&_th]:text-right [&_th]:align-top [&_th]:font-thin sm:[&_th]:pr-4"
       >
         <tr>
           <th>Programming</th>
@@ -274,13 +310,13 @@ const emailAddress = siteConfig.email;
                 (
                   { SkillProgramming, SkillProgrammingTranslations },
                   idx,
-                  arr
+                  arr,
                 ) =>
                   idx === arr.length - 1
                     ? (SkillProgrammingTranslations?.skillId ??
                       SkillProgramming.id)
                     : (SkillProgrammingTranslations?.skillId ??
-                        SkillProgramming.id) + ", "
+                        SkillProgramming.id) + ", ",
               )
             }
           </td>
@@ -293,7 +329,7 @@ const emailAddress = siteConfig.email;
                 ({ SkillFrameworks, SkillFrameworksTranslations }, idx, arr) =>
                   idx === arr.length - 1
                     ? SkillFrameworks.id
-                    : SkillFrameworks.id + ", "
+                    : SkillFrameworks.id + ", ",
               )
             }
           </td>
@@ -306,7 +342,7 @@ const emailAddress = siteConfig.email;
                 ({ SkillDatabases, SkillDatabasesTranslations }, idx, arr) =>
                   idx === arr.length - 1
                     ? SkillDatabases.id
-                    : SkillDatabases.id + ", "
+                    : SkillDatabases.id + ", ",
               )
             }
           </td>
@@ -319,7 +355,7 @@ const emailAddress = siteConfig.email;
                 ({ SkillDesign, SkillDesignTranslations }, idx, arr) =>
                   idx === arr.length - 1
                     ? SkillDesign.id
-                    : SkillDesign.id + ", "
+                    : SkillDesign.id + ", ",
               )
             }
           </td>
@@ -332,13 +368,13 @@ const emailAddress = siteConfig.email;
                 (
                   { SkillSpecialized, SkillSpecializedTranslations },
                   idx,
-                  arr
+                  arr,
                 ) =>
                   idx === arr.length - 1
                     ? (SkillSpecializedTranslations?.title ??
                       SkillSpecialized.title)
                     : (SkillSpecializedTranslations?.title ??
-                        SkillSpecialized.title) + ", "
+                        SkillSpecialized.title) + ", ",
               )
             }
           </td>
@@ -347,11 +383,11 @@ const emailAddress = siteConfig.email;
     </section>
     <section
       id="work-experience"
-      class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-400"
+      class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
     >
       <h2>Work Experience</h2>
       {
-        experience.map(
+        filteredExperience.map(
           async ({
             Experience: { id, startDate, endDate, link },
             ExperienceTranslations,
@@ -388,7 +424,7 @@ const emailAddress = siteConfig.email;
                     {ExperienceTranslations?.location}
                   </h4>
                   {ExperienceTranslations?.companyNote ? (
-                    <p class="mb-1 ml-1 text-xs text-zinc-400">
+                    <p class="mb-1 ml-1 text-xs text-zinc-300">
                       <sup>⤷</sup>
                       {ExperienceTranslations.companyNote}
                     </p>
@@ -411,7 +447,7 @@ const emailAddress = siteConfig.email;
                     {ExperienceTranslations?.location}
                   </h4>
                   {ExperienceTranslations?.companyNote ? (
-                    <p class="mb-1 ml-1 text-xs text-zinc-400">
+                    <p class="mb-1 ml-1 text-xs text-zinc-300">
                       <sup>⤷</sup>
                       {ExperienceTranslations.companyNote}
                     </p>
@@ -428,17 +464,17 @@ const emailAddress = siteConfig.email;
                 </div>
               )}
             </div>
-          )
+          ),
         )
       }
     </section>
     <section
       id="education"
-      class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-400"
+      class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
     >
       <h2>Education</h2>
       {
-        education.map(
+        filteredEducation.map(
           async ({
             Education: { id, startDate, endDate, link },
             EducatonTranslations,
@@ -502,7 +538,7 @@ const emailAddress = siteConfig.email;
                 </div>
               )}
             </div>
-          )
+          ),
         )
       }
     </section>
@@ -544,7 +580,7 @@ const emailAddress = siteConfig.email;
                     />
                   </h3>
                   <h4>{ScholarshipsTranslations?.institution ?? ""}</h4>
-                  <p class="text-sm text-pretty text-zinc-400">
+                  <p class="text-sm text-pretty text-zinc-300">
                     {ScholarshipsTranslations?.description ?? ""}
                   </p>
                 </a>
@@ -552,20 +588,20 @@ const emailAddress = siteConfig.email;
                 <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
                   <h3 class="mb-0">{ScholarshipsTranslations?.title ?? ""}</h3>
                   <h4>{ScholarshipsTranslations?.institution ?? ""}</h4>
-                  <p class="text-sm text-pretty text-zinc-400">
+                  <p class="text-sm text-pretty text-zinc-300">
                     {ScholarshipsTranslations?.description ?? ""}
                   </p>
                 </div>
               )}
             </div>
-          )
+          ),
         )
       }
     </section>
     <section id="publications">
       <h2>Publications</h2>
       {
-        publications.map(
+        filteredPublications.map(
           async ({
             Publications: { id, date, link },
             PublicationsTranslations,
@@ -596,7 +632,7 @@ const emailAddress = siteConfig.email;
                       ? `| ${PublicationsTranslations.location}`
                       : ""}
                   </h4>
-                  <p class="flex flex-wrap text-sm text-zinc-400">
+                  <p class="flex flex-wrap text-sm text-zinc-300">
                     {personByPublicationId
                       .find((itemObj) => itemObj.id === id)
                       ?.items.map((item, index, array) => (
@@ -617,7 +653,7 @@ const emailAddress = siteConfig.email;
                       ? `| ${PublicationsTranslations.location}`
                       : ""}
                   </h4>
-                  <p class="flex flex-wrap text-sm text-zinc-400">
+                  <p class="flex flex-wrap text-sm text-zinc-300">
                     {personByPublicationId
                       .find((itemObj) => itemObj.id === id)
                       ?.items.map((item, index, array) => (
@@ -631,14 +667,14 @@ const emailAddress = siteConfig.email;
                 </div>
               )}
             </div>
-          )
+          ),
         )
       }
     </section>
     <section id="certifications">
       <h2>Certifications</h2>
       {
-        certifications.map(
+        filteredCertifications.map(
           async ({
             Certifications: { date, link },
             CertificationsTranslations,
@@ -674,74 +710,14 @@ const emailAddress = siteConfig.email;
                 </div>
               )}
             </div>
-          )
-        )
-      }
-    </section>
-    <section id="tutoring">
-      <h2>Tutoring</h2>
-      {
-        tutoring.map(
-          async ({
-            Tutoring: { startDate, endDate, link },
-            TutoringTranslations,
-          }) => (
-            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
-              <div class="timeline-wrapper">
-                <div class="timeline-top" />
-                {endDate ? (
-                  <time datetime={endDate.toDateString()}>
-                    {getMonthYear(endDate)}
-                  </time>
-                ) : (
-                  ""
-                )}
-                <time datetime={startDate.toDateString()}>
-                  {getMonthYear(startDate)}
-                </time>
-                <div class="timeline" />
-              </div>
-              {link ? (
-                <a
-                  href={link}
-                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-                >
-                  <h3 class="mb-0 flex">
-                    <span class="grow">{TutoringTranslations?.title} </span>
-                    <Icon
-                      name="mdi:external-link"
-                      class="mt-2 size-3 shrink-0 print:hidden"
-                    />
-                  </h3>
-                  <h4>
-                    {TutoringTranslations?.organization} |{" "}
-                    {TutoringTranslations?.location}
-                  </h4>
-                  <p class="text-sm text-pretty text-zinc-400">
-                    {TutoringTranslations?.description}
-                  </p>
-                </a>
-              ) : (
-                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
-                  <h3 class="mb-0">{TutoringTranslations?.title}</h3>
-                  <h4>
-                    {TutoringTranslations?.organization} |{" "}
-                    {TutoringTranslations?.location}
-                  </h4>
-                  <p class="text-sm text-pretty text-zinc-400">
-                    {TutoringTranslations?.description}
-                  </p>
-                </div>
-              )}
-            </div>
-          )
+          ),
         )
       }
     </section>
     <section id="talks-and-lectures">
       <h2>Talks and Lectures</h2>
       {
-        talksAndLectures.map(
+        filteredTalksAndLectures.map(
           async ({
             TalksAndLectures: { date, link },
             TalksAndLecturesTranslations,
@@ -781,130 +757,21 @@ const emailAddress = siteConfig.email;
                 </div>
               )}
             </div>
-          )
+          ),
         )
       }
     </section>
-    <section id="courses-attended">
-      <h2>Courses Attended</h2>
-      {
-        coursesAttended.map(
-          async ({
-            CoursesAttended: { startDate, endDate, instructor, link },
-            CoursesAttendedTranslations,
-          }) => (
-            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
-              <div class="timeline-wrapper">
-                <div class="timeline-top" />
-                {endDate ? (
-                  <time datetime={endDate.toDateString()}>
-                    {getMonthYear(endDate)}
-                  </time>
-                ) : (
-                  ""
-                )}
-                <time datetime={startDate.toDateString()}>
-                  {getMonthYear(startDate)}
-                </time>
-                <div class="timeline" />
-              </div>
-              {link ? (
-                <a
-                  href={link}
-                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-                >
-                  <h3 class="mb-0 flex">
-                    <span class="grow">
-                      {CoursesAttendedTranslations?.title}{" "}
-                    </span>
-                    <Icon
-                      name="mdi:external-link"
-                      class="mt-2 size-3 shrink-0 print:hidden"
-                    />
-                  </h3>
-                  <h4>
-                    {CoursesAttendedTranslations?.organization} |{" "}
-                    {CoursesAttendedTranslations?.location}
-                  </h4>
-                  <p class="text-sm text-pretty text-zinc-400">{instructor}</p>
-                </a>
-              ) : (
-                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
-                  <h3 class="mb-0">{CoursesAttendedTranslations?.title}</h3>
-                  <h4>
-                    {CoursesAttendedTranslations?.organization} |{" "}
-                    {CoursesAttendedTranslations?.location}
-                  </h4>
-                  <p class="text-sm text-pretty text-zinc-400">{instructor}</p>
-                </div>
-              )}
-            </div>
-          )
-        )
-      }
-    </section>
-    <section id="works">
-      <h2>Works</h2>
-      {
-        works.map(async ({ Works: work, WorksTranslations: translation }) => (
-          <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
-            <div class="timeline-wrapper">
-              <div class="timeline-top" />
-              {work.endDate ? (
-                <time datetime={work.endDate.toDateString()}>
-                  {getMonthYear(work.endDate)}
-                </time>
-              ) : (
-                ""
-              )}
-              <time datetime={work.startDate.toDateString()}>
-                {getMonthYear(work.startDate)}
-              </time>
-              <div class="timeline" />
-            </div>
-            {translation && translation.link ? (
-              <a
-                href={translation.link}
-                class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-              >
-                <h3 class="mb-0 flex">
-                  <span class="grow">{translation.title} </span>
-                  <Icon
-                    name="mdi:external-link"
-                    class="mt-2 size-3 shrink-0 print:hidden"
-                  />
-                </h3>
-                <h4>
-                  {translation.category}
-                  {translation.location ? ` | ${translation.location}` : ""}
-                </h4>
-                <p class="text-sm text-pretty text-zinc-400">
-                  {translation.description}
-                </p>
-              </a>
-            ) : translation ? (
-              <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
-                <h3 class="mb-0">{translation.title}</h3>
-                <h4>
-                  {translation.category}
-                  {translation.location ? ` | ${translation.location}` : ""}
-                </h4>
-                <p class="text-sm text-pretty text-zinc-400">
-                  {translation.description}
-                </p>
-              </div>
-            ) : null}
-          </div>
-        ))
-      }
-    </section>
+
   </Container>
 </Base>
 
 <style>
   /* Reset default margins */
   @page {
-    margin: 1cm;
+    margin-top: 2cm;
+    margin-bottom: 2cm;
+    margin-left: 1.2cm;
+    margin-right: 1.2cm;
     /* Add page number in bottom-center */
     @bottom-center {
       content: counter(page) " / " counter(pages);
@@ -914,6 +781,21 @@ const emailAddress = siteConfig.email;
   }
   /* Ensure page numbers are printed */
   @media print {
+    :root,
+    :root[data-theme="light"],
+    :root[data-theme="dark"] {
+      color-scheme: light !important;
+      --theme-bg: white !important;
+    }
+    * {
+      background-color: white !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color: black !important;
+    }
+    body {
+      padding: 0;
+    }
     /* Reset some potential print-blocking styles */
     body * {
       visibility: visible;

@@ -50,8 +50,7 @@ const getMonthYear = (date: Date): string => {
   return `${month}.${year}`;
 };
 
-// Get locale from Astro
-const locale = "pt";
+const locale = "en";
 
 const summary = await db
   .selectDistinct({ text: Summary.text })
@@ -183,6 +182,15 @@ const certifications = await db
   )
   .where(eq(CertificationsTranslations.locale, locale));
 
+const tutoring = await db
+  .select()
+  .from(Tutoring)
+  .leftJoin(
+    TutoringTranslations,
+    eq(Tutoring.id, TutoringTranslations.tutoringId),
+  )
+  .where(eq(TutoringTranslations.locale, locale));
+
 const talksAndLectures = await db
   .select()
   .from(TalksAndLectures)
@@ -192,6 +200,15 @@ const talksAndLectures = await db
   )
   .where(eq(TalksAndLecturesTranslations.locale, locale));
 
+const coursesAttended = await db
+  .select()
+  .from(CoursesAttended)
+  .leftJoin(
+    CoursesAttendedTranslations,
+    eq(CoursesAttended.id, CoursesAttendedTranslations.courseId),
+  )
+  .where(eq(CoursesAttendedTranslations.locale, locale));
+
 const works = await db
   .select()
   .from(Works)
@@ -199,43 +216,17 @@ const works = await db
   .where(eq(WorksTranslations.locale, locale));
 
 const emailAddress = siteConfig.email;
-
-const filteredExperience = experience.filter(
-  (exp) => exp.Experience.startDate.getFullYear() >= 2019,
-);
-
-const filteredEducation = education.filter(
-  (edu) => edu.Education.endDate.getFullYear() >= 2016,
-);
-
-const filteredPublications = publications.filter(
-  (pub) =>
-    pub.Publications.date.getFullYear() >= 2023,
-); 
-
-const filteredCertifications = certifications.filter(
-  (cert) =>
-    cert.Certifications.date.getFullYear() >= 2018,
-);
-
-const filteredTalksAndLectures = talksAndLectures.filter(
-  (tl) =>
-    tl.TalksAndLectures.date.getFullYear() >= 2023,
-);
-
-
-
 ---
 
 <Base
   meta={{
-    title: "CV simplificado",
+    title: "Full CV",
     description:
-      "Este é meu CV simplificado, incluindo trabalho, educação, palestras, publicações e certificados.",
-    coverAlt: "Foto de perfil de Daniel Locatelli.",
+      "This is my full CV, including work, education, lectures, publications, certificates, and more.",
+    coverAlt: "Daniel Locatelli's profile photo.",
     coverImage: "@/assets/daniel-locatelli.png",
-    locale: "pt",
-    slug: "cv",
+    locale: "en",
+    slug: "full-cv",
   }}
 >
   <Container
@@ -251,7 +242,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
         <div class="flex">
           <div class="flex flex-col gap-2">
             <h1 class="font-title text-5xl">Daniel Locatelli</h1>
-            <p class="text-xl">Desenvolvedor de software AEC</p>
+            <p class="text-xl">AEC Software developer</p>
           </div>
           <div class="flex h-full grow items-end justify-end gap-3 sm:gap-2">
             <a
@@ -263,14 +254,14 @@ const filteredTalksAndLectures = talksAndLectures.filter(
                 class="inline-block size-5 align-middle"
               />
             </a>
-            <a href="https://github.com/daniel-locatelli">
+            <a href="https://github.com/daniellocatelli">
               <Icon
                 name="mdi:github"
                 class="inline-block size-5 align-middle"
               />
             </a>
             <a
-              href="https://instagram.com/architectlocatelli"
+              href="https://instagram.com/daniel.locatelli"
               class="align-middle underline"
             >
               <Icon
@@ -282,28 +273,29 @@ const filteredTalksAndLectures = talksAndLectures.filter(
         </div>
         <div class="flex flex-col gap-5 text-sm sm:flex-row">
           <p class="text-pretty sm:text-xs sm:text-balance">
-            "A arquitetura é um campo transdisciplinar, seu futuro reside no uso
-            de técnicas de co-design computacionais aplicadas a materiais vernaculares para alcançar um sistema construtivo circular."
+            "Architecture is a transdisciplinary field; its future lies in the
+            application of computational co-design to vernacular materials to
+            achieve a circular construction system."
           </p>
           <address class="flex flex-col sm:text-xs">
             <a href={"mailto:" + emailAddress}>{emailAddress}</a>
             <span> +49 178 324-0834 </span>
-            <span> Munique, Alemanha </span>
+            <span> Munich, Germany </span>
           </address>
         </div>
       </div>
     </div>
     <section id="summary">
-      <h2>Resumo</h2>
+      <h2>Summary</h2>
       <p class="text-pretty">{summary[0].text}</p>
     </section>
     <section id="technical-skills">
-      <h2>Habilidades Técnicas</h2>
+      <h2>Technical Skills</h2>
       <table
         class="table-auto [&_td]:leading-5 [&_th]:pr-2 [&_th]:text-right [&_th]:align-top [&_th]:font-thin sm:[&_th]:pr-4"
       >
         <tr>
-          <th>Programação</th>
+          <th>Programming</th>
           <td>
             {
               skillProgramming.map(
@@ -335,7 +327,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
           </td>
         </tr>
         <tr>
-          <th>Bancos de Dados</th>
+          <th>Databases</th>
           <td>
             {
               skillDatabases.map(
@@ -348,7 +340,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
           </td>
         </tr>
         <tr>
-          <th>Ferramentas de Design</th>
+          <th>Design Tools</th>
           <td>
             {
               skillDesign.map(
@@ -361,7 +353,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
           </td>
         </tr>
         <tr>
-          <th>Especializações</th>
+          <th>Specialized Skills</th>
           <td>
             {
               skillSpecialized.map(
@@ -385,9 +377,9 @@ const filteredTalksAndLectures = talksAndLectures.filter(
       id="work-experience"
       class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
     >
-      <h2>Experiência Profissional</h2>
+      <h2>Work Experience</h2>
       {
-        filteredExperience.map(
+        experience.map(
           async ({
             Experience: { id, startDate, endDate, link },
             ExperienceTranslations,
@@ -472,9 +464,9 @@ const filteredTalksAndLectures = talksAndLectures.filter(
       id="education"
       class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
     >
-      <h2>Educação</h2>
+      <h2>Education</h2>
       {
-        filteredEducation.map(
+        education.map(
           async ({
             Education: { id, startDate, endDate, link },
             EducatonTranslations,
@@ -487,7 +479,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
                     {getMonthYear(endDate)}
                   </time>
                 ) : (
-                  <span>Atual</span>
+                  <span>Current</span>
                 )}
 
                 <time datetime={startDate.toDateString()}>
@@ -543,7 +535,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
       }
     </section>
     <section id="scholarships">
-      <h2>Bolsas</h2>
+      <h2>Scholarships</h2>
       {
         scholarships.map(
           async ({
@@ -558,7 +550,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
                     {getMonthYear(endDate)}
                   </time>
                 ) : (
-                  <span>Atual</span>
+                  <span>Current</span>
                 )}
                 <time datetime={startDate.toDateString()}>
                   {getMonthYear(startDate)}
@@ -599,9 +591,9 @@ const filteredTalksAndLectures = talksAndLectures.filter(
       }
     </section>
     <section id="publications">
-      <h2>Publicações</h2>
+      <h2>Publications</h2>
       {
-        filteredPublications.map(
+        publications.map(
           async ({
             Publications: { id, date, link },
             PublicationsTranslations,
@@ -672,9 +664,9 @@ const filteredTalksAndLectures = talksAndLectures.filter(
       }
     </section>
     <section id="certifications">
-      <h2>Certificados</h2>
+      <h2>Certifications</h2>
       {
-        filteredCertifications.map(
+        certifications.map(
           async ({
             Certifications: { date, link },
             CertificationsTranslations,
@@ -714,10 +706,70 @@ const filteredTalksAndLectures = talksAndLectures.filter(
         )
       }
     </section>
-    <section id="talks-and-lectures">
-      <h2>Palestras e Aulas</h2>
+    <section id="tutoring">
+      <h2>Tutoring</h2>
       {
-        filteredTalksAndLectures.map(
+        tutoring.map(
+          async ({
+            Tutoring: { startDate, endDate, link },
+            TutoringTranslations,
+          }) => (
+            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
+              <div class="timeline-wrapper">
+                <div class="timeline-top" />
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="timeline" />
+              </div>
+              {link ? (
+                <a
+                  href={link}
+                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
+                >
+                  <h3 class="mb-0 flex">
+                    <span class="grow">{TutoringTranslations?.title} </span>
+                    <Icon
+                      name="mdi:external-link"
+                      class="mt-2 size-3 shrink-0 print:hidden"
+                    />
+                  </h3>
+                  <h4>
+                    {TutoringTranslations?.organization} |{" "}
+                    {TutoringTranslations?.location}
+                  </h4>
+                  <p class="text-sm text-pretty text-zinc-300">
+                    {TutoringTranslations?.description}
+                  </p>
+                </a>
+              ) : (
+                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
+                  <h3 class="mb-0">{TutoringTranslations?.title}</h3>
+                  <h4>
+                    {TutoringTranslations?.organization} |{" "}
+                    {TutoringTranslations?.location}
+                  </h4>
+                  <p class="text-sm text-pretty text-zinc-300">
+                    {TutoringTranslations?.description}
+                  </p>
+                </div>
+              )}
+            </div>
+          ),
+        )
+      }
+    </section>
+    <section id="talks-and-lectures">
+      <h2>Talks and Lectures</h2>
+      {
+        talksAndLectures.map(
           async ({
             TalksAndLectures: { date, link },
             TalksAndLecturesTranslations,
@@ -759,6 +811,119 @@ const filteredTalksAndLectures = talksAndLectures.filter(
             </div>
           ),
         )
+      }
+    </section>
+    <section id="courses-attended">
+      <h2>Courses Attended</h2>
+      {
+        coursesAttended.map(
+          async ({
+            CoursesAttended: { startDate, endDate, instructor, link },
+            CoursesAttendedTranslations,
+          }) => (
+            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
+              <div class="timeline-wrapper">
+                <div class="timeline-top" />
+                {endDate ? (
+                  <time datetime={endDate.toDateString()}>
+                    {getMonthYear(endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={startDate.toDateString()}>
+                  {getMonthYear(startDate)}
+                </time>
+                <div class="timeline" />
+              </div>
+              {link ? (
+                <a
+                  href={link}
+                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
+                >
+                  <h3 class="mb-0 flex">
+                    <span class="grow">
+                      {CoursesAttendedTranslations?.title}{" "}
+                    </span>
+                    <Icon
+                      name="mdi:external-link"
+                      class="mt-2 size-3 shrink-0 print:hidden"
+                    />
+                  </h3>
+                  <h4>
+                    {CoursesAttendedTranslations?.organization} |{" "}
+                    {CoursesAttendedTranslations?.location}
+                  </h4>
+                  <p class="text-sm text-pretty text-zinc-300">{instructor}</p>
+                </a>
+              ) : (
+                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
+                  <h3 class="mb-0">{CoursesAttendedTranslations?.title}</h3>
+                  <h4>
+                    {CoursesAttendedTranslations?.organization} |{" "}
+                    {CoursesAttendedTranslations?.location}
+                  </h4>
+                  <p class="text-sm text-pretty text-zinc-300">{instructor}</p>
+                </div>
+              )}
+            </div>
+          ),
+        )
+      }
+    </section>
+    <section id="works">
+      <h2>Works</h2>
+      {
+        works.map(async ({ Works: work, WorksTranslations: translation }) => (
+          <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
+            <div class="timeline-wrapper">
+              <div class="timeline-top" />
+              {work.endDate ? (
+                <time datetime={work.endDate.toDateString()}>
+                  {getMonthYear(work.endDate)}
+                </time>
+              ) : (
+                ""
+              )}
+              <time datetime={work.startDate.toDateString()}>
+                {getMonthYear(work.startDate)}
+              </time>
+              <div class="timeline" />
+            </div>
+            {translation && translation.link ? (
+              <a
+                href={translation.link}
+                class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
+              >
+                <h3 class="mb-0 flex">
+                  <span class="grow">{translation.title} </span>
+                  <Icon
+                    name="mdi:external-link"
+                    class="mt-2 size-3 shrink-0 print:hidden"
+                  />
+                </h3>
+                <h4>
+                  {translation.category}
+                  {translation.location ? ` | ${translation.location}` : ""}
+                </h4>
+                <p class="text-sm text-pretty text-zinc-300">
+                  {translation.description}
+                </p>
+              </a>
+            ) : translation ? (
+              <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
+                <h3 class="mb-0">{translation.title}</h3>
+                <h4>
+                  {translation.category}
+                  {translation.location ? ` | ${translation.location}` : ""}
+                </h4>
+                <p class="text-sm text-pretty text-zinc-300">
+                  {translation.description}
+                </p>
+              </div>
+            ) : null}
+          </div>
+        ))
       }
     </section>
   </Container>
