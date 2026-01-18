@@ -245,7 +245,7 @@ const emailAddress = siteConfig.email;
   }}
 >
   <Container
-    class="font-body relative flex flex-col gap-5 text-base print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-4 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-1 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-[17px] [&_.timeline-top]:border-r [&_.timeline-top]:print:h-3 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg/6 [&_h4]:text-lg [&_h4]:text-zinc-300"
+    class="font-body relative flex flex-col gap-5 text-base print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-4 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-1 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-[17px] [&_.timeline-top]:border-r [&_.timeline-top]:print:h-3 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:print:font-bold  [&_h3]:text-lg/6 [&_h4]:text-lg [&_h4]:text-zinc-300"
   >
     <div class="flex flex-col gap-6 pt-20 sm:flex-row sm:pt-28 print:pt-2">
       <Image
@@ -255,7 +255,7 @@ const emailAddress = siteConfig.email;
       />
       <div class="flex flex-col justify-center gap-1">
         <div class="flex flex-col gap-1">
-          <h1 class="font-title text-5xl">Daniel Locatelli</h1>
+          <h1 class="font-title text-5xl">Daniel Nunes Locatelli</h1>
           <p class="text-xl">Desenvolvedor de software AEC</p>
         </div>
         <div class="flex flex-col gap-4 text-sm sm:flex-row">
@@ -271,7 +271,7 @@ const emailAddress = siteConfig.email;
             <div class="flex h-full grow gap-2 sm:gap-1">
               <a
                 href="https://www.linkedin.com/in/daniel-locatelli/"
-                class="align-middle underline"
+                class="flex shrink"
                 title="Check my LinkedIn"
               >
                 <Icon
@@ -279,16 +279,18 @@ const emailAddress = siteConfig.email;
                   class="inline-block size-5 align-middle sm:size-3.5"
                 />
               </a>
-              <a href="https://github.com/daniel-locatelli">
+              <a href="https://github.com/daniel-locatelli"
+                 class="flex shrink"
+                 title="Check my GitHub"
+              >
                 <Icon
                   name="mdi:github"
                   class="inline-block size-5 align-middle sm:size-3.5"
-                  title="Check my GitHub"
                 />
               </a>
               <a
                 href="https://instagram.com/architectlocatelli"
-                class="align-middle underline"
+                class="flex shrink"
                 title="Check my Instagram"
               >
                 <Icon

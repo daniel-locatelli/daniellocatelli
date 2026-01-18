@@ -429,13 +429,13 @@ export default async function seed() {
       id: "UST1",
       experienceId: "UST",
       locale: "en",
-      text: "Development of a plugin in C#/.NET for Grasshopper in conjunction with a semantic data model (schema).",
+      text: "Development of a Grasshopper plugin (C#/.NET) in conjunction with a semantic data model to calculate the Life Cycle Assessment of timber buildings.",
     },
     {
       id: "UST1-pt",
       experienceId: "UST",
       locale: "pt",
-      text: "Desenvolvimento um plugin em C#/.NET para Grasshopper em conjunto com um modelo de dados semântico (schema).",
+      text: "Desenvolvimento um plugin para Grasshopper (C#/.NET) em conjunto com um modelo de dados semântico para calcular a Avaliação do Ciclo de Vida (LCA) de edifícios de madeira.",
     },
     {
       id: "UST2",
@@ -1219,13 +1219,13 @@ export default async function seed() {
       certificationId: "MITX6001x2018",
       locale: "pt",
       title:
-        "Introdução à Ciência da Computação e Programação Usando Python (6.00.1x)",
+        "Introdução à Ciência da Computação e Programação Usando Python",
       issuer: "MITX & edX.org",
     },
     {
       certificationId: "MITX6001x2018",
       locale: "en",
-      title: "Intro to Computer Science and Programming Using Python (6.00.1x)",
+      title: "Intro to Computer Science and Programming Using Python",
       issuer: "MITX & edX.org",
     },
     {
@@ -1506,7 +1506,7 @@ export default async function seed() {
       talkId: "IFPR2023",
       locale: "pt",
       title:
-        "Arquitetura Computacional na Alemanha: Estado da arte e desafios futuros.",
+        "Arquitetura Computacional na Alemanha: Estado da arte e desafios futuros",
       organization: "Curso de Arquitetura e Urbanismo do IFPR",
       location: "Online",
     },
@@ -1514,7 +1514,7 @@ export default async function seed() {
       talkId: "IFPR2023",
       locale: "en",
       title:
-        "Computational Architecture in Germany: State of the art and future challenges.",
+        "Computational Architecture in Germany: State of the art and future challenges",
       organization: "Architecture and Urbanism course at IFPR",
       location: "Online",
     },
