@@ -30,14 +30,8 @@ import {
   PersonToPublications,
   Certifications,
   CertificationsTranslations,
-  Tutoring,
-  TutoringTranslations,
   TalksAndLectures,
   TalksAndLecturesTranslations,
-  CoursesAttended,
-  CoursesAttendedTranslations,
-  Works,
-  WorksTranslations,
   and,
 } from "astro:db";
 import { Icon } from "astro-icon/components";
@@ -191,12 +185,6 @@ const talksAndLectures = await db
   )
   .where(eq(TalksAndLecturesTranslations.locale, locale));
 
-const works = await db
-  .select()
-  .from(Works)
-  .leftJoin(WorksTranslations, eq(Works.id, WorksTranslations.workId))
-  .where(eq(WorksTranslations.locale, locale));
-
 const emailAddress = siteConfig.email;
 
 const filteredExperience = experience.filter(
@@ -204,7 +192,11 @@ const filteredExperience = experience.filter(
 );
 
 const filteredEducation = education.filter(
-  (edu) => edu.Education.endDate.getFullYear() >= 2016,
+  (edu) => {
+    const endDate = edu.Education.endDate;
+    // If null (ongoing), include it; otherwise check the year
+    return !endDate || endDate.getFullYear() >= 2016;
+  },
 );
 
 const filteredPublications = publications.filter(
@@ -326,7 +318,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
           <td>
             {
               skillFrameworks.map(
-                ({ SkillFrameworks, SkillFrameworksTranslations }, idx, arr) =>
+                ({ SkillFrameworks }, idx, arr) =>
                   idx === arr.length - 1
                     ? SkillFrameworks.id
                     : SkillFrameworks.id + ", ",
@@ -339,7 +331,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
           <td>
             {
               skillDatabases.map(
-                ({ SkillDatabases, SkillDatabasesTranslations }, idx, arr) =>
+                ({ SkillDatabases }, idx, arr) =>
                   idx === arr.length - 1
                     ? SkillDatabases.id
                     : SkillDatabases.id + ", ",
@@ -352,7 +344,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
           <td>
             {
               skillDesign.map(
-                ({ SkillDesign, SkillDesignTranslations }, idx, arr) =>
+                ({ SkillDesign }, idx, arr) =>
                   idx === arr.length - 1
                     ? SkillDesign.id
                     : SkillDesign.id + ", ",

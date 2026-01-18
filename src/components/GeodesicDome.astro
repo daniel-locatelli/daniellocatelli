@@ -59,7 +59,6 @@ const { height = "180px" } = Astro.props;
       // Explosion properties
       private originalPositions: Float32Array | null = null;
       private faceData: FaceData[] = [];
-      private explosionAmount: number = 0;
       private isExploding: boolean = false;
 
       // Inertia state
@@ -275,7 +274,6 @@ const { height = "180px" } = Astro.props;
           const windowHeight =
             window.innerHeight || document.documentElement.clientHeight;
           // Map: top of page = max, bottom = min
-          const domeTop = rect.top;
           const domeBottom = rect.bottom;
           // percent: 1 at top, 0 at bottom
           let percent = 1 - Math.max(0, Math.min(domeBottom / windowHeight, 1));

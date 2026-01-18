@@ -10,7 +10,6 @@ import {
 } from "../lib/notion/client";
 import { extractTargetBlocks } from "../lib/blog-helpers";
 import type { Database } from "../lib/notion-interfaces";
-import pLimit from "p-limit";
 
 export default (): AstroIntegration => ({
   name: "all-files-downloader",

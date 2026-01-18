@@ -318,7 +318,7 @@ const emailAddress = siteConfig.email;
           <td>
             {
               skillFrameworks.map(
-                ({ SkillFrameworks, SkillFrameworksTranslations }, idx, arr) =>
+                ({ SkillFrameworks }, idx, arr) =>
                   idx === arr.length - 1
                     ? SkillFrameworks.id
                     : SkillFrameworks.id + ", ",
@@ -331,7 +331,7 @@ const emailAddress = siteConfig.email;
           <td>
             {
               skillDatabases.map(
-                ({ SkillDatabases, SkillDatabasesTranslations }, idx, arr) =>
+                ({ SkillDatabases }, idx, arr) =>
                   idx === arr.length - 1
                     ? SkillDatabases.id
                     : SkillDatabases.id + ", ",
@@ -344,7 +344,7 @@ const emailAddress = siteConfig.email;
           <td>
             {
               skillDesign.map(
-                ({ SkillDesign, SkillDesignTranslations }, idx, arr) =>
+                ({ SkillDesign }, idx, arr) =>
                   idx === arr.length - 1
                     ? SkillDesign.id
                     : SkillDesign.id + ", ",
