@@ -1,5 +1,12 @@
 import { column, defineDb, defineTable } from "astro:db";
 
+const Quote = defineTable({
+  columns: {
+    text: column.text(),
+    locale: column.text(),
+  },
+});
+
 const Summary = defineTable({
   columns: {
     text: column.text(),
@@ -321,6 +328,7 @@ const WorksTranslations = defineTable({
 // https://astro.build/db/config
 export default defineDb({
   tables: {
+    Quote,
     Summary,
     SkillProgramming,
     SkillProgrammingTranslations,

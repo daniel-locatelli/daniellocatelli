@@ -6,6 +6,20 @@ import Container from "@/components/Container.astro";
 import {
   db,
   eq,
+  gte,
+  isNotNull,
+  isNull,
+  or,
+  and,
+  Certifications,
+  CertificationsTranslations,
+  Experience,
+  ExperienceTranslations,
+  ExperienceItems,
+  Education,
+  EducatonTranslations,
+  EducationItems,
+  Quote,
   Summary,
   SkillProgramming,
   SkillProgrammingTranslations,
@@ -17,22 +31,13 @@ import {
   SkillDesignTranslations,
   SkillSpecialized,
   SkillSpecializedTranslations,
-  Experience,
-  ExperienceTranslations,
-  ExperienceItems,
-  Education,
-  EducatonTranslations,
-  EducationItems,
   Scholarships,
   ScholarshipsTranslations,
   Publications,
   PublicationsTranslations,
   PersonToPublications,
-  Certifications,
-  CertificationsTranslations,
   TalksAndLectures,
   TalksAndLecturesTranslations,
-  and,
 } from "astro:db";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@/site-config";
@@ -45,6 +50,11 @@ const getMonthYear = (date: Date): string => {
 };
 
 const locale = "en";
+
+const quote = await db
+  .selectDistinct({ text: Quote.text })
+  .from(Quote)
+  .where(eq(Quote.locale, locale));
 
 const summary = await db
   .selectDistinct({ text: Summary.text })
@@ -103,7 +113,12 @@ const experience = await db
     ExperienceTranslations,
     eq(Experience.id, ExperienceTranslations.experienceId),
   )
-  .where(eq(ExperienceTranslations.locale, locale));
+  .where(
+    and(
+      eq(ExperienceTranslations.locale, locale),
+      gte(Experience.startDate, new Date("2015-01-01")),
+    ),
+  );
 
 const itemsByExperienceId = await Promise.all(
   experience.map(async ({ Experience: exp }) => {
@@ -127,7 +142,15 @@ const education = await db
     EducatonTranslations,
     eq(Education.id, EducatonTranslations.educationId),
   )
-  .where(eq(EducatonTranslations.locale, locale));
+  .where(
+    and(
+      eq(EducatonTranslations.locale, locale),
+      or(
+        isNull(Education.endDate),
+        gte(Education.endDate, new Date("2016-01-01")),
+      ),
+    ),
+  );
 
 const itemsByEducationId = await Promise.all(
   education.map(async ({ Education: edu }) => {
@@ -155,7 +178,18 @@ const publications = await db
     PublicationsTranslations,
     eq(Publications.id, PublicationsTranslations.publicationId),
   )
-  .where(eq(PublicationsTranslations.locale, locale));
+  .where(
+    and(
+      eq(PublicationsTranslations.locale, locale),
+      or(
+        eq(Publications.id, "CDS"),
+        and(
+          isNotNull(Publications.date),
+          gte(Publications.date, new Date("2023-01-01")),
+        ),
+      ),
+    ),
+  );
 
 const personByPublicationId = await Promise.all(
   publications.map(async ({ Publications: pub }) => {
@@ -174,7 +208,12 @@ const certifications = await db
     CertificationsTranslations,
     eq(Certifications.id, CertificationsTranslations.certificationId),
   )
-  .where(eq(CertificationsTranslations.locale, locale));
+  .where(
+    and(
+      eq(CertificationsTranslations.locale, locale),
+      gte(Certifications.date, new Date("2018-01-01")),
+    ),
+  );
 
 const talksAndLectures = await db
   .select()
@@ -183,39 +222,14 @@ const talksAndLectures = await db
     TalksAndLecturesTranslations,
     eq(TalksAndLectures.id, TalksAndLecturesTranslations.talkId),
   )
-  .where(eq(TalksAndLecturesTranslations.locale, locale));
+  .where(
+    and(
+      eq(TalksAndLecturesTranslations.locale, locale),
+      gte(TalksAndLectures.date, new Date("2023-01-01")),
+    ),
+  );
 
 const emailAddress = siteConfig.email;
-
-const filteredExperience = experience.filter(
-  (exp) => exp.Experience.startDate.getFullYear() >= 2019,
-);
-
-const filteredEducation = education.filter(
-  (edu) => {
-    const endDate = edu.Education.endDate;
-    // If null (ongoing), include it; otherwise check the year
-    return !endDate || endDate.getFullYear() >= 2016;
-  },
-);
-
-const filteredPublications = publications.filter(
-  (pub) =>
-    pub.Publications.date.getFullYear() >= 2023,
-); 
-
-const filteredCertifications = certifications.filter(
-  (cert) =>
-    cert.Certifications.date.getFullYear() >= 2018,
-);
-
-const filteredTalksAndLectures = talksAndLectures.filter(
-  (tl) =>
-    tl.TalksAndLectures.date.getFullYear() >= 2023,
-);
-
-
-
 ---
 
 <Base
@@ -230,58 +244,59 @@ const filteredTalksAndLectures = talksAndLectures.filter(
   }}
 >
   <Container
-    class="font-body relative flex flex-col gap-4 text-base print:gap-2 print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-4 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-1 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-[17px] [&_.timeline-top]:border-r [&_.timeline-top]:print:h-3 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg [&_h4]:text-lg [&_h4]:text-zinc-300"
+    class="font-body relative flex flex-col gap-5 text-base print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-4 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-1 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-[17px] [&_.timeline-top]:border-r [&_.timeline-top]:print:h-3 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg/6 [&_h4]:text-lg [&_h4]:text-zinc-300"
   >
     <div class="flex flex-col gap-6 pt-20 sm:flex-row sm:pt-28 print:pt-2">
       <Image
         src={profilePhoto}
         alt="Daniel Locatelli's profile photo."
-        class="rounded-full p-8 sm:size-36 sm:p-0"
+        class="rounded-full p-8 sm:size-38 sm:p-0"
       />
-      <div class="flex flex-col justify-center gap-2">
-        <div class="flex">
-          <div class="flex flex-col gap-2">
-            <h1 class="font-title text-5xl">Daniel Locatelli</h1>
-            <p class="text-xl">AEC Software developer</p>
-          </div>
-          <div class="flex h-full grow items-end justify-end gap-3 sm:gap-2">
-            <a
-              href="https://www.linkedin.com/in/daniel-locatelli/"
-              class="align-middle underline"
-            >
-              <Icon
-                name="mdi:linkedin"
-                class="inline-block size-5 align-middle"
-              />
-            </a>
-            <a href="https://github.com/daniel-locatelli">
-              <Icon
-                name="mdi:github"
-                class="inline-block size-5 align-middle"
-              />
-            </a>
-            <a
-              href="https://instagram.com/architectlocatelli"
-              class="align-middle underline"
-            >
-              <Icon
-                name="mdi:instagram"
-                class="inline-block size-5 align-middle"
-              />
-            </a>
-          </div>
+      <div class="flex flex-col justify-center gap-1">
+        <div class="flex flex-col gap-1">
+          <h1 class="font-title text-5xl">Daniel Locatelli</h1>
+          <p class="text-xl">AEC Software developer</p>
         </div>
-        <div class="flex flex-col gap-5 text-sm sm:flex-row">
+        <div class="flex flex-col gap-4 text-sm sm:flex-row">
           <p class="text-pretty sm:text-xs sm:text-balance">
-            "Architecture is a transdisciplinary field; its future lies in the
-            application of computational co-design to vernacular materials to
-            achieve a circular construction system."
+            {quote[0].text}
           </p>
-          <address class="flex flex-col sm:text-xs">
-            <a href={"mailto:" + emailAddress}>{emailAddress}</a>
-            <span> +49 178 324-0834 </span>
-            <span> Munich, Germany </span>
-          </address>
+          <div>
+            <address class="flex flex-col sm:text-xs">
+              <a href={"mailto:" + emailAddress}>{emailAddress}</a>
+              <span> +49 178 324-0834 </span>
+              <span> Munich, Germany </span>
+            </address>
+            <div class="flex h-full grow gap-2 sm:gap-1">
+              <a
+                href="https://www.linkedin.com/in/daniel-locatelli/"
+                class="align-middle underline"
+                title="Check my LinkedIn"
+              >
+                <Icon
+                  name="mdi:linkedin"
+                  class="inline-block size-5 align-middle sm:size-3.5"
+                />
+              </a>
+              <a href="https://github.com/daniel-locatelli">
+                <Icon
+                  name="mdi:github"
+                  class="inline-block size-5 align-middle sm:size-3.5"
+                  title="Check my GitHub"
+                />
+              </a>
+              <a
+                href="https://instagram.com/architectlocatelli"
+                class="align-middle underline"
+                title="Check my Instagram"
+              >
+                <Icon
+                  name="mdi:instagram"
+                  class="inline-block size-5 align-middle sm:size-3.5"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -317,11 +332,10 @@ const filteredTalksAndLectures = talksAndLectures.filter(
           <th>Frameworks</th>
           <td>
             {
-              skillFrameworks.map(
-                ({ SkillFrameworks }, idx, arr) =>
-                  idx === arr.length - 1
-                    ? SkillFrameworks.id
-                    : SkillFrameworks.id + ", ",
+              skillFrameworks.map(({ SkillFrameworks }, idx, arr) =>
+                idx === arr.length - 1
+                  ? SkillFrameworks.id
+                  : SkillFrameworks.id + ", ",
               )
             }
           </td>
@@ -330,11 +344,10 @@ const filteredTalksAndLectures = talksAndLectures.filter(
           <th>Databases</th>
           <td>
             {
-              skillDatabases.map(
-                ({ SkillDatabases }, idx, arr) =>
-                  idx === arr.length - 1
-                    ? SkillDatabases.id
-                    : SkillDatabases.id + ", ",
+              skillDatabases.map(({ SkillDatabases }, idx, arr) =>
+                idx === arr.length - 1
+                  ? SkillDatabases.id
+                  : SkillDatabases.id + ", ",
               )
             }
           </td>
@@ -343,11 +356,8 @@ const filteredTalksAndLectures = talksAndLectures.filter(
           <th>Design Tools</th>
           <td>
             {
-              skillDesign.map(
-                ({ SkillDesign }, idx, arr) =>
-                  idx === arr.length - 1
-                    ? SkillDesign.id
-                    : SkillDesign.id + ", ",
+              skillDesign.map(({ SkillDesign }, idx, arr) =>
+                idx === arr.length - 1 ? SkillDesign.id : SkillDesign.id + ", ",
               )
             }
           </td>
@@ -379,7 +389,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
     >
       <h2>Work Experience</h2>
       {
-        filteredExperience.map(
+        experience.map(
           async ({
             Experience: { id, startDate, endDate, link },
             ExperienceTranslations,
@@ -466,7 +476,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
     >
       <h2>Education</h2>
       {
-        filteredEducation.map(
+        education.map(
           async ({
             Education: { id, startDate, endDate, link },
             EducatonTranslations,
@@ -593,7 +603,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
     <section id="publications">
       <h2>Publications</h2>
       {
-        filteredPublications.map(
+        publications.map(
           async ({
             Publications: { id, date, link },
             PublicationsTranslations,
@@ -666,7 +676,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
     <section id="certifications">
       <h2>Certifications</h2>
       {
-        filteredCertifications.map(
+        certifications.map(
           async ({
             Certifications: { date, link },
             CertificationsTranslations,
@@ -709,7 +719,7 @@ const filteredTalksAndLectures = talksAndLectures.filter(
     <section id="talks-and-lectures">
       <h2>Talks and Lectures</h2>
       {
-        filteredTalksAndLectures.map(
+        talksAndLectures.map(
           async ({
             TalksAndLectures: { date, link },
             TalksAndLecturesTranslations,
@@ -753,7 +763,6 @@ const filteredTalksAndLectures = talksAndLectures.filter(
         )
       }
     </section>
-
   </Container>
 </Base>
 

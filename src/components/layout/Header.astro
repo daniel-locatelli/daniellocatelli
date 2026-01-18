@@ -71,13 +71,13 @@ const emailAddress = siteConfig.email;
                 {locale === "de" && page.Name_de}
                 {locale === "pt" && page.Name_pt}
               </a>
-            )
+            ),
         )
       }
       <a
         title={locale === "en" ? "Mudar para Português" : "Change to English"}
         href={locale === "en" ? "/pt/" + slug : "/" + slug}
-        class="py-6 underline-offset-2 sm:px-3 sm:py-0 sm:hover:underline"
+        class="group/locale py-6 underline-offset-2 sm:px-3 sm:py-0"
       >
         <Image
           src={globe}
@@ -85,7 +85,16 @@ const emailAddress = siteConfig.email;
           loading={"eager"}
           class="inline mix-blend-difference"
         />
-        <div class="inline">{locale}</div>
+        <div class="relative inline-block">
+          <span class="transition-opacity duration-200 group-hover/locale:opacity-0">
+            {locale}
+          </span>
+          <span
+            class="absolute top-0 left-0 opacity-0 transition-opacity duration-200 group-hover/locale:opacity-100 underline"
+          >
+            {locale === "en" ? "pt" : "en"}
+          </span>
+        </div>
       </a>
       <a
         href={whatsAppUrl}
@@ -168,7 +177,7 @@ const emailAddress = siteConfig.email;
       this.menuOpen = !this.menuOpen;
       this.mobileButtonEl.setAttribute(
         "aria-expanded",
-        this.menuOpen.toString()
+        this.menuOpen.toString(),
       );
     };
 

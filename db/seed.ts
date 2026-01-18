@@ -11,6 +11,7 @@ import {
   Person,
   PersonToPublications,
   Publications,
+  Quote,
   Scholarships,
   SkillDatabases,
   SkillDatabasesTranslations,
@@ -37,6 +38,18 @@ import {
 
 // https://astro.build/db/seed
 export default async function seed() {
+  
+  await db.insert(Quote).values([
+    {
+      text: "Architecture is inherently transdisciplinary. Its future depends on using computational co-design with vernacular materials to create circular construction systems.",
+      locale: "en",
+    },
+    {
+      text: "A arquitetura é inerentemente transdisciplinar. Seu futuro depende da aplicação do co-design computacional a materiais vernaculares para criar sistemas construtivos circulares.",
+      locale: "pt",
+    },
+  ]);
+
   await db.insert(Summary).values([
     {
       text: "Software engineer and computational design researcher specializing in timber construction. Expertise in bridging design and engineering through C#/.NET, Python. M.Sc. from ITECH (University of Stuttgart) with a focus on multi-scalar robotic systems for engineered timber. Trilingual professional (English, German, and Portuguese) dedicated to solving complex structural problems through scalable software and data-driven fabrication.",
@@ -378,13 +391,13 @@ export default async function seed() {
       id: "HM1",
       experienceId: "HM",
       locale: "en",
-      text: "Research on standards, databases and modeling tools with focus on timber technology. Foundations to develop the app DOKwood.",
+      text: "Research on standards, databases, CAD and BIM tools with focus on timber technology. Foundations to develop the app DOKwood.",
     },
     {
       id: "HM1-pt",
       experienceId: "HM",
       locale: "pt",
-      text: "Pesquisa sobre normas técnicas, bancos de dados e ferramentas de modelagem com foco em tecnologia madeireira. Fundamentos para o desenvolvimento do aplicativo DOKwood.",
+      text: "Pesquisa sobre normas técnicas, bancos de dados e ferramentas CAD e BIM com foco em tecnologia madeireira. Fundamentos para o desenvolvimento do aplicativo DOKwood.",
     },
     // BS
     {
@@ -1027,13 +1040,15 @@ export default async function seed() {
       publicationId: "CDS",
       locale: "pt",
       title: "Estratégias de Design Computacional",
-      publisher: "Autopublicado",
+      publisher: "E-book autopublicado",
+      location: "Online",
     },
     {
       publicationId: "CDS",
       locale: "en",
       title: "Computational Design Strategies",
-      publisher: "Self-published",
+      publisher: "Self-published e-book",
+      location: "Online",
     },
     {
       publicationId: "SiGradi2018",
@@ -1103,6 +1118,9 @@ export default async function seed() {
     { publicationId: "CDRF2023", personId: "Hans Jakob Wagner", order: 5 },
     { publicationId: "CDRF2023", personId: "Achim Menges", order: 6 },
     { publicationId: "CDRF2023", personId: "Jan Knippers", order: 7 },
+
+    // CDS
+    { publicationId: "CDS", personId: "Daniel Nunes Locatelli", order: 1 },
 
     // ECAADE2020
     {
