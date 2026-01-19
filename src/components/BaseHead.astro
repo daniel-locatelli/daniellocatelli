@@ -89,6 +89,8 @@ const socialImageURL = new URL(
 <meta property="og:type" content={articleDate ? "article" : "website"} />
 <meta property="og:title" content={siteTitle} />
 <meta property="og:description" content={description} />
+<meta property="article:author:first_name" content={siteConfig.authorFirstName} />
+<meta property="article:author:last_name" content={siteConfig.authorLastName} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:site_name" content={siteConfig.title} />
 <meta property="og:locale" content={locale} />
