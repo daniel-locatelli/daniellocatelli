@@ -41,11 +41,11 @@ export default async function seed() {
   
   await db.insert(Quote).values([
     {
-      text: "Architecture is inherently transdisciplinary. Its future depends on using computational co-design with vernacular materials to create circular construction systems.",
+      text: '"Architecture is inherently transdisciplinary. Its future lies in the use of computational co-design with vernacular materials to create circular construction systems."',
       locale: "en",
     },
     {
-      text: "A arquitetura é inerentemente transdisciplinar. Seu futuro depende da aplicação do co-design computacional a materiais vernaculares para criar sistemas construtivos circulares.",
+      text: '"A arquitetura é inerentemente transdisciplinar. Seu futuro reside na aplicação do co-design computacional a materiais vernaculares para criar sistemas construtivos circulares."',
       locale: "pt",
     },
   ]);
