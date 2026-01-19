@@ -118,3 +118,13 @@ const socialImageURL = new URL(
 <link href="/sitemap-index.xml" rel="sitemap" />
 
 <meta content={Astro.generator} name="generator" />
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": siteConfig.author,
+  "givenName": siteConfig.firstName,
+  "familyName": siteConfig.lastName,
+  "url": Astro.site,
+})}>
+</script>
