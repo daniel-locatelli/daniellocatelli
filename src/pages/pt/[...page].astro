@@ -42,28 +42,34 @@ const { page } = Astro.props as Props;
 let databases: Database[];
 
 databases = await Promise.all(
-  page.DatabasesRef!.map(async (db) => await getDatabaseByName(db.name!))
+  page.DatabasesRef!.map(async (db) => await getDatabaseByName(db.name!)),
 );
 
-let coverList: string[][] = [[], []];
-
-databases.map((db, index) => {
-  db.Pages.map((page) => {
-    console.log(page.Name);
-    let coverUrlBg = "";
-    if (page.Cover) {
-      const url = new URL(page.Cover.Url);
-      const dir = "media/" + url.pathname.split("/").slice(-2)[0];
-      const fileNameConverted = urlToFileName(url);
-      const fileNameBgWithSlug = modifyFileName(fileNameConverted, {
-        // newBeginning: page.Slug.split("/").pop() + "_",
-        newEnd: "-bg",
-        newExtension: "jpg",
-      });
-      coverUrlBg = `/${dir}/${fileNameBgWithSlug}`;
-      coverList[index].push(coverUrlBg);
-    }
+// Flatten and sort pages
+const sortedSubpages = databases
+  .flatMap((db) => db.Pages)
+  .filter((page) => page.Locale === "en")
+  .sort((a, b) => {
+    if (!a.DateStart) return 1;
+    if (!b.DateStart) return -1;
+    return new Date(b.DateStart).getTime() - new Date(a.DateStart).getTime();
   });
+
+let coverList: string[] = [];
+
+sortedSubpages.map((subpages) => {
+  let coverUrlBg = "";
+  if (subpages.Cover) {
+    const url = new URL(subpages.Cover.Url);
+    const dir = "media/" + url.pathname.split("/").slice(-2)[0];
+    const fileNameConverted = urlToFileName(url);
+    const fileNameBgWithSlug = modifyFileName(fileNameConverted, {
+      newEnd: "-bg",
+      newExtension: "jpg",
+    });
+    coverUrlBg = `/${dir}/${fileNameBgWithSlug}`;
+  }
+  coverList.push(coverUrlBg);
 });
 
 let coverUrl = "";
@@ -100,10 +106,8 @@ const locale = "pt";
       slug={page.Slug}
     />
     {
-      coverList.map((list) => {
-        return list.map((cover) => {
-          return <link rel="preload" href={cover} as="image" />;
-        });
+      coverList.map((cover) => {
+        return <link rel="preload" href={cover} as="image" />;
       })
     }
   </head>
@@ -112,73 +116,66 @@ const locale = "pt";
     <main id="main">
       <div class="relative flex flex-col">
         {
-          databases.map((db, indexDb) => {
+          sortedSubpages.map(async (subpage, index) => {
+            let image = await importCoverImage(subpage, images);
             return (
-              <section aria-label={db.Title} class="relative w-full">
+              <section aria-label={page.Name} class="relative w-full">
                 <ul class="relative w-full space-y-0">
-                  {db.Pages.map(async (page, indexPages) => {
-                    if (page.Locale === "pt") {
-                      console.log(page.Slug);
-                      let image = await importCoverImage(page, images);
-                      return (
-                        <article class="h-vh relative flex h-screen w-full snap-start flex-col overflow-hidden bg-clip-border">
-                          <a
-                            class="flex h-full w-full transition"
-                            href={"/pt/" + page.Slug}
-                            data-astro-prefetch
-                          >
-                            <div class="absolute z-20 flex h-full w-full flex-col justify-center text-center transition">
-                              <h2 class="text-balance bg-black/60 p-2 font-title text-3xl text-white backdrop-blur-sm dark:text-white md:text-5xl">
-                                {page.Name}
-                              </h2>
-                            </div>
-                            <div class="absolute flex h-full w-full justify-between">
-                              {image && indexDb === 0 && indexPages === 0 ? (
-                                <Image
-                                  class="absolute z-10 h-full w-full animate-fade object-cover object-center"
-                                  src={image}
-                                  alt={page.CoverAlt}
-                                  transition:name={page.PageId + "-image"}
-                                  loading="eager"
-                                  widths={[
-                                    300,
-                                    700,
-                                    1000,
-                                    1280,
-                                    1400,
-                                    1600,
-                                    image.width,
-                                  ]}
-                                  sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${image.width}px`}
-                                />
-                              ) : (
-                                <Image
-                                  class="absolute z-10 h-full w-full animate-fade object-cover object-center"
-                                  src={image}
-                                  alt={page.CoverAlt}
-                                  transition:name={page.PageId + "-image"}
-                                  widths={[
-                                    300,
-                                    700,
-                                    1000,
-                                    1280,
-                                    1400,
-                                    1600,
-                                    image.width,
-                                  ]}
-                                  sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${image.width}px`}
-                                />
-                              )}
-                              <div
-                                class="absolute z-0 h-full w-full bg-cover bg-center blur-xl"
-                                style={`background-image: url(${coverList[indexDb][indexPages]})`}
-                              />
-                            </div>
-                          </a>
-                        </article>
-                      );
-                    }
-                  })}
+                  <article class="h-vh relative flex h-screen w-full snap-start flex-col overflow-hidden bg-clip-border">
+                    <a
+                      class="flex h-full w-full transition"
+                      href={"/pt/" + subpage.Slug}
+                      data-astro-prefetch
+                    >
+                      <div class="absolute z-20 flex h-full w-full flex-col justify-center text-center transition">
+                        <h2 class="font-title bg-black/60 p-2 text-3xl text-balance text-white backdrop-blur-sm md:text-5xl dark:text-white">
+                          {subpage.Name}
+                        </h2>
+                      </div>
+                      <div class="absolute flex h-full w-full justify-between">
+                        {image && index === 0 ? (
+                          <Image
+                            class="animate-fade absolute z-10 h-full w-full object-cover object-center"
+                            src={image}
+                            alt={subpage.CoverAlt}
+                            transition:name={subpage.PageId + "-image"}
+                            loading="eager"
+                            widths={[
+                              300,
+                              700,
+                              1000,
+                              1280,
+                              1400,
+                              1600,
+                              image.width,
+                            ]}
+                            sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${image.width}px`}
+                          />
+                        ) : (
+                          <Image
+                            class="animate-fade absolute z-10 h-full w-full object-cover object-center"
+                            src={image}
+                            alt={subpage.CoverAlt}
+                            transition:name={subpage.PageId + "-image"}
+                            widths={[
+                              300,
+                              700,
+                              1000,
+                              1280,
+                              1400,
+                              1600,
+                              image.width,
+                            ]}
+                            sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${image.width}px`}
+                          />
+                        )}
+                        <div
+                          class="absolute z-0 h-full w-full bg-cover bg-center blur-xl"
+                          style={`background-image: url(${coverList[index]})`}
+                        />
+                      </div>
+                    </a>
+                  </article>
                 </ul>
               </section>
             );
