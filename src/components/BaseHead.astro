@@ -9,11 +9,11 @@ type Props = SiteMeta;
 const { articleDate, description, coverImage, coverAlt, title, locale } =
   Astro.props;
 
-const titleSeparator = "•";
+const titleSeparator = "•"; // I removed the separator and the name from the title to make it cleaner when using it for references in Zotero etc.
 const siteTitle =
   title === siteConfig.title
     ? siteConfig.title
-    : `${title} ${titleSeparator} ${siteConfig.title}`;
+    : title;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(
   coverImage
