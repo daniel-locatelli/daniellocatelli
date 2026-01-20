@@ -201,7 +201,7 @@ export default async function seed() {
       id: "AMB",
       startDate: new Date("2015-3"),
       endDate: new Date("2019-7"),
-      link: "https://markobrajovic.com/en",
+      link: "https://markobrajovic.com/",
     },
     {
       id: "CSULB",
@@ -1195,7 +1195,7 @@ export default async function seed() {
       certificationId: "CS50SQL2024",
       locale: "pt",
       title: "Introdução a Banco de Dados com SQL",
-      issuer: "Universidade Harvard & edX.org",
+      issuer: "Universidade de Harvard & edX.org",
     },
     {
       certificationId: "CS50SQL2024",
@@ -1264,7 +1264,6 @@ export default async function seed() {
     {
       id: "TensegritySeminar2018",
       startDate: new Date("2018-12"),
-      link: "https://markobrajovic.com/en/all/atelier-by-nature",
     },
     {
       id: "AdaptiveWorkshop2018",
@@ -1303,11 +1302,11 @@ export default async function seed() {
     {
       tutoringId: "TensegritySeminar2018",
       locale: "pt",
-      title: "Workshop Tensegrity",
+      title: "Workshop de Tensegridade",
       organization: "Atelier Marko Brajovic",
       location: "Paraty, Brasil",
       description:
-        "A equipe que formou o Atelier Marko Brajovic se reuniu para desenvolver um tensegrity coletivamente.",
+        "Workshop de team building do Atelier Marko Brajovic com o objetivo de desenvolver uma tensegridade coletivamente.",
     },
     {
       tutoringId: "TensegritySeminar2018",
@@ -1542,7 +1541,7 @@ export default async function seed() {
     {
       talkId: "UNIP2020",
       locale: "en",
-      title: "Computational Design: Strategies",
+      title: "Computational Design Strategies",
       organization: "UNIP Sorocaba",
       location: "Online",
     },
@@ -1767,7 +1766,7 @@ export default async function seed() {
     {
       courseId: "CS50CS2023",
       locale: "pt",
-      title: "Introdução à Ciência da Computação",
+      title: "CS50 - Introdução à Ciência da Computação",
       organization: "Universidade Harvard",
       location: "Online",
     },
@@ -2839,7 +2838,7 @@ export default async function seed() {
       location: "Ibirapuera bienal pavilion, São Paulo, Brazil",
       category: "Parametric design",
       description: "Architect in charge of design and supervision.",
-      link: "https://markobrajovic.com/pt-br/all/blastu-2019",
+      link: "https://markobrajovic.com/blastu-2019/",
     },
     {
       workId: "mb-blastu-2019",
@@ -2849,7 +2848,7 @@ export default async function seed() {
       location: "Pavilhão da Bienal do Ibirapuera, São Paulo, Brasil",
       category: "Design paramétrico",
       description: "Arquiteto responsável pelo projeto e supervisão.",
-      link: "https://markobrajovic.com/pt-br/all/blastu-2019",
+      link: "https://markobrajovic.com/blastu-2019/",
     },
     {
       workId: "mb-casa-jardim-award",
@@ -2859,7 +2858,7 @@ export default async function seed() {
       location: "Pinacoteca de São Paulo, São Paulo, Brazil",
       category: "Scenic design",
       description: "Architect in charge of the stage design and trophy.",
-      link: "https://markobrajovic.com/pt-br/all/premio-casa-e-jardim-2019",
+      link: "https://markobrajovic.com/premio-casa-e-jardim-2019",
     },
     {
       workId: "mb-casa-jardim-award",
@@ -2869,7 +2868,7 @@ export default async function seed() {
       location: "Pinacoteca de São Paulo, São Paulo, Brasil",
       category: "Design cênico",
       description: "Arquiteto responsável pelo palco e troféu.",
-      link: "https://markobrajovic.com/pt-br/all/premio-casa-e-jardim-2019",
+      link: "https://markobrajovic.com/premio-casa-e-jardim-2019",
     },
   ]);
 }

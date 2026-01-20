@@ -1,3 +1,5 @@
+import type { SUPPORTED_LOCALES } from "./site.config";
+
 export type SiteConfig = {
   [x: string]: string;
   author: string;
@@ -6,6 +8,8 @@ export type SiteConfig = {
   email: string;
   whatsapp: string;
 };
+
+export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 
 export type PaginationLink = {
   url: string;

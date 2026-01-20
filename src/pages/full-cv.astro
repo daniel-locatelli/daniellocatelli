@@ -6,23 +6,6 @@ import Container from "@/components/Container.astro";
 import {
   db,
   eq,
-  Summary,
-  SkillProgramming,
-  SkillProgrammingTranslations,
-  SkillFrameworks,
-  SkillFrameworksTranslations,
-  SkillDatabases,
-  SkillDatabasesTranslations,
-  SkillDesign,
-  SkillDesignTranslations,
-  SkillSpecialized,
-  SkillSpecializedTranslations,
-  Experience,
-  ExperienceTranslations,
-  ExperienceItems,
-  Education,
-  EducatonTranslations,
-  EducationItems,
   Scholarships,
   ScholarshipsTranslations,
   Publications,
@@ -42,8 +25,11 @@ import {
 } from "astro:db";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@/site-config";
+import { getI18n, getMonthYear } from "src/i18n/utils";
+import type { I18nCV, Experience, Education } from "src/i18n/cv/types.ts";
+import type { I18nMeta } from "src/i18n/meta/types.ts";
 
-const getMonthYear = (date: Date): string => {
+const getMonthYearOld = (date: Date): string => {
   const month =
     date.getMonth() < 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
   const year = date.getFullYear();
@@ -52,98 +38,8 @@ const getMonthYear = (date: Date): string => {
 
 const locale = "en";
 
-const summary = await db
-  .selectDistinct({ text: Summary.text })
-  .from(Summary)
-  .where(eq(Summary.locale, locale));
-
-const skillProgramming = await db
-  .select()
-  .from(SkillProgramming)
-  .leftJoin(
-    SkillProgrammingTranslations,
-    eq(SkillProgramming.id, SkillProgrammingTranslations.skillId),
-  )
-  .where(eq(SkillProgrammingTranslations.locale, locale));
-
-const skillFrameworks = await db
-  .select()
-  .from(SkillFrameworks)
-  .leftJoin(
-    SkillFrameworksTranslations,
-    eq(SkillFrameworks.id, SkillFrameworksTranslations.skillId),
-  )
-  .where(eq(SkillFrameworksTranslations.locale, locale));
-
-const skillDatabases = await db
-  .select()
-  .from(SkillDatabases)
-  .leftJoin(
-    SkillDatabasesTranslations,
-    eq(SkillDatabases.id, SkillDatabasesTranslations.skillId),
-  )
-  .where(eq(SkillDatabasesTranslations.locale, locale));
-
-const skillDesign = await db
-  .select()
-  .from(SkillDesign)
-  .leftJoin(
-    SkillDesignTranslations,
-    eq(SkillDesign.id, SkillDesignTranslations.skillId),
-  )
-  .where(eq(SkillDesignTranslations.locale, locale));
-
-const skillSpecialized = await db
-  .select()
-  .from(SkillSpecialized)
-  .leftJoin(
-    SkillSpecializedTranslations,
-    eq(SkillSpecialized.id, SkillSpecializedTranslations.skillId),
-  )
-  .where(eq(SkillSpecializedTranslations.locale, locale));
-
-const experience = await db
-  .select()
-  .from(Experience)
-  .leftJoin(
-    ExperienceTranslations,
-    eq(Experience.id, ExperienceTranslations.experienceId),
-  )
-  .where(eq(ExperienceTranslations.locale, locale));
-
-const itemsByExperienceId = await Promise.all(
-  experience.map(async ({ Experience: exp }) => {
-    const items = await db
-      .select()
-      .from(ExperienceItems)
-      .where(
-        and(
-          eq(ExperienceItems.experienceId, exp.id),
-          eq(ExperienceItems.locale, locale),
-        ),
-      );
-    return { id: exp.id, items: items };
-  }),
-);
-
-const education = await db
-  .select()
-  .from(Education)
-  .leftJoin(
-    EducatonTranslations,
-    eq(Education.id, EducatonTranslations.educationId),
-  )
-  .where(eq(EducatonTranslations.locale, locale));
-
-const itemsByEducationId = await Promise.all(
-  education.map(async ({ Education: edu }) => {
-    const items = await db
-      .select()
-      .from(EducationItems)
-      .where(eq(EducationItems.educationId, edu.id));
-    return { id: edu.id, items: items };
-  }),
-);
+const meta = await getI18n<I18nMeta>("meta", locale);
+const cv = await getI18n<I18nCV>("cv", locale);
 
 const scholarships = await db
   .select()
@@ -214,8 +110,6 @@ const works = await db
   .from(Works)
   .leftJoin(WorksTranslations, eq(Works.id, WorksTranslations.workId))
   .where(eq(WorksTranslations.locale, locale));
-
-const emailAddress = siteConfig.email;
 ---
 
 <Base
@@ -236,137 +130,126 @@ const emailAddress = siteConfig.email;
       <Image
         src={profilePhoto}
         alt="Daniel Locatelli's profile photo."
-        class="rounded-full p-8 sm:size-36 sm:p-0"
+        class="rounded-full p-8 sm:size-38 sm:p-0"
       />
-      <div class="flex flex-col justify-center gap-2">
-        <div class="flex">
-          <div class="flex flex-col gap-2">
-            <h1 class="font-title text-5xl">Daniel Locatelli</h1>
-            <p class="text-xl">AEC Software developer</p>
-          </div>
-          <div class="flex h-full grow items-end justify-end gap-3 sm:gap-2">
-            <a
-              href="https://www.linkedin.com/in/daniel-locatelli/"
-              class="align-middle underline"
-            >
-              <Icon
-                name="mdi:linkedin"
-                class="inline-block size-5 align-middle"
-              />
-            </a>
-            <a href="https://github.com/daniellocatelli">
-              <Icon
-                name="mdi:github"
-                class="inline-block size-5 align-middle"
-              />
-            </a>
-            <a
-              href="https://instagram.com/daniel.locatelli"
-              class="align-middle underline"
-            >
-              <Icon
-                name="mdi:instagram"
-                class="inline-block size-5 align-middle"
-              />
-            </a>
-          </div>
+      <div class="flex flex-col justify-center gap-1">
+        <div class="flex flex-col gap-1">
+          <h1 class="font-title text-5xl">Daniel Nunes Locatelli</h1>
+          <p class="text-xl">AEC Software developer</p>
         </div>
-        <div class="flex flex-col gap-5 text-sm sm:flex-row">
+        <div class="flex flex-col gap-4 text-sm sm:flex-row">
           <p class="text-pretty sm:text-xs sm:text-balance">
-            "Architecture is a transdisciplinary field; its future lies in the
-            application of computational co-design to vernacular materials to
-            achieve a circular construction system."
+            {cv.quote}
           </p>
-          <address class="flex flex-col sm:text-xs">
-            <a href={"mailto:" + emailAddress}>{emailAddress}</a>
-            <span> +49 178 324-0834 </span>
-            <span> Munich, Germany </span>
-          </address>
+          <div>
+            <address class="flex flex-col sm:text-xs">
+              <a href={"mailto:" + siteConfig.email}>{siteConfig.email}</a>
+              <span> {siteConfig.phone} </span>
+              <span> {meta.city}, {meta.country} </span>
+            </address>
+            <div class="flex h-full grow gap-2">
+              <a
+                href="https://www.linkedin.com/in/daniel-locatelli/"
+                class="h-min"
+                title="Check my LinkedIn"
+              >
+                <Icon
+                  name="mdi:linkedin"
+                  class="inline-block size-5 align-middle sm:size-3.5"
+                />
+              </a>
+              <a
+                href="https://github.com/daniel-locatelli"
+                class="h-min"
+                title="Check my GitHub"
+              >
+                <Icon
+                  name="mdi:github"
+                  class="inline-block size-5 align-middle sm:size-3.5"
+                />
+              </a>
+              <a
+                href="https://instagram.com/architectlocatelli"
+                class="h-min"
+                title="Check my Instagram"
+              >
+                <Icon
+                  name="mdi:instagram"
+                  class="inline-block size-5 align-middle sm:size-3.5"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <section id="summary">
-      <h2>Summary</h2>
-      <p class="text-pretty">{summary[0].text}</p>
+      <h2>{cv.ui.summary}</h2>
+      <p class="text-pretty">{cv.summary}</p>
     </section>
     <section id="technical-skills">
-      <h2>Technical Skills</h2>
+      <h2>{cv.ui.skills}</h2>
       <table
         class="table-auto [&_td]:leading-5 [&_th]:pr-2 [&_th]:text-right [&_th]:align-top [&_th]:font-thin sm:[&_th]:pr-4"
       >
         <tr>
-          <th>Programming</th>
+          <th>{cv.ui.programming}</th>
           <td>
             {
-              skillProgramming.map(
-                (
-                  { SkillProgramming, SkillProgrammingTranslations },
-                  idx,
-                  arr,
-                ) =>
-                  idx === arr.length - 1
-                    ? (SkillProgrammingTranslations?.skillId ??
-                      SkillProgramming.id)
-                    : (SkillProgrammingTranslations?.skillId ??
-                        SkillProgramming.id) + ", ",
+              cv.skillsProgramming.map((skill, idx, arr) =>
+                idx === arr.length - 1 ? skill.title : skill.title + ", ",
               )
             }
           </td>
         </tr>
         <tr>
-          <th>Frameworks</th>
+          <th>{cv.ui.frameworks}</th>
           <td>
             {
-              skillFrameworks.map(
-                ({ SkillFrameworks }, idx, arr) =>
-                  idx === arr.length - 1
-                    ? SkillFrameworks.id
-                    : SkillFrameworks.id + ", ",
+              cv.skillsFrameworks.map((skill, idx, arr) =>
+                idx === arr.length - 1 ? skill.title : skill.title + ", ",
               )
             }
           </td>
         </tr>
         <tr>
-          <th>Databases</th>
+          <th>{cv.ui.databases}</th>
           <td>
             {
-              skillDatabases.map(
-                ({ SkillDatabases }, idx, arr) =>
-                  idx === arr.length - 1
-                    ? SkillDatabases.id
-                    : SkillDatabases.id + ", ",
+              cv.skillsDatabases.map((skill, idx, arr) =>
+                idx === arr.length - 1 ? skill.title : skill.title + ", ",
               )
             }
           </td>
         </tr>
         <tr>
-          <th>Design Tools</th>
+          <th>{cv.ui.designTools}</th>
           <td>
             {
-              skillDesign.map(
-                ({ SkillDesign }, idx, arr) =>
-                  idx === arr.length - 1
-                    ? SkillDesign.id
-                    : SkillDesign.id + ", ",
+              cv.skillsDesign.map((skill, idx, arr) =>
+                idx === arr.length - 1 ? skill.title : skill.title + ", ",
               )
             }
           </td>
         </tr>
         <tr>
-          <th>Specialized Skills</th>
+          <th>{cv.ui.specialization}</th>
           <td>
             {
-              skillSpecialized.map(
-                (
-                  { SkillSpecialized, SkillSpecializedTranslations },
-                  idx,
-                  arr,
-                ) =>
-                  idx === arr.length - 1
-                    ? (SkillSpecializedTranslations?.title ??
-                      SkillSpecialized.title)
-                    : (SkillSpecializedTranslations?.title ??
-                        SkillSpecialized.title) + ", ",
+              cv.skillsSpecialized.map((skill, idx, arr) =>
+                idx === arr.length - 1 ? skill : skill + ", ",
+              )
+            }
+          </td>
+        </tr>
+        <tr>
+          <th>{cv.ui.languages}</th>
+          <td>
+            {
+              cv.skillsLanguages.map((skill, idx, arr) =>
+                idx === arr.length - 1
+                  ? `${skill.title} (${skill.level})`
+                  : `${skill.title} (${skill.level}), `,
               )
             }
           </td>
@@ -377,165 +260,211 @@ const emailAddress = siteConfig.email;
       id="work-experience"
       class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
     >
-      <h2>Work Experience</h2>
+      <h2>{cv.ui.professionalExperience}</h2>
       {
-        experience.map(
-          async ({
-            Experience: { id, startDate, endDate, link },
-            ExperienceTranslations,
-          }) => (
-            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
+        cv.experiences.map((experience: Experience, index: number) => {
+          const isOdd = index % 2 === 0;
+          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+
+          return (
+            <div
+              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
+            >
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                {endDate ? (
-                  <time datetime={endDate.toDateString()}>
-                    {getMonthYear(endDate)}
+                {experience.endDate ? (
+                  <time datetime={new Date(experience.endDate).toDateString()}>
+                    {getMonthYear(experience.endDate)}
                   </time>
                 ) : (
-                  <span>Current</span>
+                  <span>{cv.ui.current}</span>
                 )}
-                <time datetime={startDate.toDateString()}>
-                  {getMonthYear(startDate)}
+                <time datetime={new Date(experience.startDate).toDateString()}>
+                  {getMonthYear(experience.startDate)}
                 </time>
                 <div class="timeline" />
               </div>
-              {link ? (
-                <a
-                  href={link}
-                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-                >
+
+              {experience.link ? (
+                <a href={experience.link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
-                    <span class="grow">{ExperienceTranslations?.title} </span>
+                    <span class="grow">{experience.title}</span>
                     <Icon
                       name="mdi:external-link"
                       class="mt-2 size-3 shrink-0 print:hidden"
                     />
                   </h3>
-                  <h4>
-                    {ExperienceTranslations?.company} |{" "}
-                    {ExperienceTranslations?.location}
-                  </h4>
-                  {ExperienceTranslations?.companyNote ? (
+                  {experience.titleNote && (
                     <p class="mb-1 ml-1 text-xs text-zinc-300">
                       <sup>⤷</sup>
-                      {ExperienceTranslations.companyNote}
+                      {experience.titleNote}
                     </p>
-                  ) : (
-                    ""
+                  )}
+                  <h4>
+                    {experience.company} | {experience.location}
+                  </h4>
+                  {experience.companyNote && (
+                    <p class="mb-1 ml-1 text-xs text-zinc-300">
+                      <sup>⤷</sup>
+                      {experience.companyNote}
+                    </p>
                   )}
                   <ul>
-                    {itemsByExperienceId
-                      .find((itemObj) => itemObj.id === id)
-                      ?.items.map((item) => (
-                        <li>{item.text}</li>
-                      ))}
+                    {experience.items.map((item: string, itemIndex: number) => (
+                      <li>{item}</li>
+                    ))}
                   </ul>
                 </a>
               ) : (
-                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
-                  <h3 class="mb-0">{ExperienceTranslations?.title}</h3>
-                  <h4>
-                    {ExperienceTranslations?.company} |{" "}
-                    {ExperienceTranslations?.location}
-                  </h4>
-                  {ExperienceTranslations?.companyNote ? (
+                <div class={`item-text ${bgClass}`}>
+                  <h3 class="mb-0">{experience.title}</h3>
+                  {experience.titleNote && (
                     <p class="mb-1 ml-1 text-xs text-zinc-300">
                       <sup>⤷</sup>
-                      {ExperienceTranslations.companyNote}
+                      {experience.titleNote}
                     </p>
-                  ) : (
-                    ""
+                  )}
+                  <h4>
+                    {experience.company} | {experience.location}
+                  </h4>
+                  {experience.companyNote && (
+                    <p class="mb-1 ml-1 text-xs text-zinc-300">
+                      <sup>⤷</sup>
+                      {experience.companyNote}
+                    </p>
                   )}
                   <ul>
-                    {itemsByExperienceId
-                      .find((itemObj) => itemObj.id === id)
-                      ?.items.map((item) => (
-                        <li>{item.text}</li>
-                      ))}
+                    {experience.items.map((item: string) => (
+                      <li>{item}</li>
+                    ))}
                   </ul>
                 </div>
               )}
             </div>
-          ),
-        )
+          );
+        })
       }
     </section>
     <section
       id="education"
       class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
     >
-      <h2>Education</h2>
+      <h2>{cv.ui.education}</h2>
       {
-        education.map(
-          async ({
-            Education: { id, startDate, endDate, link },
-            EducatonTranslations,
-          }) => (
-            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
+        cv.education.map((education: Education, index: number) => {
+          const isOdd = index % 2 === 0;
+          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+
+          return (
+            <div
+              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
+            >
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                {endDate ? (
-                  <time datetime={endDate.toDateString()}>
-                    {getMonthYear(endDate)}
+                {education.endDate ? (
+                  <time datetime={new Date(education.endDate).toDateString()}>
+                    {getMonthYear(education.endDate)}
                   </time>
                 ) : (
-                  <span>Current</span>
+                  <span>{cv.ui.current}</span>
                 )}
-
-                <time datetime={startDate.toDateString()}>
-                  {getMonthYear(startDate)}
+                <time datetime={new Date(education.startDate).toDateString()}>
+                  {getMonthYear(education.startDate)}
                 </time>
                 <div class="timeline" />
               </div>
-              {link ? (
-                <a
-                  href={link}
-                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-                >
+
+              {education.link ? (
+                <a href={education.link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
-                    <span class="grow">
-                      {EducatonTranslations?.title ?? ""}{" "}
-                    </span>
+                    <span class="grow">{education.title}</span>
                     <Icon
                       name="mdi:external-link"
                       class="mt-2 size-3 shrink-0 print:hidden"
                     />
                   </h3>
                   <h4>
-                    {EducatonTranslations?.institution ?? ""} |{" "}
-                    {EducatonTranslations?.location ?? ""}
+                    {education.institution} | {education.location}
                   </h4>
-                  <ul>
-                    {itemsByEducationId
-                      .find((itemObj) => itemObj.id === id)
-                      ?.items.map((item) => (
-                        <li>{item.text}</li>
-                      ))}
-                  </ul>
+
+                  {/* Render description if its  exist */}
+                  {education.description &&
+                    education.description.length > 0 && (
+                      <div class="mb-1 ml-1 text-sm text-zinc-300">
+                        <p>
+                          {education.description}
+                        </p>
+                      </div>
+                    )}
+
+                  {/* Render supervisors if they exist */}
+                  {education.supervisors &&
+                    education.supervisors.length > 0 && (
+                      <div class="mb-1 ml-1 text-sm text-zinc-300">
+                        <p>
+                          Supervisors:
+                          {education.supervisors.map((supervisor, idx, arr) => 
+                            idx === arr.length - 1 ? `${supervisor}` : `${supervisor}, `,
+                          )}
+                        </p>
+                      </div>
+                    )}
+
+                  {/* Render tutors if they exist */}
+                  {education.tutors &&
+                    education.tutors.length > 0 && (
+                      <div class="mb-1 ml-1 text-sm text-zinc-300">
+                        <p>
+                          Tutors:
+                          {education.tutors.map((tutors, idx, arr) => 
+                            idx === arr.length - 1 ? `${tutors}` : `${tutors}, `,
+                          )}
+                        </p>
+                      </div>
+                    )}
                 </a>
               ) : (
-                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
-                  <h3 class="mb-0">{EducatonTranslations?.title ?? ""}</h3>
+                <div class={`item-text ${bgClass}`}>
+                  <h3 class="mb-0">
+                    {education.title}
+                  </h3>
                   <h4>
-                    {EducatonTranslations?.institution ?? ""} |{" "}
-                    {EducatonTranslations?.location ?? ""}
+                    {education.institution} | {education.location}
                   </h4>
-                  <ul>
-                    {itemsByEducationId
-                      .find((itemObj) => itemObj.id === id)
-                      ?.items.map((item) => (
-                        <li>{item.text}</li>
-                      ))}
-                  </ul>
+
+                  {/* Render supervisors if they exist */}
+                  {education.supervisors &&
+                    education.supervisors.length > 0 && (
+                      <div class="mb-1 ml-1 text-xs text-zinc-300">
+                        <p class="font-semibold">Supervisors:</p>
+                        <ul class="ml-2">
+                          {education.supervisors.map((supervisor) => (
+                            <li>{supervisor}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                  {/* Render tutors if they exist */}
+                  {education.tutors && education.tutors.length > 0 && (
+                    <div class="mb-1 ml-1 text-xs text-zinc-300">
+                      <p class="font-semibold">Tutors:</p>
+                      <ul class="ml-2">
+                        {education.tutors.map((tutor) => (
+                          <li>{tutor}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
-          ),
-        )
+          );
+        })
       }
     </section>
     <section id="scholarships">
-      <h2>Scholarships</h2>
+      <h2>{cv.ui.scholarships}</h2>
       {
         scholarships.map(
           async ({
@@ -547,13 +476,13 @@ const emailAddress = siteConfig.email;
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
-                    {getMonthYear(endDate)}
+                    {getMonthYearOld(endDate)}
                   </time>
                 ) : (
                   <span>Current</span>
                 )}
                 <time datetime={startDate.toDateString()}>
-                  {getMonthYear(startDate)}
+                  {getMonthYearOld(startDate)}
                 </time>
                 <div class="timeline" />
               </div>
@@ -591,7 +520,7 @@ const emailAddress = siteConfig.email;
       }
     </section>
     <section id="publications">
-      <h2>Publications</h2>
+      <h2>{cv.ui.publications}</h2>
       {
         publications.map(
           async ({
@@ -601,7 +530,9 @@ const emailAddress = siteConfig.email;
             <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
+                <time datetime={date.toDateString()}>
+                  {getMonthYearOld(date)}
+                </time>
                 <div class="timeline" />
               </div>
               {link ? (
@@ -664,7 +595,7 @@ const emailAddress = siteConfig.email;
       }
     </section>
     <section id="certifications">
-      <h2>Certifications</h2>
+      <h2>{cv.ui.certifications}</h2>
       {
         certifications.map(
           async ({
@@ -674,7 +605,9 @@ const emailAddress = siteConfig.email;
             <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
+                <time datetime={date.toDateString()}>
+                  {getMonthYearOld(date)}
+                </time>
                 <div class="timeline" />
               </div>
               {link ? (
@@ -707,7 +640,7 @@ const emailAddress = siteConfig.email;
       }
     </section>
     <section id="tutoring">
-      <h2>Tutoring</h2>
+      <h2>{cv.ui.tutoring}</h2>
       {
         tutoring.map(
           async ({
@@ -719,13 +652,13 @@ const emailAddress = siteConfig.email;
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
-                    {getMonthYear(endDate)}
+                    {getMonthYearOld(endDate)}
                   </time>
                 ) : (
                   ""
                 )}
                 <time datetime={startDate.toDateString()}>
-                  {getMonthYear(startDate)}
+                  {getMonthYearOld(startDate)}
                 </time>
                 <div class="timeline" />
               </div>
@@ -767,7 +700,7 @@ const emailAddress = siteConfig.email;
       }
     </section>
     <section id="talks-and-lectures">
-      <h2>Talks and Lectures</h2>
+      <h2>{cv.ui.coursesAndTalks}</h2>
       {
         talksAndLectures.map(
           async ({
@@ -777,7 +710,9 @@ const emailAddress = siteConfig.email;
             <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
+                <time datetime={date.toDateString()}>
+                  {getMonthYearOld(date)}
+                </time>
                 <div class="timeline" />
               </div>
               {link ? (
@@ -814,7 +749,7 @@ const emailAddress = siteConfig.email;
       }
     </section>
     <section id="courses-attended">
-      <h2>Courses Attended</h2>
+      <h2>{cv.ui.coursesAttended}</h2>
       {
         coursesAttended.map(
           async ({
@@ -826,13 +761,13 @@ const emailAddress = siteConfig.email;
                 <div class="timeline-top" />
                 {endDate ? (
                   <time datetime={endDate.toDateString()}>
-                    {getMonthYear(endDate)}
+                    {getMonthYearOld(endDate)}
                   </time>
                 ) : (
                   ""
                 )}
                 <time datetime={startDate.toDateString()}>
-                  {getMonthYear(startDate)}
+                  {getMonthYearOld(startDate)}
                 </time>
                 <div class="timeline" />
               </div>
@@ -872,7 +807,7 @@ const emailAddress = siteConfig.email;
       }
     </section>
     <section id="works">
-      <h2>Works</h2>
+      <h2>{cv.ui.projectsList}</h2>
       {
         works.map(async ({ Works: work, WorksTranslations: translation }) => (
           <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
@@ -880,13 +815,13 @@ const emailAddress = siteConfig.email;
               <div class="timeline-top" />
               {work.endDate ? (
                 <time datetime={work.endDate.toDateString()}>
-                  {getMonthYear(work.endDate)}
+                  {getMonthYearOld(work.endDate)}
                 </time>
               ) : (
                 ""
               )}
               <time datetime={work.startDate.toDateString()}>
-                {getMonthYear(work.startDate)}
+                {getMonthYearOld(work.startDate)}
               </time>
               <div class="timeline" />
             </div>
