@@ -3,242 +3,55 @@ import Base from "@/layouts/Base.astro";
 import profilePhoto from "@/assets/daniel-locatelli-v1.png";
 import { Image } from "astro:assets";
 import Container from "@/components/Container.astro";
-import {
-  db,
-  eq,
-  gte,
-  isNotNull,
-  isNull,
-  or,
-  and,
-  Certifications,
-  CertificationsTranslations,
-  Experience,
-  ExperienceTranslations,
-  ExperienceItems,
-  Education,
-  EducatonTranslations,
-  EducationItems,
-  Quote,
-  Summary,
-  SkillProgramming,
-  SkillProgrammingTranslations,
-  SkillFrameworks,
-  SkillFrameworksTranslations,
-  SkillDatabases,
-  SkillDatabasesTranslations,
-  SkillDesign,
-  SkillDesignTranslations,
-  SkillSpecialized,
-  SkillSpecializedTranslations,
-  Scholarships,
-  ScholarshipsTranslations,
-  Publications,
-  PublicationsTranslations,
-  PersonToPublications,
-  TalksAndLectures,
-  TalksAndLecturesTranslations,
-} from "astro:db";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@/site-config";
-
-
-const getMonthYear = (date: Date): string => {
-  const month =
-    date.getMonth() < 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
-  const year = date.getFullYear();
-  return `${month}.${year}`;
-};
+import type {
+  I18nCV,
+  Experience,
+  Education,
+  Scholarship,
+  Publication,
+  Certification,
+  Engagement,
+} from "src/i18n/cv/types.ts";
+import type { I18nMeta } from "src/i18n/meta/types";
+import { createHtmlId, getI18n, getMonthYear } from "src/i18n/utils";
 
 const locale = "en";
 
-const quote = await db
-  .selectDistinct({ text: Quote.text })
-  .from(Quote)
-  .where(eq(Quote.locale, locale));
+const meta = await getI18n<I18nMeta>("meta", locale);
+const cv = await getI18n<I18nCV>("cv", locale);
 
-const summary = await db
-  .selectDistinct({ text: Summary.text })
-  .from(Summary)
-  .where(eq(Summary.locale, locale));
-
-const skillProgramming = await db
-  .select()
-  .from(SkillProgramming)
-  .leftJoin(
-    SkillProgrammingTranslations,
-    eq(SkillProgramming.id, SkillProgrammingTranslations.skillId),
-  )
-  .where(eq(SkillProgrammingTranslations.locale, locale));
-
-const skillFrameworks = await db
-  .select()
-  .from(SkillFrameworks)
-  .leftJoin(
-    SkillFrameworksTranslations,
-    eq(SkillFrameworks.id, SkillFrameworksTranslations.skillId),
-  )
-  .where(eq(SkillFrameworksTranslations.locale, locale));
-
-const skillDatabases = await db
-  .select()
-  .from(SkillDatabases)
-  .leftJoin(
-    SkillDatabasesTranslations,
-    eq(SkillDatabases.id, SkillDatabasesTranslations.skillId),
-  )
-  .where(eq(SkillDatabasesTranslations.locale, locale));
-
-const skillDesign = await db
-  .select()
-  .from(SkillDesign)
-  .leftJoin(
-    SkillDesignTranslations,
-    eq(SkillDesign.id, SkillDesignTranslations.skillId),
-  )
-  .where(eq(SkillDesignTranslations.locale, locale));
-
-const skillSpecialized = await db
-  .select()
-  .from(SkillSpecialized)
-  .leftJoin(
-    SkillSpecializedTranslations,
-    eq(SkillSpecialized.id, SkillSpecializedTranslations.skillId),
-  )
-  .where(eq(SkillSpecializedTranslations.locale, locale));
-
-const experience = await db
-  .select()
-  .from(Experience)
-  .leftJoin(
-    ExperienceTranslations,
-    eq(Experience.id, ExperienceTranslations.experienceId),
-  )
-  .where(
-    and(
-      eq(ExperienceTranslations.locale, locale),
-      gte(Experience.startDate, new Date("2015-01-01")),
-    ),
-  );
-
-const itemsByExperienceId = await Promise.all(
-  experience.map(async ({ Experience: exp }) => {
-    const items = await db
-      .select()
-      .from(ExperienceItems)
-      .where(
-        and(
-          eq(ExperienceItems.experienceId, exp.id),
-          eq(ExperienceItems.locale, locale),
-        ),
-      );
-    return { id: exp.id, items: items };
-  }),
+const expSelected = cv.experiences.filter(
+  (exp) => new Date(exp.startDate) >= new Date("2015"),
 );
 
-const education = await db
-  .select()
-  .from(Education)
-  .leftJoin(
-    EducatonTranslations,
-    eq(Education.id, EducatonTranslations.educationId),
-  )
-  .where(
-    and(
-      eq(EducatonTranslations.locale, locale),
-      or(
-        isNull(Education.endDate),
-        gte(Education.endDate, new Date("2016-01-01")),
-      ),
-    ),
-  );
+const eduSelected = cv.education.filter((edu) => {
+  if (edu.endDate === undefined) return true;
+  return new Date(edu.endDate) >= new Date("2014");
+});
 
-const itemsByEducationId = await Promise.all(
-  education.map(async ({ Education: edu }) => {
-    const items = await db
-      .select()
-      .from(EducationItems)
-      .where(eq(EducationItems.educationId, edu.id));
-    return { id: edu.id, items: items };
-  }),
+const certSelected = cv.certifications.filter(
+  (cert) => new Date(cert.date) >= new Date("2015"),
 );
 
-const scholarships = await db
-  .select()
-  .from(Scholarships)
-  .leftJoin(
-    ScholarshipsTranslations,
-    eq(Scholarships.id, ScholarshipsTranslations.scholarshipId),
-  )
-  .where(eq(ScholarshipsTranslations.locale, locale));
-
-const publications = await db
-  .select()
-  .from(Publications)
-  .leftJoin(
-    PublicationsTranslations,
-    eq(Publications.id, PublicationsTranslations.publicationId),
-  )
-  .where(
-    and(
-      eq(PublicationsTranslations.locale, locale),
-    ),
-  );
-
-const personByPublicationId = await Promise.all(
-  publications.map(async ({ Publications: pub }) => {
-    const items = await db
-      .select()
-      .from(PersonToPublications)
-      .where(eq(PersonToPublications.publicationId, pub.id));
-    return { id: pub.id, items: items };
-  }),
+const engSelected = cv.engagements.filter(
+  (eng) => new Date(eng.startDate) >= new Date(2023, 11, 0),
 );
-
-const certifications = await db
-  .select()
-  .from(Certifications)
-  .leftJoin(
-    CertificationsTranslations,
-    eq(Certifications.id, CertificationsTranslations.certificationId),
-  )
-  .where(
-    and(
-      eq(CertificationsTranslations.locale, locale),
-      gte(Certifications.date, new Date("2018-01-01")),
-    ),
-  );
-
-const talksAndLectures = await db
-  .select()
-  .from(TalksAndLectures)
-  .leftJoin(
-    TalksAndLecturesTranslations,
-    eq(TalksAndLectures.id, TalksAndLecturesTranslations.talkId),
-  )
-  .where(
-    and(
-      eq(TalksAndLecturesTranslations.locale, locale),
-      gte(TalksAndLectures.date, new Date("2023-01-01")),
-    ),
-  );
-
-const emailAddress = siteConfig.email;
 ---
 
 <Base
   meta={{
-    title: "CV",
-    description:
-      "This is my full CV, including work, education, lectures, publications, certificates, and more.",
-    coverAlt: "Daniel Locatelli's profile photo.",
+    title: cv.meta.titleSimple,
+    description: cv.meta.descriptionSimple,
+    coverAlt: cv.meta.coverAlt,
     coverImage: "@/assets/daniel-locatelli.png",
-    locale: "en",
-    slug: "cv",
+    locale: locale,
+    slug: "full-cv",
   }}
 >
   <Container
-    class="font-body relative flex flex-col gap-5 text-base print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-2 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-2 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-2 [&_.timeline-top]:border-r [&_.timeline-top]:print:h-2 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:print:font-bold [&_h3]:text-lg/6  [&_h4]:text-zinc-300"
+    class="font-body relative flex flex-col gap-5 text-base print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-2 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-2 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-2 [&_.timeline-top]:border-r [&_.timeline-top]:print:h-2 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg/6 [&_h3]:print:font-bold [&_h4]:text-zinc-300"
   >
     <div class="flex flex-col gap-6 pt-20 sm:flex-row sm:pt-28 print:pt-2">
       <Image
@@ -248,18 +61,18 @@ const emailAddress = siteConfig.email;
       />
       <div class="flex flex-col justify-center gap-1">
         <div class="flex flex-col gap-1">
-          <h1 class="font-title text-5xl">Daniel Nunes Locatelli</h1>
-          <p class="text-xl">AEC Software developer</p>
+          <h1 class="font-title text-5xl">{siteConfig.author}</h1>
+          <p class="text-xl">{cv.ui.title}</p>
         </div>
-        <div class="flex flex-col gap-4 text-sm sm:flex-row">
+        <div class="flex flex-col gap-4 text-sm sm:flex-row sm:gap-7">
           <p class="text-pretty sm:text-xs sm:text-balance">
-            {quote[0].text}
+            {cv.quote}
           </p>
           <div>
             <address class="flex flex-col sm:text-xs">
-              <a href={"mailto:" + emailAddress}>{emailAddress}</a>
-              <span> +49 178 324-0834 </span>
-              <span> Munich, Germany </span>
+              <a href={"mailto:" + siteConfig.email}>{siteConfig.email}</a>
+              <span> {siteConfig.phone} </span>
+              <span> {meta.city}, {meta.country} </span>
             </address>
             <div class="flex h-full grow gap-2">
               <a
@@ -272,10 +85,11 @@ const emailAddress = siteConfig.email;
                   class="inline-block size-5 align-middle sm:size-3.5"
                 />
               </a>
-              <a href="https://github.com/daniel-locatelli"
+              <a
+                href="https://github.com/daniel-locatelli"
                 class="h-min"
                 title="Check my GitHub"
-                >
+              >
                 <Icon
                   name="mdi:github"
                   class="inline-block size-5 align-middle sm:size-3.5"
@@ -296,83 +110,73 @@ const emailAddress = siteConfig.email;
         </div>
       </div>
     </div>
-    <section id="summary">
-      <h2>Summary</h2>
-      <p class="text-pretty">{summary[0].text}</p>
+    <section id={createHtmlId(cv.ui.summary)}>
+      <h2>{cv.ui.summary}</h2>
+      <p class="text-pretty">{cv.summary}</p>
     </section>
     <section id="technical-skills">
-      <h2>Skills</h2>
+      <h2>{cv.ui.skills}</h2>
       <table
         class="table-auto [&_td]:leading-5 [&_th]:pr-2 [&_th]:text-right [&_th]:align-top [&_th]:font-thin sm:[&_th]:pr-4"
       >
         <tr>
-          <th>Programming</th>
+          <th>{cv.ui.programming}</th>
           <td>
             {
-              skillProgramming.map(
-                (
-                  { SkillProgramming, SkillProgrammingTranslations },
-                  idx,
-                  arr,
-                ) =>
-                  idx === arr.length - 1
-                    ? (SkillProgrammingTranslations?.skillId ??
-                      SkillProgramming.id)
-                    : (SkillProgrammingTranslations?.skillId ??
-                        SkillProgramming.id) + ", ",
+              cv.skillsProgramming.map((skill, idx, arr) =>
+                idx === arr.length - 1 ? skill.title : skill.title + ", ",
               )
             }
           </td>
         </tr>
         <tr>
-          <th>Frameworks</th>
+          <th>{cv.ui.frameworks}</th>
           <td>
             {
-              skillFrameworks.map(({ SkillFrameworks }, idx, arr) =>
+              cv.skillsFrameworks.map((skill, idx, arr) =>
+                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              )
+            }
+          </td>
+        </tr>
+        <tr>
+          <th>{cv.ui.databases}</th>
+          <td>
+            {
+              cv.skillsDatabases.map((skill, idx, arr) =>
+                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              )
+            }
+          </td>
+        </tr>
+        <tr>
+          <th>{cv.ui.designTools}</th>
+          <td>
+            {
+              cv.skillsDesign.map((skill, idx, arr) =>
+                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              )
+            }
+          </td>
+        </tr>
+        <tr>
+          <th>{cv.ui.specialization}</th>
+          <td>
+            {
+              cv.skillsSpecialized.map((skill, idx, arr) =>
+                idx === arr.length - 1 ? skill : skill + ", ",
+              )
+            }
+          </td>
+        </tr>
+        <tr>
+          <th>{cv.ui.languages}</th>
+          <td>
+            {
+              cv.skillsLanguages.map((skill, idx, arr) =>
                 idx === arr.length - 1
-                  ? SkillFrameworks.id
-                  : SkillFrameworks.id + ", ",
-              )
-            }
-          </td>
-        </tr>
-        <tr>
-          <th>Databases</th>
-          <td>
-            {
-              skillDatabases.map(({ SkillDatabases }, idx, arr) =>
-                idx === arr.length - 1
-                  ? SkillDatabases.id
-                  : SkillDatabases.id + ", ",
-              )
-            }
-          </td>
-        </tr>
-        <tr>
-          <th>Design Tools</th>
-          <td>
-            {
-              skillDesign.map(({ SkillDesign }, idx, arr) =>
-                idx === arr.length - 1 ? SkillDesign.id : SkillDesign.id + ", ",
-              )
-            }
-          </td>
-        </tr>
-        <tr>
-          <th>Specialized Skills</th>
-          <td>
-            {
-              skillSpecialized.map(
-                (
-                  { SkillSpecialized, SkillSpecializedTranslations },
-                  idx,
-                  arr,
-                ) =>
-                  idx === arr.length - 1
-                    ? (SkillSpecializedTranslations?.title ??
-                      SkillSpecialized.title)
-                    : (SkillSpecializedTranslations?.title ??
-                        SkillSpecialized.title) + ", ",
+                  ? `${skill.title} (${skill.level})`
+                  : `${skill.title} (${skill.level}), `,
               )
             }
           </td>
@@ -380,244 +184,367 @@ const emailAddress = siteConfig.email;
       </table>
     </section>
     <section
-      id="work-experience"
+      id={createHtmlId(cv.ui.professionalExperience)}
       class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
     >
-      <h2>Work Experience</h2>
+      <h2>{cv.ui.professionalExperience}</h2>
       {
-        experience.map(
-          async ({
-            Experience: { id, startDate, endDate, link },
-            ExperienceTranslations,
-          }, index) => (
-            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
+        expSelected.map((experience: Experience, index: number) => {
+          const isOdd = index % 2 === 0;
+          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+
+          return (
+            <div
+              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
+            >
               <div class="timeline-wrapper">
-                <div class={`${index === 0 ? "" : "timeline-top"}`} />
-                {endDate ? (
-                  <time datetime={endDate.toDateString()}>
-                    {getMonthYear(endDate)}
+                <div class="timeline-top" />
+                {experience.endDate ? (
+                  <time datetime={new Date(experience.endDate).toDateString()}>
+                    {getMonthYear(experience.endDate)}
                   </time>
                 ) : (
-                  <span>Current</span>
+                  <span>{cv.ui.current}</span>
                 )}
-                <time datetime={startDate.toDateString()}>
-                  {getMonthYear(startDate)}
+                <time datetime={new Date(experience.startDate).toDateString()}>
+                  {getMonthYear(experience.startDate)}
                 </time>
                 <div class="timeline" />
               </div>
-              {link ? (
-                <a
-                  href={link}
-                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-                >
+
+              {experience.link ? (
+                <a href={experience.link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
-                    <span class="grow">{ExperienceTranslations?.title} </span>
+                    <span class="grow">{experience.title}</span>
                     <Icon
                       name="mdi:external-link"
                       class="mt-2 size-3 shrink-0 print:hidden"
                     />
                   </h3>
-                  <h4>
-                    {ExperienceTranslations?.company} |{" "}
-                    {ExperienceTranslations?.location}
-                  </h4>
-                  {ExperienceTranslations?.companyNote ? (
+                  {experience.titleNote && (
                     <p class="mb-1 ml-1 text-xs text-zinc-300">
                       <sup>⤷</sup>
-                      {ExperienceTranslations.companyNote}
+                      {experience.titleNote}
                     </p>
-                  ) : (
-                    ""
+                  )}
+                  <h4>
+                    {experience.company} | {experience.location}
+                  </h4>
+                  {experience.companyNote && (
+                    <p class="mb-1 ml-1 text-xs text-zinc-300">
+                      <sup>⤷</sup>
+                      {experience.companyNote}
+                    </p>
                   )}
                   <ul>
-                    {itemsByExperienceId
-                      .find((itemObj) => itemObj.id === id)
-                      ?.items.map((item) => (
-                        <li>{item.text}</li>
-                      ))}
+                    {experience.items.map((item: string, itemIndex: number) => (
+                      <li>{item}</li>
+                    ))}
                   </ul>
                 </a>
               ) : (
-                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
-                  <h3 class="mb-0">{ExperienceTranslations?.title}</h3>
-                  <h4>
-                    {ExperienceTranslations?.company} |{" "}
-                    {ExperienceTranslations?.location}
-                  </h4>
-                  {ExperienceTranslations?.companyNote ? (
+                <div class={`item-text ${bgClass}`}>
+                  <h3 class="mb-0">{experience.title}</h3>
+                  {experience.titleNote && (
                     <p class="mb-1 ml-1 text-xs text-zinc-300">
                       <sup>⤷</sup>
-                      {ExperienceTranslations.companyNote}
+                      {experience.titleNote}
                     </p>
-                  ) : (
-                    ""
+                  )}
+                  <h4>
+                    {experience.company} | {experience.location}
+                  </h4>
+                  {experience.companyNote && (
+                    <p class="mb-1 ml-1 text-xs text-zinc-300">
+                      <sup>⤷</sup>
+                      {experience.companyNote}
+                    </p>
                   )}
                   <ul>
-                    {itemsByExperienceId
-                      .find((itemObj) => itemObj.id === id)
-                      ?.items.map((item) => (
-                        <li>{item.text}</li>
-                      ))}
+                    {experience.items.map((item: string) => (
+                      <li>{item}</li>
+                    ))}
                   </ul>
                 </div>
               )}
             </div>
-          ),
-        )
+          );
+        })
       }
     </section>
     <section
-      id="education"
+      id={createHtmlId(cv.ui.education)}
       class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
     >
-      <h2>Education</h2>
+      <h2>{cv.ui.education}</h2>
       {
-        education.map(
-          async ({
-            Education: { id, startDate, endDate, link },
-            EducatonTranslations,
-          }) => (
-            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
-              <div class="timeline-wrapper">
-                <div class="timeline-top" />
-                {endDate ? (
-                  <time datetime={endDate.toDateString()}>
-                    {getMonthYear(endDate)}
-                  </time>
-                ) : (
-                  <span>Current</span>
-                )}
+        eduSelected.map((education: Education, index: number) => {
+          const isOdd = index % 2 === 0;
+          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
 
-                <time datetime={startDate.toDateString()}>
-                  {getMonthYear(startDate)}
-                </time>
-                <div class="timeline" />
-              </div>
-              {link ? (
-                <a
-                  href={link}
-                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-                >
-                  <h3 class="mb-0 flex">
-                    <span class="grow">
-                      {EducatonTranslations?.title ?? ""}{" "}
-                    </span>
-                    <Icon
-                      name="mdi:external-link"
-                      class="mt-2 size-3 shrink-0 print:hidden"
-                    />
-                  </h3>
-                  <h4>
-                    {EducatonTranslations?.institution ?? ""} |{" "}
-                    {EducatonTranslations?.location ?? ""}
-                  </h4>
-                  <ul>
-                    {itemsByEducationId
-                      .find((itemObj) => itemObj.id === id)
-                      ?.items.map((item) => (
-                        <li>{item.text}</li>
-                      ))}
-                  </ul>
-                </a>
-              ) : (
-                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
-                  <h3 class="mb-0">{EducatonTranslations?.title ?? ""}</h3>
-                  <h4>
-                    {EducatonTranslations?.institution ?? ""} |{" "}
-                    {EducatonTranslations?.location ?? ""}
-                  </h4>
-                  <ul>
-                    {itemsByEducationId
-                      .find((itemObj) => itemObj.id === id)
-                      ?.items.map((item) => (
-                        <li>{item.text}</li>
-                      ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          ),
-        )
-      }
-    </section>
-    <section id="scholarships">
-      <h2>Scholarships</h2>
-      {
-        scholarships.map(
-          async ({
-            Scholarships: { startDate, endDate, link },
-            ScholarshipsTranslations,
-          }) => (
-            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
+          return (
+            <div
+              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
+            >
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                {endDate ? (
-                  <time datetime={endDate.toDateString()}>
-                    {getMonthYear(endDate)}
+                {education.endDate ? (
+                  <time datetime={new Date(education.endDate).toDateString()}>
+                    {getMonthYear(education.endDate)}
                   </time>
                 ) : (
-                  <span>Current</span>
+                  <span>{cv.ui.current}</span>
                 )}
-                <time datetime={startDate.toDateString()}>
-                  {getMonthYear(startDate)}
+                <time datetime={new Date(education.startDate).toDateString()}>
+                  {getMonthYear(education.startDate)}
                 </time>
                 <div class="timeline" />
               </div>
-              {link ? (
-                <a
-                  href={link}
-                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-                >
+
+              {education.link ? (
+                <a href={education.link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
-                    <span class="grow">
-                      {ScholarshipsTranslations?.title ?? ""}{" "}
-                    </span>
+                    <span class="grow">{education.title}</span>
                     <Icon
                       name="mdi:external-link"
                       class="mt-2 size-3 shrink-0 print:hidden"
                     />
                   </h3>
-                  <h4>{ScholarshipsTranslations?.institution ?? ""}</h4>
-                  <p class="text-sm text-pretty text-zinc-300">
-                    {ScholarshipsTranslations?.description ?? ""}
+                  <h4>
+                    {education.institution} | {education.location}
+                  </h4>
+
+                  {/* Render description if its  exist */}
+                  {education.description &&
+                    education.description.length > 0 && (
+                      <div class="mb-1 ml-1 text-sm text-zinc-300">
+                        <p>{education.description}</p>
+                      </div>
+                    )}
+
+                  {/* Render supervisors if they exist */}
+                  {education.supervisors &&
+                    education.supervisors.length > 0 && (
+                      <div class="mb-1 ml-1 text-sm text-zinc-300">
+                        <p>
+                          {cv.ui.supervisors}:
+                          {education.supervisors.map((supervisor, idx, arr) =>
+                            idx === arr.length - 1
+                              ? `${supervisor}`
+                              : `${supervisor}, `,
+                          )}
+                        </p>
+                      </div>
+                    )}
+
+                  {/* Render tutors if they exist */}
+                  {education.advisors && education.advisors.length > 0 && (
+                    <div class="mb-1 ml-1 text-sm text-zinc-300">
+                      <p>
+                        {cv.ui.advisors}:
+                        {education.advisors.map((advisor, idx, arr) =>
+                          idx === arr.length - 1
+                            ? `${advisor}`
+                            : `${advisor}, `,
+                        )}
+                      </p>
+                    </div>
+                  )}
+                </a>
+              ) : (
+                <div class={`item-text ${bgClass}`}>
+                  <h3 class="mb-0">{education.title}</h3>
+                  <h4>
+                    {education.institution} | {education.location}
+                  </h4>
+
+                  {/* Render supervisors if they exist */}
+                  {education.supervisors &&
+                    education.supervisors.length > 0 && (
+                      <div class="mb-1 ml-1 text-xs text-zinc-300">
+                        <p class="font-semibold">Supervisors:</p>
+                        <ul class="ml-2">
+                          {education.supervisors.map((supervisor) => (
+                            <li>{supervisor}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                  {/* Render tutors if they exist */}
+                  {education.advisors && education.advisors.length > 0 && (
+                    <div class="mb-1 ml-1 text-xs text-zinc-300">
+                      <p class="font-semibold">Tutors:</p>
+                      <ul class="ml-2">
+                        {education.advisors.map((advisor) => (
+                          <li>{advisor}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })
+      }
+    </section>
+    <section id={createHtmlId(cv.ui.scholarships)}>
+      <h2>{cv.ui.scholarships}</h2>
+      {
+        cv.scholarships.map((scholarship: Scholarship, index: number) => {
+          const isOdd = index % 2 === 0;
+          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+
+          return (
+            <div
+              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
+            >
+              <div class="timeline-wrapper">
+                <div class="timeline-top" />
+                {scholarship.endDate ? (
+                  <time datetime={new Date(scholarship.endDate).toDateString()}>
+                    {getMonthYear(scholarship.endDate)}
+                  </time>
+                ) : (
+                  <span>{cv.ui.current}</span>
+                )}
+                <time datetime={new Date(scholarship.startDate).toDateString()}>
+                  {getMonthYear(scholarship.startDate)}
+                </time>
+                <div class="timeline" />
+              </div>
+
+              {scholarship.link ? (
+                <a href={scholarship.link} class={`item-text ${bgClass}`}>
+                  <h3 class="mb-0 flex">
+                    <span class="grow">{scholarship.title}</span>
+                    <Icon
+                      name="mdi:external-link"
+                      class="mt-2 size-3 shrink-0 print:hidden"
+                    />
+                  </h3>
+                  <h4>
+                    {scholarship.institution} | {scholarship.location}
+                  </h4>
+                  {scholarship.description && (
+                    <p class="text-sm text-pretty text-zinc-300">
+                      {scholarship.description}
+                    </p>
+                  )}
+                </a>
+              ) : (
+                <div class={`item-text ${bgClass}`}>
+                  <h3 class="mb-0">{scholarship.title}</h3>
+                  <h4>
+                    {scholarship.institution} | {scholarship.location}
+                  </h4>
+                  {scholarship.description && (
+                    <p class="text-sm text-pretty text-zinc-300">
+                      {scholarship.description}
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })
+      }
+    </section>
+    <section id={createHtmlId(cv.ui.publications)}>
+      <h2>{cv.ui.publications}</h2>
+      {
+        cv.publications.map((publication: Publication, index: number) => {
+          const isOdd = index % 2 === 0;
+          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+
+          return (
+            <div
+              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
+            >
+              <div class="timeline-wrapper">
+                <div class="timeline-top" />
+                <time datetime={new Date(publication.date).toDateString()}>
+                  {getMonthYear(publication.date)}
+                </time>
+                <div class="timeline" />
+              </div>
+
+              {publication.link ? (
+                <a href={publication.link} class={`item-text ${bgClass}`}>
+                  <h3 class="mb-0 flex">
+                    <span class="grow">{publication.title}</span>
+                    <Icon
+                      name="mdi:external-link"
+                      class="mt-2 size-3 shrink-0 print:hidden"
+                    />
+                  </h3>
+                  <h4>
+                    {publication.publisher}
+                    {publication.location ? ` | ${publication.location}` : ""}
+                  </h4>
+                  <p class="flex flex-wrap text-sm text-zinc-300">
+                    {publication.authors.map((author, authorIndex, array) => (
+                      <span class="mr-1 text-nowrap">
+                        {authorIndex + 1 === array.length
+                          ? author
+                          : `${author}, `}
+                      </span>
+                    ))}
                   </p>
                 </a>
               ) : (
-                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
-                  <h3 class="mb-0">{ScholarshipsTranslations?.title ?? ""}</h3>
-                  <h4>{ScholarshipsTranslations?.institution ?? ""}</h4>
-                  <p class="text-sm text-pretty text-zinc-300">
-                    {ScholarshipsTranslations?.description ?? ""}
+                <div class={`item-text ${bgClass}`}>
+                  <h3 class="mb-0">{publication.title}</h3>
+                  <h4>
+                    {publication.publisher}
+                    {publication.location ? ` | ${publication.location}` : ""}
+                  </h4>
+                  <p class="flex flex-wrap text-sm text-zinc-300">
+                    {publication.authors.map((author, authorIndex, array) => (
+                      <span class="mr-1 text-nowrap">
+                        {authorIndex + 1 === array.length
+                          ? author
+                          : `${author}, `}
+                      </span>
+                    ))}
                   </p>
                 </div>
               )}
             </div>
-          ),
-        )
+          );
+        })
       }
     </section>
-    <section id="publications">
-      <h2>Publications</h2>
+    <section id={createHtmlId(cv.ui.certifications)}>
+      <h2>{cv.ui.certifications}</h2>
       {
-        publications.map(
-          async ({
-            Publications: { id, date, link },
-            PublicationsTranslations,
-          }) => (
-            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
+        certSelected.map((certification: Certification, index: number) => {
+          const isOdd = index % 2 === 0;
+          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+
+          return (
+            <div
+              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
+            >
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
+                <time datetime={new Date(certification.date).toDateString()}>
+                  {getMonthYear(certification.date)}
+                </time>
                 <div class="timeline" />
               </div>
-              {link ? (
-                <a
-                  href={link}
-                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-                >
+
+              {certification.link ? (
+                <a href={certification.link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
                     <span class="grow">
-                      {PublicationsTranslations?.title ?? ""}{" "}
+                      {certification.title}
+                      {certification.credentialID && (
+                        <span class="ml-1 text-xs text-zinc-300">
+                          ({certification.credentialID})
+                        </span>
+                      )}
                     </span>
                     <Icon
                       name="mdi:external-link"
@@ -625,138 +552,123 @@ const emailAddress = siteConfig.email;
                     />
                   </h3>
                   <h4>
-                    {PublicationsTranslations?.publisher ?? ""}
-                    {PublicationsTranslations?.location
-                      ? `| ${PublicationsTranslations.location}`
-                      : ""}
+                    {certification.issuer}
+                    {certification.validUntil && (
+                      <span class="ml-1 text-xs text-zinc-300">
+                        | {cv.ui.validUntil}:{" "}
+                        {getMonthYear(certification.validUntil)}
+                      </span>
+                    )}
                   </h4>
-                  <p class="flex flex-wrap text-sm text-zinc-300">
-                    {personByPublicationId
-                      .find((itemObj) => itemObj.id === id)
-                      ?.items.map((item, index, array) => (
-                        <span class="mr-1 text-nowrap">
-                          {index + 1 === array.length
-                            ? item.personId
-                            : `${item.personId}, `}
-                        </span>
-                      ))}
-                  </p>
+                  {certification.description && (
+                    <p class="text-sm text-pretty text-zinc-300">
+                      {certification.description}
+                    </p>
+                  )}
                 </a>
               ) : (
-                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
-                  <h3 class="mb-0">{PublicationsTranslations?.title ?? ""}</h3>
-                  <h4>
-                    {PublicationsTranslations?.publisher ?? ""}
-                    {PublicationsTranslations?.location
-                      ? `| ${PublicationsTranslations.location}`
-                      : ""}
-                  </h4>
-                  <p class="flex flex-wrap text-sm text-zinc-300">
-                    {personByPublicationId
-                      .find((itemObj) => itemObj.id === id)
-                      ?.items.map((item, index, array) => (
-                        <span class="mr-1 text-nowrap">
-                          {index + 1 === array.length
-                            ? item.personId
-                            : `${item.personId}, `}
-                        </span>
-                      ))}
-                  </p>
-                </div>
-              )}
-            </div>
-          ),
-        )
-      }
-    </section>
-    <section id="certifications">
-      <h2>Certifications</h2>
-      {
-        certifications.map(
-          async ({
-            Certifications: { date, link },
-            CertificationsTranslations,
-          }) => (
-            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
-              <div class="timeline-wrapper">
-                <div class="timeline-top" />
-                <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
-                <div class="timeline" />
-              </div>
-              {link ? (
-                <a
-                  href={link}
-                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-                >
-                  <h3 class="mb-0 flex">
-                    <span class="grow">
-                      {CertificationsTranslations?.title ?? ""}{" "}
-                    </span>
-                    <Icon
-                      name="mdi:external-link"
-                      class="mt-2 size-3 shrink-0 print:hidden"
-                    />
-                  </h3>
-                  <h4>{CertificationsTranslations?.issuer ?? ""}</h4>
-                </a>
-              ) : (
-                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
+                <div class={`item-text ${bgClass}`}>
                   <h3 class="mb-0">
-                    {CertificationsTranslations?.title ?? ""}
+                    {certification.title}
+                    {certification.credentialID && (
+                      <span class="ml-1 text-xs text-zinc-300">
+                        ({certification.credentialID})
+                      </span>
+                    )}
                   </h3>
-                  <h4>{CertificationsTranslations?.issuer ?? ""}</h4>
+                  <h4>
+                    {certification.issuer}
+                    {certification.validUntil && (
+                      <span class="ml-1 text-xs text-zinc-300">
+                        | {cv.ui.validUntil}:{" "}
+                        {getMonthYear(certification.validUntil)}
+                      </span>
+                    )}
+                  </h4>
+                  {certification.description && (
+                    <p class="text-sm text-pretty text-zinc-300">
+                      {certification.description}
+                    </p>
+                  )}
                 </div>
               )}
             </div>
-          ),
-        )
+          );
+        })
       }
     </section>
-    <section id="talks-and-lectures">
-      <h2>Talks and Lectures</h2>
+    <section id={createHtmlId(cv.ui.engagementSimple)}>
+      <h2>{cv.ui.engagementSimple}</h2>
       {
-        talksAndLectures.map(
-          async ({
-            TalksAndLectures: { date, link },
-            TalksAndLecturesTranslations,
-          }) => (
-            <div class="group grid grid-cols-[100px_minmax(100px,1fr)]">
+        engSelected.map((engagement: Engagement, index: number) => {
+          const isOdd = index % 2 === 0;
+          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+
+          return (
+            <div
+              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
+            >
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                <time datetime={date.toDateString()}>{getMonthYear(date)}</time>
+                {engagement.endDate ? (
+                  <time datetime={new Date(engagement.endDate).toDateString()}>
+                    {getMonthYear(engagement.endDate)}
+                  </time>
+                ) : (
+                  ""
+                )}
+                <time datetime={new Date(engagement.startDate).toDateString()}>
+                  {getMonthYear(engagement.startDate)}
+                </time>
                 <div class="timeline" />
               </div>
-              {link ? (
-                <a
-                  href={link}
-                  class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]"
-                >
+
+              {engagement.link ? (
+                <a href={engagement.link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
-                    <span class="grow">
-                      {TalksAndLecturesTranslations?.title}{" "}
-                    </span>
+                    <span class="grow">{engagement.title}</span>
                     <Icon
                       name="mdi:external-link"
                       class="mt-2 size-3 shrink-0 print:hidden"
                     />
                   </h3>
                   <h4>
-                    {TalksAndLecturesTranslations?.organization} |{" "}
-                    {TalksAndLecturesTranslations?.location}
+                    {engagement.organization}
+                    {engagement.location ? ` | ${engagement.location}` : ""}
                   </h4>
+                  {
+                    <p class="text-sm text-pretty text-zinc-300 italic">
+                      {engagement.type}
+                    </p>
+                  }
+                  {engagement.description && (
+                    <p class="text-sm text-pretty text-zinc-300">
+                      {engagement.description}
+                    </p>
+                  )}
                 </a>
               ) : (
-                <div class="item-text group-odd:bg-[rgb(25,25,25)] group-even:bg-[rgb(21,21,21)]">
-                  <h3 class="mb-0">{TalksAndLecturesTranslations?.title}</h3>
+                <div class={`item-text ${bgClass}`}>
+                  <h3 class="mb-0">{engagement.title}</h3>
                   <h4>
-                    {TalksAndLecturesTranslations?.organization} |{" "}
-                    {TalksAndLecturesTranslations?.location}
+                    {engagement.organization}
+                    {engagement.location ? ` | ${engagement.location}` : ""}
                   </h4>
+                  {
+                    <p class="text-sm text-pretty text-zinc-300 italic">
+                      {engagement.type}
+                    </p>
+                  }
+                  {engagement.description && (
+                    <p class="text-sm text-pretty text-zinc-300">
+                      {engagement.description}
+                    </p>
+                  )}
                 </div>
               )}
             </div>
-          ),
-        )
+          );
+        })
       }
     </section>
   </Container>

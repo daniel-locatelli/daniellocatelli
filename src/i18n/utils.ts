@@ -27,3 +27,12 @@ export async function getI18n<T>(folder: Folder, locale: SupportedLocale): Promi
     return defaultModule.english as T;
   }
 }
+
+export function createHtmlId(input: string, separator: string = '-'): string {
+  if (!input) return '';
+  
+  return input
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, separator) // Replace non-alphanumeric with separator
+    .replace(new RegExp(`^${separator}+|${separator}+$`, 'g'), ''); // Trim separators
+}

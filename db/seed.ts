@@ -2017,7 +2017,7 @@ export default async function seed() {
     { id: "bs-urban-site-configurator", startDate: new Date("2023-01") },
     { id: "ae-curious-desert", startDate: new Date("2021-10") },
     { id: "ae-aids", startDate: new Date("2022-09") },
-    { id: "ae-dome-teshima", startDate: new Date("2022-08") },
+    { id: "ae-dome-docho-island", startDate: new Date("2022-08") },
     { id: "ae-harmonious-cycle", startDate: new Date("2022-07") },
     {
       id: "ae-common-sky",
@@ -2381,7 +2381,7 @@ export default async function seed() {
       category: "Art installations",
       description:
         "Art installations by Olafur Eliasson. Detailing of steel structure.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10162/5",
+      link: "https://art-engineering.net/en/projekt/the-curious-desert/",
     },
     {
       workId: "ae-curious-desert",
@@ -2392,7 +2392,7 @@ export default async function seed() {
       category: "Instalações de arte",
       description:
         "Instalações de arte de Olafur Eliasson. Detalhamento da estrutura de aço.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10162/5",
+      link: "https://art-engineering.net/en/projekt/the-curious-desert/",
     },
     {
       workId: "ae-aids",
@@ -2402,7 +2402,7 @@ export default async function seed() {
       location: "In front of Stedelijk Museum Amsterdam",
       category: "Sculpture",
       description: "Technical and fabrication drawings.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10166/3",
+      link: "https://art-engineering.net/en/projekt/aids-1-95-x-1-95-m/",
     },
     {
       workId: "ae-aids",
@@ -2412,25 +2412,27 @@ export default async function seed() {
       location: "Em frente ao Stedelijk Museum Amsterdam",
       category: "Escultura",
       description: "Desenhos técnicos e de fabricação.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10166/3",
+      link: "https://art-engineering.net/en/projekt/aids-1-95-x-1-95-m/",
     },
     {
-      workId: "ae-dome-teshima",
+      workId: "ae-dome-docho-island",
       locale: "en",
-      title: "Dome at Teshima Island",
+      title: "Breathing earth sphere",
       company: "ArtEngineering GmbH",
-      location: "Teshima, Japan",
+      location: "Docho Island, South Korea",
       category: "Installation",
       description: "Technical drawings, logistics for transportation.",
+      link: "https://art-engineering.net/en/projekt/breathing-earth-sphere/",
     },
     {
-      workId: "ae-dome-teshima",
+      workId: "ae-dome-docho-island",
       locale: "pt",
-      title: "Domo na Ilha de Teshima",
+      title: "Breathing earth sphere",
       company: "ArtEngineering GmbH",
-      location: "Teshima, Japão",
+      location: "Docho Island, South Korea",
       category: "Instalação",
       description: "Desenhos técnicos, logística para transporte.",
+      link: "https://art-engineering.net/en/projekt/breathing-earth-sphere/",
     },
     {
       workId: "ae-harmonious-cycle",
@@ -2441,7 +2443,7 @@ export default async function seed() {
       category: "Sculpture",
       description:
         "Sculpture by Olafur Eliasson. Aiding the detailing and prototyping; logistics for transportation.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10169/0",
+      link: "https://art-engineering.net/projekt/a-harmonious-cycle-of-interconnected-nows/",
     },
     {
       workId: "ae-harmonious-cycle",
@@ -2452,7 +2454,7 @@ export default async function seed() {
       category: "Escultura",
       description:
         "Escultura de Olafur Eliasson. Apoio no detalhamento e prototipagem; logística para transporte.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10169/0",
+      link: "https://art-engineering.net/projekt/a-harmonious-cycle-of-interconnected-nows/",
     },
     {
       workId: "ae-common-sky",
@@ -2463,7 +2465,7 @@ export default async function seed() {
       category: "Complex spatial architecture",
       description:
         "By Studio Other Spaces. Parametric detailing and automated digital fabrication workflow.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10165/4",
+      link: "https://art-engineering.net/projekt/common-sky/",
     },
     {
       workId: "ae-common-sky",
@@ -2474,7 +2476,7 @@ export default async function seed() {
       category: "Arquitetura espacial complexa",
       description:
         "Por Studio Other Spaces. Detalhamento paramétrico e fluxo de fabricação digital automatizado.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10165/4",
+      link: "https://art-engineering.net/projekt/common-sky/",
     },
     {
       workId: "ae-parapivot",
@@ -2505,7 +2507,7 @@ export default async function seed() {
       category: "Sculpture",
       description:
         "Seven-meters-tall steel sculpture by Katharina Grosse. Computational form-fitting using developable surfaces.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10160/8",
+      link: "https://art-engineering.net/projekt/canyon/",
     },
     {
       workId: "ae-canyon",
@@ -2516,29 +2518,29 @@ export default async function seed() {
       category: "Escultura",
       description:
         "Escultura de aço de sete metros de Katharina Grosse. Ajuste computacional de forma usando superfícies desenvolvíveis.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10160/8",
+      link: "https://art-engineering.net/projekt/canyon/",
     },
     {
       workId: "ae-donum",
       locale: "en",
-      title: "Donum",
+      title: "Donum Pavilion",
       company: "ArtEngineering GmbH",
       location: "Donum Estate, Sonoma, USA",
       category: "Architectural Design",
       description:
         "Vertical Panorama Pavilion by Studio Other Spaces. Wine-tasting space. Aiding the detailing.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10160/8",
+      link: "https://art-engineering.net/projekt/vertical-panorama-pavilion/",
     },
     {
       workId: "ae-donum",
       locale: "pt",
-      title: "Donum",
+      title: "Pavilhão Donum",
       company: "ArtEngineering GmbH",
       location: "Donum Estate, Sonoma, EUA",
       category: "Design Arquitetônico",
       description:
         "Vertical Panorama Pavilion por Studio Other Spaces. Espaço de degustação de vinhos. Apoio no detalhamento.",
-      link: "https://www.art-engineering.net/index.php/project/project_detail_ger/10160/8",
+      link: "https://art-engineering.net/projekt/vertical-panorama-pavilion/",
     },
     {
       workId: "ar-zero-tankstelle",

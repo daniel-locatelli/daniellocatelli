@@ -13,11 +13,15 @@ export const siteConfig: SiteConfig = {
   authorFirstName: "Daniel",
   authorLastName: "Nunes Locatelli",
   email: "contact@daniellocatelli.com",
-  phone: "+49 178 324-0834",
+  phone: "+49 178 324-0834",  
   
   // Social Links
+  bluesky: "did:plc:crjzvrnutaxdyfy3thsibcd7",
   github: "https://github.com/daniel-locatelli",
-  linkedin: "https://www.linkedin.com/in/daniel-locatelli",
+  gitlab: "https://gitlab.com/daniellocatelli",
   instagram: "https://www.instagram.com/architectlocatelli",
+  linkedin: "https://www.linkedin.com/in/daniel-locatelli",
+  orcid: "0009-0001-6384-5401",
   whatsapp: "https://wa.me/message/MFRZO3U7RABUM1",
+  
 };

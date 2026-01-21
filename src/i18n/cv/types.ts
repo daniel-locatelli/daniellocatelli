@@ -1,4 +1,11 @@
 export type I18nCV = {
+  meta: {
+    titleSimple: string,
+    descriptionSimple: string
+    titleFull: string,
+    descriptionFull: string,
+    coverAlt: string,
+  },
   ui: {
     title: string,
     summary: string,
@@ -14,12 +21,15 @@ export type I18nCV = {
     scholarships: string,
     publications: string,
     certifications: string,
-    tutoring: string,
-    coursesAndTalks: string,
+    engagementSimple: string,
+    engagementFull: string,
     coursesAttended: string,
     projectsList: string,
     // Other elements
     current: string,
+    supervisors: string,
+    advisors: string,
+    validUntil: string,
   },
   quote: string;
   summary: string;
@@ -34,8 +44,7 @@ export type I18nCV = {
   scholarships: Scholarship[];
   publications: Publication[]; // this is also addin persons
   certifications: Certification[];
-  tutorships: Tutorship[]; // how is this different from talks and lectures?
-  talksAndLectures: TalkAndLecture[];
+  engagements: Engagement[];
   coursesAttended: CourseAttended[];
   works: Work[];
 };
@@ -68,7 +77,7 @@ export type Education = {
   institution: string;
   location: string;
   supervisors?: string[];
-  tutors?: string[];
+  advisors?: string[];
 };
 
 export type Scholarship = {
@@ -101,7 +110,7 @@ export type Certification = {
   issuer: string;
 };
 
-export type Tutorship = {
+export type Engagement = {
   title: string;
   description?: string;
   startDate: string; // ISO date string
@@ -109,15 +118,7 @@ export type Tutorship = {
   link?: string;
   organization: string;
   location?: string;
-};
-
-export type TalkAndLecture = {
-  title: string;
-  description?: string;
-  date: string; // ISO date string
-  link: string;
-  organization: string;
-  location?: string;
+  type: 'Course' | 'Talk' | 'Workshop' | 'Seminar';
 };
 
 export type CourseAttended = {
@@ -139,5 +140,5 @@ export type Work = {
   endDate?: string; // ISO date string
   link?: string;
   location?: string;
-  category?: string;
+  category: string;
 };
