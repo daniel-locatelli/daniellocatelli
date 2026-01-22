@@ -3,13 +3,11 @@ import { siteConfig } from "@/site-config";
 import type { Page } from "src/lib/notion-interfaces";
 import { getDatabaseByName } from "src/lib/notion/client";
 import { Image } from "astro:assets";
-import instagramLogo from "@/assets/instagram-logo.svg";
-import linkedinLogo from "@/assets/linkedin-logo.svg";
-import githubLogo from "@/assets/github-logo.svg";
 import globe from "@/assets/globe.svg";
 import { getLocale } from "src/lib/routes-helpers";
+import { Icon } from "astro-icon/components";
 
-const locale = getLocale(Astro.params)
+const locale = getLocale(Astro.params);
 
 let pagesDatabase = (await getDatabaseByName("Pages"))!;
 let pages: Page[];
@@ -20,9 +18,6 @@ const year = new Date().getFullYear();
 export interface Props {
   slug: string | undefined;
 }
-const linkedInUrl = siteConfig.linkedin;
-const githubUrl = siteConfig.github;
-const instagramUrl = siteConfig.instagram;
 
 const { slug } = Astro.props as Props;
 ---
@@ -42,35 +37,33 @@ const { slug } = Astro.props as Props;
     <address
       class="order-1 mt-6 flex w-full items-center justify-center space-x-7 sm:order-2 sm:mt-0 sm:w-auto"
     >
-      <a
-        href={linkedInUrl}
-        target="_blank"
-        title="Check my LinkedIn."
-        class="flex"
-      >
-        <Image
-          src={linkedinLogo}
-          alt="LinkedIn logo."
-          class="inline h-4 w-auto mix-blend-difference"
-        />
-      </a>
-      <a href={githubUrl} target="_blank" title="Check my GitHub." class="flex">
-        <Image
-          src={githubLogo}
-          alt="GitHub logo."
-          class="inline h-4 w-auto mix-blend-difference"
+      <a href={siteConfig.linkedin} target="_blank" title="Lets connect." class="flex">
+        <Icon
+          name="mdi:linkedin"
+          class="inline size-4 w-auto mix-blend-difference"
         />
       </a>
       <a
-        href={instagramUrl}
+        href={siteConfig.instagram}
         target="_blank"
         title="Check my Instagram."
         class="flex"
       >
-        <Image
-          src={instagramLogo}
-          alt="Instagram logo."
-          class="inline h-4 w-auto mix-blend-difference"
+        <Icon
+          name="mdi:instagram"
+          class="inline size-4 w-auto mix-blend-difference"
+        />
+      </a>
+      <a href={siteConfig.github} target="_blank" title="Check my GitHub." class="flex">
+        <Icon
+          name="mdi:github"
+          class="inline size-4 w-auto mix-blend-difference"
+        />
+      </a>
+      <a href={siteConfig.gitlab} target="_blank" title="Check my GitLab." class="flex">
+        <Icon
+          name="mdi:gitlab"
+          class="inline size-4 w-auto mix-blend-difference"
         />
       </a>
     </address>
@@ -97,7 +90,7 @@ const { slug } = Astro.props as Props;
           >
             {locale === "en" ? page.Name : page.Name_pt}
           </a>
-        )
+        ),
       )
     }
     <a

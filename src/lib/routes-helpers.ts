@@ -22,11 +22,11 @@ export const getStaticPaths = (() => {
 
 // Type guard to check if a string is a supported locale
 const isSupportedLocale = (locale: string): locale is SupportedLocale => {
-  return SUPPORTED_LOCALES.includes(locale as SupportedLocale);
+  return SUPPORTED_LOCALES.some(supportedLocale => supportedLocale === locale);
 };
 
-export const getLocale = (params: { locale?: string }): SupportedLocale => {
-  const { locale } = params;
+export const getLocale = (params: Record<string, string | undefined>): SupportedLocale => {
+  const locale = params?.locale;
   
   // If locale is undefined, return the default
   if (!locale) {
@@ -36,15 +36,6 @@ export const getLocale = (params: { locale?: string }): SupportedLocale => {
   // Use the type guard to validate
   if (isSupportedLocale(locale)) {
     return locale;
-  }
-  
-  // Log warning for unsupported locales
-  if (import.meta.env.DEV) {
-    console.warn(
-      `[i18n] Unsupported locale: "${locale}". ` +
-      `Supported locales are: ${SUPPORTED_LOCALES.join(', ')}. ` +
-      `Falling back to: "${siteConfig.defaultLocale}"`
-    );
   }
   
   return siteConfig.defaultLocale;

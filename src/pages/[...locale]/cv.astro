@@ -77,6 +77,16 @@ const engSelected = cv.engagements.filter(
             </address>
             <div class="flex h-full grow gap-3">
               <a
+                href={siteConfig.website}
+                class="h-min"
+                title="Check my Website"
+              >
+                <Icon
+                  name="mdi:globe"
+                  class="inline-block size-5 align-middle sm:size-3.5"
+                />
+              </a>
+              <a
                 href={siteConfig.linkedin}
                 class="h-min"
                 title="Check my LinkedIn"
@@ -92,13 +102,9 @@ const engSelected = cv.engagements.filter(
                   class="inline-block size-5 align-middle sm:size-3.5"
                 />
               </a>
-              <a
-                href={siteConfig.website}
-                class="h-min"
-                title="Check my Website"
-              >
+              <a href={siteConfig.gitlab} class="h-min" title="Check my GitHub">
                 <Icon
-                  name="mdi:globe"
+                  name="mdi:gitlab"
                   class="inline-block size-5 align-middle sm:size-3.5"
                 />
               </a>
