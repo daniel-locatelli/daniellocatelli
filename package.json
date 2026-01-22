@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.5",
-    "@astrojs/db": "^0.18.2",
     "@astrojs/prism": "^3.3.0",
     "@astrojs/react": "^4.4.1",
     "@astrojs/rss": "^4.0.13",

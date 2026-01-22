@@ -1,8 +1,11 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
 import phyllotaxis from "../assets/notion/10ac74a5-a6a4-4524-9d84-cd9a01fb4abb/phyllotaxis-widescreen.svg";
+import { getLocale } from "src/lib/routes-helpers";
 
-const locale = "en";
+export { getStaticPaths } from "src/lib/routes-helpers";
+
+const locale = getLocale(Astro.params);
 ---
 
 <html lang={locale}>
@@ -10,7 +13,6 @@ const locale = "en";
     <BaseHead
       description="CS50 Cover"
       title="CS50 Cover"
-      locale={locale}
       slug="/cs50-sql-cover"
     />
   </head>

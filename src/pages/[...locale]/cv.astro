@@ -16,8 +16,10 @@ import type {
 } from "src/i18n/cv/types.ts";
 import type { I18nMeta } from "src/i18n/meta/types";
 import { createHtmlId, getI18n, getMonthYear } from "src/i18n/utils";
+import { getLocale } from "src/lib/routes-helpers";
+export { getStaticPaths } from "src/lib/routes-helpers";
 
-const locale = "en";
+const locale = getLocale(Astro.params);
 
 const meta = await getI18n<I18nMeta>("meta", locale);
 const cv = await getI18n<I18nCV>("cv", locale);
@@ -46,7 +48,6 @@ const engSelected = cv.engagements.filter(
     description: cv.meta.descriptionSimple,
     coverAlt: cv.meta.coverAlt,
     coverImage: "@/assets/daniel-locatelli.png",
-    locale: locale,
     slug: "full-cv",
   }}
 >
@@ -74,9 +75,9 @@ const engSelected = cv.engagements.filter(
               <span> {siteConfig.phone} </span>
               <span> {meta.city}, {meta.country} </span>
             </address>
-            <div class="flex h-full grow gap-2">
+            <div class="flex h-full grow gap-3">
               <a
-                href="https://www.linkedin.com/in/daniel-locatelli/"
+                href={siteConfig.linkedin}
                 class="h-min"
                 title="Check my LinkedIn"
               >
@@ -85,23 +86,19 @@ const engSelected = cv.engagements.filter(
                   class="inline-block size-5 align-middle sm:size-3.5"
                 />
               </a>
-              <a
-                href="https://github.com/daniel-locatelli"
-                class="h-min"
-                title="Check my GitHub"
-              >
+              <a href={siteConfig.github} class="h-min" title="Check my GitHub">
                 <Icon
                   name="mdi:github"
                   class="inline-block size-5 align-middle sm:size-3.5"
                 />
               </a>
               <a
-                href="https://instagram.com/architectlocatelli"
+                href={siteConfig.website}
                 class="h-min"
-                title="Check my Instagram"
+                title="Check my Website"
               >
                 <Icon
-                  name="mdi:instagram"
+                  name="mdi:globe"
                   class="inline-block size-5 align-middle sm:size-3.5"
                 />
               </a>
@@ -681,11 +678,13 @@ const engSelected = cv.engagements.filter(
     margin-bottom: 2cm;
     margin-left: 1.2cm;
     margin-right: 1.2cm;
-    /* Add page number in bottom-center */
+
     @bottom-center {
-      content: counter(page) " / " counter(pages);
-      font-size: 10pt;
-      margin-bottom: 2rem;
+      content: "Printed from daniellocatelli.com/cv • Page " counter(page)
+        " of " counter(pages);
+      font-size: 9pt;
+      padding-bottom: 0.5cm;
+      color: #666;
     }
   }
   /* Ensure page numbers are printed */

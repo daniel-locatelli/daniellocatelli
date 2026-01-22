@@ -13,7 +13,8 @@ export const siteConfig: SiteConfig = {
   authorFirstName: "Daniel",
   authorLastName: "Nunes Locatelli",
   email: "contact@daniellocatelli.com",
-  phone: "+49 178 324-0834",  
+  phone: "+49 178 324-0834",
+  website: "https://daniellocatelli.com",
   
   // Social Links
   bluesky: "did:plc:crjzvrnutaxdyfy3thsibcd7",

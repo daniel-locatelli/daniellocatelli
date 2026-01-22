@@ -1,0 +1,18 @@
+export type I18nSubpage = {
+  date: string,
+  author: string,
+  authors: string,
+  client: string,
+  director: string,
+  directors: string,
+  manager: string,
+  managers: string,
+  team: string,
+  development: string,
+  place: string,
+  language: string,
+  languages: string,
+  link: string,
+  apps: string,
+  references: string,
+}

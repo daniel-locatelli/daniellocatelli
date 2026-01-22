@@ -4,10 +4,10 @@ import {
   type RichText,
   type List,
 } from "../../../lib/notion-interfaces.ts";
-import { snakeToKebab } from "../../../lib/style-helpers.ts";
 import NotionRichText from "./RichText.astro";
 import NotionBlocks from "../NotionBlocks.astro";
 import "../../../styles/notion-color.css";
+import { snakeToKebab } from "src/lib/utils";
 
 export interface Props {
   blockList: List;

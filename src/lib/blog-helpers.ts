@@ -16,11 +16,6 @@ export const filePath = (url: URL): string => {
   return pathJoin(BASE_PATH, `/notion/${dir}/${filename}`);
 };
 
-export const imagePath = (url: URL): string => {
-  const [dir, filename] = url.pathname.split("/").slice(-2);
-  return pathJoin(BASE_PATH, `/src/assets/notion/${dir}/${filename}`);
-};
-
 export const extractTargetBlocks = (
   blockType: string,
   blocks: Block[],
@@ -124,10 +119,6 @@ export const buildURLToHTMLMap = async (
     }
     return acc;
   }, {});
-};
-
-export const getStaticFilePath = (path: string): string => {
-  return pathJoin(BASE_PATH, path);
 };
 
 export const getNavLink = (nav: string) => {
@@ -324,18 +315,6 @@ export const importCoverImage = async (page: Page, images: any) => {
   }
 };
 
-export function removePostFromPosts(posts: Page[], post: Page) {
-  return posts.filter(function (currentPost) {
-    return currentPost.PageId !== post.PageId;
-  });
-}
-
-export function filterPostsByTags(posts: Page[], post: Page) {
-  return posts.filter((p) =>
-    post.Tags.some((tag) => p.Tags.some((pTag) => pTag.name === tag.name)),
-  );
-}
-
 export function urlToFileName(url: URL) {
   let fileName = decodeURIComponent(url.pathname.split("/").slice(-1)[0]!);
   return fileName;
@@ -375,16 +354,3 @@ export function modifyFileName(
   }
   return name + newEnd + extension;
 }
-
-// export function addSlugToName(name: string, slug: string): string {
-//   if (!name.includes(slug) && slug !== "/") {
-//     let slugEdited = slug;
-//     if (slug.includes("/")) {
-//       slugEdited = slug.replace("/", "_");
-//     }
-//     const newName = slugEdited + "_" + name;
-//     return newName;
-//   } else {
-//     return name;
-//   }
-// }

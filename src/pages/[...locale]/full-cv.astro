@@ -18,8 +18,10 @@ import type {
   Work,
 } from "src/i18n/cv/types.ts";
 import type { I18nMeta } from "src/i18n/meta/types.ts";
+import { getLocale } from "src/lib/routes-helpers";
+export { getStaticPaths } from "src/lib/routes-helpers";
 
-const locale = "pt";
+const locale = getLocale(Astro.params);
 
 const meta = await getI18n<I18nMeta>("meta", locale);
 const cv = await getI18n<I18nCV>("cv", locale);
@@ -31,7 +33,6 @@ const cv = await getI18n<I18nCV>("cv", locale);
     description: cv.meta.descriptionFull,
     coverAlt: cv.meta.coverAlt,
     coverImage: "@/assets/daniel-locatelli.png",
-    locale: locale,
     slug: "full-cv",
   }}
 >
@@ -59,9 +60,9 @@ const cv = await getI18n<I18nCV>("cv", locale);
               <span> {siteConfig.phone} </span>
               <span> {meta.city}, {meta.country} </span>
             </address>
-            <div class="flex h-full grow gap-2">
+            <div class="flex h-full grow gap-3">
               <a
-                href="https://www.linkedin.com/in/daniel-locatelli/"
+                href={siteConfig.linkedin}
                 class="h-min"
                 title="Check my LinkedIn"
               >
@@ -71,7 +72,7 @@ const cv = await getI18n<I18nCV>("cv", locale);
                 />
               </a>
               <a
-                href="https://github.com/daniel-locatelli"
+                href={siteConfig.github}
                 class="h-min"
                 title="Check my GitHub"
               >
@@ -81,12 +82,12 @@ const cv = await getI18n<I18nCV>("cv", locale);
                 />
               </a>
               <a
-                href="https://instagram.com/architectlocatelli"
+                href={siteConfig.website}
                 class="h-min"
-                title="Check my Instagram"
+                title="Check my Website"
               >
                 <Icon
-                  name="mdi:instagram"
+                  name="mdi:globe"
                   class="inline-block size-5 align-middle sm:size-3.5"
                 />
               </a>

@@ -2,11 +2,14 @@
 import type { Page } from "src/lib/notion-interfaces";
 import { getDatabaseByName } from "src/lib/notion/client";
 import { Image } from "astro:assets";
-import logo from "../../assets/logo-dl.svg";
-import globe from "../../assets/globe.svg";
+import logo from "@/assets/logo-dl.svg";
+import globe from "@/assets/globe.svg";
 import WhatsApp from "@/assets/digital-glyph-white.svg";
 import { siteConfig } from "@/site-config";
 import { Icon } from "astro-icon/components";
+import { getLocale } from "src/lib/routes-helpers";
+
+const locale = getLocale(Astro.params)
 
 let pagesDatabase = (await getDatabaseByName("Pages"))!;
 let pages: Page[];
@@ -21,13 +24,9 @@ pages.sort((a, b) => {
 const url = new URL(Astro.request.url);
 
 export interface Props {
-  locale: string;
-  slug: string;
+  slug: string | undefined;
 }
-const { locale, slug } = Astro.props as Props;
-
-const whatsAppUrl = siteConfig.whatsapp;
-const emailAddress = siteConfig.email;
+const { slug } = Astro.props as Props;
 ---
 
 <header
@@ -68,7 +67,6 @@ const emailAddress = siteConfig.email;
                 title={page.Name}
               >
                 {locale === "en" && page.Name}
-                {locale === "de" && page.Name_de}
                 {locale === "pt" && page.Name_pt}
               </a>
             ),
@@ -97,7 +95,7 @@ const emailAddress = siteConfig.email;
         </div>
       </a>
       <a
-        href={whatsAppUrl}
+        href={siteConfig.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
         class="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-lg border-1 border-green-400 bg-gradient-to-r from-green-700 to-green-800 px-4 py-3 text-base text-white transition hover:from-green-800 hover:to-green-900 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none sm:hidden md:w-fit"
@@ -107,7 +105,7 @@ const emailAddress = siteConfig.email;
         {locale === "pt" && "Faça um orçamento"}
       </a>
       <a
-        href={`mailto:${emailAddress}`}
+        href={`mailto:${siteConfig.email}`}
         title="Email Daniel Locatelli"
         class="mt-4 inline-flex w-full items-center justify-center gap-3 rounded-lg border-1 border-green-400 px-4 py-3 text-base text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none sm:hidden md:w-fit"
       >

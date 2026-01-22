@@ -1,34 +1,58 @@
 ---
-import { getAllBlocksByBlockId, getAllDatabases } from "../lib/notion/client";
-import type { Page } from "../lib/notion-interfaces";
+import { getAllBlocksByBlockId, getAllDatabases } from "../../lib/notion/client.ts";
+import type { Page } from "../../lib/notion-interfaces.ts";
 import {
   importCoverImage,
   modifyFileName,
   urlToFileName,
-} from "../lib/blog-helpers";
+} from "../../lib/blog-helpers.ts";
 import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
 import PostBody from "@/components/Notion/PostBody.astro";
 import RichText from "@/components/Notion/blocks/RichText.astro";
-import * as interfaces from "../lib/notion-interfaces.ts";
+import * as interfaces from "../../lib/notion-interfaces.ts";
+import { siteConfig, SUPPORTED_LOCALES } from "@/site-config";
+import { getLocale } from "src/lib/routes-helpers";
+import { getI18n } from "src/i18n/utils";
+import type { I18nSubpage } from "src/i18n/subpage/type";
 
-const locale = "en";
+const locale = getLocale(Astro.params)
+
+const t = await getI18n<I18nSubpage>("subpage", locale);
 
 export async function getStaticPaths() {
-  const locale = "en";
-
   const databases = await getAllDatabases();
-
-  const paths = databases.flatMap((database) =>
-    // The main pages are in the other file
-    database.Pages.filter(
-      (subpage) => database.Title !== "Pages" && subpage.Locale === locale
-    ).map((subpage) => ({
-      params: { subpage: subpage.Slug },
-      props: { subpage: subpage },
-    }))
-  );
-
+  
+  // Get all subpages from non-"Pages" databases
+  const allSubpages = databases
+    .filter(database => database.Title !== "Pages")
+    .flatMap(database => database.Pages);
+  
+  const paths = [];
+  
+  for (const locale of SUPPORTED_LOCALES) {
+    const isDefaultLocale = locale === siteConfig.defaultLocale;
+    
+    for (const subpage of allSubpages) {
+      // Determine the subpage's locale
+      const subpageLocale = subpage.Locale || siteConfig.defaultLocale;
+      
+      // Only include if the subpage belongs to this locale
+      if (subpageLocale !== locale) continue;
+      
+      paths.push({
+        params: { 
+          subpage: subpage.Slug,
+          locale: isDefaultLocale ? undefined : locale
+        },
+        props: { 
+          subpage,
+          locale
+        },
+      });
+    }
+  }
+  
   return paths;
 }
 
@@ -77,7 +101,6 @@ if (subpage.Cover) {
     description: subpage.Description,
     coverImage: coverUrl,
     coverAlt: subpage.CoverAlt || "Cover image",
-    locale: locale,
     slug: slug,
   }}
 >
@@ -115,7 +138,7 @@ if (subpage.Cover) {
         {
           subpage.DateStart && (
             <tr>
-              <th class="font-body font-bold">Date</th>
+              <th class="font-body font-bold">{t.date}</th>
               <td>{subpage.DateStart}</td>
             </tr>
           )
@@ -124,9 +147,9 @@ if (subpage.Cover) {
           subpage.Authors && subpage.Authors?.length > 0 && (
             <tr>
               {subpage.Authors.length === 1 ? (
-                <th>Author</th>
+                <th>{t.author}</th>
               ) : (
-                <th>Authors</th>
+                <th>{t.authors}</th>
               )}
               <td>
                 {subpage.Authors.map((author, index) => {
@@ -152,9 +175,9 @@ if (subpage.Cover) {
           subpage.Director && subpage.Director.length > 0 && (
             <tr>
               {subpage.Director.length === 1 ? (
-                <th>Director</th>
+                <th>{t.director}</th>
               ) : (
-                <th>Directors</th>
+                <th>{t.directors}</th>
               )}
               <td>
                 {subpage.Director.map((director, index) => {
@@ -172,9 +195,9 @@ if (subpage.Cover) {
           subpage.Manager && subpage.Manager.length > 0 && (
             <tr>
               {subpage.Manager.length === 1 ? (
-                <th>Manager</th>
+                <th>{t.manager}</th>
               ) : (
-                <th>Managers</th>
+                <th>{t.managers}</th>
               )}
               <td>
                 {subpage.Manager.map((manager, index) => {
@@ -191,7 +214,7 @@ if (subpage.Cover) {
         {
           subpage.Team && subpage.Team.length > 0 && (
             <tr>
-              <th>Team</th>
+              <th>{t.team}</th>
               <td class="text-balance">
                 {subpage.Team.map((member, index) => {
                   if (index === 0) {
@@ -207,7 +230,7 @@ if (subpage.Cover) {
         {
           subpage.Development && subpage.Development.length > 0 && (
             <tr>
-              <th>Development</th>
+              <th>{t.development}</th>
               <td>
                 {subpage.Development.map((manager, index) => {
                   if (index === 0) {
@@ -223,7 +246,7 @@ if (subpage.Cover) {
         {
           subpage.Place !== "" && (
             <tr>
-              <th>Place</th>
+              <th>{t.place}</th>
               <td>{subpage.Place}</td>
             </tr>
           )
@@ -232,9 +255,9 @@ if (subpage.Cover) {
           subpage.Language && subpage.Language.length > 0 && (
             <tr>
               {subpage.Language.length === 1 ? (
-                <th>Language</th>
+                <th>{t.language}</th>
               ) : (
-                <th>Languages</th>
+                <th>{t.languages}</th>
               )}
               <td>
                 {subpage.Language.map((manager, index) => {
@@ -251,7 +274,7 @@ if (subpage.Cover) {
         {
           subpage.Link !== undefined && subpage.Link.length > 0 && (
             <tr>
-              <th>Link</th>
+              <th>{t.link}</th>
               <td>
                 {subpage.Link.map((richText: interfaces.RichText) => (
                   <RichText richText={richText} />
@@ -263,7 +286,7 @@ if (subpage.Cover) {
         {
           subpage.Apps && subpage.Apps.length > 0 && (
             <tr>
-              <th>Apps</th>
+              <th>{t.apps}</th>
               <td>
                 {subpage.Apps.map((member, index) => {
                   if (index === 0) {
@@ -279,7 +302,7 @@ if (subpage.Cover) {
         {
           subpage.References !== undefined && subpage.References.length > 0 && (
             <tr>
-              <th>References</th>
+              <th>{t.references}</th>
               <td>
                 {subpage.References.map((richText: interfaces.RichText) => (
                   <RichText richText={richText} />

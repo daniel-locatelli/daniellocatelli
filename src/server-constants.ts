@@ -1,6 +1,3 @@
-import config from "../constants-config.json";
-const key_value_from_json = { ...config };
-
 export const NOTION_API_SECRET =
   import.meta.env.VITE_NOTION_API_SECRET ||
   import.meta.env.NOTION_API_SECRET ||
@@ -22,9 +19,3 @@ export const REQUEST_TIMEOUT_MS = parseInt(
   import.meta.env.REQUEST_TIMEOUT_MS || "20000",
   10,
 );
-
-export const NUMBER_OF_POSTS_PER_PAGE = 10;
-
-export const ENABLE_LIGHTBOX = import.meta.env.ENABLE_LIGHTBOX;
-
-export const REFERENCES = key_value_from_json["references"] || null;

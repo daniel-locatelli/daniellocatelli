@@ -70,3 +70,6 @@ export function notionLangToShiki(
   }
   return lang;
 }
+
+// eslint-disable-next-line prettier/prettier
+export const snakeToKebab = (s: string) => s.replaceAll("_", "-");

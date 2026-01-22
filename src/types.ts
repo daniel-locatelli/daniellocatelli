@@ -1,11 +1,25 @@
 import type { SUPPORTED_LOCALES } from "./site.config";
 
 export type SiteConfig = {
-  [x: string]: string;
-  author: string;
   title: string;
   description: string;
+  defaultLocale: SupportedLocale;
+  
+  // Author Information
+  author: string;
+  authorFirstName: string;
+  authorLastName: string;
   email: string;
+  phone: string;
+  website: string;
+  
+  // Social Links
+  bluesky: string;
+  github: string;
+  gitlab: string;
+  instagram: string;
+  linkedin: string;
+  orcid: string;
   whatsapp: string;
 };
 
@@ -23,8 +37,7 @@ export type SiteMeta = {
   coverImage?: string | undefined;
   coverAlt?: string | undefined;
   articleDate?: string | undefined;
-  locale: string;
-  slug: string;
+  slug: string  | undefined;
   viewTransition?: boolean;
 };
 

@@ -6,9 +6,9 @@ import {
   type Emoji,
   type FileObject,
 } from "../../../lib/notion-interfaces.ts";
-import { snakeToKebab } from "../../../lib/style-helpers.ts";
 import NotionRichText from "./RichText.astro";
 import NotionBlocks from "../NotionBlocks.astro";
+import { snakeToKebab } from "src/lib/utils";
 
 export interface Props {
   block: Block;

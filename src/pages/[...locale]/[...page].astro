@@ -1,28 +1,67 @@
 ---
-import { getAllDatabases, getDatabaseByName } from "../lib/notion/client";
-import type { Database, Page } from "../lib/notion-interfaces";
+import { getAllDatabases, getDatabaseByName } from "../../lib/notion/client";
+import type { Database, Page } from "../../lib/notion-interfaces";
 import {
   importCoverImage,
   modifyFileName,
   urlToFileName,
 } from "src/lib/blog-helpers";
-import Header from "@/components/layout/Header.astro";
-import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
 import BaseHead from "@/components/BaseHead.astro";
 import { Image } from "astro:assets";
+import { siteConfig, SUPPORTED_LOCALES } from "@/site-config";
+import { getLocale } from "src/lib/routes-helpers";
+
+const locale = getLocale(Astro.params)
 
 export async function getStaticPaths() {
   const databases = await getAllDatabases();
-  const paths = databases.flatMap((database) =>
-    database.Pages.filter(
-      (page: Page) => page.Name !== "Homepage" && database.Title === "Pages",
-    ).map((page: Page) => ({
+  
+  // Get all non-homepage pages from the Pages database
+  const allPages = databases
+    .filter(database => database.Title === "Pages")
+    .flatMap(database => 
+      database.Pages.filter((page: Page) => page.Name !== "Homepage")
+    );
+  
+  // For each page, create paths for each supported locale
+  const paths = allPages.flatMap((page: Page) => {
+    const pagePaths = [];
+    
+    // 1. Create path for default locale (no locale in URL)
+    pagePaths.push({
       params: {
         page: page.Slug,
+        locale: undefined, // Default locale has no locale param
       },
-      props: { page },
-    })),
-  );
+      props: { 
+        page,
+        locale: siteConfig.defaultLocale,
+      },
+    });
+    
+    // 2. Create paths for non-default locales
+    const nonDefaultLocales = SUPPORTED_LOCALES.filter(
+      locale => locale !== siteConfig.defaultLocale
+    );
+    
+    for (const locale of nonDefaultLocales) {
+      pagePaths.push({
+        params: {
+          page: page.Slug,
+          locale: locale,
+        },
+        props: { 
+          page,
+          locale,
+        },
+      });
+    }
+    
+    return pagePaths;
+  });
+  
   return paths;
 }
 
@@ -48,7 +87,7 @@ databases = await Promise.all(
 // Flatten and sort pages
 const sortedSubpages = databases
   .flatMap((db) => db.Pages)
-  .filter((page) => page.Locale === "en")
+  .filter((page) => page.Locale === locale)
   .sort((a, b) => {
     if (!a.DateStart) return 1;
     if (!b.DateStart) return -1;
@@ -88,18 +127,15 @@ if (page.Cover) {
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}",
 );
-
-const locale = "en";
 ---
 
-<html lang="en">
+<html lang={locale}>
   <head>
     <BaseHead
       title={page.Name}
       description={page.Description}
       coverImage={coverUrl}
       coverAlt={page.CoverAlt || "Cover image"}
-      locale={locale}
       viewTransition={true}
       slug={page.Slug}
     />
@@ -110,7 +146,7 @@ const locale = "en";
     }
   </head>
   <body class="m-0 h-full max-w-full p-0">
-    <Header locale={locale} slug={page.Slug} />
+    <Header slug={page.Slug} />
     <main id="main">
       <div class="relative flex flex-col">
         {
@@ -122,7 +158,7 @@ const locale = "en";
                   <article class="h-vh relative flex h-screen w-full snap-start flex-col overflow-hidden bg-clip-border">
                     <a
                       class="flex h-full w-full transition"
-                      href={"/" + subpage.Slug}
+                      href={`/${locale === siteConfig.defaultLocale ? '' : `${locale}/`}${subpage.Slug}`}
                       data-astro-prefetch
                     >
                       <div class="absolute z-20 flex h-full w-full flex-col justify-center text-center transition">
@@ -181,7 +217,7 @@ const locale = "en";
         }
       </div>
     </main>
-    <Footer locale={locale} slug={page.Slug} />
+    <Footer slug={page.Slug} />
     <style>
       html {
         scroll-snap-type: y proximity;

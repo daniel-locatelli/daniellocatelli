@@ -1,13 +1,16 @@
 ---
 import type { SiteMeta } from "@/types";
 import BaseHead from "@/components/BaseHead.astro";
-import Footer from "@/components/layout/Footer.astro";
-import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
 import { siteConfig } from "@/site-config";
+import { getLocale } from "src/lib/routes-helpers";
 
 interface Props {
   meta: SiteMeta;
 }
+
+const locale = getLocale(Astro.params)
 
 const {
   meta: {
@@ -16,13 +19,12 @@ const {
     coverImage,
     coverAlt,
     title,
-    locale,
     slug,
   },
 } = Astro.props;
 ---
 
-<html lang={locale}>
+<html lang={locale ? locale : siteConfig.defaultLocale}>
   <head>
     <BaseHead
       articleDate={articleDate}
@@ -31,17 +33,16 @@ const {
       coverAlt={coverAlt}
       title={title}
       viewTransition={true}
-      locale={locale}
       slug={slug}
     />
     <slot name="after-head" />
   </head>
   <body class="p-0 m-0 max-w-full h-full">
-    <Header locale={locale} slug={slug} />
+    <Header slug={slug} />
     <main id="main">
       <slot />
     </main>
-    <Footer locale={locale} slug={slug} />
+    <Footer slug={slug} />
     <style>
       html {
         overflow-y: scroll;
