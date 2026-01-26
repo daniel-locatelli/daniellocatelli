@@ -685,12 +685,18 @@ const engSelected = cv.engagements.filter(
     margin-left: 1.2cm;
     margin-right: 1.2cm;
 
-    @bottom-center {
-      content: "Printed from daniellocatelli.com/cv • Page " counter(page)
-        " of " counter(pages);
+    @bottom-left {
+      content: "daniellocatelli.com/cv";
       font-size: 9pt;
       padding-bottom: 0.5cm;
       color: #666;
+    }
+
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font-size: 9pt;
+      padding-bottom: 0.5cm;
+      color: #999;
     }
   }
   /* Ensure page numbers are printed */
