@@ -94,7 +94,7 @@ export const t: I18nCV = {
       ],
     },
     {
-      title: "Software Developer",
+      title: "AEC Software Engineer",
       startDate: "2024-01",
       endDate: "2024-12",
       company: "BuildSystems GmbH",
@@ -102,12 +102,12 @@ export const t: I18nCV = {
       link: "https://buildsystems.de/",
       location: "Munich, Germany",
       items: [
-        "Development of a Funding Calculator for new constructions and renovations in Germany. The web app was built with the Angular framework and PostgreSQL. It delivers a seamless UX and provide real-time financial modeling capabilities.",
-        "Architected and implemented BuildSystems' website using Astro framework, leveraging Notion API to use Notion as a content management system (CMS).",
+        "Development of a Funding Calculator for new constructions and renovations in Germany. Built with the Angular framework and PostgreSQL (Supabase).",
+        "Development of BuildSystems' website using Astro framework, leveraging Notion API to use Notion as a content management system (CMS).",
       ],
     },
     {
-      title: "Computational Architect",
+      title: "AEC Software Engineer",
       startDate: "2023-01",
       endDate: "2023-12",
       company: "Urban Scale Timber, Flügge Funding",
@@ -115,15 +115,14 @@ export const t: I18nCV = {
       link: "https://urbanscaletimber.com/",
       location: "Munich, Germany",
       items: [
-        "Development of a Grasshopper plugin (C#/.NET) in conjunction with a semantic data model to calculate the Life Cycle Assessment of timber buildings.",
-        "UI/UX prototype for the web app Circular Component Creator.",
-        "Data visualizations using Power BI for decision-making.",
-        "Development of a timber component configurator with EPD data.",
-        "Development of a tool for urban analysis.",
+        "Development of a Grasshopper plugin (C#/.NET) and a semantic data model for urban analysis and Life Cycle Assessment of timber buildings (LCA).",
+        "UI/UX prototype for the web app Circular Component Creator in Figma.",
+        "Data visualization from Grasshopper to Power BI for decision-making.",
+        "Development of Grasshopper workflows: urban analysis tools and timber component configurator with EPD data.",
       ],
     },
     {
-      title: "Computational Architect",
+      title: "Computational Designer",
       startDate: "2021-12",
       endDate: "2022-12",
       company: "ArtEngineering GmbH",
@@ -138,7 +137,7 @@ export const t: I18nCV = {
       ],
     },
     {
-      title: "Computational Architect",
+      title: "Computational Designer",
       startDate: "2020-10",
       endDate: "2021-11",
       company: "Alfred Rein Ingenieure GmbH",
@@ -166,7 +165,7 @@ export const t: I18nCV = {
       ],
     },
     {
-      title: "Computational Architect",
+      title: "Computational Designer",
       titleNote: "Intern until December 2016",
       startDate: "2015-03",
       endDate: "2019-07",

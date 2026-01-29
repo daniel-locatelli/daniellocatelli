@@ -136,12 +136,18 @@ if (subpage.Cover) {
         class="table-auto border-separate border-spacing-x-4 text-left *:align-text-top"
       >
         {
-          subpage.DateStart && (
+          subpage.DateEnd ? (
+            <tr>
+              <th class="font-body font-bold">{t.date}</th>
+              <td>{subpage.DateEnd}</td>
+            </tr>
+          ) :
+          subpage.DateStart ? (
             <tr>
               <th class="font-body font-bold">{t.date}</th>
               <td>{subpage.DateStart}</td>
             </tr>
-          )
+          ) : null
         }
         {
           subpage.Authors && subpage.Authors?.length > 0 && (
