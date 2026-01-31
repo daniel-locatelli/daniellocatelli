@@ -77,7 +77,7 @@ export const t: I18nCV = {
   ],
   skillsLanguages: [
     { title: "English", level: "fluent" },
-    { title: "German", level: "B2" },
+    { title: "German", level: "B1" },
     { title: "Portuguese", level: "fluent" },
   ],
   experiences: [

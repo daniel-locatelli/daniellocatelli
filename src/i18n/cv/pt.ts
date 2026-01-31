@@ -75,7 +75,7 @@ export const t: I18nCV = {
   skillsSpecialized: ["Software", "Design Computacional", "Design de UI/UX"],
   skillsLanguages: [
     { title: "Inglês", level: "fluente" },
-    { title: "Alemão", level: "B2" },
+    { title: "Alemão", level: "B1" },
     { title: "Português", level: "fluente" },
   ],
   experiences: [
