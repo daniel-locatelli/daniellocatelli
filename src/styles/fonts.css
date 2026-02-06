@@ -1,43 +1,39 @@
 @font-face {
   font-family: "Poiret One";
   src:
-    local("Poiret One"),
-    url("/fonts/PoiretOne-Regular.woff2") format("woff2"),
-    url("/fonts/PoiretOne-Regular.woff") format("woff"),
-    url("/fonts/PoiretOne-Regular.otf") format("otf");
+    url("/fonts/PoiretOne-Regular.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins ExtraLight";
+  font-family: "Montserrat";
   src:
-    local("Poppins ExtraLight"),
-    url("/fonts/Poppins-ExtraLight.woff2") format("woff2"),
-    url("/fonts/Poppins-ExtraLight.woff") format("woff"),
-    url("/fonts/Poppins-ExtraLight.otf") format("otf");
+    url("/fonts/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src:
+    url("/fonts/Poppins-ExtraLight.woff2") format("woff2");
   font-weight: 200;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins Light";
+  font-family: "Poppins";
   src:
-    local("Poppins Light"),
-    url("/fonts/Poppins-Light.woff2") format("woff2"),
-    url("/fonts/Poppins-Light.woff") format("woff"),
-    url("/fonts/Poppins-Light.otf") format("otf");
+    url("/fonts/Poppins-Light.woff2") format("woff2");
   font-weight: 300;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins Bold";
+  font-family: "Poppins";
   src:
-    local("Poppins Bold"),
-    url("/fonts/Poppins-Bold.woff2") format("woff2"),
-    url("/fonts/Poppins-Bold.woff") format("woff"),
-    url("/fonts/Poppins-Bold.otf") format("otf");
+    url("/fonts/Poppins-Bold.woff2") format("woff2");
   font-weight: 700;
   font-display: swap;
 }

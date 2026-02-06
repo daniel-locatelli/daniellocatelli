@@ -42,7 +42,7 @@ const home = await getI18n<I18nHome>("home", locale);
             class="order-1 size-32 rounded-full border-2 border-zinc-200 sm:size-20 md:order-2 md:h-32 md:w-32 md:border-3"
           />
           <h1
-            class="order-2 text-2xl font-bold tracking-wide sm:text-3xl md:order-1 md:space-y-2 md:text-4xl"
+            class="order-2 text-2xl tracking-wide sm:text-3xl md:order-1 md:space-y-2 md:text-4xl"
           >
             <p>{home.hero.hi}</p>
             <p>{home.hero.greeting}</p>
@@ -58,7 +58,7 @@ const home = await getI18n<I18nHome>("home", locale);
             href={siteConfig.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border-1 border-green-400 bg-gradient-to-r from-green-700 to-green-800 px-8 py-3 text-white transition hover:from-green-800 hover:to-green-900 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none md:w-fit"
+            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 bg-linear-to-r from-green-700 to-green-800 px-8 py-3 text-white transition hover:from-green-800 hover:to-green-900 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none md:w-fit"
           >
             <Image
               src={WhatsApp}
@@ -70,7 +70,7 @@ const home = await getI18n<I18nHome>("home", locale);
           <a
             href={`mailto:${siteConfig.email}`}
             title="Email Daniel Locatelli"
-            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border-1 border-green-400 px-8 py-3 text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none md:w-fit"
+            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 px-8 py-3 text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none md:w-fit"
           >
             <Icon name="mdi:email-outline" class="size-5 md:size-4" />
             <span> {home.hero.sendEmail} </span>
@@ -139,7 +139,7 @@ const home = await getI18n<I18nHome>("home", locale);
                   alt={`Screenshot of ${project.title}`}
                   class="h-80 w-full object-cover"
                 />
-                <div class="font-body flex flex-grow flex-col p-6">
+                <div class="font-body flex grow flex-col p-6">
                   <h3 class="mb-1 text-xl font-semibold text-balance text-zinc-100">
                     {project.title}
                   </h3>
@@ -237,7 +237,7 @@ const home = await getI18n<I18nHome>("home", locale);
 
     <section id={home.contact.id} class="py-20">
       <div class="space-y-16 px-6 text-center">
-        <h2 class="text-3xl font-bold tracking-wide md:text-4xl lg:text-5xl">
+        <h2 class="text-3xl tracking-wide md:text-4xl lg:text-5xl">
           {home.contact.title}
         </h2>
         <p
@@ -253,7 +253,7 @@ const home = await getI18n<I18nHome>("home", locale);
             target="_blank"
             rel="noopener noreferrer"
             title="Contact Daniel Locatelli on WhatsApp"
-            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border-1 border-green-400 bg-gradient-to-r from-green-700 to-green-800 px-8 py-3 text-white transition hover:from-green-800 hover:to-green-900 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none md:w-fit"
+            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 bg-linear-to-r from-green-700 to-green-800 px-8 py-3 text-white transition hover:from-green-800 hover:to-green-900 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none md:w-fit"
           >
             <Image
               src={WhatsApp}
@@ -265,7 +265,7 @@ const home = await getI18n<I18nHome>("home", locale);
           <a
             href={`mailto:${siteConfig.email}`}
             title="Email Daniel Locatelli"
-            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border-1 border-green-400 px-8 py-3 text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none md:w-fit"
+            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 px-8 py-3 text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none md:w-fit"
           >
             <Icon name="mdi:email-outline" class="size-5 md:size-4" />
             {home.contact.sendEmail}
