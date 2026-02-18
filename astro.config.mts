@@ -4,6 +4,7 @@ import AllFilesDownloader from "./src/integrations/all-files-downloader";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
+import cloudflare from "@astrojs/cloudflare";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -28,6 +29,7 @@ const getSite = function () {
 export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
+  adapter: cloudflare(),
   server: {
     port: 4321,
     host: true,

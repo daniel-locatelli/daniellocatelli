@@ -100,17 +100,24 @@ const blocks = rawBlocks.reduce(
 
     return arr;
   },
-  []
+  [],
 );
 
 // Type guard function to check if an object is of type 'List'
-function isList(obj: any): obj is List {
-  return obj && obj.Type && obj.ListItems !== undefined;
+function isList(obj: unknown): obj is List {
+  return (
+    typeof obj === "object" &&
+    obj !== null &&
+    "Type" in obj &&
+    "ListItems" in obj
+  );
 }
 
 // Type guard function to check if an object is of type 'Block'
-function isBlock(obj: any): obj is Block {
-  return obj && obj.Id !== undefined && obj.Type !== undefined;
+function isBlock(obj: unknown): obj is Block {
+  return (
+    typeof obj === "object" && obj !== null && "Id" in obj && "Type" in obj
+  );
 }
 
 let headings = rawHeadings;
@@ -126,7 +133,7 @@ if (isRoot) {
 const bookmarkURLs = blocks
   .filter(
     (b): b is Block =>
-      isBlock(b) && ["bookmark", "link_preview", "embed"].includes(b.Type)
+      isBlock(b) && ["bookmark", "link_preview", "embed"].includes(b.Type),
   )
   .map((b: Block) => {
     const urlString = (b.Bookmark || b.LinkPreview || b.Embed)!.Url;
