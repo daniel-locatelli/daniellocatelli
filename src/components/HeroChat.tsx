@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { X, Send, Loader2 } from "lucide-react";
+import { X, Send, Loader2, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Message {
@@ -127,6 +127,10 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
           >
             <Send size={20} />
           </button>
+        </div>
+        <div className="mt-4 flex items-center justify-center gap-2 text-xs font-medium text-zinc-500">
+          <Sparkles size={14} className="text-zinc-400" />
+          <span>Powered by Claude {modelName}</span>
         </div>
       </form>
 
