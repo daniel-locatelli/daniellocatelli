@@ -602,6 +602,14 @@ export const t: I18nCV = {
       location: "Hamburg, Germany",
     },
     {
+      title: "COMPAS FoFin Workshop",
+      startDate: "2022-09",
+      instructor:
+        "Dr. Lotte Scheder-Bieschin, Dr. Juney Lee, and Dr. Tom Van Mele",
+      organization: "Design Modeling Symposium 2022",
+      location: "Berlin, Germany",
+    },
+    {
       title: "Parametric Design with Arduino and Grasshopper",
       startDate: "2017-07",
       instructor: "Henrique Stabile",

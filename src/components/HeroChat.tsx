@@ -261,7 +261,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
         </div>
         <div className="mt-4 flex items-center justify-center gap-2 text-xs font-medium text-zinc-500">
           <Sparkles size={14} className="text-zinc-400" />
-          <span>Powered by Claude {modelName}</span>
+          <span>Powered by {modelName}</span>
         </div>
       </form>
 
