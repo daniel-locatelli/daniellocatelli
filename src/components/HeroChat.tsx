@@ -20,6 +20,137 @@ interface HeroChatProps {
   };
 }
 
+function ChatBubble({
+  message,
+  isLast,
+}: {
+  message: Message;
+  isLast: boolean;
+}) {
+  const [display, setDisplay] = useState(
+    message.role === "user" ? message.content : "",
+  );
+
+  useEffect(() => {
+    if (message.role === "user" || !isLast) {
+      setDisplay(message.content);
+      return;
+    }
+
+    let i = 0;
+    const intervalId = setInterval(() => {
+      setDisplay(message.content.slice(0, i + 1));
+      i++;
+      if (i > message.content.length) {
+        clearInterval(intervalId);
+      }
+    }, 15); // Adjust speed here
+
+    return () => clearInterval(intervalId);
+  }, [message.content, message.role, isLast]);
+
+  return (
+    <div
+      className={`flex ${
+        message.role === "user" ? "justify-end" : "justify-start"
+      }`}
+    >
+      <div
+        className={`max-w-[85%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-sm ${
+          message.role === "user"
+            ? "rounded-br-none bg-green-700 text-white"
+            : "rounded-bl-none border border-zinc-800 bg-zinc-900 text-zinc-200"
+        }`}
+      >
+        <div className="prose prose-sm max-w-none text-zinc-200">
+          <ReactMarkdown
+            components={{
+              a: ({ node, ...props }) => (
+                <a
+                  {...props}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-green-400 underline decoration-green-400/30 underline-offset-2 transition-colors hover:decoration-green-400"
+                />
+              ),
+              p: ({ node, ...props }) => (
+                <p
+                  {...props}
+                  className="mb-3 leading-relaxed text-zinc-200 last:mb-0"
+                />
+              ),
+              h1: ({ node, ...props }) => (
+                <h1
+                  {...props}
+                  className="mt-6 mb-4 text-xl font-bold text-zinc-100"
+                />
+              ),
+              h2: ({ node, ...props }) => (
+                <h2 {...props} className="mt-5 mb-3 font-bold text-zinc-100" />
+              ),
+              h3: ({ node, ...props }) => (
+                <h3
+                  {...props}
+                  className="mt-4 mb-2 font-semibold text-zinc-100"
+                />
+              ),
+              h4: ({ node, ...props }) => (
+                <h4
+                  {...props}
+                  className="mt-4 mb-2 font-semibold text-zinc-100"
+                />
+              ),
+              ul: ({ node, ...props }) => (
+                <ul
+                  {...props}
+                  className="mb-4 ml-4 list-disc space-y-2 text-zinc-200"
+                />
+              ),
+              ol: ({ node, ...props }) => (
+                <ol
+                  {...props}
+                  className="mb-4 ml-4 list-decimal space-y-2 text-zinc-200"
+                />
+              ),
+              li: ({ node, ...props }) => (
+                <li {...props} className="pl-1 text-zinc-200" />
+              ),
+              strong: ({ node, ...props }) => (
+                <strong {...props} className="font-bold text-zinc-100" />
+              ),
+              em: ({ node, ...props }) => (
+                <em {...props} className="text-zinc-300 italic" />
+              ),
+              del: ({ node, ...props }) => (
+                <del {...props} className="text-zinc-500 line-through" />
+              ),
+              blockquote: ({ node, ...props }) => (
+                <blockquote
+                  {...props}
+                  className="border-l-2 border-green-500/50 pl-4 text-zinc-400 italic"
+                />
+              ),
+              code: ({ node, inline, ...props }: any) =>
+                inline ? (
+                  <code
+                    {...props}
+                    className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-green-400"
+                  />
+                ) : (
+                  <pre className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-800 mt-3 overflow-x-auto rounded-lg bg-zinc-950 p-4 font-mono text-xs text-zinc-300">
+                    <code {...props} />
+                  </pre>
+                ),
+            }}
+          >
+            {display}
+          </ReactMarkdown>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function HeroChat({ modelName, labels }: HeroChatProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -175,114 +306,11 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
               {/* Messages */}
               <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-700 flex-1 space-y-6 overflow-y-auto p-6">
                 {messages.map((msg, idx) => (
-                  <div
+                  <ChatBubble
                     key={idx}
-                    className={`flex ${
-                      msg.role === "user" ? "justify-end" : "justify-start"
-                    }`}
-                  >
-                    <div
-                      className={`max-w-[85%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-sm ${
-                        msg.role === "user"
-                          ? "rounded-br-none bg-green-700 text-white"
-                          : "rounded-bl-none border border-zinc-800 bg-zinc-900 text-zinc-200"
-                      }`}
-                    >
-                      <div className="prose prose-sm max-w-none text-zinc-200">
-                        <ReactMarkdown
-                          components={{
-                            a: ({ node, ...props }) => (
-                              <a
-                                {...props}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="font-medium text-green-400 underline decoration-green-400/30 underline-offset-2 transition-colors hover:decoration-green-400"
-                              />
-                            ),
-                            p: ({ node, ...props }) => (
-                              <p
-                                {...props}
-                                className="mb-3 leading-relaxed text-zinc-200 last:mb-0"
-                              />
-                            ),
-                            h1: ({ node, ...props }) => (
-                              <h1
-                                {...props}
-                                className="mt-6 mb-4 text-xl font-bold text-zinc-100"
-                              />
-                            ),
-                            h2: ({ node, ...props }) => (
-                              <h2
-                                {...props}
-                                className="mt-5 mb-3 font-bold text-zinc-100"
-                              />
-                            ),
-                            h3: ({ node, ...props }) => (
-                              <h3
-                                {...props}
-                                className="mt-4 mb-2 font-semibold text-zinc-100"
-                              />
-                            ),
-                            h4: ({ node, ...props }) => (
-                              <h4
-                                {...props}
-                                className="mt-4 mb-2 font-semibold text-zinc-100"
-                              />
-                            ),
-                            ul: ({ node, ...props }) => (
-                              <ul
-                                {...props}
-                                className="mb-4 ml-4 list-disc space-y-2 text-zinc-200"
-                              />
-                            ),
-                            ol: ({ node, ...props }) => (
-                              <ol
-                                {...props}
-                                className="mb-4 ml-4 list-decimal space-y-2 text-zinc-200"
-                              />
-                            ),
-                            li: ({ node, ...props }) => (
-                              <li {...props} className="pl-1 text-zinc-200" />
-                            ),
-                            strong: ({ node, ...props }) => (
-                              <strong
-                                {...props}
-                                className="font-bold text-zinc-100"
-                              />
-                            ),
-                            em: ({ node, ...props }) => (
-                              <em {...props} className="text-zinc-300 italic" />
-                            ),
-                            del: ({ node, ...props }) => (
-                              <del
-                                {...props}
-                                className="text-zinc-500 line-through"
-                              />
-                            ),
-                            blockquote: ({ node, ...props }) => (
-                              <blockquote
-                                {...props}
-                                className="border-l-2 border-green-500/50 pl-4 text-zinc-400 italic"
-                              />
-                            ),
-                            code: ({ node, inline, ...props }: any) =>
-                              inline ? (
-                                <code
-                                  {...props}
-                                  className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-green-400"
-                                />
-                              ) : (
-                                <pre className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-800 mt-3 overflow-x-auto rounded-lg bg-zinc-950 p-4 font-mono text-xs text-zinc-300">
-                                  <code {...props} />
-                                </pre>
-                              ),
-                          }}
-                        >
-                          {msg.content}
-                        </ReactMarkdown>
-                      </div>
-                    </div>
-                  </div>
+                    message={msg}
+                    isLast={idx === messages.length - 1}
+                  />
                 ))}
                 {isLoading && (
                   <div className="flex justify-start">
