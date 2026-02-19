@@ -40,32 +40,42 @@ async function main() {
     console.error("Error fetching CVs:", error);
   }
 
-  for (const database of databases) {
-    console.log(`Processing database: ${database.Title}`);
-    try {
-      const pages = await getDatabasePages(database.Id, database.Title);
-      console.log(`  Found ${pages.length} pages in ${database.Title}`);
+  // Process databases and their pages in parallel
+  await Promise.all(
+    databases.map(async (database) => {
+      console.log(`Processing database: ${database.Title}`);
+      try {
+        const pages = await getDatabasePages(database.Id, database.Title);
+        console.log(`  Found ${pages.length} pages in ${database.Title}`);
 
-      for (const page of pages) {
-        // Skip non-active or private pages if needed, but for now we take all
-        if (page.Active === false) continue; // Example filter
+        // Process pages in parallel for this database
+        const CONCURRENCY_LIMIT = 5;
+        for (let i = 0; i < pages.length; i += CONCURRENCY_LIMIT) {
+          const batch = pages.slice(i, i + CONCURRENCY_LIMIT);
+          await Promise.all(
+            batch.map(async (page) => {
+              if (page.Active === false) return;
 
-        const pageName = page.Name || "Untitled";
-        const safeName = pageName.replace(/[^a-z0-9]/gi, "_").toLowerCase();
-        const fileName = `${safeName}-${page.PageId}.md`;
-        const filePath = path.join(knowledgeDir, fileName);
+              const pageName = page.Name || "Untitled";
+              const safeName = pageName
+                .replace(/[^a-z0-9]/gi, "_")
+                .toLowerCase();
+              const fileName = `${safeName}-${page.PageId}.md`;
+              const filePath = path.join(knowledgeDir, fileName);
 
-        console.log(`    Fetching blocks for page: ${pageName}`);
-        const blocks = await getAllBlocksByBlockId(page.PageId);
+              console.log(`    Fetching blocks for page: ${pageName}`);
+              const blocks = await getAllBlocksByBlockId(page.PageId);
 
-        const markdown = blocksToMarkdown(blocks, page);
-
-        fs.writeFileSync(filePath, markdown);
+              const markdown = blocksToMarkdown(blocks, page);
+              fs.writeFileSync(filePath, markdown);
+            }),
+          );
+        }
+      } catch (err) {
+        console.error(`  Error processing database ${database.Title}:`, err);
       }
-    } catch (err) {
-      console.error(`  Error processing database ${database.Title}:`, err);
-    }
-  }
+    }),
+  );
 }
 
 async function fetchCVMarkdown(locale: string): Promise<string> {

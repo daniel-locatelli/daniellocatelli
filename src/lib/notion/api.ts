@@ -252,61 +252,65 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
 
   const allBlocks = results.map((blockObject) => buildBlock(blockObject));
 
-  for (let i = 0; i < allBlocks.length; i++) {
-    const block = allBlocks[i];
-
-    if (block.Type === "table" && block.Table) {
-      block.Table.Rows = await _getTableRows(block.Id);
-    } else if (block.Type === "column_list" && block.ColumnList) {
-      block.ColumnList.Columns = await _getColumns(block.Id);
-    } else if (
-      block.Type === "bulleted_list_item" &&
-      block.BulletedListItem &&
-      block.HasChildren
-    ) {
-      block.BulletedListItem.Children = await getAllBlocksByBlockId(block.Id);
-    } else if (
-      block.Type === "numbered_list_item" &&
-      block.NumberedListItem &&
-      block.HasChildren
-    ) {
-      block.NumberedListItem.Children = await getAllBlocksByBlockId(block.Id);
-    } else if (block.Type === "to_do" && block.ToDo && block.HasChildren) {
-      block.ToDo.Children = await getAllBlocksByBlockId(block.Id);
-    } else if (block.Type === "synced_block" && block.SyncedBlock) {
-      block.SyncedBlock.Children = await _getSyncedBlockChildren(block);
-    } else if (block.Type === "toggle" && block.Toggle) {
-      block.Toggle.Children = await getAllBlocksByBlockId(block.Id);
-    } else if (
-      block.Type === "paragraph" &&
-      block.Paragraph &&
-      block.HasChildren
-    ) {
-      block.Paragraph.Children = await getAllBlocksByBlockId(block.Id);
-    } else if (
-      block.Type === "heading_1" &&
-      block.Heading1 &&
-      block.HasChildren
-    ) {
-      block.Heading1.Children = await getAllBlocksByBlockId(block.Id);
-    } else if (
-      block.Type === "heading_2" &&
-      block.Heading2 &&
-      block.HasChildren
-    ) {
-      block.Heading2.Children = await getAllBlocksByBlockId(block.Id);
-    } else if (
-      block.Type === "heading_3" &&
-      block.Heading3 &&
-      block.HasChildren
-    ) {
-      block.Heading3.Children = await getAllBlocksByBlockId(block.Id);
-    } else if (block.Type === "quote" && block.Quote && block.HasChildren) {
-      block.Quote.Children = await getAllBlocksByBlockId(block.Id);
-    } else if (block.Type === "callout" && block.Callout && block.HasChildren) {
-      block.Callout.Children = await getAllBlocksByBlockId(block.Id);
-    }
-  }
+  await Promise.all(
+    allBlocks.map(async (block) => {
+      if (block.Type === "table" && block.Table) {
+        block.Table.Rows = await _getTableRows(block.Id);
+      } else if (block.Type === "column_list" && block.ColumnList) {
+        block.ColumnList.Columns = await _getColumns(block.Id);
+      } else if (
+        block.Type === "bulleted_list_item" &&
+        block.BulletedListItem &&
+        block.HasChildren
+      ) {
+        block.BulletedListItem.Children = await getAllBlocksByBlockId(block.Id);
+      } else if (
+        block.Type === "numbered_list_item" &&
+        block.NumberedListItem &&
+        block.HasChildren
+      ) {
+        block.NumberedListItem.Children = await getAllBlocksByBlockId(block.Id);
+      } else if (block.Type === "to_do" && block.ToDo && block.HasChildren) {
+        block.ToDo.Children = await getAllBlocksByBlockId(block.Id);
+      } else if (block.Type === "synced_block" && block.SyncedBlock) {
+        block.SyncedBlock.Children = await _getSyncedBlockChildren(block);
+      } else if (block.Type === "toggle" && block.Toggle) {
+        block.Toggle.Children = await getAllBlocksByBlockId(block.Id);
+      } else if (
+        block.Type === "paragraph" &&
+        block.Paragraph &&
+        block.HasChildren
+      ) {
+        block.Paragraph.Children = await getAllBlocksByBlockId(block.Id);
+      } else if (
+        block.Type === "heading_1" &&
+        block.Heading1 &&
+        block.HasChildren
+      ) {
+        block.Heading1.Children = await getAllBlocksByBlockId(block.Id);
+      } else if (
+        block.Type === "heading_2" &&
+        block.Heading2 &&
+        block.HasChildren
+      ) {
+        block.Heading2.Children = await getAllBlocksByBlockId(block.Id);
+      } else if (
+        block.Type === "heading_3" &&
+        block.Heading3 &&
+        block.HasChildren
+      ) {
+        block.Heading3.Children = await getAllBlocksByBlockId(block.Id);
+      } else if (block.Type === "quote" && block.Quote && block.HasChildren) {
+        block.Quote.Children = await getAllBlocksByBlockId(block.Id);
+      } else if (
+        block.Type === "callout" &&
+        block.Callout &&
+        block.HasChildren
+      ) {
+        block.Callout.Children = await getAllBlocksByBlockId(block.Id);
+      }
+    }),
+  );
 
   return allBlocks;
 }

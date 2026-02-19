@@ -29,8 +29,6 @@ export default (): AstroIntegration => ({
 
           try {
             const url = new URL(page.Cover.Url);
-
-            // Wrap tasks with concurrency limit
             downloadTasks.push(downloadImage(url));
             downloadTasks.push(downloadPublicImage(url));
           } catch (error) {
@@ -39,67 +37,66 @@ export default (): AstroIntegration => ({
         });
       });
 
-      // Process block contents
-      for (const database of databases) {
-        if (database.Title.length === 0) continue;
+      // Process block contents in parallel with controlled concurrency
+      const CONCURRENCY_LIMIT = 5;
+      const pagesToProcess = databases.flatMap((db) =>
+        db.Title ? db.Pages : [],
+      );
 
-        for (const page of database.Pages) {
-          try {
-            const blocks = await getAllBlocksByBlockId(page.PageId);
-            const fileAttachedBlocks = extractTargetBlocks("image", blocks)
-              .concat(extractTargetBlocks("file", blocks))
-              .concat(extractTargetBlocks("video", blocks))
-              .filter((block) => {
-                if (!block) return false;
-                const imageFileOrVideo =
-                  block.Image || block.File || block.Video;
-                return (
-                  imageFileOrVideo &&
-                  imageFileOrVideo.File &&
-                  imageFileOrVideo.File.Url
-                );
-              });
+      for (let i = 0; i < pagesToProcess.length; i += CONCURRENCY_LIMIT) {
+        const batch = pagesToProcess.slice(i, i + CONCURRENCY_LIMIT);
+        await Promise.all(
+          batch.map(async (page) => {
+            try {
+              const blocks = await getAllBlocksByBlockId(page.PageId);
+              const fileAttachedBlocks = extractTargetBlocks("image", blocks)
+                .concat(extractTargetBlocks("file", blocks))
+                .concat(extractTargetBlocks("video", blocks))
+                .filter((block) => {
+                  if (!block) return false;
+                  const imageFileOrVideo =
+                    block.Image || block.File || block.Video;
+                  return (
+                    imageFileOrVideo &&
+                    imageFileOrVideo.File &&
+                    imageFileOrVideo.File.Url
+                  );
+                });
 
-            for (const block of fileAttachedBlocks) {
-              const mediaFile = block.Image || block.File || block.Video;
-              const expiryTime = mediaFile?.File?.ExpiryTime;
+              for (const block of fileAttachedBlocks) {
+                const mediaFile = block.Image || block.File || block.Video;
+                const expiryTime = mediaFile?.File?.ExpiryTime;
 
-              // Refresh block if expired
-              const resolvedBlock =
-                expiryTime && Date.parse(expiryTime) <= Date.now()
-                  ? await getBlock(block.Id)
-                  : block;
+                const resolvedBlock =
+                  expiryTime && Date.parse(expiryTime) <= Date.now()
+                    ? await getBlock(block.Id)
+                    : block;
 
-              try {
-                const url = new URL(
-                  (resolvedBlock.Image ||
-                    resolvedBlock.File ||
-                    resolvedBlock.Video)!.File!.Url,
-                );
+                try {
+                  const url = new URL(
+                    (resolvedBlock.Image ||
+                      resolvedBlock.File ||
+                      resolvedBlock.Video)!.File!.Url,
+                  );
 
-                let downloadTask: Promise<void>;
-                if (resolvedBlock.Image) {
-                  downloadTask = downloadImage(url);
-                } else if (resolvedBlock.File) {
-                  downloadTask = downloadFile(url);
-                } else if (resolvedBlock.Video) {
-                  downloadTask = downloadVideo(url);
-                } else {
-                  continue;
+                  if (resolvedBlock.Image) {
+                    downloadTasks.push(downloadImage(url));
+                  } else if (resolvedBlock.File) {
+                    downloadTasks.push(downloadFile(url));
+                  } else if (resolvedBlock.Video) {
+                    downloadTasks.push(downloadVideo(url));
+                  }
+                } catch (error) {
+                  console.log("Invalid file URL", error);
                 }
-
-                downloadTasks.push(downloadTask);
-              } catch (error) {
-                console.log("Invalid file URL", error);
               }
+            } catch (error) {
+              console.log("Error processing page blocks", error);
             }
-          } catch (error) {
-            console.log("Error processing page blocks", error);
-          }
-        }
+          }),
+        );
       }
 
-      // Process any remaining tasks in the queue
       await Promise.all(downloadTasks);
     },
   },

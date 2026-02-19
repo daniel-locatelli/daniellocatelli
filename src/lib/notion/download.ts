@@ -10,7 +10,7 @@ import { modifyFileName, urlToFileName } from "../blog-helpers";
 const client = axios.create();
 // Use type assertion to resolve the conflicting types
 const http = rateLimit(client as any, {
-  maxRequests: 3,
+  maxRequests: 10,
   perMilliseconds: 1000,
 });
 
