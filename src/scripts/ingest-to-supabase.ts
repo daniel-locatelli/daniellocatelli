@@ -4,8 +4,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+const SUPABASE_URL = process.env.SUPABASE_URL!;
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY!;
+
+if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
+  console.error("Missing SUPABASE_URL or SUPABASE_ANON_KEY in environment");
+  process.exit(1);
+}
+
 const EMBED_ENDPOINT = `${SUPABASE_URL}/functions/v1/embed`;
 const KNOWLEDGE_DIR = path.join(process.cwd(), "knowledge");
 
