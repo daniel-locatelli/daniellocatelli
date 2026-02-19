@@ -105,7 +105,7 @@ async function main() {
     }
 
     console.log(`Processing local CV: ${file} (${locale})`);
-    const content = fs.readFileSync(filePath, "utf-8");
+    // const content = fs.readFileSync(filePath, "utf-8");
     // Simple way to get HTML if the file contains it, or just use cheerio on the text?
     // Wait, the files we save in download-knowledge.ts are TEXT/MARKDOWN.
     // We need to parse the markdown or treat it as such.

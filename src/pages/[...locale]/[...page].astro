@@ -10,7 +10,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import BaseHead from "@/components/BaseHead.astro";
 import { Image } from "astro:assets";
-import { siteConfig, SUPPORTED_LOCALES } from "@/site-config";
+import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
 import { getLocale } from "src/lib/routes-helpers";
 
 const locale = getLocale(Astro.params);

@@ -4,7 +4,7 @@ import sharp from "sharp";
 import ExifTransformer from "exif-be-gone";
 import axios from "axios";
 import rateLimit from "axios-rate-limit";
-import { REQUEST_TIMEOUT_MS } from "../../server-constants";
+import { REQUEST_TIMEOUT_MS } from "../../config/server";
 import { modifyFileName, urlToFileName } from "../blog-helpers";
 
 const client = axios.create();

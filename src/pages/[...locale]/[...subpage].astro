@@ -1,5 +1,8 @@
 ---
-import { getAllBlocksByBlockId, getAllDatabases } from "../../lib/notion/client.ts";
+import {
+  getAllBlocksByBlockId,
+  getAllDatabases,
+} from "../../lib/notion/client.ts";
 import type { Page } from "../../lib/notion-interfaces.ts";
 import {
   importCoverImage,
@@ -11,48 +14,48 @@ import Base from "@/layouts/Base.astro";
 import PostBody from "@/components/Notion/PostBody.astro";
 import RichText from "@/components/Notion/blocks/RichText.astro";
 import * as interfaces from "../../lib/notion-interfaces.ts";
-import { siteConfig, SUPPORTED_LOCALES } from "@/site-config";
+import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
 import { getLocale } from "src/lib/routes-helpers";
 import { getI18n } from "src/i18n/utils";
 import type { I18nSubpage } from "src/i18n/subpage/type";
 
-const locale = getLocale(Astro.params)
+const locale = getLocale(Astro.params);
 
 const t = await getI18n<I18nSubpage>("subpage", locale);
 
 export async function getStaticPaths() {
   const databases = await getAllDatabases();
-  
+
   // Get all subpages from non-"Pages" databases
   const allSubpages = databases
-    .filter(database => database.Title !== "Pages")
-    .flatMap(database => database.Pages);
-  
+    .filter((database) => database.Title !== "Pages")
+    .flatMap((database) => database.Pages);
+
   const paths = [];
-  
+
   for (const locale of SUPPORTED_LOCALES) {
     const isDefaultLocale = locale === siteConfig.defaultLocale;
-    
+
     for (const subpage of allSubpages) {
       // Determine the subpage's locale
       const subpageLocale = subpage.Locale || siteConfig.defaultLocale;
-      
+
       // Only include if the subpage belongs to this locale
       if (subpageLocale !== locale) continue;
-      
+
       paths.push({
-        params: { 
+        params: {
           subpage: subpage.Slug,
-          locale: isDefaultLocale ? undefined : locale
+          locale: isDefaultLocale ? undefined : locale,
         },
-        props: { 
+        props: {
           subpage,
-          locale
+          locale,
         },
       });
     }
   }
-  
+
   return paths;
 }
 
@@ -69,7 +72,7 @@ const [blocks] = await Promise.all([getAllBlocksByBlockId(subpage.PageId)]);
 // It only accepts string literals
 // https://docs.astro.build/en/recipes/dynamically-importing-images/
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
+  "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}",
 );
 
 // Cover image
@@ -111,7 +114,7 @@ if (subpage.Cover) {
     image && (
       <div class="relative mb-8 h-72 w-full overflow-hidden md:h-128">
         <Image
-          class="absolute z-10 h-full w-full animate-fade object-cover object-center"
+          class="animate-fade absolute z-10 h-full w-full object-cover object-center"
           src={image}
           alt={subpage.CoverAlt}
           transition:name={subpage.PageId + "-image"}
@@ -124,11 +127,11 @@ if (subpage.Cover) {
     )
   }
   <section
-    class="flex w-full max-w-full flex-col items-center justify-center font-body"
+    class="font-body flex w-full max-w-full flex-col items-center justify-center"
   >
     <div class="w-full max-w-full overflow-x-hidden sm:max-w-2xl">
       <h1
-        class="title mb-8 text-balance px-2 font-title text-4xl font-normal md:px-0"
+        class="title font-title mb-8 px-2 text-4xl font-normal text-balance md:px-0"
       >
         {subpage.Name}
       </h1>
@@ -141,8 +144,7 @@ if (subpage.Cover) {
               <th class="font-body font-bold">{t.date}</th>
               <td>{subpage.DateEnd}</td>
             </tr>
-          ) :
-          subpage.DateStart ? (
+          ) : subpage.DateStart ? (
             <tr>
               <th class="font-body font-bold">{t.date}</th>
               <td>{subpage.DateStart}</td>

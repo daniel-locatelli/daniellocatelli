@@ -1,10 +1,10 @@
 ---
 import Base from "@/layouts/Base.astro";
-import profilePhoto from "@/assets/daniel-locatelli-v1.png";
+import profilePhoto from "@/assets/avatars/daniel-locatelli-v1.png";
 import { Image } from "astro:assets";
 import Container from "@/components/Container.astro";
 import { Icon } from "astro-icon/components";
-import { siteConfig } from "@/site-config";
+import { siteConfig } from "@/config/site";
 import type {
   I18nCV,
   Experience,
@@ -47,7 +47,7 @@ const engSelected = cv.engagements.filter(
     title: cv.meta.titleSimple,
     description: cv.meta.descriptionSimple,
     coverAlt: cv.meta.coverAlt,
-    coverImage: "@/assets/daniel-locatelli.png",
+    coverImage: "@/assets/avatars/daniel-locatelli-v1.png",
     slug: "full-cv",
   }}
 >

@@ -1,5 +1,5 @@
 import type { Folder } from "./types";
-import { siteConfig } from "@/site-config";
+import { siteConfig } from "@/config/site";
 
 // Helper function to format date
 export const getMonthYear = (dateString: string): string => {

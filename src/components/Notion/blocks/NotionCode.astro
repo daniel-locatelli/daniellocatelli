@@ -4,6 +4,9 @@ import * as interfaces from "../../../lib/notion-interfaces";
 import Caption from "./Caption.astro";
 import { notionLangToShiki } from "src/lib/utils";
 
+import clipboard from "@/assets/ui/clipboard.svg";
+import clipboardChecked from "@/assets/ui/clipboard-checked.svg";
+
 export interface Props {
   block: interfaces.Block;
 }
@@ -12,21 +15,23 @@ const { block } = Astro.props;
 
 const code = block
   .Code!.RichTexts.map(
-    (richText: interfaces.RichText) => richText.Text!.Content
+    (richText: interfaces.RichText) => richText.Text!.Content,
   )
   .join("");
 const notionLanguage = block.Code!.Language.toLowerCase();
 const language = notionLangToShiki(notionLanguage);
 ---
 
-<div class="overflow-x-hidden max-w-full w-full mb-1 relative pb-6">
+<div class="relative mb-1 w-full max-w-full overflow-x-hidden pb-6">
   <div class="rounded-sm">
     <div class="absolute top-0 right-0">
       <button
-        class="copy py-1 px-1 bg-zinc-600 rounded-sm cursor-pointer"
+        class="copy cursor-pointer rounded-sm bg-zinc-600 px-1 py-1"
         data-code={"```" + language + "\n" + code + "```"}
+        data-clipboard-src={clipboard.src}
+        data-checked-src={clipboardChecked.src}
       >
-        <img src="/assets/clipboard.svg" alt="Copy" class="h-4 w-10 svg-icon" />
+        <img src={clipboard.src} alt="Copy" class="svg-icon h-4 w-10" />
       </button>
     </div>
     {
@@ -45,13 +50,17 @@ const language = notionLangToShiki(notionLanguage);
 <script>
   document.querySelectorAll("button.copy").forEach((button) => {
     button.addEventListener("click", (ev) => {
-      const imgTag = button.querySelector(".svg-icon");
-      const code = (ev.currentTarget as HTMLElement).getAttribute("data-code");
+      const btn = ev.currentTarget as HTMLElement;
+      const imgTag = btn.querySelector(".svg-icon");
+      const code = btn.getAttribute("data-code");
+      const clipboardSrc = btn.getAttribute("data-clipboard-src");
+      const checkedSrc = btn.getAttribute("data-checked-src");
+
       navigator.clipboard.writeText(code!);
-      if (imgTag) {
-        imgTag.setAttribute("src", "/assets/clipboard-checked.svg");
+      if (imgTag && checkedSrc && clipboardSrc) {
+        imgTag.setAttribute("src", checkedSrc);
         setTimeout(() => {
-          imgTag.setAttribute("src", "/assets/clipboard.svg");
+          imgTag.setAttribute("src", clipboardSrc);
         }, 1000);
       }
     });

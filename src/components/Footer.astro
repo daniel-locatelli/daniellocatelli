@@ -1,9 +1,9 @@
 ---
-import { siteConfig } from "@/site-config";
+import { siteConfig } from "@/config/site";
 import type { Page } from "src/lib/notion-interfaces";
 import { getDatabaseByName } from "src/lib/notion/client";
 import { Image } from "astro:assets";
-import globe from "@/assets/globe.svg";
+import globe from "@/assets/ui/globe.svg";
 import { getLocale } from "src/lib/routes-helpers";
 import { Icon } from "astro-icon/components";
 
@@ -37,7 +37,12 @@ const { slug } = Astro.props as Props;
     <address
       class="order-1 mt-6 flex w-full items-center justify-center space-x-7 sm:order-2 sm:mt-0 sm:w-auto"
     >
-      <a href={siteConfig.linkedin} target="_blank" title="Lets connect." class="flex">
+      <a
+        href={siteConfig.linkedin}
+        target="_blank"
+        title="Lets connect."
+        class="flex"
+      >
         <Icon
           name="mdi:linkedin"
           class="inline size-4 w-auto mix-blend-difference"
@@ -54,13 +59,23 @@ const { slug } = Astro.props as Props;
           class="inline size-4 w-auto mix-blend-difference"
         />
       </a>
-      <a href={siteConfig.github} target="_blank" title="Check my GitHub." class="flex">
+      <a
+        href={siteConfig.github}
+        target="_blank"
+        title="Check my GitHub."
+        class="flex"
+      >
         <Icon
           name="mdi:github"
           class="inline size-4 w-auto mix-blend-difference"
         />
       </a>
-      <a href={siteConfig.gitlab} target="_blank" title="Check my GitLab." class="flex">
+      <a
+        href={siteConfig.gitlab}
+        target="_blank"
+        title="Check my GitLab."
+        class="flex"
+      >
         <Icon
           name="mdi:gitlab"
           class="inline size-4 w-auto mix-blend-difference"

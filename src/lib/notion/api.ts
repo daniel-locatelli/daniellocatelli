@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import retry from "async-retry";
-import { NOTION_API_SECRET } from "../../server-constants";
+import { NOTION_API_SECRET } from "../../config/server";
 import type * as responses from "./responses";
 import type * as requestParams from "./request-params";
 import type {

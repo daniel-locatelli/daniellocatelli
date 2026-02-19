@@ -6,9 +6,9 @@ import {
   getDatabasePages,
   getAllBlocksByBlockId,
 } from "../lib/notion/api";
-import { NOTION_API_SECRET } from "../server-constants";
+import { NOTION_API_SECRET } from "../config/server";
 import type { Block, Page } from "../lib/notion-interfaces";
-import { siteConfig } from "../site.config";
+import { siteConfig } from "../config/site";
 import * as cheerio from "cheerio";
 
 async function main() {

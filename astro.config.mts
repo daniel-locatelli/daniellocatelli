@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import { CUSTOM_DOMAIN, BASE_PATH } from "./src/server-constants";
+import { CUSTOM_DOMAIN, BASE_PATH } from "./src/config/server";
 import AllFilesDownloader from "./src/integrations/all-files-downloader";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";

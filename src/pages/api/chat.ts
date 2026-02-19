@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import Anthropic from "@anthropic-ai/sdk";
+import { DevModelAPIAlias, ProdModelAPIAlias } from "@/config/ai-models";
 
 export const prerender = false;
 
@@ -79,9 +80,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     });
 
     const msg = await anthropic.messages.create({
-      model: import.meta.env.DEV
-        ? "claude-3-haiku-20240307"
-        : "claude-haiku-4-5",
+      model: import.meta.env.DEV ? DevModelAPIAlias : ProdModelAPIAlias,
       max_tokens: 1024,
       system: `You are Daniel Locatelli, a software engineer and computational designer. 
 Answer in the FIRST PERSON (use "I", "me", "my"). 

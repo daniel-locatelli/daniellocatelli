@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { BASE_PATH, REQUEST_TIMEOUT_MS } from "../server-constants";
+import { BASE_PATH, REQUEST_TIMEOUT_MS } from "../config/server";
 import type {
   Block,
   Heading1,

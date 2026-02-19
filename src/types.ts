@@ -1,30 +1,3 @@
-import type { SUPPORTED_LOCALES } from "./site.config";
-
-export type SiteConfig = {
-  title: string;
-  description: string;
-  defaultLocale: SupportedLocale;
-  
-  // Author Information
-  author: string;
-  authorFirstName: string;
-  authorLastName: string;
-  email: string;
-  phone: string;
-  website: string;
-  
-  // Social Links
-  bluesky: string;
-  github: string;
-  gitlab: string;
-  instagram: string;
-  linkedin: string;
-  orcid: string;
-  whatsapp: string;
-};
-
-export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
-
 export type PaginationLink = {
   url: string;
   text?: string;
@@ -37,7 +10,7 @@ export type SiteMeta = {
   coverImage?: string | undefined;
   coverAlt?: string | undefined;
   articleDate?: string | undefined;
-  slug: string  | undefined;
+  slug: string | undefined;
   viewTransition?: boolean;
 };
 

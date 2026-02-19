@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+
 import { X, Send, Loader2, Sparkles, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { siteConfig } from "../site.config";
-import WhatsAppIcon from "@/assets/digital-glyph-white.svg";
+import { siteConfig } from "../config/site";
+import WhatsAppIcon from "@/assets/ui/digital-glyph-white.svg";
 
 interface Message {
   role: "user" | "assistant";
