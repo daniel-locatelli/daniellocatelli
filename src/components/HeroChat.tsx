@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { X, Send, Loader2, Sparkles } from "lucide-react";
+import { X, Send, Loader2, Sparkles, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { siteConfig } from "../site.config";
+import WhatsAppIcon from "@/assets/digital-glyph-white.svg";
 
 interface Message {
   role: "user" | "assistant";
@@ -17,6 +19,8 @@ interface HeroChatProps {
     headerTitle: string;
     poweredBy: string;
     errorMessage: string;
+    requestQuote: string;
+    sendEmail: string;
   };
 }
 
@@ -161,6 +165,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -188,6 +193,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
     setInput("");
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setIsLoading(true);
+    setHasInteracted(true);
 
     const maxRetries = 1;
     let attempt = 0;
@@ -348,6 +354,37 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
 
               {/* Input Area */}
               <div className="border-t border-zinc-800 bg-black p-4">
+                <AnimatePresence>
+                  {hasInteracted && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0, marginBottom: 0 }}
+                      animate={{ opacity: 1, height: "auto", marginBottom: 16 }}
+                      exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+                      className="flex flex-col gap-3 sm:flex-row"
+                    >
+                      <a
+                        href={siteConfig.whatsapp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-green-400 hover:bg-zinc-900 hover:text-green-400"
+                      >
+                        <img
+                          src={WhatsAppIcon.src}
+                          alt="WhatsApp"
+                          className="size-4"
+                        />
+                        {labels.requestQuote}
+                      </a>
+                      <a
+                        href={`mailto:${siteConfig.email}`}
+                        className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-green-400 hover:bg-zinc-900 hover:text-green-400"
+                      >
+                        <Mail size={16} />
+                        {labels.sendEmail}
+                      </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
                 <form
                   onSubmit={handleChatSubmit}
                   className="flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/50 px-2 py-2"

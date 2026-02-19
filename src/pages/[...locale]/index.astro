@@ -59,39 +59,17 @@ const home = await getI18n<I18nHome>("home", locale);
             modelName={import.meta.env.DEV
               ? "Claude 3 Haiku"
               : "Claude Opus 4.6"}
-            labels={home.hero.chat}
+            labels={{
+              ...home.hero.chat,
+              requestQuote: home.hero.requestQuote,
+              sendEmail: home.hero.sendEmail,
+            }}
           />
-        </div>
-
-        <div
-          class="flex flex-col items-center gap-4 md:flex-row md:gap-2 md:text-sm"
-        >
-          <a
-            href={siteConfig.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 bg-linear-to-r from-green-700 to-green-800 px-8 py-3 text-white transition hover:from-green-800 hover:to-green-900 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none md:w-fit"
-          >
-            <Image
-              src={WhatsApp}
-              alt="WhatsApp Icon"
-              class="size-5 md:size-4"
-            />
-            {home.hero.requestQuote}
-          </a>
-          <a
-            href={`mailto:${siteConfig.email}`}
-            title="Email Daniel Locatelli"
-            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 px-8 py-3 text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none md:w-fit"
-          >
-            <Icon name="mdi:email-outline" class="size-5 md:size-4" />
-            <span> {home.hero.sendEmail} </span>
-          </a>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="mt-0!">
       <GeodesicDome />
     </section>
 
