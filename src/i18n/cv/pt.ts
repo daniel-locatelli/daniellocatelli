@@ -25,7 +25,7 @@ export const t: I18nCV = {
     scholarships: "Bolsas de estudo",
     publications: "Publicações",
     certifications: "Certificados",
-    engagementSimple: "Experiência docente recente", 
+    engagementSimple: "Experiência docente recente",
     engagementFull: "Experiência Docente",
     coursesAttended: "Cursos frequentados",
     projectsList: "Lista de Projetos",
@@ -672,6 +672,16 @@ export const t: I18nCV = {
     },
   ],
   works: [
+    {
+      title: "Website Portfólio",
+      description:
+        "Desenvolvimento deste website portfólio utilizando Astro, Three.js, Notion API, Supabase e Claude.",
+      company: "Autônomo",
+      startDate: "2024-01",
+      link: "https://daniellocatelli.com",
+      location: "Remoto",
+      category: "Software",
+    },
     {
       title: "BuildSystems Website",
       description:

@@ -69,7 +69,8 @@ async function main() {
 }
 
 async function fetchCVMarkdown(locale: string): Promise<string> {
-  let url = `${siteConfig.website}${locale === siteConfig.defaultLocale ? "" : "/" + locale}/full-cv`;
+  const baseUrl = process.env.WEBSITE_URL || siteConfig.website;
+  let url = `${baseUrl}${locale === siteConfig.defaultLocale ? "" : "/" + locale}/full-cv`;
 
   // Specific override if needed, but siteConfig logic should hold.
   // User reported issues with previous generation, so fetching live is safer.

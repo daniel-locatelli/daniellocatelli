@@ -3,9 +3,11 @@ import type { I18nCV } from "./types";
 export const t: I18nCV = {
   meta: {
     titleSimple: "Daniel Locatelli - CV",
-    descriptionSimple: "This is my simplified CV, including main work, education, lectures, publications, certificates and courses.",
+    descriptionSimple:
+      "This is my simplified CV, including main work, education, lectures, publications, certificates and courses.",
     titleFull: "Daniel Locatelli - Full CV",
-    descriptionFull: "This is my full CV, including work, education, lectures, publications, certificates, and more.",
+    descriptionFull:
+      "This is my full CV, including work, education, lectures, publications, certificates, and more.",
     coverAlt: "Daniel Locatelli's profile photo.",
   },
   ui: {
@@ -384,8 +386,7 @@ export const t: I18nCV = {
   ],
   engagements: [
     {
-      title:
-        "Working with Geographic Data in Grasshopper",
+      title: "Working with Geographic Data in Grasshopper",
       startDate: "2025-05",
       link: "https://ar.hm.edu/studierende/masterstudiengang/lehrangebot/sommersemster_2025/25sose_ma_schluesselkompetenz_31_scheurer_ciganek.de.html",
       organization: "Munich University of Applied Sciences",
@@ -674,6 +675,16 @@ export const t: I18nCV = {
     },
   ],
   works: [
+    {
+      title: "Portfolio Website",
+      description:
+        "Developed this portfolio website using Astro, Three.js, Notion API, Supabase, and Claude.",
+      company: "Self-employed",
+      startDate: "2024-01",
+      link: "https://daniellocatelli.com",
+      location: "Remote",
+      category: "Software",
+    },
     {
       title: "BuildSystems Website",
       description:

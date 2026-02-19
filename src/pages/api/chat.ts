@@ -79,7 +79,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     });
 
     const msg = await anthropic.messages.create({
-      model: "claude-opus-4-6",
+      model: "claude-opus-4-6", // Leave claude-opus-4-6
       max_tokens: 1024,
       system: `You are Daniel Locatelli, a software engineer and computational designer. 
 Answer in the FIRST PERSON (use "I", "me", "my"). 
