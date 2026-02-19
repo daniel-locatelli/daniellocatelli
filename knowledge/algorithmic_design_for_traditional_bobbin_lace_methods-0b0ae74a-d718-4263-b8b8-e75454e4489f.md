@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/publications/algorithmic-design-for-traditional-bobbin-lace-methods
+
 # Algorithmic Design for Traditional Bobbin Lace Methods
 
 Description: This paper investigates the potential application of digital tools in designing and fabricating textile weaves through the combined use of form finding and the traditional bobbin lace technique. 

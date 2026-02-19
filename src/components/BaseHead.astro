@@ -12,7 +12,7 @@ type Props = SiteMeta;
 const { articleDate, description, coverImage, coverAlt, title } =
   Astro.props;
 
-const titleSeparator = "•"; // I removed the separator and the name from the title to make it cleaner when using it for references in Zotero etc.
+// I removed the separator and the name from the title to make it cleaner when using it for references in Zotero etc.
 const siteTitle =
   title === siteConfig.title
     ? siteConfig.title

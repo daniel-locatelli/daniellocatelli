@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/publications/high-low-as-expression-of-the-brazilian-digital-fabrication
+
 # High-Low como expressão da fabricação digital brasileira
 
 Description: Este artigo investiga o conceito do high-low: alta tecnologia na fase de projeto (high), com baixa tecnologia na fase de fabricação (low). A arquitetura efêmera tem potencial para combinar conhecimentos acadêmicos e artísticos na produção comercial brasileira. Um estudo de caso experimental desenhado para a Expo Revestir para a Docol em 2017 é apresentado aqui, equilibrando o paradigma do design computacional com o campo acadêmico e aplicações comerciais viáveis.

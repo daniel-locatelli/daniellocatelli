@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/publications/high-low-as-expression-of-the-brazilian-digital-fabrication
+
 # High-Low as Expression of The Brazilian Digital Fabrication
 
 Description: This paper investigates the concept of high-low: high technology in the design phase with low technology in the fabrication phase. The ephemeral architecture has the potential to combine academic and artistic knowledge in Brazilian commercial production. One experimental case study designed for Expo Revestir for Docol in 2017 is presented here, balancing the paradigm of computational design with the academic field and viable commercial applications.

@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/projects/kfw-funding-calculator-by-buildsystems
+
 # KfW Funding Calculator by BuildSystems
 
 Description: This calculator simulates bank loans and subsidies, making sustainable constructions and renovations accessible to real estate developers and homeowners.

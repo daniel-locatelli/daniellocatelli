@@ -5,6 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 import cloudflare from "@astrojs/cloudflare";
+import react from "@astrojs/react";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -34,7 +35,7 @@ export default defineConfig({
     port: 4321,
     host: true,
   },
-  integrations: [sitemap(), AllFilesDownloader(), icon()],
+  integrations: [sitemap(), AllFilesDownloader(), icon(), react()],
   prefetch: true,
   vite: {
     plugins: [tailwindcss()],

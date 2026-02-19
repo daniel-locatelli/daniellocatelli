@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/research/building-across-scales
+
 # Building Across Scales
 
 Description: The research proposes a heterogeneous multi-scalar robotic construction system to further automate on-site timber construction. Specifically, it presents the next step in the automation of on-site gluing by introducing a custom clamping robot for the on-site pressuring of timber elements. Therefore, at the core of the research lies the development of the clamping robot as part of a larger robotic construction team, including an industrial robotic arm and an automated crane in co-design with the material and building system.

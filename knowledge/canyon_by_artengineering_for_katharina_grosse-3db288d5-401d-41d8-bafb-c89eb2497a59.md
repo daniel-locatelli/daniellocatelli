@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/projects/canyon-by-artengineering-for-katharina-grosse
+
 # Canyon by ArtEngineering for Katharina Grosse
 
 Description: For this project, Katharina Grosse chose to sculpt with leather. The challenge here was translating the organic leather strips into folded steel plates. The solution was a strategy already used in boat production for millennia: developable surfaces.

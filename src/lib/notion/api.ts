@@ -13,9 +13,8 @@ import type {
   TableRow,
   TableCell,
   Column,
-  SyncedFrom,
 } from "../notion-interfaces";
-import { Client, APIResponseError, isFullDatabase } from "@notionhq/client";
+import { Client, APIResponseError } from "@notionhq/client";
 import {
   type SearchResponse,
   type ListBlockChildrenResponse,

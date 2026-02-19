@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/projects/air-guitar-by-atelier-marko-brajovic-for-nike
+
 # Air Guitar by Atelier Marko Brajovic for Nike
 
 Description: Atelier Marko Brajovic developed this site-specific installation for the celebration of the Air Max Day. In this project, I worked on the concept and the coordination. I also got to work with addressable LEDs, Arduino, and bass pickups.

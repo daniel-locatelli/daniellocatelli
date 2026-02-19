@@ -13,8 +13,9 @@ import { getI18n } from "src/i18n/utils";
 import { getLocale } from "src/lib/routes-helpers";
 
 export { getStaticPaths } from "src/lib/routes-helpers";
+import HeroChat from "@/components/HeroChat";
 
-const locale = getLocale(Astro.params)
+const locale = getLocale(Astro.params);
 
 const home = await getI18n<I18nHome>("home", locale);
 ---
@@ -51,6 +52,11 @@ const home = await getI18n<I18nHome>("home", locale);
         </div>
 
         <p class="font-body max-w-xl" set:html={home.hero.description} />
+
+        <div class="w-full max-w-xl py-4">
+          <HeroChat client:load />
+        </div>
+
         <div
           class="flex flex-col items-center gap-4 md:flex-row md:gap-2 md:text-sm"
         >

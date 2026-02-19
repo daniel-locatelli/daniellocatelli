@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/research/building-across-scales
+
 # Building Across Scales
 
 Description: A pesquisa propõe um sistema de construção robótica heterogêneo e multiescalar para ampliar a automação da construção em madeira no canteiro de obras. Especificamente, apresenta o próximo passo na automação da colagem in loco ao introduzir um robô de fixação (clamping) customizado para a prensagem de elementos de madeira. Portanto, o cerne da pesquisa reside no desenvolvimento deste robô como parte de uma equipe robótica de construção mais ampla — incluindo um braço robótico industrial e um guindaste automatizado — operando em co-design com o material e o sistema construtivo.

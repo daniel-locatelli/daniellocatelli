@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/teaching/feasibility-of-sustainable-construction-by-buildsystems-at-siemens
+
 # Viabilidade de construções sustentáveis pela BuildSystems na Siemens
 
 Description: Neste pitch nós apresentamos nossa visão sobre como analisar o campo cada vez mais complexo da sustentabilidade na indústria da construção.

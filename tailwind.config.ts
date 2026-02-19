@@ -35,7 +35,7 @@ export default {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // Remove above once tailwindcss exposes theme type
-      typography: (theme) => ({
+      typography: () => ({
         DEFAULT: {
           css: {
             a: {

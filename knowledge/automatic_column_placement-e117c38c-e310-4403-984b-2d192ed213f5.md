@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/publications/automatic-column-placement
+
 # Automatic Column Placement
 
 Description: This paper presents a feedback-based computational method for placing columns in the early design phase of complex multi-story structures. The method integrates a circle packing algorithm, a spring system, and structural engineering simulations within a single script for the reciprocal and informed arrangement of columns in the space. While allowing the users to have an explorative approach, it empowers diverse potentials in multi-story constructions, including additional cantilevering spaces around the boundary, increased spatial qualities with large span possibilities, multidirectional structural arrangements, and multi-purpose use of space. As a result, the developed algorithm allows for flexibility by leveraging the design possibilities of grid-based and irregular column arrangements. It promotes the integration of structural and design-related constraints in the spatial organization of various building typologies. 

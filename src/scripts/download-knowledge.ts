@@ -1,7 +1,4 @@
 import "dotenv/config";
-import { t as cvEn } from "../i18n/cv/en";
-import { t as cvPt } from "../i18n/cv/pt";
-
 import fs from "node:fs";
 import path from "node:path";
 import {
@@ -11,11 +8,12 @@ import {
 } from "../lib/notion/api";
 import { NOTION_API_SECRET } from "../server-constants";
 import type { Block, Page } from "../lib/notion-interfaces";
+import { siteConfig } from "../site.config";
+import * as cheerio from "cheerio";
 
 async function main() {
   if (!NOTION_API_SECRET) {
     console.error("NOTION_API_SECRET is not set");
-
     process.exit(1);
   }
 
@@ -29,11 +27,18 @@ async function main() {
   }
 
   console.log("Generating Full CV Markdowns (EN & PT)...");
-  const cvMarkdownEn = generateCVMarkdown(cvEn);
-  const cvMarkdownPt = generateCVMarkdown(cvPt);
-  fs.writeFileSync(path.join(knowledgeDir, "full-cv-en.md"), cvMarkdownEn);
-  fs.writeFileSync(path.join(knowledgeDir, "full-cv-pt.md"), cvMarkdownPt);
-  console.log("CVs saved to knowledge/");
+
+  try {
+    const cvMarkdownEn = await fetchCVMarkdown("en");
+    fs.writeFileSync(path.join(knowledgeDir, "full-cv-en.md"), cvMarkdownEn);
+    console.log("Saved full-cv-en.md");
+
+    const cvMarkdownPt = await fetchCVMarkdown("pt");
+    fs.writeFileSync(path.join(knowledgeDir, "full-cv-pt.md"), cvMarkdownPt);
+    console.log("Saved full-cv-pt.md");
+  } catch (error) {
+    console.error("Error fetching CVs:", error);
+  }
 
   for (const database of databases) {
     console.log(`Processing database: ${database.Title}`);
@@ -63,8 +68,72 @@ async function main() {
   }
 }
 
+async function fetchCVMarkdown(locale: string): Promise<string> {
+  let url = `${siteConfig.website}${locale === siteConfig.defaultLocale ? "" : "/" + locale}/full-cv`;
+
+  // Specific override if needed, but siteConfig logic should hold.
+  // User reported issues with previous generation, so fetching live is safer.
+
+  console.log(`Fetching CV from ${url}...`);
+  let res = await fetch(url);
+
+  if (!res.ok && locale === "en") {
+    // Fallback strategies for EN if default fails (e.g. maybe it IS at /en/full-cv)
+    const altUrl = `${siteConfig.website}/en/full-cv`;
+    console.log(`Failed (${res.status}). Trying ${altUrl}...`);
+    const res2 = await fetch(altUrl);
+    if (res2.ok) {
+      url = altUrl;
+      res = res2;
+    } else {
+      throw new Error(`Failed to fetch CV from ${url} and ${altUrl}`);
+    }
+  } else if (!res.ok) {
+    throw new Error(
+      `Failed to fetch CV from ${url}: ${res.status} ${res.statusText}`,
+    );
+  }
+
+  const html = await res.text();
+  const $ = cheerio.load(html);
+
+  // Clean up
+  $("nav").remove();
+  $("footer").remove();
+  $("header").remove();
+  $("script").remove();
+  $("style").remove();
+  $("[class*='nav']").remove();
+  $("[class*='menu']").remove();
+
+  // Try to find main content
+  let contentHtml = $("main").html();
+  if (!contentHtml) {
+    console.warn("No <main> tag found, using body content.");
+    contentHtml = $("body").html() || "";
+  }
+
+  // Extract plain text instead of Markdown
+  const text = $(contentHtml).text() || "";
+
+  // Clean up whitespace: remove only multiple spaces, keep newlines for structure
+  const cleanText = text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0)
+    .join("\n\n");
+
+  // Return with URL prefix for exclude/combine script
+  return `URL: ${url}\n\n${cleanText}`;
+}
+
 function blocksToMarkdown(blocks: Block[], page: Page): string {
-  let md = `# ${page.Name}\n\n`;
+  const isDefaultLocale =
+    page.Locale === siteConfig.defaultLocale || !page.Locale;
+  const url = `${siteConfig.website}${isDefaultLocale ? "" : "/" + page.Locale}/${page.Slug}`;
+
+  let md = `URL: ${url}\n\n`;
+  md += `# ${page.Name}\n\n`;
 
   // Add Metadata
   if (page.Description) md += `Description: ${page.Description}\n`;
@@ -149,48 +218,6 @@ function richTextToMarkdown(richTexts: any[] | undefined): string {
       return text;
     })
     .join("");
-}
-
-function generateCVMarkdown(cv: typeof import("../i18n/cv/en").t): string {
-  let md = `# ${cv.meta.titleFull}\n\n`;
-  md += `> ${cv.quote}\n\n`;
-
-  md += `## ${cv.ui.summary}\n`;
-  md += `${cv.summary}\n\n`;
-
-  md += `## ${cv.ui.skills}\n`;
-  md += `### ${cv.ui.programming}\n`;
-  md +=
-    cv.skillsProgramming.map((s) => `- ${s.title}: ${s.level}`).join("\n") +
-    "\n\n";
-  md += `### ${cv.ui.frameworks}\n`;
-  md +=
-    cv.skillsFrameworks.map((s) => `- ${s.title}: ${s.level}`).join("\n") +
-    "\n\n";
-  md += `### ${cv.ui.databases}\n`;
-  md +=
-    cv.skillsDatabases.map((s) => `- ${s.title}: ${s.level}`).join("\n") +
-    "\n\n";
-
-  md += `## ${cv.ui.professionalExperience}\n`;
-  for (const exp of cv.experiences) {
-    md += `### ${exp.title} at ${exp.company}\n`;
-    md += `*${exp.startDate} - ${exp.endDate || cv.ui.current} | ${exp.location}*\n`;
-    if (exp.items) {
-      md += exp.items.map((i) => `- ${i}`).join("\n") + "\n";
-    }
-    md += "\n";
-  }
-
-  md += `## ${cv.ui.education}\n`;
-  for (const edu of cv.education) {
-    md += `### ${edu.title} at ${edu.institution}\n`;
-    md += `*${edu.startDate} - ${edu.endDate || cv.ui.current} | ${edu.location}*\n`;
-    if (edu.description) md += `${edu.description}\n`;
-    md += "\n";
-  }
-
-  return md;
 }
 
 main().catch(console.error);

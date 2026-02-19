@@ -10,7 +10,9 @@ interface Props {
   meta: SiteMeta;
 }
 
-const locale = getLocale(Astro.params)
+const locale = getLocale(Astro.params);
+
+// ... existing imports
 
 const {
   meta: {
@@ -37,7 +39,7 @@ const {
     />
     <slot name="after-head" />
   </head>
-  <body class="p-0 m-0 max-w-full h-full">
+  <body class="m-0 h-full max-w-full p-0">
     <Header slug={slug} />
     <main id="main">
       <slot />

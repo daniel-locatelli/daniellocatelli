@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/projects/canyon-by-artengineering-for-katharina-grosse
+
 # Canyon por ArtEngineering para Katharina Grosse
 
 Description: Para este projeto, Katharina Grosse escolheu esculpir com couro. O desafio aqui foi o de traduzir as tiras orgânicas de couro em chapas de aço dobradas. A solução foi usar uma estratégia já em uso na produção de barcos há milênios: developable surfaces.

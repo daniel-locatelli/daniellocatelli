@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/research/differential-growth-in-corals
+
 # Crescimento diferencial em corais
 
 Description: Pesquisa desenvolvida para os cursos Design Computacional e Biomimética do ITECH. Nos inspiramos no crescimento dos corais; o código foi desenvolvido usando Grasshopper e um componente Python personalizado que criamos. Nesse curso nós aprendemos a desenvolver componentes personalizados para o Grasshopper usando Python and C# como linguagem de programação!

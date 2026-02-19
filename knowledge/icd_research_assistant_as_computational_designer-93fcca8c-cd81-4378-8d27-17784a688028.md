@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/projects/icd-research-assistant-as-computational-designer
+
 # ICD Research Assistant as Computational Designer
 
 Description: It was interesting to understand the computational strategy to generate the geometry for a self-curving cross-laminated timber plate. The trick here is to work with cylinders because timber's natural curvature happens perpendicular to the direction of the fibers.

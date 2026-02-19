@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/publications/automatic-column-placement
+
 # Posicionamento automático de pilares
 
 Description: Este artigo apresenta um método computacional baseado em feedback para o posicionamento de pilares na fase inicial de projeto de prédios. O método integra um algoritmo de agrupamento de círculos, um sistema de molas e simulações de engenharia estrutural em um único script para o arranjo recíproco e informado de colunas no espaço. Ao mesmo tempo que permite que os usuários tenham uma abordagem exploratória, ele capacita diversos potenciais em construções de vários andares, incluindo espaços adicionais em balanço ao redor dos limites, maiores qualidades espaciais com possibilidades de grandes vãos, arranjos estruturais multidirecionais e uso multifuncional do espaço. Como resultado, o algoritmo desenvolvido permite flexibilidade, aproveitando as possibilidades de projeto de arranjos de colunas irregulares e baseados em grade e promove a integração de restrições estruturais e relacionadas ao projeto na organização espacial de várias tipologias de edifícios.

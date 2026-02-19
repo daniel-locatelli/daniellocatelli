@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/publications/algorithmic-design-for-traditional-bobbin-lace-methods
+
 # Processo algorítmico para reproduzir rendas de bobina digitalmente
 
 Description: Este artigo investiga a potencial aplicação de ferramentas digitais no projeto e fabricação de tramas têxteis através do uso combinado de busca de forma (form finding) e da técnica tradicional de renda de bilro. 

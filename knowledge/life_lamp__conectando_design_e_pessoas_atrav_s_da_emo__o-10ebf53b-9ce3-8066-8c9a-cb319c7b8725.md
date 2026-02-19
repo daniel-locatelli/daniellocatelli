@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/publications/life-lamp-connecting-design-and-people-through-emotion
+
 # Life Lamp: Conectando design e pessoas através da emoção
 
 Description: O processo de design é um híbrido entre uma abordagem top-down e uma bottom-up. Trabalhamos tanto com modelos 3D predefinidos em forma de coração quanto com modelagem baseada em agentes, amplamente explorada por Craig Reynolds na década de 1980. A parte de programação foi desenvolvida usando Grasshopper 3D, o plugin Culebra v2.0 de duas semanas para a modelagem baseada em agente em conjunto com o plugin Firefly para capturar os batimentos cardíacos. Este trabalho tornou-se posteriormente um paper apresentado na ECAAD 2020.

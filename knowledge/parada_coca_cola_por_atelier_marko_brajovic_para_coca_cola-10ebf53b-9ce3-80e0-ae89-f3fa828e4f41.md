@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola
+
 # Parada Coca-Cola por Atelier Marko Brajovic para Coca-Cola
 
 Description: Parada Coca-Cola foi o primeiro projeto em que apliquei design computacional. Esta experiência sensorial foi inspirada na garrafa de Coca-Cola, imitando as bolhas e as cores da bebida.

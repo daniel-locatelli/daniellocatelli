@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/research/differential-growth-in-corals
+
 # Differential growth in corals
 
 Description: Research developed for the ITECH courses Computational Design and Biomimetics. We were inspired by how corals grow; the code was developed using Grasshopper and a custom Python component we created. In the Computational Design course, we learned to develop custom Grasshopper components using Python and C#.

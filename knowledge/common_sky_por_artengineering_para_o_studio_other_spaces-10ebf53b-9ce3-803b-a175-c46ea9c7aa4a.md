@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/projects/common-sky-by-artengineering-for-studio-other-spaces
+
 # Common Sky por ArtEngineering para o Studio Other Spaces
 
 Description: Studio Other Spaces contratou ArtEngineering para desenvolver a parte de engenharia computacional, fabricação digital e logística. Quando cheguei, o projeto já estava em andamento. Foi esse mesmo projeto que garantiu minha posição na empresa Art Engineering. Inicialmente, precisavam de alguém que exportasse rapidamente cerca de 1,5 mil desenhos 2D do Rhino/Grasshopper para serem enviados para fabricação digital usando um cortador de plasma.

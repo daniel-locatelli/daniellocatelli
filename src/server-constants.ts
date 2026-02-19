@@ -1,15 +1,28 @@
-// Helper to safely get env vars in both Vite and Node contexts
 const getEnv = (key: string) => {
+  let value = "";
   // @ts-ignore
-  if (
-    typeof import.meta !== "undefined" &&
-    import.meta.env &&
-    import.meta.env[key]
-  ) {
+  if (typeof import.meta !== "undefined" && import.meta.env) {
     // @ts-ignore
-    return import.meta.env[key];
+    if (import.meta.env[key]) {
+      // @ts-ignore
+      value = import.meta.env[key];
+    } else if (import.meta.env[`VITE_${key}`]) {
+      // @ts-ignore
+      value = import.meta.env[`VITE_${key}`];
+    }
   }
-  return process.env[key] || process.env[`VITE_${key}`] || "";
+
+  if (!value) {
+    value = process.env[key] || process.env[`VITE_${key}`] || "";
+  }
+
+  if (key === "NOTION_API_SECRET" && !value) {
+    console.error(
+      `[ERROR] NOTION_API_SECRET is missing. Checked key='${key}' and 'VITE_${key}' in import.meta.env and process.env`,
+    );
+  }
+
+  return value;
 };
 
 export const NOTION_API_SECRET = getEnv("NOTION_API_SECRET");

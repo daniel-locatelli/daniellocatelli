@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/research/architecture-biomimicry-algorithm
+
 # Architecture + Biomimicry + Algorithm
 
 Description: This is an introductory study on the possibilities of applying computational design in architecture, focusing on form-finding. To this end, case studies with great historical, technological, and artistic relevance were raised to analyze their respective design processes through reverse engineering using the Rhinoceros 3D software and its Grasshopper plug-in. It was found that biomimicry played a fundamental role in the projects researched and will serve as a guideline in this study. Finally, a temporary pavilion was proposed for FAU-USP to consolidate the knowledge absorbed in this process.

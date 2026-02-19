@@ -1,4 +1,3 @@
-import type { SupportedLocale } from "@/types";
 import type { Folder } from "./types";
 import { siteConfig } from "@/site-config";
 
@@ -11,7 +10,10 @@ export const getMonthYear = (dateString: string): string => {
   return `${month}.${year}`;
 };
 
-export async function getI18n<T>(folder: Folder, locale: string | undefined): Promise<T> {
+export async function getI18n<T>(
+  folder: Folder,
+  locale: string | undefined,
+): Promise<T> {
   try {
     const module = await import(`./${folder}/${locale}.ts`);
     return module["t"] as T;
@@ -28,12 +30,11 @@ export async function getI18n<T>(folder: Folder, locale: string | undefined): Pr
   }
 }
 
-export function createHtmlId(input: string, separator: string = '-'): string {
-  if (!input) return '';
-  
+export function createHtmlId(input: string, separator: string = "-"): string {
+  if (!input) return "";
+
   return input
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, separator) // Replace non-alphanumeric with separator
-    .replace(new RegExp(`^${separator}+|${separator}+$`, 'g'), ''); // Trim separators
+    .replace(new RegExp(`^${separator}+|${separator}+$`, "g"), ""); // Trim separators
 }
-

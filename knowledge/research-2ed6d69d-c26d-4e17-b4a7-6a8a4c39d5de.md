@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/research
+
 # Research
 
 Description: Examples of research and publications on computational design, biomimetics, digital fabrication, and mass timber/engineered timber.

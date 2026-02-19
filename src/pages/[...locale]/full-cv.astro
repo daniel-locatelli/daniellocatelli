@@ -48,7 +48,7 @@ const cv = await getI18n<I18nCV>("cv", locale);
       <div class="flex flex-col justify-center gap-1">
         <div class="flex flex-col gap-1">
           <h1 class="font-title text-5xl">{siteConfig.author}</h1>
-          <p class="text-xl">{cv.ui.title}</p>
+          <p class="text-lg">{cv.ui.title}</p>
         </div>
         <div class="flex flex-col gap-4 text-sm sm:flex-row sm:gap-7">
           <p class="text-pretty sm:text-xs sm:text-balance">
@@ -225,7 +225,7 @@ const cv = await getI18n<I18nCV>("cv", locale);
                     </p>
                   )}
                   <ul>
-                    {experience.items.map((item: string, itemIndex: number) => (
+                    {experience.items.map((item: string) => (
                       <li>{item}</li>
                     ))}
                   </ul>

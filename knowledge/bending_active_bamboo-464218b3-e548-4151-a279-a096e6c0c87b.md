@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/research/bending-active-bamboo
+
 # Bending-active Bamboo
 
 Description: Research developed for the ITECH course Form and Structure. We were inspired by the ZCB Bamboo Pavilion, but we developed our own workflow using Grasshopper, Kangaroo Physics and K2Engineering.

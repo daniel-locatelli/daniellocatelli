@@ -1,3 +1,5 @@
+URL: https://daniellocatelli.com/pt/projects/icd-research-assistant-as-computational-designer
+
 # Assistente de pesquisa no ICD como designer computacional
 
 Description: Foi interessante entender a estratégia computacional para gerar a geometria de uma placa de madeira laminada cruzada autocurvante. O truque aqui é trabalhar com cilindros porque a curvatura natural da madeira acontece perpendicularmente à direção das fibras.
