@@ -9,13 +9,23 @@ interface Message {
   content: string;
 }
 
-export default function HeroChat() {
+interface HeroChatProps {
+  modelName: string;
+  labels: {
+    initialMessage: string;
+    inputPlaceholder: string;
+    headerTitle: string;
+    poweredBy: string;
+    errorMessage: string;
+  };
+}
+
+export default function HeroChat({ modelName, labels }: HeroChatProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content:
-        "Hi! Ask me anything related to my work, experience, or projects.",
+      content: labels.initialMessage,
     },
   ]);
   const [input, setInput] = useState("");
@@ -48,32 +58,54 @@ export default function HeroChat() {
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setIsLoading(true);
 
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: userMessage }),
-      });
+    const maxRetries = 1;
+    let attempt = 0;
+    let success = false;
 
-      if (!response.ok) throw new Error("Failed to fetch response");
+    while (attempt <= maxRetries && !success) {
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question: userMessage }),
+        });
 
-      const data = await response.json();
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.answer },
-      ]);
-    } catch (error) {
-      console.error("Chat error:", error);
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Sorry, I encountered an error. Please try again later.",
-        },
-      ]);
-    } finally {
-      setIsLoading(false);
+        if (!response.ok) {
+          // If it's a 500 or similar, we might want to retry.
+          // If it's 4xx maybe not? But for "resilience" let's retry on any non-ok for now.
+          throw new Error(`Failed to fetch response: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", content: data.answer },
+        ]);
+        success = true;
+      } catch (error) {
+        console.error(
+          `Chat error (attempt ${attempt + 1}/${maxRetries + 1}):`,
+          error,
+        );
+        attempt++;
+
+        if (attempt <= maxRetries) {
+          // Wait 1 second before retrying
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        } else {
+          // Final failure
+          setMessages((prev) => [
+            ...prev,
+            {
+              role: "assistant",
+              content: labels.errorMessage,
+            },
+          ]);
+        }
+      }
     }
+
+    setIsLoading(false);
   };
 
   return (
@@ -84,7 +116,7 @@ export default function HeroChat() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask me anything..."
+            placeholder={labels.inputPlaceholder}
             className="w-full rounded-full border border-zinc-200 bg-white/5 px-6 py-3 pr-12 text-zinc-100 shadow-sm backdrop-blur-sm transition-all focus:border-green-400 focus:ring-2 focus:ring-green-400/20 focus:outline-none dark:border-zinc-800 dark:bg-black/50 dark:text-zinc-200"
           />
           <button
@@ -121,10 +153,10 @@ export default function HeroChat() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-zinc-100">
-                      AI Assistant
+                      {labels.headerTitle}
                     </h3>
                     <p className="text-xs text-zinc-400">
-                      Powered by Claude Opus 4.6
+                      {labels.poweredBy} {modelName}
                     </p>
                   </div>
                 </div>

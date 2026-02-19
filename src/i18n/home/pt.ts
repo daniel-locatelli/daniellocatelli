@@ -19,6 +19,15 @@ export const t: I18nHome = {
       "Sou&nbsp;especialista no desenvolvimento de plugins, aplicações web e soluções de design computacional para arquitetura, engenharia e construção (AEC).",
     requestQuote: "Faça um orçamento",
     sendEmail: "Envie um Email",
+    chat: {
+      initialMessage:
+        "Olá! Pergunte-me qualquer coisa sobre meu trabalho, experiência ou projetos.",
+      inputPlaceholder: "Pergunte-me qualquer coisa...",
+      headerTitle: "Assistente IA",
+      poweredBy: "Desenvolvido com",
+      errorMessage:
+        "Desculpe, encontrei um erro. Por favor, tente novamente mais tarde.",
+    },
   },
   service: {
     id: "serviços",
@@ -108,21 +117,22 @@ export const t: I18nHome = {
     id: "recomendações",
     title: "Recomendações",
     list: [
-  {
-    text: "O Sr. Locatelli sempre executou as tarefas que lhe foram atribuídas com total satisfação, atendendo e, em muitos aspectos, superando nossas expectativas.",
-    author: "Martin Bittmann",
-    context: "BuildSystems GmbH",
-    position: "Fundador",
-    contextLink: "https://buildsystems.de",
-  },
-  {
-    text: "A conduta profissional do Sr. Locatelli foi exemplar. Ele demonstrou consistentemente uma combinação de brilhantismo técnico, pensamento estratégico e habilidade interpessoal. Sua capacidade de se integrar perfeitamente à dinâmica da equipe, mantendo um alto padrão de excelência profissional, fez dele um membro inestimável da equipe.",
-    author: "Herwig Bretis",
-    context: "ArtEngineering GmbH",
-    position: "Diretor-gerente e proprietário",
-    contextLink: "https://art-engineering.net/index.php/ge/cv_herwig_bretis",
-  },
-],
+      {
+        text: "O Sr. Locatelli sempre executou as tarefas que lhe foram atribuídas com total satisfação, atendendo e, em muitos aspectos, superando nossas expectativas.",
+        author: "Martin Bittmann",
+        context: "BuildSystems GmbH",
+        position: "Fundador",
+        contextLink: "https://buildsystems.de",
+      },
+      {
+        text: "A conduta profissional do Sr. Locatelli foi exemplar. Ele demonstrou consistentemente uma combinação de brilhantismo técnico, pensamento estratégico e habilidade interpessoal. Sua capacidade de se integrar perfeitamente à dinâmica da equipe, mantendo um alto padrão de excelência profissional, fez dele um membro inestimável da equipe.",
+        author: "Herwig Bretis",
+        context: "ArtEngineering GmbH",
+        position: "Diretor-gerente e proprietário",
+        contextLink:
+          "https://art-engineering.net/index.php/ge/cv_herwig_bretis",
+      },
+    ],
   },
   expertise: {
     id: "expertise",

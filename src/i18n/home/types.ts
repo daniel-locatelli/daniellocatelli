@@ -13,6 +13,13 @@ export type I18nHome = {
     description: string;
     requestQuote: string;
     sendEmail: string;
+    chat: {
+      initialMessage: string;
+      inputPlaceholder: string;
+      headerTitle: string;
+      poweredBy: string;
+      errorMessage: string;
+    };
   };
   service: {
     id: string;
@@ -33,23 +40,22 @@ export type I18nHome = {
     viewFullArticle: string;
   };
   testimonials: {
-    id: string,
-    title: string,
-    list: Recommendation[],
-  }
+    id: string;
+    title: string;
+    list: Recommendation[];
+  };
   expertise: {
-    id: string,
-    title: string,
-    description: string,
-  }
+    id: string;
+    title: string;
+    description: string;
+  };
   contact: {
-    id: string,
-    title: string,
-    description: string,
-    letsTalk: string,
-    sendEmail: string,
-    
-  }
+    id: string;
+    title: string;
+    description: string;
+    letsTalk: string;
+    sendEmail: string;
+  };
 };
 
 export type Service = {

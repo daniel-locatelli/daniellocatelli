@@ -54,7 +54,13 @@ const home = await getI18n<I18nHome>("home", locale);
         <p class="font-body max-w-xl" set:html={home.hero.description} />
 
         <div class="w-full max-w-xl py-4">
-          <HeroChat client:load />
+          <HeroChat
+            client:load
+            modelName={import.meta.env.DEV
+              ? "Claude 3 Haiku"
+              : "Claude Opus 4.6"}
+            labels={home.hero.chat}
+          />
         </div>
 
         <div
