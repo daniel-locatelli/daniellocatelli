@@ -39,13 +39,13 @@ export default {
         DEFAULT: {
           css: {
             a: {
-              "@apply cactus-link": "",
+              "@apply text-green-500 transition duration-300 hover:text-green-600 no-underline": "",
             },
             strong: {
               fontWeight: "300",
             },
             code: {
-              border: "1px dotted #666",
+              "@apply border border-dashed border-zinc-600": "",
               borderRadius: "2px",
             },
             blockquote: {
@@ -62,20 +62,20 @@ export default {
             },
             "thead th": {
               fontWeight: "300",
-              borderBottom: "1px dashed #666",
+              "@apply border-b border-dashed border-zinc-600": "",
             },
             "tbody tr": {
               borderBottomWidth: "none",
             },
             tfoot: {
-              borderTop: "1px dashed #666",
+              "@apply border-t border-dashed border-zinc-600": "",
             },
             sup: {
               "@apply ms-0.5": "",
               a: {
                 "@apply bg-none": "",
                 "&:hover": {
-                  "@apply text-link no-underline bg-none": "",
+                  "@apply text-green-600 no-underline bg-none": "",
                 },
                 "&:before": {
                   content: "'['",

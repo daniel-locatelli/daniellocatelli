@@ -3,12 +3,8 @@
 @config '../../tailwind.config.ts';
 
 /*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
+  Tailwind CSS v4 changed the default border color to `currentcolor`.
+  We set a consistent border color for better visual hierarchy.
 */
 @layer base {
   *,
@@ -16,32 +12,15 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    @apply border-zinc-800;
   }
 }
 
 @layer base {
-  /* :root,
-  :root[data-theme="light"] {
-    color-scheme: light;
-    --theme-bg: 0deg 0% 98%;
-    --theme-link: 172deg 18% 41%;
-    --theme-text: 203deg 11% 15%;
-    --theme-accent: 351deg 66% 48%;
-    --theme-accent-2: 0deg 0% 7%;
-    --theme-quote: 351deg 66% 48%;
-  } */
-
   :root,
   :root[data-theme="light"],
   :root[data-theme="dark"] {
     color-scheme: dark;
-    --theme-bg: black;
-    --theme-link: 330deg 49% 67%;
-    --theme-text: white;
-    --theme-accent: 159deg 64% 45%;
-    --theme-accent-2: 0deg 0% 93%;
-    --theme-quote: 102deg 100% 86%;
   }
 
   html {
@@ -49,6 +28,6 @@
   }
 
   body {
-    @apply mx-auto flex min-h-screen max-w-3xl flex-col px-8 pt-16 font-mono text-sm font-normal antialiased;
+    @apply mx-auto flex min-h-screen max-w-3xl flex-col px-8 pt-16 font-body text-sm font-normal antialiased;
   }
 }
