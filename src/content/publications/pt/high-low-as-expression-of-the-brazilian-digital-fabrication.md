@@ -32,22 +32,22 @@
 
 Este artigo é resultado de uma investigação sobre a influência dos processos digitais no Design e sua importância na inovação dentro da arquitetura efêmera através do conceito High-Low. A arquitetura efêmera tem o potencial de aliar conhecimento acadêmico e artístico à produção comercial brasileira. Aqui é apresentado um estudo de caso experimental projetado para a Expo Revestir para a Docol em 2017 que equilibra o paradigma do design computacional com o campo acadêmico e aplicações comerciais viáveis.
 
-![Grasshopper script.](/assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81c4-b886-ffbc3daf99e2.jpg)
+![Grasshopper script.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81c4-b886-ffbc3daf99e2.jpg)
 
-![Modelo 3D após remoção de células para abertura.](/assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-8115-8537-c45308744623.jpg)
+![Modelo 3D após remoção de células para abertura.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-8115-8537-c45308744623.jpg)
 
 ![Fases da construção em perspectiva explodida: soldagem do aço, montagem dos painéis e fixação das peças.
-Fases da construção em perspectiva explodida: soldagem do aço, montagem dos painéis e fixação das peças.](/assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81dd-9efe-d07af1820968.jpg)
+Fases da construção em perspectiva explodida: soldagem do aço, montagem dos painéis e fixação das peças.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81dd-9efe-d07af1820968.jpg)
 ![Foto dos ferreiros estudando o modelo em pequena escala.
-Ferreiros estudando o modelo em pequena escala.](/assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-817b-8b07-c35095a82709.jpg)
+Ferreiros estudando o modelo em pequena escala.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-817b-8b07-c35095a82709.jpg)
 ![Foto do modelo em pequena escala.
-Modelo em pequena escala.](/assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81e1-ae6a-d871ce24d341.jpg)
+Modelo em pequena escala.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81e1-ae6a-d871ce24d341.jpg)
 ![Foto da segmentação do pavilhão para transporte.
-Segmentação de pavilhão para transporte.](/assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-8104-b322-cbc815a31b21.jpg)
+Segmentação de pavilhão para transporte.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-8104-b322-cbc815a31b21.jpg)
 ![Pavilhão O3 na Expo Revestir 2017.
-Pavilhão O3 na Expo Revestir 2017.](/assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81b2-ac46-e432cd95df1f.jpeg)
+Pavilhão O3 na Expo Revestir 2017.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81b2-ac46-e432cd95df1f.jpeg)
 ![Foto de Daniel Locatelli apresentando o artigo na conferência SIGraDi 2018.
-Apresentação do artigo na conferência SIGraDi 2018.](/assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81bf-a190-c4f04f2a88ed.jpeg)
+Apresentação do artigo na conferência SIGraDi 2018.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81bf-a190-c4f04f2a88ed.jpeg)
 ![Foto dos cinco apresentadores no painel de discussão.
-Painel de discussão do SIGraDi 2018.](/assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81b1-897c-f13e632fb50e.jpeg)
+Painel de discussão do SIGraDi 2018.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81b1-897c-f13e632fb50e.jpeg)
 

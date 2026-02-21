@@ -49,12 +49,12 @@ Life lamp é um produto que surgiu como resultado da pesquisa do Estúdio Guto R
 
 
 ![Diagrama de fluxo de trabalho: Batimento cardíaco, Processamento de som, Rinoceronte, Impressão 3D, Montagem de LED.
-Diagrama de fluxo de trabalho.](/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-10ebf53b-9ce3-8183-8f96-de6eff687039.png)
+Diagrama de fluxo de trabalho.](../../../assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-10ebf53b-9ce3-8183-8f96-de6eff687039.png)
 
 ![Diagrama de caminho para os agentes e uma seção dos caminhos finais engrossados.
-Diagrama de caminho e seção de caminhos espessados.](/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-10ebf53b-9ce3-810d-b78f-d710de19c204.jpeg)
+Diagrama de caminho e seção de caminhos espessados.](../../../assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-10ebf53b-9ce3-810d-b78f-d710de19c204.jpeg)
 
 ![Diagrama: batimentos cardíacos de um recém-nascido a 120 bpm; de um adulto a 90 bpm; e de um idoso a 70 bpm.
-Diagrama de como os caminhos semelhantes a rizomas são criados.](/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-10ebf53b-9ce3-81b5-afc4-d4c9ca008647.jpeg)
+Diagrama de como os caminhos semelhantes a rizomas são criados.](../../../assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-10ebf53b-9ce3-81b5-afc4-d4c9ca008647.jpeg)
 
-©️ Foto de capa por Decimal
+© Foto de capa por Decimal

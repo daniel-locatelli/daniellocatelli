@@ -20,9 +20,9 @@
 }
 ---
 
-In addition to learning the basics of Grasshopper for Rhinoceros, participants were able to decide the direction of the course by choosing which strategy they would like to delve into among several others already well studied in the area of computational design: in this case, they chose "Exoskeleton.”
-![](/assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-81c1-bbc5-f20526bcfedb.jpg)
-![](/assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-815b-934d-c07366b04ef9.jpg)
-![](/assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-81cc-8157-eef69a4d70d7.jpg)
-![](/assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-8111-aab4-c49515d8375e.jpg)
+Neben dem Erlernen der Grundlagen von Grasshopper für Rhinoceros konnten die Teilnehmer die Richtung des Kurses mitbestimmen, indem sie aus mehreren bereits gut erforschten Strategien im Bereich des Computational Design auswählten, in welche sie sich vertiefen wollten: In diesem Fall wählten sie „Exoskeleton”.
+![](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-855e971e-adb9-49c9-9ed2-9af1314a05f9.jpg)
+![](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-2a80d929-e716-4059-a4e1-f311244336b2.jpg)
+![](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-21e4e9cb-eb5a-45df-9732-0a47ed82d07e.jpg)
+![](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-b6b50f7d-b536-4929-b1e0-ca1c91777649.jpg)
 

@@ -33,8 +33,8 @@ Minha função neste projeto foi a simulação da logística: o transporte e a m
 # Design Computacional
 Fiz uso extensivo do Kangaroo Physics, um mecanismo física em tempo real para simulação interativa e busca de formas, tudo dentro do ambiente Rhino/Grasshopper. Foi necessário identificar as colisões entre a membrana e a antena para evitar rasgá-la durante a implantação.
 
-![Foto do guindaste implantando a membrana.](/assets/content/projects/radom-raisting-by-ar-ingenieure/block-10ebf53b-9ce3-817e-9846-fdd2196bfa21.jpeg)
+![Foto do guindaste implantando a membrana.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/block-10ebf53b-9ce3-817e-9846-fdd2196bfa21.jpeg)
 
-![Foto da estrutura final da membrana implantada.](/assets/content/projects/radom-raisting-by-ar-ingenieure/block-10ebf53b-9ce3-81e5-b1ee-c794e2621446.jpeg)
+![Foto da estrutura final da membrana implantada.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/block-10ebf53b-9ce3-81e5-b1ee-c794e2621446.jpeg)
 
-©️ Photos and animation AR Ingenieure
+© Photos and animation AR Ingenieure

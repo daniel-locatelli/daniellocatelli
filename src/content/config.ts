@@ -164,6 +164,15 @@ const pageSchema = z.object({
       z.object({ Text: z.string(), Href: z.string() }),
     ])
     .optional(), // Allow simple string links or simplified link objects
+  OtherLinks: z
+    .array(
+      z.object({
+        Text: z.string(),
+        Href: z.string(),
+        Description: z.string().optional(),
+      }),
+    )
+    .optional(),
   References: z.array(z.any()).optional(),
   Active: z.boolean().optional(),
   Disclosed: z.boolean().optional().nullable(),

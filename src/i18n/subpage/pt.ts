@@ -17,4 +17,5 @@ export const t: I18nSubpage = {
   link: "Link",
   apps: "Aplicativos",
   references: "Referências",
+  otherLinks: "Outros Links",
 };

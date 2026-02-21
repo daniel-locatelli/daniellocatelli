@@ -69,7 +69,11 @@ export default {
               fontWeight: "700",
             },
             blockquote: {
-              borderLeftWidth: "0",
+              borderLeftWidth: "2px",
+              borderLeftColor: "var(--color-green-600)",
+              paddingLeft: "1rem",
+              fontStyle: "italic",
+              color: "var(--color-zinc-300)",
             },
             code: {
               "@apply border border-dashed border-zinc-600": "",

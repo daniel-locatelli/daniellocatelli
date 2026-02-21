@@ -27,15 +27,15 @@ Nature is a designer of at least 3.8 billion years old. From microorganisms to b
 We investigated everything about corals, from polyps the single unit of a coral to atolls, a ring-shaped island formation that emerges from many corals together.
 
 ![Drawing Hexacoralla by Ernst Haeckel, depicts many coral species arranged in a super pleasant way.
-Hexacoralla by Ernst Haeckel.](/assets/content/research/differential-growth-in-corals/block-456ebc2a-d2f2-43dd-83d0-07dafabe8ded.jpg)
+Hexacoralla by Ernst Haeckel.](../../../assets/content/research/differential-growth-in-corals/block-456ebc2a-d2f2-43dd-83d0-07dafabe8ded.jpg)
 We narrowed this research to Stony Corals, specifically on how it grows by a process called budding where its polyps duplicate. This research advanced in many computational design strategies. The final outcome is a Python code that implements an agent-based system, a finite element analysis, and machine learning support.
 
 ![Details of a mesh edges after the differential growth algorithm.
-Details of a mesh edges after the differential growth algorithm.](/assets/content/research/differential-growth-in-corals/block-eeba2fdc-f8ed-494a-bef7-71f54f4f1431.jpg)
+Details of a mesh edges after the differential growth algorithm.](../../../assets/content/research/differential-growth-in-corals/block-eeba2fdc-f8ed-494a-bef7-71f54f4f1431.jpg)
 
 
 
 
 ![Photo of the team: Håkon, Daniel, Ryan, Ying
-Håkon, Daniel, Ryan and Ying](/assets/content/research/differential-growth-in-corals/block-a87a9e81-53eb-4095-9cf7-02bb84805e2e.jpeg)
+Håkon, Daniel, Ryan and Ying](../../../assets/content/research/differential-growth-in-corals/block-a87a9e81-53eb-4095-9cf7-02bb84805e2e.jpeg)
 

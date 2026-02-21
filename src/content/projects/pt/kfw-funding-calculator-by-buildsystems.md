@@ -23,7 +23,13 @@
     "Text": "https://app.buildsystems.de",
     "Href": "https://app.buildsystems.de/"
   },
-  "Place": "Online"
+  "Place": "Online",
+  "Director": ["Martin Bittmann"],
+  "Manager": ["Julia Dorn"],
+  "Team": ["Daniel Locatelli", "Daniel Dieren"],
+  "OtherLinks": [
+    { "Text": "How to use Signals with Angular Forms", "Href": "https://zoaibkhan.com/blog/how-to-use-signals-with-angular-forms/", "Description": "Zoaib Khan" }
+  ]
 }
 ---
 
@@ -126,7 +132,7 @@ Conceitualmente, minha abordagem para o design foi o de fornecer um dashboard co
 Para criar protótipos, usei o Figma. Simular comportamentos de mouse over, mouse in, mouse out é possível. Além disso, seu plano pago facilita a cópia de estilos CSS e SVGs com o Modo Dev. Mas mesmo com o plano gratuito, parece muito fácil exportar SVGs.
 
 ![Captura de tela da versão desktop da calculadora de financiamento.
-Versão desktop na ferramenta Sanierung/Projekt.](/assets/content/projects/kfw-funding-calculator-by-buildsystems/block-10ebf53b-9ce3-81ce-bfd0-ebadbb6113bb.png)
+Versão desktop na ferramenta Sanierung/Projekt.](../../../assets/content/projects/kfw-funding-calculator-by-buildsystems/block-10ebf53b-9ce3-81ce-bfd0-ebadbb6113bb.png)
 
 ## Construindo a Interface do Usuário
 Este projeto marcou minha metamorfose em um desenvolvedor de software completo. Exigindo que eu aprendesse [Angular](https://angular.dev/), um framework JavaScript e sua estrutura altamente opinativa, que era perfeita para o meu caso.

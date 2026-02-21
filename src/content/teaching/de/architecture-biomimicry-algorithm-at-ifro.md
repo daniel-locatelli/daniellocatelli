@@ -21,6 +21,6 @@
 }
 ---
 
-During my visit to my hometown, I proposed a lecture to the architecture and urbanism course of the Federal Institute of Rondônia - IFRO. I presented my work, research, and discussed the future of the profession amid so many technological changes.
-![](/assets/content/teaching/architecture-biomimicry-algorithm-at-ifro/block-10ebf53b-9ce3-8172-a07a-edd4184f50a5.jpeg)
-![](/assets/content/teaching/architecture-biomimicry-algorithm-at-ifro/block-10ebf53b-9ce3-81d3-8eda-ed7a02aa3fac.jpeg)
+Während meines Besuchs in meiner Heimatstadt schlug ich dem Architektur- und Städtebaukurs des Bundesinstituts von Rondônia – IFRO – einen Vortrag vor. Ich präsentierte meine Arbeiten, Forschungen und diskutierte die Zukunft des Berufs inmitten so vieler technologischer Veränderungen.
+![](../../../assets/content/teaching/architecture-biomimicry-algorithm-at-ifro/block-30cc1190-4bd5-4425-aa0c-2d16198072a8.jpeg)
+![](../../../assets/content/teaching/architecture-biomimicry-algorithm-at-ifro/block-464f2214-93d2-4a21-b7e3-f688e821d630.jpeg)

@@ -28,7 +28,7 @@ Principais conquistas desse desenvolvimento incluíram:
 - **Gerenciamento de dados via JSON**: Criamos um banco de dados estruturado em JSON para armazenar e recuperar dados de componentes construtivos. Essa estrutura também seria utilizada em um aplicativo web chamado *Circular Component Creator*, uma outra ideia que, infelizmente, não avançou.
 - **Interface intuitiva**: O plugin apresentava uma interface amigável que aproveitava o paradigma de programação visual do Grasshopper, promovendo uma integração fluida aos fluxos de trabalho existentes.
 
-![](/assets/content/projects/plugin-da-buildsystems-para-o-grasshopper/block-1fabf53b-9ce3-8177-8578-e6cb97586cb4.png)
+![](../../../assets/content/projects/plugin-da-buildsystems-para-o-grasshopper/block-1fabf53b-9ce3-8177-8578-e6cb97586cb4.png)
 Aba da BuildSystems no Grasshopper: componentes de ACV e Urbanismo
 
 ## Desafios

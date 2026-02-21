@@ -28,15 +28,15 @@ Este estudo explorou uma ampla gama de estruturas estáticas na natureza, em ger
 Investigamos tudo sobre corais, desde pólipos, a unidade única de um coral, até atóis, uma formação de ilha em forma de anel que emerge de muitos corais juntos.
 
 ![Desenho Hexacoralla por Ernst Haeckel, retrata muitas espécies de corais dispostas de uma forma esteticamente agradável.
-Hexacoralla por Ernst Haeckel.](/assets/content/research/differential-growth-in-corals/block-10ebf53b-9ce3-812e-ab80-fa37765232b2.jpg)
+Hexacoralla por Ernst Haeckel.](../../../assets/content/research/differential-growth-in-corals/block-10ebf53b-9ce3-812e-ab80-fa37765232b2.jpg)
 Nós restringimos esta pesquisa a Stony Corals, especificamente sobre como ele cresce por um processo chamado brotamento, onde seus pólipos se duplicam. Esta pesquisa avançou em muitas estratégias de design computacional. O resultado final é um código Python que implementa um sistema baseado em agentes, uma análise de elementos finitos e suporte a aprendizado de máquina.
 
 ![Detalhes das arestas de uma malha após o algoritmo de crescimento diferencial.
-Detalhes das arestas de uma malha após o algoritmo de crescimento diferencial.](/assets/content/research/differential-growth-in-corals/block-10ebf53b-9ce3-814b-a43d-eed817b4cb6b.jpg)
+Detalhes das arestas de uma malha após o algoritmo de crescimento diferencial.](../../../assets/content/research/differential-growth-in-corals/block-10ebf53b-9ce3-814b-a43d-eed817b4cb6b.jpg)
 
 
 
 
 ![Foto do time: Håkon, Daniel, Ryan, Ying
-Håkon, Daniel, Ryan and Ying](/assets/content/research/differential-growth-in-corals/block-10ebf53b-9ce3-819c-b276-f28b0ec9a415.jpeg)
+Håkon, Daniel, Ryan and Ying](../../../assets/content/research/differential-growth-in-corals/block-10ebf53b-9ce3-819c-b276-f28b0ec9a415.jpeg)
 

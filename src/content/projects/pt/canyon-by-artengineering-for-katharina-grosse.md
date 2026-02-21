@@ -24,7 +24,16 @@
     "Text": "Canyon at ArtEngineering",
     "Href": "https://www.art-engineering.net/index.php/project/project_detail_eng/10160/4"
   },
-  "Place": "Fondation Luise Vuitton"
+  "Place": "Fondation Luise Vuitton",
+  "Director": ["Herwig Bretis"],
+  "Team": ["Daniel Locatelli"],
+  "Development": ["Kunstgiesserei St. Gallen", "T/E/S/S atelier d'ingénierie"],
+  "OtherLinks": [
+    { "Text": "Drawings, mock-ups & preparations for Canyon - Katharina Grosse", "Href": "https://www.katharinagrosse.com/blog/drawings_mock_ups_amp_preparations_for_canyon" },
+    { "Text": "Kunstgiesserei St. Gallen", "Href": "https://www.kunstgiesserei.ch/De/Work/1101/Katharina_Grosse_Canyon_2022" },
+    { "Text": "Canyon - Katharina Grosse", "Href": "https://art-engineering.net/en/projekt/canyon/" },
+    { "Text": "Canyon | TESS", "Href": "https://www.tess.fr/en/projet/canyon" }
+  ]
 }
 ---
 
@@ -33,7 +42,7 @@ Canyon foi um deles. Para este projeto, Katharina Grosse escolheu [esculpir com 
 
 ![Modelo em pequena escala do Canyon.
 Modelo em pequena escala do Canyon.
-©️Katharina Grosse](/assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-10ebf53b-9ce3-817a-a49f-e45725535a13.jpg)
+©Katharina Grosse](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-10ebf53b-9ce3-817a-a49f-e45725535a13.jpg)
 O que o contratante original não descobriu a tempo foi que o aço não se comporta como couro. O couro pode dobrar e torcer em qualquer direção porque é flexível. Em contraste, o aço só pode dobrar em uma direção. A solução foi uma estratégia já usada na produção de barcos há milênios: [superfícies desenvolvíveis](https://en.wikipedia.org/wiki/Developable_surface).
 # Design Computacional
 Eu tentei várias ferramentas, incluindo a ferramenta nativa do Rhino de superfície desenvolvível, definições do Kangaroo 2 e outras ferramentas pagas. Mas no final, a melhor ferramenta foi o [D.Loft](https://www.food4rhino.com/en/app/dloft), um plugin pago do Rhino/GH. Usamos a versão de teste e decidimos comprá-la.
@@ -41,20 +50,13 @@ Embora eu tivesse apenas um fim de semana para chegar a uma solução, o projeto
 
 ![Foto de uma máquina de dobrar chapas de aço com um ângulo personalizado.
 Máquina de dobrar chapas de aço com ângulo personalizado.
-©️Kunstgiesserei](/assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-10ebf53b-9ce3-818c-8b3c-ddd8d2b35ae5.jpg)
+©Kunstgiesserei](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-10ebf53b-9ce3-818c-8b3c-ddd8d2b35ae5.jpg)
 ![Foto da configuração para dobrar chapas de aço e verificar a curvatura.
 Configuração para dobrar chapas de aço e verificar a curvatura.
-©️Kunstgiesserei](/assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-10ebf53b-9ce3-810d-9040-f6c0a3c6c0b2.jpg)
+©Kunstgiesserei](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-10ebf53b-9ce3-810d-9040-f6c0a3c6c0b2.jpg)
 ![Foto do teste de montagem em um dos armazéns da Kunstgiesserei.
 Teste de montagem em um dos armazéns da Kunstgiesserei.
-©️Kunstgiesserei ](/assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-10ebf53b-9ce3-81e1-a3c7-c3a4d5bd9a79.jpg)
+©Kunstgiesserei ](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-10ebf53b-9ce3-81e1-a3c7-c3a4d5bd9a79.jpg)
 ![Foto do Canyon na Fundação Louis Vuitton, Paris.
 Canyon na Fundação Louis Vuitton, Paris.
-©️Kunstgiesserei](/assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-10ebf53b-9ce3-8173-8e85-e43e0e103e73.jpg)
-# Outros links
-
-
-
-
-
-©️ Foto de capa: Kunstgiesserei
+©Kunstgiesserei](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-10ebf53b-9ce3-8173-8e85-e43e0e103e73.jpg)

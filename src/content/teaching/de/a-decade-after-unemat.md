@@ -19,6 +19,6 @@
 }
 ---
 
-UNEMAT was the first university where I studied Architecture. Ten years after the beginning of my studies there, I presented this talk about my whole trajectory, from my university transfer to the FAU-USP, my work at Atelier Marko Brajovic, and my recent career shift, focusing more specifically on Computational Design and programming.
-![](/assets/content/teaching/a-decade-after-unemat/block-10ebf53b-9ce3-8149-b59b-e15e29f7fcf9.jpg)
-![](/assets/content/teaching/a-decade-after-unemat/block-10ebf53b-9ce3-8160-99e5-c4bed2a4310c.jpeg)
+UNEMAT war die erste Universität, an der ich Architektur studierte. Zehn Jahre nach Beginn meines Studiums hielt ich diesen Vortrag über meinen gesamten Werdegang – vom Universitätswechsel zur FAU-USP über meine Arbeit im Atelier Marko Brajovic bis hin zu meinem jüngsten Karrierewechsel, der sich speziell auf Computational Design und Programmierung konzentrierte.
+![](../../../assets/content/teaching/a-decade-after-unemat/block-61173bc9-685c-4ee6-b655-01489838d9ca.jpg)
+![](../../../assets/content/teaching/a-decade-after-unemat/block-5dd8f502-3c7d-41db-81a8-a8348afd7ffc.jpeg)

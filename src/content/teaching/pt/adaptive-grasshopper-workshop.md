@@ -22,8 +22,8 @@
 
 Além de aprender o básico do Grasshopper for Rhinoceros, os participantes puderam decidir o rumo do curso escolhendo em qual estratégia gostariam de se aprofundar entre várias outras já bem estudadas na área de design computacional: neste caso, escolheram “Exoesqueleto”.
 
-![](/assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-81a0-9aa6-ece0c940fe71.jpg)
-![](/assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-81ff-8b78-f1567906bb5f.jpg)
-![](/assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-812f-a531-d084ad19bb5f.jpg)
-![](/assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-81bd-8871-dd96b86ab179.jpg)
+![](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-81a0-9aa6-ece0c940fe71.jpg)
+![](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-81ff-8b78-f1567906bb5f.jpg)
+![](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-812f-a531-d084ad19bb5f.jpg)
+![](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-10ebf53b-9ce3-81bd-8871-dd96b86ab179.jpg)
 

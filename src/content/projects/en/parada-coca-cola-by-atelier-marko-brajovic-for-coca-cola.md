@@ -36,14 +36,14 @@
 Parada Coca-Cola was my very first project where I applied computational design. This sensorial experience was inspired by the Coca-Cola bottle, mimicking the bubbles and colors of the drink. It also had many other activations, as they call in marketing agencies in Brazil.
 
 ![Photo inside of the Kaleidoscope activation. 
-Kaleidoscope activation. ](/assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-e8746a8b-ec0e-458f-aacd-0d3bc049c15f.jpeg)
-![Photo showing many plastic balls and their cables connecting to the ceiling.](/assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-4874b12d-fba2-46f6-a6d8-94298866fb8e.jpeg)
+Kaleidoscope activation. ](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-e8746a8b-ec0e-458f-aacd-0d3bc049c15f.jpeg)
+![Photo showing many plastic balls and their cables connecting to the ceiling.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-4874b12d-fba2-46f6-a6d8-94298866fb8e.jpeg)
 # Computational Design
 My role in the project was to place the plastic spheres parametrically while avoiding colliding with each other and the cables that connected them to the ceiling. For that, I used Grasshopper and Galapagos.
 Another task that came later was to generate a spreadsheet with all the cable lengths and the tags to properly organize all the material to be shipped and deployed. Well, at least this was the idea. Because, at some point, someone thought it would be nice to remove the tags 🤯. It was a nightmare for the girls coordinating the event.
 
-![Photo of a lounge in first plane with red puffy circular benches and the golden bar at the back.](/assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-e05c2318-cd9b-475a-a47b-527aa954855f.jpeg)
+![Photo of a lounge in first plane with red puffy circular benches and the golden bar at the back.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-e05c2318-cd9b-475a-a47b-527aa954855f.jpeg)
 This is the latest Grasshopper file I used in the project:
 
-©️ Photos by Fernando Martins
+© Photos by Fernando Martins
 

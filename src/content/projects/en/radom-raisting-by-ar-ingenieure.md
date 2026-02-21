@@ -33,8 +33,8 @@ My role in this project was the simulation of the logistics: the transport and a
 # Computational Design
 I made extensive use of Kangaroo Physics, a Live Physics engine for interactive simulation and form-finding, all within the Rhino/Grasshopper environment. It was necessary to identify the collisions between the membrane and the antenna to avoid ripping it during the deployment.
 
-![Photo of the crane deploying the membrane.](/assets/content/projects/radom-raisting-by-ar-ingenieure/block-a25f262c-bab6-4ab9-85ef-6f5b84216921.jpeg)
+![Photo of the crane deploying the membrane.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/block-a25f262c-bab6-4ab9-85ef-6f5b84216921.jpeg)
 
-![Photo of the final membrane structure deployed.](/assets/content/projects/radom-raisting-by-ar-ingenieure/block-333b9279-4879-40bd-b10c-b9ae63b78052.jpeg)
+![Photo of the final membrane structure deployed.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/block-333b9279-4879-40bd-b10c-b9ae63b78052.jpeg)
 
-©️ Photos and animation AR Ingenieure
+© Photos and animation AR Ingenieure

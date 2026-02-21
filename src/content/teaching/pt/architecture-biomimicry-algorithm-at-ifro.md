@@ -22,5 +22,5 @@
 ---
 
 Durante minha visita à minha cidade natal, propus uma palestra para o curso de arquitetura e urbanismo do Instituto Federal de Rondônia - IFRO. Apresentei meus trabalhos, pesquisas e discuti o futuro da profissão em meio a tantas mudanças tecnológicas.
-![](/assets/content/teaching/architecture-biomimicry-algorithm-at-ifro/block-10ebf53b-9ce3-81eb-9baa-c2ee638a68cc.jpeg)
-![](/assets/content/teaching/architecture-biomimicry-algorithm-at-ifro/block-10ebf53b-9ce3-81d2-9268-c037e25a8561.jpeg)
+![](../../../assets/content/teaching/architecture-biomimicry-algorithm-at-ifro/block-10ebf53b-9ce3-81eb-9baa-c2ee638a68cc.jpeg)
+![](../../../assets/content/teaching/architecture-biomimicry-algorithm-at-ifro/block-10ebf53b-9ce3-81d2-9268-c037e25a8561.jpeg)

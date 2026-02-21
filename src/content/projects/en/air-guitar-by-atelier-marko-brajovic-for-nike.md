@@ -40,7 +40,7 @@ The Air Max Day was about celebrating the old and the new Air Max shoes, while a
 Marko developed two concepts, one involving inflatables and the Air Guitar. The first one wasn’t bad, but the Air Guitar was too good to pass.
 During the meeting with the marketing agency, they got really excited about the installation, but they thought something was missing. For which I suggested to spice it up with addressable LEDs.
 
-![Three photos of users playing the guitar.](/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dcf83d14-a517-49fa-97e3-722f58b27bc8.jpeg)
+![Three photos of users playing the guitar.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dcf83d14-a517-49fa-97e3-722f58b27bc8.jpeg)
 # Development
 After the concept was approved, I was also in charge of coordinating the whole project development, and I may have gotten too greedy here because I decided to develop the LED part all by myself.
 For the guitar part, I had no clue, but I knew the right guy for the task: my friend Lucas Caracik, a professional luthier from [Caracik Guitars](https://www.caracikguitars.com/).
@@ -55,7 +55,7 @@ Each bass pickup would send an Analog signal to their respective Arduino Megas, 
 In theory, it is pretty simple, but in reality, it drove me down the electronics rabbit hole quite quickly until I hit a wall. I came up with this circuit, but for some reason, it wasn’t working well. The event was getting closer, and the team was growing anxious. A week before the event, I contacted another guy, André Biagioni from [Fiozeira](https://fiozera.com.br/). Luckily, he agreed to participate. He said that the circuit was lacking a filter and finished the work. He also made a circuit diagram and helped with the assembly.
 
 ![Electronic circuit diagram.
-Electronic circuit diagram.](/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dfa6d8c4-39a1-4b03-a228-f90a60a9b26b.jpeg)
+Electronic circuit diagram.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dfa6d8c4-39a1-4b03-a228-f90a60a9b26b.jpeg)
 ```arduino
 #include "FastLED.h"
 
@@ -137,11 +137,11 @@ void loop(){
 }
 ```
 ![Photo of the control box: eight power supplies, four Arduino Mega, and space for an emergency battery.
-Control box, the white paper represents the space left for the emergency battery.](/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-56c64a60-4b48-4738-8581-2327c2cba058.jpg)
+Control box, the white paper represents the space left for the emergency battery.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-56c64a60-4b48-4738-8581-2327c2cba058.jpg)
 ## Post Air Max Day
 The guys from the Red Bull Station liked so much the installation that they asked to have it there for a full month. A period that I had to go and regularly to check if everything was working as expected. During this time some of the LEDs stopped working at the top of the installation, which would be very complicated to replace. The look wasn’t good because it lost that nice continuity. So instead of replacing the LEDs, I just turned off the top 10 LEDs directly in the Arduino code.
 ## Learnings
 There were no welded components, a mistake that only the inexperienced would make. At some point during the event, the guitar just stopped working. I had a mini heart attack. To my relief, it started to work again just by turning it off and on.
 Another thing that I wasn’t expecting was related to the cables. It required longer and thicker cables than I thought, the LEDs are power-hungry and need two cables for each LED strip, so they were being fed at the bottom and also at the middle, otherwise the LEDs would get wicker at the top. It also required two brick-sized power supplies for each Pickup-Arduino-LED setup.
 
-©️ Photos and video by [Eduardo Ohara](https://www.eduardoohara.com/)
+© Photos and video by [Eduardo Ohara](https://www.eduardoohara.com/)

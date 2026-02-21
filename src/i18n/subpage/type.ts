@@ -15,4 +15,5 @@ export type I18nSubpage = {
   link: string,
   apps: string,
   references: string,
+  otherLinks: string,
 }

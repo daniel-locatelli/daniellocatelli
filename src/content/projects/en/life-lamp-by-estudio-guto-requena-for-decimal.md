@@ -46,4 +46,4 @@ This work became later a paper presented at the ECAAD 2020.
 You can check the paper and the design process here:
 [Life Lamp: Connecting Design and People Through Emotion](https://daniellocatelli.com/publications/life-lamp-connecting-design-and-people-through-emotion/)
 
-©️ Cover photo by Decimal
+© Cover photo by Decimal

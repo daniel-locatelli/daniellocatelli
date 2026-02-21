@@ -1,0 +1,47 @@
+---
+{
+  "Cover": "/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/cover-cover.jpg",
+  "CoverAlt": "Foto der Frontansicht des O3-Pavillons. Copyright Gui Morelli.",
+  "Description": "Der O3-Pavillon wurde vom Atelier Marko Brajovic zu einer Zeit konzipiert, als ich meine ersten Schritte in der Welt des Computational Design machte. Ich hatte gerade mein Studium an der FAU-USP mit einer Abschlussarbeit beendet, in der ich alle für diesen Pavillon notwendigen Werkzeuge erlernte: Rhino, Grasshopper 3D und Kangaroo Physics.",
+  "Name": "O3-Pavillon von Atelier Marko Brajovic für Docol",
+  "Slug": "projects/o3-pavilion-by-atelier-marko-brajovic-for-docol",
+  "Tags": [
+    "Computational Design",
+    "Grasshopper3D",
+    "Logistics"
+  ],
+  "Authors": [
+    "Atelier Marko Brajovic"
+  ],
+  "Category": "Computational architecture",
+  "City": [
+    "São Paulo"
+  ],
+  "Client": "Docol",
+  "DateStart": "2017-02-01",
+  "DateEnd": "2017-03-01",
+  "Link": {
+    "Text": "O3 Pavilion at Atelier Marko Brajovic",
+    "Href": "https://markobrajovic.com/en/all/o3-pavilhao"
+  },
+  "Place": "Expo Revestir 2017"
+}
+---
+
+# Einführung
+Der O3-Pavillon wurde vom Atelier Marko Brajovic zu einer Zeit konzipiert, als ich meine ersten Schritte in der Welt des Computational Design machte. Ich hatte gerade mein Studium an der FAU-USP mit einer Abschlussarbeit beendet, in der ich alle für diesen Pavillon notwendigen Werkzeuge erlernte: Rhino, Grasshopper 3D und Kangaroo Physics.
+![Foto des O3-Pavillons von innen.
+Innenansicht des O3-Pavillons.
+© Gui Morelli](../../../assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/block-79c48b9b-03bc-4ed5-895b-6a2adb52419b.jpeg)
+# Formfindung
+Die erste computergestützte Herausforderung bestand darin, die Form der Kuppel zu finden. Wir verwendeten Kangaroo Physics für die Formfindung und stellten dabei sicher, dass alle Zellen an den Kuppelschnittpunkten planar blieben -- eine entscheidende Voraussetzung für die Fertigung.
+Die Kuppel verwendet eine Voronoi-Geometrie, die ihr ein organisches, korallenartiges Erscheinungsbild verleiht und gleichzeitig die strukturelle Effizienz gewährleistet.
+![Foto des O3-Pavillons von der Seite.
+Seitenansicht des O3-Pavillons.
+© Gui Morelli](../../../assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/block-e2e3ea18-5028-4c49-bd19-4179081a95f3.jpg)
+# Fertigung
+Die Fertigung wurde von Paleta Stands durchgeführt, die das digitale Modell mit traditionellen Metallbautechniken in Kombination mit CNC-geschnittenen Teilen in die physische Realität umsetzten. Dies ist ein hervorragendes Beispiel für das „High-Low"-Konzept: Hochtechnologie in der Entwurfsphase und Niedrigtechnologie in der Fertigung.
+Dieses Projekt wurde später als Paper auf der [SIGraDi 2018](https://papers.cumincad.org/cgi-bin/works/paper/sigradi2018_1797)-Konferenz vorgestellt.
+![Foto des Fertigungsprozesses.
+Fertigung durch Paleta Stands.
+© Gui Morelli](../../../assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/block-0c278b64-6bd1-49b2-a301-87eac54325f6.jpg)

@@ -21,4 +21,4 @@
 }
 ---
 
-In this pitch, we presented our workflow on how to generate data to make sense out of the ever more complex field of sustainability and ESG in the construction industry.
+In diesem Pitch präsentierten wir unseren Workflow zur Datengenerierung, um das immer komplexer werdende Feld der Nachhaltigkeit und ESG in der Bauindustrie verständlich zu machen.

@@ -37,7 +37,7 @@ O Air Max Day foi sobre celebrar os antigos e novos tênis Air Max, ao mesmo tem
 Marko desenvolveu dois conceitos, um envolvendo infláveis e o Air Guitar. O primeiro não era ruim, mas o Air Guitar era bom demais para deixar passar.
 Durante a reunião com a agência de marketing, eles ficaram super animados com a instalação, mas acharam que faltava algo. Foi então que sugeri os LEDs endereçáveis.
 
-![Three photos of users playing the guitar.](/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-10ebf53b-9ce3-812f-888b-e0917df8095d.jpeg)
+![Three photos of users playing the guitar.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-10ebf53b-9ce3-812f-888b-e0917df8095d.jpeg)
 # Desenvolvimento
 Depois que o conceito foi aprovado, eu também fiquei responsável por coordenar todo o desenvolvimento do projeto, e talvez eu tenha ficado muito ganancioso porque decidi desenvolver a parte do LED sozinho.
 Para a parte da guitarra, eu não fazia ideia de por onde começar, mas eu conhecia o cara certo: meu amigo Lucas Caracik, um luthier profissional da [Caracik Guitars](https://www.caracikguitars.com/).
@@ -53,7 +53,7 @@ Em teoria, é bem simples, mas na realidade, me levou pra uma espiral estudando 
 Uma semana antes do evento, entrei em contato com outro cara, André Biagioni da [Fiozeira](https://fiozera.com.br/). Felizmente, ele concordou em participar. Ele disse que faltava um filtro no circuito e terminou o trabalho. Ele também fez um diagrama do circuito e ajudou na montagem.
 
 ![Diagrama de circuito eletrônico.
-Diagrama de circuito eletrônico.](/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-10ebf53b-9ce3-81f0-92a0-c6cfd93dfb0d.jpeg)
+Diagrama de circuito eletrônico.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-10ebf53b-9ce3-81f0-92a0-c6cfd93dfb0d.jpeg)
 ```arduino
 #include "FastLED.h"
 
@@ -135,7 +135,7 @@ void loop(){
 }
 ```
 ![Foto da caixa de controle: oito fontes de alimentação, quatro Arduino Mega e espaço para uma bateria de emergência.
-Caixa de controle, o papel branco representa o espaço restante para a bateria de emergência.](/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-10ebf53b-9ce3-811e-a282-fcadbcdeedc4.jpg)
+Caixa de controle, o papel branco representa o espaço restante para a bateria de emergência.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-10ebf53b-9ce3-811e-a282-fcadbcdeedc4.jpg)
 ## Depois do Air Max Day
 O pessoal da Red Bull Station gostou tanto da instalação que pediu para ficar lá por um mês inteiro. Um período que eu tinha que ir lá regularmente para verificar se tudo estava funcionando como esperado. Durante esse tempo, alguns dos LEDs pararam de funcionar no topo da instalação, o que seria muito complicado de substituir. O visual não ficou bom porque perdeu aquela continuidade, parecia que a instalação estava banguela. Então, ao invés de substituir os LEDs, eu apenas desliguei os 10 LEDs de cima diretamente no código do Arduino.
 ## Aprendizados
@@ -145,4 +145,4 @@ Apesar de eu ter aprendido muito, eu teria poupado alguns cabelos brancos se eu 
 Outra coisa que não esqueço foram os cabos. Exigiu cabos mais longos e grossos do que eu esperava, os LEDs consomem muita energia e precisam de dois cabos para cada tira de LED. Eles precisam ser alimentados na parte inferior e também no meio, caso contrário, os LEDs ficariam mais fracos na metade superior.
 A instalação também exigiu duas fontes de alimentação do tamanho de tijolos para cada configuração Captador-Arduino-LED, ou seja oito fontes de alimentação no total (veja foto acima).
 
-©️ Primeira foto e video by [Eduardo Ohara](https://www.eduardoohara.com/)
+© Primeira foto e video by [Eduardo Ohara](https://www.eduardoohara.com/)

@@ -20,7 +20,7 @@
 }
 ---
 
-In this talk at PUC Minas I presented my work, ways to replicate natural processes with computational design, and key points I learned during my recently concluded master thesis.
+In diesem Vortrag an der PUC Minas stellte ich meine Arbeit vor, Wege zur Reproduktion natürlicher Prozesse mit Computational Design sowie wichtige Erkenntnisse aus meiner kürzlich abgeschlossenen Masterarbeit.
 
-You can watch the recordings here:
+Die Aufzeichnungen können hier angesehen werden:
 

@@ -1,2 +1,21 @@
-import { t } from "./en";
-export { t };
+import type { I18nSubpage } from "./type";
+
+export const t: I18nSubpage = {
+  date: "Datum",
+  author: "Autor",
+  authors: "Autoren",
+  client: "Auftraggeber",
+  director: "Direktor",
+  directors: "Direktoren",
+  manager: "Manager",
+  managers: "Manager",
+  team: "Team",
+  development: "Entwicklung",
+  place: "Ort",
+  language: "Sprache",
+  languages: "Sprachen",
+  link: "Link",
+  apps: "Apps",
+  references: "Referenzen",
+  otherLinks: "Weitere Links",
+};

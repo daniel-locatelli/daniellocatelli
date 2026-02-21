@@ -49,12 +49,12 @@ Life lamp is a product that emerged as a result of Estúdio Guto Requena's resea
 
 
 ![Workflow diagram: Heartbeat, Sound Processing, Rhinoceros, 3D printing, LED assembly.
-Workflow diagram.](/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-cfa4dd43-3600-4c76-af44-22adef3e560b.png)
+Workflow diagram.](../../../assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-cfa4dd43-3600-4c76-af44-22adef3e560b.png)
 
 ![Path diagram for the agents and a section of the final thickened paths.
-Path diagram and section of thickened paths.](/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-222ace98-bc87-410d-a65e-51b5a8bee73f.jpeg)
+Path diagram and section of thickened paths.](../../../assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-222ace98-bc87-410d-a65e-51b5a8bee73f.jpeg)
 
 ![Diagram: heartbeats of a preborn at 120 bpm; of an adult at 90 bpm; and of an old person at 70 bpm.
-Diagram how the rhizome-like paths are created.](/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-60c4c7b3-1d1c-4a03-9373-de92aa49e219.jpeg)
+Diagram how the rhizome-like paths are created.](../../../assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-60c4c7b3-1d1c-4a03-9373-de92aa49e219.jpeg)
 
-©️ Cover photo: Decimal
+© Cover photo: Decimal
