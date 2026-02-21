@@ -5,6 +5,7 @@ import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 import cloudflare from "@astrojs/cloudflare";
 import react from "@astrojs/react";
+import { rehypeLazyImages } from "./src/lib/rehype-lazy-images";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -36,6 +37,9 @@ export default defineConfig({
   },
   integrations: [sitemap(), icon(), react()],
   prefetch: true,
+  markdown: {
+    rehypePlugins: [rehypeLazyImages],
+  },
   vite: {
     plugins: [tailwindcss()],
   },

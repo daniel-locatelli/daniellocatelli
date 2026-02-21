@@ -130,10 +130,6 @@ const sortedSubpagesWithImages = await Promise.all(
   }),
 );
 
-const coverList: string[] = sortedSubpagesWithImages
-  .map((subpage) => subpage.image?.src)
-  .filter(Boolean) as string[];
-
 let coverUrl = "";
 const pageImage = await importCoverImage(page, images);
 if (pageImage) {
@@ -153,14 +149,6 @@ if (pageImage) {
     slug: page.data.Slug,
   }}
 >
-  <Fragment slot="after-head">
-    {
-      coverList.map((cover) => {
-        return <link rel="preload" href={cover} as="image" />;
-      })
-    }
-  </Fragment>
-
   <main id="main" class="pt-12 pb-12">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <header class="mb-12">
@@ -179,7 +167,7 @@ if (pageImage) {
       {
         sortedSubpagesWithImages.length > 0 ? (
           <div class="columns-1 gap-8 sm:columns-2 lg:columns-3">
-            {sortedSubpagesWithImages.map((subpage, index) => {
+            {sortedSubpagesWithImages.map((subpage) => {
               const { image } = subpage;
               return (
                 <article class="group relative mb-8 flex break-inside-avoid-column flex-col overflow-hidden rounded-2xl bg-zinc-900 transition-all hover:shadow-2xl">
@@ -195,7 +183,8 @@ if (pageImage) {
                           src={image}
                           alt={subpage.data.CoverAlt || ""}
                           transition:name={subpage.data.PageId + "-image"}
-                          loading={index < 6 ? "eager" : "lazy"}
+                          loading="eager"
+                          decoding="async"
                           widths={[400, 800]}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
