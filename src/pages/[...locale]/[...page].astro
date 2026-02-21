@@ -170,7 +170,7 @@ if (pageImage) {
           {page.data.Name}
         </h1>
         <div
-          class="prose prose-zinc dark:prose-invert mt-4 max-w-none text-xl text-gray-400"
+          class="prose mt-4 max-w-none text-xl text-zinc-400"
         >
           <Content />
         </div>
@@ -213,7 +213,7 @@ if (pageImage) {
                         {subpage.data.Name}
                       </h2>
                       {subpage.data.Description && (
-                        <p class="mt-2 line-clamp-2 text-sm text-gray-300">
+                        <p class="mt-2 line-clamp-2 text-sm text-zinc-300">
                           {subpage.data.Description}
                         </p>
                       )}
@@ -224,7 +224,7 @@ if (pageImage) {
             })}
           </div>
         ) : (
-          <div class="rounded-2xl border border-zinc-800 p-12 text-center text-gray-500">
+          <div class="rounded-2xl border border-zinc-800 p-12 text-center text-zinc-500">
             No items found.
           </div>
         )

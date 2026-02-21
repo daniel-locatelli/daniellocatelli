@@ -28,6 +28,6 @@
   }
 
   body {
-    @apply mx-auto flex min-h-screen max-w-3xl flex-col px-8 pt-16 font-body text-sm font-normal antialiased;
+    @apply mx-auto flex min-h-screen max-w-3xl flex-col px-8 pt-16 font-body text-sm font-normal text-zinc-200 antialiased;
   }
 }

@@ -394,12 +394,12 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={labels.inputPlaceholder}
-            className="w-full rounded-full border border-zinc-200 bg-white/5 px-6 py-3 pr-12 text-zinc-100 shadow-sm backdrop-blur-sm transition-all focus:border-green-400 focus:ring-2 focus:ring-green-400/20 focus:outline-none dark:border-zinc-800 dark:bg-black/50 dark:text-zinc-200"
+            className="w-full rounded-full border border-zinc-800 bg-black/50 px-6 py-3 pr-12 text-zinc-200 shadow-sm backdrop-blur-sm transition-all focus:border-green-400 focus:ring-2 focus:ring-green-400/20 focus:outline-none"
           />
           <button
             type="submit"
             disabled={!input.trim() || isLoading}
-            className="absolute right-2 rounded-full p-2 text-zinc-100 transition-colors hover:bg-zinc-100 hover:text-green-400 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:bg-zinc-800"
+            className="absolute right-2 rounded-full p-2 text-zinc-100 transition-colors hover:bg-zinc-800 hover:text-green-400 disabled:cursor-not-allowed disabled:opacity-50"
             aria-label="Start chat"
           >
             <Send size={20} />

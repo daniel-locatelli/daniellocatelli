@@ -143,12 +143,12 @@ if (image) {
   >
     <div class="w-full max-w-full overflow-x-hidden sm:max-w-2xl">
       <h1
-        class="title font-title mb-8 px-2 text-4xl font-normal text-balance text-gray-100 md:px-0"
+        class="title font-title mb-8 px-2 text-4xl font-normal text-balance text-zinc-100 md:px-0"
       >
         {subpage.data.Name}
       </h1>
       <table
-        class="table-auto border-separate border-spacing-x-4 text-left text-gray-200 *:align-text-top"
+        class="table-auto border-separate border-spacing-x-4 text-left text-zinc-200 *:align-text-top"
       >
         {
           subpage.data.DateEnd ? (
@@ -334,7 +334,7 @@ if (image) {
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="mr-2 text-green-500 transition hover:text-green-600 dark:hover:text-green-400"
+                            class="mr-2 text-green-500 transition hover:text-green-400"
                           >
                             {text}
                           </a>
@@ -349,7 +349,7 @@ if (image) {
                           href={l.Href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="text-green-500 transition hover:text-green-600 dark:hover:text-green-400"
+                          class="text-green-500 transition hover:text-green-400"
                         >
                           {l.Text}
                         </a>
@@ -362,7 +362,7 @@ if (image) {
                           href={link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="text-green-500 transition hover:text-green-600 dark:hover:text-green-400"
+                          class="text-green-500 transition hover:text-green-400"
                         >
                           {link}
                         </a>
@@ -402,7 +402,7 @@ if (image) {
                 <td>
                   {subpage.data.References.map((ref: any) => {
                     if (typeof ref === "string") return <span>{ref}</span>;
-                    if (ref.Href) return <a href={ref.Href} target="_blank" rel="noopener noreferrer" class="mr-2 text-green-500 transition hover:text-green-600 dark:hover:text-green-400">{ref.Text || ref.Href}</a>;
+                    if (ref.Href) return <a href={ref.Href} target="_blank" rel="noopener noreferrer" class="mr-2 text-green-500 transition hover:text-green-400">{ref.Text || ref.Href}</a>;
                     return <span>{ref.PlainText || ref.Text || ""}</span>;
                   })}
                 </td>
@@ -410,7 +410,7 @@ if (image) {
             )
         }
       </table>
-      <div class="prose prose-zinc dark:prose-invert my-8 max-w-none text-gray-200">
+      <div class="prose my-8 max-w-none text-zinc-200">
         <Content />
       </div>
     </div>

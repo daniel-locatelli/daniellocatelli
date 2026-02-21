@@ -2,7 +2,6 @@ import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
-  darkMode: ["class", '[data-theme="dark"]'],
   content: [
     "./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}",
     "!./src/pages/og-image/[slug].png.ts",
@@ -38,19 +37,43 @@ export default {
       typography: () => ({
         DEFAULT: {
           css: {
+            // Override prose CSS custom properties for dark theme
+            "--tw-prose-body": "var(--color-zinc-200)",
+            "--tw-prose-headings": "var(--color-zinc-100)",
+            "--tw-prose-lead": "var(--color-zinc-300)",
+            "--tw-prose-links": "var(--color-green-500)",
+            "--tw-prose-bold": "var(--color-zinc-100)",
+            "--tw-prose-counters": "var(--color-zinc-400)",
+            "--tw-prose-bullets": "var(--color-zinc-400)",
+            "--tw-prose-hr": "var(--color-zinc-700)",
+            "--tw-prose-quotes": "var(--color-zinc-400)",
+            "--tw-prose-quote-borders": "var(--color-zinc-700)",
+            "--tw-prose-captions": "var(--color-zinc-400)",
+            "--tw-prose-code": "var(--color-green-200)",
+            "--tw-prose-pre-code": "var(--color-zinc-300)",
+            "--tw-prose-pre-bg": "var(--color-zinc-900)",
+            "--tw-prose-th-borders": "var(--color-zinc-600)",
+            "--tw-prose-td-borders": "var(--color-zinc-700)",
+            // Element-specific overrides
+            h4: {
+              color: "var(--color-zinc-200)",
+            },
             a: {
-              "@apply text-green-500 transition duration-300 hover:text-green-600 no-underline":
-                "",
+              textDecoration: "none",
+              transition: "color 300ms",
+              "&:hover": {
+                color: "var(--color-green-400)",
+              },
             },
             strong: {
-              fontWeight: "300",
+              fontWeight: "700",
+            },
+            blockquote: {
+              borderLeftWidth: "0",
             },
             code: {
               "@apply border border-dashed border-zinc-600": "",
               borderRadius: "2px",
-            },
-            blockquote: {
-              borderLeftWidth: "0",
             },
             hr: {
               borderTopStyle: "dashed",
@@ -76,7 +99,9 @@ export default {
               a: {
                 "@apply bg-none": "",
                 "&:hover": {
-                  "@apply text-green-600 no-underline bg-none": "",
+                  color: "var(--color-green-400)",
+                  textDecoration: "none",
+                  background: "none",
                 },
                 "&:before": {
                   content: "'['",
