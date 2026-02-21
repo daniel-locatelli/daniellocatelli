@@ -1,36 +1,42 @@
 export type I18nCV = {
   meta: {
-    titleSimple: string,
-    descriptionSimple: string
-    titleFull: string,
-    descriptionFull: string,
-    coverAlt: string,
-  },
+    titleSimple: string;
+    descriptionSimple: string;
+    titleFull: string;
+    descriptionFull: string;
+    coverAlt: string;
+  };
   ui: {
-    title: string,
-    summary: string,
-    skills: string,
-    programming: string,
-    frameworks: string,
-    databases: string,
-    designTools: string,
-    specialization: string,
-    languages: string,
-    professionalExperience: string,
-    education: string,
-    scholarships: string,
-    publications: string,
-    certifications: string,
-    engagementSimple: string,
-    engagementFull: string,
-    coursesAttended: string,
-    projectsList: string,
+    title: string;
+    summary: string;
+    skills: string;
+    programming: string;
+    frameworks: string;
+    databases: string;
+    designTools: string;
+    specialization: string;
+    languages: string;
+    professionalExperience: string;
+    education: string;
+    scholarships: string;
+    publications: string;
+    certifications: string;
+    engagementSimple: string;
+    engagementFull: string;
+    engagementTypes: {
+      course: string;
+      talk: string;
+      workshop: string;
+      seminar: string;
+    };
+    coursesAttended: string;
+    projectsList: string;
     // Other elements
-    current: string,
-    supervisors: string,
-    advisors: string,
-    validUntil: string,
-  },
+    current: string;
+    supervisors: string;
+    advisors: string;
+    validUntil: string;
+  };
   quote: string;
   summary: string;
   skillsProgramming: Skill[];
@@ -48,7 +54,7 @@ export type I18nCV = {
   coursesAttended: CourseAttended[];
   works: Work[];
 };
-  
+
 export type Skill = {
   title: string;
   description?: string;
@@ -118,7 +124,7 @@ export type Engagement = {
   link?: string;
   organization: string;
   location?: string;
-  type: 'Course' | 'Talk' | 'Workshop' | 'Seminar';
+  type: "course" | "talk" | "workshop" | "seminar";
 };
 
 export type CourseAttended = {

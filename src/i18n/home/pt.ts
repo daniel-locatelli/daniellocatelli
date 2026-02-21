@@ -16,13 +16,13 @@ export const t: I18nHome = {
     greeting: "Daniel Locatelli",
     title: "Engenheiro de software",
     description:
-      "Sou&nbsp;especialista no desenvolvimento de plugins, aplicações web e soluções de design computacional para arquitetura, engenharia e construção (AEC).",
+      "Sou&nbsp;generalista. Eu desenvolvo plugins, aplicações web e soluções de design computacional para arquitetura, engenharia e construção (AEC).",
     requestQuote: "Faça um orçamento",
     sendEmail: "Envie um Email",
     chat: {
       initialMessage:
-        "Olá! Pergunte-me qualquer coisa sobre meu trabalho, experiência ou projetos.",
-      inputPlaceholder: "Pergunte-me qualquer coisa...",
+        "Olá! Me pergunte alguma coisa sobre meu trabalho, experiência ou projetos.",
+      inputPlaceholder: "Me pergunte alguma coisa...",
       headerTitle: "Assistente IA",
       poweredBy: "Desenvolvido com",
       errorMessage:

@@ -24,6 +24,109 @@ interface HeroChatProps {
   };
 }
 
+interface LinkPreview {
+  title: string;
+  coverUrl: string;
+  slug: string;
+}
+
+const COLLECTION_PREFIXES = [
+  "projects",
+  "research",
+  "teaching",
+  "publications",
+];
+const LOCALE_PREFIXES = ["en", "pt", "de"];
+const SITE_DOMAIN = "daniellocatelli.com";
+
+function extractInternalSlugs(markdown: string): string[] {
+  const slugs: string[] = [];
+  // Match markdown links: [text](url)
+  const linkRegex = /\[([^\]]*)\]\(([^)]+)\)/g;
+  let match;
+  while ((match = linkRegex.exec(markdown)) !== null) {
+    const href = match[2];
+    let path = "";
+
+    try {
+      const url = new URL(href, "https://daniellocatelli.com");
+      if (
+        url.hostname === SITE_DOMAIN ||
+        url.hostname === `www.${SITE_DOMAIN}`
+      ) {
+        path = url.pathname;
+      } else if (href.startsWith("/")) {
+        path = href;
+      } else {
+        continue;
+      }
+    } catch {
+      if (href.startsWith("/")) {
+        path = href;
+      } else {
+        continue;
+      }
+    }
+
+    // Strip leading slash
+    path = path.replace(/^\//, "");
+    // Strip locale prefix
+    const firstSegment = path.split("/")[0];
+    if (LOCALE_PREFIXES.includes(firstSegment)) {
+      path = path.slice(firstSegment.length + 1);
+    }
+    // Strip trailing slash
+    path = path.replace(/\/$/, "");
+
+    // Check if it starts with a known collection prefix
+    const prefix = path.split("/")[0];
+    if (COLLECTION_PREFIXES.includes(prefix) && path.includes("/")) {
+      slugs.push(path);
+    }
+  }
+  return [...new Set(slugs)];
+}
+
+function isInternalHref(href: string): boolean {
+  if (href.startsWith("/")) return true;
+  try {
+    const url = new URL(href);
+    return (
+      url.hostname === SITE_DOMAIN ||
+      url.hostname === `www.${SITE_DOMAIN}`
+    );
+  } catch {
+    return false;
+  }
+}
+
+function PreviewCard({ preview }: { preview: LinkPreview }) {
+  return (
+    <motion.a
+      href={`/${preview.slug}`}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="group relative block flex-shrink-0 overflow-hidden rounded-xl border border-zinc-800 md:aspect-square md:w-full"
+    >
+      {preview.coverUrl ? (
+        <img
+          src={preview.coverUrl}
+          alt={preview.title}
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center bg-zinc-800">
+          <Sparkles size={24} className="text-zinc-600" />
+        </div>
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+      <span className="absolute bottom-0 left-0 right-0 p-3 text-xs font-medium leading-tight text-white">
+        {preview.title.trim()}
+      </span>
+    </motion.a>
+  );
+}
+
 function ChatBubble({
   message,
   isLast,
@@ -41,14 +144,16 @@ function ChatBubble({
       return;
     }
 
-    let i = 0;
+    const words = message.content.split(/(\s+)/);
+    let wordIndex = 0;
     const intervalId = setInterval(() => {
-      setDisplay(message.content.slice(0, i + 1));
-      i++;
-      if (i > message.content.length) {
+      if (wordIndex <= words.length) {
+        setDisplay(words.slice(0, wordIndex).join(""));
+        wordIndex++;
+      } else {
         clearInterval(intervalId);
       }
-    }, 15); // Adjust speed here
+    }, 30); // Adjust speed here
 
     return () => clearInterval(intervalId);
   }, [message.content, message.role, isLast]);
@@ -60,7 +165,7 @@ function ChatBubble({
       }`}
     >
       <div
-        className={`max-w-[85%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-sm ${
+        className={`max-w-[85%] break-words rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-sm ${
           message.role === "user"
             ? "rounded-br-none bg-green-700 text-white"
             : "rounded-bl-none border border-zinc-800 bg-zinc-900 text-zinc-200"
@@ -69,14 +174,19 @@ function ChatBubble({
         <div className="prose prose-sm max-w-none text-zinc-200">
           <ReactMarkdown
             components={{
-              a: ({ node, ...props }) => (
-                <a
-                  {...props}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-green-400 underline decoration-green-400/30 underline-offset-2 transition-colors hover:decoration-green-400"
-                />
-              ),
+              a: ({ node, ...props }) => {
+                const href = props.href || "";
+                const internal = isInternalHref(href);
+                return (
+                  <a
+                    {...props}
+                    {...(internal
+                      ? {}
+                      : { target: "_blank", rel: "noopener noreferrer" })}
+                    className="font-medium text-green-400 underline decoration-green-400/30 underline-offset-2 transition-colors hover:decoration-green-400"
+                  />
+                );
+              },
               p: ({ node, ...props }) => (
                 <p
                   {...props}
@@ -166,6 +276,8 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [linkPreviews, setLinkPreviews] = useState<LinkPreview[]>([]);
+  const fetchedSlugsRef = useRef<Set<string>>(new Set());
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -176,7 +288,36 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  const handleInputSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const fetchPreviews = async (text: string) => {
+    const slugs = extractInternalSlugs(text);
+    const newSlugs = slugs.filter((s) => !fetchedSlugsRef.current.has(s));
+    if (newSlugs.length === 0) return;
+
+    newSlugs.forEach((s) => fetchedSlugsRef.current.add(s));
+
+    const results = await Promise.all(
+      newSlugs.map(async (slug) => {
+        try {
+          const res = await fetch(
+            `/api/page-preview?slug=${encodeURIComponent(slug)}`,
+          );
+          if (!res.ok) return null;
+          return (await res.json()) as LinkPreview;
+        } catch {
+          return null;
+        }
+      }),
+    );
+
+    const valid = results.filter(
+      (r): r is LinkPreview => r !== null && !!r.title,
+    );
+    if (valid.length > 0) {
+      setLinkPreviews((prev) => [...prev, ...valid]);
+    }
+  };
+
+  const handleInputSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
@@ -185,7 +326,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
     handleChatSubmit(e);
   };
 
-  const handleChatSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleChatSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
@@ -201,15 +342,13 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
 
     while (attempt <= maxRetries && !success) {
       try {
-        const response = await fetch("/api/chat", {
+        const response = await fetch("/api/ai", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question: userMessage }),
         });
 
         if (!response.ok) {
-          // If it's a 500 or similar, we might want to retry.
-          // If it's 4xx maybe not? But for "resilience" let's retry on any non-ok for now.
           throw new Error(`Failed to fetch response: ${response.status}`);
         }
 
@@ -218,6 +357,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
           ...prev,
           { role: "assistant", content: data.answer },
         ]);
+        fetchPreviews(data.answer);
         success = true;
       } catch (error) {
         console.error(
@@ -227,10 +367,8 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
         attempt++;
 
         if (attempt <= maxRetries) {
-          // Wait 1 second before retrying
           await new Promise((resolve) => setTimeout(resolve, 1000));
         } else {
-          // Final failure
           setMessages((prev) => [
             ...prev,
             {
@@ -244,6 +382,8 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
 
     setIsLoading(false);
   };
+
+  const hasPreviews = linkPreviews.length > 0;
 
   return (
     <>
@@ -283,7 +423,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="flex h-[650px] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-black shadow-2xl"
+              className={`flex h-[650px] w-full flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-black shadow-2xl transition-[max-width] duration-300 ${hasPreviews ? "max-w-5xl" : "max-w-3xl"}`}
             >
               {/* Header */}
               <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900/50 p-4">
@@ -309,105 +449,152 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                 </button>
               </div>
 
-              {/* Messages */}
-              <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-700 flex-1 space-y-6 overflow-y-auto p-6">
-                {messages.map((msg, idx) => (
-                  <ChatBubble
-                    key={idx}
-                    message={msg}
-                    isLast={idx === messages.length - 1}
-                  />
-                ))}
-                {isLoading && (
-                  <div className="flex justify-start">
-                    <div className="rounded-2xl rounded-bl-none border border-zinc-800 bg-zinc-900 px-5 py-4">
-                      <div className="flex gap-1.5">
-                        <motion.div
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ repeat: Infinity, duration: 1 }}
-                          className="size-2 rounded-full bg-zinc-500"
-                        />
-                        <motion.div
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{
-                            repeat: Infinity,
-                            duration: 1,
-                            delay: 0.2,
-                          }}
-                          className="size-2 rounded-full bg-zinc-500"
-                        />
-                        <motion.div
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{
-                            repeat: Infinity,
-                            duration: 1,
-                            delay: 0.4,
-                          }}
-                          className="size-2 rounded-full bg-zinc-500"
-                        />
-                      </div>
+              {/* Mobile preview strip */}
+              <AnimatePresence>
+                {hasPreviews && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="border-b border-zinc-800 md:hidden"
+                  >
+                    <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-700 flex gap-3 overflow-x-auto p-3">
+                      {linkPreviews.map((preview) => (
+                        <div
+                          key={preview.slug}
+                          className="h-24 w-28 flex-shrink-0"
+                        >
+                          <PreviewCard preview={preview} />
+                        </div>
+                      ))}
                     </div>
-                  </div>
+                  </motion.div>
                 )}
-                <div ref={messagesEndRef} />
-              </div>
+              </AnimatePresence>
 
-              {/* Input Area */}
-              <div className="border-t border-zinc-800 bg-black p-4">
-                <AnimatePresence>
-                  {hasInteracted && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0, marginBottom: 0 }}
-                      animate={{ opacity: 1, height: "auto", marginBottom: 16 }}
-                      exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-                      className="flex flex-col gap-3 sm:flex-row"
+              {/* Main content area: chat + desktop sidebar */}
+              <div className="flex min-h-0 flex-1">
+                {/* Chat column */}
+                <div className="flex min-w-0 flex-1 flex-col">
+                  {/* Messages */}
+                  <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-700 flex-1 space-y-6 overflow-y-auto p-6">
+                    {messages.map((msg, idx) => (
+                      <ChatBubble
+                        key={idx}
+                        message={msg}
+                        isLast={idx === messages.length - 1}
+                      />
+                    ))}
+                    {isLoading && (
+                      <div className="flex justify-start">
+                        <div className="rounded-2xl rounded-bl-none border border-zinc-800 bg-zinc-900 px-5 py-4">
+                          <div className="flex gap-1.5">
+                            <motion.div
+                              animate={{ scale: [1, 1.2, 1] }}
+                              transition={{ repeat: Infinity, duration: 1 }}
+                              className="size-2 rounded-full bg-zinc-500"
+                            />
+                            <motion.div
+                              animate={{ scale: [1, 1.2, 1] }}
+                              transition={{
+                                repeat: Infinity,
+                                duration: 1,
+                                delay: 0.2,
+                              }}
+                              className="size-2 rounded-full bg-zinc-500"
+                            />
+                            <motion.div
+                              animate={{ scale: [1, 1.2, 1] }}
+                              transition={{
+                                repeat: Infinity,
+                                duration: 1,
+                                delay: 0.4,
+                              }}
+                              className="size-2 rounded-full bg-zinc-500"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    <div ref={messagesEndRef} />
+                  </div>
+
+                  {/* Input Area */}
+                  <div className="border-t border-zinc-800 bg-black p-4">
+                    <AnimatePresence>
+                      {hasInteracted && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0, marginBottom: 0 }}
+                          animate={{ opacity: 1, height: "auto", marginBottom: 16 }}
+                          exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+                          className="flex flex-col gap-3 sm:flex-row"
+                        >
+                          <a
+                            href={siteConfig.whatsapp}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-green-400 hover:bg-zinc-900 hover:text-green-400"
+                          >
+                            <img
+                              src={WhatsAppIcon.src}
+                              alt="WhatsApp"
+                              className="size-4"
+                            />
+                            {labels.requestQuote}
+                          </a>
+                          <a
+                            href={`mailto:${siteConfig.email}`}
+                            className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-green-400 hover:bg-zinc-900 hover:text-green-400"
+                          >
+                            <Mail size={16} />
+                            {labels.sendEmail}
+                          </a>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                    <form
+                      onSubmit={handleChatSubmit}
+                      className="flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/50 px-2 py-2"
                     >
-                      <a
-                        href={siteConfig.whatsapp}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-green-400 hover:bg-zinc-900 hover:text-green-400"
+                      <input
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder={labels.inputPlaceholder}
+                        className="flex-1 bg-transparent px-4 py-2 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none"
+                      />
+                      <button
+                        type="submit"
+                        disabled={isLoading || !input.trim()}
+                        className="flex size-10 items-center justify-center rounded-full bg-green-700 text-white transition-all hover:bg-green-800 hover:shadow-lg hover:shadow-green-500/20 disabled:cursor-not-allowed disabled:bg-zinc-800 disabled:text-zinc-500 disabled:shadow-none"
                       >
-                        <img
-                          src={WhatsAppIcon.src}
-                          alt="WhatsApp"
-                          className="size-4"
-                        />
-                        {labels.requestQuote}
-                      </a>
-                      <a
-                        href={`mailto:${siteConfig.email}`}
-                        className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-green-400 hover:bg-zinc-900 hover:text-green-400"
-                      >
-                        <Mail size={16} />
-                        {labels.sendEmail}
-                      </a>
-                    </motion.div>
+                        {isLoading ? (
+                          <Loader2 size={18} className="animate-spin" />
+                        ) : (
+                          <Send size={18} />
+                        )}
+                      </button>
+                    </form>
+                  </div>
+                </div>
+
+                {/* Desktop sidebar */}
+                <AnimatePresence>
+                  {hasPreviews && (
+                    <motion.aside
+                      initial={{ opacity: 0, width: 0 }}
+                      animate={{ opacity: 1, width: 288 }}
+                      exit={{ opacity: 0, width: 0 }}
+                      className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-700 hidden flex-shrink-0 overflow-y-auto border-l border-zinc-800 md:block"
+                    >
+                      <div className="flex flex-col gap-3 p-4">
+                        {linkPreviews.map((preview) => (
+                          <PreviewCard key={preview.slug} preview={preview} />
+                        ))}
+                      </div>
+                    </motion.aside>
                   )}
                 </AnimatePresence>
-                <form
-                  onSubmit={handleChatSubmit}
-                  className="flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/50 px-2 py-2"
-                >
-                  <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Type your message..."
-                    className="flex-1 bg-transparent px-4 py-2 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    disabled={isLoading || !input.trim()}
-                    className="flex size-10 items-center justify-center rounded-full bg-green-700 text-white transition-all hover:bg-green-800 hover:shadow-lg hover:shadow-green-500/20 disabled:cursor-not-allowed disabled:bg-zinc-800 disabled:text-zinc-500 disabled:shadow-none"
-                  >
-                    {isLoading ? (
-                      <Loader2 size={18} className="animate-spin" />
-                    ) : (
-                      <Send size={18} />
-                    )}
-                  </button>
-                </form>
               </div>
             </motion.div>
           </motion.div>

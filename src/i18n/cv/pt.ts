@@ -27,6 +27,12 @@ export const t: I18nCV = {
     certifications: "Certificados",
     engagementSimple: "Experiência docente recente",
     engagementFull: "Experiência Docente",
+    engagementTypes: {
+      course: "Curso",
+      talk: "Palestra",
+      workshop: "Workshop",
+      seminar: "Seminário",
+    },
     coursesAttended: "Cursos frequentados",
     projectsList: "Lista de Projetos",
     // Other elements
@@ -386,7 +392,7 @@ export const t: I18nCV = {
       link: "https://ar.hm.edu/studierende/masterstudiengang/lehrangebot/sommersemster_2025/25sose_ma_schluesselkompetenz_31_scheurer_ciganek.de.html",
       organization: "Universidade de Ciências Applicadas de Munique",
       location: "Munique, Alemanha",
-      type: "Talk",
+      type: "talk",
     },
     {
       title:
@@ -395,7 +401,7 @@ export const t: I18nCV = {
       link: "https://www.icd.uni-stuttgart.de/news/Multiskalares-Roboterfertigungssystem-fuer-Vor-Ort-Pressklebung-im-mehrgeschossigen-Holzbau/",
       organization: "Forum Holzbau",
       location: "Stuttgart, Alemanha",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Visão Sustentabilidade",
@@ -403,7 +409,7 @@ export const t: I18nCV = {
       link: "https://www.youtube.com/watch?v=baVNIbWtMQo",
       organization: "Graphisoft X",
       location: "Online",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Arquitetura Computacional",
@@ -411,7 +417,7 @@ export const t: I18nCV = {
       link: "https://sites.google.com/mail.uft.edu.br/semanau23/programa%C3%A7%C3%A3o/sexta-1011?authuser=0#h.rx3nv64mjv6q",
       organization: "Curso de Arquitetura e Urbanismo da UFT",
       location: "Online",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Viabilidade da construção sustentável",
@@ -419,7 +425,7 @@ export const t: I18nCV = {
       link: "https://ecosystem.siemens.com/researchandinnovation/rie-munich-conference-digitalization-low-code-engineering-in-industry",
       organization: "Siemens RIE Munich Conference",
       location: "Munique, Alemanha",
-      type: "Talk",
+      type: "talk",
     },
     {
       title:
@@ -427,7 +433,7 @@ export const t: I18nCV = {
       startDate: "2023-09",
       organization: "Curso de Arquitetura e Urbanismo do IFPR",
       location: "Online",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Building Across Scales",
@@ -435,14 +441,14 @@ export const t: I18nCV = {
       link: "https://www.youtube.com/watch?v=s-hKf0NhooA&list=PLtuu5idZ57EVQS0a1PpvNbNsN7IHBw-Ci",
       organization: "DigitalFUTURES",
       location: "Online",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Design Computacional e suas Estratégias",
       startDate: "2020-11",
       organization: "UNIP Sorocaba",
       location: "Online",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Estratégias do Design Computacional",
@@ -450,7 +456,7 @@ export const t: I18nCV = {
       link: "https://youtu.be/J303rzg7y0U",
       organization: "PUC Minas",
       location: "Online",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Arquitetura + Biomimética + Algoritmo",
@@ -458,7 +464,7 @@ export const t: I18nCV = {
       link: "https://portal.ifro.edu.br/vilhena/noticias/8153",
       organization: "Curso de Arquitetura e Urbanismo do IFRO",
       location: "Vilhena, Brasil",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Models byNature 1.0 & 2.0",
@@ -469,7 +475,7 @@ export const t: I18nCV = {
       location: "São Paulo, Brasil",
       description:
         "Esse curso conectou abordagens de design natural como computação de materiais e biomimética com design computacional.",
-      type: "Course",
+      type: "course",
     },
     {
       title: "Workshop de Tensegridade",
@@ -478,7 +484,7 @@ export const t: I18nCV = {
       location: "Paraty, Brasil",
       description:
         "Workshop de team building do Atelier Marko Brajovic com o objetivo de desenvolver uma tensegridade coletivamente.",
-      type: "Workshop",
+      type: "workshop",
     },
     {
       title: "Workshop Adaptive Grasshopper",
@@ -488,7 +494,7 @@ export const t: I18nCV = {
       location: "Barra do Bugres, Brasil",
       description:
         'Workshop sobre a estratégia de design computacional "Exoesqueleto."',
-      type: "Workshop",
+      type: "workshop",
     },
     {
       title: "Workshop Grasshopper & Kangaroo",
@@ -497,7 +503,7 @@ export const t: I18nCV = {
       location: "São Paulo, Brasil",
       description:
         "Workshop sobre sistemas de molas para simular o comportamento de tecidos.",
-      type: "Workshop",
+      type: "workshop",
     },
     {
       title: "Aulas particulares de Revit",
@@ -506,14 +512,14 @@ export const t: I18nCV = {
       location: "São Paulo, Brasil",
       description:
         "Aulas de Revit desde os princípios básicos até técnicas avançadas.",
-      type: "Course",
+      type: "course",
     },
     {
       title: "Design Emocional e Tecnologia",
       startDate: "2019-03",
       organization: "SEBRAE Talks, MOVELPAR 2019",
       location: "Arapongas, Brasil",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Design Paramétrico Inspirado pela Natureza",
@@ -521,35 +527,35 @@ export const t: I18nCV = {
       link: "https://revistacasaejardim.globo.com/Casa-e-Jardim/Eventos/Semana-Design-Rio/noticia/2018/09/semana-design-rio-chega-6-edicao-no-mam-entre-os-dias-13-e-1609.html",
       organization: "Semana Design Rio 2018",
       location: "Rio de Janeiro, Brasil",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Geometrias Biomiméticas",
       startDate: "2018-08",
       organization: "Tátil",
       location: "Rio de Janeiro, Brasil",
-      type: "Seminar",
+      type: "seminar",
     },
     {
       title: "Arquitetura + Biomimética + Algoritmo",
       startDate: "2018-06",
       organization: "XIV SAU UNEMAT",
       location: "Barra do Bugres, Brasil",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Arquitetura + Biomimética + Algoritmo",
       startDate: "2017-08",
       organization: "IED São Paulo",
       location: "São Paulo, Brasil",
-      type: "Talk",
+      type: "talk",
     },
     {
       title: "Form-finding com Grasshopper",
       startDate: "2016-12",
       organization: "II Encontro de Casca Estruturada",
       location: "FAU/POLI USP, São Paulo, Brasil",
-      type: "Talk",
+      type: "talk",
     },
   ],
   coursesAttended: [

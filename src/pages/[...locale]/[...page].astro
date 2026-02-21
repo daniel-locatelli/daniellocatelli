@@ -1,39 +1,45 @@
 ---
-import { getAllDatabases, getDatabaseByName } from "../../lib/notion/client";
-import type { Database, Page } from "../../lib/notion-interfaces";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 import {
   importCoverImage,
   modifyFileName,
   urlToFileName,
 } from "src/lib/blog-helpers";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import BaseHead from "@/components/BaseHead.astro";
-import { Image } from "astro:assets";
+import Base from "@/layouts/Base.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
 import { getLocale } from "src/lib/routes-helpers";
 
 const locale = getLocale(Astro.params);
 
-export async function getStaticPaths() {
-  const databases = await getAllDatabases();
+type SubpageEntry =
+  | CollectionEntry<"projects">
+  | CollectionEntry<"research">
+  | CollectionEntry<"teaching">
+  | CollectionEntry<"publications">
+  | CollectionEntry<"tools">
+  | CollectionEntry<"people">
+  | CollectionEntry<"organizations">
+  | CollectionEntry<"cities">
+  | CollectionEntry<"prizes">
+  | CollectionEntry<"skills">;
 
-  // Get all non-homepage pages from the Pages database
-  const allPages = databases
-    .filter((database) => database.Title === "Pages")
-    .flatMap((database) =>
-      database.Pages.filter((page: Page) => page.Name !== "Homepage"),
-    );
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+
+  // Get all non-homepage pages from the Pages collection
+  const allPages = pages.filter((page) => page.data.Name !== "Homepage");
 
   // For each page, create paths for each supported locale
-  const paths = allPages.flatMap((page: Page) => {
+  const paths = allPages.flatMap((page) => {
     const pagePaths = [];
 
     // 1. Create path for default locale (no locale in URL)
     pagePaths.push({
       params: {
         locale: undefined, // Default locale has no locale param
-        page: page.Slug,
+        page: page.data.Slug,
       },
       props: {
         locale: siteConfig.defaultLocale,
@@ -50,7 +56,7 @@ export async function getStaticPaths() {
       pagePaths.push({
         params: {
           locale: locale,
-          page: page.Slug,
+          page: page.data.Slug,
         },
         props: {
           locale,
@@ -66,163 +72,163 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  page: Page;
+  page: CollectionEntry<"pages">;
 }
 
 const { page } = Astro.props as Props;
+const { Content } = await page.render();
 
-// Getting images dynamically with import.meta.glob()
-// It only accepts string literals
-// https://docs.astro.build/en/recipes/dynamically-importing-images/
-// const images = import.meta.glob<{ default: ImageMetadata }>(
-//   "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}"
-// );
+// Helper to get locale from entry ID
+const getEntryLocale = (id: string) => {
+  const parts = id.split("/");
+  if (parts.length > 1 && SUPPORTED_LOCALES.includes(parts[0] as any)) {
+    return parts[0];
+  }
+  return siteConfig.defaultLocale;
+};
 
-let databases: Database[];
+// Map page slugs to their respective subpage collections
+const DATABASE_MAPPING: Record<string, string[]> = {
+  projects: ["projects"],
+  research: ["research", "publications"],
+  teaching: ["teaching"],
+  // Add other mappings as needed
+};
 
-databases = await Promise.all(
-  page.DatabasesRef!.map(async (db) => await getDatabaseByName(db.name!)),
-);
+// Fetch subpages based on page slug
+let subpages: SubpageEntry[] = [];
+const dbNames = DATABASE_MAPPING[page.data.Slug] || [];
+
+for (const dbName of dbNames) {
+  // @ts-ignore
+  const collection = await getCollection(dbName);
+  subpages.push(...(collection as unknown as SubpageEntry[]));
+}
 
 // Flatten and sort pages
-const sortedSubpages = databases
-  .flatMap((db) => db.Pages)
-  .filter((page) => page.Locale === locale)
+const sortedSubpages = subpages
+  .filter((p) => getEntryLocale(p.id) === locale)
   .sort((a, b) => {
-    if (!a.DateStart) return 1;
-    if (!b.DateStart) return -1;
-    return new Date(b.DateStart).getTime() - new Date(a.DateStart).getTime();
+    if (!a.data.DateStart) return 1;
+    if (!b.data.DateStart) return -1;
+    return (
+      new Date(b.data.DateStart).getTime() -
+      new Date(a.data.DateStart).getTime()
+    );
   });
-
-let coverList: string[] = [];
-
-sortedSubpages.map((subpages) => {
-  let coverUrlBg = "";
-  if (subpages.Cover) {
-    const url = new URL(subpages.Cover.Url);
-    const dir = "media/" + url.pathname.split("/").slice(-2)[0];
-    const fileNameConverted = urlToFileName(url);
-    const fileNameBgWithSlug = modifyFileName(fileNameConverted, {
-      newEnd: "-bg",
-      newExtension: "jpg",
-    });
-    coverUrlBg = `/${dir}/${fileNameBgWithSlug}`;
-  }
-  coverList.push(coverUrlBg);
-});
-
-let coverUrl = "";
-if (page.Cover) {
-  const url = new URL(page.Cover.Url);
-  const dir = "media/" + url.pathname.split("/").slice(-2)[0];
-  const fileNameConverted = urlToFileName(url);
-  const fileNameWithSlug = modifyFileName(fileNameConverted, {
-    // newBeginning: page.Slug.split("/").pop() + "_",
-    newExtension: "jpg",
-  });
-  coverUrl = `${dir}/${fileNameWithSlug}`;
-}
 
 // Errors with images? Make sure to build "npm run build"
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/notion/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}",
+  "/src/assets/content/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,avif}",
 );
+
+// Pre-process images for all subpages to avoid async map in render
+const sortedSubpagesWithImages = await Promise.all(
+  sortedSubpages.map(async (subpage) => {
+    const image = await importCoverImage(subpage, images);
+    return { ...subpage, image };
+  }),
+);
+
+const coverList: string[] = sortedSubpagesWithImages
+  .map((subpage) => subpage.image?.src)
+  .filter(Boolean) as string[];
+
+let coverUrl = "";
+const pageImage = await importCoverImage(page, images);
+if (pageImage) {
+  coverUrl = pageImage.src;
+} else if (page.data.Cover) {
+  const cover = page.data.Cover;
+  coverUrl = typeof cover === "string" ? cover : cover.Url;
+}
 ---
 
-<html lang={locale}>
-  <head>
-    <BaseHead
-      title={page.Name}
-      description={page.Description}
-      coverImage={coverUrl}
-      coverAlt={page.CoverAlt || "Cover image"}
-      viewTransition={true}
-      slug={page.Slug}
-    />
+<Base
+  meta={{
+    title: page.data.Name,
+    description: page.data.Description,
+    coverImage: coverUrl,
+    coverAlt: page.data.CoverAlt || "Cover image",
+    slug: page.data.Slug,
+  }}
+>
+  <Fragment slot="after-head">
     {
       coverList.map((cover) => {
         return <link rel="preload" href={cover} as="image" />;
       })
     }
-  </head>
-  <body class="m-0 h-full max-w-full p-0">
-    <Header slug={page.Slug} />
-    <main id="main">
-      <div class="relative flex flex-col">
-        {
-          sortedSubpages.map(async (subpage, index) => {
-            let image = await importCoverImage(subpage, images);
-            return (
-              <section aria-label={page.Name} class="relative w-full">
-                <ul class="relative w-full space-y-0">
-                  <article class="h-vh relative flex h-screen w-full snap-start flex-col overflow-hidden bg-clip-border">
-                    <a
-                      class="flex h-full w-full transition"
-                      href={`/${locale === siteConfig.defaultLocale ? "" : `${locale}/`}${subpage.Slug}`}
-                      data-astro-prefetch
-                    >
-                      <div class="absolute z-20 flex h-full w-full flex-col justify-center text-center transition">
-                        <h2 class="font-title bg-black/60 p-2 text-3xl text-balance text-white backdrop-blur-sm md:text-5xl dark:text-white">
-                          {subpage.Name}
+  </Fragment>
+
+  <main id="main" class="pt-12 pb-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <header class="mb-12">
+        <h1
+          class="pt-4 text-2xl tracking-tight text-white sm:pt-12 sm:text-3xl"
+        >
+          {page.data.Name}
+        </h1>
+        <div
+          class="prose prose-zinc dark:prose-invert mt-4 max-w-none text-xl text-gray-400"
+        >
+          <Content />
+        </div>
+      </header>
+
+      {
+        sortedSubpagesWithImages.length > 0 ? (
+          <div class="columns-1 gap-8 sm:columns-2 lg:columns-3">
+            {sortedSubpagesWithImages.map((subpage, index) => {
+              const { image } = subpage;
+              return (
+                <article class="group relative mb-8 flex break-inside-avoid-column flex-col overflow-hidden rounded-2xl bg-zinc-900 transition-all hover:shadow-2xl">
+                  <a
+                    href={`/${locale === siteConfig.defaultLocale ? "" : `${locale}/`}${subpage.data.Slug}`}
+                    class="flex h-full flex-col"
+                    data-astro-prefetch
+                  >
+                    <div class="relative overflow-hidden">
+                      {image && (
+                        <Image
+                          class="object-cover transition-transform duration-500 group-hover:scale-110"
+                          src={image}
+                          alt={subpage.data.CoverAlt || ""}
+                          transition:name={subpage.data.PageId + "-image"}
+                          loading={index < 6 ? "eager" : "lazy"}
+                          widths={[400, 800]}
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      )}
+                      <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity group-hover:opacity-40 lg:hidden" />
+                      {/* Desktop Hover Overlay */}
+                      <div class="absolute inset-0 hidden items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:flex">
+                        <h2 class="px-6 text-center text-2xl text-pretty text-white">
+                          {subpage.data.Name}
                         </h2>
                       </div>
-                      <div class="absolute flex h-full w-full justify-between">
-                        {image && index === 0 ? (
-                          <Image
-                            class="animate-fade absolute z-10 h-full w-full object-cover object-center"
-                            src={image}
-                            alt={subpage.CoverAlt}
-                            transition:name={subpage.PageId + "-image"}
-                            loading="eager"
-                            widths={[
-                              300,
-                              700,
-                              1000,
-                              1280,
-                              1400,
-                              1600,
-                              image.width,
-                            ]}
-                            sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${image.width}px`}
-                          />
-                        ) : (
-                          <Image
-                            class="animate-fade absolute z-10 h-full w-full object-cover object-center"
-                            src={image}
-                            alt={subpage.CoverAlt}
-                            transition:name={subpage.PageId + "-image"}
-                            widths={[
-                              300,
-                              700,
-                              1000,
-                              1280,
-                              1400,
-                              1600,
-                              image.width,
-                            ]}
-                            sizes={`(max-width: 300px) 300px, (max-width: 700px) 700px, (max-width: 1000px) 1000px, (max-width: 1280px) 1280px, (max-width: 1400px) 1400px, (max-width: 1600px) 1600px, ${image.width}px`}
-                          />
-                        )}
-                        <div
-                          class="absolute z-0 h-full w-full bg-cover bg-center blur-xl"
-                          style={`background-image: url(${coverList[index]})`}
-                        />
-                      </div>
-                    </a>
-                  </article>
-                </ul>
-              </section>
-            );
-          })
-        }
-      </div>
-    </main>
-    <Footer slug={page.Slug} />
-    <style>
-      html {
-        scroll-snap-type: y proximity;
-        overflow-y: scroll;
+                    </div>
+                    <div class="flex flex-1 flex-col justify-end p-6 lg:hidden">
+                      <h2 class="group-hover:text-primary-400 text-xl font-bold text-white transition-colors">
+                        {subpage.data.Name}
+                      </h2>
+                      {subpage.data.Description && (
+                        <p class="mt-2 line-clamp-2 text-sm text-gray-300">
+                          {subpage.data.Description}
+                        </p>
+                      )}
+                    </div>
+                  </a>
+                </article>
+              );
+            })}
+          </div>
+        ) : (
+          <div class="rounded-2xl border border-zinc-800 p-12 text-center text-gray-500">
+            No items found.
+          </div>
+        )
       }
-    </style>
-  </body>
-</html>
+    </div>
+  </main>
+</Base>

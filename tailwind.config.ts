@@ -39,7 +39,8 @@ export default {
         DEFAULT: {
           css: {
             a: {
-              "@apply text-green-500 transition duration-300 hover:text-green-600 no-underline": "",
+              "@apply text-green-500 transition duration-300 hover:text-green-600 no-underline":
+                "",
             },
             strong: {
               fontWeight: "300",

@@ -7,7 +7,7 @@ export interface Props {
 const { height = "180px" } = Astro.props;
 ---
 
-<div class="geodesic-dome-container" style={`height: ${height}`}>
+<div class="geodesic-dome-container bg-transparent" style={`height: ${height}`}>
   <div class="canvas-container" id="geodesic-canvas"></div>
 </div>
 
@@ -22,6 +22,11 @@ const { height = "180px" } = Astro.props;
   .canvas-container {
     width: 100%;
     height: 100%;
+  }
+
+  .canvas-container :global(canvas) {
+    display: block;
+    background-color: transparent;
   }
 </style>
 
@@ -49,7 +54,7 @@ const { height = "180px" } = Astro.props;
 
     function buildGeodesicPolyhedron(
       radius: number,
-      subdivisions: number
+      subdivisions: number,
     ): {
       meshPositions: Float32Array;
       edgePositions: Float32Array;
@@ -62,7 +67,7 @@ const { height = "180px" } = Astro.props;
       const project = (
         x: number,
         y: number,
-        z: number
+        z: number,
       ): [number, number, number] => {
         const len = Math.sqrt(x * x + y * y + z * z);
         return [(x / len) * radius, (y / len) * radius, (z / len) * radius];
@@ -121,8 +126,8 @@ const { height = "180px" } = Astro.props;
             project(
               (va[0] + vb[0]) / 2,
               (va[1] + vb[1]) / 2,
-              (va[2] + vb[2]) / 2
-            )
+              (va[2] + vb[2]) / 2,
+            ),
           );
           midMap.set(k, idx);
           return idx;
@@ -151,7 +156,7 @@ const { height = "180px" } = Astro.props;
         return project(
           (va[0] + vb[0] + vc[0]) / 3,
           (va[1] + vb[1] + vc[1]) / 3,
-          (va[2] + vb[2] + vc[2]) / 3
+          (va[2] + vb[2] + vc[2]) / 3,
         );
       });
 
@@ -171,9 +176,7 @@ const { height = "180px" } = Astro.props;
         // Build tangent frame for consistent angular sorting
         let axisU = new THREE.Vector3(0, 1, 0);
         if (Math.abs(normal.dot(axisU)) > 0.9) axisU.set(1, 0, 0);
-        axisU
-          .sub(normal.clone().multiplyScalar(normal.dot(axisU)))
-          .normalize();
+        axisU.sub(normal.clone().multiplyScalar(normal.dot(axisU))).normalize();
         const axisV = new THREE.Vector3().crossVectors(normal, axisU);
 
         // Sort surrounding triangle faces by angle → ordered polygon vertices
@@ -213,7 +216,7 @@ const { height = "180px" } = Astro.props;
             a.z,
             b.x,
             b.y,
-            b.z
+            b.z,
           );
         }
 
@@ -273,9 +276,12 @@ const { height = "180px" } = Astro.props;
           75,
           rect.width / rect.height,
           0.1,
-          1000
+          1000,
         );
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        this.renderer = new THREE.WebGLRenderer({
+          antialias: true,
+          alpha: true,
+        });
         this.init();
         this.animate();
       }
@@ -331,7 +337,7 @@ const { height = "180px" } = Astro.props;
         const meshGeometry = new THREE.BufferGeometry();
         meshGeometry.setAttribute(
           "position",
-          new THREE.BufferAttribute(new Float32Array(meshPositions), 3)
+          new THREE.BufferAttribute(new Float32Array(meshPositions), 3),
         );
         meshGeometry.computeVertexNormals();
 
@@ -348,7 +354,7 @@ const { height = "180px" } = Astro.props;
         const edgeGeometry = new THREE.BufferGeometry();
         edgeGeometry.setAttribute(
           "position",
-          new THREE.BufferAttribute(new Float32Array(edgePositions), 3)
+          new THREE.BufferAttribute(new Float32Array(edgePositions), 3),
         );
         const edgeMaterial = new THREE.LineBasicMaterial({ color: 0x05df72 });
         this.wireframe = new THREE.LineSegments(edgeGeometry, edgeMaterial);
@@ -419,7 +425,8 @@ const { height = "180px" } = Astro.props;
           const windowHeight =
             window.innerHeight || document.documentElement.clientHeight;
           // percent: 0 when dome top is at viewport bottom, 1 when dome bottom is at viewport top
-          let percent = 1 - Math.max(0, Math.min(rect.bottom / windowHeight, 1));
+          let percent =
+            1 - Math.max(0, Math.min(rect.bottom / windowHeight, 1));
           this.targetExplosion = percent * 1.75;
           this.targetRotation = percent * Math.PI;
         });
@@ -457,9 +464,7 @@ const { height = "180px" } = Astro.props;
     }
 
     // ── Bootstrap ──
-    const container = document.getElementById(
-      "geodesic-canvas"
-    ) as HTMLElement;
+    const container = document.getElementById("geodesic-canvas") as HTMLElement;
     if (container) {
       const geodesicDome = new GeodesicDomeComponent(container);
       document.addEventListener("astro:before-preparation", () => {

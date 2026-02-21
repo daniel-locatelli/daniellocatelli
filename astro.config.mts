@@ -1,6 +1,5 @@
 import { defineConfig } from "astro/config";
 import { CUSTOM_DOMAIN, BASE_PATH } from "./src/config/server";
-import AllFilesDownloader from "./src/integrations/all-files-downloader";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
@@ -35,7 +34,7 @@ export default defineConfig({
     port: 4321,
     host: true,
   },
-  integrations: [sitemap(), AllFilesDownloader(), icon(), react()],
+  integrations: [sitemap(), icon(), react()],
   prefetch: true,
   vite: {
     plugins: [tailwindcss()],

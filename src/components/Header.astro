@@ -1,25 +1,22 @@
 ---
-import type { Page } from "src/lib/notion-interfaces";
-import { getDatabaseByName } from "src/lib/notion/client";
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import logo from "@/assets/ui/logo-dl.svg";
-import globe from "@/assets/ui/globe.svg";
 import WhatsApp from "@/assets/ui/digital-glyph-white.svg";
 import { siteConfig } from "@/config/site";
 import { Icon } from "astro-icon/components";
 import { getLocale } from "src/lib/routes-helpers";
+import LanguagePicker from "./LanguagePicker.astro";
 
 const locale = getLocale(Astro.params);
 
-let pagesDatabase = (await getDatabaseByName("Pages"))!;
-let pages: Page[];
-pages = pagesDatabase.Pages;
-
-pages.sort((a, b) => {
-  if (a.Name === "Homepage") return -1; // "Homepage" comes first
-  if (b.Name === "Homepage") return 1; // Anything else comes after "Homepage"
-  return a.Name.localeCompare(b.Name); // Alphabetical sorting for other pages
-});
+const pages = (await getCollection("pages"))
+  .filter((p) => p.id.startsWith("en/") && p.data.Name)
+  .sort((a, b) => {
+    if (a.data.Name === "Homepage") return -1;
+    if (b.data.Name === "Homepage") return 1;
+    return a.data.Name.localeCompare(b.data.Name);
+  });
 
 const url = new URL(Astro.request.url);
 
@@ -54,48 +51,26 @@ const { slug } = Astro.props as Props;
       {
         pages.map(
           (page) =>
-            page.Name !== "Homepage" && (
+            page.data.Name !== "Homepage" && (
               <a
-                aria-current={url.pathname === page.Slug ? "page" : false}
+                aria-current={url.pathname === page.data.Slug ? "page" : false}
                 class="flex w-full items-center justify-center border-b border-white py-6 underline-offset-2 sm:w-auto sm:border-none sm:px-3 sm:py-0 sm:hover:underline"
                 data-astro-prefetch
                 href={
                   locale === "en"
-                    ? "/" + page.Slug
-                    : "/" + locale + "/" + page.Slug
+                    ? "/" + page.data.Slug
+                    : "/" + locale + "/" + page.data.Slug
                 }
-                title={page.Name}
+                title={page.data.Name}
               >
-                {locale === "en" && page.Name}
-                {locale === "pt" && page.Name_pt}
+                {locale === "en" && page.data.Name}
+                {locale === "pt" && (page.data.Name_pt || page.data.Name)}
+                {locale === "de" && (page.data.Name_de || page.data.Name)}
               </a>
             ),
         )
       }
-      <a
-        title={locale === "en" ? "Mudar para Português" : "Change to English"}
-        href={locale === "en" ? "/pt/" + slug : "/" + slug}
-        class="group/locale py-6 underline-offset-2 sm:px-3 sm:py-0"
-      >
-        <Image
-          src={globe}
-          alt="Daniel Locatelli logo"
-          loading={"eager"}
-          class="inline mix-blend-difference"
-        />
-        <div class="relative inline-block">
-          <span
-            class="transition-opacity duration-200 group-hover/locale:opacity-0"
-          >
-            {locale}
-          </span>
-          <span
-            class="absolute top-0 left-0 underline opacity-0 transition-opacity duration-200 group-hover/locale:opacity-100"
-          >
-            {locale === "en" ? "pt" : "en"}
-          </span>
-        </div>
-      </a>
+      <LanguagePicker currentLocale={locale} slug={slug} class="sm:px-3" />
       <a
         href={siteConfig.whatsapp}
         target="_blank"
@@ -105,6 +80,7 @@ const { slug } = Astro.props as Props;
         <Image src={WhatsApp} alt="WhatsApp Icon" class="size-5 md:size-4" />
         {locale === "en" && "Request a quote"}
         {locale === "pt" && "Faça um orçamento"}
+        {locale === "de" && "Angebot anfordern"}
       </a>
       <a
         href={`mailto:${siteConfig.email}`}
@@ -114,6 +90,7 @@ const { slug } = Astro.props as Props;
         <Icon name="mdi:email-outline" class="size-5 md:size-4" />
         {locale === "en" && "Send an Email"}
         {locale === "pt" && "Envie um Email"}
+        {locale === "de" && "E-Mail senden"}
       </a>
     </nav>
   </div>

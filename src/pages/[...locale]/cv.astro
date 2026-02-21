@@ -18,11 +18,108 @@ import type { I18nMeta } from "src/i18n/meta/types";
 import { createHtmlId, getI18n, getMonthYear } from "src/i18n/utils";
 import { getLocale } from "src/lib/routes-helpers";
 export { getStaticPaths } from "src/lib/routes-helpers";
+import { getCollection } from "astro:content";
 
 const locale = getLocale(Astro.params);
 
 const meta = await getI18n<I18nMeta>("meta", locale);
 const cv = await getI18n<I18nCV>("cv", locale);
+
+// Helper to extract name from string | { name: string }
+const extractName = (item: any) => {
+  if (!item) return "";
+  return typeof item === "string" ? item : item.name;
+};
+
+// Helper to extract first name from array of string | { name: string }
+const extractFirstName = (arr: any) => {
+  if (!arr || !Array.isArray(arr) || arr.length === 0) return "";
+  return extractName(arr[0]);
+};
+
+// Helper to extract link from string | array of objects | object
+const extractLink = (linkProp: any) => {
+  if (!linkProp) return "";
+  if (typeof linkProp === "string") return linkProp;
+  if (Array.isArray(linkProp)) return linkProp[0]?.Href || "";
+  return linkProp.Href || "";
+};
+
+// Fetch Collections
+const publicationsCollection = await getCollection(
+  "publications",
+  ({ data }) => {
+    return data.Locale === locale || data.Locale === "en"; // Fallback to en if needed, or strict locale. Assuming localized files exist.
+  },
+);
+// Sort publications by DateStart descending
+const publications = publicationsCollection
+  .sort((a, b) => {
+    return (
+      new Date(b.data.DateStart || "").getTime() -
+      new Date(a.data.DateStart || "").getTime()
+    );
+  })
+  .map((p) => ({
+    title: p.data.Name,
+    date: p.data.DateStart || "",
+    link: extractLink(p.data.Link),
+    publisher: p.data.Place || p.data.Event || "", // Mapping Place/Event to Publisher
+    location: extractFirstName(p.data.City), // Mapping City to Location
+    authors: p.data.Authors?.map((a: any) => extractName(a)) || [],
+  }));
+
+const teachingCollection = await getCollection("teaching", ({ data }) => {
+  return data.Locale === locale || (locale === "en" && !data.Locale);
+});
+// Filter and map teaching (Engagements)
+// Original filter: new Date(eng.startDate) >= new Date(2023, 11, 0) (Dec 2023?)
+// Actually new Date(2023, 11, 0) is Nov 30 2023? or Dec 0? JS months are 0-indexed. 11 is Dec. Day 0 is last day of previous month?
+// Let's assume the user meant "Recent engagements".
+const engSelected = teachingCollection
+  .filter((t) => {
+    if (!t.data.DateStart) return false;
+    return new Date(t.data.DateStart) >= new Date("2023-11-30"); // Approximate matching original filter
+  })
+  .sort((a, b) => {
+    return (
+      new Date(b.data.DateStart || "").getTime() -
+      new Date(a.data.DateStart || "").getTime()
+    );
+  })
+  .map((t) => ({
+    title: t.data.Name,
+    startDate: t.data.DateStart || "",
+    endDate: t.data.DateEnd,
+    link: extractLink(t.data.Link),
+    organization: t.data.Event || t.data.Organization || "",
+    location: extractFirstName(t.data.City),
+    type: (t.data.Category || "talk").toLowerCase() as any, // 'talk', 'course', etc.
+    description: t.data.Description,
+  }));
+
+const skillsCollection = await getCollection("skills", ({ data }) => {
+  return data.Locale === locale || (locale === "en" && !data.Locale);
+});
+
+const skillsProgramming = skillsCollection.filter(
+  (s) => s.data.Category === "Programming",
+);
+const skillsFrameworks = skillsCollection.filter(
+  (s) => s.data.Category === "Frameworks",
+);
+const skillsDatabases = skillsCollection.filter(
+  (s) => s.data.Category === "Databases",
+);
+const skillsDesign = skillsCollection.filter(
+  (s) => s.data.Category === "Design Tools",
+);
+const skillsSpecialized = skillsCollection
+  .filter((s) => s.data.Category === "Specialization")
+  .map((s) => s.data.Name); // String array in original
+const skillsLanguages = skillsCollection.filter(
+  (s) => s.data.Category === "Languages",
+);
 
 const expSelected = cv.experiences.filter(
   (exp) => new Date(exp.startDate) >= new Date("2015"),
@@ -35,10 +132,6 @@ const eduSelected = cv.education.filter((edu) => {
 
 const certSelected = cv.certifications.filter(
   (cert) => new Date(cert.date) >= new Date("2015"),
-);
-
-const engSelected = cv.engagements.filter(
-  (eng) => new Date(eng.startDate) >= new Date(2023, 11, 0),
 );
 ---
 
@@ -126,8 +219,10 @@ const engSelected = cv.engagements.filter(
           <th>{cv.ui.programming}</th>
           <td>
             {
-              cv.skillsProgramming.map((skill, idx, arr) =>
-                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              skillsProgramming.map((skill, idx, arr) =>
+                idx === arr.length - 1
+                  ? skill.data.Name
+                  : skill.data.Name + ", ",
               )
             }
           </td>
@@ -136,8 +231,10 @@ const engSelected = cv.engagements.filter(
           <th>{cv.ui.frameworks}</th>
           <td>
             {
-              cv.skillsFrameworks.map((skill, idx, arr) =>
-                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              skillsFrameworks.map((skill, idx, arr) =>
+                idx === arr.length - 1
+                  ? skill.data.Name
+                  : skill.data.Name + ", ",
               )
             }
           </td>
@@ -146,8 +243,10 @@ const engSelected = cv.engagements.filter(
           <th>{cv.ui.databases}</th>
           <td>
             {
-              cv.skillsDatabases.map((skill, idx, arr) =>
-                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              skillsDatabases.map((skill, idx, arr) =>
+                idx === arr.length - 1
+                  ? skill.data.Name
+                  : skill.data.Name + ", ",
               )
             }
           </td>
@@ -156,8 +255,10 @@ const engSelected = cv.engagements.filter(
           <th>{cv.ui.designTools}</th>
           <td>
             {
-              cv.skillsDesign.map((skill, idx, arr) =>
-                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              skillsDesign.map((skill, idx, arr) =>
+                idx === arr.length - 1
+                  ? skill.data.Name
+                  : skill.data.Name + ", ",
               )
             }
           </td>
@@ -166,7 +267,7 @@ const engSelected = cv.engagements.filter(
           <th>{cv.ui.specialization}</th>
           <td>
             {
-              cv.skillsSpecialized.map((skill, idx, arr) =>
+              skillsSpecialized.map((skill, idx, arr) =>
                 idx === arr.length - 1 ? skill : skill + ", ",
               )
             }
@@ -176,10 +277,10 @@ const engSelected = cv.engagements.filter(
           <th>{cv.ui.languages}</th>
           <td>
             {
-              cv.skillsLanguages.map((skill, idx, arr) =>
+              skillsLanguages.map((skill, idx, arr) =>
                 idx === arr.length - 1
-                  ? `${skill.title} (${skill.level})`
-                  : `${skill.title} (${skill.level}), `,
+                  ? `${skill.data.Name} (${skill.data.Level})`
+                  : `${skill.data.Name} (${skill.data.Level}), `,
               )
             }
           </td>
@@ -457,7 +558,7 @@ const engSelected = cv.engagements.filter(
     <section id={createHtmlId(cv.ui.publications)}>
       <h2>{cv.ui.publications}</h2>
       {
-        cv.publications.map((publication: Publication, index: number) => {
+        publications.map((publication, index: number) => {
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
 
@@ -603,7 +704,7 @@ const engSelected = cv.engagements.filter(
     <section id={createHtmlId(cv.ui.engagementSimple)}>
       <h2>{cv.ui.engagementSimple}</h2>
       {
-        engSelected.map((engagement: Engagement, index: number) => {
+        engSelected.map((engagement, index: number) => {
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
 
@@ -641,7 +742,11 @@ const engSelected = cv.engagements.filter(
                   </h4>
                   {
                     <p class="text-sm text-pretty text-zinc-300 italic">
-                      {engagement.type}
+                      {
+                        cv.ui.engagementTypes[
+                          engagement.type as keyof typeof cv.ui.engagementTypes
+                        ]
+                      }
                     </p>
                   }
                   {engagement.description && (

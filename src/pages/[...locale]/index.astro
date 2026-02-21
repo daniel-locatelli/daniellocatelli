@@ -1,6 +1,6 @@
 ---
 import { siteConfig } from "@/config/site";
-import { DevModelName, ProdModelName } from "@/config/ai-models";
+import { DevModelName, ProdModelName } from "@/config/ai";
 import { Image } from "astro:assets";
 import profilePhoto from "@/assets/avatars/daniel-locatelli-v1.png";
 import WhatsApp from "@/assets/ui/digital-glyph-white.svg";
@@ -123,11 +123,13 @@ const home = await getI18n<I18nHome>("home", locale);
           {
             home.projects.list.map((project) => (
               <div class="flex flex-col overflow-hidden rounded-xl bg-zinc-900 shadow-lg transition-shadow duration-300 hover:shadow-xl">
-                <Image
-                  src={project.imageUrl}
-                  alt={`Screenshot of ${project.title}`}
-                  class="h-80 w-full object-cover"
-                />
+                <div class="aspect-video w-full overflow-hidden">
+                  <Image
+                    src={project.imageUrl}
+                    alt={`Screenshot of ${project.title}`}
+                    class="h-full w-full object-cover"
+                  />
+                </div>
                 <div class="font-body flex grow flex-col p-6">
                   <h3 class="mb-1 text-xl font-semibold text-balance text-zinc-100">
                     {project.title}

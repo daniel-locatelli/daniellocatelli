@@ -20,11 +20,126 @@ import type {
 import type { I18nMeta } from "src/i18n/meta/types.ts";
 import { getLocale } from "src/lib/routes-helpers";
 export { getStaticPaths } from "src/lib/routes-helpers";
+import { getCollection } from "astro:content";
 
 const locale = getLocale(Astro.params);
 
 const meta = await getI18n<I18nMeta>("meta", locale);
 const cv = await getI18n<I18nCV>("cv", locale);
+// const t = cv.ui; // Shortcut for translations
+
+// Helper to extract name from string | { name: string }
+const extractName = (item: any) => {
+  if (!item) return "";
+  return typeof item === "string" ? item : item.name;
+};
+
+// Helper to extract first name from array of string | { name: string }
+const extractFirstName = (arr: any) => {
+  if (!arr || !Array.isArray(arr) || arr.length === 0) return "";
+  return extractName(arr[0]);
+};
+
+// Helper to extract link from string | array of objects | object
+const extractLink = (linkProp: any) => {
+  if (!linkProp) return "";
+  if (typeof linkProp === "string") return linkProp;
+  if (Array.isArray(linkProp)) return linkProp[0]?.Href || "";
+  return linkProp.Href || "";
+};
+
+// Fetch Collections
+
+// Publications
+const publicationsCollection = await getCollection(
+  "publications",
+  ({ data }) => {
+    return data.Locale === locale || data.Locale === "en";
+  },
+);
+const publications = publicationsCollection
+  .sort((a, b) => {
+    return (
+      new Date(b.data.DateStart || "").getTime() -
+      new Date(a.data.DateStart || "").getTime()
+    );
+  })
+  .map((p) => ({
+    title: p.data.Name,
+    date: p.data.DateStart || "",
+    link: extractLink(p.data.Link),
+    publisher: p.data.Place || p.data.Event || "",
+    location: extractFirstName(p.data.City),
+    authors: p.data.Authors?.map((a: any) => extractName(a)) || [],
+  }));
+
+// Teaching (Engagements) - Full List
+const teachingCollection = await getCollection("teaching", ({ data }) => {
+  return data.Locale === locale || (locale === "en" && !data.Locale);
+});
+const engagements = teachingCollection
+  .sort((a, b) => {
+    return (
+      new Date(b.data.DateStart || "").getTime() -
+      new Date(a.data.DateStart || "").getTime()
+    );
+  })
+  .map((t) => ({
+    title: t.data.Name,
+    startDate: t.data.DateStart || "",
+    endDate: t.data.DateEnd,
+    link: extractLink(t.data.Link),
+    organization: t.data.Event || t.data.Organization || "",
+    location: extractFirstName(t.data.City),
+    type: (t.data.Category || "talk").toLowerCase() as any,
+    description: t.data.Description,
+  }));
+
+// Skills
+const skillsCollection = await getCollection("skills", ({ data }) => {
+  return data.Locale === locale || (locale === "en" && !data.Locale);
+});
+
+const skillsProgramming = skillsCollection.filter(
+  (s) => s.data.Category === "Programming",
+);
+const skillsFrameworks = skillsCollection.filter(
+  (s) => s.data.Category === "Frameworks",
+);
+const skillsDatabases = skillsCollection.filter(
+  (s) => s.data.Category === "Databases",
+);
+const skillsDesign = skillsCollection.filter(
+  (s) => s.data.Category === "Design Tools",
+);
+const skillsSpecialized = skillsCollection
+  .filter((s) => s.data.Category === "Specialization")
+  .map((s) => s.data.Name);
+const skillsLanguages = skillsCollection.filter(
+  (s) => s.data.Category === "Languages",
+);
+
+// Projects (Works)
+const projectsCollection = await getCollection("projects", ({ data }) => {
+  return data.Locale === locale || data.Locale === "en";
+});
+const works = projectsCollection
+  .sort((a, b) => {
+    return (
+      new Date(b.data.DateStart || "").getTime() -
+      new Date(a.data.DateStart || "").getTime()
+    );
+  })
+  .map((w) => ({
+    title: w.data.Name,
+    startDate: w.data.DateStart || "",
+    endDate: w.data.DateEnd,
+    link: extractLink(w.data.Link),
+    company: w.data.Client || w.data.Organization || "",
+    location: extractFirstName(w.data.City),
+    category: w.data.Category || "",
+    description: w.data.Description,
+  }));
 ---
 
 <Base
@@ -111,8 +226,10 @@ const cv = await getI18n<I18nCV>("cv", locale);
           <th>{cv.ui.programming}</th>
           <td>
             {
-              cv.skillsProgramming.map((skill, idx, arr) =>
-                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              skillsProgramming.map((skill, idx, arr) =>
+                idx === arr.length - 1
+                  ? skill.data.Name
+                  : skill.data.Name + ", ",
               )
             }
           </td>
@@ -121,8 +238,10 @@ const cv = await getI18n<I18nCV>("cv", locale);
           <th>{cv.ui.frameworks}</th>
           <td>
             {
-              cv.skillsFrameworks.map((skill, idx, arr) =>
-                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              skillsFrameworks.map((skill, idx, arr) =>
+                idx === arr.length - 1
+                  ? skill.data.Name
+                  : skill.data.Name + ", ",
               )
             }
           </td>
@@ -131,8 +250,10 @@ const cv = await getI18n<I18nCV>("cv", locale);
           <th>{cv.ui.databases}</th>
           <td>
             {
-              cv.skillsDatabases.map((skill, idx, arr) =>
-                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              skillsDatabases.map((skill, idx, arr) =>
+                idx === arr.length - 1
+                  ? skill.data.Name
+                  : skill.data.Name + ", ",
               )
             }
           </td>
@@ -141,8 +262,10 @@ const cv = await getI18n<I18nCV>("cv", locale);
           <th>{cv.ui.designTools}</th>
           <td>
             {
-              cv.skillsDesign.map((skill, idx, arr) =>
-                idx === arr.length - 1 ? skill.title : skill.title + ", ",
+              skillsDesign.map((skill, idx, arr) =>
+                idx === arr.length - 1
+                  ? skill.data.Name
+                  : skill.data.Name + ", ",
               )
             }
           </td>
@@ -151,7 +274,7 @@ const cv = await getI18n<I18nCV>("cv", locale);
           <th>{cv.ui.specialization}</th>
           <td>
             {
-              cv.skillsSpecialized.map((skill, idx, arr) =>
+              skillsSpecialized.map((skill, idx, arr) =>
                 idx === arr.length - 1 ? skill : skill + ", ",
               )
             }
@@ -161,10 +284,10 @@ const cv = await getI18n<I18nCV>("cv", locale);
           <th>{cv.ui.languages}</th>
           <td>
             {
-              cv.skillsLanguages.map((skill, idx, arr) =>
+              skillsLanguages.map((skill, idx, arr) =>
                 idx === arr.length - 1
-                  ? `${skill.title} (${skill.level})`
-                  : `${skill.title} (${skill.level}), `,
+                  ? `${skill.data.Name} (${skill.data.Level})`
+                  : `${skill.data.Name} (${skill.data.Level}), `,
               )
             }
           </td>
@@ -442,7 +565,7 @@ const cv = await getI18n<I18nCV>("cv", locale);
     <section id={createHtmlId(cv.ui.publications)}>
       <h2>{cv.ui.publications}</h2>
       {
-        cv.publications.map((publication: Publication, index: number) => {
+        publications.map((publication, index: number) => {
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
 
@@ -588,7 +711,7 @@ const cv = await getI18n<I18nCV>("cv", locale);
     <section id={createHtmlId(cv.ui.engagementFull)}>
       <h2>{cv.ui.engagementFull}</h2>
       {
-        cv.engagements.map((course: Engagement, index: number) => {
+        engagements.map((course, index: number) => {
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
 
@@ -624,6 +747,12 @@ const cv = await getI18n<I18nCV>("cv", locale);
                     {course.organization}
                     {course.location ? ` | ${course.location}` : ""}
                   </h4>
+                  {
+                    <p class="text-sm text-pretty text-zinc-300 italic">
+                      {(cv.ui.engagementTypes as any)[course.type] ||
+                        course.type}
+                    </p>
+                  }
                   {course.description && (
                     <p class="text-sm text-pretty text-zinc-300">
                       {course.description}
@@ -722,7 +851,7 @@ const cv = await getI18n<I18nCV>("cv", locale);
     <section id={createHtmlId(cv.ui.projectsList)}>
       <h2>{cv.ui.projectsList}</h2>
       {
-        cv.works.map((work: Work, index: number) => {
+        works.map((work, index: number) => {
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
 
