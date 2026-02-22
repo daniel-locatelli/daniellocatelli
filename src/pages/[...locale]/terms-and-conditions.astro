@@ -1,0 +1,27 @@
+---
+import Base from "@/layouts/Base.astro";
+import type { I18nLegal } from "src/i18n/legal/type";
+import { getI18n } from "src/i18n/utils";
+import { getLocale } from "src/lib/routes-helpers";
+export { getStaticPaths } from "src/lib/routes-helpers";
+
+const locale = getLocale(Astro.params);
+const legal = await getI18n<I18nLegal>("legal", locale);
+const page = legal.terms;
+---
+
+<Base meta={{ title: page.title, description: page.title, slug: "terms-and-conditions" }}>
+  <meta slot="after-head" name="robots" content="noindex" />
+  <section class="prose prose-invert mx-auto max-w-2xl px-4 py-12">
+    <h1>{page.title}</h1>
+    <p class="text-sm text-zinc-400">{page.lastUpdated}</p>
+    {
+      page.sections.map((s) => (
+        <div>
+          <h2>{s.heading}</h2>
+          <Fragment set:html={s.content} />
+        </div>
+      ))
+    }
+  </section>
+</Base>

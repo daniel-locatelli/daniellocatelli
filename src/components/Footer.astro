@@ -4,8 +4,11 @@ import { getCollection } from "astro:content";
 import { getLocale } from "src/lib/routes-helpers";
 import { Icon } from "astro-icon/components";
 import LanguagePicker from "./LanguagePicker.astro";
+import type { I18nFooter } from "src/i18n/footer/type";
+import { getI18n } from "src/i18n/utils";
 
 const locale = getLocale(Astro.params);
+const footer = await getI18n<I18nFooter>("footer", locale);
 
 const pages = (await getCollection("pages"))
   .filter((p) => p.id.startsWith("en/") && p.data.Name)
@@ -16,6 +19,8 @@ const pages = (await getCollection("pages"))
   });
 
 const year = new Date().getFullYear();
+
+const localePrefix = locale === "en" ? "" : "/" + locale;
 
 export interface Props {
   slug: string | undefined;
@@ -114,4 +119,20 @@ const { slug } = Astro.props as Props;
     }
     <LanguagePicker currentLocale={locale} slug={slug} class="sm:px-3" />
   </nav>
+  <div
+    class="font-body order-3 mt-4 flex w-full items-center justify-center gap-2 text-xs text-zinc-500 sm:mt-0"
+  >
+    <a href={`${localePrefix}/privacy-policy`} class="hover:text-zinc-300"
+      >{footer.privacyPolicy}</a
+    >
+    <span>&middot;</span>
+    <a
+      href={`${localePrefix}/terms-and-conditions`}
+      class="hover:text-zinc-300">{footer.terms}</a
+    >
+    <span>&middot;</span>
+    <a href={`${localePrefix}/impressum`} class="hover:text-zinc-300"
+      >{footer.impressum}</a
+    >
+  </div>
 </footer>

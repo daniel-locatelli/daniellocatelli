@@ -1,1 +1,1 @@
-export type Folder = "meta" | "home" | "cv" | "subpage";
+export type Folder = "meta" | "home" | "cv" | "subpage" | "legal" | "footer";
