@@ -1,7 +1,7 @@
 ---
 {
   "Cover": "/assets/content/projects/icd-research-assistant-as-computational-designer/cover-cover.jpg",
-  "CoverAlt": "Elevação lateral da Torre Urbach em preto e branco.",
+  "CoverAlt": "Renderização de uma torre com madeira laminada cruzada auto-curvante com pessoas para escala.",
   "Description": "Foi interessante entender a estratégia computacional para gerar a geometria de uma placa de madeira laminada cruzada autocurvante. O truque aqui é trabalhar com cilindros porque a curvatura natural da madeira acontece perpendicularmente à direção das fibras.",
   "Name": "Assistente de pesquisa no ICD como designer computacional",
   "Slug": "projects/icd-research-assistant-as-computational-designer",
@@ -33,5 +33,6 @@ Um painel de madeira de duas camadas dobra durante a secagem.](../../../assets/c
 Também trabalhei em alguns desenhos as-built para a própria Urbach Tower (foto da capa). Por causa disso, Dylan me ensinou todos os detalhes construtivos deste projeto e também como eles adicionaram múltiplos sensores para monitorar e rastrear os comportamentos ambientais na estrutura.
 A pesquisa de Dylan Wood no ICD foi sobre as propriedades naturais de automoldagem da madeira quando seca. Você pode conferir a palestra TED de Dylan Wood para entender mais sobre o processo aqui:
 
+![Plano 3D do local do projeto da torre.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/3d-site-plan.jpg)
 
 © Desenho e animação pela Universidade de Stuttgart, ICD/ITKE

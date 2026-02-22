@@ -1,7 +1,7 @@
 ---
 {
   "Cover": "/assets/content/projects/icd-research-assistant-as-computational-designer/cover-cover.jpg",
-  "CoverAlt": "Seitenansicht des Urbach-Turms in Schwarzweiß.",
+  "CoverAlt": "Rendering eines Turms aus selbstkrümmendem Brettsperrholz mit Personen als Maßstab.",
   "Description": "Es war spannend, die computergestützte Strategie zur Geometrieerzeugung für eine sich selbst krümmende Brettsperrholzplatte zu verstehen. Der Trick besteht darin, mit Zylindern zu arbeiten, da sich Holz von Natur aus senkrecht zur Faserrichtung krümmt.",
   "Name": "ICD-Forschungsassistent als Computational Designer",
   "Slug": "projects/icd-research-assistant-as-computational-designer",
@@ -33,6 +33,9 @@ Urbach-Turm, Remstal Gartenschau 2019.
 © ICD Universität Stuttgart](../../../assets/content/projects/icd-research-assistant-as-computational-designer/block-40eaf53c-37a7-47dd-9ee2-9312867fb9e9.webp)
 # Die Arbeit
 Meine Hauptaufgabe bestand darin, die Bestandszeichnungen des Turms anzufertigen, wobei ich Rhino und Grasshopper verwendete, um die endgültige gebaute Struktur präzise darzustellen. Dies erforderte ein Verständnis des parametrischen Modells und dessen Anpassung an die auf der Baustelle erfassten Messdaten.
+
+![3D-Lageplan des Turmprojekts.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/3d-site-plan.jpg)
+
 ![Foto des Selbstformungsprozesses von Holz.
 Selbstformungsprozess von Holz.
 © ICD Universität Stuttgart](../../../assets/content/projects/icd-research-assistant-as-computational-designer/block-40eaf53c-37a7-47dd-9ee2-9312867fb9e9.webp)

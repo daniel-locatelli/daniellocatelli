@@ -1,7 +1,7 @@
 ---
 {
   "Cover": "/assets/content/projects/icd-research-assistant-as-computational-designer/cover-cover.jpg",
-  "CoverAlt": "Urbach Tower side elevation in black and white.",
+  "CoverAlt": "Rendering of a tower using self-curving cross-laminated timber with people for scale.",
   "Description": "It was interesting to understand the computational strategy to generate the geometry for a self-curving cross-laminated timber plate. The trick here is to work with cylinders because timber's natural curvature happens perpendicular to the direction of the fibers.",
   "Name": "ICD Research Assistant as Computational Designer",
   "Slug": "projects/icd-research-assistant-as-computational-designer",
@@ -33,5 +33,6 @@ A two-layer bilayer wood panel bends while drying.](../../../assets/content/proj
 I also worked on some as-built drawings for the Urbach Tower itself (cover photo). Because of this, Dylan taught me all the constructive details for this project and also how they added multiple sensors to monitor and track the environmental  behaviors on the structure.
 Dylan Wood's research at the ICD was about the natural self-shaping properties of timber when it dries. You can check Dylan Wood's TED Talk to understand more about the process here:
 
+![3D site plan of the tower project.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/3d-site-plan.jpg)
 
 © Drawing and animation by University of Stuttgart, ICD/ITKE
