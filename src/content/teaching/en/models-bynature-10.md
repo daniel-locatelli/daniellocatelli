@@ -6,7 +6,7 @@
   "Name": "Models byNature 1.0",
   "Slug": "teaching/models-bynature-10",
   "Tags": [],
-  "Authors": [],
+  "Authors": ["Daniel Locatelli", "Adalberto de Paula"],
   "Category": "Workshop",
   "City": [
     "São Paulo"

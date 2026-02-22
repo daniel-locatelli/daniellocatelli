@@ -23,7 +23,7 @@
   "DateEnd": "2024-04-01",
   "Link": {
     "Text": "BuildSystems Website",
-    "Href": "https://buildsystem.de"
+    "Href": "https://buildsystems.de"
   },
   "Place": "BuildSystems GmbH"
 }

@@ -190,7 +190,7 @@ if (image) {
         {
           subpage.data.Client && (
             <tr>
-              <th>Client</th>
+              <th>{t.client}</th>
               <td>{subpage.data.Client}</td>
             </tr>
           )
@@ -281,7 +281,7 @@ if (image) {
           )
         }
         {
-          subpage.data.Place !== "" && (
+          subpage.data.Place && subpage.data.Place !== "" && (
             <tr>
               <th>{t.place}</th>
               <td>{subpage.data.Place}</td>
