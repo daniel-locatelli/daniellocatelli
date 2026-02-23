@@ -23,6 +23,15 @@ const pageSchema = z.object({
     ])
     .optional()
     .nullable(),
+  Thumbnail: z
+    .union([
+      z.object({
+        Url: z.string(),
+      }),
+      z.string(),
+    ])
+    .optional()
+    .nullable(),
   CoverAlt: z.string().optional().nullable(),
   CoverAlt_de: z.string().optional().nullable(),
   CoverAlt_pt: z.string().optional().nullable(),

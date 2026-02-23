@@ -157,20 +157,25 @@ export const parseYouTubeVideoId = (url: URL): string => {
   return "";
 };
 
-export const importCoverImage = async (page: any, images: any) => {
-  const cover = page.data ? page.data.Cover : page.Cover;
-  if (cover) {
+export const importImage = async (
+  page: any,
+  images: any,
+  field: string = "Cover",
+) => {
+  const data = page.data || page;
+  const value = data[field];
+  if (value) {
     let imagePath = "";
-    if (typeof cover === "string" && cover.startsWith("/")) {
+    if (typeof value === "string" && value.startsWith("/")) {
       // Local path from Content Collections
-      imagePath = "/src" + cover;
+      imagePath = "/src" + value;
     } else if (
-      typeof cover === "object" &&
-      cover.Url &&
-      !cover.Url.startsWith("http")
+      typeof value === "object" &&
+      value.Url &&
+      !value.Url.startsWith("http")
     ) {
       // Local path from Content Collections (old object format)
-      imagePath = "/src" + cover.Url;
+      imagePath = "/src" + value.Url;
     }
 
     try {
@@ -187,6 +192,10 @@ export const importCoverImage = async (page: any, images: any) => {
   } else {
     return;
   }
+};
+
+export const importCoverImage = async (page: any, images: any) => {
+  return importImage(page, images, "Cover");
 };
 
 export function urlToFileName(url: URL) {
