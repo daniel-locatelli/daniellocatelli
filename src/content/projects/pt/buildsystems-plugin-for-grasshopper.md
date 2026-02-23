@@ -1,10 +1,10 @@
 ---
 {
-  "Cover": "/assets/content/projects/plugin-da-buildsystems-para-o-grasshopper/cover-cover.png",
+  "Cover": "/assets/content/projects/buildsystems-plugin-for-grasshopper/cover-cover.png",
   "CoverAlt": "Laptop com o Grasshopper aberto e os componentes do plugin na tela.",
   "Description": "Plugin desenvolvido para BuildSystems para criar componentes construtivos com base em Declarações Ambientais de Produtos (DAPs). A ideia foi oferecer dados de Análise de Ciclo de Vida (ACV) logo no início do processo de projeto.",
   "Name": "Plugin da BuildSystems para o Grasshopper",
-  "Slug": "projects/plugin-da-buildsystems-para-o-grasshopper",
+  "Slug": "projects/buildsystems-plugin-for-grasshopper",
   "Tags": [
     "Software Development",
     "Grasshopper3D"
@@ -28,7 +28,7 @@ Principais conquistas desse desenvolvimento incluíram:
 - **Gerenciamento de dados via JSON**: Criamos um banco de dados estruturado em JSON para armazenar e recuperar dados de componentes construtivos. Essa estrutura também seria utilizada em um aplicativo web chamado *Circular Component Creator*, uma outra ideia que, infelizmente, não avançou.
 - **Interface intuitiva**: O plugin apresentava uma interface amigável que aproveitava o paradigma de programação visual do Grasshopper, promovendo uma integração fluida aos fluxos de trabalho existentes.
 
-![](../../../assets/content/projects/plugin-da-buildsystems-para-o-grasshopper/block-1fabf53b-9ce3-8177-8578-e6cb97586cb4.png)
+![](../../../assets/content/projects/buildsystems-plugin-for-grasshopper/block-1fabf53b-9ce3-8177-8578-e6cb97586cb4.png)
 Aba da BuildSystems no Grasshopper: componentes de ACV e Urbanismo
 
 ## Desafios

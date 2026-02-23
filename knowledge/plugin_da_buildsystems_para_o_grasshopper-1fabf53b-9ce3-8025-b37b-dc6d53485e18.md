@@ -1,4 +1,4 @@
-URL: https://daniellocatelli.com/pt/projects/plugin-da-buildsystems-para-o-grasshopper
+URL: https://daniellocatelli.com/pt/projects/buildsystems-plugin-for-grasshopper
 
 # Plugin da BuildSystems para o Grasshopper
 
