@@ -3,7 +3,7 @@
   "Cover": "/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/cover-cover.jpg",
   "CoverAlt": "Foto da vista frontal do Pavilhão O3. Copyright de Gui Morelli.",
   "Description": "O Pavilhão O3 foi idealizado pelo Atelier Marko Brajovic na mesma época em que eu dava meus primeiros passos no mundo do design computacional. Eu tinha acabado de me formar na FAU-USP com uma tese onde aprendi todas as ferramentas necessárias para finalizar esse pavilhão: Rhino, Grasshopper 3D e Kangaroo Physics.",
-  "Name": "Pavilhão O3 por Atelier Marko Brajovic para Docol",
+  "Name": "Pavilhão O3 por Atelier Marko Brajovic para Docol",
   "Slug": "projects/o3-pavilion-by-atelier-marko-brajovic-for-docol",
   "Tags": [
     "Computational Design",
@@ -20,6 +20,10 @@
   "Client": "Docol",
   "DateStart": "2017-02-01",
   "DateEnd": "2017-03-01",
+  "Director": ["Marko Brajovic"],
+  "Manager": ["Bruno Bezerra"],
+  "Team": ["Daniel Locatelli", "Fernanda Zanetti", "Fernanda Matos", "Natalia Winnicka"],
+  "Development": ["Paleta Stands"],
   "Link": {
     "Text": "O3 Pavilion at Atelier Marko Brajovic",
     "Href": "https://markobrajovic.com/pt-br/all/o3-pavilhao"

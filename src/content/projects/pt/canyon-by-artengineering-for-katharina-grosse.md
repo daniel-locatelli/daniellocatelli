@@ -3,7 +3,7 @@
   "Cover": "/assets/content/projects/canyon-by-artengineering-for-katharina-grosse/cover-cover.jpg",
   "CoverAlt": "Foto do Canyon instalado na Louis Vuitton em Paris.",
   "Description": "Para este projeto, Katharina Grosse escolheu esculpir com couro. O desafio aqui foi o de traduzir as tiras orgânicas de couro em chapas de aço dobradas. A solução foi usar uma estratégia já em uso na produção de barcos há milênios: developable surfaces.",
-  "Name": "Canyon por ArtEngineering para Katharina Grosse",
+  "Name": "Canyon por ArtEngineering para Katharina Grosse",
   "Slug": "projects/canyon-by-artengineering-for-katharina-grosse",
   "Tags": [
     "Computational Design",

@@ -3,7 +3,7 @@
   "Cover": "/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/cover-cover.jpeg",
   "CoverAlt": "Foto der Air Guitar von unten aufgenommen, mit Blick zur Decke des frisch renovierten Gebäudes.",
   "Description": "Atelier Marko Brajovic entwickelte diese ortsspezifische Installation zur Feier des Air Max Day. In diesem Projekt arbeitete ich am Konzept und der Koordination. Außerdem konnte ich mit adressierbaren LEDs, Arduino und Bass-Tonabnehmern arbeiten.",
-  "Name": "Air Guitar von Atelier Marko Brajovic für Nike",
+  "Name": "Air Guitar von Atelier Marko Brajovic für Nike",
   "Slug": "projects/air-guitar-by-atelier-marko-brajovic-for-nike",
   "Tags": [
     "Electronic",
@@ -19,6 +19,10 @@
   "Client": "Nike",
   "DateStart": "2018-03-01",
   "DateEnd": "2018-04-01",
+  "Director": ["Marko Brajovic"],
+  "Manager": ["Bruno Bezerra"],
+  "Team": ["Daniel Locatelli", "Rafael Ohashi", "Lucas Caracik", "André Biagioni"],
+  "Development": ["Hybrida Production"],
   "Link": {
     "Text": "Air Guitar at Atelier Marko Brajovic",
     "Href": "https://markobrajovic.com/en/all/air-guitar-sp-on-air"

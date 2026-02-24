@@ -50,20 +50,6 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
         content: `<p>Este website contém links para serviços externos, incluindo LinkedIn, GitHub, GitLab, Instagram e WhatsApp. Ao seguir esses links, você sai deste website e a política de privacidade do respectivo serviço se aplica. O operador deste website não tem controle sobre as práticas de processamento de dados desses serviços de terceiros.</p>`,
       },
       {
-        heading: "Seus Direitos (RGPD Art. 15–21)",
-        content: `<p>Sob o Regulamento Geral de Proteção de Dados, você tem o direito a:</p>
-<ul>
-<li><strong>Acesso</strong> — solicitar informações sobre seus dados pessoais sendo processados (Art. 15)</li>
-<li><strong>Retificação</strong> — solicitar correção de dados imprecisos (Art. 16)</li>
-<li><strong>Apagamento</strong> — solicitar exclusão de seus dados (Art. 17)</li>
-<li><strong>Restrição</strong> — solicitar restrição do processamento (Art. 18)</li>
-<li><strong>Portabilidade de dados</strong> — receber seus dados em formato estruturado (Art. 20)</li>
-<li><strong>Oposição</strong> — opor-se ao processamento baseado em interesse legítimo (Art. 21)</li>
-</ul>
-<p>Para exercer esses direitos, entre em contato: <a href="mailto:contact@daniellocatelli.com">contact@daniellocatelli.com</a></p>
-<p>Você também tem o direito de apresentar uma reclamação a uma autoridade supervisora, em particular no estado-membro da UE da sua residência habitual, local de trabalho ou local da alegada infração.</p>`,
-      },
-      {
         heading: "Retenção de Dados",
         content: `<p>Este website não armazena permanentemente nenhum dado pessoal de usuários. Os logs do servidor mantidos pela Cloudflare estão sujeitos às próprias políticas de retenção da Cloudflare.</p>`,
       },
@@ -152,18 +138,24 @@ Munique, Alemanha</p>`,
       },
       {
         heading: "Resolução de Disputas da UE",
-        content: `<p>A Comissão Europeia fornece uma plataforma para resolução de disputas online (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
-<p>Nosso endereço de email pode ser encontrado acima. Não estamos dispostos ou obrigados a participar de procedimentos de resolução de disputas perante um conselho de arbitragem do consumidor.</p>`,
+        content: `<p>Resolução alternativa de disputas nos termos do Art. 14(1) do Regulamento ODR e § 36 VSBG: A Comissão Europeia fornece uma plataforma para resolução de disputas online (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
+<p>Nosso endereço de email pode ser encontrado acima. Não estamos dispostos nem obrigados a participar de procedimentos de resolução de disputas perante um conselho de arbitragem do consumidor.</p>`,
       },
       {
         heading: "Responsabilidade pelo Conteúdo",
         content: `<p>Como prestador de serviços, somos responsáveis pelo nosso próprio conteúdo nestas páginas de acordo com o § 7 (1) TMG (Lei Alemã de Telemídia). De acordo com os §§ 8 a 10 TMG, no entanto, não somos obrigados a monitorar informações transmitidas ou armazenadas de terceiros ou a investigar circunstâncias que indiquem atividade ilegal.</p>
-<p>As obrigações de remover ou bloquear o uso de informações sob a lei geral permanecem inalteradas. No entanto, a responsabilidade neste sentido só é possível a partir do momento do conhecimento de uma infração específica. Ao tomar conhecimento de tais violações, removeremos o conteúdo imediatamente.</p>`,
+<p>As obrigações de remover ou bloquear o uso de informações sob a lei geral permanecem inalteradas. No entanto, a responsabilidade neste sentido só é possível a partir do momento do conhecimento de uma infração específica. Ao tomar conhecimento de tais violações, removeremos o conteúdo imediatamente.</p>
+<p>Os conteúdos deste website foram cuidadosamente verificados e criados com o melhor do nosso conhecimento. No entanto, não se garante a completude, precisão, atualidade ou qualidade das informações fornecidas. Não nos responsabilizamos por danos decorrentes da confiança no conteúdo deste website ou do seu uso, salvo se causados por dolo ou negligência grave. Reivindicações legais ao abrigo da Lei de Responsabilidade do Produto (Produkthaftungsgesetz) estão isentas desta limitação de responsabilidade.</p>`,
       },
       {
         heading: "Responsabilidade por Links",
         content: `<p>Nosso website contém links para websites externos de terceiros sobre cujo conteúdo não temos influência. Portanto, não podemos aceitar qualquer responsabilidade por esse conteúdo de terceiros. O respectivo fornecedor ou operador das páginas vinculadas é sempre responsável pelo conteúdo das páginas vinculadas.</p>
 <p>As páginas vinculadas foram verificadas quanto a possíveis violações legais no momento da vinculação. Conteúdo ilegal não era reconhecível no momento da vinculação. No entanto, o controle permanente do conteúdo das páginas vinculadas é irrazoável sem evidências concretas de uma infração. Ao tomar conhecimento de violações legais, removeremos tais links imediatamente.</p>`,
+      },
+      {
+        heading: "Propriedade Intelectual de Terceiros",
+        content: `<p>Levamos muito a sério os direitos de propriedade intelectual de terceiros. Não publicamos conscientemente conteúdo infrator em nossas páginas, nem criamos links para tal conteúdo. No entanto, é possível que o conteúdo em páginas externas mude sem a nossa influência ou a nossa capacidade de monitoramento constante.</p>
+<p>Caso descubra que um dos nossos links aponta para uma oferta que viola direitos, pedimos que nos informe. Analisaremos prontamente a questão e removeremos o link, se necessário.</p>`,
       },
     ],
   },

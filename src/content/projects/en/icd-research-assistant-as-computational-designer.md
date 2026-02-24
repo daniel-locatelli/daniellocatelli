@@ -18,6 +18,9 @@
   ],
   "DateStart": "2020-03-04",
   "DateEnd": "2020-04-03",
+  "Director": ["Achim Menges"],
+  "Manager": ["Dylan Wood"],
+  "Team": ["Daniel Locatelli", "Nils Opgnorth"],
   "Link": {
     "Text": "Urbach Tower at ICD University of Stuttgart",
     "Href": "https://www.icd.uni-stuttgart.de/projects/remstal-gartenschau-2019-urbach-turm/"

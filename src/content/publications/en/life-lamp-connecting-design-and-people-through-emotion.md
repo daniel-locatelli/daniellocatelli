@@ -1,6 +1,7 @@
 ---
 {
-  "Cover": "/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/cover-cover.jpg",
+  "Thumbnail": "/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/life-lamp-concept-thumbnail.jpg",
+  "Cover": "/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/life-lamp-concept-cover.jpg",
   "CoverAlt": "Life Lamp concept diagram: three heartbeat values overlaying on top of a baby, an adult and an elderly silhouette. Side by side with the resulting respective 3D geometries.",
   "Description": "The design process is a hybrid between a top-down and a bottom-up approach. We worked both with predefined heart-like 3D models as the design base and with agent-based modeling, widely explored by Craig Reynolds in the 1980s. The programming part was developed using Grasshopper 3D, the two-week-old plugin Culebra v2.0 for the agent-based modeling in conjunction with the Firefly plugin to capture the heartbeats. This work became later a paper presented at the ECAAD 2020.",
   "Name": "Life Lamp: Connecting Design and People Through Emotion",

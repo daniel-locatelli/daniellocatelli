@@ -50,20 +50,6 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
         content: `<p>This website contains links to external services including LinkedIn, GitHub, GitLab, Instagram, and WhatsApp. When you follow these links, you leave this website and the respective service's privacy policy applies. The operator of this website has no control over the data processing practices of these third-party services.</p>`,
       },
       {
-        heading: "Your Rights (GDPR Art. 15–21)",
-        content: `<p>Under the General Data Protection Regulation, you have the right to:</p>
-<ul>
-<li><strong>Access</strong> — request information about your personal data being processed (Art. 15)</li>
-<li><strong>Rectification</strong> — request correction of inaccurate data (Art. 16)</li>
-<li><strong>Erasure</strong> — request deletion of your data (Art. 17)</li>
-<li><strong>Restriction</strong> — request restriction of processing (Art. 18)</li>
-<li><strong>Data portability</strong> — receive your data in a structured format (Art. 20)</li>
-<li><strong>Objection</strong> — object to processing based on legitimate interest (Art. 21)</li>
-</ul>
-<p>To exercise these rights, contact: <a href="mailto:contact@daniellocatelli.com">contact@daniellocatelli.com</a></p>
-<p>You also have the right to lodge a complaint with a supervisory authority, in particular in the EU member state of your habitual residence, place of work, or place of the alleged infringement.</p>`,
-      },
-      {
         heading: "Data Retention",
         content: `<p>This website does not persistently store any personal user data. Server logs maintained by Cloudflare are subject to Cloudflare's own retention policies.</p>`,
       },
@@ -152,18 +138,24 @@ Munich, Germany</p>`,
       },
       {
         heading: "EU Dispute Resolution",
-        content: `<p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
-<p>Our email address can be found above. We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>`,
+        content: `<p>Alternative dispute resolution pursuant to Art. 14(1) ODR Regulation and § 36 VSBG: The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
+<p>Our email address can be found above. We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>`,
       },
       {
         heading: "Liability for Content",
         content: `<p>As a service provider, we are responsible for our own content on these pages in accordance with § 7 (1) TMG (German Telemedia Act). According to §§ 8 to 10 TMG, however, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.</p>
-<p>Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the time of knowledge of a specific infringement. Upon becoming aware of such violations, we will remove the content immediately.</p>`,
+<p>Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the time of knowledge of a specific infringement. Upon becoming aware of such violations, we will remove the content immediately.</p>
+<p>The contents of this website have been carefully reviewed and created to the best of our knowledge. However, no claim is made regarding the completeness, accuracy, timeliness, or quality of the information provided. We shall not be liable for damages arising from reliance on the content of this website or its use, unless such damages were caused intentionally or through gross negligence. Statutory claims under the Product Liability Act (Produkthaftungsgesetz) are exempt from this limitation of liability.</p>`,
       },
       {
         heading: "Liability for Links",
         content: `<p>Our website contains links to external third-party websites over whose content we have no influence. Therefore, we cannot accept any liability for this third-party content. The respective provider or operator of the linked pages is always responsible for the content of the linked pages.</p>
 <p>The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, permanent content control of the linked pages is unreasonable without concrete evidence of an infringement. Upon becoming aware of legal violations, we will remove such links immediately.</p>`,
+      },
+      {
+        heading: "Third-Party Intellectual Property",
+        content: `<p>We take the intellectual property rights of third parties very seriously. We do not knowingly publish infringing content on our pages, nor do we link to such content. However, it is possible that content on external pages may change without our influence or our ability to constantly monitor it.</p>
+<p>Should you discover that one of our links points to an infringing offer, we kindly ask you to notify us. We will promptly review the matter and remove the link if necessary.</p>`,
       },
     ],
   },

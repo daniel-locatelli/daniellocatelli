@@ -3,7 +3,7 @@
   "Cover": "/assets/content/projects/radom-raisting-by-ar-ingenieure/cover-cover.jpg",
   "CoverAlt": "Die Kuppelmembran wird vom Kran angeliefert.",
   "Description": "Eine pneumatisch vorgespannte Membran mit 48,8 m Durchmesser und 34 m Höhe wurde als Kugelabschnitt konstruiert, um die Parabolantenne vor aeusseren Witterungseinflüssen zu schuetzen.",
-  "Name": "Radom Raisting von AR Ingenieure",
+  "Name": "Radom Raisting von AR Ingenieure",
   "Slug": "projects/radom-raisting-by-ar-ingenieure",
   "Tags": [
     "Computational Design",
@@ -20,6 +20,9 @@
   ],
   "Client": "ITF Technical Fabrics GmbH",
   "DateStart": "2021-08-01",
+  "Director": ["Alexander Hub"],
+  "Team": ["Daniel Locatelli", "Grant Galloway"],
+  "Development": ["Radom Raisting GmbH"],
   "Link": {
     "Text": "Radom Raisting at AR Ingenieure",
     "Href": "https://www.ar-ingenieure.com/projects/radom-raisting"

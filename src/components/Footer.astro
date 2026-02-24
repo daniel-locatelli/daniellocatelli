@@ -1,138 +1,93 @@
 ---
 import { siteConfig } from "@/config/site";
-import { getCollection } from "astro:content";
 import { getLocale } from "src/lib/routes-helpers";
 import { Icon } from "astro-icon/components";
-import LanguagePicker from "./LanguagePicker.astro";
 import type { I18nFooter } from "src/i18n/footer/type";
 import { getI18n } from "src/i18n/utils";
 
 const locale = getLocale(Astro.params);
 const footer = await getI18n<I18nFooter>("footer", locale);
 
-const pages = (await getCollection("pages"))
-  .filter((p) => p.id.startsWith("en/") && p.data.Name)
-  .sort((a, b) => {
-    if (a.data.Name === "Homepage") return -1;
-    if (b.data.Name === "Homepage") return 1;
-    return a.data.Name.localeCompare(b.data.Name);
-  });
-
-const year = new Date().getFullYear();
-
 const localePrefix = locale === "en" ? "" : "/" + locale;
-
-export interface Props {
-  slug: string | undefined;
-}
-
-const { slug } = Astro.props as Props;
+const currentYear = new Date().getFullYear();
 ---
 
-<footer
-  class="mt-auto flex w-full snap-start flex-col items-center justify-center pt-6 pb-6 text-center align-top sm:flex-row sm:justify-between sm:space-y-0 sm:text-xs print:hidden"
->
-  <div
-    class="order-2 flex flex-col items-center justify-center space-y-6 sm:order-1 sm:flex-row sm:space-y-0"
-  >
+<footer class="mt-auto w-full pt-16 pb-8 print:hidden">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="border-t border-zinc-800"></div>
+
     <div
-      class="font-body order-2 flex items-center pt-6 sm:order-1 sm:me-6 sm:ml-1 sm:pt-0"
+      class="flex flex-col items-center gap-6 pt-8 sm:flex-row sm:justify-between"
     >
-      &copy; {siteConfig.author}
-      {year}
+      <!-- Social icons -->
+      <address class="flex items-center gap-5 not-italic">
+        <a
+          href={siteConfig.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="LinkedIn"
+          class="text-zinc-500 transition-colors hover:text-zinc-200"
+        >
+          <Icon name="mdi:linkedin" class="size-5" />
+        </a>
+        <a
+          href={siteConfig.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Instagram"
+          class="text-zinc-500 transition-colors hover:text-zinc-200"
+        >
+          <Icon name="mdi:instagram" class="size-5" />
+        </a>
+        <a
+          href={siteConfig.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitHub"
+          class="text-zinc-500 transition-colors hover:text-zinc-200"
+        >
+          <Icon name="mdi:github" class="size-5" />
+        </a>
+        <a
+          href={siteConfig.gitlab}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitLab"
+          class="text-zinc-500 transition-colors hover:text-zinc-200"
+        >
+          <Icon name="mdi:gitlab" class="size-5" />
+        </a>
+      </address>
+
+      <!-- Copyright + Legal -->
+      <div
+        class="font-body flex flex-col items-center gap-3 text-xs text-zinc-500 sm:flex-row sm:gap-0"
+      >
+        <span>&copy; {currentYear} {siteConfig.title}</span>
+        <span class="hidden sm:inline sm:mx-3">&middot;</span>
+        <div class="flex items-center gap-3">
+          <a
+            href={`${localePrefix}/privacy-policy`}
+            class="transition-colors hover:text-zinc-300"
+          >
+            {footer.privacyPolicy}
+          </a>
+          <span>&middot;</span>
+          <a
+            href={`${localePrefix}/terms-and-conditions`}
+            class="transition-colors hover:text-zinc-300"
+          >
+            {footer.terms}
+          </a>
+          <span>&middot;</span>
+          <a
+            href={`${localePrefix}/impressum`}
+            class="transition-colors hover:text-zinc-300"
+          >
+            {footer.impressum}
+          </a>
+        </div>
+      </div>
     </div>
-    <address
-      class="order-1 mt-6 flex w-full items-center justify-center space-x-7 sm:order-2 sm:mt-0 sm:w-auto"
-    >
-      <a
-        href={siteConfig.linkedin}
-        target="_blank"
-        title="Lets connect."
-        class="flex"
-      >
-        <Icon
-          name="mdi:linkedin"
-          class="inline size-4 w-auto mix-blend-difference"
-        />
-      </a>
-      <a
-        href={siteConfig.instagram}
-        target="_blank"
-        title="Check my Instagram."
-        class="flex"
-      >
-        <Icon
-          name="mdi:instagram"
-          class="inline size-4 w-auto mix-blend-difference"
-        />
-      </a>
-      <a
-        href={siteConfig.github}
-        target="_blank"
-        title="Check my GitHub."
-        class="flex"
-      >
-        <Icon
-          name="mdi:github"
-          class="inline size-4 w-auto mix-blend-difference"
-        />
-      </a>
-      <a
-        href={siteConfig.gitlab}
-        target="_blank"
-        title="Check my GitLab."
-        class="flex"
-      >
-        <Icon
-          name="mdi:gitlab"
-          class="inline size-4 w-auto mix-blend-difference"
-        />
-      </a>
-    </address>
-  </div>
-  <nav
-    aria-label="More on this site"
-    class="font-body order-1 flex flex-col sm:order-2 sm:mr-2 sm:flex-row"
-  >
-    {
-      pages.map((page) =>
-        page.data.Name === "Homepage" ? (
-          <a
-            class="py-2 sm:px-3 sm:py-0 sm:hover:underline"
-            href={locale === "en" ? "/" : "/" + locale + "/"}
-            title="Homepage"
-          >
-            Home
-          </a>
-        ) : (
-          <a
-            class="py-2 sm:px-3 sm:py-0 sm:hover:underline"
-            href={locale === "en" ? page.data.Slug : "/" + locale + "/" + page.data.Slug}
-            title={page.data.Name}
-          >
-            {locale === "en" && page.data.Name}
-            {locale === "pt" && (page.data.Name_pt || page.data.Name)}
-            {locale === "de" && (page.data.Name_de || page.data.Name)}
-          </a>
-        ),
-      )
-    }
-    <LanguagePicker currentLocale={locale} slug={slug} class="sm:px-3" />
-  </nav>
-  <div
-    class="font-body order-3 mt-4 flex w-full items-center justify-center gap-2 text-xs text-zinc-500 sm:mt-0"
-  >
-    <a href={`${localePrefix}/privacy-policy`} class="hover:text-zinc-300"
-      >{footer.privacyPolicy}</a
-    >
-    <span>&middot;</span>
-    <a
-      href={`${localePrefix}/terms-and-conditions`}
-      class="hover:text-zinc-300">{footer.terms}</a
-    >
-    <span>&middot;</span>
-    <a href={`${localePrefix}/impressum`} class="hover:text-zinc-300"
-      >{footer.impressum}</a
-    >
   </div>
 </footer>

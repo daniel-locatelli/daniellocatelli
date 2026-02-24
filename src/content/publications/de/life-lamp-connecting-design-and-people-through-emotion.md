@@ -1,6 +1,7 @@
 ---
 {
-  "Cover": "/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/cover-cover.jpg",
+  "Thumbnail": "/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/life-lamp-concept-thumbnail.jpg",
+  "Cover": "/assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/life-lamp-concept-cover.jpg",
   "CoverAlt": "Life Lamp Konzeptdiagramm: drei Herzschlagwerte \u00fcberlagern sich auf den Silhouetten eines Babys, eines Erwachsenen und einer \u00e4lteren Person. Daneben die resultierenden jeweiligen 3D-Geometrien.",
   "Description": "Der Designprozess ist ein Hybrid zwischen Top-down- und Bottom-up-Ansatz. Wir arbeiteten sowohl mit vordefinierten herzf\u00f6rmigen 3D-Modellen als Designgrundlage als auch mit agentenbasierter Modellierung. Die Programmierung wurde mit Grasshopper 3D, dem Plugin Culebra v2.0 f\u00fcr die agentenbasierte Modellierung und dem Plugin Firefly zur Erfassung der Herzschl\u00e4ge entwickelt.",
   "Name": "Life Lamp: Design und Menschen durch Emotion verbinden",

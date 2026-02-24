@@ -15,7 +15,28 @@
       "Bash(node -c:*)",
       "Bash(ls:*)",
       "Bash(git diff:*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:daniellocatelli.com)",
+      "Bash(cat:*)",
+      "Bash(node:*)",
+      "Bash(cd:*)",
+      "Bash(tail:*)",
+      "Bash(echo === $\\(basename \"$dir\"\\) ===:*)",
+      "Bash(npx:*)",
+      "Bash(git:*)",
+      "mcp__notionApi__API-query-data-source",
+      "mcp__notionApi__API-get-block-children",
+      "mcp__notionApi__API-post-search",
+      "Bash(xxd:*)",
+      "Bash(python:*)",
+      "Bash(done)",
+      "mcp__plugin_Notion_notion__notion-search",
+      "mcp__plugin_Notion_notion__notion-fetch"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "notionApi"
+  ]
 }

@@ -1,7 +1,8 @@
 ---
 {
   "Cover": "/assets/content/teaching/models-bynature-20/cover-cover.jpeg",
-  "Description": "This workshop sought to connect computational design practices with natural phenomena, addressing topics such as associative modeling, biomimetics and visual programming language.",
+  "CoverAlt": "Estudantes apresentam seus pavilhões Voronoi resultantes do workshop.",
+  "Description": "Este workshop buscou conectar práticas de design computacional com fenômenos naturais, abordando temas como modelagem associativa, biomimética e linguagem de programação visual.",
   "Name": "Models byNature 2.0",
   "Slug": "teaching/models-bynature-20",
   "Tags": [],
@@ -16,8 +17,10 @@
 }
 ---
 
-![](../../../assets/content/teaching/models-bynature-20/block-64b58a9d-57a3-4e4a-86f6-49de23220f20.jpeg)
-![](../../../assets/content/teaching/models-bynature-20/block-6bbe1c09-bf51-45e6-a624-8b639944bd57.jpeg)
-![](../../../assets/content/teaching/models-bynature-20/block-cc1cbd86-669e-424d-86a9-58f0c6d6a9d0.jpeg)
-![](../../../assets/content/teaching/models-bynature-20/block-25f0fbd7-c566-4597-ac1b-d86c63294a00.jpeg)
-![](../../../assets/content/teaching/models-bynature-20/block-f26c5d36-e120-4e31-b4e0-0b9fd2b39de7.jpeg)
+Este workshop buscou conectar práticas de design computacional com fenômenos naturais, abordando temas como modelagem associativa, biomimética e linguagem de programação visual.
+
+![](../../../assets/content/teaching/models-bynature-20/models-bynature-20_daniel-locatelli-01.jpeg)
+![](../../../assets/content/teaching/models-bynature-20/models-bynature-20_daniel-locatelli-02.jpeg)
+![](../../../assets/content/teaching/models-bynature-20/models-bynature-20_daniel-locatelli-03.jpeg)
+![](../../../assets/content/teaching/models-bynature-20/models-bynature-20_daniel-locatelli-04.jpeg)
+![](../../../assets/content/teaching/models-bynature-20/models-bynature-20_daniel-locatelli-05.jpeg)

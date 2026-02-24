@@ -14,8 +14,9 @@
   ],
   "Category": "Software Development",
   "City": [],
-  "Client": "BuildSystems",
   "DateStart": "2023-11-23",
+  "Director": ["Martin Bittmann"],
+  "Team": ["Daniel Locatelli", "Daniel Dieren"],
   "Link": [],
   "Place": "Online"
 }

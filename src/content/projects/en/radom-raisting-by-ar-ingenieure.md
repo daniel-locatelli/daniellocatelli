@@ -3,7 +3,7 @@
   "Cover": "/assets/content/projects/radom-raisting-by-ar-ingenieure/cover-cover.jpg",
   "CoverAlt": "Dome membrane being delivered by the crane.",
   "Description": "A 48.8m diameter and 34m high pneumatically prestressed membrane was constructed as a spherical section to protect the parabolic antenna from external weather.",
-  "Name": "Radom Raisting by AR Ingenieure",
+  "Name": "Radom Raisting by AR Ingenieure",
   "Slug": "projects/radom-raisting-by-ar-ingenieure",
   "Tags": [
     "Computational Design",
@@ -20,6 +20,9 @@
   ],
   "Client": "ITF Technical Fabrics GmbH",
   "DateStart": "2021-08-01",
+  "Director": ["Alexander Hub"],
+  "Team": ["Daniel Locatelli", "Grant Galloway"],
+  "Development": ["Radom Raisting GmbH"],
   "Link": {
     "Text": "Radom Raisting at AR Ingenieure",
     "Href": "https://www.ar-ingenieure.com/projects/radom-raisting"

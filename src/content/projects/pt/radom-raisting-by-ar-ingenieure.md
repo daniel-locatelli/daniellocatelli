@@ -3,7 +3,7 @@
   "Cover": "/assets/content/projects/radom-raisting-by-ar-ingenieure/cover-cover.jpg",
   "CoverAlt": "Membrana da cúpula sendo entregue pelo guindaste.",
   "Description": "Para proteger uma antena parabólica das intempéries, AR Ingenieure projetou uma membrana esférica pré-esforçada de 48,8m de diâmetro e 34m de altura.",
-  "Name": "Radom Raisting por AR Ingenieure",
+  "Name": "Radom Raisting por AR Ingenieure",
   "Slug": "projects/radom-raisting-by-ar-ingenieure",
   "Tags": [
     "Computational Design",
@@ -20,6 +20,9 @@
   ],
   "Client": "ITF Technical Fabrics GmbH",
   "DateStart": "2021-08-01",
+  "Director": ["Alexander Hub"],
+  "Team": ["Daniel Locatelli", "Grant Galloway"],
+  "Development": ["Radom Raisting GmbH"],
   "Link": {
     "Text": "Radom Raisting at AR Ingenieure",
     "Href": "https://www.ar-ingenieure.com/projects/radom-raisting"

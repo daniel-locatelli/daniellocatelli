@@ -581,6 +581,14 @@ export const t: I18nCV = {
       location: "Online",
     },
     {
+      title: "COMPAS FoFin Workshop",
+      startDate: "2022-09",
+      instructor:
+        "Dr. Lotte Scheder-Bieschin, Dr. Juney Lee, and Dr. Tom Van Mele",
+      organization: "Design Modeling Symposium 2022",
+      location: "Berlin, Germany",
+    },
+    {
       title: "Intelligence",
       startDate: "2020-06",
       endDate: "2020-07",
@@ -606,14 +614,6 @@ export const t: I18nCV = {
       link: "https://discourse.mcneel.com/t/thomas-wortmann-judyta-cichocka-and-adrian-krezlik-iass-2017-pre-symposium-master-class-september-22-24-hamburg-germany/45849",
       organization: "IASS 2017",
       location: "Hamburg, Germany",
-    },
-    {
-      title: "COMPAS FoFin Workshop",
-      startDate: "2022-09",
-      instructor:
-        "Dr. Lotte Scheder-Bieschin, Dr. Juney Lee, and Dr. Tom Van Mele",
-      organization: "Design Modeling Symposium 2022",
-      location: "Berlin, Germany",
     },
     {
       title: "Parametric Design with Arduino and Grasshopper",

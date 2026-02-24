@@ -4,6 +4,13 @@
 
 Personal portfolio website for Daniel Locatelli (AEC software engineer). Built with Astro, uses Notion as a CMS, integrates Claude AI for an interactive chat, and deploys to Cloudflare Pages.
 
+## Security
+
+- Always validate and sanitize user input, both client-side and server-side.
+- Add .env and .mcp files to .gitignore to prevent secrets from being committed.
+- Use environment variables for all secrets and configuration.
+- Regularly review and update dependencies to patch security vulnerabilities.
+
 ## Tech Stack
 
 - **Framework:** Astro 5 with TypeScript

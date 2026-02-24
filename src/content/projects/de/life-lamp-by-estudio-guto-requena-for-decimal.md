@@ -3,7 +3,7 @@
   "Cover": "/assets/content/projects/life-lamp-by-estudio-guto-requena-for-decimal/cover-cover.jpg",
   "CoverAlt": "Eingeschaltete Life Lamp. Copyright Decimal.",
   "Description": "Der Designprozess ist eine Mischung aus Top-down- und Bottom-up-Ansatz. Wir arbeiteten sowohl mit vordefinierten herzförmigen 3D-Modellen als Designgrundlage als auch mit agentenbasierter Modellierung, die in den 1980er-Jahren maßgeblich von Craig Reynolds erforscht wurde. Die Programmierung erfolgte mit Grasshopper 3D, dem erst zwei Wochen alten Plugin Culebra v2.0 für die agentenbasierte Modellierung in Verbindung mit dem Plugin Firefly zur Erfassung der Herzschläge. Diese Arbeit wurde später als Paper auf der ECAAD 2020 vorgestellt.",
-  "Name": "Life Lamp von Estúdio Guto Requena für Decimal",
+  "Name": "Life Lamp von Estúdio Guto Requena für Decimal",
   "Slug": "projects/life-lamp-by-estudio-guto-requena-for-decimal",
   "Tags": [
     "Computational Design",
@@ -20,6 +20,10 @@
   "Client": "Decimal",
   "DateStart": "2018-05-01",
   "DateEnd": "2018-05-31",
+  "Director": ["Guto Requena"],
+  "Manager": ["Bruno Baietto"],
+  "Team": ["Daniel Locatelli", "Vítor Curti"],
+  "Development": ["Decimal"],
   "Link": {
     "Text": "Life Lamp at Estúdio Guto Requena",
     "Href": "https://en.gutorequena.com/lifelamp/"

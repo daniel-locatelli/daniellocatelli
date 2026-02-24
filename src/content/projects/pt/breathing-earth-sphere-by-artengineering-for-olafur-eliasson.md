@@ -3,7 +3,7 @@
   "Cover": "/assets/content/projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson/cover-cover.jpeg",
   "CoverAlt": "Olafur Eliasson, Breathing earth sphere, 2024. Foto: Kyungsub Shin",
   "Description": "Olafur Eliasson comissionou ArtEngineering para realizar trabalhos de engenharia computacional, fabricação digital, e logistica. ",
-  "Name": "Breathing earth sphere por ArtEngineering para Olafur Eliasson",
+  "Name": "Breathing earth sphere por ArtEngineering para Olafur Eliasson",
   "Slug": "projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson",
   "Tags": [
     "Computational Engineering",

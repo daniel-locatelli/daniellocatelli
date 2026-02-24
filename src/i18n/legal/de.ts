@@ -50,20 +50,6 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
         content: `<p>Diese Website enthält Links zu externen Diensten wie LinkedIn, GitHub, GitLab, Instagram und WhatsApp. Wenn Sie diesen Links folgen, verlassen Sie diese Website und die Datenschutzrichtlinie des jeweiligen Dienstes gilt. Der Betreiber dieser Website hat keinen Einfluss auf die Datenverarbeitungspraktiken dieser Drittanbieter.</p>`,
       },
       {
-        heading: "Ihre Rechte (DSGVO Art. 15–21)",
-        content: `<p>Gemäß der Datenschutz-Grundverordnung haben Sie das Recht auf:</p>
-<ul>
-<li><strong>Auskunft</strong> — Informationen über die Verarbeitung Ihrer personenbezogenen Daten anfordern (Art. 15)</li>
-<li><strong>Berichtigung</strong> — Korrektur unrichtiger Daten verlangen (Art. 16)</li>
-<li><strong>Löschung</strong> — Löschung Ihrer Daten verlangen (Art. 17)</li>
-<li><strong>Einschränkung</strong> — Einschränkung der Verarbeitung verlangen (Art. 18)</li>
-<li><strong>Datenübertragbarkeit</strong> — Ihre Daten in einem strukturierten Format erhalten (Art. 20)</li>
-<li><strong>Widerspruch</strong> — der Verarbeitung auf Grundlage berechtigter Interessen widersprechen (Art. 21)</li>
-</ul>
-<p>Zur Ausübung dieser Rechte kontaktieren Sie: <a href="mailto:contact@daniellocatelli.com">contact@daniellocatelli.com</a></p>
-<p>Sie haben außerdem das Recht, eine Beschwerde bei einer Aufsichtsbehörde einzureichen, insbesondere in dem EU-Mitgliedstaat Ihres gewöhnlichen Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.</p>`,
-      },
-      {
         heading: "Datenspeicherung",
         content: `<p>Diese Website speichert keine personenbezogenen Nutzerdaten dauerhaft. Serverprotokolle, die von Cloudflare verwaltet werden, unterliegen den eigenen Aufbewahrungsrichtlinien von Cloudflare.</p>`,
       },
@@ -152,18 +138,24 @@ München, Deutschland</p>`,
       },
       {
         heading: "EU-Streitbeilegung",
-        content: `<p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
-<p>Unsere E-Mail-Adresse finden Sie oben. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>`,
+        content: `<p>Alternative Streitbeilegung gemäß Art. 14 Abs. 1 ODR-VO und § 36 VSBG: Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
+<p>Unsere E-Mail-Adresse finden Sie oben. Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir nicht verpflichtet und nicht bereit.</p>`,
       },
       {
         heading: "Haftung für Inhalte",
         content: `<p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-<p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>`,
+<p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+<p>Die Inhalte dieser Website wurden sorgfältig geprüft und nach bestem Wissen erstellt. Dennoch wird für die hier dargebotenen Informationen kein Anspruch auf Vollständigkeit, Aktualität, Qualität und Richtigkeit erhoben. Für Schäden, die durch das Vertrauen auf die Inhalte dieser Website oder deren Gebrauch entstehen, haften wir nicht, es sei denn, sie wurden vorsätzlich oder grob fahrlässig verursacht. Gesetzliche Ansprüche aus dem Produkthaftungsgesetz sind von dieser Haftungsbeschränkung ausgenommen.</p>`,
       },
       {
         heading: "Haftung für Links",
         content: `<p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
 <p>Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>`,
+      },
+      {
+        heading: "Schutzrechte Dritter",
+        content: `<p>Wir nehmen Schutzrechte Dritter sehr ernst. Selbstverständlich stellen wir bewusst weder rechtsverletzende Inhalte auf unseren Seiten ein, noch verlinken wir auf solche. Dennoch kann es sein, dass sich Inhalte auf externen Seiten verändern, ohne dass wir hierauf Einfluss hätten oder dies ständig überprüfen könnten.</p>
+<p>Sollten Sie feststellen, dass einer unserer Links auf ein rechtswidriges Angebot verweist, bitten wir darum, uns dies mitzuteilen. Wir werden dies dann umgehend prüfen und den Link gegebenenfalls entfernen.</p>`,
       },
     ],
   },

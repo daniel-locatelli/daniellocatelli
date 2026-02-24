@@ -3,7 +3,7 @@
   "Cover": "/assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/cover-cover.jpg",
   "CoverAlt": "Fabrication of pavilhão O3 by Paleta Stands. A blacksmith takes photos of the small scale model, while two other appear in the background.",
   "Description": "This paper investigates the concept of high-low: high technology in the design phase with low technology in the fabrication phase. The ephemeral architecture has the potential to combine academic and artistic knowledge in Brazilian commercial production. One experimental case study designed for Expo Revestir for Docol in 2017 is presented here, balancing the paradigm of computational design with the academic field and viable commercial applications.",
-  "Name": "High-Low as Expression of The Brazilian Digital Fabrication",
+  "Name": "High-Low as Expression of the Brazilian Digital Fabrication",
   "Slug": "publications/high-low-as-expression-of-the-brazilian-digital-fabrication",
   "Tags": [
     "High-low",

@@ -21,7 +21,7 @@ export const t: I18nHome = {
     sendEmail: "Envie um Email",
     chat: {
       initialMessage:
-        "Olá! Me pergunte alguma coisa sobre meu trabalho, experiência ou projetos.",
+        "Olá! Me pergunte alguma coisa sobre meu trabalho, experiência ou projetos.\n\n*Atenção: As respostas são geradas por IA (Anthropic Claude) e podem conter imprecisões. Este chat não constitui aconselhamento profissional, jurídico ou técnico. Por favor, verifique qualquer informação de forma independente.*",
       inputPlaceholder: "Me pergunte alguma coisa...",
       headerTitle: "Assistente IA",
       poweredBy: "Desenvolvido com",

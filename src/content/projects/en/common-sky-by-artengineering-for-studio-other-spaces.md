@@ -3,7 +3,7 @@
   "Cover": "/assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/cover-cover.jpg",
   "CoverAlt": "Interior of Common Sky. Copyright Studio Other Spaces. ",
   "Description": "Studio Other Spaces contacted ArtEngineering for computational engineering, digital fabrication, and logistics. I became involved in the project's mid-development after digital fabrication had started. It was this very project that ultimately secured my position at Art Engineering. Initially, they needed someone to quickly export around 1.5 thousand 2D drawings from Rhino/Grasshopper to be sent for digital fabrication using a plasma cutter.",
-  "Name": "Common Sky by ArtEngineering for Studio Other Spaces",
+  "Name": "Common Sky by ArtEngineering for Studio Other Spaces",
   "Slug": "projects/common-sky-by-artengineering-for-studio-other-spaces",
   "Tags": [
     "Computational Engineering",
@@ -21,6 +21,10 @@
   ],
   "Client": "Buffalo AKG Art Museum",
   "DateStart": "2022-06-12",
+  "Director": ["Herwig Bretis"],
+  "Manager": ["Alexander Spänig"],
+  "Team": ["Daniel Locatelli"],
+  "Development": ["HAHNER Technik GmbH & Co KG"],
   "Link": {
     "Text": "Common Sky at Studio Other Spaces",
     "Href": "https://studiootherspaces.net/project/common-sky.html"

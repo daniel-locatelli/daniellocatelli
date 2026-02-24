@@ -21,7 +21,7 @@ export const t: I18nHome = {
     sendEmail: "E-Mail senden",
     chat: {
       initialMessage:
-        "Hallo! Frag mich alles über meine Arbeit, Erfahrung oder Projekte.",
+        "Hallo! Frag mich alles über meine Arbeit, Erfahrung oder Projekte.\n\n*Bitte beachte: Die Antworten werden von KI (Anthropic Claude) generiert und können Ungenauigkeiten enthalten. Dieser Chat stellt keine professionelle, rechtliche oder technische Beratung dar. Bitte überprüfe alle Informationen eigenständig.*",
       inputPlaceholder: "Frag mich etwas...",
       headerTitle: "KI-Assistent",
       poweredBy: "Unterstützt von",

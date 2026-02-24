@@ -3,7 +3,7 @@
   "Cover": "/assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/cover-cover.jpg",
   "CoverAlt": "Daniel Locatelli präsentiert bei der Semana Design Rio 2018",
   "Description": "Vortrag bei der Semana Design Rio 2018 über die Inspiration von Computational Design durch natürliche Muster und Prozesse.",
-  "Name": "Parametrisches Design inspiriert durch die Natur bei Semana Design Rio",
+  "Name": "Parametrisches Design inspiriert durch die Natur bei Semana Design Rio",
   "Slug": "teaching/parametric-design-inspired-by-nature-at-semana-design-rio",
   "Tags": [
     "Parametric Design",
