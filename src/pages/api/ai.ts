@@ -6,6 +6,40 @@ import {
   getSystemPrompt,
 } from "@/config/ai";
 
+interface ModelOverride {
+  models: string[];
+  deprecated: string[];
+  updatedAt: number;
+}
+
+/**
+ * Read model override from KV, written by the ai-health-check Worker.
+ * Returns the override model list if fresh and valid, otherwise null.
+ */
+async function getModelOverride(env: any): Promise<string[] | null> {
+  try {
+    const kv = env?.AI_HEALTH_KV;
+    if (!kv) return null;
+
+    const raw = await kv.get("model-override");
+    if (!raw) return null;
+
+    const override: ModelOverride = JSON.parse(raw);
+
+    // KV TTL handles expiry, but double-check freshness (48h)
+    const age = Date.now() - override.updatedAt;
+    if (age > 48 * 60 * 60 * 1000) return null;
+
+    if (!Array.isArray(override.models) || override.models.length === 0) {
+      return null;
+    }
+
+    return override.models;
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Convert bare URLs to markdown format [url](url)
  * Avoids converting URLs that are already in markdown [text](url) format
@@ -94,9 +128,12 @@ export const POST: APIRoute = async ({ request, locals }) => {
       apiKey: ANTHROPIC_API_KEY,
     });
 
+    const kvOverride = import.meta.env.DEV
+      ? null
+      : await getModelOverride(env);
     const modelsToTry = import.meta.env.DEV
       ? [DevModelAPIAlias]
-      : ProdModelAPIAlias;
+      : kvOverride ?? [...ProdModelAPIAlias];
 
     let msg;
 

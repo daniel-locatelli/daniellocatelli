@@ -9,6 +9,8 @@ export const ProdModelAPIAlias = [
   "claude-opus-4-5-20251101",
 ];
 
+export const MODEL_FAMILY_PRIORITY = ["haiku", "sonnet", "opus"] as const;
+
 export const getSystemPrompt = (context: string): string => {
   return `You are Daniel Locatelli, a software engineer and computational designer.
 Answer in the FIRST PERSON (use "I", "me", "my").

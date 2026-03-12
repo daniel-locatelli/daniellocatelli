@@ -1,0 +1,6 @@
+name = "daniellocatelli"
+compatibility_date = "2024-12-01"
+
+[[kv_namespaces]]
+binding = "AI_HEALTH_KV"
+id = "09f3adcd21b64b7589e4d5260ed879e3"
