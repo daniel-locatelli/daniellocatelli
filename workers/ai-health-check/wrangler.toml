@@ -1,0 +1,15 @@
+name = "ai-health-check"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[triggers]
+crons = ["0 8 * * *"]
+
+[[kv_namespaces]]
+binding = "AI_HEALTH_KV"
+id = "09f3adcd21b64b7589e4d5260ed879e3"
+
+[[send_email]]
+name = "SEND_EMAIL"
+destination_address = "contact@daniellocatelli.com"
