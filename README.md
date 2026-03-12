@@ -3,179 +3,85 @@
   Daniel Locatelli
 </h1>
 <h3 align="center">
-    Website built with Astro + Notion as CMS
+  Personal portfolio &amp; blog built with Astro, React, and Claude AI
 </h3>
 
-<p align="center"><a href="https://daniellocatelli.com"><img src="https://img.shields.io/badge/https://-daniellocatelli.com-white" alt="website"></a> <a href="https://www.linkedin.com/in/daniel-locatelli/"><img src="https://img.shields.io/badge/Connect-Daniel%20Locatelli-blue?logo=linkedin" alt="Connect with me on LinkedIn"></a></p>
-<p align="center"></p>
+<p align="center">
+  <a href="https://daniellocatelli.com"><img src="https://img.shields.io/badge/https://-daniellocatelli.com-white" alt="website"></a>
+  <a href="https://www.linkedin.com/in/daniel-locatelli/"><img src="https://img.shields.io/badge/Connect-Daniel%20Locatelli-blue?logo=linkedin" alt="Connect with me on LinkedIn"></a>
+</p>
 
-# About
-This website was developed using the [Astro](https://astro.build/) framework and [Notion](https://www.notion.so/) as a CMS.
+## About
 
-## Credits
-Special credit to [Hiroki Toyokawa](https://github.com/otoyo) for making the [astro-notion-blog](https://github.com/otoyo/astro-notion-blog) open source. <br/> Although our repos now diverged significantly, it all started there.
+Portfolio website for **Daniel Locatelli**, an AEC (Architecture, Engineering & Construction) software engineer based in Germany. The site showcases projects, research, publications, teaching, and a full CV — all managed through Astro Content Collections. Visitors can interact with an AI-powered chat assistant that answers questions about Daniel's work.
 
-## Concept
-I have been using Notion both professionally and on my personal stuff for a while. So, keeping it all organized on the same platform felt like a no-brainer. Also, this was a great opportunity to learn the Astro framework, Tailwind, and how to work with APIs.
+## Tech Stack
 
-## Tech stack
-- [Astro](https://docs.astro.build/en/concepts/why-astro/) web framework
-- [Tailwind](https://tailwindcss.com/) CSS framework
-- [Notion](https://www.notion.so/) as a content management service
-- [Cloudflare](https://www.cloudflare.com/) to deploy and host the website
-- [Figma](https://www.figma.com/) to sketch layout ideas and prepare SVG files
-- [Rhino](https://www.rhino3d.com/) to generate drawings
+| Layer | Technology |
+|-------|-----------|
+| **Framework** | [Astro 5](https://astro.build/) with TypeScript |
+| **UI** | [React 19](https://react.dev/) · [Tailwind CSS 4](https://tailwindcss.com/) · [Framer Motion](https://www.framer.com/motion/) |
+| **Content** | Astro Content Collections |
+| **AI Chat** | [Anthropic Claude SDK](https://docs.anthropic.com/) · [Supabase](https://supabase.com/) vector embeddings (RAG) |
+| **3D** | [Three.js](https://threejs.org/) (geodesic dome visualization) |
+| **Deployment** | [Cloudflare Pages](https://pages.cloudflare.com/) |
+| **Icons** | [Phosphor Icons](https://phosphoricons.com/) · [Lucide React](https://lucide.dev/) |
+| **Markdown** | react-markdown · remark-gfm · KaTeX (math) · Mermaid (diagrams) |
 
-## Workflow
-- Notion as a CMS: I have an opinionated set of [databases on Notion](#notion-structure), where I create all the pages and subpages.
-- A custom Astro integration queries these databases at the beginning of every build using [Notion API](https://developers.notion.com/). Then it automatically downloads the files, saves them at `src/assets/notion`, and saves a jpg version of the database cover at `public/media` to be used as og-image. The download only happens if the file does not yet exist. And the requests follow [Notion API request limits](https://developers.notion.com/reference/request-limits).
-- Astro builds the static website, taking full advantage of the image optimization features.
-- The website is hosted on Cloudflare.
+## Features
 
-## Notion structure
-Notion API already comes with some basic data, like page ID, page cover, and page icon. These were extended using an interface so I could have my own opinionated types.
+- **Internationalization** — Full i18n support for English, Portuguese, and German using `[...locale]` dynamic route segments and typed translation files.
+- **AI Chat Assistant** — Interactive chat powered by Claude with retrieval-augmented generation (RAG) via Supabase vector embeddings. Responds as Daniel in the visitor's language.
+- **Content Collections** — Type-safe content for projects, research, publications, teaching, skills, people, organizations, and more.
+- **3D Visualization** — Three.js geodesic dome on the homepage.
+- **Responsive Design** — Dark-themed UI with Montserrat/Poppins custom fonts, mobile-friendly layout, and print-optimized CV page.
+- **Legal Pages** — Privacy Policy, Terms & Conditions, and Impressum (noindexed).
+- **SEO** — Sitemap generation, Open Graph metadata, and view transitions.
 
-### 1. Pages as Notion databases
-This database contains the pages' information. For example, the 'Projects' item refers to the page https://daniellocatelli.com/projects. The only exception is the "Homepage," which refers to the root https://daniellocatelli.com/
+## Project Structure
 
-#### 1.1. Pages Schema
-|Name|CoverAlt|Local|Description_en|Description_de|Description_pt|Status|DatabaseRef|FullName|ShortDescription_en|Tags|
-|----|--------|-----|--------------|--------------|--------------|------|-----------|--------|-------------------|----|
-|string|string|string|string|string|string|status|SelectProperty[]|string|string|SelectProperty[]|
+```
+src/
+├── assets/              # Images and icons
+├── components/          # Astro (.astro) and React (.tsx) components
+├── config/              # Site config, env variables, AI model settings
+├── content/             # Astro Content Collections (projects, research, etc.)
+├── i18n/                # Translations by section and locale (en, pt, de)
+├── layouts/             # Page layouts (Base.astro)
+├── lib/                 # Blog helpers, route utilities
+├── pages/
+│   ├── [...locale]/     # All locale-aware pages (home, cv, legal, etc.)
+│   └── api/             # Server endpoints (AI chat, page preview)
+├── scripts/             # Utility and migration scripts
+└── styles/              # Global CSS
+```
 
-Pages: Homepage, Projects, Teaching, Strategies, Publications (In progress), Blog (Not started)
+## Getting Started
 
-- [x] `Name`: The name of the page will be used to generate the slug for the page. Except for the homepage.
-- [x] `CoverAlt`: This will be the alt text used for the cover image, both on OG (shareable links) and on the Homepage.
-- [ ] `Local`: Is still not in use. The issue of internationalization isn't clear.
-- [x] `Description_en`: this is the OG description of the page.
-- [ ] `Description_de`: This is the German OG description of the page. The issue of internationalization isn't clear.
-- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
-- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
-- [x] `DatabaseRef`: The items listed here point to the subpage databases. They are used to create full-screen cards linking to the subpages.
-- [x] `FullName`: This column was created to have a longer name for the page. It is used in the head and footer links.
-- [x] `ShortDescription_en`: It was necessary to have a really short description for the Homepage. And because I wanted to keep the OG description, I created this new one.
-- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
+### Prerequisites
 
-The `SelectProperty` is a Notion type for tags with ``` id: string; name: string; color: string; ```
+- Node.js 18+
+- npm
 
-### 2. Subpages as Notion databases
-As mentioned above, the `DatabaseRef` connects to subpage databases.
-For example, the page 'Strategies' has in the `DatabaseRef` 'Computational Design Strategies,' while the page 'Research' has in the `DatabaseRef` 'Research' and 'Publications.'
+### Environment Variables
 
-This way, I can organize each category in their own databases with a unique schema. Something similar to what we would do with an SQL database.
+Create a `.env` file with:
 
-Think of a notion database just as a SQL table.
+```env
+ANTHROPIC_API_KEY=       # Claude API key
+SUPABASE_URL=            # Supabase project URL
+SUPABASE_ANON_KEY=       # Supabase anonymous key
+```
 
-#### 2.1. Computational Design Strategies schema
-|Apps|CoverAlt|Description_en|Description_de|Description_pt|Name_de|Name_pt|References|Status|Tags|
-|---|---|---|---|---|---|---|---|---|---|
-|SelectProperty[]|string|string|string|string|string|string|string|status|SelectProperty[]|
+### Commands
 
-- [x] `Name`: The name of the page will be used to generate the slug for the page.
-- [x] `CoverAlt`: This will be the alt text used for the cover image of OG and on the page.
-- [x] `Description_en`: this is the OG description of the page.
-- [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
-- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
-- [ ] `Name_de`: this is the German OG title. The issue of internationalization isn't clear.
-- [ ] `Name_pt`: this is the Portuguese OG title. The issue of internationalization isn't clear.
-- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
-- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
+```bash
+npm install              # Install dependencies
+npm run dev              # Start dev server (localhost:4321)
+npm run build            # Type-check and build for production
+npm run preview          # Preview production build locally
+```
 
-#### 2.2. Projects schema
-|Category|City|CoverAlt|Date|Description_en|Description_de|Description_pt|Disclosed|Link|Client|Authors|Director|Manager|Development|Place|Status|Team|Files|Tags|
-|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|string|SelectProperty[]|string|string|string|string|string|boolean|RichText[]|string|SelectProperty[]|SelectProperty[]|SelectProperty[]|SelectProperty[]|string|status|SelectProperty[]|file|SelectProperty[]|
+## License
 
-- [ ] `Category`: same as tags, but to have a unique general category. It's still not implemented.
-- [x] `City`: project metadata.
-- [x] `CoverAlt`: This will be the alt text used for the cover image of OG and on the page.
-- [x] `Date`: project metadata.
-- [x] `Description_en`: this is the OG description of the page.
-- [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
-- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
-- [ ] `Disclosed`: whether the project can display sensitive information. This way, I can also store undisclosed projects on the same database.
-- [x] `Link`: project metadata, an official or relevant link to the project.
-- [x] `Client`: project metadata.
-- [x] `Authors`: project metadata.
-- [x] `Director`: project metadata.
-- [x] `Manager`: project metadata.
-- [x] `Development`: project metadata, who was the developer.
-- [x] `Place`: project metadata.
-- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
-- [x] `Team`: project metadata.
-- [ ] `Files`: the idea is to have some files in the project metadata at the beginning. Not yet implemented.
-- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
-
-#### 2.3. Publications schema
-|City|CoverAlt|Date|Description_en|Description_de|Description_pt|Link|Authors|Place|Status|Language|Tags|Name_de|Name_pt|
-|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|SelectProperty[]|string|string|string|string|string|RichText[]|SelectProperty[]|string|status|SelectProperty[]|string|string|string|
-
-- [x] `City`: publication metadata.
-- [x] `CoverAlt`: This will be the alt text used for the cover image of OG and on the page.
-- [x] `Date`: publication metadata.
-- [x] `Description_en`: this is the OG description of the page.
-- [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
-- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
-- [x] `Link`: publication metadata, an official or relevant link to the project.
-- [x] `Authors`: publication metadata.
-- [x] `Place`: publication metadata.
-- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
-- [x] `Language`: publication metadata.
-- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
-- [ ] `Name_de`: this is the German OG title. The issue of internationalization isn't clear.
-- [ ] `Name_pt`: this is the Portuguese OG title. The issue of internationalization isn't clear.
-
-#### 2.4. Research schema
-|CoverAlt|Date|Description_en|Description_de|Description_pt|Link|Authors|Place|Status|Tags|
-|--|--|--|--|--|--|--|--|--|--|
-|string|string|string|string|string|RichText[]|SelectProperty[]|string|status|SelectProperty[]|
-
-- [x] `CoverAlt`: This will be the alt text used for the cover image of OG and on the page.
-- [x] `Date`: research metadata.
-- [x] `Description_en`: this is the OG description of the page.
-- [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
-- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
-- [x] `Link`: research metadata, an official or relevant link to the project.
-- [x] `Authors`: research metadata.
-- [x] `Place`: research metadata.
-- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
-- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
-
-#### 2.5. Teaching schema
-|CoverAlt|Date|Description_en|Description_de|Description_pt|Link|Team|Place|Status|Tags|City|Event|Format|Language|
-|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
-|string|string|string|string|string|RichText[]|SelectProperty[]|string|status|SelectProperty[]|SelectProperty[]|string|string|SelectProperty[]|
-
-- [x] `CoverAlt`: This will be the alt text used for the cover image of OG and on the page.
-- [x] `Date`: teaching metadata.
-- [x] `Description_en`: this is the OG description of the page.
-- [ ] `Description_de`: this is the German OG description of the page. The issue of internationalization isn't clear.
-- [ ] `Description_pt`: this is the Portuguese OG description of the page. The issue of internationalization isn't clear.
-- [x] `Link`: teaching metadata, an official or relevant link to the project.
-- [x] `Authors`: teaching metadata.
-- [x] `Place`: teaching metadata.
-- [x] `Status`: column defines whether the page is online (Live) or not (In progress / Not started).
-- [ ] `Tags`: The idea for the tags is to recommend other similar content at the end of the pages. Not yet implemented.
-- [x] `City`: teaching metadata.
-- [ ] `Event`: teaching metadata.
-- [ ] `Format`: teaching metadata.
-- [x] `Language`: teaching metadata.
-
-<!--
-## Notion as CMS
-### Database structure
-![Pages database](https://github.com/daniel-locatelli/daniellocatelli/assets/15069239/356f4c18-b62b-4616-a1f9-b06a8d9df5e1)
-### Notion API
-
-## Astro
-### Astro Integration
-### Astro Structure
-
-## Homepage custom JavaScript
-
-## Cloudflare
-### Settings
-### Connecting to Notion API
--->
+[MIT](LICENSE)
