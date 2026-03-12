@@ -1,13 +1,12 @@
 export const DevModelName = "Claude Haiku 3.0";
-export const ProdModelName = "Claude Haiku 3.5";
+export const ProdModelName = "Claude Haiku 4.5";
 
 export const DevModelAPIAlias = "claude-3-haiku-20240307";
 
 export const ProdModelAPIAlias = [
-  "claude-3-5-haiku-latest",
-  "claude-3-5-sonnet-latest",
-  "claude-4-6-sonnet-latest",
-  "claude-3-haiku-20240307",
+  "claude-haiku-4-5-20251001",
+  "claude-sonnet-4-5-20250929",
+  "claude-opus-4-5-20251101",
 ];
 
 export const getSystemPrompt = (context: string): string => {
