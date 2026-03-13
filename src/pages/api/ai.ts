@@ -113,6 +113,53 @@ export const POST: APIRoute = async ({ request, locals }) => {
     }
 
     const { documents } = await vectorSearchResponse.json();
+
+    if (import.meta.env.DEV) {
+      console.log(`Vector search returned ${documents.length} docs:`, documents.map((d: any) => d.title).join(", "));
+    }
+
+    // Always include core CV context (Professional Experience + Summary)
+    // so the AI can answer "current work" and identity questions accurately.
+    // These often rank low in vector search because their formal CV language
+    // doesn't match conversational queries like "what are you working on?"
+    const existingIds = new Set(documents.map((d: any) => d.id));
+    try {
+      const coreUrl = new URL(`${supabaseUrl}/rest/v1/knowledge_entries`);
+      coreUrl.searchParams.set("select", "id,content,url,title,type,metadata");
+      coreUrl.searchParams.set(
+        "or",
+        "(title.ilike.*Professional Experience*,title.ilike.*Summary*,title.ilike.*Experiência Profissional*,title.ilike.*Resumo*)",
+      );
+      coreUrl.searchParams.set("type", "eq.cv");
+      coreUrl.searchParams.set("limit", "4");
+
+      const coreResponse = await fetch(coreUrl.toString(), {
+        headers: {
+          Authorization: `Bearer ${supabaseAnonKey}`,
+          apikey: supabaseAnonKey!,
+        },
+      });
+      if (coreResponse.ok) {
+        const coreDocs = await coreResponse.json();
+        if (import.meta.env.DEV) {
+          console.log(`Core CV context: fetched ${coreDocs.length} docs — ${coreDocs.map((d: any) => d.title).join(", ")}`);
+        }
+        for (const doc of coreDocs) {
+          if (!existingIds.has(doc.id)) {
+            documents.unshift(doc); // Prepend core docs so they appear first
+            existingIds.add(doc.id);
+          }
+        }
+      } else if (import.meta.env.DEV) {
+        console.error(`Core CV context fetch failed: ${coreResponse.status} ${await coreResponse.text()}`);
+      }
+    } catch (e) {
+      if (import.meta.env.DEV) {
+        console.error("Core CV context error:", e);
+      }
+      // Non-critical: continue with vector search results only
+    }
+
     const context = documents
       .map((doc: any) => {
         const metadata = doc.metadata || {};

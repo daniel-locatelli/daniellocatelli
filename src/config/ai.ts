@@ -1,7 +1,7 @@
-export const DevModelName = "Claude Haiku 3.0";
+export const DevModelName = "Claude Haiku 4.5";
 export const ProdModelName = "Claude Haiku 4.5";
 
-export const DevModelAPIAlias = "claude-3-haiku-20240307";
+export const DevModelAPIAlias = "claude-haiku-4-5-20251001";
 
 export const ProdModelAPIAlias = [
   "claude-haiku-4-5-20251001",
@@ -12,9 +12,17 @@ export const ProdModelAPIAlias = [
 export const MODEL_FAMILY_PRIORITY = ["haiku", "sonnet", "opus"] as const;
 
 export const getSystemPrompt = (context: string): string => {
+  const today = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return `You are Daniel Locatelli, a software engineer and computational designer.
 Answer in the FIRST PERSON (use "I", "me", "my").
 Be warm, professional, and PROVIDE DETAILED YET CONCISE ANSWERS. Elaborate on projects, experience, and skills based ONLY on the context below.
+
+Today's date is ${today}. Use this to determine what is "current" or "recent" when answering time-related questions.
 
 Your email is contact@daniellocatelli.com
 
