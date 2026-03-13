@@ -40,4 +40,20 @@ Diese Arbeit wurde sp\u00e4ter als Paper auf der ECAAD 2020 vorgestellt.
 [Connecting Design and People Through Emotion](http://papers.cumincad.org/data/works/att/ecaade2020_389.pdf)
 Heutzutage ist es m\u00f6glich, Technologie einzusetzen, um emotionsorientierte Produkte zu schaffen, die mit der Nutzererfahrung verbunden sind. Ziel dieses Papers ist es, eine Designexploration darzustellen, die den Einsatz algorithmischer Modellierung kombiniert, um ein Design zu schaffen, das durch emotionale Bindungen mit Menschen Bedeutung ausdr\u00fcckt.
 Life Lamp wurde geschaffen, um einen Lebenszyklus als sensibles Objekt darzustellen, bestehend aus drei Schichten und einem einzigartigen Schirm, der ein komplexes Bild erzeugt und die Wege und \u00dcberraschungen unserer Existenz ausdr\u00fcckt.
+
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/publications/life-lamp-connecting-design-and-people-through-emotion/life-lamp-animation-01.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Agents creating the structure using the heartbeat of a preborn.</p>
+
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/publications/life-lamp-connecting-design-and-people-through-emotion/life-lamp-animation-02.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Intermediate step: connecting the preborn shape with the adult shape.</p>
+
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/publications/life-lamp-connecting-design-and-people-through-emotion/life-lamp-animation-03.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Agents creating the structure using the heartbeat of an adult.</p>
+
 ![](../../../assets/content/publications/life-lamp-connecting-design-and-people-through-emotion/block-cfa4dd43-3600-4c76-af44-22adef3e560b.png)

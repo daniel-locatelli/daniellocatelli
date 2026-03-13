@@ -32,6 +32,11 @@
 }
 ---
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/projects/life-lamp-by-estudio-guto-requena-for-decimal/agent-based-system.webm" type="video/webm">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Agent-based system controlled by three heart models and three real heart-beats.</p>
+
 # Das Konzept
 Das Konzept entstand aus dem Wunsch, ein Objekt zu schaffen, das für seinen Besitzer eine emotionale Bedeutung hat. Estúdio Guto Requena wollte den Herzschlag verschiedener Lebensalter erfassen -- vom fetalen Herzschlag bis zu dem eines älteren Menschen -- und diese einzigartigen Rhythmen als Eingabe für einen generativen Designprozess nutzen.
 Jedes Lebensalter hat ein anderes Herzschlagmuster: Ein fetales Herz schlägt schneller, ein erwachsenes Herz hat einen gleichmäßigen Rhythmus, und ein älteres Herz hat ein langsameres, unregelmäßigeres Muster. Diese Unterschiede werden in der endgültigen Lampenform sichtbar.

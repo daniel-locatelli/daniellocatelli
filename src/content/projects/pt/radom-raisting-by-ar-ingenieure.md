@@ -30,6 +30,10 @@
 }
 ---
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/projects/radom-raisting-by-ar-ingenieure/deployment-sequence.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Deployment animation.</p>
 
 O cliente precisava cobrir uma de suas antenas parabólicas. A AR Ingenieure entrou na licitação com a proposta de um domo inflável entregue por guindaste. Alexander Hub foi o gerente de projeto, enquanto Grant Galloway foi o engenheiro computacional.
 Minha função neste projeto foi a simulação da logística: o transporte e a montagem do domo inflável.

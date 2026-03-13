@@ -43,8 +43,20 @@ Life Lamp was created to represent a life cycle as a sensitive object consisting
 The design process is a hybrid between top-down and bottom-up approaches. The designers worked both with a predefined heart-like 3D model as the design base and with agent-based modeling, widely explored by Craig Reynolds in the 1980s.
 Life lamp is a product that emerged as a result of Estúdio Guto Requena's research that investigates the impact of digital culture through design by seeking to merge technology and affection.
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/publications/life-lamp-connecting-design-and-people-through-emotion/life-lamp-animation-01.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Agents creating the structure using the heartbeat of a preborn.</p>
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/publications/life-lamp-connecting-design-and-people-through-emotion/life-lamp-animation-02.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Intermediate step: connecting the preborn shape with the adult shape.</p>
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/publications/life-lamp-connecting-design-and-people-through-emotion/life-lamp-animation-03.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Agents creating the structure using the heartbeat of an adult.</p>
 
 
 

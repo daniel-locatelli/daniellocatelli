@@ -32,6 +32,8 @@
 }
 ---
 
+<iframe style="width: 100%; aspect-ratio: 16/9; border-radius: 0.5rem;" src="https://www.youtube.com/embed/MI3apyOKecs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Einführung
 Der O3-Pavillon wurde vom Atelier Marko Brajovic zu einer Zeit konzipiert, als ich meine ersten Schritte in der Welt des Computational Design machte. Ich hatte gerade mein Studium an der FAU-USP mit einer Abschlussarbeit beendet, in der ich alle für diesen Pavillon notwendigen Werkzeuge erlernte: Rhino, Grasshopper 3D und Kangaroo Physics.
 ![Foto des O3-Pavillons von innen.

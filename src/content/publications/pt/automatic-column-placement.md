@@ -37,6 +37,10 @@
 ## Método de projeto baseado em feedback para posicionamento de colunas espacialmente informado e estruturalmente performático em construções de vários andares
 Este artigo apresenta um método computacional baseado em feedback para o posicionamento de colunas na fase inicial de projeto de estruturas complexas de vários andares. O método integra um algoritmo de empacotamento circular, um sistema de molas e simulações de engenharia estrutural em um único script para o arranjo recíproco e informado de colunas no espaço. Ao mesmo tempo em que permite que os usuários tenham uma abordagem exploratória, ele capacita diversos potenciais em construções de vários andares, incluindo espaços adicionais em balanço ao redor do limite, qualidades espaciais aumentadas com grandes possibilidades de vão, arranjos estruturais multidirecionais e uso multifuncional do espaço. Como resultado, o algoritmo desenvolvido permite flexibilidade ao alavancar as possibilidades de projeto de arranjos de colunas irregulares e baseados em grade e promove a integração de restrições estruturais e relacionadas ao projeto na organização espacial de várias tipologias de construção.
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/publications/automatic-column-placement/parcticle-spring-system-column-placement.mp4" type="video/mp4">
+</video>
+
 ![](../../../assets/content/publications/automatic-column-placement/block-10ebf53b-9ce3-813d-af71-c659e44fc4a6.jpg)
 ![](../../../assets/content/publications/automatic-column-placement/block-10ebf53b-9ce3-81a7-bca7-ea96e29e5dd2.jpg)
 ![](../../../assets/content/publications/automatic-column-placement/block-10ebf53b-9ce3-8171-a40a-fc707726b848.jpg)

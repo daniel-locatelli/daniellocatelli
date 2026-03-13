@@ -31,7 +31,7 @@
 }
 ---
 
-
+<iframe style="width: 100%; aspect-ratio: 16/9; border-radius: 0.5rem;" src="https://www.youtube.com/embed/KucCxUmOM1o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Concept
 > The metal column connects the subsoil of the city with the suspended roof and works practically like an antenna, capturing the vibrations of the city and the magnetic fields potentiated by the building.
@@ -53,6 +53,10 @@ The system worked like this: the guitar was built using four steel cables and fo
 I also thought about using a microphone, but Lucas' suggestion to use pickups was just on another level, conceptually and functionally, and he knew everything about them.
 Initially the concept was to have the LEDs going from the bottom all the way to the top. But to do that we would need someone with a safety license to climb which we unfortunately couldn’t find on time, so we were limited to the height a work-platform-lift could get.
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/first-pickup-test.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">First test: checking if a pickup would capture the steel cable vibration.</p>
 
 ## Interactivity
 Each bass pickup would send an Analog signal to their respective Arduino Megas, which would then map the value and convert it into a digital signal, turning a specific amount of LEDs on.

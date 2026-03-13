@@ -22,6 +22,10 @@
 }
 ---
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/research/differential-growth-in-corals/differential-growth.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Differential growth in action.</p>
 
 Nature is a designer of at least 3.8 billion years old. From microorganisms to big mammals it is fascinating how nature takes the most out of the material available. This study explored a wide range of static structures in nature, in general, the lessons are that material is scarce and shape is abundant. In other words, nature optimizes shapes to save material while at the same time strengthening the structure, factors extremely interesting to architecture.
 We investigated everything about corals, from polyps the single unit of a coral to atolls, a ring-shaped island formation that emerges from many corals together.
@@ -33,8 +37,10 @@ We narrowed this research to Stony Corals, specifically on how it grows by a pro
 ![Details of a mesh edges after the differential growth algorithm.
 Details of a mesh edges after the differential growth algorithm.](../../../assets/content/research/differential-growth-in-corals/block-eeba2fdc-f8ed-494a-bef7-71f54f4f1431.jpg)
 
-
-
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/research/differential-growth-in-corals/morphogenetic_-design-system_720p.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">A canopy generated using the complete morphogenetic design system.</p>
 
 ![Photo of the team: Håkon, Daniel, Ryan, Ying
 Håkon, Daniel, Ryan and Ying](../../../assets/content/research/differential-growth-in-corals/block-a87a9e81-53eb-4095-9cf7-02bb84805e2e.jpeg)

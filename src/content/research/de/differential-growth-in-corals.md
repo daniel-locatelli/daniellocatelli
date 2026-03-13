@@ -22,6 +22,11 @@
 }
 ---
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/research/differential-growth-in-corals/differential-growth.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Differential growth in action.</p>
+
 Die Natur ist eine Designerin von mindestens 3,8 Milliarden Jahren. Von Mikroorganismen bis zu gro\u00dfen S\u00e4ugetieren \u2013 es ist faszinierend, wie die Natur das Beste aus dem verf\u00fcgbaren Material herausholt. Diese Studie untersuchte eine breite Palette statischer Strukturen in der Natur. Die allgemeine Erkenntnis: Material ist knapp und Form ist reichlich vorhanden. Mit anderen Worten: Die Natur optimiert Formen, um Material zu sparen und gleichzeitig die Struktur zu st\u00e4rken \u2013 Faktoren, die f\u00fcr die Architektur \u00e4u\u00dferst interessant sind.
 
 Wir untersuchten alles \u00fcber Korallen, von Polypen \u2013 der kleinsten Einheit einer Koralle \u2013 bis hin zu Atollen, ringf\u00f6rmigen Inselformationen, die aus vielen Korallen zusammen entstehen.
@@ -30,3 +35,8 @@ Wir untersuchten alles \u00fcber Korallen, von Polypen \u2013 der kleinsten Einh
 
 Wir verengten diese Forschung auf Steinkorallen, insbesondere darauf, wie sie durch einen Prozess namens Knospung wachsen, bei dem sich ihre Polypen verdoppeln. Diese Forschung entwickelte viele Computational-Design-Strategien weiter. Das Endergebnis ist ein Python-Code, der ein agentenbasiertes System, eine Finite-Elemente-Analyse und maschinelle Lernunterst\u00fctzung implementiert.
 ![](../../../assets/content/research/differential-growth-in-corals/block-eeba2fdc-f8ed-494a-bef7-71f54f4f1431.jpg)
+
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/research/differential-growth-in-corals/morphogenetic_-design-system_720p.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">A canopy generated using the complete morphogenetic design system.</p>

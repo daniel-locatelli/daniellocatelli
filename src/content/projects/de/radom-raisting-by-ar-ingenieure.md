@@ -30,6 +30,10 @@
 }
 ---
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/projects/radom-raisting-by-ar-ingenieure/deployment-sequence.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Deployment animation.</p>
 
 Der Auftraggeber musste eine seiner Parabolantennen abdecken. AR Ingenieure beteiligte sich an der Ausschreibung mit dem Vorschlag einer aufblasbaren Kuppel, die per Kran angeliefert wird. Alexander Hub war der Projektleiter, während Grant Galloway der Computational Engineer war.
 Meine Rolle in diesem Projekt war die Simulation der Logistik: Transport und Montage der aufblasbaren Kuppel.

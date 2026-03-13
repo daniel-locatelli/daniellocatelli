@@ -131,11 +131,32 @@ if (image) {
           src={image}
           alt={subpage.data.CoverAlt || ""}
         />
+        <a
+          href="#content"
+          aria-label="Scroll to content"
+          class="scroll-chevron absolute bottom-8 left-1/2 z-10 -translate-x-1/2 transition-opacity duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="animate-bounce text-white/80 drop-shadow-lg"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </a>
       </div>
     )
   }
   <section
-    class="font-body flex w-full max-w-full flex-col items-center justify-center"
+    id="content"
+    class="font-body flex w-full max-w-full flex-col items-center justify-center scroll-mt-16"
   >
     <div class="w-full max-w-full overflow-x-hidden sm:max-w-2xl">
       <h1
@@ -474,6 +495,10 @@ if (image) {
 </script>
 
 <style>
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
   th {
     font-weight: 300;
   }
@@ -504,6 +529,32 @@ if (image) {
     }
   }
 </style>
+
+<script>
+  function setupScrollChevron() {
+    const chevron = document.querySelector(".scroll-chevron");
+    if (!chevron) return;
+
+    const hero = chevron.closest(".blur-load");
+    if (!hero) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        (chevron as HTMLElement).style.opacity = entry.isIntersecting
+          ? "1"
+          : "0";
+        (chevron as HTMLElement).style.pointerEvents = entry.isIntersecting
+          ? "auto"
+          : "none";
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(hero);
+  }
+
+  document.addEventListener("astro:page-load", setupScrollChevron);
+</script>
 
 <script>
   function setupBlurLoad() {

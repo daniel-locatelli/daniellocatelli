@@ -41,6 +41,10 @@
 ## Feedback-Based Design Method for Spatially-Informed and Structurally-Performative Column Placement in Multi-Story Construction
 This paper presents a feedback-based computational method for the placement of columns in the early design phase of complex multi-story structures. The method integrates a circle packing algorithm, a spring system, and structural engineering simulations within a single script for the reciprocal and informed arrangement of columns in the space. While allowing the users to have an explorative approach, it empowers diverse potentials in multi-story constructions including additional cantilevering spaces around the boundary, increased spatial qualities with large span possibilities, multidirectional structural arrangements, and multi-purpose use of space. As a result, the developed algorithm allows for flexibility by leveraging the design possibilities of grid-based and irregular column arrangements and promotes the integration of structural and design-related constraints in the spatial organization of various building typologies.
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/publications/automatic-column-placement/parcticle-spring-system-column-placement.mp4" type="video/mp4">
+</video>
+
 ![](../../../assets/content/publications/automatic-column-placement/block-16f1139c-e3bc-4589-ad86-5270930b8664.jpg)
 ![](../../../assets/content/publications/automatic-column-placement/block-1e67cf37-5cf4-41fc-b47a-decd3f45d606.jpg)
 ![](../../../assets/content/publications/automatic-column-placement/block-3a44fc48-dd18-49b1-bdfb-4917f63f503b.jpg)

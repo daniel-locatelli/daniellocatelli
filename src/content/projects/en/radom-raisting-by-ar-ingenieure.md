@@ -30,6 +30,10 @@
 }
 ---
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/projects/radom-raisting-by-ar-ingenieure/deployment-sequence.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Deployment animation.</p>
 
 The client needed to cover one of their parabolic antennas. AR Ingenieure entered the bidding with the proposal of an inflatable dome delivered by crane. Alexander Hub was the project manager, while Grant Galloway was the computational engineer.
 My role in this project was the simulation of the logistics: the transport and assembly of the inflatable dome.

@@ -32,6 +32,10 @@
 }
 ---
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/projects/life-lamp-by-estudio-guto-requena-for-decimal/agent-based-system.webm" type="video/webm">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Agent-based system controlled by three heart models and three real heart-beats.</p>
 
 # Concept
 > Three audio files were used in the programming of its generative design: The audio of a baby´s rapid heartbeat while still in the womb, the heartbeat of a 35-year-old, and finally, the heartbeat of an elder of 80 years old. These data were used as parameters in software that drew them as lines of varied width and branching, shaping the lamp.

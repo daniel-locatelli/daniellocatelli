@@ -32,7 +32,7 @@
 }
 ---
 
-
+<iframe style="width: 100%; aspect-ratio: 16/9; border-radius: 0.5rem;" src="https://www.youtube.com/embed/MI3apyOKecs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Concept
 > O3 Pavilion was inspired by the ozone trioxide molecule. The three oxygen atoms become three spaces, each with a unique multi-sensory experience.

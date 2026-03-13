@@ -32,6 +32,10 @@
 }
 ---
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/projects/life-lamp-by-estudio-guto-requena-for-decimal/agent-based-system.webm" type="video/webm">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Agent-based system controlled by three heart models and three real heart-beats.</p>
 
 # Conceito
 > Um objeto sensível composto por diferentes camadas e cuja sombra única resulta numa imagem complexa que expressa os caminhos e surpresas da nossa existência.

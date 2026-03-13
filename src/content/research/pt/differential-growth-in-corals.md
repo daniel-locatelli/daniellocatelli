@@ -22,6 +22,10 @@
 }
 ---
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/research/differential-growth-in-corals/differential-growth.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Differential growth in action.</p>
 
 A natureza é uma designer de pelo menos 3,8 bilhões de anos. De microrganismos a grandes mamíferos, é fascinante como a natureza tira o máximo proveito do material disponível.
 Este estudo explorou uma ampla gama de estruturas estáticas na natureza, em geral, as lições são que o material é escasso e a forma é abundante. Em outras palavras, a natureza otimiza as formas para economizar material enquanto, ao mesmo tempo, fortalece a estrutura, fatores extremamente interessantes para a arquitetura.
@@ -34,8 +38,10 @@ Nós restringimos esta pesquisa a Stony Corals, especificamente sobre como ele c
 ![Detalhes das arestas de uma malha após o algoritmo de crescimento diferencial.
 Detalhes das arestas de uma malha após o algoritmo de crescimento diferencial.](../../../assets/content/research/differential-growth-in-corals/block-10ebf53b-9ce3-814b-a43d-eed817b4cb6b.jpg)
 
-
-
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/research/differential-growth-in-corals/morphogenetic_-design-system_720p.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">A canopy generated using the complete morphogenetic design system.</p>
 
 ![Foto do time: Håkon, Daniel, Ryan, Ying
 Håkon, Daniel, Ryan and Ying](../../../assets/content/research/differential-growth-in-corals/block-10ebf53b-9ce3-819c-b276-f28b0ec9a415.jpeg)

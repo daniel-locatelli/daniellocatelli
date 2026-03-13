@@ -31,6 +31,8 @@
 }
 ---
 
+<iframe style="width: 100%; aspect-ratio: 16/9; border-radius: 0.5rem;" src="https://www.youtube.com/embed/KucCxUmOM1o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Konzept
 Im Jahr 2017 beauftragte [Nike Brasilien](https://nike.com.br/) das Atelier Marko Brajovic mit dem Entwurf einer ortsspezifischen Installation zur Feier eines der wichtigsten Events von Nike: dem Air Max Day. Das ursprüngliche Konzept entwickelte sich von einer Sneaker-Skulptur zu einer **Musikinstallation** für die Veranstaltung.
 Man stelle sich einen großen Gitarrenkoerper aus LEDs, Bass-Tonabnehmern und Saiten vor, der in der Luft haengt, und jeder, der darunter hindurchgeht, kann die Riesengitarre spielen und eine Lichtshow ausloesen. Jede Saite ist mit einer anderen LED-Zone verbunden. Die LEDs werden durch den von den Bass-Tonabnehmern an den Saiten aufgenommenen Klang gesteuert.
@@ -40,6 +42,12 @@ Die Umsetzung der Air Guitar erforderte ein Team von zehn Personen, die mehrere 
 Für die **Elektronikentwicklung** arbeiteten wir mit [Guará Labs](https://www.instagram.com/guaralabs/) zusammen, einem Team, das für seine Expertise in **Arduino-basierten Projekten** bekannt ist. Gemeinsam entwickelten wir ein System mit 5 Arduino Megas: **einer war für den Empfang der Signale von den 5 Bass-Tonabnehmern (verbunden mit 5 Saiten) zustaendig, und die anderen 4 steuerten insgesamt rund 1.000 adressierbare LEDs**, die in 5 Zonen organisiert waren.
 ![Eine interaktive elektronische Installation namens "Air Guitar", entworfen für Nike. Sie verfügt über ein komplexes Setup aus LED-Lichtern in einem Zickzack-Muster an der Decke, mit herunterhangenden Saiten oder Kabeln, mit denen Besucher wie mit Gitarrensaiten interagieren können. Die Installation ist in einem dunklen Industrieraum mit Gewoelbedecken montiert.
 Elektronischer Schaltplan.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dfa6d8c4-39a1-4b03-a228-f90a60a9b26b.jpeg)
+
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/first-pickup-test.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">First test: checking if a pickup would capture the steel cable vibration.</p>
+
 # Interaktivitaet
 Hier ist die grundlegende Erklärung des Schaltkreises:
 1. Wenn ein Nutzer eine Saite beruehrt und loslässt, **wird die Vibration von einem Bass-Tonabnehmer** erfasst, der mit der Saite verbunden ist.

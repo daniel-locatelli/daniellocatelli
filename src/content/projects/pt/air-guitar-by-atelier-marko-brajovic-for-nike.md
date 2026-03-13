@@ -31,7 +31,7 @@
 }
 ---
 
-
+<iframe style="width: 100%; aspect-ratio: 16/9; border-radius: 0.5rem;" src="https://www.youtube.com/embed/KucCxUmOM1o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Concept
 > Em homenagem à celebração do Air Max Day, o Atelier Marko Brajovic desenvolveu a instalação site-specific Air Guitar.
@@ -50,6 +50,10 @@ O sistema funcionava assim: a guitarra foi construída usando quatro cabos de a�
 Eu também pensei em usar um microfone, mas a sugestão do Lucas de usar captadores estava em outro nível conceitual e funcional, e ele sabia tudo sobre essa tecnologia.
 Inicialmente o conceito era ter os LEDs e os cabos de aço cobrindo toda a altura do pilar. Mas pra fazer isso nós precisaríamos de alguém com licença e equipamento de escalada, o que infelizmente não conseguimos encontrar a tempo, então ficamos limitados à altura que uma plataforma elevatória de trabalho poderia atingir.
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/first-pickup-test.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">First test: checking if a pickup would capture the steel cable vibration.</p>
 
 ## Interatividade
 Cada captador de baixo envia um sinal analógico para seus respectivos Arduino Megas, que então mapeiam o valor e os convertem em um sinal digital, acendendo uma quantidade específica de LEDs.

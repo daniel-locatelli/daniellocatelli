@@ -32,7 +32,7 @@
 }
 ---
 
-
+<iframe style="width: 100%; aspect-ratio: 16/9; border-radius: 0.5rem;" src="https://www.youtube.com/embed/MI3apyOKecs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Conceito
 > Pavilhão O3 foi inspirado pela molécula trioxigênio do ozônio. Os três átomos de oxigênio se convertem em três espaços de experiência do pavilhão conceito da Docol.

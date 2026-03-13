@@ -19,6 +19,10 @@
 }
 ---
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/research/bending-active-bamboo/form-finding.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Form-finding process.</p>
 
 Este foi o trabalho que eu e Lena Strobel fizemos para o curso Form and Structure do ITECH. Nós fomos inspirados pelo ZCB Bamboo Pavilion, mas desenvolvemos nosso próprio fluxo de trabalho usando Grasshopper, Kangaroo Physics e K2Engineering.
 

@@ -34,7 +34,17 @@ Este artigo é resultado de uma investigação sobre a influência dos processos
 
 ![Grasshopper script.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81c4-b886-ffbc3daf99e2.jpg)
 
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/o3-pavilion-kangaroo-relaxation.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Parametric model after Kangaroo relaxation.</p>
+
 ![Modelo 3D após remoção de células para abertura.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-8115-8537-c45308744623.jpg)
+
+<video controls preload="metadata" style="width: 100%; border-radius: 0.5rem;">
+  <source src="/media/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/o3-pavilion-assembly-sequence.mp4" type="video/mp4">
+</video>
+<p style="font-size: 0.875rem; color: #a1a1aa; margin-top: 0.5rem;">Panel assembly sequence.</p>
 
 ![Fases da construção em perspectiva explodida: soldagem do aço, montagem dos painéis e fixação das peças.
 Fases da construção em perspectiva explodida: soldagem do aço, montagem dos painéis e fixação das peças.](../../../assets/content/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/block-10ebf53b-9ce3-81dd-9efe-d07af1820968.jpg)
