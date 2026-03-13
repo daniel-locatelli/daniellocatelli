@@ -5,6 +5,7 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import { siteConfig } from "@/config/site";
 import { getLocale } from "src/lib/routes-helpers";
+import { fade } from "astro:transitions";
 
 interface Props {
   meta: SiteMeta;
@@ -26,7 +27,7 @@ const {
 } = Astro.props;
 ---
 
-<html lang={locale ? locale : siteConfig.defaultLocale}>
+<html lang={locale ? locale : siteConfig.defaultLocale} transition:animate={fade({ duration: "0.15s" })}>
   <head>
     <BaseHead
       articleDate={articleDate}

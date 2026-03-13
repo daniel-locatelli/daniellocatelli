@@ -42,6 +42,9 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ["mermaid"],
+    },
   },
   redirects: {
     "/strategies": "https://archcompute.com/en/strategies",

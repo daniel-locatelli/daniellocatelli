@@ -1,6 +1,7 @@
 ---
 import type { SiteMeta } from "@/types";
 import { siteConfig } from "@/config/site";
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import "../styles/fonts.css";
 import { getLocale } from "src/lib/routes-helpers";
@@ -9,7 +10,7 @@ const locale = getLocale(Astro.params)
 
 type Props = SiteMeta;
 
-const { articleDate, description, coverImage, coverAlt, title } =
+const { articleDate, description, coverImage, coverAlt, title, viewTransition } =
   Astro.props;
 
 // I removed the separator and the name from the title to make it cleaner when using it for references in Zotero etc.
@@ -131,3 +132,5 @@ const socialImageURL = new URL(
   "url": Astro.site,
 })}>
 </script>
+
+{viewTransition && <ClientRouter />}

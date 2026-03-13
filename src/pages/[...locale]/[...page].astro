@@ -130,7 +130,9 @@ const sortedSubpagesWithImages = await Promise.all(
     const image =
       (await importImage(subpage, images, "Thumbnail")) ||
       (await importCoverImage(subpage, images));
-    return { ...subpage, image };
+    const coverImage = await importCoverImage(subpage, images);
+    const coverSrc = coverImage?.src || "";
+    return { ...subpage, image, coverSrc };
   }),
 );
 
@@ -179,6 +181,7 @@ if (pageImage) {
                     href={`/${locale === siteConfig.defaultLocale ? "" : `${locale}/`}${subpage.data.Slug}`}
                     class="flex h-full flex-col"
                     data-astro-prefetch
+                    data-cover-src={subpage.coverSrc || undefined}
                   >
                     <div class="relative overflow-hidden">
                       {image && (
@@ -186,7 +189,6 @@ if (pageImage) {
                           class="object-cover transition-transform duration-500 group-hover:scale-110"
                           src={image}
                           alt={subpage.data.CoverAlt || ""}
-                          transition:name={subpage.data.PageId + "-image"}
                           loading="eager"
                           decoding="async"
                           widths={[400, 800]}
@@ -225,3 +227,30 @@ if (pageImage) {
     </div>
   </main>
 </Base>
+
+<script>
+  function setupCoverPreload() {
+    const links =
+      document.querySelectorAll<HTMLAnchorElement>("a[data-cover-src]");
+    const preloaded = new Set<string>();
+
+    for (const link of links) {
+      link.addEventListener(
+        "mouseenter",
+        () => {
+          const src = link.dataset.coverSrc;
+          if (!src || preloaded.has(src)) return;
+          preloaded.add(src);
+          const preloadLink = document.createElement("link");
+          preloadLink.rel = "preload";
+          preloadLink.as = "image";
+          preloadLink.href = src;
+          document.head.appendChild(preloadLink);
+        },
+        { once: true },
+      );
+    }
+  }
+
+  document.addEventListener("astro:page-load", setupCoverPreload);
+</script>

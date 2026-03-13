@@ -6,7 +6,7 @@ import {
   modifyFileName,
   urlToFileName,
 } from "../../lib/blog-helpers.ts";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import Base from "@/layouts/Base.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
 import { getLocale } from "src/lib/routes-helpers";
@@ -99,14 +99,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 const image = await importCoverImage(subpage, images);
 
 let coverUrl = "";
-let coverUrlBg = "";
+let placeholderSrc = "";
 if (image) {
   coverUrl = image.src;
-  coverUrlBg = image.src;
+  const placeholder = await getImage({ src: image, width: 20 });
+  placeholderSrc = placeholder.src;
 } else if (subpage.data.Cover) {
   const cover = subpage.data.Cover;
   coverUrl = typeof cover === "string" ? cover : cover.Url;
-  coverUrlBg = coverUrl;
 }
 ---
 
@@ -119,21 +119,17 @@ if (image) {
     slug: slug,
   }}
 >
-  <Fragment slot="after-head">
-    <link rel="preload" href={coverUrlBg} as="image" />
-  </Fragment>
+  <Fragment slot="after-head" />
   {
     image && (
-      <div class="relative mb-8 h-72 w-full overflow-hidden md:h-128">
+      <div
+        class="blur-load relative mb-8 h-svh w-full overflow-hidden"
+        style={`background-image: url(${placeholderSrc}); background-size: cover; background-position: center;`}
+      >
         <Image
-          class="animate-fade absolute z-10 h-full w-full object-cover object-center"
+          class="h-full w-full object-cover opacity-0 transition-opacity duration-300"
           src={image}
           alt={subpage.data.CoverAlt || ""}
-          transition:name={subpage.data.PageId + "-image"}
-        />
-        <div
-          class="absolute h-full w-full bg-cover bg-center blur-lg"
-          style={`background-image: url(${coverUrlBg})`}
         />
       </div>
     )
@@ -457,20 +453,22 @@ if (image) {
     darkMode: true,
   });
   document.addEventListener("DOMContentLoaded", async () => {
-    const blocks = document.querySelectorAll("pre code.language-mermaid");
-    let idx = 0;
+    const blocks = document.querySelectorAll('pre[data-language="mermaid"]');
+    if (blocks.length === 0) return;
     for (const block of blocks) {
       const code = block.textContent ?? "";
-      const id = `mermaid-${idx++}`;
-      try {
-        const { svg } = await mermaid.render(id, code);
-        const div = document.createElement("div");
-        div.className = "mermaid-diagram my-4 overflow-x-auto";
-        div.innerHTML = svg;
-        block.closest("pre")?.replaceWith(div);
-      } catch (e) {
-        console.warn("Mermaid render failed", e);
-      }
+      const wrapper = document.createElement("div");
+      wrapper.className = "mermaid-diagram my-4 overflow-x-auto";
+      const pre = document.createElement("pre");
+      pre.className = "mermaid";
+      pre.textContent = code;
+      wrapper.appendChild(pre);
+      block.replaceWith(wrapper);
+    }
+    try {
+      await mermaid.run({ querySelector: ".mermaid" });
+    } catch (e) {
+      console.warn("Mermaid run failed", e);
     }
   });
 </script>
@@ -479,4 +477,51 @@ if (image) {
   th {
     font-weight: 300;
   }
+
+  .blur-load::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    animation: pulse 2.5s infinite;
+  }
+
+  .blur-load.loaded > img {
+    opacity: 1;
+  }
+
+  .blur-load.loaded::before {
+    content: none;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      background: rgba(255, 255, 255, 0);
+    }
+    50% {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
 </style>
+
+<script>
+  function setupBlurLoad() {
+    document.querySelectorAll(".blur-load").forEach((div) => {
+      const img = div.querySelector("img");
+      if (!img) return;
+
+      function loaded() {
+        div.classList.add("loaded");
+      }
+
+      if (img.complete) {
+        loaded();
+      } else {
+        img.addEventListener("load", loaded);
+      }
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupBlurLoad);
+</script>
