@@ -127,7 +127,7 @@ if (image) {
     image && (
       <div
         class="blur-load relative mb-8 h-[60svh] w-full overflow-hidden md:h-svh"
-        style={`background-image: url(${placeholderSrc}); background-size: cover; background-position: center;`}
+        style={`--placeholder: url(${placeholderSrc});`}
       >
         <Image
           class="h-full w-full object-cover opacity-0"
@@ -509,6 +509,15 @@ if (image) {
   .blur-load::before {
     content: "";
     position: absolute;
+    inset: -20px;
+    z-index: 0;
+    background: var(--placeholder) center / cover no-repeat;
+    filter: blur(20px);
+  }
+
+  .blur-load::after {
+    content: "";
+    position: absolute;
     inset: 0;
     z-index: 1;
     animation: pulse 2.5s infinite;
@@ -519,7 +528,8 @@ if (image) {
     transition: opacity 0.3s ease;
   }
 
-  .blur-load.loaded::before {
+  .blur-load.loaded::before,
+  .blur-load.loaded::after {
     content: none;
   }
 
