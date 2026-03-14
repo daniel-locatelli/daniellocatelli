@@ -126,11 +126,11 @@ if (image) {
   {
     image && (
       <div
-        class="blur-load relative mb-8 h-svh w-full overflow-hidden"
+        class="blur-load relative mb-8 h-[60svh] w-full overflow-hidden md:h-svh"
         style={`background-image: url(${placeholderSrc}); background-size: cover; background-position: center;`}
       >
         <Image
-          class="h-full w-full object-cover opacity-0 transition-opacity duration-300"
+          class="h-full w-full object-cover opacity-0"
           src={image}
           alt={subpage.data.CoverAlt || ""}
         />
@@ -516,6 +516,11 @@ if (image) {
 
   .blur-load.loaded > img {
     opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .blur-load.no-transition.loaded > img {
+    transition: none;
   }
 
   .blur-load.loaded::before {
@@ -560,11 +565,17 @@ if (image) {
 </script>
 
 <script>
-  function setupBlurLoad() {
+  function setupBlurLoad(skipTransition: boolean) {
     document.querySelectorAll(".blur-load").forEach((div) => {
-      if (div.classList.contains("loaded")) return; // already handled
+      if (div.classList.contains("loaded")) return;
       const img = div.querySelector("img");
       if (!img) return;
+
+      // During client-side navigation, skip the opacity transition
+      // to avoid conflicting with the view transition fade animation.
+      if (skipTransition) {
+        div.classList.add("no-transition");
+      }
 
       function onLoaded() {
         div.classList.add("loaded");
@@ -578,11 +589,10 @@ if (image) {
     });
   }
 
-  // Run on after-swap (before view transition animation captures screenshot)
-  // so cached images get the loaded class before the snapshot is taken.
-  document.addEventListener("astro:after-swap", setupBlurLoad);
-  // Also run on page-load for the initial full page load (after-swap doesn't fire then).
-  document.addEventListener("astro:page-load", setupBlurLoad);
+  // Client-side navigation: skip blur transition (view transition handles the fade)
+  document.addEventListener("astro:after-swap", () => setupBlurLoad(true));
+  // Initial page load: use the blur-up transition normally
+  document.addEventListener("astro:page-load", () => setupBlurLoad(false));
 </script>
 
 <div
