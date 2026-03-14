@@ -108,6 +108,7 @@ for (const dbName of dbNames) {
 
 // Flatten and sort pages
 const sortedSubpages = subpages
+  .filter((p) => p.data.Active !== false)
   .filter((p) => getEntryLocale(p.id) === locale)
   .sort((a, b) => {
     if (!a.data.DateStart) return 1;

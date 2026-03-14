@@ -53,6 +53,9 @@ export async function getStaticPaths() {
     const isDefaultLocale = locale === siteConfig.defaultLocale;
 
     for (const subpage of allSubpages) {
+      // Skip inactive entries (content not yet ready for their own page)
+      if (subpage.data.Active === false) continue;
+
       // Determine the subpage's locale from its ID (path)
       const parts = subpage.id.split("/");
       const subpageLocale =
