@@ -72,14 +72,11 @@ const publications = publicationsCollection
 const teachingCollection = await getCollection("teaching", ({ id }) => {
   return id.startsWith(`${locale}/`);
 });
-// Filter and map teaching (Engagements)
-// Original filter: new Date(eng.startDate) >= new Date(2023, 11, 0) (Dec 2023?)
-// Actually new Date(2023, 11, 0) is Nov 30 2023? or Dec 0? JS months are 0-indexed. 11 is Dec. Day 0 is last day of previous month?
-// Let's assume the user meant "Recent engagements".
+// Filter teaching engagements from 2023 onwards
 const engSelected = teachingCollection
   .filter((t) => {
     if (!t.data.DateStart) return false;
-    return new Date(t.data.DateStart) >= new Date("2023-11-30"); // Approximate matching original filter
+    return new Date(t.data.DateStart) >= new Date("2023-01-01");
   })
   .sort((a, b) => {
     return (
