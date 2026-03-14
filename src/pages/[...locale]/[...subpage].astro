@@ -576,3 +576,72 @@ if (image) {
 
   document.addEventListener("astro:page-load", setupBlurLoad);
 </script>
+
+<div
+  id="lightbox"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
+>
+  <button
+    id="lightbox-close"
+    aria-label="Close lightbox"
+    class="absolute top-4 right-4 z-10 cursor-pointer text-3xl text-white/70 transition hover:text-white"
+    >&times;</button
+  >
+  <img
+    id="lightbox-img"
+    class="max-h-[90vh] max-w-[90vw] rounded object-contain"
+    alt=""
+  />
+</div>
+
+<script>
+  function setupLightbox() {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById(
+      "lightbox-img",
+    ) as HTMLImageElement | null;
+    const lightboxClose = document.getElementById("lightbox-close");
+    if (!lightbox || !lightboxImg) return;
+
+    const prose = document.querySelector(".prose");
+    if (!prose) return;
+
+    // Make prose images look clickable
+    prose.querySelectorAll("img").forEach((img) => {
+      img.style.cursor = "zoom-in";
+    });
+
+    // Event delegation: click on any image inside .prose
+    prose.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName !== "IMG") return;
+      const img = target as HTMLImageElement;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+    });
+
+    function closeLightbox() {
+      lightbox!.classList.add("hidden");
+      lightbox!.classList.remove("flex");
+      lightboxImg!.src = "";
+    }
+
+    // Close on backdrop click
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox || e.target === lightboxClose) {
+        closeLightbox();
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !lightbox.classList.contains("hidden")) {
+        closeLightbox();
+      }
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupLightbox);
+</script>
