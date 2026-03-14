@@ -53,8 +53,8 @@ const extractLink = (linkProp: any) => {
 // Publications
 const publicationsCollection = await getCollection(
   "publications",
-  ({ data }) => {
-    return data.Locale === locale || data.Locale === "en";
+  ({ id }) => {
+    return id.startsWith(`${locale}/`);
   },
 );
 const publications = publicationsCollection
@@ -74,8 +74,8 @@ const publications = publicationsCollection
   }));
 
 // Teaching (Engagements) - Full List
-const teachingCollection = await getCollection("teaching", ({ data }) => {
-  return data.Locale === locale || (locale === "en" && !data.Locale);
+const teachingCollection = await getCollection("teaching", ({ id }) => {
+  return id.startsWith(`${locale}/`);
 });
 const engagements = teachingCollection
   .sort((a, b) => {
@@ -96,32 +96,32 @@ const engagements = teachingCollection
   }));
 
 // Skills
-const skillsCollection = await getCollection("skills", ({ data }) => {
-  return data.Locale === locale || (locale === "en" && !data.Locale);
+const skillsCollection = await getCollection("skills", ({ id }) => {
+  return id.startsWith(`${locale}/`) || id.startsWith("en/");
 });
 
 const skillsProgramming = skillsCollection.filter(
-  (s) => s.data.Category === "Programming",
+  (s) => s.data.Category === "Programming language",
 );
 const skillsFrameworks = skillsCollection.filter(
-  (s) => s.data.Category === "Frameworks",
+  (s) => s.data.Category === "JavaScript framework",
 );
 const skillsDatabases = skillsCollection.filter(
-  (s) => s.data.Category === "Databases",
+  (s) => s.data.Category?.toLowerCase().includes("database") || s.data.Name === "PostgreSQL" || s.data.Name === "MongoDB",
 );
 const skillsDesign = skillsCollection.filter(
-  (s) => s.data.Category === "Design Tools",
+  (s) => ["Raster image editing", "Vector editing", "Video editing", "Text editing", "BIM", "CAD", "Rendering"].includes(s.data.Category || ""),
 );
 const skillsSpecialized = skillsCollection
-  .filter((s) => s.data.Category === "Specialization")
+  .filter((s) => ["Computational design", "Fabrication process", "Interactivity ecosystem", "Markup language", "Styling language"].includes(s.data.Category || ""))
   .map((s) => s.data.Name);
 const skillsLanguages = skillsCollection.filter(
-  (s) => s.data.Category === "Languages",
+  (s) => s.data.Category === "Language",
 );
 
 // Projects (Works)
-const projectsCollection = await getCollection("projects", ({ data }) => {
-  return data.Locale === locale || data.Locale === "en";
+const projectsCollection = await getCollection("projects", ({ id }) => {
+  return id.startsWith(`${locale}/`);
 });
 const works = projectsCollection
   .sort((a, b) => {

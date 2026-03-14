@@ -48,8 +48,8 @@ const extractLink = (linkProp: any) => {
 // Fetch Collections
 const publicationsCollection = await getCollection(
   "publications",
-  ({ data }) => {
-    return data.Locale === locale || data.Locale === "en"; // Fallback to en if needed, or strict locale. Assuming localized files exist.
+  ({ id }) => {
+    return id.startsWith(`${locale}/`);
   },
 );
 // Sort publications by DateStart descending
@@ -69,8 +69,8 @@ const publications = publicationsCollection
     authors: p.data.Authors?.map((a: any) => extractName(a)) || [],
   }));
 
-const teachingCollection = await getCollection("teaching", ({ data }) => {
-  return data.Locale === locale || (locale === "en" && !data.Locale);
+const teachingCollection = await getCollection("teaching", ({ id }) => {
+  return id.startsWith(`${locale}/`);
 });
 // Filter and map teaching (Engagements)
 // Original filter: new Date(eng.startDate) >= new Date(2023, 11, 0) (Dec 2023?)
@@ -98,27 +98,27 @@ const engSelected = teachingCollection
     description: t.data.Description,
   }));
 
-const skillsCollection = await getCollection("skills", ({ data }) => {
-  return data.Locale === locale || (locale === "en" && !data.Locale);
+const skillsCollection = await getCollection("skills", ({ id }) => {
+  return id.startsWith(`${locale}/`) || id.startsWith("en/");
 });
 
 const skillsProgramming = skillsCollection.filter(
-  (s) => s.data.Category === "Programming",
+  (s) => s.data.Category === "Programming language",
 );
 const skillsFrameworks = skillsCollection.filter(
-  (s) => s.data.Category === "Frameworks",
+  (s) => s.data.Category === "JavaScript framework",
 );
 const skillsDatabases = skillsCollection.filter(
-  (s) => s.data.Category === "Databases",
+  (s) => s.data.Category?.toLowerCase().includes("database") || s.data.Name === "PostgreSQL" || s.data.Name === "MongoDB",
 );
 const skillsDesign = skillsCollection.filter(
-  (s) => s.data.Category === "Design Tools",
+  (s) => ["Raster image editing", "Vector editing", "Video editing", "Text editing", "BIM", "CAD", "Rendering"].includes(s.data.Category || ""),
 );
 const skillsSpecialized = skillsCollection
-  .filter((s) => s.data.Category === "Specialization")
-  .map((s) => s.data.Name); // String array in original
+  .filter((s) => ["Computational design", "Fabrication process", "Interactivity ecosystem", "Markup language", "Styling language"].includes(s.data.Category || ""))
+  .map((s) => s.data.Name);
 const skillsLanguages = skillsCollection.filter(
-  (s) => s.data.Category === "Languages",
+  (s) => s.data.Category === "Language",
 );
 
 const expSelected = cv.experiences.filter(
