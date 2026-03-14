@@ -519,10 +519,6 @@ if (image) {
     transition: opacity 0.3s ease;
   }
 
-  .blur-load.no-transition.loaded > img {
-    transition: none;
-  }
-
   .blur-load.loaded::before {
     content: none;
   }
@@ -565,33 +561,36 @@ if (image) {
 </script>
 
 <script>
-  function setupBlurLoad(skipTransition: boolean) {
+  function setupBlurLoad(isNavigation: boolean) {
     document.querySelectorAll(".blur-load").forEach((div) => {
       if (div.classList.contains("loaded")) return;
-      const img = div.querySelector("img");
+      const img = div.querySelector("img") as HTMLImageElement | null;
       if (!img) return;
 
-      // During client-side navigation, skip the opacity transition
-      // to avoid conflicting with the view transition fade animation.
-      if (skipTransition) {
-        div.classList.add("no-transition");
-      }
-
-      function onLoaded() {
-        div.classList.add("loaded");
-      }
-
       if (img.complete) {
-        onLoaded();
+        // Image already cached. During client-side navigation, set
+        // opacity directly via inline style to bypass the CSS transition
+        // and avoid the double blur cycle on Safari/iPhone.
+        if (isNavigation) {
+          img.style.opacity = "1";
+        }
+        div.classList.add("loaded");
       } else {
-        img.addEventListener("load", onLoaded, { once: true });
+        // Image not cached — let the normal blur-up transition handle it.
+        img.addEventListener(
+          "load",
+          () => {
+            div.classList.add("loaded");
+          },
+          { once: true },
+        );
       }
     });
   }
 
-  // Client-side navigation: skip blur transition (view transition handles the fade)
+  // Client-side navigation: runs before view transition captures screenshot
   document.addEventListener("astro:after-swap", () => setupBlurLoad(true));
-  // Initial page load: use the blur-up transition normally
+  // Initial page load (no view transition)
   document.addEventListener("astro:page-load", () => setupBlurLoad(false));
 </script>
 
