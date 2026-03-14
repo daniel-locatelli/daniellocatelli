@@ -105,7 +105,7 @@ let coverUrl = "";
 let placeholderSrc = "";
 if (image) {
   coverUrl = image.src;
-  const placeholder = await getImage({ src: image, width: 20 });
+  const placeholder = await getImage({ src: image, width: 64 });
   placeholderSrc = placeholder.src;
 } else if (subpage.data.Cover) {
   const cover = subpage.data.Cover;
