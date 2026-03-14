@@ -562,21 +562,26 @@ if (image) {
 <script>
   function setupBlurLoad() {
     document.querySelectorAll(".blur-load").forEach((div) => {
+      if (div.classList.contains("loaded")) return; // already handled
       const img = div.querySelector("img");
       if (!img) return;
 
-      function loaded() {
+      function onLoaded() {
         div.classList.add("loaded");
       }
 
       if (img.complete) {
-        loaded();
+        onLoaded();
       } else {
-        img.addEventListener("load", loaded);
+        img.addEventListener("load", onLoaded, { once: true });
       }
     });
   }
 
+  // Run on after-swap (before view transition animation captures screenshot)
+  // so cached images get the loaded class before the snapshot is taken.
+  document.addEventListener("astro:after-swap", setupBlurLoad);
+  // Also run on page-load for the initial full page load (after-swap doesn't fire then).
   document.addEventListener("astro:page-load", setupBlurLoad);
 </script>
 
