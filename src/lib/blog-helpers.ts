@@ -1,5 +1,7 @@
 import { BASE_PATH } from "../config/server";
 import { pathJoin } from "./utils";
+import sharp from "sharp";
+import { readFile } from "node:fs/promises";
 
 export const getNavLink = (nav: string) => {
   if ((!nav || nav === "/") && BASE_PATH) {
@@ -236,4 +238,17 @@ export function modifyFileName(
     return newBeginningEdited + name + newEnd + extension;
   }
   return name + newEnd + extension;
+}
+
+/**
+ * Generate a tiny base64-encoded WebP data URL for use as a blur placeholder.
+ * The result is inlined in the HTML so it paints instantly — no network request.
+ */
+export async function generateBlurDataUrl(imagePath: string): Promise<string> {
+  const buffer = await readFile(imagePath);
+  const webp = await sharp(buffer)
+    .resize({ width: 20 })
+    .webp({ quality: 20 })
+    .toBuffer();
+  return `data:image/webp;base64,${webp.toString("base64")}`;
 }

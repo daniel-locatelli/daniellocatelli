@@ -5,8 +5,9 @@ import {
   importCoverImage,
   modifyFileName,
   urlToFileName,
+  generateBlurDataUrl,
 } from "../../lib/blog-helpers.ts";
-import { Image, getImage } from "astro:assets";
+import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
 import { getLocale } from "src/lib/routes-helpers";
@@ -102,11 +103,13 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 const image = await importCoverImage(subpage, images);
 
 let coverUrl = "";
-let placeholderSrc = "";
+let blurDataUrl = "";
 if (image) {
   coverUrl = image.src;
-  const placeholder = await getImage({ src: image, width: 64 });
-  placeholderSrc = placeholder.src;
+  const fsPath = (image as any).fsPath as string;
+  if (fsPath) {
+    blurDataUrl = await generateBlurDataUrl(fsPath);
+  }
 } else if (subpage.data.Cover) {
   const cover = subpage.data.Cover;
   coverUrl = typeof cover === "string" ? cover : cover.Url;
@@ -125,12 +128,17 @@ if (image) {
   <Fragment slot="after-head" />
   {
     image && (
-      <div
-        class="blur-load relative mb-8 h-[60svh] w-full overflow-hidden md:h-svh"
-        style={`--placeholder: url(${placeholderSrc});`}
-      >
+      <div class="hero-image relative mb-8 h-[60svh] w-full overflow-hidden md:h-svh">
+        {blurDataUrl && (
+          <img
+            src={blurDataUrl}
+            class="absolute inset-0 h-full w-full object-cover scale-110 blur-xl"
+            aria-hidden="true"
+            alt=""
+          />
+        )}
         <Image
-          class="h-full w-full object-cover opacity-0"
+          class="hero-img absolute inset-0 h-full w-full object-cover opacity-0"
           src={image}
           alt={subpage.data.CoverAlt || ""}
         />
@@ -506,41 +514,8 @@ if (image) {
     font-weight: 300;
   }
 
-  .blur-load::before {
-    content: "";
-    position: absolute;
-    inset: -20px;
-    z-index: 0;
-    background: var(--placeholder) center / cover no-repeat;
-    filter: blur(20px);
-  }
-
-  .blur-load::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    animation: pulse 2.5s infinite;
-  }
-
-  .blur-load.loaded > img {
-    opacity: 1;
+  .hero-img {
     transition: opacity 0.3s ease;
-  }
-
-  .blur-load.loaded::before,
-  .blur-load.loaded::after {
-    content: none;
-  }
-
-  @keyframes pulse {
-    0%,
-    100% {
-      background: rgba(255, 255, 255, 0);
-    }
-    50% {
-      background: rgba(255, 255, 255, 0.1);
-    }
   }
 </style>
 
@@ -549,7 +524,7 @@ if (image) {
     const chevron = document.querySelector(".scroll-chevron");
     if (!chevron) return;
 
-    const hero = chevron.closest(".blur-load");
+    const hero = chevron.closest(".hero-image");
     if (!hero) return;
 
     const observer = new IntersectionObserver(
@@ -571,26 +546,19 @@ if (image) {
 </script>
 
 <script>
-  function setupBlurLoad(isNavigation: boolean) {
-    document.querySelectorAll(".blur-load").forEach((div) => {
-      if (div.classList.contains("loaded")) return;
-      const img = div.querySelector("img") as HTMLImageElement | null;
-      if (!img) return;
+  function setupHeroReveal(skipTransition: boolean) {
+    document.querySelectorAll<HTMLImageElement>(".hero-img").forEach((img) => {
+      if (skipTransition) {
+        img.style.transition = "none";
+      }
 
       if (img.complete) {
-        // Image already cached. During client-side navigation, set
-        // opacity directly via inline style to bypass the CSS transition
-        // and avoid the double blur cycle on Safari/iPhone.
-        if (isNavigation) {
-          img.style.opacity = "1";
-        }
-        div.classList.add("loaded");
+        img.style.opacity = "1";
       } else {
-        // Image not cached — let the normal blur-up transition handle it.
         img.addEventListener(
           "load",
           () => {
-            div.classList.add("loaded");
+            img.style.opacity = "1";
           },
           { once: true },
         );
@@ -598,10 +566,10 @@ if (image) {
     });
   }
 
-  // Client-side navigation: runs before view transition captures screenshot
-  document.addEventListener("astro:after-swap", () => setupBlurLoad(true));
-  // Initial page load (no view transition)
-  document.addEventListener("astro:page-load", () => setupBlurLoad(false));
+  // Client-side navigation (cached): skip transition to avoid flash
+  document.addEventListener("astro:after-swap", () => setupHeroReveal(true));
+  // Initial page load: normal 300ms fade-in
+  document.addEventListener("astro:page-load", () => setupHeroReveal(false));
 </script>
 
 <div
