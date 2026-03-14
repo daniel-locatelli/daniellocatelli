@@ -255,6 +255,7 @@ const { height = "180px" } = Astro.props;
       private wireframe: THREE.LineSegments | null = null;
       private animationId: number | null = null;
       private resizeObserver: ResizeObserver | null = null;
+      private scrollHandler: (() => void) | null = null;
 
       private originalMeshPositions: Float32Array | null = null;
       private originalEdgePositions: Float32Array | null = null;
@@ -420,7 +421,7 @@ const { height = "180px" } = Astro.props;
       }
 
       private setupScrollAnimation(): void {
-        window.addEventListener("scroll", () => {
+        this.scrollHandler = () => {
           const rect = this.container.getBoundingClientRect();
           const windowHeight =
             window.innerHeight || document.documentElement.clientHeight;
@@ -429,7 +430,8 @@ const { height = "180px" } = Astro.props;
             1 - Math.max(0, Math.min(rect.bottom / windowHeight, 1));
           this.targetExplosion = percent * 1.75;
           this.targetRotation = percent * Math.PI;
-        });
+        };
+        window.addEventListener("scroll", this.scrollHandler);
       }
 
       private animate(): void {
@@ -459,17 +461,39 @@ const { height = "180px" } = Astro.props;
       public dispose(): void {
         if (this.animationId) cancelAnimationFrame(this.animationId);
         if (this.resizeObserver) this.resizeObserver.disconnect();
+        if (this.scrollHandler) window.removeEventListener("scroll", this.scrollHandler);
         if (this.renderer) this.renderer.dispose();
       }
     }
 
     // ── Bootstrap ──
-    const container = document.getElementById("geodesic-canvas") as HTMLElement;
-    if (container) {
-      const geodesicDome = new GeodesicDomeComponent(container);
-      document.addEventListener("astro:before-preparation", () => {
-        geodesicDome.dispose();
-      });
+    // Track the active instance so we can dispose it before navigating away.
+    let activeInstance: GeodesicDomeComponent | null = null;
+
+    function initGeodesicDome() {
+      // Clean up any leftover instance (defensive)
+      if (activeInstance) {
+        activeInstance.dispose();
+        activeInstance = null;
+      }
+
+      const container = document.getElementById(
+        "geodesic-canvas",
+      ) as HTMLElement;
+      if (container) {
+        activeInstance = new GeodesicDomeComponent(container);
+      }
     }
+
+    // astro:page-load fires on initial load AND after every client-side navigation
+    document.addEventListener("astro:page-load", initGeodesicDome);
+
+    // Clean up WebGL resources before the page transition swaps the DOM
+    document.addEventListener("astro:before-preparation", () => {
+      if (activeInstance) {
+        activeInstance.dispose();
+        activeInstance = null;
+      }
+    });
   })();
 </script>
