@@ -42,7 +42,7 @@ Ich unterstützte Christoph bei seiner Untersuchung von Berechnungsmethoden zur 
 
 ![Der KUKA-Roboterarm im Labor mit Kohlefaser-Wickelproben auf den Regalen darüber.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg)
 
-![Nahaufnahme der Rahmenstruktur, die zur Verankerung der Fasern während des robotischen Wickelprozesses verwendet wird.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/resin-preparation.jpg)
+![Harzvorbereitung für den Kohlefaser-Wickelprozess.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/resin-preparation.jpg)
 
 ![Kohlefaser-Wickelproben auf dem Lagerregal, die die komplexen hohlen Geometrien zeigen, die durch kernloses Filamentwickeln erreicht werden.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/carbon-fiber-samples-on-shelf.jpg)
 

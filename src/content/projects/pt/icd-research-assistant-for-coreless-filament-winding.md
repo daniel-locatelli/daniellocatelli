@@ -42,7 +42,7 @@ Auxiliei Christoph em sua investigação de métodos computacionais para prever 
 
 ![O braço robótico KUKA no laboratório com amostras de enrolamento de fibra de carbono armazenadas nas prateleiras acima.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg)
 
-![Detalhe da estrutura utilizada para ancorar as fibras durante o processo de enrolamento robótico.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/resin-preparation.jpg)
+![Preparação da resina para o processo de enrolamento de fibra de carbono.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/resin-preparation.jpg)
 
 ![Amostras de enrolamento de fibra de carbono na prateleira de armazenamento, mostrando as complexas geometrias ocas alcançadas pelo enrolamento filamentar sem núcleo.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/carbon-fiber-samples-on-shelf.jpg)
 
