@@ -75,6 +75,9 @@ export default {
               fontStyle: "italic",
               color: "var(--color-zinc-300)",
             },
+            img: {
+              borderRadius: "0.5rem",
+            },
             code: {
               backgroundColor: "var(--color-zinc-800)",
               color: "var(--color-zinc-200)",

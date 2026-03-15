@@ -7,6 +7,7 @@ import cloudflare from "@astrojs/cloudflare";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import { rehypeLazyImages } from "./src/lib/rehype-lazy-images";
+import { rehypeFigure } from "./src/lib/rehype-figure";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -39,7 +40,7 @@ export default defineConfig({
   integrations: [sitemap(), icon(), react(), mdx()],
   prefetch: true,
   markdown: {
-    rehypePlugins: [rehypeLazyImages],
+    rehypePlugins: [rehypeFigure, rehypeLazyImages],
   },
   vite: {
     plugins: [tailwindcss()],
