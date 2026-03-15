@@ -3,7 +3,7 @@ import { defineCollection, z } from "astro:content";
 const pageSchema = z.object({
   PageId: z.string().optional(),
   Name: z.string(),
-  Slug: z.string(),
+  Slug: z.string().optional(),
   DateStart: z.string().optional(),
   DateEnd: z.string().optional(),
   Description: z.string().optional(),
@@ -183,6 +183,8 @@ const pageSchema = z.object({
     )
     .optional(),
   References: z.array(z.any()).optional(),
+  Supervisors: z.array(z.string()).optional(),
+  Advisors: z.array(z.string()).optional(),
   Active: z.boolean().optional(),
   Disclosed: z.boolean().optional().nullable(),
   Category: z.string().optional(),
@@ -207,31 +209,32 @@ export const collections = {
     type: "content",
     schema: pageSchema,
   }),
-  tools: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  prizes: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  people: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  organizations: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  cities: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
   publications: defineCollection({
     type: "content",
     schema: pageSchema,
   }),
   skills: defineCollection({
+    type: "content",
+    schema: pageSchema,
+  }),
+  // CV content collections (migrated from src/i18n/cv/)
+  experiences: defineCollection({
+    type: "content",
+    schema: pageSchema,
+  }),
+  education: defineCollection({
+    type: "content",
+    schema: pageSchema,
+  }),
+  scholarships: defineCollection({
+    type: "content",
+    schema: pageSchema,
+  }),
+  certifications: defineCollection({
+    type: "content",
+    schema: pageSchema,
+  }),
+  "courses-attended": defineCollection({
     type: "content",
     schema: pageSchema,
   }),
