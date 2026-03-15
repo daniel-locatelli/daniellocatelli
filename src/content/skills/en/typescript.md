@@ -1,6 +1,3 @@
 ---
-{
-  "Name": "TypeScript",
-  "Slug": "typescript"
-}
+Name: TypeScript
 ---

@@ -1,36 +1,34 @@
 ---
-{
-  "Cover": "/assets/content/projects/kfw-funding-calculator-by-buildsystems/cover-cover.png",
-  "CoverAlt": "A man uses the funding calculator on an iPad.",
-  "Description": "This calculator simulates bank loans and subsidies, making sustainable constructions and renovations accessible to real estate developers and homeowners.",
-  "Name": "KfW Funding Calculator by BuildSystems",
-  "Slug": "projects/kfw-funding-calculator-by-buildsystems",
-  "Tags": [
-    "Software Development",
-    "Web Development"
-  ],
-  "Authors": [
-    "BuildSystems"
-  ],
-  "Category": "Software Development",
-  "City": [
-    "Munich"
-  ],
-  "Client": "BuildSystems",
-  "DateStart": "2023-11-20",
-  "DateEnd": "2024-07-30",
-  "Link": {
-    "Text": "https://app.buildsystems.de",
-    "Href": "https://app.buildsystems.de/"
-  },
-  "Place": "Online",
-  "Director": ["Martin Bittmann"],
-  "Manager": ["Julia Dorn"],
-  "Team": ["Daniel Locatelli", "Daniel Dieren"],
-  "OtherLinks": [
-    { "Text": "How to use Signals with Angular Forms", "Href": "https://zoaibkhan.com/blog/how-to-use-signals-with-angular-forms/", "Description": "Zoaib Khan" }
-  ]
-}
+Cover: /assets/content/projects/kfw-funding-calculator-by-buildsystems/kfw-funding-calculator-by-buildsystems-cover.png
+CoverAlt: A man uses the funding calculator on an iPad.
+Description: "This calculator simulates bank loans and subsidies, making sustainable constructions and renovations accessible to real estate developers and homeowners."
+Name: KfW Funding Calculator by BuildSystems
+Tags:
+  - Software Development
+  - Web Development
+Authors:
+  - BuildSystems
+Category: Software Development
+City:
+  - Munich
+Client: BuildSystems
+DateStart: "2023-11-20"
+DateEnd: "2024-07-30"
+Link:
+  Text: "https://app.buildsystems.de"
+  Href: "https://app.buildsystems.de/"
+Place: Online
+Director:
+  - Martin Bittmann
+Manager:
+  - Julia Dorn
+Team:
+  - Daniel Nunes Locatelli
+  - Daniel Dieren
+OtherLinks:
+  - Text: How to use Signals with Angular Forms
+    Href: "https://zoaibkhan.com/blog/how-to-use-signals-with-angular-forms/"
+    Description: Zoaib Khan
 ---
 
 

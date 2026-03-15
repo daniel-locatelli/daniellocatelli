@@ -1,22 +1,18 @@
 ---
-{
-  "Cover": "/assets/content/teaching/models-bynature-10/cover-cover.jpg",
-  "CoverAlt": "Eine Studentin präsentiert ihren aus dem Workshop entstandenen Voronoi-Pavillon.",
-  "Description": "Ziel dieses Workshops war es, computergestützte Designpraktiken mit natürlichen Phänomenen zu verknüpfen. Dabei wurden Themen wie assoziative Modellierung, Biomimetik und visuelle Programmiersprachen behandelt.",
-  "Name": "Models byNature 1.0",
-  "Slug": "teaching/models-bynature-10",
-  "Tags": [],
-  "Authors": ["Daniel Locatelli", "Adalberto de Paula"],
-  "Category": "Workshop",
-  "City": [
-    "São Paulo"
-  ],
-  "DateStart": "2019-05-18",
-  "DateEnd": "2019-06-08",
-  "Language": "Portuguese",
-  "Link": [],
-  "Place": "Atelier Marko Brajovic"
-}
+Cover: /assets/content/teaching/models-bynature-10/models-bynature-10-cover.jpg
+CoverAlt: Eine Studentin präsentiert ihren aus dem Workshop entstandenen Voronoi-Pavillon.
+Description: "Ziel dieses Workshops war es, computergestützte Designpraktiken mit natürlichen Phänomenen zu verknüpfen. Dabei wurden Themen wie assoziative Modellierung, Biomimetik und visuelle Programmiersprachen behandelt."
+Name: Models byNature 1.0
+Authors:
+  - Daniel Nunes Locatelli
+  - Adalberto de Paula
+Category: Workshop
+City:
+  - São Paulo
+DateStart: "2019-05-18"
+DateEnd: "2019-06-08"
+Language: Portuguese
+Place: Atelier Marko Brajovic
 ---
 
 Dieser Workshop zielte darauf ab, Computational-Design-Praktiken mit natürlichen Phänomenen zu verbinden und behandelte Themen wie Biomimetik, Modellierung mit der Natur und visuelle Programmiersprachen unter Verwendung von Rhino und Grasshopper.

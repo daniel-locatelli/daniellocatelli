@@ -1,6 +1,3 @@
 ---
-{
-  "Name": "Computational Design",
-  "Slug": "computational-design"
-}
+Name: Computational Design
 ---

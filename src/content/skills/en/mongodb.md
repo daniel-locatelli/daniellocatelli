@@ -1,7 +1,4 @@
 ---
-{
-  "Name": "MongoDB",
-  "Slug": "mongodb",
-  "Link": "https://www.mongodb.com/"
-}
+Name: MongoDB
+Link: "https://www.mongodb.com/"
 ---

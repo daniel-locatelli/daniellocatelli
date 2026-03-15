@@ -1,36 +1,29 @@
 ---
-{
-  "Cover": "/assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/cover-cover.jpg",
-  "CoverAlt": "Daniel Locatelli pr\u00e4sentiert das Paper auf der IASS 2017 in Hamburg.",
-  "Description": "Dieses Paper untersucht die m\u00f6gliche Anwendung digitaler Werkzeuge beim Entwerfen und Herstellen textiler Gewebe durch die kombinierte Nutzung von Formfindung und der traditionellen Kl\u00f6ppeltechnik.",
-  "Name": "Algorithmisches Design f\u00fcr traditionelle Kl\u00f6ppelmethoden",
-  "Slug": "publications/algorithmic-design-for-traditional-bobbin-lace-methods",
-  "Tags": [
-    "Conceptual design",
-    "Form finding",
-    "Optimization",
-    "Dynamic relaxation",
-    "Evolutionary algorithm",
-    "Computational design",
-    "Grasshopper3d"
-  ],
-  "Authors": [
-    "Daniel Nunes Locatelli",
-    "Arthur Hunold Lara",
-    "Thiago Henrique Omena",
-    "Ruy Marcelo de Oliveira Pauletti"
-  ],
-  "City": [
-    "Hamburg"
-  ],
-  "DateStart": "2017-09-01",
-  "Language": "English",
-  "Link": {
-    "Text": "Paper at IASS 2017",
-    "Href": "https://www.ingentaconnect.com/content/iass/piass/2017/00002017/00000009/art00013"
-  },
-  "Place": "IASS 2017"
-}
+Cover: /assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/algorithmic-design-for-traditional-bobbin-lace-methods-cover.jpg
+CoverAlt: Daniel Nunes Locatelli präsentiert das Paper auf der IASS 2017 in Hamburg.
+Description: Dieses Paper untersucht die mögliche Anwendung digitaler Werkzeuge beim Entwerfen und Herstellen textiler Gewebe durch die kombinierte Nutzung von Formfindung und der traditionellen Klöppeltechnik.
+Name: Algorithmisches Design für traditionelle Klöppelmethoden
+Tags:
+  - Conceptual design
+  - Form finding
+  - Optimization
+  - Dynamic relaxation
+  - Evolutionary algorithm
+  - Computational design
+  - Grasshopper3d
+Authors:
+  - Daniel Nunes Locatelli
+  - Arthur Hunold Lara
+  - Thiago Henrique Omena
+  - Ruy Marcelo de Oliveira Pauletti
+City:
+  - Hamburg
+DateStart: "2017-09-01"
+Language: English
+Link:
+  Text: Paper at IASS 2017
+  Href: "https://www.ingentaconnect.com/content/iass/piass/2017/00002017/00000009/art00013"
+Place: IASS 2017
 ---
 
 Dieses Paper untersucht die m\u00f6gliche Anwendung digitaler Werkzeuge beim Entwerfen und Herstellen textiler Gewebe durch die kombinierte Nutzung von Formfindung und der traditionellen Kl\u00f6ppeltechnik.

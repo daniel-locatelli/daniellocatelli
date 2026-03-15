@@ -1,40 +1,40 @@
 ---
-{
-  "Cover": "/assets/content/projects/canyon-by-artengineering-for-katharina-grosse/cover-cover.jpg",
-  "CoverAlt": "Foto do Canyon instalado na Louis Vuitton em Paris.",
-  "Description": "Para este projeto, Katharina Grosse escolheu esculpir com couro. O desafio aqui foi o de traduzir as tiras orgânicas de couro em chapas de aço dobradas. A solução foi usar uma estratégia já em uso na produção de barcos há milênios: developable surfaces.",
-  "Name": "Canyon por ArtEngineering para Katharina Grosse",
-  "Slug": "projects/canyon-by-artengineering-for-katharina-grosse",
-  "Tags": [
-    "Computational Design",
-    "Structural Analysis",
-    "Digital Fabrication",
-    "Grasshopper3D"
-  ],
-  "Authors": [
-    "ArtEngineering"
-  ],
-  "Category": "Computational design",
-  "City": [
-    "Paris"
-  ],
-  "Client": "Katharina Grosse",
-  "DateStart": "2022-01-20",
-  "Link": {
-    "Text": "Canyon at ArtEngineering",
-    "Href": "https://www.art-engineering.net/index.php/project/project_detail_eng/10160/4"
-  },
-  "Place": "Fondation Luise Vuitton",
-  "Director": ["Herwig Bretis"],
-  "Team": ["Daniel Locatelli"],
-  "Development": ["Kunstgiesserei St. Gallen", "T/E/S/S atelier d'ingénierie"],
-  "OtherLinks": [
-    { "Text": "Drawings, mock-ups & preparations for Canyon - Katharina Grosse", "Href": "https://www.katharinagrosse.com/blog/drawings_mock_ups_amp_preparations_for_canyon" },
-    { "Text": "Kunstgiesserei St. Gallen", "Href": "https://www.kunstgiesserei.ch/De/Work/1101/Katharina_Grosse_Canyon_2022" },
-    { "Text": "Canyon - Katharina Grosse", "Href": "https://art-engineering.net/en/projekt/canyon/" },
-    { "Text": "Canyon | TESS", "Href": "https://www.tess.fr/en/projet/canyon" }
-  ]
-}
+Cover: /assets/content/projects/canyon-by-artengineering-for-katharina-grosse/canyon-by-artengineering-for-katharina-grosse-cover.jpg
+CoverAlt: Foto do Canyon instalado na Louis Vuitton em Paris.
+Description: "Para este projeto, Katharina Grosse escolheu esculpir com couro. O desafio aqui foi o de traduzir as tiras orgânicas de couro em chapas de aço dobradas. A solução foi usar uma estratégia já em uso na produção de barcos há milênios: developable surfaces."
+Name: Canyon por ArtEngineering para Katharina Grosse
+Tags:
+  - Computational Design
+  - Structural Analysis
+  - Digital Fabrication
+  - Grasshopper3D
+Authors:
+  - ArtEngineering
+Category: Computational design
+City:
+  - Paris
+Client: Katharina Grosse
+DateStart: "2022-01-20"
+Link:
+  Text: Canyon at ArtEngineering
+  Href: "https://www.art-engineering.net/index.php/project/project_detail_eng/10160/4"
+Place: Fondation Luise Vuitton
+Director:
+  - Herwig Bretis
+Team:
+  - Daniel Nunes Locatelli
+Development:
+  - Kunstgiesserei St. Gallen
+  - "T/E/S/S atelier d'ingénierie"
+OtherLinks:
+  - Text: "Drawings, mock-ups & preparations for Canyon - Katharina Grosse"
+    Href: "https://www.katharinagrosse.com/blog/drawings_mock_ups_amp_preparations_for_canyon"
+  - Text: Kunstgiesserei St. Gallen
+    Href: "https://www.kunstgiesserei.ch/De/Work/1101/Katharina_Grosse_Canyon_2022"
+  - Text: Canyon - Katharina Grosse
+    Href: "https://art-engineering.net/en/projekt/canyon/"
+  - Text: "Canyon | TESS"
+    Href: "https://www.tess.fr/en/projet/canyon"
 ---
 
 Na ArtEntineering, às vezes um cliente aparecia em um momento crítico quando o tempo era curto, e eles precisavam entregar um projeto aparentemente simples, mas profundamente complexo.

@@ -1,6 +1,3 @@
 ---
-{
-  "Name": "Flask",
-  "Slug": "flask"
-}
+Name: Flask
 ---

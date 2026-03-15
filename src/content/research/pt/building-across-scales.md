@@ -1,27 +1,20 @@
 ---
-{
-  "Cover": "/assets/content/research/building-across-scales/cover-cover.jpeg",
-  "CoverAlt": "Protótipo final em escala real à noite. Os furos da laje se tornaram luminárias.",
-  "Description": "A pesquisa propõe um sistema de construção robótica heterogêneo e multiescalar para ampliar a automação da construção em madeira no canteiro de obras. Especificamente, apresenta o próximo passo na automação da colagem in loco ao introduzir um robô de fixação (clamping) customizado para a prensagem de elementos de madeira. Portanto, o cerne da pesquisa reside no desenvolvimento deste robô como parte de uma equipe robótica de construção mais ampla — incluindo um braço robótico industrial e um guindaste automatizado — operando em co-design com o material e o sistema construtivo.",
-  "Name": "Building Across Scales",
-  "Slug": "research/building-across-scales",
-  "Tags": [
-    "Computational design",
-    "Form finding",
-    "Robotics"
-  ],
-  "Authors": [
-    "Daniel Locatelli",
-    "Nils Opgenorth"
-  ],
-  "City": [],
-  "DateStart": "2024-12-01",
-  "Link": {
-    "Text": "Building Across Scales at ITECH Thesis Projects",
-    "Href": "https://www.itech.uni-stuttgart.de/itech-thesis-projects/2021-building-across-scales/"
-  },
-  "Place": "ITECH - University of Stuttgart"
-}
+Cover: /assets/content/research/building-across-scales/building-across-scales-cover.jpeg
+CoverAlt: Protótipo final em escala real à noite. Os furos da laje se tornaram luminárias.
+Description: "A pesquisa propõe um sistema de construção robótica heterogêneo e multiescalar para ampliar a automação da construção em madeira no canteiro de obras. Especificamente, apresenta o próximo passo na automação da colagem in loco ao introduzir um robô de fixação (clamping) customizado para a prensagem de elementos de madeira. Portanto, o cerne da pesquisa reside no desenvolvimento deste robô como parte de uma equipe robótica de construção mais ampla — incluindo um braço robótico industrial e um guindaste automatizado — operando em co-design com o material e o sistema construtivo."
+Name: Building Across Scales
+Tags:
+  - Computational design
+  - Form finding
+  - Robotics
+Authors:
+  - Daniel Nunes Locatelli
+  - Nils Opgenorth
+DateStart: "2024-12-01"
+Link:
+  Text: Building Across Scales at ITECH Thesis Projects
+  Href: "https://www.itech.uni-stuttgart.de/itech-thesis-projects/2021-building-across-scales/"
+Place: ITECH - University of Stuttgart
 ---
 
 

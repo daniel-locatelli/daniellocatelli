@@ -1,13 +1,6 @@
 ---
-{
-  "Name": "HTML",
-  "Slug": "skills/html",
-  "Tags": [],
-  "Authors": [],
-  "Category": "Markup language",
-  "City": [],
-  "Level": "Advanced",
-  "Link": []
-}
+Name: HTML
+Category: Markup language
+Level: Advanced
 ---
 

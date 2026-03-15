@@ -1,6 +1,3 @@
 ---
-{
-  "Name": "React",
-  "Slug": "react"
-}
+Name: React
 ---

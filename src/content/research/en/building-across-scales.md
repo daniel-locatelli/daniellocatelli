@@ -1,27 +1,20 @@
 ---
-{
-  "Cover": "/assets/content/research/building-across-scales/cover-cover.jpeg",
-  "CoverAlt": "Final full-scale demonstrator at night. The holes the slab became lamps.",
-  "Description": "The research proposes a heterogeneous multi-scalar robotic construction system to further automate on-site timber construction. Specifically, it presents the next step in the automation of on-site gluing by introducing a custom clamping robot for the on-site pressuring of timber elements. Therefore, at the core of the research lies the development of the clamping robot as part of a larger robotic construction team, including an industrial robotic arm and an automated crane in co-design with the material and building system.",
-  "Name": "Building Across Scales",
-  "Slug": "research/building-across-scales",
-  "Tags": [
-    "Computational design",
-    "Form finding",
-    "Robotics"
-  ],
-  "Authors": [
-    "Daniel Locatelli",
-    "Nils Opgenorth"
-  ],
-  "City": [],
-  "DateStart": "2024-12-01",
-  "Link": {
-    "Text": "Building Across Scales at ITECH Thesis Projects",
-    "Href": "https://www.itech.uni-stuttgart.de/itech-thesis-projects/2021-building-across-scales/"
-  },
-  "Place": "ITECH - University of Stuttgart"
-}
+Cover: /assets/content/research/building-across-scales/building-across-scales-cover.jpeg
+CoverAlt: Final full-scale demonstrator at night. The holes the slab became lamps.
+Description: "The research proposes a heterogeneous multi-scalar robotic construction system to further automate on-site timber construction. Specifically, it presents the next step in the automation of on-site gluing by introducing a custom clamping robot for the on-site pressuring of timber elements. Therefore, at the core of the research lies the development of the clamping robot as part of a larger robotic construction team, including an industrial robotic arm and an automated crane in co-design with the material and building system."
+Name: Building Across Scales
+Tags:
+  - Computational design
+  - Form finding
+  - Robotics
+Authors:
+  - Daniel Nunes Locatelli
+  - Nils Opgenorth
+DateStart: "2024-12-01"
+Link:
+  Text: Building Across Scales at ITECH Thesis Projects
+  Href: "https://www.itech.uni-stuttgart.de/itech-thesis-projects/2021-building-across-scales/"
+Place: ITECH - University of Stuttgart
 ---
 
 

@@ -1,40 +1,40 @@
 ---
-{
-  "Cover": "/assets/content/projects/canyon-by-artengineering-for-katharina-grosse/cover-cover.jpg",
-  "CoverAlt": "Foto von Canyon, installiert bei Louis Vuitton in Paris.",
-  "Description": "Für dieses Projekt entschied sich Katharina Grosse, mit Leder zu formen. Die Herausforderung bestand darin, die organischen Lederstreifen in gebogene Stahlplatten zu übertragen. Die Lösung war eine Strategie, die seit Jahrtausenden im Bootsbau verwendet wird: abwickelbare Flächen.",
-  "Name": "Canyon von ArtEngineering für Katharina Grosse",
-  "Slug": "projects/canyon-by-artengineering-for-katharina-grosse",
-  "Tags": [
-    "Computational Design",
-    "Structural Analysis",
-    "Digital Fabrication",
-    "Grasshopper3D"
-  ],
-  "Authors": [
-    "ArtEngineering"
-  ],
-  "Category": "Computational design",
-  "City": [
-    "Paris"
-  ],
-  "Client": "Katharina Grosse",
-  "DateStart": "2022-01-20",
-  "Link": {
-    "Text": "Canyon at ArtEngineering",
-    "Href": "https://art-engineering.net/en/projekt/canyon/"
-  },
-  "Place": "Fondation Luise Vuitton",
-  "Director": ["Herwig Bretis"],
-  "Team": ["Daniel Locatelli"],
-  "Development": ["Kunstgiesserei St. Gallen", "T/E/S/S atelier d'ingénierie"],
-  "OtherLinks": [
-    { "Text": "Drawings, mock-ups & preparations for Canyon - Katharina Grosse", "Href": "https://www.katharinagrosse.com/blog/drawings_mock_ups_amp_preparations_for_canyon" },
-    { "Text": "Kunstgiesserei St. Gallen", "Href": "https://www.kunstgiesserei.ch/De/Work/1101/Katharina_Grosse_Canyon_2022" },
-    { "Text": "Canyon - Katharina Grosse", "Href": "https://art-engineering.net/en/projekt/canyon/" },
-    { "Text": "Canyon | TESS", "Href": "https://www.tess.fr/en/projet/canyon" }
-  ]
-}
+Cover: /assets/content/projects/canyon-by-artengineering-for-katharina-grosse/canyon-by-artengineering-for-katharina-grosse-cover.jpg
+CoverAlt: "Foto von Canyon, installiert bei Louis Vuitton in Paris."
+Description: "Für dieses Projekt entschied sich Katharina Grosse, mit Leder zu formen. Die Herausforderung bestand darin, die organischen Lederstreifen in gebogene Stahlplatten zu übertragen. Die Lösung war eine Strategie, die seit Jahrtausenden im Bootsbau verwendet wird: abwickelbare Flächen."
+Name: Canyon von ArtEngineering für Katharina Grosse
+Tags:
+  - Computational Design
+  - Structural Analysis
+  - Digital Fabrication
+  - Grasshopper3D
+Authors:
+  - ArtEngineering
+Category: Computational design
+City:
+  - Paris
+Client: Katharina Grosse
+DateStart: "2022-01-20"
+Link:
+  Text: Canyon at ArtEngineering
+  Href: "https://art-engineering.net/en/projekt/canyon/"
+Place: Fondation Luise Vuitton
+Director:
+  - Herwig Bretis
+Team:
+  - Daniel Nunes Locatelli
+Development:
+  - Kunstgiesserei St. Gallen
+  - "T/E/S/S atelier d'ingénierie"
+OtherLinks:
+  - Text: "Drawings, mock-ups & preparations for Canyon - Katharina Grosse"
+    Href: "https://www.katharinagrosse.com/blog/drawings_mock_ups_amp_preparations_for_canyon"
+  - Text: Kunstgiesserei St. Gallen
+    Href: "https://www.kunstgiesserei.ch/De/Work/1101/Katharina_Grosse_Canyon_2022"
+  - Text: Canyon - Katharina Grosse
+    Href: "https://art-engineering.net/en/projekt/canyon/"
+  - Text: "Canyon | TESS"
+    Href: "https://www.tess.fr/en/projet/canyon"
 ---
 
 # Einführung

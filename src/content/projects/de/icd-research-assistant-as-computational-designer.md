@@ -1,31 +1,28 @@
 ---
-{
-  "Cover": "/assets/content/projects/icd-research-assistant-as-computational-designer/cover-cover.jpg",
-  "CoverAlt": "Rendering eines Turms aus selbstkrümmendem Brettsperrholz mit Personen als Maßstab.",
-  "Description": "Es war spannend, die computergestützte Strategie zur Geometrieerzeugung für eine sich selbst krümmende Brettsperrholzplatte zu verstehen. Der Trick besteht darin, mit Zylindern zu arbeiten, da sich Holz von Natur aus senkrecht zur Faserrichtung krümmt.",
-  "Name": "ICD-Forschungsassistent als Computational Designer",
-  "Slug": "projects/icd-research-assistant-as-computational-designer",
-  "Tags": [
-    "Computational Design",
-    "Grasshopper3D"
-  ],
-  "Authors": [
-    "ICD - University of Stuttgart"
-  ],
-  "Category": "Computational design",
-  "City": [
-    "Stuttgart"
-  ],
-  "DateStart": "2020-03-04",
-  "DateEnd": "2020-04-03",
-  "Director": ["Achim Menges"],
-  "Manager": ["Dylan Wood"],
-  "Team": ["Daniel Locatelli", "Nils Opgnorth"],
-  "Link": {
-    "Text": "Urbach Tower at ICD University of Stuttgart",
-    "Href": "https://www.icd.uni-stuttgart.de/projects/remstal-gartenschau-2019-urbach-turm/"
-  }
-}
+Cover: /assets/content/projects/icd-research-assistant-as-computational-designer/icd-research-assistant-as-computational-designer-cover.jpg
+CoverAlt: Rendering eines Turms aus selbstkrümmendem Brettsperrholz mit Personen als Maßstab.
+Description: "Es war spannend, die computergestützte Strategie zur Geometrieerzeugung für eine sich selbst krümmende Brettsperrholzplatte zu verstehen. Der Trick besteht darin, mit Zylindern zu arbeiten, da sich Holz von Natur aus senkrecht zur Faserrichtung krümmt."
+Name: ICD-Forschungsassistent als Computational Designer
+Tags:
+  - Computational Design
+  - Grasshopper3D
+Authors:
+  - ICD - University of Stuttgart
+Category: Computational design
+City:
+  - Stuttgart
+DateStart: "2020-03-04"
+DateEnd: "2020-04-03"
+Director:
+  - Achim Menges
+Manager:
+  - Dylan Wood
+Team:
+  - Daniel Nunes Locatelli
+  - Nils Opgnorth
+Link:
+  Text: Urbach Tower at ICD University of Stuttgart
+  Href: "https://www.icd.uni-stuttgart.de/projects/remstal-gartenschau-2019-urbach-turm/"
 ---
 
 # Einführung

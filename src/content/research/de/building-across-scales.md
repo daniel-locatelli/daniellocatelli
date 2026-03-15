@@ -1,27 +1,20 @@
 ---
-{
-  "Cover": "/assets/content/research/building-across-scales/cover-cover.jpeg",
-  "CoverAlt": "Fertiger Vollma\u00dfstab-Demonstrator bei Nacht. Die L\u00f6cher in der Platte wurden zu Lampen.",
-  "Description": "Die Forschung schl\u00e4gt ein heterogenes multiskalares robotisches Bausystem zur weiteren Automatisierung des Holzbaus vor Ort vor. Im Kern liegt die Entwicklung eines Klemmroboters als Teil eines gr\u00f6\u00dferen robotischen Bauteams.",
-  "Name": "Building Across Scales",
-  "Slug": "research/building-across-scales",
-  "Tags": [
-    "Computational design",
-    "Form finding",
-    "Robotics"
-  ],
-  "Authors": [
-    "Daniel Locatelli",
-    "Nils Opgenorth"
-  ],
-  "City": [],
-  "DateStart": "2024-12-01",
-  "Link": {
-    "Text": "Building Across Scales at ITECH Thesis Projects",
-    "Href": "https://www.itech.uni-stuttgart.de/itech-thesis-projects/2021-building-across-scales/"
-  },
-  "Place": "ITECH - University of Stuttgart"
-}
+Cover: /assets/content/research/building-across-scales/building-across-scales-cover.jpeg
+CoverAlt: Fertiger Vollmaßstab-Demonstrator bei Nacht. Die Löcher in der Platte wurden zu Lampen.
+Description: Die Forschung schlägt ein heterogenes multiskalares robotisches Bausystem zur weiteren Automatisierung des Holzbaus vor Ort vor. Im Kern liegt die Entwicklung eines Klemmroboters als Teil eines größeren robotischen Bauteams.
+Name: Building Across Scales
+Tags:
+  - Computational design
+  - Form finding
+  - Robotics
+Authors:
+  - Daniel Nunes Locatelli
+  - Nils Opgenorth
+DateStart: "2024-12-01"
+Link:
+  Text: Building Across Scales at ITECH Thesis Projects
+  Href: "https://www.itech.uni-stuttgart.de/itech-thesis-projects/2021-building-across-scales/"
+Place: ITECH - University of Stuttgart
 ---
 
 ## Zusammenfassung

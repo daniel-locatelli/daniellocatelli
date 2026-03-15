@@ -1,34 +1,35 @@
 ---
-{
-  "Cover": "/assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/cover-cover.jpg",
-  "CoverAlt": "Foto vom Eingang zur Hauptbar der Parada Coca-Cola.",
-  "Description": "Parada Coca-Cola war mein allererstes Projekt, bei dem ich Computational Design anwendete. Dieses sensorische Erlebnis war von der Coca-Cola-Flasche inspiriert und ahmte die Blasen und Farben des Getraenks nach.",
-  "Name": "Parada Coca-Cola von Atelier Marko Brajovic für Coca-Cola",
-  "Slug": "projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola",
-  "Tags": [
-    "Computational Design",
-    "Grasshopper3D",
-    "Logistics"
-  ],
-  "Authors": [
-    "Atelier Marko Brajovic"
-  ],
-  "Category": "Installation",
-  "City": [
-    "Rio de Janeiro"
-  ],
-  "Client": "Coca‑Cola",
-  "DateStart": "2016-08-01",
-  "Director": ["Marko Brajovic"],
-  "Manager": ["Bruno Bezerra"],
-  "Team": ["Daniel Locatelli", "Fernanda Zanetti", "Fernanda Matos", "Natalia Winnicka", "Giane Pardini"],
-  "Development": ["GTM Cenografia"],
-  "Link": {
-    "Text": "Parada Coca-Cola at Atelier Marko Brajovic",
-    "Href": "https://markobrajovic.com/en/all/parada-coca-cola"
-  },
-  "Place": "Olimpic games"
-}
+Cover: /assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola-cover.jpg
+CoverAlt: Foto vom Eingang zur Hauptbar der Parada Coca-Cola.
+Description: "Parada Coca-Cola war mein allererstes Projekt, bei dem ich Computational Design anwendete. Dieses sensorische Erlebnis war von der Coca-Cola-Flasche inspiriert und ahmte die Blasen und Farben des Getraenks nach."
+Name: Parada Coca-Cola von Atelier Marko Brajovic für Coca-Cola
+Tags:
+  - Computational Design
+  - Grasshopper3D
+  - Logistics
+Authors:
+  - Atelier Marko Brajovic
+Category: Installation
+City:
+  - Rio de Janeiro
+Client: Coca‑Cola
+DateStart: "2016-08-01"
+Director:
+  - Marko Brajovic
+Manager:
+  - Bruno Bezerra
+Team:
+  - Daniel Nunes Locatelli
+  - Fernanda Zanetti
+  - Fernanda Matos
+  - Natalia Winnicka
+  - Giane Pardini
+Development:
+  - GTM Cenografia
+Link:
+  Text: Parada Coca-Cola at Atelier Marko Brajovic
+  Href: "https://markobrajovic.com/en/all/parada-coca-cola"
+Place: Olimpic games
 ---
 
 

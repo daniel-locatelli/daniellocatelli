@@ -1,6 +1,3 @@
 ---
-{
-  "Name": "Tailwind",
-  "Slug": "tailwind"
-}
+Name: Tailwind
 ---

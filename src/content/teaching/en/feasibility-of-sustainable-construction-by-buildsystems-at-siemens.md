@@ -1,24 +1,30 @@
 ---
-{
-  "Cover": "/assets/content/teaching/feasibility-of-sustainable-construction-by-buildsystems-at-siemens/cover-cover.jpg",
-  "CoverAlt": "Daniel Locatelli presenting one of the tools used by BuildSystems.",
-  "Description": "In this pitch, we presented our vision on how to generate data to make sense out of the ever more complex field of sustainability in the construction industry.",
-  "Name": "Feasibility of sustainable construction by BuildSystems at Siemens",
-  "Slug": "teaching/feasibility-of-sustainable-construction-by-buildsystems-at-siemens",
-  "Tags": [],
-  "Authors": [],
-  "Category": "Pitch",
-  "City": [
-    "Munich"
-  ],
-  "DateStart": "2023-03-27",
-  "Language": "English",
-  "Link": {
-    "Text": "Siemens RIE Munich Conference \"Digitalization & Low Code Engineering in Industry\"",
-    "Href": "https://ecosystem.siemens.com/researchandinnovation/rie-munich-conference-digitalization-low-code-engineering-in-industry"
-  },
-  "Place": "Munich Urban Colab"
-}
+Cover: /assets/content/teaching/feasibility-of-sustainable-construction-by-buildsystems-at-siemens/feasibility-of-sustainable-construction-by-buildsystems-at-siemens-cover.jpg
+CoverAlt: Daniel Nunes Locatelli presenting one of the tools used by BuildSystems.
+Description: "A pitch at the Siemens RIE Munich Conference on how computational tools can generate data to make sense of sustainability in the construction industry — from urban analysis to life-cycle assessment."
+Name: Feasibility of sustainable construction by BuildSystems at Siemens
+Category: Pitch
+City:
+  - Munich
+DateStart: "2023-03-27"
+Language: English
+Link:
+  Text: "Siemens RIE Munich Conference \"Digitalization & Low Code Engineering in Industry\""
+  Href: "https://ecosystem.siemens.com/researchandinnovation/rie-munich-conference-digitalization-low-code-engineering-in-industry"
+Place: Munich Urban Colab
 ---
 
-In this pitch, we presented our workflow on how to generate data to make sense out of the ever more complex field of sustainability and ESG in the construction industry.
+At the Siemens Research, Innovation & Ecosystem (RIE) Munich Conference on "Digitalization & Low Code Engineering in Industry," we presented BuildSystems' approach to tackling one of the construction industry's biggest challenges: making sustainability data actionable.
+
+## The pitch
+
+The core idea was to demonstrate a multi-level computational workflow that connects urban-scale analysis all the way down to individual building components. The tools we developed work in a closed feedback loop:
+
+1. **Urban Level Tool** — evaluates the feasibility of a new building based on city regulations and fire safety standards, determining the maximum construction area allowed for each site.
+2. **Building Level Tool** — generates a parametric building based on common construction systems that can adapt to different site dimensions.
+3. **Component Library** — feeds the parametric model with data from our building component library, containing information about material quantities, carbon footprint, and cost per square meter of construction.
+4. **Economic Level** — compares different construction systems not only by estimated cost but also by their potential to receive funding.
+
+These tools function in a closed cycle, constantly informing each other until they reach a balance — all guided by open-source databases and frameworks.
+
+![Daniel Nunes Locatelli and Julia Dorn presenting the BuildSystems workflow at the Siemens conference.](../../../assets/content/teaching/feasibility-of-sustainable-construction-by-buildsystems-at-siemens/daniel-locatelli_julia-dorn_presenting.jpg)

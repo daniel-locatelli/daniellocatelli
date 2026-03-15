@@ -1,36 +1,29 @@
 ---
-{
-  "Cover": "/assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/cover-cover.jpg",
-  "CoverAlt": "Daniel Locatelli presenting the paper at IASS 2017, Hamburg.",
-  "Description": "This paper investigates the potential application of digital tools in designing and fabricating textile weaves through the combined use of form finding and the traditional bobbin lace technique. ",
-  "Name": "Algorithmic Design for Traditional Bobbin Lace Methods",
-  "Slug": "publications/algorithmic-design-for-traditional-bobbin-lace-methods",
-  "Tags": [
-    "Conceptual design",
-    "Form finding",
-    "Optimization",
-    "Dynamic relaxation",
-    "Evolutionary algorithm",
-    "Computational design",
-    "Grasshopper3d"
-  ],
-  "Authors": [
-    "Daniel Nunes Locatelli",
-    "Arthur Hunold Lara",
-    "Thiago Henrique Omena",
-    "Ruy Marcelo de Oliveira Pauletti"
-  ],
-  "City": [
-    "Hamburg"
-  ],
-  "DateStart": "2017-09-01",
-  "Language": "English",
-  "Link": {
-    "Text": "Paper at IASS 2017",
-    "Href": "https://www.ingentaconnect.com/content/iass/piass/2017/00002017/00000009/art00013"
-  },
-  "Place": "IASS 2017"
-}
+Cover: /assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/algorithmic-design-for-traditional-bobbin-lace-methods-cover.jpg
+CoverAlt: "Daniel Nunes Locatelli presenting the paper at IASS 2017, Hamburg."
+Description: "This paper investigates the potential application of digital tools in designing and fabricating textile weaves through the combined use of form finding and the traditional bobbin lace technique. "
+Name: Algorithmic Design for Traditional Bobbin Lace Methods
+Tags:
+  - Conceptual design
+  - Form finding
+  - Optimization
+  - Dynamic relaxation
+  - Evolutionary algorithm
+  - Computational design
+  - Grasshopper3d
+Authors:
+  - Daniel Nunes Locatelli
+  - Arthur Hunold Lara
+  - Thiago Henrique Omena
+  - Ruy Marcelo de Oliveira Pauletti
+City:
+  - Hamburg
+DateStart: "2017-09-01"
+Language: English
+Link:
+  Text: Paper at IASS 2017
+  Href: "https://www.ingentaconnect.com/content/iass/piass/2017/00002017/00000009/art00013"
+Place: IASS 2017
 ---
 
 This paper investigates the potential application of digital tools in designing and fabricating textile weaves through the combined use of form finding and the traditional bobbin lace technique.

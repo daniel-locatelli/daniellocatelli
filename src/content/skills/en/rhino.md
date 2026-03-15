@@ -1,6 +1,3 @@
 ---
-{
-  "Name": "Rhino",
-  "Slug": "rhino"
-}
+Name: Rhino
 ---

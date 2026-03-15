@@ -1,14 +1,7 @@
 ---
-{
-  "Name": "CSS",
-  "Slug": "skills/css",
-  "Tags": [],
-  "Authors": [],
-  "Category": "Styling language",
-  "City": [],
-  "Level": "Advanced",
-  "Link": []
-}
+Name: CSS
+Category: Styling language
+Level: Advanced
 ---
 
 

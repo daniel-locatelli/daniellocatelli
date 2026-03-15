@@ -1,25 +1,21 @@
 ---
-{
-  "Cover": "/assets/content/projects/buildsystems-plugin-for-grasshopper/cover-cover.png",
-  "CoverAlt": "Grasshopper plugin developed for BuildSystems",
-  "Description": "Plugin developed for BuildSystems to create building components based on Environmental Products Declarations (EPDs). The idea was to offer Lifecycle Analysis (LCA) data right at the beginning of the design process.",
-  "Name": "BuildSystems plugin for Grasshopper",
-  "Slug": "projects/buildsystems-plugin-for-grasshopper",
-  "Tags": [
-    "Software Development",
-    "Grasshopper3D"
-  ],
-  "Authors": [
-    "BuildSystems"
-  ],
-  "Category": "Software Development",
-  "City": [],
-  "DateStart": "2023-11-23",
-  "Director": ["Martin Bittmann"],
-  "Team": ["Daniel Locatelli", "Daniel Dieren"],
-  "Link": [],
-  "Place": "Online"
-}
+Cover: /assets/content/projects/buildsystems-plugin-for-grasshopper/buildsystems-plugin-for-grasshopper-cover.png
+CoverAlt: Grasshopper plugin developed for BuildSystems
+Description: Plugin developed for BuildSystems to create building components based on Environmental Products Declarations (EPDs). The idea was to offer Lifecycle Analysis (LCA) data right at the beginning of the design process.
+Name: BuildSystems plugin for Grasshopper
+Tags:
+  - Software Development
+  - Grasshopper3D
+Authors:
+  - BuildSystems
+Category: Software Development
+DateStart: "2023-11-23"
+Director:
+  - Martin Bittmann
+Team:
+  - Daniel Nunes Locatelli
+  - Daniel Dieren
+Place: Online
 ---
 
 During my time at BuildSystems, I led the development of a Grasshopper plugin aimed at streamlining the architectural design process. This toolset was created to allow users to parametrically define and analyze building designs, providing real-time feedback on material usage and environmental impact through integrated Life Cycle Assessment (LCA).

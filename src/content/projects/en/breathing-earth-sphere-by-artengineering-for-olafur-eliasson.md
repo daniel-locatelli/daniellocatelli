@@ -1,39 +1,36 @@
 ---
-{
-  "Cover": "/assets/content/projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson/cover-cover.jpeg",
-  "CoverAlt": "Olafur Eliasson, Breathing earth sphere, 2024. Photo: Kyungsub Shin",
-  "Description": "Olafur Eliasson commissioned ArtEngineering for computational engineering, digital fabrication, and logistics. ",
-  "Name": "Breathing earth sphere by ArtEngineering for Olafur Eliasson",
-  "Slug": "projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson",
-  "Tags": [
-    "Computational Engineering",
-    "Structural Analysis",
-    "Digital Fabrication",
-    "Logistics",
-    "Grasshopper3D"
-  ],
-  "Authors": [
-    "ArtEngineering"
-  ],
-  "Category": "Digital Fabrication",
-  "City": [
-    "South Jeolla"
-  ],
-  "Client": "Olafur Eliasson",
-  "DateStart": "2022-07-01",
-  "Link": {
-    "Text": "Breathing earth sphere at ArtEnginnering",
-    "Href": "https://art-engineering.net/en/projekt/breathing-earth-sphere/"
-  },
-  "Place": "Docho Island",
-  "Director": ["Alexander Spänig"],
-  "Team": ["Daniel Locatelli"],
-  "Development": ["Pollux Edelstahlverarbeitung GmbH"],
-  "OtherLinks": [
-    { "Text": "Studio Olafur Eliasson", "Href": "https://olafureliasson.net/press/breathing-earth-sphere" },
-    { "Text": "Design Boom Article", "Href": "https://www.designboom.com/architecture/breathing-earth-sphere-olafur-eliasson-installation-south-korea-lava-tiles-ranieri-11-30-2024/" }
-  ]
-}
+Cover: /assets/content/projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson/breathing-earth-sphere-by-artengineering-for-olafur-eliasson-cover.jpeg
+CoverAlt: "Olafur Eliasson, Breathing earth sphere, 2024. Photo: Kyungsub Shin"
+Description: "Olafur Eliasson commissioned ArtEngineering for computational engineering, digital fabrication, and logistics. "
+Name: Breathing earth sphere by ArtEngineering for Olafur Eliasson
+Tags:
+  - Computational Engineering
+  - Structural Analysis
+  - Digital Fabrication
+  - Logistics
+  - Grasshopper3D
+Authors:
+  - ArtEngineering
+Category: Digital Fabrication
+City:
+  - South Jeolla
+Client: Olafur Eliasson
+DateStart: "2022-07-01"
+Link:
+  Text: Breathing earth sphere at ArtEnginnering
+  Href: "https://art-engineering.net/en/projekt/breathing-earth-sphere/"
+Place: Docho Island
+Director:
+  - Alexander Spänig
+Team:
+  - Daniel Nunes Locatelli
+Development:
+  - Pollux Edelstahlverarbeitung GmbH
+OtherLinks:
+  - Text: Studio Olafur Eliasson
+    Href: "https://olafureliasson.net/press/breathing-earth-sphere"
+  - Text: Design Boom Article
+    Href: "https://www.designboom.com/architecture/breathing-earth-sphere-olafur-eliasson-installation-south-korea-lava-tiles-ranieri-11-30-2024/"
 ---
 
 # Intro

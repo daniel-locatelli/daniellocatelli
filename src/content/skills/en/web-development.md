@@ -1,6 +1,3 @@
 ---
-{
-  "Name": "Web Development",
-  "Slug": "web-development"
-}
+Name: Web Development
 ---

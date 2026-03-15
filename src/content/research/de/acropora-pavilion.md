@@ -1,27 +1,20 @@
 ---
-{
-  "Cover": "/assets/content/research/acropora-pavilion/cover-cover.jpg",
-  "CoverAlt": "Tagesrendering des Acropora-Pavillons.",
-  "Description": "Acropora-Pavillon, ein Projekt f\u00fcr den Kurs Biomimetik des Masterprogramms ITECH am ICD & ITKE der Universit\u00e4t Stuttgart. Acropora ist ein Pavillon, inspiriert vom Wachstum der Korallen.",
-  "Name": "Acropora-Pavillon",
-  "Slug": "research/acropora-pavilion",
-  "Tags": [
-    "Computational design"
-  ],
-  "Authors": [
-    "Daniel Locatelli",
-    "Ryan Daley",
-    "Tzu-Ying Chen",
-    "Sergio Rosas",
-    "Anand Shah",
-    "Benjamin Hagemann",
-    "Max Mischke"
-  ],
-  "City": [],
-  "DateStart": "2020-10-01",
-  "Link": [],
-  "Place": "ITECH - University of Stuttgart"
-}
+Cover: /assets/content/research/acropora-pavilion/acropora-pavilion-cover.jpg
+CoverAlt: Tagesrendering des Acropora-Pavillons.
+Description: "Acropora-Pavillon, ein Projekt für den Kurs Biomimetik des Masterprogramms ITECH am ICD & ITKE der Universität Stuttgart. Acropora ist ein Pavillon, inspiriert vom Wachstum der Korallen."
+Name: Acropora-Pavillon
+Tags:
+  - Computational design
+Authors:
+  - Daniel Nunes Locatelli
+  - Ryan Daley
+  - Tzu-Ying Chen
+  - Sergio Rosas
+  - Anand Shah
+  - Benjamin Hagemann
+  - Max Mischke
+DateStart: "2020-10-01"
+Place: ITECH - University of Stuttgart
 ---
 
 Jedes Tier hat eine einzigartige Morphologie, Anatomie und ein einzigartiges Verhalten. Die meisten dieser Eigenschaften sind hoch entwickelt und erf\u00fcllen ihre Funktionen nahezu perfekt. Biomimetik ist eine Strategie, die L\u00f6sungen der Natur f\u00fcr unsere Probleme untersucht.

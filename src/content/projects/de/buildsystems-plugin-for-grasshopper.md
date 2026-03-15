@@ -1,25 +1,21 @@
 ---
-{
-  "Cover": "/assets/content/projects/buildsystems-plugin-for-grasshopper/cover-cover.png",
-  "CoverAlt": "Grasshopper-Plugin entwickelt für BuildSystems",
-  "Description": "Plugin entwickelt für BuildSystems zur Erstellung von Baukomponenten auf Basis von Umweltproduktdeklarationen (EPDs). Die Idee war, Ökobilanz-Daten (LCA) bereits zu Beginn des Entwurfsprozesses bereitzustellen.",
-  "Name": "BuildSystems-Plugin für Grasshopper",
-  "Slug": "projects/buildsystems-plugin-for-grasshopper",
-  "Tags": [
-    "Software Development",
-    "Grasshopper3D"
-  ],
-  "Authors": [
-    "BuildSystems"
-  ],
-  "Category": "Software Development",
-  "City": [],
-  "DateStart": "2023-11-23",
-  "Director": ["Martin Bittmann"],
-  "Team": ["Daniel Locatelli", "Daniel Dieren"],
-  "Link": [],
-  "Place": "Online"
-}
+Cover: /assets/content/projects/buildsystems-plugin-for-grasshopper/buildsystems-plugin-for-grasshopper-cover.png
+CoverAlt: Grasshopper-Plugin entwickelt für BuildSystems
+Description: "Plugin entwickelt für BuildSystems zur Erstellung von Baukomponenten auf Basis von Umweltproduktdeklarationen (EPDs). Die Idee war, Ökobilanz-Daten (LCA) bereits zu Beginn des Entwurfsprozesses bereitzustellen."
+Name: BuildSystems-Plugin für Grasshopper
+Tags:
+  - Software Development
+  - Grasshopper3D
+Authors:
+  - BuildSystems
+Category: Software Development
+DateStart: "2023-11-23"
+Director:
+  - Martin Bittmann
+Team:
+  - Daniel Nunes Locatelli
+  - Daniel Dieren
+Place: Online
 ---
 
 # C#-Plugin-Entwicklung

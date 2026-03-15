@@ -1,7 +1,4 @@
 ---
-{
-  "Name": "PostgreSQL",
-  "Slug": "postgresql",
-  "Link": "https://www.postgresql.org/"
-}
+Name: PostgreSQL
+Link: "https://www.postgresql.org/"
 ---

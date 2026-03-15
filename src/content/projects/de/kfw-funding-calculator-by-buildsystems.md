@@ -1,36 +1,34 @@
 ---
-{
-  "Cover": "/assets/content/projects/kfw-funding-calculator-by-buildsystems/cover-cover.png",
-  "CoverAlt": "Ein Mann nutzt den Förderrechner auf einem iPad.",
-  "Description": "Dieser Rechner simuliert Bankdarlehen und Förderungen und macht nachhaltiges Bauen und Sanieren für Immobilienentwickler und Eigentümer zugänglich.",
-  "Name": "KfW-Förderrechner von BuildSystems",
-  "Slug": "projects/kfw-funding-calculator-by-buildsystems",
-  "Tags": [
-    "Software Development",
-    "Web Development"
-  ],
-  "Authors": [
-    "BuildSystems"
-  ],
-  "Category": "Software Development",
-  "City": [
-    "Munich"
-  ],
-  "Client": "BuildSystems",
-  "DateStart": "2023-11-20",
-  "DateEnd": "2024-07-30",
-  "Link": {
-    "Text": "https://app.buildsystems.de",
-    "Href": "https://app.buildsystems.de/"
-  },
-  "Place": "Online",
-  "Director": ["Martin Bittmann"],
-  "Manager": ["Julia Dorn"],
-  "Team": ["Daniel Locatelli", "Daniel Dieren"],
-  "OtherLinks": [
-    { "Text": "How to use Signals with Angular Forms", "Href": "https://zoaibkhan.com/blog/how-to-use-signals-with-angular-forms/", "Description": "Zoaib Khan" }
-  ]
-}
+Cover: /assets/content/projects/kfw-funding-calculator-by-buildsystems/kfw-funding-calculator-by-buildsystems-cover.png
+CoverAlt: Ein Mann nutzt den Förderrechner auf einem iPad.
+Description: Dieser Rechner simuliert Bankdarlehen und Förderungen und macht nachhaltiges Bauen und Sanieren für Immobilienentwickler und Eigentümer zugänglich.
+Name: KfW-Förderrechner von BuildSystems
+Tags:
+  - Software Development
+  - Web Development
+Authors:
+  - BuildSystems
+Category: Software Development
+City:
+  - Munich
+Client: BuildSystems
+DateStart: "2023-11-20"
+DateEnd: "2024-07-30"
+Link:
+  Text: "https://app.buildsystems.de"
+  Href: "https://app.buildsystems.de/"
+Place: Online
+Director:
+  - Martin Bittmann
+Manager:
+  - Julia Dorn
+Team:
+  - Daniel Nunes Locatelli
+  - Daniel Dieren
+OtherLinks:
+  - Text: How to use Signals with Angular Forms
+    Href: "https://zoaibkhan.com/blog/how-to-use-signals-with-angular-forms/"
+    Description: Zoaib Khan
 ---
 
 

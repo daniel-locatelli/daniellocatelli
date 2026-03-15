@@ -1,14 +1,7 @@
 ---
-{
-  "Name": "GraphisoftX2023",
-  "Slug": "teaching/graphisoftx2023",
-  "Tags": [],
-  "Authors": [],
-  "City": [],
-  "DateStart": "2024-12-01",
-  "Link": [],
-  "Active": false
-}
+Name: GraphisoftX2023
+DateStart: "2024-12-01"
+Active: false
 ---
 
 Check Date

@@ -1,6 +1,3 @@
 ---
-{
-  "Name": "TanStack Start",
-  "Slug": "tanstack-start"
-}
+Name: TanStack Start
 ---

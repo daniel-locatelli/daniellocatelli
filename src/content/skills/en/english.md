@@ -1,13 +1,6 @@
 ---
-{
-  "Name": "English",
-  "Slug": "skills/english",
-  "Tags": [],
-  "Authors": [],
-  "Category": "Language",
-  "City": [],
-  "Level": "Fluent",
-  "Link": []
-}
+Name: English
+Category: Language
+Level: Fluent
 ---
 

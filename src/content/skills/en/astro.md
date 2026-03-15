@@ -1,13 +1,6 @@
 ---
-{
-  "Name": "Astro",
-  "Slug": "skills/astro",
-  "Tags": [],
-  "Authors": [],
-  "Category": "JavaScript framework",
-  "City": [],
-  "Level": "Intermediate",
-  "Link": []
-}
+Name: Astro
+Category: JavaScript framework
+Level: Intermediate
 ---
 

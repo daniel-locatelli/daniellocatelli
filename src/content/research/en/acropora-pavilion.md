@@ -1,27 +1,20 @@
 ---
-{
-  "Cover": "/assets/content/research/acropora-pavilion/cover-cover.jpg",
-  "CoverAlt": "Day rendering of the Acropora pavilion.",
-  "Description": "Acropora pavilion, a project developed for the course Biomimetics of the Master program ITECH from the ICD & ITKE University of Stuttgart. Acropora is a pavilion inspired by the growth of corals.",
-  "Name": "Acropora Pavilion",
-  "Slug": "research/acropora-pavilion",
-  "Tags": [
-    "Computational design"
-  ],
-  "Authors": [
-    "Daniel Locatelli",
-    "Ryan Daley",
-    "Tzu-Ying Chen",
-    "Sergio Rosas",
-    "Anand Shah",
-    "Benjamin Hagemann",
-    "Max Mischke"
-  ],
-  "City": [],
-  "DateStart": "2020-10-01",
-  "Link": [],
-  "Place": "ITECH - University of Stuttgart"
-}
+Cover: /assets/content/research/acropora-pavilion/acropora-pavilion-cover.jpg
+CoverAlt: Day rendering of the Acropora pavilion.
+Description: "Acropora pavilion, a project developed for the course Biomimetics of the Master program ITECH from the ICD & ITKE University of Stuttgart. Acropora is a pavilion inspired by the growth of corals."
+Name: Acropora Pavilion
+Tags:
+  - Computational design
+Authors:
+  - Daniel Nunes Locatelli
+  - Ryan Daley
+  - Tzu-Ying Chen
+  - Sergio Rosas
+  - Anand Shah
+  - Benjamin Hagemann
+  - Max Mischke
+DateStart: "2020-10-01"
+Place: ITECH - University of Stuttgart
 ---
 
 

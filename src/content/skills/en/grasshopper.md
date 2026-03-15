@@ -1,6 +1,3 @@
 ---
-{
-  "Name": "Grasshopper",
-  "Slug": "grasshopper"
-}
+Name: Grasshopper
 ---

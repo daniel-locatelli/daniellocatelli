@@ -1,18 +1,11 @@
 ---
-{
-  "Cover": "/assets/content/teaching/building-across-scales-at-forum-holzbau/cover-cover.jpeg",
-  "Name": "Building Across Scales at Forum Holzbau",
-  "Slug": "teaching/building-across-scales-at-forum-holzbau",
-  "Tags": [],
-  "Authors": [],
-  "Category": "Talk",
-  "City": [
-    "Fellbach"
-  ],
-  "Language": "English",
-  "Link": [],
-  "Place": "Forum Holzbau",
-  "Active": false
-}
+Cover: /assets/content/teaching/building-across-scales-at-forum-holzbau/building-across-scales-at-forum-holzbau-cover.jpeg
+Name: Building Across Scales at Forum Holzbau
+Category: Talk
+City:
+  - Fellbach
+Language: English
+Place: Forum Holzbau
+Active: false
 ---
 

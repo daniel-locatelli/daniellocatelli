@@ -1,21 +1,14 @@
 ---
-{
-  "Cover": "/assets/content/teaching/models-bynature-20/cover-cover.jpeg",
-  "CoverAlt": "Studierende präsentieren ihre aus dem Workshop entstandenen Voronoi-Pavillons.",
-  "Description": "Dieser Workshop versuchte, computergestützte Designpraktiken mit natürlichen Phänomenen zu verbinden und Themen wie assoziative Modellierung, Biomimetik und visuelle Programmiersprache zu behandeln.",
-  "Name": "Models byNature 2.0",
-  "Slug": "teaching/models-bynature-20",
-  "Tags": [],
-  "Authors": [],
-  "Category": "Workshop",
-  "City": [
-    "São Paulo"
-  ],
-  "DateStart": "2019-07-06",
-  "DateEnd": "2019-07-27",
-  "Link": [],
-  "Active": false
-}
+Cover: /assets/content/teaching/models-bynature-20/models-bynature-20-cover.jpeg
+CoverAlt: Studierende präsentieren ihre aus dem Workshop entstandenen Voronoi-Pavillons.
+Description: "Dieser Workshop versuchte, computergestützte Designpraktiken mit natürlichen Phänomenen zu verbinden und Themen wie assoziative Modellierung, Biomimetik und visuelle Programmiersprache zu behandeln."
+Name: Models byNature 2.0
+Category: Workshop
+City:
+  - São Paulo
+DateStart: "2019-07-06"
+DateEnd: "2019-07-27"
+Active: false
 ---
 
 Dieser Workshop versuchte, computergestützte Designpraktiken mit natürlichen Phänomenen zu verbinden und Themen wie assoziative Modellierung, Biomimetik und visuelle Programmiersprache zu behandeln.

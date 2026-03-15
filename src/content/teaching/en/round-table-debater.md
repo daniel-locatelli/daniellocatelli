@@ -1,14 +1,7 @@
 ---
-{
-  "Name": "Round Table Debater",
-  "Slug": "teaching/round-table-debater",
-  "Tags": [],
-  "Authors": [],
-  "Category": "Round table",
-  "City": [],
-  "DateStart": "2021-05-01",
-  "Link": [],
-  "Active": false
-}
+Name: Round Table Debater
+Category: Round table
+DateStart: "2021-05-01"
+Active: false
 ---
 
