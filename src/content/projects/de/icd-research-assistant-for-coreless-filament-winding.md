@@ -39,13 +39,9 @@ Ich unterstützte Christoph bei seiner Untersuchung von Berechnungsmethoden zur 
 - **Physische Tests im kleinen Maßstab** — Durchführung kontrollierter Wickelexperimente zur Erhebung von Daten über das Faserverhalten.
 - **Photogrammetrie** — Aufnahme der gewickelten Probekörper aus mehreren Blickwinkeln, um digitale Zwillinge für den Vergleich mit den Berechnungsvorhersagen zu erstellen.
 
-![Daniel Nunes Locatelli und Christoph Schlopschnat in Schutzanzügen im ICD-Labor, mit dem KUKA-Roboter und früheren Filamentwickelproben im Hintergrund.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/daniel-and-christoph-in-protective-suits.jpg)
+![Daniel Nunes Locatelli und Anand Shah in Schutzanzügen im ICD-Labor, mit dem KUKA-Roboter und früheren Filamentwickelproben im Hintergrund.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/daniel-and-anand-in-protective-suits.jpg)
 
 ![Der robotische Wickelaufbau im ICD Computational Construction Laboratory mit dem KUKA-Arm, dem Wickelrahmen und der Schutzabdeckung des Bodens.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/robotic-winding-setup.jpg)
-
-## Das Labor
-
-Das ICD Computational Construction Laboratory ist eine beeindruckende Einrichtung. Der industrielle KUKA-Roboterarm steht im Zentrum, umgeben von Aluminium-Traversenrahmen, die als Ankerpunkte für den Wickelprozess dienen. Auf den Regalen darüber zeigen frühere Probekörper des kernlosen Filamentwickelns — hohle Rohrstrukturen aus verflochtener Kohlefaser — die Bandbreite der Geometrien, die mit dieser Technik erreicht werden können.
 
 ![Der KUKA-Roboterarm im Labor mit Kohlefaser-Wickelproben auf den Regalen darüber.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg)
 
@@ -55,4 +51,4 @@ Das ICD Computational Construction Laboratory ist eine beeindruckende Einrichtun
 
 ## Erkenntnisse
 
-Der einprägsamste Aspekt dieser Arbeit war der Umgang mit dem Harz. Das Epoxidharz, das in Kohlefaserverbundwerkstoffen verwendet wird, ist hochgiftig und erfordert Ganzkörper-Schutzanzüge, Handschuhe und eine sorgfältige Vorbereitung des Arbeitsbereichs mit Schutzabdeckungen. Es war eine praktische Einführung in die Realitäten der Arbeit mit fortschrittlichen Verbundwerkstoffen — eine ganz andere Welt als die rechnerische Seite der Forschung.
+Der einprägsamste Aspekt dieser Arbeit war der Umgang mit dem Harz. Das Epoxidharz, das in Kohlefaserverbundwerkstoffen verwendet wird, ist hochgiftig und erfordert Ganzkörper-Schutzanzüge, Handschuhe und eine sorgfältige Vorbereitung des Arbeitsbereichs mit Schutzabdeckungen. Es war eine praktische Einführung in die Realitäten der Arbeit mit fortschrittlichen Verbundwerkstoffen — eine ganz andere Welt als die rechnerische Seite der Forschung. Und ehrlich gesagt war die Toxizität des Materials für mich ein großes Abschreckungsmittel, weshalb ich mich schließlich von dieser Forschungsrichtung abwandte. Aber es war eine wertvolle Erfahrung, die mir ein tieferes Verständnis für die Komplexität der Materialwissenschaft in der architektonischen Fertigung gab.

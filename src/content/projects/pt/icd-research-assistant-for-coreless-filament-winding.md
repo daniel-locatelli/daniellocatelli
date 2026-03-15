@@ -39,13 +39,9 @@ Auxiliei Christoph em sua investigação de métodos computacionais para prever 
 - **Testes físicos em pequena escala** — execução de experimentos controlados de enrolamento para coletar dados sobre o comportamento das fibras.
 - **Fotogrametria** — captura dos corpos de prova enrolados de múltiplos ângulos para criar gêmeos digitais para comparação com as previsões computacionais.
 
-![Daniel Nunes Locatelli e Christoph Schlopschnat com trajes de proteção no laboratório do ICD, com o robô KUKA e amostras anteriores de enrolamento filamentar visíveis ao fundo.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/daniel-and-christoph-in-protective-suits.jpg)
+![Daniel Nunes Locatelli e Anand Shah com trajes de proteção no laboratório do ICD, com o robô KUKA e amostras anteriores de enrolamento filamentar visíveis ao fundo.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/daniel-and-anand-in-protective-suits.jpg)
 
 ![Configuração do enrolamento robótico no ICD Computational Construction Laboratory, mostrando o braço KUKA, a estrutura de enrolamento e a cobertura protetora do piso.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/robotic-winding-setup.jpg)
-
-## O laboratório
-
-O ICD Computational Construction Laboratory é uma instalação impressionante. O braço robótico industrial KUKA fica no centro, cercado por estruturas treliçadas de alumínio que servem como pontos de ancoragem para o processo de enrolamento. Nas prateleiras acima, amostras anteriores de enrolamento filamentar sem núcleo — estruturas tubulares ocas de fibra de carbono entrelaçada — demonstram a variedade de geometrias que essa técnica pode alcançar.
 
 ![O braço robótico KUKA no laboratório com amostras de enrolamento de fibra de carbono armazenadas nas prateleiras acima.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg)
 
@@ -55,4 +51,4 @@ O ICD Computational Construction Laboratory é uma instalação impressionante. 
 
 ## Aprendizados
 
-O aspecto mais memorável desse trabalho foi o manuseio da resina. A resina epóxi utilizada em compósitos de fibra de carbono é altamente tóxica, exigindo trajes de proteção completos, luvas e preparação cuidadosa do espaço de trabalho com coberturas protetoras. Foi uma introdução prática às realidades de se trabalhar com materiais compósitos avançados — um mundo à parte do lado computacional da pesquisa.
+O aspecto mais memorável desse trabalho foi o manuseio da resina. A resina epóxi utilizada em compósitos de fibra de carbono é altamente tóxica, exigindo trajes de proteção completos, luvas e preparação cuidadosa do espaço de trabalho com coberturas protetoras. Foi uma introdução prática às realidades de se trabalhar com materiais compósitos avançados — um mundo à parte do lado computacional da pesquisa. E, sinceramente, a toxicidade do material foi algo que me desanimou bastante, razão pela qual acabei me afastando dessa linha de pesquisa. Mas foi uma experiência valiosa que me deu uma apreciação mais profunda das complexidades da ciência dos materiais na fabricação arquitetônica.

@@ -25,7 +25,7 @@ Link:
 Place: ICD Computational Construction Laboratory
 ---
 
-Coreless filament winding is a fabrication technique where a robotic arm winds resin-soaked fibers around a frame to create lightweight, high-performance structural elements — without the need for a solid mold. The ICD and ITKE at the University of Stuttgart have been pioneering this technology, producing increasingly ambitious pavilions and demonstrators.
+Coreless filament winding is a fabrication technique where a robotic arm winds resin-soaked fibers around a frame to create lightweight, high-performance structural elements without the need for a solid mold. The ICD and ITKE at the University of Stuttgart have been pioneering this technology, producing increasingly ambitious pavilions and demonstrators.
 
 ## The challenge
 
@@ -39,13 +39,9 @@ I assisted Christoph in his investigation of computational methods to predict ca
 - **Small-scale physical tests** — running controlled winding experiments to gather data on fiber behavior.
 - **Photogrammetry** — capturing the wound specimens from multiple angles to create digital twins for comparison with the computational predictions.
 
-![Daniel Nunes Locatelli and Christoph Schlopschnat in protective suits at the ICD lab, with the KUKA robot and previous filament-wound specimens visible in the background.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/daniel-and-christoph-in-protective-suits.jpg)
+![Daniel Nunes Locatelli and Anand Shah in protective suits at the ICD lab, with the KUKA robot and previous filament-wound specimens visible in the background.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/daniel-and-anand-in-protective-suits.jpg)
 
-![The robotic winding setup at the ICD Computational Construction Laboratory, showing the KUKA arm, winding frame, and protective floor covering.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/robotic-winding-setup.jpg)
-
-## The lab
-
-The ICD Computational Construction Laboratory is an impressive facility. The KUKA industrial robotic arm sits at the center, surrounded by aluminum truss frames that serve as anchoring points for the winding process. On the shelves above, previous coreless filament winding specimens — hollow tubular structures of interwoven carbon fiber — showcase the range of geometries this technique can achieve.
+![The robotic winding setup at the ICD Laboratory, showing the KUKA arm, winding frame, and protective floor covering.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/robotic-winding-setup.jpg)
 
 ![The KUKA robotic arm in the lab with carbon fiber winding samples stored on shelves above.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg)
 
@@ -55,4 +51,4 @@ The ICD Computational Construction Laboratory is an impressive facility. The KUK
 
 ## Learnings
 
-The most memorable aspect of this work was the resin handling. The epoxy resin used in carbon fiber composites is highly toxic, requiring full-body protective suits, gloves, and careful preparation of the workspace with protective sheeting. It was a hands-on introduction to the practical realities of working with advanced composite materials — a world apart from the computational side of the research.
+The most memorable aspect of this work was the resin handling. The epoxy resin used in carbon fiber composites is highly toxic, requiring full-body protective suits, gloves, and careful preparation of the workspace with protective sheeting. It was a hands-on introduction to the practical realities of working with advanced composite materials — a world apart from the computational side of the research. And honestly, it the toxicity of the material was a big turn-off for me, which is why I eventually moved away from this line of research. But it was a valuable experience that gave me a deeper appreciation for the complexities of material science in architectural fabrication.
