@@ -1,0 +1,61 @@
+---
+Cover: /assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-by-ar-ingenieure-cover.jpg
+CoverAlt: Dome membrane being delivered by the crane.
+Description: "Simulation of the deployment and collision avoidance for a 48.8m diameter inflatable radome protecting a parabolic antenna at the Raisting earth station."
+Name: Radom Raisting by AR Ingenieure
+Tags:
+  - Computational Design
+  - Structural Analysis
+  - Logistics
+  - Grasshopper3D
+Authors:
+  - AR Ingenieure
+Category: Membrane
+City:
+  - Raisting
+Client: ITF Technical Fabrics GmbH
+DateStart: "2021-03-01"
+DateEnd: "2021-05-01"
+Director:
+  - Alexander Hub
+Team:
+  - Daniel Nunes Locatelli
+  - Grant Galloway
+Development:
+  - Radom Raisting GmbH
+Link:
+  Text: Radom Raisting at AR Ingenieure
+  Href: "https://www.ar-ingenieure.com/projects/radom-raisting"
+---
+
+import Video from '@/components/Video.astro'
+
+The Raisting earth station in Bavaria, Germany, is home to several large parabolic satellite antennas. One of them needed a protective cover — a radome — to shield it from wind, rain, and snow. The client, ITF Technical Fabrics, approached AR Ingenieure with the engineering challenge: design an inflatable membrane dome that could be delivered by crane and deployed without colliding with the antenna it was meant to protect.
+
+## The challenge
+
+A radome of this scale — 48.8 meters in diameter and 34 meters tall — is constructed as a pneumatically prestressed spherical membrane section. The membrane itself is fabricated from multiple panels sewn together, folded, and transported to site. The critical question was: how do you unfold a massive membrane around a delicate antenna without the fabric catching on the structure?
+
+![The folded membrane being prepared on-site, with satellite dishes visible in the background.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-exterior-01.jpg)
+
+## Computational design
+
+My role was to simulate the entire deployment sequence using Kangaroo Physics within the Rhino/Grasshopper environment. The simulation needed to model the membrane's behavior as it unfolded from a compact bundle into its final spherical shape, while continuously checking for collisions with the parabolic antenna underneath.
+
+The simulation was run iteratively, testing different folding patterns and deployment speeds to find a sequence that avoided contact at every stage. Kangaroo's live physics engine was essential here — it allowed me to interactively adjust parameters and immediately see the effects on the membrane's behavior.
+
+<Video src="/media/projects/radom-raisting-by-ar-ingenieure/deployment-sequence.mp4" caption="Deployment simulation showing the membrane unfolding around the antenna." />
+
+## On-site deployment
+
+The actual deployment was a remarkable operation. The folded membrane was lifted by crane and suspended above the antenna. As it was lowered, the panels unfolded sequentially — following the pattern we had validated in the simulation.
+
+![View from the top of the dome structure looking down, showing the steel ring and chains used to lift the membrane.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-interior-01.jpg)
+
+![The membrane bundle being lifted by crane, with satellite dishes in the background.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-antenna-01.jpg)
+
+![The membrane partially deployed, hanging from the crane with weights attached to guide the unfolding.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-membrane-02.jpg)
+
+![Photo of the crane deploying the membrane.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/block-a25f262c-bab6-4ab9-85ef-6f5b84216921.jpeg)
+
+![Photo of the final membrane structure deployed.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/block-333b9279-4879-40bd-b10c-b9ae63b78052.jpeg)

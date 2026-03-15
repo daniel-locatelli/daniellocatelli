@@ -3,7 +3,7 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
   content: [
-    "./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}",
+    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
     "!./src/pages/og-image/[slug].png.ts",
   ],
   theme: {
@@ -76,8 +76,11 @@ export default {
               color: "var(--color-zinc-300)",
             },
             code: {
-              "@apply border border-dashed border-zinc-600": "",
-              borderRadius: "2px",
+              backgroundColor: "var(--color-zinc-800)",
+              padding: "0.2em 0.4em",
+              borderRadius: "6px",
+              fontSize: "85%",
+              fontWeight: "400",
             },
             hr: {
               borderTopStyle: "dashed",

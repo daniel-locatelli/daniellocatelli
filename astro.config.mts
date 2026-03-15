@@ -5,6 +5,7 @@ import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 import cloudflare from "@astrojs/cloudflare";
 import react from "@astrojs/react";
+import mdx from "@astrojs/mdx";
 import { rehypeLazyImages } from "./src/lib/rehype-lazy-images";
 
 const getSite = function () {
@@ -35,7 +36,7 @@ export default defineConfig({
     port: 4321,
     host: true,
   },
-  integrations: [sitemap(), icon(), react()],
+  integrations: [sitemap(), icon(), react(), mdx()],
   prefetch: true,
   markdown: {
     rehypePlugins: [rehypeLazyImages],

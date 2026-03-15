@@ -1,0 +1,61 @@
+---
+Cover: /assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-by-ar-ingenieure-cover.jpg
+CoverAlt: Membrana da cúpula sendo entregue pelo guindaste.
+Description: "Simulação da implantação e prevenção de colisões para um radomo inflável de 48,8m de diâmetro que protege uma antena parabólica na estação terrestre de Raisting."
+Name: Radom Raisting por AR Ingenieure
+Tags:
+  - Computational Design
+  - Structural Analysis
+  - Logistics
+  - Grasshopper3D
+Authors:
+  - AR Ingenieure
+Category: Membrane
+City:
+  - Raisting
+Client: ITF Technical Fabrics GmbH
+DateStart: "2021-03-01"
+DateEnd: "2021-05-01"
+Director:
+  - Alexander Hub
+Team:
+  - Daniel Nunes Locatelli
+  - Grant Galloway
+Development:
+  - Radom Raisting GmbH
+Link:
+  Text: Radom Raisting at AR Ingenieure
+  Href: "https://www.ar-ingenieure.com/projects/radom-raisting"
+---
+
+import Video from '@/components/Video.astro'
+
+A estação terrestre de Raisting, na Baviera, Alemanha, abriga diversas grandes antenas parabólicas de satélite. Uma delas precisava de uma cobertura protetora — um radomo — para protegê-la do vento, da chuva e da neve. O cliente, ITF Technical Fabrics, procurou a AR Ingenieure com o desafio de engenharia: projetar uma cúpula de membrana inflável que pudesse ser entregue por guindaste e implantada sem colidir com a antena que deveria proteger.
+
+## O desafio
+
+Um radomo desta escala — 48,8 metros de diâmetro e 34 metros de altura — é construído como uma seção esférica de membrana pneumaticamente pré-esforçada. A própria membrana é fabricada a partir de múltiplos painéis costurados, dobrados e transportados ao local. A questão crítica era: como desdobrar uma membrana massiva ao redor de uma antena delicada sem que o tecido se prenda na estrutura?
+
+![A membrana dobrada sendo preparada no local, com antenas parabólicas visíveis ao fundo.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-exterior-01.jpg)
+
+## Design computacional
+
+Minha função foi simular toda a sequência de implantação usando Kangaroo Physics dentro do ambiente Rhino/Grasshopper. A simulação precisava modelar o comportamento da membrana enquanto ela se desdobrava de um fardo compacto até sua forma esférica final, verificando continuamente colisões com a antena parabólica abaixo.
+
+A simulação foi executada iterativamente, testando diferentes padrões de dobra e velocidades de implantação para encontrar uma sequência que evitasse contato em todas as etapas. O motor de física em tempo real do Kangaroo foi essencial aqui — permitiu-me ajustar parâmetros interativamente e ver imediatamente os efeitos no comportamento da membrana.
+
+<Video src="/media/projects/radom-raisting-by-ar-ingenieure/deployment-sequence.mp4" caption="Simulação da implantação mostrando a membrana se desdobrando ao redor da antena." />
+
+## Implantação no local
+
+A implantação real foi uma operação notável. A membrana dobrada foi levantada pelo guindaste e suspensa acima da antena. À medida que era baixada, os painéis se desdobravam sequencialmente — seguindo o padrão que havíamos validado na simulação.
+
+![Vista do topo da estrutura da cúpula olhando para baixo, mostrando o anel de aço e as correntes usadas para levantar a membrana.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-interior-01.jpg)
+
+![O fardo da membrana sendo levantado pelo guindaste, com antenas parabólicas ao fundo.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-antenna-01.jpg)
+
+![A membrana parcialmente implantada, suspensa pelo guindaste com pesos fixados para guiar o desdobramento.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-membrane-02.jpg)
+
+![Foto do guindaste implantando a membrana.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/block-a25f262c-bab6-4ab9-85ef-6f5b84216921.jpeg)
+
+![Foto da estrutura final da membrana implantada.](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/block-333b9279-4879-40bd-b10c-b9ae63b78052.jpeg)

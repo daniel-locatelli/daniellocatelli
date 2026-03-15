@@ -1,0 +1,43 @@
+---
+interface Props {
+  src: string;
+  caption?: string;
+  autoplay?: boolean;
+}
+
+const { src, caption, autoplay = false } = Astro.props;
+
+const extension = src.split(".").pop()?.toLowerCase();
+const mimeType =
+  extension === "webm"
+    ? "video/webm"
+    : extension === "mov"
+      ? "video/quicktime"
+      : "video/mp4";
+---
+
+<figure class="my-6 flex flex-col items-center">
+  {
+    autoplay ? (
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="metadata"
+        class="max-h-[60svh] rounded-lg"
+      >
+        <source src={src} type={mimeType} />
+      </video>
+    ) : (
+      <video
+        controls
+        preload="metadata"
+        class="w-full rounded-lg"
+      >
+        <source src={src} type={mimeType} />
+      </video>
+    )
+  }
+  {caption && <figcaption class="mt-2 text-sm text-zinc-400">{caption}</figcaption>}
+</figure>

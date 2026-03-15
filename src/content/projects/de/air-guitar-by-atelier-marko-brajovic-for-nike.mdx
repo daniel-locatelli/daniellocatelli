@@ -1,0 +1,80 @@
+---
+Cover: /assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/air-guitar-by-atelier-marko-brajovic-for-nike-cover.jpeg
+CoverAlt: "Foto der Air Guitar von unten aufgenommen, mit Blick zur Decke des frisch renovierten Gebäudes."
+Description: "Atelier Marko Brajovic entwickelte diese ortsspezifische Installation zur Feier des Air Max Day. In diesem Projekt arbeitete ich am Konzept und der Koordination. Außerdem konnte ich mit adressierbaren LEDs, Arduino und Bass-Tonabnehmern arbeiten."
+Name: Air Guitar von Atelier Marko Brajovic für Nike
+Tags:
+  - Electronic
+  - Arduino
+Authors:
+  - Atelier Marko Brajovic
+Category: Installation
+City:
+  - São Paulo
+Client: Nike
+DateStart: "2018-03-01"
+DateEnd: "2018-04-01"
+Director:
+  - Marko Brajovic
+Manager:
+  - Bruno Bezerra
+Team:
+  - Daniel Nunes Locatelli
+  - Rafael Ohashi
+  - Lucas Caracik
+  - André Biagioni
+Development:
+  - Hybrida Production
+Link:
+  Text: Air Guitar at Atelier Marko Brajovic
+  Href: "https://markobrajovic.com/en/all/air-guitar-sp-on-air"
+Place: Red Bull Station
+---
+
+import Video from '@/components/Video.astro'
+import YouTube from '@/components/YouTube.astro'
+
+<YouTube id="KucCxUmOM1o" />
+
+# Konzept
+Im Jahr 2017 beauftragte [Nike Brasilien](https://nike.com.br/) das Atelier Marko Brajovic mit dem Entwurf einer ortsspezifischen Installation zur Feier eines der wichtigsten Events von Nike: dem Air Max Day. Das ursprüngliche Konzept entwickelte sich von einer Sneaker-Skulptur zu einer **Musikinstallation** für die Veranstaltung.
+Man stelle sich einen großen Gitarrenkoerper aus LEDs, Bass-Tonabnehmern und Saiten vor, der in der Luft haengt, und jeder, der darunter hindurchgeht, kann die Riesengitarre spielen und eine Lichtshow ausloesen. Jede Saite ist mit einer anderen LED-Zone verbunden. Die LEDs werden durch den von den Bass-Tonabnehmern an den Saiten aufgenommenen Klang gesteuert.
+![Drei Fotos von Nutzern, die die Gitarre spielen.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dcf83d14-a517-49fa-97e3-722f58b27bc8.jpeg)
+# Entwicklung
+Die Umsetzung der Air Guitar erforderte ein Team von zehn Personen, die mehrere Wochen ununterbrochen arbeiteten. Um alles organisiert zu halten, erstellte ich eine umfangreiche Notion-Wissensdatenbank mit allen relevanten Informationen -- von technischen Spezifikationen bis hin zu Logistik und Teammanagement.
+Für die **Elektronikentwicklung** arbeiteten wir mit [Guará Labs](https://www.instagram.com/guaralabs/) zusammen, einem Team, das für seine Expertise in **Arduino-basierten Projekten** bekannt ist. Gemeinsam entwickelten wir ein System mit 5 Arduino Megas: **einer war für den Empfang der Signale von den 5 Bass-Tonabnehmern (verbunden mit 5 Saiten) zustaendig, und die anderen 4 steuerten insgesamt rund 1.000 adressierbare LEDs**, die in 5 Zonen organisiert waren.
+![Eine interaktive elektronische Installation namens "Air Guitar", entworfen für Nike. Sie verfügt über ein komplexes Setup aus LED-Lichtern in einem Zickzack-Muster an der Decke, mit herunterhangenden Saiten oder Kabeln, mit denen Besucher wie mit Gitarrensaiten interagieren können. Die Installation ist in einem dunklen Industrieraum mit Gewoelbedecken montiert.
+Elektronischer Schaltplan.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dfa6d8c4-39a1-4b03-a228-f90a60a9b26b.jpeg)
+
+<Video src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/first-pickup-test.mp4" caption="First test: checking if a pickup would capture the steel cable vibration." />
+
+# Interaktivitaet
+Hier ist die grundlegende Erklärung des Schaltkreises:
+1. Wenn ein Nutzer eine Saite beruehrt und loslässt, **wird die Vibration von einem Bass-Tonabnehmer** erfasst, der mit der Saite verbunden ist.
+2. Das Signal wird in Echtzeit an den Empfaenger-Arduino-Mega gesendet.
+3. Der Arduino verarbeitet das Signal und **wandelt das analoge Signal in einen digitalen Wert um**. In dieser Phase werden einige Rauschunterdrueckungstechniken angewendet, wie das Glaetten der Werte mit einer Fensterfunktion.
+4. Dieser digitale Wert wird nun an die entsprechende LED-Zone gesendet, die von einem der 4 Sender-Arduino-Megas gesteuert wird.
+5. Der Sender-Arduino-Mega empfaengt den Wert und **bildet die Amplitude des Signals** auf die LED-Animationen ab.
+6. Je nach Intensitaet der Vibration **leuchtet die LED-Zone** mit bestimmten Mustern und Helligkeitsstufen auf. Mehrere LED-Animationsmodi stehen zur Verfuegung.
+## Herausforderungen
+Eine der größten Herausforderungen war die Minderung des Problems der physischen Vibrationsübertragung zwischen den Saiten. Wir hatten nur fuenf Sensoren, jeweils einer pro Saite, aber die fuenf Saiten lagen relativ nah beieinander. Wenn also jemand eine Saite zupfte und losliess, vibrierten die anderen ebenfalls leicht mit. Dies erzeugte viel "Rauschen" und fuehrte zu ungewollten LED-Aktivierungen in anderen Zonen.
+Dieses Verhalten ist den **[DTMF-Frequenzen](https://de.wikipedia.org/wiki/Mehrfrequenzwahlverfahren)** sehr ähnlich, die in der Telefonie verwendet werden. Jede Taste eines Telefons sendet ein einzigartiges Frequenzpaar, damit das Netzwerk eindeutig identifizieren kann, welche Taste gedrueckt wurde, selbst bei Signalrauschen. Bei der Air Guitar könnte jede Saite mit einer spezifischen Vibrationssignatur verknuepft werden, aber die Hauptherausforderung war die physische Kopplung zwischen den Saiten.
+Wir loesten es mit einer Kombination aus:
+1. **Schwellenwertfilterung**: Signale unterhalb einer bestimmten Amplitude wurden ignoriert.
+2. **Zeitliches Gating**: Es wurden nur Signale von einer Saite akzeptiert, die kuerzlich gezupft wurde (ein kleines Zeitfenster nach dem initialen Impuls).
+3. **Übersprechunterdrueckung**: Wenn mehrere Tonabnehmer gleichzeitig ausloesten, priorisierte das System das staerkste Signal.
+## Nach dem Air Max Day
+Nach dem Air Max Day Event wurden wir eingeladen, die Air Guitar zu **[SP On Air](https://projetosp.art.br/2018/sp-on-air/)** zu bringen, einem Festival für zeitgenoessische Kunst, Musik, Technologie und Architektur. Diesmal hatte die Air Guitar viel mehr Zeit, um vom Publikum erlebt zu werden. Wir passten einige der Animationen an und verbesserten die Interaktivitaet.
+![Foto der Air Guitar in einem dunklen Raum aus einer Perspektive von unten, das die LED-Installation an der Decke mit herunterhangenden Saiten zeigt.
+Air Guitar bei SP On Air.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dfa6d8c4-39a1-4b03-a228-f90a60a9b26b.jpeg)
+# Erkenntnisse
+Dieses Projekt war das erste Mal, dass ich ein Team für eine komplexe Tech-Art-Installation leitete. Ich habe gelernt, dass:
+1. **Organisation alles ist**: Eine umfangreiche Notion-Wissensdatenbank half dabei, das Projekt auf Kurs zu halten.
+2. **Das Spannende schwierig ist**: LEDs in Echtzeit auf Musikeingaben reagieren zu lassen klingt cool, aber die Herausforderungen der Signalverarbeitung sind real.
+3. **Frueh und oft testen**: Wir verbrachten die letzten 2 Tage vor dem Event nur mit der Kalibrierung und Feinjustierung der Sensoren.
+4. **Teamvielfalt zaehlt**: Die Kombination aus Architekten, Elektronik-Ingenieuren und Musikern schuf ein einzigartiges Projekt.
+![Foto eines Nutzers, der eine der Saiten haelt und spielt.
+Nutzer spielt die Air Guitar.
+© Daniel Nunes Locatelli](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dcf83d14-a517-49fa-97e3-722f58b27bc8.jpeg)
+![Foto der Installation mit LEDs, die in einem Wellenmuster leuchten.
+Steuerungskasten, das weisse Papier stellt den Platz für die Notfallbatterie dar.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-56c64a60-4b48-4738-8581-2327c2cba058.jpg)
