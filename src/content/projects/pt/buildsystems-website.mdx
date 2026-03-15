@@ -45,14 +45,14 @@ A BuildSystems já utilizava o Notion intensamente para documentação interna e
 
 A integração busca conteúdo em tempo de build de múltiplos bancos de dados do Notion (posts, membros da equipe, parceiros, organizações) e renderiza usando mais de 30 componentes customizados de Notion que lidam com títulos, parágrafos, imagens, blocos de código, tabelas, embeds e mais.
 
-![A seção hero da homepage.](../../../assets/content/projects/buildsystems-website/homepage-hero.jpg)
+![A seção hero da homepage.](../../../assets/content/projects/buildsystems-website/homepage-screenshot.jpg)
 
 ## Principais Recursos
 
 ### Animações CSS-First
 Uma decisão deliberada foi usar animações CSS puras com `@keyframes` em vez de animações Lottie, para evitar sobrecarregar a página com muito conteúdo, o que teria impactado a performance. O cover da homepage apresenta uma sequência animada em tela cheia, e as seções dos "Três Pilares" usam animações exclusivamente CSS em layouts horizontal e vertical. Isso mantém a página leve e performática.
 
-<Video src="/media/projects/buildsystems-website/three-pillars-animation.mp4" caption="Animação da homepage" autoplay />
+<Video src="/media/projects/buildsystems-website/three-pillars-animation.mp4" caption="Animação da homepage" autoplay /> 
 
 ### Carrossel com Arraste
 O carrossel de posts do blog implementa uma interação customizada de arrastar para rolar com física de inércia e scroll-snap suave. Os usuários podem arrastar o carrossel com mouse ou toque, e ele se ajusta suavemente ao card mais próximo quando solto.
@@ -62,7 +62,7 @@ O carrossel de posts do blog implementa uma interação customizada de arrastar 
 ### Posts do Blog via Notion
 Cada post é escrito no Notion e renderizado no site em tempo de build. Suporta conteúdo rico, incluindo mídia incorporada (Instagram, TikTok, YouTube, CodePen), equações LaTeX via KaTeX, blocos de código com destaque de sintaxe Prism.js e previews de links via metascraper.
 
-![Uma página de post do blog mostrando conteúdo buscado e renderizado do Notion.](../../../assets/content/projects/buildsystems-website/blog-post-notion.jpg)
+![Uma página de post do blog mostrando conteúdo buscado e renderizado do Notion.](../../../assets/content/projects/buildsystems-website/blog-posts.jpg)
 
 ## Arquitetura
 
