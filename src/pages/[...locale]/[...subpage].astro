@@ -70,8 +70,8 @@ interface Props {
   subpage: SubpageEntry;
 }
 
-const { subpage: slug } = Astro.params;
 const { subpage } = Astro.props as Props;
+const slug = getEntrySlug(subpage);
 
 const { Content } = await subpage.render();
 
