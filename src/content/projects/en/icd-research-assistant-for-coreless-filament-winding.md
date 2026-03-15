@@ -7,18 +7,15 @@ Tags:
   - Coreless Filament Winding
   - Computational Design
   - Robotics
-Authors:
-  - ICD - University of Stuttgart
 Category: Filament
 City:
   - Stuttgart
 DateStart: "2020-07-02"
 Director:
-  - Achim Menges
-Manager:
   - Christoph Schlopschnat
 Team:
   - Daniel Nunes Locatelli
+  - Anand Shah
 Link:
   Text: Leichtbau BW Innovation Challenge
   Href: "https://www.icd.uni-stuttgart.de/research/research-projects/leichtbau-bw-innovation-challenge/"
@@ -45,7 +42,7 @@ I assisted Christoph in his investigation of computational methods to predict ca
 
 ![The KUKA robotic arm in the lab with carbon fiber winding samples stored on shelves above.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg)
 
-![Close-up of the winding frame structure used to anchor the fibers during the robotic winding process.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/winding-frame-close-up.jpg)
+![Close-up of the winding frame structure used to anchor the fibers during the robotic winding process.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/resin-preparation.jpg)
 
 ![Carbon fiber winding samples on the storage shelf, showing the complex hollow geometries achieved through coreless filament winding.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/carbon-fiber-samples-on-shelf.jpg)
 
