@@ -10,63 +10,34 @@ import {
 } from "src/lib/blog-helpers";
 import Base from "@/layouts/Base.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
-import { getLocale } from "src/lib/routes-helpers";
-
-const locale = getLocale(Astro.params);
+import { getFileSlug, getEntrySlug, getEntryLocale } from "src/lib/routes-helpers";
 
 type SubpageEntry =
   | CollectionEntry<"projects">
   | CollectionEntry<"research">
   | CollectionEntry<"teaching">
   | CollectionEntry<"publications">
-  | CollectionEntry<"tools">
-  | CollectionEntry<"people">
-  | CollectionEntry<"organizations">
-  | CollectionEntry<"cities">
-  | CollectionEntry<"prizes">
   | CollectionEntry<"skills">;
 
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
 
-  // Get all non-homepage pages from the Pages collection
-  const allPages = pages.filter((page) => page.data.Name !== "Homepage");
+  // Get all non-homepage pages
+  const allPages = pages.filter((page) => getFileSlug(page.id) !== "index");
 
-  // For each page, create paths for each supported locale
-  const paths = allPages.flatMap((page) => {
-    const pagePaths = [];
-
-    // 1. Create path for default locale (no locale in URL)
-    pagePaths.push({
+  // Create one path per locale-specific page entry
+  const paths = allPages.map((page) => {
+    const locale = getEntryLocale(page.id);
+    return {
       params: {
-        locale: undefined, // Default locale has no locale param
-        page: page.data.Slug,
+        locale: locale === siteConfig.defaultLocale ? undefined : locale,
+        page: getFileSlug(page.id),
       },
       props: {
-        locale: siteConfig.defaultLocale,
+        locale,
         page,
       },
-    });
-
-    // 2. Create paths for non-default locales
-    const nonDefaultLocales = SUPPORTED_LOCALES.filter(
-      (locale) => locale !== siteConfig.defaultLocale,
-    );
-
-    for (const locale of nonDefaultLocales) {
-      pagePaths.push({
-        params: {
-          locale: locale,
-          page: page.data.Slug,
-        },
-        props: {
-          locale,
-          page,
-        },
-      });
-    }
-
-    return pagePaths;
+    };
   });
 
   return paths;
@@ -74,19 +45,11 @@ export async function getStaticPaths() {
 
 interface Props {
   page: CollectionEntry<"pages">;
+  locale: string;
 }
 
-const { page } = Astro.props as Props;
+const { page, locale } = Astro.props as Props;
 const { Content } = await page.render();
-
-// Helper to get locale from entry ID
-const getEntryLocale = (id: string) => {
-  const parts = id.split("/");
-  if (parts.length > 1 && SUPPORTED_LOCALES.includes(parts[0] as any)) {
-    return parts[0];
-  }
-  return siteConfig.defaultLocale;
-};
 
 // Map page slugs to their respective subpage collections
 const DATABASE_MAPPING: Record<string, string[]> = {
@@ -98,7 +61,8 @@ const DATABASE_MAPPING: Record<string, string[]> = {
 
 // Fetch subpages based on page slug
 let subpages: SubpageEntry[] = [];
-const dbNames = DATABASE_MAPPING[page.data.Slug] || [];
+const pageSlug = getFileSlug(page.id);
+const dbNames = DATABASE_MAPPING[pageSlug] || [];
 
 for (const dbName of dbNames) {
   // @ts-ignore
@@ -153,7 +117,7 @@ if (pageImage) {
     description: page.data.Description,
     coverImage: coverUrl,
     coverAlt: page.data.CoverAlt || "Cover image",
-    slug: page.data.Slug,
+    slug: pageSlug,
   }}
 >
   <main id="main" class="pt-12 pb-12">
@@ -179,7 +143,7 @@ if (pageImage) {
               return (
                 <article class="group relative mb-8 flex break-inside-avoid-column flex-col overflow-hidden rounded-2xl bg-zinc-900 transition-all hover:shadow-2xl">
                   <a
-                    href={`/${locale === siteConfig.defaultLocale ? "" : `${locale}/`}${subpage.data.Slug}`}
+                    href={`/${locale === siteConfig.defaultLocale ? "" : `${locale}/`}${getEntrySlug(subpage)}`}
                     class="flex h-full flex-col"
                     data-astro-prefetch
                     data-cover-src={subpage.coverSrc || undefined}

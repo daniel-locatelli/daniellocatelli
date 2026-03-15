@@ -10,7 +10,7 @@ import {
 import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
-import { getLocale } from "src/lib/routes-helpers";
+import { getLocale, getEntrySlug, getEntryLocale } from "src/lib/routes-helpers";
 import { getI18n } from "src/i18n/utils";
 import type { I18nSubpage } from "src/i18n/subpage/type";
 
@@ -19,11 +19,6 @@ type SubpageEntry =
   | CollectionEntry<"research">
   | CollectionEntry<"teaching">
   | CollectionEntry<"publications">
-  | CollectionEntry<"tools">
-  | CollectionEntry<"people">
-  | CollectionEntry<"organizations">
-  | CollectionEntry<"cities">
-  | CollectionEntry<"prizes">
   | CollectionEntry<"skills">;
 
 const locale = getLocale(Astro.params);
@@ -36,11 +31,6 @@ export async function getStaticPaths() {
     "research",
     "teaching",
     "publications",
-    "tools",
-    "people",
-    "organizations",
-    "cities",
-    "prizes",
     "skills",
   ];
 
@@ -57,19 +47,12 @@ export async function getStaticPaths() {
       // Skip inactive entries (content not yet ready for their own page)
       if (subpage.data.Active === false) continue;
 
-      // Determine the subpage's locale from its ID (path)
-      const parts = subpage.id.split("/");
-      const subpageLocale =
-        parts.length > 1 && SUPPORTED_LOCALES.includes(parts[0] as any)
-          ? parts[0]
-          : siteConfig.defaultLocale;
-
       // Only include if the subpage belongs to this locale
-      if (subpageLocale !== locale) continue;
+      if (getEntryLocale(subpage.id) !== locale) continue;
 
       paths.push({
         params: {
-          subpage: subpage.data.Slug,
+          subpage: getEntrySlug(subpage),
           locale: isDefaultLocale ? undefined : locale,
         },
         props: {
@@ -296,7 +279,7 @@ if (image) {
             <tr>
               <th>{t.development}</th>
               <td>
-                {subpage.data.Development.map((dev, index) => {
+                {subpage.data.Development.map((dev: any, index: number) => {
                   const name = typeof dev === "string" ? dev : dev.name;
                   if (index === 0) {
                     return <span>{name}</span>;
