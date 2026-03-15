@@ -48,7 +48,7 @@ A integração busca conteúdo em tempo de build de múltiplos bancos de dados d
 ## Principais Recursos
 
 ### Animações CSS-First
-Uma decisão deliberada foi usar animações CSS puras com `@keyframes` em vez de animações Lottie, para evitar sobrecarregar a página com muito conteúdo, o que teria impactado a performance. O cover da homepage apresenta uma sequência animada em tela cheia, e as seções dos "Três Pilares" usam animações exclusivamente CSS em layouts horizontal e vertical. Isso mantém a página leve e performática.
+Uma decisão deliberada foi usar animações CSS puras com <code>@keyframes</code> em vez de animações Lottie, para evitar sobrecarregar a página com muito conteúdo, o que teria impactado a performance. O cover da homepage apresenta uma sequência animada em tela cheia, e as seções dos "Três Pilares" usam animações exclusivamente CSS em layouts horizontal e vertical. Isso mantém a página leve e performática.
 
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
 <video autoplay loop muted playsinline preload="metadata" style="height: 60svh; align-items: center; justify-content: center; border-radius: 0.5rem;">
@@ -76,7 +76,7 @@ Cada post é escrito no Notion e renderizado no site em tempo de build. Suporta 
 
 O projeto segue uma abordagem puramente Astro — sem React ou outros frameworks JavaScript. Toda a interatividade é construída com TypeScript puro e CSS, resultando em mínimo JavaScript no lado do cliente.
 
-Um pipeline de build customizado cuida do cache de conteúdo do Notion. Executando `npm run cache:fetch`, todo o conteúdo e imagens são baixados do Notion, processados com Sharp (removendo dados EXIF e otimizando formatos) e armazenados localmente. Isso garante builds rápidos e evita chamadas desnecessárias à API durante o desenvolvimento.
+Um pipeline de build customizado cuida do cache de conteúdo do Notion. Executando <code>npm run cache:fetch</code>, todo o conteúdo e imagens são baixados do Notion, processados com Sharp (removendo dados EXIF e otimizando formatos) e armazenados localmente. Isso garante builds rápidos e evita chamadas desnecessárias à API durante o desenvolvimento.
 
 ## Design Responsivo
 

@@ -48,7 +48,7 @@ Die Integration ruft Inhalte zur Build-Zeit aus mehreren Notion-Datenbanken ab (
 ## Hauptmerkmale
 
 ### CSS-First-Animationen
-Eine bewusste Entscheidung war es, reine CSS-`@keyframes`-Animationen anstelle von Lottie-Animationen zu verwenden, um die Seite nicht mit zu viel Inhalt zu überladen, was die Performance beeinträchtigt hätte. Das Homepage-Cover zeigt eine animierte Vollbild-Sequenz, und die „Drei Säulen"-Bereiche nutzen reine CSS-Animationen in horizontalem und vertikalem Layout. Das hält die Seite schlank und performant.
+Eine bewusste Entscheidung war es, reine CSS-<code>@keyframes</code>-Animationen anstelle von Lottie-Animationen zu verwenden, um die Seite nicht mit zu viel Inhalt zu überladen, was die Performance beeinträchtigt hätte. Das Homepage-Cover zeigt eine animierte Vollbild-Sequenz, und die „Drei Säulen"-Bereiche nutzen reine CSS-Animationen in horizontalem und vertikalem Layout. Das hält die Seite schlank und performant.
 
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
 <video autoplay loop muted playsinline preload="metadata" style="height: 60svh; align-items: center; justify-content: center; border-radius: 0.5rem;">
@@ -76,7 +76,7 @@ Jeder Blogbeitrag wird in Notion verfasst und zur Build-Zeit auf der Website ger
 
 Das Projekt folgt einem reinen Astro-Ansatz — ohne React oder andere JavaScript-Frameworks. Alle Interaktivität ist mit reinem TypeScript und CSS umgesetzt, was zu minimalem clientseitigem JavaScript führt.
 
-Eine eigene Build-Pipeline übernimmt das Caching von Notion-Inhalten. Mit `npm run cache:fetch` werden alle Inhalte und Bilder aus Notion heruntergeladen, mit Sharp verarbeitet (EXIF-Daten entfernt und Formate optimiert) und lokal gespeichert. Das sorgt für schnelle Builds und verhindert unnötige API-Aufrufe während der Entwicklung.
+Eine eigene Build-Pipeline übernimmt das Caching von Notion-Inhalten. Mit <code>npm run cache:fetch</code> werden alle Inhalte und Bilder aus Notion heruntergeladen, mit Sharp verarbeitet (EXIF-Daten entfernt und Formate optimiert) und lokal gespeichert. Das sorgt für schnelle Builds und verhindert unnötige API-Aufrufe während der Entwicklung.
 
 ## Responsives Design
 
