@@ -8,8 +8,6 @@ Tags:
   - Astro
   - Notion API
   - TypeScript
-Authors:
-  - BuildSystems GmbH
 Category: Software
 City:
   - München
