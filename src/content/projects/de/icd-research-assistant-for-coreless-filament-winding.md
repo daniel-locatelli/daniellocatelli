@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/projects/icd-research-assistant-for-coreless-filament-winding/daniel-locatelli-with-kuka-robot.jpg
+Cover: /assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg
 CoverAlt: Daniel Nunes Locatelli im Schutzanzug neben dem KUKA-Roboterarm am ICD Stuttgart.
 Description: "Untersuchung von Berechnungsmethoden zur Vorhersage der Kohlefaserinteraktion beim kernlosen Filamentwickeln. Ich unterstützte Christoph Schlopschnat bei der Harzvorbereitung, physischen Tests im kleinen Maßstab und Photogrammetrie."
 Name: ICD-Wissenschaftliche Hilfskraft für Kernloses Filamentwickeln

@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/projects/icd-research-assistant-for-coreless-filament-winding/daniel-locatelli-with-kuka-robot.jpg
+Cover: /assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg
 CoverAlt: Daniel Nunes Locatelli com traje de proteção ao lado do braço robótico KUKA no ICD Stuttgart.
 Description: "Investigação de métodos computacionais para prever a interação das fibras de carbono durante o enrolamento filamentar sem núcleo. Auxiliei Christoph Schlopschnat na preparação de resina, testes físicos em pequena escala e fotogrametria."
 Name: Assistente de Pesquisa ICD para Enrolamento Filamentar sem Núcleo

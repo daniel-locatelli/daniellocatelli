@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/projects/icd-research-assistant-for-coreless-filament-winding/daniel-locatelli-with-kuka-robot.jpg
+Cover: /assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg
 CoverAlt: Daniel Nunes Locatelli in protective suit standing next to the KUKA robotic arm at ICD Stuttgart.
 Description: "Investigation of computational methods to predict carbon fiber interaction during coreless filament winding. I assisted Christoph Schlopschnat with resin preparation, small-scale physical tests, and photogrammetry."
 Name: ICD Research Assistant for Coreless Filament Winding
