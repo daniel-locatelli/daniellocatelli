@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { importCoverImage } from "src/lib/blog-helpers";
+import { getEntrySlug } from "src/lib/routes-helpers";
 
 export const prerender = false;
 
@@ -25,7 +26,7 @@ export const GET: APIRoute = async ({ url }) => {
 
   for (const collectionName of COLLECTIONS) {
     const collection = await getCollection(collectionName);
-    const entry = collection.find((e) => e.data.Slug === slug);
+    const entry = collection.find((e) => getEntrySlug(e) === slug);
     if (!entry) continue;
 
     const image = await importCoverImage(entry, images);
@@ -33,7 +34,7 @@ export const GET: APIRoute = async ({ url }) => {
       JSON.stringify({
         title: entry.data.Name,
         coverUrl: image?.src ?? "",
-        slug: entry.data.Slug,
+        slug: getEntrySlug(entry),
       }),
       { headers: { "content-type": "application/json" } },
     );

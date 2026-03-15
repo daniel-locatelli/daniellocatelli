@@ -5,18 +5,14 @@ import logo from "@/assets/ui/logo-dl.svg";
 import WhatsApp from "@/assets/ui/digital-glyph-white.svg";
 import { siteConfig } from "@/config/site";
 import { Icon } from "astro-icon/components";
-import { getLocale } from "src/lib/routes-helpers";
+import { getLocale, getFileSlug } from "src/lib/routes-helpers";
 import LanguagePicker from "./LanguagePicker.astro";
 
 const locale = getLocale(Astro.params);
 
 const pages = (await getCollection("pages"))
-  .filter((p) => p.id.startsWith("en/") && p.data.Name)
-  .sort((a, b) => {
-    if (a.data.Name === "Homepage") return -1;
-    if (b.data.Name === "Homepage") return 1;
-    return a.data.Name.localeCompare(b.data.Name);
-  });
+  .filter((p) => p.id.startsWith(`${locale}/`) && getFileSlug(p.id) !== "index")
+  .sort((a, b) => a.data.Name.localeCompare(b.data.Name));
 
 const url = new URL(Astro.request.url);
 
@@ -49,26 +45,24 @@ const { slug } = Astro.props as Props;
       id="navigation-menu"
     >
       {
-        pages.map(
-          (page) =>
-            page.data.Name !== "Homepage" && (
-              <a
-                aria-current={url.pathname === page.data.Slug ? "page" : false}
-                class="flex w-full items-center justify-center border-b border-white py-6 underline-offset-2 sm:w-auto sm:border-none sm:px-3 sm:py-0 sm:hover:underline"
-                data-astro-prefetch
-                href={
-                  locale === "en"
-                    ? "/" + page.data.Slug
-                    : "/" + locale + "/" + page.data.Slug
-                }
-                title={page.data.Name}
-              >
-                {locale === "en" && page.data.Name}
-                {locale === "pt" && (page.data.Name_pt || page.data.Name)}
-                {locale === "de" && (page.data.Name_de || page.data.Name)}
-              </a>
-            ),
-        )
+        pages.map((page) => {
+          const pageSlug = getFileSlug(page.id);
+          return (
+            <a
+              aria-current={url.pathname === pageSlug ? "page" : false}
+              class="flex w-full items-center justify-center border-b border-white py-6 underline-offset-2 sm:w-auto sm:border-none sm:px-3 sm:py-0 sm:hover:underline"
+              data-astro-prefetch
+              href={
+                locale === "en"
+                  ? "/" + pageSlug
+                  : "/" + locale + "/" + pageSlug
+              }
+              title={page.data.Name}
+            >
+              {page.data.Name}
+            </a>
+          );
+        })
       }
       <LanguagePicker currentLocale={locale} slug={slug} class="sm:px-3" />
       <a
