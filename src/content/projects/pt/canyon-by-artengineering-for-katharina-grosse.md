@@ -15,6 +15,7 @@ City:
   - Paris
 Client: Katharina Grosse
 DateStart: "2022-01-20"
+DateEnd: "2022-02-01"
 Link:
   Text: Canyon at ArtEngineering
   Href: "https://www.art-engineering.net/index.php/project/project_detail_eng/10160/4"

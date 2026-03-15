@@ -16,7 +16,7 @@ City:
   - Buffalo
 Client: Buffalo AKG Art Museum
 DateStart: "2022-06-12"
-DateEnd: "2024-11-30"
+DateEnd: "2022-06-01"
 Director:
   - Herwig Bretis
 Manager:

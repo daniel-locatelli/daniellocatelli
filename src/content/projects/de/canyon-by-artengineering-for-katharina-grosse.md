@@ -9,12 +9,13 @@ Tags:
   - Digital Fabrication
   - Grasshopper3D
 Authors:
-  - ArtEngineering
+  - ArtEngineering GmbH
 Category: Computational design
 City:
   - Paris
 Client: Katharina Grosse
 DateStart: "2022-01-20"
+DateEnd: "2022-02-01"
 Link:
   Text: Canyon at ArtEngineering
   Href: "https://art-engineering.net/en/projekt/canyon/"
