@@ -20,8 +20,11 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# Playwright MCP
+# Playwright
 .playwright-mcp/
+test-results/
+playwright-report/
+blob-report/
 
 # Worker build artifacts
 workers/ai-health-check/node_modules/
