@@ -77,10 +77,17 @@ export default {
             },
             code: {
               backgroundColor: "var(--color-zinc-800)",
+              color: "var(--color-zinc-200)",
               padding: "0.2em 0.4em",
               borderRadius: "6px",
               fontSize: "85%",
               fontWeight: "400",
+            },
+            "code::before": {
+              content: "none",
+            },
+            "code::after": {
+              content: "none",
             },
             hr: {
               borderTopStyle: "dashed",
