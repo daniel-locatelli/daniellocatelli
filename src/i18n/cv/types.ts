@@ -80,6 +80,7 @@ export type Education = {
   startDate: string; // ISO date string
   endDate?: string; // ISO date string
   link: string;
+  institutionLink?: string;
   institution: string;
   location: string;
   supervisors?: string[];

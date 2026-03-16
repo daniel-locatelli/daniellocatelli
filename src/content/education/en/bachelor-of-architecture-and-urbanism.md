@@ -7,6 +7,7 @@ Organization: "FAU, University of São Paulo"
 City:
   - São Paulo
 Link: "https://www.fau.usp.br/"
+Thesis: architecture-biomimicry-algorithm
 Supervisors:
   - Prof. Arthur Lara
 ---

@@ -26,6 +26,7 @@ const mimeType =
         playsinline
         preload="metadata"
         class="max-h-[60svh] rounded-lg"
+        data-autoplay
       >
         <source src={src} type={mimeType} />
       </video>
@@ -41,3 +42,17 @@ const mimeType =
   }
   {caption && <figcaption class="mt-2 text-sm text-zinc-400">{caption}</figcaption>}
 </figure>
+
+<script>
+  function initVideos() {
+    document.querySelectorAll<HTMLVideoElement>("video").forEach((video) => {
+      // Re-load the video source after View Transitions DOM swap
+      video.load();
+      if (video.hasAttribute("data-autoplay")) {
+        video.play().catch(() => {});
+      }
+    });
+  }
+
+  document.addEventListener("astro:page-load", initVideos);
+</script>

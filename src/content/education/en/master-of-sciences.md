@@ -7,6 +7,7 @@ Organization: "ITECH, University of Stuttgart"
 City:
   - Stuttgart
 Link: "https://www.itech.uni-stuttgart.de/"
+Thesis: building-across-scales
 Supervisors:
   - Prof. Achim Menges
   - Prof. Jan Knippers

@@ -85,7 +85,7 @@ function processContentCollections() {
 
         if (!data.Name) continue;
 
-        const slug = data.Slug || `${collection}/${file.replace(".md", "")}`;
+        const slug = `${collection}/${file.replace(".md", "")}`;
         const isUnpublished = file.startsWith("_");
         const cleanSlug = slug.replace(/^_/, "");
 

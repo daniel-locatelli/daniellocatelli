@@ -10,18 +10,19 @@ Tags:
 Authors:
   - Daniel Nunes Locatelli
   - Nils Opgenorth
+Supervisors:
+  - Prof. Achim Menges
+  - Prof. Jan Knippers
+Advisors:
+  - Hans Jakob Wagner
+  - Samuel Leder
 DateStart: "2024-12-01"
 Link:
-  Text: Building Across Scales at ITECH Thesis Projects
-  Href: "https://www.itech.uni-stuttgart.de/itech-thesis-projects/2021-building-across-scales/"
+  Text: Artigo na revista Automation in Construction
+  Href: "https://doi.org/10.1016/j.autcon.2024.105774"
 Place: ITECH - University of Stuttgart
 ---
 
-
-
-
-**Confira o artigo publicado na Automation in Construction:**
-[Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings](https://doi.org/10.1016/j.autcon.2024.105774)
 # Resumo
 **Building Across Scales
 Um sistema robótico para colagem de madeira engenheirada no canteiro**

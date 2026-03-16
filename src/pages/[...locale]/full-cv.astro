@@ -412,7 +412,62 @@ const works = projectsCollection
                 <div class="timeline" />
               </div>
 
-              {education.link ? (
+              {education.institutionLink ? (
+                <div class={`item-text ${bgClass}`}>
+                  <h3 class="mb-0 flex">
+                    <a href={education.link} class="grow hover:text-emerald-400">
+                      {education.title}
+                    </a>
+                  </h3>
+                  <h4>
+                    <a href={education.institutionLink} class="inline-flex items-center gap-1 hover:text-emerald-400">
+                      {education.institution}
+                      <Icon
+                        name="mdi:external-link"
+                        class="size-3 shrink-0 print:hidden"
+                      />
+                    </a>
+                     | {education.location}
+                  </h4>
+
+                  {/* Render description if it exists */}
+                  {education.description &&
+                    education.description.length > 0 && (
+                      <div class="mb-1 ml-1 text-sm text-zinc-300">
+                        <p>{education.description}</p>
+                      </div>
+                    )}
+
+                  {/* Render supervisors if they exist */}
+                  {education.supervisors &&
+                    education.supervisors.length > 0 && (
+                      <div class="mb-1 ml-1 text-sm text-zinc-300">
+                        <p>
+                          {cv.ui.supervisors}:
+                          {education.supervisors.map((supervisor, idx, arr) =>
+                            idx === arr.length - 1
+                              ? `${supervisor}`
+                              : `${supervisor}, `,
+                          )}
+                        </p>
+                      </div>
+                    )}
+
+                  {/* Render advisors if they exist */}
+                  {education.advisors && education.advisors.length > 0 && (
+                    <div class="mb-1 ml-1 text-sm text-zinc-300">
+                      <p>
+                        {cv.ui.advisors}:
+                        {education.advisors.map((advisor, idx, arr) =>
+                          idx === arr.length - 1
+                            ? `${advisor}`
+                            : `${advisor}, `,
+                        )}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ) : education.link ? (
                 <a href={education.link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
                     <span class="grow">{education.title}</span>
@@ -425,7 +480,7 @@ const works = projectsCollection
                     {education.institution} | {education.location}
                   </h4>
 
-                  {/* Render description if its  exist */}
+                  {/* Render description if it exists */}
                   {education.description &&
                     education.description.length > 0 && (
                       <div class="mb-1 ml-1 text-sm text-zinc-300">

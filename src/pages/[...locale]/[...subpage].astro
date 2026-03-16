@@ -201,6 +201,52 @@ if (image) {
             )
         }
         {
+          subpage.data.Supervisors &&
+            Array.isArray(subpage.data.Supervisors) &&
+            subpage.data.Supervisors.length > 0 && (
+              <tr>
+                {subpage.data.Supervisors.length === 1 ? (
+                  <th>{t.supervisor}</th>
+                ) : (
+                  <th>{t.supervisors}</th>
+                )}
+                <td>
+                  {subpage.data.Supervisors.map((sup: any, index: number) => {
+                    const name = typeof sup === "string" ? sup : sup.name;
+                    if (index === 0) {
+                      return <span>{name}</span>;
+                    } else {
+                      return <span>, {name}</span>;
+                    }
+                  })}
+                </td>
+              </tr>
+            )
+        }
+        {
+          subpage.data.Advisors &&
+            Array.isArray(subpage.data.Advisors) &&
+            subpage.data.Advisors.length > 0 && (
+              <tr>
+                {subpage.data.Advisors.length === 1 ? (
+                  <th>{t.advisor}</th>
+                ) : (
+                  <th>{t.advisors}</th>
+                )}
+                <td>
+                  {subpage.data.Advisors.map((adv: any, index: number) => {
+                    const name = typeof adv === "string" ? adv : adv.name;
+                    if (index === 0) {
+                      return <span>{name}</span>;
+                    } else {
+                      return <span>, {name}</span>;
+                    }
+                  })}
+                </td>
+              </tr>
+            )
+        }
+        {
           subpage.data.Client && (
             <tr>
               <th>{t.client}</th>

@@ -13,8 +13,14 @@ Authors:
   - Anand Shah
   - Benjamin Hagemann
   - Max Mischke
+Supervisors:
+  - Prof. Achim Menges
+  - Prof. Jan Knippers
 DateStart: "2020-10-01"
 Place: ITECH - University of Stuttgart
+Link:
+  Text: Acropora Pavilion - ITECH Thesis Projects
+  Href: /documents/daniel-locatelli_biomimetics-itech.pdf
 ---
 
 
