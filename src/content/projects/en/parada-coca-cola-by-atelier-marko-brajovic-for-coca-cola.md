@@ -40,8 +40,7 @@ Place: Olimpic games
 
 Parada Coca-Cola was my very first project where I applied computational design. This sensorial experience was inspired by the Coca-Cola bottle, mimicking the bubbles and colors of the drink. It also had many other activations, as they call in marketing agencies in Brazil.
 
-![Photo inside of the Kaleidoscope activation. 
-Kaleidoscope activation. ](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-e8746a8b-ec0e-458f-aacd-0d3bc049c15f.jpeg)
+![Photo inside of the Kaleidoscope activation.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-e8746a8b-ec0e-458f-aacd-0d3bc049c15f.jpeg)
 ![Photo showing many plastic balls and their cables connecting to the ceiling.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-4874b12d-fba2-46f6-a6d8-94298866fb8e.jpeg)
 ## Computational Design
 My role in the project was to place the plastic spheres parametrically while avoiding colliding with each other and the cables that connected them to the ceiling. For that, I used Grasshopper and Galapagos.
