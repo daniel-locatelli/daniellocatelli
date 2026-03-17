@@ -25,17 +25,14 @@ Link:
   Href: "https://www.icd.uni-stuttgart.de/projects/remstal-gartenschau-2019-urbach-turm/"
 ---
 
-## Einführung
-Während dieser kurzen Forschungsassistenz am ICD der Universität Stuttgart arbeitete ich am Projekt Urbach-Turm. Es war spannend, die computergestützte Strategie zur Geometrieerzeugung für eine sich selbst krümmende Brettsperrholzplatte zu verstehen.
-Der Trick besteht darin, mit Zylindern zu arbeiten, da sich Holz von Natur aus senkrecht zur Faserrichtung krümmt. Dylan Woods Forschung zeigte, wie man diese natürliche Selbstformungseigenschaft von Holz nutzen und in ein architektonisches Element umwandeln kann.
-![Foto des Urbach-Turms.
-Urbach-Turm, Remstal Gartenschau 2019.
-© ICD Universität Stuttgart](../../../assets/content/projects/icd-research-assistant-as-computational-designer/block-40eaf53c-37a7-47dd-9ee2-9312867fb9e9.webp)
-## Die Arbeit
-Meine Hauptaufgabe bestand darin, die Bestandszeichnungen des Turms anzufertigen, wobei ich Rhino und Grasshopper verwendete, um die endgültige gebaute Struktur präzise darzustellen. Dies erforderte ein Verständnis des parametrischen Modells und dessen Anpassung an die auf der Baustelle erfassten Messdaten.
+Ich war der Computational Designer für ein Projekt ähnlich dem [Urbach Tower](https://www.icd.uni-stuttgart.de/projects/remstal-gartenschau-2019-urbach-turm/). Der Vorschlag wurde jedoch nicht weiterverfolgt, vermutlich wegen der Pandemie.
+Dennoch war es spannend, die computergestützte Strategie zur Geometrieerzeugung für eine sich selbst krümmende Brettsperrholzplatte zu verstehen. Der Trick besteht darin, mit Zylindern zu arbeiten, da sich Holz von Natur aus senkrecht zur Faserrichtung krümmt.
+
+![Eine zweischichtige Holzplatte biegt sich beim Trocknen.
+Eine zweischichtige Holzplatte biegt sich beim Trocknen.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/block-40eaf53c-37a7-47dd-9ee2-9312867fb9e9.webp)
+Ich arbeitete auch an einigen Bestandszeichnungen für den Urbach Tower selbst (Titelbild). Deshalb brachte mir Dylan alle konstruktiven Details dieses Projekts bei und auch, wie sie mehrere Sensoren hinzufügten, um die Umwelteinflüsse auf die Struktur zu überwachen und zu verfolgen.
+Dylan Woods Forschung am ICD befasste sich mit den natürlichen Selbstformungseigenschaften von Holz beim Trocknen. Sie können sich Dylan Woods TED Talk ansehen, um mehr über den Prozess zu erfahren:
 
 ![3D-Lageplan des Turmprojekts.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/3d-site-plan.jpg)
 
-![Foto des Selbstformungsprozesses von Holz.
-Selbstformungsprozess von Holz.
-© ICD Universität Stuttgart](../../../assets/content/projects/icd-research-assistant-as-computational-designer/block-40eaf53c-37a7-47dd-9ee2-9312867fb9e9.webp)
+© Zeichnung und Animation von der Universität Stuttgart, ICD/ITKE

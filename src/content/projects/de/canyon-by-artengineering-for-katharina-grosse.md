@@ -9,7 +9,7 @@ Tags:
   - Digital Fabrication
   - Grasshopper3D
 Authors:
-  - ArtEngineering GmbH
+  - ArtEngineering
 Category: Computational design
 City:
   - Paris

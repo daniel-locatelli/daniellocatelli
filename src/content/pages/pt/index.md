@@ -1,7 +1,7 @@
 ---
 Cover: "/assets/content/homepage/homepage-cover.jpeg"
 CoverAlt: "Demonstrador da tese de mestrado do Daniel."
-Description: "Bem-vindo ao meu escritório digital. Aqui, você encontra meu trabalho e pesquisa sobre design computacional e desenvolvimento de software para a indústria AEC."
+Description: "Bem-vindo ao meu escritório digital. Aqui, você encontra meu trabalho, pesquisa e ensino sobre arquitetura, biomimética, design computacional e desenvolvimento de software para a indústria AEC."
 Name: Página Inicial
 
 ---

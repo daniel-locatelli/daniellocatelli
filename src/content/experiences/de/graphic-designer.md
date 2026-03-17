@@ -2,7 +2,7 @@
 Name: Grafikdesigner
 DateStart: "2011-06"
 DateEnd: "2013-08"
-Organization: Institut für Biomedizinische Wissenschaften - Universität von São Paulo
+Organization: Institut für Biomedizinische Wissenschaften - Universität São Paulo
 City:
   - Brasilien
 Category: Professional Experience

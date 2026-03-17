@@ -5,7 +5,7 @@ Description: "Ein Pitch auf der Siemens RIE München Konferenz darüber, wie com
 Name: Machbarkeit nachhaltigen Bauens von BuildSystems bei Siemens
 Category: Pitch
 City:
-  - Munich
+  - München
 DateStart: "2023-03-27"
 Language: English
 Link:

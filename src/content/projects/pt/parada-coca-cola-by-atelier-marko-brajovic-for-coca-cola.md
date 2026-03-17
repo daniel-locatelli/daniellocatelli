@@ -2,7 +2,7 @@
 Cover: /assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola-cover.jpg
 CoverAlt: Foto da entrada do bar principal da Parada Coca-Cola.
 Description: "Parada Coca-Cola foi o primeiro projeto em que apliquei design computacional. Esta experiência sensorial foi inspirada na garrafa de Coca-Cola, imitando as bolhas e as cores da bebida."
-Name: Parada Coca-Cola por Atelier Marko Brajovic para Coca-Cola
+Name: Parada Coca-Cola por Atelier Marko Brajovic para Coca-Cola
 Tags:
   - Computational Design
   - Grasshopper3D
@@ -33,11 +33,12 @@ Place: Olimpic games
 ---
 
 
+
 ## Conceito
-> Para os Jogos Olímpicos de Verão de 2016, fomos convidados a projetar uma experiência de imersão de marca no Armazém 3, localizado no Pear Mauá, Rio de Janeiro. O objetivo foi envolver o público numa experiência sensorial dentro do imaginário temático da marca da Coca-Cola, mantendo o diálogo com a arquitetura existente do século XIX do Armazém.
 
+> Utilizamos mais de 500 esferas de acrílico transparente de diferentes tamanhos suspensas na estrutura do teto do armazém, cobrindo quase 1000m² e iluminadas para criar um efeito de movimento de efervescência ascendente. Sob a instalação principal de bolhas, diferentes ativações interativas e exposições entretêm o público e narram a história visual da empresa.
 
-Parada Coca-Cola foi o primeiro projeto no qual apliquei design computacional. Essa experiência sensorial foi inspirada na garrafa da Coca-Cola, imitando as bolhas e cores da bebida. Também teve muitas outras ativações, como o caleidoscópio.
+Parada Coca-Cola foi o primeiro projeto no qual apliquei design computacional. Essa experiência sensorial foi inspirada na garrafa da Coca-Cola, imitando as bolhas e cores da bebida. Também teve muitas outras ativações, como chamam nas agências de marketing no Brasil.
 
 ![Foto do interior da ativação do Caleidoscópio.
 Ativação do caleidoscópio.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-10ebf53b-9ce3-81a0-a2f2-e5ce5cd3a01f.jpeg)
@@ -49,5 +50,4 @@ Outra tarefa que veio depois foi gerar uma planilha com todos os comprimentos de
 ![Foto de um lounge no primeiro plano com bancos circulares vermelhos e o bar dourado ao fundo.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-10ebf53b-9ce3-81f2-bbc6-ec6bd319c3e2.jpeg)
 Este é o último arquivo Grasshopper que usei no projeto:
 
-© Fotos por Fernando Martins
-
+© Fotos por Fernando Martins

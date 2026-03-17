@@ -11,5 +11,5 @@ Link: "https://buildsystems.de/"
 
 *Antigo Urban Scale Timber*
 
-- Desenvolvimento de uma Calculadora de Financiamento para construções e reformas na Alemanha. O aplicativo web foi construído com o framework Angular e PostgreSQL. Proporciona uma experiência de usuário fluida e oferece capacidades de modelagem financeira em tempo real.
-- Desenvolvimento e implementação do website da BuildSystems utilizando o framework Astro, com integração da API do Notion para usar sua interface como sistema de gerenciamento de conteúdo (CMS).
+- Desenvolvimento de uma Calculadora de Financiamento para construções e reformas na Alemanha. Construída com o framework Angular e PostgreSQL (Supabase).
+- Desenvolvimento do website da BuildSystems utilizando o framework Astro, com integração da API do Notion para usar o Notion como sistema de gerenciamento de conteúdo (CMS).

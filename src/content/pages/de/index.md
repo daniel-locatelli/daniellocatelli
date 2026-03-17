@@ -1,7 +1,7 @@
 ---
 Cover: "/assets/content/homepage/homepage-cover.jpeg"
 CoverAlt: "Daniels Masterarbeit-Demonstrator."
-Description: "Willkommen in meinem digitalen Büro. Hier finden Sie meine Arbeit, Forschung und Lehre zu Computational Design und Softwareentwicklung für die AEC-Branche."
+Description: "Willkommen in meinem digitalen Büro. Hier finden Sie meine Arbeit, Forschung und Lehre zu Architektur, Biomimetik, Computational Design und Softwareentwicklung für die AEC-Branche."
 Name: Startseite
 
 ---
