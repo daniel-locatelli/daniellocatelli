@@ -1,0 +1,15 @@
+---
+/**
+ * Renders child images side-by-side on desktop, stacked on mobile.
+ * Usage in MDX:
+ *   import ImageRow from '@/components/ImageRow.astro'
+ *   <ImageRow>
+ *     ![Alt text 1](./path1.jpg)
+ *     ![Alt text 2](./path2.jpg)
+ *   </ImageRow>
+ */
+---
+
+<div class="not-prose my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+  <slot />
+</div>
