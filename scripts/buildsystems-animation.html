@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+  :root {
+    --background-body: #222;
+    --font-family-secondary: 'Space Mono', monospace;
+    --bezier-animation: cubic-bezier(0.8, 0, 0.3, 1);
+    --animation-time: 4.3s;
+    --animation-delay: 0.5s;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--background-body);
+    color: white;
+    font-family: var(--font-family-secondary);
+    overflow: hidden;
+    width: 1440px;
+    height: 900px;
+  }
+
+  .cover {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 1vw;
+    background-color: var(--background-body);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: opacity, visibility;
+    animation: fadeout var(--animation-time) var(--bezier-animation) forwards;
+    animation-delay: var(--animation-delay);
+  }
+
+  .cover-text {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    transform: translate3D(0, -50%, 0);
+    width: 100vw;
+    -webkit-font-smoothing: antialiased;
+    will-change: transform;
+    animation: cover-text-fixed var(--animation-time) var(--bezier-animation) forwards;
+    animation-delay: var(--animation-delay);
+  }
+
+  .txt-build::before { content: "Build"; }
+  .txt-build {
+    display: flex;
+    font-size: 11vw;
+    justify-content: center;
+    will-change: transform;
+    animation: build-animation var(--animation-time) var(--bezier-animation) forwards;
+    animation-delay: var(--animation-delay);
+  }
+
+  .txt-systems::before { content: "Systems"; }
+  .txt-sustainable::before { content: "Sustainable"; }
+  .txt-smart::before { content: "Smart"; }
+
+  .systems-overflow {
+    overflow: hidden;
+    height: 17vw;
+  }
+
+  .systems-container {
+    font-family: var(--font-family-secondary);
+    position: relative;
+    font-size: 11vw;
+    flex: 1;
+    transform: translate3D(0, -66%, 0);
+    animation: systems-animation var(--animation-time) var(--bezier-animation) forwards;
+    animation-delay: var(--animation-delay);
+  }
+
+  .txt-sustainable, .txt-smart {
+    will-change: transform;
+    animation: block-none var(--animation-time) var(--bezier-animation) forwards;
+    animation-delay: var(--animation-delay);
+  }
+
+  @keyframes systems-animation {
+    from { }
+    25% { transform: translate3D(0, -33%, 0); }
+    35% { transform: translate3D(0, -33%, 0); }
+    60% { transform: translate3D(0, 0, 0); }
+    70% { font-size: 11vw; transform: translate3D(0, 0, 0); }
+    to { font-size: 2.7rem; transform: translate3D(0, 0, 0); }
+  }
+
+  @keyframes fadeout {
+    90% { opacity: 1; }
+    99% { opacity: 0; visibility: visible; }
+    to { opacity: 0; visibility: hidden; }
+  }
+
+  @keyframes build-animation {
+    70% { font-size: 11vw; }
+    to { font-size: 2.7rem; }
+  }
+
+  @keyframes block-none {
+    60% { visibility: hidden; }
+    to { visibility: hidden; }
+  }
+
+  @keyframes cover-text-fixed {
+    70% { transform: translate3D(0, -50%, 0); }
+    to { transform: translate3D(0, -100vh, 0); }
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <div class="cover-text">
+      <div class="txt-build"></div>
+      <div class="systems-overflow">
+        <div class="systems-container">
+          <div class="txt-systems"></div>
+          <div class="txt-sustainable"></div>
+          <div class="txt-smart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
