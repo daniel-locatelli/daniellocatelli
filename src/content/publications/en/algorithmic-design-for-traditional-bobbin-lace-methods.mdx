@@ -51,9 +51,9 @@ import ImageRow from '@/components/ImageRow.astro'
 ## Architecture and Biomimicry
 
 <ImageRow>
-  ![Example of structures in nature: Ernst Haeckel - Spumellaria.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/1-haeckel-spumellaria.png)
+  ![Example of structures in nature: Ernst Haeckel - Spumellaria](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/1-haeckel-spumellaria.png)
 
-  ![Example of structures in nature: Patricia Manzarraga - Cobweb.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/2-cobweb-by-patricia-manzarraga.jpg)
+  ![Example of structures in nature: Patricia Manzarraga - Cobweb](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/2-cobweb-by-patricia-manzarraga.jpg)
 </ImageRow>
 
 According to Benyus [2], biomimetics uses nature as the main design guideline and can be divided into three levels. The first, more superficial, is an attempt to simply mimic forms and patterns of nature regardless of the method used. The second level explores the courses that nature goes through until it achieves its final result, the process. And the third and broadest level is to mimic natural ecosystems, understanding that all individuals and elements make up a single sustainable, interconnected and interdependent biosphere.
@@ -65,9 +65,9 @@ Algorithmic architecture works in a similar way and also explores these natural 
 ## The Brief
 
 <ImageRow>
-  ![FAU-USP during lunch time.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/3-fauusp.jpg)
+  ![FAU-USP during lunch time](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/3-fauusp.jpg)
 
-  ![Adapted hammock at FAU-USP.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/4-adapted-hammock-at-fauusp.JPG)
+  ![Adapted hammock at FAU-USP](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/4-adapted-hammock-at-fauusp.JPG)
 </ImageRow>
 
 In the exploration of spaces in FAU-USP, it is evident that it lacked student life spaces. Furthermore, the research shows that student have the habit to install hammocks around the building in order to supply this need. The idea of subverting the way hammocks are designed, presented a great potential in the field of form finding. By combining computational design with a traditional weaving method, the direction of the project moved to a new design system.
@@ -86,12 +86,12 @@ It is essential that the project uses the existing machines and tools available 
 ### Identity
 The final result should refer to FAU-USP logo with the intention of connecting it to another way of thinking beyond the established modernist vision.
 
-![Logo of FAU-USP.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/5-logo-fauusp.png)
+![Logo of FAU-USP](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/5-logo-fauusp.png)
 
 ### Location
 The proposed area consists of a 12-meter-square (144m²) covered by lawn, located between the main building of FAU-USP and the Laboratory of Models and Tests (LAME).
 
-![FAU-USP on the left and LAME on the right: satellite photo.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/6-fauusp-satelite.png)
+![FAU-USP on the left and LAME on the right: satellite photo](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/6-fauusp-satelite.png)
 
 ### Optimization
 The way it is designed must consider the optimization of form and structure.
@@ -105,7 +105,7 @@ The main software used to develop this study was Rhinoceros 3D and its Grasshopp
 
 The final algorithm developed aims to manipulate a predetermined mesh pattern. In this case, for the technical study, were used a cubic frame and a sphere-shaped mesh.
 
-![Final algorithm divided in 5 steps.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/7-grasshopper-algoritmo.png)
+![Final algorithm divided in 5 steps](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/7-grasshopper-algoritmo.png)
 
 The algorithm works in five steps. The first consists in the creation of a cubic frame with a dimension of 1 meter of edge and the division of all the edges into 116 equidistant points.
 
@@ -115,19 +115,19 @@ In the third stage, a ball of 0.80 meters in diameter is created and its mesh is
 
 In the fourth step, with the structure prepared, the Kangaroo physics simulator can finally be activated. In this way, the lines and the sphere mesh are converted into elastic cables. With the resistance of the cables adjusted, it is possible to make the system stable. Next, the vector distances between the original vertices of the static sphere and the vertices with the sphere "relaxed" are calculated.
 
-![Visual steps of the final algorithm.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/8-visual-steps-of-the-final-algorithm.png)
+![Visual steps of the final algorithm](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/8-visual-steps-of-the-final-algorithm.png)
 
 The fifth step uses Galapagos. This algorithm starts generating 50 possible random results, that is, 50 individuals based on the genetic pool, which in this case are the 116 vertices found along the cubic structure and the 190 vertices in the sphere mesh. With this data, it is able to search among the 50 initial individuals, and determine the best. This process is called fitness function, and it selects the individuals that have their final vertices closest to the vertices of the initial sphere shape.
 
-![Fifth step: Galapagos evolutionary solver.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/9-fifth-step-galapagos.png)
+![Fifth step: Galapagos evolutionary solver](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/9-fifth-step-galapagos.png)
 
 From the initial generation of data points, the optimal individuals combine their genetic markers to create 50 new data points as its own distinct generation. This is repeated until the most favorable result is reached. In this example, the algorithm stabilized at the hundredth generation.
 
-![Shape optimization with Galapagos.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/10-galapagos-optimization.png)
+![Shape optimization with Galapagos](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/10-galapagos-optimization.png)
 
 Thereafter, seven other studies were developed, but only the initial mesh pattern of the sphere was changed, and its behavior was analyzed.
 
-![Eight most important inputs and outputs studies.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/11-eight-most-important-inputs-and-outputs-studies.png)
+![Eight most important inputs and outputs studies](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/11-eight-most-important-inputs-and-outputs-studies.png)
 
 With the results obtained, it was concluded that the best alternative to develop the final proposal was the "truncated hexagonal mesh", since it presents the best control over the final form, as well as being reasonable to manufacture.
 
@@ -135,11 +135,11 @@ With the results obtained, it was concluded that the best alternative to develop
 
 To fulfill all items listed in the brief, a structure was developed so it refers directly to one of the modules that compose the FAU-USP logo. From this metal skeleton made of 4 bars, a broad spectrum of 20 solutions was generated.
 
-![Concept diagram: the FAU-USP logo pattern, the bobbin lace technique, and the hammock as design inspiration.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/concept-diagram-algorithm-lace-hammock.jpg)
+![Concept diagram: the FAU-USP logo pattern, the bobbin lace technique, and the hammock as design inspiration](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/concept-diagram-algorithm-lace-hammock.jpg)
 
-![Installation unit: algorithm steps from cylindrical bobbin to final relaxed module.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/12-installation-unit-algorithm-steps.png)
+![Installation unit: algorithm steps from cylindrical bobbin to final relaxed module](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/12-installation-unit-algorithm-steps.png)
 
-![Part of the spectrum of multiple solutions.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/13-part-of-the-spectrum-of-solutions.png)
+![Part of the spectrum of multiple solutions](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/13-part-of-the-spectrum-of-solutions.png)
 
 Similar to what happens with evolution in biology, it does not result in a 'perfect solution', but it does accomplish its final goal. This is especially important in design as it becomes a mean in which humans and computers can work together. While humans assemble the algorithm, the computers process it and end up offering a large number of results, so a human can then choose the ones that respect qualities difficult to specify inside the algorithm, as aesthetics or comfort.
 
@@ -154,16 +154,16 @@ The assembly would happen in 3 steps: the production of the net, the assembly of
 The bobbin lace technique consists of a manual production of fabric that allows to develop complex patterns with rudimentary tools. The traditional fabrication consists of successive braiding and twisting lengths of thread using wooden rods (bobbins) to handle them, pins to keep the pattern stable, and a support cushion.
 
 <ImageRow>
-  ![Bobbin lace net for model.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/14-bobbin-lace-physical-model.jpg)
+  ![Bobbin lace net for model](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/14-bobbin-lace-physical-model.jpg)
 
-  ![Final physical model at scale 1:5.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/15-final-physical-model.jpg)
+  ![Final physical model at scale 1:5](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/15-final-physical-model.jpg)
 </ImageRow>
 
-![Rendering of one unit with human scale reference.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/16-rendering-of-one-unit.png)
+![Rendering of one unit with human scale reference](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/16-rendering-of-one-unit.png)
 
-![Rendering of the final proposal in front of FAU-USP.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/17-rendering-of-the-final-proposal.jpeg)
+![Rendering of the final proposal in front of FAU-USP](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/17-rendering-of-the-final-proposal.jpeg)
 
-![Top view of the final proposal showing the modules arranged in a circle following the FAU-USP logo pattern.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/18-top-view-of-final-proposal.png)
+![Top view of the final proposal showing the modules arranged in a circle following the FAU-USP logo pattern](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/18-top-view-of-final-proposal.png)
 
 ## Conclusion
 
@@ -171,7 +171,7 @@ This study sought to explore some possibilities of incorporating a traditional w
 
 Ultimately, the final algorithm works as a creative extension of the human mind, generating a spectrum of multiple solutions.
 
-![Daniel Nunes Locatelli presenting the paper at IASS 2017, Hamburg.](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/presenting-at-iass-2017-hamburg.png)
+![Daniel Nunes Locatelli presenting the paper at IASS 2017, Hamburg](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/presenting-at-iass-2017-hamburg.png)
 
 ### References
 [1] Barthel R. Natural Forms - Architectural Forms. In: FREI OTTO - *Lightweight Construction*, Natural Design, Birkhauser - Publishers for Architecture, 2005.
