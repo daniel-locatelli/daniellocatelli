@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/projects/itke-research-assistant-for-coreless-filament-winding/itke-load-test-setup.jpg
+Cover: /assets/content/research/itke-research-assistant-for-coreless-filament-winding/itke-load-test-setup.jpg
 CoverAlt: Corpo de prova de fibra natural enrolada fixado com cintas de carga para teste estrutural no ITKE Stuttgart.
 Description: "Como assistente de pesquisa, ajudei Marta Gil Pérez com os testes de carga de corpos de prova de fibra natural para o Pavilhão livMatS. A principal lição foi sobre a relação entre simulação computacional, experimentos físicos e a intuição do pesquisador."
 Name: Assistente de Pesquisa ITKE para Enrolamento Filamentar sem Núcleo
@@ -39,9 +39,9 @@ Diferentemente dos compósitos de fibra de carbono, que possuem décadas de dado
 
 Como assistente de pesquisa sob a supervisão de Marta Gil Pérez, ajudei a preparar e executar os testes de carga. Os corpos de prova — grandes elementos enrolados com fibra natural fabricados pela turma ITECH 2020 — foram montados em plataformas hidráulicas e submetidos a forças controladas utilizando cintas de carga industriais.
 
-![Equipe de pesquisa preparando um corpo de prova de fibra natural enrolada para teste de carga no laboratório do ITKE. Um protótipo de torre de fibra de carbono é visível ao fundo.](../../../assets/content/projects/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-01.jpg)
+![Equipe de pesquisa preparando um corpo de prova de fibra natural enrolada para teste de carga no laboratório do ITKE. Um protótipo de torre de fibra de carbono é visível ao fundo.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-01.jpg)
 
-![Detalhe do corpo de prova de fibra natural enrolada mostrando o complexo padrão entrelaçado, fixado com cintas de carga laranjas para teste estrutural.](../../../assets/content/projects/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-01.jpg)
+![Detalhe do corpo de prova de fibra natural enrolada mostrando o complexo padrão entrelaçado, fixado com cintas de carga laranjas para teste estrutural.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-01.jpg)
 
 ## Simulação vs. realidade
 
@@ -49,6 +49,6 @@ O que tornou essa experiência marcante foi testemunhar em primeira mão a lacun
 
 A experiência e a intuição de Marta com estruturas semelhantes foram fundamentais. Após cada teste, ela conseguia identificar quais ajustes deveriam ser feitos no projeto — embasada por uma combinação de dados medidos e anos de experiência prática com compósitos de fibras. Essa interação entre simulação, experimento e intuição é o que torna a pesquisa na fronteira da tecnologia da construção tão fascinante.
 
-![Detalhe do corpo de prova de fibra natural sob carga, mostrando a densidade do padrão de enrolamento.](../../../assets/content/projects/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-02.jpg)
+![Detalhe do corpo de prova de fibra natural sob carga, mostrando a densidade do padrão de enrolamento.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-02.jpg)
 
-![Configuração completa do teste de carga com o corpo de prova de fibra natural fixado em uma plataforma hidráulica.](../../../assets/content/projects/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-02.jpg)
+![Configuração completa do teste de carga com o corpo de prova de fibra natural fixado em uma plataforma hidráulica.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-02.jpg)

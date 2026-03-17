@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/projects/itke-research-assistant-for-coreless-filament-winding/itke-load-test-setup.jpg
+Cover: /assets/content/research/itke-research-assistant-for-coreless-filament-winding/itke-load-test-setup.jpg
 CoverAlt: Natural fiber wound specimen secured with load straps for structural testing at ITKE Stuttgart.
 Description: "As a research assistant, I helped Marta Gil Pérez with the load tests of natural fiber specimens for the livMatS Pavilion. The main takeaway was about the relationship between computer simulation, physical experiments, and the researcher's intuition."
 Name: ITKE Research Assistant for Coreless Filament Winding
@@ -39,9 +39,9 @@ Unlike carbon fiber composites, which have decades of engineering data behind th
 
 As a research assistant under Marta Gil Pérez, I helped prepare and execute the load tests. The specimens — large natural fiber wound elements fabricated by the ITECH 2020 class — were mounted on hydraulic platforms and subjected to controlled forces using industrial load straps.
 
-![Research team preparing a natural fiber wound specimen for load testing at the ITKE lab. A carbon fiber tower prototype is visible in the background.](../../../assets/content/projects/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-01.jpg)
+![Research team preparing a natural fiber wound specimen for load testing at the ITKE lab. A carbon fiber tower prototype is visible in the background.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-01.jpg)
 
-![Close-up of the natural fiber wound specimen showing the complex interwoven pattern, secured with orange load straps for structural testing.](../../../assets/content/projects/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-01.jpg)
+![Close-up of the natural fiber wound specimen showing the complex interwoven pattern, secured with orange load straps for structural testing.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-01.jpg)
 
 ## Simulation vs. reality
 
@@ -49,6 +49,6 @@ What made this experience stand out was witnessing firsthand the gap between com
 
 Marta's experience and intuition with similar structures were fundamental. After each test, she could identify which adjustments should be made to the design — informed by a combination of measured data and years of hands-on experience with fiber composites. This interplay between simulation, experiment, and intuition is what makes research at the frontier of construction technology so compelling.
 
-![Detail of the natural fiber specimen under load, showing the density of the winding pattern.](../../../assets/content/projects/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-02.jpg)
+![Detail of the natural fiber specimen under load, showing the density of the winding pattern.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-02.jpg)
 
-![The full load testing setup with the natural fiber specimen secured on a hydraulic platform.](../../../assets/content/projects/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-02.jpg)
+![The full load testing setup with the natural fiber specimen secured on a hydraulic platform.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-02.jpg)

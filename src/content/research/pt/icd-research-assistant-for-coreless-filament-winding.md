@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg
+Cover: /assets/content/research/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg
 CoverAlt: Daniel Nunes Locatelli com traje de proteção ao lado do braço robótico KUKA no ICD Stuttgart.
 Description: "Investigação de métodos computacionais para prever a interação das fibras de carbono durante o enrolamento filamentar sem núcleo. Auxiliei Christoph Schlopschnat na preparação de resina, testes físicos em pequena escala e fotogrametria."
 Name: Assistente de Pesquisa ICD para Enrolamento Filamentar sem Núcleo
@@ -36,16 +36,16 @@ Auxiliei Christoph em sua investigação de métodos computacionais para prever 
 - **Testes físicos em pequena escala** — execução de experimentos controlados de enrolamento para coletar dados sobre o comportamento das fibras.
 - **Fotogrametria** — captura dos corpos de prova enrolados de múltiplos ângulos para criar gêmeos digitais para comparação com as previsões computacionais.
 
-![Daniel Nunes Locatelli e Anand Shah com trajes de proteção no laboratório do ICD, com o robô KUKA e amostras anteriores de enrolamento filamentar visíveis ao fundo.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/daniel-and-anand-in-protective-suits.jpg)
+![Configuração do enrolamento robótico no ICD Computational Construction Laboratory, mostrando o braço KUKA, a estrutura de enrolamento e a cobertura protetora do piso.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/robotic-winding-setup.jpg)
 
-![Configuração do enrolamento robótico no ICD Computational Construction Laboratory, mostrando o braço KUKA, a estrutura de enrolamento e a cobertura protetora do piso.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/robotic-winding-setup.jpg)
+![O braço robótico KUKA no laboratório com amostras de enrolamento de fibra de carbono armazenadas nas prateleiras acima.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg)
 
-![O braço robótico KUKA no laboratório com amostras de enrolamento de fibra de carbono armazenadas nas prateleiras acima.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/kuka-robot-with-winding-samples.jpg)
+![Preparação da resina para o processo de enrolamento de fibra de carbono.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/resin-preparation.jpg)
 
-![Preparação da resina para o processo de enrolamento de fibra de carbono.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/resin-preparation.jpg)
-
-![Amostras de enrolamento de fibra de carbono na prateleira de armazenamento, mostrando as complexas geometrias ocas alcançadas pelo enrolamento filamentar sem núcleo.](../../../assets/content/projects/icd-research-assistant-for-coreless-filament-winding/carbon-fiber-samples-on-shelf.jpg)
+![Amostras de enrolamento de fibra de carbono na prateleira de armazenamento, mostrando as complexas geometrias ocas alcançadas pelo enrolamento filamentar sem núcleo.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/carbon-fiber-samples-on-shelf.jpg)
 
 ## Aprendizados
 
 O aspecto mais memorável desse trabalho foi o manuseio da resina. A resina epóxi utilizada em compósitos de fibra de carbono é altamente tóxica, exigindo trajes de proteção completos, luvas e preparação cuidadosa do espaço de trabalho com coberturas protetoras. Foi uma introdução prática às realidades de se trabalhar com materiais compósitos avançados — um mundo à parte do lado computacional da pesquisa. E, sinceramente, a toxicidade do material foi algo que me desanimou bastante, razão pela qual acabei me afastando dessa linha de pesquisa. Mas foi uma experiência valiosa que me deu uma apreciação mais profunda das complexidades da ciência dos materiais na fabricação arquitetônica.
+
+![Daniel Nunes Locatelli e Anand Shah com trajes de proteção no laboratório do ICD, com o robô KUKA e amostras anteriores de enrolamento filamentar visíveis ao fundo.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/daniel-and-anand-in-protective-suits.jpg)
