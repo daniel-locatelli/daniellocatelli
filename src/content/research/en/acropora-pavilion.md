@@ -47,6 +47,3 @@ Pavilion exploration using a triangular pattern on a pre-defined surface.](../..
 Structure based on a coral section.](../../../assets/content/research/acropora-pavilion/block-3efb2e81-2dfe-4a78-bc27-0032117c0e47.jpg)
 ![Rendering of the Acropora pavilion.
 Rendering of the Acropora pavilion.](../../../assets/content/research/acropora-pavilion/block-a8dfb3bc-4b43-46e5-a804-9f17e0e16d70.jpg)
-
-Check also my post on Instagram:
-

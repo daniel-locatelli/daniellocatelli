@@ -34,7 +34,7 @@ Place: Olimpic games
 
 
 
-# Concept
+## Concept
 
 > We used more than 500 transparent acrylic spheres of different sizes suspended from the warehouse’s ceiling structure, covering almost 1000m² and lighted it up to create a motion effect of ascending effervescence. Under the main bubble installation, different interactive activations and exhibitions entertain the public and narrate the visual history of the company.
 
@@ -43,7 +43,7 @@ Parada Coca-Cola was my very first project where I applied computational design.
 ![Photo inside of the Kaleidoscope activation. 
 Kaleidoscope activation. ](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-e8746a8b-ec0e-458f-aacd-0d3bc049c15f.jpeg)
 ![Photo showing many plastic balls and their cables connecting to the ceiling.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-4874b12d-fba2-46f6-a6d8-94298866fb8e.jpeg)
-# Computational Design
+## Computational Design
 My role in the project was to place the plastic spheres parametrically while avoiding colliding with each other and the cables that connected them to the ceiling. For that, I used Grasshopper and Galapagos.
 Another task that came later was to generate a spreadsheet with all the cable lengths and the tags to properly organize all the material to be shipped and deployed. Well, at least this was the idea. Because, at some point, someone thought it would be nice to remove the tags 🤯. It was a nightmare for the girls coordinating the event.
 

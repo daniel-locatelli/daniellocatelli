@@ -2,7 +2,7 @@
 Cover: /assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/air-guitar-by-atelier-marko-brajovic-for-nike-cover.jpeg
 CoverAlt: "Foto der Air Guitar von unten aufgenommen, mit Blick zur Decke des frisch renovierten Gebäudes."
 Description: "Atelier Marko Brajovic entwickelte diese ortsspezifische Installation zur Feier des Air Max Day. In diesem Projekt arbeitete ich am Konzept und der Koordination. Außerdem konnte ich mit adressierbaren LEDs, Arduino und Bass-Tonabnehmern arbeiten."
-Name: Air Guitar von Atelier Marko Brajovic für Nike
+Name: Air Guitar von Atelier Marko Brajovic für Nike
 Tags:
   - Electronic
   - Arduino
@@ -26,7 +26,7 @@ Team:
 Development:
   - Hybrida Production
 Link:
-  Text: Air Guitar at Atelier Marko Brajovic
+  Text: Air Guitar bei Atelier Marko Brajovic
   Href: "https://markobrajovic.com/en/all/air-guitar-sp-on-air"
 Place: Red Bull Station
 ---
@@ -36,45 +36,125 @@ import YouTube from '@/components/YouTube.astro'
 
 <YouTube id="KucCxUmOM1o" />
 
-# Konzept
-Im Jahr 2017 beauftragte [Nike Brasilien](https://nike.com.br/) das Atelier Marko Brajovic mit dem Entwurf einer ortsspezifischen Installation zur Feier eines der wichtigsten Events von Nike: dem Air Max Day. Das ursprüngliche Konzept entwickelte sich von einer Sneaker-Skulptur zu einer **Musikinstallation** für die Veranstaltung.
-Man stelle sich einen großen Gitarrenkoerper aus LEDs, Bass-Tonabnehmern und Saiten vor, der in der Luft haengt, und jeder, der darunter hindurchgeht, kann die Riesengitarre spielen und eine Lichtshow ausloesen. Jede Saite ist mit einer anderen LED-Zone verbunden. Die LEDs werden durch den von den Bass-Tonabnehmern an den Saiten aufgenommenen Klang gesteuert.
+## Konzept
+> Die Metallsäule verbindet den Untergrund der Stadt mit dem schwebenden Dach und funktioniert praktisch wie eine Antenne, die die Vibrationen der Stadt und die durch das Gebäude verstärkten Magnetfelder einfängt.
+Das Werk verwandelt das architektonische Element in ein Musikinstrument, das vom Publikum und der Stadt gespielt werden kann. Eine hybride Schnittstelle, die durch die Vibration der Luft eine sensorische Polyphonie zwischen urbanem Metabolismus und Menschen erzeugt.
+
+*Atelier Marko Brajovic*
+
+Atelier Marko Brajovic entwickelte diese ortsspezifische Installation zur Feier des Air Max Day. In diesem Projekt arbeitete ich eng mit Marko zusammen, gab Impulse und wies darauf hin, wo ich Potenzial für eine Installation in der [Red Bull Station](https://triptyque.com/en/project/redbull-station/) sah. Dieses kürzlich renovierte Gebäude war einst ein Kraftwerk und wurde hauptsächlich zu einem Musiklabor, bot aber auch Raum für andere Kunst- und Technologie-Experimente.
+Der Air Max Day feierte die alten und neuen Air-Max-Schuhe und verband gleichzeitig Nike mit Red Bull. Im Kern ging es um Schnittstellen – genauer gesagt um Schnittstellen zwischen dem Alten und dem Neuen, Design und Musik.
+Marko entwickelte zwei Konzepte: eines mit aufblasbaren Elementen und die Air Guitar. Das erste war nicht schlecht, aber die Air Guitar war zu gut, um sie abzulehnen.
+Während des Meetings mit der Marketingagentur waren sie sehr begeistert von der Installation, aber sie dachten, es fehle etwas. Daraufhin schlug ich vor, sie mit adressierbaren LEDs aufzupeppen.
+
 ![Drei Fotos von Nutzern, die die Gitarre spielen.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dcf83d14-a517-49fa-97e3-722f58b27bc8.jpeg)
-# Entwicklung
-Die Umsetzung der Air Guitar erforderte ein Team von zehn Personen, die mehrere Wochen ununterbrochen arbeiteten. Um alles organisiert zu halten, erstellte ich eine umfangreiche Notion-Wissensdatenbank mit allen relevanten Informationen -- von technischen Spezifikationen bis hin zu Logistik und Teammanagement.
-Für die **Elektronikentwicklung** arbeiteten wir mit [Guará Labs](https://www.instagram.com/guaralabs/) zusammen, einem Team, das für seine Expertise in **Arduino-basierten Projekten** bekannt ist. Gemeinsam entwickelten wir ein System mit 5 Arduino Megas: **einer war für den Empfang der Signale von den 5 Bass-Tonabnehmern (verbunden mit 5 Saiten) zustaendig, und die anderen 4 steuerten insgesamt rund 1.000 adressierbare LEDs**, die in 5 Zonen organisiert waren.
-![Eine interaktive elektronische Installation namens "Air Guitar", entworfen für Nike. Sie verfügt über ein komplexes Setup aus LED-Lichtern in einem Zickzack-Muster an der Decke, mit herunterhangenden Saiten oder Kabeln, mit denen Besucher wie mit Gitarrensaiten interagieren können. Die Installation ist in einem dunklen Industrieraum mit Gewoelbedecken montiert.
-Elektronischer Schaltplan.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dfa6d8c4-39a1-4b03-a228-f90a60a9b26b.jpeg)
+
+## Entwicklung
+Nachdem das Konzept genehmigt war, übernahm ich auch die Koordination der gesamten Projektentwicklung, und ich bin vielleicht etwas zu ehrgeizig gewesen, denn ich entschied mich, den LED-Teil komplett selbst zu entwickeln.
+Für den Gitarrenteil hatte ich keine Ahnung, aber ich kannte den richtigen Mann für die Aufgabe: meinen Freund Lucas Caracik, einen professionellen Gitarrenbauer von [Caracik Guitars](https://www.caracikguitars.com/).
+Rafael Ohashi war der Veranstaltungsmann; er hatte bereits bei vielen anderen Events mitgearbeitet und würde uns leiten und die nötige Ausrüstung und Genehmigungen besorgen.
+Das System funktionierte folgendermaßen: Die Gitarre wurde aus vier Stahlseilen und vier Bass-Tonabnehmern gebaut (ja, sie hätte eigentlich Air Bass heißen müssen, aber das klingt nicht so sexy, oder?).
+Ich dachte auch daran, ein Mikrofon zu verwenden, aber Lucas' Vorschlag, Tonabnehmer zu verwenden, war konzeptionell und funktional auf einem ganz anderen Level, und er wusste alles darüber.
+Ursprünglich war das Konzept, die LEDs von unten bis ganz nach oben zu führen. Aber dafür hätten wir jemanden mit einer Sicherheitslizenz zum Klettern gebraucht, den wir leider nicht rechtzeitig finden konnten, sodass wir auf die Höhe beschränkt waren, die eine Hebebühne erreichen konnte.
 
 <Video src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/first-pickup-test.mp4" caption="First test: checking if a pickup would capture the steel cable vibration." />
 
-# Interaktivitaet
-Hier ist die grundlegende Erklärung des Schaltkreises:
-1. Wenn ein Nutzer eine Saite beruehrt und loslässt, **wird die Vibration von einem Bass-Tonabnehmer** erfasst, der mit der Saite verbunden ist.
-2. Das Signal wird in Echtzeit an den Empfaenger-Arduino-Mega gesendet.
-3. Der Arduino verarbeitet das Signal und **wandelt das analoge Signal in einen digitalen Wert um**. In dieser Phase werden einige Rauschunterdrueckungstechniken angewendet, wie das Glaetten der Werte mit einer Fensterfunktion.
-4. Dieser digitale Wert wird nun an die entsprechende LED-Zone gesendet, die von einem der 4 Sender-Arduino-Megas gesteuert wird.
-5. Der Sender-Arduino-Mega empfaengt den Wert und **bildet die Amplitude des Signals** auf die LED-Animationen ab.
-6. Je nach Intensitaet der Vibration **leuchtet die LED-Zone** mit bestimmten Mustern und Helligkeitsstufen auf. Mehrere LED-Animationsmodi stehen zur Verfuegung.
-## Herausforderungen
-Eine der größten Herausforderungen war die Minderung des Problems der physischen Vibrationsübertragung zwischen den Saiten. Wir hatten nur fuenf Sensoren, jeweils einer pro Saite, aber die fuenf Saiten lagen relativ nah beieinander. Wenn also jemand eine Saite zupfte und losliess, vibrierten die anderen ebenfalls leicht mit. Dies erzeugte viel "Rauschen" und fuehrte zu ungewollten LED-Aktivierungen in anderen Zonen.
-Dieses Verhalten ist den **[DTMF-Frequenzen](https://de.wikipedia.org/wiki/Mehrfrequenzwahlverfahren)** sehr ähnlich, die in der Telefonie verwendet werden. Jede Taste eines Telefons sendet ein einzigartiges Frequenzpaar, damit das Netzwerk eindeutig identifizieren kann, welche Taste gedrueckt wurde, selbst bei Signalrauschen. Bei der Air Guitar könnte jede Saite mit einer spezifischen Vibrationssignatur verknuepft werden, aber die Hauptherausforderung war die physische Kopplung zwischen den Saiten.
-Wir loesten es mit einer Kombination aus:
-1. **Schwellenwertfilterung**: Signale unterhalb einer bestimmten Amplitude wurden ignoriert.
-2. **Zeitliches Gating**: Es wurden nur Signale von einer Saite akzeptiert, die kuerzlich gezupft wurde (ein kleines Zeitfenster nach dem initialen Impuls).
-3. **Übersprechunterdrueckung**: Wenn mehrere Tonabnehmer gleichzeitig ausloesten, priorisierte das System das staerkste Signal.
-## Nach dem Air Max Day
-Nach dem Air Max Day Event wurden wir eingeladen, die Air Guitar zu **[SP On Air](https://projetosp.art.br/2018/sp-on-air/)** zu bringen, einem Festival für zeitgenoessische Kunst, Musik, Technologie und Architektur. Diesmal hatte die Air Guitar viel mehr Zeit, um vom Publikum erlebt zu werden. Wir passten einige der Animationen an und verbesserten die Interaktivitaet.
-![Foto der Air Guitar in einem dunklen Raum aus einer Perspektive von unten, das die LED-Installation an der Decke mit herunterhangenden Saiten zeigt.
-Air Guitar bei SP On Air.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dfa6d8c4-39a1-4b03-a228-f90a60a9b26b.jpeg)
-# Erkenntnisse
-Dieses Projekt war das erste Mal, dass ich ein Team für eine komplexe Tech-Art-Installation leitete. Ich habe gelernt, dass:
-1. **Organisation alles ist**: Eine umfangreiche Notion-Wissensdatenbank half dabei, das Projekt auf Kurs zu halten.
-2. **Das Spannende schwierig ist**: LEDs in Echtzeit auf Musikeingaben reagieren zu lassen klingt cool, aber die Herausforderungen der Signalverarbeitung sind real.
-3. **Frueh und oft testen**: Wir verbrachten die letzten 2 Tage vor dem Event nur mit der Kalibrierung und Feinjustierung der Sensoren.
-4. **Teamvielfalt zaehlt**: Die Kombination aus Architekten, Elektronik-Ingenieuren und Musikern schuf ein einzigartiges Projekt.
-![Foto eines Nutzers, der eine der Saiten haelt und spielt.
-Nutzer spielt die Air Guitar.
-© Daniel Nunes Locatelli](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dcf83d14-a517-49fa-97e3-722f58b27bc8.jpeg)
-![Foto der Installation mit LEDs, die in einem Wellenmuster leuchten.
-Steuerungskasten, das weisse Papier stellt den Platz für die Notfallbatterie dar.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-56c64a60-4b48-4738-8581-2327c2cba058.jpg)
+### Interaktivität
+Jeder Bass-Tonabnehmer sendete ein analoges Signal an seinen jeweiligen Arduino Mega, der dann den Wert mappte und in ein digitales Signal umwandelte, um eine bestimmte Anzahl von LEDs einzuschalten.
+Theoretisch ziemlich einfach, aber in der Realität trieb es mich ziemlich schnell in den Elektronik-Kaninchenbau, bis ich an eine Wand stieß. Ich kam auf diesen Schaltkreis, aber aus irgendeinem Grund funktionierte er nicht gut. Das Event rückte näher, und das Team wurde zunehmend nervös. Eine Woche vor dem Event kontaktierte ich André Biagioni von [Fiozeira](https://fiozera.com.br/). Glücklicherweise stimmte er zu, teilzunehmen. Er sagte, dem Schaltkreis fehle ein Filter, und erledigte die restliche Arbeit. Er fertigte auch einen Schaltplan an und half bei der Montage.
+
+![Elektronischer Schaltplan.
+Elektronischer Schaltplan.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dfa6d8c4-39a1-4b03-a228-f90a60a9b26b.jpeg)
+
+```arduino
+#include "FastLED.h"
+
+#if FASTLED_VERSION < 3001000
+#error "Requires FastLED 3.1 or later; check GitHub for latest code."
+#endif
+
+#define minDelta 0
+#define maxDelta 35
+#define firstStrip 6
+#define secondStrip 7
+#define colorOrder GRB
+#define ledType WS2812B
+#define numLeds 600
+#define maxLED 460
+#define pickupPin AO
+#define calibrationCycles 5000
+#define Component 255
+#define Component 0
+#define Component 16
+#define pickupNumReads 1000
+
+int calibrationDelta = 0;
+int pickup Value = 0;
+int ledsToLight = 0;
+
+struct CRGB leds[numLeds];
+
+void calibration(){
+  int minValue = 1024;
+  int maxValue = 0;
+  for (int i = 0; i < calibrationCycles; ++i) {
+    int val = analogRead(pickupPin);
+    minValue = min(minValue, val);
+    maxValue = max(maxValue, val);
+  }
+  calibrationDelta = maxValue - minValue;
+}
+
+void pickupRead() {
+  int minValue = 1024;
+  int maxValue = 0;
+  for(int i = 0; i < pickupNumReads; i++){
+    int pickupValue = analogRead(pickupPin);
+    minValue = min(minValue, pickupValue);
+    maxValue = max(maxValue, pickup Value);
+  }
+
+  int pickupDelta = maxValue - minValue;
+  pickupDelta = pickupDelta - calibrationDelta;
+
+  if(pickupDelta < 0) {
+    pickupDelta = 0;
+  }
+  else if(pickupDelta > 35) {
+    pickupDelta = 35;
+  }
+
+  ledsToLight = map(pickupDelta, minDelta, maxDelta, O, maxLED);
+}
+
+void setup(){
+  analogReference(EXTERNAL);
+  Serial.begin(9600);
+  LEDS.addLeds<ledType, firstStrip, colorOrder> (leds, numLeds);
+  LEDS.addLeds<ledType, secondStrip, colorOrder>(leds, numLeds);
+  FastLED.clear();
+  FastLED.show();
+  calibration();
+}
+
+void loop(){
+  FastLED.clear();
+  pickupRead();
+  for(int i = 0; i < ledsToLight; i++){
+   leds[i] = CHSV(255, 255, 255);
+  }
+  FastLED.show();
+}
+```
+
+![Foto des Steuerungskastens: acht Netzteile, vier Arduino Mega und Platz für eine Notfallbatterie.
+Steuerungskasten, das weiße Papier stellt den Platz für die Notfallbatterie dar.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-56c64a60-4b48-4738-8581-2327c2cba058.jpg)
+
+### Nach dem Air Max Day
+Die Leute von der Red Bull Station mochten die Installation so sehr, dass sie darum baten, sie einen ganzen Monat dort zu belassen. Ein Zeitraum, in dem ich regelmäßig vorbeigehen musste, um zu prüfen, ob alles wie erwartet funktionierte. Während dieser Zeit hörten einige der LEDs an der Spitze der Installation auf zu funktionieren, was sehr kompliziert zu ersetzen gewesen wäre. Das Erscheinungsbild war nicht gut, weil die schöne Kontinuität verloren ging. Also habe ich, anstatt die LEDs zu ersetzen, einfach die oberen 10 LEDs direkt im Arduino-Code ausgeschaltet.
+
+### Erkenntnisse
+Es gab keine gelöteten Komponenten – ein Fehler, den nur Unerfahrene machen würden. Irgendwann während des Events hörte die Gitarre einfach auf zu funktionieren. Ich bekam einen kleinen Herzinfarkt. Zu meiner Erleichterung funktionierte sie wieder, einfach durch Aus- und Einschalten.
+Eine weitere Sache, die ich nicht erwartet hatte, hing mit den Kabeln zusammen. Es wurden längere und dickere Kabel benötigt, als ich dachte. Die LEDs sind stromhungrig und benötigen zwei Kabel für jeden LED-Streifen, sodass sie unten und auch in der Mitte eingespeist wurden – andernfalls wären die LEDs oben schwächer geworden. Es wurden außerdem zwei ziegelsteingroße Netzteile für jedes Tonabnehmer-Arduino-LED-Setup benötigt.
+
+© Fotos und Video von [Eduardo Ohara](https://www.eduardoohara.com/)

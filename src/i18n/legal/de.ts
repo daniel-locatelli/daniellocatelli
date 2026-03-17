@@ -3,7 +3,7 @@ import type { I18nLegal } from "./type";
 export const t: I18nLegal = {
   privacyPolicy: {
     title: "Datenschutzerklärung",
-    lastUpdated: "22. Februar 2026",
+    lastUpdated: "17. März 2026",
     sections: [
       {
         heading: "Verantwortlicher",
@@ -38,16 +38,29 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
 <p>Weitere Informationen: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic Datenschutzrichtlinie</a> · <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase Datenschutzrichtlinie</a></p>`,
       },
       {
+        heading: "Eingebettete Videos (YouTube)",
+        content: `<p>Einige Seiten dieser Website betten Videos von YouTube ein (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Videos werden im erweiterten Datenschutzmodus von YouTube (<code>youtube-nocookie.com</code>) eingebettet, der keine Cookies setzt, bis Sie ein Video aktiv abspielen.</p>
+<p>Wenn Sie ein eingebettetes Video abspielen, kann YouTube Folgendes erfassen:</p>
+<ul>
+<li>Ihre IP-Adresse</li>
+<li>Browser- und Geräteinformationen</li>
+<li>Wiedergabeverhalten und Interaktionsdaten</li>
+</ul>
+<p>Wenn Sie in Ihrem Google-Konto angemeldet sind, kann YouTube Ihre Wiedergabeaktivität mit Ihrem Profil verknüpfen.</p>
+<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an der Darstellung von Projektarbeiten durch Videoinhalte. Google LLC hat seinen Sitz in den Vereinigten Staaten. Datenübermittlungen werden durch die Standardvertragsklauseln von Google abgesichert.</p>
+<p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Datenschutzrichtlinie</a></p>`,
+      },
+      {
         heading: "Selbst gehostete Schriftarten",
         content: `<p>Diese Website verwendet die Schriftarten Montserrat, Poppins und Poiret One. Alle Schriftdateien werden direkt von dieser Domain ausgeliefert. Es werden keine Anfragen an Google Fonts oder andere Drittanbieter-Schriftdienste gestellt.</p>`,
       },
       {
         heading: "Keine Cookies oder Tracking",
-        content: `<p>Diese Website setzt keine Cookies. Es werden keine Analysetools, Tracking-Pixel oder Werbenetzwerke verwendet.</p>`,
+        content: `<p>Diese Website setzt keine eigenen Cookies. Es werden keine Analysetools, Tracking-Pixel oder Werbenetzwerke verwendet. Beachten Sie, dass eingebettete YouTube-Videos (im erweiterten Datenschutzmodus) Cookies setzen können, wenn Sie diese abspielen.</p>`,
       },
       {
         heading: "Externe Links",
-        content: `<p>Diese Website enthält Links zu externen Diensten wie LinkedIn, GitHub, GitLab, Instagram und WhatsApp. Wenn Sie diesen Links folgen, verlassen Sie diese Website und die Datenschutzrichtlinie des jeweiligen Dienstes gilt. Der Betreiber dieser Website hat keinen Einfluss auf die Datenverarbeitungspraktiken dieser Drittanbieter.</p>`,
+        content: `<p>Diese Website enthält Links zu externen Diensten wie LinkedIn, GitHub, GitLab, Instagram, Bluesky, ORCID und WhatsApp. Wenn Sie diesen Links folgen, verlassen Sie diese Website und die Datenschutzrichtlinie des jeweiligen Dienstes gilt. Der Betreiber dieser Website hat keinen Einfluss auf die Datenverarbeitungspraktiken dieser Drittanbieter.</p>`,
       },
       {
         heading: "Datenspeicherung",
@@ -61,7 +74,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
   },
   terms: {
     title: "Nutzungsbedingungen",
-    lastUpdated: "22. Februar 2026",
+    lastUpdated: "17. März 2026",
     sections: [
       {
         heading: "Geltungsbereich",
@@ -117,29 +130,28 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
   },
   impressum: {
     title: "Impressum",
-    lastUpdated: "22. Februar 2026",
+    lastUpdated: "17. März 2026",
     sections: [
       {
         heading: "Angaben gemäß § 5 TMG",
         content: `<p>Daniel Nunes Locatelli<br>
-<!-- Ersetzen Sie dies durch Ihre tatsächliche Postanschrift --><br>
-München, Deutschland</p>`,
+        Klingsorstraße 3<br>
+        81927 München, Deutschland</p>`,
       },
       {
         heading: "Kontakt",
         content: `<p>E-Mail: <a href="mailto:contact@daniellocatelli.com">contact@daniellocatelli.com</a><br>
-Telefon: +49 178 324-0834</p>`,
+        Telefon: +49 178 324-0834</p>`,
       },
       {
         heading: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
         content: `<p>Daniel Nunes Locatelli<br>
-<!-- Ersetzen Sie dies durch Ihre tatsächliche Postanschrift --><br>
-München, Deutschland</p>`,
+        Klingsorstraße 3<br>
+        81927 München, Deutschland</p>`,
       },
       {
-        heading: "EU-Streitbeilegung",
-        content: `<p>Alternative Streitbeilegung gemäß Art. 14 Abs. 1 ODR-VO und § 36 VSBG: Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
-<p>Unsere E-Mail-Adresse finden Sie oben. Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir nicht verpflichtet und nicht bereit.</p>`,
+        heading: "Streitbeilegung",
+        content: `<p>Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir nicht verpflichtet und nicht bereit (§ 36 VSBG).</p>`,
       },
       {
         heading: "Haftung für Inhalte",

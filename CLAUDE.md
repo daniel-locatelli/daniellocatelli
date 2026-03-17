@@ -48,7 +48,7 @@ src/
 ## Key Patterns
 
 - **Internationalization:** Three locales (en, pt, de). English is default. Translations are typed objects in `src/i18n/{section}/{locale}.ts`. Routes use `[...locale]` catch-all segments.
-- **Content Collections:** Type-safe content for projects, research, publications, teaching, skills, and more in `src/content/`.
+- **Content Collections:** Type-safe content for projects, research, publications, teaching, skills, and more in `src/content/`. **Heading levels in content files must start at h2 (`##`)**, since the page title is rendered as h1 by the layout. Never use `# ` (h1) in markdown/MDX content body.
 - **Path aliases:** Use `@/components/*`, `@/assets/*`, `@/config/*`, `@/layouts/*`, `@/utils`, `@/types`, `@/site-config` (defined in tsconfig.json).
 - **Components:** Astro components (`.astro`) for static content, React components (`.tsx`) for interactivity (e.g., `HeroChat.tsx`).
 

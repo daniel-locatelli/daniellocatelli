@@ -47,6 +47,3 @@ Exploração do pavilhão usando um padrão triangular em uma superfície pré-d
 Estrutura baseada em uma seção de coral.](../../../assets/content/research/acropora-pavilion/block-10ebf53b-9ce3-81a4-9ce4-febaef0f697f.jpg)
 ![Renderização do pavilhão Acropora.
 Renderização do pavilhão Acropora.](../../../assets/content/research/acropora-pavilion/block-10ebf53b-9ce3-81bc-95d8-e7c06fd46ff7.jpg)
-
-Confira também minha postagem no Instagram:
-

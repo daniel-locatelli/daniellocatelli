@@ -38,7 +38,7 @@ OtherLinks:
     Href: "https://www.tess.fr/en/projet/canyon"
 ---
 
-# Einführung
+## Einführung
 Bei ArtEngineering tauchte manchmal ein Kunde in einem kritischen Moment auf, wenn die Zeit knapp ist und ein scheinbar einfaches, aber zutiefst komplexes Projekt geliefert werden muss.
 Canyon war eines dieser Projekte. Für dieses Projekt entschied sich Katharina Grosse, [mit Leder zu formen](https://www.katharinagrosse.com/blog/drawings_mock_ups_amp_preparations_for_canyon). Die Herausforderung bestand darin, dass sie organische, lederartige Streifen in gebogene Stahlplatten übertragen wollte.
 
@@ -46,7 +46,7 @@ Canyon war eines dieser Projekte. Für dieses Projekt entschied sich Katharina G
 Katharina Grosses Kleinmodell von Canyon.
 ©Katharina Grosse](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-a8313003-70a0-472a-b69f-1b62c55a041d.jpg)
 Was der ursprüngliche Auftragnehmer nicht rechtzeitig erkannte, war, dass sich Stahl nicht wie Leder verhält. Leder kann sich in jede Richtung biegen und verdrehen, weil es flexibel ist. Stahl hingegen lässt sich nur in eine Richtung biegen. Die Lösung war eine Strategie, die seit Jahrtausenden im Bootsbau verwendet wird: [abwickelbare Flächen](https://de.wikipedia.org/wiki/Abwickelbare_Fl%C3%A4che).
-# Computational Design
+## Computational Design
 Ich habe mehrere Werkzeuge ausprobiert und sie miteinander verglichen, darunter Rhinos nativen Befehl für abwickelbare Flächen, Kangaroo-2-Definitionen und andere kostenpflichtige Tools. Letztendlich war das beste Werkzeug jedoch [D.Loft](https://www.food4rhino.com/en/app/dloft), ein kostenpflichtiges Rhino/GH-Plugin. Wir nutzten zunächst die Testversion und entschieden uns später für den Kauf.
 Obwohl ich nur ein Wochenende hatte, um eine Lösung zu finden, war das Projekt insgesamt eine wirklich spannende Herausforderung. Und ich durfte mit Herwig reisen, um den Produktionsprozess in der Schweiz bei der [Kunstgiesserei St. Gallen](https://www.kunstgiesserei.ch/) zu sehen -- ein äußerst interessantes Atelier und Labor für digitale Fertigung.
 

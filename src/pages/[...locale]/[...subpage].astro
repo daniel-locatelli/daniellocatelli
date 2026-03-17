@@ -376,7 +376,8 @@ if (image) {
           subpage.data.Link !== undefined &&
             ((Array.isArray(subpage.data.Link) &&
               subpage.data.Link.length > 0) ||
-              typeof subpage.data.Link === "string") && (
+              typeof subpage.data.Link === "string" ||
+              (typeof subpage.data.Link === "object" && "Href" in subpage.data.Link)) && (
               <tr>
                 <th>{t.link}</th>
                 <td>

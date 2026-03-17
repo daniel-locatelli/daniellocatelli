@@ -3,7 +3,7 @@ import type { I18nLegal } from "./type";
 export const t: I18nLegal = {
   privacyPolicy: {
     title: "Privacy Policy",
-    lastUpdated: "February 22, 2026",
+    lastUpdated: "March 17, 2026",
     sections: [
       {
         heading: "Data Controller",
@@ -38,16 +38,29 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
 <p>More information: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a> · <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase Privacy Policy</a></p>`,
       },
       {
+        heading: "Embedded Videos (YouTube)",
+        content: `<p>Some pages on this website embed videos from YouTube (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland). Videos are embedded using YouTube's privacy-enhanced mode (<code>youtube-nocookie.com</code>), which does not set cookies until you actively play a video.</p>
+<p>When you play an embedded video, YouTube may collect:</p>
+<ul>
+<li>Your IP address</li>
+<li>Browser and device information</li>
+<li>Viewing behavior and interaction data</li>
+</ul>
+<p>If you are logged into your Google account, YouTube may associate your viewing activity with your profile.</p>
+<p>Legal basis: Art. 6(1)(f) GDPR — legitimate interest in presenting project work through video content. Google LLC is based in the United States. Data transfers are covered by Google's Standard Contractual Clauses.</p>
+<p>More information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></p>`,
+      },
+      {
         heading: "Self-Hosted Fonts",
         content: `<p>This website uses the fonts Montserrat, Poppins, and Poiret One. All font files are served directly from this domain. No requests are made to Google Fonts or any other third-party font service.</p>`,
       },
       {
         heading: "No Cookies or Tracking",
-        content: `<p>This website does not set any cookies. There are no analytics tools, no tracking pixels, and no advertising networks in use.</p>`,
+        content: `<p>This website does not set any first-party cookies. There are no analytics tools, no tracking pixels, and no advertising networks in use. Note that embedded YouTube videos (in privacy-enhanced mode) may set cookies when you choose to play them.</p>`,
       },
       {
         heading: "External Links",
-        content: `<p>This website contains links to external services including LinkedIn, GitHub, GitLab, Instagram, and WhatsApp. When you follow these links, you leave this website and the respective service's privacy policy applies. The operator of this website has no control over the data processing practices of these third-party services.</p>`,
+        content: `<p>This website contains links to external services including LinkedIn, GitHub, GitLab, Instagram, Bluesky, ORCID, and WhatsApp. When you follow these links, you leave this website and the respective service's privacy policy applies. The operator of this website has no control over the data processing practices of these third-party services.</p>`,
       },
       {
         heading: "Data Retention",
@@ -61,7 +74,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
   },
   terms: {
     title: "Terms & Conditions",
-    lastUpdated: "February 22, 2026",
+    lastUpdated: "March 17, 2026",
     sections: [
       {
         heading: "Scope",
@@ -117,29 +130,28 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
   },
   impressum: {
     title: "Impressum",
-    lastUpdated: "February 22, 2026",
+    lastUpdated: "March 17, 2026",
     sections: [
       {
         heading: "Information according to § 5 TMG",
         content: `<p>Daniel Nunes Locatelli<br>
-<!-- Replace with your actual postal address --><br>
-Munich, Germany</p>`,
+        Klingsorstraße 3<br>
+        81927 Munich, Germany</p>`,
       },
       {
         heading: "Contact",
         content: `<p>Email: <a href="mailto:contact@daniellocatelli.com">contact@daniellocatelli.com</a><br>
-Phone: +49 178 324-0834</p>`,
+        Phone: +49 178 324-0834</p>`,
       },
       {
         heading: "Responsible for content according to § 18 Abs. 2 MStV",
         content: `<p>Daniel Nunes Locatelli<br>
-<!-- Replace with your actual postal address --><br>
-Munich, Germany</p>`,
+        Klingsorstraße 3<br>
+        81927 Munich, Germany</p>`,
       },
       {
-        heading: "EU Dispute Resolution",
-        content: `<p>Alternative dispute resolution pursuant to Art. 14(1) ODR Regulation and § 36 VSBG: The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
-<p>Our email address can be found above. We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>`,
+        heading: "Dispute Resolution",
+        content: `<p>We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board (§ 36 VSBG).</p>`,
       },
       {
         heading: "Liability for Content",
