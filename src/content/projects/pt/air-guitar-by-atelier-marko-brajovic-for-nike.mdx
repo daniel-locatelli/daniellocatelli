@@ -33,8 +33,10 @@ Place: Red Bull Station
 
 import Video from '@/components/Video.astro'
 import YouTube from '@/components/YouTube.astro'
+import ImageRow from '@/components/ImageRow.astro'
 
 <YouTube id="KucCxUmOM1o" />
+© Video by [Eduardo Ohara](https://www.eduardoohara.com/)
 
 ## Concept
 > Em homenagem à celebração do Air Max Day, o Atelier Marko Brajovic desenvolveu a instalação site-specific Air Guitar.
@@ -55,6 +57,12 @@ Eu também pensei em usar um microfone, mas a sugestão do Lucas de usar captado
 <Video src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/first-pickup-test.mp4" caption="First test: checking if a pickup would capture the steel cable vibration." />
 
 Inicialmente o conceito era ter os LEDs e os cabos de aço cobrindo toda a altura do pilar. Mas pra fazer isso nós precisaríamos de alguém com licença e equipamento de escalada, o que infelizmente não conseguimos encontrar a tempo, então ficamos limitados à altura que uma plataforma elevatória de trabalho poderia atingir.
+
+<ImageRow>
+  ![Lucas and the work-platform-lift](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/lucas-and-the-work-platform-lift.jpg)
+
+  <Video src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/rafael-in-the-work-platform-lift.mp4" caption="Rafael in the work-platform-lift" />
+</ImageRow>
 
 ### Interatividade
 Cada captador de baixo envia um sinal analógico para seus respectivos Arduino Megas, que então mapeiam o valor e os convertem em um sinal digital, acendendo uma quantidade específica de LEDs.
@@ -153,4 +161,4 @@ Apesar de eu ter aprendido muito, eu teria poupado alguns cabelos brancos se eu 
 Outra coisa que não esqueço foram os cabos. Exigiu cabos mais longos e grossos do que eu esperava, os LEDs consomem muita energia e precisam de dois cabos para cada tira de LED. Eles precisam ser alimentados na parte inferior e também no meio, caso contrário, os LEDs ficariam mais fracos na metade superior.
 A instalação também exigiu duas fontes de alimentação do tamanho de tijolos para cada configuração Captador-Arduino-LED, ou seja oito fontes de alimentação no total (veja foto acima).
 
-© Primeira foto e video by [Eduardo Ohara](https://www.eduardoohara.com/)
+<YouTube id="odFFIfzDSzE" />

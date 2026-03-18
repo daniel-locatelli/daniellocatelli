@@ -16,7 +16,8 @@
 </div>
 
 <style>
-  .image-row :global(img) {
+  .image-row :global(img),
+  .image-row :global(video) {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -34,8 +35,16 @@
   }
 
   .image-row :global(figure > img),
-  .image-row :global(figure > picture) {
+  .image-row :global(figure > picture),
+  .image-row :global(figure > video) {
     aspect-ratio: 4 / 5;
+  }
+
+  .image-row :global(video:fullscreen) {
+    object-fit: contain;
+    aspect-ratio: auto;
+    width: 100%;
+    height: 100%;
   }
 
   .image-row :global(figcaption) {

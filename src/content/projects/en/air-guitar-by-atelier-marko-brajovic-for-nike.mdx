@@ -33,8 +33,10 @@ Place: Red Bull Station
 
 import Video from '@/components/Video.astro'
 import YouTube from '@/components/YouTube.astro'
+import ImageRow from '@/components/ImageRow.astro'
 
 <YouTube id="KucCxUmOM1o" />
+© Video by [Eduardo Ohara](https://www.eduardoohara.com/)
 
 ## Concept
 > The metal column connects the subsoil of the city with the suspended roof and works practically like an antenna, capturing the vibrations of the city and the magnetic fields potentiated by the building.
@@ -60,6 +62,12 @@ I also thought about using a microphone, but Lucas' suggestion to use pickups wa
 <Video src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/first-pickup-test.mp4" caption="First test: checking if a pickup would capture the steel cable vibration." />
 
 Initially the concept was to have the LEDs going from the bottom all the way to the top. But to do that we would need someone with a safety license to climb which we unfortunately couldn’t find on time, so we were limited to the height a work-platform-lift could get.
+
+<ImageRow>
+  ![Lucas and the work-platform-lift](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/lucas-and-the-work-platform-lift.jpg)
+
+  <Video src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/rafael-in-the-work-platform-lift.mp4" caption="Rafael in the work-platform-lift" />
+</ImageRow>
 
 ### Interactivity
 Each bass pickup would send an Analog signal to their respective Arduino Megas, which would then map the value and convert it into a digital signal, turning a specific amount of LEDs on.
@@ -157,4 +165,4 @@ The guys from the Red Bull Station liked so much the installation that they aske
 There were no welded components, a mistake that only the inexperienced would make. At some point during the event, the guitar just stopped working. I had a mini heart attack. To my relief, it started to work again just by turning it off and on.
 Another thing that I wasn’t expecting was related to the cables. It required longer and thicker cables than I thought, the LEDs are power-hungry and need two cables for each LED strip, so they were being fed at the bottom and also at the middle, otherwise the LEDs would get wicker at the top. It also required two brick-sized power supplies for each Pickup-Arduino-LED setup.
 
-© Photos and video by [Eduardo Ohara](https://www.eduardoohara.com/)
+<YouTube id="odFFIfzDSzE" />
