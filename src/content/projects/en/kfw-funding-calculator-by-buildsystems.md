@@ -130,7 +130,7 @@ Conceptually, my approach for the design was to create a full dashboard with all
 To create prototypes, I used Figma, which was quite a pleasant design experience. Simulating mouse over, mouse in, mouse out behaviors is possible. Besides, their paid plan makes copying CSS styles and SVGs easy with the Dev Mode. But even with the free plan, it feels like a breeze to export SVGs.
 
 ![Screenshot of the desktop version of the funding calculator.
-Desktop version at Sanierung/Projekt.](../../../assets/content/projects/kfw-funding-calculator-by-buildsystems/block-cb8b813b-feac-4336-bcc9-fa986eb09257.png)
+Desktop version at Sanierung/Projekt.](../../../assets/content/projects/kfw-funding-calculator-by-buildsystems/screenshot-of-the-desktop-version-of-the-funding-calculator-desktop-version-at.png)
 
 ### Building the User Interface
 This project marked my metamorphosis into a fully-fledged software developer. This required me to learn [Angular](https://angular.dev/), a JavaScript framework, and its highly opinionated structure, which was perfect for my case.

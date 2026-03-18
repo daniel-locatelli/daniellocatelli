@@ -129,7 +129,7 @@ Konzeptionell war mein Ansatz für das Design, ein vollständiges Dashboard mit 
 Für die Erstellung von Prototypen verwendete ich Figma, was eine sehr angenehme Design-Erfahrung war. Die Simulation von Mouse-Over-, Mouse-In- und Mouse-Out-Verhalten ist möglich. Außerdem erleichtert der kostenpflichtige Plan das Kopieren von CSS-Stilen und SVGs mit dem Dev Mode. Aber auch mit dem kostenlosen Plan ist der Export von SVGs ein Kinderspiel.
 
 ![Screenshot der Desktop-Version des Förderrechners.
-Desktop-Version bei Sanierung/Projekt.](../../../assets/content/projects/kfw-funding-calculator-by-buildsystems/block-cb8b813b-feac-4336-bcc9-fa986eb09257.png)
+Desktop-Version bei Sanierung/Projekt.](../../../assets/content/projects/kfw-funding-calculator-by-buildsystems/screenshot-of-the-desktop-version-of-the-funding-calculator-desktop-version-at.png)
 
 ### Aufbau der Benutzeroberfläche
 Dieses Projekt markierte meine Metamorphose zum vollwertigen Softwareentwickler. Dafür musste ich [Angular](https://angular.dev/) erlernen, ein JavaScript-Framework mit einer stark vorgegebenen Struktur, die für meinen Fall perfekt geeignet war.

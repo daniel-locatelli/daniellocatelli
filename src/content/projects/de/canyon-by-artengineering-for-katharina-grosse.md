@@ -44,7 +44,7 @@ Canyon war eines dieser Projekte. Für dieses Projekt entschied sich Katharina G
 
 ![Foto von Katharina Grosses Kleinmodell von Canyon.
 Katharina Grosses Kleinmodell von Canyon.
-©Katharina Grosse](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-a8313003-70a0-472a-b69f-1b62c55a041d.jpg)
+©Katharina Grosse](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/katharina-grosse-small-scale-model-of-canyon-katharina-grosse-small-scale-model.jpg)
 Was der ursprüngliche Auftragnehmer nicht rechtzeitig erkannte, war, dass sich Stahl nicht wie Leder verhält. Leder kann sich in jede Richtung biegen und verdrehen, weil es flexibel ist. Stahl hingegen lässt sich nur in eine Richtung biegen. Die Lösung war eine Strategie, die seit Jahrtausenden im Bootsbau verwendet wird: [abwickelbare Flächen](https://de.wikipedia.org/wiki/Abwickelbare_Fl%C3%A4che).
 ## Computational Design
 Ich habe mehrere Werkzeuge ausprobiert und sie miteinander verglichen, darunter Rhinos nativen Befehl für abwickelbare Flächen, Kangaroo-2-Definitionen und andere kostenpflichtige Tools. Letztendlich war das beste Werkzeug jedoch [D.Loft](https://www.food4rhino.com/en/app/dloft), ein kostenpflichtiges Rhino/GH-Plugin. Wir nutzten zunächst die Testversion und entschieden uns später für den Kauf.
@@ -52,13 +52,13 @@ Obwohl ich nur ein Wochenende hatte, um eine Lösung zu finden, war das Projekt 
 
 ![Foto einer Stahlplatten-Biegemaschine mit benutzerdefiniertem Winkel.
 Stahlplatten-Biegemaschine mit benutzerdefiniertem Winkel.
-©Kunstgiesserei](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-06237d75-af1c-4a0c-bfce-75055636995d.jpg)
+©Kunstgiesserei](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/a-steel-plate-bending-machine-with-a-custom-angle-steel-plate-bending-machine.jpg)
 ![Foto des Aufbaus zum Biegen von Stahlplatten und zur Prüfung der Krümmung.
 Aufbau zum Biegen von Stahlplatten und zur Prüfung der Krümmung.
-©Kunstgiesserei](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-f3546be9-0f0a-4141-8da4-78d2a16131ff.jpg)
+©Kunstgiesserei](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/the-setup-to-bend-steel-plates-and-check-the-curvature-setup-to-bend-steel.jpg)
 ![Foto des Montage-Tests in einer der Lagerhallen der Kunstgiesserei.
 Montage-Test in einer der Lagerhallen der Kunstgiesserei.
-©Kunstgiesserei ](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-6d248e11-1615-4bab-8be3-1ce0eb794032.jpg)
+©Kunstgiesserei ](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/the-assembly-test-in-one-of-the-kunstgiesserei-warehouses-assembly-test-in-one.jpg)
 ![Foto von Canyon in der Fondation Louis Vuitton, Paris.
 Canyon in der Fondation Louis Vuitton, Paris.
-©Kunstgiesserei](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/block-2df1ddb2-98eb-4a2f-8b62-ca716cf8bd6e.jpg)
+©Kunstgiesserei](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/canyon-at-foundation-louis-vuitton-paris-canyon-at-foundation-louis-vuitton.jpg)

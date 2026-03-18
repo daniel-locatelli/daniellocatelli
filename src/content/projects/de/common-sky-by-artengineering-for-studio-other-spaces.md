@@ -39,8 +39,8 @@ Diese erste Aufgabe war in 2 Tagen erledigt. Sie waren begeistert und beschlosse
 Als ich anfing, war Alexander Spänig der Projektmanager, und so arbeitete ich in den folgenden sechs Monaten eng mit ihm an diesem Projekt.
 Ich nutzte hauptsächlich Grasshopper und das Plugin [Sandbox Topology](https://www.food4rhino.com/en/app/sandbox-topology) von Tobias Schwinn, der zufälligerweise mein Tutor im ITECH-Masterstudium war.
 
-![Innenansicht von Common Sky während der Bauphase, kurz vor dem Einsetzen der Doppelverglasung.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/block-13025cdb-1238-4d38-a27d-c47e7604e691.jpg)
-![Innenansicht von Common Sky.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/block-dbdf7cc5-dbbc-403b-9102-58c1c980686b.jpeg)
-![Nahaufnahme der an der Decke installierten Spiegel.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/block-41e1cf92-3bac-4922-9fee-460916902446.jpg)
-![Außenansicht von Common Sky.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/block-3ad33c1a-8ec4-4271-a8a5-1f11dbe248af.jpg)
+![Innenansicht von Common Sky während der Bauphase, kurz vor dem Einsetzen der Doppelverglasung.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/interior-of-common-sky-in-construction-just-before-placing-the-double-glazing.jpg)
+![Innenansicht von Common Sky.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/interior-of-common-sky.jpeg)
+![Nahaufnahme der an der Decke installierten Spiegel.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/close-up-on-the-mirrors-installed-in-the-ceiling.jpg)
+![Außenansicht von Common Sky.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/outside-view-of-common-sky.jpg)
 © Fotos von Studio Other Spaces.

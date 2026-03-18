@@ -47,7 +47,7 @@ Der Air Max Day feierte die alten und neuen Air-Max-Schuhe und verband gleichzei
 Marko entwickelte zwei Konzepte: eines mit aufblasbaren Elementen und die Air Guitar. Das erste war nicht schlecht, aber die Air Guitar war zu gut, um sie abzulehnen.
 Während des Meetings mit der Marketingagentur waren sie sehr begeistert von der Installation, aber sie dachten, es fehle etwas. Daraufhin schlug ich vor, sie mit adressierbaren LEDs aufzupeppen.
 
-![Drei Fotos von Nutzern, die die Gitarre spielen. © Eduardo Ohara](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dcf83d14-a517-49fa-97e3-722f58b27bc8.jpeg)
+![Drei Fotos von Nutzern, die die Gitarre spielen. © Eduardo Ohara](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/three-photos-of-users-playing-the-guitar-01.jpeg)
 
 ## Entwicklung
 Nachdem das Konzept genehmigt war, übernahm ich auch die Koordination der gesamten Projektentwicklung, und ich bin vielleicht etwas zu ehrgeizig gewesen, denn ich entschied mich, den LED-Teil komplett selbst zu entwickeln.
@@ -63,7 +63,7 @@ Ursprünglich war das Konzept, die LEDs von unten bis ganz nach oben zu führen.
 Jeder Bass-Tonabnehmer sendete ein analoges Signal an seinen jeweiligen Arduino Mega, der dann den Wert mappte und in ein digitales Signal umwandelte, um eine bestimmte Anzahl von LEDs einzuschalten.
 Theoretisch ziemlich einfach, aber in der Realität trieb es mich ziemlich schnell in den Elektronik-Kaninchenbau, bis ich an eine Wand stieß. Ich kam auf diesen Schaltkreis, aber aus irgendeinem Grund funktionierte er nicht gut. Das Event rückte näher, und das Team wurde zunehmend nervös. Eine Woche vor dem Event kontaktierte ich André Biagioni von [Fiozeira](https://fiozera.com.br/). Glücklicherweise stimmte er zu, teilzunehmen. Er sagte, dem Schaltkreis fehle ein Filter, und erledigte die restliche Arbeit. Er fertigte auch einen Schaltplan an und half bei der Montage.
 
-![Elektronischer Schaltplan.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dfa6d8c4-39a1-4b03-a228-f90a60a9b26b.jpeg)
+![Elektronischer Schaltplan.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/electronic-circuit-diagram.jpeg)
 
 ```arduino
 #include "FastLED.h"
@@ -147,7 +147,7 @@ void loop(){
 ```
 
 ![Foto des Steuerungskastens: acht Netzteile, vier Arduino Mega und Platz für eine Notfallbatterie.
-Steuerungskasten, das weiße Papier stellt den Platz für die Notfallbatterie dar.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-56c64a60-4b48-4738-8581-2327c2cba058.jpg)
+Steuerungskasten, das weiße Papier stellt den Platz für die Notfallbatterie dar.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/the-control-box-eight-power-supplies-four-arduino-mega-and-space-for-an.jpg)
 
 ### Nach dem Air Max Day
 Die Leute von der Red Bull Station mochten die Installation so sehr, dass sie darum baten, sie einen ganzen Monat dort zu belassen. Ein Zeitraum, in dem ich regelmäßig vorbeigehen musste, um zu prüfen, ob alles wie erwartet funktionierte. Während dieser Zeit hörten einige der LEDs an der Spitze der Installation auf zu funktionieren, was sehr kompliziert zu ersetzen gewesen wäre. Das Erscheinungsbild war nicht gut, weil die schöne Kontinuität verloren ging. Also habe ich, anstatt die LEDs zu ersetzen, einfach die oberen 10 LEDs direkt im Arduino-Code ausgeschaltet.

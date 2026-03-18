@@ -39,8 +39,8 @@ Essa primeira tarefa foi concluída em 2 dias. Eles ficaram entusiasmados e deci
 Quando entrei, Alexander Spänig era o gerente de projeto, então trabalhei em estreita colaboração com ele pelos próximos seis meses.
 Usei principalmente o Grasshopper e o plugin [Sandbox Topology](https://www.food4rhino.com/en/app/sandbox-topology) de Tobias Schwinn, que coincidentemente foi meu tutor no mestrado do ITECH.
 
-![Interior do Common Sky em construção pouco antes da colocação da cobertura de vidro duplo.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/block-10ebf53b-9ce3-818e-b894-f96a27499cb7.jpg)
-![Interior do Common Sky.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/block-10ebf53b-9ce3-81fb-8998-dce0d0d81316.jpeg)
-![Close nos espelhos instalados no teto.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/block-10ebf53b-9ce3-81d3-b9c5-ef18b36eaa7c.jpg)
-![Vista externa do Common Sky.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/block-10ebf53b-9ce3-81c3-959f-f4e4377d3949.jpg)
+![Interior do Common Sky em construção pouco antes da colocação da cobertura de vidro duplo.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/interior-do-common-sky-em-construcao-pouco-antes-da-colocacao-da-cobertura-de.jpg)
+![Interior do Common Sky.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/interior-do-common-sky.jpeg)
+![Close nos espelhos instalados no teto.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/close-nos-espelhos-instalados-no-teto.jpg)
+![Vista externa do Common Sky.](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/vista-externa-do-common-sky.jpg)
 © Fotos do Studio Other Spaces.

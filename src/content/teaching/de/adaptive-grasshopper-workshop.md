@@ -39,10 +39,10 @@ Am zweiten Tag konzentrierten wir uns vollständig auf die gewählte Strategie. 
 
 Am Ende des Workshops hatte jeder Teilnehmer seine eigene einzigartige parametrische Struktur erstellt. Die Vielfalt der Ergebnisse — von organischen korallenartigen Formen bis hin zu architektonischen Tunnelgeometrien — zeigte, wie eine einzige Computational-Design-Strategie je nach Eingabegeometrie und Parametern völlig unterschiedliche Resultate hervorbringen kann.
 
-![Endergebnisse: Nahaufnahme des parametrischen Modells eines Studenten.](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-855e971e-adb9-49c9-9ed2-9af1314a05f9.jpg)
+![Endergebnisse: Nahaufnahme des parametrischen Modells eines Studenten.](../../../assets/content/teaching/adaptive-grasshopper-workshop/student-working-on-a-grasshopper-definition-creating-a-tunnel-like-structure.jpg)
 
-![Exoskeleton-Ergebnis eines anderen Studenten mit einer komplexen organischen Geometrie.](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-2a80d929-e716-4059-a4e1-f311244336b2.jpg)
+![Exoskeleton-Ergebnis eines anderen Studenten mit einer komplexen organischen Geometrie.](../../../assets/content/teaching/adaptive-grasshopper-workshop/another-student-s-exoskeleton-result-showing-a-complex-organic-geometry.jpg)
 
 ![Daniel Nunes Locatelli präsentiert an der UNEMAT während der Architektur-Woche.](../../../assets/content/teaching/adaptive-grasshopper-workshop/adaptive-workshop_daniel-locatelli_unemat.jpg)
 
-![Gruppe von Studierenden arbeitet an ihren Grasshopper-Definitionen im Computerraum.](../../../assets/content/teaching/adaptive-grasshopper-workshop/block-21e4e9cb-eb5a-45df-9732-0a47ed82d07e.jpg)
+![Gruppe von Studierenden arbeitet an ihren Grasshopper-Definitionen im Computerraum.](../../../assets/content/teaching/adaptive-grasshopper-workshop/daniel-nunes-locatelli-presenting-at-unemat-during-the-architecture-week.jpg)

@@ -40,13 +40,13 @@ Place: Olimpic games
 
 Parada Coca-Cola foi o primeiro projeto no qual apliquei design computacional. Essa experiência sensorial foi inspirada na garrafa da Coca-Cola, imitando as bolhas e cores da bebida. Também teve muitas outras ativações, como chamam nas agências de marketing no Brasil.
 
-![Foto do interior da ativação do Caleidoscópio.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-10ebf53b-9ce3-81a0-a2f2-e5ce5cd3a01f.jpeg)
-![Foto mostrando muitas bolas de plástico e seus cabos conectados ao teto.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-10ebf53b-9ce3-811f-993e-e5738b50ed71.jpeg)
+![Foto do interior da ativação do Caleidoscópio.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/interior-da-ativacao-do-caleidoscopio.jpeg)
+![Foto mostrando muitas bolas de plástico e seus cabos conectados ao teto.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/foto-mostrando-muitas-bolas-de-plastico-e-seus-cabos-conectados-ao-teto.jpeg)
 ## Design Computacional
 Meu papel no projeto foi o de posicionar as esferas de plástico parametricamente, evitando colidir umas com as outras e com os cabos que as conectavam ao teto. Para isso, usei o Grasshopper e o Galapagos.
 Outra tarefa que veio depois foi gerar uma planilha com todos os comprimentos de cabos e as tags para organizar adequadamente todo o material para ser enviado e instalado. Bom, pelo menos essa era a ideia inicial. Porque, em algum momento, alguém achou que seria uma boa ideia remover as tags 🤯. Foi um pesadelo para as meninas que coordenaram o evento.
 
-![Foto de um lounge no primeiro plano com bancos circulares vermelhos e o bar dourado ao fundo.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/block-10ebf53b-9ce3-81f2-bbc6-ec6bd319c3e2.jpeg)
+![Foto de um lounge no primeiro plano com bancos circulares vermelhos e o bar dourado ao fundo.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/um-lounge-no-primeiro-plano-com-bancos-circulares-vermelhos-e-o-bar-dourado-ao.jpeg)
 Este é o último arquivo Grasshopper que usei no projeto:
 
 © Fotos por Fernando Martins

@@ -29,12 +29,12 @@ Diese Forschung begann mit der Untersuchung statischer Strukturen. Dazu gehören
 Weitere Untersuchungen befassten sich mit allgemeinen Prinzipien, die bei Steinkorallen in einer großen Bandbreite von Arten und auch in allen Maßstäben zu finden sind – vom einfachsten Baustein der Korallen, dem Polypen, über die Koralle selbst bis hin zu den Riffen.
 Als Ergebnis abstrahierte diese Studie die Beziehung zwischen verschiedenen Polypen, die eine einzelne Koralle bilden. Diese Modularität wird dann für eine architektonische biomimetische Anwendung genutzt: den Acropora-Pavillon.
 
-![Kuchenseeigel - Clypeaster ranganus, Universität Tübingen](../../../assets/content/research/acropora-pavilion/block-0523ae86-b297-4b48-8ed9-7a663de4f998.jpg)
-![Mikroskopie der Koralle Acropora mit einer Vergrößerung von 150x.](../../../assets/content/research/acropora-pavilion/block-13b95f94-5503-4bb0-b976-f7488a67b2de.jpg)
-![Mikroskopie der Koralle Acropora mit einer Vergrößerung von 175x.](../../../assets/content/research/acropora-pavilion/block-91fba019-b948-4484-9ba5-f251a859474c.jpg)
-![Computersimulation eines Korallenwachstums mittels eines differentiellen Wachstumsalgorithmus auf einer Mesh-Oberfläche.](../../../assets/content/research/acropora-pavilion/block-f2e15c70-21a3-47e4-bfb7-16f96dd9a946.jpg)
-![Pavillonexploration mit einem Quad-Muster auf einer vordefinierten Oberfläche.](../../../assets/content/research/acropora-pavilion/block-61811ab7-7745-458c-a3e7-3c4215c95f4a.jpg)
-![Pavillonexploration mit einem Voronoi-Muster auf einer vordefinierten Oberfläche.](../../../assets/content/research/acropora-pavilion/block-f1ca24d5-c8e3-4ddd-b11d-7558a8aa3f9e.jpg)
-![Pavillonexploration mit einem dreieckigen Muster auf einer vordefinierten Oberfläche.](../../../assets/content/research/acropora-pavilion/block-2286e6ad-b4bf-4fb8-aabc-64be52d41873.jpg)
-![Struktur basierend auf einem Korallenquerschnitt.](../../../assets/content/research/acropora-pavilion/block-3efb2e81-2dfe-4a78-bc27-0032117c0e47.jpg)
-![Rendering des Acropora-Pavillons.](../../../assets/content/research/acropora-pavilion/block-a8dfb3bc-4b43-46e5-a804-9f17e0e16d70.jpg)
+![Kuchenseeigel - Clypeaster ranganus, Universität Tübingen](../../../assets/content/research/acropora-pavilion/cake-urchins-clypeaster-ranganus-university-of-tubingen.jpg)
+![Mikroskopie der Koralle Acropora mit einer Vergrößerung von 150x.](../../../assets/content/research/acropora-pavilion/microscopy-of-the-coral-acropora-with-a-magnitude-of-150x.jpg)
+![Mikroskopie der Koralle Acropora mit einer Vergrößerung von 175x.](../../../assets/content/research/acropora-pavilion/microscopy-of-the-coral-acropora-with-a-magnitude-of-175x.jpg)
+![Computersimulation eines Korallenwachstums mittels eines differentiellen Wachstumsalgorithmus auf einer Mesh-Oberfläche.](../../../assets/content/research/acropora-pavilion/computational-simulation-of-a-coral-growth-using-a-differential-growth.jpg)
+![Pavillonexploration mit einem Quad-Muster auf einer vordefinierten Oberfläche.](../../../assets/content/research/acropora-pavilion/pavilion-exploration-using-a-quad-pattern-on-a-pre-defined-surface.jpg)
+![Pavillonexploration mit einem Voronoi-Muster auf einer vordefinierten Oberfläche.](../../../assets/content/research/acropora-pavilion/pavilion-exploration-using-a-voronoi-pattern-on-a-pre-defined-surface.jpg)
+![Pavillonexploration mit einem dreieckigen Muster auf einer vordefinierten Oberfläche.](../../../assets/content/research/acropora-pavilion/pavilion-exploration-using-a-triangular-pattern-on-a-pre-defined-surface.jpg)
+![Struktur basierend auf einem Korallenquerschnitt.](../../../assets/content/research/acropora-pavilion/structure-based-on-a-coral-section.jpg)
+![Rendering des Acropora-Pavillons.](../../../assets/content/research/acropora-pavilion/rendering-of-the-acropora-pavilion.jpg)

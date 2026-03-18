@@ -47,7 +47,7 @@ The Air Max Day was about celebrating the old and the new Air Max shoes, while a
 Marko developed two concepts, one involving inflatables and the Air Guitar. The first one wasn’t bad, but the Air Guitar was too good to pass.
 During the meeting with the marketing agency, they got really excited about the installation, but they thought something was missing. For which I suggested to spice it up with addressable LEDs.
 
-![Three photos of users playing the guitar. © Eduardo Ohara](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dcf83d14-a517-49fa-97e3-722f58b27bc8.jpeg)
+![Three photos of users playing the guitar. © Eduardo Ohara](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/three-photos-of-users-playing-the-guitar-01.jpeg)
 
 ## Development
 After the concept was approved, I was also in charge of coordinating the whole project development, and I may have gotten too greedy here because I decided to develop the LED part all by myself.
@@ -56,15 +56,16 @@ Rafael Ohashi was the events guy; he already worked with many other events, so h
 
 The system worked like this: the guitar was built using four steel cables and four bass pickups (yeah, it should have been called Air Bass, but that isn’t so sexy, right?).
 I also thought about using a microphone, but Lucas' suggestion to use pickups was just on another level, conceptually and functionally, and he knew everything about them.
-Initially the concept was to have the LEDs going from the bottom all the way to the top. But to do that we would need someone with a safety license to climb which we unfortunately couldn’t find on time, so we were limited to the height a work-platform-lift could get.
 
 <Video src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/first-pickup-test.mp4" caption="First test: checking if a pickup would capture the steel cable vibration." />
+
+Initially the concept was to have the LEDs going from the bottom all the way to the top. But to do that we would need someone with a safety license to climb which we unfortunately couldn’t find on time, so we were limited to the height a work-platform-lift could get.
 
 ### Interactivity
 Each bass pickup would send an Analog signal to their respective Arduino Megas, which would then map the value and convert it into a digital signal, turning a specific amount of LEDs on.
 In theory, it is pretty simple, but in reality, it drove me down the electronics rabbit hole quite quickly until I hit a wall. I came up with this circuit, but for some reason, it wasn’t working well. The event was getting closer, and the team was growing anxious. A week before the event, I contacted another guy, André Biagioni from [Fiozeira](https://fiozera.com.br/). Luckily, he agreed to participate. He said that the circuit was lacking a filter and finished the work. He also made a circuit diagram and helped with the assembly.
 
-![Electronic circuit diagram.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-dfa6d8c4-39a1-4b03-a228-f90a60a9b26b.jpeg)
+![Electronic circuit diagram.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/electronic-circuit-diagram.jpeg)
 
 ```arduino
 #include "FastLED.h"
@@ -147,7 +148,7 @@ void loop(){
 }
 ```
 ![Photo of the control box: eight power supplies, four Arduino Mega, and space for an emergency battery.
-Control box, the white paper represents the space left for the emergency battery.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/block-56c64a60-4b48-4738-8581-2327c2cba058.jpg)
+Control box, the white paper represents the space left for the emergency battery.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/the-control-box-eight-power-supplies-four-arduino-mega-and-space-for-an.jpg)
 
 ### Post Air Max Day
 The guys from the Red Bull Station liked so much the installation that they asked to have it there for a full month. A period that I had to go and regularly to check if everything was working as expected. During this time some of the LEDs stopped working at the top of the installation, which would be very complicated to replace. The look wasn’t good because it lost that nice continuity. So instead of replacing the LEDs, I just turned off the top 10 LEDs directly in the Arduino code.
