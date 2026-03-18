@@ -19,6 +19,7 @@ Place: Online
 ---
 
 Durante meu tempo na BuildSystems, liderei o desenvolvimento de um plugin para o Grasshopper com o objetivo de otimizar o processo de projeto arquitetônico. Esse conjunto de ferramentas foi criado para permitir que os usuários definissem e analisassem projetos de edifícios de forma paramétrica, oferecendo feedback em tempo real sobre o uso de materiais e o impacto ambiental por meio de uma Avaliação do Ciclo de Vida (ACV) integrada.
+
 Principais conquistas desse desenvolvimento incluíram:
 - **Detalhamento de componente construtivo**: Implementamos uma funcionalidade para definir e gerenciar componentes construtivos individuais com suas respectivas propriedades de material.
 - **Análise de ACV integrada**: O plugin oferecia a capacidade de avaliar rapidamente a pegada ambiental dos projetos com base em dados de materiais extraídos de Declarações Ambientais de Produto (DAPs).
@@ -27,6 +28,7 @@ Principais conquistas desse desenvolvimento incluíram:
 
 ![](../../../assets/content/projects/buildsystems-plugin-for-grasshopper/block-1fabf53b-9ce3-8177-8578-e6cb97586cb4.png)
 *Aba da BuildSystems no Grasshopper: componentes de ACV e planejamento urbano*
+
 ## Desafios
 Existem duas linguagens principais para desenvolver plugins para o Grasshopper: Python e C#. No entanto, para uma aparência mais nativa, maior desempenho e integração mais profunda, C# é a opção preferida. Isso porque o próprio Grasshopper foi escrito em C# por David Rutten.
 O principal desafio durante esse desenvolvimento foi que a McNeel, a empresa por trás do Rhino e do Grasshopper, estava no meio de uma transição do *.NET Framework 4.8* para o *.NET Core*.
@@ -40,6 +42,7 @@ O principal desafio durante esse desenvolvimento foi que a McNeel, a empresa por
     - Sendo descontinuado, o que exigiria migrar o plugin em um futuro próximo
     - Não é multiplataforma — seriam necessários plugins separados para Windows e macOS
     - Menor desempenho
+
 ### .NET Core
 - **Prós**
     - À prova de futuro, pois é a base para as próximas versões do Rhino/Grasshopper
@@ -50,6 +53,7 @@ O principal desafio durante esse desenvolvimento foi que a McNeel, a empresa por
     - Incompatível com a versão atual do Rhino.Inside Revit
     - Menos recursos e exemplos disponíveis online para desenvolvimento e depuração
 A McNeel recomenda uma abordagem chamada [multi-targeting](https://learn.microsoft.com/en-us/nuget/create-packages/multiple-target-frameworks-project-file), ou seja, desenvolver o plugin suportando ambas as versões do .NET. Isso adicionou uma camada extra de complexidade ao projeto.
+
 ## Futuro
 As fases finais do projeto focaram no estabelecimento do **BuildSystems Object Model (BSoM)** para aprimorar a extensibilidade e a manutenção do plugin.
 Apesar de totalmente funcional, o projeto foi descontinuado devido a uma mudança de foco da então startup BuildSystems. Na época, a economia alemã enfrentava dificuldades e não havia projetos de construção em andamento nos quais pudéssemos testar o plugin adequadamente. Decidimos mudar o foco e investir nosso tempo no desenvolvimento de uma ferramenta simuladora de financiamento imobiliário sustentável.

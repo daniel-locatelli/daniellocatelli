@@ -19,6 +19,7 @@ Place: Online
 ---
 
 Während meiner Zeit bei BuildSystems leitete ich die Entwicklung eines Grasshopper-Plugins zur Optimierung des architektonischen Entwurfsprozesses. Dieses Toolset wurde entwickelt, um Nutzern die parametrische Definition und Analyse von Gebäudeentwürfen zu ermöglichen und dabei Echtzeit-Feedback zum Materialverbrauch und zur Umweltbelastung durch integrierte Ökobilanzierung (LCA) bereitzustellen.
+
 Zentrale Ergebnisse dieser Entwicklung waren:
 - **Detaillierung von Baukomponenten**: Es wurde eine Funktionalität implementiert, um einzelne Baukomponenten mit ihren zugehörigen Materialeigenschaften zu definieren und zu verwalten.
 - **Integrierte Ökobilanzanalyse**: Das Plugin bot die Möglichkeit, den ökologischen Fußabdruck von Entwürfen schnell auf Basis von Materialdaten aus Umweltproduktdeklarationen (EPDs) zu bewerten.
@@ -27,6 +28,7 @@ Zentrale Ergebnisse dieser Entwicklung waren:
 
 ![](../../../assets/content/projects/buildsystems-plugin-for-grasshopper/block-1f1bf53b-9ce3-80d3-b12f-e2eedb7a3eae.png)
 *BuildSystems-Reiter in Grasshopper: LCA- und Stadtplanungskomponenten*
+
 ## Herausforderungen
 Es gibt zwei Hauptsprachen für die Entwicklung von Grasshopper-Plugins: Python und C#. Für ein nativeres Erscheinungsbild, schnellere Leistung und tiefere Integration ist jedoch C# die bevorzugte Option. Das liegt daran, dass Grasshopper selbst von David Rutten in C# geschrieben wurde.
 Die größte Herausforderung während dieser Entwicklung war, dass McNeel, das Unternehmen hinter Rhino und Grasshopper, sich mitten im Übergang von *.NET Framework 4.8* zu *.NET Core* befand.
@@ -40,6 +42,7 @@ Die größte Herausforderung während dieser Entwicklung war, dass McNeel, das U
     - Wird auslaufen, was eine Migration des Plugins in naher Zukunft erfordern würde
     - Nicht plattformübergreifend – separate Plugins wären für Windows und macOS erforderlich
     - Geringere Leistung
+
 ### .NET Core
 - **Vorteile**
     - Zukunftssicher, da es die Basis für kommende Rhino/Grasshopper-Versionen ist
@@ -50,6 +53,7 @@ Die größte Herausforderung während dieser Entwicklung war, dass McNeel, das U
     - Inkompatibel mit der aktuellen Version von Rhino.Inside Revit
     - Weniger Ressourcen und Beispiele online für Entwicklung und Debugging verfügbar
 McNeel empfiehlt einen [Multi-Targeting](https://learn.microsoft.com/en-us/nuget/create-packages/multiple-target-frameworks-project-file)-Ansatz – das Plugin soll also beide .NET-Versionen unterstützen – was dem Projekt eine zusätzliche Komplexitätsebene hinzufügte.
+
 ## Ausblick
 Die letzten Phasen des Projekts konzentrierten sich auf die Etablierung des **BuildSystems Object Model (BSoM)**, um die Erweiterbarkeit und Wartbarkeit des Plugins zu verbessern.
 Obwohl voll funktionsfähig, wurde das Projekt schließlich aufgrund einer Schwerpunktverschiebung beim damaligen Startup BuildSystems eingestellt. Zu diesem Zeitpunkt befand sich die deutsche Wirtschaft in einer schwierigen Lage, und es gab keine aktiven Bauprojekte, in denen wir das Plugin richtig hätten testen können. Wir entschieden uns für einen Kurswechsel und investierten unsere Zeit stattdessen in die Entwicklung eines Simulationstools für nachhaltige Wohnungsbaufinanzierung.
