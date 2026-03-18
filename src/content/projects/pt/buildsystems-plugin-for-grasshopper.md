@@ -26,8 +26,7 @@ Principais conquistas desse desenvolvimento incluíram:
 - **Gerenciamento de dados via JSON**: Criamos um banco de dados estruturado em JSON para armazenar e recuperar dados de componentes construtivos. Essa estrutura também seria utilizada em um aplicativo web chamado *Circular Component Creator*, uma ideia que, infelizmente, não avançou.
 - **Interface intuitiva no Grasshopper**: O plugin apresentava uma interface amigável que aproveitava o paradigma de programação visual do Grasshopper, permitindo uma integração fluida com os fluxos de trabalho existentes.
 
-![](../../../assets/content/projects/buildsystems-plugin-for-grasshopper/block-1fabf53b-9ce3-8177-8578-e6cb97586cb4.png)
-*Aba da BuildSystems no Grasshopper: componentes de ACV e planejamento urbano*
+![Aba da BuildSystems no Grasshopper: componentes de ACV e planejamento urbano](../../../assets/content/projects/buildsystems-plugin-for-grasshopper/block-1f1bf53b-9ce3-80d3-b12f-e2eedb7a3eae.png)
 
 ## Desafios
 Existem duas linguagens principais para desenvolver plugins para o Grasshopper: Python e C#. No entanto, para uma aparência mais nativa, maior desempenho e integração mais profunda, C# é a opção preferida. Isso porque o próprio Grasshopper foi escrito em C# por David Rutten.

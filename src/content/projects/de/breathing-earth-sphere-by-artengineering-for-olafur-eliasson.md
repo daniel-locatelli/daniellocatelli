@@ -34,7 +34,7 @@ OtherLinks:
 ---
 
 ## Einführung
-[Olafur Eliasson](https://olafureliasson.net/) beauftragte ArtEngineering mit Computational Engineering, digitaler Fertigung und Logistik für die Breathing earth sphere. Dies war nicht einfach ein weiterer Auftrag -- es war meine Gelegenheit, den gesamten Arbeitsablauf zu erleben: vom Konzept über Computational Engineering und digitale Fertigung bis hin zur Logistik.
+[Olafur Eliasson](https://olafureliasson.net/) beauftragte ArtEngineering mit Computational Engineering, digitaler Fertigung und Logistik für die Breathing earth sphere. Dies war meine Gelegenheit, den gesamten Arbeitsablauf zu erleben: vom Konzept über Computational Engineering und digitale Fertigung bis hin zur Logistik.
 ![Installationsansicht: Docho Island, Shinan County, South Jeolla, Südkorea, 2024](../../../assets/content/projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson/installation-view-docho-island-shinan-county-south-jeolla-south-korea-2024.jpg)
 ## Das Engineering
 Mein Schwerpunkt lag auf der Finite-Elemente-Analyse (FEA) mit SOFiSTiK, das hervorragend geeignet ist für komplexe, nicht-standardmäßige Geometrien wie diese. Wir starteten mit dem Basismodell aus Eliassons Studio und führten eine wirklich tiefgehende Analyse und Dokumentation durch: Wind, Erdbeben und sogar "zufällige" Lasten (weil unvermeidlich jemand versuchen wird, eine 10-Meter-Kuppel zu besteigen).

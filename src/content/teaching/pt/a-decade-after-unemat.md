@@ -14,5 +14,6 @@ Place: UNEMAT Barra do Bugres
 
 A UNEMAT foi a primeira universidade onde estudei Arquitetura. Dez anos após o início dos meus estudos lá, apresentei esta palestra sobre toda a minha trajetória, desde minha transferência universitária para a FAU-USP, meu trabalho no Atelier Marko Brajovic e minha recente mudança de carreira, focando mais especificamente em Design Computacional e programação.
 
-![](../../../assets/content/teaching/a-decade-after-unemat/block-10ebf53b-9ce3-8130-b2da-d59fdd83544e.jpg)
-![](../../../assets/content/teaching/a-decade-after-unemat/block-10ebf53b-9ce3-8168-943d-f68b59cfd3b8.jpeg)
+![Introdução com citação de Frei Otto](../../../assets/content/teaching/a-decade-after-unemat/introduction-frei-otto-quote.jpg)
+
+![Conversa com a mídia local sobre o trabalho de Marko Brajovic](../../../assets/content/teaching/a-decade-after-unemat/talking-to-local-news-about-marko-brajovics-work.jpeg)

@@ -8,20 +8,38 @@ Tags:
 Authors:
   - Lena Strobel
   - Daniel Nunes Locatelli
+Supervisor:
+  - Prof. Dr. Ing. Jan Knippers
 DateStart: "2020-10-01"
 Place: ITECH - University of Stuttgart
 ---
 
 import Video from '@/components/Video.astro'
 
-<Video src="/media/research/bending-active-bamboo/form-finding.mp4" caption="Form-finding process." />
+<Video autoplay src="/media/research/bending-active-bamboo/form-finding.mp4" caption="Form-finding process." />
 
 This was the work that me and Lena Strobel did for the ITECH course Form and Structure. We were inspired by the ZCB Bamboo Pavilion, but we developed our own workflow using Grasshopper, Kangaroo Physics and K2Engineering.
 
-![](../../../assets/content/research/bending-active-bamboo/block-4197e2fb-448d-42e9-ba32-96a9572abf56.jpg)
-![](../../../assets/content/research/bending-active-bamboo/block-1d967a8f-43a3-489c-916d-158cf753023d.jpg)
-![](../../../assets/content/research/bending-active-bamboo/block-82128887-ab2d-4f36-b134-8213ae81e860.jpg)
-![](../../../assets/content/research/bending-active-bamboo/block-00daa3fa-2a84-441a-af46-bdc03a32c4a5.jpg)
-You can check more information about the original pavilion here:
+## Form-Finding
+
+For the design of the initial form, we created a two-dimensional beam layout in a triangular grid. Then we used kangaroo as a spring-particle system with loads, support and beams as bending rods constraints. The shape emerges as the beams try to straighten them.
+
+![Top view before bending](../../../assets/content/research/bending-active-bamboo/top-view-before-bending.jpg)
+
+The initial idea was to reverse-engineering the bamboo pavilion using this knowledge to change the geometry to a different polygonal shape, however, the development of this study alone required all our efforts.
+
+The K2Engineering was crucial to the development of this work. The properties of bamboo could be used as input to produce structural analyses which were used to optimize the results.
+
+![Bending forces](../../../assets/content/research/bending-active-bamboo/bending-forces.jpg)
+
+![Displacement visualization](../../../assets/content/research/bending-active-bamboo/displacement-visualization.jpg)
+
+A big challenge was the design of the arcs that structured the initial geometrical shape and how they anchor to the three circular predetermined supports. Also, additional intersection points had to be added at a later stage, as the initial outcome was not as structurally and aesthetically as intended. It was also important to use Kangaroo Zombie to make the optimization faster.
+
+![Side view](../../../assets/content/research/bending-active-bamboo/side-view.jpg)
+
+You can check more information about the original pavilion here: [ZCB Bamboo Pavilion](https://www.archdaily.com/800173/zcb-bamboo-pavilion-the-chinese-university-of-hong-kong-school-of-architecture)
+
+![ZCB Bamboo Pavilion by Michael LAW](../../../assets/content/research/bending-active-bamboo/ZCBBambooPavilion-by-Michael-LAW.jpg)
 
 

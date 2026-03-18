@@ -26,8 +26,7 @@ Key achievements of this development included:
 - **Data Management via JSON**: We created a structured JSON-based database to store and retrieve construction component data. This data structure was also planned to be used in a web app called *Circular Component Creator*, an idea that unfortunately never moved forward.
 - **Intuitive Grasshopper Interface**: The plugin featured a user-friendly interface that leveraged Grasshopper’s visual programming paradigm, enabling smooth integration with existing workflows.
 
-![](../../../assets/content/projects/buildsystems-plugin-for-grasshopper/block-1f1bf53b-9ce3-80d3-b12f-e2eedb7a3eae.png)
-*BuildSystems tab in Grasshopper: LCA and urban planning components*
+![BuildSystems tab in Grasshopper: LCA and urban planning components](../../../assets/content/projects/buildsystems-plugin-for-grasshopper/block-1f1bf53b-9ce3-80d3-b12f-e2eedb7a3eae.png)
 
 ## Challenges
 There are two main languages used to develop Grasshopper plugins: Python and C#. However, for a more native look and feel, faster performance, and deeper integration C# is the preferred option. That’s because Grasshopper itself was written in C# by David Rutten.

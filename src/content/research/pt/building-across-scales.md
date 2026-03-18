@@ -26,19 +26,21 @@ Place: ITECH - University of Stuttgart
 ---
 
 ## Resumo
-**Building Across Scales
-Um sistema robótico para colagem de madeira engenheirada no canteiro**
-A pesquisa propõe um sistema de construção robótica multiescalar heterogêneo para automatizar ainda mais a construção de madeira no canteiro de obras. Especificamente, ele apresenta o próximo passo na automação da colagem no canteiro de obras por meio da introdução de um dispositivo de prensa robótico para a colagem da madeira
+**Building Across Scales: Um sistema robótico para colagem de madeira engenheirada no canteiro**
+
+A pesquisa propõe um sistema de construção robótica multiescalar heterogêneo para automatizar ainda mais a construção de madeira no canteiro de obras. Especificamente, ele apresenta o próximo passo na automação da colagem no canteiro de obras por meio da introdução de um dispositivo de prensa robótico para a colagem da madeira.
 Portanto, no cerne da pesquisa, está o desenvolvimento do dispositivo de prensa. Dispositivo esse que faz parte de uma equipe de construção robótica, incluindo uma dupla de robôs industriais e um guindaste em co-design com o material e o sistema de construção.
 A madeira engenheirada abriu novas possibilidades na maneira como as estruturas de madeira modernas são construídas e projetadas. Simplesmente empilhando tábuas de madeira umas sobre as outras e colando-as de forma cruzada, é possível obter uma forte ligação entre as camadas. No entanto, devido a restrições de transporte, essas peças de madeira têm seu tamanho limitado.
 Como essas peças apresentam uma conexão fraca, elas consequentemente limitam o sistema a um vão linear o que resulta em uma arquitetura ortogonal.
 Esta pesquisa apresenta um sistema de fabricação como uma estratégia para ir além dessas limitações. Por meio da integração de lógicas de construção no material, ele apresenta uma abordagem para atingir alta precisão durante a montagem e automatizar a operação de um guindaste.
 Habilitado pelo dispositivo de prensa, esse sistema visa continuar a lógica de fabricação de laminação cruzada de madeira projetada no local para criar uma laje quase monolítica. Isso permite uma laje de madeira apoiada em pontos de dimensões ilimitadas, o que abre para mais flexibilidade de design na planta baixa e estende o espaço de design arquitetônico.
+
 ## **Introdução**
 > Esta pesquisa tem o objetivo de automatizar a construção em madeira no canteiro de obras através do desenvolvimento de um dispositivo robótico para a prensagem de conexões coladas in loco.
 A madeira engenheirada abriu novas possibilidades na forma como as estruturas modernas de madeira são projetadas e construídas [1]. Ao simplesmente empilhar pranchas de madeira e laminá-las de forma cruzada, é possível obter uma união forte entre as camadas individuais criando a CLT — [Madeira laminada cruzada](https://pt.wikipedia.org/wiki/Madeira_laminada_cruzada). No entanto, no canteiro de obras, essa lógica é interrompida, pois os elementos individuais — como vigas, lajes e paredes — são apenas posicionados uns ao lado dos outros. Isso cria juntas fracas entre esses membros, o que limita o sistema a vãos lineares, resultando em uma arquitetura baseada em grelhas.
 Em vez disso, esta pesquisa dá continuidade à lógica de fabricação da madeira engenheirada. Ao elevar a escala, o objetivo é criar uma laje quase monolítica que cubra todo o pavimento, permitindo maior liberdade arquitetônica.
 Como a escala de um pavimento inteiro é muito superior à de um único painel de CLT, não existe atualmente tecnologia para automatizar essa abordagem. Através do desenvolvimento de um grampo robótico customizado, a intenção é automatizar esse processo.
+
 ### Relevância
 #### Automação da Construção
 Um relatório recente da ONU mostra um aumento constante na população urbana nas próximas décadas. Atualmente, cerca de 55% da população mundial vive em áreas urbanas e, até 2050, espera-se que esse número chegue a 68% [2]. Esta tendência reforça a necessidade de um sistema de construção que seja seguro, acessível, sustentável e automatizado [3].
@@ -47,9 +49,12 @@ Embora o setor da construção seja um dos maiores da economia mundial, ele poss
 ![Figura 02 - Produtividade do trabalho na indústria japonesa de acordo com Construction Industry Handbook, 2012 (Bock, 2015).](../../../assets/content/research/building-across-scales/produtividade-do-trabalho-na-industria-japonesa-de-acordo-com-construction.jpg)
 
 ![Figura 03 - Curvas em S de Foster (1986) aplicadas ao desenvolvimento futuro da indústria e tecnologia da construção. Desenho por B. Georgescu, Cátedra de Realização de Edifícios e Robótica (Bock, 2015).](../../../assets/content/research/building-across-scales/curvas-em-s-de-foster-1986-aplicadas-ao-desenvolvimento-futuro-da-industria-e.jpg)
+
 Existem muitos fatores que levam a esse baixo desempenho. A indústria possui uma ampla gama de regulamentações, depende fortemente das demandas do setor público e é altamente fragmentada [4]. No entanto, isso representa uma oportunidade para novos agentes no mercado, e uma solução possível para enfrentar a questão da produtividade é a implementação de automação e robótica [5].
 Embora a automação e a robótica tenham começado a ser aplicadas na construção já em 1970, elas ainda não alcançaram o aumento necessário de produtividade para se tornarem uma alternativa economicamente viável. No entanto, isso não deve ser visto como uma falha, mas como um processo natural quando uma mudança tecnológica significativa está em curso [6]. Avanços tecnológicos essenciais, como *big data*, redes de sensores sem fio e a modelagem de informações da construção (BIM), estão promovendo um ambiente favorável para apoiar sistemas eficientes de automação e robótica na construção [7].
+
 De acordo com Thomas Bock (2016), existem dois ciclos tecnológicos significativos ocorrendo na construção. Um engloba os sistemas de construção tradicionais, enquanto o novo refere-se à digitalização, automação e robótica (Figura 03). Os ciclos tecnológicos ocorrem em três fases distintas: inovação, crescimento e maturidade. Neste momento, estamos entrando na segunda fase deste novo ciclo: o crescimento. Ao longo desta fase, ele eventualmente superará os sistemas de construção tradicionais, culminando em sua fase final, a maturidade, levando à adoção em massa em toda a indústria [6].
+
 #### **Estratégias **de Automação
 Desde o início da automação na construção, diversas estratégias foram pesquisadas, desenvolvidas e implantadas. Uma delas é o conceito de **pré-fabricação**, no qual uma grande parte do processo de construção se desloca para um ambiente fabril, facilitando a produção em massa de peças de forma mais segura e confiável (Figura 04). Este ambiente estruturado é semelhante às fábricas de diversas outras indústrias, como a automotiva e de manufatura, conhecidas por serem favoráveis à aplicação de robôs industriais convencionais em locais estáticos.
 Na indústria da construção, no entanto, as peças ainda precisam ser transportadas para sua localização final. Os módulos de transporte geralmente são muito maiores que a matéria-prima, tornando o custo, a logística e as regulamentações locais fatores limitantes que impactam a flexibilidade do design final [8].
@@ -57,15 +62,20 @@ Na indústria da construção, no entanto, as peças ainda precisam ser transpor
 ![Figura 04 - Pré-fabricação de habitação em madeira (FingerHaus, 2021).](../../../assets/content/research/building-across-scales/pre-fabricacao-de-habitacao-em-madeira-fingerhaus-2021.jpg)
 
 ![Figura 05 - Vista externa da fábrica no canteiro (SMART) da empresa Shimizu (Bock, 2015).](../../../assets/content/research/building-across-scales/vista-externa-da-fabrica-no-canteiro-smart-da-empresa-shimizu-bock-2015.jpg)
+
 Outra estratégia explorada desde a década de 1970 é a **fábrica no canteiro** (*site factory*). Aqui, em vez de levar a fabricação das peças para um ambiente fabril externo, o próprio canteiro de obras se torna a fábrica. Neste cenário, o canteiro de obras, que de outra forma seria um ambiente não estruturado, passa a ter uma infraestrutura que facilita a navegação dos robôs, acelerando a construção do edifício. Essa estratégia levou, por exemplo, ao desenvolvimento de **fábricas voadoras** para tipologias de torres, nas quais, após a conclusão de cada andar, a fábrica inteira se desloca um nível para cima (Figura 05). Os problemas dessa estratégia são o alto custo, o tempo excessivo de montagem da fábrica antes do início da construção e a viabilidade restrita a tipologias de torres repetitivas, limitando a capacidade do projetista de customizar a forma global [9] [8].
+
 Uma abordagem mais flexível para fábricas no canteiro é a **plataforma robótica transportável para construção em madeira** (Figura 06). Ela consiste em um contêiner equipado com robôs e ferramentas que podem ser entregues diretamente no canteiro de obras. Isso permite a integração da montagem robótica em métodos de construção já existentes. A força do sistema reside no fato de ser independente de localização e reconfigurável. A ampla possibilidade de customização da plataforma permite alta flexibilidade. Portanto, torna-se possível estender, em vez de substituir, o artesanato tradicional, aumentando a qualidade e a produtividade no local [10].
 
 ![Figura 06 - Plataforma robótica transportável e flexível para construção em madeira (TIM), consistindo em um robô pick-and-place, mesa giratória central e um robô de colagem-pregação-fresagem (GNM) (Wagner et al, 2020).](../../../assets/content/research/building-across-scales/plataforma-robotica-transportavel-e-flexivel-para-construcao-em-madeira-tim.png)
 
 ![Figura 07 - Esforço Conjunto (Joint Effort): Equipe de robôs viabilizou estratégias de união de fibra de carbono para construção leve em madeira (S. Lut, T. Stark, L. Siriwardena, 2020).](../../../assets/content/research/building-across-scales/esforco-conjunto-joint-effort-equipe-de-robos-viabilizou-estrategias-de-uniao.jpg)
+
 Uma terceira estratégia explorada, especialmente no contexto de pesquisa, é o uso de **robôs móveis** na construção da superestrutura (Figura 07). Esta abordagem é interessante porque explora a ideia de montagem robótica distribuída, levando ao desenvolvimento de algoritmos sofisticados que possuem uma sequência de construção descentralizada e à prova de falhas. Em outras palavras, se algo der errado com um robô, os outros preencheriam a lacuna sem interromper toda a lógica de montagem. Robôs móveis também possuem mais flexibilidade do que fábricas no canteiro ou plataformas transportáveis, alcançando locais que seriam impossíveis para um sistema de pórtico, por exemplo. No entanto, sistemas móveis são muito mais complexos de monitorar e controlar, são menos precisos e suas limitações de baixa capacidade de carga (*payload*) os tornam menos eficientes energeticamente [8].
+
 Até agora, a automação na construção tem se concentrado majoritariamente na criação de sistemas inteiramente novos. No entanto, sua aceitação na indústria da construção atual ainda é limitada. Como mencionado anteriormente, vemos que a indústria da construção não evolui tão rápido quanto outras indústrias. Consequentemente, é essencial integrar a tecnologia de construção já existente ao tentar automatizar processos de montagem.
 Devido à natureza não estruturada e complexa da construção, é crítico analisar as diferentes tarefas no canteiro, pois algumas podem ser mais adequadas para um robô grande controlado centralmente, como um guindaste, enquanto outras podem se beneficiar de um coletivo de centenas de robôs menores [8].
+
 Em vez de desenvolver outro sistema inteiramente novo, um **sistema robótico heterogêneo** poderia agregar grande valor na automação de processos in loco. De acordo com Vasey et al. (2020), um sistema heterogêneo de robôs é um "sistema composto por robôs com especificações, ferramentas e lógicas de controle variadas, que podem ser de diferentes fabricantes ou customizados a partir de componentes e controladores comerciais (*off-the-shelf*)" [9].
 Analisando pesquisas de ponta, vemos que a combinação de robôs já ocorre em certo grau. O projeto *Sequential Roof* da ETH em Zurique é um exemplo. Ele possuía um processo de pré-fabricação altamente automatizado (Figura 08), enquanto a montagem no canteiro ainda dependia de trabalho manual [11] (Figura 09).
 
@@ -81,11 +91,12 @@ Além dos benefícios técnicos e estruturais, com o aumento da conscientizaçã
 ![Figura 10 - Imagem da campanha de marketing para a Holzbau Offensive Baden-Württemberg, Ministerium für Ernährung, Ländlichen Raum und Verbraucherschutz (MLR).](../../../assets/content/research/building-across-scales/imagem-da-campanha-de-marketing-para-a-holzbau-offensive-baden-wurttemberg.jpg)
 
 
-Figura 11 - Tipologias atuais de sistemas de construção em madeira (Kaufmann, 2018).
+![Figura 11 - Tipologias atuais de sistemas de construção em madeira (Kaufmann, 2018).](../../../assets/content/research/building-across-scales/figure-11-prefabrication-combined.png)
 
 A colagem in loco tem a possibilidade de superar os desafios que derivam de uma arquitetura modular, pois pode criar uma união forte entre as peças individuais. Visto que, até agora, apenas a cola fornece uma junta suficiente para um gradiente de rigidez contínuo, isso significa que as conexões coladas são muito mais resistentes se comparadas aos métodos tradicionais (Figura 12) [12] e poderiam viabilizar um layout de laje com suporte de carga multiaxial [15].
 
 ![Figura 12 - Eficiência de conexões entre membros de madeira de 100mm por 200mm transmitindo uma força axial de tração (Ramage, 2017).](../../../assets/content/research/building-across-scales/eficiencia-de-conexoes-entre-membros-de-madeira-de-100mm-por-200mm-transmitindo.png)
+
 ### Escopo
 O escopo da tese é a automação de uma junta colada *in loco* integrada a um sistema construtivo em madeira. Portanto, o aspecto central da pesquisa é o desenvolvimento de um dispositivo robótico customizado, responsável pela prensagem da cola na conexão *in situ*. O co-design entre o grampo robótico e a madeira permitiu a simplificação do projeto robótico e o desenvolvimento de um sistema material que pode tirar proveito total das tecnologias propostas.
 Discute-se, adiante, a possibilidade de automatizar toda a cadeia de construção, alcançada através da implementação de uma plataforma ciber-física de fabricação de madeira (TIM), responsável pela pré-fabricação de elementos de madeira no canteiro. Estratégias de sensoriamento embarcado no dispositivo robótico permitem a localização e o monitoramento do processo de montagem em tempo real, possibilitando a comunicação e a coordenação com um guindaste para automatizar o posicionamento *in situ* de elementos pré-fabricados.
@@ -198,7 +209,7 @@ Passando agora para o canteiro de obras, o processo de montagem será demonstrad
 
 ![Figura 48 - Na etapa seguinte, o dispositivo robótico procederia com a aplicação da pressão necessária para a cola in situ.](../../../assets/content/research/building-across-scales/na-etapa-seguinte-o-dispositivo-robotico-procederia-com-a-aplicacao-da-pressao.jpg)
 
-![Figura 49 - E após um determinado período de tempo, uma vez que a cola esteja seca, o dispositivo será capaz de aliviar sua pressão no furo, permitindo que caia no chão para ser realimentado no sistema.](../../../assets/content/research/building-across-scales/e-apos-um-determinado-periodo-de-tempo-uma-vez-que-a-cola-esteja-seca-o.jpg)
+![Figura 49 - E após um determinado período de tempo, uma vez que a cola esteja seca, o dispositivo será capaz de aliviar sua pressão no furo, permitindo que caia no chão para ser realimentado no sistema.](../../../assets/content/research/building-across-scales/device-falling-from-hole.jpg)
 #### **Desenvolvimento do Hardware**
 O dispositivo pode ser dividido em quatro componentes: o sistema de controle e uma âncora no topo, o mecanismo de contração no meio e outra âncora na base.
 Em geral, o dispositivo precisa realizar duas funções: fixar-se na madeira e aplicar a pressão necessária para a cura da cola. Um dos principais desafios aqui é que o dispositivo precisa ser o menor possível, enquanto aplica a maior pressão possível.

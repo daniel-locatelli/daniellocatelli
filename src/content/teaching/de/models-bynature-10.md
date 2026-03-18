@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/teaching/models-bynature-10/models-bynature-10-cover.jpg
+Cover: /assets/content/teaching/models-bynature-10/models-bynature-10_andreia-bento.jpg
 CoverAlt: Eine Studentin präsentiert ihren aus dem Workshop entstandenen Voronoi-Pavillon.
 Description: "Ziel dieses Workshops war es, computergestützte Designpraktiken mit natürlichen Phänomenen zu verknüpfen. Dabei wurden Themen wie assoziative Modellierung, Biomimetik und visuelle Programmiersprachen behandelt."
 Name: Models byNature 1.0
@@ -16,19 +16,31 @@ Place: Atelier Marko Brajovic
 ---
 
 Dieser Workshop zielte darauf ab, Computational-Design-Praktiken mit natürlichen Phänomenen zu verbinden und behandelte Themen wie Biomimetik, Modellierung mit der Natur und visuelle Programmiersprachen unter Verwendung von Rhino und Grasshopper.
-![](../../../assets/content/teaching/models-bynature-10/block-a0f820fe-d417-4672-af45-6670b312bd6e.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-87a95223-af95-48fb-a10d-f83cb49837f3.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-e922e4b0-8018-48ba-a9bc-8e6ab6b90f4e.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-59420efd-6b08-42bd-994d-549e1e391aeb.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-34d28815-0635-4d22-ad3a-b9812201493a.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-6442beb6-f7f9-40fc-aabf-66a897ef3dce.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-2adb662a-4d04-4843-8c02-766b50633986.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-bd63af0f-181c-4747-8d9d-1ccfd7a88fe9.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-542032e7-479e-4ada-8c20-e227dcfdb1a7.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-7cefc438-dd68-4910-8743-940994dc5c67.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-600b406e-8e24-4afb-a75b-661e79d54f46.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-412051d2-17d9-4499-8bd7-6b292a7516fb.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-ca34e494-f5e8-4e3f-a7ad-f302592bb80d.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-2ffa7aa9-43b1-4cb7-b4fc-4e5fa670e39e.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-722b0095-1272-44fa-9b4c-17dd9fb07e61.jpeg)
-![](../../../assets/content/teaching/models-bynature-10/block-482d3b1c-659c-425e-be89-1d8172439b47.jpeg)
+
+![Gruppenfoto](../../../assets/content/teaching/models-bynature-10/models-bynature-10_group-photo.jpeg)
+
+![Formfindung mit Spirale und Seife](../../../assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-spiral-and-soap.jpeg)
+
+![Formfindung mit Hohlkreis und Seife](../../../assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-hollow-circle-and-soap.jpeg)
+
+![Formfindung mit Tetraeder und Seife](../../../assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-tetrahedron-and-soap.jpeg)
+
+![Voronoi-Experiment](../../../assets/content/teaching/models-bynature-10/models-bynature-10_voronoi-experiment.jpeg)
+
+![Formfindung Voronoi mit Sand](../../../assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-voronoi-with-sand.jpeg)
+
+![Formfindung mit Stoff](../../../assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-fabric.jpeg)
+
+![Praktisches Modellieren 02](../../../assets/content/teaching/models-bynature-10/models-bynature-10_hands-on-modeling-02.jpeg)
+
+![Praktisches Modellieren 04](../../../assets/content/teaching/models-bynature-10/models-bynature-10_hands-on-modeling-04.jpeg)
+
+![Praktisches Modellieren 03](../../../assets/content/teaching/models-bynature-10/models-bynature-10_hands-on-modeling-03.jpeg)
+
+![Praktisches Modellieren 05](../../../assets/content/teaching/models-bynature-10/models-bynature-10_hands-on-modeling-05.jpeg)
+
+![Praktisches Modellieren 01](../../../assets/content/teaching/models-bynature-10/models-bynature-10_hands-on-modeling-01.jpeg)
+
+![Andreia Bento](../../../assets/content/teaching/models-bynature-10/models-bynature-10_andreia-bento.jpg)
+
+![Biomimetik-Präsentation Marko Brajovic](../../../assets/content/teaching/models-bynature-10/models-bynature-10_biomimetics-presentation-marko-brajovic.jpeg)
