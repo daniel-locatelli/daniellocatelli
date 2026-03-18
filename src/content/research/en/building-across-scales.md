@@ -99,7 +99,9 @@ The scope of the research can be divided into two parts:
 - The investigation of a material system, which uses timber elements and the automation of an in-situ joint.
 - The development of a heterogeneous robotic system, including the coordination between all actors. Starting from on-site fabrication to in-situ joinery.
 Both systems need to be designed in coordination so that the limitations and parameters continuously inform each other (Figure 13).
+
 ![Figure 13 - Material-robotic system overview.](../../../assets/content/research/building-across-scales/material-robotic-system-overview.png)
+
 ## Research
 ### Context
 #### On-Site Gluing
@@ -109,12 +111,15 @@ An example of a successful on-site-gluing procedure is the new technology develo
 ![Figure 15 - TS3 Glue being applied (TS3).](../../../assets/content/research/building-across-scales/ts3-glue-being-applied-ts3.jpg)
 
 ![Figure 14 - Schematic drawings showing butt to butt connections examples in which the TS3 glue could be applied (TS3).](../../../assets/content/research/building-across-scales/schematic-drawings-showing-butt-to-butt-connections-examples-in-which-the-ts3.jpg)
+
 An approach to reduce the amount of glue is by using screws (Figure 16). Because by pressurizing the glue during the drying process, it is possible to achieve a strong bonding connection using only a fraction of the glue needed initially [18].
 But the downside is that this process is again very laborious. Also, as the screws serve a temporary function, they are usually left in the timber because the labor costs of removing them are much higher than the screw itself.
 
 ![Figure 16a](../../../assets/content/research/building-across-scales/a.png)
+
 ![Figure 16b](../../../assets/content/research/building-across-scales/b.png)
 Figure 16 - Sequence showing the process of in-situ gluing using screws to generate the necessary pressure.
+
 ### State of the art
 #### Chicago Horizon [19]
 Chicago Horizon is a public pavilion installed in Grant Park, facing Lake Michigan (figure 17). It exemplifies modernist beauty in its minimalist composition: A timber flat roof plane is simply supported by a field of timber columns.
@@ -123,20 +128,27 @@ Chicago Horizon is a public pavilion installed in Grant Park, facing Lake Michig
 The aim is to create a monolithic timber slab by stacking CLT plates on top of each other and screwing them together. The solution is to have two perpendicularly stacked layers of CLT slabs (figure 18). CLT slabs are anisotropic and only span in one direction, but when they are stacked perpendicular, it adopts bidirectional properties.
 
 ![Figure 18 - Exploded Axonometric of Chicago Horizon (Schneider et al. 2017).](../../../assets/content/research/building-across-scales/exploded-axonometric-of-chicago-horizon-schneider-et-al-2017.png)
+
 #### Mass Timber Fastening [20]
 An attempt to automate screwing is the project mass timber fastening using robotic fastening machines (Figure 19), which make it possible to insert a multitude of screws at once, but they are still being operated manually and additionally the logistics of moving these machines and all of its cables from one area to another makes this process barely more efficient compared to manual screwing.
 
 ![Figure 19 - Mass Timber Fastening (Swinerton’s Innovation, 2021).](../../../assets/content/research/building-across-scales/mass-timber-fastening-swinerton-s-innovation-2021.jpg)
+
 Each CLT layer comprises 3-ply Black Spruce CLT, measuring 2.4 m by 17.0 m in plan (105mm thick). In the first layer, the CLT slabs are screwed with plywood planks at the seam. The second layer of slabs, which are perpendicular to the first, is joined using the same procedure, then fastened to the layer below with an array of screws. This way, the final product combines CLT panels that are nail laminated together (NLT). Resulting in a roof structure 210 mm thick spanning up to 9m between columns. While this results in an overall small slab thickness and even allows for free column placement, it is structurally limited to a single floor. Moreover, the need for almost 50 screws per square meter lacks scalability.
+
 #### Automatic Assembly of Jointed Timber Structure Using Distributed Robotic Clamps [21]
 The project by the ETH in Zurich takes a different approach. Instead of trying to develop a big machine to automate a construction task, they use distributed clamps to assemble joints of a complex timber structure (Figure 20). Through the collaboration with an industrial arm these clamps overcome the need to provide large assembly forces and to correct for misalignment during the assembly. But the system lacks scalability as it is still limited to the reachability of an industrial robot.
 
 ![Figure 20 - Automatic Assembly of Jointed Timber Structure Using Distributed Robotic Clamps (Leung et al.,ETH Zurich, 2021).](../../../assets/content/research/building-across-scales/automatic-assembly-of-jointed-timber-structure-using-distributed-robotic-clamps.jpg)
+
 ## Development
 ### Method
 As mentioned before, our methods can be divided into two parts: One side is the investigation and development of a material system, which uses timber elements and an in-situ glue joint. And on the other the development of a heterogeneous robotic system, including the coordination between all actors, starting from on-site fabrication to in-situ joinery.
+
 ![Figure 21  - Material system connectivity diagram.](../../../assets/content/research/building-across-scales/material-system-connectivity-diagram.png)
+
 ![Figure 22 - Robotic system connectivity diagram.](../../../assets/content/research/building-across-scales/robotic-system-connectivity-diagram.png)
+
 ### Research Development
 The research started investigating academic and industrial actors on-site and comparing them under different aspects to look for potential matches for a collaborative construction scenario. It shows that none of the actors can cover all areas by themselves, but by combining many actors, the weaknesses of each system can be compensated. For example, while distributed robots cannot achieve the payloads of a traditional crane, they strike in other areas, such as precision, as they can be customized for a specific task. By combining both systems, the crane and the distributed robots, they could benefit from each other, allowing them to perform tasks of high payload while also achieving high precision. A potential combination between the use of a crane, TIM, and distributed robot guided the next steps in this research.
 
@@ -152,29 +164,39 @@ Building on top of available construction technology, a new robotic species was 
 ![Figure 25  - Research proposal.](../../../assets/content/research/building-across-scales/research-proposal.jpg)
 The idea on how this device works is that you have pre-drilled holes in the timber, through which the device can be inserted on-site and unfold its pressure. For this, it needs to do two things. It needs to clamp itself into the timber, and it needs to apply the pressure required for the glue to dry. After deployment, the device can then relieve its pressure from the hole to fall to the ground. This allows the automation of the in-situ connection.
 Also, through the reusability of this device, it is possible to leave no metal behind in the structure, opening up more possibilities for an afterlife at the end of a structure’s life. According to Jianmei Wu, the bottleneck of disassembling timber buildings is the removal of the connections. Therefore more time is spent dismantling the structure rather than just tearing it down quickly [22].
+
 #### Heterogeneous Robotic System
 By closely linking all the different site actors together, it is possible to create a heterogeneous robotic system, which can work in different scales to complement each other. To take full advantage of the device, this system consists of three steps: a mobile industrial robot platform for the preparation of the prefabricated timber elements, which includes the application of glue onto the panels; a crane for the transportation; and lastly, the joining of elements in situ by our device. Each of these steps is closely designed with each other to achieve a collaborative workflow.
 
 ![Figure 30 - Heterogeneous Robotic System.](../../../assets/content/research/building-across-scales/heterogeneous-robotic-system.png)
+
 #### Building System
 As design intentions and site conditions can vary, it is essential that the building system is not static but rather an adaptive framework, which can react to these. The two main compartments are made out of the material and robotic side.
 If we zoom out a bit, we can see that many sub-parameters influence each other. Through a co-design of these, it is possible to achieve a fabrication system tailored towards a global design.
 For example, one of the critical aspects of the paneling logic is the maximum assemblable panel size, as it is defined by the machinic morphospace [23] of the mobile robotic platform. With the setup of TIM, it would allow for 3 x 2 m panels [10]. But depending on the setup (adding a linear axis for example) these dimensions could change so that the system could work in different resolutions of plate dimensions. The following chapters will demonstrate the computational workflow of the building system, following this restriction.
+
 ![Figure 31 - Material-robotic system diagram.](../../../assets/content/research/building-across-scales/material-robotic-system-diagram.png)
-*** Paneling Logic***
+
+*** Paneling Logic ***
 The paneling logic starts from the center point of each column position. These could be fixed depending on a particular design intention. Alternatively, by giving a specific site boundary, it is possible to start with a column distribution algorithm to ensure an even scattering. With the help of Karamba3D, the bending moment of the slab is then calculated. The panels are then arranged so that the paneling seams avoid the areas with a high bending moment. This naturally ends in a “mushroom-column” aesthetic, as the maximum bending moments are usually found on top of the column and in-mid span between the columns. The panels are then stacked on top of each other, going from the column outwards with a final panel crossing the mid-span between neighboring columns. Besides the structural aspect, the paneling logic is also guided from the fabrication side and, as mentioned earlier, from the site-specific constraints like transportation limitations and the machinic morphospace of the mobile industrial platform.
 
 ![Figure 32 - Paneling overlay.](../../../assets/content/research/building-across-scales/paneling-overlay.png)
 
 ![Figure 33 - Layers of panels.](../../../assets/content/research/building-across-scales/layers-of-panels.jpg)
+
 ![Figure 34 - Floorplan.](../../../assets/content/research/building-across-scales/floorplan.png)
-***Glue Distribution Logic***
+
+*** Glue Distribution Logic ***
 After arriving with the paneling logic, the structural model is reanalyzed to inform the glue distribution logic, which ultimately defines the spacing of the holes of the timber system for the in-situ glue pressing. In this step of the development, a key question was: How can we reduce the glue consumption and minimize the amount of work on-site.
 Since the glue is always stronger than timber and can only transfer forces in the form of shear, the initiation of system failures tends to appear as in-plane shearing-off of timber fibers adjacent to the glue interface. Therefore the cross-sectional stresses flowing from the slab into the column are calculated and divided by the in-plane shear strength of the CLT. This then results in a heat map, which highlights areas in which more glue is needed. Depending on the dimensioning of the custom robotic device, it is possible to calculate the corresponding device force and the resulting area of influence which can be pressurized. With this information, the heat map can then be populated with the right amount of robotic devices so that the required pressure level is met everywhere. The glue lines are then oriented to be later applied on-site to optimize the robotic tool path.
+
 ![Figure 35 - Finite element analysis from the paneling.](../../../assets/content/research/building-across-scales/finite-element-analysis-from-the-paneling.png)
+
 ![Figure 36  - Glue distribution: darker areas need more glue.](../../../assets/content/research/building-across-scales/glue-distribution-darker-areas-need-more-glue.png)
+
 ![Figure 37 - Points to place the holes for the robotic clamps.](../../../assets/content/research/building-across-scales/points-to-place-the-holes-for-the-robotic-clamps.png)
-***Alignment Channels***
+
+*** Alignment Channels ***
 In order to work with the tolerances of the crane, additional information is embedded inside the material to make the process of automated assembly more efficient. This will be done by engraving alignment channels into one panel and fitting alignment dowels into the other. This system works similarly to LEGO pieces. This process is generated depending on the paneling logic and the corresponding assembly order of the individual panels.
 The sequence is as follows: first, the plate is lowered until the dowels hit the underneath plate surface; then, the plate could be dragged along the surface until the wooden dowels slide into the alignment channels. Therefore it would minimize the plate’s movement in one direction; it could then be dragged through the engraved channel until the dowels would slide into their assigned holes.
 
@@ -183,6 +205,7 @@ The sequence is as follows: first, the plate is lowered until the dowels hit the
 ![Figure 39 - Panel hitting the channels.](../../../assets/content/research/building-across-scales/panel-hitting-the-channels.jpg)
 
 ![Figure 40 - Panel in place.](../../../assets/content/research/building-across-scales/panel-in-place.jpg)
+
 #### Construction Scenario
 Going now on site, the assembly process will be demonstrated. In the first step, the prefabricated timber panels will be prepared for assembly by the mobile robotic platform (TIM) before being placed in situ.
 
@@ -214,7 +237,6 @@ Therefore we decided to go for a pneumatic approach, as these systems have an ex
 In our case, we are using a pneumatic muscle, which can be activated to carry out a linear pulling motion. When the muscle inflates, it expands radially and contracts along the axes, producing a pulling force.
 This motion is then coupled with the bottom anchor. Through a spring at the bottom, the first motion of the muscle is converted into a folding motion of the anchor. Which then results in hooking into the timber.
 
-
 By having both anchors positioned at the outside of the panels, it allows us to reach the biggest possible area. Depending on the depth of the two pressed panels and the strength of the device, the possible area of influence can be calculated with the before explained methods in section 3.2.4. The device itself can be controlled over a wifi connection so that the time and length of inflation can be adjusted depending on the opening and pressing time of the chosen glue.
 After the glue has been dried, the CO2 can be released from the system to relieve the pressure on
 the anchors so that the device can fall down to the ground for the next operation.
@@ -230,6 +252,7 @@ The strength test was repeated with varying contraction lengths, ranging from 5%
 ![Figure 56 - Strength test chart.](../../../assets/content/research/building-across-scales/strength-test-chart.jpg)
 
 ![Figure 57 - Strength test setup.](../../../assets/content/research/building-across-scales/strength-test-setup.png)
+
 #### Hole Spacing Calculating
 The calculation of the area of influence for the robotic device is based on how the spacing of screws for a glue pressure application is calculated. Everything was calculated using a 200mm thick spruce slab and an adhesive amount of 300 g/m².
 The first study was based on a minimum pressure of 0.1 N/mm², as this is the current requirement of the DIN NORM. By applying different spacings in between the devices, the area of influence changes and therefore also the required force which needs to be applied by each device. This relative needed force then dictates the dimensioning and diameter robotic device.
@@ -239,6 +262,7 @@ And the final study uses a minimum pressure of 0.01 N/mm², which is more optimi
 ![Figure 58 - Estimative of force necessary to glue 200mm thick spruce.](../../../assets/content/research/building-across-scales/estimative-of-force-necessary-to-glue-200mm-thick-spruce.png)
 
 ![Figure 57 - Parameters affecting the area of influence.](../../../assets/content/research/building-across-scales/parameters-affecting-the-area-of-influence.jpg)
+
 #### Alignment Strategy
 While at the current step of development, we focused mainly on the pressurizing mechanism, we also thought about an extension of the device to help with the joining and the assembly of the panels. While the alignment channels in the timber help with the alignment of the panels for the last few centimeters, a camera system could help to navigate the crane during its operation to come into the threshold limit of the alignment channels. This could be done by either extending the robotic device with an embedded camera inside the bottom anchor or designing an additional device with a camera with higher processing power. Additionally, more stable pins could be used to help with the passive alignment of the elements. Alternatively, these could be wooden dowels, which could be left inside of the structure after assembly.
 The idea on how the plate would be lowered until the dowels hit the timber structure’s surface, from which then the plate could be dragged along the surface until the wooden dowels slide into the alignment channel. Therefore it would minimize the plate’s movement in one direction; it could then be dragged through the engraved channel until the dowels would slide into their assigned holes.
@@ -247,8 +271,17 @@ The alignment channels were tested in two different test setups. The first one c
 A way to approach this issue was by not having the ropes of the crane attached to a single point with free rotation at the top of the crane, but rather having four individual connection points, which are spaced apart from each other. Further iterations on the system, like adding a third dowel per panel or adding a chamfer to the channels, would need to be made in order to validate the concept as efficient enough to be operated by an autonomous crane.
 
 ![Figure 60 - Custom crane end-effector hook.](../../../assets/content/research/building-across-scales/custom-crane-end-effector-hook.jpg)
+
 Through machine vision, the device could then detect the holes during assembly while being lowered with the crane. The distance between the holes could then be matched with the digital model to calculate the current position and rotation of the to-be-assembled panel. The whole assembly procedure could then be automated through a feedback system connected with the crane’s operating system. The dowels and alignment channels would then serve to slide the panel into its final position.
 The plate would be lowered until the dowels hit the timber structure’s surface, from which then the plate could be dragged along the surface until the wooden dowels slide into the alignment channel. Therefore it would minimize the plate’s movement in one direction; it could then be dragged through the engraved channel until the dowels would slide into their assigned holes.
+
+![Figure 62a](../../../assets/content/research/building-across-scales/openCV_01-1.jpg)
+
+![Figure 62b](../../../assets/content/research/building-across-scales/openCV_01-2.jpg)
+
+![Figure 62c](../../../assets/content/research/building-across-scales/openCV_01-3.jpg)
+
+![Figure 62d](../../../assets/content/research/building-across-scales/openCV_01-4.jpg)
 
 Figure 62 - Hole detection of the timber elements using machine vision.
 

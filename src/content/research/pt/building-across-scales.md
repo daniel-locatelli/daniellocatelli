@@ -104,7 +104,9 @@ O escopo da pesquisa pode ser dividido em duas partes:
 - A investigação de um sistema material que utiliza elementos de madeira e a automação de uma junta *in loco*.
 - O desenvolvimento de um sistema robótico heterogêneo, incluindo a coordenação entre todos os atores — desde a fabricação no canteiro até a união (*joinery*) *in situ*.
 Ambos os sistemas precisam ser projetados em coordenação, de modo que as limitações e os parâmetros informem-se mutuamente de forma contínua (Figura 13).
+
 ![Figura 13 - Visão geral do sistema material-robótico.](../../../assets/content/research/building-across-scales/visao-geral-do-sistema-material-robotico.png)
+
 ## Pesquisa
 ### Contexto
 #### Colagem no canteiro
@@ -114,12 +116,15 @@ Um exemplo de um procedimento bem-sucedido de colagem *in loco* é a nova tecnol
 ![Figura 15 - Aplicação da cola TS3 (TS3).](../../../assets/content/research/building-across-scales/aplicacao-da-cola-ts3-ts3.jpg)
 
 ![Figura 14 - Desenhos esquemáticos mostrando exemplos de conexões de topo (butt to butt) nas quais a cola TS3 poderia ser aplicada (TS3).](../../../assets/content/research/building-across-scales/desenhos-esquematicos-mostrando-exemplos-de-conexoes-de-topo-butt-to-butt-nas.jpg)
+
 Uma abordagem para reduzir a quantidade de cola é o uso de **parafusos** (Figura 16). Ao pressurizar a cola durante o processo de secagem, é possível obter uma união forte utilizando apenas uma fração da cola inicialmente necessária [18].
 Contudo, a desvantagem é que este processo é, novamente, muito laborioso. Além disso, como os parafusos cumprem uma função temporária, eles geralmente são deixados na madeira porque os custos de mão de obra para removê-los são muito superiores ao valor do próprio parafuso.
 
 ![Figura 16a](../../../assets/content/research/building-across-scales/a-01.png)
+
 ![Figura 16b](../../../assets/content/research/building-across-scales/b-01.png)
 Figura 16 - Sequência mostrando o processo de colagem *in situ* usando parafusos para gerar a pressão necessária.
+
 ### Estado da Arte
 #### Chicago Horizon [19]
 *Chicago Horizon* é um pavilhão público instalado no Grant Park, de frente para o Lago Michigan (Figura 17). Ele exemplifica a beleza modernista em sua composição minimalista: um plano de cobertura plano em madeira é sustentado de forma simples por um campo de colunas de madeira.
@@ -128,20 +133,27 @@ Figura 16 - Sequência mostrando o processo de colagem *in situ* usando parafuso
 O objetivo é criar uma laje de madeira monolítica através do empilhamento de placas de CLT e do parafusamento entre elas. A solução é ter duas camadas de lajes CLT empilhadas perpendicularmente (Figura 18). As lajes de CLT são anisotrópicas e vencem vãos em apenas uma direção, mas, quando empilhadas perpendicularmente, o sistema adota propriedades bidirecionais.
 
 ![Figura 18 - Axonometria explodida do Chicago Horizon (Schneider et al. 2017).](../../../assets/content/research/building-across-scales/axonometria-explodida-do-chicago-horizon-schneider-et-al-2017.png)
+
 #### Mass Timber Fastening [20]
 Uma tentativa de automatizar o parafusamento é o projeto *Mass Timber Fastening*, que utiliza máquinas de fixação robótica (Figura 19). Elas tornam possível inserir uma multidão de parafusos de uma só vez, mas ainda são operadas manualmente; além disso, a logística de mover essas máquinas e todos os seus cabos de uma área para outra torna este processo apenas ligeiramente mais eficiente se comparado ao parafusamento manual.
 
 ![Figura 19 - Fixação de Madeira Engenheirada (Swinerton’s Innovation, 2021).](../../../assets/content/research/building-across-scales/fixacao-de-madeira-engenheirada-swinerton-s-innovation-2021.jpg)
+
 Cada camada de CLT é composta por CLT de *Black Spruce* (Picea mariana) de 3 camadas, medindo 2,4 m por 17,0 m em planta (105 mm de espessura). Na primeira camada, as lajes de CLT são parafusadas com pranchas de compensado na costura. A segunda camada de lajes, perpendicular à primeira, é unida pelo mesmo procedimento e, em seguida, fixada à camada inferior com uma matriz de parafusos. Dessa forma, o produto final combina painéis de CLT que são laminados por pregação/parafusamento (NLT - *Nail Laminated Timber*). O resultado é uma estrutura de cobertura de 210 mm de espessura vencendo vãos de até 9 m entre colunas. Embora isso resulte em uma espessura total de laje reduzida e permita até o posicionamento livre das colunas, o sistema é estruturalmente limitado a um único pavimento. Além disso, a necessidade de quase 50 parafusos por metro quadrado carece de escalabilidade.
+
 #### Automatic Assembly of Jointed Timber Structure Using Distributed Robotic Clamps [21]
 O projeto da ETH em Zurique adota uma abordagem diferente. Em vez de tentar desenvolver uma grande máquina para automatizar uma tarefa de construção, eles utilizam grampos distribuídos para montar as juntas de uma estrutura complexa de madeira (Figura 20). Através da colaboração com um braço industrial, esses grampos eliminam a necessidade de prover grandes forças de montagem e de corrigir desalinhamentos durante a execução. No entanto, o sistema carece de escalabilidade, pois ainda está limitado ao alcance do robô industrial.
 
 ![Figura 20 - Montagem automática de estrutura de madeira articulada usando grampos robóticos distribuídos (Leung et al., ETH Zurich, 2021).](../../../assets/content/research/building-across-scales/montagem-automatica-de-estrutura-de-madeira-articulada-usando-grampos-roboticos.jpg)
+
 ## Desenvolvimento
 ### Método
 Como mencionado anteriormente, nossos métodos podem ser divididos em duas partes: de um lado, a investigação e o desenvolvimento de um sistema material, que utiliza elementos de madeira e uma junta colada *in situ*; de outro, o desenvolvimento de um sistema robótico heterogêneo, incluindo a coordenação entre todos os atores, desde a fabricação no canteiro até a união (*joinery*) *in situ*.
+
 ![Figura 21 - Diagrama de conectividade do sistema material.](../../../assets/content/research/building-across-scales/diagrama-de-conectividade-do-sistema-material.png)
+
 ![Figura 22 - Diagrama de conectividade do sistema robótico.](../../../assets/content/research/building-across-scales/diagrama-de-conectividade-do-sistema-robotico.png)
+
 ### Desenvolvimento da Pesquisa
 A pesquisa iniciou-se investigando agentes acadêmicos e industriais no canteiro de obras e comparando-os sob diferentes aspectos para buscar potenciais combinações para um cenário de construção colaborativa. Demonstra-se que nenhum dos agentes consegue cobrir todas as áreas sozinho, mas, ao combinar vários agentes, as fraquezas de cada sistema podem ser compensadas. Por exemplo, embora robôs distribuídos não consigam atingir as capacidades de carga de um guindaste tradicional, eles se destacam em outras áreas, como a precisão, pois podem ser customizados para uma tarefa específica. Ao combinar ambos os sistemas — o guindaste e os robôs distribuídos — eles poderiam se beneficiar mutuamente, permitindo a execução de tarefas de alta carga e, ao mesmo tempo, alcançando alta precisão. Uma combinação potencial entre o uso de um guindaste, a plataforma TIM e robôs distribuídos guiou os próximos passos desta pesquisa.
 
@@ -158,30 +170,39 @@ Baseando-se na tecnologia de construção disponível, uma nova "espécie robót
 ![Figura 25 - Proposta da pesquisa.](../../../assets/content/research/building-across-scales/proposta-da-pesquisa.jpg)
 A ideia de funcionamento deste dispositivo baseia-se em furos pré-perfurados na madeira, através dos quais o dispositivo pode ser inserido no canteiro e exercer sua pressão. Para isso, ele precisa realizar duas funções: fixar-se (clamp) na madeira e aplicar a pressão necessária para a secagem da cola. Após o uso, o dispositivo pode aliviar a pressão no furo e cair no chão. Isso permite a automação da conexão in situ.
 Além disso, através da reutilização deste dispositivo, é possível não deixar resíduos metálicos na estrutura, abrindo mais possibilidades para o reaproveitamento ao final da vida útil da edificação. De acordo com Jianmei Wu, o gargalo na desmontagem de edifícios de madeira é a remoção das conexões. Por isso, gasta-se mais tempo desmantelando a estrutura do que simplesmente demolindo-a rapidamente [22].
+
 #### Sistema Robótico Heterogêneo
 Ao vincular estreitamente todos os diferentes agentes do canteiro, é possível criar um sistema robótico heterogêneo capaz de atuar em diferentes escalas para que se complementem mutuamente. Para tirar o máximo proveito do dispositivo, este sistema consiste em três etapas: uma plataforma robótica industrial móvel para a preparação dos elementos de madeira pré-fabricados, o que inclui a aplicação de cola nos painéis; um guindaste para o transporte; e, por fim, a união dos elementos in situ através do nosso dispositivo. Cada uma dessas etapas é rigorosamente projetada em conjunto para alcançar um fluxo de trabalho colaborativo.
 
 ![Figura 30 - Sistema Robótico Heterogêneo.](../../../assets/content/research/building-across-scales/sistema-robotico-heterogeneo.png)
+
 #### Sistema Construtivo
 Como as intenções de projeto e as condições do canteiro podem variar, é essencial que o sistema construtivo não seja estático, mas sim uma estrutura adaptativa capaz de reagir a elas. Os dois compartimentos principais são compostos pelo lado material e pelo lado robótico.
 Ao ampliarmos a visão, percebemos que muitos subparâmetros influenciam uns aos outros. Através do co-design desses elementos, é possível alcançar um sistema de fabricação sob medida para um design global.
 Por exemplo, um dos aspectos críticos da lógica de painéis é o tamanho máximo de painel montável, uma vez que este é definido pelo espaço morfológico da máquina (machinic morphospace) [23] da plataforma robótica móvel. Com a configuração da TIM, seriam permitidos painéis de 3 x 2 m [10]. No entanto, dependendo da configuração (adicionando um eixo linear, por exemplo), essas dimensões poderiam mudar, de modo que o sistema pudesse trabalhar em diferentes resoluções de dimensões de placas. Os capítulos seguintes demonstrarão o fluxo de trabalho computacional do sistema construtivo, respeitando essa restrição.
+
 ![Figura 31 - Diagrama do sistema material-robótico.](../../../assets/content/research/building-across-scales/diagrama-do-sistema-material-robotico.png)
-***Lógica de Paginação (Paneling)***
+
+*** Lógica de Paginação (Paneling) ***
 A lógica de paginação inicia-se a partir do ponto central de cada posição de coluna. Estes pontos podem ser fixos, dependendo de uma intenção de projeto específica. Alternativamente, ao definir um limite específico do terreno, é possível iniciar com um algoritmo de distribuição de colunas para garantir uma dispersão uniforme. Com o auxílio do Karamba3D, calcula-se o momento fletor da laje. Os painéis são então organizados de modo que as juntas de paginação evitem as áreas com alto momento fletor. Isso resulta naturalmente em uma estética de "coluna-cogumelo", já que os momentos fletores máximos são geralmente encontrados no topo da coluna e no meio do vão entre as colunas.
 Os painéis são empilhados uns sobre os outros, partindo da coluna para fora, com um painel final cruzando o meio do vão entre colunas vizinhas. Além do aspecto estrutural, a lógica de paginação também é orientada pelo lado da fabricação e, como mencionado anteriormente, por restrições específicas do canteiro, como limitações de transporte e o espaço morfológico da plataforma industrial móvel.
 
 ![Figura 32 - Sobreposição da paginação.](../../../assets/content/research/building-across-scales/sobreposicao-da-paginacao.png)
 
 ![Figura 33 - Camadas de painéis.](../../../assets/content/research/building-across-scales/camadas-de-paineis.jpg)
+
 ![Figura 34 - Planta baixa.](../../../assets/content/research/building-across-scales/planta-baixa.png)
-***Lógica de Distribuição da Cola***
+
+*** Lógica de Distribuição da Cola ***
 Após definir a lógica de paginação, o modelo estrutural é reanalisado para informar a lógica de distribuição de cola, que define, em última instância, o espaçamento dos furos no sistema de madeira para a prensagem da cola in situ. Nesta etapa do desenvolvimento, uma pergunta fundamental foi: como podemos reduzir o consumo de cola e minimizar a quantidade de trabalho no canteiro?
 Como a cola é sempre mais forte que a madeira e só pode transferir forças na forma de cisalhamento, o início das falhas do sistema tende a aparecer como o cisalhamento das fibras de madeira adjacentes à interface da cola. Portanto, as tensões transversais que fluem da laje para a coluna são calculadas e divididas pela resistência ao cisalhamento no plano do CLT. Isso resulta em um mapa de calor, que destaca áreas onde mais cola é necessária. Dependendo do dimensionamento do dispositivo robótico customizado, é possível calcular a força correspondente do dispositivo e a área de influência resultante que pode ser pressurizada. Com essa informação, o mapa de calor pode ser preenchido com a quantidade correta de dispositivos robóticos para que o nível de pressão exigido seja atingido em todos os pontos. As linhas de cola são então orientadas para serem aplicadas posteriormente no canteiro, otimizando a trajetória da ferramenta robótica.
 ![Figura 35 - Análise de elementos finitos da paginação.](../../../assets/content/research/building-across-scales/analise-de-elementos-finitos-da-paginacao.png)
+
 ![Figura 36 - Distribuição de cola: áreas mais escuras necessitam de mais cola.](../../../assets/content/research/building-across-scales/distribuicao-de-cola-areas-mais-escuras-necessitam-de-mais-cola.png)
+
 ![Figura 37 - Pontos para posicionar os furos para os grampos robóticos.](../../../assets/content/research/building-across-scales/pontos-para-posicionar-os-furos-para-os-grampos-roboticos.png)
-***Canais de Alinhamento***
+
+*** Canais de Alinhamento ***
 Para trabalhar com as tolerâncias do guindaste, informações adicionais são incorporadas ao material para tornar o processo de montagem automatizada mais eficiente. Isso é feito através da gravação de canais de alinhamento em um painel e do encaixe de pinos de alinhamento no outro. Este sistema funciona de forma semelhante às peças de LEGO. Este processo é gerado dependendo da lógica de paginação e da ordem de montagem correspondente dos painéis individuais.
 A sequência é a seguinte: primeiro, a placa é abaixada até que os pinos atinjam a superfície da placa inferior; em seguida, a placa pode ser arrastada ao longo da superfície até que os pinos de madeira deslizem para dentro dos canais de alinhamento. Assim, minimiza-se o movimento da placa em uma direção; ela pode então ser arrastada através do canal gravado até que os pinos deslizem em seus furos designados.
 
@@ -190,6 +211,7 @@ A sequência é a seguinte: primeiro, a placa é abaixada até que os pinos atin
 ![Figura 39 - Painel atingindo os canais.](../../../assets/content/research/building-across-scales/painel-atingindo-os-canais.jpg)
 
 ![Figura 40 - Painel posicionado.](../../../assets/content/research/building-across-scales/painel-posicionado.jpg)
+
 #### Exemplo de Construção
 Passando agora para o canteiro de obras, o processo de montagem será demonstrado. Na primeira etapa, os painéis de madeira pré-fabricados serão preparados para a montagem pela plataforma robótica móvel (TIM) antes de serem posicionados *in situ*.
 
@@ -220,7 +242,6 @@ Por conta disso, optamos por uma abordagem pneumática, já que esses sistemas p
 No nosso caso, utilizamos um **músculo pneumático**, que pode ser ativado para realizar um movimento linear de tração. Quando o músculo infla, ele expande radialmente e contrai ao longo dos eixos, produzindo uma força de tração.
 Este movimento é então acoplado à âncora inferior. Através de uma mola na base, o movimento inicial do músculo é convertido em um movimento de dobramento da âncora, o que resulta no seu engate na madeira.
 
-
 Ao posicionar ambas as âncoras na parte externa dos painéis, conseguimos atingir a maior área possível. Dependendo da profundidade dos dois painéis prensados e da força do dispositivo, a possível área de influência pode ser calculada com os métodos explicados anteriormente. O dispositivo em si pode ser controlado via conexão Wi-Fi, para que o tempo e a duração da inflação possam ser ajustados conforme o tempo de abertura e prensagem da cola escolhida.
 Após a secagem da cola, o CO2 pode ser liberado do sistema para aliviar a pressão nas âncoras, de modo que o dispositivo possa cair no chão para a próxima operação.
 Também investigamos diferentes possibilidades para proteger o dispositivo durante a pressurização da cola. Estas incluíram vaselina, bordas fresadas ao redor do interior do furo e outros tipos de papéis. No final, optamos por uma folha fina de papel enrolada na carcaça do dispositivo, por parecer a solução mais simples. No entanto, dependendo da escolha da cola, não vemos isso como estritamente necessário. Por exemplo, deixar uma folga de 1 cm da borda do furo ao usar uma cola que não expande, como a cola 2K-PUR, não resultou em adesivo sendo empurrado para dentro do furo.
@@ -236,6 +257,7 @@ O motivo para isso é que nossas peças usinadas em CNC não estavam 100% hermé
 ![Figura 56 - Gráfico do teste de resistência.](../../../assets/content/research/building-across-scales/grafico-do-teste-de-resistencia.jpg)
 
 ![Figura 57 - Configuração do teste de resistência.](../../../assets/content/research/building-across-scales/configuracao-do-teste-de-resistencia.png)
+
 #### **Cálculo do Espaçamento dos Furos**
 O cálculo da área de influência para o dispositivo robótico baseia-se na forma como é calculado o espaçamento de parafusos para uma aplicação de pressão de colagem. Tudo foi calculado utilizando uma laje de abeto (*spruce*) de 200 mm de espessura e uma quantidade de adesivo de 300 g/m².
 O primeiro estudo baseou-se em uma pressão mínima de **0,1 N/mm²**, conforme a exigência atual da **norma DIN**. Ao aplicar diferentes espaçamentos entre os dispositivos, a área de influência muda e, consequentemente, também a força necessária que deve ser aplicada por cada dispositivo. Essa força relativa necessária dita, então, o dimensionamento e o diâmetro do dispositivo robótico.
@@ -245,6 +267,7 @@ O estudo final utiliza uma pressão mínima de **0,01 N/mm²**, que é mais otim
 ![Figura 58 - Estimativa da força necessária para colagem de abeto de 200 mm de espessura.](../../../assets/content/research/building-across-scales/estimativa-da-forca-necessaria-para-colagem-de-abeto-de-200-mm-de-espessura.png)
 
 ![Figura 57 - Parâmetros que afetam a área de influência.](../../../assets/content/research/building-across-scales/parametros-que-afetam-a-area-de-influencia.jpg)
+
 #### **Estratégia de Alinhamento**
 Embora nesta etapa do desenvolvimento tenhamos focado principalmente no mecanismo de pressurização, também consideramos uma extensão do dispositivo para auxiliar na união e na montagem dos painéis. Enquanto os canais de alinhamento na madeira ajudam no ajuste dos painéis nos últimos centímetros, um sistema de câmeras poderia auxiliar na navegação do guindaste durante sua operação para entrar no limite de tolerância dos canais. Isso poderia ser feito estendendo o dispositivo robótico com uma câmera embutida na âncora inferior ou projetando um dispositivo adicional com uma câmera de maior poder de processamento. Além disso, pinos mais estáveis poderiam ser usados para auxiliar no alinhamento passivo dos elementos. Alternativamente, estes poderiam ser cavilhas de madeira, que seriam deixadas dentro da estrutura após a montagem.
 A ideia é que a placa seja baixada até que as cavilhas atinjam a superfície da estrutura de madeira; a partir daí, a placa pode ser arrastada pela superfície até que as cavilhas deslizem para dentro do canal de alinhamento. Isso minimizaria o movimento da placa em uma direção, permitindo que ela fosse arrastada pelo canal gravado até que as cavilhas deslizassem para seus furos designados.
@@ -253,8 +276,17 @@ Os canais de alinhamento foram testados em duas configurações distintas. A pri
 Uma forma de abordar este problema foi não ter as cordas do guindaste presas a um único ponto com rotação livre no topo, mas sim possuir quatro pontos de conexão individuais, espaçados entre si. Futuras iterações no sistema, como adicionar uma terceira cavilha por painel ou chanfrar os canais, seriam necessárias para validar o conceito como eficiente o suficiente para ser operado por um guindaste autônomo.
 
 ![Figura 60 - Gancho efetuador final customizado para o guindaste.](../../../assets/content/research/building-across-scales/gancho-efetuador-final-customizado-para-o-guindaste.jpg)
+
 Através da visão computacional, o dispositivo poderia detectar os furos durante a montagem enquanto é baixado pelo guindaste. A distância entre os furos seria então comparada com o modelo digital para calcular a posição e rotação atuais do painel a ser montado. Todo o procedimento de montagem poderia ser automatizado através de um sistema de feedback conectado ao sistema operacional do guindaste. As cavilhas e os canais de alinhamento serviriam, então, para deslizar o painel até sua posição final.
 O painel seria baixado até que as cavilhas atingissem a superfície da estrutura de madeira; a partir daí, a placa poderia ser arrastada pela superfície até que as cavilhas de madeira deslizassem para dentro do canal de alinhamento. Isso minimizaria o movimento da placa em uma direção; ela poderia então ser arrastada através do canal gravado até que as cavilhas deslizassem para seus furos designados.
+
+![Figure 62a](../../../assets/content/research/building-across-scales/openCV_01-1.jpg)
+
+![Figure 62b](../../../assets/content/research/building-across-scales/openCV_01-2.jpg)
+
+![Figure 62c](../../../assets/content/research/building-across-scales/openCV_01-3.jpg)
+
+![Figure 62d](../../../assets/content/research/building-across-scales/openCV_01-4.jpg)
 
 Figura 62 - Detecção de furos nos elementos de madeira usando visão computacional.
 

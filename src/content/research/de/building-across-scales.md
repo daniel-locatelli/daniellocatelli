@@ -98,7 +98,9 @@ Der Umfang der Forschung kann in zwei Teile unterteilt werden:
 - Die Untersuchung eines Materialsystems, das Holzelemente und die Automatisierung einer In-situ-Verbindung nutzt.
 - Die Entwicklung eines heterogenen Robotersystems, einschließlich der Koordination zwischen allen Akteuren – von der Vor-Ort-Fertigung bis zur In-situ-Fügung.
 Beide Systeme müssen koordiniert entworfen werden, sodass sich die Einschränkungen und Parameter gegenseitig kontinuierlich informieren (Abbildung 13).
+
 ![Abbildung 13 – Überblick Material-Roboter-System.](../../../assets/content/research/building-across-scales/material-robotic-system-overview.png)
+
 ## Forschung
 ### Kontext
 #### Kleben vor Ort
@@ -108,12 +110,15 @@ Ein Beispiel für ein erfolgreiches Vor-Ort-Klebeverfahren ist die neue Technolo
 ![Abbildung 15 – TS3-Klebstoff wird aufgetragen (TS3).](../../../assets/content/research/building-across-scales/ts3-glue-being-applied-ts3.jpg)
 
 ![Abbildung 14 – Schematische Zeichnungen mit Beispielen für Stoß-an-Stoß-Verbindungen, bei denen der TS3-Klebstoff angewendet werden könnte (TS3).](../../../assets/content/research/building-across-scales/schematic-drawings-showing-butt-to-butt-connections-examples-in-which-the-ts3.jpg)
+
 Ein Ansatz zur Reduzierung der Klebstoffmenge ist die Verwendung von Schrauben (Abbildung 16). Durch das Verpressen des Klebstoffs während des Trocknungsprozesses ist es möglich, eine starke Verbindung herzustellen, wobei nur ein Bruchteil des ursprünglich benötigten Klebstoffs verwendet wird [18].
 Der Nachteil ist jedoch, dass dieser Prozess wiederum sehr arbeitsintensiv ist. Da die Schrauben zudem eine temporäre Funktion erfüllen, werden sie üblicherweise im Holz belassen, weil die Arbeitskosten für ihre Entfernung deutlich höher sind als der Wert der Schraube selbst.
 
 ![Abbildung 16a](../../../assets/content/research/building-across-scales/a.png)
+
 ![Abbildung 16b](../../../assets/content/research/building-across-scales/b.png)
 Abbildung 16 – Sequenz des In-situ-Klebeprozesses unter Verwendung von Schrauben zur Erzeugung des notwendigen Pressdrucks.
+
 ### Stand der Technik
 #### Chicago Horizon [19]
 Chicago Horizon ist ein öffentlicher Pavillon im Grant Park mit Blick auf den Michigansee (Abbildung 17). Er verkörpert modernistische Schönheit in seiner minimalistischen Komposition: Eine flache Holzdachebene wird einfach von einem Feld aus Holzstützen getragen.
@@ -122,20 +127,27 @@ Chicago Horizon ist ein öffentlicher Pavillon im Grant Park mit Blick auf den M
 Das Ziel ist die Schaffung einer monolithischen Holzplatte durch Aufeinanderstapeln von BSP-Platten und deren Verschraubung. Die Lösung besteht in zwei senkrecht aufeinander gestapelten Schichten von BSP-Platten (Abbildung 18). BSP-Platten sind anisotrop und spannen nur in eine Richtung, aber durch die senkrechte Stapelung erhalten sie bidirektionale Eigenschaften.
 
 ![Abbildung 18 – Explosionsaxonometrie des Chicago Horizon (Schneider et al. 2017).](../../../assets/content/research/building-across-scales/exploded-axonometric-of-chicago-horizon-schneider-et-al-2017.png)
+
 #### Mass Timber Fastening [20]
 Ein Versuch, das Verschrauben zu automatisieren, ist das Projekt Mass Timber Fastening mit robotischen Befestigungsmaschinen (Abbildung 19), die es ermöglichen, eine Vielzahl von Schrauben gleichzeitig einzusetzen. Sie werden jedoch weiterhin manuell bedient, und die Logistik des Transports dieser Maschinen mit all ihren Kabeln von einem Bereich zum anderen macht diesen Prozess kaum effizienter als manuelles Verschrauben.
 
 ![Abbildung 19 – Mass Timber Fastening (Swinerton's Innovation, 2021).](../../../assets/content/research/building-across-scales/mass-timber-fastening-swinerton-s-innovation-2021.jpg)
+
 Jede BSP-Schicht besteht aus 3-Schicht-BSP aus Schwarzfichte mit einer Grundfläche von 2,4 m × 17,0 m (105 mm dick). In der ersten Schicht werden die BSP-Platten mit Sperrholzleisten an der Naht verschraubt. Die zweite Schicht von Platten, die senkrecht zur ersten liegt, wird nach dem gleichen Verfahren verbunden und dann mit einer Anordnung von Schrauben an der darunter liegenden Schicht befestigt. Auf diese Weise kombiniert das Endprodukt BSP-Platten, die durch Nagellaminierung verbunden sind (NLT). Das Ergebnis ist eine Dachkonstruktion von 210 mm Dicke mit Spannweiten von bis zu 9 m zwischen den Stützen. Obwohl dies zu einer insgesamt geringen Plattendicke führt und sogar eine freie Stützenplatzierung ermöglicht, ist es strukturell auf ein einzelnes Geschoss beschränkt. Zudem fehlt bei fast 50 Schrauben pro Quadratmeter die Skalierbarkeit.
+
 #### Automatische Montage gefügter Holzstrukturen mit verteilten robotischen Klemmen [21]
 Das Projekt der ETH in Zürich verfolgt einen anderen Ansatz. Anstatt zu versuchen, eine große Maschine zur Automatisierung einer Bauaufgabe zu entwickeln, verwenden sie verteilte Klemmen zur Montage der Verbindungen einer komplexen Holzstruktur (Abbildung 20). Durch die Zusammenarbeit mit einem Industriearm überwinden diese Klemmen die Notwendigkeit, große Montagekräfte aufzubringen und Fehlausrichtungen während der Montage zu korrigieren. Das System mangelt jedoch an Skalierbarkeit, da es weiterhin auf die Reichweite eines Industrieroboters beschränkt ist.
 
 ![Abbildung 20 – Automatische Montage gefügter Holzstrukturen mit verteilten robotischen Klemmen (Leung et al., ETH Zürich, 2021).](../../../assets/content/research/building-across-scales/automatic-assembly-of-jointed-timber-structure-using-distributed-robotic-clamps.jpg)
+
 ## Entwicklung
 ### Methode
 Wie bereits erwähnt, lassen sich unsere Methoden in zwei Teile gliedern: Auf der einen Seite die Untersuchung und Entwicklung eines Materialsystems, das Holzelemente und eine In-situ-Klebeverbindung nutzt. Auf der anderen Seite die Entwicklung eines heterogenen Robotersystems, einschließlich der Koordination aller Akteure – von der Vor-Ort-Fertigung bis zur In-situ-Fügung.
+
 ![Abbildung 21 – Konnektivitätsdiagramm des Materialsystems.](../../../assets/content/research/building-across-scales/material-system-connectivity-diagram.png)
+
 ![Abbildung 22 – Konnektivitätsdiagramm des Robotersystems.](../../../assets/content/research/building-across-scales/robotic-system-connectivity-diagram.png)
+
 ### Forschungsentwicklung
 Die Forschung begann mit der Untersuchung akademischer und industrieller Akteure vor Ort und deren Vergleich unter verschiedenen Aspekten, um potenzielle Übereinstimmungen für ein kollaboratives Bauszenario zu finden. Es zeigt sich, dass keiner der Akteure alle Bereiche allein abdecken kann, aber durch die Kombination vieler Akteure können die Schwächen jedes Systems kompensiert werden. Während verteilte Roboter beispielsweise nicht die Traglasten eines traditionellen Krans erreichen können, punkten sie in anderen Bereichen wie der Präzision, da sie für eine spezifische Aufgabe angepasst werden können. Durch die Kombination beider Systeme – Kran und verteilte Roboter – könnten sie voneinander profitieren und Aufgaben mit hoher Traglast bei gleichzeitig hoher Präzision ausführen. Eine potenzielle Kombination aus Kran, TIM und verteiltem Roboter leitete die nächsten Schritte dieser Forschung.
 
@@ -151,29 +163,38 @@ Aufbauend auf verfügbarer Bautechnologie wurde eine neue robotische Spezies fü
 ![Abbildung 25 – Forschungsvorschlag.](../../../assets/content/research/building-across-scales/research-proposal.jpg)
 Die Idee, wie dieses Gerät funktioniert, ist, dass vorgebohrte Löcher im Holz vorhanden sind, durch die das Gerät vor Ort eingeführt werden kann, um seinen Druck zu entfalten. Dafür muss es zwei Dinge tun: Es muss sich im Holz verklemmen und den für die Trocknung des Klebstoffs erforderlichen Druck aufbringen. Nach dem Einsatz kann das Gerät dann seinen Druck vom Loch lösen und zu Boden fallen. Dies ermöglicht die Automatisierung der In-situ-Verbindung.
 Durch die Wiederverwendbarkeit dieses Geräts ist es zudem möglich, kein Metall in der Struktur zurückzulassen, was mehr Möglichkeiten für ein Nachleben am Ende der Lebensdauer einer Struktur eröffnet. Laut Jianmei Wu ist der Engpass bei der Demontage von Holzgebäuden die Entfernung der Verbindungen. Daher wird mehr Zeit für den Rückbau der Struktur aufgewendet als für das schnelle Abreißen [22].
+
 #### Heterogenes Robotersystem
 Durch die enge Verknüpfung aller verschiedenen Baustellen-Akteure ist es möglich, ein heterogenes Robotersystem zu schaffen, das in verschiedenen Maßstäben arbeiten kann, um sich gegenseitig zu ergänzen. Um das Gerät optimal zu nutzen, besteht dieses System aus drei Schritten: einer mobilen industriellen Roboterplattform zur Vorbereitung der vorgefertigten Holzelemente, einschließlich des Auftrags von Klebstoff auf die Platten; einem Kran für den Transport; und schließlich der In-situ-Fügung der Elemente durch unser Gerät. Jeder dieser Schritte ist eng aufeinander abgestimmt, um einen kollaborativen Arbeitsablauf zu erreichen.
 
 ![Abbildung 30 – Heterogenes Robotersystem.](../../../assets/content/research/building-across-scales/heterogeneous-robotic-system.png)
+
 #### Bausystem
 Da Gestaltungsabsichten und Baustellenbedingungen variieren können, ist es essenziell, dass das Bausystem nicht statisch ist, sondern vielmehr ein adaptiver Rahmen, der darauf reagieren kann. Die beiden Hauptkomponenten bestehen aus der Material- und der Roboterseite.
 Wenn wir etwas herauszoomen, sehen wir, dass viele Unterparameter sich gegenseitig beeinflussen. Durch ein Co-Design dieser Parameter ist es möglich, ein Fabrikationssystem zu erreichen, das auf ein globales Design zugeschnitten ist.
 Beispielsweise ist einer der kritischen Aspekte der Paneellogik die maximale montierbare Plattengröße, da sie durch den maschinellen Morphospace [23] der mobilen Roboterplattform definiert wird. Mit dem Setup von TIM wären Platten von 3 × 2 m möglich [10]. Je nach Setup (z. B. durch Hinzufügen einer Linearachse) könnten sich diese Dimensionen ändern, sodass das System in verschiedenen Auflösungen von Plattenabmessungen arbeiten kann. Die folgenden Kapitel demonstrieren den rechnerischen Workflow des Bausystems unter Berücksichtigung dieser Einschränkung.
+
 ![Abbildung 31 – Diagramm des Material-Roboter-Systems.](../../../assets/content/research/building-across-scales/material-robotic-system-diagram.png)
-*** Paneellogik***
+
+*** Paneellogik ***
 Die Paneellogik beginnt am Mittelpunkt jeder Stützenposition. Diese können je nach bestimmter Gestaltungsabsicht festgelegt werden. Alternativ ist es durch die Vorgabe einer bestimmten Grundstücksgrenze möglich, mit einem Stützenverteilungsalgorithmus zu beginnen, um eine gleichmäßige Verteilung sicherzustellen. Mit Hilfe von Karamba3D wird dann das Biegemoment der Platte berechnet. Die Paneele werden so angeordnet, dass die Paneelfugen die Bereiche mit hohem Biegemoment vermeiden. Dies mündet natürlich in einer „Pilzstützen"-Ästhetik, da die maximalen Biegemomente üblicherweise an der Stützenoberkante und in der Mitte der Spannweite zwischen den Stützen zu finden sind. Die Paneele werden dann aufeinander gestapelt, von der Stütze nach außen, wobei ein letztes Paneel die Mittelspannweite zwischen benachbarten Stützen überbrückt. Neben dem strukturellen Aspekt wird die Paneellogik auch von der Fertigungsseite und, wie bereits erwähnt, von den standortspezifischen Einschränkungen wie Transportlimitierungen und dem maschinellen Morphospace der mobilen Industrieplattform geleitet.
 
 ![Abbildung 32 – Paneelüberlagerung.](../../../assets/content/research/building-across-scales/paneling-overlay.png)
 
 ![Abbildung 33 – Paneelschichten.](../../../assets/content/research/building-across-scales/layers-of-panels.jpg)
+
 ![Abbildung 34 – Grundriss.](../../../assets/content/research/building-across-scales/floorplan.png)
-***Klebstoffverteilungslogik***
+
+*** Klebstoffverteilungslogik ***
 Nach der Festlegung der Paneellogik wird das Strukturmodell erneut analysiert, um die Klebstoffverteilungslogik zu informieren, die letztlich den Abstand der Löcher des Holzsystems für das In-situ-Verpressen definiert. In diesem Entwicklungsschritt war eine zentrale Frage: Wie können wir den Klebstoffverbrauch reduzieren und den Arbeitsaufwand vor Ort minimieren?
 Da der Klebstoff immer stärker als Holz ist und Kräfte nur in Form von Schub übertragen kann, treten Systemversagen tendenziell als In-plane-Abscherung von Holzfasern neben der Klebstoffgrenzfläche auf. Daher werden die Querschnittsspannungen, die von der Platte in die Stütze fließen, berechnet und durch die In-plane-Scherfestigkeit des BSP geteilt. Daraus ergibt sich eine Heatmap, die Bereiche hervorhebt, in denen mehr Klebstoff benötigt wird. Abhängig von der Dimensionierung des maßgeschneiderten robotischen Geräts ist es möglich, die entsprechende Gerätekraft und die resultierende Einflussfläche zu berechnen, die verpresst werden kann. Mit diesen Informationen kann die Heatmap dann mit der richtigen Anzahl robotischer Geräte bestückt werden, sodass das erforderliche Druckniveau überall erreicht wird. Die Klebstofflinien werden dann für die spätere Anwendung vor Ort ausgerichtet, um den robotischen Werkzeugpfad zu optimieren.
 ![Abbildung 35 – Finite-Elemente-Analyse der Paneelierung.](../../../assets/content/research/building-across-scales/finite-element-analysis-from-the-paneling.png)
+
 ![Abbildung 36 – Klebstoffverteilung: dunklere Bereiche benötigen mehr Klebstoff.](../../../assets/content/research/building-across-scales/glue-distribution-darker-areas-need-more-glue.png)
+
 ![Abbildung 37 – Punkte zur Platzierung der Löcher für die robotischen Klemmen.](../../../assets/content/research/building-across-scales/points-to-place-the-holes-for-the-robotic-clamps.png)
-***Ausrichtungskanäle***
+
+*** Ausrichtungskanäle ***
 Um mit den Toleranzen des Krans arbeiten zu können, werden zusätzliche Informationen in das Material eingebettet, um den Prozess der automatisierten Montage effizienter zu gestalten. Dies geschieht durch das Einfräsen von Ausrichtungskanälen in ein Paneel und das Einsetzen von Ausrichtungsdübeln in das andere. Dieses System funktioniert ähnlich wie LEGO-Steine. Dieser Prozess wird abhängig von der Paneellogik und der entsprechenden Montagereihenfolge der einzelnen Paneele generiert.
 Die Sequenz ist wie folgt: Zuerst wird die Platte abgesenkt, bis die Dübel auf die darunterliegende Plattenoberfläche treffen; dann kann die Platte entlang der Oberfläche gezogen werden, bis die Holzdübel in die Ausrichtungskanäle gleiten. Dadurch wird die Bewegung der Platte in einer Richtung minimiert; sie kann dann durch den eingefrästen Kanal gezogen werden, bis die Dübel in ihre zugewiesenen Löcher gleiten.
 
@@ -182,6 +203,7 @@ Die Sequenz ist wie folgt: Zuerst wird die Platte abgesenkt, bis die Dübel auf 
 ![Abbildung 39 – Paneel trifft auf die Kanäle.](../../../assets/content/research/building-across-scales/panel-hitting-the-channels.jpg)
 
 ![Abbildung 40 – Paneel in Position.](../../../assets/content/research/building-across-scales/panel-in-place.jpg)
+
 #### Konstruktionsszenario
 Nun vor Ort angekommen, wird der Montageprozess demonstriert. Im ersten Schritt werden die vorgefertigten Holzpaneele durch die mobile Roboterplattform (TIM) für die Montage vorbereitet, bevor sie in situ platziert werden.
 
@@ -213,7 +235,6 @@ Wir haben uns daher für einen pneumatischen Ansatz entschieden, da diese System
 In unserem Fall verwenden wir einen pneumatischen Muskel, der aktiviert werden kann, um eine lineare Zugbewegung auszuführen. Wenn der Muskel aufgeblasen wird, dehnt er sich radial aus und kontrahiert entlang der Achsen, wodurch eine Zugkraft erzeugt wird.
 Diese Bewegung wird dann mit dem unteren Anker gekoppelt. Durch eine Feder am unteren Ende wird die erste Bewegung des Muskels in eine Faltbewegung des Ankers umgewandelt, die dann zum Einhaken in das Holz führt.
 
-
 Durch die Positionierung beider Anker an der Außenseite der Platten ist es möglich, die größtmögliche Fläche zu erreichen. Abhängig von der Tiefe der beiden verpressten Platten und der Stärke des Geräts kann die mögliche Einflussfläche mit den zuvor erklärten Methoden berechnet werden. Das Gerät selbst kann über eine WLAN-Verbindung gesteuert werden, sodass Zeit und Dauer der Inflation je nach Öffnungs- und Presszeit des gewählten Klebstoffs angepasst werden können.
 Nachdem der Klebstoff getrocknet ist, kann das CO2 aus dem System abgelassen werden, um den Druck auf die Anker zu lösen, sodass das Gerät für den nächsten Einsatz zu Boden fallen kann.
 Wir haben auch verschiedene Möglichkeiten untersucht, das Gerät während des Verpressens des Klebstoffs zu schützen. Dazu gehörten Vaseline, gefräste Kanten um die Innenseite des Lochs und verschiedene Arten von Papier. Letztlich haben wir uns für ein dünnes Blatt Papier entschieden, das um das Gehäuse des Geräts gewickelt wird, da dies die einfachste Lösung zu sein schien. Abhängig von der Wahl des Klebstoffs sehen wir dies jedoch nicht als zwingend notwendig an. Beispielsweise führte das Belassen eines 1-cm-Abstands vom Lochrand bei Verwendung eines nicht schäumenden Klebstoffs wie 2K-PUR-Klebstoff nicht dazu, dass Klebstoff in das Loch gedrückt wurde.
@@ -228,6 +249,7 @@ Der Festigkeitstest wurde mit verschiedenen Kontraktionslängen wiederholt, die 
 ![Abbildung 56 – Diagramm des Festigkeitstests.](../../../assets/content/research/building-across-scales/strength-test-chart.jpg)
 
 ![Abbildung 57 – Aufbau des Festigkeitstests.](../../../assets/content/research/building-across-scales/strength-test-setup.png)
+
 #### Berechnung des Lochabstands
 Die Berechnung der Einflussfläche für das robotische Gerät basiert auf der Berechnung des Schraubenabstands für eine Klebstoff-Druckanwendung. Alle Berechnungen wurden mit einer 200 mm dicken Fichtenplatte und einer Klebstoffmenge von 300 g/m² durchgeführt.
 Die erste Studie basierte auf einem Mindestdruck von 0,1 N/mm², da dies die aktuelle Anforderung der DIN-Norm ist. Durch verschiedene Abstände zwischen den Geräten ändert sich die Einflussfläche und damit auch die erforderliche Kraft, die von jedem Gerät aufgebracht werden muss. Diese relativ benötigte Kraft bestimmt dann die Dimensionierung und den Durchmesser des robotischen Geräts.
@@ -237,6 +259,7 @@ Die letzte Studie verwendet einen Mindestdruck von 0,01 N/mm², der optimistisch
 ![Abbildung 58 – Schätzung der notwendigen Kraft zum Verleimen von 200 mm dicker Fichte.](../../../assets/content/research/building-across-scales/estimative-of-force-necessary-to-glue-200mm-thick-spruce.png)
 
 ![Abbildung 57 – Parameter, die die Einflussfläche beeinflussen.](../../../assets/content/research/building-across-scales/parameters-affecting-the-area-of-influence.jpg)
+
 #### Ausrichtungsstrategie
 Obwohl wir uns im aktuellen Entwicklungsschritt hauptsächlich auf den Verpressmechanismus konzentriert haben, haben wir auch über eine Erweiterung des Geräts nachgedacht, um bei der Fügung und Montage der Paneele zu helfen. Während die Ausrichtungskanäle im Holz bei der Ausrichtung der Paneele auf den letzten Zentimetern helfen, könnte ein Kamerasystem den Kran während seines Betriebs navigieren, um in den Toleranzbereich der Ausrichtungskanäle zu kommen. Dies könnte durch die Erweiterung des robotischen Geräts mit einer eingebetteten Kamera im unteren Anker oder durch die Entwicklung eines zusätzlichen Geräts mit einer Kamera mit höherer Rechenleistung erfolgen. Zusätzlich könnten stabilere Stifte für die passive Ausrichtung der Elemente verwendet werden. Alternativ könnten dies Holzdübel sein, die nach der Montage in der Struktur verbleiben.
 Die Idee ist, dass die Platte abgesenkt wird, bis die Dübel auf die Oberfläche der Holzstruktur treffen, von wo aus die Platte dann entlang der Oberfläche gezogen werden kann, bis die Holzdübel in den Ausrichtungskanal gleiten. Dadurch wird die Bewegung der Platte in einer Richtung minimiert; sie kann dann durch den eingefrästen Kanal gezogen werden, bis die Dübel in ihre zugewiesenen Löcher gleiten.
@@ -245,8 +268,17 @@ Die Ausrichtungskanäle wurden in zwei verschiedenen Versuchsanordnungen geteste
 Ein Ansatz zur Lösung dieses Problems bestand darin, die Seile des Krans nicht an einem einzelnen Punkt mit freier Rotation an der Kranspitze zu befestigen, sondern vier einzelne Befestigungspunkte zu verwenden, die voneinander beabstandet sind. Weitere Iterationen am System, wie das Hinzufügen eines dritten Dübels pro Paneel oder das Anfasen der Kanäle, müssten vorgenommen werden, um das Konzept als effizient genug für den Betrieb durch einen autonomen Kran zu validieren.
 
 ![Abbildung 60 – Maßgeschneiderter Kran-Endeffektor-Haken.](../../../assets/content/research/building-across-scales/custom-crane-end-effector-hook.jpg)
+
 Durch maschinelle Bildverarbeitung könnte das Gerät die Löcher während der Montage erkennen, während es mit dem Kran abgesenkt wird. Der Abstand zwischen den Löchern könnte dann mit dem digitalen Modell abgeglichen werden, um die aktuelle Position und Rotation des zu montierenden Paneels zu berechnen. Der gesamte Montagevorgang könnte dann durch ein Feedbacksystem automatisiert werden, das mit dem Betriebssystem des Krans verbunden ist. Die Dübel und Ausrichtungskanäle würden dann dazu dienen, das Paneel in seine endgültige Position gleiten zu lassen.
 Die Platte würde abgesenkt, bis die Dübel auf die Oberfläche der Holzstruktur treffen, von wo aus sie dann entlang der Oberfläche gezogen werden kann, bis die Holzdübel in den Ausrichtungskanal gleiten. Dadurch wird die Bewegung der Platte in einer Richtung minimiert; sie kann dann durch den eingefrästen Kanal gezogen werden, bis die Dübel in ihre zugewiesenen Löcher gleiten.
+
+![Figure 62a](../../../assets/content/research/building-across-scales/openCV_01-1.jpg)
+
+![Figure 62b](../../../assets/content/research/building-across-scales/openCV_01-2.jpg)
+
+![Figure 62c](../../../assets/content/research/building-across-scales/openCV_01-3.jpg)
+
+![Figure 62d](../../../assets/content/research/building-across-scales/openCV_01-4.jpg)
 
 Abbildung 62 – Locherkennung der Holzelemente mittels maschineller Bildverarbeitung.
 
