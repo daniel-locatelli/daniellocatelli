@@ -5,6 +5,7 @@ DateEnd: "2020-10"
 Organization: ICD/ITKE Universität Stuttgart
 City:
   - Stuttgart
+Country: "Deutschland"
 Category: Professional Experience
 Link: "https://www.icd.uni-stuttgart.de/"
 ---

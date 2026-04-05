@@ -5,6 +5,7 @@ DateEnd: "2014-08"
 Organization: California State University Long Beach
 City:
   - Long Beach
+Country: "EUA"
 Category: Professional Experience
 Link: "https://www.csulb.edu/college-of-engineering"
 ---

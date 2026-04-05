@@ -5,6 +5,7 @@ DateEnd: "2023-12"
 Organization: "Urban Scale Timber, Flügge Funding"
 City:
   - München
+Country: "Deutschland"
 Category: Professional Experience
 Link: "https://urbanscaletimber.com/"
 ---

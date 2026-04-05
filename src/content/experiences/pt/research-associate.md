@@ -4,6 +4,7 @@ DateStart: "2025-02"
 Organization: Universidade de Ciências Aplicadas de Munique
 City:
   - Munique
+Country: "Alemanha"
 Category: Professional Experience
 Link: "https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html"
 ---

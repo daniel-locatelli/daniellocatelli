@@ -4,6 +4,7 @@ DateStart: "2025-02"
 Organization: Hochschule München
 City:
   - München
+Country: "Deutschland"
 Category: Professional Experience
 Link: "https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html"
 ---

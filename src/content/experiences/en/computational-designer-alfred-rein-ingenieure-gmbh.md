@@ -5,6 +5,7 @@ DateEnd: "2021-11"
 Organization: Alfred Rein Ingenieure GmbH
 City:
   - Stuttgart
+Country: "Germany"
 Category: Professional Experience
 Link: "https://www.ar-ingenieure.com/"
 ---

@@ -4,6 +4,7 @@ DateStart: "2025-02"
 Organization: Munich University of Applied Sciences
 City:
   - Munich
+Country: "Germany"
 Category: Professional Experience
 Link: "https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html"
 ---

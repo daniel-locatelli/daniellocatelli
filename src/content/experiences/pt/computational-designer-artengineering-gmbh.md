@@ -5,6 +5,7 @@ DateEnd: "2022-12"
 Organization: ArtEngineering GmbH
 City:
   - Schorndorf
+Country: "Alemanha"
 Category: Professional Experience
 Link: "https://art-engineering.net/"
 ---
