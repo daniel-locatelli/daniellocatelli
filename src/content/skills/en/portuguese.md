@@ -1,6 +1,7 @@
 ---
 Name: Portuguese
 Category: Language
-Level: Native
+Level: Fluent
+Order: 3
 ---
 

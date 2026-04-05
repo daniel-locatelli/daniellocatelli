@@ -1,6 +1,7 @@
 ---
 Name: Figma
-Category: Vector editing
+Category: Design tool
 Level: Intermediate
+Order: 4
 ---
 

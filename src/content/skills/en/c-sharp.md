@@ -1,6 +1,7 @@
 ---
-Name: C Sharp
-Category: Programming language
+Name: "C#"
+Category: Programming
 Level: Intermediate
+Order: 5
 ---
 

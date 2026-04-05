@@ -1,7 +1,6 @@
 ---
 Name: CSS
-Category: Styling language
+Category: Programming
 Level: Advanced
+Order: 2
 ---
-
-

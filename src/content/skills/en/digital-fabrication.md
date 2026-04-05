@@ -1,6 +1,7 @@
 ---
-Name: Digital fabrication
-Category: Fabrication process
+Name: Digital Fabrication
+Category: Specialization
 Level: Advanced
+Order: 4
 ---
 

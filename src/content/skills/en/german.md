@@ -1,6 +1,7 @@
 ---
 Name: German
 Category: Language
-Level: Intermediate
+Level: B1
+Order: 2
 ---
 

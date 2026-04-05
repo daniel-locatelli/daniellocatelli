@@ -1,6 +1,7 @@
 ---
 Name: Astro
-Category: JavaScript framework
-Level: Intermediate
+Category: Framework
+Level: Advanced
+Order: 1
 ---
 

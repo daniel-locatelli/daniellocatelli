@@ -1,6 +1,7 @@
 ---
 Name: Python
-Category: Programming language
+Category: Programming
 Level: Intermediate
+Order: 4
 ---
 

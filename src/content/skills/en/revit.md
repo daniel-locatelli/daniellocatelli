@@ -1,6 +1,7 @@
 ---
 Name: Revit
-Category: BIM
+Category: Design tool
 Level: Advanced
+Order: 3
 ---
 
