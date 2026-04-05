@@ -1,0 +1,105 @@
+---
+import { Icon } from "astro-icon/components";
+import type { I18nCV } from "src/i18n/cv/types";
+import { createHtmlId, getMonthYear } from "src/i18n/utils";
+
+interface Props {
+  cv: I18nCV;
+  heading: string;
+  items: Array<{
+    title: string;
+    startDate: string;
+    endDate?: string;
+    link: string;
+    organization: string;
+    location: string;
+    type: string;
+    description?: string;
+  }>;
+}
+
+const { cv, heading, items } = Astro.props;
+---
+
+<section id={createHtmlId(heading)}>
+  <h2>{heading}</h2>
+  {
+    items.map((engagement, index: number) => {
+      const bgClass =
+        index % 2 === 0 ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+
+      return (
+        <div
+          class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
+        >
+          <div class="timeline-wrapper">
+            <div class="timeline-top" />
+            {engagement.endDate ? (
+              <time datetime={new Date(engagement.endDate).toDateString()}>
+                {getMonthYear(engagement.endDate)}
+              </time>
+            ) : (
+              ""
+            )}
+            <time datetime={new Date(engagement.startDate).toDateString()}>
+              {getMonthYear(engagement.startDate)}
+            </time>
+            <div class="timeline" />
+          </div>
+
+          {engagement.link ? (
+            <a href={engagement.link} class={`item-text ${bgClass}`}>
+              <h3 class="mb-0 flex">
+                <span class="grow">{engagement.title}</span>
+                <Icon
+                  name="mdi:external-link"
+                  class="mt-2 size-3 shrink-0 print:hidden"
+                />
+              </h3>
+              <h4>
+                {engagement.organization}
+                {engagement.location ? ` | ${engagement.location}` : ""}
+              </h4>
+              {
+                <p class="text-sm text-pretty text-zinc-300 italic">
+                  {
+                    cv.ui.engagementTypes[
+                      engagement.type as keyof typeof cv.ui.engagementTypes
+                    ]
+                  }
+                </p>
+              }
+              {engagement.description && (
+                <p class="text-sm text-pretty text-zinc-300">
+                  {engagement.description}
+                </p>
+              )}
+            </a>
+          ) : (
+            <div class={`item-text ${bgClass}`}>
+              <h3 class="mb-0">{engagement.title}</h3>
+              <h4>
+                {engagement.organization}
+                {engagement.location ? ` | ${engagement.location}` : ""}
+              </h4>
+              {
+                <p class="text-sm text-pretty text-zinc-300 italic">
+                  {
+                    cv.ui.engagementTypes[
+                      engagement.type as keyof typeof cv.ui.engagementTypes
+                    ]
+                  }
+                </p>
+              }
+              {engagement.description && (
+                <p class="text-sm text-pretty text-zinc-300">
+                  {engagement.description}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      );
+    })
+  }
+</section>
