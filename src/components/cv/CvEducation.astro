@@ -25,6 +25,7 @@ const { cv, items, locale } = Astro.props;
         index % 2 === 0 ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
       const institutionLink = extractLink(data.Link);
       const thesisLink = buildThesisLink(data.Thesis, locale);
+      const primaryLink = thesisLink || institutionLink;
 
       return (
         <div
@@ -45,63 +46,8 @@ const { cv, items, locale } = Astro.props;
             <div class="timeline" />
           </div>
 
-          {institutionLink && thesisLink ? (
-            <div class={`item-text ${bgClass}`}>
-              <h3 class="mb-0 flex">
-                <a href={thesisLink} class="grow hover:text-emerald-400">
-                  {data.Name}
-                </a>
-              </h3>
-              <h4>
-                <a
-                  href={institutionLink}
-                  class="inline-flex items-center gap-1 hover:text-emerald-400"
-                >
-                  {data.Organization}
-                  <Icon
-                    name="mdi:external-link"
-                    class="size-3 shrink-0 print:hidden"
-                  />
-                </a>
-                 | {buildLocation(data)}
-              </h4>
-
-              {data.Description && data.Description.length > 0 && (
-                <div class="mb-1 ml-1 text-sm text-zinc-300">
-                  <p>{data.Description}</p>
-                </div>
-              )}
-
-              {data.Supervisors && data.Supervisors.length > 0 && (
-                <div class="mb-1 ml-1 text-sm text-zinc-300">
-                  <p>
-                    {cv.ui.supervisors}:
-                    {data.Supervisors.map(
-                      (supervisor: string, idx: number, arr: string[]) =>
-                        idx === arr.length - 1
-                          ? `${supervisor}`
-                          : `${supervisor}, `,
-                    )}
-                  </p>
-                </div>
-              )}
-
-              {data.Advisors && data.Advisors.length > 0 && (
-                <div class="mb-1 ml-1 text-sm text-zinc-300">
-                  <p>
-                    {cv.ui.advisors}:
-                    {data.Advisors.map(
-                      (advisor: string, idx: number, arr: string[]) =>
-                        idx === arr.length - 1
-                          ? `${advisor}`
-                          : `${advisor}, `,
-                    )}
-                  </p>
-                </div>
-              )}
-            </div>
-          ) : thesisLink ? (
-            <a href={thesisLink} class={`item-text ${bgClass}`}>
+          {primaryLink ? (
+            <a href={primaryLink} class={`item-text ${bgClass}`}>
               <h3 class="mb-0 flex">
                 <span class="grow">{data.Name}</span>
                 <Icon

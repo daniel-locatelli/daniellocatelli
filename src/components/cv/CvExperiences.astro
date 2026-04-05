@@ -17,7 +17,7 @@ const { cv, items } = Astro.props;
 
 <section
   id={createHtmlId(cv.ui.professionalExperience)}
-  class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
+  class="cv-experiences [&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
 >
   <h2>{cv.ui.professionalExperience}</h2>
   {
@@ -73,3 +73,18 @@ const { cv, items } = Astro.props;
     })
   }
 </section>
+
+<style is:global>
+  .cv-experiences .item-text > p:first-of-type:has(> em:only-child) {
+    font-size: 0.75rem;
+    color: var(--color-zinc-400);
+  }
+
+  .cv-experiences .item-text > p:first-of-type:has(> em:only-child) > em {
+    font-style: normal;
+  }
+
+  .cv-experiences .item-text > p:first-of-type:has(> em:only-child) > em::before {
+    content: "⤷ ";
+  }
+</style>

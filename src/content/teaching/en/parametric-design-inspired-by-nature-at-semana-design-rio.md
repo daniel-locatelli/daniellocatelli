@@ -11,6 +11,7 @@ Tags:
 Category: Talk
 City:
   - Rio de Janeiro
+Country: Brazil
 DateStart: "2018-09-01"
 Event: Semana Design Rio 2018
 Language: Portuguese

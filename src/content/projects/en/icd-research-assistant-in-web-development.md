@@ -5,11 +5,11 @@ Description: "I helped migrate the ICD website to the University of Stuttgart's 
 Name: ICD Research Assistant in Web Development
 Tags:
   - Web Development
-Authors:
-  - ICD - University of Stuttgart
+Organization: "ICD - University of Stuttgart"
 Category: Web development
 City:
   - Stuttgart
+Country: "Germany"
 DateStart: "2019-12-20"
 DateEnd: "2020-10-19"
 Director:
@@ -24,7 +24,6 @@ Link:
   Href: "https://www.icd.uni-stuttgart.de/"
 Place: Online
 Disclosed: true
-Active: false
 ---
 
 The Institute for Computational Design and Construction (ICD) at the University of Stuttgart is one of the most recognized research institutions in the field of computational architecture. When the university mandated that all institutes migrate their websites to a new centralized template system based on OpenCMS, the ICD needed someone to handle the transition. That someone was me — alongside Cody Tucker, under the supervision of Tobias Schwinn.

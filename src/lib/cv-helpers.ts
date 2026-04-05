@@ -23,7 +23,15 @@ export const extractLink = (linkProp: any): string => {
 /** Combines City + Country into "City, Country" */
 export const buildLocation = (data: any): string => {
   const city = extractFirstName(data.City);
-  return data.Country ? `${city}, ${data.Country}` : city;
+  if (city && data.Country) return `${city}, ${data.Country}`;
+  return city || data.Country || "";
+};
+
+/** Prepends locale prefix to internal links (starting with `/`), leaves external URLs unchanged */
+export const localizeLink = (link: string, locale: string): string => {
+  if (!link || !link.startsWith("/")) return link;
+  const prefix = locale === siteConfig.defaultLocale ? "" : `/${locale}`;
+  return `${prefix}${link}`;
 };
 
 /** Builds `/research/{thesis}` path with locale prefix */
@@ -34,6 +42,18 @@ export const buildThesisLink = (
   if (!thesis) return undefined;
   const prefix = locale === siteConfig.defaultLocale ? "" : `/${locale}`;
   return `${prefix}/research/${thesis}`;
+};
+
+/** Resolves the best link for a project entry: external Link field, internal page, or empty */
+export const resolveProjectLink = (
+  entry: { id: string; data: { Link?: any } },
+  locale: string,
+): string => {
+  const external = extractLink(entry.data.Link);
+  if (external) return localizeLink(external, locale);
+  const slug = entry.id.replace(/^[^/]+\//, "").replace(/\.mdx?$/, "");
+  if (slug.startsWith("_")) return "";
+  return localizeLink(`/projects/${slug}`, locale);
 };
 
 /** Sorts collection entries by Order field ascending */

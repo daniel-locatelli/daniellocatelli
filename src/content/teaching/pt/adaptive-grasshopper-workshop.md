@@ -6,11 +6,13 @@ Name: Oficina adaptável de Grasshopper
 Category: Workshop
 City:
   - Barra do Bugres
+Country: Brasil
 DateStart: "2018-06-07"
 DateEnd: "2018-06-08"
 Event: XIV Semana da Arquitetura e Urbanismo
-Language: Portuguese
-Place: UNEMAT Barra do Bugres
+Language: Português
+Place: UNEMAT
+Link: "/teaching/adaptive-grasshopper-workshop"
 ---
 
 Este workshop fez parte da XIV Semana da Arquitetura e Urbanismo na UNEMAT em Barra do Bugres, Brasil. O que o tornou único foi seu formato adaptável: em vez de seguir um programa rígido, os participantes escolheram coletivamente qual estratégia de design computacional queriam explorar.

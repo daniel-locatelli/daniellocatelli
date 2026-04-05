@@ -6,12 +6,11 @@ Name: KfW Funding Calculator by BuildSystems
 Tags:
   - Software Development
   - Web Development
-Authors:
-  - BuildSystems
+Organization: "BuildSystems"
 Category: Software Development
 City:
   - Munich
-Client: BuildSystems
+Country: "Germany"
 DateStart: "2023-11-20"
 DateEnd: "2024-07-30"
 Link:

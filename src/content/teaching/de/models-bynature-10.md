@@ -3,15 +3,17 @@ Cover: /assets/content/teaching/models-bynature-10/models-bynature-10_andreia-be
 CoverAlt: Eine Studentin präsentiert ihren aus dem Workshop entstandenen Voronoi-Pavillon.
 Description: "Ziel dieses Workshops war es, computergestützte Designpraktiken mit natürlichen Phänomenen zu verknüpfen. Dabei wurden Themen wie assoziative Modellierung, Biomimetik und visuelle Programmiersprachen behandelt."
 Name: Models byNature 1.0
+Link: "/teaching/models-bynature-10"
 Authors:
   - Daniel Nunes Locatelli
   - Adalberto de Paula
 Category: Workshop
 City:
   - São Paulo
+Country: Brasilien
 DateStart: "2019-05-18"
 DateEnd: "2019-06-08"
-Language: Portuguese
+Language: Portugiesisch
 Place: Atelier Marko Brajovic
 ---
 

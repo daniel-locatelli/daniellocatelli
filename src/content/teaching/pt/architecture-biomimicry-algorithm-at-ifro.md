@@ -6,8 +6,9 @@ Name: Arquitetura + Biomimética + Algoritmo no IFRO
 Category: Talk
 City:
   - Vilhena
+Country: Brasil
 DateStart: "2019-08-07"
-Language: Portuguese
+Language: Português
 Link:
   Text: "https://portal.ifro.edu.br/vilhena/noticias/8153-palestra-arquitetura-biomimetica-e-algoritmo-e-realizada-em-vilhena"
   Href: "https://portal.ifro.edu.br/vilhena/noticias/8153-palestra-arquitetura-biomimetica-e-algoritmo-e-realizada-em-vilhena"

@@ -6,6 +6,7 @@ Name: Feasibility of sustainable construction by BuildSystems at Siemens
 Category: Pitch
 City:
   - Munich
+Country: Germany
 DateStart: "2023-03-27"
 Language: English
 Link:

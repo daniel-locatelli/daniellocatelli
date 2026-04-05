@@ -55,6 +55,9 @@ export default {
             "--tw-prose-th-borders": "var(--color-zinc-600)",
             "--tw-prose-td-borders": "var(--color-zinc-700)",
             // Element-specific overrides
+            h2: {
+              marginBottom: "0.3333em",
+            },
             h4: {
               color: "var(--color-zinc-200)",
             },

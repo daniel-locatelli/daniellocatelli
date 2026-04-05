@@ -17,7 +17,7 @@ export const t: I18nCV = {
     programming: "Programação",
     frameworks: "Frameworks",
     databases: "Bancos de dados",
-    designTools: "Ferramentas de design",
+    designTools: "Ferramentas",
     specialization: "Especializações",
     languages: "Idiomas",
     professionalExperience: "Experiência Profissional",

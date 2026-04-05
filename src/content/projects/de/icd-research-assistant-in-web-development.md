@@ -5,11 +5,11 @@ Description: "Ich half bei der Migration der ICD-Website auf das zentralisierte 
 Name: ICD Wissenschaftliche Hilfskraft in der Webentwicklung
 Tags:
   - Web Development
-Authors:
-  - ICD - University of Stuttgart
+Organization: "ICD - University of Stuttgart"
 Category: Web development
 City:
   - Stuttgart
+Country: "Deutschland"
 DateStart: "2019-12-20"
 DateEnd: "2020-10-19"
 Director:
@@ -24,7 +24,6 @@ Link:
   Href: "https://www.icd.uni-stuttgart.de/"
 Place: Online
 Disclosed: true
-Active: false
 ---
 
 Das Institut für Computerbasiertes Entwerfen und Baufertigung (ICD) an der Universität Stuttgart ist eine der renommiertesten Forschungseinrichtungen im Bereich der computergestützten Architektur. Als die Universität alle Institute anwies, ihre Websites auf ein neues zentralisiertes Template-System auf Basis von OpenCMS zu migrieren, brauchte das ICD jemanden, der den Übergang betreut. Dieser Jemand war ich — gemeinsam mit Cody Tucker, unter der Leitung von Tobias Schwinn.

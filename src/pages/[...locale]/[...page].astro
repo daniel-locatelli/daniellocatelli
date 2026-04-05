@@ -5,8 +5,6 @@ import { Image } from "astro:assets";
 import {
   importCoverImage,
   importImage,
-  modifyFileName,
-  urlToFileName,
 } from "src/lib/blog-helpers";
 import Base from "@/layouts/Base.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
@@ -72,8 +70,8 @@ for (const dbName of dbNames) {
 
 // Flatten and sort pages
 const sortedSubpages = subpages
-  .filter((p) => p.data.Active !== false)
   .filter((p) => getEntryLocale(p.id) === locale)
+  .filter((p) => !getFileSlug(p.id).startsWith("_"))
   .sort((a, b) => {
     if (!a.data.DateStart) return 1;
     if (!b.data.DateStart) return -1;

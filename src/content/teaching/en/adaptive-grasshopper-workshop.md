@@ -6,11 +6,13 @@ Name: Adaptive Grasshopper Workshop
 Category: Workshop
 City:
   - Barra do Bugres
+Country: Brazil
 DateStart: "2018-06-07"
 DateEnd: "2018-06-08"
 Event: XIV Semana da Arquitetura e Urbanismo
 Language: Portuguese
-Place: UNEMAT Barra do Bugres
+Place: UNEMAT
+Link: "/teaching/adaptive-grasshopper-workshop"
 ---
 
 This workshop was part of the XIV Semana da Arquitetura e Urbanismo (XIV Architecture and Urbanism Week) at UNEMAT in Barra do Bugres, Brazil. What made it unique was its adaptive format: instead of following a rigid syllabus, the participants collectively chose which computational design strategy they wanted to explore.

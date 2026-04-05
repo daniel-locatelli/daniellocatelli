@@ -6,10 +6,12 @@ Name: Ein Jahrzehnt nach UNEMAT
 Category: Lecture
 City:
   - Barra do Bugres
+Country: Brasilien
 DateStart: "2018-06-04"
 Event: XIV Semana da Arquitetura e Urbanismo
-Language: Portuguese
-Place: UNEMAT Barra do Bugres
+Language: Portugiesisch
+Place: UNEMAT
+Link: "/teaching/a-decade-after-unemat"
 ---
 
 UNEMAT war die erste Universität, an der ich Architektur studierte. Zehn Jahre nach Beginn meines Studiums hielt ich diesen Vortrag über meinen gesamten Werdegang – vom Universitätswechsel zur FAU-USP über meine Arbeit im Atelier Marko Brajovic bis hin zu meinem jüngsten Karrierewechsel, der sich speziell auf Computational Design und Programmierung konzentrierte.

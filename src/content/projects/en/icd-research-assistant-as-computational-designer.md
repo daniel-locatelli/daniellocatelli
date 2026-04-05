@@ -6,11 +6,11 @@ Name: ICD Research Assistant as Computational Designer
 Tags:
   - Computational Design
   - Grasshopper3D
-Authors:
-  - ICD - University of Stuttgart
+Organization: "ICD - University of Stuttgart"
 Category: Computational design
 City:
   - Stuttgart
+Country: "Germany"
 DateStart: "2020-03-04"
 DateEnd: "2020-04-03"
 Director:

@@ -9,11 +9,11 @@ Tags:
   - Digital Fabrication
   - Logistics
   - Grasshopper3D
-Authors:
-  - ArtEngineering
+Organization: "ArtEngineering GmbH"
 Category: Digital Fabrication
 City:
   - Buffalo
+Country: "EUA"
 Client: Buffalo AKG Art Museum
 DateStart: "2022-06-12"
 DateEnd: "2022-06-01"

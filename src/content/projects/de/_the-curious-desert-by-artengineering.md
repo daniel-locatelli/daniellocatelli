@@ -2,10 +2,10 @@
 Name: The curious desert
 Description: Kunstinstallationen von Olafur Eliasson. Detaillierung der Stahlstruktur.
 DateStart: "2021-10-01"
-Authors:
-  - ArtEngineering GmbH
+Organization: "ArtEngineering GmbH"
 Category: Detailierung
 City:
   - Katar-Wüste
+Country: "Katar"
 Link: "https://art-engineering.net/en/projekt/the-curious-desert/"
 ---

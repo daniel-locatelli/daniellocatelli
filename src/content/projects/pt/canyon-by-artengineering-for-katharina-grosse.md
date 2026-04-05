@@ -8,11 +8,11 @@ Tags:
   - Structural Analysis
   - Digital Fabrication
   - Grasshopper3D
-Authors:
-  - ArtEngineering
+Organization: "ArtEngineering GmbH"
 Category: Computational design
 City:
   - Paris
+Country: "França"
 Client: Katharina Grosse
 DateStart: "2022-01-20"
 DateEnd: "2022-02-01"

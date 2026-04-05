@@ -6,10 +6,11 @@ Name: Workshop de Tensegridade
 Category: Workshop
 City:
   - Paraty
+Country: Brasil
 DateStart: "2017-11-25"
 Organization: Atelier Marko Brajovic
-Place: Paraty
-Language: Portuguese
+Place: Aldeia Rizoma
+Language: Português
 ---
 
 A equipe do Atelier Marko Brajovic se reuniu na exuberante paisagem de Paraty, Brasil, para um workshop prático com um duplo propósito: construir coletivamente uma estrutura de tensegridade e fortalecer os laços dentro da equipe.

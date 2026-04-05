@@ -11,9 +11,10 @@ Tags:
 Category: Talk
 City:
   - Rio de Janeiro
+Country: Brasilien
 DateStart: "2018-09-01"
 Event: Semana Design Rio 2018
-Language: Portuguese
+Language: Portugiesisch
 Link:
   Text: Semana Design Rio 2018
   Href: "https://revistacasaejardim.globo.com/Casa-e-Jardim/Eventos/Semana-Design-Rio/noticia/2018/09/semana-design-rio-chega-6-edicao-no-mam-entre-os-dias-13-e-1609.html"

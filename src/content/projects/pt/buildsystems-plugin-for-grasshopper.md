@@ -6,8 +6,7 @@ Name: Plugin da BuildSystems para o Grasshopper
 Tags:
   - Software Development
   - Grasshopper3D
-Authors:
-  - BuildSystems
+Organization: "BuildSystems"
 Category: Software Development
 DateStart: "2023-11-23"
 Director:

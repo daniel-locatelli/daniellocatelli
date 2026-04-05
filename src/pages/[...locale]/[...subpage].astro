@@ -3,14 +3,12 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import {
   importCoverImage,
-  modifyFileName,
-  urlToFileName,
   generateBlurDataUrl,
 } from "../../lib/blog-helpers.ts";
 import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
-import { getLocale, getEntrySlug, getEntryLocale } from "src/lib/routes-helpers";
+import { getLocale, getEntrySlug, getEntryLocale, getFileSlug } from "src/lib/routes-helpers";
 import { getI18n } from "src/i18n/utils";
 import type { I18nSubpage } from "src/i18n/subpage/type";
 
@@ -44,11 +42,10 @@ export async function getStaticPaths() {
     const isDefaultLocale = locale === siteConfig.defaultLocale;
 
     for (const subpage of allSubpages) {
-      // Skip inactive entries (content not yet ready for their own page)
-      if (subpage.data.Active === false) continue;
-
       // Only include if the subpage belongs to this locale
       if (getEntryLocale(subpage.id) !== locale) continue;
+      // Skip unpublished entries (filenames starting with _)
+      if (getFileSlug(subpage.id).startsWith("_")) continue;
 
       paths.push({
         params: {
@@ -175,6 +172,14 @@ if (image) {
               <td>{subpage.data.DateStart}</td>
             </tr>
           ) : null
+        }
+        {
+          subpage.data.Organization && (
+              <tr>
+                <th>{t.organization}</th>
+                <td>{subpage.data.Organization}</td>
+              </tr>
+            )
         }
         {
           subpage.data.Authors &&
@@ -346,6 +351,26 @@ if (image) {
               <td>{subpage.data.Place}</td>
             </tr>
           )
+        }
+        {
+          ((subpage.data.City &&
+            Array.isArray(subpage.data.City) &&
+            subpage.data.City.length > 0) ||
+            (subpage.data.Country && subpage.data.Country !== "")) && (
+              <tr>
+                <th>{t.location}</th>
+                <td>
+                  {[
+                    ...(subpage.data.City && Array.isArray(subpage.data.City) && subpage.data.City.length > 0
+                      ? [subpage.data.City.join(", ")]
+                      : []),
+                    ...(subpage.data.Country && subpage.data.Country !== ""
+                      ? [subpage.data.Country]
+                      : []),
+                  ].join(", ")}
+                </td>
+              </tr>
+            )
         }
         {
           subpage.data.Language && subpage.data.Language.length > 0 && (

@@ -6,12 +6,11 @@ Name: Calculadora de financiamento imobiliário da BuildSystems
 Tags:
   - Software Development
   - Web Development
-Authors:
-  - BuildSystems
+Organization: "BuildSystems"
 Category: Software Development
 City:
-  - Munich
-Client: BuildSystems
+  - Munique
+Country: "Alemanha"
 DateStart: "2023-11-20"
 DateEnd: "2024-07-30"
 Link:

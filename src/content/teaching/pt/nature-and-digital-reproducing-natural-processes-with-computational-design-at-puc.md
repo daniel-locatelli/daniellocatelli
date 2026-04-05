@@ -4,9 +4,12 @@ CoverAlt: Capa da palestra de Daniel Nunes Locatelli na PUC Minas com sua foto n
 Description: "Nesta palestra, apresentei meu trabalho, a ideia de reproduzir processos naturais com design computacional e pontos-chave que aprendi durante minha dissertação de mestrado recentemente concluída na Alemanha."
 Name: "Natureza e Digital: reproduzindo processos naturais com design computacional na PUC"
 Category: Talk
+City:
+  - Belo Horizonte
+Country: Brasil
 DateStart: "2021-08-27"
 Event: Design Paramétrico em Arquitetura
-Language: Portuguese
+Language: Português
 Link:
   Text: "https://youtu.be/J303rzg7y0U"
   Href: "https://youtu.be/J303rzg7y0U"

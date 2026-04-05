@@ -9,11 +9,11 @@ Tags:
   - Digital Fabrication
   - Logistics
   - Grasshopper3D
-Authors:
-  - ArtEngineering
+Organization: "ArtEngineering GmbH"
 Category: Digital Fabrication
 City:
   - South Jeolla
+Country: "Südkorea"
 Client: Olafur Eliasson
 DateStart: "2022-07-01"
 Link:

@@ -6,8 +6,9 @@ Name: Machbarkeit nachhaltigen Bauens von BuildSystems bei Siemens
 Category: Pitch
 City:
   - München
+Country: Deutschland
 DateStart: "2023-03-27"
-Language: English
+Language: Englisch
 Link:
   Text: "Siemens RIE Munich Conference \"Digitalization & Low Code Engineering in Industry\""
   Href: "https://ecosystem.siemens.com/researchandinnovation/rie-munich-conference-digitalization-low-code-engineering-in-industry"

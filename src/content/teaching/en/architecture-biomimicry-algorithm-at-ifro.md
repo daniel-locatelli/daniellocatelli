@@ -6,6 +6,7 @@ Name: Architecture + Biomimicry + Algorithm at IFRO
 Category: Talk
 City:
   - Vilhena
+Country: Brazil
 DateStart: "2019-08-07"
 Language: Portuguese
 Link:

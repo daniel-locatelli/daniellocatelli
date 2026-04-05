@@ -5,9 +5,10 @@ Description: "Um pitch na Conferência Siemens RIE Munique sobre como ferramenta
 Name: Viabilidade de construções sustentáveis pela BuildSystems na Siemens
 Category: Pitch
 City:
-  - Munich
+  - Munique
+Country: Alemanha
 DateStart: "2023-03-27"
-Language: English
+Language: Inglês
 Link:
   Text: "Siemens RIE Munich Conference \"Digitalization & Low Code Engineering in Industry\""
   Href: "https://ecosystem.siemens.com/researchandinnovation/rie-munich-conference-digitalization-low-code-engineering-in-industry"

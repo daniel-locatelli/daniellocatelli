@@ -4,9 +4,12 @@ CoverAlt: Cover für den Vortrag von Daniel Nunes Locatelli bei PUC Minas mit se
 Description: "In diesem Vortrag an der PUC Minas stellte ich meine Arbeit, die Idee der Reproduktion natürlicher Prozesse mit computergestütztem Design und wichtige Erkenntnisse aus meiner kürzlich abgeschlossenen Masterarbeit vor."
 Name: "Natur und Digital: Reproduktion natürlicher Prozesse mit Computational Design an der PUC"
 Category: Talk
+City:
+  - Belo Horizonte
+Country: Brasilien
 DateStart: "2021-08-27"
 Event: Design Paramétrico em Arquitetura
-Language: Portuguese
+Language: Portugiesisch
 Link:
   Text: "https://youtu.be/J303rzg7y0U"
   Href: "https://youtu.be/J303rzg7y0U"

@@ -2,7 +2,7 @@
 Name: Ekoa Park
 DateStart: "2015-04-01"
 DateEnd: "2016-02-01"
-Authors:
-  - Atelier Marko Brajovic
+Organization: "Atelier Marko Brajovic"
 Category: Arquitetura
+Country: "Brasil"
 ---

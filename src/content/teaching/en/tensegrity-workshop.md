@@ -6,9 +6,10 @@ Name: Tensegrity Workshop
 Category: Workshop
 City:
   - Paraty
+Country: Brazil
 DateStart: "2017-11-25"
 Organization: Atelier Marko Brajovic
-Place: Paraty
+Place: Aldeia Rizoma
 Language: Portuguese
 ---
 

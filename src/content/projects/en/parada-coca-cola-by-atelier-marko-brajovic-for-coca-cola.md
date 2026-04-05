@@ -7,11 +7,11 @@ Tags:
   - Computational Design
   - Grasshopper3D
   - Logistics
-Authors:
-  - Atelier Marko Brajovic
+Organization: "Atelier Marko Brajovic"
 Category: Installation
 City:
   - Rio de Janeiro
+Country: "Brazil"
 Client: Coca‑Cola
 DateStart: "2016-08-01"
 Director:

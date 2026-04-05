@@ -15,7 +15,7 @@ import { getI18n } from "src/i18n/utils";
 import { getLocale } from "src/lib/routes-helpers";
 export { getStaticPaths } from "src/lib/routes-helpers";
 import { getCollection } from "astro:content";
-import { extractName, extractFirstName, extractLink, sortByOrder } from "src/lib/cv-helpers";
+import { extractName, extractFirstName, extractLink, localizeLink, buildLocation, sortByOrder } from "src/lib/cv-helpers";
 
 const locale = getLocale(Astro.params);
 
@@ -35,7 +35,7 @@ const publications = publicationsCollection
   .map((p) => ({
     title: p.data.Name,
     date: p.data.DateStart || "",
-    link: extractLink(p.data.Link),
+    link: localizeLink(extractLink(p.data.Link), locale),
     publisher: p.data.Place || p.data.Event || "",
     location: extractFirstName(p.data.City),
     authors: p.data.Authors?.map((a: any) => extractName(a)) || [],
@@ -59,17 +59,26 @@ const engagements = teachingCollection
     title: t.data.Name,
     startDate: t.data.DateStart || "",
     endDate: t.data.DateEnd,
-    link: extractLink(t.data.Link),
-    organization: t.data.Event || t.data.Organization || "",
-    location: extractFirstName(t.data.City),
+    link: localizeLink(extractLink(t.data.Link), locale),
+    organization: t.data.Place || t.data.Event || t.data.Organization || "",
+    location: buildLocation(t.data),
     type: (t.data.Category || "talk").toLowerCase() as any,
     description: t.data.Description,
   }));
 
-// Skills (all)
-const skillsCollection = await getCollection("skills", ({ id }) =>
+// Skills (prefer locale, fall back to English)
+const allSkills = await getCollection("skills", ({ id }) =>
   id.startsWith(`${locale}/`) || id.startsWith("en/"),
 );
+const skillsMap = new Map<string, (typeof allSkills)[number]>();
+for (const skill of allSkills) {
+  const key = skill.id.replace(/^[^/]+\//, "");
+  const existing = skillsMap.get(key);
+  if (!existing || !skill.id.startsWith("en/")) {
+    skillsMap.set(key, skill);
+  }
+}
+const skillsCollection = [...skillsMap.values()];
 const skills = {
   programming: skillsCollection.filter((s) => s.data.Category === "Programming").sort(sortByOrder),
   frameworks: skillsCollection.filter((s) => s.data.Category === "Framework").sort(sortByOrder),

@@ -5,11 +5,11 @@ Description: "Ajudei a migrar o site do ICD para o template centralizado da Univ
 Name: Assistente de Pesquisa em Desenvolvimento Web no ICD
 Tags:
   - Web Development
-Authors:
-  - ICD - University of Stuttgart
+Organization: "ICD - University of Stuttgart"
 Category: Web development
 City:
   - Stuttgart
+Country: "Alemanha"
 DateStart: "2019-12-20"
 DateEnd: "2020-10-19"
 Director:
@@ -24,7 +24,6 @@ Link:
   Href: "https://www.icd.uni-stuttgart.de/"
 Place: Online
 Disclosed: true
-Active: false
 ---
 
 O Instituto de Design e Construção Computacional (ICD) da Universidade de Stuttgart é uma das instituições de pesquisa mais reconhecidas no campo da arquitetura computacional. Quando a universidade determinou que todos os institutos migrassem seus sites para um novo sistema de template centralizado baseado em OpenCMS, o ICD precisava de alguém para cuidar da transição. Esse alguém fui eu — ao lado de Cody Tucker, sob a supervisão de Tobias Schwinn.
