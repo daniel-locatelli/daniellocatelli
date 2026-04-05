@@ -5,6 +5,7 @@ DateEnd: "2011-12"
 Organization: FAU-USP
 City:
   - São Paulo
+Country: "Brasil"
 Authors:
   - Ricardo Nakamura
 ---

@@ -4,6 +4,7 @@ DateStart: "2016-05"
 Organization: Fab Lab Livre SP
 City:
   - São Paulo
+Country: "Brasil"
 Authors:
   - Ruairi Glynn
   - grad Students from UCL London

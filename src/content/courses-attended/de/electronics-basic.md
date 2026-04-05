@@ -4,6 +4,7 @@ DateStart: "2016-06"
 Organization: Fab Lab Livre SP
 City:
   - São Paulo
+Country: "Brasilien"
 Authors:
   - César A. G. de Alencar
 ---

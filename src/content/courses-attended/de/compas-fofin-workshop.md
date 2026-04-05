@@ -4,6 +4,7 @@ DateStart: "2022-09"
 Organization: Design Modeling Symposium 2022
 City:
   - Berlin
+Country: "Deutschland"
 Authors:
   - Dr. Lotte Scheder-Bieschin
   - Dr. Juney Lee

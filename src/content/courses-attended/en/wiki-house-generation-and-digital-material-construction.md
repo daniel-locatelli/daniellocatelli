@@ -4,6 +4,7 @@ DateStart: "2018-11"
 Organization: SIGraDi 2018
 City:
   - São Carlos
+Country: "Brazil"
 Authors:
   - Gonçalo Castro Henriques
   - Andrés Passaro

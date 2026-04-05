@@ -4,6 +4,7 @@ DateStart: "2017-09"
 Organization: IASS 2017
 City:
   - Hamburgo
+Country: "Alemanha"
 Authors:
   - Thomas Wortmann
   - Judyta Cichocka
