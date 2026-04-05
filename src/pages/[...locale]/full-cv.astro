@@ -5,19 +5,9 @@ import { Image } from "astro:assets";
 import Container from "@/components/Container.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@/config/site";
-import { createHtmlId, getI18n, getMonthYear } from "src/i18n/utils";
-import type {
-  I18nCV,
-  Experience,
-  Education,
-  Scholarship,
-  Publication,
-  Certification,
-  Engagement,
-  CourseAttended,
-  Work,
-} from "src/i18n/cv/types.ts";
+import type { I18nCV } from "src/i18n/cv/types.ts";
 import type { I18nMeta } from "src/i18n/meta/types.ts";
+import { createHtmlId, getI18n, getMonthYear } from "src/i18n/utils";
 import { getLocale } from "src/lib/routes-helpers";
 export { getStaticPaths } from "src/lib/routes-helpers";
 import { getCollection } from "astro:content";
@@ -26,7 +16,6 @@ const locale = getLocale(Astro.params);
 
 const meta = await getI18n<I18nMeta>("meta", locale);
 const cv = await getI18n<I18nCV>("cv", locale);
-// const t = cv.ui; // Shortcut for translations
 
 // Helper to extract name from string | { name: string }
 const extractName = (item: any) => {
@@ -47,6 +36,23 @@ const extractLink = (linkProp: any) => {
   if (Array.isArray(linkProp)) return linkProp[0]?.Href || "";
   return linkProp.Href || "";
 };
+
+const buildLocation = (data: any) => {
+  const city = extractFirstName(data.City);
+  return data.Country ? `${city}, ${data.Country}` : city;
+};
+
+const buildThesisLink = (thesis: string | undefined) => {
+  if (!thesis) return undefined;
+  const prefix = locale === siteConfig.defaultLocale ? "" : `/${locale}`;
+  return `${prefix}/research/${thesis}`;
+};
+
+// Sort helper: order by Order field ascending (lower number = first)
+const sortByOrder = (
+  a: { data: { Order?: number } },
+  b: { data: { Order?: number } },
+) => (a.data.Order ?? 999) - (b.data.Order ?? 999);
 
 // Fetch Collections
 
@@ -73,7 +79,7 @@ const publications = publicationsCollection
     authors: p.data.Authors?.map((a: any) => extractName(a)) || [],
   }));
 
-// Teaching (Engagements) - Full List
+// Teaching (Engagements) - Full List (no date filter)
 const teachingCollection = await getCollection("teaching", ({ id }) => {
   return id.startsWith(`${locale}/`);
 });
@@ -100,23 +106,85 @@ const skillsCollection = await getCollection("skills", ({ id }) => {
   return id.startsWith(`${locale}/`) || id.startsWith("en/");
 });
 
-const skillsProgramming = skillsCollection.filter(
-  (s) => s.data.Category === "Programming language",
-);
-const skillsFrameworks = skillsCollection.filter(
-  (s) => s.data.Category === "JavaScript framework",
-);
-const skillsDatabases = skillsCollection.filter(
-  (s) => s.data.Category?.toLowerCase().includes("database") || s.data.Name === "PostgreSQL" || s.data.Name === "MongoDB",
-);
-const skillsDesign = skillsCollection.filter(
-  (s) => ["Raster image editing", "Vector editing", "Video editing", "Text editing", "BIM", "CAD", "Rendering"].includes(s.data.Category || ""),
-);
+const skillsProgramming = skillsCollection
+  .filter((s) => s.data.Category === "Programming")
+  .sort(sortByOrder);
+const skillsFrameworks = skillsCollection
+  .filter((s) => s.data.Category === "Framework")
+  .sort(sortByOrder);
+const skillsDatabases = skillsCollection
+  .filter((s) => s.data.Category === "Database")
+  .sort(sortByOrder);
+const skillsDesign = skillsCollection
+  .filter((s) => s.data.Category === "Design tool")
+  .sort(sortByOrder);
 const skillsSpecialized = skillsCollection
-  .filter((s) => ["Computational design", "Fabrication process", "Interactivity ecosystem", "Markup language", "Styling language"].includes(s.data.Category || ""))
+  .filter((s) => s.data.Category === "Specialization")
+  .sort(sortByOrder)
   .map((s) => s.data.Name);
-const skillsLanguages = skillsCollection.filter(
-  (s) => s.data.Category === "Language",
+const skillsLanguages = skillsCollection
+  .filter((s) => s.data.Category === "Language")
+  .sort(sortByOrder);
+
+// Experiences collection (no date filter)
+const experiencesCollection = await getCollection(
+  "experiences",
+  ({ id }) => id.startsWith(`${locale}/`),
+);
+const experiencesFiltered = experiencesCollection.sort(
+  (a, b) =>
+    new Date(b.data.DateStart || "").getTime() -
+    new Date(a.data.DateStart || "").getTime(),
+);
+const experiences = await Promise.all(
+  experiencesFiltered.map(async (entry) => ({
+    data: entry.data,
+    Content: (await entry.render()).Content,
+  })),
+);
+
+// Education collection (no date filter)
+const educationCollection = await getCollection(
+  "education",
+  ({ id }) => id.startsWith(`${locale}/`),
+);
+const education = educationCollection.sort(
+  (a, b) =>
+    new Date(b.data.DateStart || "").getTime() -
+    new Date(a.data.DateStart || "").getTime(),
+);
+
+// Scholarships collection (no date filter)
+const scholarshipsCollection = await getCollection(
+  "scholarships",
+  ({ id }) => id.startsWith(`${locale}/`),
+);
+const scholarships = scholarshipsCollection.sort(
+  (a, b) =>
+    new Date(b.data.DateStart || "").getTime() -
+    new Date(a.data.DateStart || "").getTime(),
+);
+
+// Certifications collection (no date filter)
+const certificationsCollection = await getCollection(
+  "certifications",
+  ({ id }) => id.startsWith(`${locale}/`),
+);
+const certifications = certificationsCollection.sort(
+  (a, b) =>
+    new Date(b.data.DateStart || "").getTime() -
+    new Date(a.data.DateStart || "").getTime(),
+);
+
+// Courses Attended collection
+const coursesCollection = await getCollection(
+  "courses-attended",
+  ({ id }) => id.startsWith(`${locale}/`),
+);
+const coursesAttended = coursesCollection.sort(
+  (a, b) =>
+    new Date(b.data.DateStart || "").getTime() -
+    new Date(a.data.DateStart || "").getTime(),
 );
 
 // Projects (Works)
@@ -300,9 +368,10 @@ const works = projectsCollection
     >
       <h2>{cv.ui.professionalExperience}</h2>
       {
-        cv.experiences.map((experience: Experience, index: number) => {
+        experiences.map(({ data, Content }, index: number) => {
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+          const link = extractLink(data.Link);
 
           return (
             <div
@@ -310,72 +379,40 @@ const works = projectsCollection
             >
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                {experience.endDate ? (
-                  <time datetime={new Date(experience.endDate).toDateString()}>
-                    {getMonthYear(experience.endDate)}
+                {data.DateEnd ? (
+                  <time datetime={new Date(data.DateEnd).toDateString()}>
+                    {getMonthYear(data.DateEnd)}
                   </time>
                 ) : (
                   <span>{cv.ui.current}</span>
                 )}
-                <time datetime={new Date(experience.startDate).toDateString()}>
-                  {getMonthYear(experience.startDate)}
+                <time datetime={new Date(data.DateStart || "").toDateString()}>
+                  {getMonthYear(data.DateStart || "")}
                 </time>
                 <div class="timeline" />
               </div>
 
-              {experience.link ? (
-                <a href={experience.link} class={`item-text ${bgClass}`}>
+              {link ? (
+                <a href={link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
-                    <span class="grow">{experience.title}</span>
+                    <span class="grow">{data.Name}</span>
                     <Icon
                       name="mdi:external-link"
                       class="mt-2 size-3 shrink-0 print:hidden"
                     />
                   </h3>
-                  {experience.titleNote && (
-                    <p class="mb-1 ml-1 text-xs text-zinc-300">
-                      <sup>⤷</sup>
-                      {experience.titleNote}
-                    </p>
-                  )}
                   <h4>
-                    {experience.company} | {experience.location}
+                    {data.Organization} | {buildLocation(data)}
                   </h4>
-                  {experience.companyNote && (
-                    <p class="mb-1 ml-1 text-xs text-zinc-300">
-                      <sup>⤷</sup>
-                      {experience.companyNote}
-                    </p>
-                  )}
-                  <ul>
-                    {experience.items.map((item: string) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
+                  <Content />
                 </a>
               ) : (
                 <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0">{experience.title}</h3>
-                  {experience.titleNote && (
-                    <p class="mb-1 ml-1 text-xs text-zinc-300">
-                      <sup>⤷</sup>
-                      {experience.titleNote}
-                    </p>
-                  )}
+                  <h3 class="mb-0">{data.Name}</h3>
                   <h4>
-                    {experience.company} | {experience.location}
+                    {data.Organization} | {buildLocation(data)}
                   </h4>
-                  {experience.companyNote && (
-                    <p class="mb-1 ml-1 text-xs text-zinc-300">
-                      <sup>⤷</sup>
-                      {experience.companyNote}
-                    </p>
-                  )}
-                  <ul>
-                    {experience.items.map((item: string) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
+                  <Content />
                 </div>
               )}
             </div>
@@ -389,9 +426,12 @@ const works = projectsCollection
     >
       <h2>{cv.ui.education}</h2>
       {
-        cv.education.map((education: Education, index: number) => {
+        education.map((entry, index: number) => {
+          const data = entry.data;
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+          const institutionLink = extractLink(data.Link);
+          const thesisLink = buildThesisLink(data.Thesis);
 
           return (
             <div
@@ -399,119 +439,113 @@ const works = projectsCollection
             >
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                {education.endDate ? (
-                  <time datetime={new Date(education.endDate).toDateString()}>
-                    {getMonthYear(education.endDate)}
+                {data.DateEnd ? (
+                  <time datetime={new Date(data.DateEnd).toDateString()}>
+                    {getMonthYear(data.DateEnd)}
                   </time>
                 ) : (
                   <span>{cv.ui.current}</span>
                 )}
-                <time datetime={new Date(education.startDate).toDateString()}>
-                  {getMonthYear(education.startDate)}
+                <time datetime={new Date(data.DateStart || "").toDateString()}>
+                  {getMonthYear(data.DateStart || "")}
                 </time>
                 <div class="timeline" />
               </div>
 
-              {education.institutionLink ? (
+              {institutionLink && thesisLink ? (
                 <div class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
-                    <a href={education.link} class="grow hover:text-emerald-400">
-                      {education.title}
+                    <a href={thesisLink} class="grow hover:text-emerald-400">
+                      {data.Name}
                     </a>
                   </h3>
                   <h4>
-                    <a href={education.institutionLink} class="inline-flex items-center gap-1 hover:text-emerald-400">
-                      {education.institution}
+                    <a href={institutionLink} class="inline-flex items-center gap-1 hover:text-emerald-400">
+                      {data.Organization}
                       <Icon
                         name="mdi:external-link"
                         class="size-3 shrink-0 print:hidden"
                       />
                     </a>
-                     | {education.location}
+                     | {buildLocation(data)}
                   </h4>
 
-                  {/* Render description if it exists */}
-                  {education.description &&
-                    education.description.length > 0 && (
-                      <div class="mb-1 ml-1 text-sm text-zinc-300">
-                        <p>{education.description}</p>
-                      </div>
-                    )}
+                  {data.Description && data.Description.length > 0 && (
+                    <div class="mb-1 ml-1 text-sm text-zinc-300">
+                      <p>{data.Description}</p>
+                    </div>
+                  )}
 
-                  {/* Render supervisors if they exist */}
-                  {education.supervisors &&
-                    education.supervisors.length > 0 && (
-                      <div class="mb-1 ml-1 text-sm text-zinc-300">
-                        <p>
-                          {cv.ui.supervisors}:
-                          {education.supervisors.map((supervisor, idx, arr) =>
+                  {data.Supervisors && data.Supervisors.length > 0 && (
+                    <div class="mb-1 ml-1 text-sm text-zinc-300">
+                      <p>
+                        {cv.ui.supervisors}:
+                        {data.Supervisors.map(
+                          (supervisor: string, idx: number, arr: string[]) =>
                             idx === arr.length - 1
                               ? `${supervisor}`
                               : `${supervisor}, `,
-                          )}
-                        </p>
-                      </div>
-                    )}
+                        )}
+                      </p>
+                    </div>
+                  )}
 
-                  {/* Render advisors if they exist */}
-                  {education.advisors && education.advisors.length > 0 && (
+                  {data.Advisors && data.Advisors.length > 0 && (
                     <div class="mb-1 ml-1 text-sm text-zinc-300">
                       <p>
                         {cv.ui.advisors}:
-                        {education.advisors.map((advisor, idx, arr) =>
-                          idx === arr.length - 1
-                            ? `${advisor}`
-                            : `${advisor}, `,
+                        {data.Advisors.map(
+                          (advisor: string, idx: number, arr: string[]) =>
+                            idx === arr.length - 1
+                              ? `${advisor}`
+                              : `${advisor}, `,
                         )}
                       </p>
                     </div>
                   )}
                 </div>
-              ) : education.link ? (
-                <a href={education.link} class={`item-text ${bgClass}`}>
+              ) : thesisLink ? (
+                <a href={thesisLink} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
-                    <span class="grow">{education.title}</span>
+                    <span class="grow">{data.Name}</span>
                     <Icon
                       name="mdi:external-link"
                       class="mt-2 size-3 shrink-0 print:hidden"
                     />
                   </h3>
                   <h4>
-                    {education.institution} | {education.location}
+                    {data.Organization} | {buildLocation(data)}
                   </h4>
 
-                  {/* Render description if it exists */}
-                  {education.description &&
-                    education.description.length > 0 && (
-                      <div class="mb-1 ml-1 text-sm text-zinc-300">
-                        <p>{education.description}</p>
-                      </div>
-                    )}
+                  {data.Description && data.Description.length > 0 && (
+                    <div class="mb-1 ml-1 text-sm text-zinc-300">
+                      <p>{data.Description}</p>
+                    </div>
+                  )}
 
-                  {/* Render supervisors if they exist */}
-                  {education.supervisors &&
-                    education.supervisors.length > 0 && (
-                      <div class="mb-1 ml-1 text-sm text-zinc-300">
-                        <p>
-                          {cv.ui.supervisors}:
-                          {education.supervisors.map((supervisor, idx, arr) =>
+                  {data.Supervisors && data.Supervisors.length > 0 && (
+                    <div class="mb-1 ml-1 text-sm text-zinc-300">
+                      <p>
+                        {cv.ui.supervisors}:
+                        {data.Supervisors.map(
+                          (supervisor: string, idx: number, arr: string[]) =>
                             idx === arr.length - 1
                               ? `${supervisor}`
                               : `${supervisor}, `,
-                          )}
-                        </p>
-                      </div>
-                    )}
+                        )}
+                      </p>
+                    </div>
+                  )}
 
-                  {/* Render tutors if they exist */}
-                  {education.advisors && education.advisors.length > 0 && (
+                  {data.Advisors && data.Advisors.length > 0 && (
                     <div class="mb-1 ml-1 text-sm text-zinc-300">
                       <p>
                         {cv.ui.advisors}:
-                        {education.advisors.map((advisor, idx, arr) =>
-                          idx === arr.length - 1
-                            ? `${advisor}`
-                            : `${advisor}, `,
+                        {data.Advisors.map(
+                          (advisor: string, idx: number, arr: string[]) =>
+                            idx === arr.length - 1
+                              ? `${advisor}`
+                              : `${advisor}, `,
                         )}
                       </p>
                     </div>
@@ -519,33 +553,42 @@ const works = projectsCollection
                 </a>
               ) : (
                 <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0">{education.title}</h3>
+                  <h3 class="mb-0">{data.Name}</h3>
                   <h4>
-                    {education.institution} | {education.location}
+                    {data.Organization} | {buildLocation(data)}
                   </h4>
 
-                  {/* Render supervisors if they exist */}
-                  {education.supervisors &&
-                    education.supervisors.length > 0 && (
-                      <div class="mb-1 ml-1 text-xs text-zinc-300">
-                        <p class="font-semibold">Supervisors:</p>
-                        <ul class="ml-2">
-                          {education.supervisors.map((supervisor) => (
-                            <li>{supervisor}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                  {data.Description && data.Description.length > 0 && (
+                    <div class="mb-1 ml-1 text-sm text-zinc-300">
+                      <p>{data.Description}</p>
+                    </div>
+                  )}
 
-                  {/* Render tutors if they exist */}
-                  {education.advisors && education.advisors.length > 0 && (
-                    <div class="mb-1 ml-1 text-xs text-zinc-300">
-                      <p class="font-semibold">Tutors:</p>
-                      <ul class="ml-2">
-                        {education.advisors.map((advisor) => (
-                          <li>{advisor}</li>
-                        ))}
-                      </ul>
+                  {data.Supervisors && data.Supervisors.length > 0 && (
+                    <div class="mb-1 ml-1 text-sm text-zinc-300">
+                      <p>
+                        {cv.ui.supervisors}:
+                        {data.Supervisors.map(
+                          (supervisor: string, idx: number, arr: string[]) =>
+                            idx === arr.length - 1
+                              ? `${supervisor}`
+                              : `${supervisor}, `,
+                        )}
+                      </p>
+                    </div>
+                  )}
+
+                  {data.Advisors && data.Advisors.length > 0 && (
+                    <div class="mb-1 ml-1 text-sm text-zinc-300">
+                      <p>
+                        {cv.ui.advisors}:
+                        {data.Advisors.map(
+                          (advisor: string, idx: number, arr: string[]) =>
+                            idx === arr.length - 1
+                              ? `${advisor}`
+                              : `${advisor}, `,
+                        )}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -558,9 +601,10 @@ const works = projectsCollection
     <section id={createHtmlId(cv.ui.scholarships)}>
       <h2>{cv.ui.scholarships}</h2>
       {
-        cv.scholarships.map((scholarship: Scholarship, index: number) => {
+        scholarships.map((entry, index: number) => {
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+          const link = extractLink(entry.data.Link);
 
           return (
             <div
@@ -568,46 +612,48 @@ const works = projectsCollection
             >
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                {scholarship.endDate ? (
-                  <time datetime={new Date(scholarship.endDate).toDateString()}>
-                    {getMonthYear(scholarship.endDate)}
+                {entry.data.DateEnd ? (
+                  <time datetime={new Date(entry.data.DateEnd).toDateString()}>
+                    {getMonthYear(entry.data.DateEnd)}
                   </time>
                 ) : (
                   <span>{cv.ui.current}</span>
                 )}
-                <time datetime={new Date(scholarship.startDate).toDateString()}>
-                  {getMonthYear(scholarship.startDate)}
+                <time
+                  datetime={new Date(entry.data.DateStart || "").toDateString()}
+                >
+                  {getMonthYear(entry.data.DateStart || "")}
                 </time>
                 <div class="timeline" />
               </div>
 
-              {scholarship.link ? (
-                <a href={scholarship.link} class={`item-text ${bgClass}`}>
+              {link ? (
+                <a href={link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
-                    <span class="grow">{scholarship.title}</span>
+                    <span class="grow">{entry.data.Name}</span>
                     <Icon
                       name="mdi:external-link"
                       class="mt-2 size-3 shrink-0 print:hidden"
                     />
                   </h3>
                   <h4>
-                    {scholarship.institution} | {scholarship.location}
+                    {entry.data.Organization} | {buildLocation(entry.data)}
                   </h4>
-                  {scholarship.description && (
+                  {entry.data.Description && (
                     <p class="text-sm text-pretty text-zinc-300">
-                      {scholarship.description}
+                      {entry.data.Description}
                     </p>
                   )}
                 </a>
               ) : (
                 <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0">{scholarship.title}</h3>
+                  <h3 class="mb-0">{entry.data.Name}</h3>
                   <h4>
-                    {scholarship.institution} | {scholarship.location}
+                    {entry.data.Organization} | {buildLocation(entry.data)}
                   </h4>
-                  {scholarship.description && (
+                  {entry.data.Description && (
                     <p class="text-sm text-pretty text-zinc-300">
-                      {scholarship.description}
+                      {entry.data.Description}
                     </p>
                   )}
                 </div>
@@ -685,9 +731,10 @@ const works = projectsCollection
     <section id={createHtmlId(cv.ui.certifications)}>
       <h2>{cv.ui.certifications}</h2>
       {
-        cv.certifications.map((certification: Certification, index: number) => {
+        certifications.map((entry, index: number) => {
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+          const link = extractLink(entry.data.Link);
 
           return (
             <div
@@ -695,20 +742,22 @@ const works = projectsCollection
             >
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                <time datetime={new Date(certification.date).toDateString()}>
-                  {getMonthYear(certification.date)}
+                <time
+                  datetime={new Date(entry.data.DateStart || "").toDateString()}
+                >
+                  {getMonthYear(entry.data.DateStart || "")}
                 </time>
                 <div class="timeline" />
               </div>
 
-              {certification.link ? (
-                <a href={certification.link} class={`item-text ${bgClass}`}>
+              {link ? (
+                <a href={link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
                     <span class="grow">
-                      {certification.title}
-                      {certification.credentialID && (
+                      {entry.data.Name}
+                      {entry.data.CredentialID && (
                         <span class="ml-1 text-xs text-zinc-300">
-                          ({certification.credentialID})
+                          ({entry.data.CredentialID})
                         </span>
                       )}
                     </span>
@@ -718,42 +767,42 @@ const works = projectsCollection
                     />
                   </h3>
                   <h4>
-                    {certification.issuer}
-                    {certification.validUntil && (
+                    {entry.data.Organization}
+                    {entry.data.ValidUntil && (
                       <span class="ml-1 text-xs text-zinc-300">
                         | {cv.ui.validUntil}:{" "}
-                        {getMonthYear(certification.validUntil)}
+                        {getMonthYear(entry.data.ValidUntil)}
                       </span>
                     )}
                   </h4>
-                  {certification.description && (
+                  {entry.data.Description && (
                     <p class="text-sm text-pretty text-zinc-300">
-                      {certification.description}
+                      {entry.data.Description}
                     </p>
                   )}
                 </a>
               ) : (
                 <div class={`item-text ${bgClass}`}>
                   <h3 class="mb-0">
-                    {certification.title}
-                    {certification.credentialID && (
+                    {entry.data.Name}
+                    {entry.data.CredentialID && (
                       <span class="ml-1 text-xs text-zinc-300">
-                        ({certification.credentialID})
+                        ({entry.data.CredentialID})
                       </span>
                     )}
                   </h3>
                   <h4>
-                    {certification.issuer}
-                    {certification.validUntil && (
+                    {entry.data.Organization}
+                    {entry.data.ValidUntil && (
                       <span class="ml-1 text-xs text-zinc-300">
                         | {cv.ui.validUntil}:{" "}
-                        {getMonthYear(certification.validUntil)}
+                        {getMonthYear(entry.data.ValidUntil)}
                       </span>
                     )}
                   </h4>
-                  {certification.description && (
+                  {entry.data.Description && (
                     <p class="text-sm text-pretty text-zinc-300">
-                      {certification.description}
+                      {entry.data.Description}
                     </p>
                   )}
                 </div>
@@ -836,9 +885,11 @@ const works = projectsCollection
     <section id={createHtmlId(cv.ui.coursesAttended)}>
       <h2>{cv.ui.coursesAttended}</h2>
       {
-        cv.coursesAttended.map((course: CourseAttended, index: number) => {
+        coursesAttended.map((entry, index: number) => {
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
+          const link = extractLink(entry.data.Link);
+          const instructor = entry.data.Authors?.map((a: any) => extractName(a)).join(", ");
 
           return (
             <div
@@ -846,54 +897,60 @@ const works = projectsCollection
             >
               <div class="timeline-wrapper">
                 <div class="timeline-top" />
-                {course.endDate ? (
-                  <time datetime={new Date(course.endDate).toDateString()}>
-                    {getMonthYear(course.endDate)}
+                {entry.data.DateEnd ? (
+                  <time datetime={new Date(entry.data.DateEnd).toDateString()}>
+                    {getMonthYear(entry.data.DateEnd)}
                   </time>
                 ) : (
                   ""
                 )}
-                <time datetime={new Date(course.startDate).toDateString()}>
-                  {getMonthYear(course.startDate)}
+                <time
+                  datetime={new Date(entry.data.DateStart || "").toDateString()}
+                >
+                  {getMonthYear(entry.data.DateStart || "")}
                 </time>
                 <div class="timeline" />
               </div>
 
-              {course.link ? (
-                <a href={course.link} class={`item-text ${bgClass}`}>
+              {link ? (
+                <a href={link} class={`item-text ${bgClass}`}>
                   <h3 class="mb-0 flex">
-                    <span class="grow">{course.title}</span>
+                    <span class="grow">{entry.data.Name}</span>
                     <Icon
                       name="mdi:external-link"
                       class="mt-2 size-3 shrink-0 print:hidden"
                     />
                   </h3>
                   <h4>
-                    {course.organization}
-                    {course.location ? ` | ${course.location}` : ""}
+                    {entry.data.Organization}
+                    {buildLocation(entry.data) ? ` | ${buildLocation(entry.data)}` : ""}
                   </h4>
-                  <p class="text-sm text-pretty text-zinc-300">
-                    {course.instructor}
-                  </p>
-                  {course.description && (
+                  {instructor && (
                     <p class="text-sm text-pretty text-zinc-300">
-                      {course.description}
+                      {instructor}
+                    </p>
+                  )}
+                  {entry.data.Description && (
+                    <p class="text-sm text-pretty text-zinc-300">
+                      {entry.data.Description}
                     </p>
                   )}
                 </a>
               ) : (
                 <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0">{course.title}</h3>
+                  <h3 class="mb-0">{entry.data.Name}</h3>
                   <h4>
-                    {course.organization}
-                    {course.location ? ` | ${course.location}` : ""}
+                    {entry.data.Organization}
+                    {buildLocation(entry.data) ? ` | ${buildLocation(entry.data)}` : ""}
                   </h4>
-                  <p class="text-sm text-pretty text-zinc-300">
-                    {course.instructor}
-                  </p>
-                  {course.description && (
+                  {instructor && (
                     <p class="text-sm text-pretty text-zinc-300">
-                      {course.description}
+                      {instructor}
+                    </p>
+                  )}
+                  {entry.data.Description && (
+                    <p class="text-sm text-pretty text-zinc-300">
+                      {entry.data.Description}
                     </p>
                   )}
                 </div>
