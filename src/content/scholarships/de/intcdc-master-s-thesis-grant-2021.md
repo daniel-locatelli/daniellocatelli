@@ -6,5 +6,6 @@ DateEnd: "2021-10"
 Organization: Exzellenzcluster – IntCDC
 City:
   - Stuttgart
+Country: "Deutschland"
 Link: "https://www.intcdc.uni-stuttgart.de/supporting-structures/early-career-and-education/grants-awards-overview/master-thesis-award-2021-1/"
 ---

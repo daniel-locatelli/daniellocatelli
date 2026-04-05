@@ -6,5 +6,6 @@ DateEnd: "2014-12"
 Organization: Federal Government of Brazil
 City:
   - Auburn
+Country: "USA"
 Link: "https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/ciencia-sem-fronteiras"
 ---
