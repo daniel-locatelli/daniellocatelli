@@ -5,5 +5,6 @@ DateEnd: "2014-12"
 Organization: Auburn University – CADC
 City:
   - Auburn
+Country: "EUA"
 Link: "https://cadc.auburn.edu/"
 ---

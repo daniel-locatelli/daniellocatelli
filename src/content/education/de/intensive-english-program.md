@@ -5,5 +5,6 @@ DateEnd: "2013-12"
 Organization: Auburn Global
 City:
   - Auburn
+Country: "USA"
 Link: "https://global.auburn.edu/english/"
 ---

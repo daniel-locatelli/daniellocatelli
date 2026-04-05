@@ -6,6 +6,7 @@ DateEnd: "2016-12"
 Organization: "FAU, Universidade de São Paulo"
 City:
   - São Paulo
+Country: "Brasil"
 Link: "https://www.fau.usp.br/"
 Thesis: architecture-biomimicry-algorithm
 Supervisors:
