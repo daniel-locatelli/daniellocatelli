@@ -190,6 +190,12 @@ const pageSchema = z.object({
   Category: z.string().optional(),
   Level: z.string().optional(),
   Locale: z.string().optional(),
+  // CV-specific fields
+  Order: z.number().optional(),
+  ValidUntil: z.string().optional(),
+  CredentialID: z.string().optional(),
+  Thesis: z.string().optional(),
+  Country: z.string().optional(),
 });
 
 export const collections = {
