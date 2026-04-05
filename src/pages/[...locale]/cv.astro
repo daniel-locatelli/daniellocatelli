@@ -165,12 +165,7 @@ const educationFiltered = educationCollection
       new Date(b.data.DateStart || "").getTime() -
       new Date(a.data.DateStart || "").getTime(),
   );
-const education = await Promise.all(
-  educationFiltered.map(async (entry) => ({
-    data: entry.data,
-    Content: (await entry.render()).Content,
-  })),
-);
+const education = educationFiltered;
 
 // Scholarships collection
 const scholarshipsCollection = await getCollection(
@@ -416,7 +411,8 @@ const certifications = certificationsCollection
     >
       <h2>{cv.ui.education}</h2>
       {
-        education.map(({ data, Content }, index: number) => {
+        education.map((entry, index: number) => {
+          const data = entry.data;
           const isOdd = index % 2 === 0;
           const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
           const institutionLink = extractLink(data.Link);
