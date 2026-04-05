@@ -1,0 +1,58 @@
+---
+import Container from "@/components/Container.astro";
+
+interface Props {
+  footerUrl: string;
+}
+
+const { footerUrl } = Astro.props;
+---
+
+<Container
+  class="font-body relative flex flex-col gap-5 text-base print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-2 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-2 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-2 [&_.timeline-top]:border-r [&_.timeline-top]:print:h-2 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg/6 [&_h3]:print:font-bold [&_h4]:text-zinc-300"
+>
+  <slot />
+</Container>
+
+<style is:inline define:vars={{ footerUrl: `"${footerUrl}"` }}>
+  @page {
+    margin-top: 2cm;
+    margin-bottom: 2cm;
+    margin-left: 1.2cm;
+    margin-right: 1.2cm;
+
+    @bottom-left {
+      content: var(--footerUrl);
+      font-size: 9pt;
+      padding-bottom: 0.5cm;
+      color: #666;
+    }
+
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font-size: 9pt;
+      padding-bottom: 0.5cm;
+      color: #999;
+    }
+  }
+  @media print {
+    :root,
+    :root[data-theme="light"],
+    :root[data-theme="dark"] {
+      color-scheme: light !important;
+      --theme-bg: white !important;
+    }
+    * {
+      background-color: white !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      color: black !important;
+    }
+    body {
+      padding: 0;
+    }
+    body * {
+      visibility: visible;
+    }
+  }
+</style>

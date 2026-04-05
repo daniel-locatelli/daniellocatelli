@@ -1,0 +1,95 @@
+---
+import type { I18nCV } from "src/i18n/cv/types";
+
+interface Props {
+  cv: I18nCV;
+  skills: {
+    programming: Array<{ data: { Name: string } }>;
+    frameworks: Array<{ data: { Name: string } }>;
+    databases: Array<{ data: { Name: string } }>;
+    design: Array<{ data: { Name: string } }>;
+    specialized: string[];
+    languages: Array<{ data: { Name: string; Level?: string } }>;
+  };
+}
+
+const { cv, skills } = Astro.props;
+---
+
+<section id="technical-skills">
+  <h2>{cv.ui.skills}</h2>
+  <table
+    class="table-auto [&_td]:leading-5 [&_th]:pr-2 [&_th]:text-right [&_th]:align-top [&_th]:font-thin sm:[&_th]:pr-4"
+  >
+    <tr>
+      <th>{cv.ui.programming}</th>
+      <td>
+        {
+          skills.programming.map((skill, idx, arr) =>
+            idx === arr.length - 1
+              ? skill.data.Name
+              : skill.data.Name + ", ",
+          )
+        }
+      </td>
+    </tr>
+    <tr>
+      <th>{cv.ui.frameworks}</th>
+      <td>
+        {
+          skills.frameworks.map((skill, idx, arr) =>
+            idx === arr.length - 1
+              ? skill.data.Name
+              : skill.data.Name + ", ",
+          )
+        }
+      </td>
+    </tr>
+    <tr>
+      <th>{cv.ui.databases}</th>
+      <td>
+        {
+          skills.databases.map((skill, idx, arr) =>
+            idx === arr.length - 1
+              ? skill.data.Name
+              : skill.data.Name + ", ",
+          )
+        }
+      </td>
+    </tr>
+    <tr>
+      <th>{cv.ui.designTools}</th>
+      <td>
+        {
+          skills.design.map((skill, idx, arr) =>
+            idx === arr.length - 1
+              ? skill.data.Name
+              : skill.data.Name + ", ",
+          )
+        }
+      </td>
+    </tr>
+    <tr>
+      <th>{cv.ui.specialization}</th>
+      <td>
+        {
+          skills.specialized.map((skill, idx, arr) =>
+            idx === arr.length - 1 ? skill : skill + ", ",
+          )
+        }
+      </td>
+    </tr>
+    <tr>
+      <th>{cv.ui.languages}</th>
+      <td>
+        {
+          skills.languages.map((skill, idx, arr) =>
+            idx === arr.length - 1
+              ? `${skill.data.Name} (${skill.data.Level})`
+              : `${skill.data.Name} (${skill.data.Level}), `,
+          )
+        }
+      </td>
+    </tr>
+  </table>
+</section>
