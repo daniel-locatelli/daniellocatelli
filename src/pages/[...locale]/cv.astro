@@ -1,74 +1,37 @@
 ---
 import Base from "@/layouts/Base.astro";
-import profilePhoto from "@/assets/avatars/daniel-locatelli-v1.png";
-import { Image } from "astro:assets";
-import Container from "@/components/Container.astro";
-import { Icon } from "astro-icon/components";
-import { siteConfig } from "@/config/site";
-import type { I18nCV } from "src/i18n/cv/types.ts";
+import CvContainer from "@/components/cv/CvContainer.astro";
+import CvHeader from "@/components/cv/CvHeader.astro";
+import CvSkills from "@/components/cv/CvSkills.astro";
+import CvExperiences from "@/components/cv/CvExperiences.astro";
+import CvEducation from "@/components/cv/CvEducation.astro";
+import CvScholarships from "@/components/cv/CvScholarships.astro";
+import CvPublications from "@/components/cv/CvPublications.astro";
+import CvCertifications from "@/components/cv/CvCertifications.astro";
+import CvEngagements from "@/components/cv/CvEngagements.astro";
+import type { I18nCV } from "src/i18n/cv/types";
 import type { I18nMeta } from "src/i18n/meta/types";
-import { createHtmlId, getI18n, getMonthYear } from "src/i18n/utils";
+import { getI18n } from "src/i18n/utils";
 import { getLocale } from "src/lib/routes-helpers";
 export { getStaticPaths } from "src/lib/routes-helpers";
 import { getCollection } from "astro:content";
+import { extractName, extractFirstName, extractLink, sortByOrder } from "src/lib/cv-helpers";
 
 const locale = getLocale(Astro.params);
 
 const meta = await getI18n<I18nMeta>("meta", locale);
 const cv = await getI18n<I18nCV>("cv", locale);
 
-// Helper to extract name from string | { name: string }
-const extractName = (item: any) => {
-  if (!item) return "";
-  return typeof item === "string" ? item : item.name;
-};
-
-// Helper to extract first name from array of string | { name: string }
-const extractFirstName = (arr: any) => {
-  if (!arr || !Array.isArray(arr) || arr.length === 0) return "";
-  return extractName(arr[0]);
-};
-
-// Helper to extract link from string | array of objects | object
-const extractLink = (linkProp: any) => {
-  if (!linkProp) return "";
-  if (typeof linkProp === "string") return linkProp;
-  if (Array.isArray(linkProp)) return linkProp[0]?.Href || "";
-  return linkProp.Href || "";
-};
-
-const buildLocation = (data: any) => {
-  const city = extractFirstName(data.City);
-  return data.Country ? `${city}, ${data.Country}` : city;
-};
-
-const buildThesisLink = (thesis: string | undefined) => {
-  if (!thesis) return undefined;
-  const prefix = locale === siteConfig.defaultLocale ? "" : `/${locale}`;
-  return `${prefix}/research/${thesis}`;
-};
-
-// Sort helper: order by Order field ascending (lower number = first)
-const sortByOrder = (
-  a: { data: { Order?: number } },
-  b: { data: { Order?: number } },
-) => (a.data.Order ?? 999) - (b.data.Order ?? 999);
-
-// Fetch Collections
-const publicationsCollection = await getCollection(
-  "publications",
-  ({ id }) => {
-    return id.startsWith(`${locale}/`);
-  },
+// Publications (all)
+const publicationsCollection = await getCollection("publications", ({ id }) =>
+  id.startsWith(`${locale}/`),
 );
-// Sort publications by DateStart descending
 const publications = publicationsCollection
-  .sort((a, b) => {
-    return (
+  .sort(
+    (a, b) =>
       new Date(b.data.DateStart || "").getTime() -
-      new Date(a.data.DateStart || "").getTime()
-    );
-  })
+      new Date(a.data.DateStart || "").getTime(),
+  )
   .map((p) => ({
     title: p.data.Name,
     date: p.data.DateStart || "",
@@ -78,21 +41,20 @@ const publications = publicationsCollection
     authors: p.data.Authors?.map((a: any) => extractName(a)) || [],
   }));
 
-const teachingCollection = await getCollection("teaching", ({ id }) => {
-  return id.startsWith(`${locale}/`);
-});
-// Filter teaching engagements from 2023 onwards
-const engSelected = teachingCollection
+// Engagements (>= 2023)
+const teachingCollection = await getCollection("teaching", ({ id }) =>
+  id.startsWith(`${locale}/`),
+);
+const engagements = teachingCollection
   .filter((t) => {
     if (!t.data.DateStart) return false;
     return new Date(t.data.DateStart) >= new Date("2023-01-01");
   })
-  .sort((a, b) => {
-    return (
+  .sort(
+    (a, b) =>
       new Date(b.data.DateStart || "").getTime() -
-      new Date(a.data.DateStart || "").getTime()
-    );
-  })
+      new Date(a.data.DateStart || "").getTime(),
+  )
   .map((t) => ({
     title: t.data.Name,
     startDate: t.data.DateStart || "",
@@ -104,58 +66,48 @@ const engSelected = teachingCollection
     description: t.data.Description,
   }));
 
-const skillsCollection = await getCollection("skills", ({ id }) => {
-  return id.startsWith(`${locale}/`) || id.startsWith("en/");
-});
-
-const skillsProgramming = skillsCollection
-  .filter((s) => s.data.Category === "Programming")
-  .sort(sortByOrder);
-const skillsFrameworks = skillsCollection
-  .filter((s) => s.data.Category === "Framework")
-  .sort(sortByOrder);
-const skillsDatabases = skillsCollection
-  .filter((s) => s.data.Category === "Database")
-  .sort(sortByOrder);
-const skillsDesign = skillsCollection
-  .filter((s) => s.data.Category === "Design tool")
-  .sort(sortByOrder);
-const skillsSpecialized = skillsCollection
-  .filter((s) => s.data.Category === "Specialization")
-  .sort(sortByOrder)
-  .map((s) => s.data.Name);
-const skillsLanguages = skillsCollection
-  .filter((s) => s.data.Category === "Language")
-  .sort(sortByOrder);
-
-// Experiences collection
-const experiencesCollection = await getCollection(
-  "experiences",
-  ({ id }) => id.startsWith(`${locale}/`),
+// Skills (all)
+const skillsCollection = await getCollection("skills", ({ id }) =>
+  id.startsWith(`${locale}/`) || id.startsWith("en/"),
 );
-const experiencesFiltered = experiencesCollection
-  .filter((e) => {
-    if (!e.data.DateStart) return false;
-    return new Date(e.data.DateStart) >= new Date("2015");
-  })
-  .sort(
-    (a, b) =>
-      new Date(b.data.DateStart || "").getTime() -
-      new Date(a.data.DateStart || "").getTime(),
-  );
+const skills = {
+  programming: skillsCollection.filter((s) => s.data.Category === "Programming").sort(sortByOrder),
+  frameworks: skillsCollection.filter((s) => s.data.Category === "Framework").sort(sortByOrder),
+  databases: skillsCollection.filter((s) => s.data.Category === "Database").sort(sortByOrder),
+  design: skillsCollection.filter((s) => s.data.Category === "Design tool").sort(sortByOrder),
+  specialized: skillsCollection
+    .filter((s) => s.data.Category === "Specialization")
+    .sort(sortByOrder)
+    .map((s) => s.data.Name),
+  languages: skillsCollection.filter((s) => s.data.Category === "Language").sort(sortByOrder),
+};
+
+// Experiences (>= 2015)
+const experiencesCollection = await getCollection("experiences", ({ id }) =>
+  id.startsWith(`${locale}/`),
+);
 const experiences = await Promise.all(
-  experiencesFiltered.map(async (entry) => ({
-    data: entry.data,
-    Content: (await entry.render()).Content,
-  })),
+  experiencesCollection
+    .filter((e) => {
+      if (!e.data.DateStart) return false;
+      return new Date(e.data.DateStart) >= new Date("2015");
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.data.DateStart || "").getTime() -
+        new Date(a.data.DateStart || "").getTime(),
+    )
+    .map(async (entry) => ({
+      data: entry.data,
+      Content: (await entry.render()).Content,
+    })),
 );
 
-// Education collection
-const educationCollection = await getCollection(
-  "education",
-  ({ id }) => id.startsWith(`${locale}/`),
+// Education (DateEnd >= 2014)
+const educationCollection = await getCollection("education", ({ id }) =>
+  id.startsWith(`${locale}/`),
 );
-const educationFiltered = educationCollection
+const education = educationCollection
   .filter((e) => {
     if (e.data.DateEnd === undefined) return true;
     return new Date(e.data.DateEnd) >= new Date("2014");
@@ -165,25 +117,20 @@ const educationFiltered = educationCollection
       new Date(b.data.DateStart || "").getTime() -
       new Date(a.data.DateStart || "").getTime(),
   );
-const education = educationFiltered;
 
-// Scholarships collection
-const scholarshipsCollection = await getCollection(
-  "scholarships",
-  ({ id }) => id.startsWith(`${locale}/`),
-);
-const scholarships = scholarshipsCollection.sort(
+// Scholarships (all)
+const scholarships = (
+  await getCollection("scholarships", ({ id }) => id.startsWith(`${locale}/`))
+).sort(
   (a, b) =>
     new Date(b.data.DateStart || "").getTime() -
     new Date(a.data.DateStart || "").getTime(),
 );
 
-// Certifications collection
-const certificationsCollection = await getCollection(
-  "certifications",
-  ({ id }) => id.startsWith(`${locale}/`),
-);
-const certifications = certificationsCollection
+// Certifications (>= 2015)
+const certifications = (
+  await getCollection("certifications", ({ id }) => id.startsWith(`${locale}/`))
+)
   .filter((c) => {
     if (!c.data.DateStart) return false;
     return new Date(c.data.DateStart) >= new Date("2015");
@@ -201,725 +148,21 @@ const certifications = certificationsCollection
     description: cv.meta.descriptionSimple,
     coverAlt: cv.meta.coverAlt,
     coverImage: "@/assets/avatars/daniel-locatelli-v1.png",
-    slug: "full-cv",
+    slug: "cv",
   }}
 >
-  <Container
-    class="font-body relative flex flex-col gap-5 text-base print:text-sm print:text-black [&_.item-text]:px-6 [&_.item-text]:py-2 [&_.item-text]:print:break-inside-avoid [&_.item-text]:print:px-2 [&_.item-text]:print:py-2 [&_.timeline]:shrink-0 [&_.timeline]:grow [&_.timeline]:border-r [&_.timeline]:print:h-2 [&_.timeline-top]:h-2 [&_.timeline-top]:border-r [&_.timeline-top]:print:h-2 [&_.timeline-wrapper]:mx-3 [&_.timeline-wrapper]:flex [&_.timeline-wrapper]:shrink-0 [&_.timeline-wrapper]:flex-col [&_.timeline-wrapper]:items-center [&_.timeline-wrapper]:font-sans [&_.timeline-wrapper]:sm:mx-6 [&_a:hover]:text-emerald-400 [&_h2]:mb-3 [&_h2]:border-b [&_h2]:pb-1 [&_h2]:text-3xl [&_h2]:print:mb-1 [&_h2]:print:break-after-avoid [&_h3]:text-lg/6 [&_h3]:print:font-bold [&_h4]:text-zinc-300"
-  >
-    <div class="flex flex-col gap-6 pt-20 sm:flex-row sm:pt-28 print:pt-2">
-      <Image
-        src={profilePhoto}
-        alt="Daniel Locatelli's profile photo."
-        class="rounded-full p-8 sm:size-38 sm:p-0"
-      />
-      <div class="flex flex-col justify-center gap-1">
-        <div class="flex flex-col gap-1">
-          <h1 class="font-title text-5xl">{siteConfig.author}</h1>
-          <p class="text-lg">{cv.ui.title}</p>
-        </div>
-        <div class="flex flex-col gap-4 text-sm sm:flex-row sm:gap-7">
-          <p class="text-pretty sm:text-xs sm:text-balance">
-            {cv.quote}
-          </p>
-          <div>
-            <address class="flex flex-col sm:text-xs">
-              <a href={"mailto:" + siteConfig.email}>{siteConfig.email}</a>
-              <span> {siteConfig.phone} </span>
-              <span> {meta.city}, {meta.country} </span>
-            </address>
-            <div class="flex h-full grow gap-3">
-              <a
-                href={siteConfig.website}
-                class="h-min"
-                title="Check my Website"
-              >
-                <Icon
-                  name="mdi:globe"
-                  class="inline-block size-5 align-middle sm:size-3.5"
-                />
-              </a>
-              <a
-                href={siteConfig.linkedin}
-                class="h-min"
-                title="Connect on LinkedIn"
-              >
-                <Icon
-                  name="mdi:linkedin"
-                  class="inline-block size-5 align-middle sm:size-3.5"
-                />
-              </a>
-              <a href={siteConfig.github} class="h-min" title="Check my GitHub">
-                <Icon
-                  name="mdi:github"
-                  class="inline-block size-5 align-middle sm:size-3.5"
-                />
-              </a>
-              <a href={siteConfig.gitlab} class="h-min" title="Check my GitLab">
-                <Icon
-                  name="mdi:gitlab"
-                  class="inline-block size-5 align-middle sm:size-3.5"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <section id={createHtmlId(cv.ui.summary)}>
+  <CvContainer footerUrl="daniellocatelli.com/cv">
+    <CvHeader cv={cv} meta={meta} />
+    <section id="summary">
       <h2>{cv.ui.summary}</h2>
       <p class="text-pretty">{cv.summary}</p>
     </section>
-    <section id="technical-skills">
-      <h2>{cv.ui.skills}</h2>
-      <table
-        class="table-auto [&_td]:leading-5 [&_th]:pr-2 [&_th]:text-right [&_th]:align-top [&_th]:font-thin sm:[&_th]:pr-4"
-      >
-        <tr>
-          <th>{cv.ui.programming}</th>
-          <td>
-            {
-              skillsProgramming.map((skill, idx, arr) =>
-                idx === arr.length - 1
-                  ? skill.data.Name
-                  : skill.data.Name + ", ",
-              )
-            }
-          </td>
-        </tr>
-        <tr>
-          <th>{cv.ui.frameworks}</th>
-          <td>
-            {
-              skillsFrameworks.map((skill, idx, arr) =>
-                idx === arr.length - 1
-                  ? skill.data.Name
-                  : skill.data.Name + ", ",
-              )
-            }
-          </td>
-        </tr>
-        <tr>
-          <th>{cv.ui.databases}</th>
-          <td>
-            {
-              skillsDatabases.map((skill, idx, arr) =>
-                idx === arr.length - 1
-                  ? skill.data.Name
-                  : skill.data.Name + ", ",
-              )
-            }
-          </td>
-        </tr>
-        <tr>
-          <th>{cv.ui.designTools}</th>
-          <td>
-            {
-              skillsDesign.map((skill, idx, arr) =>
-                idx === arr.length - 1
-                  ? skill.data.Name
-                  : skill.data.Name + ", ",
-              )
-            }
-          </td>
-        </tr>
-        <tr>
-          <th>{cv.ui.specialization}</th>
-          <td>
-            {
-              skillsSpecialized.map((skill, idx, arr) =>
-                idx === arr.length - 1 ? skill : skill + ", ",
-              )
-            }
-          </td>
-        </tr>
-        <tr>
-          <th>{cv.ui.languages}</th>
-          <td>
-            {
-              skillsLanguages.map((skill, idx, arr) =>
-                idx === arr.length - 1
-                  ? `${skill.data.Name} (${skill.data.Level})`
-                  : `${skill.data.Name} (${skill.data.Level}), `,
-              )
-            }
-          </td>
-        </tr>
-      </table>
-    </section>
-    <section
-      id={createHtmlId(cv.ui.professionalExperience)}
-      class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
-    >
-      <h2>{cv.ui.professionalExperience}</h2>
-      {
-        experiences.map(({ data, Content }, index: number) => {
-          const isOdd = index % 2 === 0;
-          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
-          const link = extractLink(data.Link);
-
-          return (
-            <div
-              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
-            >
-              <div class="timeline-wrapper">
-                <div class="timeline-top" />
-                {data.DateEnd ? (
-                  <time datetime={new Date(data.DateEnd).toDateString()}>
-                    {getMonthYear(data.DateEnd)}
-                  </time>
-                ) : (
-                  <span>{cv.ui.current}</span>
-                )}
-                <time datetime={new Date(data.DateStart || "").toDateString()}>
-                  {getMonthYear(data.DateStart || "")}
-                </time>
-                <div class="timeline" />
-              </div>
-
-              {link ? (
-                <a href={link} class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0 flex">
-                    <span class="grow">{data.Name}</span>
-                    <Icon
-                      name="mdi:external-link"
-                      class="mt-2 size-3 shrink-0 print:hidden"
-                    />
-                  </h3>
-                  <h4>
-                    {data.Organization} | {buildLocation(data)}
-                  </h4>
-                  <Content />
-                </a>
-              ) : (
-                <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0">{data.Name}</h3>
-                  <h4>
-                    {data.Organization} | {buildLocation(data)}
-                  </h4>
-                  <Content />
-                </div>
-              )}
-            </div>
-          );
-        })
-      }
-    </section>
-    <section
-      id={createHtmlId(cv.ui.education)}
-      class="[&_li]:text-pretty [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:text-sm [&_ul]:text-zinc-300"
-    >
-      <h2>{cv.ui.education}</h2>
-      {
-        education.map((entry, index: number) => {
-          const data = entry.data;
-          const isOdd = index % 2 === 0;
-          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
-          const institutionLink = extractLink(data.Link);
-          const thesisLink = buildThesisLink(data.Thesis);
-
-          return (
-            <div
-              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
-            >
-              <div class="timeline-wrapper">
-                <div class="timeline-top" />
-                {data.DateEnd ? (
-                  <time datetime={new Date(data.DateEnd).toDateString()}>
-                    {getMonthYear(data.DateEnd)}
-                  </time>
-                ) : (
-                  <span>{cv.ui.current}</span>
-                )}
-                <time datetime={new Date(data.DateStart || "").toDateString()}>
-                  {getMonthYear(data.DateStart || "")}
-                </time>
-                <div class="timeline" />
-              </div>
-
-              {institutionLink && thesisLink ? (
-                <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0 flex">
-                    <a href={thesisLink} class="grow hover:text-emerald-400">
-                      {data.Name}
-                    </a>
-                  </h3>
-                  <h4>
-                    <a href={institutionLink} class="inline-flex items-center gap-1 hover:text-emerald-400">
-                      {data.Organization}
-                      <Icon
-                        name="mdi:external-link"
-                        class="size-3 shrink-0 print:hidden"
-                      />
-                    </a>
-                     | {buildLocation(data)}
-                  </h4>
-
-                  {data.Description && data.Description.length > 0 && (
-                    <div class="mb-1 ml-1 text-sm text-zinc-300">
-                      <p>{data.Description}</p>
-                    </div>
-                  )}
-
-                  {data.Supervisors && data.Supervisors.length > 0 && (
-                    <div class="mb-1 ml-1 text-sm text-zinc-300">
-                      <p>
-                        {cv.ui.supervisors}:
-                        {data.Supervisors.map(
-                          (supervisor: string, idx: number, arr: string[]) =>
-                            idx === arr.length - 1
-                              ? `${supervisor}`
-                              : `${supervisor}, `,
-                        )}
-                      </p>
-                    </div>
-                  )}
-
-                  {data.Advisors && data.Advisors.length > 0 && (
-                    <div class="mb-1 ml-1 text-sm text-zinc-300">
-                      <p>
-                        {cv.ui.advisors}:
-                        {data.Advisors.map(
-                          (advisor: string, idx: number, arr: string[]) =>
-                            idx === arr.length - 1
-                              ? `${advisor}`
-                              : `${advisor}, `,
-                        )}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              ) : thesisLink ? (
-                <a href={thesisLink} class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0 flex">
-                    <span class="grow">{data.Name}</span>
-                    <Icon
-                      name="mdi:external-link"
-                      class="mt-2 size-3 shrink-0 print:hidden"
-                    />
-                  </h3>
-                  <h4>
-                    {data.Organization} | {buildLocation(data)}
-                  </h4>
-
-                  {data.Description && data.Description.length > 0 && (
-                    <div class="mb-1 ml-1 text-sm text-zinc-300">
-                      <p>{data.Description}</p>
-                    </div>
-                  )}
-
-                  {data.Supervisors && data.Supervisors.length > 0 && (
-                    <div class="mb-1 ml-1 text-sm text-zinc-300">
-                      <p>
-                        {cv.ui.supervisors}:
-                        {data.Supervisors.map(
-                          (supervisor: string, idx: number, arr: string[]) =>
-                            idx === arr.length - 1
-                              ? `${supervisor}`
-                              : `${supervisor}, `,
-                        )}
-                      </p>
-                    </div>
-                  )}
-
-                  {data.Advisors && data.Advisors.length > 0 && (
-                    <div class="mb-1 ml-1 text-sm text-zinc-300">
-                      <p>
-                        {cv.ui.advisors}:
-                        {data.Advisors.map(
-                          (advisor: string, idx: number, arr: string[]) =>
-                            idx === arr.length - 1
-                              ? `${advisor}`
-                              : `${advisor}, `,
-                        )}
-                      </p>
-                    </div>
-                  )}
-                </a>
-              ) : (
-                <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0">{data.Name}</h3>
-                  <h4>
-                    {data.Organization} | {buildLocation(data)}
-                  </h4>
-
-                  {data.Description && data.Description.length > 0 && (
-                    <div class="mb-1 ml-1 text-sm text-zinc-300">
-                      <p>{data.Description}</p>
-                    </div>
-                  )}
-
-                  {data.Supervisors && data.Supervisors.length > 0 && (
-                    <div class="mb-1 ml-1 text-sm text-zinc-300">
-                      <p>
-                        {cv.ui.supervisors}:
-                        {data.Supervisors.map(
-                          (supervisor: string, idx: number, arr: string[]) =>
-                            idx === arr.length - 1
-                              ? `${supervisor}`
-                              : `${supervisor}, `,
-                        )}
-                      </p>
-                    </div>
-                  )}
-
-                  {data.Advisors && data.Advisors.length > 0 && (
-                    <div class="mb-1 ml-1 text-sm text-zinc-300">
-                      <p>
-                        {cv.ui.advisors}:
-                        {data.Advisors.map(
-                          (advisor: string, idx: number, arr: string[]) =>
-                            idx === arr.length - 1
-                              ? `${advisor}`
-                              : `${advisor}, `,
-                        )}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })
-      }
-    </section>
-    <section id={createHtmlId(cv.ui.scholarships)}>
-      <h2>{cv.ui.scholarships}</h2>
-      {
-        scholarships.map((entry, index: number) => {
-          const isOdd = index % 2 === 0;
-          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
-          const link = extractLink(entry.data.Link);
-
-          return (
-            <div
-              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
-            >
-              <div class="timeline-wrapper">
-                <div class="timeline-top" />
-                {entry.data.DateEnd ? (
-                  <time datetime={new Date(entry.data.DateEnd).toDateString()}>
-                    {getMonthYear(entry.data.DateEnd)}
-                  </time>
-                ) : (
-                  <span>{cv.ui.current}</span>
-                )}
-                <time
-                  datetime={new Date(entry.data.DateStart || "").toDateString()}
-                >
-                  {getMonthYear(entry.data.DateStart || "")}
-                </time>
-                <div class="timeline" />
-              </div>
-
-              {link ? (
-                <a href={link} class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0 flex">
-                    <span class="grow">{entry.data.Name}</span>
-                    <Icon
-                      name="mdi:external-link"
-                      class="mt-2 size-3 shrink-0 print:hidden"
-                    />
-                  </h3>
-                  <h4>
-                    {entry.data.Organization} | {buildLocation(entry.data)}
-                  </h4>
-                  {entry.data.Description && (
-                    <p class="text-sm text-pretty text-zinc-300">
-                      {entry.data.Description}
-                    </p>
-                  )}
-                </a>
-              ) : (
-                <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0">{entry.data.Name}</h3>
-                  <h4>
-                    {entry.data.Organization} | {buildLocation(entry.data)}
-                  </h4>
-                  {entry.data.Description && (
-                    <p class="text-sm text-pretty text-zinc-300">
-                      {entry.data.Description}
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })
-      }
-    </section>
-    <section id={createHtmlId(cv.ui.publications)}>
-      <h2>{cv.ui.publications}</h2>
-      {
-        publications.map((publication, index: number) => {
-          const isOdd = index % 2 === 0;
-          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
-
-          return (
-            <div
-              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
-            >
-              <div class="timeline-wrapper">
-                <div class="timeline-top" />
-                <time datetime={new Date(publication.date).toDateString()}>
-                  {getMonthYear(publication.date)}
-                </time>
-                <div class="timeline" />
-              </div>
-
-              {publication.link ? (
-                <a href={publication.link} class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0 flex">
-                    <span class="grow">{publication.title}</span>
-                    <Icon
-                      name="mdi:external-link"
-                      class="mt-2 size-3 shrink-0 print:hidden"
-                    />
-                  </h3>
-                  <h4>
-                    {publication.publisher}
-                    {publication.location ? ` | ${publication.location}` : ""}
-                  </h4>
-                  <p class="flex flex-wrap text-sm text-zinc-300">
-                    {publication.authors.map((author, authorIndex, array) => (
-                      <span class="mr-1 text-nowrap">
-                        {authorIndex + 1 === array.length
-                          ? author
-                          : `${author}, `}
-                      </span>
-                    ))}
-                  </p>
-                </a>
-              ) : (
-                <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0">{publication.title}</h3>
-                  <h4>
-                    {publication.publisher}
-                    {publication.location ? ` | ${publication.location}` : ""}
-                  </h4>
-                  <p class="flex flex-wrap text-sm text-zinc-300">
-                    {publication.authors.map((author, authorIndex, array) => (
-                      <span class="mr-1 text-nowrap">
-                        {authorIndex + 1 === array.length
-                          ? author
-                          : `${author}, `}
-                      </span>
-                    ))}
-                  </p>
-                </div>
-              )}
-            </div>
-          );
-        })
-      }
-    </section>
-    <section id={createHtmlId(cv.ui.certifications)}>
-      <h2>{cv.ui.certifications}</h2>
-      {
-        certifications.map((entry, index: number) => {
-          const isOdd = index % 2 === 0;
-          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
-          const link = extractLink(entry.data.Link);
-
-          return (
-            <div
-              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
-            >
-              <div class="timeline-wrapper">
-                <div class="timeline-top" />
-                <time
-                  datetime={new Date(entry.data.DateStart || "").toDateString()}
-                >
-                  {getMonthYear(entry.data.DateStart || "")}
-                </time>
-                <div class="timeline" />
-              </div>
-
-              {link ? (
-                <a href={link} class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0 flex">
-                    <span class="grow">
-                      {entry.data.Name}
-                      {entry.data.CredentialID && (
-                        <span class="ml-1 text-xs text-zinc-300">
-                          ({entry.data.CredentialID})
-                        </span>
-                      )}
-                    </span>
-                    <Icon
-                      name="mdi:external-link"
-                      class="mt-2 size-3 shrink-0 print:hidden"
-                    />
-                  </h3>
-                  <h4>
-                    {entry.data.Organization}
-                    {entry.data.ValidUntil && (
-                      <span class="ml-1 text-xs text-zinc-300">
-                        | {cv.ui.validUntil}:{" "}
-                        {getMonthYear(entry.data.ValidUntil)}
-                      </span>
-                    )}
-                  </h4>
-                  {entry.data.Description && (
-                    <p class="text-sm text-pretty text-zinc-300">
-                      {entry.data.Description}
-                    </p>
-                  )}
-                </a>
-              ) : (
-                <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0">
-                    {entry.data.Name}
-                    {entry.data.CredentialID && (
-                      <span class="ml-1 text-xs text-zinc-300">
-                        ({entry.data.CredentialID})
-                      </span>
-                    )}
-                  </h3>
-                  <h4>
-                    {entry.data.Organization}
-                    {entry.data.ValidUntil && (
-                      <span class="ml-1 text-xs text-zinc-300">
-                        | {cv.ui.validUntil}:{" "}
-                        {getMonthYear(entry.data.ValidUntil)}
-                      </span>
-                    )}
-                  </h4>
-                  {entry.data.Description && (
-                    <p class="text-sm text-pretty text-zinc-300">
-                      {entry.data.Description}
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })
-      }
-    </section>
-    <section id={createHtmlId(cv.ui.engagementSimple)}>
-      <h2>{cv.ui.engagementSimple}</h2>
-      {
-        engSelected.map((engagement, index: number) => {
-          const isOdd = index % 2 === 0;
-          const bgClass = isOdd ? "bg-[rgb(25,25,25)]" : "bg-[rgb(21,21,21)]";
-
-          return (
-            <div
-              class={`group grid grid-cols-[100px_minmax(100px,1fr)] ${index % 2 === 0 ? "group-odd" : "group-even"}`}
-            >
-              <div class="timeline-wrapper">
-                <div class="timeline-top" />
-                {engagement.endDate ? (
-                  <time datetime={new Date(engagement.endDate).toDateString()}>
-                    {getMonthYear(engagement.endDate)}
-                  </time>
-                ) : (
-                  ""
-                )}
-                <time datetime={new Date(engagement.startDate).toDateString()}>
-                  {getMonthYear(engagement.startDate)}
-                </time>
-                <div class="timeline" />
-              </div>
-
-              {engagement.link ? (
-                <a href={engagement.link} class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0 flex">
-                    <span class="grow">{engagement.title}</span>
-                    <Icon
-                      name="mdi:external-link"
-                      class="mt-2 size-3 shrink-0 print:hidden"
-                    />
-                  </h3>
-                  <h4>
-                    {engagement.organization}
-                    {engagement.location ? ` | ${engagement.location}` : ""}
-                  </h4>
-                  {
-                    <p class="text-sm text-pretty text-zinc-300 italic">
-                      {
-                        cv.ui.engagementTypes[
-                          engagement.type as keyof typeof cv.ui.engagementTypes
-                        ]
-                      }
-                    </p>
-                  }
-                  {engagement.description && (
-                    <p class="text-sm text-pretty text-zinc-300">
-                      {engagement.description}
-                    </p>
-                  )}
-                </a>
-              ) : (
-                <div class={`item-text ${bgClass}`}>
-                  <h3 class="mb-0">{engagement.title}</h3>
-                  <h4>
-                    {engagement.organization}
-                    {engagement.location ? ` | ${engagement.location}` : ""}
-                  </h4>
-                  {
-                    <p class="text-sm text-pretty text-zinc-300 italic">
-                      {engagement.type}
-                    </p>
-                  }
-                  {engagement.description && (
-                    <p class="text-sm text-pretty text-zinc-300">
-                      {engagement.description}
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })
-      }
-    </section>
-  </Container>
+    <CvSkills cv={cv} skills={skills} />
+    <CvExperiences cv={cv} items={experiences} />
+    <CvEducation cv={cv} items={education} locale={locale} />
+    <CvScholarships cv={cv} items={scholarships} />
+    <CvPublications cv={cv} items={publications} />
+    <CvCertifications cv={cv} items={certifications} />
+    <CvEngagements cv={cv} items={engagements} heading={cv.ui.engagementSimple} />
+  </CvContainer>
 </Base>
-
-<style>
-  /* Reset default margins */
-  @page {
-    margin-top: 2cm;
-    margin-bottom: 2cm;
-    margin-left: 1.2cm;
-    margin-right: 1.2cm;
-
-    @bottom-left {
-      content: "daniellocatelli.com/cv";
-      font-size: 9pt;
-      padding-bottom: 0.5cm;
-      color: #666;
-    }
-
-    @bottom-right {
-      content: counter(page) " / " counter(pages);
-      font-size: 9pt;
-      padding-bottom: 0.5cm;
-      color: #999;
-    }
-  }
-  /* Ensure page numbers are printed */
-  @media print {
-    :root,
-    :root[data-theme="light"],
-    :root[data-theme="dark"] {
-      color-scheme: light !important;
-      --theme-bg: white !important;
-    }
-    * {
-      background-color: white !important;
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-      color: black !important;
-    }
-    body {
-      padding: 0;
-    }
-    /* Reset some potential print-blocking styles */
-    body * {
-      visibility: visible;
-    }
-  }
-</style>
