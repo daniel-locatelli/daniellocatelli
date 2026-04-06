@@ -83,8 +83,8 @@ const educationCollection = await getCollection("education", ({ id }) =>
 );
 const education = educationCollection.sort(
   (a, b) =>
-    new Date(b.data.DateStart || "").getTime() -
-    new Date(a.data.DateStart || "").getTime(),
+    new Date(b.data.DateEnd || b.data.DateStart || "").getTime() -
+    new Date(a.data.DateEnd || a.data.DateStart || "").getTime(),
 );
 
 // Scholarships (all)

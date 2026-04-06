@@ -2,7 +2,7 @@
 Cover: /assets/content/teaching/arquitetura-computacional-na-alemanha-uft/arquitetura-computacional-na-alemanha-uft-cover.jpg
 CoverAlt: Screenshot of participants and last slide before finishing the presentation.
 Description: "In this talk I presented the latest technologies in the computational design field in Germany, specially the ICD & ITKE at the University of Stuttgart and the company BuildSystems."
-Name: Arquitetura Computacional na Alemanha - UFT
+Name: Computational Architecture in Germany
 Category: Talk
 City:
   - Palmas

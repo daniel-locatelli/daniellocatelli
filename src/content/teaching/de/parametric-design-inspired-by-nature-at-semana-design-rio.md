@@ -1,8 +1,8 @@
 ---
-Cover: /assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/parametric-design-inspired-by-nature-at-semana-design-rio-cover.jpg
+Cover: /assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/semana-design-rio_daniel-locatelli_atelier-marko-brajovic-01.jpeg
 CoverAlt: Daniel Nunes Locatelli präsentiert bei der Semana Design Rio 2018
 Description: Vortrag bei der Semana Design Rio 2018 über sieben Prinzipien aus der Natur, angewandt auf parametrisches Design, mit Projektbeispielen aus dem Atelier Marko Brajovic.
-Name: Parametrisches Design inspiriert durch die Natur bei Semana Design Rio
+Name: Parametrisches Design inspiriert durch die Natur
 Tags:
   - Parametric Design
   - Biomimetics
@@ -46,4 +46,6 @@ Die Präsentation stellte drei komplementäre Designansätze vor: Verhaltensfors
 
 Mehrere Projekte des Atelier Marko Brajovic wurden als Fallstudien vorgestellt, die diese Prinzipien in der Praxis demonstrieren, darunter der Brasilianische Pavillon auf der Expo Mailand 2015 (mit Studio Arthur Casas), die Parada Coca-Cola bei den Olympischen Spielen Rio 2016, die Camper-Together-Geschäfte in São Paulo, Hongkong, Melbourne und Mailand, der O3-Pavillon auf der Expo Revestir 2017, das Casa Ninho Docol auf der Expo Revestir 2018, die Nike-Air-Guitar-Installation in der Red Bull Station in São Paulo und die Heineken-Live-Your-Music-Installation im MECA Inhotim.
 
-![Präsentationsfolie bei der Semana Design Rio.](../../../assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/semana-design-rio-02.jpg)
+![Daniel Locatelli präsentiert bei der Semana Design Rio 2018.](../../../assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/semana-design-rio_daniel-locatelli_atelier-marko-brajovic-02.jpeg)
+
+![Präsentation bei der Semana Design Rio 2018.](../../../assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/semana-design-rio_daniel-locatelli_atelier-marko-brajovic-03.jpeg)

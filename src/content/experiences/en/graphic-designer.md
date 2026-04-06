@@ -4,7 +4,7 @@ DateStart: "2011-06"
 DateEnd: "2013-08"
 Organization: Biomedical Science Institute - University of São Paulo
 City:
-  - Brazil
+  - São Paulo
 Country: "Brazil"
 Category: Professional Experience
 Link: "https://ww3.icb.usp.br/"

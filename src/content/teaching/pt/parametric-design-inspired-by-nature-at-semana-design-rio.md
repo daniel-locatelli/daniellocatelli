@@ -1,8 +1,8 @@
 ---
-Cover: /assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/parametric-design-inspired-by-nature-at-semana-design-rio-cover.jpg
+Cover: /assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/semana-design-rio_daniel-locatelli_atelier-marko-brajovic-01.jpeg
 CoverAlt: Daniel Nunes Locatelli apresentando na Semana Design Rio 2018
 Description: Palestra na Semana Design Rio 2018 explorando sete princípios da natureza aplicados ao design paramétrico, com estudos de caso de projetos do Atelier Marko Brajovic.
-Name: Design Paramétrico Inspirado pela Natureza na Semana Design Rio
+Name: Design Paramétrico Inspirado pela Natureza
 Tags:
   - Parametric Design
   - Biomimetics
@@ -46,4 +46,6 @@ A apresentação enquadrou três abordagens complementares ao design: behaviouro
 
 Diversos projetos do Atelier Marko Brajovic foram apresentados como estudos de caso demonstrando esses princípios na prática, incluindo o Pavilhão do Brasil na Expo Milão 2015 (com Studio Arthur Casas), a Parada Coca-Cola nos Jogos Olímpicos Rio 2016, as lojas Camper Together em São Paulo, Hong Kong, Melbourne e Milão, o Pavilhão O3 na Expo Revestir 2017, a Casa Ninho Docol na Expo Revestir 2018, a instalação Nike Air Guitar no Red Bull Station em São Paulo e a instalação Heineken Live Your Music no MECA Inhotim.
 
-![Slide da apresentação na Semana Design Rio.](../../../assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/semana-design-rio-02.jpg)
+![Daniel Locatelli apresentando na Semana Design Rio 2018.](../../../assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/semana-design-rio_daniel-locatelli_atelier-marko-brajovic-02.jpeg)
+
+![Apresentação na Semana Design Rio 2018.](../../../assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/semana-design-rio_daniel-locatelli_atelier-marko-brajovic-03.jpeg)

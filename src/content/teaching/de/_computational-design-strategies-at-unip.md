@@ -1,5 +1,5 @@
 ---
-Name: "Computational Design: Strategien an der UNIP"
+Name: "Computergestütztes Design: Strategien"
 Category: Talk
 Country: Brasilien
 DateStart: "2020-11-01"

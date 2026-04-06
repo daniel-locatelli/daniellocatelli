@@ -1,5 +1,5 @@
 ---
-Name: Arquitetura + Biomimética + Algoritmo no IED
+Name: Arquitetura + Biomimética + Algoritmo
 DateStart: "2017-10-01"
 City:
   - São Paulo

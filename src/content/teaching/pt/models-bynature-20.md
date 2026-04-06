@@ -1,0 +1,56 @@
+---
+Cover: /assets/content/teaching/models-bynature-20/models-bynature-20_form-finding-catenary-with-soap.jpeg
+CoverAlt: Estudantes apresentam seus pavilhões Voronoi resultantes do workshop.
+Description: "A segunda edição do workshop Models byNature expandiu a primeira com quatro sábados de design paramétrico com Grasshopper inspirado na natureza, abordando experimentos de busca pela forma, modelagem computacional e biomimética no Atelier Marko Brajovic em São Paulo."
+Name: Models byNature 2.0
+Authors:
+  - Daniel Nunes Locatelli
+Category: Workshop
+City:
+  - São Paulo
+Country: Brasil
+DateStart: "2019-07-06"
+DateEnd: "2019-07-27"
+Language: Português
+Place: Atelier Marko Brajovic
+---
+
+Após o sucesso do [Models byNature 1.0](/teaching/models-bynature-10), esta segunda edição deu continuidade ao formato do workshop ao longo de quatro sábados, aprofundando ainda mais a conexão entre design computacional e fenômenos naturais. Realizado no Atelier Marko Brajovic em São Paulo, o curso guiou os participantes por experimentos físicos de busca pela forma, modelagem paramétrica com Rhino e Grasshopper e princípios de design biomimético. A literatura de referência, incluindo "Thinking by Modeling" de Frei Otto e "Soap Bubbles" de C.V. Boys, forneceu a base teórica para a abordagem prática do workshop.
+
+![Livros de referência incluindo Frei Otto e Soap Bubbles](../../../assets/content/teaching/models-bynature-20/models-bynature-20_reference-books.jpeg)
+
+## Experimentos de busca pela forma
+
+O primeiro sábado foi dedicado à busca pela forma física. Os participantes construíram armações de arame e as mergulharam em solução de sabão para revelar superfícies mínimas, o mesmo princípio que Frei Otto utilizou ao projetar estruturas tensionadas. Curvas catenárias surgiram de fios suspensos entre palitos, tecidos esticados sobre armações demonstraram o comportamento de membranas sob tensão, e areia despejada sobre placas perfuradas se auto-organizou em padrões de Voronoi. Esses experimentos proporcionaram aos participantes uma compreensão intuitiva e material da lógica estrutural que as ferramentas computacionais posteriormente formalizam.
+
+![Participantes no pátio do atelier durante os experimentos de busca pela forma](../../../assets/content/teaching/models-bynature-20/models-bynature-20_workshop-courtyard-overview.jpeg)
+
+![Workshop de busca pela forma](../../../assets/content/teaching/models-bynature-20/models-bynature-20_form-finding-workshop.jpeg)
+
+![Busca pela forma de catenária com sabão](../../../assets/content/teaching/models-bynature-20/models-bynature-20_form-finding-catenary-with-soap.jpeg)
+
+![Filme de sabão revelando superfícies mínimas em laços de arame](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-minimal-surfaces.jpeg)
+
+![Filme de sabão em armação triangular de arame](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-triangular-frame.jpeg)
+
+![Escultura complexa de filme de sabão em arame](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-wire-sculpture.jpeg)
+
+![Busca pela forma com cordas, palitos e sabão](../../../assets/content/teaching/models-bynature-20/models-bynature-20_form-finding-strings-sticks-with-soap.jpeg)
+
+![Modelo de cordas catenárias com filme de sabão](../../../assets/content/teaching/models-bynature-20/models-bynature-20_catenary-string-soap-model.jpeg)
+
+![Modelo de tecido tensionado com palitos](../../../assets/content/teaching/models-bynature-20/models-bynature-20_tensile-fabric-model.jpeg)
+
+![Padrão Voronoi emergindo da areia](../../../assets/content/teaching/models-bynature-20/models-bynature-20_voronoi-sand-experiment.jpeg)
+
+## Fase de design computacional
+
+Nos sábados seguintes, os participantes traduziram seus experimentos físicos em modelos paramétricos usando Rhino e Grasshopper. Os tópicos incluíram tesselação de Voronoi, relaxamento de malha com Kangaroo, subdivisão de superfícies com Weaverbird e técnicas de modelagem associativa. Cada participante desenvolveu um projeto individual inspirado nos processos naturais observados durante o dia de busca pela forma. A progressão do físico para o digital reforçou um princípio central: o design computacional é mais eficaz quando fundamentado na compreensão dos fenômenos que simula.
+
+![Participantes trabalhando em definições de Grasshopper](../../../assets/content/teaching/models-bynature-20/models-bynature-20_grasshopper-modeling-session.jpeg)
+
+![Workshop de design computacional](../../../assets/content/teaching/models-bynature-20/models-bynature-20_computational-design-workshop.jpeg)
+
+## Apresentações finais
+
+No último sábado, os participantes apresentaram seus projetos individuais. O arquiteto Marko Brajovic participou da sessão de encerramento com uma palestra aberta sobre biomimética e seu papel na arquitetura e no design contemporâneos, conectando os exercícios do workshop a temas mais amplos da área.

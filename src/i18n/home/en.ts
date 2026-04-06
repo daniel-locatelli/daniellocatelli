@@ -1,7 +1,7 @@
 import type { I18nHome } from "./types";
-import buildSystemsCalculator from "@/assets/mockups/iphone-pro-calculator-mockup-2.png";
-import buildSystemsPluginCover from "@/assets/mockups/grasshopper-macbook.png";
-import artEngineeringCommonSkies from "@/assets/images/common-sky-01.jpg";
+import buildSystemsCalculator from "@/assets/homepage/iphone-pro-calculator-mockup-2.png";
+import buildSystemsPluginCover from "@/assets/homepage/grasshopper-macbook.png";
+import artEngineeringCommonSkies from "@/assets/homepage/common-sky-01.jpg";
 
 export const t: I18nHome = {
   meta: {

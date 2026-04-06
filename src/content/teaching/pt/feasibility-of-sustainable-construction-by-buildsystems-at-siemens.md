@@ -2,7 +2,7 @@
 Cover: /assets/content/teaching/feasibility-of-sustainable-construction-by-buildsystems-at-siemens/feasibility-of-sustainable-construction-by-buildsystems-at-siemens-cover.jpg
 CoverAlt: Daniel Nunes Locatelli apresentando uma das ferramentas utilizadas pela BuildSystems.
 Description: "Um pitch na Conferência Siemens RIE Munique sobre como ferramentas computacionais podem gerar dados para viabilizar a sustentabilidade na indústria da construção — da análise urbana à avaliação do ciclo de vida."
-Name: Viabilidade de construções sustentáveis pela BuildSystems na Siemens
+Name: Viabilidade de Construções Sustentáveis
 Category: Pitch
 City:
   - Munique

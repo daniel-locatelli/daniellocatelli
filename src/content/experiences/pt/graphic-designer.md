@@ -4,7 +4,7 @@ DateStart: "2011-06"
 DateEnd: "2013-08"
 Organization: Instituto de Ciências Biomédicas - Universidade de São Paulo
 City:
-  - Brasil
+  - São Paulo
 Country: "Brasil"
 Category: Professional Experience
 Link: "https://ww3.icb.usp.br/"

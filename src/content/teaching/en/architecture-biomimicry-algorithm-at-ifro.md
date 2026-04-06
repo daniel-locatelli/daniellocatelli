@@ -2,7 +2,7 @@
 Cover: /assets/content/teaching/architecture-biomimicry-algorithm-at-ifro/ifro-vilhena-group-foto.jpeg
 CoverAlt: Group photo with all the students.
 Description: "During my visit to my hometown, I proposed a lecture to the architecture and urbanism course of the Federal Institute of Rondônia - IFRO. I presented some works and research that I had done so far and discussed the future of the profession amid so many technological changes."
-Name: Architecture + Biomimicry + Algorithm at IFRO
+Name: Architecture + Biomimicry + Algorithm
 Category: Talk
 City:
   - Vilhena

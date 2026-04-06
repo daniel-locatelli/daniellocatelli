@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/teaching/intcdc-masters-thesis-grant-2021/intcdc-masters-thesis-grant-2021-cover.jpg
+Cover: /assets/content/teaching/intcdc-masters-thesis-grant-2021/daniel-locatelli-and-nils-opgenorth-presenting.jpg
 CoverAlt: Daniel Nunes Locatelli e Nils Opgenorth apresentando no Seminário de Status do IntCDC
 Name: "Cerimônia de Premiação IntCDC Master's Thesis Grant 2021"
 Category: Pitch
