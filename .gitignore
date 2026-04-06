@@ -36,3 +36,6 @@ content-base/
 # Temporary files
 tmp_*.json
 
+
+# Benchmark results (generated)
+scripts/benchmark-results.json
