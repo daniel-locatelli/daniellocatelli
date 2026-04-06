@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 const pageSchema = z.object({
   PageId: z.string().optional(),
@@ -172,7 +173,7 @@ const pageSchema = z.object({
       z.array(z.any()),
       z.object({ Text: z.string(), Href: z.string() }),
     ])
-    .optional(), // Allow simple string links or simplified link objects
+    .optional(),
   OtherLinks: z
     .array(
       z.object({
@@ -190,7 +191,6 @@ const pageSchema = z.object({
   Category: z.string().optional(),
   Level: z.string().optional(),
   Locale: z.string().optional(),
-  // CV-specific fields
   Order: z.number().optional(),
   ValidUntil: z.string().optional(),
   CredentialID: z.string().optional(),
@@ -198,50 +198,22 @@ const pageSchema = z.object({
   Country: z.string().optional(),
 });
 
+const contentCollection = (base: string) =>
+  defineCollection({
+    loader: glob({ pattern: "**/*.{md,mdx}", base }),
+    schema: pageSchema,
+  });
+
 export const collections = {
-  projects: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  research: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  teaching: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  pages: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  publications: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  skills: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  // CV content collections (migrated from src/i18n/cv/)
-  experiences: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  education: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  scholarships: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  certifications: defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
-  "courses-attended": defineCollection({
-    type: "content",
-    schema: pageSchema,
-  }),
+  projects: contentCollection("./src/content/projects"),
+  research: contentCollection("./src/content/research"),
+  teaching: contentCollection("./src/content/teaching"),
+  pages: contentCollection("./src/content/pages"),
+  publications: contentCollection("./src/content/publications"),
+  skills: contentCollection("./src/content/skills"),
+  experiences: contentCollection("./src/content/experiences"),
+  education: contentCollection("./src/content/education"),
+  scholarships: contentCollection("./src/content/scholarships"),
+  certifications: contentCollection("./src/content/certifications"),
+  "courses-attended": contentCollection("./src/content/courses-attended"),
 };

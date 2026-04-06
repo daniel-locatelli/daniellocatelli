@@ -2,12 +2,10 @@
 import Base from "@/layouts/Base.astro";
 import CvContainer from "@/components/cv/CvContainer.astro";
 import CvHeader from "@/components/cv/CvHeader.astro";
-import CvSkills from "@/components/cv/CvSkills.astro";
 import CvExperiences from "@/components/cv/CvExperiences.astro";
 import CvEducation from "@/components/cv/CvEducation.astro";
 import CvScholarships from "@/components/cv/CvScholarships.astro";
 import CvPublications from "@/components/cv/CvPublications.astro";
-import CvCertifications from "@/components/cv/CvCertifications.astro";
 import CvEngagements from "@/components/cv/CvEngagements.astro";
 import type { I18nCV } from "src/i18n/cv/types";
 import type { I18nMeta } from "src/i18n/meta/types";
@@ -15,7 +13,7 @@ import { getI18n } from "src/i18n/utils";
 import { getLocale } from "src/lib/routes-helpers";
 export { getStaticPaths } from "src/lib/routes-helpers";
 import { getCollection, render } from "astro:content";
-import { extractName, extractFirstName, extractLink, localizeLink, buildLocation, sortByOrder } from "src/lib/cv-helpers";
+import { extractName, extractFirstName, extractLink, localizeLink, buildLocation } from "src/lib/cv-helpers";
 
 const locale = getLocale(Astro.params);
 
@@ -41,15 +39,11 @@ const publications = publicationsCollection
     authors: p.data.Authors?.map((a: any) => extractName(a)) || [],
   }));
 
-// Engagements (>= 2023)
+// Engagements (all, no date filter)
 const teachingCollection = await getCollection("teaching", ({ id }) =>
   id.startsWith(`${locale}/`),
 );
 const engagements = teachingCollection
-  .filter((t) => {
-    if (!t.data.DateStart) return false;
-    return new Date(t.data.DateStart) >= new Date("2023-01-01");
-  })
   .sort(
     (a, b) =>
       new Date(b.data.DateStart || "").getTime() -
@@ -66,41 +60,12 @@ const engagements = teachingCollection
     description: t.data.Description,
   }));
 
-// Skills (prefer locale, fall back to English)
-const allSkills = await getCollection("skills", ({ id }) =>
-  id.startsWith(`${locale}/`) || id.startsWith("en/"),
-);
-const skillsMap = new Map<string, (typeof allSkills)[number]>();
-for (const skill of allSkills) {
-  const key = skill.id.replace(/^[^/]+\//, "");
-  const existing = skillsMap.get(key);
-  if (!existing || !skill.id.startsWith("en/")) {
-    skillsMap.set(key, skill);
-  }
-}
-const skillsCollection = [...skillsMap.values()];
-const skills = {
-  programming: skillsCollection.filter((s) => s.data.Category === "Programming").sort(sortByOrder),
-  frameworks: skillsCollection.filter((s) => s.data.Category === "Framework").sort(sortByOrder),
-  databases: skillsCollection.filter((s) => s.data.Category === "Database").sort(sortByOrder),
-  design: skillsCollection.filter((s) => s.data.Category === "Design tool").sort(sortByOrder),
-  specialized: skillsCollection
-    .filter((s) => s.data.Category === "Specialization")
-    .sort(sortByOrder)
-    .map((s) => s.data.Name),
-  languages: skillsCollection.filter((s) => s.data.Category === "Language").sort(sortByOrder),
-};
-
-// Experiences (>= 2015)
+// Experiences (all, no date filter)
 const experiencesCollection = await getCollection("experiences", ({ id }) =>
   id.startsWith(`${locale}/`),
 );
 const experiences = await Promise.all(
   experiencesCollection
-    .filter((e) => {
-      if (!e.data.DateStart) return false;
-      return new Date(e.data.DateStart) >= new Date("2015");
-    })
     .sort(
       (a, b) =>
         new Date(b.data.DateStart || "").getTime() -
@@ -112,20 +77,15 @@ const experiences = await Promise.all(
     })),
 );
 
-// Education (DateEnd >= 2014)
+// Education (all, no date filter)
 const educationCollection = await getCollection("education", ({ id }) =>
   id.startsWith(`${locale}/`),
 );
-const education = educationCollection
-  .filter((e) => {
-    if (e.data.DateEnd === undefined) return true;
-    return new Date(e.data.DateEnd) >= new Date("2014");
-  })
-  .sort(
-    (a, b) =>
-      new Date(b.data.DateStart || "").getTime() -
-      new Date(a.data.DateStart || "").getTime(),
-  );
+const education = educationCollection.sort(
+  (a, b) =>
+    new Date(b.data.DateStart || "").getTime() -
+    new Date(a.data.DateStart || "").getTime(),
+);
 
 // Scholarships (all)
 const scholarships = (
@@ -135,43 +95,28 @@ const scholarships = (
     new Date(b.data.DateStart || "").getTime() -
     new Date(a.data.DateStart || "").getTime(),
 );
-
-// Certifications (>= 2015)
-const certifications = (
-  await getCollection("certifications", ({ id }) => id.startsWith(`${locale}/`))
-)
-  .filter((c) => {
-    if (!c.data.DateStart) return false;
-    return new Date(c.data.DateStart) >= new Date("2015");
-  })
-  .sort(
-    (a, b) =>
-      new Date(b.data.DateStart || "").getTime() -
-      new Date(a.data.DateStart || "").getTime(),
-  );
 ---
 
 <Base
   meta={{
-    title: cv.meta.titleSimple,
-    description: cv.meta.descriptionSimple,
+    title: "Daniel Locatelli - CV for PhD Application",
+    description:
+      "Curriculum Vitae for PhD application with full chronological history of educational background and work experiences.",
     coverAlt: cv.meta.coverAlt,
     coverImage: "@/assets/avatars/daniel-locatelli-v1.png",
-    slug: "cv",
+    slug: "phd-cv",
   }}
 >
-  <CvContainer footerUrl="daniellocatelli.com/cv">
+  <CvContainer footerUrl="daniellocatelli.com/phd-cv">
     <CvHeader cv={cv} meta={meta} />
     <section id="summary">
       <h2>{cv.ui.summary}</h2>
       <p class="text-pretty">{cv.summary}</p>
     </section>
-    <CvSkills cv={cv} skills={skills} />
-    <CvExperiences cv={cv} items={experiences} />
     <CvEducation cv={cv} items={education} locale={locale} />
+    <CvExperiences cv={cv} items={experiences} />
     <CvScholarships cv={cv} items={scholarships} />
     <CvPublications cv={cv} items={publications} />
-    <CvCertifications cv={cv} items={certifications} />
-    <CvEngagements cv={cv} items={engagements} heading={cv.ui.engagementSimple} />
+    <CvEngagements cv={cv} items={engagements} heading={cv.ui.engagementFull} />
   </CvContainer>
 </Base>

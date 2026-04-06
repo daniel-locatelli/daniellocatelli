@@ -16,7 +16,7 @@ import type { I18nMeta } from "src/i18n/meta/types";
 import { getI18n } from "src/i18n/utils";
 import { getLocale } from "src/lib/routes-helpers";
 export { getStaticPaths } from "src/lib/routes-helpers";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { extractName, extractFirstName, extractLink, localizeLink, buildLocation, sortByOrder, resolveProjectLink } from "src/lib/cv-helpers";
 
 const locale = getLocale(Astro.params);
@@ -102,7 +102,7 @@ const experiences = await Promise.all(
     )
     .map(async (entry) => ({
       data: entry.data,
-      Content: (await entry.render()).Content,
+      Content: (await render(entry)).Content,
     })),
 );
 

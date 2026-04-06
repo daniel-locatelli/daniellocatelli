@@ -1,7 +1,7 @@
 ---
 Name: Designer Computacional
 DateStart: "2015-03"
-DateEnd: "2019-07"
+DateEnd: "2019-08"
 Organization: Atelier Marko Brajovic
 City:
   - São Paulo

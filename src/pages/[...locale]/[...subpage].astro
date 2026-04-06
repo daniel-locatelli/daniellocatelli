@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import {
   importCoverImage,
@@ -70,7 +70,7 @@ interface Props {
 const { subpage } = Astro.props as Props;
 const slug = getEntrySlug(subpage);
 
-const { Content } = await subpage.render();
+const { Content } = await render(subpage);
 
 // Getting images dynamically with import.meta.glob()
 // It only accepts string literals
@@ -375,7 +375,7 @@ if (image) {
         {
           subpage.data.Language && subpage.data.Language.length > 0 && (
             <tr>
-              {subpage.data.Language.length === 1 ? (
+              {!Array.isArray(subpage.data.Language) || subpage.data.Language.length === 1 ? (
                 <th>{t.language}</th>
               ) : (
                 <th>{t.languages}</th>
@@ -541,7 +541,7 @@ if (image) {
     theme: "dark",
     darkMode: true,
   });
-  document.addEventListener("DOMContentLoaded", async () => {
+  document.addEventListener("astro:page-load", async () => {
     const blocks = document.querySelectorAll('pre[data-language="mermaid"]');
     if (blocks.length === 0) return;
     for (const block of blocks) {
