@@ -12,13 +12,37 @@ Language: Portugiesisch
 
 Dieser Workshop zielte darauf ab, Computational-Design-Praktiken mit natürlichen Phänomenen zu verbinden und behandelte Themen wie Biomimetik, Modellierung mit der Natur und visuelle Programmiersprachen unter Verwendung von Rhino und Grasshopper. Organisiert im Atelier Marko Brajovic in São Paulo und gemeinsam mit Adalberto de Paula geleitet, erstreckte sich der Kurs über drei Wochenenden und führte die Teilnehmenden von physischer Experimentation zur computergestützten Modellierung.
 
+
+
 ## Formfindungsexperimente
 
 Der erste Tag war vollständig physischen Formfindungsexperimenten gewidmet. Bevor irgendeine Software geöffnet wurde, erkundeten die Teilnehmenden anhand praktischer Übungen mit Alltagsmaterialien, wie natürliche Formen entstehen. Seifenfilme, die über Drahtrahmen gespannt wurden, offenbarten Minimalflächen, während Sand, der über Voronoi-gemusterte Begrenzungen geschüttet wurde, zeigte, wie sich granulare Materialien selbst organisieren. Über Rahmen gespannte Stoffe demonstrierten, wie Membranstrukturen unter Schwerkraft ihr Gleichgewicht finden. Diese Experimente vermittelten ein intuitives, haptisches Verständnis der Prinzipien, die computergestützte Werkzeuge später formalisieren.
 
+
+
+
+
+
+
+
+
+
+
+
+
 ## Computational-Design-Phase
 
 In den folgenden Sitzungen übertrugen die Teilnehmenden ihre physischen Experimente in digitale Modelle mit Rhino und Grasshopper. Behandelte Themen umfassten parametrische Modellierung, Voronoi-Tessellation, Netzrelaxation mit Kangaroo und Flächenunterteilung mit Weaverbird. Jeder Teilnehmende entwickelte ein eigenes Design, inspiriert von den am ersten Tag beobachteten natürlichen Prozessen. Der Übergang vom Physischen zum Digitalen unterstrich eine zentrale Idee des Workshops: Computational Design ist am wirkungsvollsten, wenn es auf einem Verständnis der Phänomene basiert, die es simuliert.
+
+
+
+
+
+
+
+
+
+
 
 ## Abschlusspräsentationen
 

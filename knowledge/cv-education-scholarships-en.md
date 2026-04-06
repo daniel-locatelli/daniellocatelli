@@ -23,18 +23,6 @@ January 2010 – December 2016
 Thesis: Architecture + Biomimetics + Algorithm
 Supervisors: Prof. Arthur Lara
 
-### University Entrance Preparatory Course
-Colégio Nobel | Londrina, Brazil
-January 2009 – December 2009
-
-### Bachelor of Architecture and Urbanism (dropped)
-UNEMAT | Barra do Bugres, Brazil
-January 2007 – December 2008
-
-### High School
-CEI Anglo | Vilhena, Brazil
-January 2004 – December 2006
-
 ## Scholarships
 
 ### IntCDC Master’s Thesis Grant 2021

@@ -2,15 +2,14 @@ URL: https://daniellocatelli.com/pt/full-cv
 
 # Designer Computacional
 
-Organization: Atelier Marko Brajovic
-Location: São Paulo, Brasil
+Organization: ArtEngineering GmbH
+Location: Schorndorf, Alemanha
 Category: Professional Experience
-Date: March 2015 - August 2019
-Link: https://markobrajovic.com/en
+Date: December 2021 - December 2022
+Link: https://art-engineering.net/
 
-*Estagiário até dezembro de 2016*
-
-- Modelagem CAD, BIM e computacional para projetos arquitetônicos.
-- Gerenciamento de projetos e relacionamento com fornecedores.
-- Desenvolvimento de projetos conceituais e renderizações de alta qualidade.
-- Liderança em iniciativas de prototipagem e fabricação digital.
+- Modelagem algorítmica e análise de elementos finitos de estruturas espaciais complexas e obras de arte.
+- Desenvolvimento de workflow automatizados do design à produção.
+- Auxiliou na análise estrutural de estruturas espaciais complexas.
+- Preparação de documentação técnica meticulosa.
+- Criação de desenhos de engenharia precisos e planos de produção.

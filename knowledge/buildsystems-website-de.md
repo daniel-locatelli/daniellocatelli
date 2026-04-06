@@ -29,16 +29,24 @@ BuildSystems nutzte Notion bereits intensiv für interne Dokumentation und Proje
 
 Die Integration ruft Inhalte zur Build-Zeit aus mehreren Notion-Datenbanken ab (Blogbeiträge, Teammitglieder, Partner, Organisationen) und rendert sie mit über 30 benutzerdefinierten Notion-Komponenten für Überschriften, Absätze, Bilder, Codeblöcke, Tabellen, Embeds und mehr.
 
+
+
 ## Hauptmerkmale
 
 ### CSS-First-Animationen
 Eine bewusste Entscheidung war es, reine CSS-`@keyframes`-Animationen anstelle von Lottie-Animationen zu verwenden, um die Seite nicht mit zu viel Inhalt zu überladen, was die Performance beeinträchtigt hätte. Das Homepage-Cover zeigt eine animierte Vollbild-Sequenz, und die „Drei Säulen"-Bereiche nutzen reine CSS-Animationen in horizontalem und vertikalem Layout. Das hält die Seite schlank und performant.
 
+
+
 ### Drag-to-Scroll-Karussell
 Das Blogbeitrag-Karussell implementiert eine eigene Drag-to-Scroll-Interaktion mit Trägheitsphysik und sanftem Scroll-Snap. Nutzer können das Karussell mit Maus oder Touch ziehen, und es rastet beim Loslassen sanft an der nächsten Karte ein.
 
+
+
 ### Blogbeiträge aus Notion
 Jeder Blogbeitrag wird in Notion verfasst und zur Build-Zeit auf der Website gerendert. Es werden reichhaltige Inhalte unterstützt, einschließlich eingebetteter Medien (Instagram, TikTok, YouTube, CodePen), LaTeX-Gleichungen über KaTeX, Codeblöcke mit Prism.js-Syntaxhervorhebung und Link-Vorschauen über metascraper.
+
+
 
 ## Architektur
 

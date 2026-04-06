@@ -2,7 +2,7 @@ URL: https://daniellocatelli.com/pt
 
 # Location and Contact
 
-Daniel Locatelli is currently based in Munich, Germany.
+Daniel Locatelli is currently based in Munique, Alemanha.
 
 Contact information:
 - Email: contact@daniellocatelli.com

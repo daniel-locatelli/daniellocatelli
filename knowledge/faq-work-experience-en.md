@@ -2,8 +2,8 @@ URL: https://daniellocatelli.com/full-cv
 
 # Work Experience History
 
-Daniel Locatelli has held 6 professional positions across multiple countries.
+Daniel Locatelli has held 7 professional positions across multiple countries.
 
 Positions by country:
-- Germany: 5 position(s) (AEC Software Engineer, AEC Software Engineer, Computational Designer, Computational Designer, Research Assistant)
+- Germany: 6 position(s) (Research Associate (60%), AEC Software Engineer, AEC Software Engineer, Computational Designer, Computational Designer, Research Assistant)
 - USA: 1 position(s) (On-the-job Training)

@@ -12,6 +12,8 @@ Language: Portuguese
 
 UNEMAT was the first university where I studied Architecture. Ten years after the beginning of my studies there, I presented this talk about my whole trajectory, from my university transfer to the FAU-USP, my work at Atelier Marko Brajovic, and my recent career shift, focusing more specifically on Computational Design and programming. The talk, titled "Architecture + Biomimetics + Algorithm", was structured in three parts.
 
+
+
 ## Part 1: Academic Trajectory
 
 The first part covered the academic journey after leaving UNEMAT, beginning with the transfer to FAU-USP in Sao Paulo. There, the experience ranged from the iconic building by Vilanova Artigas and its famous leaks, to the LAME laboratory, inspiring professors, and a strong social focus in architecture, though the technology area remained limited.

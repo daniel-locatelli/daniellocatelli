@@ -31,7 +31,10 @@ A bibliografia foi selecionada de forma a permitir uma visão geral dos estudos 
 
 Buckminster Fuller e Frei Otto foram especialmente importantes para este estudo. Buckminster, com seus estudos de geometria sinergética, tentou explorar o potencial da otimização no design, resultando em invenções como a cúpula geodésica e a Transformação Jitterbug que "fazem o máximo com o mínimo" (Krausse e Lichtenstein [6]). Frei Otto, por outro lado, produziu seus famosos modelos de investigação de busca de forma que exploravam qualidades físicas como filme de espuma, borracha e estruturas tensionadas (Barthel [1]).
 
+
 ## Arquitetura e Biomimética
+
+
 
 Segundo Benyus [2], a biomimética utiliza a natureza como principal diretriz de projeto e pode ser dividida em três níveis. O primeiro, mais superficial, é uma tentativa de simplesmente imitar formas e padrões da natureza, independentemente do método utilizado. O segundo nível explora os caminhos que a natureza percorre até atingir seu resultado final, o processo. E o terceiro e mais amplo nível é imitar ecossistemas naturais, compreendendo que todos os indivíduos e elementos compõem uma única biosfera sustentável, interconectada e interdependente.
 
@@ -40,6 +43,8 @@ Na natureza, estruturas que parecem simples como teias de aranha, colmeias de ab
 A arquitetura algorítmica funciona de maneira semelhante e também explora esses mecanismos naturais, mas em vez de partir da informação genética, o projeto é determinado por um algoritmo. Em resumo, um algoritmo completo teria todas as informações necessárias para a execução de uma construção, incluindo diversas alterações exigidas de acordo com cada programa de necessidades.
 
 ## O Programa de Necessidades
+
+
 
 Na exploração dos espaços da FAU-USP, ficou evidente que faltavam espaços de convivência estudantil. Além disso, a pesquisa mostra que os estudantes têm o hábito de instalar redes pelo edifício para suprir essa necessidade. A ideia de subverter a maneira como as redes são projetadas apresentou um grande potencial no campo da busca de forma. Ao combinar design computacional com um método tradicional de tecelagem, a direção do projeto caminhou para um novo sistema de design.
 
@@ -57,8 +62,12 @@ O resultado final deve ter um material confortável e permitir variações para 
 ### Identidade
 O resultado final deve fazer referência ao logotipo da FAU-USP com a intenção de conectá-lo a outra forma de pensar além da visão modernista estabelecida.
 
+
+
 ### Localização
 A área proposta consiste em um quadrado de 12 metros de lado (144 m²) coberto por gramado, localizado entre o edifício principal da FAU-USP e o Laboratório de Modelos e Ensaios (LAME).
+
+
 
 ### Otimização
 A forma como é projetado deve considerar a otimização de forma e estrutura.
@@ -72,6 +81,8 @@ O principal software utilizado para desenvolver este estudo foi o Rhinoceros 3D 
 
 O algoritmo final desenvolvido visa manipular um padrão de malha predeterminado. Neste caso, para o estudo técnico, foram utilizados um quadro cúbico e uma malha em forma de esfera.
 
+
+
 O algoritmo funciona em cinco etapas. A primeira consiste na criação de um quadro cúbico com dimensão de 1 metro de aresta e a divisão de todas as arestas em 116 pontos equidistantes.
 
 A segunda etapa é a seleção de 1 a 40 vértices-âncora dentre os 116 vértices iniciais presentes no quadro cúbico. Esse processo de seleção é guiado pelo Galapagos e será descrito na última etapa.
@@ -80,17 +91,31 @@ Na terceira fase, uma esfera de 0,80 metros de diâmetro é criada e sua malha �
 
 Na quarta etapa, com a estrutura preparada, o simulador físico Kangaroo pode finalmente ser ativado. Desta forma, as linhas e a malha da esfera são convertidas em cabos elásticos. Com a resistência dos cabos ajustada, é possível tornar o sistema estável. Em seguida, são calculadas as distâncias vetoriais entre os vértices originais da esfera estática e os vértices com a esfera "relaxada".
 
+
+
 A quinta etapa utiliza o Galapagos. Esse algoritmo começa gerando 50 possíveis resultados aleatórios, ou seja, 50 indivíduos baseados no pool genético, que neste caso são os 116 vértices encontrados ao longo da estrutura cúbica e os 190 vértices na malha da esfera. Com esses dados, ele é capaz de buscar entre os 50 indivíduos iniciais e determinar o melhor. Esse processo é chamado de função de aptidão (fitness function), e seleciona os indivíduos que têm seus vértices finais mais próximos dos vértices da forma esférica inicial.
+
+
 
 A partir da geração inicial de pontos de dados, os indivíduos ótimos combinam seus marcadores genéticos para criar 50 novos pontos de dados como sua própria geração distinta. Isso se repete até que o resultado mais favorável seja alcançado. Neste exemplo, o algoritmo se estabilizou na centésima geração.
 
+
+
 A partir daí, outros sete estudos foram desenvolvidos, mas apenas o padrão de malha inicial da esfera foi alterado, e seu comportamento foi analisado.
+
+
 
 Com os resultados obtidos, concluiu-se que a melhor alternativa para desenvolver a proposta final foi a "malha hexagonal truncada", uma vez que apresenta o melhor controle sobre a forma final, além de ser razoável para fabricação.
 
 ## Detalhamento
 
 Para atender a todos os itens listados no programa de necessidades, foi desenvolvida uma estrutura que faz referência direta a um dos módulos que compõem o logotipo da FAU-USP. A partir desse esqueleto metálico composto por 4 barras, um amplo espectro de 20 soluções foi gerado.
+
+
+
+
+
+
 
 De maneira semelhante ao que acontece com a evolução na biologia, não resulta em uma "solução perfeita", mas cumpre seu objetivo final. Isso é especialmente importante no design, pois se torna um meio pelo qual humanos e computadores podem trabalhar juntos. Enquanto os humanos montam o algoritmo, os computadores o processam e acabam oferecendo um grande número de resultados, para que um humano possa então escolher aqueles que respeitam qualidades difíceis de especificar dentro do algoritmo, como estética ou conforto.
 
@@ -104,11 +129,21 @@ A montagem aconteceria em 3 etapas: a produção da rede, a montagem do esquelet
 
 A técnica de renda de bilro consiste em uma produção manual de tecido que permite desenvolver padrões complexos com ferramentas rudimentares. A fabricação tradicional consiste no trançado e torção sucessivos de comprimentos de fio utilizando bastões de madeira (bilros) para manuseá-los, alfinetes para manter o padrão estável e uma almofada de suporte.
 
+
+
+
+
+
+
+
+
 ## Conclusão
 
 Este estudo buscou explorar algumas possibilidades de incorporar uma técnica tradicional de tecelagem ao design computacional visando desenvolver um protótipo de cadeira tipo rede. O algoritmo também fornece algumas saídas inesperadas que mudam a forma como o projetista visualiza o projeto final. Em outras palavras, esse sistema permite que o algoritmo e o projetista trabalhem juntos como uma equipe.
 
 Em última análise, o algoritmo final funciona como uma extensão criativa da mente humana, gerando um espectro de múltiplas soluções.
+
+
 
 ### Referências
 [1] Barthel R. Natural Forms - Architectural Forms. In: FREI OTTO - *Lightweight Construction*, Natural Design, Birkhauser - Publishers for Architecture, 2005.

@@ -2,14 +2,6 @@ URL: https://daniellocatelli.com/full-cv
 
 # Daniel Locatelli – Professional Experience
 
-### Research Associate (60%)
-Munich University of Applied Sciences | Munich, Germany
-February 2025 – Current
-
-- Development of a Revit plugin (C#/.NET) to import buildups from DOKwood into Revit as System Families.
-- Development of a bSDD (building Smart Data Dictionary) to consolidate a semantic data model for DOKwood.
-- Research on standards, databases, CAD and BIM tools with focus on timber technology. Foundations to develop the app DOKwood.
-
 ### AEC Software Engineer
 BuildSystems GmbH | Munich, Germany
 January 2024 – December 2024
@@ -58,17 +50,6 @@ December 2019 – October 2020
 - Computational design of a self-curving timber tower with Dylan Wood.
 - Assisted the ICD website migration with Tobias Schwinn.
 
-### Computational Designer
-Atelier Marko Brajovic | São Paulo, Brazil
-March 2015 – August 2019
-
-*Intern until December 2016*
-
-- Executed CAD, BIM, and computational modeling for architectural projects.
-- Managed project communications and supplier relationships.
-- Developed conceptual designs and high-quality renderings.
-- Led prototyping and digital fabrication initiatives.
-
 ### On-the-job Training
 California State University Long Beach | Long Beach, USA
 June 2014 – August 2014
@@ -77,11 +58,3 @@ June 2014 – August 2014
 - Conducted construction site inspections.
 - Gained BIM modeling skills.
 - Completed Safety and Health Training.
-
-### Graphic Designer
-Biomedical Science Institute - University of São Paulo | São Paulo, Brazil
-June 2011 – August 2013
-
-- Created conceptual designs for scientific communications.
-- Managed design project workflows.
-- Organized and supported academic competitions.

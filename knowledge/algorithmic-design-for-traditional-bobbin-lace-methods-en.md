@@ -31,7 +31,10 @@ The bibliography was selected in order to allow an overview of the most recent s
 
 Buckminster Fuller and Frei Otto were especially important to this study. Buckminster with his studies of synergetic geometry tried to explore the potential of optimization in the design, resulting in inventions like the geodesic dome and the Jitterbug Transformation that "do the most with the least" (Krausse and Lichtenstein [6]). Frei Otto, on the other hand, produced his famous form-finding investigation models that explored physical qualities like foam film, rubber and tensile structures (Barthel [1]).
 
+
 ## Architecture and Biomimicry
+
+
 
 According to Benyus [2], biomimetics uses nature as the main design guideline and can be divided into three levels. The first, more superficial, is an attempt to simply mimic forms and patterns of nature regardless of the method used. The second level explores the courses that nature goes through until it achieves its final result, the process. And the third and broadest level is to mimic natural ecosystems, understanding that all individuals and elements make up a single sustainable, interconnected and interdependent biosphere.
 
@@ -40,6 +43,8 @@ In nature, structures that look simple as cobwebs, bee hives and termite mounds 
 Algorithmic architecture works in a similar way and also explores these natural mechanisms, but instead of starting from genetic information, the design is determined by an algorithm. In short, a complete algorithm would have all the necessary information for the execution of a construction, including several changes required according to each brief.
 
 ## The Brief
+
+
 
 In the exploration of spaces in FAU-USP, it is evident that it lacked student life spaces. Furthermore, the research shows that student have the habit to install hammocks around the building in order to supply this need. The idea of subverting the way hammocks are designed, presented a great potential in the field of form finding. By combining computational design with a traditional weaving method, the direction of the project moved to a new design system.
 
@@ -57,8 +62,12 @@ It is essential that the project uses the existing machines and tools available 
 ### Identity
 The final result should refer to FAU-USP logo with the intention of connecting it to another way of thinking beyond the established modernist vision.
 
+
+
 ### Location
 The proposed area consists of a 12-meter-square (144m²) covered by lawn, located between the main building of FAU-USP and the Laboratory of Models and Tests (LAME).
+
+
 
 ### Optimization
 The way it is designed must consider the optimization of form and structure.
@@ -72,6 +81,8 @@ The main software used to develop this study was Rhinoceros 3D and its Grasshopp
 
 The final algorithm developed aims to manipulate a predetermined mesh pattern. In this case, for the technical study, were used a cubic frame and a sphere-shaped mesh.
 
+
+
 The algorithm works in five steps. The first consists in the creation of a cubic frame with a dimension of 1 meter of edge and the division of all the edges into 116 equidistant points.
 
 The second step is the selection between 1 and 40 vertex-anchors among the 116 initial vertices present in the cubic frame. This process of selection is guided by Galapagos and will be described in the last step.
@@ -80,17 +91,31 @@ In the third stage, a ball of 0.80 meters in diameter is created and its mesh is
 
 In the fourth step, with the structure prepared, the Kangaroo physics simulator can finally be activated. In this way, the lines and the sphere mesh are converted into elastic cables. With the resistance of the cables adjusted, it is possible to make the system stable. Next, the vector distances between the original vertices of the static sphere and the vertices with the sphere "relaxed" are calculated.
 
+
+
 The fifth step uses Galapagos. This algorithm starts generating 50 possible random results, that is, 50 individuals based on the genetic pool, which in this case are the 116 vertices found along the cubic structure and the 190 vertices in the sphere mesh. With this data, it is able to search among the 50 initial individuals, and determine the best. This process is called fitness function, and it selects the individuals that have their final vertices closest to the vertices of the initial sphere shape.
+
+
 
 From the initial generation of data points, the optimal individuals combine their genetic markers to create 50 new data points as its own distinct generation. This is repeated until the most favorable result is reached. In this example, the algorithm stabilized at the hundredth generation.
 
+
+
 Thereafter, seven other studies were developed, but only the initial mesh pattern of the sphere was changed, and its behavior was analyzed.
+
+
 
 With the results obtained, it was concluded that the best alternative to develop the final proposal was the "truncated hexagonal mesh", since it presents the best control over the final form, as well as being reasonable to manufacture.
 
 ## Detailing
 
 To fulfill all items listed in the brief, a structure was developed so it refers directly to one of the modules that compose the FAU-USP logo. From this metal skeleton made of 4 bars, a broad spectrum of 20 solutions was generated.
+
+
+
+
+
+
 
 Similar to what happens with evolution in biology, it does not result in a 'perfect solution', but it does accomplish its final goal. This is especially important in design as it becomes a mean in which humans and computers can work together. While humans assemble the algorithm, the computers process it and end up offering a large number of results, so a human can then choose the ones that respect qualities difficult to specify inside the algorithm, as aesthetics or comfort.
 
@@ -104,11 +129,21 @@ The assembly would happen in 3 steps: the production of the net, the assembly of
 
 The bobbin lace technique consists of a manual production of fabric that allows to develop complex patterns with rudimentary tools. The traditional fabrication consists of successive braiding and twisting lengths of thread using wooden rods (bobbins) to handle them, pins to keep the pattern stable, and a support cushion.
 
+
+
+
+
+
+
+
+
 ## Conclusion
 
 This study sought to explore some possibilities of incorporating a traditional weaving technique to computational design aiming to develop a hammock-like chair prototype. The algorithm also provides some unexpected outputs that changes the way the designer is envisioning the final project. In other words, this system allows the algorithm and the designer to work together as a team.
 
 Ultimately, the final algorithm works as a creative extension of the human mind, generating a spectrum of multiple solutions.
+
+
 
 ### References
 [1] Barthel R. Natural Forms - Architectural Forms. In: FREI OTTO - *Lightweight Construction*, Natural Design, Birkhauser - Publishers for Architecture, 2005.

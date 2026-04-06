@@ -26,6 +26,14 @@ Auxiliei Christoph em sua investigação de métodos computacionais para prever 
 - **Testes físicos em pequena escala** — execução de experimentos controlados de enrolamento para coletar dados sobre o comportamento das fibras.
 - **Fotogrametria** — captura dos corpos de prova enrolados de múltiplos ângulos para criar gêmeos digitais para comparação com as previsões computacionais.
 
+
+
+
+
+
+
+
+
 ## Aprendizados
 
 O aspecto mais memorável desse trabalho foi o manuseio da resina. A resina epóxi utilizada em compósitos de fibra de carbono é altamente tóxica, exigindo trajes de proteção completos, luvas e preparação cuidadosa do espaço de trabalho com coberturas protetoras. Foi uma introdução prática às realidades de se trabalhar com materiais compósitos avançados — um mundo à parte do lado computacional da pesquisa. E, sinceramente, a toxicidade do material foi algo que me desanimou bastante, razão pela qual acabei me afastando dessa linha de pesquisa. Mas foi uma experiência valiosa que me deu uma apreciação mais profunda das complexidades da ciência dos materiais na fabricação arquitetônica.

@@ -20,6 +20,10 @@ Uma tensegridade (abreviação de "integridade tensional") é um sistema estrutu
 
 Usando tubos metálicos para compressão e cabos para tração, montamos a estrutura ao ar livre. Cada pessoa segurava uma barra ou puxava um cabo enquanto o sistema gradualmente encontrava seu equilíbrio. A estrutura simplesmente não ficava de pé sem a participação simultânea de todos; uma pessoa soltando derrubaria tudo.
 
+
+
+
+
 ## O resultado
 
 A estrutura final ficou com mais de três metros de altura, um sistema autoportante de barras flutuantes mantidas juntas puramente por tração. O ato físico de coletivamente mantê-la em equilíbrio espelhou como colaboramos no estúdio.

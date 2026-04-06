@@ -21,9 +21,12 @@ Obwohl die Kernaufgabe die Migration war, bot sie auch die Gelegenheit, den Inha
 
 Die ICD-Website dient sowohl als öffentliches Portfolio als auch als akademische Referenz. Forschende, Studierende, Journalisten und potenzielle Kooperationspartner nutzen sie, um sich über die Arbeit des Instituts zu informieren. Sicherzustellen, dass jede Projektseite klare Beschreibungen, korrekten Alternativtext für Bilder und eine logische Navigation hatte, war essenziell.
 
+
+
 ## Deutsch lernen durch Forschung
 
 Was dieses Projekt persönlich besonders machte, war das unerwartete Eintauchen in die Sprache. Viele der Projektbeschreibungen, Pressemitteilungen und Verwaltungsseiten des ICD existierten auf Deutsch. Als Brasilianer, der gerade erst für sein Masterstudium nach Deutschland gekommen war, fand ich mich täglich beim Übersetzen und Anpassen deutscher Texte wieder, nicht aus einem Lehrbuch, sondern aus echter Forschungsdokumentation über Holzbau, robotische Fertigung und biomimetische Strukturen.
+
 
 ## Erkenntnisse
 

@@ -21,9 +21,12 @@ Embora a tarefa principal fosse a migração, também foi uma oportunidade de me
 
 O site do ICD serve tanto como portfólio público quanto como referência acadêmica. Pesquisadores, estudantes, jornalistas e potenciais colaboradores o utilizam para conhecer o trabalho do instituto. Garantir que cada página de projeto tivesse descrições claras, texto alternativo adequado nas imagens e navegação lógica era essencial.
 
+
+
 ## Aprendendo alemão através da pesquisa
 
 O que tornou este projeto pessoalmente especial foi a imersão linguística inesperada. Muitas das descrições de projetos, press releases e páginas administrativas do ICD existiam em alemão. Como brasileiro que havia acabado de chegar à Alemanha para o mestrado, me vi traduzindo e adaptando textos em alemão diariamente, não de um livro didático, mas de documentação real de pesquisa sobre construção em madeira, fabricação robótica e estruturas biomiméticas.
+
 
 ## Aprendizados
 

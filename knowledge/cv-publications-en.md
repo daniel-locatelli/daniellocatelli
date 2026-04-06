@@ -2,16 +2,6 @@ URL: https://daniellocatelli.com/full-cv
 
 # Daniel Locatelli – Publications
 
-### Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings
-Authors: Nils Opgenorth, Daniel Nunes Locatelli, Samuel Leder, Hans Jakob Wagner, Achim Menges
-Automation in Construction, Volume 168, Part A
-December 2024
-
-### Automatic Column Placement
-Authors: Ekin Sila Sahin, Daniel Nunes Locatelli, Lui Orozco, Anna Krtschil, Hans Jakob Wagner, Achim Menges, Jan Knippers
-CDRF 2023 – Phygital Intelligence
-June 2023
-
 ### Life Lamp: Connecting Design and People Through Emotion
 Authors: Daniel Nunes Locatelli, Leonardo Prazeres, Guilherme Giantini, Vitor Curti, Carlos Augusto Requena
 ECAADE 2020 Anthropologic

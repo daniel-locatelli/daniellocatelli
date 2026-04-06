@@ -31,7 +31,10 @@ Die Bibliographie wurde so ausgewählt, dass sie einen Überblick über die neue
 
 Buckminster Fuller und Frei Otto waren für diese Studie besonders wichtig. Buckminster versuchte mit seinen Studien zur synergetischen Geometrie das Potenzial der Optimierung im Design zu erforschen, was zu Erfindungen wie der geodätischen Kuppel und der Jitterbug-Transformation führte, die „mit dem Wenigsten das Meiste erreichen" (Krausse und Lichtenstein [6]). Frei Otto hingegen produzierte seine berühmten Formfindungs-Untersuchungsmodelle, die physikalische Eigenschaften wie Schaumfilm, Gummi und Zugkonstruktionen erforschten (Barthel [1]).
 
+
 ## Architektur und Biomimikry
+
+
 
 Laut Benyus [2] nutzt die Biomimetik die Natur als wichtigste Designrichtlinie und kann in drei Ebenen unterteilt werden. Die erste, oberflächlichere, ist ein Versuch, einfach Formen und Muster der Natur nachzuahmen, unabhängig von der verwendeten Methode. Die zweite Ebene erforscht die Wege, die die Natur durchläuft, bis sie ihr Endergebnis erreicht – den Prozess. Und die dritte und umfassendste Ebene besteht darin, natürliche Ökosysteme nachzuahmen, wobei verstanden wird, dass alle Individuen und Elemente eine einzige nachhaltige, miteinander verbundene und voneinander abhängige Biosphäre bilden.
 
@@ -40,6 +43,8 @@ In der Natur werden Strukturen, die so einfach erscheinen wie Spinnennetze, Bien
 Algorithmische Architektur funktioniert auf ähnliche Weise und erforscht ebenfalls diese natürlichen Mechanismen, aber anstatt von genetischer Information auszugehen, wird der Entwurf durch einen Algorithmus bestimmt. Kurz gesagt, ein vollständiger Algorithmus würde alle notwendigen Informationen für die Ausführung einer Konstruktion enthalten, einschließlich mehrerer Änderungen, die je nach Briefing erforderlich sind.
 
 ## Das Briefing
+
+
 
 Bei der Erkundung der Räume der FAU-USP wurde deutlich, dass es an Aufenthaltsräumen für Studierende mangelte. Darüber hinaus zeigt die Forschung, dass Studierende die Gewohnheit haben, Hängematten im Gebäude aufzuhängen, um diesem Bedarf nachzukommen. Die Idee, die Art und Weise, wie Hängematten gestaltet werden, umzudenken, bot ein großes Potenzial im Bereich der Formfindung. Durch die Kombination von Computational Design mit einer traditionellen Webmethode entwickelte sich die Richtung des Projekts zu einem neuen Designsystem.
 
@@ -57,8 +62,12 @@ Es ist wesentlich, dass das Projekt die vorhandenen Maschinen und Werkzeuge der 
 ### Identität
 Das Endergebnis sollte auf das Logo der FAU-USP verweisen, mit der Absicht, es mit einer anderen Denkweise jenseits der etablierten modernistischen Vision zu verbinden.
 
+
+
 ### Standort
 Die vorgeschlagene Fläche besteht aus einem 12 Meter großen Quadrat (144 m²), das mit Rasen bedeckt ist und sich zwischen dem Hauptgebäude der FAU-USP und dem Modell- und Versuchslabor (LAME) befindet.
+
+
 
 ### Optimierung
 Die Art der Gestaltung muss die Optimierung von Form und Struktur berücksichtigen.
@@ -72,6 +81,8 @@ Die Hauptsoftware, die für die Entwicklung dieser Studie verwendet wurde, war R
 
 Der entwickelte Endalgorithmus zielt darauf ab, ein vorbestimmtes Netzflächenmuster zu manipulieren. In diesem Fall wurden für die technische Studie ein kubischer Rahmen und eine kugelförmige Netzfläche verwendet.
 
+
+
 Der Algorithmus arbeitet in fünf Schritten. Der erste besteht in der Erstellung eines kubischen Rahmens mit einer Kantenlänge von 1 Meter und der Unterteilung aller Kanten in 116 gleichmäßig verteilte Punkte.
 
 Der zweite Schritt ist die Auswahl von 1 bis 40 Anker-Eckpunkten aus den 116 anfänglichen Eckpunkten im kubischen Rahmen. Dieser Auswahlprozess wird von Galapagos gesteuert und im letzten Schritt beschrieben.
@@ -80,17 +91,31 @@ In der dritten Stufe wird eine Kugel mit 0,80 Metern Durchmesser erzeugt und ihr
 
 Im vierten Schritt kann, nachdem die Struktur vorbereitet ist, der Physiksimulator Kangaroo endlich aktiviert werden. Auf diese Weise werden die Linien und die Kugelnetzfläche in elastische Kabel umgewandelt. Mit der angepassten Kabelwiderstandsfähigkeit ist es möglich, das System stabil zu machen. Anschließend werden die Vektordistanzen zwischen den ursprünglichen Eckpunkten der statischen Kugel und den Eckpunkten der „relaxierten" Kugel berechnet.
 
+
+
 Der fünfte Schritt verwendet Galapagos. Dieser Algorithmus beginnt mit der Erzeugung von 50 möglichen Zufallsergebnissen, das heißt 50 Individuen basierend auf dem Genpool, der in diesem Fall aus den 116 Eckpunkten entlang der kubischen Struktur und den 190 Eckpunkten in der Kugelnetzfläche besteht. Mit diesen Daten ist er in der Lage, unter den 50 anfänglichen Individuen zu suchen und das beste zu bestimmen. Dieser Prozess wird Fitnessfunktion genannt und wählt die Individuen aus, deren Endpunkte den Eckpunkten der ursprünglichen Kugelform am nächsten liegen.
+
+
 
 Aus der anfänglichen Erzeugung von Datenpunkten kombinieren die optimalen Individuen ihre genetischen Marker, um 50 neue Datenpunkte als eigene eigenständige Generation zu erzeugen. Dies wird wiederholt, bis das günstigste Ergebnis erreicht ist. In diesem Beispiel stabilisierte sich der Algorithmus bei der hundertsten Generation.
 
+
+
 Danach wurden sieben weitere Studien entwickelt, bei denen jedoch nur das anfängliche Netzflächenmuster der Kugel geändert und ihr Verhalten analysiert wurde.
+
+
 
 Mit den erzielten Ergebnissen wurde geschlussfolgert, dass die beste Alternative zur Entwicklung des Endvorschlags die „truncierte hexagonale Netzfläche" war, da sie die beste Kontrolle über die Endform bietet und gleichzeitig herstellbar ist.
 
 ## Detaillierung
 
 Um alle im Briefing aufgeführten Punkte zu erfüllen, wurde eine Struktur entwickelt, die direkt auf eines der Module verweist, die das Logo der FAU-USP bilden. Aus diesem Metallskelett aus 4 Stäben wurde ein breites Spektrum von 20 Lösungen erzeugt.
+
+
+
+
+
+
 
 Ähnlich wie bei der Evolution in der Biologie ergibt sich keine „perfekte Lösung", aber das Endziel wird erreicht. Dies ist im Design besonders wichtig, da es zu einem Mittel wird, bei dem Mensch und Computer zusammenarbeiten können. Während Menschen den Algorithmus zusammenstellen, verarbeiten die Computer ihn und bieten eine große Anzahl von Ergebnissen, aus denen ein Mensch dann diejenigen auswählen kann, die Qualitäten respektieren, die schwer im Algorithmus zu spezifizieren sind, wie Ästhetik oder Komfort.
 
@@ -104,11 +129,21 @@ Die Montage würde in 3 Schritten erfolgen: die Herstellung des Netzes, die Mont
 
 Die Klöppeltechnik besteht aus einer manuellen Stoffherstellung, die es ermöglicht, komplexe Muster mit einfachen Werkzeugen zu entwickeln. Die traditionelle Fertigung besteht aus dem sukzessiven Flechten und Verdrehen von Fadenlängen unter Verwendung von Holzstäben (Klöppeln) zum Handhaben, Nadeln zum Stabilisieren des Musters und einem Stützkissen.
 
+
+
+
+
+
+
+
+
 ## Schlussfolgerung
 
 Diese Studie versuchte, einige Möglichkeiten zu erforschen, eine traditionelle Webtechnik in Computational Design einzubeziehen, mit dem Ziel, einen Prototyp eines hängemattenähnlichen Stuhls zu entwickeln. Der Algorithmus liefert auch einige unerwartete Ergebnisse, die die Vorstellung des Designers vom Endprojekt verändern. Mit anderen Worten: Dieses System ermöglicht es dem Algorithmus und dem Designer, als Team zusammenzuarbeiten.
 
 Letztendlich funktioniert der Endalgorithmus als kreative Erweiterung des menschlichen Geistes und erzeugt ein Spektrum vielfältiger Lösungen.
+
+
 
 ### Referenzen
 [1] Barthel R. Natural Forms - Architectural Forms. In: FREI OTTO - *Lightweight Construction*, Natural Design, Birkhauser - Publishers for Architecture, 2005.

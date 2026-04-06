@@ -21,9 +21,12 @@ While the core task was migration, it was also an opportunity to improve the con
 
 The ICD website serves as both a public-facing portfolio and an academic reference. Researchers, students, journalists, and potential collaborators all use it to learn about the institute's work. Making sure each project page had clear descriptions, proper image alt text, and logical navigation was essential.
 
+
+
 ## Learning German through research
 
 What made this project personally special was the unexpected language immersion. Many of the ICD's project descriptions, press releases, and administrative pages existed in German. As a Brazilian who had just arrived in Germany for my master's program, I found myself translating and adapting German text on a daily basis, not from a textbook, but from real research documentation about timber construction, robotic fabrication, and biomimetic structures.
+
 
 ## Learnings
 

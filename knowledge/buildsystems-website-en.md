@@ -29,16 +29,24 @@ BuildSystems already used Notion extensively for internal documentation and proj
 
 The integration fetches content at build time from multiple Notion databases (blog posts, team members, partners, organizations) and renders it using 30+ custom Notion components that handle headings, paragraphs, images, code blocks, tables, embeds, etc.
 
+
+
 ## Key Features
 
 ### CSS-First Animations
 A deliberate decision was to use pure CSS `@keyframes` animations instead of Lottie animations to avoid bloating the page with too much content, which would have impacted performance. The homepage cover features a full-screen animated sequence, and the "Three Pillars" sections use CSS-only animations in both horizontal and vertical layouts. This keeps the page lightweight and performant.
 
+
+
 ### Drag-to-Scroll Carousel
 The blog post carousel implements a custom drag-to-scroll interaction with momentum physics and smooth scroll-snap. Users can drag the carousel with mouse or touch, and it smoothly snaps to the nearest card when released.
 
+
+
 ### Blog Posts from Notion
 Each blog post is authored in Notion and rendered on the website at build time. It supports rich content including embedded media (Instagram, TikTok, YouTube, CodePen), LaTeX equations via KaTeX, code blocks with Prism.js syntax highlighting, and link previews via metascraper.
+
+
 
 ## Architecture
 

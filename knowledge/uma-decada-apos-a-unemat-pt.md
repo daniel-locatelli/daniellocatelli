@@ -12,6 +12,8 @@ Language: Português
 
 A UNEMAT foi a primeira universidade onde estudei Arquitetura. Dez anos após o início dos meus estudos lá, apresentei esta palestra sobre toda a minha trajetória, desde minha transferência universitária para a FAU-USP, meu trabalho no Atelier Marko Brajovic e minha recente mudança de carreira, focando mais especificamente em Design Computacional e programação. A palestra, intitulada "Arquitetura + Biomimética + Algoritmo", foi estruturada em três partes.
 
+
+
 ## Parte 1: Trajetória Acadêmica
 
 A primeira parte abordou a trajetória acadêmica após deixar a UNEMAT, começando pela transferência para a FAU-USP em São Paulo. Lá, a experiência passou pelo icônico edifício de Vilanova Artigas e suas famosas goteiras, pelo laboratório LAME, professores inspiradores e um forte viés social na arquitetura, embora a área de tecnologia permanecesse limitada.

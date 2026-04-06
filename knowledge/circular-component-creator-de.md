@@ -18,6 +18,8 @@ Das Konzept entwickelte sich aus dem [BuildSystems-Plugin für Grasshopper](/pro
 
 Der Designprozess begann mit handgezeichneten Wireframes, um den Nutzerfluss und die Bildschirmstruktur abzubilden. Diese Skizzen definierten sechs zentrale Ansichten: die Startseite, Komponentenübersicht, Filterung, Komponentenauswahl, Detailansicht und Ergebnisanalyse.
 
+
+
 Dieser Ansatz ermöglichte dem Team, schnell über Layout- und Interaktionsmuster zu iterieren, bevor zu den Figma-Mockups übergegangen wurde.
 
 ## Figma-Mockups
@@ -28,17 +30,25 @@ Das Startseitenkonzept stellt die Anwendung mit einem isometrischen Schnitt eine
 
 Darunter werden die fünf dynamischen Komponentenkategorien angezeigt: Außenwände, Innenwände, Trennwände, Decken und Bedachungen. Jede Kategorie wird durch ein isometrisches Icon dargestellt, das den Nutzern einen unmittelbaren Überblick über die verfügbaren Komponententypen bietet.
 
+
+
 ### Komponentenbibliothek
 
 Das Bibliothekskonzept zeigt alle verfügbaren Komponenten in einem Rasterlayout. Nutzer würden bis zu drei Komponenten für einen direkten Vergleich auswählen können. Jede Komponentenkarte zeigt eine 3D-Darstellung, die Komponentenkennung und wesentliche Eigenschaften.
+
+
 
 ### Filtersystem
 
 Ein Filterpanel würde es Nutzern ermöglichen, den Komponentenkatalog nach mehreren Kriterien einzugrenzen: Materialtyp (Massivholz, Nadelholz, Beton, Porenbeton, Kalksandstein), Abmessungen und Rahmenbauweise.
 
+
+
 ### Komponentenvorschau
 
 Beim Überfahren einer Komponentenkarte mit der Maus würde eine detaillierte Vorschau mit den wichtigsten Eigenschaften angezeigt: Name, Material, U-Wert, Brandschutzklasse und weitere Angaben.
+
+
 
 ### Komponentendetailseite
 
@@ -49,6 +59,8 @@ Das Detailseitenkonzept bietet eine umfassende Ansicht einer einzelnen Komponent
 - **Analysegrafiken**: Vier Kreisdiagramme, die die Leistung der Komponente in verschiedenen Metriken darstellen.
 
 Eine 3D-Schnittansicht auf der rechten Seite zeigt die exakte Schichtkomposition, passend zur nummerierten Materialliste.
+
+
 
 ## Datenarchitektur
 

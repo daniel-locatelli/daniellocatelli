@@ -18,6 +18,8 @@ Principais conquistas desse desenvolvimento incluíram:
 - **Gerenciamento de dados via JSON**: Criamos um banco de dados estruturado em JSON para armazenar e recuperar dados de componentes construtivos. Essa estrutura também seria utilizada em um aplicativo web chamado *Circular Component Creator*, uma ideia que, infelizmente, não avançou.
 - **Interface intuitiva no Grasshopper**: O plugin apresentava uma interface amigável que aproveitava o paradigma de programação visual do Grasshopper, permitindo uma integração fluida com os fluxos de trabalho existentes.
 
+
+
 ## Desafios
 Existem duas linguagens principais para desenvolver plugins para o Grasshopper: Python e C#. No entanto, para uma aparência mais nativa, maior desempenho e integração mais profunda, C# é a opção preferida. Isso porque o próprio Grasshopper foi escrito em C# por David Rutten.
 O principal desafio durante esse desenvolvimento foi que a McNeel, a empresa por trás do Rhino e do Grasshopper, estava no meio de uma transição do *.NET Framework 4.8* para o *.NET Core*.

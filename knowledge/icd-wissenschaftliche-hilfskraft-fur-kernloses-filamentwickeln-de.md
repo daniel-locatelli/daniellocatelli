@@ -26,6 +26,14 @@ Ich unterstützte Christoph bei seiner Untersuchung von Berechnungsmethoden zur 
 - **Physische Tests im kleinen Maßstab** — Durchführung kontrollierter Wickelexperimente zur Erhebung von Daten über das Faserverhalten.
 - **Photogrammetrie** — Aufnahme der gewickelten Probekörper aus mehreren Blickwinkeln, um digitale Zwillinge für den Vergleich mit den Berechnungsvorhersagen zu erstellen.
 
+
+
+
+
+
+
+
+
 ## Erkenntnisse
 
 Der einprägsamste Aspekt dieser Arbeit war der Umgang mit dem Harz. Das Epoxidharz, das in Kohlefaserverbundwerkstoffen verwendet wird, ist hochgiftig und erfordert Ganzkörper-Schutzanzüge, Handschuhe und eine sorgfältige Vorbereitung des Arbeitsbereichs mit Schutzabdeckungen. Es war eine praktische Einführung in die Realitäten der Arbeit mit fortschrittlichen Verbundwerkstoffen — eine ganz andere Welt als die rechnerische Seite der Forschung. Und ehrlich gesagt war die Toxizität des Materials für mich ein großes Abschreckungsmittel, weshalb ich mich schließlich von dieser Forschungsrichtung abwandte. Aber es war eine wertvolle Erfahrung, die mir ein tieferes Verständnis für die Komplexität der Materialwissenschaft in der architektonischen Fertigung gab.

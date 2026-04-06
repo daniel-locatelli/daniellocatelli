@@ -29,6 +29,8 @@ A BuildSystems já utilizava o Notion intensamente para documentação interna e
 
 A integração busca conteúdo em tempo de build de múltiplos bancos de dados do Notion (posts, membros da equipe, parceiros, organizações) e renderiza usando mais de 30 componentes customizados de Notion que lidam com títulos, parágrafos, imagens, blocos de código, tabelas, embeds e mais.
 
+
+
 ## Principais Recursos
 
 ### Animações CSS-First
@@ -39,8 +41,12 @@ Uma decisão deliberada foi usar animações CSS puras com `@keyframes` em vez d
 ### Carrossel com Arraste
 O carrossel de posts do blog implementa uma interação customizada de arrastar para rolar com física de inércia e scroll-snap suave. Os usuários podem arrastar o carrossel com mouse ou toque, e ele se ajusta suavemente ao card mais próximo quando solto.
 
+
+
 ### Posts do Blog via Notion
 Cada post é escrito no Notion e renderizado no site em tempo de build. Suporta conteúdo rico, incluindo mídia incorporada (Instagram, TikTok, YouTube, CodePen), equações LaTeX via KaTeX, blocos de código com destaque de sintaxe Prism.js e previews de links via metascraper.
+
+
 
 ## Arquitetura
 

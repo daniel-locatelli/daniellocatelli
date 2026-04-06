@@ -20,6 +20,10 @@ A tensegrity (short for "tensional integrity") is a structural system where rigi
 
 Using metal tubes for compression and cables for tension, we assembled the structure outdoors. Each person held a strut or pulled a cable while the system gradually found its equilibrium. The structure simply could not stand without everyone participating at once; one person letting go would collapse the whole thing.
 
+
+
+
+
 ## The result
 
 The final structure stood over three meters tall, a self-supporting system of floating struts held together purely by tension. The physical act of collectively keeping it in balance mirrored how we collaborate in the studio.
