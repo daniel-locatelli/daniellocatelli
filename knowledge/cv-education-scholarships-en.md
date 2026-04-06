@@ -5,15 +5,9 @@ URL: https://daniellocatelli.com/full-cv
 ### Master of Sciences
 ITECH, University of Stuttgart | Stuttgart, Germany
 October 2019 – October 2021
-A Robotic Timber Fabrication System for On-Site Press Gluing
+Building Across Scales - A Robotic Timber Fabrication System for On-Site Press Gluing
 Supervisors: Prof. Achim Menges, Prof. Jan Knippers
 Advisors: Hans Jakob Wagner, Samuel Leder
-
-### Bachelor of Architecture and Urbanism
-FAU, University of São Paulo | São Paulo, Brazil
-January 2010 – December 2016
-Thesis: Architecture + Biomimetics + Algorithm
-Supervisors: Prof. Arthur Lara
 
 ### Architecture Exchange Student
 Auburn University – CADC | Auburn, USA
@@ -22,6 +16,24 @@ January 2014 – December 2014
 ### Intensive English Program
 Auburn Global | Auburn, USA
 August 2013 – December 2013
+
+### Bachelor of Architecture and Urbanism
+FAU, University of São Paulo | São Paulo, Brazil
+January 2010 – December 2016
+Thesis: Architecture + Biomimetics + Algorithm
+Supervisors: Prof. Arthur Lara
+
+### University Entrance Preparatory Course
+Colégio Nobel | Londrina, Brazil
+January 2009 – December 2009
+
+### Bachelor of Architecture and Urbanism (dropped)
+UNEMAT | Barra do Bugres, Brazil
+January 2007 – December 2008
+
+### High School
+CEI Anglo | Vilhena, Brazil
+January 2004 – December 2006
 
 ## Scholarships
 

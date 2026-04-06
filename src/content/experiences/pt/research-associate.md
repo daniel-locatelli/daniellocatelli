@@ -1,5 +1,5 @@
 ---
-Name: Pesquisador Associado
+Name: Pesquisador Associado (60%)
 DateStart: "2025-02"
 Organization: Universidade de Ciências Aplicadas de Munique
 City:

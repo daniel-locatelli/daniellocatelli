@@ -6,7 +6,8 @@
  *
  * Sources:
  * 1. Content collections (projects, research, teaching, publications) — all locales
- * 2. CV data from i18n/cv files (en, pt)
+ * 2. CV data from content collections (experiences, education, certifications,
+ *    scholarships, courses-attended, skills)
  * 3. Homepage content from i18n/home files (en, pt)
  *
  * Run: npx tsx src/scripts/generate-knowledge.ts
@@ -14,31 +15,38 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import YAML from "yaml";
 
 const KNOWLEDGE_DIR = path.join(process.cwd(), "knowledge");
 const CONTENT_DIR = path.join(process.cwd(), "src/content");
 const BASE_URL = "https://daniellocatelli.com";
+const LOCALES = ["en", "pt", "de"];
 
 // ─── Helpers ──────────────────────────────────────────────────────────
 
 function slugify(text: string): string {
   return text
     .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 }
 
 function cleanMarkdownBody(body: string): string {
+  // Remove MDX import statements
+  let cleaned = body.replace(/^import\s+.*from\s+['"].*['"];?\s*$/gm, "");
+  // Remove MDX/JSX components (e.g., <YouTube id="..." />)
+  cleaned = cleaned.replace(/<[A-Z]\w+[^>]*\/>/g, "");
+  cleaned = cleaned.replace(/<[A-Z]\w+[^>]*>[\s\S]*?<\/[A-Z]\w+>/g, "");
   // Remove image references, including multi-line alt text
-  let cleaned = body.replace(/!\[[\s\S]*?\]\(.*?\)/g, "");
-  // Remove code blocks (not useful for embeddings in this context)
-  cleaned = cleaned.replace(/```[\s\S]*?```/g, "");
+  cleaned = cleaned.replace(/!\[[\s\S]*?\]\(.*?\)/g, "");
   // Remove excessive newlines
   cleaned = cleaned.replace(/\n{3,}/g, "\n\n");
   return cleaned.trim();
 }
 
-function parseJsonFrontmatter(content: string): {
+function parseFrontmatter(content: string): {
   data: Record<string, any>;
   body: string;
 } {
@@ -46,8 +54,8 @@ function parseJsonFrontmatter(content: string): {
   if (!match) return { data: {}, body: content };
 
   try {
-    const data = JSON.parse(match[1]);
-    return { data, body: match[2] };
+    const data = YAML.parse(match[1]);
+    return { data: data || {}, body: match[2] };
   } catch {
     return { data: {}, body: content };
   }
@@ -65,35 +73,44 @@ function writeKnowledge(filename: string, content: string): void {
   fs.writeFileSync(filePath, content, "utf-8");
 }
 
+function readContentFiles(
+  collection: string,
+  locale: string,
+): { data: Record<string, any>; body: string; filename: string }[] {
+  const dir = path.join(CONTENT_DIR, collection, locale);
+  if (!fs.existsSync(dir)) return [];
+
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".md") || f.endsWith(".mdx"))
+    .map((file) => {
+      const raw = fs.readFileSync(path.join(dir, file), "utf-8");
+      const { data, body } = parseFrontmatter(raw);
+      return { data, body, filename: file };
+    })
+    .filter((entry) => entry.data.Name);
+}
+
 // ─── Content Collections ──────────────────────────────────────────────
 
 function processContentCollections() {
   const collections = ["projects", "research", "teaching", "publications"];
-  const locales = ["en", "pt"];
   let count = 0;
 
   for (const collection of collections) {
-    for (const locale of locales) {
-      const dir = path.join(CONTENT_DIR, collection, locale);
-      if (!fs.existsSync(dir)) continue;
+    for (const locale of LOCALES) {
+      const entries = readContentFiles(collection, locale);
 
-      const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
-
-      for (const file of files) {
-        const raw = fs.readFileSync(path.join(dir, file), "utf-8");
-        const { data, body } = parseJsonFrontmatter(raw);
-
-        if (!data.Name) continue;
-
-        const slug = `${collection}/${file.replace(".md", "")}`;
-        const isUnpublished = file.startsWith("_");
-        const cleanSlug = slug.replace(/^_/, "");
+      for (const { data, body, filename } of entries) {
+        const baseFilename = filename.replace(/\.(md|mdx)$/, "");
+        const isUnpublished = baseFilename.startsWith("_");
 
         // Build URL
         const urlPrefix = locale === "en" ? "" : `/${locale}`;
+        const cleanSlug = baseFilename.replace(/^_/, "");
         const url = isUnpublished
           ? `${BASE_URL}${urlPrefix}/full-cv`
-          : `${BASE_URL}${urlPrefix}/${cleanSlug}`;
+          : `${BASE_URL}${urlPrefix}/${collection}/${cleanSlug}`;
 
         // Build metadata section
         const metaParts: string[] = [];
@@ -102,23 +119,35 @@ function processContentCollections() {
         if (data.Category) metaParts.push(`Category: ${data.Category}`);
         if (data.Authors?.length) {
           const authors = data.Authors.map((a: any) =>
-            typeof a === "string" ? a : a.name
+            typeof a === "string" ? a : a.name,
           );
           metaParts.push(`Authors: ${authors.join(", ")}`);
         }
+        if (data.Director?.length) metaParts.push(`Director: ${data.Director.join(", ")}`);
+        if (data.Team?.length) metaParts.push(`Team: ${data.Team.join(", ")}`);
         if (data.Client) metaParts.push(`Client: ${data.Client}`);
+        if (data.Organization) metaParts.push(`Organization: ${data.Organization}`);
         if (data.City?.length) {
           const cities = data.City.map((c: any) =>
-            typeof c === "string" ? c : c.name
+            typeof c === "string" ? c : c.name,
           );
           metaParts.push(`Location: ${cities.join(", ")}`);
         }
         if (data.Place) metaParts.push(`Place: ${data.Place}`);
-        if (data.DateStart) metaParts.push(`Date: ${formatDate(data.DateStart)}${data.DateEnd ? ` – ${formatDate(data.DateEnd)}` : ""}`);
+        if (data.DateStart) {
+          metaParts.push(
+            `Date: ${formatDate(data.DateStart)}${data.DateEnd ? ` - ${formatDate(data.DateEnd)}` : ""}`,
+          );
+        }
         if (data.Link) {
-          const link = typeof data.Link === "string" ? data.Link : data.Link.Href;
+          const link =
+            typeof data.Link === "string"
+              ? data.Link
+              : data.Link.Href || data.Link.href;
           if (link) metaParts.push(`Link: ${link}`);
         }
+        if (data.Event) metaParts.push(`Event: ${data.Event}`);
+        if (data.Language) metaParts.push(`Language: ${data.Language}`);
 
         // Build content
         const cleanBody = cleanMarkdownBody(body);
@@ -136,8 +165,14 @@ function processContentCollections() {
         }
 
         const safeName = slugify(data.Name);
-        const filename = `${safeName}-${locale}.md`;
-        writeKnowledge(filename, lines.join("\n").replace(/\n{3,}/g, "\n\n").trim() + "\n");
+        const knowledgeFilename = `${safeName}-${locale}.md`;
+        writeKnowledge(
+          knowledgeFilename,
+          lines
+            .join("\n")
+            .replace(/\n{3,}/g, "\n\n")
+            .trim() + "\n",
+        );
         count++;
       }
     }
@@ -146,176 +181,467 @@ function processContentCollections() {
   console.log(`Generated ${count} content collection knowledge files.`);
 }
 
-// ─── CV ───────────────────────────────────────────────────────────────
-// Split CV into separate files per section for better vector search retrieval.
-// A single 677-line CV file dilutes the embedding — "current work" gets lost
-// when mixed with 50 other projects.
+// ─── CV Individual Entries ────────────────────────────────────────────
+// Generates one knowledge file per CV entry (education, experiences, etc.)
+// so vector search can match specific queries like "where did you study
+// for university entrance?" without the answer being diluted in a large
+// aggregated file.
 
-async function processCVData() {
-  const locales = ["en", "pt"];
-
+function processCVIndividual() {
+  const cvCollections = [
+    "education",
+    "experiences",
+    "scholarships",
+    "certifications",
+    "courses-attended",
+  ];
   let count = 0;
 
-  for (const code of locales) {
-    const modulePath = path.resolve(process.cwd(), "src/i18n/cv", `${code}.ts`);
-    const fileUrl = new URL(`file:///${modulePath.replace(/\\/g, "/")}`);
-    const mod = await import(fileUrl.href);
-    const cv = mod.t;
+  for (const collection of cvCollections) {
+    for (const locale of LOCALES) {
+      const entries = readContentFiles(collection, locale);
+      const urlPrefix = locale === "en" ? "" : `/${locale}`;
+      const url = `${BASE_URL}${urlPrefix}/full-cv`;
 
-    const urlPrefix = code === "en" ? "" : `/${code}`;
+      for (const { data, body } of entries) {
+        const metaParts: string[] = [];
+        if (data.Organization) metaParts.push(`Organization: ${data.Organization}`);
+        const location = [
+          ...(data.City || []),
+          data.Country || "",
+        ]
+          .filter(Boolean)
+          .join(", ");
+        if (location) metaParts.push(`Location: ${location}`);
+        if (data.Category) metaParts.push(`Category: ${data.Category}`);
+        if (data.DateStart) {
+          metaParts.push(
+            `Date: ${formatDate(data.DateStart)}${data.DateEnd ? ` - ${formatDate(data.DateEnd)}` : ""}`,
+          );
+        }
+        if (data.Description) metaParts.push(`Description: ${data.Description}`);
+        if (data.Supervisors?.length)
+          metaParts.push(`Supervisors: ${data.Supervisors.join(", ")}`);
+        if (data.Advisors?.length)
+          metaParts.push(`Advisors: ${data.Advisors.join(", ")}`);
+        if (data.Authors?.length)
+          metaParts.push(`Instructor: ${data.Authors.join(", ")}`);
+        if (data.Link) {
+          const link =
+            typeof data.Link === "string"
+              ? data.Link
+              : data.Link.Href || data.Link.href;
+          if (link) metaParts.push(`Link: ${link}`);
+        }
+
+        const cleanBody = cleanMarkdownBody(body);
+        const lines = [`URL: ${url}`, "", `# ${data.Name}`, "", ...metaParts];
+        if (cleanBody) {
+          lines.push("", cleanBody);
+        }
+
+        const safeName = slugify(data.Name);
+        const filename = `cv-entry-${safeName}-${locale}.md`;
+        writeKnowledge(
+          filename,
+          lines
+            .join("\n")
+            .replace(/\n{3,}/g, "\n\n")
+            .trim() + "\n",
+        );
+        count++;
+      }
+    }
+  }
+
+  console.log(`Generated ${count} individual CV knowledge files.`);
+}
+
+// ─── CV Timeline ─────────────────────────────────────────────────────
+// Generates a single flat chronological timeline of the entire CV.
+// Always injected as core context so the AI has the full career backbone.
+
+function processCVTimeline() {
+  const collections: { name: string; label: string; labelPt: string; labelDe: string }[] = [
+    { name: "experiences", label: "Work", labelPt: "Trabalho", labelDe: "Beruf" },
+    { name: "education", label: "Education", labelPt: "Educação", labelDe: "Bildung" },
+    { name: "scholarships", label: "Scholarship", labelPt: "Bolsa", labelDe: "Stipendium" },
+    { name: "certifications", label: "Certification", labelPt: "Certificação", labelDe: "Zertifizierung" },
+    { name: "courses-attended", label: "Course", labelPt: "Curso", labelDe: "Kurs" },
+    { name: "teaching", label: "Teaching", labelPt: "Ensino", labelDe: "Lehre" },
+  ];
+  let count = 0;
+
+  for (const locale of LOCALES) {
+    const urlPrefix = locale === "en" ? "" : `/${locale}`;
     const url = `${BASE_URL}${urlPrefix}/full-cv`;
 
-    // Helper to write a CV section file
+    // Collect all entries with parsed dates
+    const allEntries: {
+      sortDate: number;
+      line: string;
+    }[] = [];
+
+    for (const col of collections) {
+      const entries = readContentFiles(col.name, locale);
+      const label = locale === "pt" ? col.labelPt : locale === "de" ? col.labelDe : col.label;
+
+      for (const { data } of entries) {
+        const start = data.DateStart || "";
+        const end = data.DateEnd || "";
+        const sortDate = new Date(start).getTime() || 0;
+
+        // Build date range string
+        let dateRange = formatDate(start);
+        if (end) {
+          dateRange += ` \u2013 ${formatDate(end)}`;
+        } else if (col.name === "experiences" && !end) {
+          dateRange += locale === "pt" ? " \u2013 Atual" : locale === "de" ? " \u2013 Aktuell" : " \u2013 Current";
+        }
+
+        // Build location
+        const location = [
+          ...(data.City || []),
+          data.Country || "",
+        ]
+          .filter(Boolean)
+          .join(", ");
+
+        const org = data.Organization || data.Place || "";
+        const parts = [
+          dateRange,
+          `[${label}]`,
+          data.Name,
+          org,
+          location,
+        ].filter(Boolean);
+
+        allEntries.push({
+          sortDate,
+          line: parts.join(" | "),
+        });
+      }
+    }
+
+    // Sort by date descending (most recent first)
+    allEntries.sort((a, b) => b.sortDate - a.sortDate);
+
+    const title =
+      locale === "pt"
+        ? "Daniel Locatelli \u2013 Linha do Tempo"
+        : locale === "de"
+          ? "Daniel Locatelli \u2013 Zeitleiste"
+          : "Daniel Locatelli \u2013 Timeline";
+
+    const lines = [
+      `URL: ${url}`,
+      "",
+      `# ${title}`,
+      "",
+      ...allEntries.map((e) => e.line),
+    ];
+
+    writeKnowledge(
+      `cv-timeline-${locale}.md`,
+      lines.join("\n").trim() + "\n",
+    );
+    count++;
+  }
+
+  console.log(`Generated ${count} CV timeline knowledge files.`);
+}
+
+// ─── CV Aggregates ───────────────────────────────────────────────────
+// Reads individual content files from CV collections and generates
+// aggregated knowledge files per section per locale.
+
+function processCVFromContent() {
+  let count = 0;
+
+  for (const locale of LOCALES) {
+    const urlPrefix = locale === "en" ? "" : `/${locale}`;
+    const url = `${BASE_URL}${urlPrefix}/full-cv`;
+
+    // Helper to write a CV section
     function writeCVSection(section: string, content: string) {
-      const filename = `cv-${slugify(section)}-${code}.md`;
-      const lines = [
-        `URL: ${url}`,
-        "",
-        `# Daniel Locatelli – ${section}`,
-        "",
-        content,
-      ];
-      writeKnowledge(filename, lines.join("\n").replace(/\n{3,}/g, "\n\n").trim() + "\n");
+      const filename = `cv-${slugify(section)}-${locale}.md`;
+      const lines = [`URL: ${url}`, "", `# Daniel Locatelli \u2013 ${section}`, "", content];
+      writeKnowledge(
+        filename,
+        lines
+          .join("\n")
+          .replace(/\n{3,}/g, "\n\n")
+          .trim() + "\n",
+      );
       count++;
     }
 
-    // 1. Summary & Skills (compact, keep together)
-    const summaryLines: string[] = [
-      `> ${cv.quote}`,
-      "",
-      `## ${cv.ui.summary}`,
-      "",
-      cv.summary,
-      "",
-      `## ${cv.ui.skills}`,
-      "",
-      `**${cv.ui.programming}:** ${cv.skillsProgramming.map((s: any) => s.title).join(", ")}`,
-      `**${cv.ui.frameworks}:** ${cv.skillsFrameworks.map((s: any) => s.title).join(", ")}`,
-      `**${cv.ui.databases}:** ${cv.skillsDatabases.map((s: any) => s.title).join(", ")}`,
-      `**${cv.ui.designTools}:** ${cv.skillsDesign.map((s: any) => s.title).join(", ")}`,
-      `**${cv.ui.specialization}:** ${cv.skillsSpecialized.join(", ")}`,
-      `**${cv.ui.languages}:** ${cv.skillsLanguages.map((s: any) => `${s.title} (${s.level})`).join(", ")}`,
-    ];
-    writeCVSection(`${cv.ui.summary} & ${cv.ui.skills}`, summaryLines.join("\n"));
+    // 1. Professional Experience
+    const experiences = readContentFiles("experiences", locale);
+    if (experiences.length > 0) {
+      // Sort by date descending
+      experiences.sort(
+        (a, b) =>
+          new Date(b.data.DateStart).getTime() -
+          new Date(a.data.DateStart).getTime(),
+      );
 
-    // 2. Professional Experience
-    const expLines: string[] = [];
-    for (const exp of cv.experiences) {
-      const period = exp.endDate
-        ? `${formatDate(exp.startDate)} – ${formatDate(exp.endDate)}`
-        : `${formatDate(exp.startDate)} – ${cv.ui.current}`;
-      expLines.push(`### ${exp.title}`);
-      expLines.push(`${exp.company} | ${exp.location}`);
-      expLines.push(`${period}`);
-      if (exp.titleNote) expLines.push(`(${exp.titleNote})`);
-      if (exp.companyNote) expLines.push(`Note: ${exp.companyNote}`);
-      expLines.push("");
-      for (const item of exp.items) {
-        expLines.push(`- ${item}`);
+      const expLines: string[] = [];
+      for (const { data, body } of experiences) {
+        const period = data.DateEnd
+          ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
+          : `${formatDate(data.DateStart)} \u2013 Current`;
+        const location = [
+          ...(data.City || []),
+          data.Country || "",
+        ]
+          .filter(Boolean)
+          .join(", ");
+        expLines.push(`### ${data.Name}`);
+        expLines.push(
+          `${data.Organization}${location ? ` | ${location}` : ""}`,
+        );
+        expLines.push(period);
+        expLines.push("");
+        if (body.trim()) {
+          expLines.push(body.trim());
+          expLines.push("");
+        }
       }
-      expLines.push("");
-    }
-    writeCVSection(cv.ui.professionalExperience, expLines.join("\n"));
 
-    // 3. Education & Scholarships (related, keep together)
-    const eduLines: string[] = [];
-    for (const edu of cv.education) {
-      const period = edu.endDate
-        ? `${formatDate(edu.startDate)} – ${formatDate(edu.endDate)}`
-        : formatDate(edu.startDate);
-      eduLines.push(`### ${edu.title}`);
-      eduLines.push(`${edu.institution} | ${edu.location}`);
-      eduLines.push(`${period}`);
-      if (edu.description) eduLines.push(`${edu.description}`);
-      if (edu.supervisors?.length)
-        eduLines.push(`Supervisors: ${edu.supervisors.join(", ")}`);
-      if (edu.advisors?.length)
-        eduLines.push(`Advisors: ${edu.advisors.join(", ")}`);
-      eduLines.push("");
+      const sectionName =
+        locale === "pt" ? "Experi\u00EAncia Profissional" : locale === "de" ? "Berufserfahrung" : "Professional Experience";
+      writeCVSection(sectionName, expLines.join("\n"));
     }
-    eduLines.push(`## ${cv.ui.scholarships}`, "");
-    for (const s of cv.scholarships) {
-      const period = s.endDate
-        ? `${formatDate(s.startDate)} – ${formatDate(s.endDate)}`
-        : formatDate(s.startDate);
-      eduLines.push(`### ${s.title}`);
-      eduLines.push(`${s.institution} | ${s.location}`);
-      eduLines.push(`${period}`);
-      if (s.description) eduLines.push(`${s.description}`);
-      eduLines.push("");
-    }
-    writeCVSection(`${cv.ui.education} & ${cv.ui.scholarships}`, eduLines.join("\n"));
 
-    // 4. Publications
-    const pubLines: string[] = [];
-    for (const pub of cv.publications) {
-      pubLines.push(`### ${pub.title}`);
-      pubLines.push(`${pub.publisher}${pub.location ? ` | ${pub.location}` : ""}`);
-      pubLines.push(`${formatDate(pub.date)}`);
-      pubLines.push(`Authors: ${pub.authors.join(", ")}`);
-      if (pub.link) pubLines.push(`Link: ${pub.link}`);
-      pubLines.push("");
-    }
-    writeCVSection(cv.ui.publications, pubLines.join("\n"));
+    // 2. Education & Scholarships
+    const education = readContentFiles("education", locale);
+    const scholarships = readContentFiles("scholarships", locale);
+    if (education.length > 0 || scholarships.length > 0) {
+      const eduLines: string[] = [];
 
-    // 5. Certifications
-    const certLines: string[] = [];
-    for (const cert of cv.certifications) {
-      certLines.push(`### ${cert.title}`);
-      certLines.push(`${cert.issuer}`);
-      certLines.push(`${formatDate(cert.date)}`);
-      if (cert.link) certLines.push(`Link: ${cert.link}`);
-      certLines.push("");
-    }
-    writeCVSection(cv.ui.certifications, certLines.join("\n"));
+      education.sort(
+        (a, b) =>
+          new Date(b.data.DateStart).getTime() -
+          new Date(a.data.DateStart).getTime(),
+      );
+      for (const { data, body } of education) {
+        const period = data.DateEnd
+          ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
+          : formatDate(data.DateStart);
+        const location = [
+          ...(data.City || []),
+          data.Country || "",
+        ]
+          .filter(Boolean)
+          .join(", ");
+        eduLines.push(`### ${data.Name}`);
+        eduLines.push(
+          `${data.Organization}${location ? ` | ${location}` : ""}`,
+        );
+        eduLines.push(period);
+        if (data.Description) eduLines.push(data.Description);
+        if (data.Supervisors?.length)
+          eduLines.push(`Supervisors: ${data.Supervisors.join(", ")}`);
+        if (data.Advisors?.length)
+          eduLines.push(`Advisors: ${data.Advisors.join(", ")}`);
+        eduLines.push("");
+        if (body.trim()) {
+          eduLines.push(body.trim());
+          eduLines.push("");
+        }
+      }
 
-    // 6. Teaching Experience
-    const teachLines: string[] = [];
-    for (const eng of cv.engagements) {
-      const period = eng.endDate
-        ? `${formatDate(eng.startDate)} – ${formatDate(eng.endDate)}`
-        : formatDate(eng.startDate);
-      const typeLabel = cv.ui.engagementTypes[eng.type] || eng.type;
-      teachLines.push(`### ${eng.title}`);
-      teachLines.push(`${eng.organization}${eng.location ? ` | ${eng.location}` : ""}`);
-      teachLines.push(`${period} | ${typeLabel}`);
-      if (eng.description) teachLines.push(`${eng.description}`);
-      if (eng.link) teachLines.push(`Link: ${eng.link}`);
-      teachLines.push("");
-    }
-    writeCVSection(cv.ui.engagementFull, teachLines.join("\n"));
+      if (scholarships.length > 0) {
+        const scholarshipsLabel =
+          locale === "pt" ? "Bolsas de estudo" : locale === "de" ? "Stipendien" : "Scholarships";
+        eduLines.push(`## ${scholarshipsLabel}`, "");
+        scholarships.sort(
+          (a, b) =>
+            new Date(b.data.DateStart).getTime() -
+            new Date(a.data.DateStart).getTime(),
+        );
+        for (const { data } of scholarships) {
+          const period = data.DateEnd
+            ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
+            : formatDate(data.DateStart);
+          const location = [
+            ...(data.City || []),
+            data.Country || "",
+          ]
+            .filter(Boolean)
+            .join(", ");
+          eduLines.push(`### ${data.Name}`);
+          eduLines.push(
+            `${data.Organization}${location ? ` | ${location}` : ""}`,
+          );
+          eduLines.push(period);
+          if (data.Description) eduLines.push(data.Description);
+          eduLines.push("");
+        }
+      }
 
-    // 7. Courses Attended
-    const courseLines: string[] = [];
-    for (const course of cv.coursesAttended) {
-      const period = course.endDate
-        ? `${formatDate(course.startDate)} – ${formatDate(course.endDate)}`
-        : formatDate(course.startDate);
-      courseLines.push(`### ${course.title}`);
-      courseLines.push(`Instructor: ${course.instructor}`);
-      if (course.organization)
-        courseLines.push(`${course.organization}${course.location ? ` | ${course.location}` : ""}`);
-      courseLines.push(`${period}`);
-      if (course.description) courseLines.push(`${course.description}`);
-      if (course.link) courseLines.push(`Link: ${course.link}`);
-      courseLines.push("");
+      const sectionName =
+        locale === "pt"
+          ? "Educa\u00E7\u00E3o & Bolsas de estudo"
+          : locale === "de"
+            ? "Bildung & Stipendien"
+            : "Education & Scholarships";
+      writeCVSection(sectionName, eduLines.join("\n"));
     }
-    writeCVSection(cv.ui.coursesAttended, courseLines.join("\n"));
 
-    // 8. Projects List
-    const workLines: string[] = [];
-    for (const work of cv.works) {
-      const period = work.endDate
-        ? `${formatDate(work.startDate)} – ${formatDate(work.endDate)}`
-        : formatDate(work.startDate);
-      workLines.push(`### ${work.title}`);
-      workLines.push(`${work.company}${work.location ? ` | ${work.location}` : ""}`);
-      workLines.push(`${period} | ${work.category}`);
-      if (work.description) workLines.push(`${work.description}`);
-      if (work.link) workLines.push(`Link: ${work.link}`);
-      workLines.push("");
+    // 3. Certifications
+    const certifications = readContentFiles("certifications", locale);
+    if (certifications.length > 0) {
+      certifications.sort(
+        (a, b) =>
+          new Date(b.data.DateStart).getTime() -
+          new Date(a.data.DateStart).getTime(),
+      );
+      const certLines: string[] = [];
+      for (const { data } of certifications) {
+        certLines.push(`### ${data.Name}`);
+        certLines.push(data.Organization);
+        certLines.push(formatDate(data.DateStart));
+        if (data.Link) certLines.push(`Link: ${data.Link}`);
+        certLines.push("");
+      }
+      const sectionName =
+        locale === "pt" ? "Certificados" : locale === "de" ? "Zertifizierungen" : "Certifications";
+      writeCVSection(sectionName, certLines.join("\n"));
     }
-    writeCVSection(cv.ui.projectsList, workLines.join("\n"));
+
+    // 4. Courses Attended
+    const courses = readContentFiles("courses-attended", locale);
+    if (courses.length > 0) {
+      courses.sort(
+        (a, b) =>
+          new Date(b.data.DateStart).getTime() -
+          new Date(a.data.DateStart).getTime(),
+      );
+      const courseLines: string[] = [];
+      for (const { data } of courses) {
+        const period = data.DateEnd
+          ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
+          : formatDate(data.DateStart);
+        courseLines.push(`### ${data.Name}`);
+        if (data.Authors?.length)
+          courseLines.push(`Instructor: ${data.Authors.join(", ")}`);
+        const location = [
+          ...(data.City || []),
+          data.Country || "",
+        ]
+          .filter(Boolean)
+          .join(", ");
+        if (data.Organization)
+          courseLines.push(
+            `${data.Organization}${location ? ` | ${location}` : ""}`,
+          );
+        courseLines.push(period);
+        if (data.Description) courseLines.push(data.Description);
+        courseLines.push("");
+      }
+      const sectionName =
+        locale === "pt" ? "Cursos frequentados" : locale === "de" ? "Besuchte Kurse" : "Courses Attended";
+      writeCVSection(sectionName, courseLines.join("\n"));
+    }
+
+    // 5. Skills (Summary & Skills combined)
+    const skills = readContentFiles("skills", locale);
+    if (skills.length > 0) {
+      const byCategory = new Map<string, string[]>();
+      for (const { data } of skills) {
+        const cat = data.Category || "Other";
+        if (!byCategory.has(cat)) byCategory.set(cat, []);
+        byCategory.get(cat)!.push(data.Name);
+      }
+      const skillLines: string[] = [];
+      for (const [cat, names] of byCategory) {
+        skillLines.push(`**${cat}:** ${names.join(", ")}`);
+      }
+      const sectionName =
+        locale === "pt" ? "Resumo & Habilidades" : locale === "de" ? "Zusammenfassung & F\u00E4higkeiten" : "Summary & Skills";
+      writeCVSection(sectionName, skillLines.join("\n"));
+    }
+
+    // 6. Teaching Experience (from teaching content collection)
+    const teaching = readContentFiles("teaching", locale);
+    if (teaching.length > 0) {
+      teaching.sort(
+        (a, b) =>
+          new Date(b.data.DateStart).getTime() -
+          new Date(a.data.DateStart).getTime(),
+      );
+      const teachLines: string[] = [];
+      for (const { data } of teaching) {
+        const period = data.DateEnd
+          ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
+          : formatDate(data.DateStart);
+        teachLines.push(`### ${data.Name}`);
+        const location = [
+          ...(data.City || []),
+          data.Country || "",
+        ]
+          .filter(Boolean)
+          .join(", ");
+        if (data.Organization || data.Place)
+          teachLines.push(
+            `${data.Organization || data.Place}${location ? ` | ${location}` : ""}`,
+          );
+        teachLines.push(`${period}${data.Category ? ` | ${data.Category}` : ""}`);
+        if (data.Description) teachLines.push(data.Description);
+        teachLines.push("");
+      }
+      const sectionName =
+        locale === "pt" ? "Experi\u00EAncia Docente" : locale === "de" ? "Lehrerfahrung" : "Teaching Experience";
+      writeCVSection(sectionName, teachLines.join("\n"));
+    }
+
+    // 7. Publications list
+    const pubs = readContentFiles("publications", locale);
+    if (pubs.length > 0) {
+      pubs.sort(
+        (a, b) =>
+          new Date(b.data.DateStart).getTime() -
+          new Date(a.data.DateStart).getTime(),
+      );
+      const pubLines: string[] = [];
+      for (const { data } of pubs) {
+        pubLines.push(`### ${data.Name}`);
+        if (data.Authors?.length)
+          pubLines.push(`Authors: ${data.Authors.join(", ")}`);
+        if (data.Place) pubLines.push(data.Place);
+        pubLines.push(formatDate(data.DateStart));
+        pubLines.push("");
+      }
+      const sectionName =
+        locale === "pt" ? "Publica\u00E7\u00F5es" : locale === "de" ? "Publikationen" : "Publications";
+      writeCVSection(sectionName, pubLines.join("\n"));
+    }
+
+    // 8. Projects List (aggregate of all projects for CV)
+    const projects = readContentFiles("projects", locale);
+    if (projects.length > 0) {
+      projects.sort(
+        (a, b) =>
+          new Date(b.data.DateStart).getTime() -
+          new Date(a.data.DateStart).getTime(),
+      );
+      const projLines: string[] = [];
+      for (const { data } of projects) {
+        const period = data.DateEnd
+          ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
+          : formatDate(data.DateStart);
+        projLines.push(`### ${data.Name}`);
+        if (data.Organization) projLines.push(data.Organization);
+        projLines.push(`${period}${data.Category ? ` | ${data.Category}` : ""}`);
+        if (data.Description) projLines.push(data.Description);
+        projLines.push("");
+      }
+      const sectionName =
+        locale === "pt" ? "Lista de Projetos" : locale === "de" ? "Projektliste" : "Projects List";
+      writeCVSection(sectionName, projLines.join("\n"));
+    }
   }
 
   console.log(`Generated ${count} CV knowledge files.`);
@@ -324,117 +650,52 @@ async function processCVData() {
 // ─── Homepage ─────────────────────────────────────────────────────────
 
 function processHomepage() {
-  // Homepage EN
-  const enLines = [
-    `URL: ${BASE_URL}`,
-    "",
-    "# Daniel Locatelli",
-    "",
-    "Welcome to my digital office. Here, you will find my work, research, and teachings on computational design, and software development for the AEC industry.",
-    "",
-    "## I'm Daniel Locatelli",
-    "AEC Software Engineer",
-    "",
-    "I am a generalist. I develop plugins, web applications, and computational design solutions for architecture, engineering, and construction (AEC).",
-    "",
-    "## My Service Offerings",
-    "",
-    "### Plugin Development",
-    "Bespoke tools to automate tasks, integrate specialized analyses, or extend a software capability. Expert in C# for Rhino/Grasshopper, Revit and AutoCAD.",
-    "",
-    "### Web Applications",
-    "Web-based solutions for project management, collaborative tools, financial simulators and 3D visualization. Focused in React, Astro and PostgreSQL.",
-    "",
-    "### Computational Design",
-    "Applying advanced computational design strategies to streamline and enhance AEC processes, improving efficiency in design, analysis, and documentation.",
-    "",
-    "### Data Visualization",
-    "Creating dashboards to better understand, interpret, and act upon complex project data. From web-native dashboards to enterprise Power BI frameworks.",
-    "",
-    "### Digital Fabrication",
-    "Creating Grasshopper scripts to automatically extract manufacturing data from complex, parametric 3D designs for digital fabrication.",
-    "",
-    "## Architect + Programmer",
-    "",
-    "With a background in architecture and a Master of Science from the ITECH program at the University of Stuttgart, coupled with ten years' experience that encompassed computational design at German engineering offices, I possess a deep understanding of AEC challenges.",
-    "",
-    "I don't just write code; I design and build software solutions that are tailored to the needs of architects, engineers, and construction professionals because I understand your world.",
-    "",
-    "## Portfolio Highlights",
-    "",
-    "### BuildSystems Funding Calculator",
-    "BuildSystems GmbH. Web application with user-friendly forms and interactive charts for simulating funding scenarios for housing through the national German bank KfW. Tech: TypeScript, Angular, ng2-charts, Supabase, PostgreSQL, HTML, CSS.",
-    "",
-    "### BuildSystems Plugin for Grasshopper/Rhino3D",
-    "BuildSystems GmbH. Grasshopper plugin that enables designers to perform critical feasibility and sustainability analyses directly within their design environment, promoting informed decision-making. Tech: C#, RhinoCommon, Grasshopper API, JSON.",
-    "",
-    "### Data Extraction for Digital Fabrication",
-    "ArtEngineering GmbH. Support on the digital fabrication of Common Sky using Grasshopper and Sandbox Topology. Focused on geometry processing and automation of fabrication workflows. Tech: Scripting in Grasshopper/Rhino3D.",
-    "",
-    "## Recommendations",
-    "",
-    '> "Mr. Locatelli has always performed the tasks assigned to him to our complete satisfaction, meeting and, in many respects, exceeding our expectations." — Martin Bittmann, Founder, BuildSystems GmbH',
-    "",
-    '> "Mr. Locatelli\'s professional conduct was exemplary. He consistently displayed a combination of technical brilliance, strategic thinking, and interpersonal skill. His ability to integrate seamlessly into team dynamics while maintaining the highest standards of professional excellence made him an invaluable team member." — Herwig Bretis, Managing director, ArtEngineering GmbH',
-    "",
-    "## Contact",
-    "Ready to elevate your AEC projects? Let's discuss how my expertise can transform your challenges into innovative software solutions.",
-  ];
-  writeKnowledge("homepage-en.md", enLines.join("\n").trim() + "\n");
+  const pages = ["en", "pt"];
+  let count = 0;
 
-  // Homepage PT — read PT file as text and extract strings
-  const ptFilePath = path.resolve(process.cwd(), "src/i18n/home/pt.ts");
-  if (fs.existsSync(ptFilePath)) {
-    const ptLines = [
-      `URL: ${BASE_URL}/pt`,
-      "",
-      "# Daniel Locatelli",
-      "",
-      "Bem-vindo ao meu escritório digital. Aqui, você vai encontrar meus projetos, pesquisas e aulas sobre design computacional e desenvolvimento de software para a indústria AEC.",
-      "",
-      "## Eu sou Daniel Locatelli",
-      "Engenheiro de software AEC",
-      "",
-      "Eu sou generalista. Desenvolvo plugins, aplicações web e soluções de design computacional para arquitetura, engenharia e construção (AEC).",
-      "",
-      "## Meus Serviços",
-      "",
-      "### Desenvolvimento de Plugins",
-      "Ferramentas sob medida para automatizar tarefas, integrar análises especializadas ou ampliar capacidades de softwares. Especialista em C# para Rhino/Grasshopper, Revit e AutoCAD.",
-      "",
-      "### Aplicações Web",
-      "Soluções web para gestão de projetos, ferramentas colaborativas, simuladores financeiros e visualização 3D. Focado em React, Astro e PostgreSQL.",
-      "",
-      "### Design Computacional",
-      "Aplicação de estratégias avançadas de design computacional para otimizar e aprimorar processos AEC, melhorando a eficiência no design, análise e documentação.",
-      "",
-      "### Visualização de Dados",
-      "Criação de dashboards para melhor compreender, interpretar e agir sobre dados complexos de projetos. De dashboards nativos da web a frameworks Power BI empresariais.",
-      "",
-      "### Fabricação Digital",
-      "Criação de scripts Grasshopper para extrair automaticamente dados de fabricação de designs 3D paramétricos complexos para fabricação digital.",
-      "",
-      "## Arquiteto + Programador",
-      "",
-      "Com formação em arquitetura e mestrado em Ciências pelo programa ITECH da Universidade de Stuttgart, além de dez anos de experiência que abrangeram design computacional em escritórios de engenharia alemães, possuo uma profunda compreensão dos desafios AEC.",
-      "",
-      "Não apenas escrevo código; projeto e construo soluções de software sob medida para as necessidades de arquitetos, engenheiros e profissionais da construção porque entendo seu mundo.",
-      "",
-      "## Contato",
-      "Pronto para elevar seus projetos AEC? Vamos discutir como minha experiência pode transformar seus desafios em soluções de software inovadoras.",
-    ];
-    writeKnowledge("homepage-pt.md", ptLines.join("\n").trim() + "\n");
+  for (const locale of pages) {
+    const entries = readContentFiles("pages", locale);
+    const indexEntry = entries.find(
+      (e) => e.filename === "index.md" || e.filename === "index.mdx",
+    );
+
+    if (indexEntry) {
+      const urlPrefix = locale === "en" ? "" : `/${locale}`;
+      const cleanBody = cleanMarkdownBody(indexEntry.body);
+      const lines = [
+        `URL: ${BASE_URL}${urlPrefix}`,
+        "",
+        "# Daniel Locatelli",
+        "",
+      ];
+      if (indexEntry.data.Description) {
+        lines.push(indexEntry.data.Description, "");
+      }
+      if (cleanBody) {
+        lines.push(cleanBody);
+      }
+      writeKnowledge(
+        `homepage-${locale}.md`,
+        lines
+          .join("\n")
+          .replace(/\n{3,}/g, "\n\n")
+          .trim() + "\n",
+      );
+      count++;
+    }
   }
 
-  console.log("Generated 2 homepage knowledge files.");
+  console.log(`Generated ${count} homepage knowledge files.`);
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────
 
-async function main() {
+function main() {
   // Clean knowledge directory
   if (fs.existsSync(KNOWLEDGE_DIR)) {
-    const existing = fs.readdirSync(KNOWLEDGE_DIR).filter((f) => f.endsWith(".md"));
+    const existing = fs
+      .readdirSync(KNOWLEDGE_DIR)
+      .filter((f) => f.endsWith(".md"));
     console.log(`Clearing ${existing.length} existing knowledge files...`);
     for (const f of existing) {
       fs.unlinkSync(path.join(KNOWLEDGE_DIR, f));
@@ -445,12 +706,16 @@ async function main() {
 
   // Generate knowledge from all sources
   processContentCollections();
-  await processCVData();
+  processCVIndividual();
+  processCVTimeline();
+  processCVFromContent();
   processHomepage();
 
   // Final count
-  const total = fs.readdirSync(KNOWLEDGE_DIR).filter((f) => f.endsWith(".md")).length;
+  const total = fs
+    .readdirSync(KNOWLEDGE_DIR)
+    .filter((f) => f.endsWith(".md")).length;
   console.log(`\nTotal knowledge files: ${total}`);
 }
 
-main().catch(console.error);
+main();

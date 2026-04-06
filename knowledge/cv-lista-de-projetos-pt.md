@@ -3,285 +3,230 @@ URL: https://daniellocatelli.com/pt/full-cv
 # Daniel Locatelli – Lista de Projetos
 
 ### Website Portfólio
-Autônomo | Remoto
-January 2024 | Software
+Daniel Locatelli
+January 2026 | Software
 Desenvolvimento deste website portfólio utilizando Astro, Three.js, Notion API, Supabase e Claude.
-Link: https://daniellocatelli.com
+
+### Plugin da BuildSystems para o Grasshopper
+BuildSystems
+November 2023 | Software Development
+Plugin desenvolvido para BuildSystems para criar componentes construtivos com base em Declarações Ambientais de Produtos (DAPs). A ideia foi oferecer dados de Análise de Ciclo de Vida (ACV) logo no início do processo de projeto.
+
+### Calculadora de financiamento imobiliário da BuildSystems
+BuildSystems
+November 2023 – July 2024 | Software Development
+Esta calculadora simula empréstimos e subsídios bancários, tornando construções e reformas sustentáveis acessíveis a incorporadores imobiliários e proprietários de imóveis.
 
 ### BuildSystems Website
-BuildSystems GmbH | Munique, Alemanha
-August 2023 – April 2024 | Software
+August 2023 – April 2026 | Software
 Desenvolvimento do site da BuildSystems com o framework Astro, utilizando a API do Notion como CMS.
-Link: https://buildsystems.de
-
-### Calculadora de Financiamento KfW
-BuildSystems GmbH | Munique, Alemanha
-July 2023 – August 2023 | Software
-Desenvolvimento do aplicativo web Calculadora de Financiamento KfW, usando Angular e PostgreSQL.
-Link: https://app.buildsystems.de
 
 ### Criador de Componentes Circulares
-BuildSystems GmbH | Munique, Alemanha
-June 2023 – July 2023 | UI/UX design
-Desenvolvimento da interface para um aplicativo web de criação de componentes construtivos.
+BuildSystems GmbH
+June 2023 – July 2023 | Design UI/UX
+Estudo conceitual de design para um aplicativo web para navegar, filtrar e comparar componentes construtivos circulares. Desenvolvimento de mockups UI/UX no Figma e definição da arquitetura de dados.
 
 ### Ontologia BuildSystems
-BuildSystems GmbH | Munique, Alemanha
+BuildSystems GmbH
 March 2023 – June 2023 | Software
 Pesquisa sobre esquemas, modelos de objetos e bancos de dados.
 
-### Plugin Grasshopper C#
-BuildSystems GmbH | Munique, Alemanha
-March 2023 | Software
-Desenvolvimento de um plugin Grasshopper com funcionalidades dos configuradores anteriores.
-
 ### Visualização de Dados com Power BI
-BuildSystems GmbH | Munique, Alemanha
+BuildSystems GmbH
 February 2023 | Visualização de Dados
 Desenvolvimento de um fluxo conectando dados do Grasshopper ao Power BI.
 
-### Configurador de Componentes de Madeira
-BuildSystems GmbH | Munique, Alemanha
-January 2023 – February 2023 | Design Computacional
-Desenvolvimento de um configurador Grasshopper para componentes de madeira usando dados EPD.
-
 ### Configurador Urbano
-BuildSystems GmbH | Munique, Alemanha
+BuildSystems GmbH
 January 2023 | Design Computacional
 Desenvolvimento de um configurador Grasshopper para criar envelopes de edifícios.
 
-### O deserto curioso
-ArtEngineering GmbH | Deserto do Qatar
-October 2021 | Detalhamento
-Instalações de arte de Olafur Eliasson. Detalhamento da estrutura de aço.
-Link: https://art-engineering.net/en/projekt/the-curious-desert/
-
 ### AIDS
-ArtEngineering GmbH | Em frente ao Stedelijk Museum Amsterdam
+ArtEngineering GmbH
 September 2022 | Detalhamento
 Desenhos técnicos e de fabricação.
-Link: https://art-engineering.net/en/projekt/aids-1-95-x-1-95-m/
 
-### Breathing earth sphere
-ArtEngineering GmbH | Docho Island, Coreia do Sul
-August 2022 | Design Computacional
-Desenhos técnicos, logística para transporte.
-Link: https://art-engineering.net/en/projekt/breathing-earth-sphere/
+### Pesquisa em Madeira
+Alfred Rein Ingenieure GmbH
+August 2022 | Pesquisa
+Pesquisa de tecnologias de ponta para construção em madeira.
 
 ### Um ciclo harmonioso de agoras interconectados
-ArtEngineering GmbH | Azabudai Hills Gallery, Tóquio, Japão
+ArtEngineering GmbH
 July 2022 | Detalhamento
 Escultura de Olafur Eliasson. Apoio no detalhamento e prototipagem; logística para transporte.
-Link: https://art-engineering.net/projekt/a-harmonious-cycle-of-interconnected-nows/
 
-### Common Sky
-ArtEngineering GmbH | Buffalo AKG Art Museum, Buffalo, EUA
-December 2021 – June 2022 | Design Computacional
-Por Studio Other Spaces. Detalhamento paramétrico e fluxo de fabricação digital automatizado.
-Link: https://art-engineering.net/projekt/common-sky/
+### Common Sky por ArtEngineering para o Studio Other Spaces
+ArtEngineering GmbH
+June 2022 – June 2022 | Digital Fabrication
+Studio Other Spaces contratou ArtEngineering para desenvolver a parte de engenharia computacional, fabricação digital e logística. Quando cheguei, o projeto já estava em andamento. Foi esse mesmo projeto que garantiu minha posição na empresa Art Engineering. Inicialmente, precisavam de alguém que exportasse rapidamente cerca de 1,5 mil desenhos 2D do Rhino/Grasshopper para serem enviados para fabricação digital usando um cortador de plasma.
 
 ### ParaPivot
-ArtEngineering GmbH | Arquivado
+ArtEngineering GmbH
 May 2022 | Detalhamento
 Escultura de cinco metros, aço e pedra, de Studio Alicja Kwade. Detalhamento da estrutura.
 
-### Canyon
-ArtEngineering GmbH | Louis Vuitton, Paris, França
-January 2022 – February 2022 | Detalhamento
-Escultura de aço de sete metros de Katharina Grosse. Ajuste computacional de forma usando superfícies desenvolvíveis.
-Link: https://art-engineering.net/projekt/canyon/
-
 ### Pavilhão Donum
-ArtEngineering GmbH | Donum Estate, Sonoma, EUA
+ArtEngineering GmbH
 January 2022 | Detalhamento
 Vertical Panorama Pavilion por Studio Other Spaces. Espaço de degustação de vinhos. Apoio no detalhamento.
-Link: https://art-engineering.net/projekt/vertical-panorama-pavilion/
 
 ### ZERO Posto de Gasolina
-Alfred Rein Ingenieure GmbH | Arquivado
+Alfred Rein Ingenieure GmbH
 December 2021 | Design Computacional
 Tipologia de posto de gasolina. Renderização da proposta.
 
+### O deserto curioso
+ArtEngineering GmbH
+October 2021 | Detalhamento
+Instalações de arte de Olafur Eliasson. Detalhamento da estrutura de aço.
+
 ### Disney Wonder
-Alfred Rein Ingenieure GmbH | Cruzeiro
+Alfred Rein Ingenieure GmbH
 September 2021 – October 2021 | Detalhamento
 Produção de desenhos para fabricação da membrana.
 
 ### Seilnetz Muttenz
-Alfred Rein Ingenieure GmbH | Muttenz, Suíça
+Alfred Rein Ingenieure GmbH
 September 2021 – October 2021 | Design Computacional
 Form-finding da estrutura de cabos e levantamento de quantidades.
 
-### Pesquisa em Madeira
-Alfred Rein Ingenieure GmbH | Interno
-August 2022 | Pesquisa
-Pesquisa de tecnologias de ponta para construção em madeira.
-
 ### Membranaustausch
-Alfred Rein Ingenieure GmbH | Schlosses Neuwildenstein, Áustria
+Alfred Rein Ingenieure GmbH
 July 2021 | Detalhamento
 Desenhos mecânicos e renderização da fachada.
 
 ### MVV Überdachung Vorplatz
-Alfred Rein Ingenieure GmbH | Mannheim, Alemanha
+Alfred Rein Ingenieure GmbH
 July 2021 | Design Computacional
 Form-finding de estruturas de membrana usando Kangaroo 2.
 
 ### Padrão de corte automatizado
-Alfred Rein Ingenieure GmbH | Interno
+Alfred Rein Ingenieure GmbH
 February 2021 – June 2021 | Design Computacional
 Desenvolvimento de padrões de corte automatizados para membranas.
 
-### Radom Raisting
-Alfred Rein Ingenieure GmbH | Raisting, Alemanha
-March 2021 – May 2021 | Design Computacional
-Simulação da implantação e prevenção de colisões.
-Link: https://www.ar-ingenieure.com/projects/radom-raisting
+### Ponte Mecânica
+Alfred Rein Ingenieure GmbH
+January 2021 | Design Computacional
+Simulação da abertura e fechamento da ponte.
 
 ### Neubau Parkhaus Swissprintersarea
-Alfred Rein Ingenieure GmbH | Zofingen, Suíça
+Alfred Rein Ingenieure GmbH
 January 2021 | Design Computacional
 Desenhos mecânicos e renderização da fachada.
 
 ### Witterungsschutz Römermauer
-Alfred Rein Ingenieure GmbH | Wiesbaden, Alemanha
+Alfred Rein Ingenieure GmbH
 January 2021 | Arquitetura
 Coordenação do projeto, cobertura de membrana integrando a paisagem.
 
-### Ponte Mecânica
-Alfred Rein Ingenieure GmbH | Arquivado
-January 2021 | Design Computacional
-Simulação da abertura e fechamento da ponte.
-
-### Bobinamento sem núcleo
-ICD/ITKE Universidade de Stuttgart | ICD CCL, Stuttgart, Alemanha
-August 2020 – October 2020 | Teste estrutural
-Testes estruturais com fibras naturais para o pavilhão livMatS.
-Link: https://www.archdaily.com/966168/livmats-pavilion-icd-itke-university-of-stuttgart
-
-### Migração do site ICD
-ICD/ITKE Universidade de Stuttgart | Online
-December 2019 – October 2020 | Software
-Migração do site do ICD para o novo template no OpenCMS.
-Link: https://www.icd.uni-stuttgart.de/
-
 ### Bobinamento de filamento de carbono
-ICD/ITKE Universidade de Stuttgart | ICD, Stuttgart, Alemanha
+ICD/ITKE Universidade de Stuttgart
 July 2020 | Fotogrametria
 Investigação de gêmeos digitais para bobinamento de fibra de carbono em pequena escala.
-Link: https://www.icd.uni-stuttgart.de/research/research-projects/leichtbau-bw-innovation-challenge/
 
-### Torre com madeira laminada auto-curvante
-ICD/ITKE Universidade de Stuttgart | Alemanha
-March 2020 – April 2020 | Design Computacional
-Designer computacional para projeto semelhante à Urbach Tower.
-
-### BlastU 2019
-Atelier Marko Brajovic | Pavilhão da Bienal do Ibirapuera, São Paulo, Brasil
-January 2019 – August 2019 | Design Computacional
-Arquiteto responsável pelo projeto e supervisão.
-Link: https://markobrajovic.com/blastu-2019/
+### Assistente de Pesquisa em Desenvolvimento Web no ICD
+ICD - University of Stuttgart
+December 2019 – October 2020 | Web development
+Ajudei a migrar o site do ICD para o template centralizado da Universidade de Stuttgart baseado em OpenCMS. Além do gerenciamento de conteúdo e SEO, este projeto me proporcionou meu primeiro contato com a língua alemã e uma profunda admiração pelo portfólio de pesquisa do ICD.
 
 ### Prêmio Casa e Jardim 2019
-Atelier Marko Brajovic | Pinacoteca de São Paulo, São Paulo, Brasil
+Atelier Marko Brajovic
 June 2019 | Design Computacional
 Arquiteto responsável pelo palco e troféu.
-Link: https://markobrajovic.com/premio-casa-e-jardim-2019
 
 ### Ita House
-Atelier Marko Brajovic | Paraty, Brasil
+Atelier Marko Brajovic
 April 2019 | Arquitetura
 
 ### Itaú Rock in Rio
-Atelier Marko Brajovic | Rio de Janeiro, Brasil
+Atelier Marko Brajovic
 February 2019 – April 2019 | Cenografia
 
+### BlastU 2019
+Atelier Marko Brajovic
+January 2019 – August 2019 | Design Computacional
+Arquiteto responsável pelo projeto e supervisão.
+
 ### Embraer Pavilion
-Atelier Marko Brajovic | Paris, França
+Atelier Marko Brajovic
 January 2019 | Arquitetura
-Link: https://markobrajovic.com/embraer-pavilion/
 
 ### Camper Thailand
 Atelier Marko Brajovic
 December 2018 | Design Computacional
 
-### The First Blow
-Atelier Marko Brajovic | T3 Aeroporto Internacional de Guarulhos, São Paulo, Brasil
-November 2018 | Instalação
-Link: https://markobrajovic.com/o-primeiro-sopro/
-
 ### Animale Jewelry
-Atelier Marko Brajovic | Rio de Janeiro, Brasil
+Atelier Marko Brajovic
 November 2018 – December 2018 | Arquitetura
 
+### The First Blow
+Atelier Marko Brajovic
+November 2018 | Instalação
+
 ### Hitchcock
-Atelier Marko Brajovic | MIS - Museu da Imagem e do Som, São Paulo, Brasil
+Atelier Marko Brajovic
 July 2018 – October 2018 | Cenografia
-Link: https://markobrajovic.com/hitchcock-bastidores-do-suspense/
 
-### Bar Stage Heineken
-Atelier Marko Brajovic | MECA Inhotim (MG), Maquiné (RS), Recife (PE), São Paulo (SP), Rio de Janeiro (RJ) - Brasil
-June 2018 – November 2018 | Cenografia
-Link: https://markobrajovic.com/palco-e-bar-heineken/
+### Bar & Palco Heineken - Live Your Music
+Atelier Marko Brajovic
+June 2018 – November 2018 | Computational Design
+Arquiteto responsável pelo design paramétrico, produção e supervisão.
 
-### Nike Air Guitar
-Atelier Marko Brajovic | Red Bull Station, São Paulo, Brasil
-March 2018 – April 2018 | Eletrônica
-Link: https://markobrajovic.com/air-guitar-sp-on-air/
+### Life Lamp por Estúdio Guto Requena para Decimal
+Estudio Guto Requena
+May 2018 – May 2018 | Product design
+O processo de design é um híbrido entre uma abordagem de cima para baixo e de baixo para cima. Trabalhamos tanto com modelos 3D predefinidos em forma de coração como base de design quanto com modelagem baseada em agentes, amplamente explorada por Craig Reynolds na década de 1980. A parte de programação foi desenvolvida usando Grasshopper 3D, o plugin Culebra v2.0 de duas semanas para a modelagem baseada em agente em conjunto com o plugin Firefly para capturar os batimentos cardíacos. Este trabalho tornou-se posteriormente um paper apresentado na ECAAD 2020.
+
+### Air Guitar por Atelier Marko Brajovic para Nike
+Atelier Marko Brajovic
+March 2018 – April 2018 | Installation
+O Atelier Marko Brajovic desenvolveu esta instalação para a celebração do Air Max Day. Neste projeto, trabalhei em estreita colaboração com Marko, trabalhando com o conceito, coordenação de projeto e na parte técnica com LEDs endereçáveis, Arduino e captadores de baixos.
 
 ### Wave
-Atelier Marko Brajovic | Design Weekend!, São Paulo, Brasil
+Atelier Marko Brajovic
 August 2017 | Coordenação
-Link: https://markobrajovic.com/wave/
-
-### Restaurante Homa
-Atelier Marko Brajovic | Pinheiros, São Paulo, Brasil
-January 2017 – December 2017 | Arquitetura
-Link: https://markobrajovic.com/restaurante-homa/
 
 ### InsideOut
 Atelier Marko Brajovic
 June 2017 | Design de produto
 
-### Asha House
-Atelier Marko Brajovic | Aldeia Rizoma, Paraty, Brasil
-January 2016 – December 2017 | Arquitetura
-Link: https://markobrajovic.com/casa-asha/
-
-### O3 Pavilion
-Atelier Marko Brajovic | EXPO Revestir, São Paulo, Brasil
-March 2017 | Design Computacional
-Link: https://markobrajovic.com/o3-pavilhao/
-
-### Life Lamp
-Freelance | São Paulo, Brasil
-January 2017 – December 2017 | Design Computacional
-Conceito do Estudio Guto Requena para Decimal. Designer computacional responsável pelo programa.
-Link: https://gutorequena.com/life/
-
 ### Casa Margarita
-Freelance | São Paulo, Brasil
+Freelance
 June 2017 – August 2017 | Arquitetura
 Reforma de uma casa de classe média.
 
+### Pavilhão O3 por Atelier Marko Brajovic para Docol
+Atelier Marko Brajovic
+February 2017 – March 2017 | Computational architecture
+O Pavilhão O3 foi idealizado pelo Atelier Marko Brajovic na mesma época em que eu dava meus primeiros passos no mundo do design computacional. Eu tinha acabado de me formar na FAU-USP com uma tese onde aprendi todas as ferramentas necessárias para finalizar esse pavilhão: Rhino, Grasshopper 3D e Kangaroo Physics.
+
+### Restaurante Homa
+Atelier Marko Brajovic
+January 2017 – December 2017 | Arquitetura
+
 ### Live Talks
-Atelier Marko Brajovic | São Paulo, Brazil
+Atelier Marko Brajovic
 October 2016 | Cenografia
 
-### Parada Coca Cola
-Atelier Marko Brajovic | Rio de Janeiro, Brasil
-August 2016 | Cenografia
-Link: https://markobrajovic.com/parada-coca-cola/
+### Parada Coca-Cola por Atelier Marko Brajovic para Coca-Cola
+Atelier Marko Brajovic
+August 2016 | Installation
+Parada Coca-Cola foi o primeiro projeto em que apliquei design computacional. Esta experiência sensorial foi inspirada na garrafa de Coca-Cola, imitando as bolhas e as cores da bebida.
 
 ### Le Sandwich
-Freelance | São Paulo, Brasil
+Freelance
 June 2016 – July 2016 | Arquitetura
 Conversão de uma agência bancária de dois andares em um restaurante.
 
 ### Coca Cola Taste Fashion
-Atelier Marko Brajovic | Parque Ibirapuera, São Paulo, Brasil
+Atelier Marko Brajovic
 April 2016 | Cenografia
-Link: https://markobrajovic.com/taste-the-fashion/
+
+### Asha House
+Atelier Marko Brajovic
+January 2016 – December 2017 | Arquitetura
 
 ### Ekoa Park
 Atelier Marko Brajovic

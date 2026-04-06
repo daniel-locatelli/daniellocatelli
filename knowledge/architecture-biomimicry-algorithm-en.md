@@ -1,13 +1,21 @@
-URL: https://daniellocatelli.com/research/architecture-biomimicry-algorithm
+URL: https://daniellocatelli.com/teaching/architecture-biomimicry-algorithm-at-ifro
 
 # Architecture + Biomimicry + Algorithm
 
-Description: This is an introductory study on the possibilities of applying computational design in architecture, focusing on form-finding. To this end, case studies with great historical, technological, and artistic relevance were raised to analyze their respective design processes through reverse engineering using the Rhinoceros 3D software and its Grasshopper plug-in. It was found that biomimicry played a fundamental role in the projects researched and will serve as a guideline in this study. Finally, a temporary pavilion was proposed for FAU-USP to consolidate the knowledge absorbed in this process.
-Tags: Computational design, Form finding
-Authors: Daniel Locatelli, Arthur Hunold Lara
-Place: Faculdade de Arquitetura e Urbanismo - Universidade de São Paulo
-Date: December 2016
-Link: https://daniellocatelli.com/documents/daniel-locatelli_tfg-fauusp.pdf
+Description: During my visit to my hometown, I proposed a lecture to the architecture and urbanism course of the Federal Institute of Rondônia - IFRO. I presented some works and research that I had done so far and discussed the future of the profession amid so many technological changes.
+Category: Talk
+Location: Vilhena
+Place: IFRO Vilhena
+Date: August 2019
+Link: https://portal.ifro.edu.br/vilhena/noticias/8153
+Language: Portuguese
 
-In my final BArch thesis, I explored the possibilities of combining computational design with bobbin lace, a traditional weaving technique. This journey culminated in the creation of a hammock-like structure, intended as a temporary installation for the Architecture campus at the University of São Paulo (FAU-USP), Brazil. This innovative approach, which honored traditional craftsmanship while showcasing modern design tools, was later presented at the [International Association for Shell and Spatial Structures (IASS) conference in 2017](https://www.ingentaconnect.com/content/iass/piass/2017/00002017/00000009/art00013).
-My thesis served as an introductory study on the application of computational design in architecture, with a focus on form-finding. By examining case studies of significant historical, technological, and artistic relevance, I reverse-engineered their design processes using Rhinoceros 3D software and its Grasshopper plug-in. Through this analysis, I discovered that biomimicry played a fundamental role in the projects I researched, guiding my study.
+During my visit to my hometown, I proposed a lecture to the architecture and urbanism course of the Federal Institute of Rondônia (IFRO). I presented my work, research, and discussed the future of the profession amid so many technological changes.
+
+The talk traced my academic and professional trajectory, starting from my early studies at UNEMAT (2007-2008), through FAU-USP (2010-2016), and my exchange period at Auburn University and CSU Long Beach (2013-2014).
+
+I then presented my professional work at Atelier Marko Brajovic, showcasing projects such as the Parada Coca-Cola, the Docol Pavilion at Exporevestir 2017 with its Voronoi diagram-based design, and the Heineken Bar at Festival MECA.
+
+A central part of the talk focused on biomimicry, exploring how biological principles informed my final graduation project (TFG), with references to Frei Otto's Expo 1967 Pavilion and minimal surface structures. I also presented the Models byNature workshop and the ICD/ITKE Research Pavilion 2016-17 as examples of computational design inspired by nature.
+
+The lecture concluded with a discussion on the technological evolution in the AEC industry, from Ivan Sutherland's Sketchpad in 1963 to contemporary applications of artificial intelligence in architecture, including generative design research by Stanislas Chaillou at Harvard.

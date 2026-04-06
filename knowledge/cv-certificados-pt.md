@@ -2,15 +2,15 @@ URL: https://daniellocatelli.com/pt/full-cv
 
 # Daniel Locatelli – Certificados
 
-### Introdução a Banco de Dados com SQL
-Universidade de Harvard & edX.org
-July 2024
-Link: https://cs50.harvard.edu/certificates/581eaf67-0711-4c95-be9e-d4ec37eeeac1
-
 ### Introdução à Ciência da Computação
 Universidade Harvard & edX.org
 July 2024
 Link: https://cs50.harvard.edu/certificates/d05f22b7-5ebd-4433-9b12-ba626504cc2f
+
+### Introdução a Banco de Dados com SQL
+Universidade de Harvard & edX.org
+July 2024
+Link: https://cs50.harvard.edu/certificates/581eaf67-0711-4c95-be9e-d4ec37eeeac1
 
 ### Introdução à Ciência da Computação e Programação Usando Python
 MITX & edX.org

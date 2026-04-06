@@ -2,15 +2,15 @@ URL: https://daniellocatelli.com/full-cv
 
 # Daniel Locatelli – Certifications
 
-### CS50's Introduction to Databases with SQL
-Harvard University & edX.org
-July 2024
-Link: https://cs50.harvard.edu/certificates/581eaf67-0711-4c95-be9e-d4ec37eeeac1
-
 ### CS50's Introduction to Computer Science
 Harvard University & edX.org
 July 2024
 Link: https://cs50.harvard.edu/certificates/d05f22b7-5ebd-4433-9b12-ba626504cc2f
+
+### CS50's Introduction to Databases with SQL
+Harvard University & edX.org
+July 2024
+Link: https://cs50.harvard.edu/certificates/581eaf67-0711-4c95-be9e-d4ec37eeeac1
 
 ### Intro to Computer Science and Programming Using Python
 MITX & edX.org

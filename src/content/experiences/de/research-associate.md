@@ -1,5 +1,5 @@
 ---
-Name: Wissenschaftlicher Mitarbeiter
+Name: Wissenschaftlicher Mitarbeiter (60%)
 DateStart: "2025-02"
 Organization: Hochschule München
 City:

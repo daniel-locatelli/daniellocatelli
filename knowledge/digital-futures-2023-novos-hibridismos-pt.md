@@ -1,0 +1,43 @@
+URL: https://daniellocatelli.com/pt/teaching/digital-futures-2023
+
+# Digital Futures 2023: Novos Hibridismos
+
+Description: Esta sessão, abrindo a série DigitalFutures em português, reúne diferentes práticas inovadoras no âmbito de metodologias computacionais aplicadas em arquitetura e design, onde inteligência artificial, algoritmos generativos, design paramétrico, fabricação robótica, ciência dos materiais e biomimética fazem parte de um repertório híbrido.
+Category: Talk
+Place: YouTube - Online
+Date: March 2022
+Link: https://www.youtube.com/watch?v=s-hKf0NhooA
+Event: DigitalFutures
+Language: Português
+
+Esta sessão inaugurou a série de palestras DigitalFutures em português, reunindo cinco palestrantes do Brasil, Portugal e Alemanha para discutir metodologias computacionais inovadoras aplicadas à arquitetura e ao design. O evento fez parte da terceira edição do DigitalFutures Summer Festival.
+
+## Mariana Cabugueira
+
+**Arquitetura Digital e o Metaverso**
+
+Mariana Cabugueira, Senior Architectural Designer no escritório Zaha Hadid Architects, compartilhou sua trajetória desde a Escola de Arquitetura de Lisboa e o Politécnico de Milão até o Design Research Laboratory da Architectural Association em Londres. Lá, ela foi treinada em ferramentas como Grasshopper, Maya, 3ds Max, After Effects e C++ antes de ingressar no cluster de competições da ZHA, onde o design deve ultrapassar os limites convencionais. Ela discutiu como o Autodesk Maya serve como ferramenta principal do estúdio e refletiu sobre o potencial inexplorado dos arquitetos no metaverso, argumentando que os mundos virtuais devem ser moldados por designers e não por desenvolvedores de jogos.
+
+## Rebeca Duque Estrada
+
+**Fabricação Robótica como Ponte entre Natureza e Arquitetura**
+
+Rebeca Duque Estrada, doutoranda no Instituto de Design e Construção Computacional (ICD) da Universidade de Stuttgart, apresentou sua pesquisa sobre tectônicas fibrosas e biomimética. Ela demonstrou como compostos biológicos como colágeno, celulose e quitina inspiram novos paradigmas estruturais através de suas propriedades anisotrópicas e lógica de filamento contínuo. Seus trabalhos incluíram a Aero Chair, uma cadeira de fibra de carbono ultraleve pesando apenas 300 gramas, fabricada em três horas usando um processo de enrolamento inspirado em teias de aranha, e o pavilhão Maison Fibre na Bienal de Arquitetura de Veneza 2021, uma estrutura híbrida de madeira e fibra fabricada com robôs colaborativos que explorou design biologicamente informado em escala arquitetônica.
+
+## Victor Sardenberg
+
+**Arquitetura Especulativa e a Crítica ao Capital**
+
+Victor Sardenberg, pesquisador de doutorado na Universidade Nova de Lisboa, apresentou um provocativo ensaio visual sobre a arquitetura como produção de imagens. Através de colagens remixando edifícios icônicos do século 20 e um pitch satírico de startup, ele criticou como o capitalismo neoliberal reduz a arquitetura a um veículo de acumulação de capital, desconectando o valor de uso do valor de troca. Ele argumentou pela importância do pensamento utópico e pela responsabilidade dos arquitetos em imaginar alternativas.
+
+## Paulo Duca
+
+**Selva Generativa e Design Computacional na Prática**
+
+Paulo Duca, fundador da Selva Generativa, apresentou sua prática de design computacional enraizada em uma conexão pessoal com a natureza, tendo crescido em uma fazenda na Bahia. Seus projetos incluíram a Arena Arbor, um espaço paramétrico de eventos projetado e construído em 30 dias; o Hotel Casulo com sua fachada biomimética em João Pessoa; joias generativas; salas de aula em domos geodésicos; e planejamento urbano paramétrico para o Recife. Ele articulou sua visão de uma "selva generativa" onde cada artefato carrega seu próprio DNA algorítmico, capaz de mutação e evolução.
+
+## Daniel Locatelli
+
+**Sistema Robótico para Montagem de Madeira no Canteiro de Obras**
+
+Apresentei minha pesquisa de mestrado, realizada na Universidade de Stuttgart com meu colega Nils Opgenorth, sobre o desenvolvimento de um sistema de fabricação robótica para colagem de painéis de madeira laminada cruzada (CLT) diretamente no canteiro de obras. O trabalho abordou uma limitação central do CLT: as conexões entre painéis permanecem como o ponto mais fraco do sistema, restringindo os projetos a vãos lineares e geometrias retangulares. A solução proposta foi um dispositivo robótico compacto de fixação que se ancora em furos pré-fabricados, aplica pressão para a cura do adesivo e pode ser removido e reutilizado, eliminando a necessidade de fixadores permanentes ou maquinário de grande porte.

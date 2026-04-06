@@ -1,0 +1,30 @@
+URL: https://daniellocatelli.com/pt/teaching/nature-and-digital-reproducing-natural-processes-with-computational-design-at-puc
+
+# Natureza e Digital: reproduzindo processos naturais com design computacional
+
+Description: Nesta palestra, apresentei meu trabalho, a ideia de reproduzir processos naturais com design computacional e pontos-chave que aprendi durante minha dissertação de mestrado recentemente concluída na Alemanha.
+Category: Talk
+Location: Belo Horizonte
+Place: PUC Minas - Online
+Date: August 2021
+Link: https://youtu.be/J303rzg7y0U
+Event: Design Paramétrico em Arquitetura
+Language: Português
+
+Esta palestra, parte do evento "Design Paramétrico em Arquitetura" na PUC Minas, explorou como o design computacional pode reproduzir processos naturais e as lições aprendidas durante minha pesquisa de mestrado na Universidade de Stuttgart.
+
+## Terminologia do Design Computacional
+
+A apresentação começou esclarecendo a terminologia em torno do design computacional, distinguindo entre modelagem associativa, design paramétrico, design algorítmico e design generativo. Foi referenciado o mapa mental de David Rutten de 2012, onde o criador do Grasshopper tentou identificar e conectar esses vários termos.
+
+## Trajetória Profissional
+
+Compartilhei minha jornada acadêmica e profissional: da UNEMAT (2007-2008) e FAU-USP (2010-2016), passando por um intercâmbio na Auburn University e um estágio na CSULB na Califórnia, até projetos no Atelier Marko Brajovic incluindo Ekóa Park, Parada Coca-Cola, o Pavilhão O3, Casa Asha e Nike Air Guitar.
+
+## Biomimética na Arquitetura
+
+O cerne da palestra focou na biomimética conforme definida por Janine Benyus, estruturada em três níveis: reproduzir formas, reproduzir processos e reproduzir ecossistemas. Discuti como pioneiros como Robert Hooke, Antoni Gaudí (com seus modelos funiculares para a Colônia Güell e a Sagrada Família), Frei Otto (com experimentos de filme de sabão), Sergio Musmeci e Pier Luigi Nervi usaram modelos físicos para encontrar formas estruturalmente eficientes. A palestra também abordou referências contemporâneas de design computacional como Luigi Moretti, John Frazer, Achim Menges e Neri Oxman, e introduziu o conceito de computação material: colaborar com o mundo físico em vez de tentar dominá-lo.
+
+## Programa de Mestrado ITECH e 10 Lições Aprendidas
+
+Apresentei minha experiência no programa de mestrado ITECH na Universidade de Stuttgart e compartilhei dez principais aprendizados de estudar na Alemanha: a forte conexão entre universidades e indústria, o papel dos demonstradores e pavilhões, a cultura de pesquisa interdisciplinar, processos bottom-up versus top-down, a importância de ver o panorama geral, a busca por uma nova estética da madeira, o fato de que inteligência artificial não faz mágica, a biomimética como um meio e não um fim, o conceito de vernacular digital e o valor da reflexão. A palestra concluiu com uma discussão sobre como essas lições poderiam ser aplicadas no Brasil, considerando materiais locais como madeira maciça, terra, tijolo e bambu.

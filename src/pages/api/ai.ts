@@ -118,20 +118,21 @@ export const POST: APIRoute = async ({ request, locals }) => {
       console.log(`Vector search returned ${documents.length} docs:`, documents.map((d: any) => d.title).join(", "));
     }
 
-    // Always include core CV context (Professional Experience + Summary)
-    // so the AI can answer "current work" and identity questions accurately.
-    // These often rank low in vector search because their formal CV language
-    // doesn't match conversational queries like "what are you working on?"
+    // Always include core CV context (Timeline + Summary & Skills)
+    // so the AI has the full career chronology and identity context.
+    // The timeline is a flat chronological list of all CV entries (work,
+    // education, teaching, certifications, etc.) that prevents confabulation
+    // about career transitions and dates.
     const existingIds = new Set(documents.map((d: any) => d.id));
     try {
       const coreUrl = new URL(`${supabaseUrl}/rest/v1/knowledge_entries`);
       coreUrl.searchParams.set("select", "id,content,url,title,type,metadata");
       coreUrl.searchParams.set(
         "or",
-        "(title.ilike.*Professional Experience*,title.ilike.*Summary*,title.ilike.*Experiência Profissional*,title.ilike.*Resumo*)",
+        "(title.ilike.*Timeline*,title.ilike.*Linha do Tempo*,title.ilike.*Zeitleiste*,title.ilike.*Summary*,title.ilike.*Resumo*,title.ilike.*Zusammenfassung*)",
       );
       coreUrl.searchParams.set("type", "eq.cv");
-      coreUrl.searchParams.set("limit", "4");
+      coreUrl.searchParams.set("limit", "6");
 
       const coreResponse = await fetch(coreUrl.toString(), {
         headers: {

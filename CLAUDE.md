@@ -59,6 +59,10 @@ Required in `.env`:
 - `ANTHROPIC_API_KEY` — Claude API key
 - `SUPABASE_URL` / `SUPABASE_ANON_KEY` — Supabase vector store
 
+## AI Chat Knowledge Pipeline
+
+The HeroChat assistant is powered by vector embeddings in Supabase. **After any content change in `src/content/`, run `/sync-knowledge`** to regenerate knowledge files and upload fresh embeddings. This also checks whether AI model IDs in `src/config/ai.ts` are still current.
+
 ## Code Style
 
 - TypeScript strict mode

@@ -2,7 +2,7 @@ URL: https://daniellocatelli.com/full-cv
 
 # Daniel Locatelli – Professional Experience
 
-### Research Associate
+### Research Associate (60%)
 Munich University of Applied Sciences | Munich, Germany
 February 2025 – Current
 
@@ -13,7 +13,8 @@ February 2025 – Current
 ### AEC Software Engineer
 BuildSystems GmbH | Munich, Germany
 January 2024 – December 2024
-Note: Previously the startup Urban Scale Timber
+
+*Previously the startup Urban Scale Timber*
 
 - Development of a Funding Calculator for new constructions and renovations in Germany. Built with the Angular framework and PostgreSQL (Supabase).
 - Development of BuildSystems' website using Astro framework, leveraging Notion API to use Notion as a content management system (CMS).
@@ -21,7 +22,8 @@ Note: Previously the startup Urban Scale Timber
 ### AEC Software Engineer
 Urban Scale Timber, Flügge Funding | Munich, Germany
 January 2023 – December 2023
-Note: The startup is now BuildSystems GmbH
+
+*The startup is now BuildSystems GmbH*
 
 - Development of a Grasshopper plugin (C#/.NET) and a semantic data model for urban analysis and Life Cycle Assessment of timber buildings (LCA).
 - UI/UX prototype for the web app Circular Component Creator in Figma.
@@ -58,8 +60,9 @@ December 2019 – October 2020
 
 ### Computational Designer
 Atelier Marko Brajovic | São Paulo, Brazil
-March 2015 – July 2019
-(Intern until December 2016)
+March 2015 – August 2019
+
+*Intern until December 2016*
 
 - Executed CAD, BIM, and computational modeling for architectural projects.
 - Managed project communications and supplier relationships.
@@ -76,7 +79,7 @@ June 2014 – August 2014
 - Completed Safety and Health Training.
 
 ### Graphic Designer
-Biomedical Science Institute - University of São Paulo | Brazil
+Biomedical Science Institute - University of São Paulo | São Paulo, Brazil
 June 2011 – August 2013
 
 - Created conceptual designs for scientific communications.

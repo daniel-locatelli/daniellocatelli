@@ -30,3 +30,9 @@ blob-report/
 workers/ai-health-check/node_modules/
 workers/ai-health-check/.wrangler/
 
+# Content base (large binary assets for knowledge generation)
+content-base/
+
+# Temporary files
+tmp_*.json
+

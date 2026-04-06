@@ -3,286 +3,230 @@ URL: https://daniellocatelli.com/full-cv
 # Daniel Locatelli – Projects List
 
 ### Portfolio Website
-Self-employed | Remote
-January 2024 | Software
+Daniel Locatelli
+January 2026 | Software
 Developed this portfolio website using Astro, Three.js, Notion API, Supabase, and Claude.
-Link: https://daniellocatelli.com
+
+### BuildSystems plugin for Grasshopper
+BuildSystems
+November 2023 | Software Development
+Plugin developed for BuildSystems to create building components based on Environmental Products Declarations (EPDs). The idea was to offer Lifecycle Analysis (LCA) data right at the beginning of the design process.
+
+### KfW Funding Calculator by BuildSystems
+BuildSystems
+November 2023 – July 2024 | Software Development
+This calculator simulates bank loans and subsidies, making sustainable constructions and renovations accessible to real estate developers and homeowners.
 
 ### BuildSystems Website
-BuildSystems GmbH | Munich, Germany
-August 2023 – April 2024 | Software
+August 2023 – April 2026 | Software
 Developed the BuildSystems website using the Astro framework, leveraging the Notion API as a CMS.
-Link: https://buildsystems.de
-
-### KfW Funding Calculator
-BuildSystems GmbH | Munich, Germany
-July 2023 – August 2023 | Software
-Developed the KfW Funding Calculator web application using Angular and PostgreSQL.
-Link: https://app.buildsystems.de
 
 ### Circular Component Creator
-BuildSystems GmbH | Munich, Germany
-June 2023 – July 2023 | UI/UX design
-Developed the interface for a web application to create building components.
+BuildSystems GmbH
+June 2023 – July 2023 | UI/UX Design
+Conceptual design study for a web application to browse, filter, and compare circular building components. Developed UI/UX mockups in Figma and defined the underlying data architecture.
 
 ### BuildSystems Ontology
-BuildSystems GmbH | Munich, Germany
+BuildSystems GmbH
 March 2023 – June 2023 | Software
 Research on schemas, object models, and databases.
 
-### Grasshopper C# Plugin
-BuildSystems GmbH | Munich, Germany
-March 2023 | Software
-Developed a Grasshopper plugin incorporating the functionality of previous configurators.
-
 ### Data Visualization with Power BI
-BuildSystems GmbH | Munich, Germany
+BuildSystems GmbH
 February 2023 | Data visualization
 Developed a workflow connecting Grasshopper data to Power BI.
 
-### Timber Component Configurator
-BuildSystems GmbH | Munich, Germany
-January 2023 – February 2023 | Computational design
-Developed a Grasshopper configurator for timber components using EPD data.
-
 ### Urban Site Configurator
-BuildSystems GmbH | Munich, Germany
+BuildSystems GmbH
 January 2023 | Computational design
 Developed a Grasshopper configurator to create building envelopes.
 
-### The curious desert
-ArtEngineering GmbH | Qatar desert
-October 2021 | Detailing
-Art installations by Olafur Eliasson. Detailing of steel structure.
-Link: https://art-engineering.net/en/projekt/the-curious-desert/
-
 ### AIDS
-ArtEngineering GmbH | In front of Stedelijk Museum Amsterdam
+ArtEngineering GmbH
 September 2022 | Detailing
 Technical and fabrication drawings.
-Link: https://art-engineering.net/en/projekt/aids-1-95-x-1-95-m/
 
-### Breathing earth sphere
-ArtEngineering GmbH | Docho Island, South Korea
-August 2022 | Computational Design
-Technical drawings, logistics for transportation.
-Link: https://art-engineering.net/en/projekt/breathing-earth-sphere/
+### Wood Research
+Alfred Rein Ingenieure GmbH
+August 2022 | Research
+Researching cutting-edge technology for wood construction.
 
 ### A harmonious cycle of interconnected nows
-ArtEngineering GmbH | Azabudai Hills Gallery, Tokyo, Japan
+ArtEngineering GmbH
 July 2022 | Detailing
 Sculpture by Olafur Eliasson. Aiding the detailing and prototyping; logistics for transportation.
-Link: https://art-engineering.net/projekt/a-harmonious-cycle-of-interconnected-nows/
 
-### Common Sky
-ArtEngineering GmbH | Buffalo AKG Art Museum, Buffalo, USA
-December 2021 – June 2022 | Computational Design
-By Studio Other Spaces. Parametric detailing and automated digital fabrication workflow.
-Link: https://art-engineering.net/projekt/common-sky/
+### Common Sky by ArtEngineering for Studio Other Spaces
+ArtEngineering GmbH
+June 2022 – June 2022 | Digital Fabrication
+Studio Other Spaces contacted ArtEngineering for computational engineering, digital fabrication, and logistics. I became involved in the project's mid-development after digital fabrication had started. It was this very project that ultimately secured my position at Art Engineering. Initially, they needed someone to quickly export around 1.5 thousand 2D drawings from Rhino/Grasshopper to be sent for digital fabrication using a plasma cutter.
 
 ### ParaPivot
-ArtEngineering GmbH | Archived
+ArtEngineering GmbH
 May 2022 | Detailing
 Five-meter steel and stone sculpture by Studio Alicja Kwade. Detailing of the structural framing.
-Link: https://art-engineering.net/projekt/parapivot/
-
-### Canyon
-ArtEngineering GmbH | Louis Vuitton, Paris, France
-January 2022 – February 2022 | Detailing
-Seven-meter-tall steel sculpture by Katharina Grosse. Computational form-fitting using developable surfaces.
-Link: https://art-engineering.net/projekt/canyon/
 
 ### Donum Pavilion
-ArtEngineering GmbH | Donum Estate, Sonoma, USA
+ArtEngineering GmbH
 January 2022 | Detailing
 Vertical Panorama Pavilion by Studio Other Spaces. Wine-tasting space. Aiding the detailing.
-Link: https://art-engineering.net/projekt/vertical-panorama-pavilion/
 
 ### ZERO Gas Station
-Alfred Rein Ingenieure GmbH | Archived
+Alfred Rein Ingenieure GmbH
 December 2021 | Computational Design
 Gas station typology. Rendering of the proposal.
 
+### The curious desert
+ArtEngineering GmbH
+October 2021 | Detailing
+Art installations by Olafur Eliasson. Detailing of steel structure.
+
 ### Disney Wonder
-Alfred Rein Ingenieure GmbH | Cruise Ship
+Alfred Rein Ingenieure GmbH
 September 2021 – October 2021 | Detailing
 Production of drawings for membrane fabrication.
 
 ### Seilnetz Muttenz
-Alfred Rein Ingenieure GmbH | Muttenz, Switzerland
+Alfred Rein Ingenieure GmbH
 September 2021 – October 2021 | Computational Design
 Form-finding of the cable net structure and quantity takeoff.
 
-### Wood Research
-Alfred Rein Ingenieure GmbH | Internal
-August 2022 | Research
-Researching cutting-edge technology for wood construction.
-
 ### Membranaustausch
-Alfred Rein Ingenieure GmbH | Schloss Neuwildenstein, Austria
+Alfred Rein Ingenieure GmbH
 July 2021 | Detailing
 Mechanical drawings and rendering of the facade.
 
 ### MVV Canopy Forecourt
-Alfred Rein Ingenieure GmbH | Mannheim, Germany
+Alfred Rein Ingenieure GmbH
 July 2021 | Computational Design
 Form-finding of membrane structures using Kangaroo 2.
 
 ### Automatic Cutting Pattern
-Alfred Rein Ingenieure GmbH | Internal
+Alfred Rein Ingenieure GmbH
 February 2021 – June 2021 | Computational Design
 Development of automated cutting patterns for membranes.
 
-### Radom Raisting
-Alfred Rein Ingenieure GmbH | Raisting, Germany
-March 2021 – May 2021 | Computational Design
-Simulation of the deployment and collision avoidance.
-Link: https://www.ar-ingenieure.com/projects/radom-raisting
+### Mechanical Bridge
+Alfred Rein Ingenieure GmbH
+January 2021 | Computational Design
+Simulation of the bridge opening and closing.
 
 ### New Parking Garage Swissprintersarea
-Alfred Rein Ingenieure GmbH | Zofingen, Switzerland
+Alfred Rein Ingenieure GmbH
 January 2021 | Computational Design
 Mechanical drawings and rendering of the facade.
 
 ### Weather Protection Roman Wall
-Alfred Rein Ingenieure GmbH | Wiesbaden, Germany
+Alfred Rein Ingenieure GmbH
 January 2021 | Architecture
 Project coordination, membrane cover integrating the landscape.
 
-### Mechanical Bridge
-Alfred Rein Ingenieure GmbH | Archived
-January 2021 | Computational Design
-Simulation of the bridge opening and closing.
-
-### Coreless Filament Winding
-ICD/ITKE University of Stuttgart | ICD CCL, Stuttgart, Germany
-August 2020 – October 2020 | Engineering
-Structural tests with natural fibers for the livMatS pavilion.
-Link: https://www.archdaily.com/966168/livmats-pavilion-icd-itke-university-of-stuttgart
-
-### ICD Website Migration
-ICD/ITKE University of Stuttgart | Online
-December 2019 – October 2020 | Software
-Migration of ICD's website to the new template in OpenCMS.
-Link: https://www.icd.uni-stuttgart.de/
-
 ### Carbon Filament Winding
-ICD/ITKE University of Stuttgart | ICD, Stuttgart, Germany
+ICD/ITKE University of Stuttgart
 July 2020 | Photogrammetry
 Investigation of digital twins for small-scale carbon fiber winding.
-Link: https://www.icd.uni-stuttgart.de/research/research-projects/leichtbau-bw-innovation-challenge/
 
-### Tower using Self-Curving Cross-Laminated Timber
-ICD/ITKE University of Stuttgart | Germany
-March 2020 – April 2020 | Computational Design
-Computational designer for a project similar to the Urbach Tower.
-
-### BlastU 2019
-Atelier Marko Brajovic | Ibirapuera bienal pavilion, São Paulo, Brazil
-January 2019 – August 2019 | Computational Design
-Architect in charge of design and supervision.
-Link: https://markobrajovic.com/blastu-2019/
+### ICD Research Assistant in Web Development
+ICD - University of Stuttgart
+December 2019 – October 2020 | Web development
+I helped migrate the ICD website to the University of Stuttgart's centralized OpenCMS template. Beyond content management and SEO, this project gave me my first contact with the German language and a deep appreciation for the ICD's research portfolio.
 
 ### Casa e Jardim Award 2019
-Atelier Marko Brajovic | Pinacoteca de São Paulo, São Paulo, Brazil
+Atelier Marko Brajovic
 June 2019 | Computational Design
 Architect in charge of the stage design and trophy.
-Link: https://markobrajovic.com/premio-casa-e-jardim-2019
 
 ### Ita House
-Atelier Marko Brajovic | Paraty, Brazil
+Atelier Marko Brajovic
 April 2019 | Architecture
 
 ### Itaú Rock in Rio
-Atelier Marko Brajovic | Archived
+Atelier Marko Brajovic
 February 2019 – April 2019 | Scenic design
 
+### BlastU 2019
+Atelier Marko Brajovic
+January 2019 – August 2019 | Computational Design
+Architect in charge of design and supervision.
+
 ### Embraer Pavilion
-Atelier Marko Brajovic | Paris, France
+Atelier Marko Brajovic
 January 2019 | Architecture
-Link: https://markobrajovic.com/embraer-pavilion/
 
 ### Camper Thailand
 Atelier Marko Brajovic
 December 2018 | Computational Design
 
-### The First Blow
-Atelier Marko Brajovic | T3 Aeroporto Internacional de Guarulhos, São Paulo, Brazil
-November 2018 | Computational Design
-Link: https://markobrajovic.com/o-primeiro-sopro/
-
 ### Animale Jewelry
-Atelier Marko Brajovic | Rio de Janeiro, Brazil
+Atelier Marko Brajovic
 November 2018 – December 2018 | Architecture
 
+### The First Blow
+Atelier Marko Brajovic
+November 2018 | Computational Design
+
 ### Hitchcock
-Atelier Marko Brajovic | MIS - Museum of Image and Sound, São Paulo, Brazil
+Atelier Marko Brajovic
 July 2018 – October 2018 | Scenic design
-Link: https://markobrajovic.com/hitchcock-bastidores-do-suspense/
 
-### Bar Stage Heineken
-Atelier Marko Brajovic | MECA Inhotim (MG), Maquiné (RS), Recife (PE), São Paulo (SP), Rio de Janeiro (RJ) - Brazil
+### Bar & Stage Heineken - Live Your Music
+Atelier Marko Brajovic
 June 2018 – November 2018 | Computational Design
-Link: https://markobrajovic.com/palco-e-bar-heineken/
+Architect in charge of the parametric design, production and supervision.
 
-### Nike Air Guitar
-Atelier Marko Brajovic | Red Bull Station, São Paulo, Brazil
-March 2018 – April 2018 | Electronics
-Link: https://markobrajovic.com/air-guitar-sp-on-air/
+### Life Lamp by Estúdio Guto Requena for Decimal
+Estudio Guto Requena
+May 2018 – May 2018 | Product design
+The design process is a hybrid between a top-down and a bottom-up approach. We worked both with predefined heart-like 3D models as the design base and with agent-based modeling, widely explored by Craig Reynolds in the 1980s. The programming part was developed using Grasshopper 3D, the two-week-old plugin Culebra v2.0 for the agent-based modeling in conjunction with the plugin Firefly to capture the heartbeats. This work became later a paper presented at the ECAAD 2020.
+
+### Air Guitar by Atelier Marko Brajovic for Nike
+Atelier Marko Brajovic
+March 2018 – April 2018 | Installation
+Atelier Marko Brajovic developed this site-specific installation for the celebration of the Air Max Day. In this project, I worked on the concept and the coordination. I also got to work with addressable LEDs, Arduino, and bass pickups.
 
 ### Wave
-Atelier Marko Brajovic | Design Weekend!, São Paulo, Brazil
+Atelier Marko Brajovic
 August 2017 | Coordination
-Link: https://markobrajovic.com/wave/
-
-### Homa Restaurant
-Atelier Marko Brajovic | Pinheiros, São Paulo, Brazil
-January 2017 – December 2017 | Architecture
-Link: https://markobrajovic.com/restaurante-homa/
 
 ### InsideOut
 Atelier Marko Brajovic
 June 2017 | Product design
 
-### Asha House
-Atelier Marko Brajovic | Rizoma Village, Paraty, Brazil
-January 2016 – December 2017 | Architecture
-Link: https://markobrajovic.com/casa-asha/
-
-### O3 Pavilion
-Atelier Marko Brajovic | EXPO Revestir, São Paulo, Brazil
-March 2017 | Computational Design
-Link: https://markobrajovic.com/o3-pavilhao/
-
-### Life Lamp
-Freelance | São Paulo, Brazil
-December 2017 – January 2017 | Computational Design
-Concept by Estudio Guto Requena for Decimal. Computational designer responsible for the program.
-Link: https://gutorequena.com/life/
-
 ### Margarita House
-Freelance | São Paulo, Brazil
+Freelance
 June 2017 – August 2017 | Architectural Design
 Full middle class house renovation.
 
+### O3 Pavilion by Atelier Marko Brajovic for Docol
+Atelier Marko Brajovic
+February 2017 – March 2017 | Computational architecture
+The O3 Pavilion was conceptualized by the Atelier Marko Brajovic at the same time that I was taking my first steps into the computational design world. I had just graduated from FAU-USP with a thesis in which I learned all the tools necessary to finish this pavilion: Rhino, Grasshopper 3D and Kangaroo Physics.
+
+### Homa Restaurant
+Atelier Marko Brajovic
+January 2017 – December 2017 | Architecture
+
 ### Live Talks
-Atelier Marko Brajovic | São Paulo, Brazil
+Atelier Marko Brajovic
 October 2016 | Computational Design
 
-### Parada Coca Cola
-Atelier Marko Brajovic | Rio de Janeiro, Brazil
-August 2016 | Computational Design
-Link: https://markobrajovic.com/parada-coca-cola/
+### Parada Coca-Cola by Atelier Marko Brajovic for Coca-Cola
+Atelier Marko Brajovic
+August 2016 | Installation
+Parada Coca-Cola was my very first project where I applied computational design. This sensorial experience was inspired by the Coca-Cola bottle, mimicking the bubbles and colors of the drink.
 
 ### Le Sandwich
-Freelance | São Paulo, Brazil
+Freelance
 June 2016 – July 2016 | Architectural Design
 Converted a two-floors bank agency into a restaurant.
 
 ### Coca Cola Taste Fashion
-Atelier Marko Brajovic | Ibirapuera Park, São Paulo - Brazil
+Atelier Marko Brajovic
 April 2016 | Scenic Design
-Link: https://markobrajovic.com/taste-the-fashion/
+
+### Asha House
+Atelier Marko Brajovic
+January 2016 – December 2017 | Architecture
 
 ### Ekoa Park
 Atelier Marko Brajovic

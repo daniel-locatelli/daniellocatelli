@@ -5,3 +5,4 @@ URL: https://daniellocatelli.com/full-cv
 Category: Talk
 Location: São Paulo
 Date: December 2016
+Event: II Structured Shell Meeting
