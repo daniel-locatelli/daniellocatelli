@@ -8,6 +8,7 @@ Tags:
   - Form finding
 Authors:
   - Daniel Nunes Locatelli
+Supervisors:
   - Arthur Hunold Lara
 DateStart: "2016-12-01"
 Link:

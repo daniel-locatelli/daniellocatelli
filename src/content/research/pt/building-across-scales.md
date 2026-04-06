@@ -18,11 +18,12 @@ Advisors:
   - Samuel Leder
 City:
   - Stuttgart
+Country: "Alemanha"
 DateStart: "2024-12-01"
 Link:
   Text: Artigo no periódico Automation in Construction
   Href: "https://doi.org/10.1016/j.autcon.2024.105774"
-Place: ITECH - University of Stuttgart
+Organization: "ITECH - University of Stuttgart"
 ---
 
 ## Resumo

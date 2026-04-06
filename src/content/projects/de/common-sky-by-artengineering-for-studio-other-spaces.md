@@ -31,7 +31,6 @@ Link:
 Place: Buffalo AKG Art Museum
 ---
 
-## Einführung
 [Studio Other Spaces](https://studiootherspaces.net/) beauftragte ArtEngineering mit Computational Engineering, digitaler Fertigung und Logistik. Ich stieg mitten in der Projektentwicklung ein, nachdem die digitale Fertigung bereits begonnen hatte. Es war genau dieses Projekt, das letztlich meine Festanstellung bei ArtEngineering sicherte.
 ## Computational Design
 Zunächst wurde jemand benötigt, der schnell rund 1.500 2D-Zeichnungen aus Rhino/Grasshopper exportieren konnte, um sie für die digitale Fertigung mit einem Plasmabrenner zu versenden.

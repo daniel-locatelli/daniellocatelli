@@ -7,11 +7,11 @@ Tags:
   - Coreless Filament Winding
   - Structural Analysis
   - Structural Test
-Authors:
-  - ITKE - University of Stuttgart
+Organization: "ITKE - University of Stuttgart"
 Category: Filament
 City:
   - Stuttgart
+Country: "Deutschland"
 Place: Botanic Garden Freiburg
 DateStart: "2020-08-25"
 DateEnd: "2020-10-01"
@@ -21,6 +21,8 @@ Manager:
   - Marta Gil Pérez
 Team:
   - Daniel Nunes Locatelli
+  - Anand Shah
+  - Francesca Maisto
 Link:
   Text: livMatS Pavilion 2020-21
   Href: "https://www.itke.uni-stuttgart.de/research/icd-itke-research-pavilions/livMatS-pavilion-2020-21/"
@@ -29,7 +31,7 @@ OtherLinks:
     Href: "https://www.archdaily.com/966168/livmats-pavilion-icd-itke-university-of-stuttgart"
 ---
 
-Der livMatS-Pavillon — eine Zusammenarbeit zwischen dem ICD, dem ITKE und dem Exzellenzcluster livMatS der Universität Freiburg — erweiterte die Grenzen des kernlosen Filamentwickelns durch die Verwendung von **Naturfasern** anstelle von Kohle- oder Glasfasern. Der Pavillon wurde schließlich im Botanischen Garten in Freiburg installiert, doch bevor dies geschehen konnte, mussten die Strukturbauteile rigoros getestet werden.
+Der livMatS-Pavillon (eine Zusammenarbeit zwischen dem ICD, dem ITKE und dem Exzellenzcluster livMatS der Universität Freiburg) erweiterte die Grenzen des kernlosen Filamentwickelns durch die Verwendung von **Naturfasern** anstelle von Kohle- oder Glasfasern. Der Pavillon wurde schließlich im Botanischen Garten in Freiburg installiert, doch bevor dies geschehen konnte, mussten die Strukturbauteile rigoros getestet werden.
 
 ## Die Herausforderung
 
@@ -37,7 +39,7 @@ Im Gegensatz zu Kohlefaserverbundwerkstoffen, die auf Jahrzehnte an Ingenieurdat
 
 ## Meine Rolle
 
-Als wissenschaftliche Hilfskraft unter der Leitung von Marta Gil Pérez half ich bei der Vorbereitung und Durchführung der Belastungstests. Die Probekörper — große naturfasergewickelte Elemente, die von der ITECH-Klasse 2020 gefertigt wurden — wurden auf hydraulischen Plattformen montiert und mithilfe industrieller Lastgurte kontrollierten Kräften ausgesetzt.
+Als wissenschaftliche Hilfskraft unter der Leitung von Marta Gil Pérez half ich bei der Vorbereitung und Durchführung der Belastungstests. Die Probekörper (große naturfasergewickelte Elemente, die von der ITECH-Klasse 2020 gefertigt wurden) wurden auf hydraulischen Plattformen montiert und mithilfe industrieller Lastgurte kontrollierten Kräften ausgesetzt.
 
 ![Forschungsteam bei der Vorbereitung eines naturfasergewickelten Probekörpers für den Belastungstest im ITKE-Labor. Ein Prototyp eines Kohlefaserturms ist im Hintergrund sichtbar.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-01.jpg)
 
@@ -47,7 +49,7 @@ Als wissenschaftliche Hilfskraft unter der Leitung von Marta Gil Pérez half ich
 
 Was diese Erfahrung besonders machte, war das unmittelbare Erleben der Kluft zwischen rechnerischer Vorhersage und physischem Verhalten. Spitzenforschung wie diese verfügt noch nicht über zuverlässige Methoden der Strukturanalyse allein durch Computersimulation. Um ein strukturell sicheres Ergebnis zu erzielen, sind physische Tests im Realmaßstab unerlässlich.
 
-Martas Erfahrung und Intuition mit ähnlichen Strukturen waren grundlegend. Nach jedem Test konnte sie erkennen, welche Anpassungen am Entwurf vorgenommen werden sollten — gestützt auf eine Kombination aus Messdaten und jahrelanger praktischer Erfahrung mit Faserverbundwerkstoffen. Dieses Zusammenspiel von Simulation, Experiment und Intuition macht die Forschung an der Grenze der Bautechnologie so fesselnd.
+Martas Erfahrung und Intuition mit ähnlichen Strukturen waren grundlegend. Nach jedem Test konnte sie erkennen, welche Anpassungen am Entwurf vorgenommen werden sollten, gestützt auf eine Kombination aus Messdaten und jahrelanger praktischer Erfahrung mit Faserverbundwerkstoffen. Dieses Zusammenspiel von Simulation, Experiment und Intuition macht die Forschung an der Grenze der Bautechnologie so fesselnd.
 
 ![Detail des Naturfaserprobekörpers unter Last, das die Dichte des Wickelmusters zeigt.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-02.jpg)
 

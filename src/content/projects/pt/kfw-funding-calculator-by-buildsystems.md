@@ -8,15 +8,11 @@ Tags:
   - Web Development
 Organization: "BuildSystems"
 Category: Software Development
-City:
-  - Munique
-Country: "Alemanha"
 DateStart: "2023-11-20"
 DateEnd: "2024-07-30"
 Link:
   Text: "https://app.buildsystems.de"
   Href: "https://app.buildsystems.de/"
-Place: Online
 Director:
   - Martin Bittmann
 Manager:
@@ -58,7 +54,6 @@ Criei uma documentação simples no Notion a partir do arquivo do Excel para ent
 Como a equipe já usa o [Figma](https://www.figma.com/), decidi permanecer dentro desse ecossistema. Então, usei o [FigJam](https://www.figma.com/figjam/) para esboçar um diagrama inicial de arquitetura de software, pensando em quais componentes seriam necessários e a relação entre eles.
 ```mermaid
 %%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
-%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
 flowchart TB
 
 	R(Routes) --> N & S & PO & PR & SE
@@ -145,7 +140,7 @@ Durante o processo de desenvolvimento, tentei criar um único componente que aco
 Isso, no entanto, tornou o componente muito complexo porque havia muitas variáveis e requisitos exclusivos para cada calculadora. Então, no final, decidi dividi-lo em dois componentes. Embora haja algum código redundante, isso adicionou velocidade ao desenvolvimento.
 
 ```mermaid
-%%{ init: { 'flowchart': { 'curve': 'base' } } }%%
+%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
 flowchart TB
 	NC(Neubau Component) --> NPFC(Projekt Form Component) & NDFC(Darlehen Form Component)
 		subgraph NPF[Projekt Form]
@@ -225,7 +220,7 @@ No entanto, alguns usuários do Netlify começaram a relatar como passaram do pl
 O Cloudflare é semelhante ao Netlify. Mesmo modelo de negócios e implantação automatizada usando o GitHub. No entanto, ele tem um sistema anti-bot mais robusto.
 A implantação é automática e bem simples:
 ```mermaid
-%%{ init: { 'flowchart': { 'curve': 'base' } } }%%
+%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
 flowchart LR
 NG(Angular) --push--> MA(main branch) --> CP(CF pages production) --> PA(https://app.buildsystems.de)
 NG --push--> DV(development branch) --> CD(CF pages development) --> DA(https://branchname.pages.dev)

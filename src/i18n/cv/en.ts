@@ -29,6 +29,7 @@ export const t: I18nCV = {
     engagementFull: "Teaching Experience",
     engagementTypes: {
       course: "Course",
+      pitch: "Pitch",
       talk: "Talk",
       workshop: "Workshop",
       seminar: "Seminar",

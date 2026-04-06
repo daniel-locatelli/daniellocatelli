@@ -14,7 +14,6 @@ Director:
 Team:
   - Daniel Nunes Locatelli
   - Daniel Dieren
-Place: Online
 ---
 
 Durante meu tempo na BuildSystems, liderei o desenvolvimento de um plugin para o Grasshopper com o objetivo de otimizar o processo de projeto arquitetônico. Esse conjunto de ferramentas foi criado para permitir que os usuários definissem e analisassem projetos de edifícios de forma paramétrica, oferecendo feedback em tempo real sobre o uso de materiais e o impacto ambiental por meio de uma Avaliação do Ciclo de Vida (ACV) integrada.

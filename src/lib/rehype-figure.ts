@@ -26,7 +26,7 @@ export function rehypeFigure() {
       const figure: Element = {
         type: "element",
         tagName: "figure",
-        properties: { className: ["my-6"] },
+        properties: {},
         children: [
           node,
           {

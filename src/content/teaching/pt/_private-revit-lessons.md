@@ -1,6 +1,8 @@
 ---
 Name: Aulas particulares de Revit
 DateStart: "2017-02"
+DateEnd: "2017-03"
+Country: "Brasil"
 Organization: Aulas particulares
 City:
   - São Paulo

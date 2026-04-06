@@ -10,6 +10,7 @@ Tags:
 Category: Filament
 City:
   - Stuttgart
+Country: Germany
 DateStart: "2020-07-02"
 Director:
   - Christoph Schlopschnat
@@ -19,7 +20,7 @@ Team:
 Link:
   Text: Leichtbau BW Innovation Challenge
   Href: "https://www.icd.uni-stuttgart.de/research/research-projects/leichtbau-bw-innovation-challenge/"
-Place: ICD Computational Construction Laboratory
+Organization: ICD – University of Stuttgart
 ---
 
 Coreless filament winding is a fabrication technique where a robotic arm winds resin-soaked fibers around a frame to create lightweight, high-performance structural elements without the need for a solid mold. The ICD and ITKE at the University of Stuttgart have been pioneering this technology, producing increasingly ambitious pavilions and demonstrators.

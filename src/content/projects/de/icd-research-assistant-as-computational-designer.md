@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/projects/icd-research-assistant-as-computational-designer/icd-research-assistant-as-computational-designer-cover.jpg
+Cover: /assets/content/projects/icd-research-assistant-as-computational-designer/icd-research-assistant-as-computational-designer-cover_upscaled.jpg
 CoverAlt: Rendering eines Turms aus selbstkrümmendem Brettsperrholz mit Personen als Maßstab.
 Description: "Es war spannend, die computergestützte Strategie zur Geometrieerzeugung für eine sich selbst krümmende Brettsperrholzplatte zu verstehen. Der Trick besteht darin, mit Zylindern zu arbeiten, da sich Holz von Natur aus senkrecht zur Faserrichtung krümmt."
 Name: ICD-Forschungsassistent als Computational Designer

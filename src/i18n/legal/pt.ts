@@ -52,7 +52,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Fontes Auto-Hospedadas",
-        content: `<p>Este website utiliza as fontes Montserrat, Poppins e Poiret One. Todos os arquivos de fontes são servidos diretamente deste domínio. Nenhuma requisição é feita ao Google Fonts ou a qualquer outro serviço de fontes de terceiros.</p>`,
+        content: `<p>Este website utiliza as fontes Montserrat e Poppins. Todos os arquivos de fontes são servidos diretamente deste domínio. Nenhuma requisição é feita ao Google Fonts ou a qualquer outro serviço de fontes de terceiros.</p>`,
       },
       {
         heading: "Sem Cookies ou Rastreamento",

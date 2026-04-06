@@ -52,7 +52,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Self-Hosted Fonts",
-        content: `<p>This website uses the fonts Montserrat, Poppins, and Poiret One. All font files are served directly from this domain. No requests are made to Google Fonts or any other third-party font service.</p>`,
+        content: `<p>This website uses the fonts Montserrat and Poppins. All font files are served directly from this domain. No requests are made to Google Fonts or any other third-party font service.</p>`,
       },
       {
         heading: "No Cookies or Tracking",

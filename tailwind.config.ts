@@ -77,6 +77,12 @@ export default {
               paddingLeft: "1rem",
               fontStyle: "italic",
               color: "var(--color-zinc-300)",
+              marginBottom: "0.8em",
+            },
+            figure: {
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             },
             img: {
               borderRadius: "0.5rem",

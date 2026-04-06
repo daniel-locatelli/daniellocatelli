@@ -12,14 +12,13 @@ DateEnd: "2018-06-08"
 Event: XIV Semana da Arquitetura e Urbanismo
 Language: Português
 Place: UNEMAT
-Link: "/teaching/adaptive-grasshopper-workshop"
 ---
 
 Este workshop fez parte da XIV Semana da Arquitetura e Urbanismo na UNEMAT em Barra do Bugres, Brasil. O que o tornou único foi seu formato adaptável: em vez de seguir um programa rígido, os participantes escolheram coletivamente qual estratégia de design computacional queriam explorar.
 
 ## O conceito
 
-Preparei diversas estratégias de design computacional bastante conhecidas — Voronoi, relaxamento de malha, reação-difusão, entre outras — e no primeiro dia, após cobrir os fundamentos do Grasshopper, o grupo votou em qual abordagem gostariam de se aprofundar. Escolheram o **Exoskeleton**, um plugin do Grasshopper que converte malhas em wireframe em estruturas tubulares sólidas.
+Preparei diversas estratégias de design computacional bastante conhecidas (Voronoi, relaxamento de malha, reação-difusão, entre outras) e no primeiro dia, após cobrir os fundamentos do Grasshopper, o grupo votou em qual abordagem gostariam de se aprofundar. Escolheram o **Exoskeleton**, um plugin do Grasshopper que converte malhas em wireframe em estruturas tubulares sólidas.
 
 ## Dia 1: Fundamentos
 
@@ -31,7 +30,7 @@ O primeiro dia cobriu o básico: a interface do Grasshopper, tipos de dados, par
 
 ## Dia 2: Exoskeleton
 
-No segundo dia, focamos inteiramente na estratégia escolhida. Os alunos construíram suas próprias definições no Grasshopper do zero, experimentando diferentes topologias de malha e espessuras de tubos. O plugin Exoskeleton recebe qualquer entrada em wireframe e gera uma malha suave, pronta para impressão 3D — tornando-o uma ponte perfeita entre design computacional e fabricação digital.
+No segundo dia, focamos inteiramente na estratégia escolhida. Os alunos construíram suas próprias definições no Grasshopper do zero, experimentando diferentes topologias de malha e espessuras de tubos. O plugin Exoskeleton recebe qualquer entrada em wireframe e gera uma malha suave, pronta para impressão 3D, tornando-o uma ponte perfeita entre design computacional e fabricação digital.
 
 ![Daniel Nunes Locatelli ajudando um aluno a refinar seu modelo no Exoskeleton.](../../../assets/content/teaching/adaptive-grasshopper-workshop/student-with-exoskeleton-done.jpg)
 
@@ -39,7 +38,7 @@ No segundo dia, focamos inteiramente na estratégia escolhida. Os alunos constru
 
 ## Resultados
 
-Ao final do workshop, cada participante havia produzido sua própria estrutura paramétrica única. A variedade de resultados — de formas orgânicas semelhantes a corais até geometrias arquitetônicas de túneis — demonstrou como uma única estratégia computacional pode produzir resultados vastamente diferentes dependendo da geometria de entrada e dos parâmetros.
+Ao final do workshop, cada participante havia produzido sua própria estrutura paramétrica única. A variedade de resultados, de formas orgânicas semelhantes a corais até geometrias arquitetônicas de túneis, demonstrou como uma única estratégia computacional pode produzir resultados vastamente diferentes dependendo da geometria de entrada e dos parâmetros.
 
 ![Resultados finais: detalhe do modelo paramétrico de um aluno.](../../../assets/content/teaching/adaptive-grasshopper-workshop/student-working-on-a-grasshopper-definition-creating-a-tunnel-like-structure.jpg)
 

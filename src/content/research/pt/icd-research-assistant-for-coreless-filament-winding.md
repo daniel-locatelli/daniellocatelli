@@ -10,6 +10,7 @@ Tags:
 Category: Filament
 City:
   - Stuttgart
+Country: Alemanha
 DateStart: "2020-07-02"
 Director:
   - Christoph Schlopschnat
@@ -19,7 +20,7 @@ Team:
 Link:
   Text: Leichtbau BW Innovation Challenge
   Href: "https://www.icd.uni-stuttgart.de/research/research-projects/leichtbau-bw-innovation-challenge/"
-Place: ICD Computational Construction Laboratory
+Organization: ICD – Universidade de Stuttgart
 ---
 
 O enrolamento filamentar sem núcleo é uma técnica de fabricação em que um braço robótico enrola fibras embebidas em resina ao redor de uma estrutura para criar elementos estruturais leves e de alto desempenho — sem a necessidade de um molde sólido. O ICD e o ITKE da Universidade de Stuttgart têm sido pioneiros nessa tecnologia, produzindo pavilhões e demonstradores cada vez mais ambiciosos.

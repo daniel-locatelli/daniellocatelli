@@ -1,7 +1,7 @@
 ---
 Cover: /assets/content/teaching/tensegrity-workshop/tensegrity-workshop-cover.jpeg
 CoverAlt: Membros da equipe construindo uma estrutura de tensegridade juntos.
-Description: "Um workshop de team-building do Atelier Marko Brajovic com o objetivo de desenvolver coletivamente uma tensegridade. Além do experimento estrutural, o processo revelou como tensões sociais e conexões humanas espelham os próprios princípios da tensegridade."
+Description: "Um workshop de team-building onde construímos coletivamente uma estrutura de tensegridade, descobrindo como o equilíbrio de forças na estrutura espelhava nossas próprias dinâmicas colaborativas."
 Name: Workshop de Tensegridade
 Category: Workshop
 City:
@@ -13,23 +13,23 @@ Place: Aldeia Rizoma
 Language: Português
 ---
 
-A equipe do Atelier Marko Brajovic se reuniu na exuberante paisagem de Paraty, Brasil, para um workshop prático com um duplo propósito: construir coletivamente uma estrutura de tensegridade e fortalecer os laços dentro da equipe.
+Nos reunimos como equipe do Atelier Marko Brajovic em Paraty, Brasil, para construir coletivamente uma estrutura de tensegridade e fortalecer nossos laços ao longo do processo.
 
 ## O que é uma tensegridade?
 
-Uma tensegridade — abreviação de "integridade tensional" — é um sistema estrutural no qual membros rígidos de compressão (barras) flutuam dentro de uma rede contínua de cabos de tração. Nenhuma barra toca a outra; a estrutura mantém sua forma inteiramente pelo equilíbrio de forças. O conceito foi popularizado por Buckminster Fuller e pelo artista Kenneth Snelson em meados do século XX.
+Uma tensegridade (abreviação de "integridade tensional") é um sistema estrutural onde barras rígidas flutuam dentro de uma rede contínua de cabos de tração. Nenhuma barra toca a outra; a estrutura mantém sua forma inteiramente pelo equilíbrio de forças, conceito popularizado por Buckminster Fuller e Kenneth Snelson.
 
 ## A construção
 
-Usando tubos metálicos como elementos de compressão e cabos como elementos de tração, a equipe montou a estrutura ao ar livre. O processo foi inteiramente colaborativo: cada pessoa segurava uma barra ou puxava um cabo enquanto o sistema gradualmente encontrava seu equilíbrio. O que tornou particularmente envolvente foi que a estrutura simplesmente não ficava de pé sem a participação simultânea de todos — uma pessoa soltando derrubaria todo o sistema.
-
-![Equipe montando a estrutura de tensegridade no jardim, cercada por vegetação tropical.](../../../assets/content/teaching/tensegrity-workshop/tensegrity-workshop_atelier-marko-brajovic-01.jpeg)
+Usando tubos metálicos para compressão e cabos para tração, montamos a estrutura ao ar livre. Cada pessoa segurava uma barra ou puxava um cabo enquanto o sistema gradualmente encontrava seu equilíbrio. A estrutura simplesmente não ficava de pé sem a participação simultânea de todos; uma pessoa soltando derrubaria tudo.
 
 ![A equipe tensionando cabos para estabilizar a estrutura em crescimento.](../../../assets/content/teaching/tensegrity-workshop/tensegrity-workshop_atelier-marko-brajovic-02.jpeg)
 
+![Equipe montando a estrutura de tensegridade no jardim, cercada por vegetação tropical.](../../../assets/content/teaching/tensegrity-workshop/tensegrity-workshop_atelier-marko-brajovic-01.jpeg)
+
 ## O resultado
 
-A estrutura final ficou com mais de três metros de altura — um sistema autoportante de barras flutuantes mantidas juntas puramente por tração. Como exercício de team-building, funcionou em múltiplos níveis: o ato físico de coletivamente manter uma estrutura em equilíbrio espelhou as dinâmicas colaborativas do próprio estúdio.
+A estrutura final ficou com mais de três metros de altura, um sistema autoportante de barras flutuantes mantidas juntas puramente por tração. O ato físico de coletivamente mantê-la em equilíbrio espelhou como colaboramos no estúdio.
 
 ![A estrutura de tensegridade completa em pé no jardim.](../../../assets/content/teaching/tensegrity-workshop/tensegrity-workshop_atelier-marko-brajovic-03.jpeg)
 

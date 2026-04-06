@@ -31,7 +31,6 @@ Link:
 Place: Buffalo AKG Art Museum
 ---
 
-## Introdução
 [Studio Other Spaces](https://studiootherspaces.net/) contatou ArtEngineering para fazer o projeto de engenharia computacional, fabricação digital e logística. Eu entrei no projeto no meio do desenvolvimento, depois que a fabricação digital já havia começado. Foi esse mesmo projeto que garantiu minha contratação na ArtEngineering.
 ## Design Computacional
 Inicialmente, eles precisavam de alguém para exportar rapidamente cerca de 1,5 mil desenhos 2D do Rhino/Grasshopper para serem enviados para fabricação digital usando um cortador de plasma.

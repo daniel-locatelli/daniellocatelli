@@ -31,7 +31,6 @@ Link:
 Place: Buffalo AKG Art Museum
 ---
 
-## Intro
 [Studio Other Spaces](https://studiootherspaces.net/) contacted ArtEngineering for computational engineering, digital fabrication, and logistics. I became involved in the project mid-development, after digital fabrication had already started. It was this very project that ultimately secured my position at ArtEngineering.
 ## Computational Design
 Initially, they needed someone to quickly export around 1.5 thousand 2D drawings from Rhino/Grasshopper to be sent for digital fabrication using a plasma cutter.

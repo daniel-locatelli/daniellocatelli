@@ -7,11 +7,11 @@ Tags:
   - Coreless Filament Winding
   - Structural Analysis
   - Structural Test
-Authors:
-  - ITKE - University of Stuttgart
+Organization: "ITKE - University of Stuttgart"
 Category: Filament
 City:
   - Stuttgart
+Country: "Germany"
 Place: Botanic Garden Freiburg
 DateStart: "2020-08-25"
 DateEnd: "2020-10-01"
@@ -21,6 +21,8 @@ Manager:
   - Marta Gil Pérez
 Team:
   - Daniel Nunes Locatelli
+  - Anand Shah
+  - Francesca Maisto
 Link:
   Text: livMatS Pavilion 2020-21
   Href: "https://www.itke.uni-stuttgart.de/research/icd-itke-research-pavilions/livMatS-pavilion-2020-21/"
@@ -29,7 +31,7 @@ OtherLinks:
     Href: "https://www.archdaily.com/966168/livmats-pavilion-icd-itke-university-of-stuttgart"
 ---
 
-The livMatS Pavilion — a collaboration between the ICD, ITKE, and the Cluster of Excellence livMatS at the University of Freiburg — pushed the boundaries of coreless filament winding by using **natural fibers** instead of carbon or glass. The pavilion was eventually installed at the Botanic Garden in Freiburg, but before any of that could happen, the structural components needed to be rigorously tested.
+The livMatS Pavilion (a collaboration between the ICD, ITKE, and the Cluster of Excellence livMatS at the University of Freiburg) pushed the boundaries of coreless filament winding by using **natural fibers** instead of carbon or glass. The pavilion was eventually installed at the Botanic Garden in Freiburg, but before any of that could happen, the structural components needed to be rigorously tested.
 
 ## The challenge
 
@@ -37,7 +39,7 @@ Unlike carbon fiber composites, which have decades of engineering data behind th
 
 ## My role
 
-As a research assistant under Marta Gil Pérez, I helped prepare and execute the load tests. The specimens — large natural fiber wound elements fabricated by the ITECH 2020 class — were mounted on hydraulic platforms and subjected to controlled forces using industrial load straps.
+As a research assistant under Marta Gil Pérez, I helped prepare and execute the load tests. The specimens (large natural fiber wound elements fabricated by the ITECH 2020 class) were mounted on hydraulic platforms and subjected to controlled forces using industrial load straps.
 
 ![Research team preparing a natural fiber wound specimen for load testing at the ITKE lab. A carbon fiber tower prototype is visible in the background.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-01.jpg)
 
@@ -47,7 +49,7 @@ As a research assistant under Marta Gil Pérez, I helped prepare and execute the
 
 What made this experience stand out was witnessing firsthand the gap between computational prediction and physical behavior. Cutting-edge research like this does not yet have reliable structural analysis methods through computer simulation alone. To achieve a structurally safe result, full-scale physical testing is essential.
 
-Marta's experience and intuition with similar structures were fundamental. After each test, she could identify which adjustments should be made to the design — informed by a combination of measured data and years of hands-on experience with fiber composites. This interplay between simulation, experiment, and intuition is what makes research at the frontier of construction technology so compelling.
+Marta's experience and intuition with similar structures were fundamental. After each test, she could identify which adjustments should be made to the design, informed by a combination of measured data and years of hands-on experience with fiber composites. This interplay between simulation, experiment, and intuition is what makes research at the frontier of construction technology so compelling.
 
 ![Detail of the natural fiber specimen under load, showing the density of the winding pattern.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-02.jpg)
 

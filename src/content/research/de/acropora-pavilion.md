@@ -17,7 +17,7 @@ Supervisors:
   - Axel Körner
   - Jan Knippers
 DateStart: "2020-10-01"
-Place: ITECH - University of Stuttgart
+Organization: ITECH – Universität Stuttgart
 Link:
   Text: Acropora-Pavillon - ITECH-Projekt
   Href: /documents/daniel-locatelli_biomimetics-itech.pdf

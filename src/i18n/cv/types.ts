@@ -25,6 +25,7 @@ export type I18nCV = {
     engagementFull: string;
     engagementTypes: {
       course: string;
+      pitch: string;
       talk: string;
       workshop: string;
       seminar: string;

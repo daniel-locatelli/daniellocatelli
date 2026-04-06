@@ -8,15 +8,11 @@ Tags:
   - Web Development
 Organization: "BuildSystems"
 Category: Software Development
-City:
-  - München
-Country: "Deutschland"
 DateStart: "2023-11-20"
 DateEnd: "2024-07-30"
 Link:
   Text: "https://app.buildsystems.de"
   Href: "https://app.buildsystems.de/"
-Place: Online
 Director:
   - Martin Bittmann
 Manager:
@@ -57,7 +53,6 @@ Ich erstellte eine einfache Dokumentation in Notion aus der Excel-Datei, um jede
 Da das Team bereits [Figma](https://www.figma.com/) nutzte, entschied ich mich, im selben Ökosystem zu bleiben. Daher verwendete ich [FigJam](https://www.figma.com/figjam/), um ein erstes Softwarearchitektur-Diagramm zu skizzieren und darüber nachzudenken, welche Komponenten nötig wären und wie sie zusammenhängen.
 ```mermaid
 %%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
-%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
 flowchart TB
 
 	R(Routes) --> N & S & PO & PR & SE
@@ -144,7 +139,7 @@ Während des Entwicklungsprozesses versuchte ich, eine einzelne Komponente zu er
 Dies machte die Komponente jedoch zu komplex, da es viele Variablen und Anforderungen gab, die für jeden Rechner einzigartig waren. Letztendlich entschied ich mich, sie in zwei Komponenten aufzuteilen. Obwohl es etwas redundanten Code gibt, beschleunigte dies die Entwicklung.
 
 ```mermaid
-%%{ init: { 'flowchart': { 'curve': 'base' } } }%%
+%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
 flowchart TB
 	NC(Neubau Component) --> NPFC(Projekt Form Component) & NDFC(Darlehen Form Component)
 		subgraph NPF[Projekt Form]
@@ -224,7 +219,7 @@ Allerdings verbreiteten einige Netlify-Nutzer, wie sie vom kostenlosen Plan zu R
 Cloudflare ist Netlify ähnlich. Gleiches Geschäftsmodell und automatisiertes Deployment über GitHub. Es verfügt jedoch über ein robusteres Anti-Bot-System.
 Das Deployment ist automatisch und recht einfach:
 ```mermaid
-%%{ init: { 'flowchart': { 'curve': 'base' } } }%%
+%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
 flowchart LR
 NG(Angular) --push--> MA(main branch) --> CP(CF pages production) --> PA(https://app.buildsystems.de)
 NG --push--> DV(development branch) --> CD(CF pages development) --> DA(https://branchname.pages.dev)

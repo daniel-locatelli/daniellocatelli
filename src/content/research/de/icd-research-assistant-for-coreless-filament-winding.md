@@ -10,6 +10,7 @@ Tags:
 Category: Filament
 City:
   - Stuttgart
+Country: Deutschland
 DateStart: "2020-07-02"
 Director:
   - Christoph Schlopschnat
@@ -19,7 +20,7 @@ Team:
 Link:
   Text: Leichtbau BW Innovation Challenge
   Href: "https://www.icd.uni-stuttgart.de/research/research-projects/leichtbau-bw-innovation-challenge/"
-Place: ICD Computational Construction Laboratory
+Organization: ICD – Universität Stuttgart
 ---
 
 Kernloses Filamentwickeln ist ein Fertigungsverfahren, bei dem ein Roboterarm harzgetränkte Fasern um einen Rahmen wickelt, um leichte, leistungsstarke Strukturelemente herzustellen — ohne die Notwendigkeit einer festen Form. Das ICD und das ITKE an der Universität Stuttgart sind Pioniere dieser Technologie und haben immer ambitioniertere Pavillons und Demonstratoren realisiert.

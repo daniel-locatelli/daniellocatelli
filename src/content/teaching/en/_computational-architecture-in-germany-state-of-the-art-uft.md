@@ -11,8 +11,9 @@ DateStart: "2023-11-10"
 Place: UFT - Online
 Event: SEMANAU 2023
 Link:
-  Text: "https://sites.google.com/mail.uft.edu.br/semanau23/palestras"
+  Text: Talks at SEMANAU 2023
   Href: "https://sites.google.com/mail.uft.edu.br/semanau23/palestras"
+Language: Portuguese
 ---
 
 In this talk I presented the latest technologies in the computational design field in Germany, specially the ICD & ITKE at the University of Stuttgart and BuildSystems.

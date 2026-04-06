@@ -1,10 +1,10 @@
 ---
-Name: Architecture + Biomimetics + Algorithm am IED
-Category: Talk
+Name: Architektur + Biomimetik + Algorithmus am IED
+DateStart: "2017-10-01"
 City:
   - São Paulo
 Country: Brasilien
-DateStart: "2017-10-01"
 Place: Istituto Europeo di Design
+Category: Talk
 ---
 

@@ -13,6 +13,9 @@ Link:
   Text: "Siemens RIE Munich Conference \"Digitalization & Low Code Engineering in Industry\""
   Href: "https://ecosystem.siemens.com/researchandinnovation/rie-munich-conference-digitalization-low-code-engineering-in-industry"
 Place: Munich Urban Colab
+Team:
+  - Daniel Nunes Locatelli
+  - Julia Dorn
 ---
 
 At the Siemens Research, Innovation & Ecosystem (RIE) Munich Conference on "Digitalization & Low Code Engineering in Industry," we presented BuildSystems' approach to tackling one of the construction industry's biggest challenges: making sustainability data actionable.

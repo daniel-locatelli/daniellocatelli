@@ -8,15 +8,11 @@ Tags:
   - Web Development
 Organization: "BuildSystems"
 Category: Software Development
-City:
-  - Munich
-Country: "Germany"
 DateStart: "2023-11-20"
 DateEnd: "2024-07-30"
 Link:
   Text: "https://app.buildsystems.de"
   Href: "https://app.buildsystems.de/"
-Place: Online
 Director:
   - Martin Bittmann
 Manager:
@@ -58,7 +54,6 @@ I created a simple documentation on Notion from the Excel file to understand eac
 Because the team already uses [Figma](https://www.figma.com/), I decided to stay within its ecosystem. So, I used [FigJam](https://www.figma.com/figjam/) to sketch an initial software architecture diagram, thinking about which components would be necessary and the relationship between them.
 ```mermaid
 %%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
-%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
 flowchart TB
 
 	R(Routes) --> N & S & PO & PR & SE
@@ -145,7 +140,7 @@ During the development process, I tried to create a single component that would 
 This, however, made the component too complex because there were many variables and requirements unique to each calculator. So in the end I decided to split it into two components. Although there is some redundant code, this added speed to the development.
 
 ```mermaid
-%%{ init: { 'flowchart': { 'curve': 'base' } } }%%
+%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
 flowchart TB
 	NC(Neubau Component) --> NPFC(Projekt Form Component) & NDFC(Darlehen Form Component)
 		subgraph NPF[Projekt Form]
@@ -225,7 +220,7 @@ However, some Netlify users started to spread how they went from the free plan t
 Cloudflare is similar to Netlify. Same business model and automated deployment using GitHub. However, it does have a more robust anti-bot system.
 The deployment is automatic and quite simple:
 ```mermaid
-%%{ init: { 'flowchart': { 'curve': 'base' } } }%%
+%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
 flowchart LR
 NG(Angular) --push--> MA(main branch) --> CP(CF pages production) --> PA(https://app.buildsystems.de)
 NG --push--> DV(development branch) --> CD(CF pages development) --> DA(https://branchname.pages.dev)

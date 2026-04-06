@@ -28,7 +28,7 @@ Development:
   - GTM Cenografia
 Link:
   Text: Parada Coca-Cola at Atelier Marko Brajovic
-  Href: "https://markobrajovic.com/en/all/parada-coca-cola"
+  Href: "https://markobrajovic.com/parada-coca-cola/"
 Place: Olimpic games
 ---
 
@@ -37,6 +37,8 @@ Place: Olimpic games
 ## Concept
 
 > We used more than 500 transparent acrylic spheres of different sizes suspended from the warehouse’s ceiling structure, covering almost 1000m² and lighted it up to create a motion effect of ascending effervescence. Under the main bubble installation, different interactive activations and exhibitions entertain the public and narrate the visual history of the company.
+
+*Atelier Marko Brajovic*
 
 Parada Coca-Cola was my very first project where I applied computational design. This sensorial experience was inspired by the Coca-Cola bottle, mimicking the bubbles and colors of the drink. It also had many other activations, as they call in marketing agencies in Brazil.
 
@@ -47,7 +49,6 @@ My role in the project was to place the plastic spheres parametrically while avo
 Another task that came later was to generate a spreadsheet with all the cable lengths and the tags to properly organize all the material to be shipped and deployed. Well, at least this was the idea. Because, at some point, someone thought it would be nice to remove the tags 🤯. It was a nightmare for the girls coordinating the event.
 
 ![Photo of a lounge in first plane with red puffy circular benches and the golden bar at the back.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/a-lounge-in-first-plane-with-red-puffy-circular-benches-and-the-golden-bar-at.jpeg)
-This is the latest Grasshopper file I used in the project:
 
 © Photos by Fernando Martins
 
