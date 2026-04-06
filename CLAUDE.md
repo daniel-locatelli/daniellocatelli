@@ -61,7 +61,14 @@ Required in `.env`:
 
 ## AI Chat Knowledge Pipeline
 
-The HeroChat assistant is powered by vector embeddings in Supabase. **After any content change in `src/content/`, run `/sync-knowledge`** to regenerate knowledge files and upload fresh embeddings. This also checks whether AI model IDs in `src/config/ai.ts` are still current.
+The HeroChat assistant is powered by vector embeddings in Supabase (Voyage AI, 1024-dim). **After any content change in `src/content/`, run `/sync-knowledge`** to regenerate knowledge files and upload fresh embeddings. This also checks whether AI model IDs in `src/config/ai.ts` are still current.
+
+The knowledge pipeline generates:
+- Individual content pages and CV entries (per locale)
+- A chronological CV timeline (always injected as core context)
+- **FAQ synthesis chunks** (`processFAQ()` in `src/scripts/generate-knowledge.ts`): 10 natural-language FAQ files per locale that pre-answer common visitor questions (current employment, skills, education, etc.). These bridge the semantic gap between user questions and structured data.
+
+**Benchmark:** Run `npx tsx scripts/benchmark-chat.ts` (with dev server running) to test ~26 common questions against the chat API. Use `--retry-failures` to skip previously passed tests. Target: 100% pass rate.
 
 ## Code Style
 

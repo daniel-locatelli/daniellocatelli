@@ -24,6 +24,7 @@ This reads all `src/content/` collections and generates `knowledge/*.md` files i
 - A flat chronological CV timeline (always injected as core context by the AI endpoint)
 - Aggregated CV sections per category
 - Homepage
+- **FAQ synthesis chunks** (10 topics x 3 locales = 30 files) that pre-answer common visitor questions in natural language (current employment status, professional overview, education, skills, languages, location/contact, research, teaching, work history, personal background). These bridge the semantic gap between user questions and structured data for better vector retrieval.
 
 It wipes the knowledge directory first. Report the total count and any warnings.
 
@@ -43,12 +44,25 @@ Then apply:
 source .env 2>/dev/null && export SUPABASE_URL SUPABASE_ANON_KEY && npx tsx scripts/sync-knowledge.ts --apply
 ```
 
-This deletes all existing rows in `knowledge_entries` and re-inserts every entry with a fresh embedding via the Supabase `embed` edge function (Voyage-4 model, 1024 dimensions). Takes ~5 minutes for ~350 entries across 3 locales (en, pt, de).
+This deletes all existing rows in `knowledge_entries` and re-inserts every entry with a fresh embedding via the Supabase `embed` edge function (Voyage AI, 1024 dimensions). Takes ~5 minutes for ~255 entries across 3 locales (en, pt, de).
 
-### Step 4: Report
+### Step 4: Run Q&A benchmark (optional)
+
+If the dev server is running (`npm run dev`), run the benchmark to verify chat quality:
+
+```bash
+source .env 2>/dev/null && export SUPABASE_URL SUPABASE_ANON_KEY && npx tsx scripts/benchmark-chat.ts
+```
+
+This tests ~26 common questions against the chat API and checks for expected phrases in answers. Use `--retry-failures` to only re-test previously failed questions. Use `--url https://daniellocatelli.com` to test against production.
+
+Target: 100% pass rate. If failures occur, check whether FAQ content in `processFAQ()` (in `src/scripts/generate-knowledge.ts`) needs updating, or if the system prompt in `src/config/ai.ts` needs adjusting.
+
+### Step 5: Report
 
 Summarize:
 - Model config status (current or updated)
-- Number of knowledge files generated
+- Number of knowledge files generated (including FAQ count)
 - Number of entries synced to Supabase (succeeded / failed)
+- Benchmark results (if run)
 - Any issues encountered
