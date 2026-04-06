@@ -688,6 +688,401 @@ function processHomepage() {
   console.log(`Generated ${count} homepage knowledge files.`);
 }
 
+// ─── FAQ Synthesis ───────────────────────────────────────────────────
+// Generates natural-language FAQ knowledge files that bridge the semantic
+// gap between user questions and structured content data.
+
+function processFAQ() {
+  let count = 0;
+
+  for (const locale of LOCALES) {
+    const urlPrefix = locale === "en" ? "" : `/${locale}`;
+    const cvUrl = `${BASE_URL}${urlPrefix}/full-cv`;
+    const homeUrl = `${BASE_URL}${urlPrefix}`;
+
+    // Load all collections needed across FAQs
+    const experiences = readContentFiles("experiences", locale);
+
+    // Fallback: if the current-job file (research-associate.md) failed YAML
+    // parsing (e.g. URL with special chars), read it with regex and inject a
+    // synthetic entry so every FAQ that uses `experiences` sees the current job.
+    if (!experiences.some((e) => !e.data.DateEnd)) {
+      const fallbackFile = path.join(CONTENT_DIR, "experiences", locale, "research-associate.md");
+      if (fs.existsSync(fallbackFile)) {
+        const raw = fs.readFileSync(fallbackFile, "utf-8");
+        const nameMatch = raw.match(/^Name:\s*(.+)$/m);
+        const dateMatch = raw.match(/^DateStart:\s*"?([^"\n]+)"?$/m);
+        const orgMatch = raw.match(/^Organization:\s*(.+)$/m);
+        const countryMatch = raw.match(/^Country:\s*"?([^"\n]+)"?$/m);
+        const cityMatch = raw.match(/^\s+-\s+(.+)$/m);
+        if (nameMatch) {
+          experiences.push({
+            data: {
+              Name: nameMatch[1].trim(),
+              DateStart: dateMatch?.[1]?.trim() || "",
+              Organization: orgMatch?.[1]?.trim() || "",
+              Country: countryMatch?.[1]?.trim() || "",
+              City: cityMatch ? [cityMatch[1].trim()] : [],
+            },
+            body: "",
+            filename: "research-associate.md",
+          });
+        }
+      }
+    }
+
+    experiences.sort(
+      (a, b) =>
+        new Date(b.data.DateStart).getTime() -
+        new Date(a.data.DateStart).getTime(),
+    );
+
+    const education = readContentFiles("education", locale);
+    education.sort(
+      (a, b) =>
+        new Date(b.data.DateStart).getTime() -
+        new Date(a.data.DateStart).getTime(),
+    );
+
+    const scholarships = readContentFiles("scholarships", locale);
+    scholarships.sort(
+      (a, b) =>
+        new Date(b.data.DateStart).getTime() -
+        new Date(a.data.DateStart).getTime(),
+    );
+
+    const skills = readContentFiles("skills", locale);
+    const publications = readContentFiles("publications", locale);
+    publications.sort(
+      (a, b) =>
+        new Date(b.data.DateStart).getTime() -
+        new Date(a.data.DateStart).getTime(),
+    );
+
+    const teaching = readContentFiles("teaching", locale);
+    teaching.sort(
+      (a, b) =>
+        new Date(b.data.DateStart).getTime() -
+        new Date(a.data.DateStart).getTime(),
+    );
+
+    // ── FAQ 1: Current Employment Status ──
+    {
+      const currentJob = experiences.find((e) => !e.data.DateEnd);
+
+      if (currentJob) {
+        const d = currentJob.data;
+        const city = (d.City || []).join(", ");
+        const content = [
+          `URL: ${cvUrl}`,
+          "",
+          `# Current Employment Status`,
+          "",
+          `Daniel Locatelli is currently employed as ${d.Name} at ${d.Organization} in ${city}, ${d.Country}, starting ${formatDate(d.DateStart)}. He is actively working in this role.`,
+          "",
+          `Yes, Daniel is working right now. His current position is ${d.Name} at ${d.Organization}.`,
+        ];
+        writeKnowledge(
+          `faq-current-status-${locale}.md`,
+          content.join("\n").trim() + "\n",
+        );
+        count++;
+      }
+    }
+
+    // ── FAQ 2: Professional Overview ──
+    {
+      const firstJobDate = experiences.length > 0
+        ? new Date(experiences[experiences.length - 1].data.DateStart)
+        : new Date();
+      const yearsExperience = new Date().getFullYear() - firstJobDate.getFullYear();
+
+      const recent5 = experiences.slice(0, 5);
+      const positionLines = recent5.map((e) => {
+        const d = e.data;
+        const end = d.DateEnd ? formatDate(d.DateEnd) : (locale === "pt" ? "Atual" : locale === "de" ? "Aktuell" : "Current");
+        return `- ${d.Name} at ${d.Organization} (${formatDate(d.DateStart)} to ${end})`;
+      });
+
+      const content = [
+        `URL: ${homeUrl}`,
+        "",
+        `# Professional Overview`,
+        "",
+        `Daniel Locatelli is a software engineer and computational designer with over ${yearsExperience} years of experience in the AEC (Architecture, Engineering, and Construction) industry. He combines expertise in software development, computational design, and digital fabrication.`,
+        "",
+        `Recent positions:`,
+        ...positionLines,
+      ];
+      writeKnowledge(
+        `faq-professional-overview-${locale}.md`,
+        content.join("\n").trim() + "\n",
+      );
+      count++;
+    }
+
+    // ── FAQ 3: Educational Background ──
+    {
+      // Filter out dropped/trancado/abgebrochen, high school, and preparatory entries
+      const dropPatterns = ["dropped", "trancado", "abgebrochen"];
+      const excludePatterns = ["high school", "ensino médio", "gymnasial", "preparatory", "pré-vestibular", "vorbereitungskurs", "intensive english", "programa intensivo", "intensives englisch"];
+      const filteredEdu = education.filter((e) => {
+        const nameLower = e.data.Name.toLowerCase();
+        const hasDropped = dropPatterns.some((p) => nameLower.includes(p));
+        const isExcluded = excludePatterns.some((p) => nameLower.includes(p));
+        return !hasDropped && !isExcluded;
+      });
+
+      const degreeLines = filteredEdu.map((e) => {
+        const d = e.data;
+        const location = [...(d.City || []), d.Country || ""].filter(Boolean).join(", ");
+        return `- ${d.Name} at ${d.Organization}, ${location} (${formatDate(d.DateStart)} to ${formatDate(d.DateEnd)})`;
+      });
+
+      const scholarshipLines = scholarships.map((e) => {
+        const d = e.data;
+        return `- ${d.Name} from ${d.Organization} (${formatDate(d.DateStart)} to ${formatDate(d.DateEnd)})`;
+      });
+
+      const highest = filteredEdu.find((e) =>
+        e.data.Name.toLowerCase().includes("master") || e.data.Name.toLowerCase().includes("mestrado"),
+      );
+      const highestDegree = highest ? highest.data.Name : filteredEdu[0]?.data.Name || "";
+
+      const content = [
+        `URL: ${cvUrl}`,
+        "",
+        `# Educational Background`,
+        "",
+        `Daniel Locatelli's highest degree is a ${highestDegree}. His academic background includes:`,
+        "",
+        ...degreeLines,
+        "",
+        `Scholarships received:`,
+        ...scholarshipLines,
+      ];
+      writeKnowledge(
+        `faq-education-${locale}.md`,
+        content.join("\n").trim() + "\n",
+      );
+      count++;
+    }
+
+    // ── FAQ 4: Technical Skills ──
+    {
+      const byCategory = new Map<string, string[]>();
+      for (const { data } of skills) {
+        const cat = data.Category || "Other";
+        if (!byCategory.has(cat)) byCategory.set(cat, []);
+        const entry = data.Level ? `${data.Name} (${data.Level})` : data.Name;
+        byCategory.get(cat)!.push(entry);
+      }
+
+      const skillLines: string[] = [];
+      for (const [cat, names] of byCategory) {
+        skillLines.push(`**${cat}:** ${names.join(", ")}`);
+      }
+
+      // Extract specific categories for explicit listing
+      const programmingLangs = skills
+        .filter((s) => s.data.Category === "Programming")
+        .map((s) => s.data.Name);
+      const frameworks = skills
+        .filter((s) => s.data.Category === "Framework")
+        .map((s) => s.data.Name);
+      const designTools = skills
+        .filter((s) => s.data.Category === "Design tool")
+        .map((s) => s.data.Name);
+
+      const content = [
+        `URL: ${cvUrl}`,
+        "",
+        `# Technical Skills`,
+        "",
+        `Daniel Locatelli's technical skills grouped by category:`,
+        "",
+        ...skillLines,
+        "",
+        `Programming languages: ${programmingLangs.join(", ")}.`,
+        `Frameworks: ${frameworks.join(", ")}.`,
+        `Design tools: ${designTools.join(", ")}.`,
+      ];
+      writeKnowledge(
+        `faq-skills-${locale}.md`,
+        content.join("\n").trim() + "\n",
+      );
+      count++;
+    }
+
+    // ── FAQ 5: Languages Spoken ──
+    {
+      const langSkills = skills.filter((s) => s.data.Category === "Language");
+      const langLines = langSkills.map((s) => `- ${s.data.Name}: ${s.data.Level}`);
+
+      const content = [
+        `URL: ${cvUrl}`,
+        "",
+        `# Languages Spoken`,
+        "",
+        `Daniel Locatelli speaks the following languages:`,
+        "",
+        ...langLines,
+        "",
+        `He also has basic knowledge of Italian and Spanish.`,
+      ];
+      writeKnowledge(
+        `faq-languages-${locale}.md`,
+        content.join("\n").trim() + "\n",
+      );
+      count++;
+    }
+
+    // ── FAQ 6: Location and Contact ──
+    {
+      const currentJob = experiences.find((e) => !e.data.DateEnd);
+      const city = currentJob ? (currentJob.data.City || []).join(", ") : "Munich";
+      const country = currentJob ? currentJob.data.Country : "Germany";
+
+      const content = [
+        `URL: ${homeUrl}`,
+        "",
+        `# Location and Contact`,
+        "",
+        `Daniel Locatelli is currently based in ${city}, ${country}.`,
+        "",
+        `Contact information:`,
+        `- Email: contact@daniellocatelli.com`,
+        `- Website: https://daniellocatelli.com`,
+      ];
+      writeKnowledge(
+        `faq-contact-location-${locale}.md`,
+        content.join("\n").trim() + "\n",
+      );
+      count++;
+    }
+
+    // ── FAQ 7: Research and Publications ──
+    {
+      const pubCount = publications.length;
+      const recent5 = publications.slice(0, 5);
+      const pubLines = recent5.map((p) => {
+        const d = p.data;
+        const authors = d.Authors?.length
+          ? d.Authors.map((a: any) => (typeof a === "string" ? a : a.name)).join(", ")
+          : "";
+        return `- "${d.Name}"${authors ? ` by ${authors}` : ""} (${formatDate(d.DateStart)})`;
+      });
+
+      // Find master's thesis topic
+      const masterEdu = education.find((e) =>
+        e.data.Name.toLowerCase().includes("master") || e.data.Name.toLowerCase().includes("mestrado"),
+      );
+      const thesisTopic = masterEdu?.data.Description || "";
+
+      const content = [
+        `URL: ${cvUrl}`,
+        "",
+        `# Research and Publications`,
+        "",
+        `Daniel Locatelli has ${pubCount} publications. His master's thesis topic was: ${thesisTopic}.`,
+        "",
+        `Recent publications:`,
+        ...pubLines,
+      ];
+      writeKnowledge(
+        `faq-research-publications-${locale}.md`,
+        content.join("\n").trim() + "\n",
+      );
+      count++;
+    }
+
+    // ── FAQ 8: Teaching Experience ──
+    {
+      const teachCount = teaching.length;
+      const recent5 = teaching.slice(0, 5);
+      const teachLines = recent5.map((t) => {
+        const d = t.data;
+        const venue = d.Organization || d.Place || "";
+        return `- ${d.Name}${venue ? ` at ${venue}` : ""} (${formatDate(d.DateStart)})`;
+      });
+
+      // Collect unique countries
+      const countries = new Set<string>();
+      for (const t of teaching) {
+        if (t.data.Country) countries.add(t.data.Country);
+      }
+
+      const content = [
+        `URL: ${cvUrl}`,
+        "",
+        `# Teaching Experience`,
+        "",
+        `Daniel Locatelli has ${teachCount} teaching entries, including lectures, workshops, and presentations. He has taught in: ${[...countries].join(", ")}.`,
+        "",
+        `Recent teaching activities:`,
+        ...teachLines,
+      ];
+      writeKnowledge(
+        `faq-teaching-${locale}.md`,
+        content.join("\n").trim() + "\n",
+      );
+      count++;
+    }
+
+    // ── FAQ 9: Work Experience History ──
+    {
+      const totalPositions = experiences.length;
+
+      // Group by country
+      const byCountry = new Map<string, string[]>();
+      for (const { data } of experiences) {
+        const country = data.Country || "Unknown";
+        if (!byCountry.has(country)) byCountry.set(country, []);
+        byCountry.get(country)!.push(data.Name);
+      }
+
+      const countryLines: string[] = [];
+      for (const [country, positions] of byCountry) {
+        countryLines.push(`- ${country}: ${positions.length} position(s) (${positions.join(", ")})`);
+      }
+
+      const content = [
+        `URL: ${cvUrl}`,
+        "",
+        `# Work Experience History`,
+        "",
+        `Daniel Locatelli has held ${totalPositions} professional positions across multiple countries.`,
+        "",
+        `Positions by country:`,
+        ...countryLines,
+      ];
+      writeKnowledge(
+        `faq-work-experience-${locale}.md`,
+        content.join("\n").trim() + "\n",
+      );
+      count++;
+    }
+
+    // ── FAQ 10: Personal Background ──
+    {
+      const content = [
+        `URL: ${homeUrl}`,
+        "",
+        `# Personal Background`,
+        "",
+        `Daniel Locatelli is Brazilian, originally from Vilhena, Rondonia, Brazil. He moved to Germany in 2019 to pursue his Master's degree at the University of Stuttgart. He is currently based in Munich, Germany.`,
+      ];
+      writeKnowledge(
+        `faq-background-${locale}.md`,
+        content.join("\n").trim() + "\n",
+      );
+      count++;
+    }
+  }
+
+  console.log(`Generated ${count} FAQ knowledge files.`);
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────
 
 function main() {
@@ -710,6 +1105,7 @@ function main() {
   processCVTimeline();
   processCVFromContent();
   processHomepage();
+  processFAQ();
 
   // Final count
   const total = fs
