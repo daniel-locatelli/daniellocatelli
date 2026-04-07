@@ -1,6 +1,6 @@
 ---
-Cover: /assets/content/teaching/models-bynature-20/models-bynature-20_form-finding-catenary-with-soap.jpeg
-CoverAlt: Estudantes apresentam seus pavilhões Voronoi resultantes do workshop.
+Cover: /assets/content/teaching/models-bynature-20/models-bynature-20_instagram-post-01.png
+CoverAlt: Cartaz de divulgação do workshop Models byNature 2.0, com esboços de domos geodésicos sobre fotografias de pavilhões iluminados no Atelier Marko Brajovic em São Paulo.
 Description: "A segunda edição do workshop Models byNature expandiu a primeira com quatro sábados de design paramétrico com Grasshopper inspirado na natureza, abordando experimentos de busca pela forma, modelagem computacional e biomimética no Atelier Marko Brajovic em São Paulo."
 Name: Models byNature 2.0
 Authors:
