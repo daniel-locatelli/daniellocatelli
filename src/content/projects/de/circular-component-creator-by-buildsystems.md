@@ -1,7 +1,7 @@
 ---
-Cover: /assets/content/projects/circular-component-creator-by-buildsystems/landing-page.png
+Cover: /assets/content/projects/circular-component-creator-by-buildsystems/landing-page_cropped.png
 CoverAlt: Startseite des Circular Component Creator mit einer isometrischen Schnitt einer Baukomponente und dynamischen Komponentenkategorien.
-Name: Circular Component Creator
+Name: "Circular\u00A0Component\u00A0Creator von\u00A0BuildSystems"
 Description: "Konzeptionelle Designstudie für eine Web-Applikation zum Durchsuchen, Filtern und Vergleichen zirkulärer Baukomponenten. Entwicklung von UI/UX-Mockups in Figma und Definition der Datenarchitektur."
 Tags:
   - UI/UX Design

@@ -1,7 +1,7 @@
 ---
 Cover: /assets/content/projects/icd-research-assistant-in-web-development/icd-research-assistant-in-web-development-cover.jpg
 CoverAlt: Startseite der ICD-Website mit dem BUGA-Faserpavillon.
-Description: "Ich half bei der Migration der ICD-Website auf das zentralisierte OpenCMS-Template der Universität Stuttgart. Neben Content-Management und SEO ermöglichte mir dieses Projekt meinen ersten Kontakt mit der deutschen Sprache und eine tiefe Wertschätzung für das Forschungsportfolio des ICD."
+Description: "Ich half bei der Migration der ICD-Website auf das zentralisierte OpenCMS-Template der Universität Stuttgart. Dieses Projekt ermöglichte mir meinen ersten Kontakt mit der deutschen Sprache und eine tiefe Wertschätzung für das Forschungsportfolio des ICD."
 Name: ICD Wissenschaftliche Hilfskraft in der Webentwicklung
 Tags:
   - Web Development
@@ -26,12 +26,6 @@ Disclosed: true
 Die Universität Stuttgart führte ein standardisiertes OpenCMS-Template für alle Institute und Abteilungen ein. Das bedeutete, die bestehende ICD-Website, reich an jahrelangen Forschungsprojekten, Publikationen, Pavillondokumentationen und Teamprofilen, vollständig umzustrukturieren, um sie an das Layout und das Inhaltsmodell des neuen Templates anzupassen.
 
 Die Arbeit war methodisch: Seite für Seite migrierte ich Texte, Bilder und Metadaten vom alten System in die neue CMS-Struktur. Jedes Forschungsprojekt musste seine Beschreibung neu formatiert, seine Bilder in den korrekten Abmessungen erneut hochgeladen und seine Metadaten (Autoren, Daten, Tags) innerhalb der Inhaltstypen von OpenCMS ordnungsgemäß kategorisiert bekommen.
-
-## Content-Management und SEO
-
-Obwohl die Kernaufgabe die Migration war, bot sie auch die Gelegenheit, den Inhalt nebenbei zu verbessern. Ich überprüfte und verfeinerte Seitentitel, Meta-Beschreibungen und URL-Strukturen gemäß den Best Practices der Suchmaschinenoptimierung.
-
-Die ICD-Website dient sowohl als öffentliches Portfolio als auch als akademische Referenz. Forschende, Studierende, Journalisten und potenzielle Kooperationspartner nutzen sie, um sich über die Arbeit des Instituts zu informieren. Sicherzustellen, dass jede Projektseite klare Beschreibungen, korrekten Alternativtext für Bilder und eine logische Navigation hatte, war essenziell.
 
 ![Startseite der ICD-Website mit dem BUGA-Faserpavillon.](../../../assets/content/projects/icd-research-assistant-in-web-development/icd-website-homepage-buga-fibre-pavilion.jpg)
 

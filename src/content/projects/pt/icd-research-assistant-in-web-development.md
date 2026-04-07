@@ -1,8 +1,8 @@
 ---
 Cover: /assets/content/projects/icd-research-assistant-in-web-development/icd-research-assistant-in-web-development-cover.jpg
 CoverAlt: Página inicial do site do ICD com o Pavilhão de Fibra BUGA.
-Description: "Ajudei a migrar o site do ICD para o template centralizado da Universidade de Stuttgart baseado em OpenCMS. Além do gerenciamento de conteúdo e SEO, este projeto me proporcionou meu primeiro contato com a língua alemã e uma profunda admiração pelo portfólio de pesquisa do ICD."
-Name: Assistente de Pesquisa em Desenvolvimento Web no ICD
+Description: "Ajudei a migrar o site do ICD para o template centralizado da Universidade de Stuttgart baseado em OpenCMS. Este projeto me proporcionou meu primeiro contato com a língua alemã e uma profunda admiração pelo portfólio de pesquisa do ICD."
+Name: "Assistente de Pesquisa em Desenvolvimento\u00A0Web no ICD"
 Tags:
   - Web Development
 Organization: "ICD - University of Stuttgart"
@@ -26,12 +26,6 @@ Disclosed: true
 A Universidade de Stuttgart estava implementando um template padronizado em OpenCMS para todos os seus institutos e departamentos. Isso significava pegar o site existente do ICD, rico em anos de projetos de pesquisa, publicações, documentação de pavilhões e perfis da equipe, e reestruturar tudo para se adequar ao layout e modelo de conteúdo do novo template.
 
 O trabalho foi metódico: página por página, migrei textos, imagens e metadados do sistema antigo para a nova estrutura do CMS. Cada projeto de pesquisa precisava ter sua descrição reformatada, suas imagens reenviadas nas dimensões corretas e seus metadados (autores, datas, tags) devidamente categorizados dentro dos tipos de conteúdo do OpenCMS.
-
-## Gerenciamento de conteúdo e SEO
-
-Embora a tarefa principal fosse a migração, também foi uma oportunidade de melhorar o conteúdo ao longo do caminho. Revisei e refinei títulos de páginas, meta descrições e estruturas de URL seguindo as melhores práticas de SEO.
-
-O site do ICD serve tanto como portfólio público quanto como referência acadêmica. Pesquisadores, estudantes, jornalistas e potenciais colaboradores o utilizam para conhecer o trabalho do instituto. Garantir que cada página de projeto tivesse descrições claras, texto alternativo adequado nas imagens e navegação lógica era essencial.
 
 ![Página inicial do site do ICD com o Pavilhão de Fibra BUGA.](../../../assets/content/projects/icd-research-assistant-in-web-development/icd-website-homepage-buga-fibre-pavilion.jpg)
 
