@@ -1,6 +1,6 @@
 ---
-Cover: /assets/content/teaching/models-bynature-20/models-bynature-20_instagram-post-01.png
-CoverAlt: Cartaz de divulgação do workshop Models byNature 2.0, com esboços de domos geodésicos sobre fotografias de pavilhões iluminados no Atelier Marko Brajovic em São Paulo.
+Cover: /assets/content/teaching/models-bynature-20/murilo-gasparetto_soap-film-pyramidal-catenary.png
+CoverAlt: Filme de sabão formando uma superfície de catenária piramidal sobre uma armação de arame, fotografado por Murilo Gasparetto no dia de busca pela forma do workshop.
 Description: "A segunda edição do workshop Models byNature expandiu a primeira com quatro sábados de design paramétrico com Grasshopper inspirado na natureza, abordando experimentos de busca pela forma, modelagem computacional e biomimética no Atelier Marko Brajovic em São Paulo."
 Name: Models byNature 2.0
 Authors:
@@ -31,7 +31,7 @@ O primeiro sábado foi dedicado à busca pela forma física. Os participantes co
 
 ![Filme de sabão revelando superfícies mínimas em laços de arame](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-minimal-surfaces.jpeg)
 
-![Filme de sabão em armação triangular de arame](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-triangular-frame.jpeg)
+![Filme de sabão formando uma catenária piramidal em armação de arame](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-pyramidal-catenary.jpeg)
 
 ![Escultura complexa de filme de sabão em arame](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-wire-sculpture.jpeg)
 

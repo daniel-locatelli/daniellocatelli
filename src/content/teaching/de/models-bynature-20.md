@@ -1,6 +1,6 @@
 ---
-Cover: /assets/content/teaching/models-bynature-20/models-bynature-20_instagram-post-01.png
-CoverAlt: Werbeplakat für den Workshop Models byNature 2.0 mit Skizzen geodätischer Kuppeln über Fotografien beleuchteter Pavillons im Atelier Marko Brajovic in São Paulo.
+Cover: /assets/content/teaching/models-bynature-20/murilo-gasparetto_soap-film-pyramidal-catenary.png
+CoverAlt: Seifenfilm, der eine pyramidale Kettenlinienfläche auf einem Drahtrahmen bildet, fotografiert von Murilo Gasparetto am Formfindungstag des Workshops.
 Description: "Die zweite Ausgabe des Workshops Models byNature erweiterte die erste mit vier Samstagen parametrischen Designs mit Grasshopper, inspiriert von der Natur, mit Formfindungsexperimenten, computergestützter Modellierung und Biomimetik im Atelier Marko Brajovic in São Paulo."
 Name: Models byNature 2.0
 Authors:
@@ -31,7 +31,7 @@ Der erste Samstag war der physischen Formfindung gewidmet. Die Teilnehmenden bau
 
 ![Seifenfilm zeigt Minimalflächen auf Drahtschleifen](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-minimal-surfaces.jpeg)
 
-![Seifenfilm auf einem dreieckigen Drahtrahmen](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-triangular-frame.jpeg)
+![Seifenfilm, der eine pyramidale Kettenlinie auf einem Drahtrahmen bildet](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-pyramidal-catenary.jpeg)
 
 ![Komplexe Seifenfilm-Skulptur auf Draht](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-wire-sculpture.jpeg)
 

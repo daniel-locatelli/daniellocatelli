@@ -1,6 +1,6 @@
 ---
-Cover: /assets/content/teaching/models-bynature-20/models-bynature-20_instagram-post-01.png
-CoverAlt: Promotional poster for the Models byNature 2.0 workshop, featuring geodesic dome sketches above photographs of illuminated pavilions at Atelier Marko Brajovic in São Paulo.
+Cover: /assets/content/teaching/models-bynature-20/murilo-gasparetto_soap-film-pyramidal-catenary.png
+CoverAlt: Soap film forming a pyramidal catenary surface on a wire frame, photographed by Murilo Gasparetto during the form-finding day of the workshop.
 Description: "The second edition of the Models byNature workshop expanded on the first with four Saturdays of parametric design with Grasshopper inspired by nature, covering form-finding experiments, computational modeling, and biomimetics at Atelier Marko Brajovic in São Paulo."
 Name: Models byNature 2.0
 Authors:
@@ -31,7 +31,7 @@ The first Saturday was dedicated to physical form-finding. Participants built wi
 
 ![Soap film revealing minimal surfaces on wire loops](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-minimal-surfaces.jpeg)
 
-![Soap film on a triangular wire frame](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-triangular-frame.jpeg)
+![Soap film forming a pyramidal catenary on a wire frame](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-pyramidal-catenary.jpeg)
 
 ![Complex soap film sculpture on wire](../../../assets/content/teaching/models-bynature-20/models-bynature-20_soap-film-wire-sculpture.jpeg)
 
