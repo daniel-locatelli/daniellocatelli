@@ -135,7 +135,11 @@ if (pageImage) {
 
       {
         sortedSubpagesWithImages.length > 0 ? (
-          <div data-subpage-container class="flex flex-col gap-8">
+          <div
+            data-subpage-container
+            class="flex flex-col gap-8"
+            style="visibility:hidden"
+          >
             {sortedSubpagesWithImages.map((subpage, idx) => {
               const { image } = subpage;
               return (
@@ -190,79 +194,95 @@ if (pageImage) {
           </div>
         )
       }
+      <script is:inline>
+        (function () {
+          function setupCoverPreload() {
+            var links = document.querySelectorAll("a[data-cover-src]");
+            var preloaded = new Set();
+            Array.prototype.forEach.call(links, function (link) {
+              link.addEventListener(
+                "mouseenter",
+                function () {
+                  var src = link.dataset.coverSrc;
+                  if (!src || preloaded.has(src)) return;
+                  preloaded.add(src);
+                  var preloadLink = document.createElement("link");
+                  preloadLink.rel = "preload";
+                  preloadLink.as = "image";
+                  preloadLink.href = src;
+                  document.head.appendChild(preloadLink);
+                },
+                { once: true },
+              );
+            });
+          }
+
+          function getColumnCount() {
+            if (window.matchMedia("(min-width: 1024px)").matches) return 3;
+            if (window.matchMedia("(min-width: 640px)").matches) return 2;
+            return 1;
+          }
+
+          function layoutColumns() {
+            var container = document.querySelector("[data-subpage-container]");
+            if (!container) return;
+
+            var cards = Array.prototype.slice
+              .call(container.querySelectorAll("[data-chron-index]"))
+              .sort(function (a, b) {
+                return Number(a.dataset.chronIndex) - Number(b.dataset.chronIndex);
+              });
+
+            var cols = getColumnCount();
+
+            container.replaceChildren();
+
+            if (cols === 1) {
+              container.className = "flex flex-col gap-8";
+              cards.forEach(function (card) {
+                container.appendChild(card);
+              });
+            } else {
+              container.className =
+                "grid gap-8 " + (cols === 2 ? "grid-cols-2" : "grid-cols-3");
+              var wrappers = [];
+              for (var i = 0; i < cols; i++) {
+                var wrapper = document.createElement("div");
+                wrapper.className = "flex flex-col gap-8";
+                container.appendChild(wrapper);
+                wrappers.push(wrapper);
+              }
+              cards.forEach(function (card, i) {
+                wrappers[i % cols].appendChild(card);
+              });
+            }
+
+            // Reveal the container only after it's in its final layout, so the
+            // initial SSR state (flex-col full-width) is never painted. See
+            // style="visibility:hidden" on the container above.
+            container.style.visibility = "";
+          }
+
+          // Synchronous first run at parse time, before the first paint of the
+          // container. This is why the script uses is:inline instead of a
+          // bundled module script: modules are deferred to DOMContentLoaded,
+          // which is too late to prevent the flat-layout flash.
+          layoutColumns();
+          setupCoverPreload();
+
+          // Re-run on breakpoint changes and Astro view-transition navigations.
+          window
+            .matchMedia("(min-width: 1024px)")
+            .addEventListener("change", layoutColumns);
+          window
+            .matchMedia("(min-width: 640px)")
+            .addEventListener("change", layoutColumns);
+          document.addEventListener("astro:page-load", function () {
+            layoutColumns();
+            setupCoverPreload();
+          });
+        })();
+      </script>
     </div>
   </main>
 </Base>
-
-<script>
-  function setupCoverPreload() {
-    const links =
-      document.querySelectorAll<HTMLAnchorElement>("a[data-cover-src]");
-    const preloaded = new Set<string>();
-
-    for (const link of links) {
-      link.addEventListener(
-        "mouseenter",
-        () => {
-          const src = link.dataset.coverSrc;
-          if (!src || preloaded.has(src)) return;
-          preloaded.add(src);
-          const preloadLink = document.createElement("link");
-          preloadLink.rel = "preload";
-          preloadLink.as = "image";
-          preloadLink.href = src;
-          document.head.appendChild(preloadLink);
-        },
-        { once: true },
-      );
-    }
-  }
-
-  function getColumnCount(): 1 | 2 | 3 {
-    if (window.matchMedia("(min-width: 1024px)").matches) return 3;
-    if (window.matchMedia("(min-width: 640px)").matches) return 2;
-    return 1;
-  }
-
-  function layoutColumns() {
-    const container = document.querySelector<HTMLElement>(
-      "[data-subpage-container]",
-    );
-    if (!container) return;
-
-    const cards = Array.from(
-      container.querySelectorAll<HTMLElement>("[data-chron-index]"),
-    ).sort(
-      (a, b) =>
-        Number(a.dataset.chronIndex) - Number(b.dataset.chronIndex),
-    );
-
-    const cols = getColumnCount();
-
-    container.replaceChildren();
-
-    if (cols === 1) {
-      container.className = "flex flex-col gap-8";
-      for (const card of cards) container.appendChild(card);
-      return;
-    }
-
-    container.className = `grid gap-8 ${cols === 2 ? "grid-cols-2" : "grid-cols-3"}`;
-    const wrappers: HTMLElement[] = [];
-    for (let i = 0; i < cols; i++) {
-      const wrapper = document.createElement("div");
-      wrapper.className = "flex flex-col gap-8";
-      container.appendChild(wrapper);
-      wrappers.push(wrapper);
-    }
-    cards.forEach((card, i) => wrappers[i % cols].appendChild(card));
-  }
-
-  const mqDesktop = window.matchMedia("(min-width: 1024px)");
-  const mqTablet = window.matchMedia("(min-width: 640px)");
-  mqDesktop.addEventListener("change", layoutColumns);
-  mqTablet.addEventListener("change", layoutColumns);
-
-  document.addEventListener("astro:page-load", setupCoverPreload);
-  document.addEventListener("astro:page-load", layoutColumns);
-</script>
