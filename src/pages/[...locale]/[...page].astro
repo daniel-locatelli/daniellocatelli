@@ -135,11 +135,14 @@ if (pageImage) {
 
       {
         sortedSubpagesWithImages.length > 0 ? (
-          <div class="columns-1 gap-8 sm:columns-2 lg:columns-3">
-            {sortedSubpagesWithImages.map((subpage) => {
+          <div data-subpage-container class="flex flex-col gap-8">
+            {sortedSubpagesWithImages.map((subpage, idx) => {
               const { image } = subpage;
               return (
-                <article class="group relative mb-8 flex break-inside-avoid-column flex-col overflow-hidden rounded-2xl bg-zinc-900 transition-all hover:shadow-2xl">
+                <article
+                  data-chron-index={idx}
+                  class="group relative flex flex-col overflow-hidden rounded-2xl bg-zinc-900 transition-all hover:shadow-2xl"
+                >
                   <a
                     href={`/${locale === siteConfig.defaultLocale ? "" : `${locale}/`}${getEntrySlug(subpage)}`}
                     class="flex h-full flex-col"
