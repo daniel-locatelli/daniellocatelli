@@ -152,7 +152,7 @@ public/media/ea987659-410b-4a7b-9174-b426bcab6e04/
 | 9 | Life Lamp by Estudio Guto Requena for Decimal | `life-lamp-by-estudio-guto-requena-for-decimal.md` |
 | 10 | Air Guitar by Atelier Marko Brajovic for Nike | `air-guitar-by-atelier-marko-brajovic-for-nike.md` |
 | 11 | O3 Pavilion by Atelier Marko Brajovic for Docol | `o3-pavilion-by-atelier-marko-brajovic-for-docol.md` |
-| 12 | Parada Coca-Cola by Atelier Marko Brajovic for Coca-Cola | `parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola.md` |
+| 12 | Parada Coca-Cola by Atelier Marko Brajovic | `parada-coca-cola-by-atelier-marko-brajovic.md` |
 
 ### Research — 10 items live (5 research + 5 publications)
 

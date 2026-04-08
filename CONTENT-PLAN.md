@@ -28,7 +28,7 @@ Tracking document for all content collections.
 | `kfw-funding-calculator-by-buildsystems` | Funding calculator web app with Angular and PostgreSQL | [x] | [x] | [x] |
 | `life-lamp-by-estudio-guto-requena-for-decimal` | Emotional design lamp, computational designer for the program | [x] | [x] | [x] |
 | `o3-pavilion-by-atelier-marko-brajovic-for-docol` | Computational architecture pavilion for EXPO Revestir | [x] | [x] | [x] |
-| `parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola` | Coca-Cola installation in Rio de Janeiro | [x] | [x] | [x] |
+| `parada-coca-cola-by-atelier-marko-brajovic` | Coca-Cola installation in Rio de Janeiro | [x] | [x] | [x] |
 | `radom-raisting-by-ar-ingenieure` | Simulation of deployment and collision avoidance for inflatable radome | [x] | [x] | [ ] |
 | `_a-harmonious-cycle-of-interconnected-nows-by-artengineering` | Sculpture by Olafur Eliasson, detailing and prototyping | [ ] | [ ] | [ ] |
 | `_affective-data-table` | Emotional design table with CNC fabrication for Movelpar | [x] | [x] | [ ] |

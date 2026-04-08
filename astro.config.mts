@@ -167,5 +167,11 @@ export default defineConfig({
       "https://archcompute.com/pt-br/strategies/fabrication-systems/weaving/",
     "/pt/computational-design-strategies/zonohedral-dome-zome":
       "https://archcompute.com/pt-br/strategies/structural-systems/zonohedral-dome/",
+    "/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola":
+      "/projects/parada-coca-cola-by-atelier-marko-brajovic",
+    "/pt/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola":
+      "/pt/projects/parada-coca-cola-by-atelier-marko-brajovic",
+    "/de/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola":
+      "/de/projects/parada-coca-cola-by-atelier-marko-brajovic",
   },
 });

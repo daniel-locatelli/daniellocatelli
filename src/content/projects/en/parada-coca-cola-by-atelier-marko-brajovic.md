@@ -1,8 +1,8 @@
 ---
-Cover: /assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola-cover.jpg
+Cover: /assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic/parada-coca-cola-by-atelier-marko-brajovic-cover.jpg
 CoverAlt: Photo from the entrance to the main bar of Parada Coca-Cola.
 Description: "Parada Coca-Cola was my very first project where I applied computational design. This sensorial experience was inspired by the Coca-Cola bottle, mimicking the bubbles and colors of the drink."
-Name: Parada Coca-Cola by Atelier Marko Brajovic for Coca-Cola
+Name: Parada Coca-Cola by Atelier Marko Brajovic
 Tags:
   - Computational Design
   - Grasshopper3D
@@ -42,13 +42,13 @@ Place: Olimpic games
 
 Parada Coca-Cola was my very first project where I applied computational design. This sensorial experience was inspired by the Coca-Cola bottle, mimicking the bubbles and colors of the drink. It also had many other activations, as they call in marketing agencies in Brazil.
 
-![Photo inside of the Kaleidoscope activation.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/photo-inside-of-the-kaleidoscope-activation.jpeg)
-![Photo showing many plastic balls and their cables connecting to the ceiling.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/photo-showing-many-plastic-balls-and-their-cables-connecting-to-the-ceiling.jpeg)
+![Photo inside of the Kaleidoscope activation.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic/photo-inside-of-the-kaleidoscope-activation.jpeg)
+![Photo showing many plastic balls and their cables connecting to the ceiling.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic/photo-showing-many-plastic-balls-and-their-cables-connecting-to-the-ceiling.jpeg)
 ## Computational Design
 My role in the project was to place the plastic spheres parametrically while avoiding colliding with each other and the cables that connected them to the ceiling. For that, I used Grasshopper and Galapagos.
 Another task that came later was to generate a spreadsheet with all the cable lengths and the tags to properly organize all the material to be shipped and deployed. Well, at least this was the idea. Because, at some point, someone thought it would be nice to remove the tags 🤯. It was a nightmare for the girls coordinating the event.
 
-![Photo of a lounge in first plane with red puffy circular benches and the golden bar at the back.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola/a-lounge-in-first-plane-with-red-puffy-circular-benches-and-the-golden-bar-at.jpeg)
+![Photo of a lounge in first plane with red puffy circular benches and the golden bar at the back.](../../../assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic/a-lounge-in-first-plane-with-red-puffy-circular-benches-and-the-golden-bar-at.jpeg)
 
 © Photos by Fernando Martins
 
