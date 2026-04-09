@@ -36,4 +36,4 @@ Dylan Woods Forschung am ICD befasste sich mit den natürlichen Selbstformungsei
 
 ![3D-Lageplan des Turmprojekts.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/3d-site-plan.jpg)
 
-© Zeichnung und Animation von der Universität Stuttgart, ICD/ITKE
+© Zeichnungen, Bilder und Animation von der Universität Stuttgart, ICD/ITKE

@@ -36,4 +36,4 @@ A pesquisa de Dylan Wood no ICD foi sobre as propriedades naturais de automoldag
 
 ![Plano 3D do local do projeto da torre.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/3d-site-plan.jpg)
 
-© Desenho e animação pela Universidade de Stuttgart, ICD/ITKE
+© Desenhos, imagens e animação pela Universidade de Stuttgart, ICD/ITKE

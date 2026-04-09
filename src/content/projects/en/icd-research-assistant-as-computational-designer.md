@@ -36,4 +36,4 @@ Dylan Wood's research at the ICD was about the natural self-shaping properties o
 
 ![3D site plan of the tower project.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/3d-site-plan.jpg)
 
-© Drawing and animation by University of Stuttgart, ICD/ITKE
+© Drawings, images and animation by University of Stuttgart, ICD/ITKE
