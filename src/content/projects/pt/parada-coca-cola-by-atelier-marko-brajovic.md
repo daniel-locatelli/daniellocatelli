@@ -34,8 +34,6 @@ Place: Olimpic games
 
 
 
-## Conceito
-
 > Utilizamos mais de 500 esferas de acrílico transparente de diferentes tamanhos suspensas na estrutura do teto do armazém, cobrindo quase 1000m² e iluminadas para criar um efeito de movimento de efervescência ascendente. Sob a instalação principal de bolhas, diferentes ativações interativas e exposições entretêm o público e narram a história visual da empresa.
 
 *Atelier Marko Brajovic*

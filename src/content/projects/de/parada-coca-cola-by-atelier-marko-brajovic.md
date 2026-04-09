@@ -34,8 +34,6 @@ Place: Olimpic games
 
 
 
-## Konzept
-
 > Wir verwendeten mehr als 500 transparente Acrylkugeln verschiedener Größen, die an der Deckenstruktur des Lagerhauses aufgehängt wurden, fast 1000m² abdeckten und beleuchtet wurden, um einen Bewegungseffekt aufsteigender Perlung zu erzeugen. Unter der Haupt-Blaseninstallation unterhielten verschiedene interaktive Aktivierungen und Ausstellungen das Publikum und erzählten die visuelle Geschichte des Unternehmens.
 
 *Atelier Marko Brajovic*

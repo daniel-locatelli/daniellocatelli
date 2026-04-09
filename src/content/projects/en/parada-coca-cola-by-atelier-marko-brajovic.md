@@ -34,8 +34,6 @@ Place: Olimpic games
 
 
 
-## Concept
-
 > We used more than 500 transparent acrylic spheres of different sizes suspended from the warehouse’s ceiling structure, covering almost 1000m² and lighted it up to create a motion effect of ascending effervescence. Under the main bubble installation, different interactive activations and exhibitions entertain the public and narrate the visual history of the company.
 
 *Atelier Marko Brajovic*
