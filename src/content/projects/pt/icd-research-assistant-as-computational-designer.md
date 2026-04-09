@@ -29,7 +29,9 @@ Fui o designer computacional de um projeto semelhante à [Torre Urbach](https://
 No entanto, foi interessante entender a estratégia computacional para gerar a geometria de uma placa de madeira laminada cruzada autocurvada. O truque aqui é trabalhar com cilindros, porque a curvatura natural da madeira acontece perpendicularmente à direção das fibras.
 
 ![Um painel de madeira de duas camadas dobra durante a secagem.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/um-painel-de-madeira-de-duas-camadas-dobra-durante-a-secagem.webp)
-Também trabalhei em alguns desenhos as-built para a própria Urbach Tower (foto da capa). Por causa disso, Dylan me ensinou todos os detalhes construtivos deste projeto e também como eles adicionaram múltiplos sensores para monitorar e rastrear os comportamentos ambientais na estrutura.
+Também trabalhei em alguns desenhos as-built para a própria Urbach Tower. Por causa disso, Dylan me ensinou todos os detalhes construtivos deste projeto e também como eles adicionaram múltiplos sensores para monitorar e rastrear os comportamentos ambientais na estrutura.
+
+![Desenho de elevação lateral da Urbach Tower.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/urbach-tower-side-elevation.jpg)
 A pesquisa de Dylan Wood no ICD foi sobre as propriedades naturais de automoldagem da madeira quando seca. Você pode conferir a palestra TED de Dylan Wood para entender mais sobre o processo aqui:
 
 ![Plano 3D do local do projeto da torre.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/3d-site-plan.jpg)

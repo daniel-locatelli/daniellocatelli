@@ -29,7 +29,9 @@ Ich war der Computational Designer für ein Projekt ähnlich dem [Urbach Tower](
 Dennoch war es spannend, die computergestützte Strategie zur Geometrieerzeugung für eine sich selbst krümmende Brettsperrholzplatte zu verstehen. Der Trick besteht darin, mit Zylindern zu arbeiten, da sich Holz von Natur aus senkrecht zur Faserrichtung krümmt.
 
 ![Eine zweischichtige Holzplatte biegt sich beim Trocknen.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/a-two-layer-bilayer-wood-panel-bends-while-drying.webp)
-Ich arbeitete auch an einigen Bestandszeichnungen für den Urbach Tower selbst (Titelbild). Deshalb brachte mir Dylan alle konstruktiven Details dieses Projekts bei und auch, wie sie mehrere Sensoren hinzufügten, um die Umwelteinflüsse auf die Struktur zu überwachen und zu verfolgen.
+Ich arbeitete auch an einigen Bestandszeichnungen für den Urbach Tower selbst. Deshalb brachte mir Dylan alle konstruktiven Details dieses Projekts bei und auch, wie sie mehrere Sensoren hinzufügten, um die Umwelteinflüsse auf die Struktur zu überwachen und zu verfolgen.
+
+![Seitenansicht-Zeichnung des Urbach Tower.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/urbach-tower-side-elevation.jpg)
 Dylan Woods Forschung am ICD befasste sich mit den natürlichen Selbstformungseigenschaften von Holz beim Trocknen. Sie können sich Dylan Woods TED Talk ansehen, um mehr über den Prozess zu erfahren:
 
 ![3D-Lageplan des Turmprojekts.](../../../assets/content/projects/icd-research-assistant-as-computational-designer/3d-site-plan.jpg)
