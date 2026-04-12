@@ -67,6 +67,6 @@ Segunda colaboração com uma artista renomada durante o período na ArtEngineer
 
 **Entre o Prompt e a Obra: O Olhar de um Arquiteto Brasileiro na Alemanha**
 
-### Descrição da apresentação (100 palavras)
+### Descrição da apresentação (98 palavras)
 
-Arquitetos se fascinam com imagens geradas por IA, mas entre o prompt e a obra ainda há muito a ser feito. Em 2019, migrei do Brasil para a Alemanha enxergando arquitetura pela lente da biomimética. Dos três níveis da biomimética de Benyus, o ecossistema nunca ficou claro. Foi na minha passagem pelo mestrado do ITECH, por dois escritórios de engenharia, e na imersão na cultura de Goethe que finalmente encontrei a peça que faltava: pensar em sistemas. O ecossistema era justamente isso. Neste talk, conto como o pensamento sistêmico é a peça que conectará o prompt à obra.
+Arquitetos já geram imagens com IA, mas entre o prompt e a obra ainda há muito a ser feito. Em 2019, migrei do Brasil para a Alemanha enxergando a arquitetura pela lente da biomimética. Minha passagem pelo mestrado do ITECH, por dois escritórios de engenharia, e pela imersão na cultura de Goethe me ensinou algo diferente: pensar em sistemas. A imagem é apenas o último passo, antes dela vem um sistema inteiro: estrutura, fabricação, logística, materialidade. Neste talk, conto sobre essa trajetória e por que o pensamento sistêmico é o que falta para conectar o prompt à obra.
