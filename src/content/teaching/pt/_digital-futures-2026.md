@@ -1,6 +1,6 @@
 ---
-Name: "Digital Futures 2026: Diáspora Lusófona"
-Description: "Talk sobre a diáspora lusófona acadêmica e profissional: perfil profissional, formação em solo estrangeiro, oportunidades, desafios e trabalho atual."
+Name: "Digital Futures 2026: Entre o Prompt e a Obra"
+Description: "Talk sobre a jornada da biomimética ao pensamento sistêmico e o que falta na inteligência artificial para arquitetura: o olhar de um arquiteto brasileiro formado e atuante na Alemanha."
 Category: Talk
 DateStart: "2026-04-18"
 Place: Online
@@ -16,7 +16,7 @@ Segunda participação na série DigitalFutures em português, após Digital Fut
 
 ## Bio para divulgação (87 palavras)
 
-Arquiteto pela FAU-USP, Daniel Locatelli trabalhou com design computacional no Atelier Marko Brajovic antes de migrar para a Alemanha em 2019. Lá, concluiu o mestrado no ITECH, com tese sobre fabricação robótica e madeira engenheirada. Atuou no escritório de engenharia Alfred Rein com form finding de estruturas tensionadas, e no escritório ArtEngineering, com engenharia computacional em obras de artistas renomados como Olafur Eliasson. Hoje é pesquisador na Universidade de Ciências Aplicadas de Munique atuando na interseção entre engenharia de software, inteligência artificial e fabricação digital em madeira.
+Arquiteto pela FAU-USP, Daniel Locatelli trabalhou com design computacional no Atelier Marko Brajovic antes de migrar para a Alemanha em 2019. Lá, concluiu o mestrado no ITECH, com tese sobre fabricação robótica e madeira engenheirada. Atuou no escritório de engenharia Alfred Rein com form-finding de estruturas tensionadas, e no escritório ArtEngineering, com engenharia computacional em obras de Olafur Eliasson e Katharina Grosse. Hoje é pesquisador na Universidade de Ciências Aplicadas de Munique atuando na interseção entre engenharia de software, inteligência artificial e fabricação digital em madeira.
 
 ## Notas de composição da bio
 
@@ -49,11 +49,11 @@ Tese de mestrado no ITECH (Universidade de Stuttgart), em coautoria com Nils Opg
 
 Simulação de implantação de uma cúpula inflável de 48,8m de diâmetro para proteger uma antena parabólica na estação terrena de Raisting. Ilustra "form finding de estruturas tensionadas".
 
-### 4. Breathing Earth Sphere, ArtEngineering para Olafur Eliasson
+### 4. Common Sky, ArtEngineering para Studio Other Spaces (Olafur Eliasson)
 
-![Olafur Eliasson, Breathing earth sphere, 2024. Foto: Kyungsub Shin](../../../assets/content/projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson/breathing-earth-sphere-by-artengineering-for-olafur-eliasson-cover.jpeg)
+![Interior do Common Sky no Buffalo AKG Art Museum](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/common-sky-by-artengineering-for-studio-other-spaces-cover.jpg)
 
-Engenharia computacional, análise por elementos finitos com SOFiSTiK e resolução logística da esfera de aço inoxidável de 10m instalada na Ilha de Docho, Coreia do Sul. Imagem-título que sustenta o nome Eliasson na bio.
+Cobertura treliçada em aço e vidro para o Buffalo AKG Art Museum, projetada pelo Studio Other Spaces (cofundado por Olafur Eliasson). Sustenta o nome Eliasson na bio com uma obra de escala arquitetônica.
 
 ### 5. Canyon, ArtEngineering para Katharina Grosse
 
@@ -63,24 +63,10 @@ Segunda colaboração com uma artista renomada durante o período na ArtEngineer
 
 ## Submissão ao formulário
 
-### Título (provisório, a refinar)
+### Título (final)
 
-**De Janine Benyus a Goethe: Uma Travessia de Lentes**
-
-Título de trabalho. Daniel ainda não está convencido de "Uma Travessia de Lentes" (soa forçado). Brainstorm adicional pendente numa próxima sessão.
-
-Outros candidatos já considerados:
-
-- **"A Biomimética Definitiva é o Pensamento Sistêmico"** — provocativo, a tese como título. Risco: soa como conclusão spoiler, pode ser lido como afirmação em vez de jornada.
-- **"Da Biomimética ao Pensamento Sistêmico: Uma Diáspora Epistemológica"** — descritivo, nomeia explicitamente o recorte de diáspora do evento. Mais seguro mas mais plano, registro acadêmico.
-
-Princípios para o próximo brainstorm:
-
-- Deve sugerir a jornada biomimética → sistemas sem gastar a revelação no título.
-- "Lentes" como metáfora foi instinto de abertura do próprio Daniel (ver notas do talk), vale preservar se achar uma forma menos forçada.
-- Dois nomes concretos (Benyus/Goethe) funcionam como ancoragem identificável pro público brasileiro de design computacional.
-- Evitar jargão (travessia epistemológica, diáspora epistemológica, etc.) que soe acadêmico demais para o formato talk de 20 minutos.
+**Entre o Prompt e a Obra: O Olhar de um Arquiteto Brasileiro na Alemanha**
 
 ### Descrição da apresentação (100 palavras)
 
-Em 2019, migrei do Brasil para a Alemanha com uma compreensão particular de arquitetura: a biomimética de Janine Benyus, filtrada pela prática do Atelier Marko Brajovic. Form, process, ecosystem. Imaginei que dominava o tema. Cinco anos depois, percebo que o mais importante não era imitar a natureza, mas pensar em sistemas, algo profundamente enraizado na cultura alemã desde Goethe. Nesta talk, conto como essa mudança de lente guiou meu trabalho em dois escritórios de engenharia alemães, no mestrado do ITECH com uma tese sobre fabricação robótica de madeira, e hoje, na interseção entre fabricação digital em madeira e inteligência artificial.
+Arquitetos se fascinam com imagens geradas por IA, mas entre o prompt e a obra ainda há muito a ser feito. Em 2019, migrei do Brasil para a Alemanha enxergando arquitetura pela lente da biomimética. Dos três níveis da biomimética de Benyus, o ecossistema nunca ficou claro. Foi na minha passagem pelo mestrado do ITECH, por dois escritórios de engenharia, e na imersão na cultura de Goethe que finalmente encontrei a peça que faltava: pensar em sistemas. O ecossistema era justamente isso. Neste talk, conto como o pensamento sistêmico é a peça que conectará o prompt à obra.

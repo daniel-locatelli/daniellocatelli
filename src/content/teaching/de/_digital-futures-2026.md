@@ -1,6 +1,6 @@
 ---
-Name: "Digital Futures 2026: Lusophone Diaspora"
-Description: "Vortrag über die akademische und berufliche lusophone Diaspora: berufliches Profil, Ausbildung im Ausland, Chancen, Herausforderungen und aktuelle Arbeit."
+Name: "Digital Futures 2026: Entre o Prompt e a Obra"
+Description: "Vortrag über den Weg von der Biomimetik zum Systemdenken und was der KI in der Architektur noch fehlt: die Perspektive eines in Deutschland ausgebildeten und tätigen brasilianischen Architekten."
 Category: Talk
 DateStart: "2026-04-18"
 Place: Online
@@ -14,9 +14,11 @@ Einladung am 2026-04-07 von Digital Futures Portuguese (portuguese.digitalfuture
 
 Zweite Teilnahme an der portugiesischsprachigen DigitalFutures-Reihe, nach Digital Futures 2023: Novos Hibridismos.
 
-## Sprecher-Bio
+## Sprecher-Bio (87 Wörter)
 
-Die für diesen Vortrag vorbereitete Bio ist auf Portugiesisch, da die Veranstaltung auf Portugiesisch vor einem lusophonen Publikum stattfindet. Siehe die pt/-Version dieser Datei für den Text und die Kompositionsnotizen.
+Architekt der FAU-USP, arbeitete Daniel Locatelli mit computergestütztem Entwurf im Atelier Marko Brajovic, bevor er 2019 nach Deutschland migrierte. Dort schloss er seinen Master am ITECH ab, mit einer Thesis über robotische Fertigung und Ingenieurholz. Er arbeitete im Ingenieurbüro Alfred Rein mit Form Finding von Zugstrukturen und bei ArtEngineering mit Computational Engineering an Werken von Olafur Eliasson und Katharina Grosse. Heute ist er Forscher an der Hochschule München und arbeitet an der Schnittstelle von Software Engineering, Künstlicher Intelligenz und digitaler Holzfertigung.
+
+Siehe die pt/-Version für Kompositionsnotizen und die Begründung hinter den einzelnen Formulierungsentscheidungen.
 
 ## Eingereichte Bilder
 
@@ -40,11 +42,11 @@ Masterarbeit am ITECH (Universität Stuttgart), zusammen mit Nils Opgenorth. Meh
 
 Einbausimulation einer aufblasbaren Kuppel mit 48,8m Durchmesser zum Schutz einer Parabolantenne an der Erdfunkstelle Raisting. Illustriert "Form Finding von Zugstrukturen".
 
-### 4. Breathing Earth Sphere, ArtEngineering für Olafur Eliasson
+### 4. Common Sky, ArtEngineering für Studio Other Spaces (Olafur Eliasson)
 
-![Olafur Eliasson, Breathing earth sphere, 2024. Foto: Kyungsub Shin](../../../assets/content/projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson/breathing-earth-sphere-by-artengineering-for-olafur-eliasson-cover.jpeg)
+![Innenansicht von Common Sky im Buffalo AKG Art Museum](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/common-sky-by-artengineering-for-studio-other-spaces-cover.jpg)
 
-Computational Engineering, Finite-Elemente-Analyse mit SOFiSTiK und logistische Segmentierung der 10m Edelstahlkugel, installiert auf Docho Island, Südkorea. Leitbild, das den Namen Eliasson in der Bio belegt.
+Stahl-Glas-Gitterdach für das Buffalo AKG Art Museum, entworfen von Studio Other Spaces (Mitgründer: Olafur Eliasson). Belegt den Namen Eliasson in der Bio mit einem Werk im architektonischen Maßstab.
 
 ### 5. Canyon, ArtEngineering für Katharina Grosse
 
@@ -54,12 +56,12 @@ Zweite Zusammenarbeit mit einer renommierten Künstlerin während der Zeit bei A
 
 ## Formulareinreichung
 
-### Titel (vorläufig, wird verfeinert)
+### Titel (final)
 
-**De Janine Benyus a Goethe: Uma Travessia de Lentes**
+**Entre o Prompt e a Obra: O Olhar de um Arquiteto Brasileiro na Alemanha**
 
-Arbeitstitel auf Portugiesisch, wird wörtlich so eingereicht, da die Veranstaltung auf Portugiesisch stattfindet. Daniel ist von "Uma Travessia de Lentes" noch nicht überzeugt (wirkt gezwungen). Weiteres Brainstorming in einer nächsten Sitzung ausstehend. Siehe die pt/-Version dieser Datei für die bereits erwogenen Alternativen und die Prinzipien für das nächste Brainstorming.
+Portugiesischer Titel, wird wörtlich so eingereicht. "Zwischen dem Prompt und dem Bauwerk: Der Blick eines brasilianischen Architekten in Deutschland."
 
-### Beschreibung des Vortrags (100 Wörter, Portugiesisch)
+### Beschreibung des Vortrags (100 Wörter)
 
-Wird wörtlich auf Portugiesisch eingereicht, passend zur Sprache der Veranstaltung. Vollständiger Text in der pt/-Version dieser Datei.
+Architekten sind fasziniert von KI-generierten Bildern, doch zwischen dem Prompt und dem Bauwerk gibt es noch viel zu tun. 2019 migrierte ich von Brasilien nach Deutschland und sah Architektur durch die Linse der Biomimetik. Von Benyus' drei Ebenen der Biomimetik war mir das Ökosystem nie klar. Erst auf meinem Weg durch das ITECH-Masterstudium, durch zwei Ingenieurbüros und das Eintauchen in die Kultur von Goethe fand ich das fehlende Stück: in Systemen zu denken. Das Ökosystem war genau das. In diesem Talk erzähle ich, wie das Systemdenken das Stück ist, das den Prompt mit dem Bauwerk verbinden wird.

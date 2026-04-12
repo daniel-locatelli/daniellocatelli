@@ -1,6 +1,6 @@
 ---
-Name: "Digital Futures 2026: Lusophone Diaspora"
-Description: "Talk on the academic and professional Lusophone diaspora: professional profile, education abroad, opportunities, challenges, and current work."
+Name: "Digital Futures 2026: Entre o Prompt e a Obra"
+Description: "Talk on the journey from biomimicry to systems thinking and what's missing in AI for architecture: the perspective of a Brazilian architect trained and working in Germany."
 Category: Talk
 DateStart: "2026-04-18"
 Place: Online
@@ -14,9 +14,11 @@ Invitation received on 2026-04-07 from Digital Futures Portuguese (portuguese.di
 
 Second appearance in the Portuguese-language DigitalFutures series, after Digital Futures 2023: Novos Hibridismos.
 
-## Speaker bio
+## Speaker bio (87 words)
 
-The bio prepared for this talk is in Portuguese, since the event is delivered in Portuguese to a Lusophone audience. See the pt/ version of this file for the text and composition notes.
+Architect from FAU-USP, Daniel Locatelli worked with computational design at Atelier Marko Brajovic before migrating to Germany in 2019. There, he completed his master's degree at ITECH, with a thesis on robotic fabrication and engineered timber. He worked at the engineering office Alfred Rein with form finding of tensile structures, and at ArtEngineering, with computational engineering on works by Olafur Eliasson and Katharina Grosse. Today he is a researcher at Munich University of Applied Sciences working at the intersection of software engineering, artificial intelligence, and digital timber fabrication.
+
+See the pt/ version for composition notes and rationale behind each phrasing choice.
 
 ## Submitted images
 
@@ -40,11 +42,11 @@ Master's thesis at ITECH (University of Stuttgart), co-authored with Nils Opgeno
 
 Deployment simulation of a 48.8m inflatable radome protecting a parabolic antenna at the Raisting earth station. Illustrates "form finding of tensile structures".
 
-### 4. Breathing Earth Sphere, ArtEngineering for Olafur Eliasson
+### 4. Common Sky, ArtEngineering for Studio Other Spaces (Olafur Eliasson)
 
-![Olafur Eliasson, Breathing earth sphere, 2024. Photo: Kyungsub Shin](../../../assets/content/projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson/breathing-earth-sphere-by-artengineering-for-olafur-eliasson-cover.jpeg)
+![Interior of Common Sky at the Buffalo AKG Art Museum](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/common-sky-by-artengineering-for-studio-other-spaces-cover.jpg)
 
-Computational engineering, finite element analysis with SOFiSTiK, and logistical segmentation of the 10m stainless steel sphere installed on Docho Island, South Korea. Headline image that grounds the Eliasson name in the bio.
+Steel and glass lattice canopy for the Buffalo AKG Art Museum, designed by Studio Other Spaces (co-founded by Olafur Eliasson). Grounds the Eliasson name in the bio with an architectural-scale work.
 
 ### 5. Canyon, ArtEngineering for Katharina Grosse
 
@@ -54,12 +56,12 @@ Second collaboration with a renowned artist during the ArtEngineering period, in
 
 ## Form submission
 
-### Title (provisional, to be refined)
+### Title (final)
 
-**De Janine Benyus a Goethe: Uma Travessia de Lentes**
+**Entre o Prompt e a Obra: O Olhar de um Arquiteto Brasileiro na Alemanha**
 
-Working title in Portuguese — submitted verbatim because the event is Portuguese-language. Daniel is not sold on "Uma Travessia de Lentes" (feels forced). Further brainstorming pending in a future session. See the pt/ version of this file for the alternative candidates already considered and the principles for the next brainstorm.
+Portuguese title, submitted verbatim. "Between the Prompt and the Built Work: The Perspective of a Brazilian Architect in Germany."
 
-### Talk description (100 words, Portuguese)
+### Talk description (100 words)
 
-Submitted verbatim in Portuguese to match the event language. See the pt/ version of this file for the full text.
+Architects are fascinated by AI-generated images, but between the prompt and the built work there is still much to be done. In 2019 I migrated from Brazil to Germany seeing architecture through the lens of biomimicry. Of Benyus's three levels of biomimicry, the ecosystem was never clear to me. It was during my passage through the ITECH master's program, two engineering offices, and immersion in the culture of Goethe that I finally found the missing piece: thinking in systems. The ecosystem was precisely that. In this talk, I share how systems thinking is the piece that will connect the prompt to the built work.
