@@ -274,6 +274,15 @@ const home = await getI18n<I18nHome>("home", locale);
               <Icon name="mdi:linkedin" class="size-6 shrink-0 print:hidden" />
             </a>
             <a
+              href={siteConfig.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Daniel Locatelli on Instagram"
+              class="text-zinc-300 transition duration-300 hover:text-green-400"
+            >
+              <Icon name="mdi:instagram" class="size-6 shrink-0 print:hidden" />
+            </a>
+            <a
               href={siteConfig.github}
               target="_blank"
               rel="noopener noreferrer"
@@ -283,13 +292,13 @@ const home = await getI18n<I18nHome>("home", locale);
               <Icon name="mdi:github" class="size-6 shrink-0 print:hidden" />
             </a>
             <a
-              href={siteConfig.instagram}
+              href={siteConfig.gitlab}
               target="_blank"
               rel="noopener noreferrer"
-              title="Daniel Locatelli on GitHub"
+              title="Daniel Locatelli on GitLab"
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
-              <Icon name="mdi:instagram" class="size-6 shrink-0 print:hidden" />
+              <Icon name="mdi:gitlab" class="size-6 shrink-0 print:hidden" />
             </a>
           </div>
           <p class="text-sm text-zinc-300">{siteConfig.email}</p>

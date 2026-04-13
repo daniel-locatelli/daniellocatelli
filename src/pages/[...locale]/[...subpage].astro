@@ -153,12 +153,12 @@ if (image) {
   >
     <div class="w-full max-w-full overflow-x-hidden sm:max-w-2xl">
       <h1
-        class="title font-title mb-8 px-2 text-4xl font-normal text-balance text-zinc-100 md:px-0"
+        class="title font-title mb-8 px-4 text-4xl font-normal text-balance text-zinc-100 sm:px-0"
       >
         {subpage.data.Name}
       </h1>
       <table
-        class="table-auto border-separate border-spacing-x-4 text-left text-zinc-200 *:align-text-top"
+        class="table-auto border-separate border-spacing-x-4 px-4 text-left text-zinc-200 sm:px-0 *:align-text-top"
       >
         {
           subpage.data.DateEnd ? (
@@ -495,7 +495,7 @@ if (image) {
             )
         }
       </table>
-      <div class="prose my-8 max-w-none text-zinc-200">
+      <div class="prose my-8 max-w-none px-4 text-zinc-200 sm:px-0">
         <Content />
       </div>
       {
@@ -569,6 +569,17 @@ if (image) {
 
   th {
     font-weight: 300;
+  }
+
+  @media (max-width: 639px) {
+    .prose :global(img),
+    .prose :global(figure),
+    .prose :global(video) {
+      margin-left: -1rem;
+      margin-right: -1rem;
+      max-width: calc(100% + 2rem);
+      width: calc(100% + 2rem);
+    }
   }
 
   .hero-img {
