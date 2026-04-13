@@ -25,7 +25,7 @@ Organization: ICD – University of Stuttgart
 
 Coreless filament winding is a fabrication technique where a robotic arm winds resin-soaked fibers around a frame to create lightweight, high-performance structural elements without the need for a solid mold. The ICD and ITKE at the University of Stuttgart have been pioneering this technology, producing increasingly ambitious pavilions and demonstrators.
 
-## The challenge
+## The research problem
 
 As the robotic arm intertwines the fibers in a kind of three-dimensional weaving, the relationship between these fibers becomes very complex and difficult to predict. At the time, there was no reliable computational tool for accurately simulating how the fibers would interact during the winding process. Christoph Schlopschnat's research aimed to bridge this gap.
 

@@ -25,7 +25,7 @@ Organization: ICD – Universidade de Stuttgart
 
 O enrolamento filamentar sem núcleo é uma técnica de fabricação em que um braço robótico enrola fibras embebidas em resina ao redor de uma estrutura para criar elementos estruturais leves e de alto desempenho — sem a necessidade de um molde sólido. O ICD e o ITKE da Universidade de Stuttgart têm sido pioneiros nessa tecnologia, produzindo pavilhões e demonstradores cada vez mais ambiciosos.
 
-## O desafio
+## O problema de pesquisa
 
 À medida que o braço robótico entrelaça as fibras em uma espécie de tecelagem tridimensional, a relação entre essas fibras se torna muito complexa e difícil de prever. Na época, não existia uma ferramenta computacional confiável para simular com precisão como as fibras interagiriam durante o processo de enrolamento. A pesquisa de Christoph Schlopschnat visava preencher essa lacuna.
 

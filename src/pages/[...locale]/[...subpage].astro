@@ -160,6 +160,7 @@ if (image) {
       <table
         class="table-auto border-separate border-spacing-x-4 px-4 text-left text-zinc-200 sm:px-0 *:align-text-top"
       >
+        <tbody>
         {
           subpage.data.DateEnd ? (
             <tr>
@@ -181,6 +182,17 @@ if (image) {
               </tr>
             )
         }
+        {
+          subpage.data.Client && (
+            <tr>
+              <th>{t.client}</th>
+              <td>{subpage.data.Client}</td>
+            </tr>
+          )
+        }
+        </tbody>
+        <tbody>
+        <tr><td colspan="2" class="py-1.5"><hr class="border-zinc-800" /></td></tr>
         {
           subpage.data.Authors &&
             Array.isArray(subpage.data.Authors) &&
@@ -252,14 +264,6 @@ if (image) {
             )
         }
         {
-          subpage.data.Client && (
-            <tr>
-              <th>{t.client}</th>
-              <td>{subpage.data.Client}</td>
-            </tr>
-          )
-        }
-        {
           subpage.data.Director &&
             Array.isArray(subpage.data.Director) &&
             subpage.data.Director.length > 0 && (
@@ -327,23 +331,9 @@ if (image) {
               </tr>
             )
         }
-        {
-          subpage.data.Development && subpage.data.Development.length > 0 && (
-            <tr>
-              <th>{t.development}</th>
-              <td>
-                {subpage.data.Development.map((dev: any, index: number) => {
-                  const name = typeof dev === "string" ? dev : dev.name;
-                  if (index === 0) {
-                    return <span>{name}</span>;
-                  } else {
-                    return <span>, {name}</span>;
-                  }
-                })}
-              </td>
-            </tr>
-          )
-        }
+        </tbody>
+        <tbody>
+        <tr><td colspan="2" class="py-1.5"><hr class="border-zinc-800" /></td></tr>
         {
           subpage.data.Place && subpage.data.Place !== "" && (
             <tr>
@@ -371,6 +361,23 @@ if (image) {
                 </td>
               </tr>
             )
+        }
+        {
+          subpage.data.Development && subpage.data.Development.length > 0 && (
+            <tr>
+              <th>{t.development}</th>
+              <td>
+                {subpage.data.Development.map((dev: any, index: number) => {
+                  const name = typeof dev === "string" ? dev : dev.name;
+                  if (index === 0) {
+                    return <span>{name}</span>;
+                  } else {
+                    return <span>, {name}</span>;
+                  }
+                })}
+              </td>
+            </tr>
+          )
         }
         {
           subpage.data.Language && subpage.data.Language.length > 0 && (
@@ -494,6 +501,7 @@ if (image) {
               </tr>
             )
         }
+        </tbody>
       </table>
       <div class="prose my-8 max-w-none px-4 text-zinc-200 sm:px-0">
         <Content />

@@ -25,7 +25,7 @@ Organization: ICD – Universität Stuttgart
 
 Kernloses Filamentwickeln ist ein Fertigungsverfahren, bei dem ein Roboterarm harzgetränkte Fasern um einen Rahmen wickelt, um leichte, leistungsstarke Strukturelemente herzustellen — ohne die Notwendigkeit einer festen Form. Das ICD und das ITKE an der Universität Stuttgart sind Pioniere dieser Technologie und haben immer ambitioniertere Pavillons und Demonstratoren realisiert.
 
-## Die Herausforderung
+## Das Forschungsproblem
 
 Während der Roboterarm die Fasern in einer Art dreidimensionaler Verflechtung verwebt, wird die Beziehung zwischen diesen Fasern sehr komplex und schwer vorherzusagen. Zu diesem Zeitpunkt gab es kein zuverlässiges Berechnungswerkzeug, um die Interaktion der Fasern während des Wickelprozesses genau zu simulieren. Christoph Schlopschnats Forschung zielte darauf ab, diese Lücke zu schließen.
 

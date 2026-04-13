@@ -1,7 +1,7 @@
 ---
 Cover: /assets/content/research/architecture-biomimicry-algorithm/architecture-biomimicry-algorithm-cover.jpg
 CoverAlt: Rendering der Microverse-Installation vor der FAU-USP.
-Description: "Diese einführende Studie untersucht die Möglichkeiten der Anwendung von Computational Design in der Architektur mit Schwerpunkt auf Formfindung. Dazu wurden Fallstudien von großer historischer, technologischer und künstlerischer Relevanz herangezogen, um ihre jeweiligen Entwurfsprozesse mittels Reverse Engineering mit Rhinoceros 3D und dem Grasshopper-Plugin zu analysieren. Dabei zeigte sich, dass Biomimetik in den untersuchten Projekten eine grundlegende Rolle spielte und als Leitfaden für diese Studie dient. Schließlich wurde ein temporärer Pavillon für die FAU-USP vorgeschlagen, um das in diesem Prozess gewonnene Wissen zu festigen."
+Description: "Es handelt sich um eine einführende Studie über die Möglichkeiten der Anwendung von Computational Design in der Architektur mit Schwerpunkt auf Formfindung. Dazu wurden Fallstudien von großer historischer, technologischer und künstlerischer Relevanz herangezogen, um ihre jeweiligen Entwurfsprozesse mittels Reverse Engineering mit der Software Rhinoceros 3D und dem Grasshopper-Plugin zu analysieren. Dabei zeigte sich, dass Biomimetik in den untersuchten Projekten eine grundlegende Rolle spielte und daher als Leitfaden für diese Studie dient. Schließlich wurde ein temporärer Pavillon für die FAU-USP vorgeschlagen, um das in diesem Prozess gewonnene Wissen zu festigen."
 Name: Architektur + Biomimetik + Algorithmus
 Tags:
   - Computational design
@@ -17,20 +17,376 @@ Link:
 Place: Faculdade de Arquitetura e Urbanismo - Universidade de São Paulo
 ---
 
-In meiner Abschlussarbeit des BArch erforschte ich die Möglichkeiten, Computational Design mit Klöppelspitze zu kombinieren, einer traditionellen Webtechnik. Diese Reise gipfelte in der Gestaltung einer hängemattenartigen Struktur, die als temporäre Installation für den Architektur-Campus der Universität São Paulo (FAU-USP) in Brasilien gedacht war. Dieser innovative Ansatz, der traditionelle Handwerkskunst ehrte und gleichzeitig moderne Designwerkzeuge präsentierte, wurde später auf der [International Association for Shell and Spatial Structures (IASS) Konferenz 2017](https://www.ingentaconnect.com/content/iass/piass/2017/00002017/00000009/art00013) vorgestellt.
+## Zusammenfassung
 
-Meine Abschlussarbeit diente als einführende Studie zur Anwendung von Computational Design in der Architektur mit Schwerpunkt auf Formfindung. Durch die Untersuchung von Fallstudien mit bedeutender historischer, technologischer und künstlerischer Relevanz habe ich deren Entwurfsprozesse mittels Reverse Engineering mit Rhinoceros 3D und dem Grasshopper-Plugin analysiert. Dabei stellte ich fest, dass Biomimetik in den untersuchten Projekten eine grundlegende Rolle spielte und meine Studie leitete.
+Es handelt sich um eine einführende Studie über die Möglichkeiten der Anwendung von Computational Design in der Architektur mit Schwerpunkt auf *form finding*, der Suche nach der Form. Dazu wurden Fallstudien von großer historischer, technologischer und künstlerischer Relevanz herangezogen, um ihre jeweiligen Entwurfsprozesse mittels Reverse Engineering mit der Software Rhinoceros 3D und dem Grasshopper-Plugin zu analysieren. Dabei zeigte sich, dass Biomimetik in den untersuchten Projekten eine grundlegende Rolle spielte und daher als Leitfaden für diese Studie dient. Schließlich wurde ein temporärer Pavillon für die FAU-USP vorgeschlagen, um das in diesem Prozess gewonnene Wissen zu festigen.
+
+Abschlussarbeit vorgestellt auf der [IASS 2017 - International Association for Shell and Spatial Structures](https://www.ingentaconnect.com/content/iass/piass/2017/00002017/00000009/art00013).
+
+## Einleitung
+
+> Making the world's available resources serve one hundred percent of an exploding population can only be accomplished by a boldly accelerated design revolution.
+
+*Buckminster Fuller*
+
+Diese Abschlussarbeit hat als Hauptziel die Entwicklung einer einführenden Studie über die Möglichkeiten der Anwendung von Computational Design in der Architektur. Dazu wurde eine Bibliografie erschlossen, die einen Überblick über die aktuellsten Forschungen in diesem Bereich ermöglichte, und als Folge davon führte dies zur Entdeckung zahlreicher Blogs und Online-Foren, die derzeit eine kleine, aber äußerst aktive und kollaborative Gemeinschaft bilden.
+
+Im Verlauf der Recherchen wurde deutlich, dass die meisten Referenzen in einem Punkt zusammenliefen: der Biomimetik. Daher wurde dieses Thema ebenfalls untersucht, um die gleichen Denkgrundlagen zu schaffen, die von renommierten Designern und Architekten in diesem Bereich entwickelt wurden.
+
+In der Ausarbeitung wurden Fallstudien von großer historischer, technologischer oder künstlerischer Relevanz herangezogen, um dann eine Analyse mittels Reverse Engineering mit der Software Rhinoceros 3D und dem Grasshopper-Plugin vorzuschlagen. Während dieses Prozesses konnte man, auch ohne die Projekte exakt zu reproduzieren, die jeweiligen Entwurfsmechanismen jedes Werks nachvollziehen.
+
+Um das Verständnis des Themas zu festigen, wurde ein Pavillon für die FAUUSP mit einem Raumprogramm geringer Komplexität vorgeschlagen, der es ermöglichen sollte, die verschiedenen während der Reverse-Engineering-Studien verwendeten Algorithmen einzusetzen und weiterzuentwickeln.
+
+### Konzeptualisierung
+
+Seit vielen Jahrzehnten nutzen die Menschen die Ressourcen des Planeten Erde auf eine Weise, die es nicht erlauben wird, diese Exzesse noch lange aufrechtzuerhalten. Es wird beispielsweise geschätzt, dass die Bauindustrie in Brasilien etwa 50 bis 70 % der gesamten Masse an städtischem Festabfall produziert.
+
+Es gibt zahlreiche Gründe, die den technischen Fortschritt in diesem Bereich behindern; darunter Immobilienspekulation, die Instabilität des Wohnungsmarktes, die fehlende Abstimmung im Forschungsprozess und andere. Laut Ceotto fand die letzte große Entwicklung im brasilianischen Bausektor mit der Einführung des Stahlbetons Ende der 1920er Jahre statt, und in den folgenden Jahrzehnten hat sich sehr wenig verändert.
+
+![Mauerroboter von Fastbrick Robotics](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-010-img-01-xref-19.png)
+
+Im Bereich des Bauwesens schreitet die Automatisierung noch langsam voran, doch es gibt bereits zahlreiche Forschungen mit Robotern oder sogar Drohnen, die Bausteine setzen können, sowie 3D-Druckern, die ganze Gebäude errichten können. Inmitten all dieser technologischen Entwicklung steht die Menschheit vor einem enormen Wohnungsdefizit, allein in Brasilien fehlen 6,2 Millionen Wohnungen.
+
+![Robotisch konstruierte Struktur an der ETH Zürich](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-011-img-01-xref-22.png)
+
+Die handwerkliche Produktionsmethode in der brasilianischen Bauindustrie wird schrittweise automatisiert. Die Frage ist nicht, ob dieser handwerkliche Bauprozess (Stein für Stein) enden wird, sondern wann. Als Folge wird es wichtig sein, neue Praktiken in der architektonischen Produktion zu entwickeln, um den ungezügelten Ressourcenverbrauch auszugleichen und gleichzeitig die Produktion von Entwürfen und Bauten zu beschleunigen, um der wachsenden Nachfrage nach neuen Gebäuden gerecht zu werden.
+
+### Computational Design
+
+Früher war in einem Architekturprojekt jede Person für ihre jeweiligen Zeichnungen verantwortlich, das heißt, die Entwicklung eines Projekts hing von einzelnen und voneinander unabhängigen Zeichnungen ab. Mit dem Aufkommen von Building Information Modeling (BIM) und Programmen, die das NURBS-Modellierungssystem verwenden, wurden die Projekte jedoch kollaborativ entwickelt. Heute können mehrere Personen an demselben digitalen Modell arbeiten, und es gibt eine große Wiederverwendung von Daten im gesamten Produktionsprozess eines Gebäudes, wodurch die Produktivität des Teams deutlich gesteigert wird.
+
+Die Einführung dieser Technologien in die AEC-Branche (Architektur, Ingenieurwesen und Bauwesen) ermöglicht die Kontrolle aller Bauphasen. Vom Entwurfsprozess über Umwelt- und Flusssimulationen, Kosten- und Terminplanung, Fertigung und Montage von Bauteilen bis hin zu vielen anderen Variablen, die je nach Raumprogramm und dem für jedes Projekt investierten Kapital angepasst werden können. Auch nach Fertigstellung des Bauwerks können die verfügbaren Daten genutzt werden, um seinen Betrieb während des gesamten Lebenszyklus zu steuern und zu überwachen.
+
+Ein weiteres Feld in voller Entwicklung ist das der algorithmischen Architektur. Traditionell bezieht sich das Wort Algorithmus auf den Prozess, ein Problem in einer endlichen Anzahl von Schritten zu lösen. Heute kann man den Algorithmus jedoch als Vermittler zwischen dem menschlichen Geist und der Rechenleistung des Computers verstehen.
+
+Der Mechanismus des *form finding*, ein Begriff, der vom Architekten Frei Otto geprägt wurde, kann als Algorithmus verstanden werden, also als eine Reihe von Anweisungen, die das Ergebnis einer endgültigen Form bestimmen. Wenn man den Wert einer dieser Anweisungen ändert, ändert sich auch die endgültige Form, was eine schnelle Bewertung mit großem Potenzial für räumliche und strukturelle Optimierung ermöglicht.
+
+![Diagramm der technologischen Entwicklung in Architektur und Bauwesen](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-017-img-01-xref-39.png)
+
+Mit der Erfindung des Computers verfügen Architekten und Designer nun über eine größere Fähigkeit, mit Situationen hoher Komplexität umzugehen. Geometrische Formen, deren Entwurf früher Tage oder sogar Monate gedauert hätte, können nun in deutlich kürzerer Zeit erzeugt werden.
+
+Obwohl diese Arbeit die Beziehung von Algorithmen nur aus der Perspektive von Design und Architektur behandelt, ist hervorzuheben, dass sie auch große theoretische Implikationen in Philosophie, Soziologie und anderen Künsten haben.
+
+### Schlussfolgerung der Einleitung
+
+Wie dargestellt, gibt es viele Variablen, die den Entwurf eines Gebäudes bestimmen. Um derzeit alle diese Verantwortlichkeiten in einem einzigen Projekt zu berücksichtigen, bedarf es entweder eines riesigen Teams oder sehr viel Zeit, um zu einem Ergebnis zu gelangen, das keine Frage vernachlässigt. Genau hier zeigt der Computer sein volles Potenzial: Indem er objektive und bürokratische Variablen wie Bebauungsplan, Bauordnung, Brandschutzvorschriften, Sonneneinstrahlung, Ergonomie und Dokumentation automatisiert, ermöglicht er dem Architekten, sich auf komplexere Fragen zu konzentrieren und sich in Definitionen und subjektive Konzepte zu vertiefen, mit denen der Computer noch nicht umgehen kann.
+
+Die Computertechnik eröffnet eine neue Dimension für Architektur und Design; ihre ständige Weiterentwicklung birgt großes Potenzial, zur Lösung der zuvor genannten Probleme beizutragen. Die Architekten müssen sich jedoch der Bedeutung ihrer Rolle als Wegweiser dieser Innovation bewusst werden.
+
+Diese Abschlussarbeit erhebt nicht den Anspruch, Lösungen für diese Probleme vorzuschlagen, sondern soll als Ergänzung zur Ausbildung im Studiengang Architektur und Städtebau der USP dienen. Durch den Einstieg in dieses Thema wird die vorliegende Studie mehr als ein bloßer Nachweis beruflicher Kompetenz; sie eröffnet auch ein viel breiteres Spektrum an Möglichkeiten, die im akademischen Umfeld, in dem es noch wenig Forschungs- und Lehranreize in diesem Bereich gibt, bisher im Verborgenen lagen.
+
+## Entwurfsrichtlinie
+
+> Biology has become indispensable for architecture, but architecture has also become indispensable for biology.
+
+*Frei Otto*
+
+### Biomimetik
+
+Die Annäherung an die Natur als Hauptrichtlinie eines Projekts mag wie nur eine weitere subjektive Form der Konzeptdefinition erscheinen. Bei der Analyse der folgenden Fallstudien wurde jedoch festgestellt, dass sie etwas gemeinsam hatten: die Biomimetik.
+
+Es gibt drei Ebenen der Biomimetik nach Benyus. Die erste, oberflächlichere Ebene versucht einfach, die Formen und Muster der Natur nachzuahmen, unabhängig von der verwendeten Methode. Die zweite erkundet die verschiedenen Prozesse, die die Natur nutzt, um zum Endergebnis zu gelangen, also die Rezepte für die Herstellung. Und die dritte und umfassendste Ebene besteht darin, natürliche Ökosysteme nachzuahmen, in dem Verständnis, dass alle Individuen und Elemente eine einzige nachhaltige, miteinander verbundene und voneinander abhängige Biosphäre bilden.
+
+![Ernst Haeckel, "Spumellaria: Kunstformen der Natur"](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-018-img-01-xref-43.png)
+
+Für Terzidis ist es in seinem Buch *Algorithmic Architecture* erforderlich, zunächst eine Umkehr vorzunehmen und nach dem Ursprung zu suchen, wenn man eine Reflexion über Design beginnt. Laut ihm hat diese Umkehr den Zweck, die vorsokratische philosophische Sicht zu erforschen, die besagt, dass "nichts aus dem Nichts kommt und nichts ins Nichts zurückkehrt", und als Konsequenz die Idee, dass Neuheit an sich nur eine sensorische Illusion ist.
+
+Für ihn gibt es zwei Wege, die in Richtung einer Neuerung eingeschlagen werden können: Der erste ist die Suche nach *Innovation*, die wie "dem Baum des Wissens Blätter hinzufügen" wäre, also etwas auf Basis einer bereits bekannten Idee zu entwickeln. Und der zweite ist die Suche nach *Originalität*, die wie "dem Baum des Wissens Wurzeln hinzufügen" wäre, was bedeutet, bestehende Informationen maximal zu abstrahieren, um ihre Ursprünge zu finden und etwas zu entdecken, das noch nicht bekannt ist.
+
+In diesem Sinne befasst sich die Biomimetik, entgegen der gängigen Meinung, nicht nur mit einer formalen Frage; sie ist nicht die Rechtfertigung des Ergebnisses. Ganz im Gegenteil, so wie Terzidis vorschlägt, lenkt sie die Suche nach dem Ursprung des Designs.
+
+![Webervogel, der sein Nest inspiziert](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-020-img-01-xref-50.png)
+
+![Wilde Bienenwabe](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-020-img-02-xref-51.png)
+
+Nachhaltige Architektur, wie sie heute verstanden wird, ist nicht unbedingt die natürliche Architektur, auf die sich Frei Otto in seinen Studien bezog. Es wird verstanden, dass dieses Ergebnis die Konsequenz eines gesamten rationalen Optimierungsprozesses ist, der von der Natur inspiriert wurde. Frei Otto nannte dieses Verfahren den umgekehrten Weg und es führte ihn dazu, zahlreiche Studien zum *form finding* zu entwickeln.
+
+Man kann schlussfolgern, dass diese westliche Sichtweise, dass Menschen eine von der Natur getrennte Spezies sind, eine immense Möglichkeit technologischer Erforschung zum gegenseitigen Nutzen von Mensch und Natur hemmt.
+
+### Problemidentifikation
+
+Da diese Arbeit eine einführende Untersuchung der Möglichkeiten des Computational Design darstellt, wurde ein Projekt mit einem Raumprogramm geringer Komplexität angestrebt, das ein Eintauchen in dieses Feld des technologischen Wissens mit Fokus auf die Entwicklung von Algorithmen ermöglicht.
+
+![Salão Caramelo der FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-021-img-01-xref-54.png)
+
+Das Gebäude der FAU-USP ist weltweit für seine brutalistische Architektur bekannt. Entworfen von Vilanova Artigas und Carlos Cascaldi, weist es zahlreiche räumliche Qualitäten auf, die für eine Architekturschule wichtig sind, wie weitläufige und anpassbare Bereiche. Trotz der flexiblen Nutzungsmöglichkeiten der Räume wurden jedoch keine Aufenthaltsbereiche zum Ausruhen hinzugefügt.
+
+Diese Art von Raum ist in einem Studiengang unentbehrlich, der nicht nur ganztägig stattfindet, sondern auch zusätzlichen Einsatz erfordert, um die zahlreichen geforderten Arbeiten fertigzustellen. Als Folge verbringen die Studierenden wesentlich mehr Zeit an der Fakultät als der theoretisch vorgesehene Stundenplan vorsieht.
+
+Daher wurde für diese Abschlussarbeit der Vorschlag eines temporären Pavillons außerhalb des Gebäudes beschlossen, um der Gemeinschaft der FAU-USP einen Ort der Erholung und des Zusammenkommens zu bieten.
+
+### Auswahlkriterien
+
+Bevor mit der Untersuchung sowohl des Algorithmus als auch seiner Produktionsweise begonnen wurde, war es wichtig, einige Ziele und Kriterien für die Entwicklung im Blick zu behalten. Schließlich ist es sehr leicht, sich von den unendlichen Möglichkeiten dieser Technik mitreißen zu lassen und dabei zu vergessen, dass die Studie vor allem dazu dient, die Architekturpraxis zu verbessern, und diese wiederum für Menschen gemacht ist. Aus diesem Grund wurden einige Kriterien ausgewählt, um die Ausrichtung dieser Forschung auf den Nutzer beizubehalten.
+
+**Komfort:** Es ist wichtig, die Art des gewählten Materials, die Sonneneinstrahlung und die Ergonomie zu berücksichtigen. Die Studie der Ergonomie ist eine der wichtigsten, da das Hauptziel darin besteht, dass sich die Menschen wohl genug fühlen, um sogar nach dem Mittagessen ein Nickerchen machen zu können. Das Endergebnis muss daher Variationen ermöglichen, damit die Nutzer in den verschiedensten Positionen verweilen können: sitzend, geneigt und liegend.
+
+**Optimierung:** Die Entwurfsmethode muss die Optimierung der Form und ihrer Struktur ermöglichen. Der Algorithmus muss ein wirtschaftliches Endergebnis erzeugen, das die geringstmögliche Materialmenge verwendet.
+
+**Herstellbarkeit:** Es ist grundlegend, dass der Entwurf den vorhandenen Fertigungsmöglichkeiten entspricht. Das Projekt muss die Eigenschaften und verfügbaren Produktionsweisen berücksichtigen und vorzugsweise vorgefertigt sein.
+
+**Respekt vor dem historischen Erbe:** Ein weiterer entscheidender Punkt ist, dass dieser Pavillon temporär sein muss, da die FAU-USP ein denkmalgeschütztes Gebäude ist und daher keinerlei permanente Eingriffe an seiner Struktur oder seiner Umgebung erlaubt.
+
+**Identität:** Mit der Absicht, die FAU-USP mit einer anderen Denkweise jenseits der etablierten modernistischen Vision zu verbinden.
+
+## Fallstudien: Algorithmen
+
+Es war sehr wichtig, eine Referenzdatenbank mit renommierten Projekten aufzubauen, die die in den vorherigen Kapiteln genannten Prinzipien anwendeten. Auf diese Weise wurde mittels Reverse Engineering versucht, Algorithmen zu entwickeln, die ähnliche Formen wie die der analysierten Projekte erzeugen, was zu einer Bibliothek algorithmischer Lösungen für Probleme führte, die trotz unterschiedlicher Kontexte ähnliche Lösungswege aufweisen.
+
+Die für diese Studien verwendeten Programme waren Rhinoceros, sein Grasshopper-Plugin sowie verschiedene Plugins für Grasshopper selbst, wie Kangaroo Physics, Weaverbird und LunchBox.
+
+### Buckminster Fuller: Geodäsie + Tensegrity
+
+Über mehr als fünf Jahrzehnte hinweg entwickelte Buckminster Fuller Pionierlösungen, die sein Engagement für das Innovationspotenzial des Designs widerspiegelten, um neue Technologien zu schaffen, die "mehr mit weniger" leisten. Eines seiner Hauptinteressen während seines gesamten Lebens war es, diese Entdeckungen zu nutzen, um das Bauwesen zu revolutionieren und das menschliche Wohnen zu verbessern.
+
+In seinen Studien zur "synergetischen Geometrie" versuchte Fuller, die Designprinzipien in der Natur zu erforschen. In diesem Prozess stach eine seiner Erfindungen hervor: die geodätische Kuppel. Sie zeichnet sich durch eine leichte Struktur mit hervorragendem Kosten-Nutzen-Verhältnis aus, die einfach zu montieren ist und große Räume ohne Stützen oder ähnliche Strukturen überspannen kann, da sie Belastungen effizient verteilt.
+
+Eine weitere Forschungslinie Fullers war die Entwicklung der Tensegrity, ein von ihm selbst geprägter Begriff, der die Wörter *tension* und *integrity* vereint, also Spannung und Integrität.
+
+Tensegrity ist eine selbsttragende räumliche Struktur, die sich durch Zugkräfte stabilisiert. Sie besteht aus Stäben und Kabeln, wobei jeder Stab isoliert ist und nur durch gespannte Kabel mit anderen Stäben verbunden wird. Ihr Selbstgleichgewichtszustand ermöglicht die Erforschung verschiedener *form finding*-Ansätze mit zahlreichen Anwendungen in Architektur und Design.
+
+![Beispiele für geodätisches Design in der Natur (Radiolarien)](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-028-img-01-xref-73.png)
+
+Diese erste Fallstudie versucht genau diese in der Patentbeschreibung erwähnte Tensegrity in geodätischer Form zu replizieren. Das Hauptziel war es, sich den geometrischen Studien Fullers anzunähern, aber es war auch grundlegend, die Funktionsweise des Physiksimulators Kangaroo Physics, eines Grasshopper-Plugins, zu verstehen. Diese Komponente bildet reale physikalische Bedingungen nach, beispielsweise Schwerkraft und Materialelastizität.
+
+Da Tensegrity-Strukturen grundsätzlich durch Kabelzug und Stabdruck funktionieren, war dies eine hervorragende Gelegenheit, mit den *form finding*-Studien zu beginnen.
+
+![Algorithmus der geodätischen Tensegrity in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-029-img-05-xref-81.png)
+
+![Entwicklungsstufen der geodätischen Tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-029-img-01-xref-76.png)
+
+![Entwicklungsstufen der geodätischen Tensegrity mit Kabeln](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-029-img-02-xref-77.png)
+
+![Geodätische Tensegrity mit Stäben und Kabeln](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-029-img-03-xref-78.png)
+
+![Vollständige geodätische Tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-029-img-04-xref-79.png)
+
+### Frei Otto: Deutscher Pavillon der Expo 1967
+
+Buckminster Fuller und Frei Otto teilten eine ähnliche Ideologie in ihrer Forschung; beide sahen in ihren Werken "(...) eine günstige, dauerhafte und hochgradig vielseitige architektonische Lösung". Als Wissenschaftler verbrachte Otto sein ganzes Leben mit dem Studium des *form finding*-Prozesses in der Natur, und als Architekt nutzte er diese Prozesse, um verschiedene Strukturen zu entwerfen und zu bauen.
+
+Das Projekt des deutschen Pavillons der Expo 1967 wurde als Fallstudie gewählt, weil es den Meilenstein darstellt, an dem Frei Otto seine Experimente mit leichter Architektur der Welt präsentierte. Obwohl der Pavillon in Zusammenarbeit mit dem Architekten Rolf Gutbrod und einem großen interdisziplinären Team entwickelt wurde, waren es Ottos über viele Jahre angesammelte Forschungen, die seinen Entwurf leiteten.
+
+Die meisten seiner Forschungen verwendeten physische Modelle mit dem Ziel, Strukturen mit minimaler Fläche zu konstruieren, Kräfte und Spannungspfade zu untersuchen und Prozesse der Selbstformung zu verstehen. Ottos Modelle simulierten Probleme auf eine Weise, die es erlaubte, ihre Variablen so oft wie nötig zu ändern, bis optimierte strukturelle und räumliche Bedingungen erreicht wurden. Experimente mit Gummi und Seifenfilmen halfen beispielsweise bei der Erzeugung von Minimalflächen, die in Membrantragwerken und auch in Seilnetzkonstruktionen eingesetzt wurden.
+
+Um das Verhalten von Seifenfilmen zu simulieren, wurde eine als Netzrelaxation bekannte Methode mit Grasshopper und auch mit Hilfe des Physiksimulators Kangaroo Physics verwendet. Das heißt, das Ausgangsnetz wird so verändert, dass jedes Segment seine "Steifigkeit" verliert und sich so verformt, dass ein Kräftegleichgewicht erreicht wird. Der endgültige Algorithmus beinhaltet eine Netzverfeinerung, um Anomalien in der Topografie zu vermeiden und sie gleichmäßig zu gestalten.
+
+Es ist wichtig zu betonen, dass dieser Algorithmus eine Annäherung an die Minimalfläche eines Seifenfilms ist und keine originalgetreue Reproduktion, da eine solche die Form so einschränken würde, dass es unmöglich wäre, spitze Punkte ähnlich dem Pavillonprojekt zu haben.
+
+Der Hauptnutzen dieser Fallstudie ergab sich aus der Notwendigkeit, den Umgang mit topografischen Netzen zu erlernen und eine *form finding*-Methode ähnlich der von Otto zu entwickeln.
+
+![Algorithmus des deutschen Pavillons der Expo 1967 in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-033-img-02-xref-98.png)
+
+### Tomás Saraceno: Galaxies Forming Along Filaments
+
+Wie die zuvor genannten Architekten entstammen Saracenos Bedenken der zeitgenössischen Besorgnis über die Erschöpfung der Ressourcen des Planeten und deren Erhaltung.
+
+Tomás Saracenos Architekturkonzept ist äußerst umfassend. Sein Interesse an diesem Bereich rührt von seiner Faszination für utopische Theorien und astronomische Konstellationen her. In den letzten 10 Jahren hat er zahlreiche Prototypen erdacht und erschaffen, die neue Wege widerspiegeln, die Natur zu betrachten, auf der Suche nach einer nachhaltigeren und emanzipatorischeren Architekturpraxis, indem er beispielsweise eine schwebende, modulare und transnationale Stadt vorschlug.
+
+Saraceno hat auch eine große Faszination für Spinnennetze und verfügt bereits über zahlreiche Forschungen sowohl zum Entstehungsprozess der Netzstruktur als auch zu ihrer endgültigen Geometrie. In einer seiner Forschungen versuchte er, die geometrische Formation eines Spinnennetzes der Schwarzen Witwe (*Lactradectus mactans*) mittels lasergestützter Tomografie zu digitalisieren.
+
+Seine Inspiration durch die Natur führte ihn dazu, verschiedene künstlerische Installationen vorzuschlagen, die die Idee der Biomimetik erforschen. In dieser Fallstudie *Galaxies forming along filaments* verwendet Saraceno das Spinnennetz als Ausgangspunkt, das mit seiner komplexen Geometrie in der Lage ist, extrem hohe Gewichte zu tragen.
+
+Für die Entwicklung dieser Fallstudie war es notwendig, das Projekt auf zwei Weisen zu untersuchen. Erstens mit einer eher formalen Annäherung, da es erforderlich war, die geometrische Logik der Kugeln zu verstehen, während die zweite den Entwurfsprozess erforschte. Dafür war die Anwendung von Galapagos erforderlich, einem evolutionären Algorithmus innerhalb von Grasshopper, um die benötigte Fadenmenge zu optimieren, ohne die Endform zu beeinträchtigen.
+
+Diese Fallstudie war besonders wichtig, da sie eine Annäherung mittels Galapagos erforderte. Damit wurde eine Einführung in die Funktionsweise dieser Art von naturinspiriertem Algorithmus ermöglicht und das große Potenzial sichtbar, das er hat, nicht nur als Werkzeug zu dienen, sondern als Problemlöser, für den zuvor ein umfangreicher Arbeitsaufwand seitens der Architekten erforderlich war.
+
+![Algorithmus von Galaxies Forming Along Filaments in Grasshopper mit Galapagos](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-037-img-01-xref-120.png)
+
+![Entwicklungsstufen der Saraceno-Kugeln](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-038-img-01-xref-127.png)
+
+![Entwicklungsstufen der Saraceno-Kugeln](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-038-img-05-xref-131.png)
+
+### Achim Menges: Landesgartenschau Exhibition Hall
+
+Achim Menges ist Gründungsdirektor des Instituts für Computerbasiertes Entwerfen (ICD) an der Universität Stuttgart seit 2008, einer der anerkanntesten Einrichtungen im Bereich Computational Design und robotische Fertigung; nicht zufällig war dies dieselbe Universität, an der Frei Otto 26 Jahre lang lehrte.
+
+Menges hat zahlreiche Spitzenforschungen geleitet, die morphogenetisches Design, biomimetische Ingenieurskunst und digitale Fertigung kombinieren. Dies führt zu interdisziplinärer Forschung mit Zusammenarbeit von Bauingenieuren, Informatikern, Materialwissenschaftlern und Biologen.
+
+Am ICD der Universität Stuttgart wurden zahlreiche Pavillons entwickelt; die *Landesgartenschau Exhibition Hall* wurde jedoch hauptsächlich aus zwei Gründen ausgewählt: Erstens wegen ihrer Materialität, da sie aus Holz besteht, einem viel einfacheren und zugänglicheren Material im Vergleich zu den anderen Pavillons, die beispielsweise Kohlefaserfäden in ihrer Produktion verwenden. Die andere Motivation war, dass diese Art von planarem Hexagonalmuster in Online-Foren ausgiebig diskutiert wird, sodass dies eine hervorragende Gelegenheit war, in diese häufig geführte Diskussion einzusteigen.
+
+Die Inspiration für dieses Projekt kam von den Schalen der Sanddollars, da sie einzelne Teile aufweisen, die durch Verbindungen ähnlich der Holzverbindung vom Typ "Fingerzinken" verbunden sind. Die Struktur des Pavillons besteht aus Sperrholzplatten, die vollständig von Robotern vorgefertigt werden und eine effiziente Materialausnutzung erreichen. All dies ist nur dank der Integration von Computational Design, Simulationen und topografischen Vermessungsmethoden möglich.
+
+Für die Erstellung dieses Algorithmus wurde der Physiksimulator Kangaroo Physics und verschiedene andere Grasshopper-Komponenten verwendet. Darüber hinaus wurden die Kenntnisse und Teile des Algorithmus aus der vorherigen Fallstudie von Tomás Saraceno für dieses Projekt wiederverwendet, was die schnelle Erstellung eines grundlegenden Hexagonalmusters ermöglichte.
+
+Trotz der scheinbaren formalen Einfachheit konnte jedoch kein zufriedenstellendes Ergebnis hinsichtlich der Abwicklung der hexagonalen Flächen erzielt werden. Die Studie stieß auf ein Problem, das Programmierkenntnisse erfordern würde, die in der kurzen Zeitspanne dieser Studie nicht entwickelt werden konnten. Das Problem besteht in der Beziehung zwischen der Krümmung des Pavillons und dem Muster der Sperrholzplatten. Bei der Analyse der Bilder des Originalprojekts fällt auf, dass in den konkaven Bereichen die Platten ebenfalls ein konkaves Hexagon aufweisen, das heißt, das Muster des Hexagonalnetzes müsste sich entsprechend der Krümmung des Pavillons ändern, was in dieser Studie nicht erreicht werden konnte.
+
+![Algorithmus der Landesgartenschau Exhibition Hall in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-043-img-03-xref-162.png)
+
+## Fallstudien: Fertigung
+
+Neben den Fallstudien zu Algorithmen war es auch wichtig, Referenzen für die Fertigung des Pavillons zu suchen. So wurden Projekte identifiziert, die Alternativen für seine Produktion bieten könnten. Also Projekte, die angesichts der Realität der FAU-USP und der Verfügbarkeit von Materialien eine greifbare Möglichkeit zur Herstellung dieses Pavillons bieten würden.
+
+### Nós
+
+Das Festival *Land-shape* war eine dänische Kulturinitiative, die zwischen 2013 und 2016 stattfand und verschiedene Künstler auswählte, die an Landschaftsinterventionen interessiert waren. Die Ausgabe von 2015 umfasste eine Gruppe aus drei Studierenden der FAU-USP, die sich um eine Idee zusammenfanden: die Intervention "Nós".
+
+Das Konzept dieser Intervention bestand darin, ausgehend von der Fischereikultur Dänemarks und Brasiliens ein Netz aus typischen Fischerknoten zu entwickeln, das gemeinsam mit der gesamten lokalen Gemeinschaft hergestellt werden konnte. Das Ziel dieses Projekts war es, das Netz an einem architektonischen Wahrzeichen und am Boden zu befestigen, damit es von der Gemeinschaft angeeignet und nach Belieben genutzt werden konnte. Für die Umsetzung dieses Projekts orientierte sich die Gruppe an der traditionellen Herstellung von Fischernetzen, die aus einer manuellen, von Generation zu Generation weitergegebenen Produktion besteht.
+
+Bekannt als "Netzknoten" oder "Weberknoten", benötigt diese Technik lediglich eine Netznadel und Seile, ist aber in der Lage, ein Netz mit großen Dimensionen und Stabilität zu erzeugen, indem einige einfache Schritte wiederholt werden, bis die benötigte Ausdehnung erreicht ist. Das Ergebnis ergibt jedoch immer dasselbe karierte Muster.
+
+### Communal XL Lace Hammock
+
+2014 führte die AA Visiting School einen dreiwöchigen Workshop im kleinen Dorf Vitanje in Slowenien durch. Die Aktivitäten fanden im damals neuen Gebäude des Europäischen Kulturzentrums für Weltraumtechnologien, KSEVT genannt, statt und erforschten das Potenzial des Nano-Tourismus der Region mit Fokus auf die natürlichen Landschaftsmerkmale und das exotische Verhalten der lokalen Bevölkerung.
+
+Eine der Gruppen dieses Workshops bemerkte, dass die Besucher des Kulturzentrums die Stadt gleich nach Besichtigung der Ausstellungen verließen. Als Ergebnis schlugen sie einen Service mit Aktivitäten und Unterkunftsstrategien vor, die die Menschen dazu ermutigen sollten, von wenigen Stunden bis hin zu mehreren Tagen im Dorf zu bleiben. Das Projekt bestand darin, ein Kit zur Vermietung anzubieten, das eine extra große Hängematte aus Spitze, eine Karte mit Vorschlägen für zu erkundende Orte und eine Handy-App umfasste, die Aktualisierungen über neue verfügbare Attraktionen ermöglichte.
+
+Der Konzeptions- und Prototyping-Prozess dieser Hängematte bringt eine Neuinterpretation des traditionellen Klöppelspitze-Prozesses mit sich, einer manuellen Textilherstellungstechnik, die es ermöglicht, komplexe Muster mit einfachen Geräten zu entwickeln. Die traditionelle Fertigung besteht aus aufeinanderfolgenden Kreuzungen von Textilfäden unter Verwendung von Holzklöppeln zu deren Handhabung, Stecknadeln zu deren Fixierung und einem Stützkissen. Im Gegensatz dazu verwendeten die Teilnehmer für den finalen Prototyp Seile, Holzstäbe, verschiedene Nägel und einige Styropor-Unterlagen.
+
+## Entwurf
+
+Strukturen in der Natur, die relativ einfach erscheinen, wie Spinnennetze, Bienenwaben und Termitenhügel, werden hauptsächlich durch die DNA des Tieres bestimmt, das sie baut, also durch sein genetisches Programm. Dennoch sind selbst in diesen Fällen, in denen eine klar definierte formale Identität vorliegt, spezifische Anpassungen an die unmittelbare Umgebung erforderlich, in der sie installiert wird: Jedes Spinnennetz ist beispielsweise auf leicht unterschiedliche Weise verankert.
+
+Die algorithmische Architektur funktioniert auf ähnliche Weise und erforscht ebenfalls diese natürlichen Mechanismen, aber anstatt von einem genetischen Programm auszugehen, wird das Projekt durch den Algorithmus bestimmt. Zusammenfassend enthält der Algorithmus alle notwendigen Informationen für die Ausführung eines Bauwerks.
+
+Im Verlauf der algorithmischen Fallstudien begann sich das Konzept des Pavillons zu etablieren. Die Idee, die Erforschung von Netzen zu vertiefen und ihre Struktur unter Verwendung der Kombination aus dem Physiksimulator Kangaroo Physics und dem evolutionären Algorithmus Galapagos zu optimieren, zeigte ein interessantes Potenzial in Richtung Biomimetik und *form finding*.
+
+Während der Entwicklung der vorangegangenen Kapitel wurden viele fragmentierte Informationen parallel und nichtlinear aufgenommen; in einer der zahlreichen Reflexionen darüber, was bei einem Pavillon angemessen und komfortabel wäre, kam man zu dem Schluss, dass die typischen indigenen Hängematten ein guter Ausgangspunkt wären.
+
+### Standort
+
+![Luftaufnahme der FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-052-img-01-xref-197.png)
+
+![Fassade der FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-052-img-02-xref-199.png)
+
+### Konzeptdefinition
+
+Die Idee, die Art und Weise zu unterwandern, wie Ruhehängematten gebaut werden, birgt ein großes Potenzial im Bereich des *form finding*, und es war zweckmäßig und günstig, eine der Fallstudien auszuwählen und in diese Richtung weiterzuentwickeln. Auf diese Weise wird das Endprodukt eine solide Referenzbasis aufweisen, den Richtlinien für Komfort, Herstellbarkeit und Respekt vor dem historischen Erbe entsprechen und darüber hinaus einen Fortschritt in den Möglichkeiten des Computational Design ermöglichen.
+
+Außerdem suchte der Pavillon einen klaren Bezug zur Fakultät für Architektur und Städtebau der USP, denn die FAU wird häufig als Fakultät mit vorwiegend modernistischer Denkweise bezeichnet, und es wäre interessant, sie mit einer alternativen Denkweise zu verbinden. Daher wurde vorgeschlagen, dass ihr eigenes Logo einen Bezug zum Pavillon herstellen sollte.
+
+![Logo der FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-075-img-02-xref-334.png)
+
+![Vom Logo der FAU-USP abgeleitetes Modul](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-075-img-03-xref-335.png)
+
+Die Wahl eines Pavillons, der sich eine textile Produktion aneignet, erwies sich als sehr passend, da eine der ersten Maschinen, die begann, Daten in Form von Informationen zu speichern, genau die Webmaschine mit Lochkarten von Joseph-Marie Jacquard aus dem Jahr 1804 war. Das bedeutet, dass der Pavillon, so kompliziert er auch erscheinen mag, dennoch ein Algorithmus ist und einem Automatisierungsprozess unterzogen werden kann, mit anschließender individualisierter Massenproduktion.
+
+### Technik
+
+Die Lösung, die dem angestrebten Konzept am nächsten kam, war die aus der Fallstudie der künstlerischen Installation von Tomás Saraceno. Sein Projekt *Galaxies forming along filaments* ermöglichte eine freie Verformung eines vorbestimmten Musters, sehr interessant für die Studie des *form finding*.
+
+Im Folgenden werden Studien verschiedener in Grasshopper mit Hilfe des Plugins Kangaroo Physics erzeugter Muster vorgestellt, um einen textilen Gewebeeffekt zu erzeugen, der sich der Realität annähert. Den letzten Schliff gibt Galapagos, ein in Grasshopper integrierter evolutionärer Algorithmus.
+
+Galapagos funktioniert ähnlich wie die von Charles Darwin vorgeschlagene Evolutionstheorie, daher sein Name *Galapagos evolutionary solver*. In dieser Studie wird er zunächst 20 zufällige Individuen basierend auf dem genetischen Pool erzeugen, der in diesem Fall aus 116 entlang der kubischen Struktur gefundenen Scheitelpunkten besteht, und für jeden dieser Scheitelpunkte gibt es 16 Verbindungsmöglichkeiten mit der Kugel.
 
 ![Konzept](../../../assets/content/research/architecture-biomimicry-algorithm/concept.jpg)
 
-![Algorithmus-Schritte der Installationseinheit](../../../assets/content/research/architecture-biomimicry-algorithm/installation-unit-algorithm-steps.jpg)
+![Algorithmusschritte der Installationseinheit](../../../assets/content/research/architecture-biomimicry-algorithm/installation-unit-algorithm-steps.jpg)
+
+**Studie 01: Quadratisches Netz**
+
+![Ergebnis der Studie 01: quadratisches Netz](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-059-img-01-xref-233.png)
+
+**Studie 02: Abgestumpftes quadratisches Netz**
+
+![Ergebnis der Studie 02: abgestumpftes quadratisches Netz](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-061-img-01-xref-245.png)
+
+**Studie 03: Dreiecks-Netz**
+
+![Ergebnis der Studie 03: Dreiecks-Netz](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-063-img-01-xref-258.png)
+
+**Studie 04: Abgestumpftes Dreiecks-Netz**
+
+![Ergebnis der Studie 04: abgestumpftes Dreiecks-Netz](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-065-img-01-xref-270.png)
+
+**Studie 05: Phyllotaxis-Netz**
+
+![Ergebnis der Studie 05: Phyllotaxis-Netz](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-067-img-01-xref-283.png)
+
+**Studie 06: Abgestumpftes Phyllotaxis-Netz**
+
+![Ergebnis der Studie 06: abgestumpftes Phyllotaxis-Netz](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-069-img-01-xref-296.png)
+
+**Studie 07: Duales Hexagonal-Netz**
+
+![Ergebnis der Studie 07: duales Hexagonal-Netz](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-071-img-09-xref-313.png)
+
+**Studie 08: Abgestumpftes duales Hexagonal-Netz**
+
+![Ergebnis der Studie 08: abgestumpftes duales Hexagonal-Netz](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-073-img-09-xref-326.png)
+
+### Entwicklung
+
+Mit den Ergebnissen aus der Interaktion der an der kubischen Struktur befestigten gespannten kugelförmigen Netze wurde geschlossen, dass die beste Alternative zur Entwicklung der Entwurfsmethodik das "abgestumpfte duale Hexagonal-Netz" war, da es die größte Eignung für die Komfortanforderungen zeigte. Das Endergebnis näherte sich stärker der ursprünglichen Kugel an, was auf eine bessere Kontrolle über die Endform hindeutet, und es ist zudem ohne Weiteres herstellbar.
+
+Die Struktur wurde so entwickelt, dass sie direkt auf eines der Module verweist, die das Logo der FAU-USP bilden. Aus diesem Skelett wurde ein breites Spektrum an Lösungen erzeugt.
 
 ![Teil des Lösungsspektrums](../../../assets/content/research/architecture-biomimicry-algorithm/part-of-the-spectrum-of-solutions.jpg)
 
-![Rendering einer Einheit](../../../assets/content/research/architecture-biomimicry-algorithm/rendering-of-one-unit.jpg)
+## Detailplanung
+
+### Konstruktionsmethode
+
+Die Wahl der Produktionsmethode durfte nicht vom bisher dargestellten Gesamtkontext losgelöst sein. So wurde für die Herstellung des im vorherigen Kapitel vorgeschlagenen Hexagonalnetzes die traditionelle Klöppelspitze-Technik verwendet, dieselbe, die von der AA Visiting School in der Fertigungs-Fallstudie eingesetzt wurde. Obwohl die von der AA in ihrer *Communal XL Lace Hammock* verwendete Netzherstellung im Wesentlichen handwerklich ist, erkennt man, dass dies ein linearer Prozess ist, der sich für eine Automatisierung eignet. Das heißt, bei der Analyse der Bewegungsabfolge, die die Netzformen erzeugt, zeigt sich, dass es möglich ist, eine Vorrichtung zu entwickeln, die ähnliche Ergebnisse auf effizientere Weise produziert.
+
+![Schritte der Klöppelspitze-Technik](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-083-img-01-xref-397.png)
+
+![Schritte der Klöppelspitze-Technik](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-083-img-02-xref-398.png)
+
+![Schritte der Klöppelspitze-Technik](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-083-img-03-xref-399.png)
+
+![Schritte der Klöppelspitze-Technik](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-083-img-04-xref-400.png)
+
+Es gibt beispielsweise bereits Drohnen, die Spulen mit Seilen tragen und im Flug Gewebe produzieren können. Obwohl dieses Thema nicht im Fokus dieser Arbeit steht, könnte es in einer zukünftigen Studie vertieft werden. Vorerst kann das Netz einfach von Hand hergestellt werden.
+
+Die Struktur wird aus 4 Stahlrohren mit zwei Zoll Durchmesser und 2,5 m Länge bestehen, wobei 4 vorgefertigte Winkelverbindungen mit Winkeln von 34 und 71,9 Grad verwendet werden.
+
+### Transport
+
+Um den Transport zu erleichtern, durften die starren Teile nicht länger als 4 m sein, damit sie problemlos in einem normalen Auto mit wenigen Anpassungen transportiert werden können. Die Verbindungsstücke wären aufgrund ihrer geringen Größe kein Problem. Das Netz wäre weniger aufwendig, da es gefaltet und komprimiert werden kann.
+
+### Montage
+
+Die Montage würde in 3 Schritten erfolgen: die Herstellung des Netzes, die Montage des Strukturskeletts und schließlich die Befestigung des Netzes mit Seilen und deren Spannung. Alle Maße und Befestigungspunkte können direkt aus Grasshopper entnommen und dokumentiert werden, wodurch Informationsdiskrepanzen vermieden und der Montageprozess beschleunigt wird. Da die ersten beiden Schritte voneinander unabhängig sind, können sie parallel durchgeführt werden.
+
+### Physisches Modell
+
+![Materialien für das Modell: Holzklöppel](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-086-img-01-xref-414.png)
+
+![Material für das Modell: Baumwollfaden](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-086-img-02-xref-415.png)
+
+![Vorbereitung der Klöppel mit Bohrmaschine](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-086-img-03-xref-416.png)
+
+![Fertiger Klöppel mit Faden](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-086-img-04-xref-417.png)
+
+![Klöppelspitze-Muster in Produktion](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-087-img-01-xref-420.png)
+
+![Klöppel in Verwendung während der Spitzenherstellung](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-087-img-02-xref-421.png)
+
+![Detail des hexagonalen Klöppelspitze-Netzes](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-087-img-03-xref-422.png)
+
+![Modellkomponenten: Rohre und aufgerollte Spitze](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-088-img-01-xref-425.png)
+
+![Montiertes Strukturskelett](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-088-img-02-xref-427.png)
+
+![Spitze wird um das Skelett gewickelt](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-089-img-01-xref-431.png)
 
 ![Physisches Modell der Klöppelspitze](../../../assets/content/research/architecture-biomimicry-algorithm/bobbin-lace-physical-model.jpeg)
 
+![Fertiges physisches Modell: Frontansicht](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-090-img-01-xref-435.png)
+
+![Fertiges physisches Modell: Seitenansichten](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-090-img-02-xref-436.png)
+
 ![Fertiges physisches Modell](../../../assets/content/research/architecture-biomimicry-algorithm/final-physical-model.jpeg)
 
-![Titelbild Architektur Biomimetik Algorithmus](../../../assets/content/research/architecture-biomimicry-algorithm/architecture-biomimicry-algorithm-cover.jpg)
+![Hochauflösendes Detail des fertigen physischen Modells](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-091-img-01-xref-441.png)
+
+### Rendering
+
+![Rendering einer Einheit des Pavillons](../../../assets/content/research/architecture-biomimicry-algorithm/rendering-of-one-unit.jpg)
+
+![Rendering des Entwurfsvorschlags vor der FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/rendering-of-the-final-proposal.jpeg)
+
+![Draufsicht des Entwurfsvorschlags](../../../assets/content/research/architecture-biomimicry-algorithm/top-view-of-final-proposal.png)
+
+![Rendering des Entwurfsvorschlags (Titelbild)](../../../assets/content/research/architecture-biomimicry-algorithm/architecture-biomimicry-algorithm-cover.jpg)
+
+## Abschließende Betrachtungen
+
+Diese Studie versuchte, einige Möglichkeiten der Integration von Computational Design in die architektonische Entwurfspraxis zu erforschen. Die für die Erstellung dieser Arbeit notwendige Vertiefung führte zu einem enormen Wissenszuwachs sowohl in technologischen als auch in philosophischen und konzeptionellen Fragen.
+
+Obwohl hier keine strukturmechanischen Fragen behandelt wurden, zeigte sich in den Fallstudien und zahlreichen anderen Forschungen, dass dies ein Feld mit enormem, noch zu erforschendem Potenzial ist. Hier wurden zwei Hauptmethoden verwendet: der Physiksimulator Kangaroo Physics und der evolutionäre Algorithmus Galapagos innerhalb von Grasshopper. Es gibt jedoch ein weiteres Plugin namens Karamba, dessen Funktion die Bewertung struktureller Aspekte wie Knicken und Schubkräfte ist. Die ursprüngliche Idee war, es ebenfalls in den Studien zu verwenden, aber aufgrund seiner Komplexität und da dieser Pavillon ein Projekt kleinen Maßstabs ist, wurde dieses Plugin beiseitegelassen.
+
+Die Entwicklung des Algorithmus befindet sich noch in einem frühen Stadium, aber mit der richtigen Verfeinerung kann eine alternative Bautechnik unter Verwendung von Drohnen beispielsweise erreicht werden.
+
+Die architektonische Praxis verändert sich ständig, und die Notwendigkeit, diese Entwicklung fortzusetzen, ist entscheidend. Dies ist nicht nur der Schlüssel zur Entdeckung von Innovationen und Techniken, sondern auch bestimmend für die Idee, dass Design als Dreh- und Angelpunkt unserer Ausdrucksformen von Identität und Differenz betrachtet wird.
