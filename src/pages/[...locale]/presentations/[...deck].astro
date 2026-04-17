@@ -1,0 +1,65 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Slides from "@/layouts/Slides.astro";
+import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
+import {
+  getEntryLocale,
+  getFileSlug,
+} from "src/lib/routes-helpers";
+
+export async function getStaticPaths() {
+  const all = (await getCollection("presentations")) as CollectionEntry<"presentations">[];
+  const paths = [] as Array<{
+    params: { locale: string | undefined; deck: string };
+    props: { deck: CollectionEntry<"presentations">; locale: string };
+  }>;
+
+  for (const locale of SUPPORTED_LOCALES) {
+    const isDefault = locale === siteConfig.defaultLocale;
+    for (const deck of all) {
+      if (getEntryLocale(deck.id) !== locale) continue;
+      const fileSlug = getFileSlug(deck.id);
+      if (fileSlug.startsWith("_")) continue;
+      paths.push({
+        params: {
+          locale: isDefault ? undefined : locale,
+          deck: fileSlug,
+        },
+        props: { deck, locale },
+      });
+    }
+  }
+
+  return paths;
+}
+
+interface Props {
+  deck: CollectionEntry<"presentations">;
+  locale: string;
+}
+
+const { deck, locale } = Astro.props as Props;
+const { Content } = await render(deck);
+
+const fileSlug = getFileSlug(deck.id);
+
+const cover = deck.data.Cover;
+const coverUrl = typeof cover === "string" ? cover : cover?.Url ?? "";
+
+const basePath = locale === siteConfig.defaultLocale ? "" : `/${locale}`;
+const exitHref = `${basePath}/teaching/${fileSlug}`;
+---
+
+<Slides
+  meta={{
+    title: deck.data.Name,
+    description: deck.data.Description ?? "",
+    coverImage: coverUrl,
+    coverAlt: deck.data.CoverAlt ?? "",
+    slug: `presentations/${fileSlug}`,
+  }}
+  exitHref={exitHref}
+>
+  <Content />
+</Slides>

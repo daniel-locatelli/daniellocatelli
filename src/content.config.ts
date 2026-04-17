@@ -186,6 +186,18 @@ const pageSchema = z.object({
   References: z.array(z.any()).optional(),
   Supervisors: z.array(z.string()).optional(),
   Advisors: z.array(z.string()).optional(),
+  Coordinators: z
+    .union([
+      z.array(
+        z.object({
+          name: z.string(),
+          role: z.string().optional(),
+        }),
+      ),
+      z.array(z.string()),
+    ])
+    .optional()
+    .nullable(),
   Active: z.boolean().optional(),
   Disclosed: z.boolean().optional().nullable(),
   Category: z.string().optional(),
@@ -216,4 +228,5 @@ export const collections = {
   scholarships: contentCollection("./src/content/scholarships"),
   certifications: contentCollection("./src/content/certifications"),
   "courses-attended": contentCollection("./src/content/courses-attended"),
+  presentations: contentCollection("./src/content/presentations"),
 };

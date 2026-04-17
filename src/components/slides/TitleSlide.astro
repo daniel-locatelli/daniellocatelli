@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  image?: ImageMetadata | string;
+  imageAlt?: string;
+  imagePosition?: string;
+  darkText?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  image,
+  imageAlt = "",
+  imagePosition = "center",
+  darkText = false,
+} = Astro.props;
+
+const textColor = darkText ? "text-zinc-950" : "text-white";
+
+const isStringImage = typeof image === "string";
+---
+
+<section
+  data-slide
+  class="slide relative h-svh w-full overflow-hidden bg-zinc-950 text-zinc-100"
+>
+  {
+    image &&
+      (isStringImage ? (
+        <img
+          src={image as string}
+          alt={imageAlt}
+          loading="eager"
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover"
+          style={`object-position: ${imagePosition};`}
+        />
+      ) : (
+        <Image
+          src={image as ImageMetadata}
+          alt={imageAlt}
+          loading="eager"
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover"
+          style={`object-position: ${imagePosition};`}
+        />
+      ))
+  }
+
+  <div
+    class={`absolute top-8 left-8 z-10 flex max-w-[70%] flex-col items-start text-left sm:top-12 sm:left-12 ${textColor}`}
+  >
+    <h1
+      class="text-xl leading-tight font-bold tracking-wide uppercase sm:text-3xl lg:text-4xl"
+      style="font-family: 'Montserrat', sans-serif;"
+    >
+      {title}
+    </h1>
+    {
+      subtitle && (
+        <p
+          class="mt-3 text-sm leading-tight font-normal tracking-wider uppercase sm:text-lg lg:text-xl"
+          style="font-family: 'Montserrat', sans-serif;"
+        >
+          {subtitle}
+        </p>
+      )
+    }
+  </div>
+</section>

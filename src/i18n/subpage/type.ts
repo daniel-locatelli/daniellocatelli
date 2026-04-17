@@ -6,6 +6,8 @@ export type I18nSubpage = {
   supervisors: string,
   advisor: string,
   advisors: string,
+  coordinator: string,
+  coordinators: string,
   organization: string,
   client: string,
   director: string,
@@ -22,4 +24,5 @@ export type I18nSubpage = {
   apps: string,
   references: string,
   otherLinks: string,
+  openPresentation: string,
 }

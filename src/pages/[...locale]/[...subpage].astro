@@ -69,8 +69,24 @@ interface Props {
 
 const { subpage } = Astro.props as Props;
 const slug = getEntrySlug(subpage);
+const fileSlug = getFileSlug(subpage.id);
+const entryLocale = getEntryLocale(subpage.id);
 
 const { Content } = await render(subpage);
+
+// Detect a matching presentation (same slug + locale, not a draft).
+const presentations = await getCollection("presentations");
+const matchingDeck = presentations.find(
+  (p) =>
+    getEntryLocale(p.id) === entryLocale &&
+    getFileSlug(p.id) === fileSlug &&
+    !getFileSlug(p.id).startsWith("_"),
+);
+const deckBasePath =
+  entryLocale === siteConfig.defaultLocale ? "" : `/${entryLocale}`;
+const deckHref = matchingDeck
+  ? `${deckBasePath}/presentations/${fileSlug}`
+  : null;
 
 // Getting images dynamically with import.meta.glob()
 // It only accepts string literals
@@ -157,6 +173,26 @@ if (image) {
       >
         {subpage.data.Name}
       </h1>
+      {
+        deckHref && (
+          <a
+            href={deckHref}
+            class="mx-4 mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-green-600 bg-green-600/10 px-4 py-2 text-sm font-medium text-green-400 transition hover:bg-green-600/20 hover:text-green-300 sm:mx-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            {t.openPresentation}
+          </a>
+        )
+      }
       <table
         class="table-auto border-separate border-spacing-x-4 px-4 text-left text-zinc-200 sm:px-0 *:align-text-top"
       >
@@ -258,6 +294,31 @@ if (image) {
                     } else {
                       return <span>, {name}</span>;
                     }
+                  })}
+                </td>
+              </tr>
+            )
+        }
+        {
+          subpage.data.Coordinators &&
+            Array.isArray(subpage.data.Coordinators) &&
+            subpage.data.Coordinators.length > 0 && (
+              <tr>
+                {subpage.data.Coordinators.length === 1 ? (
+                  <th>{t.coordinator}</th>
+                ) : (
+                  <th>{t.coordinators}</th>
+                )}
+                <td>
+                  {subpage.data.Coordinators.map((c: any, index: number) => {
+                    const name = typeof c === "string" ? c : c.name;
+                    const role = typeof c === "string" ? null : c.role;
+                    const prefix = index === 0 ? "" : ", ";
+                    return role ? (
+                      <span>{prefix}{name} ({role})</span>
+                    ) : (
+                      <span>{prefix}{name}</span>
+                    );
                   })}
                 </td>
               </tr>

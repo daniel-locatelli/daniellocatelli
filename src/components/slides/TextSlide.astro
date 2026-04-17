@@ -1,0 +1,40 @@
+---
+interface Props {
+  text: string;
+  subtext?: string;
+  size?: "md" | "lg" | "xl";
+}
+
+const { text, subtext, size = "lg" } = Astro.props;
+
+const sizeClass =
+  size === "xl"
+    ? "text-5xl sm:text-7xl lg:text-8xl"
+    : size === "md"
+      ? "text-3xl sm:text-5xl lg:text-6xl"
+      : "text-4xl sm:text-6xl lg:text-7xl";
+---
+
+<section
+  data-slide
+  class="slide relative flex h-svh w-full items-center justify-center bg-zinc-950 px-8 text-center text-zinc-100 sm:px-16"
+>
+  <div class="max-w-5xl">
+    <p
+      class={`${sizeClass} leading-tight font-bold tracking-wide uppercase text-balance`}
+      style="font-family: 'Montserrat', sans-serif;"
+    >
+      {text}
+    </p>
+    {
+      subtext && (
+        <p
+          class="mt-8 text-lg font-normal tracking-widest uppercase opacity-75 sm:text-2xl"
+          style="font-family: 'Montserrat', sans-serif;"
+        >
+          {subtext}
+        </p>
+      )
+    }
+  </div>
+</section>

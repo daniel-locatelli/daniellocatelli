@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  src: ImageMetadata | string;
+  alt: string;
+  caption?: string;
+  fit?: "contain" | "cover";
+}
+
+const { src, alt, caption, fit = "contain" } = Astro.props;
+const isStringSrc = typeof src === "string";
+---
+
+<figure class="flex max-h-full flex-col items-center gap-4">
+  {
+    isStringSrc ? (
+      <img
+        src={src as string}
+        alt={alt}
+        loading="eager"
+        decoding="async"
+        class={`max-h-[70vh] ${fit === "cover" ? "w-full object-cover" : "object-contain"}`}
+      />
+    ) : (
+      <Image
+        src={src as ImageMetadata}
+        alt={alt}
+        loading="eager"
+        decoding="async"
+        class={`max-h-[70vh] ${fit === "cover" ? "w-full object-cover" : "object-contain"}`}
+      />
+    )
+  }
+  {
+    caption && (
+      <figcaption class="text-sm text-balance text-zinc-400">
+        {caption}
+      </figcaption>
+    )
+  }
+</figure>

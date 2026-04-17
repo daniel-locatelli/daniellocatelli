@@ -1,0 +1,396 @@
+---
+import type { SiteMeta } from "@/types";
+import BaseHead from "@/components/BaseHead.astro";
+import { siteConfig } from "@/config/site";
+import { getLocale } from "src/lib/routes-helpers";
+
+interface Props {
+  meta: SiteMeta;
+  exitHref?: string;
+}
+
+const locale = getLocale(Astro.params);
+
+const {
+  meta: {
+    articleDate,
+    description = siteConfig.description,
+    coverImage,
+    coverAlt,
+    title,
+    slug,
+  },
+  exitHref,
+} = Astro.props;
+---
+
+<html lang={locale ?? siteConfig.defaultLocale}>
+  <head>
+    <BaseHead
+      articleDate={articleDate}
+      description={description}
+      coverImage={coverImage}
+      coverAlt={coverAlt}
+      title={title}
+      viewTransition={false}
+      slug={slug}
+    />
+    <slot name="after-head" />
+  </head>
+  <body
+    class="m-0 h-svh max-h-svh w-screen max-w-none overflow-hidden bg-zinc-950 p-0 text-zinc-100"
+    style="font-family: 'Montserrat', sans-serif; padding: 0; max-width: none; margin: 0;"
+  >
+    <main id="deck" class="relative h-svh w-screen">
+      <slot />
+    </main>
+
+    <!-- HUD: exit, help, fullscreen, progress -->
+    <div
+      id="deck-hud"
+      class="pointer-events-none fixed inset-x-0 top-0 z-30 flex items-start justify-between p-3 transition-opacity duration-300"
+    >
+      <div class="pointer-events-auto flex items-center gap-2">
+        {
+          exitHref && (
+            <a
+              href={exitHref}
+              aria-label="Exit presentation"
+              class="rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition hover:bg-zinc-800 hover:text-zinc-100"
+            >
+              ← Exit
+            </a>
+          )
+        }
+      </div>
+      <div class="pointer-events-auto flex items-center gap-2">
+        <button
+          id="deck-help"
+          aria-label="Show keyboard shortcuts"
+          class="rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition hover:bg-zinc-800 hover:text-zinc-100"
+          type="button"
+        >
+          ?
+        </button>
+        <button
+          id="deck-fullscreen"
+          aria-label="Toggle fullscreen"
+          class="rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition hover:bg-zinc-800 hover:text-zinc-100"
+          type="button"
+        >
+          ⛶
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="deck-progress"
+      class="pointer-events-none fixed right-6 bottom-6 z-30 text-xs font-normal tracking-widest text-zinc-400 tabular-nums uppercase sm:text-sm"
+      style="font-family: 'Montserrat', sans-serif;"
+    >
+      <span id="deck-progress-current">1</span><span class="mx-1 opacity-50">/</span><span id="deck-progress-total" class="opacity-50">1</span>
+    </div>
+
+
+    <dialog
+      id="deck-help-dialog"
+      class="max-w-md rounded-lg border border-zinc-700 bg-zinc-900 p-6 text-zinc-100 backdrop:bg-black/70"
+    >
+      <h3 class="font-title mb-4 text-xl">Keyboard shortcuts</h3>
+      <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
+        <dt class="font-mono text-zinc-400">→ / Space / PgDn</dt><dd>Next slide</dd>
+        <dt class="font-mono text-zinc-400">← / PgUp</dt><dd>Previous slide</dd>
+        <dt class="font-mono text-zinc-400">Home / End</dt><dd>First / last slide</dd>
+        <dt class="font-mono text-zinc-400">F</dt><dd>Toggle fullscreen</dd>
+        <dt class="font-mono text-zinc-400">N</dt><dd>Toggle speaker notes</dd>
+        <dt class="font-mono text-zinc-400">O</dt><dd>Overview (all slides)</dd>
+        <dt class="font-mono text-zinc-400">?</dt><dd>This help</dd>
+        <dt class="font-mono text-zinc-400">Esc</dt><dd>Exit fullscreen / overview</dd>
+      </dl>
+      <form method="dialog" class="mt-6 text-right">
+        <button class="rounded bg-zinc-800 px-4 py-1.5 text-sm hover:bg-zinc-700" type="submit">
+          Close
+        </button>
+      </form>
+    </dialog>
+  </body>
+</html>
+
+<style is:global>
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Neutralize the site-wide body constraints (max-w-3xl, flex, padding) for deck pages */
+  body:has(#deck) {
+    max-width: none !important;
+    width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  .slide {
+    display: none;
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none;
+  }
+
+  .slide.is-active {
+    display: flex;
+  }
+
+  .slide:focus,
+  .slide *:focus {
+    outline: none;
+  }
+
+  /* Overview mode: scale all slides down into a grid */
+  body.deck-overview #deck {
+    overflow: auto;
+    height: 100svh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: #000;
+  }
+
+  body.deck-overview .slide {
+    display: flex;
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    outline: 2px solid transparent;
+    transform: none;
+    cursor: pointer;
+    transition: outline-color 0.15s;
+  }
+
+  body.deck-overview .slide.is-active {
+    outline-color: rgb(34 197 94);
+  }
+
+  body.deck-overview .slide > * {
+    transform: scale(0.25);
+    transform-origin: top left;
+    width: 400%;
+    height: 400%;
+  }
+
+  body.deck-notes [data-slide-notes] {
+    display: block;
+  }
+
+  body.deck-hud-hidden #deck-hud,
+  body.deck-hud-hidden #deck-progress {
+    opacity: 0;
+  }
+
+  .slide img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .slide figure {
+    margin: 0;
+  }
+</style>
+
+<script>
+  function initDeck() {
+    const slides = Array.from(
+      document.querySelectorAll<HTMLElement>("#deck [data-slide]"),
+    );
+    if (slides.length === 0) return;
+
+    const total = slides.length;
+    const totalEl = document.getElementById("deck-progress-total");
+    const currentEl = document.getElementById("deck-progress-current");
+    if (totalEl) totalEl.textContent = String(total);
+
+    const parseHash = (): number => {
+      const m = window.location.hash.match(/^#(\d+)$/);
+      if (!m) return 0;
+      const n = parseInt(m[1], 10) - 1;
+      return Math.max(0, Math.min(total - 1, n));
+    };
+
+    let index = parseHash();
+    let hudTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const showHud = () => {
+      document.body.classList.remove("deck-hud-hidden");
+      if (hudTimer) clearTimeout(hudTimer);
+      hudTimer = setTimeout(() => {
+        document.body.classList.add("deck-hud-hidden");
+      }, 3000);
+    };
+
+    const render = (next: number, pushHash = true) => {
+      index = Math.max(0, Math.min(total - 1, next));
+      slides.forEach((s, i) => {
+        s.classList.toggle("is-active", i === index);
+      });
+      if (currentEl) currentEl.textContent = String(index + 1);
+      if (pushHash) {
+        const newHash = `#${index + 1}`;
+        if (window.location.hash !== newHash) {
+          history.replaceState(null, "", newHash);
+        }
+      }
+      showHud();
+    };
+
+    const next = () => render(index + 1);
+    const prev = () => render(index - 1);
+
+    document.addEventListener("keydown", (e) => {
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+      switch (e.key) {
+        case "ArrowRight":
+        case "PageDown":
+        case " ":
+          e.preventDefault();
+          next();
+          break;
+        case "ArrowLeft":
+        case "PageUp":
+          e.preventDefault();
+          prev();
+          break;
+        case "Home":
+          e.preventDefault();
+          render(0);
+          break;
+        case "End":
+          e.preventDefault();
+          render(total - 1);
+          break;
+        case "f":
+        case "F":
+          e.preventDefault();
+          toggleFullscreen();
+          break;
+        case "n":
+        case "N":
+          e.preventDefault();
+          document.body.classList.toggle("deck-notes");
+          break;
+        case "o":
+        case "O":
+          e.preventDefault();
+          toggleOverview();
+          break;
+        case "?":
+          e.preventDefault();
+          (document.getElementById("deck-help-dialog") as HTMLDialogElement | null)?.showModal();
+          break;
+        case "Escape":
+          if (document.body.classList.contains("deck-overview")) {
+            document.body.classList.remove("deck-overview");
+          }
+          break;
+      }
+    });
+
+    // Mouse movement reveals HUD
+    document.addEventListener("mousemove", showHud);
+
+    // Fullscreen button
+    const fsBtn = document.getElementById("deck-fullscreen");
+    fsBtn?.addEventListener("click", toggleFullscreen);
+    const helpBtn = document.getElementById("deck-help");
+    helpBtn?.addEventListener("click", () => {
+      (document.getElementById("deck-help-dialog") as HTMLDialogElement | null)?.showModal();
+    });
+
+    // Touch swipe
+    let touchX = 0;
+    let touchY = 0;
+    document.addEventListener("touchstart", (e) => {
+      const t = e.touches[0];
+      touchX = t.clientX;
+      touchY = t.clientY;
+    });
+    document.addEventListener("touchend", (e) => {
+      const t = e.changedTouches[0];
+      const dx = t.clientX - touchX;
+      const dy = t.clientY - touchY;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) next();
+        else prev();
+      }
+    });
+
+    // Click to navigate: left 25% = prev, rest = next. HUD/dialog/links skip.
+    document.getElementById("deck")?.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (
+        target.closest("#deck-hud") ||
+        target.closest("#deck-help-dialog") ||
+        target.closest("a, button")
+      ) {
+        return;
+      }
+      if (document.body.classList.contains("deck-overview")) {
+        const slideEl = target.closest("[data-slide]") as HTMLElement | null;
+        if (!slideEl) return;
+        const i = slides.indexOf(slideEl);
+        if (i >= 0) {
+          document.body.classList.remove("deck-overview");
+          render(i);
+        }
+        return;
+      }
+      if (e.clientX < window.innerWidth * 0.25) {
+        prev();
+      } else {
+        next();
+      }
+    });
+
+    // Prevent native drag/selection on slide media so click never feels "stuck"
+    document.getElementById("deck")?.addEventListener("mousedown", (e) => {
+      const target = e.target as HTMLElement;
+      if (target.closest("#deck-hud") || target.closest("a, button")) return;
+      e.preventDefault();
+    });
+
+    window.addEventListener("hashchange", () => {
+      render(parseHash(), false);
+    });
+
+    render(index, false);
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+
+  function toggleOverview() {
+    document.body.classList.toggle("deck-overview");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDeck);
+  } else {
+    initDeck();
+  }
+</script>

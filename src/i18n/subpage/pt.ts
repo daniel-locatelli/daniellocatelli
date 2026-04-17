@@ -8,6 +8,8 @@ export const t: I18nSubpage = {
   supervisors: "Orientadores",
   advisor: "Coorientador",
   advisors: "Coorientadores",
+  coordinator: "Coordenador",
+  coordinators: "Coordenação",
   organization: "Organização",
   client: "Cliente",
   director: "Diretor",
@@ -24,4 +26,5 @@ export const t: I18nSubpage = {
   apps: "Aplicativos",
   references: "Referências",
   otherLinks: "Outros Links",
+  openPresentation: "Abrir apresentação",
 };

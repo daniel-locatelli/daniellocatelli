@@ -1,0 +1,15 @@
+---
+interface Props {
+  gap?: "sm" | "md" | "lg";
+  cols?: 2 | 3;
+}
+
+const { gap = "md", cols = 2 } = Astro.props;
+
+const gapClass = gap === "sm" ? "gap-4" : gap === "lg" ? "gap-16" : "gap-10";
+const colsClass = cols === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
+---
+
+<div class={`grid grid-cols-1 ${colsClass} ${gapClass} w-full items-center`}>
+  <slot />
+</div>

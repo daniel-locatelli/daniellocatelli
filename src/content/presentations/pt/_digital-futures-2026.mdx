@@ -1,0 +1,155 @@
+---
+Name: "Entre o Prompt e a Obra"
+Description: "Apresentação Digital Futures 2026. O olhar de um arquiteto brasileiro na Alemanha sobre o que falta entre a imagem gerada por IA e a obra construída: pensamento sistêmico."
+DateStart: "2026-04-18"
+Event: DigitalFutures
+Language: Português
+---
+
+import TitleSlide from "@/components/slides/TitleSlide.astro";
+import Slide from "@/components/slides/Slide.astro";
+import TextSlide from "@/components/slides/TextSlide.astro";
+import SlideNotes from "@/components/slides/SlideNotes.astro";
+
+import cover from "@/assets/content/teaching/digital-futures-2026/digital-futures-2026_youtube-cover_upscayl_2x_remacri-4x.png";
+import atelier from "@/assets/content/organizations/atelier-marko-brajovic/atelier-marko-brajovic-2019.jpeg";
+import o3 from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/front-photo.jpeg";
+import tfg from "@/assets/content/research/architecture-biomimicry-algorithm/architecture-biomimicry-algorithm-cover.jpg";
+import modelsByNature from "@/assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-fabric.jpeg";
+import coral from "@/assets/content/research/acropora-pavilion/microscopy-of-the-coral-acropora-with-a-magnitude-of-175x.jpg";
+import bamboo from "@/assets/content/research/bending-active-bamboo/side-view.jpg";
+import coralGrowth from "@/assets/content/research/acropora-pavilion/computational-simulation-of-a-coral-growth-using-a-differential-growth.jpg";
+import coDesign from "@/assets/content/research/building-across-scales/FinalDiagram_v4_02_Material.png";
+import columns from "@/assets/content/publications/automatic-column-placement/automatic-column-placement-cover.jpg";
+import thesis from "@/assets/content/research/building-across-scales/2021_nunes-locatelli_opgenorth_01.jpg";
+import radom from "@/assets/content/projects/radom-raisting-by-ar-ingenieure/membrane-lifted-by-crane.jpg";
+import commonSky from "@/assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/common-sky-by-artengineering-for-studio-other-spaces-cover.jpg";
+import canyon from "@/assets/content/projects/canyon-by-artengineering-for-katharina-grosse/canyon-by-artengineering-for-katharina-grosse-cover.jpg";
+import buildsystems from "@/assets/content/organizations/buildsystems/buildsystems-team.jpg";
+
+{/* 1 */}
+<TitleSlide
+  title="Entre o Prompt e a Obra"
+  subtitle="O olhar de um arquiteto brasileiro formado e atuante na Alemanha"
+  image={cover}
+  imageAlt="Capa do Digital Futures 2026"
+/>
+
+{/* 2 */}
+<Slide title="Atelier Marko Brajovic" subtitle="São Paulo, 2016" image={atelier} imageAlt="Ateliê Marko Brajovic em 2019">
+  <SlideNotes>
+    Sempre me interessei pela conexão entre natureza e arquitetura. Foi isso que me levou ao Atelier Marko Brajovic em São Paulo, em 2016.
+  </SlideNotes>
+</Slide>
+
+{/* 3 */}
+<Slide title="O3 Pavilion" subtitle="Primeiros passos em design computacional" image={o3} imageAlt="Pavilhão O3 do Atelier Marko Brajovic visto de frente">
+  <SlideNotes>
+    No ateliê, trabalhei em projetos como o O3 Pavilion e aprendi Grasshopper, um ambiente de design computacional que me permitiu programar geometria.
+  </SlideNotes>
+</Slide>
+
+{/* 4 */}
+<Slide title="TFG FAU-USP" subtitle="Comportamento material e form finding" image={tfg} imageAlt="Rendering do TFG Arquitetura + Biomimética + Algoritmo">
+  <SlideNotes>
+    Ao mesmo tempo, meu trabalho final de graduação com o professor Arthur Hunold Lara explorava comportamento material e form finding como caminhos para o desenho.
+  </SlideNotes>
+</Slide>
+
+{/* 5 */}
+<Slide title="ModelsByNature" subtitle="Ensinando o que estava aprendendo" image={modelsByNature} imageAlt="Form finding com tecido em workshop ModelsByNature">
+  <SlideNotes>
+    Comecei também a ensinar. Nos workshops ModelsByNature, o conteúdo era biomimética e form finding.
+  </SlideNotes>
+</Slide>
+
+{/* 6 */}
+<Slide title="Nível 1" subtitle="Forma" image={coral} imageAlt="Microscopia do coral Acropora">
+  <SlideNotes>
+    Janine Benyus descreve três níveis de biomimética. O primeiro é o mais reconhecível: copiar a forma.
+  </SlideNotes>
+</Slide>
+
+{/* 7 */}
+<Slide title="Nível 2" subtitle="Processo" image={bamboo} imageAlt="Estudo de bambu bending active">
+  <SlideNotes>
+    O segundo nível é copiar o processo. Em vez de imitar como algo é, imitar como algo se forma.
+  </SlideNotes>
+</Slide>
+
+{/* 8 */}
+<TextSlide text="Nível 3" subtext="Ecossistema" />
+
+{/* 9 */}
+<TextSlide text="IASS" subtext="Hamburgo, 2017" size="md" />
+
+{/* 10 */}
+<TextSlide text="ITECH" subtext="Uni Stuttgart — Achim Menges + Jan Knippers" size="md" />
+
+{/* 11 */}
+<TextSlide text="2019" subtext="Brasil → Alemanha" size="xl" />
+
+{/* 12 */}
+<Slide title="Morfogenética" subtitle="A natureza vira arquitetura" image={coralGrowth} imageAlt="Simulação computacional de crescimento de coral">
+  <SlideNotes>
+    No ITECH encontrei o conceito de morfogênese que Achim Menges traz da biologia para a arquitetura.
+  </SlideNotes>
+</Slide>
+
+{/* 13 */}
+<Slide title="Co-Design" subtitle="A sistematização da morfogênese" image={coDesign} imageAlt="Diagrama de co-design material e robótico" darkText>
+  <SlideNotes>
+    O foco começou a se mover para Co-Design: a sistematização do que a morfogênese apenas intuía.
+  </SlideNotes>
+</Slide>
+
+{/* 14 */}
+<TextSlide text="Nível 3" subtext="Agora faz sentido" />
+
+{/* 15 */}
+<Slide title="Automatic Column Placement" subtitle="Co-design na prática" image={columns} imageAlt="Algoritmo de posicionamento automático de colunas" darkText>
+  <SlideNotes>
+    Pesquisa no ITECH que fez o conceito aterrar para mim: um algoritmo que posiciona colunas otimizando estrutura e fluxo.
+  </SlideNotes>
+</Slide>
+
+{/* 16 */}
+<Slide title="Building Across Scales" subtitle="Tese de mestrado, 2021" image={thesis} imageAlt="Demonstrador final da tese Building Across Scales">
+  <SlideNotes>
+    Minha tese, com Nils Opgenorth: um sistema robótico multiescalar para colar painéis de madeira laminada cruzada diretamente no canteiro.
+  </SlideNotes>
+</Slide>
+
+{/* 17 */}
+<Slide title="Radom Raisting" subtitle="Alfred Rein Ingenieure — form finding à escala arquitetônica" image={radom} imageAlt="Cúpula de membrana sendo içada por guindaste" darkText>
+  <SlideNotes>
+    Primeiro escritório de engenharia: simulação de implantação de uma cúpula inflável de 48,8m.
+  </SlideNotes>
+</Slide>
+
+{/* 18 */}
+<Slide title="Common Sky" subtitle="ArtEngineering × Olafur Eliasson" image={commonSky} imageAlt="Interior do Common Sky no Buffalo AKG Art Museum">
+  <SlideNotes>
+    Engenharia computacional para artistas. Cobertura treliçada para o Buffalo AKG Art Museum.
+  </SlideNotes>
+</Slide>
+
+{/* 19 */}
+<Slide title="Canyon" subtitle="ArtEngineering × Katharina Grosse" image={canyon} imageAlt="Canyon instalado na Louis Vuitton em Paris">
+  <SlideNotes>
+    Segunda colaboração artística: Canyon, de Katharina Grosse, na Louis Vuitton em Paris.
+  </SlideNotes>
+</Slide>
+
+{/* 20 */}
+<Slide title="BuildSystems" subtitle="Arquiteto → Engenheiro de Software" image={buildsystems} imageAlt="Equipe BuildSystems">
+  <SlideNotes>
+    A convicção sobre co-design se consolidou. Próximo passo: código. Na BuildSystems, me tornei engenheiro de software.
+  </SlideNotes>
+</Slide>
+
+{/* 21 */}
+<TextSlide text="DOKwood" subtext="Madeira, software, um sistema para ser orquestrado por IA" size="md" />
+
+{/* 22 */}
+<TextSlide text="ETH Zürich" subtext="Doutorado, julho de 2026" size="md" />

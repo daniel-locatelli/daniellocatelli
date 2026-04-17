@@ -1,0 +1,80 @@
+Get images from past presentations. The just fill the gap for the rest.
+
+The structure is chronological, the story telling goes like:
+
+People like to wear lenses to see architecture. It is so complex! (BIM, Neuroarquitetura, Biomimetics)
+
+I've always been interested in the connection between Nature and Architecture (first slide image about nature).
+
+This is what brought me to the Atelier Marko Brajovic in São Paulo in 2016 (foto project atelier marko brajovic).
+
+There I worked in project X Y Z, and I could learn grasshopper a computational design tool (another project image).
+
+At the same time I headed to my graduation thesis with professor Arthur Lara, where I explored material behaviour and form-finding as means to achieve a design (images of my master thesis).
+
+And even made a couple of workshops in Brazil (image of design bynature).
+
+Explain a bit about Benius three levels of Biomimetics (image of first level),
+explain second level (image of second level),
+explain third level and that this one I had a hard time conceptualizign (image of third level).
+
+DNA
+
+Went deep into de Biomimetics (diagram)
+
+I presented the result of my thesis at the IASS in Hamburg, Germany, where I met Pedro Giachini an student of the ITECH master's at the Uni Stuttgart (image).
+
+The ITECH master's led by Achim Menges and Jan Knippers, was already one of my references for my graduation thesis (image).
+
+This visit to Hamburg and talking to Pedro, was what made me decide to apply to the ITECH program.
+
+In 2019 I started the masters there, where there was some research being done about Nature, explain about morphogenetics how achim gets this concept from nature and brings to architecture (image about one of my researches about nature),
+but the focus was starting to move to Co-Design (show image of co-design)
+explain what co-design is (systematization of morphogenetics).
+? -> Systems (third phase)
+Benius third level now makes sense
+ICD 📍Goethe (Achim book, Goethe institute…)
+Morphogenesis
+Bottom-up
+Gestalt (sum of parts is bigger than the individual parts combined)
+Emergência…
+Co-design.
+
+Wood
+Digitalization in timber as part of the industry
+Digitalization intrinsic to the field. Because every timber company happens to have a CNC, what doesn’t happen to concrete, they can do a lot with molds, casts…
+Now the industry has the means, but not the processes. It is already prepared for the next steps, just needs some interfaces 
+Show that video first semester of ITECH 
+Master thesis
+
+
+Eu parava muito cedo na concepção, systems thinking make you think though everything meticulously.
+One example robot for my master thesis… rotating rope vs air pressure 
+
+Systems thinking = Still too much to learn from the Germans
+
+AR Ingeniure
+ArtEngineering
+BuildSystems (software engineering as a priority)
+Hochschule München: semantic model, timber, AI
+
+Co-design as means for having an AI system where the architect becomes the orchestrator.
+
+Agent Harness for AEC
+
+AI
+Prompt -> Image -> Architecture X
+Prompt -> Constructive parts, FEM, etc -> Image -> Approval -> Manufacturing files and shop drawings -> Construction -> Architecture 
+
+Starting a PhD
+
+Announce a course on AI for software development in Architecture.
+Create a Grasshopper plugin using Claude Code
+
+Just a link to google forms? Is this scalable?
+Or a simple Supabase form?
+
+
+
+
+

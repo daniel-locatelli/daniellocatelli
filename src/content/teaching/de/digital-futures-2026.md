@@ -1,67 +1,33 @@
 ---
+Cover: /assets/content/teaching/digital-futures-2026/digital-futures-2026_youtube-cover_upscayl_2x_remacri-4x.png
+CoverAlt: "YouTube-Cover für die Digital Futures 2026 Session: Entre o Prompt e a Obra."
 Name: "Digital Futures 2026: Entre o Prompt e a Obra"
 Description: "Vortrag über den Weg von der Biomimetik zum Systemdenken und was der KI in der Architektur noch fehlt: die Perspektive eines in Deutschland ausgebildeten und tätigen brasilianischen Architekten."
 Category: Talk
 DateStart: "2026-04-18"
+Organization: DigitalFUTURES
+Authors:
+  - Daniel Nunes Locatelli
+  - Gabriela Bilá
+  - Verônica Natividade
+Coordinators:
+  - name: Angelica Paiva Ponzio
+    role: Organisationskomitee
+  - name: Daniela Silva
+  - name: Leonardo Prazeres Veloso de Souza
+  - name: Ricardo Cesar Rodrigues
+  - name: Henrique Lattes Borçato
 Place: Online
 Language: Portugiesisch
+Link:
+  Text: "Vortrag auf YouTube"
+  Href: "https://www.youtube.com/watch?v=E0wMJIbP9r8"
 Event: DigitalFutures
 ---
 
-## Über die Einladung
+Architekten generieren bereits Bilder mit KI, doch zwischen dem Prompt und dem Bauwerk gibt es noch viel zu tun.
 
-Einladung am 2026-04-07 von Digital Futures Portuguese (portuguese.digitalfutures@gmail.com) erhalten für einen etwa 20-minütigen Vortrag über die akademische und berufliche lusophone Diaspora: berufliches Profil, Ausbildung und Arbeit im Ausland, Chancen und Herausforderungen sowie aktuelle Arbeit.
+Ausgebildet als Architekt an der FAU-USP, arbeitete ich mit computergestütztem Entwurf im Atelier Marko Brajovic, und dort lernte ich, die Architektur durch die Linse der Biomimetik zu sehen. 2019 migrierte ich nach Deutschland, wo ich meinen Master am ITECH abschloss, mit einer Thesis über robotische Fertigung und Ingenieurholz. Ich arbeitete im Ingenieurbüro Alfred Rein mit Form Finding von Zugstrukturen und bei ArtEngineering mit Computational Engineering an Werken von Olafur Eliasson und Katharina Grosse. Heute bin ich Forscher an der Hochschule München und arbeite an der Schnittstelle von Software Engineering, Künstlicher Intelligenz und digitaler Holzfertigung.
 
-Zweite Teilnahme an der portugiesischsprachigen DigitalFutures-Reihe, nach Digital Futures 2023: Novos Hibridismos.
+Mein Weg durch das ITECH-Masterstudium, durch zwei Ingenieurbüros und das Eintauchen in die Kultur von Goethe lehrte mich etwas anderes: in Systemen zu denken. Das Bild ist nur der letzte Schritt, davor kommt ein ganzes System: Tragwerk, Fertigung, Logistik, Materialität. In diesem Talk erzähle ich von dieser Reise und warum das Systemdenken das fehlende Stück ist, das den Prompt mit dem Bauwerk verbinden wird.
 
-## Sprecher-Bio (87 Wörter)
-
-Architekt der FAU-USP, arbeitete Daniel Locatelli mit computergestütztem Entwurf im Atelier Marko Brajovic, bevor er 2019 nach Deutschland migrierte. Dort schloss er seinen Master am ITECH ab, mit einer Thesis über robotische Fertigung und Ingenieurholz. Er arbeitete im Ingenieurbüro Alfred Rein mit Form Finding von Zugstrukturen und bei ArtEngineering mit Computational Engineering an Werken von Olafur Eliasson und Katharina Grosse. Heute ist er Forscher an der Hochschule München und arbeitet an der Schnittstelle von Software Engineering, Künstlicher Intelligenz und digitaler Holzfertigung.
-
-Siehe die pt/-Version für Kompositionsnotizen und die Begründung hinter den einzelnen Formulierungsentscheidungen.
-
-## Eingereichte Bilder
-
-Fünf Portfoliobilder in narrativer Reihenfolge, je eines pro in der Bio genannter Station. Formularlimit: bis zu 5 Dateien, je 10 MB, PDF/Bild/Video.
-
-### 1. O3 Pavilion, Atelier Marko Brajovic (brasilianische Phase)
-
-![O3 Pavilion vom Atelier Marko Brajovic, Frontansicht. Foto: Gui Morelli](../../../assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/o3-pavilion-by-atelier-marko-brajovic-for-docol-cover.jpg)
-
-Im Atelier kurz nach dem Abschluss an der FAU-USP entworfen. Erste Schritte im computergestützten Entwurf mit Rhino, Grasshopper und Kangaroo. Verankert die brasilianische Identität vor der Diaspora, mit der die Bio beginnt.
-
-### 2. Building Across Scales, ITECH-Masterarbeit (deutsche Ausbildung)
-
-![Finaler Demonstrator in Originalgröße bei Nacht. Die Löcher in der Platte wurden zu Lampen](../../../assets/content/research/building-across-scales/building-across-scales-cover.jpeg)
-
-Masterarbeit am ITECH (Universität Stuttgart), zusammen mit Nils Opgenorth. Mehrskaliges Robotersystem für das Verkleben von Brettsperrholz direkt auf der Baustelle. Illustriert "robotische Fertigung und Ingenieurholz".
-
-### 3. Radom Raisting, Alfred Rein Ingenieure (erstes Ingenieurbüro)
-
-![Membrankuppel wird vom Kran geliefert](../../../assets/content/projects/radom-raisting-by-ar-ingenieure/radom-raisting-by-ar-ingenieure-cover.jpg)
-
-Einbausimulation einer aufblasbaren Kuppel mit 48,8m Durchmesser zum Schutz einer Parabolantenne an der Erdfunkstelle Raisting. Illustriert "Form Finding von Zugstrukturen".
-
-### 4. Common Sky, ArtEngineering für Studio Other Spaces (Olafur Eliasson)
-
-![Innenansicht von Common Sky im Buffalo AKG Art Museum](../../../assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/common-sky-by-artengineering-for-studio-other-spaces-cover.jpg)
-
-Stahl-Glas-Gitterdach für das Buffalo AKG Art Museum, entworfen von Studio Other Spaces (Mitgründer: Olafur Eliasson). Belegt den Namen Eliasson in der Bio mit einem Werk im architektonischen Maßstab.
-
-### 5. Canyon, ArtEngineering für Katharina Grosse
-
-![Canyon im Louis-Vuitton-Store in Paris installiert](../../../assets/content/projects/canyon-by-artengineering-for-katharina-grosse/canyon-by-artengineering-for-katharina-grosse-cover.jpg)
-
-Zweite Zusammenarbeit mit einer renommierten Künstlerin während der Zeit bei ArtEngineering, installiert bei Louis Vuitton in Paris. Belegt den Plural "Künstler" in der Bio und verhindert, dass die gesamte Erzählung auf einem einzigen Namen ruht.
-
-## Formulareinreichung
-
-### Titel (final)
-
-**Entre o Prompt e a Obra: O Olhar de um Arquiteto Brasileiro na Alemanha**
-
-Portugiesischer Titel, wird wörtlich so eingereicht. "Zwischen dem Prompt und dem Bauwerk: Der Blick eines brasilianischen Architekten in Deutschland."
-
-### Beschreibung des Vortrags (100 Wörter)
-
-Architekten generieren bereits Bilder mit KI, doch zwischen dem Prompt und dem Bauwerk gibt es noch viel zu tun. 2019 migrierte ich von Brasilien nach Deutschland und sah die Architektur durch die Linse der Biomimetik. Mein Weg durch das ITECH-Masterstudium, durch zwei Ingenieurbüros und das Eintauchen in die Kultur von Goethe lehrte mich etwas anderes: in Systemen zu denken. Das Bild ist nur der letzte Schritt, davor kommt ein ganzes System: Tragwerk, Fertigung, Logistik, Materialität. In diesem Talk erzähle ich von dieser Reise und warum das Systemdenken das fehlende Stück ist, das den Prompt mit dem Bauwerk verbinden wird.
