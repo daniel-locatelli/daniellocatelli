@@ -74,7 +74,7 @@ const home = await getI18n<I18nHome>("home", locale);
 
     <section id={home.service.id}>
       <div class="container mx-auto">
-        <h2 class="text-center">{home.service.title}</h2>
+        <h2 class="md:text-center">{home.service.title}</h2>
         <div class="flex flex-col gap-2">
           {
             home.service.list.map((service) => (
@@ -100,9 +100,9 @@ const home = await getI18n<I18nHome>("home", locale);
 
     <section id={home.about.id}>
       <div class="container mx-auto">
-        <h2 class="text-center">{home.about.title}</h2>
+        <h2 class="md:text-center">{home.about.title}</h2>
         <div
-          class="font-body mx-auto max-w-4xl space-y-6 px-8 text-lg leading-relaxed"
+          class="font-body mx-auto max-w-4xl space-y-6 text-lg leading-relaxed"
         >
           <p class="text-pretty">
             {home.about.background}
@@ -116,7 +116,7 @@ const home = await getI18n<I18nHome>("home", locale);
 
     <section id={home.projects.id}>
       <div class="container mx-auto">
-        <h2 class="mb-16 text-center text-3xl md:text-4xl">
+        <h2 class="mb-16 text-3xl md:text-center md:text-4xl">
           {home.projects.title}
         </h2>
         <div class="grid gap-8">
@@ -131,7 +131,7 @@ const home = await getI18n<I18nHome>("home", locale);
                   />
                 </div>
                 <div class="font-body flex grow flex-col p-6">
-                  <h3 class="mb-1 text-xl font-semibold text-balance text-zinc-100">
+                  <h3 class="mb-1 text-xl font-semibold text-pretty text-zinc-100">
                     {project.title}
                   </h3>
                   <a
@@ -175,7 +175,7 @@ const home = await getI18n<I18nHome>("home", locale);
     </section>
 
     <section id={home.testimonials.id} class="py-16 text-zinc-200">
-      <h2 class="mb-12 text-center text-3xl md:text-4xl">
+      <h2 class="mb-12 text-3xl md:text-center md:text-4xl">
         {home.testimonials.title}
       </h2>
       <div class="container mx-auto flex flex-col gap-12">
@@ -183,23 +183,23 @@ const home = await getI18n<I18nHome>("home", locale);
           home.testimonials.list.map((rec) => (
             <div>
               <Icon name="mdi:format-quote-open" class="ml-4 size-12" />
-              <blockquote class="relative flex flex-col gap-3 rounded-r-xl border-l-2 border-green-600 pr-4 pl-4 md:mx-6">
+              <blockquote class="relative rounded-r-xl border-l-2 border-green-600 pr-4 pl-4 md:mx-6">
                 <p class="text-lg text-pretty italic">{rec.text}</p>
-                <a
-                  href={rec.contextLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex w-fit gap-2 hover:text-green-600"
-                >
-                  <div>
-                    <p class="font-bold">{rec.author}</p>
-                    <p class="flex gap-2">
-                      <span>{rec.context}</span>
-                      <Icon name="mdi:external-link" class="size-3" />
-                    </p>
-                  </div>
-                </a>
               </blockquote>
+              <a
+                href={rec.contextLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 flex w-fit gap-2 pl-4 hover:text-green-600 md:mx-6 md:pl-4"
+              >
+                <div>
+                  <p class="font-bold">{rec.author}</p>
+                  <p class="flex gap-2">
+                    <span>{rec.context}</span>
+                    <Icon name="mdi:external-link" class="size-3" />
+                  </p>
+                </div>
+              </a>
             </div>
           ))
         }
@@ -209,12 +209,12 @@ const home = await getI18n<I18nHome>("home", locale);
     <section id={home.expertise.id}>
       <div class="">
         <h2
-          class="mb-16 text-center text-3xl text-pretty text-zinc-100 md:text-4xl"
+          class="mb-16 text-3xl text-pretty text-zinc-100 md:text-center md:text-4xl"
         >
           {home.expertise.title}
         </h2>
         <p
-          class="mb-6 text-center text-lg leading-relaxed text-balance text-zinc-100"
+          class="mb-6 text-lg leading-relaxed text-pretty text-zinc-100 md:text-balance md:text-center"
         >
           {home.expertise.description}
         </p>
@@ -227,12 +227,12 @@ const home = await getI18n<I18nHome>("home", locale);
     </section>
 
     <section id={home.contact.id} class="py-20">
-      <div class="space-y-16 px-6 text-center">
+      <div class="space-y-16 md:text-center">
         <h2 class="text-3xl tracking-wide md:text-4xl lg:text-5xl">
           {home.contact.title}
         </h2>
         <p
-          class="font-body mx-auto max-w-2xl text-lg text-balance text-zinc-300 md:text-xl"
+          class="font-body mx-auto max-w-2xl text-lg text-pretty text-zinc-300 md:text-xl"
         >
           {home.contact.description}
         </p>
@@ -301,7 +301,7 @@ const home = await getI18n<I18nHome>("home", locale);
               <Icon name="mdi:gitlab" class="size-6 shrink-0 print:hidden" />
             </a>
           </div>
-          <p class="text-sm text-zinc-300">{siteConfig.email}</p>
+          <p class="text-center text-sm text-zinc-300">{siteConfig.email}</p>
         </div>
       </div>
     </section>
