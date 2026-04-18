@@ -1,0 +1,250 @@
+---
+Name: "Entre o Prompt e a Obra"
+Description: "Apresentação Digital Futures 2026. O olhar de um arquiteto brasileiro na Alemanha sobre o que falta entre a imagem gerada por IA e a obra construída: pensamento sistêmico."
+DateStart: "2026-04-18"
+Event: DigitalFutures
+Language: Português
+---
+
+import TitleSlide from "@/components/slides/TitleSlide.astro";
+import Slide from "@/components/slides/Slide.astro";
+import TextSlide from "@/components/slides/TextSlide.astro";
+import SlideNotes from "@/components/slides/SlideNotes.astro";
+
+import cover from "@/assets/content/teaching/digital-futures-2026/digital-futures-2026-cover.jpg";
+import architectureLenses from "@/assets/content/presentations/digital-futures-2026/architecture-lenses.png";
+import atelier from "@/assets/content/teaching/tensegrity-workshop/tensegrity-workshop_atelier-marko-brajovic-01.jpeg";
+import o3 from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/o3-pavilion-by-atelier-marko-brajovic-for-docol-cover.jpg";
+import giraffes from "@/assets/content/presentations/digital-futures-2026/giraffes_upscayl-standard-4x.png";
+import nasaBill from "@/assets/content/presentations/digital-futures-2026/NASABill_Ingalls.webp";
+import gaudi from "@/assets/content/presentations/digital-futures-2026/Antoni-Gaudí_Canaan.jpeg";
+import haeckelDetroit from "@/assets/content/presentations/digital-futures-2026/haeckel-detroit-composite.jpg";
+import o3FormFinding from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/animacao-da-descoberta-de-forma-kangaroo-forcando-celulas-a-serem-planas-busca.gif";
+import codesignDiagram from "@/assets/content/presentations/digital-futures-2026/icd-itke-codesign-diagram-inverted.png";
+import materialRoboticDiagram from "@/assets/content/research/building-across-scales/material-robotic-system-diagram.png";
+import urpflanze from "@/assets/content/presentations/digital-futures-2026/Urpflanze_upscayl_2x_upscayl-standard-4x.png";
+import tfg from "@/assets/content/research/architecture-biomimicry-algorithm/architecture-biomimicry-algorithm-cover.jpg";
+import modelsByNature from "@/assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-fabric.jpeg";
+import coral from "@/assets/content/research/acropora-pavilion/microscopy-of-the-coral-acropora-with-a-magnitude-of-175x.jpg";
+import bamboo from "@/assets/content/research/bending-active-bamboo/side-view.jpg";
+import coralGrowth from "@/assets/content/research/acropora-pavilion/computational-simulation-of-a-coral-growth-using-a-differential-growth.jpg";
+import coDesign from "@/assets/content/research/building-across-scales/FinalDiagram_v4_02_Material.png";
+import columns from "@/assets/content/publications/automatic-column-placement/automatic-column-placement-cover.jpg";
+import thesis from "@/assets/content/research/building-across-scales/building-across-scales-cover.jpeg";
+import radom from "@/assets/content/presentations/digital-futures-2026/the-final-membrane-structure-deployed_upscayl_2x_upscayl-standard-4x.png";
+import breathingEarth from "@/assets/content/presentations/digital-futures-2026/breathing-earth-sphere-cropped.jpg";
+import breathingEarthInstallation from "@/assets/content/projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson/installation-view-docho-island-shinan-county-south-jeolla-south-korea-2024-05.jpg";
+import commonSky from "@/assets/content/projects/common-sky-by-artengineering-for-studio-other-spaces/common-sky-by-artengineering-for-studio-other-spaces-cover.jpg";
+import commonSkyConstruction from "@/assets/content/presentations/digital-futures-2026/interior-of-common-sky-in-construction-just-before-placing-the-double-glazing_upscayl_2x_upscayl-standard-4x.png";
+import canyon from "@/assets/content/projects/canyon-by-artengineering-for-katharina-grosse/canyon-by-artengineering-for-katharina-grosse-cover.jpg";
+import canyonBending from "@/assets/content/presentations/digital-futures-2026/uma-maquina-de-dobrar-chapas-de-aco-com-um-angulo-personalizado-maquina-de_upscayl_2x_upscayl-standard-4x.png";
+import buildsystems from "@/assets/content/organizations/buildsystems/buildsystems-team.jpg";
+import bsOntology from "@/assets/content/presentations/digital-futures-2026/diagram-tech-titles-padded.png";
+import buildup from "@/assets/content/presentations/digital-futures-2026/buildup.png";
+import dokwood from "@/assets/content/presentations/digital-futures-2026/dokwood.png";
+import bsGrasshopper from "@/assets/content/presentations/digital-futures-2026/buildsystems-plugin-for-grasshopper-cover-extended.jpeg";
+import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsystems/kfw-funding-calculator-by-buildsystems-cover.png";
+
+{/* 1 */}
+<TitleSlide
+  title="Entre o Prompt e a Obra"
+  subtitle="O olhar de um arquiteto brasileiro formado e atuante na Alemanha"
+  author="Daniel Locatelli"
+  institution="Universidade de Ciências Aplicadas de Munique"
+  image={cover}
+  imageAlt="Montagem de cinco projetos do portfólio de Daniel Locatelli"
+/>
+
+{/* 2 */}
+<Slide image={architectureLenses} imageAlt="Lentes da arquitetura" copyright="© Gemini" />
+
+{/* 3 */}
+<Slide title="Atelier Marko Brajovic" subtitle="São Paulo, 2015 - 2019" image={atelier} imageAlt="Ateliê Marko Brajovic em 2019">
+  <SlideNotes>
+    Sempre me interessei pela conexão entre natureza e arquitetura. Foi isso que me levou ao Atelier Marko Brajovic em São Paulo, em 2016.
+  </SlideNotes>
+</Slide>
+
+{/* 4 */}
+<Slide image={atelier} imageAlt="Ateliê Marko Brajovic em 2019">
+  <div class="absolute inset-0 z-[5] bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <h2 class="text-4xl font-bold uppercase tracking-wide text-white sm:text-6xl lg:text-7xl" style="font-family: 'Montserrat', sans-serif;">Biomimética</h2>
+  </div>
+</Slide>
+
+{/* 5 */}
+<Slide title="Workshop Models ByNature" subtitle="São Paulo, 2019">
+  <video class="absolute inset-0 h-full w-full object-contain" autoplay loop muted playsinline>
+    <source src="/presentations/models-bynature-workshop-1.5x.mp4" type="video/mp4" />
+  </video>
+</Slide>
+
+{/* 6 */}
+<Slide image={giraffes} imageAlt="Girafas" copyright="© Luca Galuzzi" />
+
+{/* 7 */}
+<Slide title="Pavilhão O3" subtitle="Atelier Marko Brajovic para Docol, Expo Revestir 2017" image={o3} imageAlt="Foto da vista frontal do Pavilhão O3." copyright="© Gui Morelli">
+  <SlideNotes>
+    No ateliê, trabalhei em projetos como o O3 Pavilion e aprendi Grasshopper, um ambiente de design computacional que me permitiu programar geometria.
+  </SlideNotes>
+</Slide>
+
+{/* 8 */}
+<Slide title="Pavilhão O3" subtitle="Form finding com Kangaroo Physics">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img src={o3FormFinding.src} alt="Animação de form finding do Pavilhão O3 com Kangaroo" width="528" height="264" style="image-rendering: auto;" />
+  </div>
+</Slide>
+
+{/* 9 */}
+<Slide title="Biomimética" subtitle="Janine Benyus" image={nasaBill} imageAlt="NASA/Bill Ingalls" copyright="© NASA/Bill Ingalls">
+  <div class="absolute inset-0 z-[5] bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <div class="flex flex-col items-center gap-12 text-white" style="font-family: 'Montserrat', sans-serif;">
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Formas</p>
+      <p class="text-xl sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Processos</p>
+      <p class="text-xl sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Ecossistemas</p>
+    </div>
+  </div>
+</Slide>
+
+{/* 10 */}
+<Slide image={nasaBill} imageAlt="NASA/Bill Ingalls" copyright="© NASA/Bill Ingalls">
+  <div class="absolute inset-0 z-[5] bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <div class="flex flex-col items-center gap-12 text-white" style="font-family: 'Montserrat', sans-serif;">
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Formas</p>
+      <p class="text-xl opacity-25 sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide opacity-25 sm:text-4xl lg:text-5xl">Reproduzir Processos</p>
+      <p class="text-xl opacity-25 sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide opacity-25 sm:text-4xl lg:text-5xl">Reproduzir Ecossistemas</p>
+    </div>
+  </div>
+</Slide>
+
+{/* 11 */}
+<Slide image={haeckelDetroit} imageAlt="Ernst Haeckel e Detroit Publishing Company" copyright={["© Ernst Haeckel: Diatomáceas em Formas de arte na natureza 1899 - 1904", "© Detroit Publishing Company: Porte Monumentale na Exposição Universal de 1900"]} />
+
+{/* 12 */}
+<Slide image={nasaBill} imageAlt="NASA/Bill Ingalls" copyright="© NASA/Bill Ingalls">
+  <div class="absolute inset-0 z-[5] bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <div class="flex flex-col items-center gap-12 text-white" style="font-family: 'Montserrat', sans-serif;">
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Formas</p>
+      <p class="text-xl sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Processos</p>
+      <p class="text-xl opacity-25 sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide opacity-25 sm:text-4xl lg:text-5xl">Reproduzir Ecossistemas</p>
+    </div>
+  </div>
+</Slide>
+
+{/* 13 */}
+<Slide image={gaudi} imageAlt="Antoni Gaudí em Canaan" copyright="© Canaan">
+  <div class="absolute inset-0 z-[5] bg-black/50" />
+  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center text-white">
+    <p class="max-w-4xl text-xl leading-relaxed font-light italic text-balance sm:text-3xl lg:text-4xl" style="font-family: 'Poppins', sans-serif;">"When an invention is not in harmony with natural laws it is not viable."</p>
+    <p class="mt-6 text-base font-bold tracking-wider uppercase sm:text-lg lg:text-xl" style="font-family: 'Montserrat', sans-serif;">Antoni Gaudí</p>
+  </div>
+</Slide>
+
+{/* 14 */}
+<Slide image={nasaBill} imageAlt="NASA/Bill Ingalls" copyright="© NASA/Bill Ingalls">
+  <div class="absolute inset-0 z-[5] bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <div class="flex flex-col items-center gap-12 text-white" style="font-family: 'Montserrat', sans-serif;">
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Formas</p>
+      <p class="text-xl sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Processos</p>
+      <p class="text-xl sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Ecossistemas</p>
+    </div>
+  </div>
+</Slide>
+
+{/* 15 */}
+<Slide title="Mestrado no ITECH" subtitle="Sistemas de co-design" copyright="© ICD/ITKE">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img src={codesignDiagram.src} alt="Diagrama de co-design ICD/ITKE" width="1000" height="562" />
+  </div>
+</Slide>
+
+{/* 16 */}
+<Slide title="Goethe" subtitle="Pensamento sistêmico enraizado na cultura alemã" copyright="© Goethe: Versuch die Metamorphose der Pflanzen zu erklären">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img src={urpflanze.src} alt="Urpflanze de Goethe" width="1322" height="1540" class="max-h-full w-auto" />
+  </div>
+</Slide>
+
+{/* 17 */}
+<Slide title="Building Across Scales" subtitle="Tese de mestrado, ITECH 2021" image={thesis} imageAlt="Protótipo final em escala real à noite">
+  <SlideNotes>
+    Minha tese, com Nils Opgenorth: um sistema robótico multiescalar para colar painéis de madeira laminada cruzada diretamente no canteiro.
+  </SlideNotes>
+</Slide>
+
+{/* 18 */}
+<Slide title="Building Across Scales" subtitle="Diagrama material-robótico" image={materialRoboticDiagram} imageAlt="Diagrama do sistema material-robótico" darkText />
+
+{/* 19 */}
+<Slide title="Radom Raisting" subtitle="AR Ingenieure" image={radom} imageAlt="Membrana da cúpula sendo entregue pelo guindaste" copyright="© AR Ingenieure" />
+
+{/* 20 */}
+<Slide title="Radom Raisting" subtitle="Simulação de implantação" copyright="© AR Ingenieure">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <video width="1920" height="1080" autoplay loop muted playsinline>
+      <source src="/media/projects/radom-raisting-by-ar-ingenieure/deployment-sequence.mp4" type="video/mp4" />
+    </video>
+  </div>
+</Slide>
+
+{/* 21 */}
+<Slide title="Common Sky" subtitle="ArtEngineering para Studio Other Spaces" image={commonSky} imageAlt="Interior do Common Sky" copyright="© Studio Other Spaces" />
+
+{/* 22 */}
+<Slide title="Common Sky" subtitle="Construção" image={commonSkyConstruction} imageAlt="Common Sky em construção" copyright="© Studio Other Spaces" />
+
+{/* 23 */}
+<Slide title="Canyon" subtitle="ArtEngineering para Katharina Grosse" image={canyon} imageAlt="Canyon instalado na Louis Vuitton em Paris" copyright="© Kunstgiesserei" />
+
+{/* 24 */}
+<Slide title="Canyon" subtitle="Dobra de chapas de aço" image={canyonBending} imageAlt="Configuração para dobrar chapas de aço e verificar a curvatura" copyright="© Kunstgiesserei" />
+
+{/* 25 */}
+<Slide title="Breathing Earth Sphere" subtitle="ArtEngineering para Olafur Eliasson" image={breathingEarth} imageAlt="Breathing Earth Sphere por Olafur Eliasson" copyright="© Kyungsub Shin" />
+
+{/* 26 */}
+<Slide title="Breathing Earth Sphere" subtitle="Docho Island, Coreia do Sul" image={breathingEarthInstallation} imageAlt="Vista da instalação em Docho Island" copyright="© Kyungsub Shin" />
+
+{/* 27 */}
+<Slide title="BuildSystems" subtitle="Plugin para Grasshopper" image={bsGrasshopper} imageAlt="Plugin da BuildSystems para o Grasshopper" />
+
+{/* 28 */}
+<Slide title="BuildSystems" subtitle="Calculadora de financiamento KfW" image={bsKfw} imageAlt="Calculadora de financiamento imobiliário da BuildSystems" />
+
+{/* 29 */}
+<Slide title="BuildSystems" subtitle="Ontology" image={bsOntology} imageAlt="Diagrama de ontologia BuildSystems" />
+
+{/* 30 */}
+<Slide title="Hochschule München" subtitle="DOKwood">
+  <video class="absolute inset-0 h-full w-full object-contain" autoplay loop muted playsinline>
+    <source src="/presentations/dokwood-demo.mp4" type="video/mp4" />
+  </video>
+</Slide>
+
+{/* 31 */}
+<Slide>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img src={buildup.src} alt="Buildup" width="1016" height="390" />
+  </div>
+</Slide>
+
+{/* 32 */}
+<Slide>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img src={dokwood.src} alt="DOKwood" width="2560" height="1528" class="max-h-full w-auto" />
+  </div>
+</Slide>

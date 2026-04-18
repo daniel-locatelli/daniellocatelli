@@ -6,7 +6,7 @@ People like to wear lenses to see architecture. It is so complex! (BIM, Neuroarq
 
 I've always been interested in the connection between Nature and Architecture (first slide image about nature).
 
-This is what brought me to the Atelier Marko Brajovic in São Paulo in 2016 (foto project atelier marko brajovic).
+This is what brought me to the Atelier Marko Brajovic in São Paulo in 2015 (foto project atelier marko brajovic).
 
 There I worked in project X Y Z, and I could learn grasshopper a computational design tool (another project image).
 
