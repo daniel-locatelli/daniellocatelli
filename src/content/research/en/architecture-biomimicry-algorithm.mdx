@@ -17,6 +17,8 @@ Link:
 Place: Faculdade de Arquitetura e Urbanismo - Universidade de São Paulo
 ---
 
+import ImageRow from '@/components/ImageRow.astro'
+
 ## Abstract
 
 This is an introductory study on the possibilities of applying computational design in architecture, focusing on *form finding*. To this end, case studies of great historical, technological, and artistic relevance were examined in order to analyze their respective design processes through reverse engineering using the Rhinoceros 3D software and its Grasshopper plug-in. It was found that biomimicry played a fundamental role in the researched projects and, therefore, serves as a guideline in this study. Finally, to consolidate the knowledge absorbed in this process, a temporary pavilion was proposed for FAU-USP.
@@ -43,25 +45,23 @@ For many decades, human beings have used the resources of planet Earth in a mann
 
 There are several reasons that hinder technical advancement in this area, among them real estate speculation, housing market instability, the lack of alignment in the research production process, and others. According to Ceotto, the last major evolution in the Brazilian construction sector occurred with the introduction of reinforced concrete at the end of the 1920s, and very little changed in the following decades.
 
-![Brick-laying robot by Fastbrick Robotics](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-010-img-01-xref-19.png)
+![Brick-laying robot by Fastbrick Robotics](../../../assets/content/research/architecture-biomimicry-algorithm/brick-laying-robot-by-fastbrick-robotics.jpg)
 
 In the construction field, automation is still progressing slowly, but there are already several research projects involving robots or even drones capable of laying blocks, as well as 3D printers capable of constructing entire buildings. Amid all this technological development, humanity faces an enormous housing deficit; in Brazil alone, 6.2 million homes are lacking.
 
-![Robotically constructed structure at ETH Zurich](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-011-img-01-xref-22.png)
+![Robotically constructed structure at ETH Zurich](../../../assets/content/research/architecture-biomimicry-algorithm/robotically-constructed-structure-at-eth-zurich.jpg)
 
 The artisanal production methodology in Brazil's construction industry is gradually being automated. The question is not whether this artisanal building process (brick by brick) will end, but rather when. As a consequence, the development of new practices in architectural production will be important in order to counterbalance the excessive use of resources while simultaneously accelerating the production of designs and constructions to meet the growing demand for new buildings.
 
 ### Computational design
 
-In the past, in an architectural project, each person was responsible for their own drawings; that is, the development of a project depended on individual and disconnected drawings. However, with the emergence of Building Information Modeling (BIM) and software using the NURBS modeling system, projects began to be developed collaboratively. Currently, multiple people can work on a single digital model, and there is significant data reuse throughout the entire building production process, making the team's productivity much greater.
+In the past, in an architectural project, each person was responsible for their own drawings; that is, the development of a project depended on individual and disconnected drawings. However, with the emergence of Building Information Modeling (BIM), projects began to be developed collaboratively. Currently, multiple people can work on a single digital model, and there is significant data reuse throughout the entire building production process, making the team's productivity much greater.
 
 The introduction of these technologies within the AEC (Architecture, Engineering, and Construction) industry enables control of all stages of a project, from the design process, environmental and flow simulations, cost and schedule management, fabrication and assembly of components, to many other variables that can be adjusted according to the program of requirements and the capital invested in each project. Even after the construction is completed, the available data can be used to control and monitor its operation throughout its entire life cycle.
 
 Another rapidly developing field is algorithmic architecture. Traditionally, the word algorithm refers to the process of dealing with a problem by following a finite number of steps. However, today the algorithm can be understood as a mediator between the human mind and the processing power of the computer.
 
 The mechanism of *form finding*, a term coined by the architect Frei Otto, can be understood as an algorithm; that is, a set of instructions that determine the outcome of a final form. By changing the value of one of these instructions, the final form also changes, enabling rapid evaluation with great potential for spatial and structural optimization.
-
-![Diagram of technological evolution in architecture and construction](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-017-img-01-xref-39.png)
 
 With the invention of the computer, architects and designers now have a greater capacity to deal with situations of great complexity. Geometric forms that would previously have taken days or even months to design can now be produced in much shorter periods of time.
 
@@ -87,17 +87,22 @@ Approaching nature as the main guideline of a project may seem like just another
 
 There are three levels of biomimicry according to Benyus. The first, more superficial level, simply attempts to mimic the forms and patterns of nature regardless of the method used. The second explores the various processes that nature employs to arrive at the final result; that is, the recipes for how to make things. And the third and broadest level is that of mimicking natural ecosystems, understanding that all individuals and elements compose a single sustainable, interconnected, and interdependent biosphere.
 
-![Ernst Haeckel, "Spumellaria: Art Forms in Nature"](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-018-img-01-xref-43.png)
+![Ernst Haeckel, "Spumellaria: Art Forms in Nature"](../../../assets/content/research/architecture-biomimicry-algorithm/ernst-haeckel_spumellaria.png)
 
 For Terzidis, in his book *Algorithmic Architecture*, when beginning a reflection on design, it is first necessary to reverse course and search for its origin. According to him, this reversal has the purpose of exploring the pre-Socratic philosophical view that states "nothing comes from nothing and nothing returns to nothing," leading to the idea that novelty itself is merely a sensory illusion.
 
 For him, there are two paths that can be taken toward novelty. The first is the pursuit of *innovation*, which would be like "adding leaves to the tree of knowledge"; that is, developing something based on an idea that is already known. The second is the pursuit of *originality*, which would be like "adding roots to the tree of knowledge," meaning to abstract existing information as much as possible in search of its origins and discover something that is not yet known.
 
+![Cobweb](../../../assets/content/research/architecture-biomimicry-algorithm/cobweb.jpg)
+
+
 In this sense, contrary to common thinking, biomimicry does not address only a formal question; it is not the justification of the result. Quite the opposite: just as Terzidis proposes, it directs the search for the origin of design.
 
-![Weaver bird inspecting its nest](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-020-img-01-xref-50.png)
+<ImageRow>
+![Weaver bird inspecting its nest](../../../assets/content/research/architecture-biomimicry-algorithm/weaver-bird-inspecting-its-nest.jpg)
 
-![Wild honeycomb](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-020-img-02-xref-51.png)
+![Honeycomb](../../../assets/content/research/architecture-biomimicry-algorithm/honeycomb.jpg)
+</ImageRow>
 
 Sustainable architecture as understood today is not necessarily the natural architecture that Frei Otto referred to in his studies, for example. Once it is understood that this result is the consequence of an entire rational optimization process inspired by nature. Frei Otto called this procedure the opposite path, and it led him to develop several form finding studies.
 
@@ -107,13 +112,19 @@ One can conclude that this Western view of humans as a species separate from nat
 
 As this work is an introductory investigation into the possibilities of computational design, a project with a low-complexity program of requirements was sought, thus allowing an immersion in this field of technological knowledge with a focus on algorithm development.
 
-![Salao Caramelo at FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-021-img-01-xref-54.png)
+<ImageRow>
+  ![Caramelo hall at FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/salão-caramelo-fauusp.jpg)
+
+  ![Hammocks at FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/hammocks-fauusp.jpg)
+</ImageRow>
 
 The design of the FAU-USP building is world-renowned for its brutalist architecture. Designed by Vilanova Artigas and Carlos Cascaldi, it features several spatial qualities important for an architecture school, such as ample and adaptable areas. However, despite having spaces with flexible uses, no permanent rest areas for relaxation were included.
 
 This type of space is indispensable in a program that, in addition to running full-time, requires extra dedication to complete the various assignments demanded. As a consequence, students remain at the school for much longer than the theoretically proposed schedule.
 
 Therefore, it was decided for this thesis to propose a temporary pavilion external to the building, in order to provide a rest and social area for the FAU-USP community.
+
+  ![Custom Hammock Seat at FAU-USP side lawn](../../../assets/content/research/architecture-biomimicry-algorithm/custom-hammock-seat-unknown-author.jpg)
 
 ### Selection criteria
 
@@ -135,9 +146,11 @@ It was very important to build a reference database of renowned projects that us
 
 The software used for these studies was Rhinoceros, its Grasshopper plug-in, as well as various plug-ins for Grasshopper itself, such as Kangaroo Physics, Weaverbird, and LunchBox.
 
-### Buckminster Fuller: geodesic + tensegrity
+### Buckminster Fuller: tensegrity
 
 For over five decades, Buckminster Fuller developed pioneering solutions that reflected his commitment to the potential of design innovation to create new technologies that would do "more with less." One of his main interests throughout his life was to use these discoveries to revolutionize construction and improve human habitation.
+
+  ![Buckminster Fuller holding a Tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller-tensegrity.jpg)
 
 In his studies of "synergetic geometry," Fuller sought to explore the principles of design in nature. In this process, one of his inventions stood out: the geodesic dome. It is characterized as a lightweight structure with excellent cost-effectiveness, easy to assemble, and capable of covering large spaces without the need for columns or similar supports, as it distributes stress efficiently.
 
@@ -145,21 +158,19 @@ Another line of research pursued by Fuller was the development of tensegrity, a 
 
 Tensegrity is a self-supporting spatial structure that stabilizes itself through tension. It is composed of bars and cables, with each bar isolated and connected to other bars only through tensioned cables. Its state of self-equilibrium allows the exploration of various form finding approaches with numerous applications in architecture and design.
 
-![Examples of geodesic design in nature (radiolarians)](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-028-img-01-xref-73.png)
+<ImageRow>
+  ![Examples of geodesic design in nature (radiolarians)](../../../assets/content/research/architecture-biomimicry-algorithm/radiolarians.png)
+
+  ![Tensegrity from an Icosahedron](../../../assets/content/research/architecture-biomimicry-algorithm/tensegrity-icosahedron.jpg)
+</ImageRow>
 
 This first case study seeks to replicate precisely this geodesic-shaped tensegrity referenced in the patent summary. The main objective was to approximate Fuller's geometric studies, but it was also fundamental for understanding how the Kangaroo Physics simulator works, a Grasshopper plug-in. This component recreates physical conditions that exist in the real world, for example, gravity and the elasticity of materials.
 
 Since tensegrities work primarily through cable tension and bar compression, this was an excellent opportunity to begin form finding studies.
 
-![Geodesic tensegrity algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-029-img-05-xref-81.png)
+![Geodesic tensegrity algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/tensegrity-icosahedron-grasshopper.png)
 
-![Stages of geodesic tensegrity evolution](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-029-img-01-xref-76.png)
-
-![Stages of geodesic tensegrity evolution with cables](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-029-img-02-xref-77.png)
-
-![Geodesic tensegrity with bars and cables](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-029-img-03-xref-78.png)
-
-![Complete geodesic tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-029-img-04-xref-79.png)
+![Tensegrity from an Icosahedron](../../../assets/content/research/architecture-biomimicry-algorithm/tensegrity-icosahedron.jpg)
 
 ### Frei Otto: German Pavilion at Expo 1967
 
@@ -171,9 +182,19 @@ Most of his research used physical models with the objective of constructing min
 
 To simulate the behavior of soap films, a method known as mesh relaxation was used with Grasshopper and also with the aid of the Kangaroo Physics simulator. That is, the initial mesh is altered in such a way that each segment loses its "rigidity" and begins to deform so as to reach an equilibrium of forces. The final algorithm includes a mesh refinement to avoid topographical aberrations, making it uniform.
 
+![Frei Otto: Soap Film Study](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_film-de-savon.jpg)
+
 It is important to emphasize that this algorithm is an approximation of the minimal surface of a soap film and not a faithful reproduction, as doing so would restrict the form in a way that would make it impossible to have sharp points similar to the pavilion's design.
 
 The main benefit of this case study came from the need to learn how to manipulate topographic meshes and develop a form finding method similar to Otto's.
+
+![German Pavilion Expo 1967 Inside](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_inside.jpg)
+
+![German Pavilion Expo 1967 Roof Plan](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_roofplan.jpg)
+
+![German Pavilion Expo 1967 Outside](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_outside.jpg)
+
+![German Pavilion Expo 1967 Model](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_model.jpg)
 
 ![German Pavilion Expo 1967 algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-033-img-02-xref-98.png)
 
