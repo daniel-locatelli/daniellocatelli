@@ -66,7 +66,7 @@ async function processChunk(content: string, url: string) {
       return;
     }
 
-    const { embedding } = await response.json();
+    const { embedding } = (await response.json()) as { embedding: number[] };
 
     // Insert into Supabase - We'll use our anon key since we granted insert permissions
     const insertResponse = await fetch(`${SUPABASE_URL}/rest/v1/documents`, {

@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Personal portfolio website for Daniel Locatelli (AEC software engineer). Built with Astro, integrates Claude AI for an interactive chat, and deploys to Cloudflare Pages.
+Personal portfolio website for Daniel Locatelli (AEC software engineer). Built with Astro, integrates Claude AI for an interactive chat, and deploys to Cloudflare Workers (Static Assets).
 
 ## Security
 
@@ -13,9 +13,9 @@ Personal portfolio website for Daniel Locatelli (AEC software engineer). Built w
 
 ## Tech Stack
 
-- **Framework:** Astro 5 with TypeScript
+- **Framework:** Astro 6 with TypeScript
 - **UI:** React 19 (interactive components), Tailwind CSS 4
-- **Deployment:** Cloudflare Pages (`@astrojs/cloudflare`)
+- **Deployment:** Cloudflare Workers with Static Assets (`@astrojs/cloudflare`)
 - **Content:** Astro Content Collections
 - **AI:** Anthropic Claude SDK with Supabase vector embeddings
 - **3D:** Three.js (geodesic dome component)

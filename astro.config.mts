@@ -32,7 +32,9 @@ const getSite = function () {
 export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: { build: "compile", runtime: "passthrough" },
+  }),
   server: {
     port: 4321,
     host: true,
@@ -43,10 +45,26 @@ export default defineConfig({
     rehypePlugins: [rehypeFigure, rehypeLazyImages],
   },
   vite: {
-    plugins: [tailwindcss()],
-    optimizeDeps: {
-      include: ["mermaid"],
-    },
+    plugins: [
+      tailwindcss(),
+      {
+        name: "ssr-optimize-deps",
+        apply: "serve",
+        configEnvironment(name) {
+          if (name !== "client") {
+            return {
+              optimizeDeps: {
+                include: [
+                  "astro-icon/components",
+                  "@iconify/utils",
+                  "@iconify/utils/lib/svg/build",
+                ],
+              },
+            };
+          }
+        },
+      },
+    ],
   },
   redirects: {
     "/strategies": "https://archcompute.com/en/strategies",

@@ -19,12 +19,12 @@ Portfolio website for **Daniel Locatelli**, an AEC (Architecture, Engineering & 
 
 | Layer | Technology |
 |-------|-----------|
-| **Framework** | [Astro 5](https://astro.build/) with TypeScript |
+| **Framework** | [Astro 6](https://astro.build/) with TypeScript |
 | **UI** | [React 19](https://react.dev/) · [Tailwind CSS 4](https://tailwindcss.com/) · [Framer Motion](https://www.framer.com/motion/) |
 | **Content** | Astro Content Collections |
 | **AI Chat** | [Anthropic Claude SDK](https://docs.anthropic.com/) · [Supabase](https://supabase.com/) vector embeddings (RAG) |
 | **3D** | [Three.js](https://threejs.org/) (geodesic dome visualization) |
-| **Deployment** | [Cloudflare Pages](https://pages.cloudflare.com/) |
+| **Deployment** | [Cloudflare Workers](https://workers.cloudflare.com/) (Static Assets) |
 | **Icons** | [Phosphor Icons](https://phosphoricons.com/) · [Lucide React](https://lucide.dev/) |
 | **Markdown** | react-markdown · remark-gfm · KaTeX (math) · Mermaid (diagrams) |
 

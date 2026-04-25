@@ -15,6 +15,6 @@
     },
     "resolveJsonModule": true
   },
-  "include": ["./.eslintrc.cjs", "src/**/*"],
+  "include": ["./.eslintrc.cjs", "src/**/*", "worker-configuration.d.ts"],
   "exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]
 }

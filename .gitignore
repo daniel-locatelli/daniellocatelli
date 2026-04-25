@@ -3,6 +3,8 @@ dist/
 
 # generated types
 .astro/
+worker-configuration.d.ts
+cloudflare-env.d.ts
 
 # dependencies
 node_modules/

@@ -352,7 +352,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
           throw new Error(`Failed to fetch response: ${response.status}`);
         }
 
-        const data = await response.json();
+        const data = (await response.json()) as { answer: string };
         setMessages((prev) => [
           ...prev,
           { role: "assistant", content: data.answer },
