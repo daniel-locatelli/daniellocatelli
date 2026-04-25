@@ -207,7 +207,7 @@ if (pageImage) {
                   if (!src || preloaded.has(src)) return;
                   preloaded.add(src);
                   var preloadLink = document.createElement("link");
-                  preloadLink.rel = "preload";
+                  preloadLink.rel = "prefetch";
                   preloadLink.as = "image";
                   preloadLink.href = src;
                   document.head.appendChild(preloadLink);
