@@ -1,7 +1,5 @@
 import { BASE_PATH } from "../config/server";
 import { pathJoin } from "./utils";
-import sharp from "sharp";
-import { readFile } from "node:fs/promises";
 
 export const getNavLink = (nav: string) => {
   if ((!nav || nav === "/") && BASE_PATH) {
@@ -245,10 +243,21 @@ export function modifyFileName(
  * The result is inlined in the HTML so it paints instantly — no network request.
  */
 export async function generateBlurDataUrl(imagePath: string): Promise<string> {
-  const buffer = await readFile(imagePath);
-  const webp = await sharp(buffer)
-    .resize({ width: 20 })
-    .webp({ quality: 20 })
-    .toBuffer();
-  return `data:image/webp;base64,${webp.toString("base64")}`;
+  // Lazy-load Node-only deps so this module remains importable in workerd
+  // (the dev SSR runtime). Returns "" if either import fails — the blur is
+  // purely cosmetic, so a missing placeholder is acceptable in dev.
+  try {
+    const [{ default: sharp }, { readFile }] = await Promise.all([
+      import("sharp"),
+      import("node:fs/promises"),
+    ]);
+    const buffer = await readFile(imagePath);
+    const webp = await sharp(buffer)
+      .resize({ width: 20 })
+      .webp({ quality: 20 })
+      .toBuffer();
+    return `data:image/webp;base64,${webp.toString("base64")}`;
+  } catch {
+    return "";
+  }
 }
