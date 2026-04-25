@@ -29,6 +29,10 @@ blob-report/
 # Worker build artifacts
 workers/ai-health-check/node_modules/
 workers/ai-health-check/.wrangler/
+.wrangler/
+
+# Claude Code harness state
+.claude/scheduled_tasks.lock
 
 # Content base (large binary assets for knowledge generation)
 content-base/
