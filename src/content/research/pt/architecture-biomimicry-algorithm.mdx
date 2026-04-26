@@ -17,7 +17,9 @@ Link:
 Place: Faculdade de Arquitetura e Urbanismo - Universidade de São Paulo
 ---
 
+import Figure from '@/components/Figure.astro'
 import ImageRow from '@/components/ImageRow.astro'
+import YouTube from '@/components/YouTube.astro'
 
 ## Resumo
 
@@ -175,26 +177,26 @@ Como as tensegridades funcionam basicamente por tração de cabos e compressão 
 ![Algoritmo da tensegridade geodésica no Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_01-grasshopper.png)
 
 <ImageRow>
-  ![Tensegridade a partir de um icosaedro](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_02-icosahedron.jpg)
+  ![Icosaedro](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_02-icosahedron.jpg)
 
-  ![Tensegridade a partir de um icosaedro](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_03-reciprocal.jpg)
+  ![Estrutura recíproca](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_03-reciprocal.jpg)
+
+  ![Conexões](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_04-connections.jpg)
+
+  ![Tensegridade ativa](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_05-active.jpg)
 </ImageRow>
+
+<YouTube id="oHP6yDu1oOw" />
 
 ### Frei Otto: pavilhão alemão da Expo 1967
 
 Buckminster Fuller e Frei Otto possuíam uma ideologia similar em torno de suas pesquisas, ambos viam em suas obras "(...) uma solução arquitetônica barata, durável e altamente versátil". Como cientista, Otto passou sua vida toda estudando o processo de *form finding* na natureza, e como arquiteto ele usou estes processos para desenvolver e construir diversas estruturas.
 
+<Figure credit="SN / Prestel Verlag / saai / Archiv für Architektur und Ingenieurbau /  Karlsruher Institut für Technologie">
+  ![Frei Otto](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto.jpeg)
+</Figure>
+
 O projeto do pavilhão alemão da Expo 1967 foi escolhido como estudo de caso por ser o marco em que Frei Otto finalmente apresentou seus experimentos de arquitetura leve para o mundo. Apesar de o pavilhão ter sido desenvolvido em colaboração com o arquiteto Rolf Gutbrod e por uma equipe grande e interdisciplinar, foram as pesquisas de Otto, acumuladas por vários anos, que guiaram sua concepção.
-
-A maioria de suas pesquisas utilizavam modelos físicos com o objetivo de construir estruturas com área mínima, investigar forças e caminhos de tensão e entender processos de autoformação. Os modelos de Otto simulavam problemas de maneira que suas variáveis poderiam ser alteradas quantas vezes fossem necessárias até que se conseguisse atingir condições estruturais e espaciais otimizadas. Experimentos com borracha e filme de sabão, por exemplo, ajudaram a criar superfícies mínimas que eram empregadas em estruturas de membranas tensionadas e também em construções com rede de cabos.
-
-Para simular o comportamento dos filmes de sabão, foi utilizado um método conhecido como relaxamento de malha com Grasshopper e também com o auxílio do simulador de física Kangaroo Physics. Ou seja, a malha inicial é alterada de tal modo que cada segmento perde sua "rigidez" e passa a se deformar de maneira a chegar em um equilíbrio de forças. O algoritmo final apresenta um refinamento na malha para evitar aberrações na topografia, deixando-a uniforme.
-
-![Frei Otto: estudo com filme de sabão](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_film-de-savon.jpg)
-
-É importante reforçar que este algoritmo é uma aproximação da superfície mínima de um filme de sabão e não uma reprodução fiel, pois assim sendo ela restringiria a forma de modo que seria impossível ter pontos agudos similares ao projeto do pavilhão.
-
-O principal proveito deste estudo de caso foi devido à necessidade de aprender a manipular malhas topográficas e desenvolver um método de *form finding* similar ao de Otto.
 
 <ImageRow>
   ![Pavilhão Alemão da Expo 1967 (planta de cobertura)](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_roofplan.jpg)
@@ -207,6 +209,16 @@ O principal proveito deste estudo de caso foi devido à necessidade de aprender 
 
   ![Pavilhão Alemão da Expo 1967 (exterior)](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_outside.jpg)
 </ImageRow>
+
+A maioria de suas pesquisas utilizavam modelos físicos com o objetivo de construir estruturas com área mínima, investigar forças e caminhos de tensão e entender processos de autoformação. Os modelos de Otto simulavam problemas de maneira que suas variáveis poderiam ser alteradas quantas vezes fossem necessárias até que se conseguisse atingir condições estruturais e espaciais otimizadas. Experimentos com borracha e filme de sabão, por exemplo, ajudaram a criar superfícies mínimas que eram empregadas em estruturas de membranas tensionadas e também em construções com rede de cabos.
+
+![Frei Otto: estudo com filme de sabão](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_film-de-savon.jpg)
+
+Para simular o comportamento dos filmes de sabão, foi utilizado um método conhecido como relaxamento de malha com Grasshopper e também com o auxílio do simulador de física Kangaroo Physics. Ou seja, a malha inicial é alterada de tal modo que cada segmento perde sua "rigidez" e passa a se deformar de maneira a chegar em um equilíbrio de forças. O algoritmo final apresenta um refinamento na malha para evitar aberrações na topografia, deixando-a uniforme.
+
+É importante reforçar que este algoritmo é uma aproximação da superfície mínima de um filme de sabão e não uma reprodução fiel, pois assim sendo ela restringiria a forma de modo que seria impossível ter pontos agudos similares ao projeto do pavilhão.
+
+O principal proveito deste estudo de caso foi devido à necessidade de aprender a manipular malhas topográficas e desenvolver um método de *form finding* similar ao de Otto.
 
 ![Algoritmo do pavilhão alemão da Expo 1967 no Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper.png)
 
@@ -244,11 +256,13 @@ O conceito de Tomás Saraceno sobre arquitetura é extremamente amplo. Seu inter
 
 Saraceno também possui uma grande fascinação por teias de aranha, e já possui diversas pesquisas tanto sobre o processo de desenvolvimento da estrutura das teias, quanto sobre sua geometria final. Uma de suas pesquisas, buscou digitalizar através de tomografia suportada por laser a formação geométrica de uma teia de aranha da viúva negra (*Lactradectus mactans*).
 
-![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_01.jpg)
+<ImageRow>
+  ![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_01.jpg)
 
-![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_02.jpg)
+  ![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_02.jpg)
 
-![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_03.jpg)
+  ![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_03.jpg)
+</ImageRow>
 
 Sua inspiração na natureza o levou a propor diversas instalações artísticas que exploram a ideia da biomimética. Neste estudo de caso *Galaxies forming along filaments* Saraceno usa como ponto inicial a teia de aranha que, com sua complexa geometria, é capaz de suspender pesos extremamente altos.
 

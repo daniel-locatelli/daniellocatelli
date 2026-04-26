@@ -17,7 +17,9 @@ Link:
 Place: Faculdade de Arquitetura e Urbanismo - Universidade de São Paulo
 ---
 
+import Figure from '@/components/Figure.astro'
 import ImageRow from '@/components/ImageRow.astro'
+import YouTube from '@/components/YouTube.astro'
 
 ## Zusammenfassung
 
@@ -175,26 +177,26 @@ Da Tensegrity-Strukturen grundsätzlich durch Kabelzug und Stabdruck funktionier
 ![Algorithmus der geodätischen Tensegrity in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_01-grasshopper.png)
 
 <ImageRow>
-  ![Tensegrity aus einem Ikosaeder](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_02-icosahedron.jpg)
+  ![Ikosaeder](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_02-icosahedron.jpg)
 
-  ![Tensegrity aus einem Ikosaeder](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_03-reciprocal.jpg)
+  ![Reziproke Struktur](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_03-reciprocal.jpg)
+
+  ![Verbindungen](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_04-connections.jpg)
+
+  ![Aktive Tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_05-active.jpg)
 </ImageRow>
+
+<YouTube id="oHP6yDu1oOw" />
 
 ### Frei Otto: Deutscher Pavillon der Expo 1967
 
 Buckminster Fuller und Frei Otto teilten eine ähnliche Ideologie in ihrer Forschung; beide sahen in ihren Werken "(...) eine günstige, dauerhafte und hochgradig vielseitige architektonische Lösung". Als Wissenschaftler verbrachte Otto sein ganzes Leben mit dem Studium des *form finding*-Prozesses in der Natur, und als Architekt nutzte er diese Prozesse, um verschiedene Strukturen zu entwerfen und zu bauen.
 
+<Figure credit="SN / Prestel Verlag / saai / Archiv für Architektur und Ingenieurbau /  Karlsruher Institut für Technologie">
+  ![Frei Otto](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto.jpeg)
+</Figure>
+
 Das Projekt des deutschen Pavillons der Expo 1967 wurde als Fallstudie gewählt, weil es den Meilenstein darstellt, an dem Frei Otto seine Experimente mit leichter Architektur der Welt präsentierte. Obwohl der Pavillon in Zusammenarbeit mit dem Architekten Rolf Gutbrod und einem großen interdisziplinären Team entwickelt wurde, waren es Ottos über viele Jahre angesammelte Forschungen, die seinen Entwurf leiteten.
-
-Die meisten seiner Forschungen verwendeten physische Modelle mit dem Ziel, Strukturen mit minimaler Fläche zu konstruieren, Kräfte und Spannungspfade zu untersuchen und Prozesse der Selbstformung zu verstehen. Ottos Modelle simulierten Probleme auf eine Weise, die es erlaubte, ihre Variablen so oft wie nötig zu ändern, bis optimierte strukturelle und räumliche Bedingungen erreicht wurden. Experimente mit Gummi und Seifenfilmen halfen beispielsweise bei der Erzeugung von Minimalflächen, die in Membrantragwerken und auch in Seilnetzkonstruktionen eingesetzt wurden.
-
-Um das Verhalten von Seifenfilmen zu simulieren, wurde eine als Netzrelaxation bekannte Methode mit Grasshopper und auch mit Hilfe des Physiksimulators Kangaroo Physics verwendet. Das heißt, das Ausgangsnetz wird so verändert, dass jedes Segment seine "Steifigkeit" verliert und sich so verformt, dass ein Kräftegleichgewicht erreicht wird. Der endgültige Algorithmus beinhaltet eine Netzverfeinerung, um Anomalien in der Topografie zu vermeiden und sie gleichmäßig zu gestalten.
-
-![Frei Otto: Seifenfilm-Studie](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_film-de-savon.jpg)
-
-Es ist wichtig zu betonen, dass dieser Algorithmus eine Annäherung an die Minimalfläche eines Seifenfilms ist und keine originalgetreue Reproduktion, da eine solche die Form so einschränken würde, dass es unmöglich wäre, spitze Punkte ähnlich dem Pavillonprojekt zu haben.
-
-Der Hauptnutzen dieser Fallstudie ergab sich aus der Notwendigkeit, den Umgang mit topografischen Netzen zu erlernen und eine *form finding*-Methode ähnlich der von Otto zu entwickeln.
 
 <ImageRow>
   ![Deutscher Pavillon Expo 1967 (Dachgrundriss)](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_roofplan.jpg)
@@ -207,6 +209,16 @@ Der Hauptnutzen dieser Fallstudie ergab sich aus der Notwendigkeit, den Umgang m
 
   ![Deutscher Pavillon Expo 1967 (Außenansicht)](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_outside.jpg)
 </ImageRow>
+
+Die meisten seiner Forschungen verwendeten physische Modelle mit dem Ziel, Strukturen mit minimaler Fläche zu konstruieren, Kräfte und Spannungspfade zu untersuchen und Prozesse der Selbstformung zu verstehen. Ottos Modelle simulierten Probleme auf eine Weise, die es erlaubte, ihre Variablen so oft wie nötig zu ändern, bis optimierte strukturelle und räumliche Bedingungen erreicht wurden. Experimente mit Gummi und Seifenfilmen halfen beispielsweise bei der Erzeugung von Minimalflächen, die in Membrantragwerken und auch in Seilnetzkonstruktionen eingesetzt wurden.
+
+![Frei Otto: Seifenfilm-Studie](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_film-de-savon.jpg)
+
+Um das Verhalten von Seifenfilmen zu simulieren, wurde eine als Netzrelaxation bekannte Methode mit Grasshopper und auch mit Hilfe des Physiksimulators Kangaroo Physics verwendet. Das heißt, das Ausgangsnetz wird so verändert, dass jedes Segment seine "Steifigkeit" verliert und sich so verformt, dass ein Kräftegleichgewicht erreicht wird. Der endgültige Algorithmus beinhaltet eine Netzverfeinerung, um Anomalien in der Topografie zu vermeiden und sie gleichmäßig zu gestalten.
+
+Es ist wichtig zu betonen, dass dieser Algorithmus eine Annäherung an die Minimalfläche eines Seifenfilms ist und keine originalgetreue Reproduktion, da eine solche die Form so einschränken würde, dass es unmöglich wäre, spitze Punkte ähnlich dem Pavillonprojekt zu haben.
+
+Der Hauptnutzen dieser Fallstudie ergab sich aus der Notwendigkeit, den Umgang mit topografischen Netzen zu erlernen und eine *form finding*-Methode ähnlich der von Otto zu entwickeln.
 
 ![Algorithmus des deutschen Pavillons der Expo 1967 in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper.png)
 
@@ -244,11 +256,13 @@ Tomás Saracenos Architekturkonzept ist äußerst umfassend. Sein Interesse an d
 
 Saraceno hat auch eine große Faszination für Spinnennetze und verfügt bereits über zahlreiche Forschungen sowohl zum Entstehungsprozess der Netzstruktur als auch zu ihrer endgültigen Geometrie. In einer seiner Forschungen versuchte er, die geometrische Formation eines Spinnennetzes der Schwarzen Witwe (*Lactradectus mactans*) mittels lasergestützter Tomografie zu digitalisieren.
 
-![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_01.jpg)
+<ImageRow>
+  ![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_01.jpg)
 
-![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_02.jpg)
+  ![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_02.jpg)
 
-![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_03.jpg)
+  ![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_03.jpg)
+</ImageRow>
 
 Seine Inspiration durch die Natur führte ihn dazu, verschiedene künstlerische Installationen vorzuschlagen, die die Idee der Biomimetik erforschen. In dieser Fallstudie *Galaxies forming along filaments* verwendet Saraceno das Spinnennetz als Ausgangspunkt, das mit seiner komplexen Geometrie in der Lage ist, extrem hohe Gewichte zu tragen.
 
