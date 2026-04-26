@@ -51,17 +51,22 @@ export default defineConfig({
         name: "ssr-optimize-deps",
         apply: "serve",
         configEnvironment(name) {
-          if (name !== "client") {
+          if (name === "client") {
             return {
               optimizeDeps: {
-                include: [
-                  "astro-icon/components",
-                  "@iconify/utils",
-                  "@iconify/utils/lib/svg/build",
-                ],
+                include: ["mermaid"],
               },
             };
           }
+          return {
+            optimizeDeps: {
+              include: [
+                "astro-icon/components",
+                "@iconify/utils",
+                "@iconify/utils/lib/svg/build",
+              ],
+            },
+          };
         },
       },
     ],

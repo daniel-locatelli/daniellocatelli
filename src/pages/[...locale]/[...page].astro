@@ -154,7 +154,17 @@ if (pageImage) {
                     data-cover-src={subpage.coverSrc || undefined}
                   >
                     <div class="relative overflow-hidden">
-                      {image && (
+                      {image && (image.format === "svg" ? (
+                        <img
+                          class="object-cover transition-transform duration-500 group-hover:scale-110"
+                          src={image.src}
+                          alt={subpage.data.CoverAlt || ""}
+                          width={image.width}
+                          height={image.height}
+                          loading="eager"
+                          decoding="async"
+                        />
+                      ) : (
                         <Image
                           class="object-cover transition-transform duration-500 group-hover:scale-110"
                           src={image}
@@ -164,7 +174,7 @@ if (pageImage) {
                           widths={[400, 800]}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
-                      )}
+                      ))}
                       <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity group-hover:opacity-40 lg:hidden" />
                       {/* Desktop Hover Overlay */}
                       <div class="absolute inset-0 hidden items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:flex">

@@ -35,3 +35,67 @@
     @apply mx-auto flex min-h-screen max-w-3xl flex-col px-8 pt-16 font-body text-sm font-normal text-zinc-200 antialiased;
   }
 }
+
+/* ImageRow and Figure component styles. Defined globally because Astro 6's
+   MDX integration does not inline scoped <style> blocks (even with is:global)
+   from .astro components imported into .mdx files. */
+.image-row img,
+.image-row video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.image-row p {
+  margin: 0;
+}
+
+.image-row figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-row figure > img,
+.image-row figure > picture,
+.image-row figure > video {
+  aspect-ratio: 4 / 5;
+}
+
+.image-row video:fullscreen {
+  object-fit: contain;
+  aspect-ratio: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.image-row figcaption {
+  font-size: 0.875rem;
+  color: var(--tw-prose-captions, #a1a1aa);
+  margin-top: 0.5rem;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.figure-credit > p {
+  display: contents;
+}
+
+.figure-credit img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (hover: hover) {
+  .figure-credit .credit-pill {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  .figure-credit:hover .credit-pill,
+  .figure-credit:focus-within .credit-pill {
+    opacity: 1;
+  }
+}

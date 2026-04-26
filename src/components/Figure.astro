@@ -1,0 +1,25 @@
+---
+/**
+ * Renders a single image with a credit/source line overlaid on the image.
+ * Uses the shared Credit pill so styling stays in lockstep with Slide.astro.
+ * Alt text remains on the <img> for accessibility but is not rendered visibly.
+ *
+ * Usage in MDX:
+ *   import Figure from '@/components/Figure.astro'
+ *   <Figure credit="SN / Prestel Verlag / saai / Archiv für Architektur und Ingenieurbau / Karlsruher Institut für Technologie">
+ *     ![Alt text](./path.jpg)
+ *   </Figure>
+ */
+import Credit from "@/components/Credit.astro";
+
+interface Props {
+  credit: string | string[];
+}
+
+const { credit } = Astro.props;
+---
+
+<figure class="figure-credit not-prose relative my-6 overflow-hidden rounded-lg">
+  <slot />
+  <Credit credit={credit} class="bottom-2 left-2" />
+</figure>

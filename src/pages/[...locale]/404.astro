@@ -1,8 +1,7 @@
 ---
 import Base from "@/layouts/Base.astro";
 export { getStaticPaths } from "src/lib/routes-helpers";
-import logo from "@/assets/ui/logo-dl.svg";
-import { Image } from "astro:assets";
+import Logo from "@/assets/ui/logo-dl.svg";
 ---
 
 <Base
@@ -14,10 +13,8 @@ import { Image } from "astro:assets";
 >
   <div class="flex h-full flex-col items-center justify-center gap-4">
     <div class="flex items-center justify-center gap-4">
-      <Image
-        src={logo}
-        alt="Daniel Locatelli logo"
-        loading={"eager"}
+      <Logo
+        aria-label="Daniel Locatelli logo"
         class="inline mix-blend-difference"
       />
       <div class="text-4xl font-extralight">404</div>

@@ -133,11 +133,21 @@ if (image) {
             alt=""
           />
         )}
-        <Image
-          class="hero-img absolute inset-0 h-full w-full object-cover opacity-0"
-          src={image}
-          alt={subpage.data.CoverAlt || ""}
-        />
+        {image.format === "svg" ? (
+          <img
+            class="hero-img absolute inset-0 h-full w-full object-cover opacity-0"
+            src={image.src}
+            alt={subpage.data.CoverAlt || ""}
+            width={image.width}
+            height={image.height}
+          />
+        ) : (
+          <Image
+            class="hero-img absolute inset-0 h-full w-full object-cover opacity-0"
+            src={image}
+            alt={subpage.data.CoverAlt || ""}
+          />
+        )}
         <a
           href="#content"
           aria-label="Scroll to content"

@@ -11,64 +11,28 @@
  */
 ---
 
-<div class="image-row not-prose my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+<div class="image-row not-prose my-6 flex flex-col gap-4 sm:flex-row [&>*]:min-w-0 sm:[&>*]:flex-1">
   <slot />
 </div>
 
-<style>
-  .image-row :global(img),
-  .image-row :global(video) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0.5rem;
-  }
-
-  .image-row :global(p) {
-    margin: 0;
-  }
-
-  .image-row :global(figure) {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .image-row :global(figure > img),
-  .image-row :global(figure > picture),
-  .image-row :global(figure > video) {
-    aspect-ratio: 4 / 5;
-  }
-
-  .image-row :global(video:fullscreen) {
-    object-fit: contain;
-    aspect-ratio: auto;
-    width: 100%;
-    height: 100%;
-  }
-
-  .image-row :global(figcaption) {
-    font-size: 0.875rem;
-    color: var(--tw-prose-captions, #a1a1aa);
-    margin-top: 0.5rem;
-    text-align: center;
-    text-wrap: balance;
-  }
-</style>
-
 <script>
-  document.querySelectorAll(".image-row").forEach((row) => {
-    row.querySelectorAll("img").forEach((img) => {
-      const alt = img.getAttribute("alt");
-      if (!alt) return;
+  function wrapImageRowImages() {
+    document.querySelectorAll(".image-row").forEach((row) => {
+      row.querySelectorAll("img").forEach((img) => {
+        if (img.parentElement?.tagName === "FIGURE") return;
+        const alt = img.getAttribute("alt");
+        if (!alt) return;
 
-      const figure = document.createElement("figure");
-      const caption = document.createElement("figcaption");
-      caption.textContent = alt;
+        const figure = document.createElement("figure");
+        const caption = document.createElement("figcaption");
+        caption.textContent = alt;
 
-      img.parentNode!.insertBefore(figure, img);
-      figure.appendChild(img);
-      figure.appendChild(caption);
+        img.parentNode!.insertBefore(figure, img);
+        figure.appendChild(img);
+        figure.appendChild(caption);
+      });
     });
-  });
+  }
+
+  document.addEventListener("astro:page-load", wrapImageRowImages);
 </script>

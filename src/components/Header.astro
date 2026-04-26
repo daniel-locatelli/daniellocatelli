@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
-import logo from "@/assets/ui/logo-dl.svg";
+import Logo from "@/assets/ui/logo-dl.svg";
 import WhatsApp from "@/assets/ui/digital-glyph-white.svg";
 import { siteConfig } from "@/config/site";
 import { Icon } from "astro-icon/components";
@@ -32,10 +31,8 @@ const { slug } = Astro.props as Props;
       class="inline-flex h-10 w-12 items-center sm:relative sm:inline-block sm:justify-between"
       href={locale === "en" ? "/" : "/" + locale}
     >
-      <Image
-        src={logo}
-        alt="Daniel Locatelli logo"
-        loading={"eager"}
+      <Logo
+        aria-label="Daniel Locatelli logo"
         class="inline mix-blend-difference"
       />
     </a>
@@ -71,7 +68,7 @@ const { slug } = Astro.props as Props;
         rel="noopener noreferrer"
         class="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 bg-linear-to-r from-green-700 to-green-800 px-4 py-3 text-base text-white transition hover:from-green-800 hover:to-green-900 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:outline-none sm:hidden md:w-fit"
       >
-        <Image src={WhatsApp} alt="WhatsApp Icon" class="size-5 md:size-4" />
+        <WhatsApp aria-hidden="true" class="size-5 md:size-4" />
         {locale === "en" && "Request a quote"}
         {locale === "pt" && "Faça um orçamento"}
         {locale === "de" && "Angebot anfordern"}

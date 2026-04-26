@@ -1,0 +1,33 @@
+---
+/**
+ * Frosted-pill credit/copyright overlay. Positions itself absolutely;
+ * the parent element must establish a positioning context (position: relative).
+ *
+ * Shared by Slide.astro (full-screen presentation slides) and Figure.astro
+ * (inline content images). Keep visual changes here so both surfaces stay
+ * consistent.
+ */
+interface Props {
+  credit: string | string[];
+  class?: string;
+}
+
+const { credit, class: className } = Astro.props;
+
+function withCopyright(line: string): string {
+  return /^\s*(©|\(c\))/i.test(line) ? line : `© ${line}`;
+}
+---
+
+<div
+  class:list={[
+    "credit-pill absolute z-10 rounded bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm",
+    className,
+  ]}
+>
+  {
+    Array.isArray(credit)
+      ? credit.map((line) => <p>{withCopyright(line)}</p>)
+      : <p>{withCopyright(credit)}</p>
+  }
+</div>

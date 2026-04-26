@@ -17,7 +17,9 @@ Link:
 Place: Faculdade de Arquitetura e Urbanismo - Universidade de São Paulo
 ---
 
+import Figure from '@/components/Figure.astro'
 import ImageRow from '@/components/ImageRow.astro'
+import YouTube from '@/components/YouTube.astro'
 
 ## Abstract
 
@@ -93,30 +95,23 @@ For Terzidis, in his book *Algorithmic Architecture*, when beginning a reflectio
 
 For him, there are two paths that can be taken toward novelty. The first is the pursuit of *innovation*, which would be like "adding leaves to the tree of knowledge"; that is, developing something based on an idea that is already known. The second is the pursuit of *originality*, which would be like "adding roots to the tree of knowledge," meaning to abstract existing information as much as possible in search of its origins and discover something that is not yet known.
 
-![Cobweb](../../../assets/content/research/architecture-biomimicry-algorithm/cobweb.jpg)
-
-
 In this sense, contrary to common thinking, biomimicry does not address only a formal question; it is not the justification of the result. Quite the opposite: just as Terzidis proposes, it directs the search for the origin of design.
-
-<ImageRow>
-![Weaver bird inspecting its nest](../../../assets/content/research/architecture-biomimicry-algorithm/weaver-bird-inspecting-its-nest.jpg)
-
-![Honeycomb](../../../assets/content/research/architecture-biomimicry-algorithm/honeycomb.jpg)
-</ImageRow>
 
 Sustainable architecture as understood today is not necessarily the natural architecture that Frei Otto referred to in his studies, for example. Once it is understood that this result is the consequence of an entire rational optimization process inspired by nature. Frei Otto called this procedure the opposite path, and it led him to develop several form finding studies.
 
 One can conclude that this Western view of humans as a species separate from nature inhibits an immense possibility of technological exploration with mutual benefit for both humans and nature.
 
+<ImageRow>
+  ![Cobweb](../../../assets/content/research/architecture-biomimicry-algorithm/cobweb.jpg)
+
+  ![Weaver bird inspecting its nest](../../../assets/content/research/architecture-biomimicry-algorithm/weaver-bird-inspecting-its-nest.jpg)
+
+  ![Honeycomb](../../../assets/content/research/architecture-biomimicry-algorithm/honeycomb.jpg)
+</ImageRow>
+
 ### Problem identification
 
 As this work is an introductory investigation into the possibilities of computational design, a project with a low-complexity program of requirements was sought, thus allowing an immersion in this field of technological knowledge with a focus on algorithm development.
-
-<ImageRow>
-  ![Caramelo hall at FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/salão-caramelo-fauusp.jpg)
-
-  ![Hammocks at FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/hammocks-fauusp.jpg)
-</ImageRow>
 
 The design of the FAU-USP building is world-renowned for its brutalist architecture. Designed by Vilanova Artigas and Carlos Cascaldi, it features several spatial qualities important for an architecture school, such as ample and adaptable areas. However, despite having spaces with flexible uses, no permanent rest areas for relaxation were included.
 
@@ -124,21 +119,32 @@ This type of space is indispensable in a program that, in addition to running fu
 
 Therefore, it was decided for this thesis to propose a temporary pavilion external to the building, in order to provide a rest and social area for the FAU-USP community.
 
-  ![Custom Hammock Seat at FAU-USP side lawn](../../../assets/content/research/architecture-biomimicry-algorithm/custom-hammock-seat-unknown-author.jpg)
+<ImageRow>
+  ![Caramelo hall at FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/salão-caramelo-fauusp.jpg)
+
+  ![Hammocks at FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/hammocks-fauusp.jpg)
+
+  ![Custom Seat at FAU-USP](../../../assets/content/research/architecture-biomimicry-algorithm/custom-hammock-seat-unknown-author.jpg)
+</ImageRow>
 
 ### Selection criteria
 
 Finally, before beginning the study of both the algorithm and its production method, it was important to keep some objectives and criteria in mind during development. After all, it is very easy to get carried away by the infinite possibilities of this type of technique and end up forgetting that, above all, the study is being done to improve the practice of architecture, which in turn is made for people. For this reason, some criteria were selected to keep the direction of this research focused on the user.
 
-**Comfort:** It is important to consider the type of material chosen, solar exposure, and ergonomics. The study of ergonomics is one of the most important, as the main objective is for people to feel comfortable enough to even take a nap after lunch. The final result should then allow variations so that users can assume the most diverse positions: sitting, reclining, and lying down.
+#### Comfort
+It is important to consider the type of material chosen, solar exposure, and ergonomics. The study of ergonomics is one of the most important, as the main objective is for people to feel comfortable enough to even take a nap after lunch. The final result should then allow variations so that users can assume the most diverse positions: sitting, reclining, and lying down.
 
-**Optimization:** The method of designing the project should enable the optimization of form and structure. The algorithm should produce an economical final result that uses the least amount of material possible.
+#### Optimization
+The method of designing the project should enable the optimization of form and structure. The algorithm should produce an economical final result that uses the least amount of material possible.
 
-**Fabricability:** It is essential that the project meets the existing fabrication possibilities. The project should take into account the available production characteristics and methods, and should preferably be prefabricated.
+#### Fabricability
+It is essential that the project meets the existing fabrication possibilities. The project should take into account the available production characteristics and methods, and should preferably be prefabricated.
 
-**Respect for Historical Heritage:** Another crucial point is that this pavilion must be temporary, since FAU-USP is a heritage-listed building and therefore does not allow any type of permanent intervention to either its structure or its surroundings.
+#### Respect for Historical Heritage
+Another crucial point is that this pavilion must be temporary, since FAU-USP is a heritage-listed building and therefore does not allow any type of permanent intervention to either its structure or its surroundings.
 
-**Identity:** With the intention of connecting FAU-USP to a different way of thinking beyond the established modernist vision.
+#### Identity
+With the intention of connecting FAU-USP to a different way of thinking beyond the established modernist vision.
 
 ## Case studies: algorithms
 
@@ -150,7 +156,7 @@ The software used for these studies was Rhinoceros, its Grasshopper plug-in, as 
 
 For over five decades, Buckminster Fuller developed pioneering solutions that reflected his commitment to the potential of design innovation to create new technologies that would do "more with less." One of his main interests throughout his life was to use these discoveries to revolutionize construction and improve human habitation.
 
-  ![Buckminster Fuller holding a Tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller-tensegrity.jpg)
+  ![Buckminster Fuller holding a Tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_geodesic-tensegrity.jpg)
 
 In his studies of "synergetic geometry," Fuller sought to explore the principles of design in nature. In this process, one of his inventions stood out: the geodesic dome. It is characterized as a lightweight structure with excellent cost-effectiveness, easy to assemble, and capable of covering large spaces without the need for columns or similar supports, as it distributes stress efficiently.
 
@@ -159,44 +165,86 @@ Another line of research pursued by Fuller was the development of tensegrity, a 
 Tensegrity is a self-supporting spatial structure that stabilizes itself through tension. It is composed of bars and cables, with each bar isolated and connected to other bars only through tensioned cables. Its state of self-equilibrium allows the exploration of various form finding approaches with numerous applications in architecture and design.
 
 <ImageRow>
-  ![Examples of geodesic design in nature (radiolarians)](../../../assets/content/research/architecture-biomimicry-algorithm/radiolarians.png)
+  ![Examples of geodesic design in nature (radiolarians)](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_radiolarians.png)
 
-  ![Geodesic Tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/geodesic-tensegrity.png)
+  ![Geodesic Tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_geodesic-tensegrity.png)
 </ImageRow>
 
 This first case study seeks to replicate precisely this geodesic-shaped tensegrity referenced in the patent summary. The main objective was to approximate Fuller's geometric studies, but it was also fundamental for understanding how the Kangaroo Physics simulator works, a Grasshopper plug-in. This component recreates physical conditions that exist in the real world, for example, gravity and the elasticity of materials.
 
 Since tensegrities work primarily through cable tension and bar compression, this was an excellent opportunity to begin form finding studies.
 
-![Geodesic tensegrity algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/tensegrity-icosahedron-grasshopper.png)
+![Geodesic tensegrity algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_01-grasshopper.png)
 
-![Tensegrity from an Icosahedron](../../../assets/content/research/architecture-biomimicry-algorithm/tensegrity-icosahedron.jpg)
+<ImageRow>
+  ![Icosahedron](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_02-icosahedron.jpg)
+
+  ![Reciprocal Structure](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_03-reciprocal.jpg)
+
+  ![Connections](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_04-connections.jpg)
+
+  ![Active Tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_tensegrity_05-active.jpg)
+</ImageRow>
+
+<YouTube id="oHP6yDu1oOw" />
 
 ### Frei Otto: German Pavilion at Expo 1967
 
 Buckminster Fuller and Frei Otto shared a similar ideology regarding their research; both saw in their works "(...) a cheap, durable, and highly versatile architectural solution." As a scientist, Otto spent his entire life studying the process of *form finding* in nature, and as an architect he used these processes to develop and construct various structures.
 
+<Figure credit="SN / Prestel Verlag / saai / Archiv für Architektur und Ingenieurbau /  Karlsruher Institut für Technologie">
+  ![Active Tensegrity](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto.jpeg)
+</Figure>
+
 The German Pavilion project for Expo 1967 was chosen as a case study because it marks the moment when Frei Otto finally presented his lightweight architecture experiments to the world. Although the pavilion was developed in collaboration with architect Rolf Gutbrod and by a large interdisciplinary team, it was Otto's research, accumulated over many years, that guided its conception.
+
+<ImageRow>
+  ![German Pavilion Expo 1967 Roof Plan](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_roofplan.jpg)
+
+  ![German Pavilion Expo 1967 Model](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_model_square.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![German Pavilion Expo 1967 Inside](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_inside.jpg)
+
+  ![German Pavilion Expo 1967 Outside](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_outside.jpg)
+</ImageRow>
 
 Most of his research used physical models with the objective of constructing minimal-area structures, investigating forces and tension paths, and understanding self-forming processes. Otto's models simulated problems in such a way that their variables could be altered as many times as necessary until optimized structural and spatial conditions were achieved. Experiments with rubber and soap film, for example, helped create minimal surfaces that were employed in tensioned membrane structures and also in cable net constructions.
 
-To simulate the behavior of soap films, a method known as mesh relaxation was used with Grasshopper and also with the aid of the Kangaroo Physics simulator. That is, the initial mesh is altered in such a way that each segment loses its "rigidity" and begins to deform so as to reach an equilibrium of forces. The final algorithm includes a mesh refinement to avoid topographical aberrations, making it uniform.
-
 ![Frei Otto: Soap Film Study](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_film-de-savon.jpg)
+
+To simulate the behavior of soap films, a method known as mesh relaxation was used with Grasshopper and also with the aid of the Kangaroo Physics simulator. That is, the initial mesh is altered in such a way that each segment loses its "rigidity" and begins to deform so as to reach an equilibrium of forces. The final algorithm includes a mesh refinement to avoid topographical aberrations, making it uniform.
 
 It is important to emphasize that this algorithm is an approximation of the minimal surface of a soap film and not a faithful reproduction, as doing so would restrict the form in a way that would make it impossible to have sharp points similar to the pavilion's design.
 
 The main benefit of this case study came from the need to learn how to manipulate topographic meshes and develop a form finding method similar to Otto's.
 
-![German Pavilion Expo 1967 Inside](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_inside.jpg)
+![German Pavilion Expo 1967 - Algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper.png)
 
-![German Pavilion Expo 1967 Roof Plan](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_roofplan.jpg)
+<ImageRow>
+  ![German Pavilion Expo 1967 - Base Geometry](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper_01-base-geometry.jpg)
 
-![German Pavilion Expo 1967 Outside](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_outside.jpg)
+  ![German Pavilion Expo 1967 - Base Mesh](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper_02-base-mesh.jpg)
+</ImageRow>
 
-![German Pavilion Expo 1967 Model](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_model.jpg)
+<ImageRow>
+  ![German Pavilion Expo 1967 - Remesh](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper_03-remesh.jpg)
 
-![German Pavilion Expo 1967 algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-033-img-02-xref-98.png)
+  ![German Pavilion Expo 1967 - Anchor Points XYZ](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper_04-anchor-points-xyz.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![German Pavilion Expo 1967 - Anchor Points XY](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper_05-anchor-points-xy.jpg)
+
+  ![German Pavilion Expo 1967 - Poles](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper_06-poles.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![German Pavilion Expo 1967 - Naked Edges](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper_07-naked-edges.jpg)
+
+  ![German Pavilion Expo 1967 - Kangaroo System Activated](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper_08-kangaroo-system-activated.jpg)
+</ImageRow>
 
 ### Tomas Saraceno: Galaxies Forming Along Filaments
 
@@ -204,7 +252,17 @@ Like the architects mentioned previously, Saraceno's concerns arise from the con
 
 Tomas Saraceno's concept of architecture is extremely broad. His interest in this field stems from his fascination with utopian theories and astronomical constellations. Over the past 10 years, he has been imagining and creating various prototypes that reflect new ways of perceiving nature in the pursuit of a more sustainable and emancipatory practice in architecture, proposing, for example, a floating, modular, and transnational city.
 
+![Cosmic Jive: The Spider Sessions](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_cosmic-jive-the-spider-sessions.jpg)
+
 Saraceno also has a great fascination with spider webs, and already has several research projects on both the developmental process of web structures and their final geometry. One of his research projects sought to digitize, through laser-supported tomography, the geometric formation of a black widow spider's web (*Latrodectus mactans*).
+
+<ImageRow>
+  ![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_01.jpg)
+
+  ![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_02.jpg)
+
+  ![Galaxies Forming Along Filaments](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming-along-filaments_03.jpg)
+</ImageRow>
 
 His inspiration from nature led him to propose several artistic installations that explore the idea of biomimicry. In this case study, *Galaxies Forming Along Filaments*, Saraceno uses as a starting point the spider web, which, with its complex geometry, is capable of suspending extremely high weights.
 
@@ -212,9 +270,9 @@ To develop this case study, it was necessary to investigate the project in two w
 
 This case study was especially important for requiring an approach using Galapagos. Through it, an introduction to the functioning of this type of nature-inspired algorithm was possible, and it allowed a glimpse of the great potential it has to serve not only as a tool, but as a problem solver for issues that previously required extensive work on the part of architects.
 
-![Galaxies Forming Along Filaments algorithm in Grasshopper with Galapagos](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-037-img-01-xref-120.png)
+![Galaxies Forming Along Filaments - Algorithm in Grasshopper with Galapagos](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-037-img-01-xref-120.png)
 
-![Stages of evolution of Saraceno's spheres](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-038-img-01-xref-127.png)
+![Galaxies Forming Along Filaments - Stages of Evolution of Saraceno's Spheres](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-038-img-01-xref-127.png)
 
 ![Stages of evolution of Saraceno's spheres](../../../assets/content/research/architecture-biomimicry-algorithm/pdf-page-038-img-05-xref-131.png)
 
