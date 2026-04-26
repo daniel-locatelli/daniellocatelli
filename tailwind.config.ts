@@ -112,18 +112,22 @@ export default {
             },
             "thead th": {
               fontWeight: "300",
-              "@apply border-b border-dashed border-zinc-600": "",
+              borderBottomWidth: "1px",
+              borderBottomStyle: "dashed",
+              borderBottomColor: "var(--color-zinc-600)",
             },
             "tbody tr": {
               borderBottomWidth: "none",
             },
             tfoot: {
-              "@apply border-t border-dashed border-zinc-600": "",
+              borderTopWidth: "1px",
+              borderTopStyle: "dashed",
+              borderTopColor: "var(--color-zinc-600)",
             },
             sup: {
-              "@apply ms-0.5": "",
+              marginInlineStart: "0.125rem",
               a: {
-                "@apply bg-none": "",
+                backgroundImage: "none",
                 "&:hover": {
                   color: "var(--color-green-400)",
                   textDecoration: "none",
