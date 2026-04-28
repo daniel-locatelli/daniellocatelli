@@ -8,6 +8,7 @@ import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import { rehypeLazyImages } from "./src/lib/rehype-lazy-images";
 import { rehypeFigure } from "./src/lib/rehype-figure";
+import { rehypeFootnoteTooltips } from "./src/lib/rehype-footnote-tooltips";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -42,7 +43,7 @@ export default defineConfig({
   integrations: [sitemap(), icon(), react(), mdx()],
   prefetch: true,
   markdown: {
-    rehypePlugins: [rehypeFigure, rehypeLazyImages],
+    rehypePlugins: [rehypeFigure, rehypeLazyImages, rehypeFootnoteTooltips],
   },
   vite: {
     plugins: [

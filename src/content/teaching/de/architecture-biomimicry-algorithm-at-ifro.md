@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/teaching/architecture-biomimicry-algorithm-at-ifro/ifro-vilhena-group-foto.jpeg
-CoverAlt: Gruppenfoto mit allen Schülern.
+CoverAlt: Alle Schüler als Gruppe versammelt.
 Description: "Während meines Besuchs in meiner Heimatstadt schlug ich einen Vortrag für den Architektur- und Städtebaukurs des Bundesinstituts von Rondônia - IFRO vor. Ich präsentierte einige Werke und Forschungen, die ich bisher gemacht hatte, und diskutierte die Zukunft des Berufs inmitten so vieler technologischer Veränderungen."
 Name: Architektur + Biomimetik + Algorithmus
 Category: Talk

@@ -1,25 +1,53 @@
 ---
 /**
- * Renders a single image with a credit/source line overlaid on the image.
- * Uses the shared Credit pill so styling stays in lockstep with Slide.astro.
- * Alt text remains on the <img> for accessibility but is not rendered visibly.
+ * Renders a single image with a visible caption below it (from the image's
+ * markdown alt text) and a credit/source pill overlaid on the image. The
+ * Credit pill stays in lockstep with Slide.astro via the shared Credit
+ * component.
+ *
+ * The alt text is extracted server-side from the rendered slot HTML so the
+ * figcaption appears with no JS and no flash. The rounded/clipped image box
+ * is a wrapper div inside the figure so the figcaption renders below it
+ * without being clipped by overflow-hidden.
  *
  * Usage in MDX:
  *   import Figure from '@/components/Figure.astro'
- *   <Figure credit="SN / Prestel Verlag / saai / Archiv für Architektur und Ingenieurbau / Karlsruher Institut für Technologie">
- *     ![Alt text](./path.jpg)
+ *   <Figure credit="..." captionHref="https://...">
+ *     ![Visible caption text](./path.jpg)
  *   </Figure>
+ *
+ * - `credit` overlays an attribution pill (string or `{ name, href }` object).
+ * - `captionHref` makes the figcaption a link to the subject's canonical
+ *   source page (project page, article, etc.). The alt attribute is kept
+ *   intact for accessibility.
  */
-import Credit from "@/components/Credit.astro";
+import Credit, { type CreditLine } from "@/components/Credit.astro";
 
 interface Props {
-  credit: string | string[];
+  credit?: CreditLine | CreditLine[];
+  captionHref?: string;
 }
 
-const { credit } = Astro.props;
+const { credit, captionHref } = Astro.props;
+
+const slotHtml = await Astro.slots.render("default");
+const altMatch = slotHtml.match(/<img[^>]*\salt=(?:"([^"]*)"|'([^']*)')/i);
+const caption = altMatch ? (altMatch[1] ?? altMatch[2] ?? "") : "";
 ---
 
-<figure class="figure-credit not-prose relative my-6 overflow-hidden rounded-lg">
-  <slot />
-  <Credit credit={credit} class="bottom-2 left-2" />
+<figure class="figure-credit not-prose my-6">
+  <div class="relative overflow-hidden rounded-lg">
+    <Fragment set:html={slotHtml} />
+    {credit && <Credit credit={credit} class="bottom-2 left-2" />}
+  </div>
+  {
+    caption &&
+      (captionHref ? (
+        <figcaption>
+          <a href={captionHref} target="_blank" rel="noopener noreferrer" set:html={caption} />
+        </figcaption>
+      ) : (
+        <figcaption set:html={caption} />
+      ))
+  }
 </figure>

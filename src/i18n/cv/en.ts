@@ -8,7 +8,7 @@ export const t: I18nCV = {
     titleFull: "Daniel Locatelli - Full CV",
     descriptionFull:
       "This is my full CV, including work, education, lectures, publications, certificates, and more.",
-    coverAlt: "Daniel Locatelli's profile photo.",
+    coverAlt: "Daniel Locatelli.",
   },
   ui: {
     title: "AEC Software Engineer",

@@ -8,7 +8,7 @@ export const t: I18nCV = {
     titleFull: "Daniel Locatelli - Vollständiger Lebenslauf",
     descriptionFull:
       "Dies ist mein vollständiger Lebenslauf, einschließlich Arbeit, Ausbildung, Vorträgen, Publikationen, Zertifikaten und mehr.",
-    coverAlt: "Daniel Locatellis Profilfoto.",
+    coverAlt: "Daniel Locatelli.",
   },
   ui: {
     title: "AEC Software-Ingenieur",

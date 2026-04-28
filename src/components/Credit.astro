@@ -6,17 +6,29 @@
  * Shared by Slide.astro (full-screen presentation slides) and Figure.astro
  * (inline content images). Keep visual changes here so both surfaces stay
  * consistent.
+ *
+ * Each credit line can be a plain string or a `{ name, href }` object that
+ * renders the name as an external link.
  */
+export type CreditLink = { name: string; href: string };
+export type CreditLine = string | CreditLink;
+
 interface Props {
-  credit: string | string[];
+  credit: CreditLine | CreditLine[];
   class?: string;
 }
 
 const { credit, class: className } = Astro.props;
 
-function withCopyright(line: string): string {
-  return /^\s*(©|\(c\))/i.test(line) ? line : `© ${line}`;
+function isLink(line: CreditLine): line is CreditLink {
+  return typeof line === "object" && line !== null && "href" in line;
 }
+
+function hasCopyrightPrefix(text: string): boolean {
+  return /^\s*(©|\(c\))/i.test(text);
+}
+
+const lines = Array.isArray(credit) ? credit : [credit];
 ---
 
 <div
@@ -26,8 +38,22 @@ function withCopyright(line: string): string {
   ]}
 >
   {
-    Array.isArray(credit)
-      ? credit.map((line) => <p>{withCopyright(line)}</p>)
-      : <p>{withCopyright(credit)}</p>
+    lines.map((line) =>
+      isLink(line) ? (
+        <p>
+          {hasCopyrightPrefix(line.name) ? "" : "© "}
+          <a
+            href={line.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline decoration-white/30 underline-offset-2 transition-colors hover:text-white hover:decoration-white/60 focus-visible:text-white"
+          >
+            {line.name}
+          </a>
+        </p>
+      ) : (
+        <p>{hasCopyrightPrefix(line) ? line : `© ${line}`}</p>
+      ),
+    )
   }
 </div>

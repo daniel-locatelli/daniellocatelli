@@ -28,7 +28,7 @@
   }
 
   figcaption {
-    text-wrap: balance;
+    text-wrap: pretty;
   }
 
   body {
@@ -57,9 +57,9 @@
   flex-direction: column;
 }
 
-.image-row figure > img,
-.image-row figure > picture,
-.image-row figure > video {
+.image-row figure img,
+.image-row figure picture,
+.image-row figure video {
   aspect-ratio: 4 / 5;
 }
 
@@ -70,16 +70,49 @@
   height: 100%;
 }
 
-.image-row figcaption {
+.image-row figcaption,
+.figure-credit > figcaption {
   font-size: 0.875rem;
+  line-height: 1.35;
   color: var(--tw-prose-captions, #a1a1aa);
   margin-top: 0.5rem;
   text-align: center;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
-.figure-credit > p {
+.figure-credit p {
   display: contents;
+}
+
+/* Caption links (Figure's `captionHref`): a trailing external-link arrow
+   signals the link at rest; the underline only appears on hover/focus so
+   the caption stays visually quiet until the reader engages with it. */
+.image-row figcaption a,
+.figure-credit > figcaption a {
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+  transition:
+    text-decoration-color 150ms ease-in-out,
+    color 150ms ease-in-out;
+}
+
+.image-row figcaption a:hover,
+.image-row figcaption a:focus-visible,
+.figure-credit > figcaption a:hover,
+.figure-credit > figcaption a:focus-visible {
+  color: rgb(255 255 255 / 0.85);
+  text-decoration: underline;
+  text-decoration-color: rgb(255 255 255 / 0.55);
+}
+
+.image-row figcaption a::after,
+.figure-credit > figcaption a::after {
+  /* Non-breaking space + arrow keeps the icon glued to the last word,
+     so `text-wrap: pretty` won't leave a single-word + arrow orphan line. */
+  content: "\00A0↗";
+  font-size: 0.85em;
+  opacity: 0.7;
 }
 
 .figure-credit img {
@@ -98,4 +131,89 @@
   .figure-credit:focus-within .credit-pill {
     opacity: 1;
   }
+}
+
+/* Footnote hover tooltips. The rehype-footnote-tooltips plugin appends a
+   .footnote-tooltip <span> inside each inline footnote <sup>. The tooltip
+   is positioned absolutely and revealed on hover/focus of the adjacent
+   a.footnote-ref link via the CSS sibling selector — no JS needed. */
+
+/* The wrapping <sup> is the positioning context for the absolutely
+   positioned tooltip. We override the default font-size/line-height so
+   the pill renders at the surrounding text size, then nudge it up half
+   an em so it reads as a citation marker. */
+sup:has(a.footnote-ref) {
+  position: relative;
+  vertical-align: baseline;
+  font-size: inherit;
+  line-height: inherit;
+  top: -0.25em;
+}
+
+/* Pill-style numbered marker, styled after the dario amodei reference. */
+a.footnote-ref {
+  z-index: 1;
+  background-color: #27272a; /* zinc-800 */
+  border-radius: 4px;
+  margin-inline: 2px;
+  padding: 3px 5px 1px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  color: #e4e4e7; /* zinc-200 */
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+a.footnote-ref:hover,
+a.footnote-ref:focus-visible {
+  background-color: #3f3f46; /* zinc-700 */
+  color: #4ade80; /* green-400, matches site link accent */
+}
+
+/* The tooltip is rendered via the Popover API so it lives in the browser's
+   top layer. That escapes any ancestor `overflow: hidden` clipping (the
+   prose container uses `overflow-x-hidden`) without needing z-index hacks.
+   Visibility is driven by JS calling .showPopover() / .hidePopover() in
+   src/pages/[...locale]/[...subpage].astro; CSS only handles the chrome.
+   Hide explicitly (independent of any UA `[popover]` rule) so the tooltip
+   never spills inline into the prose if popover support is missing. */
+.footnote-tooltip {
+  display: none;
+}
+
+.footnote-tooltip:popover-open {
+  display: block;
+}
+
+.footnote-tooltip[popover] {
+  margin: 0;
+  inset: auto;
+  position: fixed;
+  width: max-content;
+  max-width: min(28rem, calc(100vw - 2rem));
+  padding: 0.75rem 1rem;
+  background-color: #18181b; /* zinc-900 */
+  border: 1px solid #3f3f46; /* zinc-700 */
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #e4e4e7; /* zinc-200 */
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.footnote-tooltip p {
+  margin: 0;
+  display: inline;
+}
+
+.footnote-tooltip a {
+  color: #4ade80; /* green-400 */
+  text-decoration: underline;
 }

@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/teaching/adaptive-grasshopper-workshop/adaptive-grasshopper-workshop-cover.jpg
-CoverAlt: Group photo with all the students and the workshop result in the background.
+CoverAlt: All the students grouped together with the workshop result in the background.
 Description: "In addition to learning the basics of Grasshopper for Rhinoceros, participants were able to decide the direction of the course by choosing which computational design strategy to explore. In this case, they chose Exoskeleton."
 Name: Adaptive Grasshopper Workshop
 Category: Workshop

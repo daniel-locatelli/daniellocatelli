@@ -41,6 +41,8 @@ const home = await getI18n<I18nHome>("home", locale);
           <Image
             src={profilePhoto}
             alt={home.meta.coverAlt}
+            loading="eager"
+            fetchpriority="high"
             class="order-1 size-32 rounded-full border-2 border-zinc-200 sm:size-20 md:order-2 md:h-32 md:w-32 md:border-3"
           />
           <h1
@@ -264,37 +266,41 @@ const home = await getI18n<I18nHome>("home", locale);
               href={siteConfig.linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Daniel Locatelli on LinkedIn"
               title="Daniel Locatelli on LinkedIn"
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
-              <Icon name="mdi:linkedin" class="size-6 shrink-0 print:hidden" />
+              <Icon name="mdi:linkedin" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
             </a>
             <a
               href={siteConfig.instagram}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Daniel Locatelli on Instagram"
               title="Daniel Locatelli on Instagram"
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
-              <Icon name="mdi:instagram" class="size-6 shrink-0 print:hidden" />
+              <Icon name="mdi:instagram" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
             </a>
             <a
               href={siteConfig.github}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Daniel Locatelli on GitHub"
               title="Daniel Locatelli on GitHub"
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
-              <Icon name="mdi:github" class="size-6 shrink-0 print:hidden" />
+              <Icon name="mdi:github" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
             </a>
             <a
               href={siteConfig.gitlab}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Daniel Locatelli on GitLab"
               title="Daniel Locatelli on GitLab"
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
-              <Icon name="mdi:gitlab" class="size-6 shrink-0 print:hidden" />
+              <Icon name="mdi:gitlab" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
             </a>
           </div>
           <p class="text-center text-sm text-zinc-300">{siteConfig.email}</p>

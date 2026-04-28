@@ -8,7 +8,7 @@ export const t: I18nHome = {
     title: "Daniel Locatelli",
     description:
       "Bem-vindo ao meu escritório digital. Aqui, você encontra meu trabalho e pesquisa sobre design computacional e desenvolvimento de software para a indústria AEC.",
-    coverAlt: "Foto de perfil do Daniel Locatelli",
+    coverAlt: "Daniel Locatelli.",
   },
   hero: {
     id: "hero",

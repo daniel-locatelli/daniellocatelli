@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/projects/canyon-by-artengineering-for-katharina-grosse/canyon-by-artengineering-for-katharina-grosse-cover.jpg
-CoverAlt: "Foto von Canyon, installiert bei Louis Vuitton in Paris."
+CoverAlt: "Canyon, installiert bei Louis Vuitton in Paris."
 Description: "Für dieses Projekt entschied sich Katharina Grosse, mit Leder zu formen. Die Herausforderung bestand darin, die organischen Lederstreifen in gebogene Stahlplatten zu übertragen. Die Lösung war eine Strategie, die seit Jahrtausenden im Bootsbau verwendet wird: abwickelbare Flächen."
 Name: Canyon von ArtEngineering für Katharina Grosse
 Tags:

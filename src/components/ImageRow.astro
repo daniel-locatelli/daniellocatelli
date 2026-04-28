@@ -19,7 +19,7 @@
   function wrapImageRowImages() {
     document.querySelectorAll(".image-row").forEach((row) => {
       row.querySelectorAll("img").forEach((img) => {
-        if (img.parentElement?.tagName === "FIGURE") return;
+        if (img.closest("figure")) return;
         const alt = img.getAttribute("alt");
         if (!alt) return;
 

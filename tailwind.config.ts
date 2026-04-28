@@ -124,22 +124,11 @@ export default {
               borderTopStyle: "dashed",
               borderTopColor: "var(--color-zinc-600)",
             },
+            // Footnote markers (sup > a.footnote-ref) are styled as pills via
+            // the rules in src/styles/global.css; keep this block lean so it
+            // doesn't fight that pill design with brackets or color overrides.
             sup: {
               marginInlineStart: "0.125rem",
-              a: {
-                backgroundImage: "none",
-                "&:hover": {
-                  color: "var(--color-green-400)",
-                  textDecoration: "none",
-                  background: "none",
-                },
-                "&:before": {
-                  content: "'['",
-                },
-                "&:after": {
-                  content: "']'",
-                },
-              },
             },
           },
         },

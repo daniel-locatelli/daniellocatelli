@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/projects/parada-coca-cola-by-atelier-marko-brajovic/parada-coca-cola-by-atelier-marko-brajovic-cover.jpg
-CoverAlt: Foto vom Eingang zur Hauptbar der Parada Coca-Cola.
+CoverAlt: Blick vom Eingang zur Hauptbar der Parada Coca-Cola.
 Description: "Parada Coca-Cola war mein allererstes Projekt, bei dem ich Computational Design anwendete. Dieses sensorische Erlebnis war von der Coca-Cola-Flasche inspiriert und ahmte die Blasen und Farben des Getränks nach."
 Name: Parada Coca-Cola von Atelier Marko Brajovic
 Tags:

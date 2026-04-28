@@ -131,6 +131,8 @@ if (image) {
             class="absolute inset-0 h-full w-full object-cover scale-110 blur-xl"
             aria-hidden="true"
             alt=""
+            loading="eager"
+            decoding="async"
           />
         )}
         {image.format === "svg" ? (
@@ -140,12 +142,18 @@ if (image) {
             alt={subpage.data.CoverAlt || ""}
             width={image.width}
             height={image.height}
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
           />
         ) : (
           <Image
             class="hero-img absolute inset-0 h-full w-full object-cover opacity-0"
             src={image}
             alt={subpage.data.CoverAlt || ""}
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
           />
         )}
         <a
@@ -635,6 +643,9 @@ if (image) {
     }
     try {
       await mermaid.run({ querySelector: ".mermaid" });
+      document
+        .querySelectorAll<SVGElement>(".mermaid-diagram svg")
+        .forEach((svg) => svg.setAttribute("role", "img"));
     } catch (e) {
       console.warn("Mermaid run failed", e);
     }
@@ -786,4 +797,83 @@ if (image) {
   }
 
   document.addEventListener("astro:page-load", setupLightbox);
+</script>
+
+<script>
+  // Footnote tooltips. The rehype-footnote-tooltips plugin emits each
+  // tooltip with `popover="manual"` so we can promote it into the top layer
+  // (escaping ancestor overflow clipping). We position it manually relative
+  // to the pill on hover/focus, with viewport-edge clamping and an
+  // above-then-below flip when the pill is near the top of the viewport.
+  function setupFootnoteTooltips() {
+    const refs = document.querySelectorAll<HTMLAnchorElement>("a.footnote-ref");
+    refs.forEach((ref) => {
+      const sup = ref.parentElement;
+      const tooltip = sup?.querySelector<HTMLElement>(".footnote-tooltip");
+      if (!sup || !tooltip) return;
+
+      // Defensive: ensure the popover attribute is present even if the rehype
+      // plugin's hast property was dropped during HTML serialization. Without
+      // it, showPopover() throws silently and the tooltip stays hidden.
+      tooltip.setAttribute("popover", "manual");
+
+      let hoverTimer: number | undefined;
+      const cancelHide = () => {
+        if (hoverTimer !== undefined) {
+          window.clearTimeout(hoverTimer);
+          hoverTimer = undefined;
+        }
+      };
+      const queueHide = () => {
+        cancelHide();
+        hoverTimer = window.setTimeout(() => {
+          try {
+            tooltip.hidePopover();
+          } catch {}
+        }, 100);
+      };
+
+      const show = () => {
+        cancelHide();
+        // Close any sibling tooltips first so a fast cursor between pills
+        // never leaves more than one tooltip on screen.
+        document
+          .querySelectorAll<HTMLElement>(".footnote-tooltip")
+          .forEach((other) => {
+            if (other !== tooltip) {
+              try {
+                other.hidePopover();
+              } catch {}
+            }
+          });
+        try {
+          tooltip.showPopover();
+        } catch {
+          return;
+        }
+        const r = ref.getBoundingClientRect();
+        const tw = tooltip.offsetWidth;
+        const th = tooltip.offsetHeight;
+        const margin = 8;
+        let left = r.left + r.width / 2 - tw / 2;
+        left = Math.max(
+          margin,
+          Math.min(left, window.innerWidth - tw - margin),
+        );
+        let top = r.top - th - margin;
+        if (top < margin) top = r.bottom + margin;
+        tooltip.style.left = `${Math.round(left)}px`;
+        tooltip.style.top = `${Math.round(top)}px`;
+      };
+
+      ref.addEventListener("mouseenter", show);
+      ref.addEventListener("mouseleave", queueHide);
+      ref.addEventListener("focus", show);
+      ref.addEventListener("blur", queueHide);
+      tooltip.addEventListener("mouseenter", cancelHide);
+      tooltip.addEventListener("mouseleave", queueHide);
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupFootnoteTooltips);
 </script>

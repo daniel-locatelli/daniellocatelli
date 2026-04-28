@@ -28,13 +28,11 @@ const { slug } = Astro.props as Props;
   <div class="flex w-full max-w-7xl px-0 sm:px-6 lg:px-8">
     <a
       aria-current={url.pathname === "/" ? "page" : false}
+      aria-label="Daniel Locatelli, home"
       class="inline-flex h-10 w-12 items-center sm:relative sm:inline-block sm:justify-between"
       href={locale === "en" ? "/" : "/" + locale}
     >
-      <Logo
-        aria-label="Daniel Locatelli logo"
-        class="inline mix-blend-difference"
-      />
+      <Logo aria-hidden="true" class="inline mix-blend-difference" />
     </a>
     <nav
       aria-label="Main menu"
@@ -97,7 +95,7 @@ const { slug } = Astro.props as Props;
     >
       <svg
         aria-hidden="true"
-        class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0"
+        class="absolute inset-s-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0"
         fill="none"
         focusable="false"
         id="line-svg"
@@ -113,7 +111,7 @@ const { slug } = Astro.props as Props;
       </svg>
       <svg
         aria-hidden="true"
-        class="text-accent absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100"
+        class="text-accent absolute inset-s-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100"
         class="text-accent"
         fill="none"
         focusable="false"
