@@ -133,7 +133,7 @@ Darüber hinaus verwendet Angular eine Programmiersprache namens [TypeScript](ht
 Ein weiterer Grund für die Wahl von Angular ist sein Ruf für Zuverlässigkeit und einfache Wartung, insbesondere bei großen Anwendungen. Es wird von Google unterstützt, das bereits mehr als 2600 Lösungen damit erstellt hat, sodass klar ist, dass es komplexe Projekte bewältigen kann und langfristig gepflegt wird.
 Mit meinem Hintergrund in Architektur und Ingenieurwesen verstehe ich, wie schnell die Dinge auch in diesem Bereich komplex werden können, und obwohl der KfW-Rechner auf den ersten Blick einfach erscheint, umfasst er in seiner ersten Version rund ein paar Hundert Variablen und über hundert Funktionen. Angesichts des Ziels von BuildSystems, eine skalierbare App zu schaffen, die sich zu einem umfassenden Frühplanungstool entwickeln soll, waren Angulars Stärken perfekt für dieses Projekt geeignet.
 #### KI-Werkzeuge als Copilot
-Es ist auch erwähnenswert, wie wichtig KI-Werkzeuge als Copilot waren. ChatGPT spielte eine entscheidende Rolle bei der Umwandlung der Excel-Formeln in TypeScript-Code. Allerdings muss ich sagen, dass diese KI-Werkzeuge bei hochmodernen Funktionen keine guten Antworten lieferten, da ihnen offensichtlich die entsprechenden Trainingsdaten noch fehlten.
+Diese App wurde zwischen Ende 2023 und Mitte 2024 entwickelt, als KI-gestützte Coding-Assistenten noch eine Neuheit waren und nicht zum Standardwerkzeug eines jeden Entwicklers gehörten. Trotzdem spielte ChatGPT eine entscheidende Rolle bei der Umwandlung der Excel-Formeln in TypeScript-Code. Bei hochmodernen Funktionen lieferten diese Werkzeuge jedoch keine guten Antworten, da die nötigen Trainingsdaten schlicht noch nicht vorhanden waren.
 #### Prozess
 Während des Entwicklungsprozesses versuchte ich, eine einzelne Komponente zu erstellen, die sowohl den Neubau- als auch den Sanierungsrechner abdecken würde, um den Code weniger repetitiv zu gestalten und dem Prinzip von [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (Don't Repeat Yourself) zu folgen.
 Dies machte die Komponente jedoch zu komplex, da es viele Variablen und Anforderungen gab, die für jeden Rechner einzigartig waren. Letztendlich entschied ich mich, sie in zwei Komponenten aufzuteilen. Obwohl es etwas redundanten Code gibt, beschleunigte dies die Entwicklung.
@@ -207,7 +207,7 @@ flowchart TB
 ```
 Die Strategien zur Implementierung der Funktionen änderten sich im Laufe der Entwicklung ebenfalls, da ich mit fortschreitendem Wissen neue und verbesserte Wege fand, dasselbe Ergebnis zu erzielen. Beispielsweise änderte sich die Implementierung der Formulare bereits zweimal. Beim ersten Mal entschied ich mich, den gesamten Code zu refaktorieren, um sicherzustellen, dass alles einheitlich und der Code klarer war.
 Das stellte sich jedoch als schlechte Produktmanagement-Entscheidung heraus, da die Funktionen bereits funktionierten und obwohl der Code etwas verwirrend war, die Änderung der internen Struktur den Endnutzer überhaupt nicht beeinflusst hätte. Daher werde ich bei der zweiten Änderung, die für die zweite Version der App stattfindet, den restlichen Code nicht refaktorieren.
-Wenn Sie mehr darüber erfahren möchten, wie ich derzeit die Formulare implementiere, lesen Sie diesen Artikel von Zoaib Khan:
+Wenn Sie mehr darüber erfahren möchten, wie ich derzeit die Formulare implementiere, lesen Sie [diesen Artikel von Zoaib Khan](https://zoaibkhan.com/blog/how-to-use-signals-with-angular-forms/).
 
 ### Test und Qualitätssicherung
 Ich habe mich auch intensiv mit dem Thema [Unit-Testing](https://en.m.wikipedia.org/wiki/Unit_testing) unter Verwendung des Standard-Tools [Karma](http://karma-runner.github.io/6.4/intro/how-it-works.html) beschäftigt.
@@ -241,15 +241,15 @@ end
 ## Reibungslose App-Entwicklung: Wichtige Erkenntnisse und Strategien
 - **Sicherheit zuerst**: Priorisieren Sie die Datensicherheit von Anfang an, um spätere Compliance-Probleme zu vermeiden.
 - **Frühe Planung**: Investieren Sie Zeit in die Planung und verstehen Sie die Anforderungen, bevor Sie mit der Entwicklung beginnen.
-- **KI-Werkzeuge**: Nutzen Sie KI-Werkzeuge für erste Designs, um schnell Benutzeroberflächen zu generieren; verwenden Sie Code-Copiloten, selbst wenn es nur ChatGPT ist.
+- **KI-Werkzeuge**: 2023 war der Griff zu KI noch nicht der Standard, der er heute ist, aber die Lehre aus diesem Projekt ist eindeutig: Nutzen Sie Code-Copiloten von Tag eins an und lassen Sie KI einen ersten Entwurf der Benutzeroberfläche generieren, mit dem Sie weiterarbeiten können.
 - **Flexibilität**: Seien Sie sich bewusst, dass sich die App weiterentwickeln wird, und halten Sie sich daher nicht zu strikt an das [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)-Prinzip.
 - **Framework-Auswahl**: Wählen Sie ein Framework, das zu den Anforderungen Ihres Projekts passt, und bleiben Sie dabei. In der Regel ist das beste Framework dasjenige, das man bereits kennt.
 - **Kontinuierliches Testen**: Setzen Sie Ihre Test-Bemühungen auf End-to-End-Tests.
 Eine der größten Herausforderungen war es, die App "snappy" zu machen; mit anderen Worten: Wenn der Nutzer einen Schieberegler bewegt, werden alle Werte und Diagramme in Echtzeit aktualisiert. Außerdem waren wir wegen der äußerst restriktiven EU-Vorschriften vorsichtig mit den Daten der Nutzer.
 Die erste Entscheidung war, serverseitige Berechnungen komplett zu vermeiden. Die gesamte App ist rein clientseitig, was bedeutet, dass sie nach dem Laden keine Daten mehr versenden muss; die Berechnung erfolgt direkt auf dem Gerät. Das bedeutete auch, dass wir uns für die erste Version keine Gedanken über Datenspeicherung machen mussten.
-Die App von Grund auf zu designen war eine wertvolle Erfahrung, aber jetzt, da ich den Prozess verstehe, würde ich das UI-Design mit einem KI-Assistenten beginnen. Werkzeuge wie [Galileo AI](https://www.usegalileo.ai/) oder [Rendition Create](https://www.renditioncreate.com/) können helfen, mit einer ansprechenden, aus Prompts generierten App-Oberfläche zu starten (Text to UI). Mit einem UI-Entwurf zu beginnen ist immer schneller, selbst wenn sich der Entwurf drastisch ändert.
-## Nächste Schritte
-Derzeit arbeiten wir an der zweiten Version der App. Die Idee ist, einen weiteren Rechner und einige andere Funktionen einzuführen, wie das Speichern eines Projekts und den Vergleich zweier Projekte. Wir werden [Supabase](https://supabase.com/) zur Datenspeicherung verwenden.
+Die App von Grund auf zu designen war eine wertvolle Erfahrung. 2023 standen KI-Designwerkzeuge erst am Anfang, aber heute würde ich das UI-Design mit einem KI-Assistenten beginnen. Werkzeuge wie [Galileo AI](https://www.usegalileo.ai/) oder [Rendition Create](https://www.renditioncreate.com/) können einen ansprechenden, aus Prompts generierten ersten Entwurf einer App-Oberfläche liefern (Text to UI). Mit einem UI-Entwurf zu beginnen ist immer schneller, selbst wenn sich der Entwurf drastisch ändert.
+## Supabase-Backend
+Wir haben außerdem die zweite Version der App veröffentlicht, die einen weiteren Rechner sowie Funktionen wie das Speichern eines Projekts und den Vergleich zweier Projekte brachte. Die Datenebene haben wir auf [Supabase](https://supabase.com/) aufgebaut; das untenstehende Schema zeigt, wie Projekte, Benutzer und Bearbeitungsverläufe modelliert sind.
 ```mermaid
 erDiagram
     auth_users {

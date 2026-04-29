@@ -134,7 +134,7 @@ In addition, Angular uses a programming language called [TypeScript](https://en.
 Another reason to choose Angular is its reputation for reliability and ease of maintenance, especially in large-scale applications. It is backed by Google, which have already built more than 2600 solutions with it, so it is clear that it can handle complex projects and will be maintained for a long time.
 With my background in architecture and engineering, I understand how quickly things can become complex in this field too, and even though the KfW Calculator seems simple at first, it includes around a couple of hundred variables and over a hundred functions in its first version. Given BuildSystems' goal to create a scalable app that will evolve into a comprehensive early planning tool, Angular's strengths were a perfect fit for this project.
 #### AI Tools as a Copilot
-It is also worth mentioning the importance of AI tools as a copilot. ChatGPT played a crucial role converting the excel formulas into TypeScript code. But I have to say though, for cutting-edge features these AI tools did not give good answers, because obviously they still don’t have the training data available.
+This app was built between late 2023 and mid-2024, when AI coding assistants were still a novelty rather than a default part of every developer's toolkit. Even so, ChatGPT played a crucial role in converting the Excel formulas into TypeScript code. For cutting-edge features, though, these tools did not give great answers, because the training data simply was not there yet.
 #### Process
 During the development process, I tried to create a single component that would accommodate both the New Building (Neubau) and the Renovation (Sanierung) calculator, making the code less repetitive following the principle of [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don’t repeat yourself).
 This, however, made the component too complex because there were many variables and requirements unique to each calculator. So in the end I decided to split it into two components. Although there is some redundant code, this added speed to the development.
@@ -208,10 +208,10 @@ flowchart TB
 ```
 The strategies used to implement the features also varied throughout the development because as I progressed, I learned new and improved ways to achieve the same result. For example, the implementation of the forms changed twice already. The first time I decided to refactor the whole code to make sure everything was homogeneous and had a more clear code.
 That, however, turned out to be a poor product management decision, because the features were already working and although the code was a bit confusing, changing the internals would not affect the end user at all. So for the second change, which is happening for the second version of the app, I won’t be refactoring the rest of the code.
-If you want to learn more about how I am currently implementing the forms, check out this article by Zoaib Khan:
+If you want to learn more about how I am currently implementing the forms, check out [this article by Zoaib Khan](https://zoaibkhan.com/blog/how-to-use-signals-with-angular-forms/).
 
 ### Testing and Quality Assurance
-I also went down the rabbit hole on the topic of [unit testing](https://en.m.wikipedia.org/wiki/Unit_testing) using the default [Karma](http://karma-runner.github.io/6.4/intro/how-it-works.html)** **tool.
+I also went down the rabbit hole on the topic of [unit testing](https://en.m.wikipedia.org/wiki/Unit_testing) using the default [Karma](http://karma-runner.github.io/6.4/intro/how-it-works.html) tool.
 This type of testing checks small parts (units) of the software to make sure each one works correctly on its own. Unfortunately, though, I could only learn this at a late stage, which meant I had to refactor the code to allow the unit tests to work.
 Besides, if I had to start over, I would instead focus my energy on [end-to-end testing](https://en.m.wikipedia.org/w/index.php?title=System_testing&diffonly=true) (E2E) using [Cypress](https://docs.cypress.io/guides/overview/why-cypress). This test checks the whole system by simulating user interaction, ensuring inputs and outputs match our due diligence.
 ## Deployment
@@ -242,15 +242,15 @@ end
 ## Ensuring a Smooth App Development: Key Insights and Strategies
 - **Security First**: Prioritize data security from the beginning to avoid compliance issues later.
 - **Early Planning**: Invest time in planning and understand the requirements you need before starting the development.
-- **AI Tools**: Utilize AI tools for initial designs to quickly generate user interfaces; use code copilots even if just ChatGPT.
+- **AI Tools**: In 2023 reaching for AI was not yet the default it is today, but the lesson from this project is clear: use code copilots from day one, and let AI generate first-pass UI designs to start from.
 - **Flexibility**: Be aware that the app will evolve, so don't adhere too strictly to the [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principle.
 - **Framework Selection**: Choose a framework that suits your project's needs and stick with it. Usually, the best framework is the one you already know.
 - **Continuous Testing**: bet your testing efforts on end-to-end testing.
 One of the main challenges was to make the app "snappy"; in other words, while the user moves a slider, all the values and charts are updated in real-time. Also, we were cautious about the users' data because of the super restrictive EU regulations.
 The first decision was to avoid server-side calculations altogether. The whole app is client-side only, which means that once it is loaded, it doesn't have to send data anywhere; the calculation happens directly on the device. That means we also didn’t have to worry about data storage for the first version.
-Designing the app from scratch was a valuable experience, but now that I understand the process, I would start the UI design with an AI assistant. Tools like [Galileo AI](https://www.usegalileo.ai/) or [Rendition Create](https://www.renditioncreate.com/) can help start with a nice app interface generated from prompts (Text to UI). Starting with a UI draft is always faster, even if the draft changes drastically.
-## Next steps
-Right now we are working on the second version of the app. The idea is to bring another calculator and some other features, like saving a project and comparing two projects. We will be using [Supabase](https://supabase.com/) to store the data.
+Designing the app from scratch was a valuable experience. In 2023, AI design tools were only beginning to emerge, but today I would start the UI design with an AI assistant. Tools like [Galileo AI](https://www.usegalileo.ai/) or [Rendition Create](https://www.renditioncreate.com/) can produce a nice first-pass app interface from prompts (Text to UI). Starting with a UI draft is always faster, even if the draft changes drastically.
+## Supabase backend
+We also shipped the second version of the app, which added another calculator alongside features like saving a project and comparing two projects. The data layer is built on [Supabase](https://supabase.com/); the schema below shows how projects, users, and edit history are modeled.
 ```mermaid
 erDiagram
     auth_users {

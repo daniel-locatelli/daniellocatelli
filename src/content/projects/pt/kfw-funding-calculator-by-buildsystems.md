@@ -134,7 +134,7 @@ Além disso, o Angular usa uma linguagem de programação chamada [TypeScript](h
 Outro motivo para escolher o Angular é sua reputação de confiabilidade e facilidade de manutenção, especialmente em aplicações de grande escala. Ele é apoiado pelo Google, que já construiu mais de 2.600 soluções com ele, então está claro que ele pode lidar com projetos complexos e será mantido por um longo tempo.
 Com minha formação em arquitetura e engenharia, entendo o quão rápido as coisas podem se tornar complexas neste campo também, e embora a Calculadora KfW pareça simples no início, ela inclui cerca de duas centenas de variáveis e mais de cem funções em sua primeira versão. Dado o objetivo da BuildSystems de criar um aplicativo escalável que evoluirá para uma ferramenta abrangente de planejamento inicial, os pontos fortes do Angular foram perfeitos para este projeto.
 #### Ferramentas de IA como copiloto
-Também vale a pena mencionar a importância das ferramentas de IA como um copiloto. O ChatGPT desempenhou um papel crucial na conversão de fórmulas do Excel em código TypeScript. Mas devo dizer que, para recursos de ponta, essas ferramentas de IA não deram boas respostas, porque obviamente elas ainda não têm os dados de treinamento disponíveis.
+Este aplicativo foi construído entre o final de 2023 e meados de 2024, quando os assistentes de IA para programação ainda eram uma novidade, e não uma parte padrão das ferramentas de qualquer desenvolvedor. Ainda assim, o ChatGPT desempenhou um papel crucial na conversão das fórmulas do Excel em código TypeScript. Para recursos de ponta, no entanto, essas ferramentas não davam boas respostas, porque os dados de treinamento simplesmente ainda não existiam.
 #### Processo
 Durante o processo de desenvolvimento, tentei criar um único componente que acomodasse tanto a calculadora de Nova Construção (Neubau) quanto a de Renovação (Sanierung), tornando o código menos repetitivo seguindo o princípio de [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don't repeat yourself).
 Isso, no entanto, tornou o componente muito complexo porque havia muitas variáveis e requisitos exclusivos para cada calculadora. Então, no final, decidi dividi-lo em dois componentes. Embora haja algum código redundante, isso adicionou velocidade ao desenvolvimento.
@@ -208,7 +208,7 @@ flowchart TB
 ```
 As estratégias usadas para implementar os recursos também variaram ao longo do desenvolvimento porque, à medida que eu progredia, aprendi maneiras novas e aprimoradas de atingir o mesmo resultado. Por exemplo, a implementação dos formulários já mudou duas vezes. Na primeira vez, decidi refatorar todo o código para garantir que tudo fosse homogêneo e tivesse um código mais claro.
 Isso, no entanto, acabou sendo uma decisão ruim de gerenciamento de produto, porque os recursos já estavam funcionando e, embora o código fosse um pouco confuso, alterar os internos não afetaria o usuário final de forma alguma. Então, para a segunda mudança, que está acontecendo para a segunda versão do aplicativo, não refatorarei o resto do código.
-Se você quiser saber mais sobre como estou implementando os formulários atualmente, confira este artigo de Zoaib Khan:
+Se você quiser saber mais sobre como estou implementando os formulários atualmente, confira [este artigo de Zoaib Khan](https://zoaibkhan.com/blog/how-to-use-signals-with-angular-forms/).
 
 ### Testes e Garantia de Qualidade
 Eu também mergulhei fundo no tópico de [testes unitários](https://en.m.wikipedia.org/wiki/Unit_testing) usando a ferramenta padrão [Karma](http://karma-runner.github.io/6.4/intro/how-it-works.html).
@@ -242,15 +242,15 @@ end
 ## Desenvolvimento do aplicativo: principais insights e estratégias
 - **Segurança em primeiro lugar**: Priorize a segurança dos dados desde o início para evitar problemas de conformidade mais tarde.
 - **Planejamento antecipado**: Invista tempo no planejamento e entenda os requisitos necessários antes de iniciar o desenvolvimento.
-- **Ferramentas de IA**: Utilize ferramentas de IA para designs iniciais para gerar rapidamente interfaces de usuário; use copilotos de código, mesmo que seja apenas o ChatGPT.
+- **Ferramentas de IA**: Em 2023 recorrer à IA ainda não era o padrão que é hoje, mas a lição deste projeto é clara: use copilotos de código desde o primeiro dia e deixe a IA gerar um primeiro rascunho da interface para começar.
 - **Flexibilidade**: Esteja ciente de que o aplicativo evoluirá, portanto, não siga estritamente o princípio [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 - **Seleção de framework**: Escolha um framework que atenda às necessidades do seu projeto e continue com ele. Normalmente, o melhor framework é aquele que você já conhece.
 - **Teste contínuo**: Aposte seus esforços de teste em testes de ponta a ponta.
 Um dos principais desafios era tornar o aplicativo "snappy"; em outras palavras, enquanto o usuário move um controle deslizante, todos os valores e gráficos são atualizados em tempo real. Além disso, fomos cautelosos com os dados dos usuários por causa das regulamentações super restritivas da União Europeia.
 A primeira decisão foi evitar cálculos no servidor completamente. O aplicativo inteiro funciona apenas do lado do cliente, o que significa que, uma vez carregado, ele não precisa enviar dados para lugar nenhum; o cálculo acontece diretamente no dispositivo. Isso significa que também não tivemos que nos preocupar com o armazenamento de dados para a primeira versão.
-Projetar o aplicativo do zero foi uma experiência valiosa, mas agora que entendo o processo, eu começaria o design da interface com um assistente de IA. Ferramentas como [Galileo AI](https://www.usegalileo.ai/) ou [Rendition Create](https://www.renditioncreate.com/) podem ajudar a começar com uma interface de aplicativo agradável gerada a partir de prompts (Texto para UI). Começar com um rascunho de UI é sempre mais rápido, mesmo que o rascunho mude drasticamente.
-## Próximos passos
-No momento, estamos trabalhando na segunda versão do aplicativo. A ideia é trazer outra calculadora e alguns outros recursos, como salvar um projeto e comparar dois projetos. Usaremos [Supabase](https://supabase.com/) para armazenar os dados.
+Projetar o aplicativo do zero foi uma experiência valiosa. Em 2023, as ferramentas de IA para design ainda estavam apenas começando a surgir, mas hoje eu começaria o design da interface com um assistente de IA. Ferramentas como [Galileo AI](https://www.usegalileo.ai/) ou [Rendition Create](https://www.renditioncreate.com/) podem produzir um primeiro rascunho agradável de interface a partir de prompts (Texto para UI). Começar com um rascunho de UI é sempre mais rápido, mesmo que o rascunho mude drasticamente.
+## Backend com Supabase
+Também lançamos a segunda versão do aplicativo, que trouxe outra calculadora junto com recursos como salvar um projeto e comparar dois projetos. A camada de dados foi construída no [Supabase](https://supabase.com/); o esquema abaixo mostra como projetos, usuários e histórico de edição são modelados.
 ```mermaid
 erDiagram
     auth_users {
