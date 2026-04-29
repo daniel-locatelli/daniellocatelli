@@ -50,7 +50,7 @@ A camada de CMS começou como um fork do [astro-notion-blog](https://github.com/
 ## Principais Recursos
 
 ### Animações CSS-First
-Uma decisão deliberada foi usar animações CSS puras com `@keyframes` em vez de animações Lottie, para evitar sobrecarregar a página com muito conteúdo, o que teria impactado a performance. O cover da homepage apresenta uma sequência animada em tela cheia, e as seções dos "Três Pilares" usam animações exclusivamente CSS em layouts horizontal e vertical. Isso mantém a página leve e performática.
+A agência de design havia entregue originalmente o cover da homepage e as seções dos "Três Pilares" com animações Lottie. Após a integração, os scores do Lighthouse caíram bruscamente porque as animações Lottie inflavam o DOM muito além do tamanho recomendado, prejudicando o desempenho de renderização. Reconstruí ambas as animações com `@keyframes` puro de CSS, com os "Três Pilares" adaptados para funcionar em layouts horizontal e vertical. Isso preservou a fidelidade visual e manteve a página leve e performática.
 
 <Video src="/media/projects/buildsystems-website/three-pillars-animation.mp4" caption="Animação da homepage" autoplay /> 
 

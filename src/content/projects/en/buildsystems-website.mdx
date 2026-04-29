@@ -50,7 +50,7 @@ The CMS layer started as a fork of [astro-notion-blog](https://github.com/otoyo/
 ## Key Features
 
 ### CSS-First Animations
-A deliberate decision was to use pure CSS `@keyframes` animations instead of Lottie animations to avoid bloating the page with too much content, which would have impacted performance. The homepage cover features a full-screen animated sequence, and the "Three Pillars" sections use CSS-only animations in both horizontal and vertical layouts. This keeps the page lightweight and performant.
+The design agency originally delivered the homepage cover and "Three Pillars" sections as Lottie animations. After integration, Lighthouse scores dropped sharply because the Lottie animations inflated the DOM well past the recommended size, hurting rendering performance. I rebuilt both animations in pure CSS `@keyframes`, with the "Three Pillars" adapted to work in both horizontal and vertical layouts. This preserved the visual fidelity while keeping the page lightweight and performant.
 
 <Video src="/media/projects/buildsystems-website/three-pillars-animation.mp4" caption="Homepage animation" autoplay />
 

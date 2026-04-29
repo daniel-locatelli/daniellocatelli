@@ -50,7 +50,7 @@ Die CMS-Schicht entstand als Fork von [astro-notion-blog](https://github.com/oto
 ## Hauptmerkmale
 
 ### CSS-First-Animationen
-Eine bewusste Entscheidung war es, reine CSS-`@keyframes`-Animationen anstelle von Lottie-Animationen zu verwenden, um die Seite nicht mit zu viel Inhalt zu überladen, was die Performance beeinträchtigt hätte. Das Homepage-Cover zeigt eine animierte Vollbild-Sequenz, und die „Drei Säulen"-Bereiche nutzen reine CSS-Animationen in horizontalem und vertikalem Layout. Das hält die Seite schlank und performant.
+Die Designagentur hatte das Homepage-Cover und die „Drei Säulen"-Bereiche ursprünglich als Lottie-Animationen geliefert. Nach der Integration fielen die Lighthouse-Scores deutlich ab, weil die Lottie-Animationen das DOM weit über die empfohlene Größe aufblähten und die Rendering-Performance beeinträchtigten. Ich habe beide Animationen in reinem CSS-`@keyframes` neu aufgebaut und die „Drei Säulen" für horizontale und vertikale Layouts angepasst. So blieb die visuelle Wirkung erhalten, während die Seite schlank und performant bleibt.
 
 <Video src="/media/projects/buildsystems-website/three-pillars-animation.mp4" caption="Homepage-Animation" autoplay />
 
