@@ -14,6 +14,8 @@ Link:
   Text: Palestras na SEMANAU 2023
   Href: "https://sites.google.com/mail.uft.edu.br/semanau23/palestras"
 Language: Português
+Authors:
+  - Daniel Nunes Locatelli
 ---
 
 Nesta palestra apresentei as mais recentes tecnologias na área de design computacional na Alemanha, especialmente o ICD & ITKE da Universidade de Stuttgart e a BuildSystems.

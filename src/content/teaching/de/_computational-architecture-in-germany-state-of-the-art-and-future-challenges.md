@@ -5,4 +5,6 @@ Organization: Architektur- und Stadtplanungskurs am IFPR
 City:
   - Online
 Category: Talk
+Authors:
+  - Daniel Nunes Locatelli
 ---

@@ -6,5 +6,7 @@ City:
   - São Paulo
 Country: Brazil
 Place: FAU-USP - Online
+Authors:
+  - Daniel Nunes Locatelli
 ---
 

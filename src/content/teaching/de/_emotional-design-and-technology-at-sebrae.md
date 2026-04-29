@@ -16,6 +16,8 @@ DateStart: "2019-03-19"
 Event: MOVELPAR 2019
 Language: Portugiesisch
 Place: MOVELPAR
+Authors:
+  - Daniel Nunes Locatelli
 ---
 
 Vortrag bei MOVELPAR 2019, einer der größten Möbelmessen Lateinamerikas, organisiert von SEBRAE Talks. Die Präsentation erforschte, wie emotionales Design und Technologie sich im zeitgenössischen Möbel- und Produktdesign verbinden und wie computergestützte Werkzeuge die emotionale Verbindung zwischen Nutzern und gestalteten Objekten verstärken können.

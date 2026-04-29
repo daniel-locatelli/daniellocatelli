@@ -8,4 +8,6 @@ City:
   - São Paulo
 Category: Course
 Description: Aulas de Revit desde os princípios básicos até técnicas avançadas.
+Authors:
+  - Daniel Nunes Locatelli
 ---

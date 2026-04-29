@@ -6,5 +6,7 @@ City:
 Country: Brasil
 Place: Istituto Europeo di Design
 Category: Talk
+Authors:
+  - Daniel Nunes Locatelli
 ---
 

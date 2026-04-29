@@ -12,6 +12,8 @@ DateEnd: "2018-06-08"
 Event: XIV Semana da Arquitetura e Urbanismo
 Language: Português
 Place: UNEMAT
+Authors:
+  - Daniel Nunes Locatelli
 ---
 
 Este workshop fez parte da XIV Semana da Arquitetura e Urbanismo na UNEMAT em Barra do Bugres, Brasil. O que o tornou único foi seu formato adaptável: em vez de seguir um programa rígido, os participantes escolheram coletivamente qual estratégia de design computacional queriam explorar.

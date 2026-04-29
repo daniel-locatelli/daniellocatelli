@@ -14,6 +14,8 @@ Link:
   Text: Vorträge bei SEMANAU 2023
   Href: "https://sites.google.com/mail.uft.edu.br/semanau23/palestras"
 Language: Portugiesisch
+Authors:
+  - Daniel Nunes Locatelli
 ---
 
 In diesem Vortrag präsentierte ich die neuesten Technologien im Bereich computergestütztes Design in Deutschland, speziell das ICD & ITKE an der Universität Stuttgart und BuildSystems.

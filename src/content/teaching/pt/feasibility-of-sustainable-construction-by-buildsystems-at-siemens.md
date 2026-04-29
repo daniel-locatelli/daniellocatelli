@@ -14,7 +14,7 @@ Link:
   Text: "Siemens RIE Munich Conference \"Digitalization & Low Code Engineering in Industry\""
   Href: "https://ecosystem.siemens.com/researchandinnovation/rie-munich-conference-digitalization-low-code-engineering-in-industry"
 Place: Munich Urban Colab
-Team:
+Authors:
   - Daniel Nunes Locatelli
   - Julia Dorn
 ---

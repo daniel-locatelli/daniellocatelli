@@ -11,4 +11,6 @@ Country: Deutschland
 Language: Englisch
 Category: Talk
 Link: "https://www.icd.uni-stuttgart.de/news/Multiskalares-Roboterfertigungssystem-fuer-Vor-Ort-Pressklebung-im-mehrgeschossigen-Holzbau/"
+Authors:
+  - Daniel Nunes Locatelli
 ---

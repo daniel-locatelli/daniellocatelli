@@ -5,4 +5,6 @@ Organization: Architecture and Urbanism course at IFPR
 City:
   - Online
 Category: Talk
+Authors:
+  - Daniel Nunes Locatelli
 ---

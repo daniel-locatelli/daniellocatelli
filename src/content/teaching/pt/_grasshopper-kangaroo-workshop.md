@@ -7,5 +7,7 @@ City:
 Country: Brasil
 DateStart: "2017-04-08"
 Place: PortoFabLab
+Authors:
+  - Daniel Nunes Locatelli
 ---
 

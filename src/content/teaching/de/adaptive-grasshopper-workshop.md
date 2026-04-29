@@ -12,6 +12,8 @@ DateEnd: "2018-06-08"
 Event: XIV Semana da Arquitetura e Urbanismo
 Language: Portugiesisch
 Place: UNEMAT
+Authors:
+  - Daniel Nunes Locatelli
 ---
 
 Dieser Workshop war Teil der XIV Semana da Arquitetura e Urbanismo (XIV. Architektur- und Urbanismus-Woche) an der UNEMAT in Barra do Bugres, Brasilien. Das Besondere war sein adaptives Format: Anstatt einem starren Lehrplan zu folgen, wählten die Teilnehmer gemeinsam, welche Computational-Design-Strategie sie erkunden wollten.

@@ -52,6 +52,18 @@ O principal desafio durante esse desenvolvimento foi que a McNeel, a empresa por
     - Menos recursos e exemplos disponíveis online para desenvolvimento e depuração
 A McNeel recomenda uma abordagem chamada [multi-targeting](https://learn.microsoft.com/en-us/nuget/create-packages/multiple-target-frameworks-project-file), ou seja, desenvolver o plugin suportando ambas as versões do .NET. Isso adicionou uma camada extra de complexidade ao projeto.
 
-## Futuro
-As fases finais do projeto focaram no estabelecimento do **BuildSystems Object Model (BSoM)** para aprimorar a extensibilidade e a manutenção do plugin.
+## BuildSystems Object Model (BSoM)
+O **BuildSystems Object Model (BSoM)** foi parte integral do projeto, o modelo de dados compartilhado que sustentava a extensibilidade e a manutenção do plugin.
+
+### Fase conceitual
+Mapeamos a ontologia em que o plugin se apoiaria.
+
+![Diagrama da ontologia do BSoM](../../../assets/content/projects/buildsystems-plugin-for-grasshopper/diagram-tech-titles-padded.png)
+
+### Fase de implementação
+Em seguida, implementamos o BSoM em C#, para que o Grasshopper pudesse consumi-lo nativamente. Parte desse trabalho consistiu em definir a estrutura de dados de um componente construtivo.
+
+![Hierarquia de dados de um componente construtivo da BuildSystems](../../../assets/content/projects/circular-component-creator-by-buildsystems/data-hierarchy-diagram.png)
+
+## Resultado
 Apesar de totalmente funcional, o projeto foi descontinuado devido a uma mudança de foco da então startup BuildSystems. Na época, a economia alemã enfrentava dificuldades e não havia projetos de construção em andamento nos quais pudéssemos testar o plugin adequadamente. Decidimos mudar o foco e investir nosso tempo no desenvolvimento de uma ferramenta simuladora de financiamento imobiliário sustentável.

@@ -12,5 +12,7 @@ Language: Englisch
 Link:
   Text: Präsentation als Nachricht auf der IntCDC-Website
   Href: "https://www.intcdc.uni-stuttgart.de/news/IntCDC-Masters-Thesis-Grant-2021/"
+Authors:
+  - Daniel Nunes Locatelli
 ---
 

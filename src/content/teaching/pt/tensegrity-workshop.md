@@ -11,6 +11,8 @@ DateStart: "2017-11-25"
 Organization: Atelier Marko Brajovic
 Place: Aldeia Rizoma
 Language: Português
+Authors:
+  - Daniel Nunes Locatelli
 ---
 
 Nos reunimos como equipe do Atelier Marko Brajovic em Paraty, Brasil, para construir coletivamente uma estrutura de tensegridade e fortalecer nossos laços ao longo do processo.

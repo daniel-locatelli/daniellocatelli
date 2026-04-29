@@ -14,6 +14,8 @@ Link:
   Text: Talks at SEMANAU 2023
   Href: "https://sites.google.com/mail.uft.edu.br/semanau23/palestras"
 Language: Portuguese
+Authors:
+  - Daniel Nunes Locatelli
 ---
 
 In this talk I presented the latest technologies in the computational design field in Germany, specially the ICD & ITKE at the University of Stuttgart and BuildSystems.

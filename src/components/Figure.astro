@@ -26,16 +26,24 @@ import Credit, { type CreditLine } from "@/components/Credit.astro";
 interface Props {
   credit?: CreditLine | CreditLine[];
   captionHref?: string;
+  float?: "left" | "right";
 }
 
-const { credit, captionHref } = Astro.props;
+const { credit, captionHref, float } = Astro.props;
+
+const floatClass =
+  float === "right"
+    ? "sm:float-right sm:ml-6 sm:mb-4 sm:w-2/5"
+    : float === "left"
+      ? "sm:float-left sm:mr-6 sm:mb-4 sm:w-2/5"
+      : "";
 
 const slotHtml = await Astro.slots.render("default");
 const altMatch = slotHtml.match(/<img[^>]*\salt=(?:"([^"]*)"|'([^']*)')/i);
 const caption = altMatch ? (altMatch[1] ?? altMatch[2] ?? "") : "";
 ---
 
-<figure class="figure-credit not-prose my-6">
+<figure class:list={["figure-credit not-prose my-6", floatClass]}>
   <div class="relative overflow-hidden rounded-lg">
     <Fragment set:html={slotHtml} />
     {credit && <Credit credit={credit} class="bottom-2 left-2" />}
@@ -51,3 +59,10 @@ const caption = altMatch ? (altMatch[1] ?? altMatch[2] ?? "") : "";
       ))
   }
 </figure>
+
+<style>
+  .figure-credit :global(.credit-pill) {
+    padding-inline: 0.5rem;
+    padding-block: 0.25rem;
+  }
+</style>

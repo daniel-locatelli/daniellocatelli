@@ -11,6 +11,8 @@ DateStart: "2017-11-25"
 Organization: Atelier Marko Brajovic
 Place: Aldeia Rizoma
 Language: Portugiesisch
+Authors:
+  - Daniel Nunes Locatelli
 ---
 
 Wir kamen als Team des Atelier Marko Brajovic in Paraty, Brasilien, zusammen, um gemeinsam eine Tensegrity-Struktur zu bauen und dabei unsere Teamdynamik zu stärken.

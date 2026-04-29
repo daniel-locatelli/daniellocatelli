@@ -7,5 +7,7 @@ City:
   - Rio de Janeiro
 Country: Brasil
 DateStart: "2018-08-01"
+Authors:
+  - Daniel Nunes Locatelli
 ---
 

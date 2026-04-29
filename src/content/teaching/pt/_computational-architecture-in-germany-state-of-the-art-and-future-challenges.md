@@ -5,4 +5,6 @@ Organization: Curso de Arquitetura e Urbanismo do IFPR
 City:
   - Online
 Category: Talk
+Authors:
+  - Daniel Nunes Locatelli
 ---

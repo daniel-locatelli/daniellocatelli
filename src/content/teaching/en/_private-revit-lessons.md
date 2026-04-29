@@ -8,4 +8,6 @@ City:
   - São Paulo
 Category: Course
 Description: Revit lessons from the basic principles to advanced techniques.
+Authors:
+  - Daniel Nunes Locatelli
 ---

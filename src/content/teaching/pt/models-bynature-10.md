@@ -6,6 +6,7 @@ Name: Models byNature 1.0
 Authors:
   - Daniel Nunes Locatelli
   - Adalberto de Paula
+  - Marko Brajovic
 Category: Workshop
 City:
   - São Paulo
