@@ -1,0 +1,54 @@
+---
+interface Props {
+  src: string;
+  type?: string;
+  poster?: string;
+  loop?: boolean;
+  autoplay?: boolean;
+  muted?: boolean;
+  controls?: boolean;
+  playsinline?: boolean;
+  fit?: "contain" | "cover";
+}
+
+const {
+  src,
+  type = "video/mp4",
+  poster,
+  loop = true,
+  autoplay = true,
+  muted = true,
+  controls = false,
+  playsinline = true,
+  fit = "contain",
+} = Astro.props;
+---
+
+<div class="absolute inset-0 h-full w-full">
+  {
+    fit === "contain" && (
+      <video
+        class="absolute inset-0 h-full w-full scale-110 object-cover opacity-70 blur-2xl"
+        autoplay={autoplay}
+        loop={loop}
+        muted={muted}
+        playsinline={playsinline}
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <source src={src} type={type} />
+      </video>
+    )
+  }
+  <video
+    class={`relative z-[1] h-full w-full object-${fit}`}
+    autoplay={autoplay}
+    loop={loop}
+    muted={muted}
+    controls={controls}
+    playsinline={playsinline}
+    poster={poster}
+  >
+    <source src={src} type={type} />
+  </video>
+</div>

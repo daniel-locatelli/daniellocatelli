@@ -10,6 +10,7 @@ import TitleSlide from "@/components/slides/TitleSlide.astro";
 import Slide from "@/components/slides/Slide.astro";
 import TextSlide from "@/components/slides/TextSlide.astro";
 import SlideNotes from "@/components/slides/SlideNotes.astro";
+import SlideVideo from "@/components/slides/SlideVideo.astro";
 
 import cover from "@/assets/content/teaching/digital-futures-2026/digital-futures-2026-cover.jpg";
 import architectureLenses from "@/assets/content/presentations/digital-futures-2026/architecture-lenses.png";
@@ -76,9 +77,7 @@ import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsyst
 
 {/* 5 */}
 <Slide title="Workshop Models ByNature" subtitle="São Paulo, 2019">
-  <video class="absolute inset-0 h-full w-full object-contain" autoplay loop muted playsinline>
-    <source src="/presentations/models-bynature-workshop-1.5x.mp4" type="video/mp4" />
-  </video>
+  <SlideVideo src="/presentations/models-bynature-workshop-1.5x.mp4" />
 </Slide>
 
 {/* 6 */}
@@ -195,11 +194,7 @@ import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsyst
 
 {/* 20 */}
 <Slide title="Radom Raisting" subtitle="Simulação de implantação" copyright="AR Ingenieure">
-  <div class="absolute inset-0 flex items-center justify-center">
-    <video width="1920" height="1080" autoplay loop muted playsinline>
-      <source src="/media/projects/radom-raisting-by-ar-ingenieure/deployment-sequence.mp4" type="video/mp4" />
-    </video>
-  </div>
+  <SlideVideo src="/media/projects/radom-raisting-by-ar-ingenieure/deployment-sequence.mp4" />
 </Slide>
 
 {/* 21 */}
@@ -231,9 +226,7 @@ import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsyst
 
 {/* 30 */}
 <Slide title="Hochschule München" subtitle="DOKwood">
-  <video class="absolute inset-0 h-full w-full object-contain" autoplay loop muted playsinline>
-    <source src="/presentations/dokwood-demo.mp4" type="video/mp4" />
-  </video>
+  <SlideVideo src="/presentations/dokwood-demo.mp4" />
 </Slide>
 
 {/* 31 */}
