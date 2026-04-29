@@ -24,6 +24,14 @@ Der Circular Component Creator (CCC) war eine konzeptionelle Designstudie bei [B
 
 Das Konzept entwickelte sich aus dem [BuildSystems-Plugin für Grasshopper](/projects/buildsystems-plugin-for-grasshopper), das Ökobilanz-Daten (LCA) innerhalb der Rhino/Grasshopper-Designumgebung bereitstellte. Der CCC zielte darauf ab, ähnliche Funktionen auf eine eigenständige Webplattform zu bringen und die Komponentenbibliothek einem breiteren Publikum über Grasshopper-Nutzer hinaus zugänglich zu machen.
 
+## Datenarchitektur
+
+Das zugrundeliegende Datenmodell folgt einer hierarchischen Struktur, die widerspiegelt, wie reale Baukomponenten zusammengesetzt werden. Eine Komponente besteht aus Baugruppen, die wiederum aus Schichten bestehen. Jede Schicht kann Unterschichten enthalten, unterteilt in tragende und dämmende Teile.
+
+Diese Hierarchie wurde so konzipiert, dass die Anwendung aggregierte Eigenschaften (Gesamtdicke, U-Wert, Gewicht) berechnen und gleichzeitig eine granulare Kontrolle über individuelle Materialspezifikationen behalten könnte.
+
+![Diagramm der hierarchischen Datenstruktur: Komponente zu Baugruppe zu Schicht zu Unterschicht, mit tragenden und dämmenden Unterteilungen.](../../../assets/content/projects/circular-component-creator-by-buildsystems/data-hierarchy-diagram.png)
+
 ## UX-Designprozess
 
 Der Designprozess begann mit handgezeichneten Wireframes, um den Nutzerfluss und die Bildschirmstruktur abzubilden. Diese Skizzen definierten sechs zentrale Ansichten: die Startseite, Komponentenübersicht, Filterung, Komponentenauswahl, Detailansicht und Ergebnisanalyse.
@@ -72,10 +80,4 @@ Eine 3D-Schnittansicht auf der rechten Seite zeigt die exakte Schichtkomposition
 
 ![Figma-Mockup der Komponentendetailseite mit Eigenschaften, Materialschichten, einem 3D-Schnitt und Analyse-Kreisdiagrammen.](../../../assets/content/projects/circular-component-creator-by-buildsystems/component-detail-page.png)
 
-## Datenarchitektur
-
-Das zugrundeliegende Datenmodell folgt einer hierarchischen Struktur, die widerspiegelt, wie reale Baukomponenten zusammengesetzt werden. Eine Komponente besteht aus Baugruppen, die wiederum aus Schichten bestehen. Jede Schicht kann Unterschichten enthalten, unterteilt in tragende und dämmende Teile.
-
-Diese Hierarchie wurde so konzipiert, dass die Anwendung aggregierte Eigenschaften (Gesamtdicke, U-Wert, Gewicht) berechnen und gleichzeitig eine granulare Kontrolle über individuelle Materialspezifikationen behalten könnte.
-
-![Diagramm der hierarchischen Datenstruktur: Komponente zu Baugruppe zu Schicht zu Unterschicht, mit tragenden und dämmenden Unterteilungen.](../../../assets/content/projects/circular-component-creator-by-buildsystems/data-hierarchy-diagram.png)
+Dies war das letzte Element des Designprozesses, bevor das Projekt auf Eis gelegt wurde. Die detaillierten Mockups boten eine klare Vorstellung davon, wie die Anwendung funktionieren und aussehen würde, und legten ein solides Fundament für eine mögliche zukünftige Entwicklung.

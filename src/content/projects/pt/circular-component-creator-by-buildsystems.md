@@ -24,6 +24,14 @@ O Circular Component Creator (CCC) foi um estudo conceitual de design na [BuildS
 
 O conceito evoluiu a partir do [plugin BuildSystems para Grasshopper](/projects/buildsystems-plugin-for-grasshopper), que fornecia dados de Análise de Ciclo de Vida (ACV) dentro do ambiente de design Rhino/Grasshopper. O CCC tinha como objetivo trazer capacidades semelhantes para uma plataforma web independente, tornando a biblioteca de componentes acessível a um público mais amplo, além dos usuários do Grasshopper.
 
+## Arquitetura de Dados
+
+O modelo de dados subjacente segue uma estrutura hierárquica que reflete como componentes construtivos reais são montados. Um Componente é composto por Montagens, que por sua vez consistem em Camadas. Cada camada pode conter Subcamadas, separadas em partes estruturais e de isolamento.
+
+Essa hierarquia foi projetada para permitir que o aplicativo calculasse propriedades agregadas (espessura total, valor U, peso) mantendo controle granular sobre especificações individuais de materiais.
+
+![Diagrama mostrando a estrutura hierárquica de dados: Componente para Montagem para Camada para Subcamada, com subdivisões estruturais e de isolamento.](../../../assets/content/projects/circular-component-creator-by-buildsystems/data-hierarchy-diagram.png)
+
 ## Processo de Design UX
 
 O processo de design começou com wireframes desenhados à mão para mapear o fluxo do usuário e a estrutura das telas. Esses esboços definiram seis telas principais: a página inicial, navegação de componentes, filtragem, seleção de componentes, visualização detalhada e análise de resultados.
@@ -72,10 +80,4 @@ Uma vista de corte 3D no lado direito mostra a composição exata das camadas, c
 
 ![Mockup no Figma da página de detalhes do componente mostrando propriedades, camadas de material, um corte 3D e gráficos de pizza de análise.](../../../assets/content/projects/circular-component-creator-by-buildsystems/component-detail-page.png)
 
-## Arquitetura de Dados
-
-O modelo de dados subjacente segue uma estrutura hierárquica que reflete como componentes construtivos reais são montados. Um Componente é composto por Montagens, que por sua vez consistem em Camadas. Cada camada pode conter Subcamadas, separadas em partes estruturais e de isolamento.
-
-Essa hierarquia foi projetada para permitir que o aplicativo calculasse propriedades agregadas (espessura total, valor U, peso) mantendo controle granular sobre especificações individuais de materiais.
-
-![Diagrama mostrando a estrutura hierárquica de dados: Componente para Montagem para Camada para Subcamada, com subdivisões estruturais e de isolamento.](../../../assets/content/projects/circular-component-creator-by-buildsystems/data-hierarchy-diagram.png)
+Esta foi a última peça do processo de design antes que o projeto fosse colocado em espera. Os mockups detalhados forneceram uma visão clara de como a aplicação funcionaria e se apresentaria, estabelecendo uma base sólida para um possível desenvolvimento futuro.

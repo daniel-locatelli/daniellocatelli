@@ -24,6 +24,14 @@ The Circular Component Creator (CCC) was a conceptual design study at [BuildSyst
 
 The concept evolved from the [BuildSystems plugin for Grasshopper](/projects/buildsystems-plugin-for-grasshopper), which provided Lifecycle Analysis (LCA) data within the Rhino/Grasshopper design environment. The CCC aimed to bring similar capabilities to a standalone web platform, making the component library accessible to a broader audience beyond Grasshopper users.
 
+## Data Architecture
+
+The underlying data model follows a hierarchical structure that reflects how real building components are assembled. A Component is composed of Assemblies, which in turn consist of Layers. Each layer can contain Sub-layers, separated into structural and insulation parts.
+
+This hierarchy was designed to allow the application to calculate aggregated properties (total thickness, U-value, weight) while maintaining granular control over individual material specifications.
+
+![Diagram showing the hierarchical data structure: Component to Assembly to Layer to Sub-layer, with structural and insulation subdivisions.](../../../assets/content/projects/circular-component-creator-by-buildsystems/data-hierarchy-diagram.png)
+
 ## UX Design Process
 
 The design process started with hand-drawn wireframes to map out the user flow and screen structure. These sketches defined six key screens: the landing page, component browsing, filtering, component selection, detail view, and outcome analysis.
@@ -72,10 +80,4 @@ A 3D cross-section view on the right side shows the exact layer composition, mat
 
 ![Figma mockup of the component detail page showing properties, material layers, a 3D cross-section, and analysis pie charts.](../../../assets/content/projects/circular-component-creator-by-buildsystems/component-detail-page.png)
 
-## Data Architecture
-
-The underlying data model follows a hierarchical structure that reflects how real building components are assembled. A Component is composed of Assemblies, which in turn consist of Layers. Each layer can contain Sub-layers, separated into structural and insulation parts.
-
-This hierarchy was designed to allow the application to calculate aggregated properties (total thickness, U-value, weight) while maintaining granular control over individual material specifications.
-
-![Diagram showing the hierarchical data structure: Component to Assembly to Layer to Sub-layer, with structural and insulation subdivisions.](../../../assets/content/projects/circular-component-creator-by-buildsystems/data-hierarchy-diagram.png)
+This was the last piece of the design process before the project was put on hold. The detailed mockups provided a clear vision for how the application would function and look, setting a strong foundation for potential future development.
