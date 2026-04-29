@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/research/itke-research-assistant-for-coreless-filament-winding/itke-load-test-setup.jpg
 CoverAlt: Natural fiber wound specimen secured with load straps for structural testing at ITKE Stuttgart.
+CoverFocal: "85% 50%"
 Description: "As a research assistant, I helped Marta Gil Pérez with the load tests of natural fiber specimens for the livMatS Pavilion. The main takeaway was about the relationship between computer simulation, physical experiments, and the researcher's intuition."
 Name: ITKE Research Assistant for Coreless Filament Winding
 Tags:

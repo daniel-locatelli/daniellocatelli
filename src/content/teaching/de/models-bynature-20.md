@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/teaching/models-bynature-20/murilo-gasparetto_soap-film-pyramidal-catenary.png
 CoverAlt: Seifenfilm, der eine pyramidale Kettenlinienfläche auf einem Drahtrahmen bildet, festgehalten von Murilo Gasparetto am Formfindungstag des Workshops.
+CoverFocal: "50% 80%"
 Description: "Die zweite Ausgabe des Workshops Models byNature erweiterte die erste mit vier Samstagen parametrischen Designs mit Grasshopper, inspiriert von der Natur, mit Formfindungsexperimenten, computergestützter Modellierung und Biomimetik im Atelier Marko Brajovic in São Paulo."
 Name: Models byNature 2.0
 Authors:

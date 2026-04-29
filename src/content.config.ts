@@ -37,6 +37,8 @@ const pageSchema = z.object({
   CoverAlt: z.string().optional().nullable(),
   CoverAlt_de: z.string().optional().nullable(),
   CoverAlt_pt: z.string().optional().nullable(),
+  CoverFocal: z.string().optional().nullable(),
+  CoverFit: z.enum(["cover", "contain"]).optional().nullable(),
   Icon: z
     .union([
       z.object({

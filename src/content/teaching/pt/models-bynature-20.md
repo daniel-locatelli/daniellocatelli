@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/teaching/models-bynature-20/murilo-gasparetto_soap-film-pyramidal-catenary.png
 CoverAlt: Filme de sabão formando uma superfície de catenária piramidal sobre uma armação de arame, registrado por Murilo Gasparetto no dia de busca pela forma do workshop.
+CoverFocal: "50% 80%"
 Description: "A segunda edição do workshop Models byNature expandiu a primeira com quatro sábados de design paramétrico com Grasshopper inspirado na natureza, abordando experimentos de busca pela forma, modelagem computacional e biomimética no Atelier Marko Brajovic em São Paulo."
 Name: Models byNature 2.0
 Authors:

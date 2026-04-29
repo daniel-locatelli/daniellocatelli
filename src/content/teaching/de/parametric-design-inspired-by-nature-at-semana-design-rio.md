@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/teaching/parametric-design-inspired-by-nature-at-semana-design-rio/semana-design-rio_daniel-locatelli_atelier-marko-brajovic-01.jpeg
 CoverAlt: Daniel Nunes Locatelli präsentiert bei der Semana Design Rio 2018
+CoverFocal: "75% 50%"
 Description: Vortrag bei der Semana Design Rio 2018 über sieben Prinzipien aus der Natur, angewandt auf parametrisches Design, mit Projektbeispielen aus dem Atelier Marko Brajovic.
 Name: Parametrisches Design inspiriert durch die Natur
 Tags:

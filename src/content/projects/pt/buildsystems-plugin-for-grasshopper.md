@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/projects/buildsystems-plugin-for-grasshopper/buildsystems-plugin-for-grasshopper-cover.png
 CoverAlt: Plugin para o Grasshopper desenvolvido para a BuildSystems
+CoverFit: contain
 Description: Plugin desenvolvido para BuildSystems para criar componentes construtivos com base em Declarações Ambientais de Produtos (DAPs). A ideia foi oferecer dados de Análise de Ciclo de Vida (ACV) logo no início do processo de projeto.
 Name: Plugin da BuildSystems para o Grasshopper
 Tags:

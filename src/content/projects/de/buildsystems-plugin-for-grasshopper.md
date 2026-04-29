@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/projects/buildsystems-plugin-for-grasshopper/buildsystems-plugin-for-grasshopper-cover.png
 CoverAlt: Grasshopper-Plugin entwickelt für BuildSystems
+CoverFit: contain
 Description: "Plugin entwickelt für BuildSystems zur Erstellung von Baukomponenten auf Basis von Umweltproduktdeklarationen (EPDs). Die Idee war, Ökobilanz-Daten (LCA) bereits zu Beginn des Entwurfsprozesses bereitzustellen."
 Name: BuildSystems-Plugin für Grasshopper
 Tags:

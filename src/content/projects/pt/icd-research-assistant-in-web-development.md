@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/projects/icd-research-assistant-in-web-development/icd-research-assistant-in-web-development-cover.jpg
 CoverAlt: Página inicial do site do ICD com o Pavilhão de Fibra BUGA.
+CoverFit: contain
 Description: "Ajudei a migrar o site do ICD para o template centralizado da Universidade de Stuttgart baseado em OpenCMS. Este projeto me proporcionou meu primeiro contato com a língua alemã e uma profunda admiração pelo portfólio de pesquisa do ICD."
 Name: "Assistente de Pesquisa em Desenvolvimento\u00A0Web no ICD"
 Tags:

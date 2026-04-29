@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/teaching/digital-futures-2026/digital-futures-2026_youtube-cover_upscayl_2x_remacri-4x.png
 CoverAlt: "Capa do YouTube para a sessão Digital Futures 2026: Entre o Prompt e a Obra."
+CoverFit: contain
 Name: "Digital Futures 2026: Entre o Prompt e a Obra"
 Description: "Talk sobre a jornada da biomimética ao pensamento sistêmico e o que falta na inteligência artificial para arquitetura: o olhar de um arquiteto brasileiro formado e atuante na Alemanha."
 Category: Talk

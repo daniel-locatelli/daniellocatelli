@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/projects/icd-research-assistant-in-web-development/icd-research-assistant-in-web-development-cover.jpg
 CoverAlt: Startseite der ICD-Website mit dem BUGA-Faserpavillon.
+CoverFit: contain
 Description: "Ich half bei der Migration der ICD-Website auf das zentralisierte OpenCMS-Template der Universität Stuttgart. Dieses Projekt ermöglichte mir meinen ersten Kontakt mit der deutschen Sprache und eine tiefe Wertschätzung für das Forschungsportfolio des ICD."
 Name: ICD Wissenschaftliche Hilfskraft in der Webentwicklung
 Tags:

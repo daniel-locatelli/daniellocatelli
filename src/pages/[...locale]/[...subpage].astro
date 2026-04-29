@@ -110,6 +110,14 @@ if (image) {
   const cover = subpage.data.Cover;
   coverUrl = typeof cover === "string" ? cover : cover.Url;
 }
+
+const isLetterbox = subpage.data.CoverFit === "contain";
+const focalStyle = subpage.data.CoverFocal
+  ? `object-position: ${subpage.data.CoverFocal}`
+  : undefined;
+const foregroundClass = isLetterbox
+  ? "hero-img absolute inset-0 h-full w-full object-contain opacity-0 md:object-cover"
+  : "hero-img absolute inset-0 h-full w-full object-cover opacity-0";
 ---
 
 <Base
@@ -125,19 +133,42 @@ if (image) {
   {
     image && (
       <div class="hero-image relative mb-8 h-[60svh] w-full overflow-hidden md:h-svh">
-        {blurDataUrl && (
-          <img
-            src={blurDataUrl}
-            class="absolute inset-0 h-full w-full object-cover scale-110 blur-xl"
-            aria-hidden="true"
-            alt=""
-            loading="eager"
-            decoding="async"
-          />
-        )}
+        {isLetterbox &&
+          (blurDataUrl ? (
+            <img
+              src={blurDataUrl}
+              class="absolute inset-0 h-full w-full object-cover scale-110 blur-xl md:hidden"
+              aria-hidden="true"
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
+          ) : image.format === "svg" ? (
+            <img
+              src={image.src}
+              class="absolute inset-0 h-full w-full object-cover scale-110 blur-2xl md:hidden"
+              aria-hidden="true"
+              alt=""
+              width={image.width}
+              height={image.height}
+              loading="eager"
+              decoding="async"
+            />
+          ) : (
+            <Image
+              src={image}
+              width={40}
+              class="absolute inset-0 h-full w-full object-cover scale-110 blur-2xl md:hidden"
+              aria-hidden="true"
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
+          ))}
         {image.format === "svg" ? (
           <img
-            class="hero-img absolute inset-0 h-full w-full object-cover opacity-0"
+            class={foregroundClass}
+            style={focalStyle}
             src={image.src}
             alt={subpage.data.CoverAlt || ""}
             width={image.width}
@@ -148,7 +179,8 @@ if (image) {
           />
         ) : (
           <Image
-            class="hero-img absolute inset-0 h-full w-full object-cover opacity-0"
+            class={foregroundClass}
+            style={focalStyle}
             src={image}
             alt={subpage.data.CoverAlt || ""}
             loading="eager"

@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/teaching/digital-futures-2026/digital-futures-2026_youtube-cover_upscayl_2x_remacri-4x.png
 CoverAlt: "YouTube cover for the Digital Futures 2026 session: Entre o Prompt e a Obra."
+CoverFit: contain
 Name: "Digital Futures 2026: Entre o Prompt e a Obra"
 Description: "Talk on the journey from biomimicry to systems thinking and what's missing in AI for architecture: the perspective of a Brazilian architect trained and working in Germany."
 Category: Talk

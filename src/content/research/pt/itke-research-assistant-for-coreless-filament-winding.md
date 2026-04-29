@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/research/itke-research-assistant-for-coreless-filament-winding/itke-load-test-setup.jpg
 CoverAlt: Corpo de prova de fibra natural enrolada fixado com cintas de carga para teste estrutural no ITKE Stuttgart.
+CoverFocal: "85% 50%"
 Description: "Como assistente de pesquisa, ajudei Marta Gil Pérez com os testes de carga de corpos de prova de fibra natural para o Pavilhão livMatS. A principal lição foi sobre a relação entre simulação computacional, experimentos físicos e a intuição do pesquisador."
 Name: Assistente de Pesquisa ITKE para Enrolamento Filamentar sem Núcleo
 Tags:

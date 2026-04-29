@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/projects/buildsystems-plugin-for-grasshopper/buildsystems-plugin-for-grasshopper-cover.png
 CoverAlt: Grasshopper plugin developed for BuildSystems
+CoverFit: contain
 Description: Plugin developed for BuildSystems to create building components based on Environmental Products Declarations (EPDs). The idea was to offer Lifecycle Analysis (LCA) data right at the beginning of the design process.
 Name: BuildSystems plugin for Grasshopper
 Tags:

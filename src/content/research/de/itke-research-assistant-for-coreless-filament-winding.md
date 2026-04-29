@@ -1,6 +1,7 @@
 ---
 Cover: /assets/content/research/itke-research-assistant-for-coreless-filament-winding/itke-load-test-setup.jpg
 CoverAlt: Naturfaser-Wickelprobekörper mit Lastgurten für Strukturtests am ITKE Stuttgart befestigt.
+CoverFocal: "85% 50%"
 Description: "Als wissenschaftliche Hilfskraft half ich Marta Gil Pérez bei den Belastungstests von Naturfaserprobekörpern für den livMatS-Pavillon. Die wichtigste Erkenntnis betraf die Beziehung zwischen Computersimulation, physischen Experimenten und der Intuition der Forscherin."
 Name: ITKE-Wissenschaftliche Hilfskraft für Kernloses Filamentwickeln
 Tags:
