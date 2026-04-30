@@ -864,16 +864,19 @@ const foregroundClass = isLetterbox
       );
     }
 
-    function setZoomed(zoomed: boolean) {
+    function setZoomed(zoomed: boolean, anchorX = 0.5, anchorY = 0.5) {
       const value = zoomed ? "true" : "false";
       lightbox!.dataset.zoomed = value;
       scrollEl!.dataset.zoomed = value;
       lightboxImg!.dataset.zoomed = value;
       if (zoomed) {
-        // Wait for layout to apply natural-size constraints, then center.
+        // Wait for layout to apply natural-size constraints, then place the
+        // anchor point at the centre of the visible viewport.
         requestAnimationFrame(() => {
-          scrollEl!.scrollLeft = (scrollEl!.scrollWidth - scrollEl!.clientWidth) / 2;
-          scrollEl!.scrollTop = (scrollEl!.scrollHeight - scrollEl!.clientHeight) / 2;
+          const targetX = lightboxImg!.offsetLeft + anchorX * lightboxImg!.naturalWidth - scrollEl!.clientWidth / 2;
+          const targetY = lightboxImg!.offsetTop + anchorY * lightboxImg!.naturalHeight - scrollEl!.clientHeight / 2;
+          scrollEl!.scrollLeft = Math.max(0, Math.min(scrollEl!.scrollWidth - scrollEl!.clientWidth, targetX));
+          scrollEl!.scrollTop = Math.max(0, Math.min(scrollEl!.scrollHeight - scrollEl!.clientHeight, targetY));
         });
       } else {
         scrollEl!.scrollTo(0, 0);
@@ -896,7 +899,10 @@ const foregroundClass = isLetterbox
       }
       const isZoomed = lightbox!.dataset.zoomed === "true";
       if (!isZoomed && !isImageLargerThanFit()) return;
-      setZoomed(!isZoomed);
+      // Anchor zoom-in on the click point; reset to centre on zoom-out.
+      const anchorX = isZoomed ? 0.5 : e.offsetX / lightboxImg.clientWidth;
+      const anchorY = isZoomed ? 0.5 : e.offsetY / lightboxImg.clientHeight;
+      setZoomed(!isZoomed, anchorX, anchorY);
     }, { signal });
 
     const DRAG_THRESHOLD = 5;
