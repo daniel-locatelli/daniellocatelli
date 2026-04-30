@@ -68,6 +68,30 @@ test.describe("Subpages", () => {
     await expect(page.locator("#lightbox")).toHaveClass(/hidden/);
   });
 
+  test("lightbox image click toggles zoom", async ({ page }) => {
+    await page.goto(`/${KNOWN_SUBPAGE.slug}`);
+    const lightbox = page.locator("#lightbox");
+    const lightboxImg = page.locator("#lightbox-img");
+
+    await page.locator(".prose img").first().click();
+    await expect(lightbox).not.toHaveClass(/hidden/);
+    await expect(lightbox).toHaveAttribute("data-zoomed", "false");
+
+    // Wait for the upgraded image to load so naturalWidth is available.
+    await page.waitForFunction(() => {
+      const img = document.getElementById("lightbox-img") as HTMLImageElement | null;
+      return !!img && img.complete && img.naturalWidth > 0;
+    });
+
+    // Only large-enough images toggle to zoomed; KNOWN_SUBPAGE has full-bleed
+    // body images that always exceed 90vw of the test viewport.
+    await lightboxImg.click();
+    await expect(lightbox).toHaveAttribute("data-zoomed", "true");
+
+    await lightboxImg.click();
+    await expect(lightbox).toHaveAttribute("data-zoomed", "false");
+  });
+
   test("Portuguese subpage renders", async ({ page }) => {
     await page.goto(localeUrl("pt", `/${KNOWN_SUBPAGE.slug}`));
     await expect(page.locator("main h1").first()).toContainText(KNOWN_SUBPAGE.title);
