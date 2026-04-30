@@ -909,3 +909,33 @@ const foregroundClass = isLetterbox
 
   document.addEventListener("astro:page-load", setupFootnoteTooltips);
 </script>
+
+<script>
+  // Body images are tagged with data-preload by rehype-lazy-images. We keep
+  // loading="lazy" as a no-JS fallback, but proactively flip to eager once
+  // the image is within ~1.5 viewports of the user, so fast scrolls don't
+  // hit a per-row network wait. Native loading="lazy" alone has too tight a
+  // preload distance for a reading experience.
+  function setupBodyImagePreload() {
+    const images = document.querySelectorAll<HTMLImageElement>(
+      'img[data-preload="true"]',
+    );
+    if (!("IntersectionObserver" in window) || images.length === 0) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const img = entry.target as HTMLImageElement;
+          img.loading = "eager";
+          io.unobserve(img);
+        }
+      },
+      { rootMargin: "1500px 0px" },
+    );
+
+    images.forEach((img) => io.observe(img));
+  }
+
+  document.addEventListener("astro:page-load", setupBodyImagePreload);
+</script>
