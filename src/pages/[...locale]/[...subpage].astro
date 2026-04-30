@@ -787,6 +787,28 @@ const foregroundClass = isLetterbox
 </div>
 
 <script>
+  function pickLargestSrc(img: HTMLImageElement): string {
+    const srcset = img.getAttribute("srcset");
+    if (srcset) {
+      let bestUrl = "";
+      let bestWidth = 0;
+      for (const entry of srcset.split(",")) {
+        const parts = entry.trim().split(/\s+/);
+        if (parts.length < 2) continue;
+        const url = parts[0];
+        const descriptor = parts[parts.length - 1];
+        if (!descriptor.endsWith("w")) continue;
+        const width = parseInt(descriptor.slice(0, -1), 10);
+        if (Number.isFinite(width) && width > bestWidth) {
+          bestWidth = width;
+          bestUrl = url;
+        }
+      }
+      if (bestUrl) return bestUrl;
+    }
+    return img.currentSrc || img.src;
+  }
+
   function setupLightbox() {
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById(
@@ -808,7 +830,7 @@ const foregroundClass = isLetterbox
       const target = e.target as HTMLElement;
       if (target.tagName !== "IMG") return;
       const img = target as HTMLImageElement;
-      lightboxImg.src = img.src;
+      lightboxImg.src = pickLargestSrc(img);
       lightboxImg.alt = img.alt;
       lightbox.classList.remove("hidden");
       lightbox.classList.add("flex");
