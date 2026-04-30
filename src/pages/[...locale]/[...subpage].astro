@@ -764,6 +764,7 @@ const foregroundClass = isLetterbox
 
 <div
   id="lightbox"
+  data-zoomed="false"
   class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
 >
   <button
@@ -772,11 +773,17 @@ const foregroundClass = isLetterbox
     class="absolute top-4 right-4 z-10 cursor-pointer text-3xl text-white/70 transition hover:text-white"
     >&times;</button
   >
-  <img
-    id="lightbox-img"
-    class="max-h-[90vh] max-w-[90vw] rounded object-contain"
-    alt=""
-  />
+  <div
+    id="lightbox-scroll"
+    class="flex max-h-[95vh] max-w-[95vw] items-center justify-center select-none data-[zoomed=true]:overflow-auto"
+  >
+    <img
+      id="lightbox-img"
+      draggable="false"
+      class="rounded object-contain max-h-[90vh] max-w-[90vw] data-[zoomed=true]:max-h-none data-[zoomed=true]:max-w-none"
+      alt=""
+    />
+  </div>
 </div>
 
 <script>
