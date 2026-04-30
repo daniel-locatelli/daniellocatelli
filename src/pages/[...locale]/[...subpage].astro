@@ -815,9 +815,9 @@ const foregroundClass = isLetterbox
       "lightbox-img",
     ) as HTMLImageElement | null;
     const lightboxClose = document.getElementById("lightbox-close");
+    if (!lightbox || !lightboxImg) return;
     const scrollEl = document.getElementById("lightbox-scroll");
     if (!scrollEl) return;
-    if (!lightbox || !lightboxImg) return;
 
     const prose = document.querySelector(".prose");
     if (!prose) return;
