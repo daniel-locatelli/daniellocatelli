@@ -809,7 +809,13 @@ const foregroundClass = isLetterbox
     return img.currentSrc || img.src;
   }
 
+  let lightboxAbort: AbortController | null = null;
+
   function setupLightbox() {
+    if (lightboxAbort) lightboxAbort.abort();
+    lightboxAbort = new AbortController();
+    const signal = lightboxAbort.signal;
+
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById(
       "lightbox-img",
@@ -837,7 +843,7 @@ const foregroundClass = isLetterbox
       setZoomed(false);
       lightbox.classList.remove("hidden");
       lightbox.classList.add("flex");
-    });
+    }, { signal });
 
     function closeLightbox() {
       setZoomed(false);
@@ -870,7 +876,7 @@ const foregroundClass = isLetterbox
       if (e.target === lightbox || e.target === lightboxClose) {
         closeLightbox();
       }
-    });
+    }, { signal });
 
     lightboxImg.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -881,14 +887,14 @@ const foregroundClass = isLetterbox
       const isZoomed = lightbox!.dataset.zoomed === "true";
       if (!isZoomed && !isImageLargerThanFit()) return;
       setZoomed(!isZoomed);
-    });
+    }, { signal });
 
     const DRAG_THRESHOLD = 5;
     let dragStart: { x: number; y: number; scrollLeft: number; scrollTop: number } | null = null;
 
     scrollEl.addEventListener("mousedown", (e) => {
       if (lightbox!.dataset.zoomed !== "true") return;
-      if ((e.target as HTMLElement).id !== "lightbox-img") return;
+      if (e.target !== lightboxImg) return;
       e.preventDefault();
       dragStart = {
         x: e.clientX,
@@ -897,7 +903,7 @@ const foregroundClass = isLetterbox
         scrollTop: scrollEl!.scrollTop,
       };
       lightbox!.dataset.dragging = "false";
-    });
+    }, { signal });
 
     window.addEventListener("mousemove", (e) => {
       if (!dragStart) return;
@@ -914,7 +920,7 @@ const foregroundClass = isLetterbox
         scrollEl!.scrollLeft = dragStart.scrollLeft - dx;
         scrollEl!.scrollTop = dragStart.scrollTop - dy;
       }
-    });
+    }, { signal });
 
     window.addEventListener("mouseup", () => {
       if (!dragStart) return;
@@ -923,14 +929,14 @@ const foregroundClass = isLetterbox
         lightboxImg!.style.cursor = "grab";
       }
       // dataset.dragging stays "true" until the matching click consumes it (Task 3).
-    });
+    }, { signal });
 
     // Close on Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !lightbox.classList.contains("hidden")) {
         closeLightbox();
       }
-    });
+    }, { signal });
   }
 
   document.addEventListener("astro:page-load", setupLightbox);
