@@ -764,6 +764,8 @@ const foregroundClass = isLetterbox
 
 <div
   id="lightbox"
+  data-zoomed="false"
+  data-dragging="false"
   class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
 >
   <button
@@ -772,21 +774,57 @@ const foregroundClass = isLetterbox
     class="absolute top-4 right-4 z-10 cursor-pointer text-3xl text-white/70 transition hover:text-white"
     >&times;</button
   >
-  <img
-    id="lightbox-img"
-    class="max-h-[90vh] max-w-[90vw] rounded object-contain"
-    alt=""
-  />
+  <div
+    id="lightbox-scroll"
+    class="flex max-h-[95vh] max-w-[95vw] select-none data-[zoomed=true]:overflow-auto"
+  >
+    <img
+      id="lightbox-img"
+      draggable="false"
+      class="m-auto rounded object-contain max-h-[90vh] max-w-[90vw] data-[zoomed=true]:max-h-none data-[zoomed=true]:max-w-none"
+      alt=""
+    />
+  </div>
 </div>
 
 <script>
+  function pickLargestSrc(img: HTMLImageElement): string {
+    const srcset = img.getAttribute("srcset");
+    if (srcset) {
+      let bestUrl = "";
+      let bestWidth = 0;
+      for (const entry of srcset.split(",")) {
+        const parts = entry.trim().split(/\s+/);
+        if (parts.length < 2) continue;
+        const url = parts[0];
+        const descriptor = parts[parts.length - 1];
+        if (!descriptor.endsWith("w")) continue;
+        const width = parseInt(descriptor.slice(0, -1), 10);
+        if (Number.isFinite(width) && width > bestWidth) {
+          bestWidth = width;
+          bestUrl = url;
+        }
+      }
+      if (bestUrl) return bestUrl;
+    }
+    return img.currentSrc || img.src;
+  }
+
+  let lightboxAbort: AbortController | null = null;
+
   function setupLightbox() {
+    if (lightboxAbort) lightboxAbort.abort();
+    lightboxAbort = new AbortController();
+    const signal = lightboxAbort.signal;
+
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById(
       "lightbox-img",
     ) as HTMLImageElement | null;
     const lightboxClose = document.getElementById("lightbox-close");
-    if (!lightbox || !lightboxImg) return;
+    if (!lightbox || !lightboxImg || !lightboxClose) return;
+    const scrollEl = document.getElementById("lightbox-scroll");
+    if (!scrollEl) return;
 
     const prose = document.querySelector(".prose");
     if (!prose) return;
@@ -801,16 +839,49 @@ const foregroundClass = isLetterbox
       const target = e.target as HTMLElement;
       if (target.tagName !== "IMG") return;
       const img = target as HTMLImageElement;
-      lightboxImg.src = img.src;
+      lightboxImg.src = pickLargestSrc(img);
       lightboxImg.alt = img.alt;
+      setZoomed(false);
       lightbox.classList.remove("hidden");
       lightbox.classList.add("flex");
-    });
+      document.body.style.overflow = "hidden";
+    }, { signal });
 
     function closeLightbox() {
+      setZoomed(false);
+      lightbox!.dataset.dragging = "false";
       lightbox!.classList.add("hidden");
       lightbox!.classList.remove("flex");
       lightboxImg!.src = "";
+      document.body.style.overflow = "";
+    }
+
+    function isImageLargerThanFit(): boolean {
+      const fitW = window.innerWidth * 0.9;
+      const fitH = window.innerHeight * 0.9;
+      return (
+        lightboxImg!.naturalWidth > fitW || lightboxImg!.naturalHeight > fitH
+      );
+    }
+
+    function setZoomed(zoomed: boolean, anchorX = 0.5, anchorY = 0.5) {
+      const value = zoomed ? "true" : "false";
+      lightbox!.dataset.zoomed = value;
+      scrollEl!.dataset.zoomed = value;
+      lightboxImg!.dataset.zoomed = value;
+      if (zoomed) {
+        // Wait for layout to apply natural-size constraints, then place the
+        // anchor point at the centre of the visible viewport.
+        requestAnimationFrame(() => {
+          const targetX = lightboxImg!.offsetLeft + anchorX * lightboxImg!.naturalWidth - scrollEl!.clientWidth / 2;
+          const targetY = lightboxImg!.offsetTop + anchorY * lightboxImg!.naturalHeight - scrollEl!.clientHeight / 2;
+          scrollEl!.scrollLeft = Math.max(0, Math.min(scrollEl!.scrollWidth - scrollEl!.clientWidth, targetX));
+          scrollEl!.scrollTop = Math.max(0, Math.min(scrollEl!.scrollHeight - scrollEl!.clientHeight, targetY));
+        });
+      } else {
+        scrollEl!.scrollTo(0, 0);
+      }
+      lightboxImg!.style.cursor = zoomed ? "grab" : "zoom-in";
     }
 
     // Close on backdrop click
@@ -818,14 +889,70 @@ const foregroundClass = isLetterbox
       if (e.target === lightbox || e.target === lightboxClose) {
         closeLightbox();
       }
-    });
+    }, { signal });
+
+    lightboxImg.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (lightbox!.dataset.dragging === "true") {
+        lightbox!.dataset.dragging = "false";
+        return;
+      }
+      const isZoomed = lightbox!.dataset.zoomed === "true";
+      if (!isZoomed && !isImageLargerThanFit()) return;
+      // Anchor zoom-in on the click point; reset to centre on zoom-out.
+      const anchorX = isZoomed ? 0.5 : e.offsetX / lightboxImg.clientWidth;
+      const anchorY = isZoomed ? 0.5 : e.offsetY / lightboxImg.clientHeight;
+      setZoomed(!isZoomed, anchorX, anchorY);
+    }, { signal });
+
+    const DRAG_THRESHOLD = 5;
+    let dragStart: { x: number; y: number; scrollLeft: number; scrollTop: number } | null = null;
+
+    scrollEl.addEventListener("mousedown", (e) => {
+      if (lightbox!.dataset.zoomed !== "true") return;
+      if (e.target !== lightboxImg) return;
+      e.preventDefault();
+      dragStart = {
+        x: e.clientX,
+        y: e.clientY,
+        scrollLeft: scrollEl!.scrollLeft,
+        scrollTop: scrollEl!.scrollTop,
+      };
+      lightbox!.dataset.dragging = "false";
+    }, { signal });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!dragStart) return;
+      const dx = e.clientX - dragStart.x;
+      const dy = e.clientY - dragStart.y;
+      if (
+        lightbox!.dataset.dragging !== "true" &&
+        Math.hypot(dx, dy) >= DRAG_THRESHOLD
+      ) {
+        lightbox!.dataset.dragging = "true";
+        lightboxImg!.style.cursor = "grabbing";
+      }
+      if (lightbox!.dataset.dragging === "true") {
+        scrollEl!.scrollLeft = dragStart.scrollLeft - dx;
+        scrollEl!.scrollTop = dragStart.scrollTop - dy;
+      }
+    }, { signal });
+
+    window.addEventListener("mouseup", () => {
+      if (!dragStart) return;
+      dragStart = null;
+      if (lightbox!.dataset.zoomed === "true") {
+        lightboxImg!.style.cursor = "grab";
+      }
+      // dataset.dragging stays "true" until the matching click consumes it (Task 3).
+    }, { signal });
 
     // Close on Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !lightbox.classList.contains("hidden")) {
         closeLightbox();
       }
-    });
+    }, { signal });
   }
 
   document.addEventListener("astro:page-load", setupLightbox);
