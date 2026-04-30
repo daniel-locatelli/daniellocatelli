@@ -279,6 +279,8 @@ O principal proveito deste estudo de caso foi devido à necessidade de aprender 
   ![Pavilhão Alemão da Expo 1967 - Sistema Kangaroo ativado](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper_08-kangaroo-system-activated.jpg)
 </ImageRow>
 
+<YouTube id="6oNBxRBSd3I" title="Frei Otto: pavilhão alemão da Expo 1967" />
+
 ### Tomás Saraceno: Galaxies Forming Along Filaments
 
 Assim como os arquitetos citados anteriormente, as preocupações de Saraceno surgem da ansiedade contemporânea a respeito do esgotamento de recursos do planeta e sua conservação.
@@ -353,6 +355,8 @@ Este estudo de caso foi especialmente importante por exigir uma aproximação ut
 
 ![Galapagos iteração 02](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming_grasshopper_render-16-galapagos-iteration-02.jpg)
 
+<YouTube id="UIbw5dfc2dM" title="Tomás Saraceno: Galaxies Forming Along Filaments" />
+
 ### Achim Menges: Landesgartenschau Exhibition Hall
 
 Achim Menges é diretor fundador do Instituto de Design Computacional (ICD) na Universidade de Stuttgart desde 2008, uma das instituições com maior reconhecimento na área de design computacional e fabricação por robôs; não por coincidência esta foi a mesma universidade em que Frei Otto lecionou durante 26 anos.
@@ -363,11 +367,57 @@ São diversos os pavilhões desenvolvidos no ICD da Universidade de Stuttgart, n
 
 A inspiração deste projeto veio das conchas das bolachas-da-praia, pois elas apresentam peças individuais conectadas por junções similares ao encaixe de madeira do tipo "dedos". A estrutura do pavilhão é composta por placas de compensado inteiramente pré-fabricadas por robôs que conseguem um eficiente aproveitamento da matéria-prima. Tudo isso só é possível devido à integração entre o design computacional, simulações e métodos de levantamento topográficos.
 
+<ImageRow>
+  ![Landesgartenschau Exhibition Hall: vista externa das duas cúpulas hexagonais de compensado](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-02.jpg)
+
+  ![Landesgartenschau Exhibition Hall: vista frontal com entrada de vidro](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-03.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![Landesgartenschau Exhibition Hall: vista interna da abóbada hexagonal de compensado](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-01.jpg)
+
+  ![Landesgartenschau Exhibition Hall: montagem de uma placa de compensado com encaixe tipo "dedos"](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-04.jpg)
+</ImageRow>
+
 Para a produção deste algoritmo, foi utilizado o simulador de física Kangaroo Physics e diversos outros componentes do Grasshopper. Além disso, o conhecimento e parte do algoritmo resultante do estudo de caso anterior do Tomás Saraceno foi reaproveitado para este projeto, possibilitando a criação de um padrão basico hexagonal rapidamente.
 
 No entanto, apesar de aparentar certa simplicidade formal, não foi possível chegar a um resultado satisfatório quanto à planificação das superfícies hexagonais. O estudo se deparou com um problema que exigiria habilidade de programação, impossível de ser desenvolvida no breve período de tempo de realização deste estudo. A questão consiste na relação entre a curvatura do pavilhão e o formato do padrão das placas de compensado. Ao analisar as imagens do projeto original, nota-se que em suas partes côncavas as placas também apresentam um hexágono côncavo, ou seja, o padrão da malha hexagonal deveria se alterar de acordo com a curvatura do pavilhão, o que não foi possível alcançar neste estudo.
 
 ![Algoritmo do Landesgartenschau Exhibition Hall no Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau_grasshopper.png)
+
+<ImageRow>
+  ![Etapa 01: Contorno da geometria base no Rhino](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_01-base-rhino.jpg)
+
+  ![Etapa 02: Geometria base no Rhino](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_02-base-rhino.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![Etapa 03: Geometria base no Rhino](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_03-base-rhino.jpg)
+
+  ![Etapa 04: Remesh](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_04-remesh.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![Etapa 05: Vetores de força da catenária](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_05-vectors-catenary.jpg)
+
+  ![Etapa 06: Simulação de catenária com Kangaroo](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_06-kangaroo-catenary.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![Etapa 07: Forma sólida da catenária](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_07-solid-catenary.jpg)
+
+  ![Etapa 08: Grafo dual](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_08-dual-graph.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![Etapa 09: Malha hexagonal base](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_09-base.jpg)
+
+  ![Etapa 10: Relaxação da malha](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_10-relaxation.jpg)
+</ImageRow>
+
+![Landesgartenschau Exhibition Hall: morfologia e disposição das placas para curvatura gaussiana positiva e negativa](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-05.jpg)
+
+<YouTube id="MqW6srXyQ7o" title="Achim Menges: Landesgartenschau Exhibition Hall" />
 
 ## Estudos de caso: fabricação
 

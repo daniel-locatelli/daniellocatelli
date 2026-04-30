@@ -789,6 +789,12 @@ const foregroundClass = isLetterbox
 
 <script>
   function pickLargestSrc(img: HTMLImageElement): string {
+    // Body images processed by remark-image-to-astro-image carry
+    // data-zoom-src pointing at the unresized original asset, so the
+    // lightbox can zoom to true natural resolution rather than to the
+    // largest srcset derivative (capped at 1600w).
+    const zoomSrc = img.dataset.zoomSrc;
+    if (zoomSrc) return zoomSrc;
     const srcset = img.getAttribute("srcset");
     if (srcset) {
       let bestUrl = "";

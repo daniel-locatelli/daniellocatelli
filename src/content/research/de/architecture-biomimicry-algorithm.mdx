@@ -279,6 +279,8 @@ Der Hauptnutzen dieser Fallstudie ergab sich aus der Notwendigkeit, den Umgang m
   ![Deutscher Pavillon Expo 1967 - Kangaroo-System aktiviert](../../../assets/content/research/architecture-biomimicry-algorithm/frei-otto_german-pavilion-64_grasshopper_08-kangaroo-system-activated.jpg)
 </ImageRow>
 
+<YouTube id="6oNBxRBSd3I" title="Frei Otto: Deutscher Pavillon der Expo 1967" />
+
 ### Tomás Saraceno: Galaxies Forming Along Filaments
 
 Wie die zuvor genannten Architekten entstammen Saracenos Bedenken der zeitgenössischen Besorgnis über die Erschöpfung der Ressourcen des Planeten und deren Erhaltung.
@@ -353,6 +355,8 @@ Diese Fallstudie war besonders wichtig, da sie eine Annäherung mittels Galapago
 
 ![Galapagos-Iteration 02](../../../assets/content/research/architecture-biomimicry-algorithm/tomas-saraceno_galaxies-forming_grasshopper_render-16-galapagos-iteration-02.jpg)
 
+<YouTube id="UIbw5dfc2dM" title="Tomás Saraceno: Galaxies Forming Along Filaments" />
+
 ### Achim Menges: Landesgartenschau Exhibition Hall
 
 Achim Menges ist Gründungsdirektor des Instituts für Computerbasiertes Entwerfen (ICD) an der Universität Stuttgart seit 2008, einer der anerkanntesten Einrichtungen im Bereich Computational Design und robotische Fertigung; nicht zufällig war dies dieselbe Universität, an der Frei Otto 26 Jahre lang lehrte.
@@ -363,11 +367,57 @@ Am ICD der Universität Stuttgart wurden zahlreiche Pavillons entwickelt; die *L
 
 Die Inspiration für dieses Projekt kam von den Schalen der Sanddollars, da sie einzelne Teile aufweisen, die durch Verbindungen ähnlich der Holzverbindung vom Typ "Fingerzinken" verbunden sind. Die Struktur des Pavillons besteht aus Sperrholzplatten, die vollständig von Robotern vorgefertigt werden und eine effiziente Materialausnutzung erreichen. All dies ist nur dank der Integration von Computational Design, Simulationen und topografischen Vermessungsmethoden möglich.
 
+<ImageRow>
+  ![Landesgartenschau Exhibition Hall: Außenansicht der beiden hexagonalen Sperrholzkuppeln](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-02.jpg)
+
+  ![Landesgartenschau Exhibition Hall: Vorderansicht mit Glaseingang](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-03.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![Landesgartenschau Exhibition Hall: Innenansicht des hexagonalen Sperrholzgewölbes](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-01.jpg)
+
+  ![Landesgartenschau Exhibition Hall: Montage einer fingerverzinkten Sperrholzplatte](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-04.jpg)
+</ImageRow>
+
 Für die Erstellung dieses Algorithmus wurde der Physiksimulator Kangaroo Physics und verschiedene andere Grasshopper-Komponenten verwendet. Darüber hinaus wurden die Kenntnisse und Teile des Algorithmus aus der vorherigen Fallstudie von Tomás Saraceno für dieses Projekt wiederverwendet, was die schnelle Erstellung eines grundlegenden Hexagonalmusters ermöglichte.
 
 Trotz der scheinbaren formalen Einfachheit konnte jedoch kein zufriedenstellendes Ergebnis hinsichtlich der Abwicklung der hexagonalen Flächen erzielt werden. Die Studie stieß auf ein Problem, das Programmierkenntnisse erfordern würde, die in der kurzen Zeitspanne dieser Studie nicht entwickelt werden konnten. Das Problem besteht in der Beziehung zwischen der Krümmung des Pavillons und dem Muster der Sperrholzplatten. Bei der Analyse der Bilder des Originalprojekts fällt auf, dass in den konkaven Bereichen die Platten ebenfalls ein konkaves Hexagon aufweisen, das heißt, das Muster des Hexagonalnetzes müsste sich entsprechend der Krümmung des Pavillons ändern, was in dieser Studie nicht erreicht werden konnte.
 
 ![Algorithmus der Landesgartenschau Exhibition Hall in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau_grasshopper.png)
+
+<ImageRow>
+  ![Schritt 01: Grundriss der Basisgeometrie in Rhino](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_01-base-rhino.jpg)
+
+  ![Schritt 02: Basisgeometrie in Rhino](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_02-base-rhino.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![Schritt 03: Basisgeometrie in Rhino](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_03-base-rhino.jpg)
+
+  ![Schritt 04: Remesh](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_04-remesh.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![Schritt 05: Kraftvektoren der Kettenlinie](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_05-vectors-catenary.jpg)
+
+  ![Schritt 06: Kangaroo-Kettenliniensimulation](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_06-kangaroo-catenary.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![Schritt 07: Massive Kettenlinienform](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_07-solid-catenary.jpg)
+
+  ![Schritt 08: Dualer Graph](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_08-dual-graph.jpg)
+</ImageRow>
+
+<ImageRow>
+  ![Schritt 09: Hexagonales Basisnetz](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_09-base.jpg)
+
+  ![Schritt 10: Netzrelaxation](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_10-relaxation.jpg)
+</ImageRow>
+
+![Landesgartenschau Exhibition Hall: Plattenmorphologie und Plattenanordnung bei positiver und negativer Gaußscher Krümmung](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-05.jpg)
+
+<YouTube id="MqW6srXyQ7o" title="Achim Menges: Landesgartenschau Exhibition Hall" />
 
 ## Fallstudien: Fertigung
 

@@ -73,6 +73,8 @@ function buildImage(importName: string, alt: string): any {
       jsxStr("sizes", SIZES),
       jsxStr("loading", "lazy"),
       jsxStr("decoding", "async"),
+      // Original-resolution URL for the lightbox to upgrade to on zoom.
+      jsxExpr("data-zoom-src", `${importName}.src`),
     ],
     children: [],
   };

@@ -2,7 +2,7 @@
 Cover: /assets/content/projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson/breathing-earth-sphere-by-artengineering-for-olafur-eliasson-cover.jpeg
 CoverAlt: "Olafur Eliasson, Breathing earth sphere, 2024. © Kyungsub Shin"
 Description: "Olafur Eliasson commissioned ArtEngineering for computational engineering, digital fabrication, and logistics. "
-Name: Breathing earth sphere by ArtEngineering for Olafur Eliasson
+Name: Breathing earth sphere by ArtEngineering for Olafur Eliasson
 Tags:
   - Computational Engineering
   - Structural Analysis
