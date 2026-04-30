@@ -815,6 +815,8 @@ const foregroundClass = isLetterbox
       "lightbox-img",
     ) as HTMLImageElement | null;
     const lightboxClose = document.getElementById("lightbox-close");
+    const scrollEl = document.getElementById("lightbox-scroll");
+    if (!scrollEl) return;
     if (!lightbox || !lightboxImg) return;
 
     const prose = document.querySelector(".prose");
@@ -832,14 +834,35 @@ const foregroundClass = isLetterbox
       const img = target as HTMLImageElement;
       lightboxImg.src = pickLargestSrc(img);
       lightboxImg.alt = img.alt;
+      setZoomed(false);
       lightbox.classList.remove("hidden");
       lightbox.classList.add("flex");
     });
 
     function closeLightbox() {
+      setZoomed(false);
       lightbox!.classList.add("hidden");
       lightbox!.classList.remove("flex");
       lightboxImg!.src = "";
+    }
+
+    function isImageLargerThanFit(): boolean {
+      const fitW = window.innerWidth * 0.9;
+      const fitH = window.innerHeight * 0.9;
+      return (
+        lightboxImg!.naturalWidth > fitW || lightboxImg!.naturalHeight > fitH
+      );
+    }
+
+    function setZoomed(zoomed: boolean) {
+      const value = zoomed ? "true" : "false";
+      lightbox!.dataset.zoomed = value;
+      scrollEl!.dataset.zoomed = value;
+      lightboxImg!.dataset.zoomed = value;
+      if (!zoomed) {
+        scrollEl!.scrollTo(0, 0);
+      }
+      lightboxImg!.style.cursor = zoomed ? "grab" : "zoom-in";
     }
 
     // Close on backdrop click
@@ -847,6 +870,17 @@ const foregroundClass = isLetterbox
       if (e.target === lightbox || e.target === lightboxClose) {
         closeLightbox();
       }
+    });
+
+    lightboxImg.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (lightbox!.dataset.dragging === "true") {
+        lightbox!.dataset.dragging = "false";
+        return;
+      }
+      const isZoomed = lightbox!.dataset.zoomed === "true";
+      if (!isZoomed && !isImageLargerThanFit()) return;
+      setZoomed(!isZoomed);
     });
 
     // Close on Escape
