@@ -171,11 +171,11 @@ Os programas usados para fazer esses estudos foram o Rhinoceros, seu plug-in Gra
 
 ### Buckminster Fuller: geodésica + tensegridade
 
-Por mais de cinco décadas, Buckminster Fuller desenvolveu soluções pioneiras que refletiam seu comprometimento com o potencial de inovação do design em criar novas tecnologias que fizessem "mais com menos". Um de seus principais interesses ao longo de sua vida foi o de usar essas descobertas para revolucionar a construção e aperfeiçoar a habitação humana.
-
-<Figure credit="AP Photo/Bill Ingraham" captionHref="https://tensegritywiki.com/index.php?title=File:RBF_with_92_prism_tensegrity_19790418_B.jpg">
+<Figure float='right' credit="AP Photo/Bill Ingraham" captionHref="https://tensegritywiki.com/index.php?title=File:RBF_with_92_prism_tensegrity_19790418_B.jpg">
   ![Buckminster Fuller segurando uma tensegridade](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_geodesic-tensegrity.jpg)
 </Figure>
+
+Por mais de cinco décadas, Buckminster Fuller desenvolveu soluções pioneiras que refletiam seu comprometimento com o potencial de inovação do design em criar novas tecnologias que fizessem "mais com menos". Um de seus principais interesses ao longo de sua vida foi o de usar essas descobertas para revolucionar a construção e aperfeiçoar a habitação humana.
 
 Em seus estudos de "geometria sinergética", Fuller buscou explorar os princípios do design na natureza. Neste processo, uma de suas invenções se destacou: o domo geodésico. Ele se caracteriza por ser uma estrutura leve, com ótimo custo-benefício, de fácil montagem e que pode cobrir grandes espaços sem a necessidade de colunas ou estruturas similares, pois distribui o estresse de forma eficiente.
 
@@ -368,20 +368,36 @@ São diversos os pavilhões desenvolvidos no ICD da Universidade de Stuttgart, n
 A inspiração deste projeto veio das conchas das bolachas-da-praia, pois elas apresentam peças individuais conectadas por junções similares ao encaixe de madeira do tipo "dedos". A estrutura do pavilhão é composta por placas de compensado inteiramente pré-fabricadas por robôs que conseguem um eficiente aproveitamento da matéria-prima. Tudo isso só é possível devido à integração entre o design computacional, simulações e métodos de levantamento topográficos.
 
 <ImageRow>
-  ![Landesgartenschau Exhibition Hall: vista externa das duas cúpulas hexagonais de compensado](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-02.jpg)
+  <Figure credit="Gerber & Nebelsick / Nebelsick & Grun, Universidade de Tubingen." captionHref="https://www.icd.uni-stuttgart.de/projects/landesgartenschau-exhibition-hall/">
+    ![Uma bolacha-da-praia](../../../assets/content/research/architecture-biomimicry-algorithm/ICD_ITKE_LAGA_Laga_000_Biomimetic_bw-2000x1371.webp)
+  </Figure>
 
-  ![Landesgartenschau Exhibition Hall: vista frontal com entrada de vidro](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-03.jpg)
+  <Figure credit="Gerber & Nebelsick / Nebelsick & Grun, Universidade de Tubingen." captionHref="https://www.icd.uni-stuttgart.de/projects/landesgartenschau-exhibition-hall/">
+    ![Conexão da bolacha-da-praia sob ampliação](../../../assets/content/research/architecture-biomimicry-algorithm/ICD_ITKE_LAGA_Laga_001_Biomimetic-2000x1500.webp)
+  </Figure>
 </ImageRow>
 
 <ImageRow>
-  ![Landesgartenschau Exhibition Hall: vista interna da abóbada hexagonal de compensado](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-01.jpg)
+  <Figure credit="Roland Halbe" captionHref="https://www.icd.uni-stuttgart.de/projects/landesgartenschau-exhibition-hall/">
+    ![Landesgartenschau Exhibition Hall: vista externa das duas cúpulas hexagonais de compensado](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-02.jpg)
+  </Figure>
 
-  ![Landesgartenschau Exhibition Hall: montagem de uma placa de compensado com encaixe tipo "dedos"](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-04.jpg)
+  <Figure credit="Roland Halbe" captionHref="https://www.icd.uni-stuttgart.de/projects/landesgartenschau-exhibition-hall/">
+    ![Landesgartenschau Exhibition Hall: vista frontal com entrada de vidro](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-03.jpg)
+  </Figure>
+</ImageRow>
+
+<ImageRow>
+  <Figure credit="ICD/ITKE/IIGS Universidade de Stuttgart" captionHref="https://www.achimmenges.net/en/project/landesgartenschau-exhibition-hall-2/?i=0">
+    ![Landesgartenschau Exhibition Hall: vista interna da abóbada hexagonal de compensado](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-01.jpg)
+  </Figure>
+
+  <Figure credit="ICD/ITKE/IIGS Universidade de Stuttgart" captionHref="https://www.achimmenges.net/en/project/landesgartenschau-exhibition-hall-2/?i=0">
+    ![Montagem de uma placa de compensado com encaixe tipo "dedos"](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-04.jpg)
+  </Figure>
 </ImageRow>
 
 Para a produção deste algoritmo, foi utilizado o simulador de física Kangaroo Physics e diversos outros componentes do Grasshopper. Além disso, o conhecimento e parte do algoritmo resultante do estudo de caso anterior do Tomás Saraceno foi reaproveitado para este projeto, possibilitando a criação de um padrão basico hexagonal rapidamente.
-
-No entanto, apesar de aparentar certa simplicidade formal, não foi possível chegar a um resultado satisfatório quanto à planificação das superfícies hexagonais. O estudo se deparou com um problema que exigiria habilidade de programação, impossível de ser desenvolvida no breve período de tempo de realização deste estudo. A questão consiste na relação entre a curvatura do pavilhão e o formato do padrão das placas de compensado. Ao analisar as imagens do projeto original, nota-se que em suas partes côncavas as placas também apresentam um hexágono côncavo, ou seja, o padrão da malha hexagonal deveria se alterar de acordo com a curvatura do pavilhão, o que não foi possível alcançar neste estudo.
 
 ![Algoritmo do Landesgartenschau Exhibition Hall no Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau_grasshopper.png)
 
@@ -415,9 +431,11 @@ No entanto, apesar de aparentar certa simplicidade formal, não foi possível ch
   ![Etapa 10: Relaxação da malha](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_10-relaxation.jpg)
 </ImageRow>
 
-![Landesgartenschau Exhibition Hall: morfologia e disposição das placas para curvatura gaussiana positiva e negativa](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-05.jpg)
-
 <YouTube id="MqW6srXyQ7o" title="Achim Menges: Landesgartenschau Exhibition Hall" />
+
+No entanto, apesar de aparentar certa simplicidade formal, não foi possível chegar a um resultado satisfatório quanto à planificação das superfícies hexagonais. O estudo se deparou com um problema que exigiria habilidade de programação, impossível de ser desenvolvida no breve período de tempo de realização deste estudo. A questão consiste na relação entre a curvatura do pavilhão e o formato do padrão das placas de compensado. Ao analisar as imagens do projeto original, nota-se que em suas partes côncavas as placas também apresentam um hexágono côncavo, ou seja, o padrão da malha hexagonal deveria se alterar de acordo com a curvatura do pavilhão, o que não foi possível alcançar neste estudo.
+
+![Landesgartenschau Exhibition Hall: morfologia e disposição das placas para curvatura gaussiana positiva e negativa](../../../assets/content/research/architecture-biomimicry-algorithm/achim-menges_landesgartenschau-exhibition-hall-05.jpg)
 
 ## Estudos de caso: fabricação
 
