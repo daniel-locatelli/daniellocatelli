@@ -67,6 +67,10 @@ export default defineConfig({
                 "astro-icon/components",
                 "@iconify/utils",
                 "@iconify/utils/lib/svg/build",
+                "react",
+                "react-dom",
+                "react-dom/server",
+                "react/jsx-runtime",
               ],
             },
           };
