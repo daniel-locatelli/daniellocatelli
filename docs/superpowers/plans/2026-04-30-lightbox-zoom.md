@@ -217,8 +217,10 @@ function isImageLargerThanFit(): boolean {
 }
 
 function setZoomed(zoomed: boolean) {
-  lightbox!.dataset.zoomed = zoomed ? "true" : "false";
-  lightboxImg!.dataset.zoomed = zoomed ? "true" : "false";
+  const value = zoomed ? "true" : "false";
+  lightbox!.dataset.zoomed = value;
+  scrollEl!.dataset.zoomed = value;
+  lightboxImg!.dataset.zoomed = value;
   if (!zoomed) {
     scrollEl!.scrollTo(0, 0);
   }
