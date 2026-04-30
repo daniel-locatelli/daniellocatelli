@@ -765,6 +765,7 @@ const foregroundClass = isLetterbox
 <div
   id="lightbox"
   data-zoomed="false"
+  data-dragging="false"
   class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
 >
   <button
@@ -821,7 +822,7 @@ const foregroundClass = isLetterbox
       "lightbox-img",
     ) as HTMLImageElement | null;
     const lightboxClose = document.getElementById("lightbox-close");
-    if (!lightbox || !lightboxImg) return;
+    if (!lightbox || !lightboxImg || !lightboxClose) return;
     const scrollEl = document.getElementById("lightbox-scroll");
     if (!scrollEl) return;
 
@@ -848,6 +849,7 @@ const foregroundClass = isLetterbox
 
     function closeLightbox() {
       setZoomed(false);
+      lightbox!.dataset.dragging = "false";
       lightbox!.classList.add("hidden");
       lightbox!.classList.remove("flex");
       lightboxImg!.src = "";
