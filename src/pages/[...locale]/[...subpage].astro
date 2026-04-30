@@ -776,12 +776,12 @@ const foregroundClass = isLetterbox
   >
   <div
     id="lightbox-scroll"
-    class="flex max-h-[95vh] max-w-[95vw] items-center justify-center select-none data-[zoomed=true]:overflow-auto"
+    class="flex max-h-[95vh] max-w-[95vw] select-none data-[zoomed=true]:overflow-auto"
   >
     <img
       id="lightbox-img"
       draggable="false"
-      class="rounded object-contain max-h-[90vh] max-w-[90vw] data-[zoomed=true]:max-h-none data-[zoomed=true]:max-w-none"
+      class="m-auto rounded object-contain max-h-[90vh] max-w-[90vw] data-[zoomed=true]:max-h-none data-[zoomed=true]:max-w-none"
       alt=""
     />
   </div>
@@ -869,7 +869,13 @@ const foregroundClass = isLetterbox
       lightbox!.dataset.zoomed = value;
       scrollEl!.dataset.zoomed = value;
       lightboxImg!.dataset.zoomed = value;
-      if (!zoomed) {
+      if (zoomed) {
+        // Wait for layout to apply natural-size constraints, then center.
+        requestAnimationFrame(() => {
+          scrollEl!.scrollLeft = (scrollEl!.scrollWidth - scrollEl!.clientWidth) / 2;
+          scrollEl!.scrollTop = (scrollEl!.scrollHeight - scrollEl!.clientHeight) / 2;
+        });
+      } else {
         scrollEl!.scrollTo(0, 0);
       }
       lightboxImg!.style.cursor = zoomed ? "grab" : "zoom-in";
