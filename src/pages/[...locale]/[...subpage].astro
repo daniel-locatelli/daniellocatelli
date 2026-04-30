@@ -843,6 +843,7 @@ const foregroundClass = isLetterbox
       setZoomed(false);
       lightbox.classList.remove("hidden");
       lightbox.classList.add("flex");
+      document.body.style.overflow = "hidden";
     }, { signal });
 
     function closeLightbox() {
@@ -850,6 +851,7 @@ const foregroundClass = isLetterbox
       lightbox!.classList.add("hidden");
       lightbox!.classList.remove("flex");
       lightboxImg!.src = "";
+      document.body.style.overflow = "";
     }
 
     function isImageLargerThanFit(): boolean {
