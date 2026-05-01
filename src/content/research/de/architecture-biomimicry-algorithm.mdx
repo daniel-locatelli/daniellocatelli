@@ -46,7 +46,11 @@ Um das Verständnis des Themas zu festigen, wurde ein Pavillon für die FAUUSP m
 
 Seit vielen Jahrzehnten nutzen die Menschen die Ressourcen des Planeten Erde auf eine Weise, die es nicht erlauben wird, diese Exzesse noch lange aufrechtzuerhalten. Es wird beispielsweise geschätzt, dass die Bauindustrie in Brasilien etwa 50 bis 70 % der gesamten Masse an städtischem Festabfall produziert.
 
-Es gibt zahlreiche Gründe, die den technischen Fortschritt in diesem Bereich behindern; darunter Immobilienspekulation, die Instabilität des Wohnungsmarktes, die fehlende Abstimmung im Forschungsprozess und andere. Laut Ceotto fand die letzte große Entwicklung im brasilianischen Bausektor mit der Einführung des Stahlbetons Ende der 1920er Jahre statt, und in den folgenden Jahrzehnten hat sich sehr wenig verändert.
+Es gibt zahlreiche Gründe, die den technischen Fortschritt in diesem Bereich behindern; darunter Immobilienspekulation, die Instabilität des Wohnungsmarktes, die fehlende Abstimmung im Forschungsprozess und andere. Laut Ceotto fand die letzte große Entwicklung im brasilianischen Bausektor mit der Einführung des Stahlbetons Ende der 1920er Jahre statt, und in den folgenden Jahrzehnten hat sich sehr wenig verändert:
+
+> In Brasilien war der Hochbau einer der Wirtschaftssektoren, in dem es in den letzten Jahrzehnten nur sehr wenig Entwicklung gab. Es wäre nicht übertrieben zu behaupten, dass aus systemischer Sicht heute auf eine Weise gebaut wird, die der vor 70 Jahren sehr ähnlich ist. Die letzte große Entwicklung war die Einführung des Stahlbetons im Land Ende der 1920er Jahre [...]
+
+*Ceotto*
 
 Im Bereich des Bauwesens schreitet die Automatisierung noch langsam voran, doch es gibt bereits zahlreiche Forschungen mit Robotern oder sogar Drohnen, die Bausteine setzen können, sowie 3D-Druckern, die ganze Gebäude errichten können. Inmitten all dieser technologischen Entwicklung steht die Menschheit vor einem enormen Wohnungsdefizit, allein in Brasilien fehlen 6,2 Millionen Wohnungen.
 
@@ -179,7 +183,7 @@ Die für diese Studien verwendeten Programme waren Rhinoceros, sein Grasshopper-
 
 In seinen Studien zur "synergetischen Geometrie" versuchte Fuller, die Designprinzipien in der Natur zu erforschen. In diesem Prozess stach eine seiner Erfindungen hervor: die geodätische Kuppel. Sie zeichnet sich durch eine leichte Struktur mit hervorragendem Kosten-Nutzen-Verhältnis aus, die einfach zu montieren ist und große Räume ohne Stützen oder ähnliche Strukturen überspannen kann, da sie Belastungen effizient verteilt.
 
-Eine weitere Forschungslinie Fullers war die Entwicklung der Tensegrity, ein von ihm selbst geprägter Begriff, der die Wörter *tension* und *integrity* vereint.
+Eine weitere Forschungslinie Fullers war die Entwicklung der Tensegrity, ein von ihm selbst geprägter Begriff, der die englischen Wörter *tension* und *integrity* vereint, also Spannung und Integrität, daher Tensegrity.
 
 Tensegrity ist eine selbsttragende räumliche Struktur, die sich durch Zugkräfte stabilisiert. Sie besteht aus Stäben und Kabeln, wobei jeder Stab isoliert ist und nur durch gespannte Kabel mit anderen Stäben verbunden wird. Ihr Selbstgleichgewichtszustand ermöglicht die Erforschung verschiedener *form finding*-Ansätze mit zahlreichen Anwendungen in Architektur und Design.
 
@@ -192,6 +196,12 @@ Tensegrity ist eine selbsttragende räumliche Struktur, die sich durch Zugkräft
     ![Einfache und doppelte Bindung von Elementen in Tensegrity-Sphären](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_geodesic-tensegrity.png)
   </Figure>
 </ImageRow>
+
+Um die wahre Ambition Buckminster Fullers zu verstehen, lohnt es sich, seine eigene Beschreibung aus der Patentanmeldung zur Tensegrity zu lesen:
+
+> Sie [Tensegrity] hat besondere Anwendungen bei Strukturen großer Spannweite wie Kuppeln, deren freie Spannweite ein Stadion überdachen oder ein ganzes Dorf oder eine Stadt beherbergen kann (...) sie ist auch auf geodätische Strukturen anwendbar, wie sie in meinem früheren Patent Nr. 2.682.235 beschrieben und beansprucht werden
+
+*Buckminster Fuller, US-Patent 3.063.521*
 
 Diese erste Fallstudie versucht genau diese in der Patentbeschreibung erwähnte Tensegrity in geodätischer Form zu replizieren. Das Hauptziel war es, sich den geometrischen Studien Fullers anzunähern, aber es war auch grundlegend, die Funktionsweise des Physiksimulators Kangaroo Physics, eines Grasshopper-Plugins, zu verstehen. Diese Komponente bildet reale physikalische Bedingungen nach, beispielsweise Schwerkraft und Materialelastizität.
 
@@ -533,9 +543,63 @@ Die Lösung, die dem angestrebten Konzept am nächsten kam, war die aus der Fall
 
 Im Folgenden werden Studien verschiedener in Grasshopper mit Hilfe des Plugins Kangaroo Physics erzeugter Muster vorgestellt, um einen textilen Gewebeeffekt zu erzeugen, der sich der Realität annähert. Den letzten Schliff gibt Galapagos, ein in Grasshopper integrierter evolutionärer Algorithmus.
 
-Galapagos funktioniert ähnlich wie die von Charles Darwin vorgeschlagene Evolutionstheorie, daher sein Name *Galapagos evolutionary solver*. In dieser Studie wird er zunächst 20 zufällige Individuen basierend auf dem genetischen Pool erzeugen, der in diesem Fall aus 116 entlang der kubischen Struktur gefundenen Scheitelpunkten besteht, und für jeden dieser Scheitelpunkte gibt es 16 Verbindungsmöglichkeiten mit der Kugel.
+Galapagos funktioniert ähnlich wie die von Charles Darwin vorgeschlagene Evolutionstheorie, daher sein Name *Galapagos evolutionary solver*. In dieser Studie wird er zunächst 20 zufällige Individuen basierend auf dem genetischen *Pool* erzeugen, der in diesem Fall aus 116 entlang der kubischen Struktur gefundenen Scheitelpunkten besteht, und für jeden dieser Scheitelpunkte gibt es 16 Verbindungsmöglichkeiten mit der Kugel.
 
-![Algorithmusschritte der Installationseinheit](../../../assets/content/research/architecture-biomimicry-algorithm/installation-unit-algorithm-steps.jpg)
+Nehmen wir die erste Abbildung unten als Beispiel. Darin ist zu sehen, dass jeder Stab der kubischen Struktur entlang seiner Länge 9 einzigartige Scheitelpunkte aufweist, plus zwei an den Enden, die mit zwei anderen Stäben gemeinsam sind, das heißt, die Struktur umfasst insgesamt 116 Scheitelpunkte.
+
+<ImageRow>
+<Figure>
+  ![Scheitelpunkte der kubischen Struktur](../../../assets/content/research/architecture-biomimicry-algorithm/technique_01-cube-vertices.jpg)
+</Figure>
+
+<Figure>
+  ![Ausgewählte Scheitelpunkte](../../../assets/content/research/architecture-biomimicry-algorithm/technique_02-selected-vertices.jpg)
+</Figure>
+
+<Figure>
+  ![Linien von ausgewählten Scheitelpunkten](../../../assets/content/research/architecture-biomimicry-algorithm/technique_03-lines-from-selected-vertices.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Mögliche Linien](../../../assets/content/research/architecture-biomimicry-algorithm/technique_04-possible-lines.jpg)
+</Figure>
+
+<Figure>
+  ![Ausgewählte Linien](../../../assets/content/research/architecture-biomimicry-algorithm/technique_05-selected-lines.jpg)
+</Figure>
+
+<Figure>
+  ![Entspannte Linien](../../../assets/content/research/architecture-biomimicry-algorithm/technique_06-relaxed-lines.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Vektoren](../../../assets/content/research/architecture-biomimicry-algorithm/technique_07-vectors.jpg)
+</Figure>
+
+<Figure>
+  ![Alle möglichen Linien](../../../assets/content/research/architecture-biomimicry-algorithm/technique_08-all-lines-possible.jpg)
+</Figure>
+</ImageRow>
+
+Der erste Schritt des Algorithmus besteht darin, zwischen 0 und 40 dieser Scheitelpunkte auszuwählen, damit dann die 16 Scheitelpunkte der Kugel bestimmt werden können, die jedem Stabscheitelpunkt am nächsten liegen.
+
+Zum Beispiel werden für den Scheitelpunkt, der im Diagramm in der oberen Ecke der Struktur erscheint, die 16 nächstgelegenen Scheitelpunkte auf der Kugel bestimmt. Der nächste Schritt des Algorithmus besteht darin, einen Scheitelpunkt aus diesen 16 auszuwählen, um eine einzige Linie zu erzeugen.
+
+Dieser Vorgang wiederholt sich parallel für alle ausgewählten Scheitelpunkte, sodass nur eine einzige Linie von jedem Scheitelpunkt ausgeht und ihn mit der Kugel verbindet.
+
+Anschließend werden die Linien und das Netz der Kugel in Kabel umgewandelt, die dem Hookeschen Gesetz, dem Gesetz der Elastizität von Körpern, unterliegen. Mit der richtig abgestimmten Festigkeit der Kabel und des Netzes ist es möglich, das System ins Gleichgewicht zu bringen.
+
+Mit der vorbereiteten Struktur kann die Physik dann mit Kangaroo aktiviert werden. Daraufhin wird der Abstand zwischen den ursprünglichen Scheitelpunkten der statischen Kugel und den Scheitelpunkten mit der "entspannten" Kugel berechnet. Galapagos kann damit unter den anfänglichen 20 Individuen die 5 "am besten angepassten" suchen. Dieser Prozess wird *Fitness*-Funktion genannt, die in diesem Fall die Ergebnisse auswählt, die der Kugelform am nächsten kommen.
+
+Ausgehend von der ersten Auswahl werden die Informationen des genetischen *Pools* der zufriedenstellendsten Ergebnisse rekombiniert, um 20 neue Individuen zu erzeugen, also eine neue Generation, und dies wiederholt sich, bis ein zufriedenstellendes Ergebnis erzielt wird.
+
+Für diese Studie gibt es 1856 Kabelmöglichkeiten und eine enorme Anzahl möglicher Kombinationen zwischen ihnen, was zu einer hervorragenden Studie führte, um zu verstehen, wie der Computer im Designprozess helfen kann, wenn eine große Datenmenge verfügbar ist.
+
+Dieser Algorithmus musste sehr sorgfältig untersucht werden, bevor diese Arbeit entwickelt wurde, denn um eine konsistente Evolutionsmethode zu erreichen, müssen die *Fitness*-Funktion und der genetische *Pool* sehr gut aufeinander abgestimmt sein.
 
 <ImageRow>
   ![Studie 01: Quadratisches Netz](../../../assets/content/research/architecture-biomimicry-algorithm/study-01-grid-mesh.png)
@@ -566,6 +630,10 @@ Galapagos funktioniert ähnlich wie die von Charles Darwin vorgeschlagene Evolut
 Mit den Ergebnissen aus der Interaktion der an der kubischen Struktur befestigten gespannten kugelförmigen Netze wurde geschlossen, dass die beste Alternative zur Entwicklung der Entwurfsmethodik das "abgestumpfte duale Hexagonal-Netz" war, da es die größte Eignung für die Komfortanforderungen zeigte. Das Endergebnis näherte sich stärker der ursprünglichen Kugel an, was auf eine bessere Kontrolle über die Endform hindeutet, und es ist zudem ohne Weiteres herstellbar.
 
 Die Struktur wurde so entwickelt, dass sie direkt auf eines der Module verweist, die das Logo der FAU-USP bilden. Aus diesem Skelett wurde ein breites Spektrum an Lösungen erzeugt.
+
+Diese abschließende Studie war das Ergebnis der Rückmeldungen aus dem Produktionsprozess des physischen Modells, das im nächsten Kapitel vorgestellt wird.
+
+![Algorithmusschritte der Installationseinheit](../../../assets/content/research/architecture-biomimicry-algorithm/installation-unit-algorithm-steps.jpg)
 
 ![Teil des Lösungsspektrums](../../../assets/content/research/architecture-biomimicry-algorithm/part-of-the-spectrum-of-solutions.jpg)
 

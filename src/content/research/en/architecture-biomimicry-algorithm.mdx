@@ -46,7 +46,11 @@ To consolidate the understanding of the topic, a pavilion was proposed for FAU-U
 
 For many decades, human beings have used the resources of planet Earth in a manner that will not be sustainable for much longer. It is estimated, for example, that in Brazil the construction industry produces around 50 to 70% of all urban solid waste by mass.
 
-There are several reasons that hinder technical advancement in this area, among them real estate speculation, housing market instability, the lack of alignment in the research production process, and others. According to Ceotto, the last major evolution in the Brazilian construction sector occurred with the introduction of reinforced concrete at the end of the 1920s, and very little changed in the following decades.
+There are several reasons that hinder technical advancement in this area, among them real estate speculation, housing market instability, the lack of alignment in the research production process, and others. According to Ceotto, the last major evolution in the Brazilian construction sector occurred with the introduction of reinforced concrete at the end of the 1920s, and very little changed in the following decades:
+
+> In Brazil, the construction of buildings was one of the economic sectors with very little development in recent decades. It would be no exaggeration to say that, from a systemic point of view, we build today in a manner very similar to that of 70 years ago. The last major evolution came with the introduction of reinforced concrete in the country at the end of the 1920s [...]
+
+*Ceotto*
 
 In the construction field, automation is still progressing slowly, but there are already several research projects involving robots or even drones capable of laying blocks, as well as 3D printers capable of constructing entire buildings. Amid all this technological development, humanity faces an enormous housing deficit; in Brazil alone, 6.2 million homes are lacking.
 
@@ -179,7 +183,7 @@ For over five decades, Buckminster Fuller developed pioneering solutions that re
 
 In his studies of "synergetic geometry," Fuller sought to explore the principles of design in nature. In this process, one of his inventions stood out: the geodesic dome. It is characterized as a lightweight structure with excellent cost-effectiveness, easy to assemble, and capable of covering large spaces without the need for columns or similar supports, as it distributes stress efficiently.
 
-Another line of research pursued by Fuller was the development of tensegrity, a term he coined by combining the words *tension* and *integrity*.
+Another line of research pursued by Fuller was the development of tensegrity, a term he coined by combining the words *tension* and *integrity*, hence tensegrity.
 
 Tensegrity is a self-supporting spatial structure that stabilizes itself through tension. It is composed of bars and cables, with each bar isolated and connected to other bars only through tensioned cables. Its state of self-equilibrium allows the exploration of various form finding approaches with numerous applications in architecture and design.
 
@@ -192,6 +196,12 @@ Tensegrity is a self-supporting spatial structure that stabilizes itself through
     ![Single and double bonding of members in tensegrity spheres](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_geodesic-tensegrity.png)
   </Figure>
 </ImageRow>
+
+To grasp Buckminster Fuller's true ambition, it is worth reading his own description from the tensegrity patent registration:
+
+> It [tensegrity] has special applications in structures of large proportion such as domes, with clear spans capable of covering a stadium or sheltering an entire village or city (...) it is also applicable to geodesic structures as described and claimed in my prior patent No. 2,682,235
+
+*Buckminster Fuller, US patent 3,063,521*
 
 This first case study seeks to replicate precisely this geodesic-shaped tensegrity referenced in the patent summary. The main objective was to approximate Fuller's geometric studies, but it was also fundamental for understanding how the Kangaroo Physics simulator works, a Grasshopper plug-in. This component recreates physical conditions that exist in the real world, for example, gravity and the elasticity of materials.
 
@@ -536,37 +546,75 @@ The solution that most closely approximated the intended concept was the one use
 
 The following presents studies of various patterns produced in Grasshopper with the aid of the Kangaroo Physics plug-in in order to generate a textile weave effect that approximates reality. The finishing touch is provided by Galapagos, an evolutionary algorithm integrated into Grasshopper.
 
-Galapagos works similarly to the theory of evolution proposed by Charles Darwin, hence its name *Galapagos evolutionary solver*. In this study, it will initially generate 20 random individuals based on the genetic pool, which in this case will be 116 vertices found along the cubic structure, and for each of these vertices, there will be 16 possible connections with the sphere.
+Galapagos works similarly to the theory of evolution proposed by Charles Darwin, hence its name *Galapagos evolutionary solver*. In this study, it will initially generate 20 random individuals based on the genetic *pool*, which in this case will be 116 vertices found along the cubic structure, and for each of these vertices, there will be 16 possible connections with the sphere.
+
+Take the first image bellow as an example. It shows that each rod of the cubic structure has 9 unique vertices along its length, plus two at the ends shared with two other rods; in other words, the structure has 116 vertices in total.
+
+The first step of the algorithm is to select between 0 and 40 of these vertices, so that the 16 sphere vertices closest to each rod vertex can then be determined.
+
 
 <ImageRow>
-  ![Study 01: Grid mesh](../../../assets/content/research/architecture-biomimicry-algorithm/study-01-grid-mesh.png)
+<Figure>
+  ![Vertices of the cubic structure](../../../assets/content/research/architecture-biomimicry-algorithm/technique_01-cube-vertices.jpg)
+</Figure>
 
-  ![Study 02: Truncated grid mesh](../../../assets/content/research/architecture-biomimicry-algorithm/study-02-truncated-grid-mesh.png)
+<Figure>
+  ![Selected vertices](../../../assets/content/research/architecture-biomimicry-algorithm/technique_02-selected-vertices.jpg)
+</Figure>
+
+<Figure>
+  ![Lines from selected vertices](../../../assets/content/research/architecture-biomimicry-algorithm/technique_03-lines-from-selected-vertices.jpg)
+</Figure>
 </ImageRow>
+
+
+For example, for the vertex shown in the diagram at the upper corner of the structure, the 16 closest vertices on the sphere are determined. The next step of the algorithm is to select one of those 16 vertices to create a single line.
+
+This process is repeated in parallel for all selected vertices, so that only a single line emerges from each vertex and connects it to the sphere.
+
+Next, the lines and the sphere's mesh are converted into cables subject to Hooke's law, the law of elasticity of bodies. With the resistance of the cables and the mesh properly tuned, it is possible to bring the system into equilibrium.
+
 
 <ImageRow>
-  ![Study 03: Triangular mesh](../../../assets/content/research/architecture-biomimicry-algorithm/study-03-triangular-mesh.png)
+<Figure>
+  ![Possible lines](../../../assets/content/research/architecture-biomimicry-algorithm/technique_04-possible-lines.jpg)
+</Figure>
 
-  ![Study 04: Truncated triangular mesh](../../../assets/content/research/architecture-biomimicry-algorithm/study-04-truncated-triangular-mesh.png)
+<Figure>
+  ![Selected lines](../../../assets/content/research/architecture-biomimicry-algorithm/technique_05-selected-lines.jpg)
+</Figure>
+
+<Figure>
+  ![Relaxed lines](../../../assets/content/research/architecture-biomimicry-algorithm/technique_06-relaxed-lines.jpg)
+</Figure>
 </ImageRow>
+
+With the structure prepared, the physics can then be activated using Kangaroo. The distance between the original vertices of the static sphere and the vertices of the "relaxed" sphere is then calculated. Galapagos can therefore search, among the initial 20 individuals, for the 5 most "adapted" ones. This process is called the *fitness* function, which in this case selects the results closest to the shape of a sphere.
+
 
 <ImageRow>
-  ![Study 05: Phyllotaxis mesh](../../../assets/content/research/architecture-biomimicry-algorithm/study-05-phyllotaxis-mesh.png)
+<Figure>
+  ![Vectors](../../../assets/content/research/architecture-biomimicry-algorithm/technique_07-vectors.jpg)
+</Figure>
 
-  ![Study 06: Truncated phyllotaxis mesh](../../../assets/content/research/architecture-biomimicry-algorithm/study-06-truncated-phyllotaxis-mesh.png)
+<Figure>
+  ![All possible lines](../../../assets/content/research/architecture-biomimicry-algorithm/technique_08-all-lines-possible.jpg)
+</Figure>
 </ImageRow>
 
-<ImageRow>
-  ![Study 07: Dual hexagonal mesh](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-hexagonal-mesh.jpg)
+From the initial selection, the most satisfactory results have their genetic *pool* information recombined to create 20 new individuals, that is, a new generation, and this repeats until a satisfactory result is achieved.
 
-  ![Study 08: Truncated dual hexagonal mesh](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-hexagonal-mesh.jpg)
-</ImageRow>
+For this study there are 1856 cable possibilities and an enormous number of possible combinations among them, which made it an excellent study to understand how the computer can assist the design process when a large amount of data is available.
+
+This algorithm had to be very carefully studied before this work was developed, since to arrive at a consistent method of evolution, the *fitness* function and the genetic *pool* need to be very well aligned.
 
 ### Development
 
 With the results obtained from the interaction of tensioned spherical meshes attached to the cubic structure, it was concluded that the best alternative for developing the design methodology would be the "Truncated dual hexagonal mesh," as it showed the greatest suitability for the comfort requirements. The final result came closest to the original sphere, which indicates greater control over the final form, in addition to being perfectly feasible to fabricate.
 
 The structure was developed in a way that directly referenced one of the modules composing the FAU-USP logo. From this skeleton, a broad spectrum of solutions was generated.
+
+This final study was the result of feedback from the production process of the physical model presented in the next chapter.
 
 ![Installation unit algorithm steps](../../../assets/content/research/architecture-biomimicry-algorithm/installation-unit-algorithm-steps.jpg)
 

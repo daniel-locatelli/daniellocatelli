@@ -46,7 +46,11 @@ Para consolidar o entendimento sobre o tema, foi proposto um pavilhão para a FA
 
 Por muitas décadas, os seres humanos têm usado os recursos do planeta terra de tal maneira que não será possível continuar sustentando esses excessos por muito tempo. Estima-se, por exemplo, que no Brasil a construção civil produza em torno de 50 a 70% de toda a massa de resíduos sólidos urbanos.
 
-São diversos os motivos que impedem o avanço técnico dessa área; entre eles estão a especulação imobiliária, a instabilidade do mercado habitacional, a falta de alinhamento no processo de produção de pesquisas, entre outros. Segundo Ceotto, a última grande evolução no setor da construção civil brasileira ocorreu com a introdução do concreto armado no fim da década de 1920 e muito pouco mudou nas décadas seguintes.
+São diversos os motivos que impedem o avanço técnico dessa área; entre eles estão a especulação imobiliária, a instabilidade do mercado habitacional, a falta de alinhamento no processo de produção de pesquisas, entre outros. Segundo Ceotto, a última grande evolução no setor da construção civil brasileira ocorreu com a introdução do concreto armado no fim da década de 1920 e muito pouco mudou nas décadas seguintes:
+
+> No Brasil, a Construção Civil de edifícios foi um dos setores da economia onde houve muito pouco desenvolvimento nas últimas décadas. Não seria exagero afirmar que, do ponto de vista sistêmico, se constrói hoje de forma muito semelhante do que há 70 anos atrás. A última grande evolução se deu com a introdução do concreto armado no país no fim da década de 20 [...]
+
+*Ceotto*
 
 Na área da construção, a automação ainda anda a passos lentos, mas já existem diversas pesquisa envolvendo robôs ou mesmo drones capazes de assentar blocos, além de impressoras 3D capazes de construir edifícios inteiros. Em meio a todo esse desenvolvimento tecnológico, a humanidade enfrenta um enorme déficit de moradias, e só no Brasil são 6,2 milhões de residências em falta.
 
@@ -179,7 +183,7 @@ Por mais de cinco décadas, Buckminster Fuller desenvolveu soluções pioneiras 
 
 Em seus estudos de "geometria sinergética", Fuller buscou explorar os princípios do design na natureza. Neste processo, uma de suas invenções se destacou: o domo geodésico. Ele se caracteriza por ser uma estrutura leve, com ótimo custo-benefício, de fácil montagem e que pode cobrir grandes espaços sem a necessidade de colunas ou estruturas similares, pois distribui o estresse de forma eficiente.
 
-Uma outra linha de pesquisa de Fuller foi o desenvolvimento da tensegridade, termo cunhado por ele mesmo que une as palavras *tension* e *integrity*.
+Uma outra linha de pesquisa de Fuller foi o desenvolvimento da tensegridade, termo cunhado por ele mesmo que une as palavras *tension* e *integrity*, ou traduzindo do inglês, tensão e integridade, ou seja, tensegridade.
 
 A tensegridade é uma estrutura espacial autossustentável que se estabiliza através da tração. É composta por barras e cabos, sendo que cada barra é isolada e conectada a outras barras somente através de cabos tracionados. Seu estado de autoequilíbrio permite que sejam exploradas diversas abordagens de *form finding* com inúmeras aplicações na arquitetura e no design.
 
@@ -192,6 +196,12 @@ A tensegridade é uma estrutura espacial autossustentável que se estabiliza atr
     ![Ligação simples e dupla de membros em esferas de tensegridade](../../../assets/content/research/architecture-biomimicry-algorithm/buckminster-fuller_geodesic-tensegrity.png)
   </Figure>
 </ImageRow>
+
+Para compreender a real ambição de Buckminster Fuller, é conveniente ler sua descrição de registro de patente da tensegridade:
+
+> Ela (tensegridade) possui aplicações especiais em estruturas de grande proporção como domos, com vão livre capaz de cobrir um estádio ou abrigar uma vila ou cidade completamente (...) é também aplicável à estruturas geodésicas como descrito e reivindicado por minha patente anterior N º. 2.682.235
+
+*Buckminster Fuller, patente US 3.063.521*
 
 Este primeiro estudo de caso busca replicar justamente esta tensegridade com formato de geodésica citada no resumo da patente. O objetivo principal foi o de se aproximar dos estudos geométricos de Fuller, mas também foi fundamental para entender o funcionamento do simulador de física Kangaroo Physics, plug-in do Grasshopper. Este componente recria condições físicas existentes no mundo real, por exemplo, a gravidade e a elasticidade dos materiais.
 
@@ -535,7 +545,61 @@ A seguir serão apresentados estudos de diversos padrões produzidos no Grasshop
 
 O Galapagos funciona de forma similar à teoria da evolução proposta por Charles Darwin, daí seu nome *Galapagos evolutionary solver*. Neste estudo, ele irá gerar no início 20 indivíduos aleatórios baseados no *pool* genético, que neste caso serão 116 vértices encontrados ao longo da estrutura cúbica e, para cada um destes vértices, existirão 16 possibilidades de conexão com a esfera.
 
-![Etapas do algoritmo da unidade de instalação](../../../assets/content/research/architecture-biomimicry-algorithm/installation-unit-algorithm-steps.jpg)
+Tomemos como exemplo a primeira imagem abaixo. Nela nota-se que cada haste da estrutura cúbica apresenta ao longo de seu comprimento 9 vértices únicos e mais dois nas pontas, que são comuns a duas outras hastes, ou seja, a estrutura totaliza 116 vértices.
+
+<ImageRow>
+<Figure>
+  ![Vértices da estrutura cúbica](../../../assets/content/research/architecture-biomimicry-algorithm/technique_01-cube-vertices.jpg)
+</Figure>
+
+<Figure>
+  ![Vértices selecionados](../../../assets/content/research/architecture-biomimicry-algorithm/technique_02-selected-vertices.jpg)
+</Figure>
+
+<Figure>
+  ![Linhas a partir dos vértices selecionados](../../../assets/content/research/architecture-biomimicry-algorithm/technique_03-lines-from-selected-vertices.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Linhas possíveis](../../../assets/content/research/architecture-biomimicry-algorithm/technique_04-possible-lines.jpg)
+</Figure>
+
+<Figure>
+  ![Linhas selecionadas](../../../assets/content/research/architecture-biomimicry-algorithm/technique_05-selected-lines.jpg)
+</Figure>
+
+<Figure>
+  ![Linhas relaxadas](../../../assets/content/research/architecture-biomimicry-algorithm/technique_06-relaxed-lines.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Vetores](../../../assets/content/research/architecture-biomimicry-algorithm/technique_07-vectors.jpg)
+</Figure>
+
+<Figure>
+  ![Todas as linhas possíveis](../../../assets/content/research/architecture-biomimicry-algorithm/technique_08-all-lines-possible.jpg)
+</Figure>
+</ImageRow>
+
+O primeiro passo do algoritmo é o de selecionar entre 0 e 40 destes vértices, para que então seja possível determinar os 16 vértices da esfera mais próximos de cada vértice da barra.
+
+Por exemplo, para o vértice que aparece no diagrama no canto superior da estrutura, são determinados os 16 vértices mais próximos na esfera. O próximo passo do algoritmo é o de selecionar um vértice dentre estes 16 para criar uma única linha.
+
+Este processo se repete em paralelo para todos os vértices selecionados de maneira que exista apenas uma única linha saindo de cada vértice e conectando-o à esfera.
+
+Em seguida, as linhas e a malha da esfera serão convertidas em cabos sujeitos à lei de Hooke, ou seja, a lei de elasticidade dos corpos. Com a resistência dos cabos e da malha bem ajustados é possível fazer com que o sistema entre em equilíbrio.
+
+Com a estrutura preparada, pode-se então ativar a física usando o Kangaroo. A partir disso, é calculada a distância entre os vértices originais da esfera estática e os vértices com a esfera "relaxada". O Galapagos poderá com isso buscar dentre os 20 indivíduos iniciais, os 5 mais "adaptados". Esse processo é chamado de função *fitness*, que neste caso seleciona os resultados mais próximos ao formato de uma esfera.
+
+A partir da seleção inicial, os resultados mais satisfatórios têm suas informações do *pool* genético recombinadas de maneira a criar novos 20 indivíduos, ou seja, uma nova geração, e isso se repete até que se atinja um resultado satisfatório.
+
+Para este estudo existem 1856 possibilidades de cabos e um número enorme de combinações possíveis entre eles, o que resultou em um ótimo estudo para entender como o computador pode ajudar no processo de design quando se dispõe de uma grande quantidade de dados.
+
+Este algoritmo teve que ser muito bem estudado antes do desenvolvimento deste trabalho, pois para conseguir chegar em um método consistente de evolução, a função *fitness* e o *pool* genético precisam estar muito bem alinhados.
 
 <ImageRow>
   ![Estudo 01: Malha quadriculada](../../../assets/content/research/architecture-biomimicry-algorithm/study-01-grid-mesh.png)
@@ -566,6 +630,10 @@ O Galapagos funciona de forma similar à teoria da evolução proposta por Charl
 Com os resultados obtidos a partir da interação das malhas esféricas tensionadas presas à estrutura cúbica, concluiu-se que a melhor alternativa para desenvolver a metodologia de concepção seria a "Malha dual hexagonal truncada", pois foi a que apresentou maior adequação aos requisitos de conforto, já que o resultado final se aproximou mais da esfera original, o que indica maior controle sobre a forma final, além de ser perfeitamente possível fabricá-la.
 
 A estrutura foi desenvolvida de maneira que remetesse diretamente a um dos módulos que compõem o logotipo da FAU-USP. A partir deste esqueleto gerou-se um amplo espectro de soluções.
+
+Este estudo final foi resultado do feedback do processo de produção do modelo físico apresentado no capítulo seguinte.
+
+![Etapas do algoritmo da unidade de instalação](../../../assets/content/research/architecture-biomimicry-algorithm/installation-unit-algorithm-steps.jpg)
 
 ![Parte do espectro de soluções](../../../assets/content/research/architecture-biomimicry-algorithm/part-of-the-spectrum-of-solutions.jpg)
 
