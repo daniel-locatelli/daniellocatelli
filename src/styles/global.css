@@ -24,7 +24,7 @@
   }
 
   html {
-    @apply scroll-smooth scroll-pt-20;
+    @apply scroll-pt-20;
   }
 
   figcaption {
@@ -206,6 +206,10 @@ a.footnote-ref:focus-visible {
   color: #e4e4e7; /* zinc-200 */
   text-align: left;
   text-wrap: pretty;
+  /* Long URLs in citations would otherwise force the tooltip wider than
+     max-width and trigger a horizontal scrollbar. Allow mid-word breaks
+     so the content always fits the box. */
+  overflow-wrap: anywhere;
 }
 
 .footnote-tooltip p {

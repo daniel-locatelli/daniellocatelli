@@ -51,5 +51,76 @@ const {
         overflow-y: scroll;
       }
     </style>
+    <script>
+      // Faster smooth scroll for in-page anchor clicks. Native
+      // `scroll-behavior: smooth` runs at a browser-fixed ~400-600ms with no
+      // API to shorten it; this listener animates over 250ms with a cubic
+      // ease and respects `scroll-padding-top` so footnote refs and back-refs
+      // still land below the fixed header.
+      let bound = false;
+      function bindFastAnchorScroll() {
+        if (bound) return;
+        bound = true;
+        const DURATION = 250;
+        const easeInOutCubic = (t: number) =>
+          t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+        // Capture phase + stopImmediatePropagation so we run before Astro's
+        // ClientRouter, which otherwise treats same-page hash clicks as
+        // navigations and calls its own pushState (instant jump).
+        document.addEventListener(
+          "click",
+          (e) => {
+            if (e.defaultPrevented) return;
+            if (e.button !== 0) return;
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+            const a = (e.target as Element | null)?.closest?.(
+              'a[href^="#"]',
+            ) as HTMLAnchorElement | null;
+            if (!a) return;
+            const href = a.getAttribute("href");
+            if (!href || href.length < 2) return;
+            let id: string;
+            try {
+              id = decodeURIComponent(href.slice(1));
+            } catch {
+              return;
+            }
+            const target = document.getElementById(id);
+            if (!target) return;
+            if (
+              window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ) {
+              return; // let the browser handle it (it will jump instantly)
+            }
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            const padTop =
+              parseFloat(
+                getComputedStyle(document.documentElement).scrollPaddingTop,
+              ) || 0;
+            const startY = window.scrollY;
+            const targetY =
+              target.getBoundingClientRect().top + startY - padTop;
+            const distance = targetY - startY;
+            if (Math.abs(distance) < 1) {
+              history.pushState(null, "", href);
+              return;
+            }
+            const t0 = performance.now();
+            const step = (now: number) => {
+              const p = Math.min((now - t0) / DURATION, 1);
+              window.scrollTo(0, startY + distance * easeInOutCubic(p));
+              if (p < 1) requestAnimationFrame(step);
+              else history.pushState(null, "", href);
+            };
+            requestAnimationFrame(step);
+          },
+          { capture: true },
+        );
+      }
+      bindFastAnchorScroll();
+      document.addEventListener("astro:after-swap", bindFastAnchorScroll);
+    </script>
   </body>
 </html>

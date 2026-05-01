@@ -46,6 +46,9 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkImageToAstroImage],
     rehypePlugins: [rehypeFigure, rehypeLazyImages, rehypeFootnoteTooltips],
+    remarkRehype: {
+      clobberPrefix: "",
+    },
   },
   vite: {
     plugins: [
