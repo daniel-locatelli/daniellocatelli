@@ -591,6 +591,10 @@ Next, the lines and the sphere's mesh are converted into cables subject to Hooke
 
 With the structure prepared, the physics can then be activated using Kangaroo. The distance between the original vertices of the static sphere and the vertices of the "relaxed" sphere is then calculated. Galapagos can therefore search, among the initial 20 individuals, for the 5 most "adapted" ones. This process is called the *fitness* function, which in this case selects the results closest to the shape of a sphere.
 
+From the initial selection, the most satisfactory results have their genetic *pool* information recombined to create 20 new individuals, that is, a new generation, and this repeats until a satisfactory result is achieved.
+
+For this study there are 1856 cable possibilities and an enormous number of possible combinations among them, which made it an excellent study to understand how the computer can assist the design process when a large amount of data is available.
+
 
 <ImageRow>
 <Figure>
@@ -602,11 +606,243 @@ With the structure prepared, the physics can then be activated using Kangaroo. T
 </Figure>
 </ImageRow>
 
-From the initial selection, the most satisfactory results have their genetic *pool* information recombined to create 20 new individuals, that is, a new generation, and this repeats until a satisfactory result is achieved.
-
-For this study there are 1856 cable possibilities and an enormous number of possible combinations among them, which made it an excellent study to understand how the computer can assist the design process when a large amount of data is available.
-
 This algorithm had to be very carefully studied before this work was developed, since to arrive at a consistent method of evolution, the *fitness* function and the genetic *pool* need to be very well aligned.
+
+### Study 01: Quadrilateral mesh
+
+![Quadrilateral mesh algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/study-01-quad-mesh_grasshopper.png)
+
+<ImageRow>
+<Figure>
+  ![Quadrilateral mesh: render 01](../../../assets/content/research/architecture-biomimicry-algorithm/study-01-quad-mesh_01-render.jpg)
+</Figure>
+
+<Figure>
+  ![Quadrilateral mesh: render 02](../../../assets/content/research/architecture-biomimicry-algorithm/study-01-quad-mesh_02-render.jpg)
+</Figure>
+
+<Figure>
+  ![Quadrilateral mesh: render 03](../../../assets/content/research/architecture-biomimicry-algorithm/study-01-quad-mesh_03-render.jpg)
+</Figure>
+</ImageRow>
+
+![Quadrilateral mesh: render 04](../../../assets/content/research/architecture-biomimicry-algorithm/study-01-quad-mesh_04-render.png)
+
+### Study 02: Truncated quadrilateral mesh
+
+![Truncated quadrilateral mesh algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/study-02-truncated-quad-mesh_grasshopper.png)
+
+<ImageRow>
+<Figure>
+  ![Truncated quadrilateral mesh: render 01](../../../assets/content/research/architecture-biomimicry-algorithm/study-02-truncated-grid-mesh_01-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated quadrilateral mesh: render 02](../../../assets/content/research/architecture-biomimicry-algorithm/study-02-truncated-grid-mesh_02-render.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Truncated quadrilateral mesh: render 03](../../../assets/content/research/architecture-biomimicry-algorithm/study-02-truncated-grid-mesh_03-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated quadrilateral mesh: render 04](../../../assets/content/research/architecture-biomimicry-algorithm/study-02-truncated-grid-mesh_04-render.jpg)
+</Figure>
+</ImageRow>
+
+![Truncated quadrilateral mesh: render 05](../../../assets/content/research/architecture-biomimicry-algorithm/study-02-truncated-grid-mesh_05-render.png)
+
+### Study 03: Triangular mesh
+
+![Triangular mesh algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/study-03-tri-mesh_grasshopper.png)
+
+<ImageRow>
+<Figure>
+  ![Triangular mesh: render 01](../../../assets/content/research/architecture-biomimicry-algorithm/study-03-tri-mesh_01-render.jpg)
+</Figure>
+
+<Figure>
+  ![Triangular mesh: render 02](../../../assets/content/research/architecture-biomimicry-algorithm/study-03-tri-mesh_02-render.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Triangular mesh: render 03](../../../assets/content/research/architecture-biomimicry-algorithm/study-03-tri-mesh_03-render.jpg)
+</Figure>
+
+<Figure>
+  ![Triangular mesh: render 04](../../../assets/content/research/architecture-biomimicry-algorithm/study-03-tri-mesh_04-render.jpg)
+</Figure>
+</ImageRow>
+
+![Triangular mesh: render 05](../../../assets/content/research/architecture-biomimicry-algorithm/study-03-tri-mesh_05-render.png)
+
+### Study 04: Truncated triangular mesh
+
+![Truncated triangular mesh algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/study-04-truncated-tri-mesh_grasshopper.png)
+
+<ImageRow>
+<Figure>
+  ![Truncated triangular mesh: render 01](../../../assets/content/research/architecture-biomimicry-algorithm/study-04-truncated-tri-mesh_01-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated triangular mesh: render 02](../../../assets/content/research/architecture-biomimicry-algorithm/study-04-truncated-tri-mesh_02-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated triangular mesh: render 03](../../../assets/content/research/architecture-biomimicry-algorithm/study-04-truncated-tri-mesh_03-render.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Truncated triangular mesh: render 04](../../../assets/content/research/architecture-biomimicry-algorithm/study-04-truncated-tri-mesh_04-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated triangular mesh: render 05](../../../assets/content/research/architecture-biomimicry-algorithm/study-04-truncated-tri-mesh_05-render.jpg)
+</Figure>
+</ImageRow>
+
+![Truncated triangular mesh: render 06](../../../assets/content/research/architecture-biomimicry-algorithm/study-04-truncated-tri-mesh_06-render.png)
+
+### Study 05: Phylotaxis mesh
+
+![Phylotaxis mesh algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/study-05-phyllotaxis-mesh_grasshopper.png)
+
+<ImageRow>
+<Figure>
+  ![Phylotaxis mesh: render 01](../../../assets/content/research/architecture-biomimicry-algorithm/study-05-phyllotaxis-mesh_01-render.png.jpg)
+</Figure>
+
+<Figure>
+  ![Phylotaxis mesh: render 02](../../../assets/content/research/architecture-biomimicry-algorithm/study-05-phyllotaxis-mesh_02-render.png.jpg)
+</Figure>
+
+<Figure>
+  ![Phylotaxis mesh: render 03](../../../assets/content/research/architecture-biomimicry-algorithm/study-05-phyllotaxis-mesh_03-render.png.jpg)
+</Figure>
+</ImageRow>
+
+![Phylotaxis mesh: render 04](../../../assets/content/research/architecture-biomimicry-algorithm/study-05-phyllotaxis-mesh_04-render.png)
+
+### Study 06: Truncated phylotaxis mesh
+
+![Truncated phylotaxis mesh algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/study-06-truncated-phyllotaxis-mesh_grasshopper.png)
+
+<ImageRow>
+<Figure>
+  ![Truncated phylotaxis mesh: render 01](../../../assets/content/research/architecture-biomimicry-algorithm/study-06-truncated-phyllotaxis-mesh_01-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated phylotaxis mesh: render 02](../../../assets/content/research/architecture-biomimicry-algorithm/study-06-truncated-phyllotaxis-mesh_02-render.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Truncated phylotaxis mesh: render 03](../../../assets/content/research/architecture-biomimicry-algorithm/study-06-truncated-phyllotaxis-mesh_03-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated phylotaxis mesh: render 04](../../../assets/content/research/architecture-biomimicry-algorithm/study-06-truncated-phyllotaxis-mesh_04-render.jpg.jpg)
+</Figure>
+</ImageRow>
+
+![Truncated phylotaxis mesh: render 05](../../../assets/content/research/architecture-biomimicry-algorithm/study-06-truncated-phyllotaxis-mesh_05-render.png)
+
+### Study 07: Dual hexagonal mesh
+
+![Dual hexagonal mesh algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-mesh_grasshopper.png)
+
+<ImageRow>
+<Figure>
+  ![Dual hexagonal mesh: render 01](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-mesh_01-render.jpg)
+</Figure>
+
+<Figure>
+  ![Dual hexagonal mesh: render 02](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-mesh_02-render.jpg)
+</Figure>
+
+<Figure>
+  ![Dual hexagonal mesh: render 03](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-mesh_03-render.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Dual hexagonal mesh: render 04](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-mesh_04-render.jpg)
+</Figure>
+
+<Figure>
+  ![Dual hexagonal mesh: render 05](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-mesh_05-render.jpg)
+</Figure>
+
+<Figure>
+  ![Dual hexagonal mesh: render 06](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-mesh_06-render.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Dual hexagonal mesh: render 07](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-mesh_07-render.jpg)
+</Figure>
+
+<Figure>
+  ![Dual hexagonal mesh: render 08](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-mesh_08-render.jpg)
+</Figure>
+</ImageRow>
+
+![Dual hexagonal mesh: render 09](../../../assets/content/research/architecture-biomimicry-algorithm/study-07-dual-mesh_09-render.jpg)
+
+### Study 08: Truncated dual hexagonal mesh
+
+![Truncated dual hexagonal mesh algorithm in Grasshopper](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-mesh_grasshopper.png)
+
+<ImageRow>
+<Figure>
+  ![Truncated dual hexagonal mesh: render 01](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-mesh_01-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated dual hexagonal mesh: render 02](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-mesh_02-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated dual hexagonal mesh: render 03](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-mesh_03-render.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Truncated dual hexagonal mesh: render 04](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-mesh_04-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated dual hexagonal mesh: render 05](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-mesh_05-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated dual hexagonal mesh: render 06](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-mesh_06-render.jpg)
+</Figure>
+</ImageRow>
+
+<ImageRow>
+<Figure>
+  ![Truncated dual hexagonal mesh: render 07](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-mesh_07-render.jpg)
+</Figure>
+
+<Figure>
+  ![Truncated dual hexagonal mesh: render 08](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-mesh_08-render.jpg)
+</Figure>
+</ImageRow>
+
+![Truncated dual hexagonal mesh: render 09](../../../assets/content/research/architecture-biomimicry-algorithm/study-08-truncated-dual-mesh_09-render.jpg)
 
 ### Development
 
