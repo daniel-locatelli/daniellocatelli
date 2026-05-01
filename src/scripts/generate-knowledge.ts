@@ -222,7 +222,7 @@ function processCVIndividual() {
       const urlPrefix = locale === "en" ? "" : `/${locale}`;
       const url = `${BASE_URL}${urlPrefix}/full-cv`;
 
-      for (const { data, body } of entries) {
+      for (const { data, body, filename } of entries) {
         const metaParts: string[] = [];
         if (data.Organization) metaParts.push(`Organization: ${data.Organization}`);
         const location = [
@@ -259,10 +259,18 @@ function processCVIndividual() {
           lines.push("", cleanBody);
         }
 
-        const safeName = slugify(data.Name);
-        const filename = `cv-entry-${safeName}-${locale}.md`;
+        // Same anti-collision pattern as processContentCollections:
+        // use the source filename (with collection prefix) instead of
+        // slugify(data.Name). Otherwise an entry like "CS50's Introduction
+        // to Computer Science" living in both certifications/ and
+        // courses-attended/ collides into a single knowledge file, and
+        // counts diverge across locales when only some locales have both
+        // copies.
+        const baseFilename = filename.replace(/\.(md|mdx)$/, "");
+        const cleanSlug = baseFilename.replace(/^_/, "");
+        const knowledgeFilename = `cv-entry-${collection}-${cleanSlug}-${locale}.md`;
         writeKnowledge(
-          filename,
+          knowledgeFilename,
           lines
             .join("\n")
             .replace(/\n{3,}/g, "\n\n")

@@ -151,6 +151,44 @@ ICD - University of Stuttgart
 December 2019 – October 2020 | Web development
 Ich half bei der Migration der ICD-Website auf das zentralisierte OpenCMS-Template der Universität Stuttgart. Dieses Projekt ermöglichte mir meinen ersten Kontakt mit der deutschen Sprache und eine tiefe Wertschätzung für das Forschungsportfolio des ICD.
 
+### Casa e Jardim Award 2019
+Atelier Marko Brajovic
+June 2019 | Computational Design
+Architekt verantwortlich für das Bühnenbild und die Trophäe.
+
+### Ita House
+Atelier Marko Brajovic
+April 2019 | Architektur
+
+### Itaú Rock in Rio
+Atelier Marko Brajovic
+February 2019 – April 2019 | Bühnenbild
+
+### BlastU 2019
+Atelier Marko Brajovic
+January 2019 – August 2019 | Computational Design
+Architekt verantwortlich für Entwurf und Bauleitung.
+
+### Embraer-Pavillon
+Atelier Marko Brajovic
+January 2019 | Architektur
+
+### Camper Thailand
+Atelier Marko Brajovic
+December 2018 | Computational Design
+
+### Animale Jewelry
+Atelier Marko Brajovic
+November 2018 – December 2018 | Architektur
+
+### The First Blow
+Atelier Marko Brajovic
+November 2018 | Computational Design
+
+### Hitchcock
+Atelier Marko Brajovic
+July 2018 – October 2018 | Bühnenbild
+
 ### Bar & Bühne Heineken von Atelier Marko Brajovic
 Atelier Marko Brajovic
 June 2018 – November 2018 | Computational Design
@@ -166,12 +204,50 @@ Atelier Marko Brajovic
 March 2018 – April 2018 | Installation
 Atelier Marko Brajovic entwickelte diese ortsspezifische Installation zur Feier des Air Max Day. In diesem Projekt arbeitete ich am Konzept und der Koordination. Außerdem konnte ich mit adressierbaren LEDs, Arduino und Bass-Tonabnehmern arbeiten.
 
+### Wave
+Atelier Marko Brajovic
+August 2017 | Koordination
+
+### InsideOut
+Atelier Marko Brajovic
+June 2017 | Produktdesign
+
+### Margarita House
+Freiberuflich
+June 2017 – August 2017 | Architekturentwurf
+Komplette Renovierung eines Mittelklasse-Einfamilienhauses.
+
 ### O3-Pavillon von Atelier Marko Brajovic für Docol
 Atelier Marko Brajovic
 February 2017 – March 2017 | Computational architecture
 Der O3-Pavillon wurde vom Atelier Marko Brajovic zu einer Zeit konzipiert, als ich meine ersten Schritte in der Welt des Computational Design machte. Ich hatte gerade mein Studium an der FAU-USP mit einer Abschlussarbeit beendet, in der ich alle für diesen Pavillon notwendigen Werkzeuge erlernte: Rhino, Grasshopper 3D und Kangaroo Physics.
 
+### Restaurant Homa
+Atelier Marko Brajovic
+January 2017 – December 2017 | Architektur
+
+### Live Talks
+Atelier Marko Brajovic
+October 2016 | Computational Design
+
 ### Parada Coca-Cola von Atelier Marko Brajovic
 Atelier Marko Brajovic
 August 2016 | Installation
 Parada Coca-Cola war mein allererstes Projekt, bei dem ich Computational Design anwendete. Dieses sensorische Erlebnis war von der Coca-Cola-Flasche inspiriert und ahmte die Blasen und Farben des Getränks nach.
+
+### Le Sandwich
+Freiberuflich
+June 2016 – July 2016 | Architekturentwurf
+Umbau einer zweistöckigen Bankfiliale zu einem Restaurant.
+
+### Coca Cola Taste Fashion
+Atelier Marko Brajovic
+April 2016 | Bühnenbild
+
+### Asha House
+Atelier Marko Brajovic
+January 2016 – December 2017 | Architektur
+
+### Ekoa Park
+Atelier Marko Brajovic
+April 2015 – February 2016 | Architektur
