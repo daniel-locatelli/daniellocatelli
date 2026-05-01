@@ -288,6 +288,22 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
     scrollToBottom();
   }, [messages, isOpen]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const html = document.documentElement;
+    const originalOverflow = html.style.overflow;
+    const originalPaddingRight = html.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - html.clientWidth;
+    html.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      html.style.paddingRight = `${scrollbarWidth}px`;
+    }
+    return () => {
+      html.style.overflow = originalOverflow;
+      html.style.paddingRight = originalPaddingRight;
+    };
+  }, [isOpen]);
+
   const fetchPreviews = async (text: string) => {
     const slugs = extractInternalSlugs(text);
     const newSlugs = slugs.filter((s) => !fetchedSlugsRef.current.has(s));
@@ -477,7 +493,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                 {/* Chat column */}
                 <div className="flex min-w-0 flex-1 flex-col">
                   {/* Messages */}
-                  <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-700 flex-1 space-y-6 overflow-y-auto p-6">
+                  <div className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-700 flex-1 space-y-6 overflow-y-auto overscroll-contain p-6">
                     {messages.map((msg, idx) => (
                       <ChatBubble
                         key={idx}
@@ -535,10 +551,19 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                             rel="noopener noreferrer"
                             className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-green-400 hover:bg-zinc-900 hover:text-green-400"
                           >
-                            <img
-                              src={WhatsAppIcon.src}
-                              alt="WhatsApp"
-                              className="size-4"
+                            <span
+                              aria-hidden="true"
+                              className="size-4 bg-current"
+                              style={{
+                                maskImage: `url(${WhatsAppIcon.src})`,
+                                WebkitMaskImage: `url(${WhatsAppIcon.src})`,
+                                maskSize: "contain",
+                                WebkitMaskSize: "contain",
+                                maskRepeat: "no-repeat",
+                                WebkitMaskRepeat: "no-repeat",
+                                maskPosition: "center",
+                                WebkitMaskPosition: "center",
+                              }}
                             />
                             {labels.requestQuote}
                           </a>
@@ -585,7 +610,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                       initial={{ opacity: 0, width: 0 }}
                       animate={{ opacity: 1, width: 288 }}
                       exit={{ opacity: 0, width: 0 }}
-                      className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-700 hidden flex-shrink-0 overflow-y-auto border-l border-zinc-800 md:block"
+                      className="scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-700 hidden flex-shrink-0 overflow-y-auto overscroll-contain border-l border-zinc-800 md:block"
                     >
                       <div className="flex flex-col gap-3 p-4">
                         {linkPreviews.map((preview) => (
