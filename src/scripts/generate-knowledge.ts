@@ -669,10 +669,9 @@ function processCVFromContent() {
 // ─── Homepage ─────────────────────────────────────────────────────────
 
 function processHomepage() {
-  const pages = ["en", "pt"];
   let count = 0;
 
-  for (const locale of pages) {
+  for (const locale of LOCALES) {
     const entries = readContentFiles("pages", locale);
     const indexEntry = entries.find(
       (e) => e.filename === "index.md" || e.filename === "index.mdx",
