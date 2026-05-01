@@ -999,18 +999,86 @@ function processFAQ() {
         return `- "${d.Name}"${authors ? ` by ${authors}` : ""} (${formatDate(d.DateStart)})`;
       });
 
-      // Find master's thesis topic
-      const masterEdu = education.find((e) =>
-        e.data.Name.toLowerCase().includes("master") || e.data.Name.toLowerCase().includes("mestrado"),
+      // Find both undergraduate (bachelor's) and master's theses. Each
+      // education entry stores a `Thesis:` slug pointing into the research
+      // collection, so we can pull the full thesis Name + Description from
+      // there for richer retrieval context.
+      const research = readContentFiles("research", locale);
+      const bachelorEdu = education.find((e) =>
+        /\b(bachelor|bacharel|bachelorabschluss)\b/i.test(e.data.Name) &&
+        !/\b(dropped|trancado|abgebrochen)\b/i.test(e.data.Name),
       );
-      const thesisTopic = masterEdu?.data.Description || "";
+      const masterEdu = education.find((e) =>
+        /\b(master|mestrado|magister)\b/i.test(e.data.Name),
+      );
+      const findThesisResearch = (slug: string | undefined) =>
+        slug
+          ? research.find(
+              (r) => r.filename.replace(/\.(md|mdx)$/, "") === slug,
+            )
+          : undefined;
+      const bachelorThesis = findThesisResearch(bachelorEdu?.data.Thesis);
+      const masterThesis = findThesisResearch(masterEdu?.data.Thesis);
+
+      // Locale-specific synonym block makes "graduation thesis", "TFG",
+      // "Bachelorarbeit", "Masterarbeit", "Tese de graduação", etc. all
+      // embed near this entry so vector search finds it regardless of
+      // the visitor's phrasing.
+      const synonyms =
+        locale === "pt"
+          ? [
+              "Sinônimos: tese de graduação, trabalho de conclusão de curso, TCC,",
+              "TFG, Trabalho Final de Graduação, monografia de bacharelado,",
+              "tese de bacharelado, tese de mestrado, dissertação, M.Sc. thesis.",
+            ]
+          : locale === "de"
+            ? [
+              "Synonyme: Bachelorarbeit, Abschlussarbeit, Diplomarbeit, Bachelor-Thesis,",
+              "Masterarbeit, M.Sc.-Arbeit, Master-Thesis.",
+            ]
+            : [
+              "Synonyms: graduation thesis, undergraduate thesis, bachelor's thesis,",
+              "final-year project, capstone project, TFG, B.Arch. thesis, master's thesis,",
+              "M.Sc. thesis.",
+            ];
+
+      const thesisLines: string[] = [];
+      if (bachelorThesis) {
+        const d = bachelorThesis.data;
+        const url = `${BASE_URL}${urlPrefix}/research/${bachelorThesis.filename.replace(/\.(md|mdx)$/, "")}`;
+        thesisLines.push(
+          `**Graduation thesis (undergraduate / bachelor's thesis / TFG)**: "${d.Name}"`,
+          d.Description ? `${d.Description}` : "",
+          `Read more: ${url}`,
+          "",
+        );
+      }
+      if (masterThesis) {
+        const d = masterThesis.data;
+        const url = `${BASE_URL}${urlPrefix}/research/${masterThesis.filename.replace(/\.(md|mdx)$/, "")}`;
+        thesisLines.push(
+          `**Master's thesis (M.Sc. thesis)**: "${d.Name}"`,
+          d.Description ? `${d.Description}` : "",
+          `Read more: ${url}`,
+          "",
+        );
+      } else if (masterEdu?.data.Description) {
+        // Fallback if Thesis slug doesn't resolve
+        thesisLines.push(
+          `**Master's thesis**: ${masterEdu.data.Description}`,
+          "",
+        );
+      }
 
       const content = [
         `URL: ${cvUrl}`,
         "",
-        `# Research and Publications`,
+        `# Theses, Research and Publications`,
         "",
-        `Daniel Locatelli has ${pubCount} publications. His master's thesis topic was: ${thesisTopic}.`,
+        ...synonyms,
+        "",
+        ...thesisLines,
+        `Daniel Locatelli has ${pubCount} publications.`,
         "",
         `Recent publications:`,
         ...pubLines,
