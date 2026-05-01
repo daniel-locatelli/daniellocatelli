@@ -5,8 +5,8 @@ export const DevModelAPIAlias = "claude-haiku-4-5-20251001";
 
 export const ProdModelAPIAlias = [
   "claude-haiku-4-5-20251001",
-  "claude-sonnet-4-5-20250929",
-  "claude-opus-4-5-20251101",
+  "claude-sonnet-4-6",
+  "claude-opus-4-7",
 ];
 
 export const MODEL_FAMILY_PRIORITY = ["haiku", "sonnet", "opus"] as const;
