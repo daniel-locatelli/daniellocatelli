@@ -50,14 +50,26 @@ function parseFrontmatter(content: string): {
   data: Record<string, any>;
   body: string;
 } {
-  const match = content.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
-  if (!match) return { data: {}, body: content };
+  // Normalize CRLF → LF so YAML parser doesn't choke on Windows-authored
+  // files. Without this, quoted strings containing characters like `–`
+  // (U+2013) on CRLF lines silently fail with "Unexpected scalar at node
+  // end" and the entire entry is dropped from the knowledge index.
+  const normalized = content.replace(/\r\n/g, "\n");
+  const match = normalized.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+  if (!match) return { data: {}, body: normalized };
 
   try {
     const data = YAML.parse(match[1]);
     return { data: data || {}, body: match[2] };
-  } catch {
-    return { data: {}, body: content };
+  } catch (err) {
+    // Loud failure: a parse error means an entry will silently disappear
+    // from the knowledge index. Surfacing it lets us notice and fix the
+    // underlying frontmatter rather than discovering a missing entry weeks
+    // later via a chat-quality regression.
+    console.warn(
+      `  ! YAML parse failed (entry will be skipped): ${(err as Error).message.split("\n")[0]}`,
+    );
+    return { data: {}, body: normalized };
   }
 }
 
@@ -164,8 +176,15 @@ function processContentCollections() {
           lines.push(cleanBody);
         }
 
-        const safeName = slugify(data.Name);
-        const knowledgeFilename = `${safeName}-${locale}.md`;
+        // Use the source filename (with collection prefix) instead of
+        // slugify(data.Name). Translated names can collide when two
+        // collections happen to share a translation: e.g. PT/DE both
+        // translate "Biomimicry" and "Biomimetics" to the same word, so
+        // a research entry and an unpublished talk would write to the
+        // same knowledge file and the talk would silently overwrite the
+        // research. Source filenames are unique per (collection × locale)
+        // so this is collision-proof.
+        const knowledgeFilename = `${collection}-${cleanSlug}-${locale}.md`;
         writeKnowledge(
           knowledgeFilename,
           lines

@@ -2,7 +2,7 @@ URL: https://daniellocatelli.com
 
 # Professional Overview
 
-Daniel Locatelli is a software engineer and computational designer with over 12 years of experience in the AEC (Architecture, Engineering, and Construction) industry. He combines expertise in software development, computational design, and digital fabrication.
+Daniel Locatelli is a software engineer and computational designer with over 15 years of experience in the AEC (Architecture, Engineering, and Construction) industry. He combines expertise in software development, computational design, and digital fabrication.
 
 Recent positions:
 - Research Associate (60%) at Munich University of Applied Sciences (February 2025 to Current)

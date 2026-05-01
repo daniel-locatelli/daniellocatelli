@@ -9,6 +9,8 @@
  *   npx tsx scripts/benchmark-chat.ts --url https://daniellocatelli.com  # against production
  */
 
+import fs from "node:fs";
+
 interface TestCase {
   question: string;
   /** At least one of these phrases must appear in the answer (case-insensitive) */
@@ -232,7 +234,6 @@ function checkAnswer(
 
 function loadPreviousResults(): Map<string, boolean> {
   try {
-    const fs = require("fs");
     const data = JSON.parse(fs.readFileSync(RESULTS_FILE, "utf-8"));
     return new Map(Object.entries(data));
   } catch {
@@ -241,7 +242,6 @@ function loadPreviousResults(): Map<string, boolean> {
 }
 
 function saveResults(results: Map<string, boolean>) {
-  const fs = require("fs");
   fs.writeFileSync(RESULTS_FILE, JSON.stringify(Object.fromEntries(results), null, 2));
 }
 

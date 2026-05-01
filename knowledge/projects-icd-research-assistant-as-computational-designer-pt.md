@@ -1,0 +1,22 @@
+URL: https://daniellocatelli.com/pt/projects/icd-research-assistant-as-computational-designer
+
+# Assistente de pesquisa no ICD como designer computacional
+
+Description: Foi interessante entender a estratégia computacional para gerar a geometria de uma placa de madeira laminada cruzada autocurvante. O truque aqui é trabalhar com cilindros porque a curvatura natural da madeira acontece perpendicularmente à direção das fibras.
+Tags: Computational Design, Grasshopper3D
+Category: Computational design
+Director: Achim Menges
+Team: Daniel Nunes Locatelli, Nils Opgnorth
+Organization: ICD - University of Stuttgart
+Location: Stuttgart
+Date: March 2020 - April 2020
+Link: https://www.icd.uni-stuttgart.de/projects/remstal-gartenschau-2019-urbach-turm/
+
+Fui o designer computacional de um projeto semelhante à [Torre Urbach](https://www.icd.uni-stuttgart.de/projects/remstal-gartenschau-2019-urbach-turm/). A proposta, no entanto, não avançou por causa da pandemia, suponho.
+No entanto, foi interessante entender a estratégia computacional para gerar a geometria de uma placa de madeira laminada cruzada autocurvada. O truque aqui é trabalhar com cilindros, porque a curvatura natural da madeira acontece perpendicularmente à direção das fibras.
+
+Também trabalhei em alguns desenhos as-built para a própria Urbach Tower. Por causa disso, Dylan me ensinou todos os detalhes construtivos deste projeto e também como eles adicionaram múltiplos sensores para monitorar e rastrear os comportamentos ambientais na estrutura.
+
+A pesquisa de Dylan Wood no ICD foi sobre as propriedades naturais de automoldagem da madeira quando seca. Você pode conferir a palestra TED de Dylan Wood para entender mais sobre o processo aqui:
+
+© Desenhos, imagens e animação pela Universidade de Stuttgart, ICD/ITKE

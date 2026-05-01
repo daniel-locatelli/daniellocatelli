@@ -9,6 +9,7 @@ Daniel Locatelli's technical skills grouped by category:
 **Programming:** C# (Intermediate), CSS (Advanced), HTML (Advanced), Python (Intermediate), TypeScript (Advanced)
 **Specialization:** Computational Design, Digitale Fertigung (Advanced), UI/UX-Design, Webentwicklung
 **Language:** Englisch (Fließend), Deutsch (B1), Portugiesisch (Muttersprache)
+**Database:** MongoDB (Intermediate), PostgreSQL (Advanced)
 
 Programming languages: C#, CSS, HTML, Python, TypeScript.
 Frameworks: Astro, Flask, React, Tailwind, TanStack Start.

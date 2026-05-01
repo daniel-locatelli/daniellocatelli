@@ -7,3 +7,4 @@ URL: https://daniellocatelli.com/pt/full-cv
 **Programming:** C#, CSS, HTML, Python, TypeScript
 **Specialization:** Design Computacional, Fabricação Digital, Design UI/UX, Desenvolvimento Web
 **Language:** Inglês, Alemão, Português
+**Database:** MongoDB, PostgreSQL

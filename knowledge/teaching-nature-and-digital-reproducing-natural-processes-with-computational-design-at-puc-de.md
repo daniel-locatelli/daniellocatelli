@@ -1,0 +1,31 @@
+URL: https://daniellocatelli.com/de/teaching/nature-and-digital-reproducing-natural-processes-with-computational-design-at-puc
+
+# Natur und Digital: Reproduktion natürlicher Prozesse mit Computational Design
+
+Description: In diesem Vortrag an der PUC Minas stellte ich meine Arbeit, die Idee der Reproduktion natürlicher Prozesse mit computergestütztem Design und wichtige Erkenntnisse aus meiner kürzlich abgeschlossenen Masterarbeit vor.
+Category: Talk
+Authors: Daniel Nunes Locatelli
+Location: Belo Horizonte
+Place: PUC Minas - Online
+Date: August 2021
+Link: https://youtu.be/J303rzg7y0U
+Event: Design Paramétrico em Arquitetura
+Language: Portugiesisch
+
+Dieser Vortrag, Teil der Veranstaltung "Design Paramétrico em Arquitetura" an der PUC Minas, untersuchte, wie Computational Design natürliche Prozesse reproduzieren kann, und die Erkenntnisse aus meiner Masterforschung an der Universität Stuttgart.
+
+## Terminologie des Computational Design
+
+Die Präsentation begann mit der Klärung der Terminologie rund um Computational Design und unterschied zwischen assoziativer Modellierung, parametrischem Design, algorithmischem Design und generativem Design. Es wurde auf die Mindmap von David Rutten aus dem Jahr 2012 verwiesen, in der der Schöpfer von Grasshopper versuchte, diese verschiedenen Begriffe zu identifizieren und zu verknüpfen.
+
+## Beruflicher Werdegang
+
+Ich teilte meinen akademischen und beruflichen Werdegang: von der UNEMAT (2007-2008) und FAU-USP (2010-2016), über einen Austausch an der Auburn University und ein Praktikum an der CSULB in Kalifornien, bis hin zu Projekten im Atelier Marko Brajovic, darunter Ekóa Park, Parada Coca-Cola, der O3-Pavillon, Casa Asha und Nike Air Guitar.
+
+## Biomimetik in der Architektur
+
+Der Kern des Vortrags konzentrierte sich auf Biomimetik nach der Definition von Janine Benyus, strukturiert auf drei Ebenen: Formen reproduzieren, Prozesse reproduzieren und Ökosysteme reproduzieren. Ich diskutierte, wie Pioniere wie Robert Hooke, Antoni Gaudí (mit seinen Seilmodellen für die Colònia Güell und die Sagrada Família), Frei Otto (mit Seifenfilmexperimenten), Sergio Musmeci und Pier Luigi Nervi physische Modelle nutzten, um strukturell effiziente Formen zu finden. Der Vortrag behandelte auch zeitgenössische Referenzen des Computational Design wie Luigi Moretti, John Frazer, Achim Menges und Neri Oxman und führte das Konzept der materiellen Computation ein: mit der physischen Welt zusammenzuarbeiten, anstatt sie zu beherrschen.
+
+## ITECH-Masterprogramm und 10 Erkenntnisse
+
+Ich präsentierte meine Erfahrung im ITECH-Masterprogramm an der Universität Stuttgart und teilte zehn zentrale Erkenntnisse aus dem Studium in Deutschland: die starke Verbindung zwischen Universitäten und Industrie, die Rolle von Demonstratoren und Pavillons, die interdisziplinäre Forschungskultur, Bottom-up- versus Top-down-Prozesse, die Bedeutung des Gesamtbildes, die Suche nach einer neuen Ästhetik des Holzes, die Tatsache, dass künstliche Intelligenz keine Magie ist, Biomimetik als Mittel und nicht als Zweck, das Konzept des digitalen Vernaculars und den Wert der Reflexion. Der Vortrag schloss mit einer Diskussion darüber, wie diese Erkenntnisse in Brasilien angewendet werden könnten, unter Berücksichtigung lokaler Materialien wie Massivholz, Erde, Ziegel und Bambus.

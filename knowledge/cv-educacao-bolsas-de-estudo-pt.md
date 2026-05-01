@@ -23,6 +23,18 @@ January 2010 – December 2016
 Tese: Arquitetura + Biomimética + Algoritmo
 Supervisors: Prof. Arthur Lara
 
+### Cursinho Pré-Vestibular
+Colégio Nobel | Londrina, Brasil
+January 2009 – December 2009
+
+### Bacharel em Arquitetura e Urbanismo (trancado)
+UNEMAT | Barra do Bugres, Brasil
+January 2007 – December 2008
+
+### Ensino Médio
+CEI Anglo | Vilhena, Brasil
+January 2004 – December 2006
+
 ## Bolsas de estudo
 
 ### Bolsa de Mestrado IntCDC 2021
