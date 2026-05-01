@@ -1915,9 +1915,9 @@ git commit -m "feat(decks): add Playwright + pdf-lib PDF export script"
 
 - [ ] **Step 1: Append a new section to CLAUDE.md**
 
-Insert this section after "AI Chat Knowledge Pipeline" (or in an appropriate place that follows the file's existing structure):
+Insert this section after "AI Chat Knowledge Pipeline" (or in an appropriate place that follows the file's existing structure). Use a fenced markdown block with four backticks since the body itself contains a fenced YAML block:
 
-```markdown
+````markdown
 ## Slide deck authoring (astlide library-only)
 
 Slide decks live in `src/content/decks/{locale}/{slug}/NNN-name.mdx`, where:
@@ -1947,7 +1947,7 @@ Public canonical slide URL: `/{locale}/{slug}/{N}`.
 Multilingual rule applies (CLAUDE.md "Multilingual content edits"): when editing a slide in one locale, update the corresponding files in pt and de. Translatable: `title`, body markdown text, `alt=` strings, `<Notes>` body. Sync verbatim: `slideLayout`, `transition`, image `src=`, all Tailwind classes.
 
 PDF export: `npm run export-deck -- --locale en --slug <slug> --format pdf --out exports` (requires dev server running).
-```
+````
 
 - [ ] **Step 2: Commit**
 
