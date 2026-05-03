@@ -47,27 +47,30 @@ import dokwood from "@/assets/content/presentations/digital-futures-2026/dokwood
 import bsGrasshopper from "@/assets/content/presentations/digital-futures-2026/buildsystems-plugin-for-grasshopper-cover-extended.jpeg";
 import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsystems/kfw-funding-calculator-by-buildsystems-cover.png";
 
-{/* 1 */}
-<TitleSlide
-  title="Entre o Prompt e a Obra"
-  subtitle="O olhar de um arquiteto brasileiro formado e atuante na Alemanha"
-  author="Daniel Locatelli"
-  institution="Universidade de Ciências Aplicadas de Munique"
-  image={cover}
-  imageAlt="Montagem de cinco projetos do portfólio de Daniel Locatelli"
-/>
+---
+type: title
+title: Entre o Prompt e a Obra
+subtitle: O olhar de um arquiteto brasileiro formado e atuante na Alemanha
+author: Daniel Locatelli
+institution: Universidade de Ciências Aplicadas de Munique
+image: cover
+imageAlt: Montagem de cinco projetos do portfólio de Daniel Locatelli
+---
 
-{/* 2 */}
-<Slide image={architectureLenses} imageAlt="Lentes da arquitetura" copyright="Gemini" />
+---
+image: architectureLenses
+imageAlt: Lentes da arquitetura
+copyright: Gemini
+---
 
-{/* 3 */}
-<Slide title="Atelier Marko Brajovic" subtitle="São Paulo, 2015 - 2019" image={atelier} imageAlt="Ateliê Marko Brajovic em 2019">
-  <SlideNotes>
-    Sempre me interessei pela conexão entre natureza e arquitetura. Foi isso que me levou ao Atelier Marko Brajovic em São Paulo, em 2016.
-  </SlideNotes>
-</Slide>
+---
+title: Atelier Marko Brajovic
+subtitle: São Paulo, 2015 - 2019
+image: atelier
+imageAlt: Ateliê Marko Brajovic em 2019
+notes: Sempre me interessei pela conexão entre natureza e arquitetura. Foi isso que me levou ao Atelier Marko Brajovic em São Paulo, em 2016.
+---
 
-{/* 4 */}
 <Slide image={atelier} imageAlt="Ateliê Marko Brajovic em 2019">
   <div class="absolute inset-0 z-[5] bg-black/50" />
   <div class="absolute inset-0 z-10 flex items-center justify-center">
@@ -75,29 +78,24 @@ import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsyst
   </div>
 </Slide>
 
-{/* 5 */}
 <Slide title="Workshop Models ByNature" subtitle="São Paulo, 2019">
   <SlideVideo src="/presentations/models-bynature-workshop-1.5x.mp4" />
 </Slide>
 
-{/* 6 */}
 <Slide image={giraffes} imageAlt="Girafas" copyright="Luca Galuzzi" />
 
-{/* 7 */}
 <Slide title="Pavilhão O3" subtitle="Atelier Marko Brajovic para Docol, Expo Revestir 2017" image={o3} imageAlt="Foto da vista frontal do Pavilhão O3." copyright="Gui Morelli">
   <SlideNotes>
     No ateliê, trabalhei em projetos como o O3 Pavilion e aprendi Grasshopper, um ambiente de design computacional que me permitiu programar geometria.
   </SlideNotes>
 </Slide>
 
-{/* 8 */}
 <Slide title="Pavilhão O3" subtitle="Form finding com Kangaroo Physics">
   <div class="absolute inset-0 flex items-center justify-center">
     <img src={o3FormFinding.src} alt="Animação de form finding do Pavilhão O3 com Kangaroo" width="528" height="264" style="image-rendering: auto;" />
   </div>
 </Slide>
 
-{/* 9 */}
 <Slide title="Biomimética" subtitle="Janine Benyus" image={nasaBill} imageAlt="NASA/Bill Ingalls" copyright="NASA/Bill Ingalls">
   <div class="absolute inset-0 z-[5] bg-black/50" />
   <div class="absolute inset-0 z-10 flex items-center justify-center">
@@ -111,7 +109,6 @@ import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsyst
   </div>
 </Slide>
 
-{/* 10 */}
 <Slide image={nasaBill} imageAlt="NASA/Bill Ingalls" copyright="NASA/Bill Ingalls">
   <div class="absolute inset-0 z-[5] bg-black/50" />
   <div class="absolute inset-0 z-10 flex items-center justify-center">
@@ -125,10 +122,8 @@ import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsyst
   </div>
 </Slide>
 
-{/* 11 */}
 <Slide image={haeckelDetroit} imageAlt="Ernst Haeckel e Detroit Publishing Company" copyright={["Ernst Haeckel: Diatomáceas em Formas de arte na natureza 1899 - 1904", "Detroit Publishing Company: Porte Monumentale na Exposição Universal de 1900"]} />
 
-{/* 12 */}
 <Slide image={nasaBill} imageAlt="NASA/Bill Ingalls" copyright="NASA/Bill Ingalls">
   <div class="absolute inset-0 z-[5] bg-black/50" />
   <div class="absolute inset-0 z-10 flex items-center justify-center">
@@ -142,7 +137,6 @@ import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsyst
   </div>
 </Slide>
 
-{/* 13 */}
 <Slide image={gaudi} imageAlt="Antoni Gaudí em Canaan" copyright="Canaan">
   <div class="absolute inset-0 z-[5] bg-black/50" />
   <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center text-white">
@@ -151,7 +145,6 @@ import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsyst
   </div>
 </Slide>
 
-{/* 14 */}
 <Slide image={nasaBill} imageAlt="NASA/Bill Ingalls" copyright="NASA/Bill Ingalls">
   <div class="absolute inset-0 z-[5] bg-black/50" />
   <div class="absolute inset-0 z-10 flex items-center justify-center">
@@ -165,85 +158,66 @@ import bsKfw from "@/assets/content/projects/kfw-funding-calculator-by-buildsyst
   </div>
 </Slide>
 
-{/* 15 */}
 <Slide title="Mestrado no ITECH" subtitle="Sistemas de co-design" copyright="ICD/ITKE">
   <div class="absolute inset-0 flex items-center justify-center">
     <img src={codesignDiagram.src} alt="Diagrama de co-design ICD/ITKE" width="1000" height="562" />
   </div>
 </Slide>
 
-{/* 16 */}
 <Slide title="Goethe" subtitle="Pensamento sistêmico enraizado na cultura alemã" copyright="Goethe: Versuch die Metamorphose der Pflanzen zu erklären">
   <div class="absolute inset-0 flex items-center justify-center">
     <img src={urpflanze.src} alt="Urpflanze de Goethe" width="1322" height="1540" class="max-h-full w-auto" />
   </div>
 </Slide>
 
-{/* 17 */}
 <Slide title="Building Across Scales" subtitle="Tese de mestrado, ITECH 2021" image={thesis} imageAlt="Protótipo final em escala real à noite">
   <SlideNotes>
     Minha tese, com Nils Opgenorth: um sistema robótico multiescalar para colar painéis de madeira laminada cruzada diretamente no canteiro.
   </SlideNotes>
 </Slide>
 
-{/* 18 */}
 <Slide title="Building Across Scales" subtitle="Diagrama material-robótico" image={materialRoboticDiagram} imageAlt="Diagrama do sistema material-robótico" darkText />
 
-{/* 19 */}
 <Slide title="Radom Raisting" subtitle="AR Ingenieure" image={radom} imageAlt="Membrana da cúpula sendo entregue pelo guindaste" copyright="AR Ingenieure" />
 
-{/* 20 */}
 <Slide title="Radom Raisting" subtitle="Simulação de implantação" copyright="AR Ingenieure">
   <SlideVideo src="/media/projects/radom-raisting-by-ar-ingenieure/deployment-sequence.mp4" />
 </Slide>
 
-{/* 21 */}
 <Slide title="Common Sky" subtitle="ArtEngineering para Studio Other Spaces" image={commonSky} imageAlt="Interior do Common Sky" copyright="Studio Other Spaces" />
 
-{/* 22 */}
 <Slide title="Common Sky" subtitle="Construção" image={commonSkyConstruction} imageAlt="Common Sky em construção" copyright="Studio Other Spaces" />
 
-{/* 23 */}
 <Slide title="Canyon" subtitle="ArtEngineering para Katharina Grosse" image={canyon} imageAlt="Canyon instalado na Louis Vuitton em Paris" copyright="Kunstgiesserei" />
 
-{/* 24 */}
 <Slide title="Canyon" subtitle="Dobra de chapas de aço" image={canyonBending} imageAlt="Configuração para dobrar chapas de aço e verificar a curvatura" copyright="Kunstgiesserei" />
 
-{/* 25 */}
 <Slide title="Breathing Earth Sphere" subtitle="ArtEngineering para Olafur Eliasson" image={breathingEarth} imageAlt="Breathing Earth Sphere por Olafur Eliasson" copyright="Kyungsub Shin" />
 
-{/* 26 */}
 <Slide title="Breathing Earth Sphere" subtitle="Docho Island, Coreia do Sul" image={breathingEarthInstallation} imageAlt="Vista da instalação em Docho Island" copyright="Kyungsub Shin" />
 
-{/* 27 */}
 <Slide title="BuildSystems" subtitle="Plugin para Grasshopper" image={bsGrasshopper} imageAlt="Plugin da BuildSystems para o Grasshopper" />
 
-{/* 28 */}
 <Slide title="BuildSystems" subtitle="Calculadora de financiamento KfW" image={bsKfw} imageAlt="Calculadora de financiamento imobiliário da BuildSystems" />
 
-{/* 29 */}
 <Slide title="BuildSystems" subtitle="Ontology" image={bsOntology} imageAlt="Diagrama de ontologia BuildSystems" />
 
-{/* 30 */}
 <Slide title="Hochschule München" subtitle="DOKwood">
   <SlideVideo src="/presentations/dokwood-demo.mp4" />
 </Slide>
 
-{/* 31 */}
 <Slide>
   <div class="absolute inset-0 flex items-center justify-center">
     <img src={buildup.src} alt="Buildup" width="1016" height="390" />
   </div>
 </Slide>
 
-{/* 32 */}
 <Slide>
   <div class="absolute inset-0 flex items-center justify-center">
     <img src={dokwood.src} alt="DOKwood" width="2560" height="1528" class="max-h-full w-auto" />
   </div>
 </Slide>
 
-{/* 33 */}
 <Slide copyright="Gemini">
   <div class="absolute inset-0 flex items-center justify-center">
     <img src={aiHarness.src} alt="AI Harness" width="1367" height="768" />

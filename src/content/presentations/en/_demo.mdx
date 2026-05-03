@@ -1,0 +1,52 @@
+---
+Name: "Plugin demo"
+Description: "Test fixture for the presentation-slides Vite plugin. Excluded from routing by the leading underscore."
+DateStart: "2026-05-03"
+Event: DigitalFutures
+Language: English
+---
+
+import TitleSlide from "@/components/slides/TitleSlide.astro";
+import Slide from "@/components/slides/Slide.astro";
+import TextSlide from "@/components/slides/TextSlide.astro";
+import SlideNotes from "@/components/slides/SlideNotes.astro";
+
+import cover from "@/assets/content/teaching/digital-futures-2026/digital-futures-2026-cover.jpg";
+
+---
+type: title
+title: Plugin demo
+subtitle: Two authoring syntaxes, side by side
+author: Daniel Locatelli
+image: cover
+imageAlt: Demo cover
+---
+
+---
+title: Image, title, subtitle
+subtitle: Authored as a YAML block
+image: cover
+imageAlt: Demo cover
+copyright: Daniel Locatelli
+notes: This slide was written as a YAML block. The plugin rewrites it to a self-closing <Slide /> JSX with a <SlideNotes> child.
+---
+
+---
+image: cover
+imageAlt: Demo cover
+copyright: Daniel Locatelli
+---
+
+<Slide title="Legacy JSX slide" subtitle="Still works alongside YAML" image={cover} imageAlt="Demo cover">
+  <div class="absolute inset-0 z-[5] bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <h2 class="text-4xl font-bold uppercase tracking-wide text-white sm:text-6xl" style="font-family: 'Montserrat', sans-serif;">Coexistence</h2>
+  </div>
+</Slide>
+
+---
+type: text
+text: A YAML text slide
+subtext: For chapter dividers
+size: lg
+---

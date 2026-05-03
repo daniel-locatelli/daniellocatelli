@@ -10,6 +10,7 @@ import { rehypeLazyImages } from "./src/lib/rehype-lazy-images";
 import { rehypeFigure } from "./src/lib/rehype-figure";
 import { rehypeFootnoteTooltips } from "./src/lib/rehype-footnote-tooltips";
 import { remarkImageToAstroImage } from "./src/lib/remark-image-to-astro-image";
+import { presentationSlides } from "./src/lib/vite-presentation-slides";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -52,6 +53,7 @@ export default defineConfig({
   },
   vite: {
     plugins: [
+      presentationSlides(),
       tailwindcss(),
       {
         name: "ssr-optimize-deps",
