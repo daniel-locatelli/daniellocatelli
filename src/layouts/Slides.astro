@@ -366,7 +366,6 @@ const {
           history.replaceState(null, "", newHash);
         }
       }
-      showHud();
 
       // Warm adjacent slides so the next nav is instant.
       void ensureSlideReady(slides[index - 1]);
@@ -451,6 +450,7 @@ const {
       const t = e.touches[0];
       touchX = t.clientX;
       touchY = t.clientY;
+      showHud();
     });
     document.addEventListener("touchend", (e) => {
       const t = e.changedTouches[0];
@@ -501,6 +501,8 @@ const {
     });
 
     render(index, false);
+    // Flash the HUD once on load so first-time visitors discover the controls.
+    showHud();
   }
 
   function toggleFullscreen() {
