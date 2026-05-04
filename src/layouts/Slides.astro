@@ -73,6 +73,15 @@ const {
       </div>
       <div class="pointer-events-auto flex items-center gap-2">
         <button
+          id="deck-presenter-btn"
+          aria-label="Open presenter window"
+          title="Open presenter window (P)"
+          class="rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition hover:bg-zinc-800 hover:text-zinc-100"
+          type="button"
+        >
+          ◫
+        </button>
+        <button
           id="deck-help"
           aria-label="Show keyboard shortcuts"
           class="rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition hover:bg-zinc-800 hover:text-zinc-100"
@@ -88,6 +97,26 @@ const {
         >
           ⛶
         </button>
+      </div>
+    </div>
+
+    <div
+      id="deck-presenter-overlay"
+      class="pointer-events-none fixed inset-x-0 top-3 z-30 hidden flex-col items-center gap-2"
+    >
+      <div
+        id="deck-timer"
+        class="rounded-full bg-zinc-900/85 px-4 py-2 text-xl font-bold tracking-wider text-zinc-50 backdrop-blur tabular-nums"
+        style="font-family: 'Montserrat', sans-serif;"
+      >
+        00:00
+      </div>
+      <div
+        id="deck-next-hint"
+        class="max-w-[60vw] truncate rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur"
+        style="font-family: 'Montserrat', sans-serif;"
+      >
+        Next: …
       </div>
     </div>
 
@@ -112,6 +141,7 @@ const {
         <dt class="font-mono text-zinc-400">F</dt><dd>Toggle fullscreen</dd>
         <dt class="font-mono text-zinc-400">N</dt><dd>Toggle speaker notes</dd>
         <dt class="font-mono text-zinc-400">O</dt><dd>Overview (all slides)</dd>
+        <dt class="font-mono text-zinc-400">P</dt><dd>Open presenter window</dd>
         <dt class="font-mono text-zinc-400">?</dt><dd>This help</dd>
         <dt class="font-mono text-zinc-400">Esc</dt><dd>Exit fullscreen / overview</dd>
       </dl>
@@ -211,6 +241,16 @@ const {
   #deck-preload.is-done {
     opacity: 0;
     pointer-events: none;
+  }
+
+  /* Presenter mode: show timer + next-hint overlay; hide the open-presenter
+     button (you're already in presenter); auto-show speaker notes. */
+  body.is-presenter #deck-presenter-overlay {
+    display: flex;
+  }
+
+  body.is-presenter #deck-presenter-btn {
+    display: none;
   }
 </style>
 
@@ -317,6 +357,78 @@ const {
     let index = parseHash();
     let hudTimer: ReturnType<typeof setTimeout> | null = null;
 
+    // Presenter mode is activated by ?presenter=1 on the URL. The presenter
+    // window auto-shows speaker notes, runs an elapsed timer, and surfaces a
+    // "Next: …" hint. Display + presenter windows of the same deck stay in
+    // sync via a BroadcastChannel scoped to this pathname.
+    const isPresenter = new URLSearchParams(location.search).has("presenter");
+    if (isPresenter) {
+      document.body.classList.add("is-presenter");
+      document.body.classList.add("deck-notes");
+    }
+
+    const channelName = `deck:${location.pathname.replace(/\/$/, "")}`;
+    let channel: BroadcastChannel | null = null;
+    try {
+      channel = new BroadcastChannel(channelName);
+    } catch {
+      // BroadcastChannel unsupported (very old browser): degrade silently.
+      channel = null;
+    }
+
+    const broadcastGoto = (slideNumber: number) => {
+      channel?.postMessage({ type: "goto", slide: slideNumber });
+    };
+
+    const openPresenter = () => {
+      const url = new URL(location.href);
+      url.searchParams.set("presenter", "1");
+      window.open(
+        url.toString(),
+        "deckPresenter",
+        "width=1280,height=800,noopener=no",
+      );
+    };
+
+    const nextHintEl = document.getElementById("deck-next-hint");
+    const updateNextHint = () => {
+      if (!nextHintEl) return;
+      const upcoming = slides[index + 1];
+      if (!upcoming) {
+        nextHintEl.textContent = "(end of deck)";
+        return;
+      }
+      const titleEl = upcoming.querySelector("h1, h2");
+      const subtitleEl = upcoming.querySelector("p");
+      const title = titleEl?.textContent?.trim() ?? "";
+      const subtitle = subtitleEl?.textContent?.trim() ?? "";
+      nextHintEl.textContent = title
+        ? subtitle
+          ? `Next: ${title} — ${subtitle}`
+          : `Next: ${title}`
+        : `Next: Slide ${index + 2}`;
+    };
+
+    if (isPresenter) {
+      const timerEl = document.getElementById("deck-timer");
+      const startedAt = Date.now();
+      const formatTime = (totalSeconds: number) => {
+        const h = Math.floor(totalSeconds / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
+        const pad = (n: number) => String(n).padStart(2, "0");
+        return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
+      };
+      const tickTimer = () => {
+        if (!timerEl) return;
+        timerEl.textContent = formatTime(
+          Math.floor((Date.now() - startedAt) / 1000),
+        );
+      };
+      tickTimer();
+      setInterval(tickTimer, 1000);
+    }
+
     const showHud = () => {
       document.body.classList.remove("deck-hud-hidden");
       if (hudTimer) clearTimeout(hudTimer);
@@ -347,7 +459,11 @@ const {
 
     let renderToken = 0;
 
-    const render = async (next: number, pushHash = true) => {
+    const render = async (
+      next: number,
+      pushHash = true,
+      broadcast = true,
+    ) => {
       const myToken = ++renderToken;
       const targetIndex = Math.max(0, Math.min(total - 1, next));
 
@@ -367,10 +483,36 @@ const {
         }
       }
 
+      updateNextHint();
+      if (broadcast) broadcastGoto(index + 1);
+
       // Warm adjacent slides so the next nav is instant.
       void ensureSlideReady(slides[index - 1]);
       void ensureSlideReady(slides[index + 1]);
     };
+
+    if (channel) {
+      channel.addEventListener("message", (e) => {
+        const data = e.data as
+          | { type: "goto"; slide: number }
+          | { type: "state"; slide: number }
+          | { type: "request-state" }
+          | undefined;
+        if (!data || typeof data !== "object") return;
+        if (
+          (data.type === "goto" || data.type === "state") &&
+          typeof data.slide === "number" &&
+          data.slide - 1 !== index
+        ) {
+          // Apply remote nav locally without re-broadcasting.
+          render(data.slide - 1, false, false);
+        } else if (data.type === "request-state") {
+          channel?.postMessage({ type: "state", slide: index + 1 });
+        }
+      });
+      // Late-joiner: ask any existing window for the current slide.
+      setTimeout(() => channel?.postMessage({ type: "request-state" }), 50);
+    }
 
     const next = () => render(index + 1);
     const prev = () => render(index - 1);
@@ -420,6 +562,11 @@ const {
           e.preventDefault();
           toggleOverview();
           break;
+        case "p":
+        case "P":
+          e.preventDefault();
+          openPresenter();
+          break;
         case "?":
           e.preventDefault();
           (document.getElementById("deck-help-dialog") as HTMLDialogElement | null)?.showModal();
@@ -442,6 +589,8 @@ const {
     helpBtn?.addEventListener("click", () => {
       (document.getElementById("deck-help-dialog") as HTMLDialogElement | null)?.showModal();
     });
+    const presenterBtn = document.getElementById("deck-presenter-btn");
+    presenterBtn?.addEventListener("click", openPresenter);
 
     // Touch swipe
     let touchX = 0;
