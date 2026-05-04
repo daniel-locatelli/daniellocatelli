@@ -62,6 +62,14 @@ const {
             </a>
           )
         }
+        <div
+          id="deck-preload"
+          class="flex items-center gap-2 rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition-opacity duration-500"
+          aria-live="polite"
+        >
+          <span class="inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-400" aria-hidden="true" />
+          <span id="deck-preload-text">Preloading…</span>
+        </div>
       </div>
       <div class="pointer-events-auto flex items-center gap-2">
         <button
@@ -199,10 +207,96 @@ const {
   .slide figure {
     margin: 0;
   }
+
+  #deck-preload.is-done {
+    opacity: 0;
+    pointer-events: none;
+  }
 </style>
 
 <script>
+  async function prefetchAll() {
+    const preloadEl = document.getElementById("deck-preload");
+    const preloadTextEl = document.getElementById("deck-preload-text");
+
+    const images = Array.from(
+      document.querySelectorAll<HTMLImageElement>("#deck img"),
+    );
+    const videos = Array.from(
+      document.querySelectorAll<HTMLVideoElement>("#deck video"),
+    );
+
+    // Browser default is preload="metadata"; force the full download so
+    // navigating to a video slide mid-talk doesn't hit a network buffer.
+    videos.forEach((v) => {
+      v.preload = "auto";
+      try {
+        v.load();
+      } catch {}
+    });
+
+    const total = images.length + videos.length;
+    let done = 0;
+
+    const update = () => {
+      if (preloadTextEl) {
+        preloadTextEl.textContent =
+          total === 0 ? "Ready" : `Preloading ${done} / ${total}`;
+      }
+    };
+    update();
+
+    const decodeImage = async (img: HTMLImageElement) => {
+      try {
+        if (!img.complete) {
+          await new Promise<void>((resolve) => {
+            const onSettle = () => {
+              img.removeEventListener("load", onSettle);
+              img.removeEventListener("error", onSettle);
+              resolve();
+            };
+            img.addEventListener("load", onSettle);
+            img.addEventListener("error", onSettle);
+          });
+        }
+        if (typeof img.decode === "function") {
+          await img.decode().catch(() => {});
+        }
+      } catch {}
+      done++;
+      update();
+    };
+
+    const waitForVideo = (v: HTMLVideoElement) =>
+      new Promise<void>((resolve) => {
+        if (v.readyState >= 4) {
+          resolve();
+          return;
+        }
+        const onReady = () => {
+          v.removeEventListener("canplaythrough", onReady);
+          v.removeEventListener("error", onReady);
+          resolve();
+        };
+        v.addEventListener("canplaythrough", onReady);
+        v.addEventListener("error", onReady);
+      }).then(() => {
+        done++;
+        update();
+      });
+
+    await Promise.all([
+      ...images.map(decodeImage),
+      ...videos.map(waitForVideo),
+    ]);
+
+    preloadEl?.classList.add("is-done");
+    setTimeout(() => preloadEl?.remove(), 600);
+  }
+
   function initDeck() {
+    prefetchAll();
+
     const slides = Array.from(
       document.querySelectorAll<HTMLElement>("#deck [data-slide]"),
     );
@@ -231,8 +325,37 @@ const {
       }, 3000);
     };
 
-    const render = (next: number, pushHash = true) => {
-      index = Math.max(0, Math.min(total - 1, next));
+    // Force the browser to (re-)decode the slide's images and seek videos to
+    // their first frame. Browsers free decoded bitmaps for `display: none`
+    // subtrees under memory pressure, so even after `prefetchAll()` ran on
+    // init, navigating to a long-untouched slide can show a flash before the
+    // bitmap is repainted. Calling decode() here is ~5ms when the bitmap is
+    // still resident and forces a re-decode otherwise.
+    const ensureSlideReady = async (slide: HTMLElement | undefined) => {
+      if (!slide) return;
+      const imgs = Array.from(
+        slide.querySelectorAll<HTMLImageElement>("img"),
+      );
+      await Promise.all(
+        imgs.map((img) =>
+          typeof img.decode === "function"
+            ? img.decode().catch(() => {})
+            : Promise.resolve(),
+        ),
+      );
+    };
+
+    let renderToken = 0;
+
+    const render = async (next: number, pushHash = true) => {
+      const myToken = ++renderToken;
+      const targetIndex = Math.max(0, Math.min(total - 1, next));
+
+      await ensureSlideReady(slides[targetIndex]);
+      // Stale render: a newer navigation has superseded this one.
+      if (myToken !== renderToken) return;
+
+      index = targetIndex;
       slides.forEach((s, i) => {
         s.classList.toggle("is-active", i === index);
       });
@@ -244,6 +367,10 @@ const {
         }
       }
       showHud();
+
+      // Warm adjacent slides so the next nav is instant.
+      void ensureSlideReady(slides[index - 1]);
+      void ensureSlideReady(slides[index + 1]);
     };
 
     const next = () => render(index + 1);

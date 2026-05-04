@@ -8,6 +8,7 @@ interface Props {
   muted?: boolean;
   controls?: boolean;
   playsinline?: boolean;
+  preload?: "none" | "metadata" | "auto";
   fit?: "contain" | "cover";
 }
 
@@ -20,6 +21,7 @@ const {
   muted = true,
   controls = false,
   playsinline = true,
+  preload = "auto",
   fit = "contain",
 } = Astro.props;
 ---
@@ -33,6 +35,7 @@ const {
         loop={loop}
         muted={muted}
         playsinline={playsinline}
+        preload={preload}
         aria-hidden="true"
         tabindex="-1"
       >
@@ -47,6 +50,7 @@ const {
     muted={muted}
     controls={controls}
     playsinline={playsinline}
+    preload={preload}
     poster={poster}
   >
     <source src={src} type={type} />
