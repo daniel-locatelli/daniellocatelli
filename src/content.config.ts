@@ -219,10 +219,41 @@ const contentCollection = (base: string) =>
     schema: pageSchema,
   });
 
+const deckSchema = z.object({
+  Name: z.string(),
+  Description: z.string().optional(),
+  DateStart: z.string().optional(),
+  Event: z.string().optional(),
+  Language: z.string().optional(),
+  Cover: z
+    .union([z.object({ Url: z.string() }), z.string()])
+    .optional()
+    .nullable(),
+  CoverAlt: z.string().optional().nullable(),
+  CoverFit: z.enum(["cover", "contain"]).optional().nullable(),
+});
+
 export const collections = {
   projects: contentCollection("./src/content/projects"),
   research: contentCollection("./src/content/research"),
-  teaching: contentCollection("./src/content/teaching"),
+  // Decks live alongside their teaching writeups (e.g. teaching/en/<slug>/{index.md, deck.mdx}),
+  // so the teaching glob excludes deck.mdx and the decks collection picks it up separately.
+  // Two collections, one base directory: unusual but deliberate, to keep all material for one
+  // talk co-located on disk while giving decks their own minimal schema.
+  teaching: defineCollection({
+    loader: glob({
+      pattern: ["**/*.{md,mdx}", "!**/deck.mdx"],
+      base: "./src/content/teaching",
+    }),
+    schema: pageSchema,
+  }),
+  decks: defineCollection({
+    loader: glob({
+      pattern: "**/deck.mdx",
+      base: "./src/content/teaching",
+    }),
+    schema: deckSchema,
+  }),
   pages: contentCollection("./src/content/pages"),
   publications: contentCollection("./src/content/publications"),
   skills: contentCollection("./src/content/skills"),
@@ -231,5 +262,4 @@ export const collections = {
   scholarships: contentCollection("./src/content/scholarships"),
   certifications: contentCollection("./src/content/certifications"),
   "courses-attended": contentCollection("./src/content/courses-attended"),
-  presentations: contentCollection("./src/content/presentations"),
 };

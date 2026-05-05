@@ -1,8 +1,9 @@
 import type { Plugin } from "vite";
 import { parse as parseYaml } from "yaml";
 
-// Pre-processes presentation .mdx files so simple slides can be authored as
-// YAML frontmatter blocks instead of full <Slide> JSX. A block of the form
+// Pre-processes deck .mdx files (any file named `deck.mdx` under
+// src/content/) so simple slides can be authored as YAML frontmatter blocks
+// instead of full <Slide> JSX. A block of the form
 //
 //   ---
 //   title: Atelier Marko Brajovic
@@ -28,7 +29,7 @@ import { parse as parseYaml } from "yaml";
 //   - All other fields are emitted as JSX attribute expressions wrapping
 //     JSON-stringified values, so quote-escaping is handled uniformly.
 
-const PRESENTATION_PATH_MARKER = "src/content/presentations/";
+const DECK_FILE_SUFFIX = "/deck.mdx";
 
 const URL_PATTERN = /^(\/|\.\.?\/|https?:\/\/|data:|blob:)/;
 const IDENTIFIER_PATTERN =
@@ -83,8 +84,7 @@ export function presentationSlides(): Plugin {
     enforce: "pre",
     transform(code, id) {
       const normalizedId = id.replace(/\\/g, "/");
-      if (!normalizedId.endsWith(".mdx")) return null;
-      if (!normalizedId.includes(PRESENTATION_PATH_MARKER)) return null;
+      if (!normalizedId.endsWith(DECK_FILE_SUFFIX)) return null;
 
       // Skip the deck-level frontmatter at the top of the file.
       const frontmatterMatch = code.match(/^---\r?\n[\s\S]*?\r?\n---\r?\n/);

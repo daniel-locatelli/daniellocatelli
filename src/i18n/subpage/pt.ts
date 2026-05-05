@@ -26,5 +26,5 @@ export const t: I18nSubpage = {
   apps: "Aplicativos",
   references: "Referências",
   otherLinks: "Outros Links",
-  openPresentation: "Abrir apresentação",
+  openSlideDeck: "Abrir slides",
 };

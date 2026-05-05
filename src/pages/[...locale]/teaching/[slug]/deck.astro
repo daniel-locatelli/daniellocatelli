@@ -3,28 +3,26 @@ import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Slides from "@/layouts/Slides.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
-import {
-  getEntryLocale,
-  getFileSlug,
-} from "src/lib/routes-helpers";
+import { getEntryLocale, getDeckParentSlug } from "src/lib/routes-helpers";
 
 export async function getStaticPaths() {
-  const all = (await getCollection("presentations")) as CollectionEntry<"presentations">[];
+  const decks = (await getCollection("decks")) as CollectionEntry<"decks">[];
   const paths = [] as Array<{
-    params: { locale: string | undefined; deck: string };
-    props: { deck: CollectionEntry<"presentations">; locale: string };
+    params: { locale: string | undefined; slug: string };
+    props: { deck: CollectionEntry<"decks">; locale: string };
   }>;
 
   for (const locale of SUPPORTED_LOCALES) {
     const isDefault = locale === siteConfig.defaultLocale;
-    for (const deck of all) {
+    for (const deck of decks) {
       if (getEntryLocale(deck.id) !== locale) continue;
-      const fileSlug = getFileSlug(deck.id);
-      if (fileSlug.startsWith("_")) continue;
+      const parentSlug = getDeckParentSlug(deck.id);
+      // Skip drafts (parent folder prefixed with "_").
+      if (parentSlug.startsWith("_")) continue;
       paths.push({
         params: {
           locale: isDefault ? undefined : locale,
-          deck: fileSlug,
+          slug: parentSlug,
         },
         props: { deck, locale },
       });
@@ -35,20 +33,20 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  deck: CollectionEntry<"presentations">;
+  deck: CollectionEntry<"decks">;
   locale: string;
 }
 
 const { deck, locale } = Astro.props as Props;
 const { Content } = await render(deck);
 
-const fileSlug = getFileSlug(deck.id);
+const parentSlug = getDeckParentSlug(deck.id);
 
 const cover = deck.data.Cover;
 const coverUrl = typeof cover === "string" ? cover : cover?.Url ?? "";
 
 const basePath = locale === siteConfig.defaultLocale ? "" : `/${locale}`;
-const exitHref = `${basePath}/teaching/${fileSlug}`;
+const exitHref = `${basePath}/teaching/${parentSlug}`;
 ---
 
 <Slides
@@ -57,7 +55,7 @@ const exitHref = `${basePath}/teaching/${fileSlug}`;
     description: deck.data.Description ?? "",
     coverImage: coverUrl,
     coverAlt: deck.data.CoverAlt ?? "",
-    slug: `presentations/${fileSlug}`,
+    slug: `teaching/${parentSlug}/deck`,
   }}
   exitHref={exitHref}
 >

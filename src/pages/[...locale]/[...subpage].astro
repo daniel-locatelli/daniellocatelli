@@ -74,18 +74,18 @@ const entryLocale = getEntryLocale(subpage.id);
 
 const { Content } = await render(subpage);
 
-// Detect a matching presentation (same slug + locale, not a draft).
-const presentations = await getCollection("presentations");
-const matchingDeck = presentations.find(
-  (p) =>
-    getEntryLocale(p.id) === entryLocale &&
-    getFileSlug(p.id) === fileSlug &&
-    !getFileSlug(p.id).startsWith("_"),
-);
+// Detect a matching deck. Decks live as `teaching/<locale>/<slug>/deck.mdx`,
+// so a deck's id ends in "<locale>/<slug>/deck". Only teaching entries can
+// have a deck — other collections (projects, research…) skip this lookup.
+const matchingDeckId = `${entryLocale}/${fileSlug}/deck`;
+const matchingDeck =
+  subpage.collection === "teaching"
+    ? (await getCollection("decks")).find((d) => d.id === matchingDeckId)
+    : undefined;
 const deckBasePath =
   entryLocale === siteConfig.defaultLocale ? "" : `/${entryLocale}`;
 const deckHref = matchingDeck
-  ? `${deckBasePath}/presentations/${fileSlug}`
+  ? `${deckBasePath}/teaching/${fileSlug}/deck`
   : null;
 
 // Getting images dynamically with import.meta.glob()
@@ -239,7 +239,7 @@ const foregroundClass = isLetterbox
             >
               <path d="M8 5v14l11-7z" />
             </svg>
-            {t.openPresentation}
+            {t.openSlideDeck}
           </a>
         )
       }

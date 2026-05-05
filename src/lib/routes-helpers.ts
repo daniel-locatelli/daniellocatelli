@@ -14,9 +14,10 @@ const isSupportedLocale = (locale: string): locale is SupportedLocale => {
  * Strips the locale prefix and optional .md/.mdx extension.
  * e.g. "en/air-guitar-by-atelier-marko-brajovic" → "air-guitar-by-atelier-marko-brajovic"
  *
- * Astro 5's glob() loader collapses `<locale>/index.md` to id `<locale>`
- * (using the directory name as the slug). We must explicitly map those back
- * to "index" so that the homepage filter in [...page].astro works correctly.
+ * Astro's glob() loader collapses `<dir>/index.md` to id `<dir>` (using the
+ * directory name as the slug). For locale-only ids (e.g. `pt` from
+ * `pages/pt/index.md`), we must explicitly map back to "index" so the homepage
+ * filter in [...page].astro works correctly.
  */
 export function getFileSlug(id: string): string {
   if (isSupportedLocale(id)) {
@@ -37,6 +38,17 @@ export function getEntrySlug(entry: {
   id: string;
 }): string {
   return `${entry.collection}/${getFileSlug(entry.id)}`;
+}
+
+/**
+ * Get the parent-folder slug from a deck entry id.
+ * Deck files live as `<locale>/<parent-slug>/deck.mdx`, giving an id ending
+ * in "<parent-slug>/deck". This returns the parent-slug.
+ * e.g. "en/digital-futures-2026/deck" → "digital-futures-2026"
+ */
+export function getDeckParentSlug(id: string): string {
+  const parts = id.split("/");
+  return parts[parts.length - 2] ?? "";
 }
 
 /**
