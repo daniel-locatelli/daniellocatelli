@@ -207,13 +207,6 @@ const {
     transform: none;
     cursor: pointer;
     transition: outline-color 0.15s;
-    /* Defeat the locked-aspect rules from the portrait media query so
-       overview-mode thumbnails stay 320×180 regardless of viewport. */
-    aspect-ratio: auto;
-    max-width: none;
-    max-height: none;
-    width: auto;
-    margin: 0;
   }
 
   body.deck-overview .slide.is-active {
@@ -246,24 +239,22 @@ const {
   }
 
   /* On portrait or square viewports (mostly phones held vertically),
-     lock the slide to 16:9 with letterbox bars so landscape images and
-     desktop-anchored title positioning render as designed instead of
-     being cover-cropped to the phone's aspect ratio. Desktop, laptops,
-     and rotated-landscape phones are unaffected. */
+     render the slide at a fixed 1280×720 desktop canvas and scale it
+     down with transform so all proportions (text, padding, image
+     positioning) match a desktop view rather than being skewed by
+     viewport-based Tailwind breakpoints. Letterbox bars appear in
+     the leftover vertical space. Desktop, laptops, ultrawides, and
+     rotated-landscape phones are unaffected. Scoped to :not(.deck-overview)
+     so the O-key grid view keeps 320×180 thumbnails. */
   @media (max-aspect-ratio: 1/1) {
-    #deck {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .slide {
-      aspect-ratio: 16 / 9;
-      max-width: 100vw;
-      max-height: 100svh;
-      width: auto;
-      height: auto;
-      margin: auto;
+    body:not(.deck-overview) .slide.is-active {
+      position: absolute;
+      width: 1280px;
+      height: 720px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(calc(100vw / 1280px));
+      flex: none;
     }
   }
 
