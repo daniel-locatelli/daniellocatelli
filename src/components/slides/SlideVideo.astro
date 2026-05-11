@@ -1,4 +1,21 @@
 ---
+// Mirrors SlideImage's positioning API. Without any of `height`, `width`,
+// `align`, `x`, or `y`, the component falls back to filling the parent
+// <Slide> (the historical behavior used by full-bleed video slides). When
+// any positioning prop is supplied, the wrapping <div> is absolutely
+// positioned inside the slide and the browser handles centering via
+// `transform: translate(-50%, -50%)` — no manual letterbox math required.
+type Align =
+  | "center"
+  | "top"
+  | "bottom"
+  | "left"
+  | "right"
+  | "top-left"
+  | "top-right"
+  | "bottom-left"
+  | "bottom-right";
+
 interface Props {
   src: string;
   type?: string;
@@ -10,6 +27,22 @@ interface Props {
   playsinline?: boolean;
   preload?: "none" | "metadata" | "auto";
   fit?: "contain" | "cover";
+  /** Show a scaled-up, blurred clone of the video to fill empty letterbox
+   * space. Defaults to true when fit === "contain". Pass false to use the
+   * solid slide bg in the letterbox area instead. */
+  blur?: boolean;
+  // CSS length for size. Omit one to let the other auto-scale by the
+  // video's intrinsic aspect ratio (resolved once metadata loads).
+  height?: string;
+  width?: string;
+  // Default placement anchor. Ignored if x or y is set.
+  align?: Align;
+  // Custom anchor — x/y specify the *center* of the video box as a CSS
+  // length (e.g. "30%", "320px"). Either or both may be set; the unset
+  // axis defaults to 50%.
+  x?: string;
+  y?: string;
+  class?: string;
 }
 
 const {
@@ -23,12 +56,80 @@ const {
   playsinline = true,
   preload = "auto",
   fit = "contain",
+  blur,
+  height,
+  width,
+  align,
+  x,
+  y,
+  class: extraClass = "",
 } = Astro.props;
+
+const showBlur = blur ?? fit === "contain";
+
+const isPositioned =
+  height !== undefined ||
+  width !== undefined ||
+  x !== undefined ||
+  y !== undefined ||
+  align !== undefined;
+
+let wrapperStyle = "";
+let wrapperClass: string;
+
+if (!isPositioned) {
+  wrapperClass = `absolute inset-0 h-full w-full ${extraClass}`.trim();
+} else {
+  const rules: string[] = [];
+  const useExplicit = x !== undefined || y !== undefined;
+
+  if (useExplicit) {
+    rules.push(`left: ${x ?? "50%"}`);
+    rules.push(`top: ${y ?? "50%"}`);
+    rules.push("transform: translate(-50%, -50%)");
+  } else {
+    switch (align ?? "center") {
+      case "top":
+        rules.push("left: 50%", "top: 0", "transform: translateX(-50%)");
+        break;
+      case "bottom":
+        rules.push("left: 50%", "bottom: 0", "transform: translateX(-50%)");
+        break;
+      case "left":
+        rules.push("left: 0", "top: 50%", "transform: translateY(-50%)");
+        break;
+      case "right":
+        rules.push("right: 0", "top: 50%", "transform: translateY(-50%)");
+        break;
+      case "top-left":
+        rules.push("left: 0", "top: 0");
+        break;
+      case "top-right":
+        rules.push("right: 0", "top: 0");
+        break;
+      case "bottom-left":
+        rules.push("left: 0", "bottom: 0");
+        break;
+      case "bottom-right":
+        rules.push("right: 0", "bottom: 0");
+        break;
+      case "center":
+      default:
+        rules.push("left: 50%", "top: 50%", "transform: translate(-50%, -50%)");
+    }
+  }
+
+  if (height) rules.push(`height: ${height}`);
+  if (width) rules.push(`width: ${width}`);
+
+  wrapperStyle = rules.join("; ") + ";";
+  wrapperClass = `absolute ${extraClass}`.trim();
+}
 ---
 
-<div class="absolute inset-0 h-full w-full">
+<div class={wrapperClass} style={wrapperStyle}>
   {
-    fit === "contain" && (
+    showBlur && (
       <video
         class="absolute inset-0 h-full w-full scale-110 object-cover opacity-70 blur-2xl"
         autoplay={autoplay}

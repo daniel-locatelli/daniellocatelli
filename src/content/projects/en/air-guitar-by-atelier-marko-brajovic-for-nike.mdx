@@ -1,6 +1,9 @@
 ---
 Cover: /assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/air-guitar-by-atelier-marko-brajovic-for-nike-cover_no-beams.png
 CoverAlt: "Air Guitar viewed from below, looking up to the ceiling of the newly renovated building."
+CoverCredit:
+  name: Eduardo Ohara
+  href: "https://www.eduardoohara.com/"
 Description: "Atelier Marko Brajovic developed this site-specific installation for the celebration of the Air Max Day. In this project, I worked on the concept and the coordination. I also got to work with addressable LEDs, Arduino, and bass pickups."
 Name: Air Guitar by Atelier Marko Brajovic for Nike
 Tags:
@@ -29,11 +32,15 @@ Link:
   Text: Air Guitar at Atelier Marko Brajovic
   Href: "https://markobrajovic.com/air-guitar-sp-on-air/"
 Place: Red Bull Station
+OtherLinks:
+  - Text: Hybrida Production
+    Href: "https://hybridaproduction.com/"
 ---
 
 import Video from '@/components/Video.astro'
 import YouTube from '@/components/YouTube.astro'
 import ImageRow from '@/components/ImageRow.astro'
+import Figure from '@/components/Figure.astro'
 
 <YouTube id="KucCxUmOM1o" title="Air Guitar by Atelier Marko Brajovic for Nike" />
 © Video by [Eduardo Ohara](https://www.eduardoohara.com/)
@@ -49,7 +56,9 @@ The Air Max Day was about celebrating the old and the new Air Max shoes, while a
 Marko developed two concepts, one involving inflatables and the Air Guitar. The first one wasn’t bad, but the Air Guitar was too good to pass.
 During the meeting with the marketing agency, they got really excited about the installation, but they thought something was missing. For which I suggested to spice it up with addressable LEDs.
 
-![Three photos of users playing the guitar. © Eduardo Ohara](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/three-photos-of-users-playing-the-guitar-01.jpeg)
+<Figure credit={{ name: "Eduardo Ohara", href: "https://www.eduardoohara.com/" }}>
+  ![Three photos of users playing the guitar.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/three-photos-of-users-playing-the-guitar-01.jpeg)
+</Figure>
 
 ## Development
 After the concept was approved, I was also in charge of coordinating the whole project development, and I may have gotten too greedy here because I decided to develop the LED part all by myself.

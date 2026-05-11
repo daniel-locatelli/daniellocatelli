@@ -53,6 +53,7 @@ src/
 - **Slug changes:** When changing a content file's slug (renaming a file under `src/content/` so its URL segment changes), always do all three of: (a) rename the matching asset folder under `src/assets/content/` plus any asset filenames that embed the old slug, and update every `Cover:` and inline image path in the content files to match; (b) add a redirect from each old locale URL to the new one in the `redirects` block of `astro.config.mts` (one entry per locale: `/`, `/pt/`, `/de/`); (c) apply the rename and redirect across all three locales in the same commit. This preserves inbound links, bookmarks, and SEO signals, and keeps the repo free of mismatched slug/asset-folder pairs.
 - **Path aliases:** Use `@/components/*`, `@/assets/*`, `@/config/*`, `@/layouts/*`, `@/utils`, `@/types`, `@/site-config` (defined in tsconfig.json).
 - **Components:** Astro components (`.astro`) for static content, React components (`.tsx`) for interactivity (e.g., `HeroChat.tsx`).
+- **Slide authoring:** Decks live at `src/content/teaching/<locale>/<slug>/deck.mdx`. See `docs/slides/AUTHORING.md` for the full schema. **Default to YAML fences for simple slides; drop to JSX (`<Slide>`/`<SlideImage>`/`<SlideVideo>`/`<SlideImageRow>`) only for overlays, multiple positioned children, or custom layouts.** Background image (full-bleed) is the top-level `image:` field; foreground positioned content currently requires JSX. The YAML plugin lives at `src/lib/vite-presentation-slides.ts`.
 
 ## Environment Variables
 
