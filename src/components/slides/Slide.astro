@@ -10,6 +10,7 @@ interface Props {
   imagePosition?: string;
   darkText?: boolean;
   copyright?: string | string[];
+  fit?: "cover" | "contain";
 }
 
 const {
@@ -20,7 +21,10 @@ const {
   imagePosition = "center",
   darkText = false,
   copyright,
+  fit = "cover",
 } = Astro.props;
+
+const fitClass = fit === "contain" ? "object-contain" : "object-cover";
 
 const textColor = darkText ? "text-zinc-950" : "text-white";
 
@@ -29,7 +33,7 @@ const isStringImage = typeof image === "string";
 
 <section
   data-slide
-  class="slide relative h-svh w-full overflow-hidden bg-zinc-950 text-zinc-100"
+  class="slide relative h-svh w-full overflow-hidden bg-black text-zinc-100"
 >
   {
     image &&
@@ -39,7 +43,7 @@ const isStringImage = typeof image === "string";
           alt={imageAlt}
           loading="eager"
           decoding="async"
-          class="absolute inset-0 h-full w-full object-cover"
+          class={`absolute inset-0 h-full w-full ${fitClass}`}
           style={`object-position: ${imagePosition};`}
         />
       ) : (
@@ -48,7 +52,7 @@ const isStringImage = typeof image === "string";
           alt={imageAlt}
           loading="eager"
           decoding="async"
-          class="absolute inset-0 h-full w-full object-cover"
+          class={`absolute inset-0 h-full w-full ${fitClass}`}
           style={`object-position: ${imagePosition};`}
         />
       ))
@@ -57,7 +61,7 @@ const isStringImage = typeof image === "string";
   {
     (title || subtitle) && (
       <div
-        class={`absolute top-8 left-8 z-10 flex max-w-[60%] flex-col items-start text-left sm:top-12 sm:left-12 ${textColor} rounded bg-black/50 px-4 py-3 backdrop-blur-sm`}
+        class={`absolute top-8 left-8 z-10 flex max-w-[60%] flex-col items-start text-left sm:top-12 sm:left-12 ${textColor} rounded bg-black/70 px-4 py-3 backdrop-blur-sm`}
       >
         {title && (
           <h2
@@ -79,7 +83,7 @@ const isStringImage = typeof image === "string";
     )
   }
 
-  {copyright && <Credit credit={copyright} class="bottom-3 left-4 sm:bottom-4 sm:left-6" />}
+  {copyright && <Credit credit={copyright} class="right-4 bottom-3 sm:right-6 sm:bottom-4" />}
 
   <slot />
 </section>

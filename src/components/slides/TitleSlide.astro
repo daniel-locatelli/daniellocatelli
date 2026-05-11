@@ -10,6 +10,7 @@ interface Props {
   imageAlt?: string;
   imagePosition?: string;
   darkText?: boolean;
+  fit?: "cover" | "contain";
 }
 
 const {
@@ -21,7 +22,10 @@ const {
   imageAlt = "",
   imagePosition = "center",
   darkText = false,
+  fit = "cover",
 } = Astro.props;
+
+const fitClass = fit === "contain" ? "object-contain" : "object-cover";
 
 const textColor = darkText ? "text-zinc-950" : "text-white";
 
@@ -30,7 +34,7 @@ const isStringImage = typeof image === "string";
 
 <section
   data-slide
-  class="slide relative h-svh w-full overflow-hidden bg-zinc-950 text-zinc-100"
+  class="slide relative h-svh w-full overflow-hidden bg-black text-zinc-100"
 >
   {
     image &&
@@ -40,7 +44,7 @@ const isStringImage = typeof image === "string";
           alt={imageAlt}
           loading="eager"
           decoding="async"
-          class="absolute inset-0 h-full w-full object-cover"
+          class={`absolute inset-0 h-full w-full ${fitClass}`}
           style={`object-position: ${imagePosition};`}
         />
       ) : (
@@ -49,7 +53,7 @@ const isStringImage = typeof image === "string";
           alt={imageAlt}
           loading="eager"
           decoding="async"
-          class="absolute inset-0 h-full w-full object-cover"
+          class={`absolute inset-0 h-full w-full ${fitClass}`}
           style={`object-position: ${imagePosition};`}
         />
       ))

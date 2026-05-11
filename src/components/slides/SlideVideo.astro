@@ -10,6 +10,10 @@ interface Props {
   playsinline?: boolean;
   preload?: "none" | "metadata" | "auto";
   fit?: "contain" | "cover";
+  /** Show a scaled-up, blurred clone of the video to fill empty letterbox
+   * space. Defaults to true when fit === "contain". Pass false to use the
+   * solid slide bg in the letterbox area instead. */
+  blur?: boolean;
 }
 
 const {
@@ -23,12 +27,15 @@ const {
   playsinline = true,
   preload = "auto",
   fit = "contain",
+  blur,
 } = Astro.props;
+
+const showBlur = blur ?? fit === "contain";
 ---
 
 <div class="absolute inset-0 h-full w-full">
   {
-    fit === "contain" && (
+    showBlur && (
       <video
         class="absolute inset-0 h-full w-full scale-110 object-cover opacity-70 blur-2xl"
         autoplay={autoplay}

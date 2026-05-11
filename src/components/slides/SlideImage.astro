@@ -1,42 +1,117 @@
 ---
 import { Image } from "astro:assets";
 
+// Place an image on a slide without manual centering math. The image is
+// absolutely positioned inside the parent <Slide>. Pick a size (height,
+// width, or both) and an anchor — the component uses
+// `transform: translate(-50%, -50%)` so the browser handles the centering
+// based on the image's rendered box, no aspect-ratio arithmetic required.
+type Align =
+  | "center"
+  | "top"
+  | "bottom"
+  | "left"
+  | "right"
+  | "top-left"
+  | "top-right"
+  | "bottom-left"
+  | "bottom-right";
+
 interface Props {
   src: ImageMetadata | string;
   alt: string;
-  caption?: string;
-  fit?: "contain" | "cover";
+  // CSS length for size. Omit one to let the other auto-scale by the
+  // image's intrinsic aspect ratio.
+  height?: string;
+  width?: string;
+  // Default placement anchor. Ignored if x or y is set.
+  align?: Align;
+  // Custom anchor — x/y specify the *center* of the image as a CSS
+  // length (e.g. "30%", "320px"). Either or both may be set; the unset
+  // axis defaults to 50%.
+  x?: string;
+  y?: string;
+  class?: string;
 }
 
-const { src, alt, caption, fit = "contain" } = Astro.props;
-const isStringSrc = typeof src === "string";
+const {
+  src,
+  alt,
+  height,
+  width,
+  align = "center",
+  x,
+  y,
+  class: extraClass = "",
+} = Astro.props;
+
+const useExplicit = x !== undefined || y !== undefined;
+
+const rules: string[] = [];
+
+if (useExplicit) {
+  rules.push(`left: ${x ?? "50%"}`);
+  rules.push(`top: ${y ?? "50%"}`);
+  rules.push("transform: translate(-50%, -50%)");
+} else {
+  switch (align) {
+    case "top":
+      rules.push("left: 50%", "top: 0", "transform: translateX(-50%)");
+      break;
+    case "bottom":
+      rules.push("left: 50%", "bottom: 0", "transform: translateX(-50%)");
+      break;
+    case "left":
+      rules.push("left: 0", "top: 50%", "transform: translateY(-50%)");
+      break;
+    case "right":
+      rules.push("right: 0", "top: 50%", "transform: translateY(-50%)");
+      break;
+    case "top-left":
+      rules.push("left: 0", "top: 0");
+      break;
+    case "top-right":
+      rules.push("right: 0", "top: 0");
+      break;
+    case "bottom-left":
+      rules.push("left: 0", "bottom: 0");
+      break;
+    case "bottom-right":
+      rules.push("right: 0", "bottom: 0");
+      break;
+    case "center":
+    default:
+      rules.push("left: 50%", "top: 50%", "transform: translate(-50%, -50%)");
+  }
+}
+
+if (height) rules.push(`height: ${height}`);
+if (width) rules.push(`width: ${width}`);
+rules.push("object-fit: contain");
+
+const inlineStyle = rules.join("; ") + ";";
+
+const isString = typeof src === "string";
 ---
 
-<figure class="flex max-h-full flex-col items-center gap-4">
-  {
-    isStringSrc ? (
-      <img
-        src={src as string}
-        alt={alt}
-        loading="eager"
-        decoding="async"
-        class={`max-h-[70vh] ${fit === "cover" ? "w-full object-cover" : "object-contain"}`}
-      />
-    ) : (
-      <Image
-        src={src as ImageMetadata}
-        alt={alt}
-        loading="eager"
-        decoding="async"
-        class={`max-h-[70vh] ${fit === "cover" ? "w-full object-cover" : "object-contain"}`}
-      />
-    )
-  }
-  {
-    caption && (
-      <figcaption class="text-sm text-balance text-zinc-400">
-        {caption}
-      </figcaption>
-    )
-  }
-</figure>
+{
+  isString ? (
+    <img
+      src={src as string}
+      alt={alt}
+      loading="eager"
+      decoding="async"
+      class={`absolute ${extraClass}`}
+      style={inlineStyle}
+    />
+  ) : (
+    <Image
+      src={src as ImageMetadata}
+      alt={alt}
+      loading="eager"
+      decoding="async"
+      class={`absolute ${extraClass}`}
+      style={inlineStyle}
+    />
+  )
+}

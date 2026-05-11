@@ -38,7 +38,7 @@ const {
     <slot name="after-head" />
   </head>
   <body
-    class="m-0 h-svh max-h-svh w-screen max-w-none overflow-hidden bg-zinc-950 p-0 text-zinc-100"
+    class="m-0 h-svh max-h-svh w-screen max-w-none overflow-hidden bg-black p-0 text-zinc-100"
     style="font-family: 'Montserrat', sans-serif; padding: 0; max-width: none; margin: 0;"
   >
     <main id="deck" class="relative h-svh w-screen">
@@ -229,7 +229,11 @@ const {
     opacity: 0;
   }
 
-  .slide img {
+  /* Bare-image safety net for slot content (no Tailwind class). Wrapped in
+     :where() so its specificity is just the `img` element (0,0,0,1) — Tailwind
+     utility classes like `h-full` (0,0,1,0) win, which is what we want for
+     absolutely-positioned full-bleed images in Slide.astro. */
+  :where(.slide) img {
     max-width: 100%;
     height: auto;
   }
