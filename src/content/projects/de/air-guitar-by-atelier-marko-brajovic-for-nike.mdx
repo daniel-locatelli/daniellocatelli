@@ -1,6 +1,9 @@
 ---
 Cover: /assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/air-guitar-by-atelier-marko-brajovic-for-nike-cover_no-beams.png
 CoverAlt: "Air Guitar von unten betrachtet, mit Blick zur Decke des frisch renovierten Gebäudes."
+CoverCredit:
+  name: Eduardo Ohara
+  href: "https://www.eduardoohara.com/"
 Description: "Atelier Marko Brajovic entwickelte diese ortsspezifische Installation zur Feier des Air Max Day. In diesem Projekt arbeitete ich am Konzept und der Koordination. Außerdem konnte ich mit adressierbaren LEDs, Arduino und Bass-Tonabnehmern arbeiten."
 Name: Air Guitar von Atelier Marko Brajovic für Nike
 Tags:
@@ -34,6 +37,7 @@ Place: Red Bull Station
 import Video from '@/components/Video.astro'
 import YouTube from '@/components/YouTube.astro'
 import ImageRow from '@/components/ImageRow.astro'
+import Figure from '@/components/Figure.astro'
 
 <YouTube id="KucCxUmOM1o" title="Air Guitar von Atelier Marko Brajovic für Nike" />
 © Video by [Eduardo Ohara](https://www.eduardoohara.com/)
@@ -45,11 +49,13 @@ Das Werk verwandelt das architektonische Element in ein Musikinstrument, das vom
 *Atelier Marko Brajovic*
 
 Atelier Marko Brajovic entwickelte diese ortsspezifische Installation zur Feier des Air Max Day. In diesem Projekt arbeitete ich eng mit Marko zusammen, gab Impulse und wies darauf hin, wo ich Potenzial für eine Installation in der [Red Bull Station](https://triptyque.com/en/project/redbull-station/) sah. Dieses kürzlich renovierte Gebäude war einst ein Kraftwerk und wurde hauptsächlich zu einem Musiklabor, bot aber auch Raum für andere Kunst- und Technologie-Experimente.
-Der Air Max Day feierte die alten und neuen Air-Max-Schuhe und verband gleichzeitig Nike mit Red Bull. Im Kern ging es um Schnittstellen – genauer gesagt um Schnittstellen zwischen dem Alten und dem Neuen, Design und Musik.
+Der Air Max Day feierte die alten und neuen Air-Max-Schuhe und verband gleichzeitig Nike mit Red Bull. Im Kern ging es um Schnittstellen, genauer gesagt um Schnittstellen zwischen dem Alten und dem Neuen, Design und Musik.
 Marko entwickelte zwei Konzepte: eines mit aufblasbaren Elementen und die Air Guitar. Das erste war nicht schlecht, aber die Air Guitar war zu gut, um sie abzulehnen.
 Während des Meetings mit der Marketingagentur waren sie sehr begeistert von der Installation, aber sie dachten, es fehle etwas. Daraufhin schlug ich vor, sie mit adressierbaren LEDs aufzupeppen.
 
-![Drei Fotos von Nutzern, die die Gitarre spielen. © Eduardo Ohara](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/three-photos-of-users-playing-the-guitar-01.jpeg)
+<Figure credit={{ name: "Eduardo Ohara", href: "https://www.eduardoohara.com/" }}>
+  ![Drei Fotos von Nutzern, die die Gitarre spielen.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/three-photos-of-users-playing-the-guitar-01.jpeg)
+</Figure>
 
 ## Entwicklung
 Nachdem das Konzept genehmigt war, übernahm ich auch die Koordination der gesamten Projektentwicklung, und ich bin vielleicht etwas zu ehrgeizig gewesen, denn ich entschied mich, den LED-Teil komplett selbst zu entwickeln.
@@ -162,7 +168,7 @@ Steuerungskasten, das weiße Papier stellt den Platz für die Notfallbatterie da
 Die Leute von der Red Bull Station mochten die Installation so sehr, dass sie darum baten, sie einen ganzen Monat dort zu belassen. Ein Zeitraum, in dem ich regelmäßig vorbeigehen musste, um zu prüfen, ob alles wie erwartet funktionierte. Während dieser Zeit hörten einige der LEDs an der Spitze der Installation auf zu funktionieren, was sehr kompliziert zu ersetzen gewesen wäre. Das Erscheinungsbild war nicht gut, weil die schöne Kontinuität verloren ging. Also habe ich, anstatt die LEDs zu ersetzen, einfach die oberen 10 LEDs direkt im Arduino-Code ausgeschaltet.
 
 ### Erkenntnisse
-Es gab keine gelöteten Komponenten – ein Fehler, den nur Unerfahrene machen würden. Irgendwann während des Events hörte die Gitarre einfach auf zu funktionieren. Ich bekam einen kleinen Herzinfarkt. Zu meiner Erleichterung funktionierte sie wieder, einfach durch Aus- und Einschalten.
-Eine weitere Sache, die ich nicht erwartet hatte, hing mit den Kabeln zusammen. Es wurden längere und dickere Kabel benötigt, als ich dachte. Die LEDs sind stromhungrig und benötigen zwei Kabel für jeden LED-Streifen, sodass sie unten und auch in der Mitte eingespeist wurden – andernfalls wären die LEDs oben schwächer geworden. Es wurden außerdem zwei ziegelsteingroße Netzteile für jedes Tonabnehmer-Arduino-LED-Setup benötigt.
+Es gab keine gelöteten Komponenten, ein Fehler, den nur Unerfahrene machen würden. Irgendwann während des Events hörte die Gitarre einfach auf zu funktionieren. Ich bekam einen kleinen Herzinfarkt. Zu meiner Erleichterung funktionierte sie wieder, einfach durch Aus- und Einschalten.
+Eine weitere Sache, die ich nicht erwartet hatte, hing mit den Kabeln zusammen. Es wurden längere und dickere Kabel benötigt, als ich dachte. Die LEDs sind stromhungrig und benötigen zwei Kabel für jeden LED-Streifen, sodass sie unten und auch in der Mitte eingespeist wurden, andernfalls wären die LEDs oben schwächer geworden. Es wurden außerdem zwei ziegelsteingroße Netzteile für jedes Tonabnehmer-Arduino-LED-Setup benötigt.
 
 <YouTube id="odFFIfzDSzE" title="Air Guitar Nike Installation, weitere Aufnahmen" />

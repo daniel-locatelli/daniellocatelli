@@ -39,6 +39,19 @@ const pageSchema = z.object({
   CoverAlt_pt: z.string().optional().nullable(),
   CoverFocal: z.string().optional().nullable(),
   CoverFit: z.enum(["cover", "contain"]).optional().nullable(),
+  CoverCredit: z
+    .union([
+      z.string(),
+      z.object({ name: z.string(), href: z.string() }),
+      z.array(
+        z.union([
+          z.string(),
+          z.object({ name: z.string(), href: z.string() }),
+        ]),
+      ),
+    ])
+    .optional()
+    .nullable(),
   Icon: z
     .union([
       z.object({

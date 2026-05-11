@@ -7,6 +7,7 @@ import {
 } from "../../lib/blog-helpers.ts";
 import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
+import Credit from "@/components/Credit.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
 import { getLocale, getEntrySlug, getEntryLocale, getFileSlug } from "src/lib/routes-helpers";
 import { getI18n } from "src/i18n/utils";
@@ -187,6 +188,9 @@ const foregroundClass = isLetterbox
             decoding="async"
             fetchpriority="high"
           />
+        )}
+        {subpage.data.CoverCredit && (
+          <Credit credit={subpage.data.CoverCredit} class="bottom-4 left-4" />
         )}
         <a
           href="#content"
