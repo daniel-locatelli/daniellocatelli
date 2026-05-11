@@ -28,6 +28,11 @@ import { parse as parseYaml } from "yaml";
 //      `data:`, `blob:`) are emitted as string literals.
 //   - All other fields are emitted as JSX attribute expressions wrapping
 //     JSON-stringified values, so quote-escaping is handled uniformly.
+//
+// In addition to the transform, this module exports a pure `validateSlide`
+// function and an `extractSlidesFromMdx` helper. Both are reused by the
+// standalone `scripts/check-decks.ts` script so authors get fast feedback
+// without invoking Astro. See docs/slides/AUTHORING.md for the schema.
 
 const DECK_FILE_SUFFIX = "/deck.mdx";
 
@@ -39,7 +44,630 @@ const IDENTIFIER_PATTERN =
 // imports) rather than a literal string. URL-like values still emit as strings.
 const BINDING_FIELDS = new Set(["image"]);
 
-function emitAttr(key: string, value: unknown): string {
+// --- Validator -------------------------------------------------------------
+
+export interface SlideValidationError {
+  file: string;
+  line: number;
+  message: string;
+}
+
+export interface ExtractedSlide {
+  config: Record<string, unknown>;
+  line: number;
+  file: string;
+}
+
+type SlideType = "slide" | "title" | "text" | "image-row";
+
+const SLIDE_TYPES: readonly SlideType[] = [
+  "slide",
+  "title",
+  "text",
+  "image-row",
+] as const;
+
+const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
+  slide: new Set([
+    "type",
+    "title",
+    "subtitle",
+    "image",
+    "imageAlt",
+    "imagePosition",
+    "darkText",
+    "copyright",
+    "fit",
+    "notes",
+    "slideImage",
+    "slideVideo",
+  ]),
+  title: new Set([
+    "type",
+    "title",
+    "subtitle",
+    "author",
+    "institution",
+    "image",
+    "imageAlt",
+    "imagePosition",
+    "darkText",
+    "fit",
+    "notes", // recognized but rejected; see notes-rejection check
+    "slideImage", // recognized but rejected; see slideImage-rejection check
+    "slideVideo", // recognized but rejected; see slideVideo-rejection check
+  ]),
+  text: new Set([
+    "type",
+    "text",
+    "subtext",
+    "size",
+    "notes",
+    "slideImage",
+    "slideVideo",
+  ]),
+  "image-row": new Set([
+    "type",
+    "title",
+    "subtitle",
+    "darkText",
+    "copyright",
+    "gap",
+    "fit",
+    "images",
+    "notes", // recognized but rejected; see notes-rejection check
+    "slideImage", // recognized but rejected; see slideImage-rejection check
+    "slideVideo", // recognized but rejected; see slideVideo-rejection check
+  ]),
+};
+
+const REQUIRED_FIELDS: Record<SlideType, readonly string[]> = {
+  slide: [],
+  title: ["title"],
+  text: ["text"],
+  "image-row": ["images"],
+};
+
+const ENUM_VALUES: Record<string, readonly string[]> = {
+  size: ["md", "lg", "xl"],
+  fit: ["cover", "contain"],
+  gap: ["none", "sm", "md", "lg"],
+};
+
+const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
+  slide: [
+    "title",
+    "subtitle",
+    "image",
+    "imageAlt",
+    "imagePosition",
+    "fit",
+    "notes",
+  ],
+  title: [
+    "title",
+    "subtitle",
+    "author",
+    "institution",
+    "image",
+    "imageAlt",
+    "imagePosition",
+    "fit",
+  ],
+  text: ["text", "subtext", "size"],
+  "image-row": ["title", "subtitle", "gap", "fit"],
+};
+
+const BOOLEAN_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
+  slide: ["darkText"],
+  title: ["darkText"],
+  text: [],
+  "image-row": ["darkText"],
+};
+
+// --- Nested child blocks ---------------------------------------------------
+// Field sets are informational; per spec, unknown keys inside a nested block
+// pass through to JSX attributes (and TypeScript catches typos at build time).
+// The validator still checks the documented fields for required-ness and
+// type, which gives faster feedback for the common props.
+
+// Shared across slideImage and slideVideo (both maps to the Align union
+// type defined identically in their components).
+const ALIGN_VALUES: readonly string[] = [
+  "center",
+  "top",
+  "bottom",
+  "left",
+  "right",
+  "top-left",
+  "top-right",
+  "bottom-left",
+  "bottom-right",
+];
+
+const SLIDE_IMAGE_STRING_FIELDS: readonly string[] = [
+  "src",
+  "alt",
+  "width",
+  "height",
+  "x",
+  "y",
+  "align",
+  "class",
+];
+
+const SLIDE_IMAGE_BINDING_FIELDS: ReadonlySet<string> = new Set(["src"]);
+
+const SLIDE_VIDEO_STRING_FIELDS: readonly string[] = [
+  "src",
+  "type",
+  "poster",
+  "preload",
+  "fit",
+  "width",
+  "height",
+  "x",
+  "y",
+  "align",
+  "class",
+];
+
+const SLIDE_VIDEO_BOOLEAN_FIELDS: readonly string[] = [
+  "loop",
+  "autoplay",
+  "muted",
+  "controls",
+  "playsinline",
+  "blur",
+];
+
+// Videos are always URL strings (served from /public), never JS bindings.
+const SLIDE_VIDEO_BINDING_FIELDS: ReadonlySet<string> = new Set();
+
+const SLIDE_VIDEO_PRELOAD_VALUES: readonly string[] = [
+  "none",
+  "metadata",
+  "auto",
+];
+
+const SLIDE_VIDEO_FIT_VALUES: readonly string[] = ["cover", "contain"];
+
+function levenshtein(a: string, b: string): number {
+  const m = a.length;
+  const n = b.length;
+  if (m === 0) return n;
+  if (n === 0) return m;
+  const dp: number[][] = Array.from({ length: m + 1 }, () =>
+    Array(n + 1).fill(0),
+  );
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + cost,
+      );
+    }
+  }
+  return dp[m][n];
+}
+
+function suggest(
+  unknownValue: string,
+  candidates: Iterable<string>,
+  maxDistance = 2,
+): string | undefined {
+  let best: string | undefined;
+  let bestDist = Infinity;
+  const target = unknownValue.toLowerCase();
+  for (const candidate of candidates) {
+    const d = levenshtein(target, candidate.toLowerCase());
+    if (d < bestDist && d <= maxDistance) {
+      bestDist = d;
+      best = candidate;
+    }
+  }
+  return best;
+}
+
+function validateSlideImageBlock(
+  block: unknown,
+  push: (message: string) => void,
+): void {
+  if (!block || typeof block !== "object" || Array.isArray(block)) {
+    push(
+      `slideImage: must be an object with 'src' and 'alt' fields, got ${Array.isArray(block) ? "array" : typeof block}.`,
+    );
+    return;
+  }
+  const obj = block as Record<string, unknown>;
+
+  if (obj.src === undefined || obj.src === null || obj.src === "") {
+    push(`slideImage: missing required field 'src'.`);
+  } else if (typeof obj.src !== "string") {
+    push(
+      `slideImage.src must be a string (binding identifier or URL), got ${typeof obj.src}.`,
+    );
+  }
+
+  if (obj.alt === undefined || obj.alt === null || obj.alt === "") {
+    push(`slideImage: missing 'alt'. Required for accessibility.`);
+  } else if (typeof obj.alt !== "string") {
+    push(`slideImage.alt must be a string, got ${typeof obj.alt}.`);
+  }
+
+  // Type-check the known optional fields (skip src and alt; already handled).
+  for (const field of SLIDE_IMAGE_STRING_FIELDS) {
+    if (field === "src" || field === "alt") continue;
+    const value = obj[field];
+    if (value === undefined || value === null) continue;
+    if (typeof value !== "string") {
+      push(
+        `slideImage.${field} must be a string, got ${typeof value}. Hint: quote percentages and numeric-looking values, e.g. width: "50%".`,
+      );
+    }
+  }
+
+  // align: enum check
+  if (typeof obj.align === "string" && !ALIGN_VALUES.includes(obj.align)) {
+    const suggestion = suggest(obj.align, ALIGN_VALUES);
+    const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+    push(
+      `slideImage.align: invalid value '${obj.align}'. Valid: ${ALIGN_VALUES.join(", ")}.${hint}`,
+    );
+  }
+}
+
+function validateSlideVideoBlock(
+  block: unknown,
+  push: (message: string) => void,
+): void {
+  if (!block || typeof block !== "object" || Array.isArray(block)) {
+    push(
+      `slideVideo: must be an object with a 'src' field, got ${Array.isArray(block) ? "array" : typeof block}.`,
+    );
+    return;
+  }
+  const obj = block as Record<string, unknown>;
+
+  // Required: src (always a URL string, never a JS binding).
+  if (obj.src === undefined || obj.src === null || obj.src === "") {
+    push(`slideVideo: missing required field 'src'.`);
+  } else if (typeof obj.src !== "string") {
+    push(
+      `slideVideo.src must be a string (URL), got ${typeof obj.src}.`,
+    );
+  }
+
+  // Type-check the known string fields (skip src; handled above).
+  for (const field of SLIDE_VIDEO_STRING_FIELDS) {
+    if (field === "src") continue;
+    const value = obj[field];
+    if (value === undefined || value === null) continue;
+    if (typeof value !== "string") {
+      push(
+        `slideVideo.${field} must be a string, got ${typeof value}. Hint: quote percentages and numeric-looking values, e.g. width: "50%".`,
+      );
+    }
+  }
+
+  // Type-check the known boolean fields.
+  for (const field of SLIDE_VIDEO_BOOLEAN_FIELDS) {
+    const value = obj[field];
+    if (value === undefined || value === null) continue;
+    if (typeof value !== "boolean") {
+      push(
+        `slideVideo.${field} must be a boolean (true/false), got ${typeof value}.`,
+      );
+    }
+  }
+
+  // Enum checks
+  if (typeof obj.align === "string" && !ALIGN_VALUES.includes(obj.align)) {
+    const suggestion = suggest(obj.align, ALIGN_VALUES);
+    const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+    push(
+      `slideVideo.align: invalid value '${obj.align}'. Valid: ${ALIGN_VALUES.join(", ")}.${hint}`,
+    );
+  }
+  if (
+    typeof obj.fit === "string" &&
+    !SLIDE_VIDEO_FIT_VALUES.includes(obj.fit)
+  ) {
+    const suggestion = suggest(obj.fit, SLIDE_VIDEO_FIT_VALUES);
+    const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+    push(
+      `slideVideo.fit: invalid value '${obj.fit}'. Valid: ${SLIDE_VIDEO_FIT_VALUES.join(", ")}.${hint}`,
+    );
+  }
+  if (
+    typeof obj.preload === "string" &&
+    !SLIDE_VIDEO_PRELOAD_VALUES.includes(obj.preload)
+  ) {
+    const suggestion = suggest(obj.preload, SLIDE_VIDEO_PRELOAD_VALUES);
+    const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+    push(
+      `slideVideo.preload: invalid value '${obj.preload}'. Valid: ${SLIDE_VIDEO_PRELOAD_VALUES.join(", ")}.${hint}`,
+    );
+  }
+}
+
+export function validateSlide(
+  config: Record<string, unknown>,
+  ctx: { file: string; line: number },
+): SlideValidationError[] {
+  const errors: SlideValidationError[] = [];
+  const push = (message: string) =>
+    errors.push({ file: ctx.file, line: ctx.line, message });
+
+  const rawType = config.type;
+  if (rawType !== undefined && typeof rawType !== "string") {
+    push(`'type' must be a string, got ${typeof rawType}.`);
+    return errors;
+  }
+
+  const typeStr = (rawType as string | undefined) ?? "slide";
+  if (!SLIDE_TYPES.includes(typeStr as SlideType)) {
+    const suggestion = suggest(typeStr, SLIDE_TYPES);
+    const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+    push(
+      `Unknown slide type '${typeStr}'. Valid: ${SLIDE_TYPES.join(", ")}.${hint}`,
+    );
+    return errors;
+  }
+  const type = typeStr as SlideType;
+
+  // Unknown fields
+  const known = KNOWN_FIELDS[type];
+  for (const key of Object.keys(config)) {
+    if (!known.has(key)) {
+      const suggestion = suggest(key, known);
+      const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+      push(`Slide (type: ${type}): unknown field '${key}'.${hint}`);
+    }
+  }
+
+  // Required fields
+  for (const field of REQUIRED_FIELDS[type]) {
+    const value = config[field];
+    if (value === undefined || value === null || value === "") {
+      push(`Slide (type: ${type}): missing required field '${field}'.`);
+    }
+  }
+
+  // imageAlt required if image is set (on slide and title; text has no image)
+  if (
+    type !== "text" &&
+    config.image !== undefined &&
+    (config.imageAlt === undefined || config.imageAlt === "")
+  ) {
+    push(
+      `Slide (type: ${type}): 'image' is set but 'imageAlt' is missing. Required for accessibility.`,
+    );
+  }
+
+  // notes rejected on title/text/image-row (no first-class children renderer)
+  if (type !== "slide" && config.notes !== undefined) {
+    const componentName =
+      type === "title"
+        ? "TitleSlide"
+        : type === "text"
+          ? "TextSlide"
+          : "SlideImageRow";
+    push(
+      `Slide (type: ${type}): '${componentName}' does not render notes. Remove the 'notes' field or change 'type' to 'slide'.`,
+    );
+  }
+
+  // slideImage: nested block validation (only on type: slide)
+  if (config.slideImage !== undefined) {
+    if (type !== "slide") {
+      push(
+        `Slide (type: ${type}): 'slideImage' is only supported on type: slide. Remove it or change 'type' to 'slide'.`,
+      );
+    } else {
+      validateSlideImageBlock(config.slideImage, push);
+    }
+  }
+
+  // slideVideo: nested block validation (only on type: slide)
+  if (config.slideVideo !== undefined) {
+    if (type !== "slide") {
+      push(
+        `Slide (type: ${type}): 'slideVideo' is only supported on type: slide. Remove it or change 'type' to 'slide'.`,
+      );
+    } else {
+      validateSlideVideoBlock(config.slideVideo, push);
+    }
+  }
+
+  // image-row: images array validation
+  if (type === "image-row") {
+    const images = config.images;
+    if (images === undefined) {
+      // Already covered by REQUIRED_FIELDS check above
+    } else if (!Array.isArray(images)) {
+      push(
+        `Slide (type: image-row): 'images' must be an array, got ${typeof images}.`,
+      );
+    } else if (images.length === 0) {
+      push(
+        `Slide (type: image-row): 'images' must contain at least one item.`,
+      );
+    } else if (images.length > 4) {
+      push(
+        `Slide (type: image-row): 'images' has ${images.length} items; SlideImageRow supports up to 4 (2-4 columns recommended).`,
+      );
+    } else {
+      images.forEach((item, idx) => {
+        if (!item || typeof item !== "object" || Array.isArray(item)) {
+          push(
+            `Slide (type: image-row): images[${idx}] must be an object with 'src' and 'alt' fields.`,
+          );
+          return;
+        }
+        const obj = item as Record<string, unknown>;
+        if (
+          obj.src === undefined ||
+          obj.src === null ||
+          obj.src === ""
+        ) {
+          push(
+            `Slide (type: image-row): images[${idx}] is missing required field 'src'.`,
+          );
+        } else if (typeof obj.src !== "string") {
+          push(
+            `Slide (type: image-row): images[${idx}].src must be a string (binding identifier or URL), got ${typeof obj.src}.`,
+          );
+        }
+        if (
+          obj.alt === undefined ||
+          obj.alt === null ||
+          obj.alt === ""
+        ) {
+          push(
+            `Slide (type: image-row): images[${idx}] is missing 'alt'. Required for accessibility.`,
+          );
+        } else if (typeof obj.alt !== "string") {
+          push(
+            `Slide (type: image-row): images[${idx}].alt must be a string, got ${typeof obj.alt}.`,
+          );
+        }
+        for (const key of Object.keys(obj)) {
+          if (key !== "src" && key !== "alt") {
+            const suggestion = suggest(key, ["src", "alt"]);
+            const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+            push(
+              `Slide (type: image-row): images[${idx}] has unknown field '${key}'. Only 'src' and 'alt' are supported.${hint}`,
+            );
+          }
+        }
+      });
+    }
+  }
+
+  // Enum value validation (size, fit)
+  for (const field of Object.keys(ENUM_VALUES)) {
+    const value = config[field];
+    if (value === undefined) continue;
+    if (!known.has(field)) continue; // skip fields not valid for this slide type
+    const valid = ENUM_VALUES[field];
+    if (typeof value !== "string" || !valid.includes(value)) {
+      const suggestion =
+        typeof value === "string" ? suggest(value, valid) : undefined;
+      const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+      push(
+        `Slide (type: ${type}): invalid '${field}' value '${String(value)}'. Valid: ${valid.join(", ")}.${hint}`,
+      );
+    }
+  }
+
+  // String type checks
+  for (const field of STRING_FIELDS_BY_TYPE[type]) {
+    const value = config[field];
+    if (value === undefined || value === null) continue;
+    if (typeof value !== "string") {
+      push(
+        `Slide (type: ${type}): field '${field}' must be a string, got ${typeof value}. Hint: quote percentages and numeric-looking values, e.g. width: "50%".`,
+      );
+    }
+  }
+
+  // copyright: string or string[] (slide only)
+  if (type === "slide" && config.copyright !== undefined) {
+    const c = config.copyright;
+    const ok =
+      typeof c === "string" ||
+      (Array.isArray(c) && c.every((x) => typeof x === "string"));
+    if (!ok) {
+      push(
+        `Slide (type: ${type}): 'copyright' must be a string or an array of strings.`,
+      );
+    }
+  }
+
+  // Boolean type checks
+  for (const field of BOOLEAN_FIELDS_BY_TYPE[type]) {
+    const value = config[field];
+    if (value !== undefined && typeof value !== "boolean") {
+      push(
+        `Slide (type: ${type}): field '${field}' must be a boolean (true/false), got ${typeof value}.`,
+      );
+    }
+  }
+
+  return errors;
+}
+
+// --- Extraction ------------------------------------------------------------
+
+export function extractSlidesFromMdx(
+  code: string,
+  file: string,
+): ExtractedSlide[] {
+  const frontmatterMatch = code.match(/^---\r?\n[\s\S]*?\r?\n---\r?\n/);
+  const frontmatter = frontmatterMatch?.[0] ?? "";
+  const body = code.slice(frontmatter.length);
+
+  const slides: ExtractedSlide[] = [];
+  const regex = /(?:^|\n)---\r?\n([\s\S]*?)\r?\n---(?=\r?\n|$)/g;
+
+  for (const match of body.matchAll(regex)) {
+    const yamlContent = match[1];
+    let parsed: unknown;
+    try {
+      parsed = parseYaml(yamlContent);
+    } catch {
+      continue;
+    }
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      continue;
+    }
+
+    const startsWithNewline = match[0].startsWith("\n");
+    const fenceOffset = (match.index ?? 0) + (startsWithNewline ? 1 : 0);
+    const absoluteOffset = frontmatter.length + fenceOffset;
+    // 1-indexed line number of the opening `---`
+    const line = code.slice(0, absoluteOffset).split("\n").length;
+
+    slides.push({
+      config: parsed as Record<string, unknown>,
+      line,
+      file,
+    });
+  }
+
+  return slides;
+}
+
+export function formatValidationErrors(
+  errors: readonly SlideValidationError[],
+): string {
+  return errors
+    .map((e) => `  ${e.file}:${e.line}\n    ${e.message}`)
+    .join("\n\n");
+}
+
+// --- Emission --------------------------------------------------------------
+
+// Emits a string value as either a bare JS expression (when it looks like an
+// identifier or member access) or a string literal otherwise. Used for
+// binding-aware fields and inside the image-row `images[].src` items.
+function emitBindingOrString(value: string): string {
+  if (!URL_PATTERN.test(value) && IDENTIFIER_PATTERN.test(value)) {
+    return value;
+  }
+  return JSON.stringify(value);
+}
+
+function emitAttr(
+  key: string,
+  value: unknown,
+  bindingFields: ReadonlySet<string> = BINDING_FIELDS,
+): string {
   if (value === null || value === undefined) return "";
   if (typeof value === "boolean") return ` ${key}={${value}}`;
   if (typeof value === "number") return ` ${key}={${value}}`;
@@ -50,8 +678,8 @@ function emitAttr(key: string, value: unknown): string {
   }
 
   if (typeof value === "string") {
-    if (BINDING_FIELDS.has(key) && !URL_PATTERN.test(value) && IDENTIFIER_PATTERN.test(value)) {
-      return ` ${key}={${value}}`;
+    if (bindingFields.has(key)) {
+      return ` ${key}={${emitBindingOrString(value)}}`;
     }
     return ` ${key}={${JSON.stringify(value)}}`;
   }
@@ -59,24 +687,107 @@ function emitAttr(key: string, value: unknown): string {
   return "";
 }
 
+// Emits a <SlideImage /> child from a slideImage YAML block. Uses
+// SLIDE_IMAGE_BINDING_FIELDS so the per-item src resolves to a JS binding
+// when it looks like an identifier (bare name or dotted member access).
+function emitSlideImageJsx(block: Record<string, unknown>): string {
+  const attrs = Object.entries(block)
+    .map(([k, v]) => emitAttr(k, v, SLIDE_IMAGE_BINDING_FIELDS))
+    .join("");
+  return `<SlideImage${attrs} />`;
+}
+
+// Emits a <SlideVideo /> child from a slideVideo YAML block. Uses an empty
+// binding-fields set so src is always emitted as a string literal: video
+// files live under /public, not as JS imports.
+function emitSlideVideoJsx(block: Record<string, unknown>): string {
+  const attrs = Object.entries(block)
+    .map(([k, v]) => emitAttr(k, v, SLIDE_VIDEO_BINDING_FIELDS))
+    .join("");
+  return `<SlideVideo${attrs} />`;
+}
+
+// Emits the `images` array for an image-row slide. Each item resolves `src`
+// as a binding-or-string and `alt` as a JSON-quoted string literal. Items
+// that don't match the expected shape are emitted as best-effort; the
+// validator should have rejected malformed input upstream.
+function emitImagesArray(items: readonly unknown[]): string {
+  const parts: string[] = [];
+  for (const item of items) {
+    if (!item || typeof item !== "object" || Array.isArray(item)) continue;
+    const obj = item as Record<string, unknown>;
+    const src = obj.src;
+    const alt = obj.alt;
+    if (typeof src !== "string") continue;
+    const srcExpr = emitBindingOrString(src);
+    const altExpr = JSON.stringify(typeof alt === "string" ? alt : "");
+    parts.push(`{ src: ${srcExpr}, alt: ${altExpr} }`);
+  }
+  return `[${parts.join(", ")}]`;
+}
+
 function buildSlideJsx(config: Record<string, unknown>): string {
   const type = (config.type as string | undefined) ?? "slide";
   const notes = config.notes as string | undefined;
+  const slideImage =
+    config.slideImage && typeof config.slideImage === "object" && !Array.isArray(config.slideImage)
+      ? (config.slideImage as Record<string, unknown>)
+      : undefined;
+  const slideVideo =
+    config.slideVideo && typeof config.slideVideo === "object" && !Array.isArray(config.slideVideo)
+      ? (config.slideVideo as Record<string, unknown>)
+      : undefined;
 
   const componentName =
-    type === "title" ? "TitleSlide" : type === "text" ? "TextSlide" : "Slide";
+    type === "title"
+      ? "TitleSlide"
+      : type === "text"
+        ? "TextSlide"
+        : type === "image-row"
+          ? "SlideImageRow"
+          : "Slide";
+
+  // Fields with bespoke emission live outside the generic emitAttr loop.
+  const specialFields = new Set<string>([
+    "type",
+    "notes",
+    "slideImage",
+    "slideVideo",
+  ]);
+  if (componentName === "SlideImageRow") specialFields.add("images");
 
   const attrs = Object.entries(config)
-    .filter(([k]) => k !== "type" && k !== "notes")
+    .filter(([k]) => !specialFields.has(k))
     .map(([k, v]) => emitAttr(k, v))
     .join("");
 
-  if (notes && componentName === "Slide") {
-    return `<Slide${attrs}>\n  <SlideNotes>{${JSON.stringify(notes)}}</SlideNotes>\n</Slide>`;
+  let extraAttrs = "";
+  if (componentName === "SlideImageRow" && Array.isArray(config.images)) {
+    extraAttrs = ` images={${emitImagesArray(config.images)}}`;
   }
 
-  return `<${componentName}${attrs} />`;
+  // Children (only emitted on type: slide; validator rejects these fields
+  // on other types). Render order: SlideImage, SlideVideo, SlideNotes.
+  const children: string[] = [];
+  if (componentName === "Slide" && slideImage) {
+    children.push(emitSlideImageJsx(slideImage));
+  }
+  if (componentName === "Slide" && slideVideo) {
+    children.push(emitSlideVideoJsx(slideVideo));
+  }
+  if (componentName === "Slide" && notes) {
+    children.push(`<SlideNotes>{${JSON.stringify(notes)}}</SlideNotes>`);
+  }
+
+  if (children.length > 0) {
+    const indented = children.map((c) => `  ${c}`).join("\n");
+    return `<${componentName}${attrs}${extraAttrs}>\n${indented}\n</${componentName}>`;
+  }
+
+  return `<${componentName}${attrs}${extraAttrs} />`;
 }
+
+// --- Plugin ----------------------------------------------------------------
 
 export function presentationSlides(): Plugin {
   return {
@@ -85,6 +796,20 @@ export function presentationSlides(): Plugin {
     transform(code, id) {
       const normalizedId = id.replace(/\\/g, "/");
       if (!normalizedId.endsWith(DECK_FILE_SUFFIX)) return null;
+
+      // Validate first (one parse pass), then emit (second parse pass).
+      // YAML parsing is cheap; the duplication keeps the two responsibilities
+      // separated and makes the validator reusable from the standalone script.
+      const slides = extractSlidesFromMdx(code, normalizedId);
+      const errors = slides.flatMap((s) =>
+        validateSlide(s.config, { file: s.file, line: s.line }),
+      );
+      if (errors.length > 0) {
+        const formatted = formatValidationErrors(errors);
+        throw new Error(
+          `Slide validation failed (${errors.length} error${errors.length === 1 ? "" : "s"}):\n\n${formatted}\n`,
+        );
+      }
 
       // Skip the deck-level frontmatter at the top of the file.
       const frontmatterMatch = code.match(/^---\r?\n[\s\S]*?\r?\n---\r?\n/);

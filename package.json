@@ -12,7 +12,8 @@
     "test:unit": "tsx --test tests/unit/**/*.test.ts",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "validate:links": "tsx src/scripts/validate-internal-links.ts"
+    "validate:links": "tsx src/scripts/validate-internal-links.ts",
+    "check:decks": "tsx src/scripts/check-decks.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.91.1",
@@ -58,6 +59,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.3",
     "puppeteer": "^24.42.0",
+    "tsx": "^4.21.0",
     "wrangler": "^4.83.0"
   }
 }
