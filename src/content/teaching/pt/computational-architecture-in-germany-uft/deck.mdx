@@ -1,0 +1,1019 @@
+---
+Name: "Arquitetura Computacional na Alemanha"
+Description: "Apresentação SEMANAU 2023 (UFT). Da biomimética à computação material: trajetória de um arquiteto brasileiro entre o Atelier Marko Brajovic, o ITECH em Stuttgart e a BuildSystems em Munique."
+DateStart: "2023-11-10"
+Event: SEMANAU 2023
+Language: Português
+---
+
+import TitleSlide from "@/components/slides/TitleSlide.astro";
+import Slide from "@/components/slides/Slide.astro";
+import TextSlide from "@/components/slides/TextSlide.astro";
+import SlideNotes from "@/components/slides/SlideNotes.astro";
+import SlideVideo from "@/components/slides/SlideVideo.astro";
+import SlideImageRow from "@/components/slides/SlideImageRow.astro";
+import SlideImage from "@/components/slides/SlideImage.astro";
+
+import img3 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image3.png";
+import o3PavilionCenografia from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/full-scenography-for-the-o3-pavilion.jpeg";
+import o3FormFinding from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/animation-of-the-form-finding-kangaroo-forcing-cells-to-be-planar.gif";
+import o3AssemblySequence from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/animation-with-the-sequence-of-assembly.gif";
+import crownShyness from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/crown-shyness.jpg";
+import giraffes from "@/assets/content/teaching/digital-futures-2026/deck/giraffes_upscayl-standard-4x.png";
+import o3ConstructionPhases from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/phases-of-construction-in-a-exploded-perspective-steel-welding-panel-fitting.jpg";
+import o3BlacksmithsModel from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/blacksmiths-studying-the-small-scale-model.jpeg";
+import o3SmallScaleModel from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/the-small-scale-model-of-the-pavilion-structure-in-background.jpg";
+import o3InteriorMiddleCell from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/interior-of-the-middle-cell-rain-sounds-and-leds-simulating-lightnings.jpg";
+import o3InteriorRightCell from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/interior-of-the-right-cell.png";
+import airGuitarThreePhotos from "@/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/three-photos-of-users-playing-the-guitar.jpeg";
+import airGuitarCoverNoBeams from "@/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/air-guitar-by-atelier-marko-brajovic-for-nike-cover_no-beams.png";
+import liveTalksTensegrityModel from "@/assets/content/projects/live-talks-by-atelier-marko-brajovic/tensegrity-model.png";
+import liveTalksTensegrity from "@/assets/content/projects/live-talks-by-atelier-marko-brajovic/live-talks-tensegrity.jpg";
+import cocaColaPavilion from "@/assets/content/projects/coca-cola-taste-of-fashion/coca-cola-taste-of-fashion_pavilion.jpeg";
+import tensegrityWorkshop from "@/assets/content/teaching/tensegrity-workshop/tensegrity-workshop_atelier-marko-brajovic-01.jpeg";
+import formFindingSpiralSoap from "@/assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-spiral-and-soap.jpeg";
+import formFindingTetrahedronSoap from "@/assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-tetrahedron-and-soap.jpeg";
+import formFindingHollowCircleSoap from "@/assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-hollow-circle-and-soap.jpeg";
+import andreiaBento from "@/assets/content/teaching/models-bynature-10/models-bynature-10_andreia-bento.jpg";
+import modelAsLamp from "@/assets/content/teaching/models-bynature-10/models-bynature-10_model-as-a-lamp.jpeg";
+import tfgTitle from "@/assets/content/research/architecture-biomimicry-algorithm/tfg-vetorizado-com-padrão-do-algoritmo.png";
+import tfgConcept from "@/assets/content/research/architecture-biomimicry-algorithm/concept.jpg";
+import tfgAlgorithmSteps from "@/assets/content/research/architecture-biomimicry-algorithm/installation-unit-algorithm-steps.jpg";
+import tfgUnitRendering from "@/assets/content/research/architecture-biomimicry-algorithm/rendering-of-one-unit.jpg";
+import tfgBobbinsInUse from "@/assets/content/research/architecture-biomimicry-algorithm/bobbins-in-use.jpg";
+import tfgFinalPhysicalModel from "@/assets/content/research/architecture-biomimicry-algorithm/final-physical-model.jpeg";
+import tfgCover from "@/assets/content/research/architecture-biomimicry-algorithm/architecture-biomimicry-algorithm-cover.jpg";
+import tfgTopView from "@/assets/content/research/architecture-biomimicry-algorithm/top-view-of-final-proposal.png";
+import img40 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image40.png";
+import img41 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image41.png";
+import img42 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image42.png";
+import img43 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image43.png";
+import img44 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image44.jpg";
+import img45 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image45.png";
+import img46 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image46.png";
+import img47 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image47.png";
+import img48 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image48.gif";
+import img49 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image49.gif";
+import img50 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image50.gif";
+import img51 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image51.gif";
+import img52 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image52.png";
+import img53 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image53.png";
+import img54 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image54.jpg";
+import img55 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image55.png";
+import img56 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image56.jpeg";
+import img57 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image57.jpeg";
+import img58 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image58.jpeg";
+import img59 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image59.png";
+import nasaBg from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image60.jpeg";
+import img61 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image61.jpeg";
+import img62 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image62.jpeg";
+import bucky from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image63.png";
+import img64 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image64.png";
+import img65 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image65.png";
+import img66 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image66.jpeg";
+import gaudi from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image67.jpeg";
+import img68 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image68.jpeg";
+import img69 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image69.jpeg";
+import img70 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image70.png";
+import img71 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image71.jpeg";
+import img72 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image72.png";
+import img73 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image73.jpeg";
+import img74 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image74.png";
+import img75 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image75.png";
+import img76 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image76.png";
+import img77 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image77.png";
+import img78 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image78.png";
+import img79 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image79.png";
+import img80 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image80.png";
+import img81 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image81.gif";
+import img82 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image82.png";
+import img83 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image83.png";
+import img84 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image84.png";
+import img85 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image85.png";
+import img86 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image86.jpeg";
+import img87 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image87.png";
+import img88 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image88.jpg";
+import img89 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image89.png";
+import o3ConstructionPhases0 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image90.png";
+import o3ConstructionPhases1 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image91.png";
+import o3ConstructionPhases2 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image92.jpeg";
+import o3ConstructionPhases3 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image93.jpg";
+import o3ConstructionPhases4 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image94.jpeg";
+import o3ConstructionPhases5 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image95.jpeg";
+import o3ConstructionPhases6 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image96.jpeg";
+import o3ConstructionPhases7 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image97.jpeg";
+import o3ConstructionPhases8 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image98.jpeg";
+import o3ConstructionPhases9 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image99.jpeg";
+import img100 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image100.png";
+import img101 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image101.png";
+
+---
+type: title
+title: Arquitetura Computacional na Alemanha
+subtitle: Estado da arte e principais tecnologias
+author: Daniel Locatelli
+institution: SEMANAU 2023, Universidade Federal do Tocantins
+---
+
+---
+slideImage:
+  src: img3
+  alt: Imagem de abertura
+  height: "35%"
+---
+
+---
+title: Pavilhão O3
+subtitle: Atelier Marko Brajovic, Expo Revestir 2017
+image: o3PavilionCenografia
+imageAlt: Vista frontal do Pavilhão O3
+copyright: Gui Morelli
+fit: contain
+---
+
+---
+title: Pavilhão O3
+subtitle: Atelier Marko Brajovic, Expo Revestir 2017
+image: crownShyness
+imageAlt: Detalhe da estrutura do Pavilhão O3
+fit: contain
+---
+
+---
+title: Pavilhão O3
+subtitle: "Inspiração biomimética: Girafas"
+image: giraffes
+imageAlt: Referência biomimética
+copyright: Luca Galuzzi
+fit: contain
+---
+
+---
+title: Pavilhão O3
+subtitle: Form finding dos domos
+slideImage:
+  src: o3FormFinding.src
+  alt: Animação do form finding com Kangaroo, forçando as células a serem planas
+  width: "40%"
+  y: "52%"
+notes: Usamos o Grasshopper para o form finding dos domos.
+---
+
+---
+title: Pavilhão O3
+subtitle: Estudo paramétrico de variações
+slideImage:
+  src: o3AssemblySequence.src
+  alt: Animação com a sequência de montagem do Pavilhão O3
+  y: "52%"
+  width: "30%"
+notes: "A programação facilita os estudos: várias versões com o mesmo algoritmo, apenas variando os parâmetros."
+---
+
+---
+title: Pavilhão O3
+subtitle: Detalhamento dependente da programação
+slideImage:
+  src: o3ConstructionPhases
+  alt: Detalhamento computacional do Pavilhão O3
+  width: "80%"
+notes: Detalhamento do projeto dependente da programação.
+---
+
+---
+title: Pavilhão O3
+subtitle: Serralheiros estudando a maquete
+slideImage:
+  src: o3BlacksmithsModel
+  alt: Serralheiros estudando a maquete do Pavilhão O3
+  y: "45%"
+notes: A maquete foi fundamental para a construção, servindo como referência para os serralheiros durante a montagem.
+---
+
+---
+title: Pavilhão O3
+subtitle: Maquete em frente à estrutura
+slideImage:
+  src: o3SmallScaleModel
+  alt: Maquete em frente à estrutura do Pavilhão O3
+  width: "100%"
+  align: bottom
+notes: Fabricação high-low, ou parametricismo regional.
+---
+
+---
+title: Pavilhão O3
+subtitle: Atelier Marko Brajovic, Expo Revestir 2017
+image: o3InteriorMiddleCell
+imageAlt: Pavilhão O3 finalizado, vista externa dos três domos.
+copyright: Gui Morelli
+fit: contain
+---
+
+---
+title: Pavilhão O3
+subtitle: Atelier Marko Brajovic, Expo Revestir 2017
+image: o3InteriorRightCell
+imageAlt: Pavilhão O3 detalhe
+copyright: Gui Morelli
+fit: contain
+---
+
+---
+title: Pavilhão O3
+subtitle: Artigo SIGRADI 2018
+copyright: Gui Morelli
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media3.mp4
+  fit: cover
+  blur: false
+notes: Prof. Thiago Omena, durante o doutorado na FAU, ajudou com o artigo.
+---
+
+---
+title: Nike Air Guitar
+subtitle: Atelier Marko Brajovic, Red Bull Station 2018
+image: airGuitarThreePhotos
+imageAlt: Instalação Nike Air Guitar
+copyright: Edu Ohara
+fit: contain
+---
+
+---
+title: Nike Air Guitar
+subtitle: Atelier Marko Brajovic, Red Bull Station 2018
+image: airGuitarCoverNoBeams
+imageAlt: Detalhe da Nike Air Guitar
+copyright: Edu Ohara
+fit: contain
+---
+
+---
+title: Nike Air Guitar
+subtitle: Atelier Marko Brajovic, Red Bull Station 2018
+copyright: Edu Ohara
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media4.mp4
+  blur: false
+---
+
+---
+title: Tensegridades
+subtitle: Atelier Marko Brajovic
+slideImage:
+  src: liveTalksTensegrityModel
+  alt: Estudo de tensegridades em escala reduzida.
+  width: "55%"
+  y: "55%"
+---
+
+---
+title: Tensegridades
+subtitle: Atelier Marko Brajovic, Livetalks 2016
+slideImage:
+  src: liveTalksTensegrity
+  alt: Tensegridade na Livetalks 2016.
+  align: top
+---
+
+---
+title: Tensegridades
+subtitle: Coca-Cola @ SPFW 2016
+image: cocaColaPavilion
+imageAlt: Instalação de tensegridade para Coca-Cola na SPFW 2016
+copyright: Atelier Marko Brajovic
+fit: contain
+---
+
+---
+title: Tensegridades
+subtitle: Workshop
+image: tensegrityWorkshop
+imageAlt: Workshop de tensegridades
+copyright: Adalberto de Paula
+fit: contain
+---
+
+---
+title: Tensegridades
+subtitle: Atelier Marko Brajovic
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media5.mp4
+  blur: false
+---
+
+---
+title: Models ByNature
+subtitle: Workshop
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media6.mp4
+  blur: false
+---
+
+---
+type: image-row
+title: Models ByNature
+subtitle: Workshop
+images:
+  - src: formFindingSpiralSoap
+    alt: Models ByNature workshop, registro 1
+  - src: formFindingTetrahedronSoap
+    alt: Models ByNature workshop, registro 2
+  - src: formFindingHollowCircleSoap
+    alt: Models ByNature workshop, registro 3
+fit: contain
+---
+
+---
+title: Models ByNature
+subtitle: Workshop
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media7.mp4
+  blur: false
+---
+
+---
+title: Models ByNature
+subtitle: Workshop
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media8.mp4
+  blur: false
+---
+
+---
+type: image-row
+title: Models ByNature
+subtitle: Workshop, registros
+images:
+  - src: andreiaBento
+    alt: Models ByNature workshop, registro 4
+  - src: modelAsLamp
+    alt: Models ByNature workshop, registro 5
+fit: cover
+---
+
+<Slide>
+  <img src={tfgTitle.src} alt="Capa do TFG na FAUUSP" class="absolute" style="left:15%; top:23.9%; width:70%; height:52.2%; object-fit:contain;" />
+</Slide>
+
+---
+title: TFG FAUUSP
+subtitle: Conceito
+slideImage:
+  src: tfgConcept
+  alt: Conceito do TFG FAUUSP.
+  width: "80%"
+---
+
+---
+title: TFG FAUUSP
+subtitle: Construção do algoritmo
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media9.mp4
+  y: "55%"
+  width: "80%"
+  blur: false
+---
+
+---
+title: TFG FAUUSP
+subtitle: Construção do algoritmo
+slideImage:
+  src: tfgAlgorithmSteps
+  alt: Etapas do algoritmo.
+  width: "80%"
+---
+
+---
+title: TFG FAUUSP
+subtitle: Renderização de uma unidade
+slideImage:
+  src: tfgUnitRendering
+  alt: Renderização de uma unidade.
+  width: "80%"
+---
+
+---
+title: TFG FAUUSP
+subtitle: Renda de bilros
+slideImage:
+  src: tfgBobbinsInUse
+  alt: Renda de bilros.
+  width: "50%"
+---
+
+---
+title: TFG FAUUSP
+subtitle: Artigo IASS 2017
+image: tfgFinalPhysicalModel
+imageAlt: TFG FAUUSP, estudo
+fit: contain
+---
+
+---
+title: TFG FAUUSP
+subtitle: Artigo IASS 2017
+image: tfgCover
+imageAlt: TFG FAUUSP, simulação
+fit: contain
+---
+
+---
+title: TFG FAUUSP
+subtitle: Artigo IASS 2017
+image: tfgTopView
+imageAlt: TFG FAUUSP, resultado
+fit: contain
+notes: "A montagem da estrutura final foi feita dentro da sala de fabricação do Cluster of Excellence em Waiblingen. A configuração: plataforma robótica móvel (TIM), guindaste e dispositivo de fixação. O guindaste é um spider crane, operado manualmente."
+---
+
+---
+slideImage:
+  src: img40
+  alt: Imagem de abertura
+  height: "45%"
+---
+
+---
+title: Luminária Life
+subtitle: Estudio Guto Requena, ECAAD 2020
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media10.mp4
+  blur: false
+---
+
+---
+title: Luminária Life
+subtitle: Estudio Guto Requena, ECAAD 2020
+image: img42
+imageAlt: Mapa mental de David Rutten
+copyright: Decimal
+fit: contain
+notes: Mapa mental de David Rutten, criador do Grasshopper, em uma tentativa de identificar e conectar vários termos do design computacional.
+---
+
+---
+title: Luminária Life
+subtitle: Estudio Guto Requena, ECAAD 2020
+image: img43
+imageAlt: Luminária Life, resultado final
+copyright: Decimal
+fit: contain
+---
+
+<Slide image={img44} imageAlt="Building Across Scales, montagem de capa" fit="contain">
+  <div class="absolute inset-0 z-5 bg-linear-to-t from-black via-black/70 to-black/30" />
+  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center text-white">
+    <h2 class="max-w-5xl text-3xl leading-tight font-bold tracking-wide uppercase sm:text-5xl lg:text-6xl" style="font-family: 'Montserrat', sans-serif;">Building Across Scales</h2>
+    <p class="mt-4 max-w-4xl text-base leading-relaxed font-light italic opacity-90 sm:text-xl lg:text-2xl" style="font-family: 'Poppins', sans-serif;">Um sistema robótico de construção em madeira para colagem no canteiro</p>
+    <div class="mt-12 flex flex-col gap-1 text-sm tracking-wider uppercase sm:text-base">
+      <p class="font-bold">Daniel Locatelli, Nils Opgenorth</p>
+      <p class="opacity-80">Orientadores: Samuel Leder, Hans Jakob Wagner</p>
+      <p class="opacity-80">Consultor externo: Bernhard Rolle</p>
+      <p class="opacity-80">Supervisores: Prof. Achim Menges, Prof. Jan Knippers</p>
+    </div>
+  </div>
+</Slide>
+
+<Slide title="Building Across Scales" subtitle="Tese de mestrado">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img src={img48.src} alt="Building Across Scales, animação 1" class="max-h-full max-w-full object-contain" />
+  </div>
+  <SlideNotes>Natureza é um conceito interessante, porque o que é a natureza? A natureza não é tudo que nos rodeia? O conceito de natureza me parece que veio para tentar separar o que é humano do que é não-humano. Mas isso é impossível, porque nós somos parte disso que chamamos natureza.</SlideNotes>
+</Slide>
+
+<Slide title="Building Across Scales" subtitle="Tese de mestrado">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img src={img49.src} alt="Building Across Scales, animação 2" class="max-h-full max-w-full object-contain" />
+  </div>
+  <SlideNotes>O que aprendemos na escola, física, química, biologia, são formas diferentes de ler nossa realidade. Cada disciplina tem focos específicos, mas no fim elas se embaralham e uma aprende com a outra.</SlideNotes>
+</Slide>
+
+<Slide title="Building Across Scales" subtitle="Tese de mestrado">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img src={img50.src} alt="Building Across Scales, animação 3" class="max-h-full max-w-full object-contain" />
+  </div>
+</Slide>
+
+<Slide title="Building Across Scales" subtitle="Tese de mestrado">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img src={img51.src} alt="Building Across Scales, animação 4" class="max-h-full max-w-full object-contain" />
+  </div>
+  <SlideNotes>Janine Benyus divide a biomimética em três níveis. Para o design, eles se resumem em formas, processos e ecossistemas. Formas: cópia. Processos: computação natural. Ecossistemas: sistemas.</SlideNotes>
+</Slide>
+
+---
+title: Building Across Scales
+subtitle: Tese de mestrado
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media11.mp4
+  blur: false
+notes: "A parte da biomimética que define a forma é justamente essa: tentar encontrar na natureza formas e materiais que possam ser utilizados nas nossas construções."
+---
+
+---
+title: Building Across Scales
+subtitle: Computação material
+image: img53
+imageAlt: Computação material, diagrama
+fit: contain
+notes: "Frei Otto usava os materiais como computadores físicos. A computação material reflete uma mudança profunda de atitude em relação ao mundo físico: uma que envolva a colaboração com ele, em vez da aspiração de dominá-lo. (Antoine Picon)"
+---
+
+---
+title: Building Across Scales
+subtitle: Robert Hooke, modelos suspensos
+image: img54
+imageAlt: Robert Hooke, retrato
+fit: contain
+notes: "Hooke é lembrado pela lei de Hooke, mas foi um cientista completo, pesquisando diversas áreas, um dos primeiros a estudar a célula. Após o Grande Incêndio de Londres, atuou também como arquiteto. Naquela época já fazia estudos sobre modelos suspensos."
+---
+
+<Slide>
+  <img src={img55.src} alt="Modelo suspenso, estudo" class="absolute" style="left:41.26%; top:40.44%; width:17.48%; height:19.13%; object-fit:contain;" />
+</Slide>
+
+---
+title: Vertical Panorama Pavilion
+subtitle: Studio Other Spaces, Sonoma, CA
+image: img56
+imageAlt: Vertical Panorama Pavilion, vista externa
+copyright: Adam Potts
+fit: contain
+---
+
+---
+title: Vertical Panorama Pavilion
+subtitle: Studio Other Spaces, Sonoma, CA
+image: img57
+imageAlt: Vertical Panorama Pavilion, vista interna
+copyright: Adam Potts
+fit: contain
+---
+
+---
+title: Vertical Panorama Pavilion
+subtitle: Studio Other Spaces, Sonoma, CA
+image: img58
+imageAlt: Vertical Panorama Pavilion, processo
+copyright: Art Engineering
+fit: contain
+---
+
+<TextSlide text="Design Computacional" />
+
+<TextSlide text="Modelagem Associativa" />
+
+<Slide>
+  <div class="absolute inset-0 flex flex-col items-center justify-center gap-8 text-center text-white" style="font-family: 'Montserrat', sans-serif;">
+    <p class="text-3xl font-bold uppercase tracking-wide sm:text-5xl lg:text-6xl">Modelagem Associativa</p>
+    <p class="text-2xl sm:text-4xl lg:text-5xl">≃</p>
+    <p class="text-3xl font-bold uppercase tracking-wide sm:text-5xl lg:text-6xl">Design Paramétrico</p>
+  </div>
+</Slide>
+
+<Slide>
+  <div class="absolute inset-0 flex flex-col items-center justify-center gap-8 text-center text-white" style="font-family: 'Montserrat', sans-serif;">
+    <p class="text-3xl font-bold uppercase tracking-wide sm:text-5xl lg:text-6xl">Modelagem Associativa</p>
+    <p class="text-2xl sm:text-4xl lg:text-5xl">≃</p>
+    <p class="text-3xl font-bold uppercase tracking-wide sm:text-5xl lg:text-6xl">Design Paramétrico</p>
+    <p class="text-2xl sm:text-4xl lg:text-5xl">≃</p>
+    <p class="text-3xl font-bold uppercase tracking-wide sm:text-5xl lg:text-6xl">Design Algorítmico</p>
+  </div>
+</Slide>
+
+<Slide>
+  <div class="absolute inset-0 flex flex-col items-center justify-center gap-6 text-center text-white" style="font-family: 'Montserrat', sans-serif;">
+    <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Modelagem Associativa</p>
+    <p class="text-xl sm:text-3xl lg:text-4xl">≃</p>
+    <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Design Paramétrico</p>
+    <p class="text-xl sm:text-3xl lg:text-4xl">≃</p>
+    <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Design Algorítmico</p>
+    <p class="text-xl sm:text-3xl lg:text-4xl">≃</p>
+    <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Design Generativo</p>
+  </div>
+</Slide>
+
+---
+title: Mapa mental
+subtitle: David Rutten, 2012
+image: img59
+imageAlt: Mapa mental de David Rutten
+copyright: David Rutten
+fit: contain
+---
+
+<Slide>
+  <div class="absolute inset-0 flex items-center justify-center text-center text-white" style="font-family: 'Montserrat', sans-serif;">
+    <div class="flex flex-col items-center gap-8">
+      <p class="text-3xl font-light tracking-wide opacity-70 sm:text-5xl lg:text-6xl">Computerização</p>
+      <p class="text-2xl opacity-50 sm:text-4xl">x</p>
+      <p class="text-4xl font-bold uppercase tracking-wide sm:text-6xl lg:text-7xl">Computação</p>
+    </div>
+  </div>
+</Slide>
+
+<Slide>
+  <div class="absolute inset-0 flex items-center justify-center text-center text-white" style="font-family: 'Montserrat', sans-serif;">
+    <div class="flex flex-col items-center gap-8">
+      <p class="text-3xl font-light tracking-wide opacity-70 sm:text-5xl lg:text-6xl">CAD</p>
+      <p class="text-2xl opacity-50 sm:text-4xl">x</p>
+      <p class="text-4xl font-bold uppercase tracking-wide sm:text-6xl lg:text-7xl">Programação</p>
+    </div>
+  </div>
+</Slide>
+
+<Slide image={nasaBg} imageAlt="NASA / Bill Ingalls" copyright="NASA / Bill Ingalls" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/50" />
+  <SlideNotes>O método dos elementos finitos teve seu impulso real nos anos 1960 e 1970 por meio de J. H. Argyris, na Universidade de Stuttgart.</SlideNotes>
+</Slide>
+
+<Slide image={nasaBg} imageAlt="NASA / Bill Ingalls" copyright="NASA / Bill Ingalls" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/50" />
+  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white" style="font-family: 'Montserrat', sans-serif;">
+    <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Ciências Naturais</p>
+    <p class="mt-6 text-lg italic opacity-80 sm:text-2xl lg:text-3xl" style="font-family: 'Poppins', sans-serif;">Física, química, biologia</p>
+  </div>
+  <SlideNotes>Existe atualmente uma discussão sobre a possibilidade de se encontrar uma teoria que unifique e explique o universo de forma contínua. A ideia: através de regras simples, uma grande complexidade pode emergir.</SlideNotes>
+</Slide>
+
+<Slide image={nasaBg} imageAlt="NASA / Bill Ingalls" copyright="NASA / Bill Ingalls" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <p class="text-3xl font-bold uppercase tracking-wide text-white sm:text-5xl lg:text-6xl" style="font-family: 'Montserrat', sans-serif;">Biomimética</p>
+  </div>
+  <SlideNotes>Vou exemplificar com o cellular automata, o Game of Life. A partir de regras simples uma enorme complexidade pode emergir.</SlideNotes>
+</Slide>
+
+<Slide image={nasaBg} imageAlt="NASA / Bill Ingalls" copyright="NASA / Bill Ingalls" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <div class="flex flex-col items-center gap-12 text-white" style="font-family: 'Montserrat', sans-serif;">
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Formas</p>
+      <p class="text-xl sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Processos</p>
+      <p class="text-xl sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Ecossistemas</p>
+    </div>
+  </div>
+  <SlideNotes>A vida é uma camada de organização: célula, órgãos, organismos, sociedades, ecossistemas. Tudo seguindo regras físicas como a gravidade, ou melhor, o espaço-tempo.</SlideNotes>
+</Slide>
+
+<Slide image={nasaBg} imageAlt="NASA / Bill Ingalls" copyright="NASA / Bill Ingalls" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <div class="flex flex-col items-center gap-12 text-white" style="font-family: 'Montserrat', sans-serif;">
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Formas</p>
+      <p class="text-xl opacity-25 sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide opacity-25 sm:text-4xl lg:text-5xl">Reproduzir Processos</p>
+      <p class="text-xl opacity-25 sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide opacity-25 sm:text-4xl lg:text-5xl">Reproduzir Ecossistemas</p>
+    </div>
+  </div>
+  <SlideNotes>A vida que conhecemos é baseada em códigos. O DNA é um código capaz de gerar e manter um ser vivo. Se nossa realidade pode ser resumida a uma fórmula básica e os seres vivos são baseados em códigos, seria possível traduzir essas informações para o computador?</SlideNotes>
+</Slide>
+
+---
+type: image-row
+title: Reproduzir Formas
+subtitle: Exposição Universal de 1900
+fit: contain
+images:
+  - src: img61
+    alt: Diatomáceas, Ernst Haeckel, Formas de arte na natureza, 1899-1904
+  - src: img62
+    alt: Porte Monumentale, Exposição Universal de 1900, Detroit Publishing Company
+---
+
+<Slide image={nasaBg} imageAlt="NASA / Bill Ingalls" copyright="NASA / Bill Ingalls" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <div class="flex flex-col items-center gap-12 text-white" style="font-family: 'Montserrat', sans-serif;">
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Formas</p>
+      <p class="text-xl sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Processos</p>
+      <p class="text-xl opacity-25 sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide opacity-25 sm:text-4xl lg:text-5xl">Reproduzir Ecossistemas</p>
+    </div>
+  </div>
+  <SlideNotes>Coleção de textos coletada por Achim Menges. Em nossa primeira aula em 2019, Menges fez uma ressalva: o livro é um divisor de águas, mas hoje está um pouco ultrapassado por não incluir textos sobre inteligência artificial.</SlideNotes>
+</Slide>
+
+<Slide image={nasaBg} imageAlt="NASA / Bill Ingalls" copyright="NASA / Bill Ingalls" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <p class="text-3xl font-bold uppercase tracking-wide text-white sm:text-5xl lg:text-6xl" style="font-family: 'Montserrat', sans-serif;">Computação Material</p>
+  </div>
+</Slide>
+
+<Slide image={bucky} imageAlt="Buckminster Fuller" copyright="AP Photo, Bill Ingraham" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/60" />
+  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center text-white">
+    <p class="max-w-4xl text-xl leading-relaxed font-light italic text-balance sm:text-3xl lg:text-4xl" style="font-family: 'Poppins', sans-serif;">"Don't fight forces, use them!"</p>
+    <p class="mt-6 text-base font-bold tracking-wider uppercase sm:text-lg lg:text-xl" style="font-family: 'Montserrat', sans-serif;">Buckminster Fuller</p>
+  </div>
+  <SlideNotes>ICD/ITKE Research Pavilion 2016-17.</SlideNotes>
+</Slide>
+
+<TextSlide text="Robert Hooke" subtext="1635, 1703" size="md" />
+
+---
+image: img64
+imageAlt: Robert Hooke, contexto histórico
+fit: contain
+---
+
+---
+title: St Paul's Cathedral
+subtitle: Londres, 1675, 1711, arq. Christopher Wren
+image: img65
+imageAlt: St Paul's Cathedral, gravura
+copyright: British Museum
+fit: contain
+---
+
+---
+title: St Paul's Cathedral
+subtitle: Londres, 1675, 1711, arq. Christopher Wren
+image: img66
+imageAlt: St Paul's Cathedral, vista atual
+copyright: all-free-photos.com
+fit: contain
+---
+
+<TextSlide text="Antoni Gaudí" subtext="1852, 1926" size="md" />
+
+<Slide image={gaudi} imageAlt="Antoni Gaudí" copyright="Canaan" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/50" />
+  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center text-white">
+    <p class="max-w-4xl text-xl leading-relaxed font-light italic text-balance sm:text-3xl lg:text-4xl" style="font-family: 'Poppins', sans-serif;">"When an invention is not in harmony with natural laws it is not viable."</p>
+    <p class="mt-6 text-base font-bold tracking-wider uppercase sm:text-lg lg:text-xl" style="font-family: 'Montserrat', sans-serif;">Antoni Gaudí</p>
+  </div>
+</Slide>
+
+---
+title: Colônia Güell
+subtitle: Barcelona, 1898, 1914, arq. Antoni Gaudí
+image: img68
+imageAlt: Modelo suspenso de Antoni Gaudí para a Colônia Güell
+copyright: Canaan
+fit: contain
+---
+
+---
+title: Colônia Güell
+subtitle: Barcelona, 1898, 1914, arq. Antoni Gaudí
+image: img69
+imageAlt: Igreja da Colônia Güell, vista interna
+copyright: Bob Masters / DGPC
+fit: contain
+---
+
+<TextSlide text="Buckminster Fuller" subtext="1895, 1983" size="md" />
+
+<Slide image={bucky} imageAlt="Buckminster Fuller" copyright="AP Photo, Bill Ingraham" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/60" />
+  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center text-white">
+    <p class="max-w-4xl text-xl leading-relaxed font-light italic text-balance sm:text-3xl lg:text-4xl" style="font-family: 'Poppins', sans-serif;">"The opposite of nature is impossible."</p>
+    <p class="mt-6 text-base font-bold tracking-wider uppercase sm:text-lg lg:text-xl" style="font-family: 'Montserrat', sans-serif;">Buckminster Fuller</p>
+  </div>
+</Slide>
+
+---
+title: Buckminster Fuller
+subtitle: Geodésicas e tensegridade
+image: img70
+imageAlt: Estudos de geodésicas e tensegridade por Buckminster Fuller
+copyright: Estate of R. Buckminster Fuller
+fit: contain
+---
+
+<TextSlide text="Frei Otto" subtext="1925, 2015" size="md" />
+
+<Slide>
+  <div class="absolute inset-0 flex flex-col items-center justify-center px-8 text-center text-white">
+    <p class="max-w-5xl text-xl leading-relaxed font-light italic text-balance sm:text-3xl lg:text-4xl" style="font-family: 'Poppins', sans-serif;">"Biology has become indispensable for architecture, but architecture has also become indispensable for biology."</p>
+    <p class="mt-6 text-base font-bold tracking-wider uppercase sm:text-lg lg:text-xl" style="font-family: 'Montserrat', sans-serif;">Frei Otto</p>
+  </div>
+</Slide>
+
+---
+image: img72
+imageAlt: Estudo de Frei Otto
+copyright: Frei Otto
+fit: contain
+---
+
+---
+image: img73
+imageAlt: Estudo de Frei Otto
+copyright: Frei Otto
+fit: contain
+---
+
+---
+image: img74
+imageAlt: Estudo de Frei Otto
+copyright: Frei Otto
+fit: contain
+---
+
+---
+image: img75
+imageAlt: Estudo de Frei Otto
+copyright: Frei Otto
+fit: contain
+---
+
+---
+copyright: Frei Otto
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media12.mp4
+  fit: contain
+  blur: false
+---
+
+---
+copyright: Frei Otto
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media13.mp4
+  fit: contain
+  blur: false
+---
+
+---
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media14.mp4
+  fit: contain
+  blur: false
+---
+
+---
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media15.mp4
+  fit: contain
+  blur: false
+---
+
+---
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media16.mp4
+  fit: contain
+  blur: false
+---
+
+<TextSlide text="Finite Element Method" subtext="J. H. Argyris, Universidade de Stuttgart" size="md" />
+
+<Slide image={nasaBg} imageAlt="NASA / Bill Ingalls" copyright="NASA / Bill Ingalls" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <div class="flex flex-col items-center gap-12 text-white" style="font-family: 'Montserrat', sans-serif;">
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Formas</p>
+      <p class="text-xl sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Processos</p>
+      <p class="text-xl sm:text-3xl lg:text-4xl">↓</p>
+      <p class="text-2xl font-bold uppercase tracking-wide sm:text-4xl lg:text-5xl">Reproduzir Ecossistemas</p>
+    </div>
+  </div>
+</Slide>
+
+<Slide image={nasaBg} imageAlt="NASA / Bill Ingalls" copyright="NASA / Bill Ingalls" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/50" />
+  <div class="absolute inset-0 z-10 flex items-center justify-center">
+    <p class="text-3xl font-bold uppercase tracking-wide text-white sm:text-5xl lg:text-6xl" style="font-family: 'Montserrat', sans-serif;">Teoria Unificada</p>
+  </div>
+</Slide>
+
+<Slide title="Game of Life">
+  <div class="absolute inset-0 flex items-center justify-center">
+    <img src={img81.src} alt="Cellular automata, Conway's Game of Life" class="max-h-full max-w-full object-contain" />
+  </div>
+</Slide>
+
+<TextSlide text="Emergência" size="md" />
+
+---
+image: img83
+imageAlt: Estudo de emergência
+fit: contain
+---
+
+---
+image: img84
+imageAlt: Estudo de emergência
+fit: contain
+---
+
+<Slide image={img85} imageAlt="ICD/ITKE Research Pavilion" copyright="NAARO" fit="contain">
+  <div class="absolute inset-0 z-5 bg-black/55" />
+  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center text-white">
+    <p class="max-w-5xl text-xl leading-relaxed font-light italic text-balance sm:text-3xl lg:text-4xl" style="font-family: 'Poppins', sans-serif;">"Biology makes us challenge our preconceptions of how things should be designed and constructed."</p>
+    <p class="mt-6 text-base font-bold tracking-wider uppercase sm:text-lg lg:text-xl" style="font-family: 'Montserrat', sans-serif;">Achim Menges</p>
+  </div>
+</Slide>
+
+<Slide>
+  <img src={img86.src} alt="ICD/ITKE Research Pavilion, contexto" class="absolute" style="left:34.78%; top:10.71%; width:30.44%; height:78.59%; object-fit:contain;" />
+</Slide>
+
+---
+copyright: ICD/ITKE, University of Stuttgart
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/media17.mp4
+  fit: contain
+  blur: false
+---
+
+---
+title: ICD/ITKE Research Pavilion
+image: img88
+imageAlt: ICD/ITKE Research Pavilion, externa
+copyright: Roland Halbe
+fit: contain
+---
+
+<Slide title="ICD/ITKE Research Pavilion" subtitle="Detalhes construtivos">
+  <img src={img89.src} alt="Vista geral do pavilhão ICD/ITKE" class="absolute" style="left:20.44%; top:23.72%; width:59.11%; height:26.28%; object-fit:contain;" />
+  <img src={o3ConstructionPhases0.src} alt="Detalhe construtivo 1 do pavilhão ICD/ITKE" class="absolute" style="left:33.84%; top:59.98%; width:11.16%; height:12.38%; object-fit:contain;" />
+  <img src={o3ConstructionPhases1.src} alt="Detalhe construtivo 2 do pavilhão ICD/ITKE" class="absolute" style="left:55.13%; top:60.95%; width:12.8%; height:10.37%; object-fit:contain;" />
+</Slide>
+
+---
+title: ICD/ITKE Research Pavilion
+image: o3ConstructionPhases2
+imageAlt: Vista do pavilhão ICD/ITKE
+copyright: ICD/ITKE, University of Stuttgart
+fit: contain
+---
+
+---
+title: ICD/ITKE Research Pavilion
+image: o3ConstructionPhases3
+imageAlt: Vista do pavilhão ICD/ITKE
+copyright: ICD/ITKE, University of Stuttgart
+fit: contain
+---
+
+---
+title: ICD/ITKE Research Pavilion
+image: o3ConstructionPhases4
+imageAlt: Vista do pavilhão ICD/ITKE
+copyright: ICD/ITKE, University of Stuttgart
+fit: contain
+---
+
+---
+title: ICD/ITKE Research Pavilion
+image: o3ConstructionPhases5
+imageAlt: Vista do pavilhão ICD/ITKE
+copyright: ICD/ITKE, University of Stuttgart
+fit: contain
+---
+
+---
+title: ICD/ITKE Research Pavilion
+image: o3ConstructionPhases6
+imageAlt: Vista do pavilhão ICD/ITKE
+copyright: ICD/ITKE, University of Stuttgart
+fit: contain
+---
+
+---
+title: ICD/ITKE Research Pavilion
+image: o3ConstructionPhases7
+imageAlt: Vista do pavilhão ICD/ITKE
+copyright: ICD/ITKE, University of Stuttgart
+fit: contain
+---
+
+---
+title: ICD/ITKE Research Pavilion
+image: o3ConstructionPhases8
+imageAlt: Vista externa, ICD/ITKE
+copyright: Roland Halbe
+fit: contain
+---
+
+---
+title: IntCDC, University of Stuttgart
+image: o3ConstructionPhases9
+imageAlt: IntCDC, University of Stuttgart
+copyright: ICD/ITKE/IntCDC, University of Stuttgart
+fit: contain
+---
+
+<TextSlide text="Aprendizados durante o ITECH" size="md" />
+
+<Slide title="BuildSystems" subtitle="Viabilizando construções sustentáveis">
+  <img src={img100.src} alt="BuildSystems, plataforma" class="absolute" style="left:15%; top:40.95%; width:70%; height:18.1%; object-fit:contain;" />
+</Slide>
+
+---
+image: img101
+imageAlt: BuildSystems, interface
+fit: contain
+---
+
+<TextSlide text="Inteligência Artificial" size="md" />
+
+<TextSlide text="Obrigado!" size="xl" />

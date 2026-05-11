@@ -227,12 +227,16 @@ const {
   }
 
   /* Bare-image safety net for slot content (no Tailwind class). Wrapped in
-     :where() so its specificity is just the `img` element (0,0,0,1) — Tailwind
-     utility classes like `h-full` (0,0,1,0) win, which is what we want for
-     absolutely-positioned full-bleed images in Slide.astro. */
-  :where(.slide) img {
-    max-width: 100%;
-    height: auto;
+     @layer base so Tailwind v4 utilities like `h-full` (in the `utilities`
+     layer, declared after `base`) win by cascade-layer order — needed for
+     absolutely-positioned full-bleed images in Slide.astro and the grid
+     cells in SlideImageRow.astro. The :where() also keeps the rule's
+     specificity at (0,0,0,1) so unlayered classes still override it. */
+  @layer base {
+    :where(.slide) img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 
   .slide figure {

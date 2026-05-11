@@ -604,34 +604,56 @@ export function validateSlide(
 
 // --- Extraction ------------------------------------------------------------
 
+export interface ExtractionResult {
+  slides: ExtractedSlide[];
+  parseErrors: SlideValidationError[];
+}
+
 export function extractSlidesFromMdx(
   code: string,
   file: string,
-): ExtractedSlide[] {
+): ExtractionResult {
   const frontmatterMatch = code.match(/^---\r?\n[\s\S]*?\r?\n---\r?\n/);
   const frontmatter = frontmatterMatch?.[0] ?? "";
   const body = code.slice(frontmatter.length);
 
   const slides: ExtractedSlide[] = [];
+  const parseErrors: SlideValidationError[] = [];
   const regex = /(?:^|\n)---\r?\n([\s\S]*?)\r?\n---(?=\r?\n|$)/g;
 
   for (const match of body.matchAll(regex)) {
     const yamlContent = match[1];
-    let parsed: unknown;
-    try {
-      parsed = parseYaml(yamlContent);
-    } catch {
-      continue;
-    }
-    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-      continue;
-    }
 
     const startsWithNewline = match[0].startsWith("\n");
     const fenceOffset = (match.index ?? 0) + (startsWithNewline ? 1 : 0);
     const absoluteOffset = frontmatter.length + fenceOffset;
     // 1-indexed line number of the opening `---`
     const line = code.slice(0, absoluteOffset).split("\n").length;
+
+    let parsed: unknown;
+    try {
+      parsed = parseYaml(yamlContent);
+    } catch (e) {
+      // Parse failure inside a YAML fence is a build error. Silent skip
+      // (the prior behavior) caused the plugin to leave `---...---` in the
+      // body, which then confused MDX and rendered the deck empty without
+      // any diagnostic. Surface as a validation error.
+      const message = (e as Error).message.split("\n")[0];
+      parseErrors.push({
+        file,
+        line,
+        message: `YAML parse error: ${message}. Hint: quote prose values that contain ': ' (a colon followed by a space) so YAML doesn't read them as nested mappings.`,
+      });
+      continue;
+    }
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      parseErrors.push({
+        file,
+        line,
+        message: `Fence content is not a YAML object (got ${parsed === null || parsed === undefined ? "empty fence" : Array.isArray(parsed) ? "array" : typeof parsed}). Slide fences must be a mapping with at least one field.`,
+      });
+      continue;
+    }
 
     slides.push({
       config: parsed as Record<string, unknown>,
@@ -640,7 +662,7 @@ export function extractSlidesFromMdx(
     });
   }
 
-  return slides;
+  return { slides, parseErrors };
 }
 
 export function formatValidationErrors(
@@ -800,10 +822,16 @@ export function presentationSlides(): Plugin {
       // Validate first (one parse pass), then emit (second parse pass).
       // YAML parsing is cheap; the duplication keeps the two responsibilities
       // separated and makes the validator reusable from the standalone script.
-      const slides = extractSlidesFromMdx(code, normalizedId);
-      const errors = slides.flatMap((s) =>
-        validateSlide(s.config, { file: s.file, line: s.line }),
+      const { slides, parseErrors } = extractSlidesFromMdx(
+        code,
+        normalizedId,
       );
+      const errors = [
+        ...parseErrors,
+        ...slides.flatMap((s) =>
+          validateSlide(s.config, { file: s.file, line: s.line }),
+        ),
+      ];
       if (errors.length > 0) {
         const formatted = formatValidationErrors(errors);
         throw new Error(

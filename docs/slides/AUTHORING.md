@@ -34,6 +34,13 @@ import SlideNotes from "@/components/slides/SlideNotes.astro";
 import SlideImage from "@/components/slides/SlideImage.astro";
 import SlideVideo from "@/components/slides/SlideVideo.astro";
 import SlideImageRow from "@/components/slides/SlideImageRow.astro";
+// Required-imports rule: the YAML plugin emits JSX that references whichever
+// components your fences use. `type: title` needs `TitleSlide`; `type: text`
+// needs `TextSlide`; `type: image-row` needs `SlideImageRow`; any `slide`
+// fence emits `<Slide>` and (if `notes:` is set) `<SlideNotes>`; any
+// `slideImage:` block needs `SlideImage`; any `slideVideo:` block needs
+// `SlideVideo`. Keep the full set imported; an unused import is cheap, but
+// a missing one makes MDX silently render the deck as an empty <main>.
 
 import cover from "@/assets/content/teaching/<slug>/<image>.jpg";
 // ...more asset imports
@@ -483,10 +490,12 @@ Asset paths under `src/assets/content/teaching/<slug>/` are conventional but not
 ## Common pitfalls
 
 - **Unquoted percentages parse as numbers.** Write `width: "50%"`, not `width: 50%` and definitely not `width: 50`.
+- **Colons in prose values trigger nested-mapping errors.** YAML reads `notes: A: B` as `notes` having a sub-key `A`. Quote any string value that contains `': '` (a colon followed by a space): `notes: "A: B"`. The validator catches this at `npm run check:decks`.
+- **Missing component imports = silent empty deck.** If a deck uses `slideVideo:` but doesn't `import SlideVideo`, MDX fails to resolve the component and renders an empty `<main>` with no error. Keep all six slide-component imports present even if you think you're not using one; it's the cheapest insurance against this failure mode.
 - **GIFs through `<Image>` lose animation.** Use `gif.src` (string URL) instead of passing the import binding directly.
 - **Template literals don't work in YAML.** Inline the full path string, or stay in JSX.
 - **Forgetting `imageAlt:` when `image:` is set** breaks accessibility. Always include alt text.
-- **`notes:` on title/text slides is silently dropped today.** `TitleSlide` and `TextSlide` don't render children. Plan to error on this in the upcoming validator.
+- **`notes:` on title/text/image-row slides is rejected.** Those components don't render notes. The validator errors on this; remove `notes:` or change `type:` to `slide`.
 - **Em dashes (`—`) in slide text content** are forbidden by project convention (see `CLAUDE.md`). Use commas, colons, or parentheses instead.
 
 ## Related references

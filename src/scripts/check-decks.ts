@@ -53,8 +53,9 @@ async function main(): Promise<void> {
     fileCount++;
     const code = await readFile(file, "utf8");
     const relPath = toPosix(relative(ROOT, file));
-    const slides = extractSlidesFromMdx(code, relPath);
+    const { slides, parseErrors } = extractSlidesFromMdx(code, relPath);
     slideCount += slides.length;
+    allErrors.push(...parseErrors);
     for (const slide of slides) {
       allErrors.push(
         ...validateSlide(slide.config, {
