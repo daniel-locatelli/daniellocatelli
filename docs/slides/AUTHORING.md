@@ -86,6 +86,8 @@ The general-purpose slide. Background image with title/subtitle/copyright chrome
 | `fit` | `"cover"` or `"contain"` | no | `"cover"` | Background `object-fit` |
 | `notes` | string | no | | Emitted as `<SlideNotes>` child |
 
+`notes:` is supported on every slide type. `<SlideNotes>` renders as a `position: fixed` overlay, so it doesn't compete with the slide's centered content.
+
 ### `type: title`
 
 Title/intro slide. Centered chrome over an optional background.
@@ -102,8 +104,7 @@ Title/intro slide. Centered chrome over an optional background.
 | `imagePosition` | string | no | `"center"` | |
 | `darkText` | boolean | no | `false` | |
 | `fit` | `"cover"` or `"contain"` | no | `"cover"` | |
-
-`notes:` is **not** supported on title slides.
+| `notes` | string | no | | Emitted as `<SlideNotes>` overlay |
 
 ### `type: text`
 
@@ -114,9 +115,9 @@ Centered text-only slide. Used for chapter dividers and pull quotes.
 | `type` | `"text"` | yes | | |
 | `text` | string | yes | | Main centered text |
 | `subtext` | string | no | | Smaller secondary line |
-| `size` | `"md"` \| `"lg"` \| `"xl"` | no | `"lg"` | Main text size |
-
-`notes:` is **not** supported on text slides.
+| `size` | `"sm"` \| `"md"` \| `"lg"` \| `"xl"` | no | `"lg"` | Main text size |
+| `case` | `"upper"` \| `"normal"` | no | `"normal"` | `"upper"` applies `text-transform: uppercase` and wider letter-spacing (calibrated for all-caps) |
+| `notes` | string | no | | Emitted as `<SlideNotes>` overlay |
 
 ### `type: image-row`
 
@@ -132,6 +133,7 @@ Whole-slide grid of 2-4 images with optional shared title/subtitle/copyright. Re
 | `gap` | `"none"` \| `"sm"` \| `"md"` \| `"lg"` | no | `"sm"` | Spacing between images |
 | `fit` | `"cover"` or `"contain"` | no | `"contain"` | Image `object-fit` |
 | `images` | array | yes | | 2-4 items; each item is `{ src, alt }` |
+| `notes` | string | no | | Emitted as `<SlideNotes>` overlay |
 
 Each item in `images` accepts:
 
@@ -157,7 +159,7 @@ images:
 ---
 ```
 
-`notes:` is **not** supported on image-row slides. If you need 5 or more images, multiple rows, or per-image positioning, drop to JSX.
+If you need 5 or more images, multiple rows, or per-image positioning, drop to JSX.
 
 ## Nested child blocks (inside `type: slide`)
 
@@ -495,7 +497,6 @@ Asset paths under `src/assets/content/teaching/<slug>/` are conventional but not
 - **GIFs through `<Image>` lose animation.** Use `gif.src` (string URL) instead of passing the import binding directly.
 - **Template literals don't work in YAML.** Inline the full path string, or stay in JSX.
 - **Forgetting `imageAlt:` when `image:` is set** breaks accessibility. Always include alt text.
-- **`notes:` on title/text/image-row slides is rejected.** Those components don't render notes. The validator errors on this; remove `notes:` or change `type:` to `slide`.
 - **Em dashes (`—`) in slide text content** are forbidden by project convention (see `CLAUDE.md`). Use commas, colons, or parentheses instead.
 
 ## Related references

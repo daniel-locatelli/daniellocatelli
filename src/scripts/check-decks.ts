@@ -3,8 +3,8 @@
  * schema defined by `src/lib/vite-presentation-slides.ts`.
  *
  * Catches unknown fields, missing required fields, missing `imageAlt` when
- * `image` is set, dropped-silently `notes` on title/text slides, invalid
- * enum values, and type mismatches (number where string expected).
+ * `image` is set, invalid enum values, and type mismatches (number where
+ * string expected).
  *
  * Runs without spinning up Astro or Vite; pure YAML parsing plus schema
  * checks. Target runtime under one second on the full content tree.

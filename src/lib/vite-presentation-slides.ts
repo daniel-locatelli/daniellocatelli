@@ -93,7 +93,7 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "imagePosition",
     "darkText",
     "fit",
-    "notes", // recognized but rejected; see notes-rejection check
+    "notes",
     "slideImage", // recognized but rejected; see slideImage-rejection check
     "slideVideo", // recognized but rejected; see slideVideo-rejection check
   ]),
@@ -102,6 +102,7 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "text",
     "subtext",
     "size",
+    "case",
     "notes",
     "slideImage",
     "slideVideo",
@@ -115,7 +116,7 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "gap",
     "fit",
     "images",
-    "notes", // recognized but rejected; see notes-rejection check
+    "notes",
     "slideImage", // recognized but rejected; see slideImage-rejection check
     "slideVideo", // recognized but rejected; see slideVideo-rejection check
   ]),
@@ -129,9 +130,10 @@ const REQUIRED_FIELDS: Record<SlideType, readonly string[]> = {
 };
 
 const ENUM_VALUES: Record<string, readonly string[]> = {
-  size: ["md", "lg", "xl"],
+  size: ["sm", "md", "lg", "xl"],
   fit: ["cover", "contain"],
   gap: ["none", "sm", "md", "lg"],
+  case: ["upper", "normal"],
 };
 
 const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
@@ -153,9 +155,10 @@ const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
     "imageAlt",
     "imagePosition",
     "fit",
+    "notes",
   ],
-  text: ["text", "subtext", "size"],
-  "image-row": ["title", "subtitle", "gap", "fit"],
+  text: ["text", "subtext", "size", "case", "notes"],
+  "image-row": ["title", "subtitle", "gap", "fit", "notes"],
 };
 
 const BOOLEAN_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
@@ -446,19 +449,6 @@ export function validateSlide(
   ) {
     push(
       `Slide (type: ${type}): 'image' is set but 'imageAlt' is missing. Required for accessibility.`,
-    );
-  }
-
-  // notes rejected on title/text/image-row (no first-class children renderer)
-  if (type !== "slide" && config.notes !== undefined) {
-    const componentName =
-      type === "title"
-        ? "TitleSlide"
-        : type === "text"
-          ? "TextSlide"
-          : "SlideImageRow";
-    push(
-      `Slide (type: ${type}): '${componentName}' does not render notes. Remove the 'notes' field or change 'type' to 'slide'.`,
     );
   }
 
@@ -788,8 +778,10 @@ function buildSlideJsx(config: Record<string, unknown>): string {
     extraAttrs = ` images={${emitImagesArray(config.images)}}`;
   }
 
-  // Children (only emitted on type: slide; validator rejects these fields
-  // on other types). Render order: SlideImage, SlideVideo, SlideNotes.
+  // Children. slideImage/slideVideo are restricted to type: slide (the
+  // validator rejects them on other types). notes is supported on every
+  // type since <SlideNotes> is position: fixed and only needs to exist
+  // somewhere in the DOM. Render order: SlideImage, SlideVideo, SlideNotes.
   const children: string[] = [];
   if (componentName === "Slide" && slideImage) {
     children.push(emitSlideImageJsx(slideImage));
@@ -797,7 +789,7 @@ function buildSlideJsx(config: Record<string, unknown>): string {
   if (componentName === "Slide" && slideVideo) {
     children.push(emitSlideVideoJsx(slideVideo));
   }
-  if (componentName === "Slide" && notes) {
+  if (notes) {
     children.push(`<SlideNotes>{${JSON.stringify(notes)}}</SlideNotes>`);
   }
 

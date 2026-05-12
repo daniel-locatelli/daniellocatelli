@@ -65,7 +65,7 @@ const isStringImage = typeof image === "string";
     class={`absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center ${textColor}`}
   >
     <h1
-      class="max-w-5xl text-3xl leading-tight font-bold tracking-wide uppercase text-shadow-xs sm:text-5xl lg:text-6xl"
+      class="max-w-5xl text-3xl leading-tight font-bold tracking-wide whitespace-pre-line uppercase text-shadow-xs sm:text-5xl lg:text-6xl"
       style="font-family: 'Montserrat', sans-serif;"
     >
       {title}
@@ -73,7 +73,7 @@ const isStringImage = typeof image === "string";
     {
       subtitle && (
         <p
-          class="mt-4 max-w-4xl text-base leading-relaxed font-light tracking-wide italic text-pretty opacity-80 text-shadow-xs sm:text-xl lg:text-2xl"
+          class="mt-4 max-w-4xl text-base leading-relaxed font-light tracking-wide whitespace-pre-line italic text-pretty opacity-80 text-shadow-xs sm:text-xl lg:text-2xl"
           style="font-family: 'Poppins', sans-serif;"
         >
           {subtitle}
@@ -103,4 +103,5 @@ const isStringImage = typeof image === "string";
       )
     }
   </div>
+  <slot />
 </section>
