@@ -78,9 +78,11 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "darkText",
     "copyright",
     "fit",
+    "overlay",
     "notes",
     "slideImage",
     "slideVideo",
+    "slideText",
   ]),
   title: new Set([
     "type",
@@ -144,6 +146,7 @@ const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
     "imageAlt",
     "imagePosition",
     "fit",
+    "overlay",
     "notes",
   ],
   title: [
@@ -232,6 +235,23 @@ const SLIDE_VIDEO_PRELOAD_VALUES: readonly string[] = [
   "metadata",
   "auto",
 ];
+
+const SLIDE_TEXT_STRING_FIELDS: readonly string[] = [
+  "text",
+  "subtext",
+  "size",
+  "case",
+  "variant",
+  "gap",
+];
+
+const SLIDE_TEXT_SIZE_VALUES: readonly string[] = ["sm", "md", "lg", "xl"];
+const SLIDE_TEXT_CASE_VALUES: readonly string[] = ["upper", "normal"];
+const SLIDE_TEXT_VARIANT_VALUES: readonly string[] = ["title", "quote"];
+const SLIDE_TEXT_GAP_VALUES: readonly string[] = ["sm", "md", "lg", "xl"];
+
+// text/subtext are plain strings; no JS bindings.
+const SLIDE_TEXT_BINDING_FIELDS: ReadonlySet<string> = new Set();
 
 const SLIDE_VIDEO_FIT_VALUES: readonly string[] = ["cover", "contain"];
 
@@ -398,6 +418,52 @@ function validateSlideVideoBlock(
   }
 }
 
+function validateSlideTextBlock(
+  block: unknown,
+  push: (message: string) => void,
+): void {
+  if (!block || typeof block !== "object" || Array.isArray(block)) {
+    push(
+      `slideText: must be an object with a 'text' field, got ${Array.isArray(block) ? "array" : typeof block}.`,
+    );
+    return;
+  }
+  const obj = block as Record<string, unknown>;
+
+  if (obj.text === undefined || obj.text === null || obj.text === "") {
+    push(`slideText: missing required field 'text'.`);
+  } else if (typeof obj.text !== "string") {
+    push(`slideText.text must be a string, got ${typeof obj.text}.`);
+  }
+
+  for (const field of SLIDE_TEXT_STRING_FIELDS) {
+    if (field === "text") continue;
+    const value = obj[field];
+    if (value === undefined || value === null) continue;
+    if (typeof value !== "string") {
+      push(`slideText.${field} must be a string, got ${typeof value}.`);
+    }
+  }
+
+  const enumCheck = (
+    field: string,
+    values: readonly string[],
+  ): void => {
+    const value = obj[field];
+    if (typeof value === "string" && !values.includes(value)) {
+      const suggestion = suggest(value, values);
+      const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+      push(
+        `slideText.${field}: invalid value '${value}'. Valid: ${values.join(", ")}.${hint}`,
+      );
+    }
+  };
+  enumCheck("size", SLIDE_TEXT_SIZE_VALUES);
+  enumCheck("case", SLIDE_TEXT_CASE_VALUES);
+  enumCheck("variant", SLIDE_TEXT_VARIANT_VALUES);
+  enumCheck("gap", SLIDE_TEXT_GAP_VALUES);
+}
+
 export function validateSlide(
   config: Record<string, unknown>,
   ctx: { file: string; line: number },
@@ -463,6 +529,23 @@ export function validateSlide(
     }
   }
 
+  // overlay: format check (only on type: slide)
+  if (config.overlay !== undefined) {
+    if (type !== "slide") {
+      push(
+        `Slide (type: ${type}): 'overlay' is only supported on type: slide. Remove it or change 'type' to 'slide'.`,
+      );
+    } else if (typeof config.overlay !== "string") {
+      push(
+        `Slide: 'overlay' must be a string in "color/alpha" form (e.g. "black/50"), got ${typeof config.overlay}.`,
+      );
+    } else if (!/^(black|white)\/(?:100|\d{1,2})$/.test(config.overlay)) {
+      push(
+        `Slide: 'overlay' must be "<color>/<alpha>" where color is "black" or "white" and alpha is 0-100 (e.g. "black/50"), got "${config.overlay}".`,
+      );
+    }
+  }
+
   // slideVideo: nested block validation (only on type: slide)
   if (config.slideVideo !== undefined) {
     if (type !== "slide") {
@@ -471,6 +554,17 @@ export function validateSlide(
       );
     } else {
       validateSlideVideoBlock(config.slideVideo, push);
+    }
+  }
+
+  // slideText: nested block validation (only on type: slide)
+  if (config.slideText !== undefined) {
+    if (type !== "slide") {
+      push(
+        `Slide (type: ${type}): 'slideText' is only supported on type: slide. Remove it or change 'type' to 'slide'.`,
+      );
+    } else {
+      validateSlideTextBlock(config.slideText, push);
     }
   }
 
@@ -719,6 +813,15 @@ function emitSlideVideoJsx(block: Record<string, unknown>): string {
   return `<SlideVideo${attrs} />`;
 }
 
+// Emits a <SlideText /> child from a slideText YAML block. All fields are
+// plain strings (no JS bindings).
+function emitSlideTextJsx(block: Record<string, unknown>): string {
+  const attrs = Object.entries(block)
+    .map(([k, v]) => emitAttr(k, v, SLIDE_TEXT_BINDING_FIELDS))
+    .join("");
+  return `<SlideText${attrs} />`;
+}
+
 // Emits the `images` array for an image-row slide. Each item resolves `src`
 // as a binding-or-string and `alt` as a JSON-quoted string literal. Items
 // that don't match the expected shape are emitted as best-effort; the
@@ -738,9 +841,23 @@ function emitImagesArray(items: readonly unknown[]): string {
   return `[${parts.join(", ")}]`;
 }
 
+function emitOverlayJsx(overlay: string): string {
+  // We emit inline `style="background-color: rgba(...)"` rather than a
+  // `bg-${color}/${alpha}` Tailwind class. Tailwind 4's content scanner reads
+  // the source `.mdx` files (not this plugin's transformed output), so a
+  // dynamically-generated class would only render while a literal occurrence
+  // existed elsewhere in the source. Inline style is scanner-independent.
+  const match = overlay.match(/^(black|white)\/(\d+)$/);
+  if (!match) return "";
+  const rgb = match[1] === "black" ? "0, 0, 0" : "255, 255, 255";
+  const alpha = parseInt(match[2], 10) / 100;
+  return `<div class="absolute inset-0 z-5" style="background-color: rgba(${rgb}, ${alpha});" />`;
+}
+
 function buildSlideJsx(config: Record<string, unknown>): string {
   const type = (config.type as string | undefined) ?? "slide";
   const notes = config.notes as string | undefined;
+  const overlay = config.overlay as string | undefined;
   const slideImage =
     config.slideImage && typeof config.slideImage === "object" && !Array.isArray(config.slideImage)
       ? (config.slideImage as Record<string, unknown>)
@@ -748,6 +865,10 @@ function buildSlideJsx(config: Record<string, unknown>): string {
   const slideVideo =
     config.slideVideo && typeof config.slideVideo === "object" && !Array.isArray(config.slideVideo)
       ? (config.slideVideo as Record<string, unknown>)
+      : undefined;
+  const slideText =
+    config.slideText && typeof config.slideText === "object" && !Array.isArray(config.slideText)
+      ? (config.slideText as Record<string, unknown>)
       : undefined;
 
   const componentName =
@@ -763,8 +884,10 @@ function buildSlideJsx(config: Record<string, unknown>): string {
   const specialFields = new Set<string>([
     "type",
     "notes",
+    "overlay",
     "slideImage",
     "slideVideo",
+    "slideText",
   ]);
   if (componentName === "SlideImageRow") specialFields.add("images");
 
@@ -778,16 +901,26 @@ function buildSlideJsx(config: Record<string, unknown>): string {
     extraAttrs = ` images={${emitImagesArray(config.images)}}`;
   }
 
-  // Children. slideImage/slideVideo are restricted to type: slide (the
-  // validator rejects them on other types). notes is supported on every
-  // type since <SlideNotes> is position: fixed and only needs to exist
-  // somewhere in the DOM. Render order: SlideImage, SlideVideo, SlideNotes.
+  // Children. overlay/slideImage/slideVideo/slideText are restricted to
+  // type: slide (the validator rejects them on other types). notes is
+  // supported on every type since <SlideNotes> is position: fixed and only
+  // needs to exist somewhere in the DOM. Render order: overlay (z-5),
+  // SlideImage, SlideVideo, SlideText (z-10), SlideNotes — overlay first so
+  // any positioned foreground content sits visually above it; slideText
+  // last among visible content so it sits over both the overlay and any
+  // foreground image/video.
   const children: string[] = [];
+  if (componentName === "Slide" && overlay) {
+    children.push(emitOverlayJsx(overlay));
+  }
   if (componentName === "Slide" && slideImage) {
     children.push(emitSlideImageJsx(slideImage));
   }
   if (componentName === "Slide" && slideVideo) {
     children.push(emitSlideVideoJsx(slideVideo));
+  }
+  if (componentName === "Slide" && slideText) {
+    children.push(emitSlideTextJsx(slideText));
   }
   if (notes) {
     children.push(`<SlideNotes>{${JSON.stringify(notes)}}</SlideNotes>`);

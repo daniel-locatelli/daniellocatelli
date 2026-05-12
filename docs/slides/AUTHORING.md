@@ -84,6 +84,7 @@ The general-purpose slide. Background image with title/subtitle/copyright chrome
 | `darkText` | boolean | no | `false` | Use zinc-950 chrome text for light backgrounds |
 | `copyright` | string or string[] | no | | Bottom-right credit |
 | `fit` | `"cover"` or `"contain"` | no | `"cover"` | Background `object-fit` |
+| `overlay` | string `"<color>/<alpha>"` | no | | Full-bleed darkening/lightening overlay at `z-5`. Color is `"black"` or `"white"`; alpha is 0-100. Example: `"black/50"`. Emitted as inline `rgba()` so Tailwind's content scanner is not involved. |
 | `notes` | string | no | | Emitted as `<SlideNotes>` child |
 
 `notes:` is supported on every slide type. `<SlideNotes>` renders as a `position: fixed` overlay, so it doesn't compete with the slide's centered content.
@@ -249,7 +250,67 @@ slideVideo:
 
 `slideVideo:` is only valid on `type: slide`. The validator rejects it on title/text/image-row slides.
 
-Both `slideImage:` and `slideVideo:` may appear on the same slide; they emit as sibling children inside `<Slide>` in this order: `<SlideImage>`, `<SlideVideo>`, `<SlideNotes>` (when `notes:` is set).
+### `slideText:`
+
+Foreground text overlay rendered on top of the background image (and overlay, if set). Used for centered titles, multi-line stacks, and quote+attribution patterns over an image. Maps 1:1 to `<SlideText>` props.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `text` | string | yes | | Main text. Use a `\|` or `\|+` block scalar for multi-line stacks; each line renders as its own `<p>` in a flex column with `gap` spacing. |
+| `subtext` | string | no | | Smaller secondary line. Rendered as italic Poppins below the title (variant: title) or as bold uppercase Montserrat attribution (variant: quote). |
+| `size` | `"sm" \| "md" \| "lg" \| "xl"` | no | `"md"` | Main text size tier. |
+| `case` | `"upper" \| "normal"` | no | `"upper"` | Applies `text-transform: uppercase` + wider letter-spacing to the title variant. Quote variant ignores this (always normal case). |
+| `variant` | `"title" \| "quote"` | no | `"title"` | `"title"` is bold Montserrat. `"quote"` is light italic Poppins, with a bold-uppercase attribution below if `subtext` is set. |
+| `gap` | `"sm" \| "md" \| "lg" \| "xl"` | no | `"lg"` | Vertical gap between lines when `text` is multi-line. Maps to `gap-4/8/12/16`. |
+
+Example (centered title over a dark-overlaid background):
+
+```yaml
+---
+image: nasaBillIngalls
+imageAlt: NASA / Bill Ingalls
+overlay: black/50
+slideText:
+  text: Computação Material
+  size: lg
+---
+```
+
+Example (multi-line stack with arrows):
+
+```yaml
+---
+image: nasaBillIngalls
+imageAlt: NASA / Bill Ingalls
+overlay: black/50
+slideText:
+  text: |
+    Reproduzir Formas
+    ↓
+    Reproduzir Processos
+    ↓
+    Reproduzir Ecossistemas
+---
+```
+
+Example (quote with attribution):
+
+```yaml
+---
+image: bucky
+imageAlt: Buckminster Fuller
+overlay: black/60
+slideText:
+  text: |-
+    "Don't fight forces, use them!"
+  subtext: Buckminster Fuller
+  variant: quote
+---
+```
+
+`slideText:` is only valid on `type: slide`. For per-line opacity / build-reveal patterns within a stack, stay in JSX.
+
+Both `slideImage:`, `slideVideo:`, and `slideText:` may appear on the same slide; they emit as sibling children inside `<Slide>` in this order: `<SlideImage>`, `<SlideVideo>`, `<SlideText>`, `<SlideNotes>` (when `notes:` is set). The `slideText:` block lives at `z-10`, above the optional `overlay:` (`z-5`) and the background image.
 
 ## Field value rules
 
