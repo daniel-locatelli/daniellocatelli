@@ -59,13 +59,13 @@ const isStringImage = typeof image === "string";
       ))
   }
 
-  {image && <div class="absolute inset-0 z-[5] bg-gradient-to-t from-black via-black/80 to-transparent" />}
+  {image && <div class="absolute inset-0 z-[5] bg-gradient-to-t from-black/70 via-black/50 to-transparent" />}
 
   <div
     class={`absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center ${textColor}`}
   >
     <h1
-      class="max-w-5xl text-3xl leading-tight font-bold tracking-wide uppercase sm:text-5xl lg:text-6xl"
+      class="max-w-5xl text-3xl leading-tight font-bold tracking-wide uppercase text-shadow-xs sm:text-5xl lg:text-6xl"
       style="font-family: 'Montserrat', sans-serif;"
     >
       {title}
@@ -73,7 +73,7 @@ const isStringImage = typeof image === "string";
     {
       subtitle && (
         <p
-          class="mt-4 max-w-4xl text-base leading-relaxed font-light tracking-wide italic opacity-80 sm:text-xl lg:text-2xl"
+          class="mt-4 max-w-4xl text-base leading-relaxed font-light tracking-wide italic text-pretty opacity-80 text-shadow-xs sm:text-xl lg:text-2xl"
           style="font-family: 'Poppins', sans-serif;"
         >
           {subtitle}
@@ -85,7 +85,7 @@ const isStringImage = typeof image === "string";
         <div class="mt-16 flex flex-col gap-1">
           {author && (
             <p
-              class="text-base font-bold tracking-wider uppercase sm:text-lg lg:text-xl"
+              class="text-base font-bold tracking-wider uppercase text-shadow-xs sm:text-lg lg:text-xl"
               style="font-family: 'Montserrat', sans-serif;"
             >
               {author}
@@ -93,7 +93,7 @@ const isStringImage = typeof image === "string";
           )}
           {institution && (
             <p
-              class="text-sm tracking-wider uppercase opacity-70 sm:text-base lg:text-lg"
+              class="text-sm tracking-wider uppercase opacity-70 text-shadow-xs sm:text-base lg:text-lg"
               style="font-family: 'Montserrat', sans-serif;"
             >
               {institution}
