@@ -142,6 +142,7 @@ Each item in `images` accepts:
 | --- | --- | --- | --- |
 | `src` | binding or URL | yes | Bare identifier resolves to a JS import binding; URL-shaped strings stay literal |
 | `alt` | string | yes | Required for accessibility |
+| `copyright` | string or string[] | no | Per-image credit, rendered as a frosted-pill at the cell's bottom-left corner (kept off the right side so it doesn't collide with the slide progress indicator). |
 
 Example:
 

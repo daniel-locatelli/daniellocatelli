@@ -5,6 +5,7 @@ import Credit from "@/components/Credit.astro";
 interface ImageItem {
   src: ImageMetadata | string;
   alt?: string;
+  copyright?: string | string[];
 }
 
 interface Props {
@@ -68,6 +69,7 @@ const gridColsClass =
               class={`absolute inset-0 h-full w-full ${fitClass}`}
             />
           )}
+          {img.copyright && <Credit credit={img.copyright} class="bottom-2 left-2" />}
         </div>
       ))
     }

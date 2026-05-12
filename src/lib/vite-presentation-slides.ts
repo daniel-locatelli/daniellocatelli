@@ -620,12 +620,24 @@ export function validateSlide(
             `Slide (type: image-row): images[${idx}].alt must be a string, got ${typeof obj.alt}.`,
           );
         }
+        if (obj.copyright !== undefined && obj.copyright !== null) {
+          const cr = obj.copyright;
+          const ok =
+            typeof cr === "string" ||
+            (Array.isArray(cr) && cr.every((line) => typeof line === "string"));
+          if (!ok) {
+            push(
+              `Slide (type: image-row): images[${idx}].copyright must be a string or array of strings, got ${Array.isArray(cr) ? "array of mixed types" : typeof cr}.`,
+            );
+          }
+        }
+        const allowedImageKeys = ["src", "alt", "copyright"];
         for (const key of Object.keys(obj)) {
-          if (key !== "src" && key !== "alt") {
-            const suggestion = suggest(key, ["src", "alt"]);
+          if (!allowedImageKeys.includes(key)) {
+            const suggestion = suggest(key, allowedImageKeys);
             const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
             push(
-              `Slide (type: image-row): images[${idx}] has unknown field '${key}'. Only 'src' and 'alt' are supported.${hint}`,
+              `Slide (type: image-row): images[${idx}] has unknown field '${key}'. Allowed: ${allowedImageKeys.join(", ")}.${hint}`,
             );
           }
         }
@@ -836,7 +848,14 @@ function emitImagesArray(items: readonly unknown[]): string {
     if (typeof src !== "string") continue;
     const srcExpr = emitBindingOrString(src);
     const altExpr = JSON.stringify(typeof alt === "string" ? alt : "");
-    parts.push(`{ src: ${srcExpr}, alt: ${altExpr} }`);
+    const fragments = [`src: ${srcExpr}`, `alt: ${altExpr}`];
+    const cr = obj.copyright;
+    if (typeof cr === "string") {
+      fragments.push(`copyright: ${JSON.stringify(cr)}`);
+    } else if (Array.isArray(cr) && cr.every((line) => typeof line === "string")) {
+      fragments.push(`copyright: ${JSON.stringify(cr)}`);
+    }
+    parts.push(`{ ${fragments.join(", ")} }`);
   }
   return `[${parts.join(", ")}]`;
 }
