@@ -1,34 +1,55 @@
+"""Create a 5-stripe collage cover for the UFT/SEMANAU 2023 talk page.
+
+Each stripe is one of Daniel's projects featured in the deck, centered-cropped
+to a vertical strip. Career arc: Atelier Marko Brajovic -> Estudio Guto Requena
+-> ITECH master thesis -> Art Engineering.
+"""
+from pathlib import Path
 from PIL import Image, ImageDraw
 
-CANVAS_W, CANVAS_H = 2400, 1350
+ASSETS = Path(r"C:\repos-gitlab-personal\daniellocatelli\src\assets\content")
+OUT = Path(r"C:\repos-gitlab-personal\daniellocatelli\src\assets\content\teaching\computational-architecture-in-germany-uft\uft-cover.jpg")
 
-uft = Image.open(r"src/assets/content/teaching/computational-architecture-in-germany-uft/MarcaUFTvertical.jpg").convert("RGBA")
-avatar = Image.open(r"src/assets/avatars/daniel-locatelli-v1.png").convert("RGBA")
+CANVAS_W, CANVAS_H = 3840, 2160
+N = 5
+STRIPE_W = CANVAS_W // N
+STRIPE_H = CANVAS_H
+GAP = 6
+
+images = [
+    ASSETS / "projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/interior-of-the-middle-cell-rain-sounds-and-leds-simulating-lightnings.jpg",
+    ASSETS / "projects/air-guitar-by-atelier-marko-brajovic-for-nike/air-guitar-by-atelier-marko-brajovic-for-nike-cover_no-beams.png",
+    ASSETS / "projects/life-lamp-by-estudio-guto-requena-for-decimal/life-lamp_on.jpg",
+    ASSETS / "research/building-across-scales/the-demonstrator-at-night-the-holes-for-the-clamping-robots-are-now-used-for-01.jpg",
+    ASSETS / "projects/donum-pavilion-by-artengineering/Donum VPP-FULL RES-26.jpg",
+]
 
 canvas = Image.new("RGB", (CANVAS_W, CANVAS_H), (255, 255, 255))
+target_ratio = STRIPE_W / STRIPE_H
 
-uft_max_w, uft_max_h = 500, 500
-ratio = min(uft_max_w / uft.width, uft_max_h / uft.height)
-uft_w, uft_h = int(uft.width * ratio), int(uft.height * ratio)
-uft_resized = uft.resize((uft_w, uft_h), Image.LANCZOS)
+for i, path in enumerate(images):
+    img = Image.open(path).convert("RGB")
+    w, h = img.size
+    src_ratio = w / h
 
-avatar_size = 500
-avatar_resized = avatar.resize((avatar_size, avatar_size), Image.LANCZOS)
+    if src_ratio > target_ratio:
+        new_w = int(h * target_ratio)
+        left = (w - new_w) // 2
+        box = (left, 0, left + new_w, h)
+    else:
+        new_h = int(w / target_ratio)
+        top = (h - new_h) // 2
+        box = (0, top, w, top + new_h)
 
-mask = Image.new("L", (avatar_size, avatar_size), 0)
-mask_draw = ImageDraw.Draw(mask)
-mask_draw.ellipse((0, 0, avatar_size, avatar_size), fill=255)
+    cropped = img.crop(box)
+    resized = cropped.resize((STRIPE_W, STRIPE_H), Image.LANCZOS)
+    canvas.paste(resized, (i * STRIPE_W, 0))
 
-# space-evenly: equal gaps left of UFT, between, right of avatar
-gap = (CANVAS_W - uft_w - avatar_size) // 3
-uft_x = gap
-uft_y = (CANVAS_H - uft_h) // 2
-canvas.paste(uft_resized, (uft_x, uft_y), uft_resized)
+if GAP > 0:
+    draw = ImageDraw.Draw(canvas)
+    for i in range(1, N):
+        x = i * STRIPE_W
+        draw.rectangle([x - GAP // 2, 0, x + GAP // 2, CANVAS_H], fill=(255, 255, 255))
 
-av_x = gap + uft_w + gap
-av_y = (CANVAS_H - avatar_size) // 2
-canvas.paste(avatar_resized, (av_x, av_y), mask)
-
-out_path = r"src/assets/content/teaching/computational-architecture-in-germany-uft/uft-cover.jpg"
-canvas.save(out_path, "JPEG", quality=92, optimize=True)
-print(f"Saved {out_path} ({canvas.size[0]}x{canvas.size[1]})")
+canvas.save(OUT, "JPEG", quality=88, optimize=True, progressive=True)
+print(f"Saved {OUT} ({canvas.size[0]}x{canvas.size[1]})")
