@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/teaching/computational-architecture-in-germany-uft/uft-cover.jpg
-CoverAlt: Colagem em cinco faixas verticais dos projetos apresentados na palestra, Pavilhão O3, Nike Air Guitar, Luminária Life, Building Across Scales e Vertical Panorama Pavilion.
+CoverAlt: Colagem em cinco faixas verticais de projetos alemães apresentados na palestra, ICD/ITKE Research Pavilion 2014-15, 2015-16 e 2016-17, Building Across Scales e livMatS Biomimetic Shell.
 CoverFit: cover
 Description: "Nesta palestra apresentei as principais tecnologias de design computacional na Alemanha, especialmente o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems, conectando essa trajetória ao meu percurso entre o Atelier Marko Brajovic, o ITECH em Stuttgart e a indústria em Munique."
 Name: Arquitetura Computacional na Alemanha

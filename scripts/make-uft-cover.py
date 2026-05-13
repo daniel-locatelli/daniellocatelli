@@ -1,27 +1,27 @@
 """Create a 5-stripe collage cover for the UFT/SEMANAU 2023 talk page.
 
-Each stripe is one of Daniel's projects featured in the deck, centered-cropped
-to a vertical strip. Career arc: Atelier Marko Brajovic -> Estudio Guto Requena
--> ITECH master thesis -> Art Engineering.
+Each stripe is one of the German projects featured in the deck, centered-cropped
+to a vertical strip. The talk is about computational architecture in Germany,
+so only German-located projects are included.
 """
 from pathlib import Path
-from PIL import Image, ImageDraw
+from PIL import Image
 
 ASSETS = Path(r"C:\repos-gitlab-personal\daniellocatelli\src\assets\content")
+DECK = ASSETS / "teaching/computational-architecture-in-germany-uft/deck"
 OUT = Path(r"C:\repos-gitlab-personal\daniellocatelli\src\assets\content\teaching\computational-architecture-in-germany-uft\uft-cover.jpg")
 
 CANVAS_W, CANVAS_H = 3840, 2160
 N = 5
 STRIPE_W = CANVAS_W // N
 STRIPE_H = CANVAS_H
-GAP = 6
 
 images = [
-    ASSETS / "projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/interior-of-the-middle-cell-rain-sounds-and-leds-simulating-lightnings.jpg",
-    ASSETS / "projects/air-guitar-by-atelier-marko-brajovic-for-nike/air-guitar-by-atelier-marko-brajovic-for-nike-cover_no-beams.png",
-    ASSETS / "projects/life-lamp-by-estudio-guto-requena-for-decimal/life-lamp_on.jpg",
+    DECK / "icd-itke-research-pavilion-2014-15.jpg",
+    DECK / "icd-itke-research-pavilion-2015-16.jpg",
+    DECK / "icd-itke-research-pavilion-2016-17.jpg",
     ASSETS / "research/building-across-scales/the-demonstrator-at-night-the-holes-for-the-clamping-robots-are-now-used-for-01.jpg",
-    ASSETS / "projects/donum-pavilion-by-artengineering/Donum VPP-FULL RES-26.jpg",
+    DECK / "livmats-biomimetic-shell.jpg",
 ]
 
 canvas = Image.new("RGB", (CANVAS_W, CANVAS_H), (255, 255, 255))
@@ -44,12 +44,6 @@ for i, path in enumerate(images):
     cropped = img.crop(box)
     resized = cropped.resize((STRIPE_W, STRIPE_H), Image.LANCZOS)
     canvas.paste(resized, (i * STRIPE_W, 0))
-
-if GAP > 0:
-    draw = ImageDraw.Draw(canvas)
-    for i in range(1, N):
-        x = i * STRIPE_W
-        draw.rectangle([x - GAP // 2, 0, x + GAP // 2, CANVAS_H], fill=(255, 255, 255))
 
 canvas.save(OUT, "JPEG", quality=88, optimize=True, progressive=True)
 print(f"Saved {OUT} ({canvas.size[0]}x{canvas.size[1]})")
