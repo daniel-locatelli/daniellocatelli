@@ -1,6 +1,6 @@
 ---
-Cover: /assets/content/teaching/computational-architecture-in-germany-uft/buildsystems-ontology.png
-CoverAlt: Diagrama da ontologia da BuildSystems para dados de construção em madeira.
+Cover: /assets/content/teaching/computational-architecture-in-germany-uft/uft-cover.jpg
+CoverAlt: Logotipo da UFT (Universidade Federal do Tocantins) ao lado de um retrato circular de Daniel Locatelli.
 CoverFit: contain
 Description: "Nesta palestra apresentei as principais tecnologias de design computacional na Alemanha, especialmente o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems, conectando essa trajetória ao meu percurso entre o Atelier Marko Brajovic, o ITECH em Stuttgart e a indústria em Munique."
 Name: Arquitetura Computacional na Alemanha
