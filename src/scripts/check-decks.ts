@@ -19,7 +19,9 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 import {
+  extractImports,
   extractSlidesFromMdx,
+  validateBindings,
   validateSlide,
   type SlideValidationError,
 } from "../lib/vite-presentation-slides.ts";
@@ -64,6 +66,8 @@ async function main(): Promise<void> {
         }),
       );
     }
+    const imports = extractImports(code);
+    allErrors.push(...validateBindings(slides, imports));
   }
 
   const elapsed = Date.now() - start;

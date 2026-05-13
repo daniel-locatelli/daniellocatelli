@@ -1,11 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import Credit from "@/components/Credit.astro";
+import Credit, { type CreditLine } from "@/components/Credit.astro";
+import SlideChrome from "./SlideChrome.astro";
 
 interface ImageItem {
   src: ImageMetadata | string;
   alt?: string;
-  copyright?: string | string[];
+  copyright?: CreditLine | CreditLine[];
 }
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
   subtitle?: string;
   images: ImageItem[];
   darkText?: boolean;
-  copyright?: string | string[];
+  copyright?: CreditLine | CreditLine[];
   gap?: "none" | "sm" | "md" | "lg";
   fit?: "cover" | "contain";
 }
@@ -28,7 +29,6 @@ const {
   fit = "contain",
 } = Astro.props;
 
-const textColor = darkText ? "text-zinc-950" : "text-white";
 const fitClass = fit === "contain" ? "object-contain" : "object-cover";
 const gapClass =
   gap === "none" ? "gap-0" : gap === "lg" ? "gap-6" : gap === "md" ? "gap-4" : "gap-1";
@@ -75,32 +75,7 @@ const gridColsClass =
     }
   </div>
 
-  {
-    (title || subtitle) && (
-      <div
-        class={`absolute top-4 left-4 z-10 flex max-w-[60%] flex-col items-start text-left sm:top-6 sm:left-6 ${textColor} rounded bg-black/50 px-4 py-3 backdrop-blur-sm`}
-      >
-        {title && (
-          <h2
-            class="text-lg leading-tight font-bold tracking-wide uppercase sm:text-2xl lg:text-3xl"
-            style="font-family: 'Montserrat', sans-serif;"
-          >
-            {title}
-          </h2>
-        )}
-        {subtitle && (
-          <p
-            class="mt-2 text-sm leading-tight font-normal tracking-wider uppercase sm:text-base lg:text-lg"
-            style="font-family: 'Montserrat', sans-serif;"
-          >
-            {subtitle}
-          </p>
-        )}
-      </div>
-    )
-  }
-
-  {copyright && <Credit credit={copyright} class="bottom-4 left-4 sm:bottom-6 sm:left-6" />}
+  <SlideChrome title={title} subtitle={subtitle} darkText={darkText} copyright={copyright} />
 
   <slot />
 </section>

@@ -46,7 +46,15 @@ const gapClass =
         ? "gap-4"
         : "gap-12"; // lg default
 
-const lines = text.split("\n").filter((line) => line.length > 0);
+// Preserve empty lines so YAML "|+" chomping (keep all trailing newlines)
+// renders as vertical padding via the flex-column `gap-{N}`. Strip exactly
+// one trailing empty so plain "|" (clip-default) single-line text doesn't
+// gain a phantom bottom gap.
+const rawLines = text.split("\n");
+const lines =
+  rawLines.length > 0 && rawLines[rawLines.length - 1] === ""
+    ? rawLines.slice(0, -1)
+    : rawLines;
 ---
 
 {
@@ -74,8 +82,15 @@ const lines = text.split("\n").filter((line) => line.length > 0);
         style="font-family: 'Montserrat', sans-serif;"
       >
         {lines.map((line) => (
-          <p class={`${titleSizeClass} leading-tight font-bold text-balance ${caseClass}`}>
-            {line}
+          <p
+            class={`${titleSizeClass} leading-tight font-bold text-balance min-h-[1lh] ${caseClass}`}
+          >
+            {/* ` ` (non-breaking space) gives empty lines one line-height
+                of layout space so trailing-blank `|+` blocks render at the
+                same column height as their populated siblings. Otherwise
+                empties collapse to 0 and the visible items shift vertically
+                across otherwise-identical layouts. */}
+            {line || " "}
           </p>
         ))}
       </div>

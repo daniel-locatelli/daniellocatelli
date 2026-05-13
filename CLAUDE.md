@@ -72,6 +72,10 @@ The knowledge pipeline generates:
 
 **Benchmark:** Run `npx tsx scripts/benchmark-chat.ts` (with dev server running) to test ~26 common questions against the chat API. Use `--retry-failures` to skip previously passed tests. Target: 100% pass rate.
 
+## Backlog
+
+Non-critical improvement ideas, structural refactors, and quality-of-life cleanups live in [`docs/BACKLOG.md`](docs/BACKLOG.md). When you notice something worth doing but not urgent enough to interrupt current work, add it there rather than implementing it inline or letting the thought disappear.
+
 ## Code Style
 
 - TypeScript strict mode

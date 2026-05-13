@@ -11,6 +11,7 @@ interface Props {
   imagePosition?: string;
   darkText?: boolean;
   fit?: "cover" | "contain";
+  overlay?: string;
 }
 
 const {
@@ -23,6 +24,7 @@ const {
   imagePosition = "center",
   darkText = false,
   fit = "cover",
+  overlay,
 } = Astro.props;
 
 const fitClass = fit === "contain" ? "object-contain" : "object-cover";
@@ -30,6 +32,20 @@ const fitClass = fit === "contain" ? "object-contain" : "object-cover";
 const textColor = darkText ? "text-zinc-950" : "text-white";
 
 const isStringImage = typeof image === "string";
+
+// When an explicit `overlay` is set, it replaces the default gradient so the
+// caller controls darkening fully. Format mirrors the Slide overlay field:
+// "<black|white>/<0-100>". Mismatched values fall through harmlessly (no
+// overlay rendered) since the YAML validator already gates the format.
+let overlayStyle: string | undefined;
+if (overlay) {
+  const m = overlay.match(/^(black|white)\/(\d+)$/);
+  if (m) {
+    const rgb = m[1] === "black" ? "0, 0, 0" : "255, 255, 255";
+    const alpha = parseInt(m[2], 10) / 100;
+    overlayStyle = `background-color: rgba(${rgb}, ${alpha});`;
+  }
+}
 ---
 
 <section
@@ -59,7 +75,8 @@ const isStringImage = typeof image === "string";
       ))
   }
 
-  {image && <div class="absolute inset-0 z-[5] bg-gradient-to-t from-black/70 via-black/50 to-transparent" />}
+  {image && !overlayStyle && <div class="absolute inset-0 z-[5] bg-gradient-to-t from-black/70 via-black/50 to-transparent" />}
+  {overlayStyle && <div class="absolute inset-0 z-[5]" style={overlayStyle} />}
 
   <div
     class={`absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center ${textColor}`}

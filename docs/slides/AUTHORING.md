@@ -82,7 +82,7 @@ The general-purpose slide. Background image with title/subtitle/copyright chrome
 | `imageAlt` | string | required if `image` set | | Screen-reader text |
 | `imagePosition` | string | no | `"center"` | CSS `object-position` value |
 | `darkText` | boolean | no | `false` | Use zinc-950 chrome text for light backgrounds |
-| `copyright` | string or string[] | no | | Bottom-right credit |
+| `copyright` | credit line or credit line[] | no | | Bottom-right credit. See [credit lines](#credit-lines). |
 | `fit` | `"cover"` or `"contain"` | no | `"cover"` | Background `object-fit` |
 | `overlay` | string `"<color>/<alpha>"` | no | | Full-bleed darkening/lightening overlay at `z-5`. Color is `"black"` or `"white"`; alpha is 0-100. Example: `"black/50"`. Emitted as inline `rgba()` so Tailwind's content scanner is not involved. |
 | `notes` | string | no | | Emitted as `<SlideNotes>` child |
@@ -130,7 +130,7 @@ Whole-slide grid of 2-4 images with optional shared title/subtitle/copyright. Re
 | `title` | string | no | | Top-left chrome |
 | `subtitle` | string | no | | Top-left chrome, below title |
 | `darkText` | boolean | no | `false` | Use zinc-950 chrome text for light backgrounds |
-| `copyright` | string or string[] | no | | Bottom-right credit |
+| `copyright` | credit line or credit line[] | no | | Bottom-right credit. See [credit lines](#credit-lines). |
 | `gap` | `"none"` \| `"sm"` \| `"md"` \| `"lg"` | no | `"sm"` | Spacing between images |
 | `fit` | `"cover"` or `"contain"` | no | `"contain"` | Image `object-fit` |
 | `images` | array | yes | | 2-4 items; each item is `{ src, alt }` |
@@ -142,7 +142,7 @@ Each item in `images` accepts:
 | --- | --- | --- | --- |
 | `src` | binding or URL | yes | Bare identifier resolves to a JS import binding; URL-shaped strings stay literal |
 | `alt` | string | yes | Required for accessibility |
-| `copyright` | string or string[] | no | Per-image credit, rendered as a frosted-pill at the cell's bottom-left corner (kept off the right side so it doesn't collide with the slide progress indicator). |
+| `copyright` | credit line or credit line[] | no | Per-image credit, rendered as a frosted-pill at the cell's bottom-left corner (kept off the right side so it doesn't collide with the slide progress indicator). See [credit lines](#credit-lines). |
 
 Example:
 
@@ -312,6 +312,37 @@ slideText:
 `slideText:` is only valid on `type: slide`. For per-line opacity / build-reveal patterns within a stack, stay in JSX.
 
 Both `slideImage:`, `slideVideo:`, and `slideText:` may appear on the same slide; they emit as sibling children inside `<Slide>` in this order: `<SlideImage>`, `<SlideVideo>`, `<SlideText>`, `<SlideNotes>` (when `notes:` is set). The `slideText:` block lives at `z-10`, above the optional `overlay:` (`z-5`) and the background image.
+
+## Credit lines
+
+The `copyright` field (on `type: slide`, on `type: image-row`, and on each item inside `image-row` `images:`) accepts:
+
+- A **plain string**: `copyright: Gui Morelli` renders as `© Gui Morelli`.
+- A **link object** `{ name, href }`: renders the name as an external link to `href`. The `© ` prefix is auto-prepended unless `name` already starts with `©` or `(c)`.
+- An **array** mixing both forms: each item becomes its own line in the frosted-pill stack.
+
+Link form in YAML:
+
+```yaml
+image: crownShyness
+imageAlt: Timidez das copas em árvores Wana-Kwali
+copyright:
+  name: SAM EN CIMES
+  href: "https://elaguyane.wordpress.com/2013/12/04/description-architecturale-wana-kwali/"
+```
+
+Quote the URL so YAML doesn't try to parse the `://` as nested mapping syntax in edge cases.
+
+Multiple lines, mixed forms:
+
+```yaml
+copyright:
+  - name: SAM EN CIMES
+    href: "https://elaguyane.wordpress.com/2013/12/04/description-architecturale-wana-kwali/"
+  - Photo retouched by Daniel Locatelli
+```
+
+The same shape works for the per-image `copyright` inside an `image-row`.
 
 ## Field value rules
 

@@ -95,6 +95,7 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "imagePosition",
     "darkText",
     "fit",
+    "overlay",
     "notes",
     "slideImage", // recognized but rejected; see slideImage-rejection check
     "slideVideo", // recognized but rejected; see slideVideo-rejection check
@@ -158,6 +159,7 @@ const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
     "imageAlt",
     "imagePosition",
     "fit",
+    "overlay",
     "notes",
   ],
   text: ["text", "subtext", "size", "case", "notes"],
@@ -294,6 +296,24 @@ function suggest(
     }
   }
   return best;
+}
+
+// A credit/copyright line is either a plain string or a `{ name, href }` link
+// object. Mirrors the `CreditLine` union exported from src/components/Credit.astro.
+// Used by both the top-level `copyright` field (slide + image-row) and the
+// per-image `images[].copyright` field.
+function isCreditLine(value: unknown): boolean {
+  if (typeof value === "string") return true;
+  if (typeof value !== "object" || value === null || Array.isArray(value)) {
+    return false;
+  }
+  const obj = value as Record<string, unknown>;
+  return typeof obj.name === "string" && typeof obj.href === "string";
+}
+
+function isValidCopyright(value: unknown): boolean {
+  if (isCreditLine(value)) return true;
+  return Array.isArray(value) && value.every(isCreditLine);
 }
 
 function validateSlideImageBlock(
@@ -529,11 +549,11 @@ export function validateSlide(
     }
   }
 
-  // overlay: format check (only on type: slide)
+  // overlay: format check (supported on type: slide and type: title; rejected elsewhere)
   if (config.overlay !== undefined) {
-    if (type !== "slide") {
+    if (type !== "slide" && type !== "title") {
       push(
-        `Slide (type: ${type}): 'overlay' is only supported on type: slide. Remove it or change 'type' to 'slide'.`,
+        `Slide (type: ${type}): 'overlay' is only supported on type: slide and type: title. Remove it or change 'type'.`,
       );
     } else if (typeof config.overlay !== "string") {
       push(
@@ -621,13 +641,9 @@ export function validateSlide(
           );
         }
         if (obj.copyright !== undefined && obj.copyright !== null) {
-          const cr = obj.copyright;
-          const ok =
-            typeof cr === "string" ||
-            (Array.isArray(cr) && cr.every((line) => typeof line === "string"));
-          if (!ok) {
+          if (!isValidCopyright(obj.copyright)) {
             push(
-              `Slide (type: image-row): images[${idx}].copyright must be a string or array of strings, got ${Array.isArray(cr) ? "array of mixed types" : typeof cr}.`,
+              `Slide (type: image-row): images[${idx}].copyright must be a string, a { name, href } object, or an array of those.`,
             );
           }
         }
@@ -672,17 +688,17 @@ export function validateSlide(
     }
   }
 
-  // copyright: string or string[] (slide only)
-  if (type === "slide" && config.copyright !== undefined) {
-    const c = config.copyright;
-    const ok =
-      typeof c === "string" ||
-      (Array.isArray(c) && c.every((x) => typeof x === "string"));
-    if (!ok) {
-      push(
-        `Slide (type: ${type}): 'copyright' must be a string or an array of strings.`,
-      );
-    }
+  // copyright: a CreditLine, or an array of them. A CreditLine is either a
+  // plain string or a `{ name, href }` link object. Applies to both `slide`
+  // and `image-row` top-level copyright.
+  if (
+    (type === "slide" || type === "image-row") &&
+    config.copyright !== undefined &&
+    !isValidCopyright(config.copyright)
+  ) {
+    push(
+      `Slide (type: ${type}): 'copyright' must be a string, a { name, href } object, or an array of those.`,
+    );
   }
 
   // Boolean type checks
@@ -692,6 +708,102 @@ export function validateSlide(
       push(
         `Slide (type: ${type}): field '${field}' must be a boolean (true/false), got ${typeof value}.`,
       );
+    }
+  }
+
+  return errors;
+}
+
+// --- Imports & binding resolution ------------------------------------------
+
+// Parses ES module import statements at the top of a deck.mdx body and
+// returns the set of identifiers they introduce into scope. Used to catch
+// YAML slide blocks that reference a binding (e.g. `image: img83`) which is
+// no longer imported, before the broken `image={img83}` JSX reaches MDX and
+// renders a silent empty page.
+//
+// Recognises default, named (with `as` aliases), namespace, and combined
+// `default, { named }` forms. The decks today use only default imports,
+// but supporting the full ESM surface keeps the check honest.
+export function extractImports(code: string): Set<string> {
+  const imports = new Set<string>();
+  const re = /^\s*import\s+([^"';]+?)\s+from\s+["'][^"']+["']/gm;
+  for (const match of code.matchAll(re)) {
+    const clause = match[1];
+    const parts = clause.match(/\{[^}]*\}|\*\s+as\s+\w+|\w+/g) ?? [];
+    for (const part of parts) {
+      if (part.startsWith("{")) {
+        for (const seg of part.slice(1, -1).split(",")) {
+          const trimmed = seg.trim();
+          if (!trimmed) continue;
+          const aliasMatch = trimmed.match(/\s+as\s+(\w+)$/);
+          imports.add(aliasMatch ? aliasMatch[1] : trimmed);
+        }
+      } else if (part.startsWith("*")) {
+        const ns = part.match(/\*\s+as\s+(\w+)/);
+        if (ns) imports.add(ns[1]);
+      } else {
+        imports.add(part);
+      }
+    }
+  }
+  return imports;
+}
+
+export function validateBindings(
+  slides: readonly ExtractedSlide[],
+  imports: ReadonlySet<string>,
+): SlideValidationError[] {
+  const errors: SlideValidationError[] = [];
+
+  const checkBinding = (
+    value: unknown,
+    fieldPath: string,
+    ctx: { file: string; line: number },
+  ): void => {
+    if (typeof value !== "string" || value === "") return;
+    if (URL_PATTERN.test(value)) return;
+    if (!IDENTIFIER_PATTERN.test(value)) return;
+    const root = value.split(".")[0];
+    if (imports.has(root)) return;
+    const suggestion = suggest(root, imports);
+    const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+    errors.push({
+      file: ctx.file,
+      line: ctx.line,
+      message: `Slide: '${fieldPath}' references binding '${root}' which is not imported in this deck.${hint} Add an import at the top of the file, or use a URL path starting with '/'.`,
+    });
+  };
+
+  for (const slide of slides) {
+    const { config, line, file } = slide;
+    const type = (config.type as string | undefined) ?? "slide";
+    const ctx = { file, line };
+
+    if (type === "slide" || type === "title") {
+      checkBinding(config.image, "image", ctx);
+    }
+
+    if (
+      type === "slide" &&
+      config.slideImage &&
+      typeof config.slideImage === "object" &&
+      !Array.isArray(config.slideImage)
+    ) {
+      const si = config.slideImage as Record<string, unknown>;
+      checkBinding(si.src, "slideImage.src", ctx);
+    }
+
+    if (type === "image-row" && Array.isArray(config.images)) {
+      config.images.forEach((item, idx) => {
+        if (item && typeof item === "object" && !Array.isArray(item)) {
+          checkBinding(
+            (item as Record<string, unknown>).src,
+            `images[${idx}].src`,
+            ctx,
+          );
+        }
+      });
     }
   }
 
@@ -802,6 +914,13 @@ function emitAttr(
     return ` ${key}={${JSON.stringify(value)}}`;
   }
 
+  // Plain object: emits as a JS object literal. Used by `copyright` link
+  // form `{ name, href }`. JSON.stringify produces valid JS object-literal
+  // syntax (quoted keys are accepted in JSX expressions).
+  if (typeof value === "object") {
+    return ` ${key}={${JSON.stringify(value)}}`;
+  }
+
   return "";
 }
 
@@ -849,11 +968,11 @@ function emitImagesArray(items: readonly unknown[]): string {
     const srcExpr = emitBindingOrString(src);
     const altExpr = JSON.stringify(typeof alt === "string" ? alt : "");
     const fragments = [`src: ${srcExpr}`, `alt: ${altExpr}`];
-    const cr = obj.copyright;
-    if (typeof cr === "string") {
-      fragments.push(`copyright: ${JSON.stringify(cr)}`);
-    } else if (Array.isArray(cr) && cr.every((line) => typeof line === "string")) {
-      fragments.push(`copyright: ${JSON.stringify(cr)}`);
+    // Per-image copyright accepts the same shape as the top-level field:
+    // a string, a `{ name, href }` link object, or an array mixing both.
+    // JSON.stringify covers all three (objects emit as valid JS literals).
+    if (obj.copyright !== undefined && isValidCopyright(obj.copyright)) {
+      fragments.push(`copyright: ${JSON.stringify(obj.copyright)}`);
     }
     parts.push(`{ ${fragments.join(", ")} }`);
   }
@@ -900,14 +1019,17 @@ function buildSlideJsx(config: Record<string, unknown>): string {
           : "Slide";
 
   // Fields with bespoke emission live outside the generic emitAttr loop.
+  // `overlay` is emitted as a JSX child <div> for Slide (positioned over the
+  // background image at z-5), but as a prop string for TitleSlide (so the
+  // component can suppress its auto-gradient and parse "color/alpha" itself).
   const specialFields = new Set<string>([
     "type",
     "notes",
-    "overlay",
     "slideImage",
     "slideVideo",
     "slideText",
   ]);
+  if (componentName === "Slide") specialFields.add("overlay");
   if (componentName === "SlideImageRow") specialFields.add("images");
 
   const attrs = Object.entries(config)
@@ -970,11 +1092,13 @@ export function presentationSlides(): Plugin {
         code,
         normalizedId,
       );
+      const imports = extractImports(code);
       const errors = [
         ...parseErrors,
         ...slides.flatMap((s) =>
           validateSlide(s.config, { file: s.file, line: s.line }),
         ),
+        ...validateBindings(slides, imports),
       ];
       if (errors.length > 0) {
         const formatted = formatValidationErrors(errors);
