@@ -111,7 +111,7 @@ Alfred Rein Ingenieure GmbH
 July 2021 | Design Computacional
 Form-finding de estruturas de membrana usando Kangaroo 2.
 
-### Radom Raisting por AR Ingenieure
+### Radom Raisting por AR Ingenieure
 AR Ingenieure
 March 2021 – May 2021 | Membrane
 Simulação da implantação e prevenção de colisões para um radomo inflável de 48,8m de diâmetro que protege uma antena parabólica na estação terrestre de Raisting.

@@ -2,11 +2,6 @@ URL: https://daniellocatelli.com/full-cv
 
 # Daniel Locatelli – Teaching Experience
 
-### Digital Futures 2026: Entre o Prompt e a Obra
-DigitalFUTURES
-April 2026 | Talk
-Talk on the journey from biomimicry to systems thinking and what's missing in AI for architecture: the perspective of a Brazilian architect trained and working in Germany.
-
 ### Working with Geographic Data in Grasshopper
 Munich University of Applied Sciences | Munich
 May 2025 | Lecture

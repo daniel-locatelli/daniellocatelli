@@ -20,5 +20,3 @@ Zunächst wurde jemand benötigt, der schnell rund 1.500 2D-Zeichnungen aus Rhin
 Diese erste Aufgabe war in 2 Tagen erledigt. Sie waren begeistert und beschlossen, mir eine Vollzeitstelle anzubieten. Zu dem Zeitpunkt beendete ich gerade meinen ITECH-Masterabschluss und arbeitete noch als Praktikant bei einem anderen Unternehmen. Dieses Angebot kam also genau zur richtigen Zeit.
 Als ich anfing, war Alexander Spänig der Projektmanager, und so arbeitete ich in den folgenden sechs Monaten eng mit ihm an diesem Projekt.
 Ich nutzte hauptsächlich Grasshopper und das Plugin [Sandbox Topology](https://www.food4rhino.com/en/app/sandbox-topology) von Tobias Schwinn, der zufälligerweise mein Tutor im ITECH-Masterstudium war.
-
-© Fotos von Studio Other Spaces.

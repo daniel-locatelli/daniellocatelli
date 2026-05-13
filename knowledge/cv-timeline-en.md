@@ -2,7 +2,6 @@ URL: https://daniellocatelli.com/full-cv
 
 # Daniel Locatelli – Timeline
 
-April 2026 | [Teaching] | Digital Futures 2026: Entre o Prompt e a Obra | DigitalFUTURES
 May 2025 | [Teaching] | Working with Geographic Data in Grasshopper | Munich University of Applied Sciences | Munich
 February 2025 – Current | [Work] | Research Associate (60%) | Munich University of Applied Sciences | Munich, Germany
 July 2024 | [Teaching] | Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings | Forum Holzbau | Fellbach, Germany

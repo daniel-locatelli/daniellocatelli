@@ -20,5 +20,3 @@ Initially, they needed someone to quickly export around 1.5 thousand 2D drawings
 This first task was finished in 2 days. They were thrilled and decided to offer me a full-time position. At the time, I was finishing my ITECH master's degree and was still working as an intern for another company. So this offer came just in time as a no-brainer.
 When I joined, Alexander Spänig was the project manager, so I worked closely with him for the next six months on this project.
 I mainly used Grasshopper and the plugin [Sandbox Topology](https://www.food4rhino.com/en/app/sandbox-topology) from Tobias Schwinn, who coincidentally was my tutor at the ITECH masters.
-
-© Photos by Studio Other Spaces.

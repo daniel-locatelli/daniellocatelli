@@ -30,5 +30,3 @@ The fabrication process wasn’t on our hands though. It was under a sub-contrac
 You can check the paper here:
 
 [High-Low as Expression of The Brazilian Digital Fabrication](https://daniellocatelli.com/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/)
-
-© Cover photo by [Gui Morelli](https://www.guimorelli.com/)

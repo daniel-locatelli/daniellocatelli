@@ -18,5 +18,3 @@ Nonetheless, it was interesting to understand the computational strategy to gene
 I also worked on some as-built drawings for the Urbach Tower itself. Because of this, Dylan taught me all the constructive details for this project and also how they added multiple sensors to monitor and track the environmental  behaviors on the structure.
 
 Dylan Wood's research at the ICD was about the natural self-shaping properties of timber when it dries. You can check Dylan Wood's TED Talk to understand more about the process here:
-
-© Drawings, images and animation by University of Stuttgart, ICD/ITKE

@@ -1,6 +1,6 @@
 URL: https://daniellocatelli.com/pt/projects/radom-raisting-by-ar-ingenieure
 
-# Radom Raisting por AR Ingenieure
+# Radom Raisting por AR Ingenieure
 
 Description: Simulação da implantação e prevenção de colisões para um radomo inflável de 48,8m de diâmetro que protege uma antena parabólica na estação terrestre de Raisting.
 Tags: Computational Design, Structural Analysis, Logistics, Grasshopper3D
@@ -28,5 +28,3 @@ A simulação foi executada iterativamente, testando diferentes padrões de dobr
 ## Implantação no local
 
 A implantação real foi uma operação notável. A membrana dobrada foi levantada pelo guindaste e suspensa acima da antena. À medida que era baixada, os painéis se desdobravam sequencialmente, seguindo o padrão que havíamos validado na simulação.
-
-© Fotos da AR Ingenieure

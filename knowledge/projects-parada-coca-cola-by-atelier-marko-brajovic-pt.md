@@ -23,5 +23,3 @@ Parada Coca-Cola foi o primeiro projeto no qual apliquei design computacional. E
 ## Design Computacional
 Meu papel no projeto foi o de posicionar as esferas de plástico parametricamente, evitando colidir umas com as outras e com os cabos que as conectavam ao teto. Para isso, usei o Grasshopper e o Galapagos.
 Outra tarefa que veio depois foi gerar uma planilha com todos os comprimentos de cabos e as tags para organizar adequadamente todo o material para ser enviado e instalado. Bom, pelo menos essa era a ideia inicial. Porque, em algum momento, alguém achou que seria uma boa ideia remover as tags 🤯. Foi um pesadelo para as meninas que coordenaram o evento.
-
-© Fotos por Fernando Martins

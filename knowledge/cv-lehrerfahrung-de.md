@@ -2,11 +2,6 @@ URL: https://daniellocatelli.com/de/full-cv
 
 # Daniel Locatelli – Lehrerfahrung
 
-### Digital Futures 2026: Entre o Prompt e a Obra
-DigitalFUTURES
-April 2026 | Talk
-Vortrag über den Weg von der Biomimetik zum Systemdenken und was der KI in der Architektur noch fehlt: die Perspektive eines in Deutschland ausgebildeten und tätigen brasilianischen Architekten.
-
 ### Arbeiten mit Geodaten in Grasshopper
 Hochschule München | München
 May 2025 | Lecture

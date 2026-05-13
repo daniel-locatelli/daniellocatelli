@@ -23,5 +23,3 @@ Parada Coca-Cola war mein allererstes Projekt, bei dem ich Computational Design 
 ## Computational Design
 Meine Rolle im Projekt war es, die Kunststoffkugeln parametrisch zu platzieren und dabei Kollisionen untereinander sowie mit den Kabeln, die sie mit der Decke verbanden, zu vermeiden. Dafür verwendete ich Grasshopper und Galapagos.
 Eine weitere Aufgabe, die später hinzukam, war die Erstellung einer Tabelle mit allen Kabellängen und den Kennzeichnungen, um das gesamte Material für den Versand und die Montage ordentlich zu organisieren. Nun ja, zumindest war das die Idee. Denn irgendwann fand jemand es eine gute Idee, die Kennzeichnungen zu entfernen 🤯. Es war ein Albtraum für die Mädchen, die das Event koordinierten.
-
-© Fotos von Fernando Martins

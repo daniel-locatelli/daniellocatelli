@@ -1,6 +1,6 @@
 URL: https://daniellocatelli.com/de/projects/radom-raisting-by-ar-ingenieure
 
-# Radom Raisting von AR Ingenieure
+# Radom Raisting von AR Ingenieure
 
 Description: Simulation der Montagesequenz und Kollisionsvermeidung für ein aufblasbares Radom mit 48,8 m Durchmesser zum Schutz einer Parabolantenne an der Erdfunkstelle Raisting.
 Tags: Computational Design, Structural Analysis, Logistics, Grasshopper3D
@@ -28,5 +28,3 @@ Die Simulation wurde iterativ durchgeführt, wobei verschiedene Faltmuster und M
 ## Montage vor Ort
 
 Die eigentliche Montage war ein bemerkenswerter Vorgang. Die gefaltete Membran wurde vom Kran angehoben und über der Antenne aufgehängt. Beim Absenken entfalteten sich die Bahnen nacheinander, entsprechend dem Muster, das wir in der Simulation validiert hatten.
-
-© Fotos von AR Ingenieure

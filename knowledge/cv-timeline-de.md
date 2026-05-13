@@ -2,7 +2,6 @@ URL: https://daniellocatelli.com/de/full-cv
 
 # Daniel Locatelli – Zeitleiste
 
-April 2026 | [Lehre] | Digital Futures 2026: Entre o Prompt e a Obra | DigitalFUTURES
 May 2025 | [Lehre] | Arbeiten mit Geodaten in Grasshopper | Hochschule München | München
 February 2025 – Aktuell | [Beruf] | Wissenschaftlicher Mitarbeiter (60%) | Hochschule München | München, Deutschland
 July 2024 | [Lehre] | Multiskalares Roboterfertigungssystem für Vor-Ort-Pressklebung im mehrgeschossigen Holzbau | Forum Holzbau | Fellbach, Deutschland

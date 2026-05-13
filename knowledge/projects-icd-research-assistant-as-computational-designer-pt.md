@@ -18,5 +18,3 @@ No entanto, foi interessante entender a estratégia computacional para gerar a g
 Também trabalhei em alguns desenhos as-built para a própria Urbach Tower. Por causa disso, Dylan me ensinou todos os detalhes construtivos deste projeto e também como eles adicionaram múltiplos sensores para monitorar e rastrear os comportamentos ambientais na estrutura.
 
 A pesquisa de Dylan Wood no ICD foi sobre as propriedades naturais de automoldagem da madeira quando seca. Você pode conferir a palestra TED de Dylan Wood para entender mais sobre o processo aqui:
-
-© Desenhos, imagens e animação pela Universidade de Stuttgart, ICD/ITKE

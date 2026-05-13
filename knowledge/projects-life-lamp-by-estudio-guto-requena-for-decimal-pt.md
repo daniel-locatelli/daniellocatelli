@@ -22,5 +22,3 @@ A parte de programação foi desenvolvida usando Grasshopper, o plugin Culebra v
 Este trabalho se tornou mais tarde um artigo apresentado no ECAAD 2020.
 Você pode conferir o artigo e o processo de design aqui:
 [Life Lamp: Connecting Design and People Through Emotion](https://daniellocatelli.com/publications/life-lamp-connecting-design-and-people-through-emotion/)
-
-© Capa por Decimal

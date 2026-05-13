@@ -18,5 +18,3 @@ Dennoch war es spannend, die computergestützte Strategie zur Geometrieerzeugung
 Ich arbeitete auch an einigen Bestandszeichnungen für den Urbach Tower selbst. Deshalb brachte mir Dylan alle konstruktiven Details dieses Projekts bei und auch, wie sie mehrere Sensoren hinzufügten, um die Umwelteinflüsse auf die Struktur zu überwachen und zu verfolgen.
 
 Dylan Woods Forschung am ICD befasste sich mit den natürlichen Selbstformungseigenschaften von Holz beim Trocknen. Sie können sich Dylan Woods TED Talk ansehen, um mehr über den Prozess zu erfahren:
-
-© Zeichnungen, Bilder und Animation von der Universität Stuttgart, ICD/ITKE

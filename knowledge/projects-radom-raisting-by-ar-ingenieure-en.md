@@ -28,5 +28,3 @@ The simulation was run iteratively, testing different folding patterns and deplo
 ## On-site deployment
 
 The actual deployment was a remarkable operation. The folded membrane was lifted by crane and suspended above the antenna. As it was lowered, the panels unfolded sequentially, following the pattern we had validated in the simulation.
-
-© Photos by AR Ingenieure

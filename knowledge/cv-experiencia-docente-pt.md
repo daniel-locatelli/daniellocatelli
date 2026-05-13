@@ -2,11 +2,6 @@ URL: https://daniellocatelli.com/pt/full-cv
 
 # Daniel Locatelli – Experiência Docente
 
-### Digital Futures 2026: Entre o Prompt e a Obra
-DigitalFUTURES
-April 2026 | Talk
-Talk sobre a jornada da biomimética ao pensamento sistêmico e o que falta na inteligência artificial para arquitetura: o olhar de um arquiteto brasileiro formado e atuante na Alemanha.
-
 ### Trabalhando com dados geográficos no Grasshopper
 Universidade de Ciências Applicadas de Munique | Munique
 May 2025 | Lecture
@@ -20,11 +15,6 @@ Nesta palestra, apresentamos os resultados do nosso projeto de tese no Programa 
 Graphisoft X - Online | Alemanha
 December 2023 | Talk
 Saiba mais sobre Smart Sustainability Roadmaps, que possibilitam inovações sistêmicas de processos no planejamento. Temas como planejamento orientado à demanda e à economia circular, eficiência energética, avaliação do ciclo de vida, certificações, financiamentos e Pre-BIM Modelling são abordados.
-
-### Arquitetura Computacional na Alemanha
-UFT - Online | Palmas, Brasil
-November 2023 | Talk
-Nesta palestra apresentei as mais recentes tecnologias na área de design computacional na Alemanha, especialmente o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems.
 
 ### Arquitetura Computacional na Alemanha
 Curso de Arquitetura e Urbanismo do IFPR | Online
