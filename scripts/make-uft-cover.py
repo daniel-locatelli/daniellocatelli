@@ -20,7 +20,7 @@ images = [
     DECK / "buga-wood-pavilion-reuse-2023.jpg",
     DECK / "icd-itke-research-pavilion-2015-16.jpg",
     DECK / "icd-itke-research-pavilion-2016-17.jpg",
-    ASSETS / "research/building-across-scales/demonstrated-construction-site-setup-mobile-robotic-platform-tim-spider-crane.jpg",
+    DECK / "buga-fibre-pavilion-2019.jpg",
     DECK / "livmats-biomimetic-shell.jpg",
 ]
 
