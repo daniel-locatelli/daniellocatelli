@@ -37,6 +37,7 @@ export default defineConfig({
   base: BASE_PATH,
   adapter: cloudflare({
     imageService: { build: "compile", runtime: "passthrough" },
+    platformProxy: { enabled: true },
   }),
   server: {
     port: 4321,

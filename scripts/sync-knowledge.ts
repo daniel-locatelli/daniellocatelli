@@ -14,10 +14,12 @@ import { join } from "path";
 // ── Config ───────────────────────────────────────────────────────────────────
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  console.error("Missing SUPABASE_URL or SUPABASE_ANON_KEY in environment.");
+if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+  console.error(
+    "Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in environment.",
+  );
   console.error("Set them in your .env or export them before running.");
   process.exit(1);
 }
@@ -80,7 +82,7 @@ async function generateEmbedding(text: string): Promise<number[] | null> {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
       },
       body: JSON.stringify({ input: text }),
     });
@@ -107,7 +109,9 @@ async function main() {
       : "APPLYING - wiping DB and re-inserting all entries\n",
   );
 
-  const supabase = createClient(SUPABASE_URL!, SUPABASE_ANON_KEY!);
+  const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_ROLE_KEY!, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
 
   // 1. Read and parse all knowledge files
   const files = readdirSync(knowledgeDir).filter((f) => f.endsWith(".md"));

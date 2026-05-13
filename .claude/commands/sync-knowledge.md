@@ -30,10 +30,12 @@ It wipes the knowledge directory first. Report the total count and any warnings.
 
 ### Step 3: Sync to Supabase
 
+Sync uses the **service_role key** (server-only secret in `.env`, never deployed to Cloudflare) so it can delete and insert under tight RLS. Anon is read-only on `knowledge_entries`.
+
 First do a dry run:
 
 ```bash
-source .env 2>/dev/null && export SUPABASE_URL SUPABASE_ANON_KEY && npx tsx scripts/sync-knowledge.ts
+source .env 2>/dev/null && export SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY && npx tsx scripts/sync-knowledge.ts
 ```
 
 Report the entry count and type/locale breakdown to the user.
@@ -41,10 +43,10 @@ Report the entry count and type/locale breakdown to the user.
 Then apply:
 
 ```bash
-source .env 2>/dev/null && export SUPABASE_URL SUPABASE_ANON_KEY && npx tsx scripts/sync-knowledge.ts --apply
+source .env 2>/dev/null && export SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY && npx tsx scripts/sync-knowledge.ts --apply
 ```
 
-This deletes all existing rows in `knowledge_entries` and re-inserts every entry with a fresh embedding via the Supabase `embed` edge function (Voyage AI, 1024 dimensions). Takes ~5 minutes for ~255 entries across 3 locales (en, pt, de).
+This deletes all existing rows in `knowledge_entries` and re-inserts every entry with a fresh embedding via the Supabase `embed` edge function (Voyage AI, 1024 dimensions). Takes ~7-10 minutes for ~450 entries across 3 locales (en, pt, de).
 
 ### Step 4: Run Q&A benchmark (optional)
 

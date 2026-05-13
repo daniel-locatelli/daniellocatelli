@@ -5,7 +5,6 @@ import {
   ProdModelAPIAlias,
   getSystemPrompt,
 } from "@/config/ai";
-import { env as cfEnv } from "cloudflare:workers";
 
 interface ModelOverride {
   models: string[];
@@ -54,7 +53,7 @@ function formatUrlsAsMarkdown(text: string): string {
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     const { question } = (await request.json()) as { question?: string };
     if (!question) {
@@ -63,12 +62,14 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const env = cfEnv as unknown as {
-      AI_HEALTH_KV?: { get(key: string): Promise<string | null> };
-      ANTHROPIC_API_KEY?: string;
-      SUPABASE_URL?: string;
-      SUPABASE_ANON_KEY?: string;
-    };
+    const env = (locals as any)?.runtime?.env as
+      | {
+          AI_HEALTH_KV?: { get(key: string): Promise<string | null> };
+          ANTHROPIC_API_KEY?: string;
+          SUPABASE_URL?: string;
+          SUPABASE_ANON_KEY?: string;
+        }
+      | undefined;
     const ANTHROPIC_API_KEY =
       env?.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY;
 
