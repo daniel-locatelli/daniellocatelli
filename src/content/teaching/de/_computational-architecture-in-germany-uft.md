@@ -1,6 +1,6 @@
 ---
-Cover: /assets/content/teaching/computational-architecture-in-germany-uft/buildsystems-ontology.png
-CoverAlt: Diagramm der BuildSystems-Ontologie für Holzbau-Daten.
+Cover: /assets/content/teaching/computational-architecture-in-germany-uft/uft-cover.jpg
+CoverAlt: Logo der UFT (Universidade Federal do Tocantins) neben einem runden Porträt von Daniel Locatelli.
 CoverFit: contain
 Description: "In diesem Vortrag präsentierte ich die neuesten Technologien im Bereich computergestütztes Design in Deutschland, speziell das ICD & ITKE an der Universität Stuttgart und die Firma BuildSystems."
 Name: Computergestützte Architektur in Deutschland
