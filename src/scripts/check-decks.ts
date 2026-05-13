@@ -3,8 +3,8 @@
  * schema defined by `src/lib/vite-presentation-slides.ts`.
  *
  * Catches unknown fields, missing required fields, missing `imageAlt` when
- * `image` is set, dropped-silently `notes` on title/text slides, invalid
- * enum values, and type mismatches (number where string expected).
+ * `image` is set, invalid enum values, and type mismatches (number where
+ * string expected).
  *
  * Runs without spinning up Astro or Vite; pure YAML parsing plus schema
  * checks. Target runtime under one second on the full content tree.
@@ -19,7 +19,9 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 import {
+  extractImports,
   extractSlidesFromMdx,
+  validateBindings,
   validateSlide,
   type SlideValidationError,
 } from "../lib/vite-presentation-slides.ts";
@@ -53,8 +55,9 @@ async function main(): Promise<void> {
     fileCount++;
     const code = await readFile(file, "utf8");
     const relPath = toPosix(relative(ROOT, file));
-    const slides = extractSlidesFromMdx(code, relPath);
+    const { slides, parseErrors } = extractSlidesFromMdx(code, relPath);
     slideCount += slides.length;
+    allErrors.push(...parseErrors);
     for (const slide of slides) {
       allErrors.push(
         ...validateSlide(slide.config, {
@@ -63,6 +66,8 @@ async function main(): Promise<void> {
         }),
       );
     }
+    const imports = extractImports(code);
+    allErrors.push(...validateBindings(slides, imports));
   }
 
   const elapsed = Date.now() - start;

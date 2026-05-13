@@ -34,6 +34,13 @@ import SlideNotes from "@/components/slides/SlideNotes.astro";
 import SlideImage from "@/components/slides/SlideImage.astro";
 import SlideVideo from "@/components/slides/SlideVideo.astro";
 import SlideImageRow from "@/components/slides/SlideImageRow.astro";
+// Required-imports rule: the YAML plugin emits JSX that references whichever
+// components your fences use. `type: title` needs `TitleSlide`; `type: text`
+// needs `TextSlide`; `type: image-row` needs `SlideImageRow`; any `slide`
+// fence emits `<Slide>` and (if `notes:` is set) `<SlideNotes>`; any
+// `slideImage:` block needs `SlideImage`; any `slideVideo:` block needs
+// `SlideVideo`. Keep the full set imported; an unused import is cheap, but
+// a missing one makes MDX silently render the deck as an empty <main>.
 
 import cover from "@/assets/content/teaching/<slug>/<image>.jpg";
 // ...more asset imports
@@ -75,9 +82,12 @@ The general-purpose slide. Background image with title/subtitle/copyright chrome
 | `imageAlt` | string | required if `image` set | | Screen-reader text |
 | `imagePosition` | string | no | `"center"` | CSS `object-position` value |
 | `darkText` | boolean | no | `false` | Use zinc-950 chrome text for light backgrounds |
-| `copyright` | string or string[] | no | | Bottom-right credit |
+| `copyright` | credit line or credit line[] | no | | Bottom-right credit. See [credit lines](#credit-lines). |
 | `fit` | `"cover"` or `"contain"` | no | `"cover"` | Background `object-fit` |
+| `overlay` | string `"<color>/<alpha>"` | no | | Full-bleed darkening/lightening overlay at `z-5`. Color is `"black"` or `"white"`; alpha is 0-100. Example: `"black/50"`. Emitted as inline `rgba()` so Tailwind's content scanner is not involved. |
 | `notes` | string | no | | Emitted as `<SlideNotes>` child |
+
+`notes:` is supported on every slide type. `<SlideNotes>` renders as a `position: fixed` overlay, so it doesn't compete with the slide's centered content.
 
 ### `type: title`
 
@@ -95,8 +105,7 @@ Title/intro slide. Centered chrome over an optional background.
 | `imagePosition` | string | no | `"center"` | |
 | `darkText` | boolean | no | `false` | |
 | `fit` | `"cover"` or `"contain"` | no | `"cover"` | |
-
-`notes:` is **not** supported on title slides.
+| `notes` | string | no | | Emitted as `<SlideNotes>` overlay |
 
 ### `type: text`
 
@@ -107,9 +116,9 @@ Centered text-only slide. Used for chapter dividers and pull quotes.
 | `type` | `"text"` | yes | | |
 | `text` | string | yes | | Main centered text |
 | `subtext` | string | no | | Smaller secondary line |
-| `size` | `"md"` \| `"lg"` \| `"xl"` | no | `"lg"` | Main text size |
-
-`notes:` is **not** supported on text slides.
+| `size` | `"sm"` \| `"md"` \| `"lg"` \| `"xl"` | no | `"lg"` | Main text size |
+| `case` | `"upper"` \| `"normal"` | no | `"normal"` | `"upper"` applies `text-transform: uppercase` and wider letter-spacing (calibrated for all-caps) |
+| `notes` | string | no | | Emitted as `<SlideNotes>` overlay |
 
 ### `type: image-row`
 
@@ -121,10 +130,11 @@ Whole-slide grid of 2-4 images with optional shared title/subtitle/copyright. Re
 | `title` | string | no | | Top-left chrome |
 | `subtitle` | string | no | | Top-left chrome, below title |
 | `darkText` | boolean | no | `false` | Use zinc-950 chrome text for light backgrounds |
-| `copyright` | string or string[] | no | | Bottom-right credit |
+| `copyright` | credit line or credit line[] | no | | Bottom-right credit. See [credit lines](#credit-lines). |
 | `gap` | `"none"` \| `"sm"` \| `"md"` \| `"lg"` | no | `"sm"` | Spacing between images |
 | `fit` | `"cover"` or `"contain"` | no | `"contain"` | Image `object-fit` |
 | `images` | array | yes | | 2-4 items; each item is `{ src, alt }` |
+| `notes` | string | no | | Emitted as `<SlideNotes>` overlay |
 
 Each item in `images` accepts:
 
@@ -132,6 +142,7 @@ Each item in `images` accepts:
 | --- | --- | --- | --- |
 | `src` | binding or URL | yes | Bare identifier resolves to a JS import binding; URL-shaped strings stay literal |
 | `alt` | string | yes | Required for accessibility |
+| `copyright` | credit line or credit line[] | no | Per-image credit, rendered as a frosted-pill at the cell's bottom-left corner (kept off the right side so it doesn't collide with the slide progress indicator). See [credit lines](#credit-lines). |
 
 Example:
 
@@ -150,7 +161,7 @@ images:
 ---
 ```
 
-`notes:` is **not** supported on image-row slides. If you need 5 or more images, multiple rows, or per-image positioning, drop to JSX.
+If you need 5 or more images, multiple rows, or per-image positioning, drop to JSX.
 
 ## Nested child blocks (inside `type: slide`)
 
@@ -240,7 +251,98 @@ slideVideo:
 
 `slideVideo:` is only valid on `type: slide`. The validator rejects it on title/text/image-row slides.
 
-Both `slideImage:` and `slideVideo:` may appear on the same slide; they emit as sibling children inside `<Slide>` in this order: `<SlideImage>`, `<SlideVideo>`, `<SlideNotes>` (when `notes:` is set).
+### `slideText:`
+
+Foreground text overlay rendered on top of the background image (and overlay, if set). Used for centered titles, multi-line stacks, and quote+attribution patterns over an image. Maps 1:1 to `<SlideText>` props.
+
+| Field | Type | Required | Default | Notes |
+| --- | --- | --- | --- | --- |
+| `text` | string | yes | | Main text. Use a `\|` or `\|+` block scalar for multi-line stacks; each line renders as its own `<p>` in a flex column with `gap` spacing. |
+| `subtext` | string | no | | Smaller secondary line. Rendered as italic Poppins below the title (variant: title) or as bold uppercase Montserrat attribution (variant: quote). |
+| `size` | `"sm" \| "md" \| "lg" \| "xl"` | no | `"md"` | Main text size tier. |
+| `case` | `"upper" \| "normal"` | no | `"upper"` | Applies `text-transform: uppercase` + wider letter-spacing to the title variant. Quote variant ignores this (always normal case). |
+| `variant` | `"title" \| "quote"` | no | `"title"` | `"title"` is bold Montserrat. `"quote"` is light italic Poppins, with a bold-uppercase attribution below if `subtext` is set. |
+| `gap` | `"sm" \| "md" \| "lg" \| "xl"` | no | `"lg"` | Vertical gap between lines when `text` is multi-line. Maps to `gap-4/8/12/16`. |
+
+Example (centered title over a dark-overlaid background):
+
+```yaml
+---
+image: nasaBillIngalls
+imageAlt: NASA / Bill Ingalls
+overlay: black/50
+slideText:
+  text: Computação Material
+  size: lg
+---
+```
+
+Example (multi-line stack with arrows):
+
+```yaml
+---
+image: nasaBillIngalls
+imageAlt: NASA / Bill Ingalls
+overlay: black/50
+slideText:
+  text: |
+    Reproduzir Formas
+    ↓
+    Reproduzir Processos
+    ↓
+    Reproduzir Ecossistemas
+---
+```
+
+Example (quote with attribution):
+
+```yaml
+---
+image: bucky
+imageAlt: Buckminster Fuller
+overlay: black/60
+slideText:
+  text: |-
+    "Don't fight forces, use them!"
+  subtext: Buckminster Fuller
+  variant: quote
+---
+```
+
+`slideText:` is only valid on `type: slide`. For per-line opacity / build-reveal patterns within a stack, stay in JSX.
+
+Both `slideImage:`, `slideVideo:`, and `slideText:` may appear on the same slide; they emit as sibling children inside `<Slide>` in this order: `<SlideImage>`, `<SlideVideo>`, `<SlideText>`, `<SlideNotes>` (when `notes:` is set). The `slideText:` block lives at `z-10`, above the optional `overlay:` (`z-5`) and the background image.
+
+## Credit lines
+
+The `copyright` field (on `type: slide`, on `type: image-row`, and on each item inside `image-row` `images:`) accepts:
+
+- A **plain string**: `copyright: Gui Morelli` renders as `© Gui Morelli`.
+- A **link object** `{ name, href }`: renders the name as an external link to `href`. The `© ` prefix is auto-prepended unless `name` already starts with `©` or `(c)`.
+- An **array** mixing both forms: each item becomes its own line in the frosted-pill stack.
+
+Link form in YAML:
+
+```yaml
+image: crownShyness
+imageAlt: Timidez das copas em árvores Wana-Kwali
+copyright:
+  name: SAM EN CIMES
+  href: "https://elaguyane.wordpress.com/2013/12/04/description-architecturale-wana-kwali/"
+```
+
+Quote the URL so YAML doesn't try to parse the `://` as nested mapping syntax in edge cases.
+
+Multiple lines, mixed forms:
+
+```yaml
+copyright:
+  - name: SAM EN CIMES
+    href: "https://elaguyane.wordpress.com/2013/12/04/description-architecturale-wana-kwali/"
+  - Photo retouched by Daniel Locatelli
+```
+
+The same shape works for the per-image `copyright` inside an `image-row`.
 
 ## Field value rules
 
@@ -483,10 +585,11 @@ Asset paths under `src/assets/content/teaching/<slug>/` are conventional but not
 ## Common pitfalls
 
 - **Unquoted percentages parse as numbers.** Write `width: "50%"`, not `width: 50%` and definitely not `width: 50`.
+- **Colons in prose values trigger nested-mapping errors.** YAML reads `notes: A: B` as `notes` having a sub-key `A`. Quote any string value that contains `': '` (a colon followed by a space): `notes: "A: B"`. The validator catches this at `npm run check:decks`.
+- **Missing component imports = silent empty deck.** If a deck uses `slideVideo:` but doesn't `import SlideVideo`, MDX fails to resolve the component and renders an empty `<main>` with no error. Keep all six slide-component imports present even if you think you're not using one; it's the cheapest insurance against this failure mode.
 - **GIFs through `<Image>` lose animation.** Use `gif.src` (string URL) instead of passing the import binding directly.
 - **Template literals don't work in YAML.** Inline the full path string, or stay in JSX.
 - **Forgetting `imageAlt:` when `image:` is set** breaks accessibility. Always include alt text.
-- **`notes:` on title/text slides is silently dropped today.** `TitleSlide` and `TextSlide` don't render children. Plan to error on this in the upcoming validator.
 - **Em dashes (`—`) in slide text content** are forbidden by project convention (see `CLAUDE.md`). Use commas, colons, or parentheses instead.
 
 ## Related references

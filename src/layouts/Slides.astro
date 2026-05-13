@@ -45,54 +45,52 @@ const {
       <slot />
     </main>
 
-    <!-- HUD: exit, help, fullscreen, progress -->
+    <!-- HUD: preload + exit + help + presenter + fullscreen (top-right); progress (bottom-right) -->
     <div
       id="deck-hud"
-      class="pointer-events-none fixed inset-x-0 top-0 z-30 flex items-start justify-between p-3 transition-opacity duration-300"
+      class="pointer-events-none fixed inset-x-0 top-0 z-30 flex items-start justify-end p-4 transition-opacity duration-300 sm:p-6"
     >
       <div class="pointer-events-auto flex items-center gap-2">
-        {
-          exitHref && (
-            <a
-              href={exitHref}
-              aria-label="Exit presentation"
-              class="rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition hover:bg-zinc-800 hover:text-zinc-100"
-            >
-              ← Exit
-            </a>
-          )
-        }
         <div
           id="deck-preload"
-          class="flex items-center gap-2 rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition-opacity duration-500"
+          class="flex items-center gap-2 rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 tabular-nums backdrop-blur-sm transition-opacity duration-500"
           aria-live="polite"
         >
           <span class="inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-400" aria-hidden="true" />
           <span id="deck-preload-text">Preloading…</span>
         </div>
-      </div>
-      <div class="pointer-events-auto flex items-center gap-2">
-        <button
-          id="deck-presenter-btn"
-          aria-label="Open presenter window"
-          title="Open presenter window (P)"
-          class="rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition hover:bg-zinc-800 hover:text-zinc-100"
-          type="button"
-        >
-          ◫
-        </button>
+        {
+          exitHref && (
+            <a
+              href={exitHref}
+              aria-label="Exit presentation"
+              class="cursor-pointer rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm transition hover:bg-black/65 hover:text-zinc-100"
+            >
+              ← Exit
+            </a>
+          )
+        }
         <button
           id="deck-help"
           aria-label="Show keyboard shortcuts"
-          class="rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition hover:bg-zinc-800 hover:text-zinc-100"
+          class="cursor-pointer rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm transition hover:bg-black/65 hover:text-zinc-100"
           type="button"
         >
           ?
         </button>
         <button
+          id="deck-presenter-btn"
+          aria-label="Open presenter window"
+          title="Open presenter window (P)"
+          class="cursor-pointer rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm transition hover:bg-black/65 hover:text-zinc-100"
+          type="button"
+        >
+          ◫
+        </button>
+        <button
           id="deck-fullscreen"
           aria-label="Toggle fullscreen"
-          class="rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur transition hover:bg-zinc-800 hover:text-zinc-100"
+          class="cursor-pointer rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm transition hover:bg-black/65 hover:text-zinc-100"
           type="button"
         >
           ⛶
@@ -106,14 +104,14 @@ const {
     >
       <div
         id="deck-timer"
-        class="rounded-full bg-zinc-900/85 px-4 py-2 text-xl font-bold tracking-wider text-zinc-50 backdrop-blur tabular-nums"
+        class="rounded-full bg-black/50 px-4 py-2 text-xl font-bold tracking-wider text-zinc-50 backdrop-blur-sm tabular-nums"
         style="font-family: 'Montserrat', sans-serif;"
       >
         00:00
       </div>
       <div
         id="deck-next-hint"
-        class="max-w-[60vw] truncate rounded-full bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-300 backdrop-blur"
+        class="max-w-[60vw] truncate rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm"
         style="font-family: 'Montserrat', sans-serif;"
       >
         Next: …
@@ -122,8 +120,7 @@ const {
 
     <div
       id="deck-progress"
-      class="pointer-events-none fixed right-6 bottom-6 z-30 text-xs font-normal tracking-widest text-white tabular-nums uppercase sm:text-sm"
-      style="font-family: 'Montserrat', sans-serif;"
+      class="pointer-events-none fixed right-4 bottom-4 z-30 rounded bg-black/50 px-3 py-1.5 text-xs text-white/60 tabular-nums backdrop-blur-sm sm:right-6 sm:bottom-6"
     >
       <span id="deck-progress-current">1</span><span class="mx-1">/</span><span id="deck-progress-total">1</span>
     </div>
@@ -131,7 +128,7 @@ const {
 
     <dialog
       id="deck-help-dialog"
-      class="max-w-md rounded-lg border border-zinc-700 bg-zinc-900 p-6 text-zinc-100 backdrop:bg-black/70"
+      class="max-w-md rounded-lg border border-zinc-700 bg-zinc-900 p-6 text-zinc-100 backdrop:bg-black/50"
     >
       <h3 class="font-title mb-4 text-xl">Keyboard shortcuts</h3>
       <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
@@ -230,12 +227,16 @@ const {
   }
 
   /* Bare-image safety net for slot content (no Tailwind class). Wrapped in
-     :where() so its specificity is just the `img` element (0,0,0,1) — Tailwind
-     utility classes like `h-full` (0,0,1,0) win, which is what we want for
-     absolutely-positioned full-bleed images in Slide.astro. */
-  :where(.slide) img {
-    max-width: 100%;
-    height: auto;
+     @layer base so Tailwind v4 utilities like `h-full` (in the `utilities`
+     layer, declared after `base`) win by cascade-layer order — needed for
+     absolutely-positioned full-bleed images in Slide.astro and the grid
+     cells in SlideImageRow.astro. The :where() also keeps the rule's
+     specificity at (0,0,0,1) so unlayered classes still override it. */
+  @layer base {
+    :where(.slide) img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 
   .slide figure {
@@ -302,10 +303,13 @@ const {
     const total = images.length + videos.length;
     let done = 0;
 
+    const padWidth = String(total).length;
     const update = () => {
       if (preloadTextEl) {
         preloadTextEl.textContent =
-          total === 0 ? "Ready" : `Preloading ${done} / ${total}`;
+          total === 0
+            ? "Ready"
+            : `Preloading ${String(done).padStart(padWidth, "0")} / ${total}`;
       }
     };
     update();

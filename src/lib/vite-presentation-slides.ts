@@ -78,9 +78,11 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "darkText",
     "copyright",
     "fit",
+    "overlay",
     "notes",
     "slideImage",
     "slideVideo",
+    "slideText",
   ]),
   title: new Set([
     "type",
@@ -93,7 +95,8 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "imagePosition",
     "darkText",
     "fit",
-    "notes", // recognized but rejected; see notes-rejection check
+    "overlay",
+    "notes",
     "slideImage", // recognized but rejected; see slideImage-rejection check
     "slideVideo", // recognized but rejected; see slideVideo-rejection check
   ]),
@@ -102,6 +105,7 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "text",
     "subtext",
     "size",
+    "case",
     "notes",
     "slideImage",
     "slideVideo",
@@ -115,7 +119,7 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "gap",
     "fit",
     "images",
-    "notes", // recognized but rejected; see notes-rejection check
+    "notes",
     "slideImage", // recognized but rejected; see slideImage-rejection check
     "slideVideo", // recognized but rejected; see slideVideo-rejection check
   ]),
@@ -129,9 +133,10 @@ const REQUIRED_FIELDS: Record<SlideType, readonly string[]> = {
 };
 
 const ENUM_VALUES: Record<string, readonly string[]> = {
-  size: ["md", "lg", "xl"],
+  size: ["sm", "md", "lg", "xl"],
   fit: ["cover", "contain"],
   gap: ["none", "sm", "md", "lg"],
+  case: ["upper", "normal"],
 };
 
 const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
@@ -142,6 +147,7 @@ const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
     "imageAlt",
     "imagePosition",
     "fit",
+    "overlay",
     "notes",
   ],
   title: [
@@ -153,9 +159,11 @@ const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
     "imageAlt",
     "imagePosition",
     "fit",
+    "overlay",
+    "notes",
   ],
-  text: ["text", "subtext", "size"],
-  "image-row": ["title", "subtitle", "gap", "fit"],
+  text: ["text", "subtext", "size", "case", "notes"],
+  "image-row": ["title", "subtitle", "gap", "fit", "notes"],
 };
 
 const BOOLEAN_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
@@ -230,6 +238,23 @@ const SLIDE_VIDEO_PRELOAD_VALUES: readonly string[] = [
   "auto",
 ];
 
+const SLIDE_TEXT_STRING_FIELDS: readonly string[] = [
+  "text",
+  "subtext",
+  "size",
+  "case",
+  "variant",
+  "gap",
+];
+
+const SLIDE_TEXT_SIZE_VALUES: readonly string[] = ["sm", "md", "lg", "xl"];
+const SLIDE_TEXT_CASE_VALUES: readonly string[] = ["upper", "normal"];
+const SLIDE_TEXT_VARIANT_VALUES: readonly string[] = ["title", "quote"];
+const SLIDE_TEXT_GAP_VALUES: readonly string[] = ["sm", "md", "lg", "xl"];
+
+// text/subtext are plain strings; no JS bindings.
+const SLIDE_TEXT_BINDING_FIELDS: ReadonlySet<string> = new Set();
+
 const SLIDE_VIDEO_FIT_VALUES: readonly string[] = ["cover", "contain"];
 
 function levenshtein(a: string, b: string): number {
@@ -271,6 +296,24 @@ function suggest(
     }
   }
   return best;
+}
+
+// A credit/copyright line is either a plain string or a `{ name, href }` link
+// object. Mirrors the `CreditLine` union exported from src/components/Credit.astro.
+// Used by both the top-level `copyright` field (slide + image-row) and the
+// per-image `images[].copyright` field.
+function isCreditLine(value: unknown): boolean {
+  if (typeof value === "string") return true;
+  if (typeof value !== "object" || value === null || Array.isArray(value)) {
+    return false;
+  }
+  const obj = value as Record<string, unknown>;
+  return typeof obj.name === "string" && typeof obj.href === "string";
+}
+
+function isValidCopyright(value: unknown): boolean {
+  if (isCreditLine(value)) return true;
+  return Array.isArray(value) && value.every(isCreditLine);
 }
 
 function validateSlideImageBlock(
@@ -395,6 +438,52 @@ function validateSlideVideoBlock(
   }
 }
 
+function validateSlideTextBlock(
+  block: unknown,
+  push: (message: string) => void,
+): void {
+  if (!block || typeof block !== "object" || Array.isArray(block)) {
+    push(
+      `slideText: must be an object with a 'text' field, got ${Array.isArray(block) ? "array" : typeof block}.`,
+    );
+    return;
+  }
+  const obj = block as Record<string, unknown>;
+
+  if (obj.text === undefined || obj.text === null || obj.text === "") {
+    push(`slideText: missing required field 'text'.`);
+  } else if (typeof obj.text !== "string") {
+    push(`slideText.text must be a string, got ${typeof obj.text}.`);
+  }
+
+  for (const field of SLIDE_TEXT_STRING_FIELDS) {
+    if (field === "text") continue;
+    const value = obj[field];
+    if (value === undefined || value === null) continue;
+    if (typeof value !== "string") {
+      push(`slideText.${field} must be a string, got ${typeof value}.`);
+    }
+  }
+
+  const enumCheck = (
+    field: string,
+    values: readonly string[],
+  ): void => {
+    const value = obj[field];
+    if (typeof value === "string" && !values.includes(value)) {
+      const suggestion = suggest(value, values);
+      const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+      push(
+        `slideText.${field}: invalid value '${value}'. Valid: ${values.join(", ")}.${hint}`,
+      );
+    }
+  };
+  enumCheck("size", SLIDE_TEXT_SIZE_VALUES);
+  enumCheck("case", SLIDE_TEXT_CASE_VALUES);
+  enumCheck("variant", SLIDE_TEXT_VARIANT_VALUES);
+  enumCheck("gap", SLIDE_TEXT_GAP_VALUES);
+}
+
 export function validateSlide(
   config: Record<string, unknown>,
   ctx: { file: string; line: number },
@@ -449,19 +538,6 @@ export function validateSlide(
     );
   }
 
-  // notes rejected on title/text/image-row (no first-class children renderer)
-  if (type !== "slide" && config.notes !== undefined) {
-    const componentName =
-      type === "title"
-        ? "TitleSlide"
-        : type === "text"
-          ? "TextSlide"
-          : "SlideImageRow";
-    push(
-      `Slide (type: ${type}): '${componentName}' does not render notes. Remove the 'notes' field or change 'type' to 'slide'.`,
-    );
-  }
-
   // slideImage: nested block validation (only on type: slide)
   if (config.slideImage !== undefined) {
     if (type !== "slide") {
@@ -473,6 +549,23 @@ export function validateSlide(
     }
   }
 
+  // overlay: format check (supported on type: slide and type: title; rejected elsewhere)
+  if (config.overlay !== undefined) {
+    if (type !== "slide" && type !== "title") {
+      push(
+        `Slide (type: ${type}): 'overlay' is only supported on type: slide and type: title. Remove it or change 'type'.`,
+      );
+    } else if (typeof config.overlay !== "string") {
+      push(
+        `Slide: 'overlay' must be a string in "color/alpha" form (e.g. "black/50"), got ${typeof config.overlay}.`,
+      );
+    } else if (!/^(black|white)\/(?:100|\d{1,2})$/.test(config.overlay)) {
+      push(
+        `Slide: 'overlay' must be "<color>/<alpha>" where color is "black" or "white" and alpha is 0-100 (e.g. "black/50"), got "${config.overlay}".`,
+      );
+    }
+  }
+
   // slideVideo: nested block validation (only on type: slide)
   if (config.slideVideo !== undefined) {
     if (type !== "slide") {
@@ -481,6 +574,17 @@ export function validateSlide(
       );
     } else {
       validateSlideVideoBlock(config.slideVideo, push);
+    }
+  }
+
+  // slideText: nested block validation (only on type: slide)
+  if (config.slideText !== undefined) {
+    if (type !== "slide") {
+      push(
+        `Slide (type: ${type}): 'slideText' is only supported on type: slide. Remove it or change 'type' to 'slide'.`,
+      );
+    } else {
+      validateSlideTextBlock(config.slideText, push);
     }
   }
 
@@ -536,12 +640,20 @@ export function validateSlide(
             `Slide (type: image-row): images[${idx}].alt must be a string, got ${typeof obj.alt}.`,
           );
         }
+        if (obj.copyright !== undefined && obj.copyright !== null) {
+          if (!isValidCopyright(obj.copyright)) {
+            push(
+              `Slide (type: image-row): images[${idx}].copyright must be a string, a { name, href } object, or an array of those.`,
+            );
+          }
+        }
+        const allowedImageKeys = ["src", "alt", "copyright"];
         for (const key of Object.keys(obj)) {
-          if (key !== "src" && key !== "alt") {
-            const suggestion = suggest(key, ["src", "alt"]);
+          if (!allowedImageKeys.includes(key)) {
+            const suggestion = suggest(key, allowedImageKeys);
             const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
             push(
-              `Slide (type: image-row): images[${idx}] has unknown field '${key}'. Only 'src' and 'alt' are supported.${hint}`,
+              `Slide (type: image-row): images[${idx}] has unknown field '${key}'. Allowed: ${allowedImageKeys.join(", ")}.${hint}`,
             );
           }
         }
@@ -576,17 +688,17 @@ export function validateSlide(
     }
   }
 
-  // copyright: string or string[] (slide only)
-  if (type === "slide" && config.copyright !== undefined) {
-    const c = config.copyright;
-    const ok =
-      typeof c === "string" ||
-      (Array.isArray(c) && c.every((x) => typeof x === "string"));
-    if (!ok) {
-      push(
-        `Slide (type: ${type}): 'copyright' must be a string or an array of strings.`,
-      );
-    }
+  // copyright: a CreditLine, or an array of them. A CreditLine is either a
+  // plain string or a `{ name, href }` link object. Applies to both `slide`
+  // and `image-row` top-level copyright.
+  if (
+    (type === "slide" || type === "image-row") &&
+    config.copyright !== undefined &&
+    !isValidCopyright(config.copyright)
+  ) {
+    push(
+      `Slide (type: ${type}): 'copyright' must be a string, a { name, href } object, or an array of those.`,
+    );
   }
 
   // Boolean type checks
@@ -602,36 +714,154 @@ export function validateSlide(
   return errors;
 }
 
+// --- Imports & binding resolution ------------------------------------------
+
+// Parses ES module import statements at the top of a deck.mdx body and
+// returns the set of identifiers they introduce into scope. Used to catch
+// YAML slide blocks that reference a binding (e.g. `image: img83`) which is
+// no longer imported, before the broken `image={img83}` JSX reaches MDX and
+// renders a silent empty page.
+//
+// Recognises default, named (with `as` aliases), namespace, and combined
+// `default, { named }` forms. The decks today use only default imports,
+// but supporting the full ESM surface keeps the check honest.
+export function extractImports(code: string): Set<string> {
+  const imports = new Set<string>();
+  const re = /^\s*import\s+([^"';]+?)\s+from\s+["'][^"']+["']/gm;
+  for (const match of code.matchAll(re)) {
+    const clause = match[1];
+    const parts = clause.match(/\{[^}]*\}|\*\s+as\s+\w+|\w+/g) ?? [];
+    for (const part of parts) {
+      if (part.startsWith("{")) {
+        for (const seg of part.slice(1, -1).split(",")) {
+          const trimmed = seg.trim();
+          if (!trimmed) continue;
+          const aliasMatch = trimmed.match(/\s+as\s+(\w+)$/);
+          imports.add(aliasMatch ? aliasMatch[1] : trimmed);
+        }
+      } else if (part.startsWith("*")) {
+        const ns = part.match(/\*\s+as\s+(\w+)/);
+        if (ns) imports.add(ns[1]);
+      } else {
+        imports.add(part);
+      }
+    }
+  }
+  return imports;
+}
+
+export function validateBindings(
+  slides: readonly ExtractedSlide[],
+  imports: ReadonlySet<string>,
+): SlideValidationError[] {
+  const errors: SlideValidationError[] = [];
+
+  const checkBinding = (
+    value: unknown,
+    fieldPath: string,
+    ctx: { file: string; line: number },
+  ): void => {
+    if (typeof value !== "string" || value === "") return;
+    if (URL_PATTERN.test(value)) return;
+    if (!IDENTIFIER_PATTERN.test(value)) return;
+    const root = value.split(".")[0];
+    if (imports.has(root)) return;
+    const suggestion = suggest(root, imports);
+    const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+    errors.push({
+      file: ctx.file,
+      line: ctx.line,
+      message: `Slide: '${fieldPath}' references binding '${root}' which is not imported in this deck.${hint} Add an import at the top of the file, or use a URL path starting with '/'.`,
+    });
+  };
+
+  for (const slide of slides) {
+    const { config, line, file } = slide;
+    const type = (config.type as string | undefined) ?? "slide";
+    const ctx = { file, line };
+
+    if (type === "slide" || type === "title") {
+      checkBinding(config.image, "image", ctx);
+    }
+
+    if (
+      type === "slide" &&
+      config.slideImage &&
+      typeof config.slideImage === "object" &&
+      !Array.isArray(config.slideImage)
+    ) {
+      const si = config.slideImage as Record<string, unknown>;
+      checkBinding(si.src, "slideImage.src", ctx);
+    }
+
+    if (type === "image-row" && Array.isArray(config.images)) {
+      config.images.forEach((item, idx) => {
+        if (item && typeof item === "object" && !Array.isArray(item)) {
+          checkBinding(
+            (item as Record<string, unknown>).src,
+            `images[${idx}].src`,
+            ctx,
+          );
+        }
+      });
+    }
+  }
+
+  return errors;
+}
+
 // --- Extraction ------------------------------------------------------------
+
+export interface ExtractionResult {
+  slides: ExtractedSlide[];
+  parseErrors: SlideValidationError[];
+}
 
 export function extractSlidesFromMdx(
   code: string,
   file: string,
-): ExtractedSlide[] {
+): ExtractionResult {
   const frontmatterMatch = code.match(/^---\r?\n[\s\S]*?\r?\n---\r?\n/);
   const frontmatter = frontmatterMatch?.[0] ?? "";
   const body = code.slice(frontmatter.length);
 
   const slides: ExtractedSlide[] = [];
+  const parseErrors: SlideValidationError[] = [];
   const regex = /(?:^|\n)---\r?\n([\s\S]*?)\r?\n---(?=\r?\n|$)/g;
 
   for (const match of body.matchAll(regex)) {
     const yamlContent = match[1];
-    let parsed: unknown;
-    try {
-      parsed = parseYaml(yamlContent);
-    } catch {
-      continue;
-    }
-    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-      continue;
-    }
 
     const startsWithNewline = match[0].startsWith("\n");
     const fenceOffset = (match.index ?? 0) + (startsWithNewline ? 1 : 0);
     const absoluteOffset = frontmatter.length + fenceOffset;
     // 1-indexed line number of the opening `---`
     const line = code.slice(0, absoluteOffset).split("\n").length;
+
+    let parsed: unknown;
+    try {
+      parsed = parseYaml(yamlContent);
+    } catch (e) {
+      // Parse failure inside a YAML fence is a build error. Silent skip
+      // (the prior behavior) caused the plugin to leave `---...---` in the
+      // body, which then confused MDX and rendered the deck empty without
+      // any diagnostic. Surface as a validation error.
+      const message = (e as Error).message.split("\n")[0];
+      parseErrors.push({
+        file,
+        line,
+        message: `YAML parse error: ${message}. Hint: quote prose values that contain ': ' (a colon followed by a space) so YAML doesn't read them as nested mappings.`,
+      });
+      continue;
+    }
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      parseErrors.push({
+        file,
+        line,
+        message: `Fence content is not a YAML object (got ${parsed === null || parsed === undefined ? "empty fence" : Array.isArray(parsed) ? "array" : typeof parsed}). Slide fences must be a mapping with at least one field.`,
+      });
+      continue;
+    }
 
     slides.push({
       config: parsed as Record<string, unknown>,
@@ -640,7 +870,7 @@ export function extractSlidesFromMdx(
     });
   }
 
-  return slides;
+  return { slides, parseErrors };
 }
 
 export function formatValidationErrors(
@@ -684,6 +914,13 @@ function emitAttr(
     return ` ${key}={${JSON.stringify(value)}}`;
   }
 
+  // Plain object: emits as a JS object literal. Used by `copyright` link
+  // form `{ name, href }`. JSON.stringify produces valid JS object-literal
+  // syntax (quoted keys are accepted in JSX expressions).
+  if (typeof value === "object") {
+    return ` ${key}={${JSON.stringify(value)}}`;
+  }
+
   return "";
 }
 
@@ -707,6 +944,15 @@ function emitSlideVideoJsx(block: Record<string, unknown>): string {
   return `<SlideVideo${attrs} />`;
 }
 
+// Emits a <SlideText /> child from a slideText YAML block. All fields are
+// plain strings (no JS bindings).
+function emitSlideTextJsx(block: Record<string, unknown>): string {
+  const attrs = Object.entries(block)
+    .map(([k, v]) => emitAttr(k, v, SLIDE_TEXT_BINDING_FIELDS))
+    .join("");
+  return `<SlideText${attrs} />`;
+}
+
 // Emits the `images` array for an image-row slide. Each item resolves `src`
 // as a binding-or-string and `alt` as a JSON-quoted string literal. Items
 // that don't match the expected shape are emitted as best-effort; the
@@ -721,14 +967,35 @@ function emitImagesArray(items: readonly unknown[]): string {
     if (typeof src !== "string") continue;
     const srcExpr = emitBindingOrString(src);
     const altExpr = JSON.stringify(typeof alt === "string" ? alt : "");
-    parts.push(`{ src: ${srcExpr}, alt: ${altExpr} }`);
+    const fragments = [`src: ${srcExpr}`, `alt: ${altExpr}`];
+    // Per-image copyright accepts the same shape as the top-level field:
+    // a string, a `{ name, href }` link object, or an array mixing both.
+    // JSON.stringify covers all three (objects emit as valid JS literals).
+    if (obj.copyright !== undefined && isValidCopyright(obj.copyright)) {
+      fragments.push(`copyright: ${JSON.stringify(obj.copyright)}`);
+    }
+    parts.push(`{ ${fragments.join(", ")} }`);
   }
   return `[${parts.join(", ")}]`;
+}
+
+function emitOverlayJsx(overlay: string): string {
+  // We emit inline `style="background-color: rgba(...)"` rather than a
+  // `bg-${color}/${alpha}` Tailwind class. Tailwind 4's content scanner reads
+  // the source `.mdx` files (not this plugin's transformed output), so a
+  // dynamically-generated class would only render while a literal occurrence
+  // existed elsewhere in the source. Inline style is scanner-independent.
+  const match = overlay.match(/^(black|white)\/(\d+)$/);
+  if (!match) return "";
+  const rgb = match[1] === "black" ? "0, 0, 0" : "255, 255, 255";
+  const alpha = parseInt(match[2], 10) / 100;
+  return `<div class="absolute inset-0 z-5" style="background-color: rgba(${rgb}, ${alpha});" />`;
 }
 
 function buildSlideJsx(config: Record<string, unknown>): string {
   const type = (config.type as string | undefined) ?? "slide";
   const notes = config.notes as string | undefined;
+  const overlay = config.overlay as string | undefined;
   const slideImage =
     config.slideImage && typeof config.slideImage === "object" && !Array.isArray(config.slideImage)
       ? (config.slideImage as Record<string, unknown>)
@@ -736,6 +1003,10 @@ function buildSlideJsx(config: Record<string, unknown>): string {
   const slideVideo =
     config.slideVideo && typeof config.slideVideo === "object" && !Array.isArray(config.slideVideo)
       ? (config.slideVideo as Record<string, unknown>)
+      : undefined;
+  const slideText =
+    config.slideText && typeof config.slideText === "object" && !Array.isArray(config.slideText)
+      ? (config.slideText as Record<string, unknown>)
       : undefined;
 
   const componentName =
@@ -748,12 +1019,17 @@ function buildSlideJsx(config: Record<string, unknown>): string {
           : "Slide";
 
   // Fields with bespoke emission live outside the generic emitAttr loop.
+  // `overlay` is emitted as a JSX child <div> for Slide (positioned over the
+  // background image at z-5), but as a prop string for TitleSlide (so the
+  // component can suppress its auto-gradient and parse "color/alpha" itself).
   const specialFields = new Set<string>([
     "type",
     "notes",
     "slideImage",
     "slideVideo",
+    "slideText",
   ]);
+  if (componentName === "Slide") specialFields.add("overlay");
   if (componentName === "SlideImageRow") specialFields.add("images");
 
   const attrs = Object.entries(config)
@@ -766,16 +1042,28 @@ function buildSlideJsx(config: Record<string, unknown>): string {
     extraAttrs = ` images={${emitImagesArray(config.images)}}`;
   }
 
-  // Children (only emitted on type: slide; validator rejects these fields
-  // on other types). Render order: SlideImage, SlideVideo, SlideNotes.
+  // Children. overlay/slideImage/slideVideo/slideText are restricted to
+  // type: slide (the validator rejects them on other types). notes is
+  // supported on every type since <SlideNotes> is position: fixed and only
+  // needs to exist somewhere in the DOM. Render order: overlay (z-5),
+  // SlideImage, SlideVideo, SlideText (z-10), SlideNotes — overlay first so
+  // any positioned foreground content sits visually above it; slideText
+  // last among visible content so it sits over both the overlay and any
+  // foreground image/video.
   const children: string[] = [];
+  if (componentName === "Slide" && overlay) {
+    children.push(emitOverlayJsx(overlay));
+  }
   if (componentName === "Slide" && slideImage) {
     children.push(emitSlideImageJsx(slideImage));
   }
   if (componentName === "Slide" && slideVideo) {
     children.push(emitSlideVideoJsx(slideVideo));
   }
-  if (componentName === "Slide" && notes) {
+  if (componentName === "Slide" && slideText) {
+    children.push(emitSlideTextJsx(slideText));
+  }
+  if (notes) {
     children.push(`<SlideNotes>{${JSON.stringify(notes)}}</SlideNotes>`);
   }
 
@@ -800,10 +1088,18 @@ export function presentationSlides(): Plugin {
       // Validate first (one parse pass), then emit (second parse pass).
       // YAML parsing is cheap; the duplication keeps the two responsibilities
       // separated and makes the validator reusable from the standalone script.
-      const slides = extractSlidesFromMdx(code, normalizedId);
-      const errors = slides.flatMap((s) =>
-        validateSlide(s.config, { file: s.file, line: s.line }),
+      const { slides, parseErrors } = extractSlidesFromMdx(
+        code,
+        normalizedId,
       );
+      const imports = extractImports(code);
+      const errors = [
+        ...parseErrors,
+        ...slides.flatMap((s) =>
+          validateSlide(s.config, { file: s.file, line: s.line }),
+        ),
+        ...validateBindings(slides, imports),
+      ];
       if (errors.length > 0) {
         const formatted = formatValidationErrors(errors);
         throw new Error(

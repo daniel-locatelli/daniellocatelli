@@ -1,0 +1,107 @@
+---
+interface Props {
+  text: string;
+  subtext?: string;
+  size?: "sm" | "md" | "lg" | "xl";
+  case?: "upper" | "normal";
+  variant?: "title" | "quote";
+  gap?: "sm" | "md" | "lg" | "xl";
+}
+
+const {
+  text,
+  subtext,
+  size = "md",
+  case: textCase = "upper",
+  variant = "title",
+  gap = "lg",
+} = Astro.props;
+
+const titleSizeClass =
+  size === "xl"
+    ? "text-4xl sm:text-6xl lg:text-7xl"
+    : size === "lg"
+      ? "text-3xl sm:text-5xl lg:text-6xl"
+      : size === "sm"
+        ? "text-xl sm:text-3xl lg:text-4xl"
+        : "text-2xl sm:text-4xl lg:text-5xl"; // md default
+
+const quoteSizeClass =
+  size === "xl"
+    ? "text-3xl sm:text-5xl lg:text-6xl"
+    : size === "md"
+      ? "text-lg sm:text-2xl lg:text-3xl"
+      : size === "sm"
+        ? "text-base sm:text-xl lg:text-2xl"
+        : "text-xl sm:text-3xl lg:text-4xl"; // lg default
+
+const caseClass = textCase === "upper" ? "uppercase tracking-wide" : "";
+
+const gapClass =
+  gap === "xl"
+    ? "gap-16"
+    : gap === "md"
+      ? "gap-8"
+      : gap === "sm"
+        ? "gap-4"
+        : "gap-12"; // lg default
+
+// Preserve empty lines so YAML "|+" chomping (keep all trailing newlines)
+// renders as vertical padding via the flex-column `gap-{N}`. Strip exactly
+// one trailing empty so plain "|" (clip-default) single-line text doesn't
+// gain a phantom bottom gap.
+const rawLines = text.split("\n");
+const lines =
+  rawLines.length > 0 && rawLines[rawLines.length - 1] === ""
+    ? rawLines.slice(0, -1)
+    : rawLines;
+---
+
+{
+  variant === "quote" ? (
+    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center text-white">
+      <p
+        class={`max-w-4xl ${quoteSizeClass} leading-relaxed font-light whitespace-pre-line italic text-balance`}
+        style="font-family: 'Poppins', sans-serif;"
+      >
+        {text}
+      </p>
+      {subtext && (
+        <p
+          class="mt-6 text-base font-bold tracking-wider uppercase sm:text-lg lg:text-xl"
+          style="font-family: 'Montserrat', sans-serif;"
+        >
+          {subtext}
+        </p>
+      )}
+    </div>
+  ) : (
+    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center px-8 text-center text-white">
+      <div
+        class={`flex flex-col items-center ${gapClass}`}
+        style="font-family: 'Montserrat', sans-serif;"
+      >
+        {lines.map((line) => (
+          <p
+            class={`${titleSizeClass} leading-tight font-bold text-balance min-h-[1lh] ${caseClass}`}
+          >
+            {/* ` ` (non-breaking space) gives empty lines one line-height
+                of layout space so trailing-blank `|+` blocks render at the
+                same column height as their populated siblings. Otherwise
+                empties collapse to 0 and the visible items shift vertically
+                across otherwise-identical layouts. */}
+            {line || " "}
+          </p>
+        ))}
+      </div>
+      {subtext && (
+        <p
+          class="mt-6 text-lg leading-relaxed whitespace-pre-line italic opacity-80 sm:text-2xl lg:text-3xl"
+          style="font-family: 'Poppins', sans-serif;"
+        >
+          {subtext}
+        </p>
+      )}
+    </div>
+  )
+}
