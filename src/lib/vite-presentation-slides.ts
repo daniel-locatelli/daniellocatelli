@@ -83,6 +83,7 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "slideImage",
     "slideVideo",
     "slideText",
+    "text",
   ]),
   title: new Set([
     "type",
@@ -149,6 +150,7 @@ const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
     "fit",
     "overlay",
     "notes",
+    "text",
   ],
   title: [
     "title",

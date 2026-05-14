@@ -43,3 +43,21 @@ describe("validateSlide — current behavior (pre-refactor)", () => {
     assert.ok(errors.some((e) => e.message.includes("overlay")));
   });
 });
+
+describe("validateSlide — markdown text on type: slide", () => {
+  test("accepts text: markdown string on type: slide", () => {
+    const errors = validateSlide(
+      { type: "slide", text: "# Heading\n\nBody." },
+      ctx,
+    );
+    assert.deepEqual(errors, []);
+  });
+
+  test("rejects non-string text", () => {
+    const errors = validateSlide(
+      { type: "slide", text: 42 as unknown as string },
+      ctx,
+    );
+    assert.ok(errors.some((e) => e.message.includes("'text'")));
+  });
+});
