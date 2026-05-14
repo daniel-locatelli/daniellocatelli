@@ -457,6 +457,51 @@ const {
       setInterval(tickTimer, 1000);
     }
 
+    // Video transport sync between presenter and audience windows.
+    // Only "real" videos (excluding aria-hidden blur clones) participate.
+    // Indexed by document order so both windows agree on identity.
+    const realVideos = Array.from(
+      document.querySelectorAll<HTMLVideoElement>(
+        "#deck video:not([aria-hidden])",
+      ),
+    );
+
+    if (isPresenter) {
+      // Presenter sees controls, hears nothing (audience window emits audio).
+      realVideos.forEach((v, i) => {
+        v.controls = true;
+        v.muted = true;
+        // Filter out the play event that fires immediately after a seek, and
+        // the seeked event that fires from natural loop wraparound. Both
+        // would spam the channel without representing speaker intent.
+        let suppressNextPlay = false;
+        v.addEventListener("seeking", () => {
+          suppressNextPlay = true;
+        });
+        v.addEventListener("seeked", () => {
+          channel?.postMessage({
+            type: "video",
+            index: i,
+            action: "seek",
+            currentTime: v.currentTime,
+            paused: v.paused,
+          });
+          // Clear the suppress flag on the next tick so a real play after
+          // the seek-induced one still broadcasts.
+          setTimeout(() => {
+            suppressNextPlay = false;
+          }, 0);
+        });
+        v.addEventListener("play", () => {
+          if (suppressNextPlay) return;
+          channel?.postMessage({ type: "video", index: i, action: "play" });
+        });
+        v.addEventListener("pause", () => {
+          channel?.postMessage({ type: "video", index: i, action: "pause" });
+        });
+      });
+    }
+
     const showHud = () => {
       document.body.classList.remove("deck-hud-hidden");
       if (hudTimer) clearTimeout(hudTimer);
@@ -501,7 +546,15 @@ const {
 
       index = targetIndex;
       slides.forEach((s, i) => {
-        s.classList.toggle("is-active", i === index);
+        const isActive = i === index;
+        s.classList.toggle("is-active", isActive);
+        // Videos on hidden slides keep playing (and emitting audio) by
+        // default — pause non-active slides so unmuted videos don't
+        // overlap, and resume the active slide's videos.
+        s.querySelectorAll<HTMLVideoElement>("video").forEach((v) => {
+          if (isActive) v.play().catch(() => {});
+          else v.pause();
+        });
       });
       if (currentEl) currentEl.textContent = String(index + 1);
       if (pushHash) {
@@ -525,6 +578,13 @@ const {
           | { type: "goto"; slide: number }
           | { type: "state"; slide: number }
           | { type: "request-state" }
+          | {
+              type: "video";
+              index: number;
+              action: "play" | "pause" | "seek";
+              currentTime?: number;
+              paused?: boolean;
+            }
           | undefined;
         if (!data || typeof data !== "object") return;
         if (
@@ -536,6 +596,19 @@ const {
           render(data.slide - 1, false, false);
         } else if (data.type === "request-state") {
           channel?.postMessage({ type: "state", slide: index + 1 });
+        } else if (data.type === "video" && !isPresenter) {
+          // Only the audience window honors video transport messages.
+          const v = realVideos[data.index];
+          if (!v) return;
+          if (data.action === "seek" && typeof data.currentTime === "number") {
+            v.currentTime = data.currentTime;
+            if (data.paused === false && v.paused) v.play().catch(() => {});
+            else if (data.paused === true && !v.paused) v.pause();
+          } else if (data.action === "play" && v.paused) {
+            v.play().catch(() => {});
+          } else if (data.action === "pause" && !v.paused) {
+            v.pause();
+          }
         }
       });
       // Late-joiner: ask any existing window for the current slide.
@@ -645,7 +718,10 @@ const {
       if (
         target.closest("#deck-hud") ||
         target.closest("#deck-help-dialog") ||
-        target.closest("a, button")
+        target.closest("a, button") ||
+        // Presenter video controls live on <video controls>; clicks on the
+        // control bar must reach the native UI, not advance the slide.
+        target.closest("video[controls]")
       ) {
         return;
       }
@@ -669,7 +745,12 @@ const {
     // Prevent native drag/selection on slide media so click never feels "stuck"
     document.getElementById("deck")?.addEventListener("mousedown", (e) => {
       const target = e.target as HTMLElement;
-      if (target.closest("#deck-hud") || target.closest("a, button")) return;
+      if (
+        target.closest("#deck-hud") ||
+        target.closest("a, button") ||
+        target.closest("video[controls]")
+      )
+        return;
       e.preventDefault();
     });
 

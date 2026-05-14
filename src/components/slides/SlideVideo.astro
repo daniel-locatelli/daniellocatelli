@@ -51,7 +51,7 @@ const {
   poster,
   loop = true,
   autoplay = true,
-  muted = true,
+  muted = false,
   controls = false,
   playsinline = true,
   preload = "auto",
@@ -134,7 +134,7 @@ if (!isPositioned) {
         class="absolute inset-0 h-full w-full scale-110 object-cover opacity-70 blur-2xl"
         autoplay={autoplay}
         loop={loop}
-        muted={muted}
+        muted
         playsinline={playsinline}
         preload={preload}
         aria-hidden="true"
