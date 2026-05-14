@@ -89,3 +89,51 @@ text: |
     assert.match(String(slides[0].config.text), /^# Hello/);
   });
 });
+
+describe("validateSlide — images: array on type: slide", () => {
+  test("accepts images array on type: slide", () => {
+    const errors = validateSlide(
+      {
+        type: "slide",
+        images: [
+          { src: "imgA", alt: "A" },
+          { src: "imgB", alt: "B" },
+        ],
+      },
+      ctx,
+    );
+    assert.deepEqual(errors, []);
+  });
+
+  test("accepts images array combined with text and overlay", () => {
+    const errors = validateSlide(
+      {
+        type: "slide",
+        images: [{ src: "a", alt: "A" }, { src: "b", alt: "B" }],
+        overlay: "black/40",
+        text: "## Caption",
+      },
+      ctx,
+    );
+    assert.deepEqual(errors, []);
+  });
+
+  test("rejects empty images array", () => {
+    const errors = validateSlide(
+      { type: "slide", images: [] },
+      ctx,
+    );
+    assert.ok(errors.some((e) => e.message.includes("at least one")));
+  });
+
+  test("rejects malformed item (missing alt) on type: slide", () => {
+    const errors = validateSlide(
+      {
+        type: "slide",
+        images: [{ src: "imgA" }],
+      },
+      ctx,
+    );
+    assert.ok(errors.some((e) => e.message.includes("missing 'alt'")));
+  });
+});

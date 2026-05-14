@@ -84,6 +84,8 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "slideVideo",
     "slideText",
     "text",
+    "images",
+    "gap",
   ]),
   title: new Set([
     "type",
@@ -151,6 +153,7 @@ const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
     "overlay",
     "notes",
     "text",
+    "gap",
   ],
   title: [
     "title",
@@ -486,6 +489,80 @@ function validateSlideTextBlock(
   enumCheck("gap", SLIDE_TEXT_GAP_VALUES);
 }
 
+function validateImagesArray(
+  images: unknown,
+  push: (message: string) => void,
+  contextLabel: string,
+): void {
+  if (!Array.isArray(images)) {
+    push(
+      `${contextLabel}: 'images' must be an array, got ${typeof images}.`,
+    );
+    return;
+  }
+  if (images.length === 0) {
+    push(`${contextLabel}: 'images' must contain at least one item.`);
+    return;
+  }
+  if (images.length > 4) {
+    push(
+      `${contextLabel}: 'images' has ${images.length} items; at most 4 are supported (2-4 columns recommended).`,
+    );
+  }
+  images.forEach((item, idx) => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) {
+      push(
+        `${contextLabel}: images[${idx}] must be an object with 'src' and 'alt' fields.`,
+      );
+      return;
+    }
+    const obj = item as Record<string, unknown>;
+    if (
+      obj.src === undefined ||
+      obj.src === null ||
+      obj.src === ""
+    ) {
+      push(
+        `${contextLabel}: images[${idx}] is missing required field 'src'.`,
+      );
+    } else if (typeof obj.src !== "string") {
+      push(
+        `${contextLabel}: images[${idx}].src must be a string (binding identifier or URL), got ${typeof obj.src}.`,
+      );
+    }
+    if (
+      obj.alt === undefined ||
+      obj.alt === null ||
+      obj.alt === ""
+    ) {
+      push(
+        `${contextLabel}: images[${idx}] is missing 'alt'. Required for accessibility.`,
+      );
+    } else if (typeof obj.alt !== "string") {
+      push(
+        `${contextLabel}: images[${idx}].alt must be a string, got ${typeof obj.alt}.`,
+      );
+    }
+    if (obj.copyright !== undefined && obj.copyright !== null) {
+      if (!isValidCopyright(obj.copyright)) {
+        push(
+          `${contextLabel}: images[${idx}].copyright must be a string, a { name, href } object, or an array of those.`,
+        );
+      }
+    }
+    const allowedImageKeys = ["src", "alt", "copyright"];
+    for (const key of Object.keys(obj)) {
+      if (!allowedImageKeys.includes(key)) {
+        const suggestion = suggest(key, allowedImageKeys);
+        const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+        push(
+          `${contextLabel}: images[${idx}] has unknown field '${key}'. Allowed: ${allowedImageKeys.join(", ")}.${hint}`,
+        );
+      }
+    }
+  });
+}
+
 export function validateSlide(
   config: Record<string, unknown>,
   ctx: { file: string; line: number },
@@ -592,75 +669,23 @@ export function validateSlide(
 
   // image-row: images array validation
   if (type === "image-row") {
-    const images = config.images;
-    if (images === undefined) {
-      // Already covered by REQUIRED_FIELDS check above
-    } else if (!Array.isArray(images)) {
-      push(
-        `Slide (type: image-row): 'images' must be an array, got ${typeof images}.`,
+    if (config.images !== undefined) {
+      validateImagesArray(
+        config.images,
+        push,
+        `Slide (type: ${type})`,
       );
-    } else if (images.length === 0) {
-      push(
-        `Slide (type: image-row): 'images' must contain at least one item.`,
-      );
-    } else if (images.length > 4) {
-      push(
-        `Slide (type: image-row): 'images' has ${images.length} items; SlideImageRow supports up to 4 (2-4 columns recommended).`,
-      );
-    } else {
-      images.forEach((item, idx) => {
-        if (!item || typeof item !== "object" || Array.isArray(item)) {
-          push(
-            `Slide (type: image-row): images[${idx}] must be an object with 'src' and 'alt' fields.`,
-          );
-          return;
-        }
-        const obj = item as Record<string, unknown>;
-        if (
-          obj.src === undefined ||
-          obj.src === null ||
-          obj.src === ""
-        ) {
-          push(
-            `Slide (type: image-row): images[${idx}] is missing required field 'src'.`,
-          );
-        } else if (typeof obj.src !== "string") {
-          push(
-            `Slide (type: image-row): images[${idx}].src must be a string (binding identifier or URL), got ${typeof obj.src}.`,
-          );
-        }
-        if (
-          obj.alt === undefined ||
-          obj.alt === null ||
-          obj.alt === ""
-        ) {
-          push(
-            `Slide (type: image-row): images[${idx}] is missing 'alt'. Required for accessibility.`,
-          );
-        } else if (typeof obj.alt !== "string") {
-          push(
-            `Slide (type: image-row): images[${idx}].alt must be a string, got ${typeof obj.alt}.`,
-          );
-        }
-        if (obj.copyright !== undefined && obj.copyright !== null) {
-          if (!isValidCopyright(obj.copyright)) {
-            push(
-              `Slide (type: image-row): images[${idx}].copyright must be a string, a { name, href } object, or an array of those.`,
-            );
-          }
-        }
-        const allowedImageKeys = ["src", "alt", "copyright"];
-        for (const key of Object.keys(obj)) {
-          if (!allowedImageKeys.includes(key)) {
-            const suggestion = suggest(key, allowedImageKeys);
-            const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
-            push(
-              `Slide (type: image-row): images[${idx}] has unknown field '${key}'. Allowed: ${allowedImageKeys.join(", ")}.${hint}`,
-            );
-          }
-        }
-      });
     }
+    // Note: REQUIRED_FIELDS already enforces presence of 'images' on image-row.
+  }
+
+  // slide: optional images array validation
+  if (type === "slide" && config.images !== undefined) {
+    validateImagesArray(
+      config.images,
+      push,
+      `Slide (type: ${type})`,
+    );
   }
 
   // Enum value validation (size, fit)
@@ -796,7 +821,10 @@ export function validateBindings(
       checkBinding(si.src, "slideImage.src", ctx);
     }
 
-    if (type === "image-row" && Array.isArray(config.images)) {
+    if (
+      (type === "image-row" || type === "slide") &&
+      Array.isArray(config.images)
+    ) {
       config.images.forEach((item, idx) => {
         if (item && typeof item === "object" && !Array.isArray(item)) {
           checkBinding(
@@ -1032,7 +1060,7 @@ function buildSlideJsx(config: Record<string, unknown>): string {
     "slideText",
   ]);
   if (componentName === "Slide") specialFields.add("overlay");
-  if (componentName === "SlideImageRow") specialFields.add("images");
+  if (componentName === "SlideImageRow" || componentName === "Slide") specialFields.add("images");
   if (componentName === "Slide") specialFields.add("text"); // emitted as <SlideMarkdown> child
 
   const attrs = Object.entries(config)
@@ -1041,7 +1069,10 @@ function buildSlideJsx(config: Record<string, unknown>): string {
     .join("");
 
   let extraAttrs = "";
-  if (componentName === "SlideImageRow" && Array.isArray(config.images)) {
+  if (
+    (componentName === "SlideImageRow" || componentName === "Slide") &&
+    Array.isArray(config.images)
+  ) {
     extraAttrs = ` images={${emitImagesArray(config.images)}}`;
   }
 
