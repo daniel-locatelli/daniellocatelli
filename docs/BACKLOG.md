@@ -20,3 +20,11 @@ Non-critical ideas and improvements for the daniellocatelli portfolio repo. Use 
 **Trigger.** When the same subject appears in 3+ content files, or when a filename rename (e.g. `buckminster-fuller_radiolarians.png`, which is actually a Haeckel illustration from the H.M.S. Challenger report) reveals attribution drift.
 
 **Open questions.** Does Astro's image optimization play well with widely-shared imports? Do we want one sidecar JSON per file, or one registry per source identity? Migration path for existing duplicated assets?
+
+## SlideMarkdown font sizes need tuning
+
+**Problem.** After the unified-slide-type migration (2026-05-14), some slides render with text that feels too large or too small versus the previous TextSlide/TitleSlide rendering. The `clamp()` scale picked for `SlideMarkdown` in `src/components/slides/SlideMarkdown.astro` was an approximation of the old TextSlide's `text-{4xl,5xl,6xl,7xl}` Tailwind tiers, not an exact match.
+
+**Sketch.** Walk through the migrated decks visually, note which heading levels feel off in which contexts, and adjust the `clamp(min, vw, max)` values per element. Likely candidates: h1 (currently `clamp(2.5rem, 7vw, 6rem)`), p (currently `clamp(1rem, 1.8vw, 1.5rem)`).
+
+**Trigger.** Before the next public-facing deck delivery, or sooner if a specific slide reads badly in a presentation rehearsal.
