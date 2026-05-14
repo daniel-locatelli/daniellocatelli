@@ -1,0 +1,107 @@
+---
+import { renderSlideMarkdown } from "@/lib/slide-markdown";
+
+interface Props {
+  text: string;
+  // Vertical alignment within the slide. Default 'center' matches the
+  // current TextSlide hero behavior.
+  align?: "center" | "top" | "bottom";
+  darkText?: boolean;
+}
+
+const { text, align = "center", darkText = false } = Astro.props;
+
+const html = renderSlideMarkdown(text);
+
+const justify =
+  align === "top" ? "justify-start pt-16" :
+  align === "bottom" ? "justify-end pb-16" :
+  "justify-center";
+
+const textColor = darkText ? "text-zinc-950" : "text-white";
+---
+
+<div
+  class:list={[
+    "absolute inset-0 z-10 flex flex-col items-center px-8 text-center",
+    justify,
+    textColor,
+    "slide-md",
+  ]}
+>
+  <div class="max-w-5xl" set:html={html} />
+</div>
+
+<style is:global>
+  /* Project-consistent typography for slide markdown. Size tiers are
+     intentionally comparable to TextSlide (h1 ≈ lg hero, p ≈ body) so
+     migrated slides retain visual continuity. Implementation uses clamp()
+     rather than Tailwind step classes because set:html precludes utility
+     classes on generated elements. Authors get heading hierarchy via
+     markdown structure; visual scale is never authored. */
+  .slide-md h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-wrap: balance;
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    margin: 0 0 1.5rem 0;
+  }
+
+  .slide-md h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    line-height: 1.15;
+    text-wrap: balance;
+    font-size: clamp(1.75rem, 4.5vw, 3.5rem);
+    margin: 0 0 1rem 0;
+  }
+
+  .slide-md h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    text-wrap: balance;
+    font-size: clamp(1.25rem, 3vw, 2.25rem);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .slide-md p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    line-height: 1.5;
+    text-wrap: pretty;
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    margin: 0 0 1rem 0;
+  }
+
+  .slide-md blockquote {
+    font-family: "Poppins", sans-serif;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+    opacity: 0.85;
+    border-left: 3px solid currentColor;
+    padding-left: 1rem;
+    margin: 0 0 1rem 0;
+    text-align: left;
+    font-size: clamp(1.125rem, 2vw, 1.75rem);
+  }
+
+  .slide-md ul,
+  .slide-md ol {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    line-height: 1.5;
+    text-align: left;
+    margin: 0 auto 1rem auto;
+    max-width: 40em;
+  }
+
+  .slide-md :last-child {
+    margin-bottom: 0;
+  }
+</style>

@@ -6,20 +6,23 @@ Event: DigitalFutures
 Language: English
 ---
 
-import TitleSlide from "@/components/slides/TitleSlide.astro";
 import Slide from "@/components/slides/Slide.astro";
-import TextSlide from "@/components/slides/TextSlide.astro";
 import SlideNotes from "@/components/slides/SlideNotes.astro";
+import SlideMarkdown from "@/components/slides/SlideMarkdown.astro";
 
 import cover from "@/assets/content/teaching/digital-futures-2026/digital-futures-2026-cover.jpg";
 
 ---
-type: title
-title: Plugin demo
-subtitle: Two authoring syntaxes, side by side
-author: Daniel Locatelli
+type: slide
 image: cover
 imageAlt: Demo cover
+overlay: black/50
+text: |
+  # Plugin demo
+
+  Two authoring syntaxes, side by side
+
+  Daniel Locatelli
 ---
 
 ---
@@ -45,8 +48,9 @@ copyright: Daniel Locatelli
 </Slide>
 
 ---
-type: text
-text: A YAML text slide
-subtext: For chapter dividers
-size: lg
+type: slide
+text: |
+  # A YAML text slide
+
+  For chapter dividers
 ---

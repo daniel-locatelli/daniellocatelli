@@ -20,7 +20,7 @@ import { parse as parseYaml } from "yaml";
 // frontmatter (Astro content collection metadata) and is left alone.
 //
 // Field semantics:
-//   - `type`: "slide" (default) | "title" | "text" — picks the component
+//   - `type`: "slide" (the only valid value; may be omitted, defaults to "slide")
 //   - `notes`: emitted as <SlideNotes>{value}</SlideNotes> child of <Slide>
 //   - `image`: a bare identifier (e.g. `atelier`) is emitted as a JSX
 //      expression `image={atelier}`, referring to imports at the top of the
@@ -58,14 +58,9 @@ export interface ExtractedSlide {
   file: string;
 }
 
-type SlideType = "slide" | "title" | "text" | "image-row";
+type SlideType = "slide";
 
-const SLIDE_TYPES: readonly SlideType[] = [
-  "slide",
-  "title",
-  "text",
-  "image-row",
-] as const;
+const SLIDE_TYPES: readonly SlideType[] = ["slide"] as const;
 
 const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
   slide: new Set([
@@ -83,53 +78,14 @@ const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
     "slideImage",
     "slideVideo",
     "slideText",
-  ]),
-  title: new Set([
-    "type",
-    "title",
-    "subtitle",
-    "author",
-    "institution",
-    "image",
-    "imageAlt",
-    "imagePosition",
-    "darkText",
-    "fit",
-    "overlay",
-    "notes",
-    "slideImage", // recognized but rejected; see slideImage-rejection check
-    "slideVideo", // recognized but rejected; see slideVideo-rejection check
-  ]),
-  text: new Set([
-    "type",
     "text",
-    "subtext",
-    "size",
-    "case",
-    "notes",
-    "slideImage",
-    "slideVideo",
-  ]),
-  "image-row": new Set([
-    "type",
-    "title",
-    "subtitle",
-    "darkText",
-    "copyright",
-    "gap",
-    "fit",
     "images",
-    "notes",
-    "slideImage", // recognized but rejected; see slideImage-rejection check
-    "slideVideo", // recognized but rejected; see slideVideo-rejection check
+    "gap",
   ]),
 };
 
 const REQUIRED_FIELDS: Record<SlideType, readonly string[]> = {
   slide: [],
-  title: ["title"],
-  text: ["text"],
-  "image-row": ["images"],
 };
 
 const ENUM_VALUES: Record<string, readonly string[]> = {
@@ -149,28 +105,13 @@ const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
     "fit",
     "overlay",
     "notes",
+    "text",
+    "gap",
   ],
-  title: [
-    "title",
-    "subtitle",
-    "author",
-    "institution",
-    "image",
-    "imageAlt",
-    "imagePosition",
-    "fit",
-    "overlay",
-    "notes",
-  ],
-  text: ["text", "subtext", "size", "case", "notes"],
-  "image-row": ["title", "subtitle", "gap", "fit", "notes"],
 };
 
 const BOOLEAN_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
   slide: ["darkText"],
-  title: ["darkText"],
-  text: [],
-  "image-row": ["darkText"],
 };
 
 // --- Nested child blocks ---------------------------------------------------
@@ -300,7 +241,7 @@ function suggest(
 
 // A credit/copyright line is either a plain string or a `{ name, href }` link
 // object. Mirrors the `CreditLine` union exported from src/components/Credit.astro.
-// Used by both the top-level `copyright` field (slide + image-row) and the
+// Used by both the top-level `copyright` field and the
 // per-image `images[].copyright` field.
 function isCreditLine(value: unknown): boolean {
   if (typeof value === "string") return true;
@@ -484,6 +425,80 @@ function validateSlideTextBlock(
   enumCheck("gap", SLIDE_TEXT_GAP_VALUES);
 }
 
+function validateImagesArray(
+  images: unknown,
+  push: (message: string) => void,
+  contextLabel: string,
+): void {
+  if (!Array.isArray(images)) {
+    push(
+      `${contextLabel}: 'images' must be an array, got ${typeof images}.`,
+    );
+    return;
+  }
+  if (images.length === 0) {
+    push(`${contextLabel}: 'images' must contain at least one item.`);
+    return;
+  }
+  if (images.length > 4) {
+    push(
+      `${contextLabel}: 'images' has ${images.length} items; at most 4 are supported (2-4 columns recommended).`,
+    );
+  }
+  images.forEach((item, idx) => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) {
+      push(
+        `${contextLabel}: images[${idx}] must be an object with 'src' and 'alt' fields.`,
+      );
+      return;
+    }
+    const obj = item as Record<string, unknown>;
+    if (
+      obj.src === undefined ||
+      obj.src === null ||
+      obj.src === ""
+    ) {
+      push(
+        `${contextLabel}: images[${idx}] is missing required field 'src'.`,
+      );
+    } else if (typeof obj.src !== "string") {
+      push(
+        `${contextLabel}: images[${idx}].src must be a string (binding identifier or URL), got ${typeof obj.src}.`,
+      );
+    }
+    if (
+      obj.alt === undefined ||
+      obj.alt === null ||
+      obj.alt === ""
+    ) {
+      push(
+        `${contextLabel}: images[${idx}] is missing 'alt'. Required for accessibility.`,
+      );
+    } else if (typeof obj.alt !== "string") {
+      push(
+        `${contextLabel}: images[${idx}].alt must be a string, got ${typeof obj.alt}.`,
+      );
+    }
+    if (obj.copyright !== undefined && obj.copyright !== null) {
+      if (!isValidCopyright(obj.copyright)) {
+        push(
+          `${contextLabel}: images[${idx}].copyright must be a string, a { name, href } object, or an array of those.`,
+        );
+      }
+    }
+    const allowedImageKeys = ["src", "alt", "copyright"];
+    for (const key of Object.keys(obj)) {
+      if (!allowedImageKeys.includes(key)) {
+        const suggestion = suggest(key, allowedImageKeys);
+        const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+        push(
+          `${contextLabel}: images[${idx}] has unknown field '${key}'. Allowed: ${allowedImageKeys.join(", ")}.${hint}`,
+        );
+      }
+    }
+  });
+}
+
 export function validateSlide(
   config: Record<string, unknown>,
   ctx: { file: string; line: number },
@@ -527,9 +542,8 @@ export function validateSlide(
     }
   }
 
-  // imageAlt required if image is set (on slide and title; text has no image)
+  // imageAlt required if image is set
   if (
-    type !== "text" &&
     config.image !== undefined &&
     (config.imageAlt === undefined || config.imageAlt === "")
   ) {
@@ -538,24 +552,14 @@ export function validateSlide(
     );
   }
 
-  // slideImage: nested block validation (only on type: slide)
+  // slideImage: nested block validation
   if (config.slideImage !== undefined) {
-    if (type !== "slide") {
-      push(
-        `Slide (type: ${type}): 'slideImage' is only supported on type: slide. Remove it or change 'type' to 'slide'.`,
-      );
-    } else {
-      validateSlideImageBlock(config.slideImage, push);
-    }
+    validateSlideImageBlock(config.slideImage, push);
   }
 
-  // overlay: format check (supported on type: slide and type: title; rejected elsewhere)
+  // overlay: format check
   if (config.overlay !== undefined) {
-    if (type !== "slide" && type !== "title") {
-      push(
-        `Slide (type: ${type}): 'overlay' is only supported on type: slide and type: title. Remove it or change 'type'.`,
-      );
-    } else if (typeof config.overlay !== "string") {
+    if (typeof config.overlay !== "string") {
       push(
         `Slide: 'overlay' must be a string in "color/alpha" form (e.g. "black/50"), got ${typeof config.overlay}.`,
       );
@@ -566,99 +570,23 @@ export function validateSlide(
     }
   }
 
-  // slideVideo: nested block validation (only on type: slide)
+  // slideVideo: nested block validation
   if (config.slideVideo !== undefined) {
-    if (type !== "slide") {
-      push(
-        `Slide (type: ${type}): 'slideVideo' is only supported on type: slide. Remove it or change 'type' to 'slide'.`,
-      );
-    } else {
-      validateSlideVideoBlock(config.slideVideo, push);
-    }
+    validateSlideVideoBlock(config.slideVideo, push);
   }
 
-  // slideText: nested block validation (only on type: slide)
+  // slideText: nested block validation
   if (config.slideText !== undefined) {
-    if (type !== "slide") {
-      push(
-        `Slide (type: ${type}): 'slideText' is only supported on type: slide. Remove it or change 'type' to 'slide'.`,
-      );
-    } else {
-      validateSlideTextBlock(config.slideText, push);
-    }
+    validateSlideTextBlock(config.slideText, push);
   }
 
-  // image-row: images array validation
-  if (type === "image-row") {
-    const images = config.images;
-    if (images === undefined) {
-      // Already covered by REQUIRED_FIELDS check above
-    } else if (!Array.isArray(images)) {
-      push(
-        `Slide (type: image-row): 'images' must be an array, got ${typeof images}.`,
-      );
-    } else if (images.length === 0) {
-      push(
-        `Slide (type: image-row): 'images' must contain at least one item.`,
-      );
-    } else if (images.length > 4) {
-      push(
-        `Slide (type: image-row): 'images' has ${images.length} items; SlideImageRow supports up to 4 (2-4 columns recommended).`,
-      );
-    } else {
-      images.forEach((item, idx) => {
-        if (!item || typeof item !== "object" || Array.isArray(item)) {
-          push(
-            `Slide (type: image-row): images[${idx}] must be an object with 'src' and 'alt' fields.`,
-          );
-          return;
-        }
-        const obj = item as Record<string, unknown>;
-        if (
-          obj.src === undefined ||
-          obj.src === null ||
-          obj.src === ""
-        ) {
-          push(
-            `Slide (type: image-row): images[${idx}] is missing required field 'src'.`,
-          );
-        } else if (typeof obj.src !== "string") {
-          push(
-            `Slide (type: image-row): images[${idx}].src must be a string (binding identifier or URL), got ${typeof obj.src}.`,
-          );
-        }
-        if (
-          obj.alt === undefined ||
-          obj.alt === null ||
-          obj.alt === ""
-        ) {
-          push(
-            `Slide (type: image-row): images[${idx}] is missing 'alt'. Required for accessibility.`,
-          );
-        } else if (typeof obj.alt !== "string") {
-          push(
-            `Slide (type: image-row): images[${idx}].alt must be a string, got ${typeof obj.alt}.`,
-          );
-        }
-        if (obj.copyright !== undefined && obj.copyright !== null) {
-          if (!isValidCopyright(obj.copyright)) {
-            push(
-              `Slide (type: image-row): images[${idx}].copyright must be a string, a { name, href } object, or an array of those.`,
-            );
-          }
-        }
-        const allowedImageKeys = ["src", "alt", "copyright"];
-        for (const key of Object.keys(obj)) {
-          if (!allowedImageKeys.includes(key)) {
-            const suggestion = suggest(key, allowedImageKeys);
-            const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
-            push(
-              `Slide (type: image-row): images[${idx}] has unknown field '${key}'. Allowed: ${allowedImageKeys.join(", ")}.${hint}`,
-            );
-          }
-        }
-      });
-    }
+  // images: optional array validation
+  if (config.images !== undefined) {
+    validateImagesArray(
+      config.images,
+      push,
+      `Slide (type: ${type})`,
+    );
   }
 
   // Enum value validation (size, fit)
@@ -689,10 +617,8 @@ export function validateSlide(
   }
 
   // copyright: a CreditLine, or an array of them. A CreditLine is either a
-  // plain string or a `{ name, href }` link object. Applies to both `slide`
-  // and `image-row` top-level copyright.
+  // plain string or a `{ name, href }` link object.
   if (
-    (type === "slide" || type === "image-row") &&
     config.copyright !== undefined &&
     !isValidCopyright(config.copyright)
   ) {
@@ -777,15 +703,11 @@ export function validateBindings(
 
   for (const slide of slides) {
     const { config, line, file } = slide;
-    const type = (config.type as string | undefined) ?? "slide";
     const ctx = { file, line };
 
-    if (type === "slide" || type === "title") {
-      checkBinding(config.image, "image", ctx);
-    }
+    checkBinding(config.image, "image", ctx);
 
     if (
-      type === "slide" &&
       config.slideImage &&
       typeof config.slideImage === "object" &&
       !Array.isArray(config.slideImage)
@@ -794,7 +716,7 @@ export function validateBindings(
       checkBinding(si.src, "slideImage.src", ctx);
     }
 
-    if (type === "image-row" && Array.isArray(config.images)) {
+    if (Array.isArray(config.images)) {
       config.images.forEach((item, idx) => {
         if (item && typeof item === "object" && !Array.isArray(item)) {
           checkBinding(
@@ -885,7 +807,7 @@ export function formatValidationErrors(
 
 // Emits a string value as either a bare JS expression (when it looks like an
 // identifier or member access) or a string literal otherwise. Used for
-// binding-aware fields and inside the image-row `images[].src` items.
+// binding-aware fields and inside the per-image `images[].src` items.
 function emitBindingOrString(value: string): string {
   if (!URL_PATTERN.test(value) && IDENTIFIER_PATTERN.test(value)) {
     return value;
@@ -953,7 +875,7 @@ function emitSlideTextJsx(block: Record<string, unknown>): string {
   return `<SlideText${attrs} />`;
 }
 
-// Emits the `images` array for an image-row slide. Each item resolves `src`
+// Emits the `images` array prop. Each item resolves `src`
 // as a binding-or-string and `alt` as a JSON-quoted string literal. Items
 // that don't match the expected shape are emitted as best-effort; the
 // validator should have rejected malformed input upstream.
@@ -979,23 +901,8 @@ function emitImagesArray(items: readonly unknown[]): string {
   return `[${parts.join(", ")}]`;
 }
 
-function emitOverlayJsx(overlay: string): string {
-  // We emit inline `style="background-color: rgba(...)"` rather than a
-  // `bg-${color}/${alpha}` Tailwind class. Tailwind 4's content scanner reads
-  // the source `.mdx` files (not this plugin's transformed output), so a
-  // dynamically-generated class would only render while a literal occurrence
-  // existed elsewhere in the source. Inline style is scanner-independent.
-  const match = overlay.match(/^(black|white)\/(\d+)$/);
-  if (!match) return "";
-  const rgb = match[1] === "black" ? "0, 0, 0" : "255, 255, 255";
-  const alpha = parseInt(match[2], 10) / 100;
-  return `<div class="absolute inset-0 z-5" style="background-color: rgba(${rgb}, ${alpha});" />`;
-}
-
 function buildSlideJsx(config: Record<string, unknown>): string {
-  const type = (config.type as string | undefined) ?? "slide";
   const notes = config.notes as string | undefined;
-  const overlay = config.overlay as string | undefined;
   const slideImage =
     config.slideImage && typeof config.slideImage === "object" && !Array.isArray(config.slideImage)
       ? (config.slideImage as Record<string, unknown>)
@@ -1009,28 +916,21 @@ function buildSlideJsx(config: Record<string, unknown>): string {
       ? (config.slideText as Record<string, unknown>)
       : undefined;
 
-  const componentName =
-    type === "title"
-      ? "TitleSlide"
-      : type === "text"
-        ? "TextSlide"
-        : type === "image-row"
-          ? "SlideImageRow"
-          : "Slide";
+  const componentName = "Slide";
 
   // Fields with bespoke emission live outside the generic emitAttr loop.
-  // `overlay` is emitted as a JSX child <div> for Slide (positioned over the
-  // background image at z-5), but as a prop string for TitleSlide (so the
-  // component can suppress its auto-gradient and parse "color/alpha" itself).
+  // `overlay` flows through as a regular prop (Slide.astro renders the overlay
+  // div internally from the prop). `images` and `text` are handled specially
+  // below (images via emitImagesArray; text as a <SlideMarkdown> child).
   const specialFields = new Set<string>([
     "type",
     "notes",
     "slideImage",
     "slideVideo",
     "slideText",
+    "images",
+    "text",
   ]);
-  if (componentName === "Slide") specialFields.add("overlay");
-  if (componentName === "SlideImageRow") specialFields.add("images");
 
   const attrs = Object.entries(config)
     .filter(([k]) => !specialFields.has(k))
@@ -1038,30 +938,27 @@ function buildSlideJsx(config: Record<string, unknown>): string {
     .join("");
 
   let extraAttrs = "";
-  if (componentName === "SlideImageRow" && Array.isArray(config.images)) {
+  if (Array.isArray(config.images)) {
     extraAttrs = ` images={${emitImagesArray(config.images)}}`;
   }
 
-  // Children. overlay/slideImage/slideVideo/slideText are restricted to
-  // type: slide (the validator rejects them on other types). notes is
-  // supported on every type since <SlideNotes> is position: fixed and only
-  // needs to exist somewhere in the DOM. Render order: overlay (z-5),
-  // SlideImage, SlideVideo, SlideText (z-10), SlideNotes — overlay first so
-  // any positioned foreground content sits visually above it; slideText
-  // last among visible content so it sits over both the overlay and any
+  // Children. slideImage/slideVideo/slideText/text are emitted as children;
+  // overlay is now a prop on <Slide> (rendered internally by Slide.astro).
+  // Render order: SlideImage, SlideVideo, SlideText (z-10), SlideMarkdown,
+  // SlideNotes — slideText last among visible content so it sits over any
   // foreground image/video.
   const children: string[] = [];
-  if (componentName === "Slide" && overlay) {
-    children.push(emitOverlayJsx(overlay));
-  }
-  if (componentName === "Slide" && slideImage) {
+  if (slideImage) {
     children.push(emitSlideImageJsx(slideImage));
   }
-  if (componentName === "Slide" && slideVideo) {
+  if (slideVideo) {
     children.push(emitSlideVideoJsx(slideVideo));
   }
-  if (componentName === "Slide" && slideText) {
+  if (slideText) {
     children.push(emitSlideTextJsx(slideText));
+  }
+  if (typeof config.text === "string" && config.text.length > 0) {
+    children.push(`<SlideMarkdown text={${JSON.stringify(config.text)}} />`);
   }
   if (notes) {
     children.push(`<SlideNotes>{${JSON.stringify(notes)}}</SlideNotes>`);

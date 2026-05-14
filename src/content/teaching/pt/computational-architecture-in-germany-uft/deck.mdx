@@ -6,14 +6,12 @@ Event: SEMANAU 2023
 Language: Português
 ---
 
-import TitleSlide from "@/components/slides/TitleSlide.astro";
 import Slide from "@/components/slides/Slide.astro";
-import TextSlide from "@/components/slides/TextSlide.astro";
 import SlideNotes from "@/components/slides/SlideNotes.astro";
 import SlideVideo from "@/components/slides/SlideVideo.astro";
-import SlideImageRow from "@/components/slides/SlideImageRow.astro";
 import SlideImage from "@/components/slides/SlideImage.astro";
 import SlideText from "@/components/slides/SlideText.astro";
+import SlideMarkdown from "@/components/slides/SlideMarkdown.astro";
 
 import atelierMarkoBrajovicLogo from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/aterlier-marko-brajovic_logo.png";
 import o3PavilionCenografia from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/o3-pavilion-by-atelier-marko-brajovic-for-docol-cover.jpg";
@@ -97,19 +95,22 @@ import cobwebWeaverNestHoneycombCollage from "@/assets/content/teaching/computat
 import spumellariaHaeckel from "@/assets/content/research/architecture-biomimicry-algorithm/ernst-haeckel_spumellaria.png";
 
 ---
-type: title
-title: Arquitetura Computacional
-author: Daniel Nunes Locatelli
+type: slide
 image: spumellariaHaeckel
 imageAlt: Detalhe da prancha Spumellaria de Ernst Haeckel, Kunstformen der Natur
-overlay: black/60
+overlay: black/80
+fit: contain
+text: |
+  # Arquitetura Computacional na Alemanha
+
+  Daniel Nunes Locatelli
 ---
 
 ---
 slideImage:
   src: atelierMarkoBrajovicLogo
   alt: Logo do Atelier Marko Brajovic.
-  height: "35%"
+  height: "30%"
 ---
 
 ---
@@ -165,8 +166,8 @@ subtitle: |
 slideImage:
   src: o3AssemblySequence.src
   alt: Animação com a sequência de montagem do Pavilhão O3
-  y: "53%"
   width: "30%"
+  y: "53%"
 notes: "A programação facilita os estudos: várias versões com o mesmo algoritmo, apenas variando os parâmetros."
 ---
 
@@ -178,7 +179,7 @@ subtitle: |
 slideImage:
   src: o3ConstructionPhases
   alt: Detalhamento computacional do Pavilhão O3
-  width: "70%"
+  width: "65%"
 notes: Detalhamento do projeto dependente da programação.
 ---
 
@@ -225,6 +226,7 @@ subtitle: |
 image: o3InteriorRightCell
 imageAlt: Pavilhão O3 detalhe
 copyright: Gui Morelli
+notes: Prof. Thiago Omena, durante o doutorado na FAU, ajudou com o artigo.
 ---
 
 ---
@@ -237,7 +239,6 @@ slideVideo:
   src: /presentations/computational-architecture-in-germany-uft/pavilhao-o3.mp4
   fit: cover
   blur: false
-notes: Prof. Thiago Omena, durante o doutorado na FAU, ajudou com o artigo.
 ---
 
 ---
@@ -312,6 +313,7 @@ title: Models byNature
 subtitle: Workshop
 image: modelsByNatureWorkshop
 imageAlt: Capa do workshop Models byNature, realizado em 2019.
+fit: contain
 ---
 
 ---
@@ -323,7 +325,7 @@ slideVideo:
 ---
 
 ---
-type: image-row
+type: slide
 title: Models byNature
 subtitle: Workshop
 images:
@@ -353,7 +355,7 @@ slideVideo:
 ---
 
 ---
-type: image-row
+type: slide
 title: Models ByNature
 subtitle: Workshop
 images:
@@ -368,6 +370,7 @@ fit: cover
 slideImage:
   src: tfgTitle
   alt: Capa do TFG na FAUUSP.
+  width: 70%
 ---
 
 ---
@@ -480,13 +483,18 @@ copyright: Decimal
 ---
 
 ---
-type: title
-title: Building Across Scales
-subtitle: Um sistema robótico de construção em madeira para colagem no canteiro
-author: Daniel Locatelli, Nils Opgenorth
-institution: ITECH Master Thesis
+type: slide
 image: buildingAcrossScalesCover
 imageAlt: Building Across Scales, montagem de capa
+overlay: black/50
+text: |
+  # Building Across Scales
+
+  Um sistema robótico de construção em madeira para colagem no canteiro
+
+  Daniel Locatelli e Nils Opgenorth
+
+  ITECH Master Thesis
 ---
 
 ---
@@ -603,63 +611,49 @@ copyright: HAHNER Technik GmbH & Co KG
 ---
 
 ---
-type: title
-title: Design Computacional
+type: slide
 image: spumellariaHaeckel
 imageAlt: Detalhe da prancha Spumellaria de Ernst Haeckel, Kunstformen der Natur
-overlay: black/60
+overlay: black/80
+fit: contain
+text: |
+  # Design Computacional
 ---
 
 ---
-type: text
-text: |+
-  Modelagem Associativa
-  
-  
-  
-  
-  
-  
-size: sm
+type: slide
+text: |
+  ### Modelagem Associativa
 ---
 
 ---
-type: text
-text: |+
-  Modelagem Associativa
+type: slide
+text: |
+  ### Modelagem Associativa
   ≃
   Design Paramétrico
-  
-  
-  
-  
-size: sm
 ---
 
 ---
-type: text
-text: |+
-  Modelagem Associativa
+type: slide
+text: |
+  ### Modelagem Associativa
   ≃
   Design Paramétrico
   ≃
   Design Algorítmico
-  
-  
-size: sm
 ---
 
 ---
-type: text
-text: |+
-  Modelagem Associativa
+type: slide
+text: |
+  ### Modelagem Associativa
   ≃
   Design Paramétrico
   ≃
   Design Algorítmico
   ≃
   Design Generativo
-size: sm
 notes:
   E agora o marketing da Autodesk está se aproveitando pra “lançar” o design generativo.
   Que também é mais ou menos a mesma coisa.
@@ -682,17 +676,17 @@ notes:
 ---
 
 ---
-type: text
+type: slide
 text: |
-  Computerização
+  # Computerização
   x
   Computação
 ---
 
 ---
-type: text
+type: slide
 text: |
-  CAD
+  # CAD
   x
   Programação
 ---
@@ -767,7 +761,7 @@ slideText:
 ---
 
 ---
-type: image-row
+type: slide
 title: Reproduzir Formas
 subtitle: Exposição Universal de 1900
 fit: cover
@@ -829,10 +823,11 @@ slideText:
 ---
 
 ---
-type: text
-text: Robert Hooke
-subtext: 1635, 1703
-size: md
+type: slide
+text: |
+  ## Robert Hooke
+
+  1635, 1703
 notes:
   HISTÓRIA
 
@@ -890,10 +885,11 @@ copyright: all-free-photos.com
 ---
 
 ---
-type: text
-text: Antoni Gaudí
-subtext: 1852, 1926
-size: md
+type: slide
+text: |
+  ## Antoni Gaudí
+
+  1852, 1926
 ---
 
 ---
@@ -940,10 +936,11 @@ fit: cover
 ---
 
 ---
-type: text
-text: Buckminster Fuller
-subtext: 1895, 1983
-size: md
+type: slide
+text: |
+  ## Buckminster Fuller
+
+  1895, 1983
 ---
 
 ---
@@ -969,10 +966,11 @@ fit: contain
 ---
 
 ---
-type: text
-text: Frei Otto
-subtext: 1925, 2015
-size: md
+type: slide
+text: |
+  ## Frei Otto
+
+  1925, 2015
 ---
 
 ---
@@ -1062,10 +1060,11 @@ slideVideo:
 ---
 
 ---
-type: text
-text: Finite Element Method
-subtext: J. H. Argyris, Universidade de Stuttgart
-size: md
+type: slide
+text: |
+  ## Finite Element Method
+
+  J. H. Argyris, Universidade de Stuttgart
 notes:
   The finite element method obtained its real impetus in the 1960s and 1970s by the developments of J. H. Argyris at the University of Stuttgart
 ---
@@ -1111,9 +1110,9 @@ notes:
 ---
 
 ---
-type: text
-text: Emergência
-size: md
+type: slide
+text: |
+  ## Emergência
 notes:
   Então a vida é essa camada de organização. Começa lá na célula, órgãos, organismos, sociedades, ecossistemas, etc.
 
@@ -1121,7 +1120,7 @@ notes:
 ---
 
 ---
-type: image-row
+type: slide
 fit: contain
 images:
   - src: issTexasAtNight
@@ -1289,9 +1288,9 @@ copyright:
 ---
 
 ---
-type: text
-text: Aprendizados durante o ITECH
-size: md
+type: slide
+text: |
+  ## Aprendizados durante o ITECH
 notes:
   Conexão da universidade com empresas
   Demonstradores e pavilhões
@@ -1312,9 +1311,9 @@ slideImage:
 ---
 
 ---
-type: text
-text: Inteligência Artificial
-size: md
+type: slide
+text: |
+  ## Inteligência Artificial
 notes: |
   Imagens são fáceis, matriz de pixels
   Large language models (LLM) precisam de uma lógica = gramática e interpretação de texto. Fácil de criar tags bom, ruim.
@@ -1338,7 +1337,7 @@ notes: |
 ---
 
 ---
-type: text
-text: Obrigado!
-size: xl
+type: slide
+text: |
+  # Obrigado!
 ---
