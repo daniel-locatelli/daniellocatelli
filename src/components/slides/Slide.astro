@@ -20,6 +20,7 @@ interface Props {
   copyright?: CreditLine | CreditLine[];
   fit?: "cover" | "contain";
   gap?: "none" | "sm" | "md" | "lg";
+  overlay?: string;
 }
 
 const {
@@ -33,7 +34,18 @@ const {
   copyright,
   fit = "cover",
   gap = "sm",
+  overlay,
 } = Astro.props;
+
+let overlayStyle: string | undefined;
+if (overlay) {
+  const m = overlay.match(/^(black|white)\/(100|\d{1,2})$/);
+  if (m) {
+    const rgb = m[1] === "black" ? "0, 0, 0" : "255, 255, 255";
+    const alpha = parseInt(m[2], 10) / 100;
+    overlayStyle = `background-color: rgba(${rgb}, ${alpha});`;
+  }
+}
 
 const fitClass = fit === "contain" ? "object-contain" : "object-cover";
 
@@ -106,6 +118,8 @@ const isStringImage = typeof image === "string";
       </div>
     )
   }
+
+  {overlayStyle && <div class="absolute inset-0 z-[5]" style={overlayStyle} />}
 
   <SlideChrome title={title} subtitle={subtitle} darkText={darkText} copyright={copyright} />
 
