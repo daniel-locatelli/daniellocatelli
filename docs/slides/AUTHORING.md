@@ -34,13 +34,15 @@ import SlideNotes from "@/components/slides/SlideNotes.astro";
 import SlideImage from "@/components/slides/SlideImage.astro";
 import SlideVideo from "@/components/slides/SlideVideo.astro";
 import SlideImageRow from "@/components/slides/SlideImageRow.astro";
+import SlideMarkdown from "@/components/slides/SlideMarkdown.astro";
 // Required-imports rule: the YAML plugin emits JSX that references whichever
 // components your fences use. `type: title` needs `TitleSlide`; `type: text`
 // needs `TextSlide`; `type: image-row` needs `SlideImageRow`; any `slide`
 // fence emits `<Slide>` and (if `notes:` is set) `<SlideNotes>`; any
 // `slideImage:` block needs `SlideImage`; any `slideVideo:` block needs
-// `SlideVideo`. Keep the full set imported; an unused import is cheap, but
-// a missing one makes MDX silently render the deck as an empty <main>.
+// `SlideVideo`; any `text:` field on a slide needs `SlideMarkdown`. Keep the
+// full set imported; an unused import is cheap, but a missing one makes MDX
+// silently render the deck as an empty <main>.
 
 import cover from "@/assets/content/teaching/<slug>/<image>.jpg";
 // ...more asset imports

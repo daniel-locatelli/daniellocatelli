@@ -1033,6 +1033,7 @@ function buildSlideJsx(config: Record<string, unknown>): string {
   ]);
   if (componentName === "Slide") specialFields.add("overlay");
   if (componentName === "SlideImageRow") specialFields.add("images");
+  if (componentName === "Slide") specialFields.add("text"); // emitted as <SlideMarkdown> child
 
   const attrs = Object.entries(config)
     .filter(([k]) => !specialFields.has(k))
@@ -1064,6 +1065,9 @@ function buildSlideJsx(config: Record<string, unknown>): string {
   }
   if (componentName === "Slide" && slideText) {
     children.push(emitSlideTextJsx(slideText));
+  }
+  if (componentName === "Slide" && typeof config.text === "string" && config.text.length > 0) {
+    children.push(`<SlideMarkdown text={${JSON.stringify(config.text)}} />`);
   }
   if (notes) {
     children.push(`<SlideNotes>{${JSON.stringify(notes)}}</SlideNotes>`);
