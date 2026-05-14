@@ -1,31 +1,51 @@
 ---
 import { Image } from "astro:assets";
-import { type CreditLine } from "@/components/Credit.astro";
+import Credit, { type CreditLine } from "@/components/Credit.astro";
 import SlideChrome from "./SlideChrome.astro";
+
+interface ImageItem {
+  src: ImageMetadata | string;
+  alt?: string;
+  copyright?: CreditLine | CreditLine[];
+}
 
 interface Props {
   title?: string;
   subtitle?: string;
   image?: ImageMetadata | string;
+  images?: ImageItem[];
   imageAlt?: string;
   imagePosition?: string;
   darkText?: boolean;
   copyright?: CreditLine | CreditLine[];
   fit?: "cover" | "contain";
+  gap?: "none" | "sm" | "md" | "lg";
 }
 
 const {
   title,
   subtitle,
   image,
+  images,
   imageAlt = "",
   imagePosition = "center",
   darkText = false,
   copyright,
   fit = "cover",
+  gap = "sm",
 } = Astro.props;
 
 const fitClass = fit === "contain" ? "object-contain" : "object-cover";
+
+const gapClass =
+  gap === "none" ? "gap-0" : gap === "lg" ? "gap-6" : gap === "md" ? "gap-4" : "gap-1";
+
+const gridColsClass =
+  images && images.length >= 4
+    ? "grid-cols-4"
+    : images && images.length === 3
+      ? "grid-cols-3"
+      : "grid-cols-2";
 
 const isStringImage = typeof image === "string";
 ---
@@ -36,6 +56,7 @@ const isStringImage = typeof image === "string";
 >
   {
     image &&
+      !images &&
       (isStringImage ? (
         <img
           src={image as string}
@@ -55,6 +76,35 @@ const isStringImage = typeof image === "string";
           style={`object-position: ${imagePosition};`}
         />
       ))
+  }
+
+  {
+    images && (
+      <div class={`absolute inset-0 grid ${gridColsClass} ${gapClass} p-2`}>
+        {images.map((img) => (
+          <div class="relative h-full w-full overflow-hidden">
+            {typeof img.src === "string" ? (
+              <img
+                src={img.src as string}
+                alt={img.alt ?? ""}
+                loading="eager"
+                decoding="async"
+                class={`absolute inset-0 h-full w-full ${fitClass}`}
+              />
+            ) : (
+              <Image
+                src={img.src as ImageMetadata}
+                alt={img.alt ?? ""}
+                loading="eager"
+                decoding="async"
+                class={`absolute inset-0 h-full w-full ${fitClass}`}
+              />
+            )}
+            {img.copyright && <Credit credit={img.copyright} class="bottom-2 left-2" />}
+          </div>
+        ))}
+      </div>
+    )
   }
 
   <SlideChrome title={title} subtitle={subtitle} darkText={darkText} copyright={copyright} />
