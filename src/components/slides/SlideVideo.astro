@@ -78,7 +78,7 @@ let wrapperStyle = "";
 let wrapperClass: string;
 
 if (!isPositioned) {
-  wrapperClass = `absolute inset-0 h-full w-full ${extraClass}`.trim();
+  wrapperClass = `absolute inset-0 z-10 h-full w-full ${extraClass}`.trim();
 } else {
   const rules: string[] = [];
   const useExplicit = x !== undefined || y !== undefined;
@@ -123,7 +123,7 @@ if (!isPositioned) {
   if (width) rules.push(`width: ${width}`);
 
   wrapperStyle = rules.join("; ") + ";";
-  wrapperClass = `absolute ${extraClass}`.trim();
+  wrapperClass = `absolute z-10 ${extraClass}`.trim();
 }
 ---
 
