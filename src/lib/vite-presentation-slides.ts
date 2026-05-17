@@ -70,17 +70,14 @@ const KNOWN_FIELDS: ReadonlySet<string> = new Set([
   "notes",
   "slideImage",
   "slideVideo",
-  "slideText",
   "text",
   "images",
   "gap",
 ]);
 
 const ENUM_VALUES: Record<string, readonly string[]> = {
-  size: ["sm", "md", "lg", "xl"],
   fit: ["cover", "contain"],
   gap: ["none", "sm", "md", "lg"],
-  case: ["upper", "normal"],
 };
 
 const STRING_FIELDS: readonly string[] = [
@@ -162,23 +159,6 @@ const SLIDE_VIDEO_PRELOAD_VALUES: readonly string[] = [
   "metadata",
   "auto",
 ];
-
-const SLIDE_TEXT_STRING_FIELDS: readonly string[] = [
-  "text",
-  "subtext",
-  "size",
-  "case",
-  "variant",
-  "gap",
-];
-
-const SLIDE_TEXT_SIZE_VALUES: readonly string[] = ["sm", "md", "lg", "xl"];
-const SLIDE_TEXT_CASE_VALUES: readonly string[] = ["upper", "normal"];
-const SLIDE_TEXT_VARIANT_VALUES: readonly string[] = ["title", "quote"];
-const SLIDE_TEXT_GAP_VALUES: readonly string[] = ["sm", "md", "lg", "xl"];
-
-// text/subtext are plain strings; no JS bindings.
-const SLIDE_TEXT_BINDING_FIELDS: ReadonlySet<string> = new Set();
 
 const SLIDE_VIDEO_FIT_VALUES: readonly string[] = ["cover", "contain"];
 
@@ -363,52 +343,6 @@ function validateSlideVideoBlock(
   }
 }
 
-function validateSlideTextBlock(
-  block: unknown,
-  push: (message: string) => void,
-): void {
-  if (!block || typeof block !== "object" || Array.isArray(block)) {
-    push(
-      `slideText: must be an object with a 'text' field, got ${Array.isArray(block) ? "array" : typeof block}.`,
-    );
-    return;
-  }
-  const obj = block as Record<string, unknown>;
-
-  if (obj.text === undefined || obj.text === null || obj.text === "") {
-    push(`slideText: missing required field 'text'.`);
-  } else if (typeof obj.text !== "string") {
-    push(`slideText.text must be a string, got ${typeof obj.text}.`);
-  }
-
-  for (const field of SLIDE_TEXT_STRING_FIELDS) {
-    if (field === "text") continue;
-    const value = obj[field];
-    if (value === undefined || value === null) continue;
-    if (typeof value !== "string") {
-      push(`slideText.${field} must be a string, got ${typeof value}.`);
-    }
-  }
-
-  const enumCheck = (
-    field: string,
-    values: readonly string[],
-  ): void => {
-    const value = obj[field];
-    if (typeof value === "string" && !values.includes(value)) {
-      const suggestion = suggest(value, values);
-      const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
-      push(
-        `slideText.${field}: invalid value '${value}'. Valid: ${values.join(", ")}.${hint}`,
-      );
-    }
-  };
-  enumCheck("size", SLIDE_TEXT_SIZE_VALUES);
-  enumCheck("case", SLIDE_TEXT_CASE_VALUES);
-  enumCheck("variant", SLIDE_TEXT_VARIANT_VALUES);
-  enumCheck("gap", SLIDE_TEXT_GAP_VALUES);
-}
-
 function validateImagesArray(
   images: unknown,
   push: (message: string) => void,
@@ -541,11 +475,6 @@ export function validateSlide(
   // slideVideo: nested block validation
   if (config.slideVideo !== undefined) {
     validateSlideVideoBlock(config.slideVideo, push);
-  }
-
-  // slideText: nested block validation
-  if (config.slideText !== undefined) {
-    validateSlideTextBlock(config.slideText, push);
   }
 
   // images: optional array validation
@@ -830,15 +759,6 @@ function emitSlideVideoJsx(block: Record<string, unknown>): string {
   return `<SlideVideo${attrs} />`;
 }
 
-// Emits a <SlideText /> child from a slideText YAML block. All fields are
-// plain strings (no JS bindings).
-function emitSlideTextJsx(block: Record<string, unknown>): string {
-  const attrs = Object.entries(block)
-    .map(([k, v]) => emitAttr(k, v, SLIDE_TEXT_BINDING_FIELDS))
-    .join("");
-  return `<SlideText${attrs} />`;
-}
-
 // Emits the `images` array prop. Each item resolves `src`
 // as a binding-or-string and `alt` as a JSON-quoted string literal. Items
 // that don't match the expected shape are emitted as best-effort; the
@@ -875,10 +795,6 @@ function buildSlideJsx(config: Record<string, unknown>): string {
     config.slideVideo && typeof config.slideVideo === "object" && !Array.isArray(config.slideVideo)
       ? (config.slideVideo as Record<string, unknown>)
       : undefined;
-  const slideText =
-    config.slideText && typeof config.slideText === "object" && !Array.isArray(config.slideText)
-      ? (config.slideText as Record<string, unknown>)
-      : undefined;
 
   // Fields with bespoke emission live outside the generic emitAttr loop.
   // `overlay` flows through as a regular prop (Slide.astro renders the overlay
@@ -888,7 +804,6 @@ function buildSlideJsx(config: Record<string, unknown>): string {
     "notes",
     "slideImage",
     "slideVideo",
-    "slideText",
     "images",
     "text",
   ]);
@@ -903,20 +818,15 @@ function buildSlideJsx(config: Record<string, unknown>): string {
     extraAttrs = ` images={${emitImagesArray(config.images)}}`;
   }
 
-  // Children. slideImage/slideVideo/slideText/text are emitted as children;
+  // Children. slideImage/slideVideo/text are emitted as children;
   // overlay is now a prop on <Slide> (rendered internally by Slide.astro).
-  // Render order: SlideImage, SlideVideo, SlideText (z-10), SlideMarkdown,
-  // SlideNotes — slideText last among visible content so it sits over any
-  // foreground image/video.
+  // Render order: SlideImage, SlideVideo, SlideMarkdown, SlideNotes.
   const children: string[] = [];
   if (slideImage) {
     children.push(emitSlideImageJsx(slideImage));
   }
   if (slideVideo) {
     children.push(emitSlideVideoJsx(slideVideo));
-  }
-  if (slideText) {
-    children.push(emitSlideTextJsx(slideText));
   }
   if (typeof config.text === "string" && config.text.length > 0) {
     children.push(`<SlideMarkdown text={${JSON.stringify(config.text)}} />`);

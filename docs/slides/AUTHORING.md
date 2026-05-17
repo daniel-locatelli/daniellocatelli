@@ -34,13 +34,12 @@ import SlideMarkdown from "@/components/slides/SlideMarkdown.astro";
 import SlideNotes from "@/components/slides/SlideNotes.astro";
 import SlideImage from "@/components/slides/SlideImage.astro";
 import SlideVideo from "@/components/slides/SlideVideo.astro";
-import SlideText from "@/components/slides/SlideText.astro";
 // Required-imports rule: the YAML plugin emits JSX that references whichever
 // components your fences use. Any fence emits `<Slide>`; `text:` fields emit
 // `<SlideMarkdown>`; `notes:` fields emit `<SlideNotes>`; `slideImage:` blocks
-// emit `<SlideImage>`; `slideVideo:` blocks emit `<SlideVideo>`; `slideText:`
-// blocks emit `<SlideText>`. Keep all imports present; an unused import is
-// cheap, but a missing one makes MDX silently render an empty <main>.
+// emit `<SlideImage>`; `slideVideo:` blocks emit `<SlideVideo>`. Keep all
+// imports present; an unused import is cheap, but a missing one makes MDX
+// silently render an empty <main>.
 
 import cover from "@/assets/content/teaching/<slug>/<image>.jpg";
 // ...more asset imports
@@ -86,7 +85,6 @@ The full field set:
 | `text` | markdown string | no | | Centered primary text via `SlideMarkdown`. See [the text field](#the-text-field-markdown-subset). |
 | `slideImage` | object | no | | Foreground positioned image. See [foreground composition](#foreground-composition). |
 | `slideVideo` | object | no | | Foreground positioned video. |
-| `slideText` | object | no | | Foreground text overlay. |
 | `notes` | string | no | | Emitted as `<SlideNotes>` child. Shown in notes mode. |
 
 `notes:` renders as a `position: fixed` overlay and does not compete with the slide's centered content.
@@ -243,9 +241,9 @@ For 5 or more images, multiple rows, or per-image `object-position`, drop to JSX
 
 ## Foreground composition
 
-A slide fence can carry `slideImage:`, `slideVideo:`, and `slideText:` as nested blocks. These render above the background and above any `overlay:`. Combined with `image:` (or `images:`) and `notes:`, one fence can describe a full composition.
+A slide fence can carry `slideImage:` and `slideVideo:` as nested blocks. These render above the background and above any `overlay:`. Combined with `image:` (or `images:`), `text:`, and `notes:`, one fence can describe a full composition.
 
-The plugin emits nested blocks as children of `<Slide>` in this order: `<SlideImage>`, `<SlideVideo>`, `<SlideText>`, `<SlideNotes>`.
+The plugin emits nested blocks as children of `<Slide>` in this order: `<SlideImage>`, `<SlideVideo>`, `<SlideMarkdown>`, `<SlideNotes>`.
 
 ### `slideImage:`
 
@@ -329,48 +327,55 @@ slideVideo:
 ---
 ```
 
-### `slideText:`
+### Centered titles, multi-line stacks, and quotes
 
-A foreground text overlay rendered above the background image and above any `overlay:`. Used for centered headlines, multi-line stacks, and quote-with-attribution patterns. Maps 1:1 to `<SlideText>` props.
+All three patterns are authored via the markdown `text:` field (rendered by `SlideMarkdown`). There is no separate `slideText:` component.
 
-| Field | Type | Required | Default | Notes |
-| --- | --- | --- | --- | --- |
-| `text` | string | yes | | Main text. Use `\|` for multi-line stacks; each line renders as its own `<p>`. |
-| `subtext` | string | no | | Smaller secondary line (italic for title variant; bold uppercase attribution for quote variant). |
-| `size` | `"sm"` \| `"md"` \| `"lg"` \| `"xl"` | no | `"md"` | Main text size tier. |
-| `case` | `"upper"` \| `"normal"` | no | `"upper"` | Uppercase + wider letter-spacing for the title variant. |
-| `variant` | `"title"` \| `"quote"` | no | `"title"` | `"title"` is bold Montserrat. `"quote"` is light italic Poppins. |
-| `gap` | `"sm"` \| `"md"` \| `"lg"` \| `"xl"` | no | `"lg"` | Vertical gap between lines in a multi-line stack. |
-
-Example (centered title):
+Centered title:
 
 ```yaml
 ---
 image: nasaBillIngalls
 imageAlt: NASA / Bill Ingalls
 overlay: black/50
-slideText:
-  text: Computação Material
-  size: lg
+text: "# Computação Material"
 ---
 ```
 
-Example (quote with attribution):
+Multi-line stack with line-by-line buildup:
+
+```yaml
+---
+text: |
+  # Reproduzir Formas
+
+  # ↓
+
+  # Reproduzir Processos
+
+  # ↓
+
+  # Reproduzir Ecossistemas
+---
+```
+
+Each `# Line` is its own h1 block; the blank lines between them are normal block boundaries. For progressive-reveal sequences where each slide adds one more line, use whitespace-only slot lines (`   `) for the empty positions so every slide is the same total height.
+
+Quote with attribution:
 
 ```yaml
 ---
 image: bucky
 imageAlt: Buckminster Fuller
 overlay: black/60
-slideText:
-  text: |-
-    "Don't fight forces, use them!"
-  subtext: Buckminster Fuller
-  variant: quote
+text: |
+  > "Don't fight forces, use them!"
+
+  ## Buckminster Fuller
 ---
 ```
 
-**Note:** `slideText:` and `text:` serve similar purposes but are distinct. `text:` uses the structured markdown renderer (`SlideMarkdown`); `slideText:` uses the legacy `<SlideText>` component with its own size/case/variant API. Prefer `text:` for new slides; `slideText:` remains for patterns not yet expressible in the markdown subset (per-line opacity, custom variant styling, etc.).
+The markdown blockquote (`>`) renders as a centered italic Poppins pull quote inside `.slide-md`; a following `## Author Name` line gives the attribution.
 
 ## Credit lines
 

@@ -73,28 +73,29 @@ const textColor = darkText ? "text-zinc-950" : "text-white";
     font-weight: 300;
     line-height: 1.5;
     text-wrap: pretty;
-    font-size: clamp(0.75rem, 1.35vw, 1.125rem);
+    font-size: clamp(0.9375rem, 1.65vw, 1.375rem);
     margin: 0 0 1rem 0;
   }
 
+  /* Blockquotes in slide markdown are full-slide pull quotes, not inline
+     body quotes. The wrapper already centers content, so no border or
+     left-indent; size matches the headline tier so quote text reads as a
+     primary visual element. */
   .slide-md blockquote {
     font-family: "Poppins", sans-serif;
     font-style: italic;
     font-weight: 300;
-    line-height: 1.4;
-    opacity: 0.85;
-    border-left: 3px solid currentColor;
-    padding-left: 1rem;
-    margin: 0 0 1rem 0;
-    text-align: left;
-    font-size: clamp(0.844rem, 1.5vw, 1.3125rem);
+    line-height: 1.35;
+    margin: 0 0 1.5rem 0;
+    font-size: clamp(1.125rem, 2.625vw, 2.25rem);
+    max-width: 56rem;
   }
 
   .slide-md ul,
   .slide-md ol {
     font-family: "Poppins", sans-serif;
     font-weight: 300;
-    font-size: clamp(0.75rem, 1.35vw, 1.125rem);
+    font-size: clamp(0.9375rem, 1.65vw, 1.375rem);
     line-height: 1.5;
     text-align: left;
     margin: 0 auto 1rem auto;
