@@ -7,14 +7,14 @@ import {
 
 const ctx = { file: "deck.mdx", line: 1 };
 
-describe("validateSlide — current behavior (pre-refactor)", () => {
-  test("type: slide accepts no fields (all optional)", () => {
+describe("validateSlide — basic shape", () => {
+  test("empty slide accepts no fields (all optional)", () => {
     const errors = validateSlide({}, ctx);
     assert.deepEqual(errors, []);
   });
 
-  test("unknown field on type: slide is rejected", () => {
-    const errors = validateSlide({ type: "slide", banana: "yellow" }, ctx);
+  test("unknown field is rejected", () => {
+    const errors = validateSlide({ banana: "yellow" }, ctx);
     assert.ok(errors.some((e) => e.message.includes("unknown field 'banana'")));
   });
 
@@ -24,10 +24,10 @@ describe("validateSlide — current behavior (pre-refactor)", () => {
   });
 });
 
-describe("validateSlide — markdown text on type: slide", () => {
-  test("accepts text: markdown string on type: slide", () => {
+describe("validateSlide — markdown text", () => {
+  test("accepts text: markdown string", () => {
     const errors = validateSlide(
-      { type: "slide", text: "# Heading\n\nBody." },
+      { text: "# Heading\n\nBody." },
       ctx,
     );
     assert.deepEqual(errors, []);
@@ -35,7 +35,7 @@ describe("validateSlide — markdown text on type: slide", () => {
 
   test("rejects non-string text", () => {
     const errors = validateSlide(
-      { type: "slide", text: 42 as unknown as string },
+      { text: 42 as unknown as string },
       ctx,
     );
     assert.ok(errors.some((e) => e.message.includes("'text'")));
@@ -44,17 +44,11 @@ describe("validateSlide — markdown text on type: slide", () => {
 
 describe("YAML→JSX transform — text field", () => {
   test("text: emits <SlideMarkdown> child of <Slide>", () => {
-    // Direct unit test of the transform requires exporting buildSlideJsx,
-    // which is currently private. Until we export it, this test asserts
-    // via extractSlidesFromMdx + the Vite plugin's transform contract:
-    // the YAML field exists; rendering is verified end-to-end by the deck
-    // validator + manual visual review in Phase 2.
     const mdx = `---
 Name: x
 ---
 
 ---
-type: slide
 text: |
   # Hello
 ---
@@ -62,16 +56,14 @@ text: |
     const { slides, parseErrors } = extractSlidesFromMdx(mdx, "deck.mdx");
     assert.deepEqual(parseErrors, []);
     assert.equal(slides.length, 1);
-    assert.equal(slides[0].config.type, "slide");
     assert.match(String(slides[0].config.text), /^# Hello/);
   });
 });
 
-describe("validateSlide — images: array on type: slide", () => {
-  test("accepts images array on type: slide", () => {
+describe("validateSlide — images: array", () => {
+  test("accepts images array", () => {
     const errors = validateSlide(
       {
-        type: "slide",
         images: [
           { src: "imgA", alt: "A" },
           { src: "imgB", alt: "B" },
@@ -85,7 +77,6 @@ describe("validateSlide — images: array on type: slide", () => {
   test("accepts images array combined with text and overlay", () => {
     const errors = validateSlide(
       {
-        type: "slide",
         images: [{ src: "a", alt: "A" }, { src: "b", alt: "B" }],
         overlay: "black/40",
         text: "## Caption",
@@ -96,47 +87,27 @@ describe("validateSlide — images: array on type: slide", () => {
   });
 
   test("rejects empty images array", () => {
-    const errors = validateSlide(
-      { type: "slide", images: [] },
-      ctx,
-    );
+    const errors = validateSlide({ images: [] }, ctx);
     assert.ok(errors.some((e) => e.message.includes("at least one")));
   });
 
-  test("rejects malformed item (missing alt) on type: slide", () => {
+  test("rejects malformed item (missing alt)", () => {
     const errors = validateSlide(
-      {
-        type: "slide",
-        images: [{ src: "imgA" }],
-      },
+      { images: [{ src: "imgA" }] },
       ctx,
     );
     assert.ok(errors.some((e) => e.message.includes("missing 'alt'")));
   });
 });
 
-describe("validateSlide — deprecated types removed", () => {
-  test("type: title is no longer accepted", () => {
-    const errors = validateSlide({ type: "title", title: "x" }, ctx);
-    assert.ok(
-      errors.some((e) => e.message.includes("Unknown slide type 'title'")),
-    );
-  });
-
-  test("type: text is no longer accepted", () => {
-    const errors = validateSlide({ type: "text", text: "x" }, ctx);
-    assert.ok(
-      errors.some((e) => e.message.includes("Unknown slide type 'text'")),
-    );
-  });
-
-  test("type: image-row is no longer accepted", () => {
-    const errors = validateSlide(
-      { type: "image-row", images: [{ src: "a", alt: "A" }] },
-      ctx,
-    );
-    assert.ok(
-      errors.some((e) => e.message.includes("Unknown slide type 'image-row'")),
-    );
+describe("validateSlide — deprecated type: field", () => {
+  test("any 'type:' value is rejected with deprecation message", () => {
+    for (const value of ["slide", "title", "text", "image-row"]) {
+      const errors = validateSlide({ type: value }, ctx);
+      assert.ok(
+        errors.some((e) => e.message.includes("'type:' is no longer supported")),
+        `expected deprecation message for type: ${value}`,
+      );
+    }
   });
 });

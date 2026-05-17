@@ -4,7 +4,7 @@ Decks live at `src/content/<collection>/<locale>/<slug>/deck.mdx`. Each slide is
 
 Use YAML by default. Drop to JSX only when the slide needs multiple positioned children, custom layouts, or anything YAML cannot express.
 
-The unified slide type is `type: slide` (or omit `type:` entirely; `slide` is the only valid value and the default). There is no longer a separate `title`, `text`, or `image-row` type. For historical context, see `docs/superpowers/plans/2026-05-14-unified-slide-type-with-markdown.md`.
+Every YAML fence is a slide; there is no longer a separate `title`, `text`, or `image-row` type. The discriminator `type:` field was removed once the variants collapsed into one. For historical context, see `docs/superpowers/plans/2026-05-14-unified-slide-type-with-markdown.md`.
 
 ## How the plugin works
 
@@ -68,11 +68,10 @@ A leading underscore on the slug folder (e.g. `src/content/teaching/en/_demo/`) 
 
 ## Authoring a slide
 
-All slides use `type: slide` (or omit `type:`). The full field set:
+The full field set:
 
 | Field | Type | Required | Default | Notes |
 | --- | --- | --- | --- | --- |
-| `type` | `"slide"` | no | `"slide"` | Can be omitted |
 | `title` | string | no | | Top-left chrome pill |
 | `subtitle` | string | no | | Top-left chrome pill, below title |
 | `image` | binding or URL | no | | Background image; bare identifier resolves to a JS import binding |
@@ -113,6 +112,50 @@ The `text:` field accepts a markdown string (use a YAML block scalar `|` for mul
 | `1. item` | ordered list, left-aligned |
 
 **Not supported** (stripped by the renderer): raw HTML, links, images, code blocks, tables, horizontal rules. Note that `---` conflicts with YAML fence syntax anyway, so horizontal rules cannot be used inside `text:` blocks.
+
+### Blank lines and visual slots
+
+Two authoring idioms produce visible vertical space:
+
+**Whitespace-only lines as slots.** A line containing only whitespace (typed as `   ` in the source) is an explicit visual slot. Each slot inherits the heading prefix of the preceding content block, so an empty slot after a `## Heading` renders as an empty h2 of the same height as the heading itself. This is the idiom for progressive-reveal sequences where every line must occupy the same vertical position across slides:
+
+```yaml
+---
+text: |
+  ## Modelagem Associativa
+  
+   
+  
+   
+---
+```
+
+```yaml
+---
+text: |
+  ## Modelagem Associativa
+  
+  ## Design Paramétrico
+  
+   
+---
+```
+
+Both slides above are exactly the same total height (three h2-tall rows). Lines align perfectly between them, so flipping between slides reveals each new line "in place" without the column shifting.
+
+**Multiple blank lines for breathing room.** A run of two or more truly-empty lines (no whitespace in them) is treated as one block separator plus one spacer per additional blank. Use this when you just want a paragraph or two of extra space, without caring about exact alignment.
+
+```yaml
+---
+text: |
+  ## Heading
+
+
+  Body paragraph with extra breathing room above it.
+---
+```
+
+**Trailing blanks usually survive default `|`.** If your last "line" is a whitespace-only slot (i.e., you typed `   ` on the last line), `|` preserves it because the parser sees content on that line. Only pure trailing empty lines need `|+` (keep chomping) — and even then, the same effect is usually clearer to author as explicit slot lines.
 
 ### Examples
 

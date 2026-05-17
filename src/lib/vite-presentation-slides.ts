@@ -20,7 +20,6 @@ import { parse as parseYaml } from "yaml";
 // frontmatter (Astro content collection metadata) and is left alone.
 //
 // Field semantics:
-//   - `type`: "slide" (the only valid value; may be omitted, defaults to "slide")
 //   - `notes`: emitted as <SlideNotes>{value}</SlideNotes> child of <Slide>
 //   - `image`: a bare identifier (e.g. `atelier`) is emitted as a JSX
 //      expression `image={atelier}`, referring to imports at the top of the
@@ -58,35 +57,24 @@ export interface ExtractedSlide {
   file: string;
 }
 
-type SlideType = "slide";
-
-const SLIDE_TYPES: readonly SlideType[] = ["slide"] as const;
-
-const KNOWN_FIELDS: Record<SlideType, ReadonlySet<string>> = {
-  slide: new Set([
-    "type",
-    "title",
-    "subtitle",
-    "image",
-    "imageAlt",
-    "imagePosition",
-    "darkText",
-    "copyright",
-    "fit",
-    "overlay",
-    "notes",
-    "slideImage",
-    "slideVideo",
-    "slideText",
-    "text",
-    "images",
-    "gap",
-  ]),
-};
-
-const REQUIRED_FIELDS: Record<SlideType, readonly string[]> = {
-  slide: [],
-};
+const KNOWN_FIELDS: ReadonlySet<string> = new Set([
+  "title",
+  "subtitle",
+  "image",
+  "imageAlt",
+  "imagePosition",
+  "darkText",
+  "copyright",
+  "fit",
+  "overlay",
+  "notes",
+  "slideImage",
+  "slideVideo",
+  "slideText",
+  "text",
+  "images",
+  "gap",
+]);
 
 const ENUM_VALUES: Record<string, readonly string[]> = {
   size: ["sm", "md", "lg", "xl"],
@@ -95,24 +83,20 @@ const ENUM_VALUES: Record<string, readonly string[]> = {
   case: ["upper", "normal"],
 };
 
-const STRING_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
-  slide: [
-    "title",
-    "subtitle",
-    "image",
-    "imageAlt",
-    "imagePosition",
-    "fit",
-    "overlay",
-    "notes",
-    "text",
-    "gap",
-  ],
-};
+const STRING_FIELDS: readonly string[] = [
+  "title",
+  "subtitle",
+  "image",
+  "imageAlt",
+  "imagePosition",
+  "fit",
+  "overlay",
+  "notes",
+  "text",
+  "gap",
+];
 
-const BOOLEAN_FIELDS_BY_TYPE: Record<SlideType, readonly string[]> = {
-  slide: ["darkText"],
-};
+const BOOLEAN_FIELDS: readonly string[] = ["darkText"];
 
 // --- Nested child blocks ---------------------------------------------------
 // Field sets are informational; per spec, unknown keys inside a nested block
@@ -507,38 +491,22 @@ export function validateSlide(
   const push = (message: string) =>
     errors.push({ file: ctx.file, line: ctx.line, message });
 
-  const rawType = config.type;
-  if (rawType !== undefined && typeof rawType !== "string") {
-    push(`'type' must be a string, got ${typeof rawType}.`);
-    return errors;
-  }
-
-  const typeStr = (rawType as string | undefined) ?? "slide";
-  if (!SLIDE_TYPES.includes(typeStr as SlideType)) {
-    const suggestion = suggest(typeStr, SLIDE_TYPES);
-    const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
+  // 'type:' was the discriminator for the deprecated title/text/image-row
+  // variants. All slides are now the unified `slide` type, so the field is
+  // rejected explicitly rather than falling through as a generic unknown
+  // field (whose "did you mean...?" suggestion would be misleading).
+  if (config.type !== undefined) {
     push(
-      `Unknown slide type '${typeStr}'. Valid: ${SLIDE_TYPES.join(", ")}.${hint}`,
+      `Slide: 'type:' is no longer supported; all slides are the unified type. Delete this line.`,
     );
-    return errors;
   }
-  const type = typeStr as SlideType;
 
-  // Unknown fields
-  const known = KNOWN_FIELDS[type];
   for (const key of Object.keys(config)) {
-    if (!known.has(key)) {
-      const suggestion = suggest(key, known);
+    if (key === "type") continue;
+    if (!KNOWN_FIELDS.has(key)) {
+      const suggestion = suggest(key, KNOWN_FIELDS);
       const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
-      push(`Slide (type: ${type}): unknown field '${key}'.${hint}`);
-    }
-  }
-
-  // Required fields
-  for (const field of REQUIRED_FIELDS[type]) {
-    const value = config[field];
-    if (value === undefined || value === null || value === "") {
-      push(`Slide (type: ${type}): missing required field '${field}'.`);
+      push(`Slide: unknown field '${key}'.${hint}`);
     }
   }
 
@@ -548,7 +516,7 @@ export function validateSlide(
     (config.imageAlt === undefined || config.imageAlt === "")
   ) {
     push(
-      `Slide (type: ${type}): 'image' is set but 'imageAlt' is missing. Required for accessibility.`,
+      `Slide: 'image' is set but 'imageAlt' is missing. Required for accessibility.`,
     );
   }
 
@@ -582,36 +550,32 @@ export function validateSlide(
 
   // images: optional array validation
   if (config.images !== undefined) {
-    validateImagesArray(
-      config.images,
-      push,
-      `Slide (type: ${type})`,
-    );
+    validateImagesArray(config.images, push, "Slide");
   }
 
   // Enum value validation (size, fit)
   for (const field of Object.keys(ENUM_VALUES)) {
     const value = config[field];
     if (value === undefined) continue;
-    if (!known.has(field)) continue; // skip fields not valid for this slide type
+    if (!KNOWN_FIELDS.has(field)) continue;
     const valid = ENUM_VALUES[field];
     if (typeof value !== "string" || !valid.includes(value)) {
       const suggestion =
         typeof value === "string" ? suggest(value, valid) : undefined;
       const hint = suggestion ? ` Did you mean '${suggestion}'?` : "";
       push(
-        `Slide (type: ${type}): invalid '${field}' value '${String(value)}'. Valid: ${valid.join(", ")}.${hint}`,
+        `Slide: invalid '${field}' value '${String(value)}'. Valid: ${valid.join(", ")}.${hint}`,
       );
     }
   }
 
   // String type checks
-  for (const field of STRING_FIELDS_BY_TYPE[type]) {
+  for (const field of STRING_FIELDS) {
     const value = config[field];
     if (value === undefined || value === null) continue;
     if (typeof value !== "string") {
       push(
-        `Slide (type: ${type}): field '${field}' must be a string, got ${typeof value}. Hint: quote percentages and numeric-looking values, e.g. width: "50%".`,
+        `Slide: field '${field}' must be a string, got ${typeof value}. Hint: quote percentages and numeric-looking values, e.g. width: "50%".`,
       );
     }
   }
@@ -623,16 +587,16 @@ export function validateSlide(
     !isValidCopyright(config.copyright)
   ) {
     push(
-      `Slide (type: ${type}): 'copyright' must be a string, a { name, href } object, or an array of those.`,
+      `Slide: 'copyright' must be a string, a { name, href } object, or an array of those.`,
     );
   }
 
   // Boolean type checks
-  for (const field of BOOLEAN_FIELDS_BY_TYPE[type]) {
+  for (const field of BOOLEAN_FIELDS) {
     const value = config[field];
     if (value !== undefined && typeof value !== "boolean") {
       push(
-        `Slide (type: ${type}): field '${field}' must be a boolean (true/false), got ${typeof value}.`,
+        `Slide: field '${field}' must be a boolean (true/false), got ${typeof value}.`,
       );
     }
   }
@@ -916,14 +880,11 @@ function buildSlideJsx(config: Record<string, unknown>): string {
       ? (config.slideText as Record<string, unknown>)
       : undefined;
 
-  const componentName = "Slide";
-
   // Fields with bespoke emission live outside the generic emitAttr loop.
   // `overlay` flows through as a regular prop (Slide.astro renders the overlay
   // div internally from the prop). `images` and `text` are handled specially
   // below (images via emitImagesArray; text as a <SlideMarkdown> child).
   const specialFields = new Set<string>([
-    "type",
     "notes",
     "slideImage",
     "slideVideo",
@@ -966,10 +927,10 @@ function buildSlideJsx(config: Record<string, unknown>): string {
 
   if (children.length > 0) {
     const indented = children.map((c) => `  ${c}`).join("\n");
-    return `<${componentName}${attrs}${extraAttrs}>\n${indented}\n</${componentName}>`;
+    return `<Slide${attrs}${extraAttrs}>\n${indented}\n</Slide>`;
   }
 
-  return `<${componentName}${attrs}${extraAttrs} />`;
+  return `<Slide${attrs}${extraAttrs} />`;
 }
 
 // --- Plugin ----------------------------------------------------------------
