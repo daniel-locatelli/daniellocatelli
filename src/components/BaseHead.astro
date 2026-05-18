@@ -20,10 +20,9 @@ const siteTitle =
     : title;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(
-  coverImage
-    ? `${Astro.site}${coverImage}`
-    : "/building-across-scales_master-thesis_daniel-locatelli_nils-opgenorth.jpg",
-  Astro.url
+  coverImage ||
+    "/building-across-scales_master-thesis_daniel-locatelli_nils-opgenorth.jpg",
+  Astro.site,
 ).href;
 ---
 
