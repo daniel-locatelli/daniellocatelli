@@ -3,6 +3,7 @@ import { siteConfig } from "@/config/site";
 import { DevModelName, ProdModelName } from "@/config/ai";
 import { Image } from "astro:assets";
 import profilePhoto from "@/assets/avatars/daniel-locatelli-v1.png";
+import homepageCover from "@/assets/content/homepage/homepage-cover.jpeg";
 import WhatsApp from "@/assets/ui/digital-glyph-white.svg";
 import Base from "@/layouts/Base.astro";
 import Container from "@/components/Container.astro";
@@ -26,7 +27,7 @@ const home = await getI18n<I18nHome>("home", locale);
     title: home.meta.title,
     description: home.meta.description,
     coverAlt: home.meta.coverAlt,
-    coverImage: "@/assets/daniel-locatelli-v1.png",
+    coverImage: homepageCover.src,
     slug: "",
   }}
 >
