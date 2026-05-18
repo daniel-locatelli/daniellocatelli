@@ -145,7 +145,7 @@ Tracking document for all content collections.
 | `automatic-column-placement` | CDRF 2023 paper on feedback-based column placement | [x] | [x] | [x] |
 | `computational-design-strategies` | Self-published e-book | [x] | [x] | [x] |
 | `high-low-as-expression-of-the-brazilian-digital-fabrication` | SIGraDi 2018 paper | [x] | [x] | [x] |
-| `life-lamp-connecting-design-and-people-through-emotion` | ECAADE 2020 paper | [x] | [x] | [x] |
+| `life-lamp-connecting-design-and-people-through-emotion` | eCAADe 2020 paper | [x] | [x] | [x] |
 
 ---
 

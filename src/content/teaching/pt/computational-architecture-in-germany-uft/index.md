@@ -21,7 +21,7 @@ Authors:
 
 Nesta palestra para a SEMANAU 2023, na Universidade Federal do Tocantins, apresentei o estado da arte do design computacional na Alemanha conectado à minha própria trajetória.
 
-Comecei pelo Atelier Marko Brajovic, em São Paulo, com o Pavilhão O3, o Nike Air Guitar, os estudos de tensegridades e o workshop Models ByNature, todos exemplos de como o design paramétrico podia entrar no projeto e na fabricação. Em seguida revisitei o TFG na FAUUSP, premiado com paper na IASS 2017, e a Luminária Life com o Estudio Guto Requena, publicada na ECAAD 2020.
+Comecei pelo Atelier Marko Brajovic, em São Paulo, com o Pavilhão O3, o Nike Air Guitar, os estudos de tensegridades e o workshop Models ByNature, todos exemplos de como o design paramétrico podia entrar no projeto e na fabricação. Em seguida revisitei o TFG na FAUUSP, premiado com paper na IASS 2017, e a Luminária Life com o Estudio Guto Requena, publicada na eCAADe 2020.
 
 A segunda parte da palestra foi sobre a Alemanha. Da tese de mestrado no ITECH (Building Across Scales, com Nils Opgenorth, orientação de Achim Menges e Jan Knippers), a um percurso histórico que liga Robert Hooke, Christopher Wren, Antoni Gaudí, Buckminster Fuller e Frei Otto à computação material que se ensina hoje em Stuttgart. Os pavilhões de pesquisa do ICD/ITKE, e mais recentemente o cluster IntCDC, foram apresentados como o ponto em que biomimética, fabricação digital e estrutura passam a ser projetados como um único sistema.
 
