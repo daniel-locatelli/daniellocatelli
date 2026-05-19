@@ -47,10 +47,13 @@ test.describe("Homepage", () => {
 
     test(`${locale}: ${url} has contact buttons in main`, async ({ page }) => {
       await page.goto(url);
-      // Both contact buttons sit inside #contact on the real homepage
-      await expect(
-        page.locator("main a[href*='wa.me']").first(),
-      ).toBeAttached();
+      // Contact buttons sit inside #contact on the real homepage.
+      // WhatsApp button temporarily disabled (number cancelled). When the
+      // <a href={siteConfig.whatsapp}> blocks are restored, uncomment the
+      // wa.me assertion below.
+      // await expect(
+      //   page.locator("main a[href*='wa.me']").first(),
+      // ).toBeAttached();
       await expect(
         page.locator("main a[href*='mailto:']").first(),
       ).toBeAttached();

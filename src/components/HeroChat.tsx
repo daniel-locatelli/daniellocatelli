@@ -4,7 +4,10 @@ import ReactMarkdown from "react-markdown";
 import { X, Send, Loader2, Sparkles, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "../config/site";
-import WhatsAppIcon from "@/assets/ui/digital-glyph-white.svg";
+// WhatsApp link temporarily disabled (number cancelled). To restore: uncomment
+// this import and the WhatsApp <a> block in the input area, then update
+// siteConfig.whatsapp.
+// import WhatsAppIcon from "@/assets/ui/digital-glyph-white.svg";
 
 interface Message {
   role: "user" | "assistant";
@@ -545,6 +548,10 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                           exit={{ opacity: 0, height: 0, marginBottom: 0 }}
                           className="flex flex-col gap-3 sm:flex-row"
                         >
+                          {/* WhatsApp link temporarily disabled (number
+                              cancelled). Restore by updating
+                              siteConfig.whatsapp and uncommenting this block
+                              + the WhatsAppIcon import at the top of the file.
                           <a
                             href={siteConfig.whatsapp}
                             target="_blank"
@@ -567,6 +574,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                             />
                             {labels.requestQuote}
                           </a>
+                          */}
                           <a
                             href={`mailto:${siteConfig.email}`}
                             className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-green-400 hover:bg-zinc-900 hover:text-green-400"

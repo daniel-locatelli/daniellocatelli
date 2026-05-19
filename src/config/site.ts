@@ -46,5 +46,8 @@ export const siteConfig: SiteConfig = {
   instagram: "https://www.instagram.com/architectlocatelli",
   linkedin: "https://www.linkedin.com/in/daniel-locatelli",
   orcid: "0009-0001-6384-5401",
+  // WhatsApp number cancelled — link is currently commented out in the UI
+  // (Header.astro, [...locale]/index.astro, HeroChat.tsx). Update this URL
+  // and uncomment those blocks to restore.
   whatsapp: "https://wa.me/message/MFRZO3U7RABUM1",
 };

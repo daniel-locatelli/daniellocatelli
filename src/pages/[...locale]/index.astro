@@ -4,7 +4,9 @@ import { DevModelName, ProdModelName } from "@/config/ai";
 import { Image } from "astro:assets";
 import profilePhoto from "@/assets/avatars/daniel-locatelli-v1.png";
 import homepageCover from "@/assets/content/homepage/homepage-cover.jpeg";
-import WhatsApp from "@/assets/ui/digital-glyph-white.svg";
+// WhatsApp link temporarily disabled (number cancelled). To restore: uncomment
+// this import and the WhatsApp <a> blocks below, then update siteConfig.whatsapp.
+// import WhatsApp from "@/assets/ui/digital-glyph-white.svg";
 import Base from "@/layouts/Base.astro";
 import Container from "@/components/Container.astro";
 import { Icon } from "astro-icon/components";
@@ -242,6 +244,9 @@ const home = await getI18n<I18nHome>("home", locale);
         <div
           class="flex flex-col items-center justify-center space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6"
         >
+          {/* WhatsApp link temporarily disabled (number cancelled). Restore by
+              updating siteConfig.whatsapp and uncommenting this block + the
+              WhatsApp import at the top of this file.
           <a
             href={siteConfig.whatsapp}
             target="_blank"
@@ -252,6 +257,7 @@ const home = await getI18n<I18nHome>("home", locale);
             <WhatsApp aria-hidden="true" class="size-5 md:size-4" />
             {home.contact.letsTalk}
           </a>
+          */}
           <a
             href={`mailto:${siteConfig.email}`}
             title="Email Daniel Locatelli"

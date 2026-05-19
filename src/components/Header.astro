@@ -1,7 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import Logo from "@/assets/ui/logo-dl.svg";
-import WhatsApp from "@/assets/ui/digital-glyph-white.svg";
+// WhatsApp link temporarily disabled (number cancelled). To restore: uncomment
+// this import and the WhatsApp <a> block below, then update siteConfig.whatsapp.
+// import WhatsApp from "@/assets/ui/digital-glyph-white.svg";
 import { siteConfig } from "@/config/site";
 import { Icon } from "astro-icon/components";
 import { getLocale, getFileSlug } from "src/lib/routes-helpers";
@@ -60,6 +62,10 @@ const { slug } = Astro.props as Props;
         })
       }
       <LanguagePicker currentLocale={locale} slug={slug} class="sm:px-3" />
+      {/* WhatsApp link temporarily disabled (number cancelled). Restore by
+          updating siteConfig.whatsapp, uncommenting this block + the WhatsApp
+          import in the frontmatter above, and changing the email button below
+          from `mt-10` back to `mt-4` (it inherited WhatsApp's spacing).
       <a
         href={siteConfig.whatsapp}
         target="_blank"
@@ -71,10 +77,11 @@ const { slug } = Astro.props as Props;
         {locale === "pt" && "Faça um orçamento"}
         {locale === "de" && "Angebot anfordern"}
       </a>
+      */}
       <a
         href={`mailto:${siteConfig.email}`}
         title="Email Daniel Locatelli"
-        class="mt-4 inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 px-4 py-3 text-base text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none sm:hidden md:w-fit"
+        class="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 px-4 py-3 text-base text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus:ring-2 focus:ring-green-300 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:outline-none sm:hidden md:w-fit"
       >
         <Icon name="mdi:email-outline" class="size-5 md:size-4" />
         {locale === "en" && "Send an Email"}
