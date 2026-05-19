@@ -254,12 +254,12 @@ const foregroundClass = isLetterbox
         {
           subpage.data.DateEnd ? (
             <tr>
-              <th class="font-body font-bold">{t.date}</th>
+              <th scope="row" class="font-body font-bold">{t.date}</th>
               <td>{subpage.data.DateEnd}</td>
             </tr>
           ) : subpage.data.DateStart ? (
             <tr>
-              <th class="font-body font-bold">{t.date}</th>
+              <th scope="row" class="font-body font-bold">{t.date}</th>
               <td>{subpage.data.DateStart}</td>
             </tr>
           ) : null
@@ -267,7 +267,7 @@ const foregroundClass = isLetterbox
         {
           subpage.data.Organization && (
               <tr>
-                <th>{t.organization}</th>
+                <th scope="row">{t.organization}</th>
                 <td>{subpage.data.Organization}</td>
               </tr>
             )
@@ -275,7 +275,7 @@ const foregroundClass = isLetterbox
         {
           subpage.data.Client && (
             <tr>
-              <th>{t.client}</th>
+              <th scope="row">{t.client}</th>
               <td>{subpage.data.Client}</td>
             </tr>
           )
@@ -289,9 +289,9 @@ const foregroundClass = isLetterbox
             subpage.data.Authors.length > 0 && (
               <tr>
                 {subpage.data.Authors.length === 1 ? (
-                  <th>{t.author}</th>
+                  <th scope="row">{t.author}</th>
                 ) : (
-                  <th>{t.authors}</th>
+                  <th scope="row">{t.authors}</th>
                 )}
                 <td>
                   {subpage.data.Authors.map((author: any, index: number) => {
@@ -313,9 +313,9 @@ const foregroundClass = isLetterbox
             subpage.data.Supervisors.length > 0 && (
               <tr>
                 {subpage.data.Supervisors.length === 1 ? (
-                  <th>{t.supervisor}</th>
+                  <th scope="row">{t.supervisor}</th>
                 ) : (
-                  <th>{t.supervisors}</th>
+                  <th scope="row">{t.supervisors}</th>
                 )}
                 <td>
                   {subpage.data.Supervisors.map((sup: any, index: number) => {
@@ -336,9 +336,9 @@ const foregroundClass = isLetterbox
             subpage.data.Advisors.length > 0 && (
               <tr>
                 {subpage.data.Advisors.length === 1 ? (
-                  <th>{t.advisor}</th>
+                  <th scope="row">{t.advisor}</th>
                 ) : (
-                  <th>{t.advisors}</th>
+                  <th scope="row">{t.advisors}</th>
                 )}
                 <td>
                   {subpage.data.Advisors.map((adv: any, index: number) => {
@@ -359,9 +359,9 @@ const foregroundClass = isLetterbox
             subpage.data.Coordinators.length > 0 && (
               <tr>
                 {subpage.data.Coordinators.length === 1 ? (
-                  <th>{t.coordinator}</th>
+                  <th scope="row">{t.coordinator}</th>
                 ) : (
-                  <th>{t.coordinators}</th>
+                  <th scope="row">{t.coordinators}</th>
                 )}
                 <td>
                   {subpage.data.Coordinators.map((c: any, index: number) => {
@@ -384,9 +384,9 @@ const foregroundClass = isLetterbox
             subpage.data.Director.length > 0 && (
               <tr>
                 {subpage.data.Director.length === 1 ? (
-                  <th>{t.director}</th>
+                  <th scope="row">{t.director}</th>
                 ) : (
-                  <th>{t.directors}</th>
+                  <th scope="row">{t.directors}</th>
                 )}
                 <td>
                   {subpage.data.Director.map((director: any, index: number) => {
@@ -408,9 +408,9 @@ const foregroundClass = isLetterbox
             subpage.data.Manager.length > 0 && (
               <tr>
                 {subpage.data.Manager.length === 1 ? (
-                  <th>{t.manager}</th>
+                  <th scope="row">{t.manager}</th>
                 ) : (
-                  <th>{t.managers}</th>
+                  <th scope="row">{t.managers}</th>
                 )}
                 <td>
                   {subpage.data.Manager.map((manager: any, index: number) => {
@@ -431,7 +431,7 @@ const foregroundClass = isLetterbox
             Array.isArray(subpage.data.Team) &&
             subpage.data.Team.length > 0 && (
               <tr>
-                <th>{t.team}</th>
+                <th scope="row">{t.team}</th>
                 <td class="text-balance">
                   {subpage.data.Team.map((member: any, index: number) => {
                     const name =
@@ -452,7 +452,7 @@ const foregroundClass = isLetterbox
         {
           subpage.data.Place && subpage.data.Place !== "" && (
             <tr>
-              <th>{t.place}</th>
+              <th scope="row">{t.place}</th>
               <td>{subpage.data.Place}</td>
             </tr>
           )
@@ -463,7 +463,7 @@ const foregroundClass = isLetterbox
             subpage.data.City.length > 0) ||
             (subpage.data.Country && subpage.data.Country !== "")) && (
               <tr>
-                <th>{t.location}</th>
+                <th scope="row">{t.location}</th>
                 <td>
                   {[
                     ...(subpage.data.City && Array.isArray(subpage.data.City) && subpage.data.City.length > 0
@@ -480,7 +480,7 @@ const foregroundClass = isLetterbox
         {
           subpage.data.Development && subpage.data.Development.length > 0 && (
             <tr>
-              <th>{t.development}</th>
+              <th scope="row">{t.development}</th>
               <td>
                 {subpage.data.Development.map((dev: any, index: number) => {
                   const name = typeof dev === "string" ? dev : dev.name;
@@ -498,9 +498,9 @@ const foregroundClass = isLetterbox
           subpage.data.Language && subpage.data.Language.length > 0 && (
             <tr>
               {!Array.isArray(subpage.data.Language) || subpage.data.Language.length === 1 ? (
-                <th>{t.language}</th>
+                <th scope="row">{t.language}</th>
               ) : (
-                <th>{t.languages}</th>
+                <th scope="row">{t.languages}</th>
               )}
               <td>
                 {Array.isArray(subpage.data.Language) ? (
@@ -526,7 +526,7 @@ const foregroundClass = isLetterbox
               typeof subpage.data.Link === "string" ||
               (typeof subpage.data.Link === "object" && "Href" in subpage.data.Link)) && (
               <tr>
-                <th>{t.link}</th>
+                <th scope="row">{t.link}</th>
                 <td>
                   {(() => {
                     const link = subpage.data.Link;
@@ -587,7 +587,7 @@ const foregroundClass = isLetterbox
             Array.isArray(subpage.data.Apps) &&
             subpage.data.Apps.length > 0 && (
               <tr>
-                <th>{t.apps}</th>
+                <th scope="row">{t.apps}</th>
                 <td>
                   {subpage.data.Apps.map((app: any, index: number) => {
                     const name = typeof app === "string" ? app : app.name;
@@ -605,7 +605,7 @@ const foregroundClass = isLetterbox
           subpage.data.References !== undefined &&
             subpage.data.References.length > 0 && (
               <tr>
-                <th>{t.references}</th>
+                <th scope="row">{t.references}</th>
                 <td>
                   {subpage.data.References.map((ref: any) => {
                     if (typeof ref === "string") return <span>{ref}</span>;
