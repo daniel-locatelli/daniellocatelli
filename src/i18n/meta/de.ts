@@ -1,2 +1,7 @@
-import { t } from "./en";
-export { t };
+import type { I18nMeta } from "./types";
+
+export const t: I18nMeta = {
+  city: "Munich",
+  country: "Germany",
+  openNewTab: "öffnet in neuem Tab",
+};

@@ -26,6 +26,13 @@ import SQLite from "../assets/tech-stack/sqlite.svg";
 import PostgreSQL from "../assets/tech-stack/postgresql.svg";
 // import RFEM from "../assets/tech-stack/rfem.svg";
 // import Sofistik from "../assets/tech-stack/sofistik.svg";
+import { getLocale } from "src/lib/routes-helpers";
+import { getI18n } from "src/i18n/utils";
+import type { I18nMeta } from "src/i18n/meta/types";
+
+const locale = getLocale(Astro.params);
+const meta = await getI18n<I18nMeta>("meta", locale);
+const newTabHint = `(${meta.openNewTab})`;
 ---
 
 <div id="chart-container" class="w-full">
@@ -48,6 +55,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
       >
         <AutoCad class="inline-block w-10 cursor-pointer rounded bg-white" />
         <div class="text-center text-xs">AutoCAD</div>
+        <span class="sr-only">{newTabHint}</span>
       </a>
       <a
         href="https://www.autodesk.com/products/civil-3d/overview"
@@ -57,6 +65,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
       >
         <Civil3D class="inline-block w-10 cursor-pointer rounded bg-white" />
         <div class="text-center text-xs">Civil&nbsp;3D</div>
+        <span class="sr-only">{newTabHint}</span>
       </a>
       <a
         href="https://www.autodesk.com/products/revit/overview"
@@ -66,6 +75,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
       >
         <Revit class="inline-block w-10 cursor-pointer rounded bg-white" />
         <div class="text-center text-xs">Revit</div>
+        <span class="sr-only">{newTabHint}</span>
       </a>
     </div>
   </div>
@@ -87,6 +97,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
         >
           <Dynamo class="inline-block w-10 cursor-pointer rounded bg-white" />
           <div class="text-center text-xs">Dynamo</div>
+          <span class="sr-only">{newTabHint}</span>
         </a>
         <a
           href="https://en.wikipedia.org/wiki/Grasshopper_3D"
@@ -98,6 +109,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
             class="inline-block w-10 cursor-pointer rounded bg-[#579141]"
           />
           <div class="text-center text-xs">Grasshopper</div>
+          <span class="sr-only">{newTabHint}</span>
         </a>
       </div>
       <div
@@ -119,6 +131,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">Kangaroo</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://www.grasshopper3d.com/group/galapagos"
@@ -130,6 +143,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">Galapagos</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://www.giuliopiacentino.com/weaverbird/"
@@ -141,6 +155,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">Weaverbird</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://www.ladybug.tools/"
@@ -152,6 +167,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">Ladybug Tools</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://www.complicitmatter.com/culebra-net/"
@@ -163,6 +179,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">Culebra</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://karamba3d.com/"
@@ -174,6 +191,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">Karamba3D</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
         </div>
       </div>
@@ -199,6 +217,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
         >
           <RFEM class="inline-block w-10 cursor-pointer rounded bg-white" />
           <div class="text-center text-xs">RFEM</div>
+          <span class="sr-only">{newTabHint}</span>
         </a>
         <a
           href="https://www.sofistik.com/en/"
@@ -208,6 +227,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
         >
           <Sofistik class="inline-block w-10 cursor-pointer rounded bg-white" />
           <div class="text-center text-xs">SOFiSTiK</div>
+          <span class="sr-only">{newTabHint}</span>
         </a>
       </div>
     </div>
@@ -240,6 +260,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
           >
             <Python class="inline-block w-10 cursor-pointer rounded bg-white" />
             <div class="text-center text-xs">Python</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://dotnet.microsoft.com/en-us/languages/csharp"
@@ -249,6 +270,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
           >
             <CSharp class="inline-block w-10 cursor-pointer rounded bg-white" />
             <div class="text-center text-xs">C#</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <div
             class="relative flex w-full items-center justify-around rounded-xl border border-dashed border-white py-6 md:w-fit md:justify-between md:gap-8 md:px-8"
@@ -266,6 +288,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
             >
               <HTML class="inline-block w-10 cursor-pointer" />
               <div class="text-center text-xs">HTML</div>
+              <span class="sr-only">{newTabHint}</span>
             </a>
             <a
               href="https://www.w3.org/Style/CSS/Overview.en.html"
@@ -275,6 +298,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
             >
               <CSS class="inline-block w-10 cursor-pointer" />
               <div class="text-center text-xs">CSS</div>
+              <span class="sr-only">{newTabHint}</span>
             </a>
             <a
               href="https://en.wikipedia.org/wiki/JavaScript"
@@ -284,6 +308,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
             >
               <TypescriptLogo class="inline-block w-10 cursor-pointer" />
               <div class="text-center text-xs">TypeScript</div>
+              <span class="sr-only">{newTabHint}</span>
             </a>
           </div>
         </div>
@@ -310,6 +335,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">Flask</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://tanstack.com/start"
@@ -323,6 +349,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white p-1"
             />
             <div class="text-center text-xs">TanStack</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://astro.build/"
@@ -334,6 +361,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">Astro</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://react.dev/"
@@ -345,6 +373,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">React</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
         </div>
       </div>
@@ -369,6 +398,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">NoSQL</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://sqlite.org/index.html"
@@ -378,6 +408,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
           >
             <SQLite class="inline-block w-10 cursor-pointer rounded bg-white" />
             <div class="text-center text-xs">SQLite</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
           <a
             href="https://www.postgresql.org/"
@@ -389,6 +420,7 @@ import PostgreSQL from "../assets/tech-stack/postgresql.svg";
               class="inline-block w-10 cursor-pointer rounded bg-white"
             />
             <div class="text-center text-xs">PostgreSQL</div>
+            <span class="sr-only">{newTabHint}</span>
           </a>
         </div>
       </div>

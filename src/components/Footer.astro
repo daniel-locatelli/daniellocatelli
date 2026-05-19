@@ -3,13 +3,16 @@ import { siteConfig } from "@/config/site";
 import { getLocale } from "src/lib/routes-helpers";
 import { Icon } from "astro-icon/components";
 import type { I18nFooter } from "src/i18n/footer/type";
+import type { I18nMeta } from "src/i18n/meta/types";
 import { getI18n } from "src/i18n/utils";
 
 const locale = getLocale(Astro.params);
 const footer = await getI18n<I18nFooter>("footer", locale);
+const meta = await getI18n<I18nMeta>("meta", locale);
 
 const localePrefix = locale === "en" ? "" : "/" + locale;
 const currentYear = new Date().getFullYear();
+const newTabHint = `(${meta.openNewTab})`;
 ---
 
 <footer class="mt-auto w-full pt-16 pb-8 print:hidden">
@@ -25,8 +28,8 @@ const currentYear = new Date().getFullYear();
           href={siteConfig.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="LinkedIn"
-          title="LinkedIn"
+          aria-label={`LinkedIn ${newTabHint}`}
+          title={`LinkedIn ${newTabHint}`}
           class="text-zinc-500 transition-colors hover:text-zinc-200"
         >
           <Icon name="mdi:linkedin" class="size-5" aria-hidden="true" />
@@ -35,8 +38,8 @@ const currentYear = new Date().getFullYear();
           href={siteConfig.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Instagram"
-          title="Instagram"
+          aria-label={`Instagram ${newTabHint}`}
+          title={`Instagram ${newTabHint}`}
           class="text-zinc-500 transition-colors hover:text-zinc-200"
         >
           <Icon name="mdi:instagram" class="size-5" aria-hidden="true" />
@@ -45,8 +48,8 @@ const currentYear = new Date().getFullYear();
           href={siteConfig.github}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="GitHub"
-          title="GitHub"
+          aria-label={`GitHub ${newTabHint}`}
+          title={`GitHub ${newTabHint}`}
           class="text-zinc-500 transition-colors hover:text-zinc-200"
         >
           <Icon name="mdi:github" class="size-5" aria-hidden="true" />
@@ -55,8 +58,8 @@ const currentYear = new Date().getFullYear();
           href={siteConfig.gitlab}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="GitLab"
-          title="GitLab"
+          aria-label={`GitLab ${newTabHint}`}
+          title={`GitLab ${newTabHint}`}
           class="text-zinc-500 transition-colors hover:text-zinc-200"
         >
           <Icon name="mdi:gitlab" class="size-5" aria-hidden="true" />

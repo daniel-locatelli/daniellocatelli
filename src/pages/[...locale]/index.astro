@@ -13,6 +13,7 @@ import { Icon } from "astro-icon/components";
 import SkillsMap from "@/components/SkillsMap.astro";
 import GeodesicDome from "@/components/GeodesicDome.astro";
 import type { I18nHome } from "src/i18n/home/types";
+import type { I18nMeta } from "src/i18n/meta/types";
 import { getI18n } from "src/i18n/utils";
 import { getLocale } from "src/lib/routes-helpers";
 
@@ -22,6 +23,8 @@ import HeroChat from "@/components/HeroChat";
 const locale = getLocale(Astro.params);
 
 const home = await getI18n<I18nHome>("home", locale);
+const meta = await getI18n<I18nMeta>("meta", locale);
+const newTabHint = `(${meta.openNewTab})`;
 ---
 
 <Base
@@ -273,8 +276,8 @@ const home = await getI18n<I18nHome>("home", locale);
               href={siteConfig.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Daniel Locatelli on LinkedIn"
-              title="Daniel Locatelli on LinkedIn"
+              aria-label={`Daniel Locatelli on LinkedIn ${newTabHint}`}
+              title={`Daniel Locatelli on LinkedIn ${newTabHint}`}
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon name="mdi:linkedin" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
@@ -283,8 +286,8 @@ const home = await getI18n<I18nHome>("home", locale);
               href={siteConfig.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Daniel Locatelli on Instagram"
-              title="Daniel Locatelli on Instagram"
+              aria-label={`Daniel Locatelli on Instagram ${newTabHint}`}
+              title={`Daniel Locatelli on Instagram ${newTabHint}`}
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon name="mdi:instagram" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
@@ -293,8 +296,8 @@ const home = await getI18n<I18nHome>("home", locale);
               href={siteConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Daniel Locatelli on GitHub"
-              title="Daniel Locatelli on GitHub"
+              aria-label={`Daniel Locatelli on GitHub ${newTabHint}`}
+              title={`Daniel Locatelli on GitHub ${newTabHint}`}
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon name="mdi:github" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
@@ -303,8 +306,8 @@ const home = await getI18n<I18nHome>("home", locale);
               href={siteConfig.gitlab}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Daniel Locatelli on GitLab"
-              title="Daniel Locatelli on GitLab"
+              aria-label={`Daniel Locatelli on GitLab ${newTabHint}`}
+              title={`Daniel Locatelli on GitLab ${newTabHint}`}
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon name="mdi:gitlab" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
