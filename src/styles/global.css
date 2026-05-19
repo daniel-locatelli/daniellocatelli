@@ -24,7 +24,7 @@
   }
 
   html {
-    @apply scroll-pt-20;
+    @apply scroll-pt-20 bg-black;
   }
 
   figcaption {
@@ -32,7 +32,7 @@
   }
 
   body {
-    @apply mx-auto flex min-h-screen max-w-3xl flex-col px-8 pt-16 font-body text-sm font-normal text-zinc-200 antialiased;
+    @apply mx-auto flex min-h-screen max-w-3xl flex-col bg-black px-8 pt-16 font-body text-sm font-normal text-zinc-200 antialiased;
   }
 }
 
