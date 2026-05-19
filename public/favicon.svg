@@ -1,17 +1,5 @@
 <svg width="128" height="128" viewBox="-8 -8 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
-	<style>
-		:root {
-			--theme: #000;
-			--varn: #ddd;
-		}
-		@media (prefers-color-scheme: dark) {
-			:root {
-				--theme: #fff;
-				--varn: #000;
-			}
-		}
-	</style>
-	<circle cx="64" cy="64" r="64" fill="var(--varn)" />
-	<path d="M97.0554 87.931H51.3125L89.6564 49.5846L128 11.2383" stroke="var(--theme)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round" />
-	<path d="M30.759 40.257L76.502 40.257L0.00220758 116.762" stroke="var(--theme)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round" />
+	<circle cx="64" cy="64" r="64" fill="#000" />
+	<path d="M97.0554 87.931H51.3125L89.6564 49.5846L128 11.2383" stroke="#fff" stroke-width="8" stroke-linecap="square" stroke-linejoin="round" />
+	<path d="M30.759 40.257L76.502 40.257L0.00220758 116.762" stroke="#fff" stroke-width="8" stroke-linecap="square" stroke-linejoin="round" />
 </svg>
