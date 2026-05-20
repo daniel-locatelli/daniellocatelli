@@ -1,6 +1,6 @@
 # Agent Readiness — Design
 
-**Status:** Approved, pending implementation plan
+**Status:** Approved (revised after review), pending implementation plan
 **Date:** 2026-05-20
 **Owner:** Daniel Locatelli
 **Motivation:** Improve the daniellocatelli.com score on https://isitagentready.com (currently 25%) by addressing the checks that genuinely matter for a personal portfolio. The score is a vanity metric; the goal is to make the site actually useful to AI agents (LLM clients, MCP-capable agents, AI search) while keeping operational cost near zero.
@@ -8,9 +8,10 @@
 ## Goals
 
 1. Make the site discoverable and parseable by AI agents: explicit AI bot rules, a curated `llms.txt`, a `Link` header pointing at the sitemap, and Content Signals metadata.
-2. Serve a clean markdown variant of every content page so agents can consume the source without HTML stripping.
+2. Serve a clean markdown variant of every content page at the same URL (via content negotiation) **and** at a `.md` suffix URL, both returning `200 OK text/markdown` directly (no redirect chains).
 3. Publish a read-only MCP server card that exposes the portfolio as agent-queryable tools (`list_projects`, `search_content`, `get_cv`, etc.) at near-zero recurring cost.
-4. Avoid functionality that costs money per request (no exposing the paid Anthropic-backed chat as a free MCP tool).
+4. Use idiomatic Astro patterns (File Endpoints, middleware `rewrite()`) rather than fighting the framework with prebuild scripts.
+5. Avoid functionality that costs money per request (no exposing the paid Anthropic-backed chat as a free MCP tool).
 
 ## Non-goals
 
@@ -19,6 +20,7 @@
 - Commerce protocols (x402, MPP, UCP, ACP): no commerce on this site.
 - Full agent skills / WebMCP discovery beyond a static MCP card.
 - Server-side rewriting of the existing `/api/ai` chat (paid, stays as-is, NOT exposed via MCP).
+- A shared `content-index` walker. The Content Collections API (`getCollection`) does the walking. `generate-knowledge.ts` keeps its own filesystem walker because it runs outside the Astro lifecycle.
 
 ## Expected score impact
 
@@ -33,16 +35,20 @@
 
 ## Architecture
 
-Four workstreams, all shippable as a single PR. They share one underlying refactor: a `content-index` module that walks `src/content/` once and feeds three consumers (existing knowledge generator, new `llms.txt` generator, new MCP `list_*` tools).
+Four workstreams. All artifacts live inside Astro's lifecycle — no prebuild scripts beyond the existing knowledge-sync pipeline.
 
 ```
-src/scripts/lib/content-index.ts   ← new shared walker
-   │
-   ├─→ src/scripts/generate-knowledge.ts     (existing, refactored to consume the walker)
-   ├─→ src/scripts/generate-llms-txt.ts      (new)
-   ├─→ src/scripts/generate-markdown-pages.ts (new)
-   └─→ src/pages/api/mcp.ts                  (new MCP route, imports walker)
+src/pages/llms.txt.ts                 ← File Endpoint (English, root)
+src/pages/[locale]/llms.txt.ts        ← File Endpoint (pt, de)
+src/pages/[...path].md.ts             ← File Endpoint for markdown variants
+src/pages/api/mcp.ts                  ← MCP JSON-RPC handler
+src/middleware.ts                     ← Accept: text/markdown negotiation
+public/.well-known/mcp.json           ← Static MCP manifest
+public/robots.txt                     ← Rewritten
+public/_headers                       ← New, Cloudflare Static Assets
 ```
+
+All four endpoints call `getCollection()` from `astro:content`. No custom walker, no parallel content-discovery code.
 
 ### Section 1 — Discoverability & Bot Access Control
 
@@ -53,7 +59,7 @@ src/scripts/lib/content-index.ts   ← new shared walker
 **robots.txt structure:**
 - Default `User-agent: * / Allow: /`
 - Explicit `Allow: /` blocks for: GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-User, anthropic-ai, PerplexityBot, Perplexity-User, Google-Extended, CCBot, Bytespider, Applebot-Extended, Cohere-ai, Diffbot, Amazonbot, FacebookBot
-- `Content-Signal: search=yes, ai-train=yes, ai-input=yes` line (Cloudflare 2024 proposal, signals the user welcomes all three uses)
+- `Content-Signal: search=yes, ai-train=yes, ai-input=yes` (Cloudflare 2024 proposal; signals the user welcomes all three uses)
 - `Sitemap: https://daniellocatelli.com/sitemap-index.xml`
 
 **_headers content (Cloudflare Workers Static Assets honors this file the same way Pages does):**
@@ -67,19 +73,31 @@ src/scripts/lib/content-index.ts   ← new shared walker
 - `curl -I https://daniellocatelli.com/` shows the `Link` header.
 - `curl https://daniellocatelli.com/robots.txt` shows the expanded content.
 
-### Section 2 — `llms.txt` auto-generation
+### Section 2 — `llms.txt` via Astro File Endpoints
 
 **Files:**
-- `src/scripts/lib/content-index.ts` (new shared walker, extracted from `generate-knowledge.ts`)
-- `src/scripts/generate-llms-txt.ts` (new)
-- `package.json` — add a `prebuild` script chaining the new generators. Decision: keep them as two scripts (`generate-llms-txt.ts` and `generate-markdown-pages.ts`) so each has a single responsibility and can be re-run independently; chain them with `&&` in `prebuild`.
+- `src/pages/llms.txt.ts` — emits the English root `llms.txt`
+- `src/pages/[locale]/llms.txt.ts` — emits `pt/llms.txt` and `de/llms.txt` via `getStaticPaths`
 
-**Outputs:**
-- `public/llms.txt` (English, default)
-- `public/pt/llms.txt`
-- `public/de/llms.txt`
+**Implementation pattern (sketch):**
+```ts
+// src/pages/llms.txt.ts
+import { getCollection } from "astro:content";
+import type { APIRoute } from "astro";
 
-**Format (per llmstxt.org):**
+export const prerender = true;
+
+export const GET: APIRoute = async () => {
+  const projects = await getCollection("projects", e => e.id.startsWith("en/"));
+  const research = await getCollection("research", e => e.id.startsWith("en/"));
+  // ... build markdown
+  return new Response(body, {
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+};
+```
+
+**Output format (per llmstxt.org):**
 ```
 # Daniel Locatelli
 > AEC software engineer based in Berlin. Architecture × Computation × AI.
@@ -92,13 +110,7 @@ src/scripts/lib/content-index.ts   ← new shared walker
 - [<title>](https://daniellocatelli.com/projects/<slug>): <summary>
 - ...
 
-## Research
-- ...
-
-## Teaching
-- ...
-
-## Publications
+## Research / Teaching / Publications
 - ...
 
 ## Optional
@@ -106,35 +118,65 @@ src/scripts/lib/content-index.ts   ← new shared walker
 - [German index](https://daniellocatelli.com/de/llms.txt)
 ```
 
-**Refactor risk:** `generate-knowledge.ts` is a critical input to the existing chat embeddings pipeline. The refactor must preserve identical output. Mitigated by running `npx tsx src/scripts/generate-knowledge.ts` before and after and diffing `knowledge/` to confirm zero changes.
+No prebuild script. No shared walker. Astro emits the static files at build time.
 
 ### Section 3 — Markdown content negotiation
 
-**Strategy:** emit `.md` companions at build time AND honor `Accept: text/markdown` via middleware.
+**Strategy:** emit `.md` companions at build time via a File Endpoint + use Astro middleware `rewrite()` to internally serve the `.md` body when `Accept: text/markdown` is requested at the canonical URL.
 
 **Files:**
-- `src/scripts/generate-markdown-pages.ts` (new; consumes the shared walker)
-- `src/middleware.ts` (new)
+- `src/pages/[...path].md.ts` — File Endpoint emitting `.md` for every content-collection page (uses `getStaticPaths()`)
+- `src/middleware.ts` — Astro middleware, inspects `Accept` header, rewrites internally to the corresponding `.md` URL when applicable
 
-**Build-time output:**
-For every content-collection page, emit `public/<route>.md`. Examples:
-- `public/en/projects/<slug>.md` (or `public/projects/<slug>.md` if the default locale path has no `/en/` prefix — must match the actual route)
-- `public/pt/projects/<slug>.md`
-- `public/de/projects/<slug>.md`
-- Same for `research`, `teaching`, `publications`.
-- For the homepage and CV: `public/index.md`, `public/cv.md` (and locale variants).
+**Endpoint pattern (sketch):**
+```ts
+// src/pages/[...path].md.ts
+import { getCollection, type CollectionEntry } from "astro:content";
+import type { APIRoute, GetStaticPaths } from "astro";
 
-Each `.md` file contains:
-- A short front-matter block (canonical URL, locale, last-modified)
-- The raw source markdown body (no Astro components, no JSX, no React)
-- For MDX content that contains JSX, the script strips components and falls back to the structured fields (title, summary, dates, etc.) so the output is always plain markdown.
+export const prerender = true;
 
-**Middleware behavior:** When the request `Accept` header includes `text/markdown` and the request path does NOT already end in `.md`, respond with a 302 to `<path>.md`. No suffix-stripping logic on the way back — clients that need markdown either request it via header or follow the redirect.
+export const getStaticPaths: GetStaticPaths = async () => {
+  const collections = ["projects", "research", "teaching", "publications"];
+  const entries = (await Promise.all(collections.map(c => getCollection(c)))).flat();
+  return entries.map(entry => ({
+    params: { path: entry.id.replace(/\.(md|mdx)$/, "") },
+    props: { entry },
+  }));
+};
 
-**Edge cases documented:**
-- Trailing-slash routes: middleware redirects `/projects/foo/` to `/projects/foo.md` (drops the slash).
-- 404 protection: if the corresponding `.md` doesn't exist (e.g., a dynamic route), middleware falls through and serves HTML.
-- Caching: `.md` files are static assets, cached the same as everything else.
+export const GET: APIRoute = ({ props }) => {
+  const md = renderEntryAsPlainMarkdown(props.entry);
+  return new Response(md, {
+    headers: { "Content-Type": "text/markdown; charset=utf-8" },
+  });
+};
+```
+
+**Middleware behavior (using `rewrite()`, NOT `redirect()`):**
+```ts
+// src/middleware.ts
+import { defineMiddleware } from "astro:middleware";
+
+export const onRequest = defineMiddleware(async (ctx, next) => {
+  const accept = ctx.request.headers.get("accept") ?? "";
+  const wantsMarkdown =
+    /text\/markdown/i.test(accept) && !ctx.url.pathname.endsWith(".md");
+  if (wantsMarkdown) {
+    const target = ctx.url.pathname.replace(/\/$/, "") + ".md";
+    return ctx.rewrite(target); // internal rewrite; client sees 200 at original URL
+  }
+  return next();
+});
+```
+
+**Result:** an agent requesting `GET /projects/foo` with `Accept: text/markdown` receives `200 OK Content-Type: text/markdown` with the markdown body, at the original URL. No redirect chain. Strict clients work.
+
+**MDX→markdown stripping:** AST-based, not regex. Pass the raw body through a small remark transform that removes `mdxJsxFlowElement` and `mdxJsxTextElement` nodes, then `mdast-util-to-markdown` to stringify. For pages dominated by JSX (some teaching deck MDX files), the endpoint falls back to a structured rendering of front-matter fields (title, summary, dates, links) so output is always meaningful markdown.
+
+**Edge cases:**
+- 404 protection: `getStaticPaths` only emits `.md` for entries that exist. Routes without a content-collection backing return 404 — middleware skips rewrite if the corresponding `.md` doesn't exist (caught by Astro's natural 404).
+- Caching: static assets, cached identically to HTML pages.
 
 ### Section 4 — Read-only MCP server
 
@@ -142,19 +184,36 @@ Each `.md` file contains:
 - `public/.well-known/mcp.json` (new static manifest)
 - `src/pages/api/mcp.ts` (new API route — JSON-RPC handler implementing MCP streamable-HTTP transport)
 
-**Tools exposed (all read-only, no Anthropic calls):**
+**Tools exposed (read-only):**
 
 | Tool | Backend | Cost per call |
 |---|---|---|
-| `list_projects(locale="en")` | Built-in JSON snapshot from content collections at build time | $0 |
-| `list_research(locale="en")` | Same | $0 |
-| `list_teaching(locale="en")` | Same | $0 |
-| `list_publications(locale="en")` | Same | $0 |
-| `get_cv(locale="en")` | Same (experiences, education, certifications, scholarships) | $0 |
-| `search_content(query, locale="en", limit=5)` | Voyage embed + Supabase RPC `match_knowledge` (existing) | ~$0.0001 |
-| `get_page(url)` | Fetches the corresponding `.md` from the same site | $0 |
+| `list_projects(locale="en")` | `getCollection("projects")` | $0 |
+| `list_research(locale="en")` | `getCollection("research")` | $0 |
+| `list_teaching(locale="en")` | `getCollection("teaching")` | $0 |
+| `list_publications(locale="en")` | `getCollection("publications")` | $0 |
+| `get_cv(locale="en")` | `getCollection` over experiences, education, certifications, scholarships | $0 |
+| `search_content(query, locale="en", limit=5)` | Voyage embed + Supabase RPC `match_knowledge` | ~$0.0001 |
+| `get_page(url)` | Fetches the corresponding `.md` | $0 |
 
-**Rate limit:** Cloudflare KV (`AI_HEALTH_KV` is already bound) counts IP→hourly hits on `search_content`. Cap: 30 calls / IP / hour. Returns a JSON-RPC error past the cap. Other tools are unlimited (they hit no upstream).
+**Rate limiting — revised after review:**
+
+The original plan (per-IP KV counter at 30 calls/hr) is unsafe. Cloudflare Workers KV writes are limited (1k/day on free tier) and per-key write rate is ~1 write/sec; a coordinated attacker with multiple IPs can either exhaust KV writes or bypass the per-IP cap entirely behind shared NAT. Worse, the KV write cost can exceed the Voyage cost the limiter is meant to protect against.
+
+**Revised approach (two layers):**
+
+1. **Global daily budget in KV.** A single key (`mcp:budget:YYYY-MM-DD`) tracks total `search_content` calls today. Hard cap: 5,000/day (≈ $0.50/day worst case). The handler reads the counter on every call (1 KV read, free), and writes only via a **stochastic counter pattern**: increment locally by 1, but write to KV with probability 1/N (e.g., N=10). Expected writes/day ≈ 500, well within free tier. If reading shows the counter past cap, return a JSON-RPC error (`-32004`, "rate limit exceeded").
+2. **Cloudflare Workers Rate Limiting binding** on the `/api/mcp` route as a fast-fail edge layer. Binding declaration in `wrangler.toml`:
+   ```toml
+   [[unsafe.bindings]]
+   name = "MCP_RATELIMIT"
+   type = "ratelimit"
+   namespace_id = "<assigned>"
+   simple = { limit = 60, period = 60 }   # 60 req / 60s per ip
+   ```
+   The handler calls `env.MCP_RATELIMIT.limit({ key: clientIp })` first; if exceeded, returns `429` immediately with zero KV writes.
+
+The two layers complement each other: the binding stops bursts at the edge (no app-layer work), the KV budget enforces total spend.
 
 **Manifest sketch (`/.well-known/mcp.json`):**
 ```json
@@ -168,13 +227,22 @@ Each `.md` file contains:
     "url": "https://daniellocatelli.com/api/mcp"
   },
   "tools": [
-    { "name": "list_projects", "description": "List portfolio projects", "inputSchema": { ... } },
-    ...
+    {
+      "name": "list_projects",
+      "description": "List portfolio projects",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "locale": { "type": "string", "enum": ["en", "pt", "de"], "default": "en" }
+        }
+      }
+    }
   ]
 }
 ```
+(Tool schemas defined inline in the manifest and mirrored in the handler.)
 
-**Why not Cloudflare's `McpAgent` (Durable Objects):** McpAgent is the "right" way for stateful sessions but adds a DO binding, billing surface, and infrastructure complexity. This server is stateless (every call independent), so a plain Astro API route handling JSON-RPC is sufficient and matches the rest of the site's architecture.
+**Why not Cloudflare's `McpAgent` (Durable Objects):** McpAgent is the right choice for stateful sessions but adds a DO binding, billing surface, and infrastructure complexity. This server is stateless (every call independent), so a plain Astro API route handling JSON-RPC is sufficient and matches the rest of the site's architecture.
 
 ### Section 5 — Verification
 
@@ -182,29 +250,29 @@ Each `.md` file contains:
 
 Runs the same checks the scanner does, against a configurable origin (default: production):
 - `GET /robots.txt` — asserts AI bot rules, sitemap directive, content signals
-- `GET /llms.txt` — asserts present and well-formed
+- `GET /llms.txt` — asserts present and well-formed (English root + pt + de variants)
 - `GET /sitemap-index.xml` — asserts 200
 - `HEAD /` — asserts `Link` and `X-Robots-Tag` headers
-- `GET /` with `Accept: text/markdown` — asserts 302 to `/index.md`
-- `GET /<some>.md` — asserts 200 and `Content-Type: text/markdown`
+- `GET /projects/<slug>` with `Accept: text/markdown` — asserts **200 OK with `Content-Type: text/markdown`** (no redirect; verifies the middleware `rewrite()` path)
+- `GET /projects/<slug>.md` — asserts 200 and `Content-Type: text/markdown`
 - `GET /.well-known/mcp.json` — asserts 200 and parseable
-- `POST /api/mcp` with a `tools/list` JSON-RPC body — asserts the tool list contains the expected names
+- `POST /api/mcp` with a `tools/list` JSON-RPC body — asserts the expected tool names appear
 
-Runs in CI on push to main (post-deploy) and locally with `--origin http://localhost:4321` for dev verification.
+Runs locally with `--origin http://localhost:4321` for dev verification.
 
 ## Estimated effort
 
 | Workstream | Estimated effort |
 |---|---|
 | robots.txt + _headers | 30 min |
-| content-index refactor + llms.txt generator | 2-3 hr |
-| Markdown variants + middleware | 2-3 hr |
-| MCP route + manifest + KV rate limit | 3-4 hr |
+| `llms.txt` File Endpoints (root + locale) | 1-2 hr |
+| `.md` File Endpoint + middleware rewrite + remark JSX-strip | 3-4 hr |
+| MCP route + manifest + Workers Rate Limit binding + KV budget | 3-4 hr |
 | Verification script + manual re-score | 1 hr |
 | **Total** | **~9-12 hr** |
 
-## Open questions for implementation
+## Open questions resolved
 
-1. **Locale URL convention:** Does the default English locale use `/projects/<slug>` or `/en/projects/<slug>`? The markdown-pages generator must mirror whatever the live router produces. Verify against `astro build` output before writing the generator.
-2. **MDX → markdown stripping:** Some teaching deck pages are MDX with `<Slide>` JSX. For those, the markdown variant should fall back to title + summary + structured fields rather than failing. Confirm the stripping pass produces sensible output for one MDX-heavy page before assuming it works everywhere.
-3. **Sitemap inclusion of `.md` URLs:** Probably NO (would bloat the sitemap and confuse search engines). Decision: keep `.md` URLs out of the sitemap; they're discoverable via the `Accept` header or by suffix convention.
+1. ~~**Locale URL convention**~~ — resolved: Astro `getStaticPaths()` mirrors the live router automatically. The File Endpoint produces correct paths regardless of `prefixDefaultLocale`.
+2. ~~**MDX → markdown stripping**~~ — resolved: AST-based via a remark transform removing `mdxJsxFlowElement` / `mdxJsxTextElement` nodes; structured-fields fallback for JSX-dominated pages.
+3. ~~**Sitemap inclusion of `.md` URLs**~~ — resolved: NO. Sitemap is for search engines; `.md` variants are for agents. Keep them separate.
