@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "2025-06-18",
+  "name": "daniel-locatelli-portfolio",
+  "description": "Read-only access to Daniel Locatelli's portfolio: projects, research, and full-text search.",
+  "version": "1.0.0",
+  "transport": {
+    "type": "streamable-http",
+    "url": "https://daniellocatelli.com/api/mcp"
+  },
+  "tools": [
+    {
+      "name": "list_projects",
+      "description": "List portfolio projects with title, summary, URL, and start date.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "locale": { "type": "string", "enum": ["en", "pt", "de"], "default": "en" }
+        }
+      }
+    },
+    {
+      "name": "list_research",
+      "description": "List research entries with title, summary, URL, and start date.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "locale": { "type": "string", "enum": ["en", "pt", "de"], "default": "en" }
+        }
+      }
+    },
+    {
+      "name": "search_content",
+      "description": "Vector search across all portfolio content. Returns up to 20 matches with title, URL, snippet, and similarity score.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["query"],
+        "properties": {
+          "query": { "type": "string" },
+          "locale": { "type": "string", "enum": ["en", "pt", "de"], "default": "en" },
+          "limit": { "type": "integer", "default": 5, "minimum": 1, "maximum": 20 }
+        }
+      }
+    },
+    {
+      "name": "get_page",
+      "description": "Fetch any daniellocatelli.com page as plain markdown.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["url"],
+        "properties": { "url": { "type": "string", "format": "uri" } }
+      }
+    }
+  ]
+}
