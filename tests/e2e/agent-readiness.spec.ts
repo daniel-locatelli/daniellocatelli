@@ -54,3 +54,20 @@ test.describe("Agent readiness — llms.txt (locales)", () => {
     });
   }
 });
+
+test.describe("Agent readiness — markdown variants", () => {
+  test("project page is reachable at .md and returns text/markdown", async ({ request }) => {
+    const res = await request.get("/projects/buildsystems-website.md");
+    expect(res.status()).toBe(200);
+    expect(res.headers()["content-type"]).toMatch(/^text\/markdown/);
+    const body = await res.text();
+    expect(body).toContain("# ");
+    expect(body).toContain("BuildSystems");
+  });
+
+  test("portuguese project .md is reachable", async ({ request }) => {
+    const res = await request.get("/pt/projects/buildsystems-website.md");
+    expect(res.status()).toBe(200);
+    expect(res.headers()["content-type"]).toMatch(/^text\/markdown/);
+  });
+});
