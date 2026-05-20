@@ -41,3 +41,16 @@ test.describe("Agent readiness — discoverability", () => {
     expect(res.headers()["x-robots-tag"]).toBe("all");
   });
 });
+
+test.describe("Agent readiness — llms.txt (locales)", () => {
+  for (const locale of ["pt", "de"]) {
+    test(`/${locale}/llms.txt returns localized content`, async ({ request }) => {
+      const res = await request.get(`/${locale}/llms.txt`);
+      expect(res.status()).toBe(200);
+      expect(res.headers()["content-type"]).toMatch(/^text\/plain/);
+      const body = await res.text();
+      expect(body).toMatch(/^# Daniel Locatelli\n/);
+      expect(body).toContain(`https://daniellocatelli.com/${locale}/projects/`);
+    });
+  }
+});
