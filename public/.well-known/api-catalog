@@ -1,0 +1,14 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://daniellocatelli.com",
+      "service-desc": [
+        {
+          "href": "https://daniellocatelli.com/.well-known/mcp.json",
+          "type": "application/json",
+          "title": "Daniel Locatelli Portfolio - MCP Server"
+        }
+      ]
+    }
+  ]
+}
