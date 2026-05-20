@@ -184,36 +184,26 @@ export const onRequest = defineMiddleware(async (ctx, next) => {
 - `public/.well-known/mcp.json` (new static manifest)
 - `src/pages/api/mcp.ts` (new API route — JSON-RPC handler implementing MCP streamable-HTTP transport)
 
-**Tools exposed (read-only):**
+**Tools exposed in v1 (read-only, lean core):**
 
 | Tool | Backend | Cost per call |
 |---|---|---|
 | `list_projects(locale="en")` | `getCollection("projects")` | $0 |
 | `list_research(locale="en")` | `getCollection("research")` | $0 |
-| `list_teaching(locale="en")` | `getCollection("teaching")` | $0 |
-| `list_publications(locale="en")` | `getCollection("publications")` | $0 |
-| `get_cv(locale="en")` | `getCollection` over experiences, education, certifications, scholarships | $0 |
 | `search_content(query, locale="en", limit=5)` | Voyage embed + Supabase RPC `match_knowledge` | ~$0.0001 |
 | `get_page(url)` | Fetches the corresponding `.md` | $0 |
 
-**Rate limiting — revised after review:**
+**Tools deliberately out of scope for v1:** `list_teaching`, `list_publications`, `get_cv`. Since `get_page` ships in v1 and returns clean markdown from any URL (Section 3), structured tools for teaching/publications/CV are redundant — an agent that knows a URL (via `llms.txt` or `search_content`) can read it via `get_page` and extract structure from the markdown directly. Avoids bikeshedding JSON schemas for content that already has a stable markdown representation.
 
-The original plan (per-IP KV counter at 30 calls/hr) is unsafe. Cloudflare Workers KV writes are limited (1k/day on free tier) and per-key write rate is ~1 write/sec; a coordinated attacker with multiple IPs can either exhaust KV writes or bypass the per-IP cap entirely behind shared NAT. Worse, the KV write cost can exceed the Voyage cost the limiter is meant to protect against.
+**Rate limiting — final:**
 
-**Revised approach (two layers):**
+Only `search_content` costs money. Protect it with a **single boring layer**: a global daily budget in KV.
 
-1. **Global daily budget in KV.** A single key (`mcp:budget:YYYY-MM-DD`) tracks total `search_content` calls today. Hard cap: 5,000/day (≈ $0.50/day worst case). The handler reads the counter on every call (1 KV read, free), and writes only via a **stochastic counter pattern**: increment locally by 1, but write to KV with probability 1/N (e.g., N=10). Expected writes/day ≈ 500, well within free tier. If reading shows the counter past cap, return a JSON-RPC error (`-32004`, "rate limit exceeded").
-2. **Cloudflare Workers Rate Limiting binding** on the `/api/mcp` route as a fast-fail edge layer. Binding declaration in `wrangler.toml`:
-   ```toml
-   [[unsafe.bindings]]
-   name = "MCP_RATELIMIT"
-   type = "ratelimit"
-   namespace_id = "<assigned>"
-   simple = { limit = 60, period = 60 }   # 60 req / 60s per ip
-   ```
-   The handler calls `env.MCP_RATELIMIT.limit({ key: clientIp })` first; if exceeded, returns `429` immediately with zero KV writes.
+A single key (`mcp:budget:YYYY-MM-DD`) tracks total `search_content` calls today. Hard cap: 5,000/day (≈ $0.50/day worst case). The handler reads the counter on every call (1 KV read, free) and writes via a **stochastic counter pattern**: increment locally by 1, but write to KV with probability 1/N (N=10). Expected writes/day ≈ 500, well within the 1k/day free tier. If reading shows the counter past cap, return a JSON-RPC error (`-32004`, "rate limit exceeded") until midnight UTC.
 
-The two layers complement each other: the binding stops bursts at the edge (no app-layer work), the KV budget enforces total spend.
+**Workers Rate Limit binding rejected:** it lives under `unsafe.bindings` in `wrangler.toml`, which is explicitly beta and unstable. Depending on a beta configuration surface to protect against $0.50/day of exposure is a poor trade — if Cloudflare reshapes the namespace, CI breaks for no good reason. The stochastic budget alone is sufficient.
+
+The other three tools (`list_projects`, `list_research`, `get_page`) cost $0 and are unrate-limited.
 
 **Manifest sketch (`/.well-known/mcp.json`):**
 ```json
@@ -227,20 +217,14 @@ The two layers complement each other: the binding stops bursts at the edge (no a
     "url": "https://daniellocatelli.com/api/mcp"
   },
   "tools": [
-    {
-      "name": "list_projects",
-      "description": "List portfolio projects",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "locale": { "type": "string", "enum": ["en", "pt", "de"], "default": "en" }
-        }
-      }
-    }
+    { "name": "list_projects", "description": "List portfolio projects", "inputSchema": { "type": "object", "properties": { "locale": { "type": "string", "enum": ["en", "pt", "de"], "default": "en" } } } },
+    { "name": "list_research", "description": "List research entries", "inputSchema": { "type": "object", "properties": { "locale": { "type": "string", "enum": ["en", "pt", "de"], "default": "en" } } } },
+    { "name": "search_content", "description": "Vector search across all portfolio content", "inputSchema": { "type": "object", "required": ["query"], "properties": { "query": { "type": "string" }, "locale": { "type": "string", "enum": ["en", "pt", "de"], "default": "en" }, "limit": { "type": "integer", "default": 5, "maximum": 20 } } } },
+    { "name": "get_page", "description": "Fetch a portfolio page as plain markdown", "inputSchema": { "type": "object", "required": ["url"], "properties": { "url": { "type": "string", "format": "uri" } } } }
   ]
 }
 ```
-(Tool schemas defined inline in the manifest and mirrored in the handler.)
+Tool schemas in the manifest mirror the handler.
 
 **Why not Cloudflare's `McpAgent` (Durable Objects):** McpAgent is the right choice for stateful sessions but adds a DO binding, billing surface, and infrastructure complexity. This server is stateless (every call independent), so a plain Astro API route handling JSON-RPC is sufficient and matches the rest of the site's architecture.
 
@@ -267,9 +251,9 @@ Runs locally with `--origin http://localhost:4321` for dev verification.
 | robots.txt + _headers | 30 min |
 | `llms.txt` File Endpoints (root + locale) | 1-2 hr |
 | `.md` File Endpoint + middleware rewrite + remark JSX-strip | 3-4 hr |
-| MCP route + manifest + Workers Rate Limit binding + KV budget | 3-4 hr |
+| MCP route + manifest + stochastic KV budget (4 tools) | 2-3 hr |
 | Verification script + manual re-score | 1 hr |
-| **Total** | **~9-12 hr** |
+| **Total** | **~8-11 hr** |
 
 ## Open questions resolved
 
