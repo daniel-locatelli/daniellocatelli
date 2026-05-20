@@ -1060,6 +1060,8 @@ test.describe("Agent readiness — Accept: text/markdown negotiation", () => {
 Run: `npx playwright test agent-readiness -g "Accept: text/markdown" --reporter=list`
 Expected: 2 passes.
 
+> **Production-environment caveat.** `astro dev` resolves `ctx.rewrite()` using in-memory routing. In the deployed Worker, the rewrite target (`.md`) is a prerendered static asset served by Cloudflare's Workers Static Assets binding, not by Astro's runtime. The two routing engines hand off differently. Task 11 explicitly re-runs the Accept-negotiation e2e tests against `npm run preview` (which uses Wrangler to simulate the Worker + Static Assets routing) to catch any divergence before the PR is merged. If the rewrite fails in preview but works in dev, the fallback is to replace `ctx.rewrite(target)` with an internal `fetch(new URL(target, ctx.url))` and return the response body with `Content-Type: text/markdown`.
+
 - [ ] **Step 7: Commit**
 
 ```bash
@@ -1676,6 +1678,9 @@ const TOOLS = {
   get_page: { description: "Fetch any daniellocatelli.com page as plain markdown." },
 } as const;
 
+// MCP streamable-HTTP spec (2025-06-18) permits either application/json
+// (single response) or text/event-stream (multi-message stream). We don't
+// stream, so application/json is the correct and spec-compliant choice.
 function ok(id: JsonRpcRequest["id"], result: any): Response {
   const payload: JsonRpcResult = { jsonrpc: "2.0", id, result };
   return new Response(JSON.stringify(payload), {
@@ -1816,7 +1821,33 @@ ls dist/.well-known/mcp.json
 ```
 Expected: all five files exist.
 
-- [ ] **Step 5: Push the branch and open a PR**
+- [ ] **Step 5: Re-run the Accept-negotiation e2e against `npm run preview`**
+
+`astro dev` resolves middleware rewrites in memory; the deployed Worker hands off to Cloudflare Workers Static Assets. Verify the middleware behavior holds in the Worker-simulated environment **before** pushing.
+
+```bash
+npm run preview  # in one terminal; Wrangler simulates the Worker + assets binding
+PLAYWRIGHT_BASE_URL=http://localhost:4321 npx playwright test agent-readiness -g "Accept: text/markdown|markdown variants" --reporter=list
+```
+
+Expected: 4 passes (2 Accept-negotiation tests + 2 `.md` variant tests).
+
+If the Accept-negotiation tests fail in preview but passed against `astro dev`:
+- The rewrite to a prerendered static asset isn't resolving through the Worker's routing.
+- **Fallback:** edit `src/middleware.ts` so the rewrite path performs an internal fetch instead:
+  ```ts
+  if (target) {
+    const targetUrl = new URL(target, ctx.url);
+    const res = await fetch(targetUrl, { headers: ctx.request.headers });
+    return new Response(res.body, {
+      status: res.status,
+      headers: { "Content-Type": "text/markdown; charset=utf-8" },
+    });
+  }
+  ```
+- Re-run this step until preview passes. Then proceed.
+
+- [ ] **Step 6: Push the branch and open a PR**
 
 ```bash
 git push -u origin feat/agent-readiness
@@ -1842,15 +1873,15 @@ EOF
 )"
 ```
 
-- [ ] **Step 6: After PR merges and deploys: re-run isitagentready.com**
+- [ ] **Step 7: After PR merges and deploys: re-run isitagentready.com**
 
 Visit `https://isitagentready.com/daniellocatelli.com` and record the new score.
 
-- [ ] **Step 7: If score < 60%, investigate the failing categories**
+- [ ] **Step 8: If score < 60%, investigate the failing categories**
 
 The scanner's published categories are: Discoverability, Content Accessibility, Bot Access Control, Protocol Discovery, Commerce. Map the failing checks back to the spec's "After (target)" table and decide whether the gap is something this PR should have caught (file an issue) or out-of-scope (Web Bot Auth, OAuth, commerce — these are documented non-goals).
 
-- [ ] **Step 8: Final commit — update spec status if needed**
+- [ ] **Step 9: Final commit — update spec status if needed**
 
 If the score landed in the target range, edit the spec header status from "Approved (revised after review), pending implementation plan" to "Shipped 2026-MM-DD, score: NN%". Commit and merge.
 
