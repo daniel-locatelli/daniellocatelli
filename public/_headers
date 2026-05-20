@@ -1,3 +1,6 @@
 /*
-  Link: </sitemap-index.xml>; rel="sitemap"
+  Link: </sitemap-index.xml>; rel="sitemap", </.well-known/api-catalog>; rel="api-catalog"
   X-Robots-Tag: all
+
+/.well-known/api-catalog
+  Content-Type: application/linkset+json
