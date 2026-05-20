@@ -57,7 +57,7 @@ export const GET: APIRoute = async () => {
 
   const body = formatLlmsTxt({
     title: "Daniel Locatelli",
-    tagline: "AEC software engineer based in Berlin. Architecture x Computation x AI.",
+    tagline: "AEC software engineer based in Berlin. Architecture × Computation × AI.",
     sections,
   });
 
