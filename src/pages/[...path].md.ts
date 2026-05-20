@@ -16,6 +16,7 @@ interface PathProps {
   collection: Coll;
   locale: Locale;
   slug: string;
+  [key: string]: unknown;
 }
 
 function pathFor(locale: Locale, collection: Coll, slug: string): string {
