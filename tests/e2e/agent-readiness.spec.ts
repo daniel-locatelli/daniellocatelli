@@ -71,3 +71,23 @@ test.describe("Agent readiness — markdown variants", () => {
     expect(res.headers()["content-type"]).toMatch(/^text\/markdown/);
   });
 });
+
+test.describe("Agent readiness — Accept: text/markdown negotiation", () => {
+  test("project page with Accept: text/markdown returns markdown at canonical URL", async ({ request }) => {
+    const res = await request.get("/projects/buildsystems-website", {
+      headers: { Accept: "text/markdown" },
+    });
+    expect(res.status()).toBe(200);
+    expect(res.headers()["content-type"]).toMatch(/^text\/markdown/);
+    const body = await res.text();
+    expect(body).toContain("BuildSystems");
+  });
+
+  test("project page with Accept: text/html stays HTML", async ({ request }) => {
+    const res = await request.get("/projects/buildsystems-website", {
+      headers: { Accept: "text/html" },
+    });
+    expect(res.status()).toBe(200);
+    expect(res.headers()["content-type"]).toMatch(/^text\/html/);
+  });
+});
