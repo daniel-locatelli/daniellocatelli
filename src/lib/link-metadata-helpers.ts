@@ -12,6 +12,6 @@ import { createHash } from "node:crypto";
 export function generateLinkKey(href: string): string {
   const url = new URL(href);
   const hostStub = url.hostname.replace(/^www\./, "").replace(/\./g, "-").toLowerCase();
-  const hash = createHash("sha256").update(href).digest("hex").slice(0, 8);
+  const hash = createHash("sha256").update(url.href).digest("hex").slice(0, 8);
   return `${hostStub}-${hash}`;
 }

@@ -42,3 +42,9 @@ test("generateLinkKey: produces filenames under 80 chars even for deep URLs", ()
 test("generateLinkKey: throws on invalid URL", () => {
   assert.throws(() => generateLinkKey("not a url"));
 });
+
+test("generateLinkKey: case-insensitive hostname produces same key", () => {
+  const upper = generateLinkKey("https://DOCS.ASTRO.BUILD/en/");
+  const lower = generateLinkKey("https://docs.astro.build/en/");
+  assert.equal(upper, lower);
+});
