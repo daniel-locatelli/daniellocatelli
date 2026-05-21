@@ -8,6 +8,7 @@ import {
 import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
 import Credit from "@/components/Credit.astro";
+import LinkPreview from "@/components/LinkPreview.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
 import { getLocale, getEntrySlug, getEntryLocale, getFileSlug } from "src/lib/routes-helpers";
 import { getI18n } from "src/i18n/utils";
@@ -622,36 +623,16 @@ const foregroundClass = isLetterbox
         <Content />
       </div>
       {
-        subpage.data.OtherLinks &&
-          subpage.data.OtherLinks.length > 0 && (
-            <div class="mt-8">
-              <h2 class="font-title mb-4 text-xl text-zinc-100">
-                {t.otherLinks}
-              </h2>
-              <div class="flex flex-col gap-3">
-                {subpage.data.OtherLinks.map((link: any) => (
-                  <a
-                    href={link.Href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex flex-col gap-1 rounded-lg border border-zinc-700 px-4 py-3 transition hover:border-green-600 hover:bg-zinc-900"
-                  >
-                    <span class="font-body text-sm font-medium text-green-500">
-                      {link.Text}
-                    </span>
-                    {link.Description && (
-                      <span class="text-xs text-zinc-400">
-                        {link.Description}
-                      </span>
-                    )}
-                    <span class="truncate text-xs text-zinc-500">
-                      {link.Href}
-                    </span>
-                  </a>
-                ))}
-              </div>
+        subpage.data.OtherLinks && subpage.data.OtherLinks.length > 0 && (
+          <div class="mt-8">
+            <h2 class="font-title mb-4 text-xl text-zinc-100">{t.otherLinks}</h2>
+            <div class="flex flex-col gap-3">
+              {subpage.data.OtherLinks.map((link) => (
+                <LinkPreview link={link} />
+              ))}
             </div>
-          )
+          </div>
+        )
       }
     </div>
   </section>
