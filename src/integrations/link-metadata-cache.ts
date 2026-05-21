@@ -1,7 +1,6 @@
 import type { AstroIntegration, AstroIntegrationLogger } from "astro";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import glob from "fast-glob";
 import matter from "gray-matter";
 import metascraper from "metascraper";
@@ -25,7 +24,10 @@ async function ensureDir(dir: string): Promise<void> {
   }
 }
 
-async function readCached(key: string): Promise<CachedLinkMetadata | null> {
+async function readCached(
+  key: string,
+  logger: AstroIntegrationLogger,
+): Promise<CachedLinkMetadata | null> {
   const file = path.join(CACHE_DIR, "metadata", `${key}.json`);
   try {
     const raw = await fs.readFile(file, "utf-8");
@@ -33,7 +35,7 @@ async function readCached(key: string): Promise<CachedLinkMetadata | null> {
     if (Date.now() - parsed.timestamp < TTL_MS) return parsed;
   } catch (err) {
     if ((err as NodeJS.ErrnoException).code !== "ENOENT") {
-      console.error(`link-metadata-cache: failed to read ${file}`, err);
+      logger.error(`failed to read ${file}: ${(err as Error).message}`);
     }
   }
   return null;
@@ -48,9 +50,12 @@ function pickExt(imageUrl: string): string {
 async function downloadImage(
   key: string,
   imageUrl: string,
+  logger: AstroIntegrationLogger,
 ): Promise<string | null> {
   try {
-    const response = await fetch(imageUrl);
+    const response = await fetch(imageUrl, {
+      signal: AbortSignal.timeout(15_000),
+    });
     if (!response.ok) return null;
     const buffer = new Uint8Array(await response.arrayBuffer());
     const ext = pickExt(imageUrl);
@@ -59,7 +64,7 @@ async function downloadImage(
     await fs.writeFile(filePath, buffer);
     return filename;
   } catch (err) {
-    console.error(`link-metadata-cache: image download failed for ${imageUrl}`, err);
+    logger.error(`image download failed for ${imageUrl}: ${(err as Error).message}`);
     return null;
   }
 }
@@ -69,7 +74,7 @@ async function scrapeOne(
   logger: AstroIntegrationLogger,
 ): Promise<void> {
   const key = generateLinkKey(href);
-  const existing = await readCached(key);
+  const existing = await readCached(key, logger);
   if (existing) return;
 
   logger.info(`scraping ${href}`);
@@ -77,6 +82,7 @@ async function scrapeOne(
     const response = await fetch(href, {
       headers: { "user-agent": "Mozilla/5.0 (link-metadata-cache)" },
       redirect: "follow",
+      signal: AbortSignal.timeout(15_000),
     });
     if (!response.ok) {
       logger.warn(`scrape ${href} returned HTTP ${response.status}`);
@@ -94,7 +100,7 @@ async function scrapeOne(
     };
 
     if (meta.image) {
-      const local = await downloadImage(key, meta.image);
+      const local = await downloadImage(key, meta.image, logger);
       if (local) cached.localImagePath = local;
     }
 
@@ -105,7 +111,7 @@ async function scrapeOne(
   }
 }
 
-async function collectHrefs(): Promise<string[]> {
+async function collectHrefs(logger: AstroIntegrationLogger): Promise<string[]> {
   const files = await glob("src/content/**/*.{md,mdx}", { absolute: true });
   const set = new Set<string>();
   await Promise.all(
@@ -119,7 +125,7 @@ async function collectHrefs(): Promise<string[]> {
           if (link && typeof link.Href === "string") set.add(link.Href);
         }
       } catch (err) {
-        console.error(`link-metadata-cache: failed to read ${file}`, err);
+        logger.error(`failed to read ${file}: ${(err as Error).message}`);
       }
     }),
   );
@@ -134,7 +140,7 @@ export default function linkMetadataCache(): AstroIntegration {
         await ensureDir(path.join(CACHE_DIR, "metadata"));
         await ensureDir(path.join(CACHE_DIR, "images"));
 
-        const hrefs = await collectHrefs();
+        const hrefs = await collectHrefs(logger);
         logger.info(`found ${hrefs.length} unique OtherLinks URLs`);
 
         // Fire-and-forget per URL so dev-server startup is not blocked
@@ -145,15 +151,6 @@ export default function linkMetadataCache(): AstroIntegration {
           });
         }
       },
-      "astro:config:setup": ({ command, logger }) => {
-        // Skip the build path: production builds rely on the committed cache.
-        if (command !== "dev") {
-          logger.info("link-metadata-cache: skipped in non-dev mode");
-        }
-      },
     },
   };
 }
-
-// fileURLToPath kept around for future use in resolve-relative helpers.
-void fileURLToPath;
