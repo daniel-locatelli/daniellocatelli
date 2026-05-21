@@ -11,6 +11,7 @@ import { rehypeFigure } from "./src/lib/rehype-figure";
 import { rehypeFootnoteTooltips } from "./src/lib/rehype-footnote-tooltips";
 import { remarkImageToAstroImage } from "./src/lib/remark-image-to-astro-image";
 import { presentationSlides } from "./src/lib/vite-presentation-slides";
+import linkMetadataCache from "./src/integrations/link-metadata-cache";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -42,7 +43,7 @@ export default defineConfig({
     port: 4321,
     host: true,
   },
-  integrations: [sitemap(), icon(), react(), mdx()],
+  integrations: [sitemap(), icon(), react(), mdx(), linkMetadataCache()],
   prefetch: true,
   markdown: {
     remarkPlugins: [remarkImageToAstroImage],
