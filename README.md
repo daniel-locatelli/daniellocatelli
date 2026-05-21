@@ -37,6 +37,7 @@ Portfolio website for **Daniel Locatelli**, an AEC (Architecture, Engineering & 
 - **Responsive Design** — Dark-themed UI with Montserrat/Poppins custom fonts, mobile-friendly layout, and print-optimized CV page.
 - **Legal Pages** — Privacy Policy, Terms & Conditions, and Impressum (noindexed).
 - **SEO** — Sitemap generation, Open Graph metadata, and view transitions.
+- **Agent Readiness** — AI crawler-friendly (`robots.txt` welcomes 16 bots), `llms.txt` index, `.md` companion URLs for every content page, `Accept: text/markdown` content negotiation, `/.well-known/api-catalog` (RFC 9727), and an MCP server at `/api/mcp` with read-only tools. See [`docs/agent-readiness.md`](docs/agent-readiness.md) for architecture.
 
 ## Project Structure
 
