@@ -4,3 +4,12 @@
 
 /.well-known/api-catalog
   Content-Type: application/linkset+json
+
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
+
+/pt/llms.txt
+  Content-Type: text/markdown; charset=utf-8
+
+/de/llms.txt
+  Content-Type: text/markdown; charset=utf-8
