@@ -1,10 +1,10 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Agent readiness — llms.txt (English)", () => {
-  test("/llms.txt returns text/plain with portfolio sections", async ({ request }) => {
+  test("/llms.txt returns text/markdown with portfolio sections", async ({ request }) => {
     const res = await request.get("/llms.txt");
     expect(res.status()).toBe(200);
-    expect(res.headers()["content-type"]).toMatch(/^text\/plain/);
+    expect(res.headers()["content-type"]).toMatch(/^text\/markdown/);
     const body = await res.text();
     expect(body).toMatch(/^# Daniel Locatelli\n/);
     expect(body).toContain("\n## Projects\n");
@@ -47,7 +47,7 @@ test.describe("Agent readiness — llms.txt (locales)", () => {
     test(`/${locale}/llms.txt returns localized content`, async ({ request }) => {
       const res = await request.get(`/${locale}/llms.txt`);
       expect(res.status()).toBe(200);
-      expect(res.headers()["content-type"]).toMatch(/^text\/plain/);
+      expect(res.headers()["content-type"]).toMatch(/^text\/markdown/);
       const body = await res.text();
       expect(body).toMatch(/^# Daniel Locatelli\n/);
       expect(body).toContain(`https://daniellocatelli.com/${locale}/projects/`);
