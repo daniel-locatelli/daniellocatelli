@@ -193,9 +193,11 @@ const pageSchema = z.object({
   OtherLinks: z
     .array(
       z.object({
-        Text: z.string(),
-        Href: z.string(),
+        Href: z.string().url(),
+        Text: z.string().optional(),
         Description: z.string().optional(),
+        Image: z.string().optional(),
+        HideMedia: z.boolean().optional(),
       }),
     )
     .optional(),
