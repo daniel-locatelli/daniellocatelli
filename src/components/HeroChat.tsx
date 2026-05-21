@@ -410,9 +410,13 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
         <div className="relative flex items-center">
           <input
             type="text"
+            id="hero-chat-input"
+            name="hero-chat-input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={labels.inputPlaceholder}
+            aria-label={labels.inputPlaceholder}
+            autoComplete="off"
             className="w-full rounded-full border border-zinc-800 bg-black/50 px-6 py-3 pr-12 text-zinc-200 shadow-sm backdrop-blur-sm transition-all focus:border-green-400 focus:ring-2 focus:ring-green-400/20 focus:outline-none"
           />
           <button
@@ -591,9 +595,13 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                     >
                       <input
                         type="text"
+                        id="hero-chat-modal-input"
+                        name="hero-chat-modal-input"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder={labels.inputPlaceholder}
+                        aria-label={labels.inputPlaceholder}
+                        autoComplete="off"
                         className="flex-1 bg-transparent px-4 py-2 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none"
                       />
                       <button
