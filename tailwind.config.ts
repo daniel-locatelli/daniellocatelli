@@ -105,7 +105,7 @@ export default {
               borderTopStyle: "dashed",
             },
             th: {
-              fontWeight: "light",
+              fontWeight: "300",
             },
             thead: {
               borderBottomWidth: "none",

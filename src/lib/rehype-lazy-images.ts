@@ -18,7 +18,10 @@ export function rehypeLazyImages() {
         node.properties.loading = "eager";
       } else {
         node.properties.loading = "lazy";
-        node.properties.dataPreload = "true";
+        // Use the literal kebab-case key: hast's property-information module
+        // has no mapping for `dataPreload`, so the serializer lowercases it
+        // to `datapreload` (invalid HTML) instead of `data-preload`.
+        node.properties["data-preload"] = "true";
       }
       imageIndex++;
     });

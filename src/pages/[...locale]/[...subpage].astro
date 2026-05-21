@@ -655,8 +655,7 @@ const foregroundClass = isLetterbox
       }
     </div>
   </section>
-</Base>
-
+  <Fragment slot="after-body">
 <script>
   import mermaid from "mermaid";
   mermaid.initialize({
@@ -783,6 +782,7 @@ const foregroundClass = isLetterbox
       draggable="false"
       class="m-auto rounded object-contain max-h-[90vh] max-w-[90vw] data-[zoomed=true]:max-h-none data-[zoomed=true]:max-w-none"
       alt=""
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E"
     />
   </div>
 </div>
@@ -1072,3 +1072,5 @@ const foregroundClass = isLetterbox
 
   document.addEventListener("astro:page-load", setupBodyImagePreload);
 </script>
+  </Fragment>
+</Base>

@@ -122,5 +122,6 @@ const {
       bindFastAnchorScroll();
       document.addEventListener("astro:after-swap", bindFastAnchorScroll);
     </script>
+    <slot name="after-body" />
   </body>
 </html>
