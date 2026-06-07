@@ -6,7 +6,30 @@ compatibility_flags = ["nodejs_compat"]
 [assets]
 binding = "ASSETS"
 directory = "./dist/client"
-run_worker_first = true
+# Run the Worker first for page/document routes so src/middleware.ts can
+# negotiate `Accept: text/markdown` on prerendered pages (see commit b41b7b7).
+# Exclude static assets AND Vite's dev-server paths (/@vite, /@id, /@fs,
+# /src, /node_modules) so they bypass the Worker -- otherwise the prerendered
+# [...locale] catch-all 404s them under the Cloudflare workerd dev server.
+run_worker_first = [
+  "/*",
+  "!/@*",
+  "!/src/*",
+  "!/node_modules/*",
+  "!/_astro/*",
+  "!/fonts/*",
+  "!/media/*",
+  "!/documents/*",
+  "!/presentations/*",
+  "!/assets/*",
+  "!/*.svg",
+  "!/*.png",
+  "!/*.ico",
+  "!/*.woff2",
+  "!/*.webmanifest",
+  "!/*.xml",
+  "!/*.txt",
+]
 
 [[kv_namespaces]]
 binding = "AI_HEALTH_KV"
