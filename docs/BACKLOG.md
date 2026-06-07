@@ -21,14 +21,6 @@ Non-critical ideas and improvements for the daniellocatelli portfolio repo. Use 
 
 **Open questions.** Does Astro's image optimization play well with widely-shared imports? Do we want one sidecar JSON per file, or one registry per source identity? Migration path for existing duplicated assets?
 
-## SlideMarkdown font sizes need tuning
-
-**Problem.** After the unified-slide-type migration (2026-05-14), some slides render with text that feels too large or too small versus the previous TextSlide/TitleSlide rendering. The `clamp()` scale picked for `SlideMarkdown` in `src/components/slides/SlideMarkdown.astro` was an approximation of the old TextSlide's `text-{4xl,5xl,6xl,7xl}` Tailwind tiers, not an exact match.
-
-**Sketch.** Walk through the migrated decks visually, note which heading levels feel off in which contexts, and adjust the `clamp(min, vw, max)` values per element. Likely candidates: h1 (currently `clamp(2.5rem, 7vw, 6rem)`), p (currently `clamp(1rem, 1.8vw, 1.5rem)`).
-
-**Trigger.** Before the next public-facing deck delivery, or sooner if a specific slide reads badly in a presentation rehearsal.
-
 ## Astro Island `<style>` injection inside body flow
 
 **Problem.** Astro's `client:*` directive injects `<style>astro-island,astro-slot,astro-static-slot{display:contents}</style>` at the location of the first hydrated island. On the home page this lands inside the `<div class="w-full max-w-xl py-4">` wrapping `<HeroChat>`, which PowerMapper flags as "Element style not allowed as child element in this context." Per current HTML5 spec, `<style>` is metadata content and is only valid inside `<head>` (`scoped` was removed). Browsers tolerate it; strict validators do not.

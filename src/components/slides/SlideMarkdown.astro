@@ -87,8 +87,40 @@ const textColor = darkText ? "text-zinc-950" : "text-white";
     font-weight: 300;
     line-height: 1.35;
     margin: 0 0 1.5rem 0;
-    font-size: clamp(1.125rem, 2.625vw, 2.25rem);
-    max-width: 56rem;
+    font-size: clamp(1.5rem, 3.8vw, 3rem);
+    max-width: none;
+  }
+
+  /* Pull-quote slides get a wider content column so a long quote wraps into
+     a few wide lines instead of a tall, narrow pile. Scoped via :has() so
+     title/heading slides keep the standard (narrower) measure. The 80rem cap
+     keeps line length readable on ultrawide displays. */
+  .slide-md > .max-w-5xl:has(blockquote) {
+    max-width: 80rem;
+  }
+
+  /* Markdown wraps blockquote content in a <p>, which would otherwise be
+     caught by the `.slide-md p` body rule (equal specificity) and render at
+     body size. Force the inner paragraph to inherit the blockquote's
+     pull-quote typography so the quote text actually takes the size above. */
+  .slide-md blockquote p {
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    line-height: inherit;
+    margin: 0;
+  }
+
+  /* When an h2 directly follows a blockquote it is a quote attribution
+     (e.g. the speaker's name), not a section header. Render it as a
+     subordinate credit so the quote itself stays the hero: smaller, and
+     lighter than the bold 700 used for standalone headers, which would
+     otherwise out-weigh the light-300 quote even at a larger pixel size. */
+  .slide-md blockquote + h2 {
+    font-size: clamp(0.9375rem, 2vw, 1.625rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin: 0;
   }
 
   .slide-md ul,
