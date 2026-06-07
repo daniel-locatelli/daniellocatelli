@@ -17,25 +17,28 @@ N = 5
 STRIPE_W = CANVAS_W // N
 STRIPE_H = CANVAS_H
 
+# (path, x_shift): x_shift nudges the horizontal crop center for wide
+# images, as a fraction of the stripe width. Negative moves left.
 images = [
-    DECK / "buga-wood-pavilion-reuse-2023.jpg",
-    DECK / "icd-itke-research-pavilion-2015-16.jpg",
-    DECK / "icd-itke-research-pavilion-2016-17_upscayl_2x_high-fidelity-4x.png",
-    DECK / "buga-fibre-pavilion-2019.jpg",
-    DECK / "livmats-biomimetic-shell.jpg",
+    (DECK / "buga-wood-pavilion-reuse-2023.jpg", 0.0),
+    (DECK / "icd-itke-research-pavilion-2016-17_upscayl_2x_high-fidelity-4x.png", -0.40),
+    (DECK / "icd-itke-research-pavilion-2015-16.jpg", 0.0),
+    (DECK / "buga-fibre-pavilion-2019.jpg", 0.0),
+    (DECK / "livmats-biomimetic-shell.jpg", 0.0),
 ]
 
 canvas = Image.new("RGB", (CANVAS_W, CANVAS_H), (255, 255, 255))
 target_ratio = STRIPE_W / STRIPE_H
 
-for i, path in enumerate(images):
+for i, (path, x_shift) in enumerate(images):
     img = Image.open(path).convert("RGB")
     w, h = img.size
     src_ratio = w / h
 
     if src_ratio > target_ratio:
         new_w = int(h * target_ratio)
-        left = (w - new_w) // 2
+        left = (w - new_w) // 2 + int(x_shift * new_w)
+        left = max(0, min(left, w - new_w))
         box = (left, 0, left + new_w, h)
     else:
         new_h = int(w / target_ratio)
