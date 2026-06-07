@@ -7,9 +7,10 @@ so only German-located projects are included.
 from pathlib import Path
 from PIL import Image
 
-ASSETS = Path(r"C:\repos-gitlab-personal\daniellocatelli\src\assets\content")
+REPO_ROOT = Path(__file__).resolve().parent.parent
+ASSETS = REPO_ROOT / "src/assets/content"
 DECK = ASSETS / "teaching/computational-architecture-in-germany-uft/deck"
-OUT = Path(r"C:\repos-gitlab-personal\daniellocatelli\src\assets\content\teaching\computational-architecture-in-germany-uft\uft-cover.jpg")
+OUT = ASSETS / "teaching/computational-architecture-in-germany-uft/uft-cover.jpg"
 
 CANVAS_W, CANVAS_H = 3840, 2160
 N = 5
@@ -19,7 +20,7 @@ STRIPE_H = CANVAS_H
 images = [
     DECK / "buga-wood-pavilion-reuse-2023.jpg",
     DECK / "icd-itke-research-pavilion-2015-16.jpg",
-    DECK / "icd-itke-research-pavilion-2016-17.jpg",
+    DECK / "icd-itke-research-pavilion-2016-17_upscayl_2x_high-fidelity-4x.png",
     DECK / "buga-fibre-pavilion-2019.jpg",
     DECK / "livmats-biomimetic-shell.jpg",
 ]
