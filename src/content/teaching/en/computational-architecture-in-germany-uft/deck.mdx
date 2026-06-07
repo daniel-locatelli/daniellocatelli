@@ -1,0 +1,1368 @@
+---
+Name: "Computational Architecture in Germany"
+Description: "SEMANAU 2023 talk (UFT). From biomimicry to material computation: the path of a Brazilian architect between Atelier Marko Brajovic, ITECH in Stuttgart, and BuildSystems in Munich."
+DateStart: "2023-11-10"
+Event: SEMANAU 2023
+Language: English
+---
+
+import Slide from "@/components/slides/Slide.astro";
+import SlideNotes from "@/components/slides/SlideNotes.astro";
+import SlideVideo from "@/components/slides/SlideVideo.astro";
+import SlideImage from "@/components/slides/SlideImage.astro";
+import SlideMarkdown from "@/components/slides/SlideMarkdown.astro";
+
+import atelierMarkoBrajovicLogo from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/aterlier-marko-brajovic_logo.png";
+import o3PavilionCenografia from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/o3-pavilion-by-atelier-marko-brajovic-for-docol-cover.jpg";
+import o3FormFinding from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/animation-of-the-form-finding-kangaroo-forcing-cells-to-be-planar.gif";
+import o3AssemblySequence from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/animation-with-the-sequence-of-assembly.gif";
+import crownShyness from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/crown-shyness.jpg";
+import giraffes from "@/assets/content/teaching/digital-futures-2026/deck/giraffes_upscayl-standard-4x.png";
+import o3ConstructionPhases from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/phases-of-construction-in-a-exploded-perspective-steel-welding-panel-fitting.jpg";
+import o3BlacksmithsModel from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/blacksmiths-studying-the-small-scale-model.jpeg";
+import o3SmallScaleModel from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/the-small-scale-model-of-the-pavilion-structure-in-background.png";
+import o3InteriorMiddleCell from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/interior-of-the-middle-cell-rain-sounds-and-leds-simulating-lightnings.jpg";
+import o3InteriorRightCell from "@/assets/content/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol/interior-of-the-right-cell.png";
+import airGuitarThreePhotos from "@/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/three-photos-of-users-playing-the-guitar.jpeg";
+import airGuitarCoverNoBeams from "@/assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/air-guitar-by-atelier-marko-brajovic-for-nike-cover_no-beams.png";
+import liveTalksTensegrityModel from "@/assets/content/projects/live-talks-by-atelier-marko-brajovic/tensegrity-model.png";
+import liveTalksTensegrity from "@/assets/content/projects/live-talks-by-atelier-marko-brajovic/live-talks-tensegrity.jpg";
+import cocaColaPavilion from "@/assets/content/projects/coca-cola-taste-of-fashion/coca-cola-taste-of-fashion_pavilion.png";
+import tensegrityWorkshop from "@/assets/content/teaching/tensegrity-workshop/tensegrity-workshop_atelier-marko-brajovic-01.jpeg";
+import modelsByNatureWorkshop from "@/assets/content/teaching/models-bynature-10/models-bynature-10_horizontal-cover.png";
+import formFindingSpiralSoap from "@/assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-spiral-and-soap.jpeg";
+import formFindingTetrahedronSoap from "@/assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-tetrahedron-and-soap.jpeg";
+import formFindingHollowCircleSoap from "@/assets/content/teaching/models-bynature-10/models-bynature-10_form-finding-with-hollow-circle-and-soap.jpeg";
+import andreiaBento from "@/assets/content/teaching/models-bynature-10/models-bynature-10_andreia-bento.jpg";
+import modelAsLamp from "@/assets/content/teaching/models-bynature-10/models-bynature-10_model-as-a-lamp.jpeg";
+import tfgTitle from "@/assets/content/research/architecture-biomimicry-algorithm/tfg-vetorizado-com-padrão-do-algoritmo.png";
+import tfgConcept from "@/assets/content/research/architecture-biomimicry-algorithm/concept.jpg";
+import tfgAlgorithmSteps from "@/assets/content/research/architecture-biomimicry-algorithm/installation-unit-algorithm-steps.jpg";
+import tfgUnitRendering from "@/assets/content/research/architecture-biomimicry-algorithm/rendering-of-one-unit.jpg";
+import tfgBobbinsInUse from "@/assets/content/research/architecture-biomimicry-algorithm/bobbins-in-use.jpg";
+import tfgFinalPhysicalModel from "@/assets/content/research/architecture-biomimicry-algorithm/final-physical-model.jpeg";
+import tfgCover from "@/assets/content/research/architecture-biomimicry-algorithm/architecture-biomimicry-algorithm-cover.jpg";
+import tfgTopView from "@/assets/content/research/architecture-biomimicry-algorithm/top-view-of-final-proposal.png";
+import gutoRequenaLogo from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/guto-requena_logo.jpg";
+import lifeLampOff from "@/assets/content/projects/life-lamp-by-estudio-guto-requena-for-decimal/life-lamp_off.jpg";
+import lifeLampOn from "@/assets/content/projects/life-lamp-by-estudio-guto-requena-for-decimal/life-lamp_on.jpg";
+import buildingAcrossScalesCover from "@/assets/content/research/building-across-scales/2021_nunes-locatelli_opgenorth_01.jpg";
+import computationalDesignFormFinding from "@/assets/content/research/building-across-scales/computational-design_form-finding.gif";
+import computationalDesignFeaKaramba from "@/assets/content/research/building-across-scales/computational-design_fea-karamba.gif";
+import deviceAnimationExplodedView from "@/assets/content/research/building-across-scales/device_animation-exploded-view.gif";
+import deviceInAction from "@/assets/content/research/building-across-scales/device_in-action.gif";
+import demonstratorAtNight from "@/assets/content/research/building-across-scales/the-demonstrator-at-night-the-holes-for-the-clamping-robots-are-now-used-for-01.jpg";
+import artEngineeringLogo from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/art-engineering_logo.jpg";
+import donumVppFullRes5 from "@/assets/content/projects/donum-pavilion-by-artengineering/Donum VPP-FULL RES-5.jpg";
+import donumVppFullRes26 from "@/assets/content/projects/donum-pavilion-by-artengineering/Donum VPP-FULL RES-26.jpg";
+import donumProduction2 from "@/assets/content/projects/donum-pavilion-by-artengineering/Production-2 © The Donum Estate and Studio Other Spaces.jpg";
+import mindmapByDavidRutten from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/mindmap-by-david-rutten-inverted.png";
+import nasaBillIngalls from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/NASABill_Ingalls.jpeg";
+import grandEntranceExposition1900 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/Grand_entrance,_Exposition_Universal,_1900,_Paris,_France.jpg";
+import haeckelCyrtoidea from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/Haeckel_Cyrtoidea.jpg";
+import buckminsterFullerExpanded from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/BuckminsterFuller_expanded.png";
+import catenariaHooke from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/catenária-hooke.png";
+import catenariaHooke2 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/catenária-hooke2.png";
+import stPaulsCathedral from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/St Paul's Cathedral by all-free-photos.com.jpg";
+import gaudi from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/gaudí-and-funicular-model.png";
+import gaudiFunicularModel from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/Maqueta_funicular.jpg";
+import coloniaGuellCryptInterior from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/colonia-guell-crypt-interior.jpg";
+import radiolariaFuller from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/radiolaria-fuller.png";
+import freiOttoSopaFilmStudy from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/frei-otto_sopa-film-study.png";
+import freiOttoCableNetModel from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/FAR-REF-001.jpg";
+import freiOttoTeamPhotogrammetry from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/FreiOtto_Muenchen_KB-N-BW_0344-016_expanded.png";
+import freiOttoMontrealExpo67 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/Frei-Otto-Montreal-Expo67_slider.jpg";
+import germanPavilionExpo67 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/Frei-Otto-The-1967-International-and-Universal-Exposition-01_expanded.png";
+import gameOfLife from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/game-of-life.gif";
+import achimMengesPortrait from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/achim-menges-naaro-elytra-filament-pavilion-edited.png";
+import computationalDesignThinkingBook from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/AD-computational_design_thinking.jpg";
+import icdResearchPavilion2016_17 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/icd-itke-research-pavilion-2016-17_upscayl_2x_high-fidelity-4x.png";
+import o3ConstructionPhases0 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image90.png";
+import o3ConstructionPhases1 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/image91.png";
+import icdResearchPavilion2014_15 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/icd-itke-research-pavilion-2014-15_upscayl_2x_high-fidelity-4x.png";
+import icdResearchPavilion2015_16 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/icd-itke-research-pavilion-2015-16.jpg";
+import icdResearchPavilion2012 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/icd-itke-research-pavilion-2012.jpg";
+import icdResearchPavilion2013_14 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/ICD-ITKE_RP13-14_Image07_upscayl_2x_ultramix-balanced-4x.png";
+import bugaWoodPavilionReuse2023 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/buga-wood-pavilion-reuse-2023.jpg";
+import bugaFibrePavilion2019 from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/buga-fibre-pavilion-2019.jpg";
+import livMatSBiomimeticShell from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/livmats-biomimetic-shell.jpg";
+import livMatSBiomimeticShellFabrication from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/livmats-biomimetic-shell-fabrication.jpg";
+import buildSystemsLogo from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/build-systems_logo.svg";
+import issTexasAtNight from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/iss036e009405-full.jpg";
+import humanSkinCellCytoskeleton from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/human skin cell.jpg";
+import radiolariaHaeckelJipaCollage from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/radiolaria-haeckel-jipa-collage.png";
+import cobwebWeaverNestHoneycombCollage from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/cobweb-weaver-nest-honeycomb-collage.png";
+import spumellariaHaeckel from "@/assets/content/research/architecture-biomimicry-algorithm/ernst-haeckel_spumellaria.png";
+
+---
+image: spumellariaHaeckel
+imageAlt: Detail of Ernst Haeckel's Spumellaria plate, Kunstformen der Natur
+overlay: black/90
+fit: contain
+text: |
+  # Computational Architecture in Germany
+
+  Daniel Nunes Locatelli
+---
+
+---
+slideImage:
+  src: atelierMarkoBrajovicLogo
+  alt: Atelier Marko Brajovic logo.
+  height: "30%"
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+image: o3PavilionCenografia
+imageAlt: Front view of the O3 Pavilion
+copyright: Gui Morelli
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+image: crownShyness
+imageAlt: Crown shyness in Wana-Kwali trees, CIRAD plantation, French Guiana
+copyright:
+  name: SAM EN CIMES
+  href: "https://elaguyane.wordpress.com/2013/12/04/description-architecturale-wana-kwali/"
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+image: giraffes
+imageAlt: Two giraffes.
+copyright: Luca Galuzzi
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+slideImage:
+  src: o3FormFinding.src
+  alt: Animation of the form finding with Kangaroo, forcing the cells to be planar
+  width: "40%"
+  y: "53%"
+notes: We used Grasshopper for the form finding of the domes.
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+slideImage:
+  src: o3AssemblySequence.src
+  alt: Animation with the assembly sequence of the O3 Pavilion
+  width: "30%"
+  y: "53%"
+notes: "Programming makes studies easier: several versions with the same algorithm, just varying the parameters."
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+slideImage:
+  src: o3ConstructionPhases
+  alt: Computational detailing of the O3 Pavilion
+  width: "65%"
+notes: Project detailing dependent on programming.
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+slideImage:
+  src: o3BlacksmithsModel
+  alt: Blacksmiths studying the model of the O3 Pavilion
+  y: "45%"
+notes: High-low fabrication, or regional parametricism.
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+slideImage:
+  src: o3SmallScaleModel
+  alt: Model in front of the O3 Pavilion structure
+  width: "100%"
+  align: bottom
+notes: The model was essential for the construction, serving as a reference for the blacksmiths during the assembly.
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+image: o3InteriorMiddleCell
+imageAlt: Finished O3 Pavilion, exterior view of the three domes.
+copyright: Gui Morelli
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+image: o3InteriorRightCell
+imageAlt: O3 Pavilion detail
+copyright: Gui Morelli
+notes: Prof. Thiago Omena, during his PhD at FAU, helped with the paper.
+---
+
+---
+title: O3 Pavilion
+subtitle: |
+  Expo Revestir São Paulo 2017
+  SIGRADI 2018
+copyright: Gui Morelli
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/pavilhao-o3.mp4
+  fit: cover
+  blur: false
+---
+
+---
+title: Nike Air Guitar
+subtitle: Red Bull Station 2018
+image: airGuitarThreePhotos
+imageAlt: Nike Air Guitar installation
+copyright: Edu Ohara
+---
+
+---
+title: Nike Air Guitar
+subtitle: Red Bull Station 2018
+image: airGuitarCoverNoBeams
+imageAlt: Nike Air Guitar detail
+copyright: Edu Ohara
+---
+
+---
+title: Nike Air Guitar
+subtitle: Red Bull Station 2018
+copyright: Edu Ohara
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/nike-air-guitar.mp4
+  blur: false
+---
+
+---
+title: Tensegrity
+slideImage:
+  src: liveTalksTensegrityModel
+  alt: Small-scale study of tensegrities.
+  width: "55%"
+  y: "55%"
+---
+
+---
+title: Tensegrity
+subtitle: Computational Design
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/tensegridade-design-computacional.mp4
+  blur: false
+---
+
+---
+title: Tensegrity
+subtitle: Livetalks 2016
+slideImage:
+  src: liveTalksTensegrity
+  alt: Tensegrity at Livetalks 2016.
+  align: top
+---
+
+---
+title: Tensegrity
+subtitle: Coca-Cola at SPFW 2016
+image: cocaColaPavilion
+imageAlt: Tensegrity installation for Coca-Cola at SPFW 2016.
+copyright: Atelier Marko Brajovic
+---
+
+---
+title: Tensegrity
+subtitle: Workshop in Paraty, 2017
+image: tensegrityWorkshop
+imageAlt: Tensegrity workshop.
+copyright: Adalberto de Paula
+---
+
+---
+title: Models byNature
+subtitle: Workshop
+image: modelsByNatureWorkshop
+imageAlt: Cover of the Models byNature workshop, held in 2019.
+fit: contain
+---
+
+---
+title: Models byNature
+subtitle: Workshop
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/models-bynature-workshop-sand-voronoi.mp4
+  blur: false
+---
+
+---
+title: Models byNature
+subtitle: Workshop
+images:
+  - src: formFindingSpiralSoap
+    alt: Models byNature workshop, photo 1
+  - src: formFindingTetrahedronSoap
+    alt: Models byNature workshop, photo 2
+  - src: formFindingHollowCircleSoap
+    alt: Models byNature workshop, photo 3
+fit: contain
+---
+
+---
+title: Models byNature
+subtitle: Workshop
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/models-bynature-workshop-soap-catenary-1.mp4
+  blur: false
+---
+
+---
+title: Models ByNature
+subtitle: Workshop
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/models-bynature-workshop-soap-catenary-2.mp4
+  blur: false
+---
+
+---
+title: Models ByNature
+subtitle: Workshop
+images:
+  - src: andreiaBento
+    alt: Models ByNature workshop, photo 4
+  - src: modelAsLamp
+    alt: Models ByNature workshop, photo 5
+fit: cover
+---
+
+---
+slideImage:
+  src: tfgTitle
+  alt: Cover of the TFG at FAUUSP.
+  width: 70%
+---
+
+---
+title: TFG FAUUSP
+subtitle: IASS 2017
+slideImage:
+  src: tfgConcept
+  alt: Concept of the TFG FAUUSP.
+  width: "80%"
+notes: "Concept: FAU logo, spider webs, bobbin lace."
+---
+
+---
+title: TFG FAUUSP
+subtitle: IASS 2017
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/tfg-fauusp-construcao-do-algoritmo.mp4
+  y: "55%"
+  width: "80%"
+  blur: false
+notes: Building the algorithm.
+---
+
+---
+title: TFG FAUUSP
+subtitle: IASS 2017
+slideImage:
+  src: tfgAlgorithmSteps
+  alt: Algorithm steps.
+  width: "70%"
+  y: "53%"
+notes: Building the algorithm.
+---
+
+---
+title: TFG FAUUSP
+subtitle: IASS 2017
+slideImage:
+  src: tfgUnitRendering
+  alt: Rendering of one unit.
+  width: "70%"
+notes: Rendering of one unit.
+---
+
+---
+title: TFG FAUUSP
+subtitle: IASS 2017
+slideImage:
+  src: tfgBobbinsInUse
+  alt: Bobbin lace.
+  width: "50%"
+notes: "Bobbin lace, a traditional technique used for the fabrication of the installation."
+---
+
+---
+title: TFG FAUUSP
+subtitle: IASS 2017
+image: tfgFinalPhysicalModel
+imageAlt: Final physical model.
+fit: contain
+notes: "The physical model."
+---
+
+---
+title: TFG FAUUSP
+subtitle: IASS 2017
+image: tfgCover
+imageAlt: Rendering of the installation.
+notes: Rendering of the installation.
+---
+
+---
+title: TFG FAUUSP
+subtitle: IASS 2017
+image: tfgTopView
+imageAlt: Top view of the installation.
+fit: contain
+notes: Top view of the installation.
+---
+
+---
+slideImage:
+  src: gutoRequenaLogo
+  alt: Estudio Guto Requena logo.
+  height: "45%"
+---
+
+---
+title: Life Lamp
+subtitle: eCAADe 2020
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/luminaria-life-form-finding.mp4
+  blur: false
+---
+
+---
+title: Life Lamp
+subtitle: eCAADe 2020
+image: lifeLampOff
+imageAlt: Life Lamp turned off.
+copyright: Decimal
+---
+
+---
+title: Life Lamp
+subtitle: eCAADe 2020
+image: lifeLampOn
+imageAlt: Life Lamp turned on.
+copyright: Decimal
+---
+
+---
+image: buildingAcrossScalesCover
+imageAlt: Building Across Scales, cover montage
+overlay: black/60
+text: |
+  # Building Across Scales
+
+  ## A robotic timber construction system for on-site gluing
+
+  Daniel Locatelli and Nils Opgenorth
+
+  ITECH Master Thesis
+---
+
+---
+title: Building Across Scales
+subtitle: |
+  Master's Thesis 2021
+  Automation in Construction 2024
+image: computationalDesignFormFinding.src
+imageAlt: Animation of the form finding process, using Kangaroo to distribute columns in the structure.
+notes: "Form finding using Kangaroo, to distribute the columns in the structure."
+---
+
+---
+title: Building Across Scales
+subtitle: |
+  Master's Thesis 2021
+  Automation in Construction 2024
+image: computationalDesignFeaKaramba.src
+imageAlt: Animation of the finite element analysis process using Karamba. Followed by an animation of the segmentation process for fabrication.
+notes: "Finite element analysis using Karamba, to verify the structure. Segmentation for fabrication."
+---
+
+---
+title: Building Across Scales
+subtitle: |
+  Master's Thesis 2021
+  Automation in Construction 2024
+image: deviceAnimationExplodedView.src
+imageAlt: Exploded-view animation of the robotic device, showing the internal pressure mechanisms.
+notes: "Robotic device for gluing timber pieces, using pressure to hold the pieces during the curing of the glue."
+---
+
+---
+title: Building Across Scales
+subtitle: |
+  Master's Thesis 2021
+  Automation in Construction 2024
+image: deviceInAction.src
+imageAlt: Animation of the device in action, gluing the timber pieces.
+notes: "Device in action, gluing the timber pieces."
+---
+
+---
+title: Building Across Scales
+subtitle: |
+  Master's Thesis 2021
+  Automation in Construction 2024
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/building-across-scales-demonstrador.mp4
+  blur: false
+notes:
+  "The assembly of the final structure was done inside the fabrication hall of the Cluster of Excellence in Waiblingen. The setup consists of a mobile robotic platform, a crane, and our clamping device.
+  The robotic timber construction platform, also called TIM, is equipped with industrial robots and specific tools for timber fabrication. It is built on top of a container platform, which allows the system to be delivered directly to the construction site.
+  For the crane we used a spider crane, which was operated manually by us. The only adjustment we made here was to add a small coupling system made of bosch profiles at the end of the crane."
+---
+
+---
+title: Building Across Scales
+subtitle: |
+  Master's Thesis 2021
+  Automation in Construction 2024
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/building-across-scales-camera-assembly.mp4
+notes:
+  Through machine vision, the camera can detect the holes during assembly as it is lowered with the crane. The distance between the holes could then be matched with the digital model to calculate the current position of the panel to be assembled. The whole assembly procedure could then be automated through a feedback system connected to the crane's operating system.
+---
+
+---
+title: Building Across Scales
+subtitle: |
+  Master's Thesis 2021
+  Automation in Construction 2024
+image: demonstratorAtNight
+imageAlt: The demonstrator is a structure with a single column and timber slab forming a small shelter.
+notes:
+  Finished demonstrator at night, with a single column and timber slab forming a small shelter.
+---
+
+---
+slideImage:
+  src: artEngineeringLogo
+  alt: Art Engineering logo.
+  width: "15%"
+---
+
+---
+title: Vertical Panorama Pavilion
+subtitle: |
+  Studio Other Spaces
+  Sonoma - USA, 2017 - 2021
+image: donumVppFullRes5
+imageAlt: Vertical Panorama Pavilion, exterior view
+copyright: Adam Potts
+---
+
+---
+title: Vertical Panorama Pavilion
+subtitle: |
+  Studio Other Spaces
+  Sonoma - USA, 2017 - 2021
+image: donumVppFullRes26
+imageAlt: Vertical Panorama Pavilion, interior view
+copyright: Adam Potts
+---
+
+---
+title: Vertical Panorama Pavilion
+subtitle: |
+  Studio Other Spaces
+  Sonoma - USA, 2017 - 2021
+image: donumProduction2
+imageAlt: Vertical Panorama Pavilion, process
+copyright: HAHNER Technik GmbH & Co KG
+---
+
+---
+image: spumellariaHaeckel
+imageAlt: Detail of Ernst Haeckel's Spumellaria plate, Kunstformen der Natur
+overlay: black/90
+fit: contain
+text: |
+  # Computational Design
+---
+
+---
+image: spumellariaHaeckel
+imageAlt: Detail of Ernst Haeckel's Spumellaria plate, Kunstformen der Natur
+overlay: black/90
+fit: contain
+text: |
+  ## Associative Modelling
+
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+---
+
+---
+image: spumellariaHaeckel
+imageAlt: Detail of Ernst Haeckel's Spumellaria plate, Kunstformen der Natur
+overlay: black/90
+fit: contain
+text: |
+  ## Associative Modelling
+
+  ## ≃
+
+  ## Parametric Design
+
+   
+
+   
+
+   
+
+   
+---
+
+---
+image: spumellariaHaeckel
+imageAlt: Detail of Ernst Haeckel's Spumellaria plate, Kunstformen der Natur
+overlay: black/90
+fit: contain
+text: |
+  ## Associative Modelling
+
+  ## ≃
+
+  ## Parametric Design
+
+  ## ≃
+
+  ## Algorithmic Design
+
+   
+
+   
+---
+
+---
+image: spumellariaHaeckel
+imageAlt: Detail of Ernst Haeckel's Spumellaria plate, Kunstformen der Natur
+overlay: black/90
+fit: contain
+text: |
+  ## Associative Modelling
+
+  ## ≃
+  
+  ## Parametric Design
+  
+  ## ≃
+  
+  ## Algorithmic Design
+  
+  ## ≃
+  
+  ## Generative Design
+notes:
+  And now Autodesk's marketing is taking advantage to "launch" generative design.
+  Which is also more or less the same thing.
+  I don't say it is the same thing because there isn't even a consensus about it in the scientific community.
+  Many terms are still being consolidated.
+  Only with a certain historical distance, looking from afar, will we be able to truly understand what is happening now.
+  In my opinion it is only worth investing time trying to understand this if your goal is precisely to do a master's or a more theoretical PhD to try to establish these definitions.
+---
+
+---
+title: Mind map
+subtitle: David Rutten, 2012
+slideImage:
+  src: mindmapByDavidRutten
+  alt: David Rutten's mind map.
+  copyright: David Rutten
+  width: "60%"
+notes:
+  David Rutten's mind map, creator of Grasshopper, in an attempt to identify and connect several terms.
+---
+
+---
+image: spumellariaHaeckel
+imageAlt: Detail of Ernst Haeckel's Spumellaria plate, Kunstformen der Natur
+overlay: black/90
+fit: contain
+text: |
+  # Computerization
+  
+  ## X
+  
+  # Computation
+---
+
+---
+image: spumellariaHaeckel
+imageAlt: Detail of Ernst Haeckel's Spumellaria plate, Kunstformen der Natur
+overlay: black/90
+fit: contain
+text: |
+  # CAD
+
+  ## X
+  
+  # Programming
+---
+
+---
+image: nasaBillIngalls
+imageAlt: Night sky with a falling star, taken by NASA photographer Bill Ingalls.
+copyright: NASA / Bill Ingalls
+notes:
+  Nature is an interesting concept, because what is nature? Isn't nature everything that surrounds us?
+  So the concept of nature seems to me to have come to try to separate what is human from what is non-human.
+  But that is impossible, because we are part of what we call nature.
+---
+
+---
+image: nasaBillIngalls
+imageAlt: Night sky with a falling star, taken by NASA photographer Bill Ingalls.
+copyright: NASA / Bill Ingalls
+overlay: black/60
+text: |
+  # Natural Sciences
+
+  ### Physics, chemistry, biology
+notes: 
+  So let's stop for a moment to think about what we learn at school.
+
+  Physics, chemistry, biology
+
+  They are different ways of reading our reality. Each of these disciplines has specific focuses, but in the end they end up blending and one discipline ends up learning from the other.
+---
+
+---
+image: nasaBillIngalls
+imageAlt: Night sky with a falling star, taken by NASA photographer Bill Ingalls.
+copyright: NASA / Bill Ingalls
+overlay: black/60
+text: "# Biomimicry"
+notes:
+  Nature is an interesting concept, because what is nature? Isn't nature everything that surrounds us?
+  So the concept of nature seems to me to have come to try to separate what is human from what is non-human.
+  But that is impossible, because we are part of what we call nature.
+---
+
+---
+image: nasaBillIngalls
+imageAlt: Night sky with a falling star, taken by NASA photographer Bill Ingalls.
+copyright: NASA / Bill Ingalls
+overlay: black/60
+text: |
+  ## Reproducing Forms
+
+  ## ↓
+
+  ## Reproducing Processes
+
+  ## ↓
+
+  ## Reproducing Ecosystems
+notes:
+  Janine Benyus divides biomimicry into three levels. Which for us in the design field can be summarized into forms, processes, and ecosystems.
+  Forms = copy
+  Processes = natural computation
+  Ecosystems = systems
+  So if the discussion is happening around creating artificial life, the idea of using the computer to generate forms or processes inspired by Nature no longer seems like such a complicated thing.
+---
+
+---
+image: nasaBillIngalls
+imageAlt: Night sky with a falling star, taken by NASA photographer Bill Ingalls.
+copyright: NASA / Bill Ingalls
+overlay: black/60
+text: |
+  ## Reproducing Forms
+
+   
+
+   
+
+   
+
+   
+---
+
+---
+title: Reproducing Forms
+subtitle: 1900 World's Fair
+fit: cover
+images:
+  - src: grandEntranceExposition1900
+    alt: Diatoms, Ernst Haeckel, Art Forms in Nature, 1899-1904
+    copyright: Detroit Publishing Company
+  - src: haeckelCyrtoidea
+    alt: Porte Monumentale, 1900 World's Fair, Detroit Publishing Company
+    copyright: Ernst Haeckel
+notes:
+  HISTORY
+
+  The part of biomimicry that defines form, is exactly this.
+
+  Trying to find in nature forms and materials that can be used in our buildings.
+---
+
+---
+image: nasaBillIngalls
+imageAlt: Night sky with a falling star, taken by NASA photographer Bill Ingalls.
+copyright: NASA / Bill Ingalls
+overlay: black/60
+text: |
+  ## Reproducing Forms
+
+  ## ↓
+
+  ## Reproducing Processes
+
+   
+
+   
+---
+
+---
+image: nasaBillIngalls
+imageAlt: Night sky with a falling star, taken by NASA photographer Bill Ingalls.
+copyright: NASA / Bill Ingalls
+overlay: black/60
+text: "# Material Computation"
+notes: |+
+  HISTORY
+
+  Menges' quote that Frei Otto used materials as "physical computers"
+
+  Material computation reflects a profound change of attitude toward the physical world. One that involves collaboration with it, instead of an aspiration to dominate it.
+
+  Antoine Picon
+---
+
+---
+image: buckminsterFullerExpanded
+imageAlt: Buckminster Fuller
+copyright: AP Photo, Bill Ingraham
+overlay: black/60
+text: |
+  > "Don't fight forces, USE them!"
+
+  ## Buckminster Fuller
+---
+
+---
+text: |
+  ## Robert Hooke
+
+  1635 - 1703
+notes:
+  HISTORY
+
+  He is remembered for "Hooke's law"...
+  But in fact he was a complete scientist, researching several areas.
+
+  One of the first to study the cell...
+
+  After the great fire of London, he also worked as an architect, having designed several buildings.
+
+  By that time he had already begun making studies on hanging models.
+
+  “Isaac Newton and Robert Hooke already proposed the theory that the forces of a hanging form are the same as those of an upright form, a theory that I have checked myself through trials with models.”
+  A Conversation with Frei Otto, Princeton Architecture Press, 2010
+
+  “In 1670, Robert Hooke recognised the connection between the freely hanging catenary under tensile stress and its reversal as a support line for arch and vault structures under compressive stress.
+---
+
+---
+image: catenariaHooke
+imageAlt: Robert Hooke, historical context
+fit: contain
+notes:
+  HISTORY
+
+  Menges' quote that Frei Otto used materials as "physical computers"
+
+  Material computation reflects a profound change of attitude toward the physical world. One that involves collaboration with it, instead of an aspiration to dominate it.
+---
+
+---
+title: St Paul's Cathedral
+subtitle: London, 1675, 1711, arch. Christopher Wren
+image: catenariaHooke2
+imageAlt: St Paul's Cathedral, engraving
+copyright: British Museum
+fit: contain
+notes: 
+  HISTORY 
+
+  The First Professional Scientist
+  Robert Hooke and the Royal Society of London
+
+  We find ample evidence that this work was not entirely independent of Hooke’s larger interests in natural philosophy, including his posing the problem of finding the form of an arch which would support any desired weight late in 1670, and there are many such examples of his interest in similar “engineering” problems, and often of his discussing them with Wren. The jewel in Hooke’s crown, so to speak, was his law of the spring, “Hooke’s Law,” which he extended to all elastic bodies, including wood and masonry.
+
+  Hooke concluded that the proper form for an arch would be an inverted catenary, the latter being the curve taken by a uniform chain hanging from two supports under gravity. He approximated this curve, or rather the surface generated by it, by a “cubico-parabolic conoid,” which is generated by rotating the curve y = ax3 about the y-axis. The catenary problem was solved by James Bernoulli, Huygens and Leibniz in the 1690s. Hooke’s formulation was apparently used by Wren in the dome of St. Paul’s. For a discussion of the issues involved, see Heyman (1998). In “Helisocopes” Hooke expressed this in an anagram, which has been unscrambled as «Ut pendet continuum flexile, sic stabit contiguum rigidum inversum,» or (Heyman (1998), p. 40) «as hangs the flexible line, so but inverted will stand the rigid arch.»
+---
+
+---
+title: St Paul's Cathedral
+subtitle: London, 1675, 1711, arch. Christopher Wren
+image: stPaulsCathedral
+imageAlt: St Paul's Cathedral, present-day view
+copyright: all-free-photos.com
+---
+
+---
+image: gaudi
+imageAlt: Antoni Gaudí
+copyright: Pau Audouard, Canaan
+overlay: black/60
+text: |
+  > "When an invention is not in harmony with natural laws it is not viable."
+
+  ## Antoni Gaudí
+notes:
+  HISTORY
+
+  It was not until Antoni Gaudí’s hanging chain model – made from threads and suspended linen bags filled with birdshot for the church of the Güell workers’ settlement (Figure 2) – that a transformation was achieved that passed rigorously from constructive to architectural form. What was striking in Gaudí’s work was the complete mapping of the entire construction in a spatial and physical hanging model with a high degree of complexity.
+
+  In addition to the method of experimental modelling, Gaudí, like many others, also used graphic methods for generating forms and analysing arch constructions.
+
+---
+
+---
+title: Colònia Güell
+subtitle: Barcelona, 1898, 1914, arch. Antoni Gaudí
+image: gaudiFunicularModel
+imageAlt: Antoni Gaudí's hanging model for the Colònia Güell
+copyright: Canaan
+fit: contain
+notes:
+  ANTONI GAUDÍ by Roe, J.
+
+  Natural arches are appreciably parabolic or catenary. Strangely enough, the catenary arch, which follows the curve formed by a chain suspended freely from two points, but inverted, and possesses excellent mechanical properties that were already known by the end of the seventeenth century, was scarcely ever used by architects, who considered it ugly, influenced as they were by long centuries of architectural tradition that had accustomed them to shapes drawn with a compass.
+---
+
+---
+title: Colònia Güell
+subtitle: Barcelona, 1898, 1914, arch. Antoni Gaudí
+image: coloniaGuellCryptInterior
+imageAlt: Axial view of the interior of the Crypt of the Colònia Güell, showing the fan-ribbed brick vault, leaning basalt columns, and altar in the background
+copyright:
+  name: Unknown author
+  href: "https://de.pinterest.com/pin/513973376195114918/"
+fit: cover
+---
+
+---
+image: buckminsterFullerExpanded
+imageAlt: Buckminster Fuller
+copyright: AP Photo, Bill Ingraham
+overlay: black/60
+text: |
+  > "The opposite of nature is impossible."
+
+  ## Buckminster Fuller
+---
+
+---
+title: Buckminster Fuller
+subtitle: Geodesics and tensegrity
+image: radiolariaFuller
+imageAlt: Radiolarian by Ernst Haeckel alongside geodesic and tensegrity studies by Buckminster Fuller
+copyright: Ernst Haeckel; Estate of R. Buckminster Fuller
+fit: contain
+---
+
+---
+image: freiOttoMontrealExpo67
+imageAlt: Frei Otto alongside a cable-net model, Expo 67, Montreal
+copyright: Frei Otto
+overlay: black/55
+text: |
+  > "Biology has become indispensable for architecture, but architecture has also become indispensable for biology."
+
+  ## Frei Otto
+---
+
+---
+image: freiOttoSopaFilmStudy
+imageAlt: Frei Otto's soap film study
+copyright: Frei Otto
+notes:
+  HISTORY
+
+  Frei Otto
+  Many of his works could only be analyzed superficially, with great difficulty and at the cost of much time and effort, and only resulted in approximations (rework this sentence)
+  Four-point awning
+  Humped surface
+  Centrally supported rectangular membrane
+  Show the equipment used by Frei Otto
+  Expo 67, Physical properties of soap
+  Show video of experiments (just forward link)
+---
+
+---
+image: freiOttoCableNetModel
+imageAlt: Frei Otto's cable-net model
+copyright: Frei Otto
+---
+
+---
+image: freiOttoTeamPhotogrammetry
+imageAlt: Frei Otto and team analyzing a model on a terrace, possibly for photogrammetry
+copyright: Frei Otto
+---
+
+---
+image: germanPavilionExpo67
+imageAlt: German Pavilion by Frei Otto and Rolf Gutbrod at Expo 67, Montreal
+copyright: Frei Otto
+---
+
+---
+copyright: Frei Otto
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/frei-otto-01.mp4
+  blur: false
+---
+
+---
+copyright: Frei Otto
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/frei-otto-02.mp4
+  blur: false
+---
+
+---
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/ivan-sutherland-sketchpad-1963.mp4
+  blur: false
+notes:
+  Ivan Sutherland Sketchpad Demo 1963
+---
+
+---
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/geodesic-tensegrity-grasshopper.mp4
+  blur: false
+---
+
+---
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/german-pavilion-expo-67-form-finding-grasshopper.mp4
+  blur: false
+---
+
+---
+text: |
+  ## Finite Element Method
+
+  J. H. Argyris, University of Stuttgart
+notes:
+  The finite element method obtained its real impetus in the 1960s and 1970s by the developments of J. H. Argyris at the University of Stuttgart
+---
+
+---
+image: nasaBillIngalls
+imageAlt: NASA / Bill Ingalls
+copyright: NASA / Bill Ingalls
+overlay: black/60
+text: |
+  ## Reproducing Forms
+
+  ## ↓
+
+  ## Reproducing Processes
+
+  ## ↓
+
+  ## Reproducing Ecosystems
+---
+
+---
+image: nasaBillIngalls
+imageAlt: NASA / Bill Ingalls
+copyright: NASA / Bill Ingalls
+overlay: black/60
+text: |
+  # Unified Theory
+notes:
+  There is currently a discussion about the possibility of finding a theory that unifies and explains the universe in a continuous way.
+  The idea behind this is that through simple rules a great complexity can emerge.
+---
+
+---
+title: Game of Life
+image: gameOfLife.src
+imageAlt: Cellular automata, Conway's Game of Life
+notes:
+  I will try to illustrate it here for you with cellular automata.
+  Game of life
+  From simple rules an enormous complexity can emerge.
+---
+
+---
+image: nasaBillIngalls
+imageAlt: NASA / Bill Ingalls
+copyright: NASA / Bill Ingalls
+overlay: black/60
+text: |
+  ## Emergence
+notes:
+  So life is this layer of organization. It starts there in the cell, organs, organisms, societies, ecosystems, etc.
+
+  All of this happens following physical rules that we so far understand, such as gravity, or rather, space-time.
+---
+
+---
+fit: contain
+images:
+  - src: issTexasAtNight
+    alt: Night view of Texas from the International Space Station, showing the urban lights of the four largest metropolitan areas (Dallas-Fort Worth, Houston, San Antonio, and Austin)
+    copyright:
+      name: NASA, ISS Expedition 36
+      href: "https://eol.jsc.nasa.gov/SearchPhotos/photo.pl?mission=ISS036&roll=E&frame=9405"
+  - src: humanSkinCellCytoskeleton
+    alt: Cytoskeleton of a human skin cell revealed by fluorescence, with microtubules and actin filaments around the nucleus
+    copyright:
+      name: Torsten Wittmann, UCSF, CC BY-NC 2.0
+      href: "https://www.flickr.com/photos/nihgov/26567781502"
+notes:
+  And life as we know it is also based on codes. A code that we started learning very recently, which is DNA.
+  DNA is basically a code capable of generating and maintaining a living being.
+
+  Now, consider this, if our reality can possibly be reduced to a basic formula and living beings are also based on codes.
+  Would it be possible to translate this information to the computer?
+---
+
+---
+image: radiolariaHaeckelJipaCollage
+imageAlt: Four-quadrant collage contrasting natural and digital form, Spumellaria plate by Ernst Haeckel, a DNA sequence, a 3D-printed radiolarian held by Andrei Jipa's hand, and a sequence of binary digits
+fit: contain
+copyright:
+  - name: Ernst Haeckel
+    href: "https://archive.org/details/KunstformenderN00Haec/page/91/mode/1up"
+  - name: Andrei Jipa
+    href: "https://wewanttolearn.wordpress.com/2013/10/17/17th-october-tutorials-2013/"
+---
+
+---
+image: cobwebWeaverNestHoneycombCollage
+imageAlt: Collage with three examples of animal construction, a dome-shaped spider web, a weaver bird inspecting its woven nest, and a honeycomb hive with naturally arched edges
+fit: contain
+copyright:
+  - name: Patricia Manzarraga
+    href: "http://pastelescarnivoros.blogspot.com/2013/11/clara-perfeccion.html"
+  - name: Shirish Totade
+    href: "https://www.flickr.com/photos/shirishtotade/5977535576"
+  - name: Max Westby
+    href: "https://www.flickr.com/photos/max_westby/4559471"
+---
+
+---
+image: achimMengesPortrait
+imageAlt: Achim Menges portrayed in front of the Elytra Filament Pavilion
+copyright: NAARO
+fit: cover
+overlay: black/55
+text: |
+  > "Biology makes us challenge our preconceptions of how things should be designed and constructed."
+
+  ## Achim Menges
+---
+
+---
+slideImage:
+  src: computationalDesignThinkingBook
+  alt: "Cover of the book Computational Design Thinking, AD Reader, eds. Achim Menges and Sean Ahlquist, 2011"
+  height: "75"
+notes:
+  A collection of texts gathered by Achim Menges
+  In our first class in 2019, Achim Menges made a caveat.
+  The book is still a major turning point, but today it is a bit outdated for not including texts about artificial intelligence.
+---
+
+---
+copyright: ICD/ITKE, University of Stuttgart
+slideVideo:
+  src: /presentations/computational-architecture-in-germany-uft/icd-itke-intro.mp4
+  blur: false
+---
+
+---
+title: ICD/ITKE Research Pavilion 2016-17
+subtitle: University of Stuttgart
+image: icdResearchPavilion2016_17
+imageAlt: ICD/ITKE Research Pavilion 2016-17, cantilevered carbon fibre structure at dusk, with people around it
+copyright:
+  name: © Burggraf / Reichert
+  href: "https://www.icd.uni-stuttgart.de/projects/icditke-research-pavilion-2016-17/"
+---
+
+---
+title: ICD/ITKE Research Pavilion 2014-15
+subtitle: University of Stuttgart
+image: icdResearchPavilion2014_15
+imageAlt: ICD/ITKE Research Pavilion 2014-15, carbon fibre dome inspired by the water spider
+copyright:
+  name: Roland Halbe
+  href: "https://www.icd.uni-stuttgart.de/projects/icditke-research-pavilion-2014-15/"
+---
+
+---
+title: ICD/ITKE Research Pavilion 2015-16
+subtitle: University of Stuttgart
+image: icdResearchPavilion2015_16
+imageAlt: ICD/ITKE Research Pavilion 2015-16, segmented timber shell inspired by sea urchins
+copyright:
+  name: Roland Halbe
+  href: "https://www.icd.uni-stuttgart.de/projects/icditke-research-pavilion-2015-16/"
+---
+
+---
+title: ICD/ITKE Research Pavilion 2012
+subtitle: University of Stuttgart
+image: icdResearchPavilion2012
+imageAlt: ICD/ITKE Research Pavilion 2012, robotically fabricated shell in thin plywood
+copyright:
+  name: ICD/ITKE University of Stuttgart
+  href: "https://www.icd.uni-stuttgart.de/projects/icditke-research-pavilion-2012/"
+---
+
+---
+title: ICD/ITKE Research Pavilion 2013-14
+subtitle: University of Stuttgart
+image: icdResearchPavilion2013_14
+imageAlt: ICD/ITKE Research Pavilion 2013-14, filament-wound fibre modules inspired by beetle elytra
+copyright:
+  name: ICD/ITKE University of Stuttgart
+  href: "https://www.icd.uni-stuttgart.de/projects/icditke-research-pavilion-2013-14/"
+---
+
+---
+title: BUGA Wood Pavilion, Reuse 2023
+subtitle: Mannheim, University of Stuttgart
+image: bugaWoodPavilionReuse2023
+imageAlt: BUGA Wood Pavilion reassembled in Mannheim (2023), arch of hexagonal timber panels in an urban landscape
+copyright:
+  name: Conné van d'Grachten, ICD/ITKE/IntCDC, University of Stuttgart
+  href: "https://www.icd.uni-stuttgart.de/projects/buga-wood-pavilion-reuse-2023/"
+---
+
+---
+title: BUGA Fibre Pavilion 2019
+subtitle: BUGA Heilbronn, University of Stuttgart
+image: bugaFibrePavilion2019
+imageAlt: BUGA Fibre Pavilion 2019, translucent shell of wound fibres in a field of daffodils
+copyright:
+  name: ICD/ITKE University of Stuttgart
+  href: "https://www.icd.uni-stuttgart.de/projects/buga-fiber-pavilion/"
+---
+
+---
+title: livMatS Biomimetic Shell
+subtitle: FIT, University of Freiburg / ICD/ITKE Stuttgart
+image: livMatSBiomimeticShell
+imageAlt: livMatS Biomimetic Shell at the FIT campus in Freiburg, shell of hexagonal timber panels at dusk
+copyright:
+  name: Roland Halbe
+  href: "https://www.icd.uni-stuttgart.de/projects/livmats-biomimetic-shell/"
+---
+
+---
+title: IntCDC, University of Stuttgart
+subtitle: Off-site robotic prefabrication
+image: livMatSBiomimeticShellFabrication
+imageAlt: Robotic fabrication platform for the livMatS Biomimetic Shell, timber panels being handled by a KUKA arm
+copyright:
+  name: ICD/ITKE/IntCDC, University of Stuttgart
+  href: "https://www.icd.uni-stuttgart.de/projects/livmats-biomimetic-shell/"
+---
+
+---
+text: |
+  ## Lessons from the ITECH
+notes:
+  Connection between university and companies
+  Demonstrators and pavilions
+  Interdisciplinary research culture
+  Bottom-up vs top-down processes
+  Big picture
+  The new aesthetics of timber
+  Artificial intelligence is not magic
+---
+
+---
+title: BuildSystems
+subtitle: Making sustainable construction feasible
+slideImage:
+  src: buildSystemsLogo.src
+  alt: BuildSystems logo.
+  height: "15%"
+---
+
+---
+text: |
+  ## Artificial Intelligence
+notes: |
+  Images are easy, a matrix of pixels
+  Large language models (LLM) need a logic = grammar and text interpretation. Easy to create tags good, bad.
+
+  Architecture is very subjective: show all the players
+  Materials, volume
+
+  Supply (of materials), vernacular or imported materials
+  Price fluctuation
+  Energy consumption
+  Carbon consumption
+
+  Labor, qualified local workforce
+  Local construction companies
+  Market, real estate bubble
+  Inflation
+
+  Aesthetics, regional aesthetic questions
+
+  User comfort
+---
+
+---
+text: |
+  # Thank you!
+---
