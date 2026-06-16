@@ -12,6 +12,14 @@ export type SiteMeta = {
   articleDate?: string | undefined;
   slug: string | undefined;
   viewTransition?: boolean;
+  /**
+   * Locales in which this page actually exists. Used to emit hreflang
+   * alternate links. Defaults to all SUPPORTED_LOCALES when omitted, which is
+   * correct for the common case where content is translated into every locale.
+   * Pages that exist in only some locales should pass the narrowed list to
+   * avoid pointing hreflang at non-existent (404) URLs.
+   */
+  alternateLocales?: readonly string[];
 };
 
 /** Webmentions */

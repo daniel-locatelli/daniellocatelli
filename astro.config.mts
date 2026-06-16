@@ -43,7 +43,18 @@ export default defineConfig({
     port: 4321,
     host: true,
   },
-  integrations: [sitemap(), icon(), react(), mdx(), linkMetadataCache()],
+  integrations: [
+    sitemap({
+      // Keep non-content utility pages out of the sitemap: the CS50 "*-cover"
+      // social-share pages and the localized 404 pages are not meant to be
+      // indexed or surfaced in search.
+      filter: (page) => !/-cover\/?$/.test(page) && !/\/404\/?$/.test(page),
+    }),
+    icon(),
+    react(),
+    mdx(),
+    linkMetadataCache(),
+  ],
   prefetch: true,
   markdown: {
     remarkPlugins: [remarkImageToAstroImage],

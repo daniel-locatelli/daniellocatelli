@@ -26,12 +26,14 @@ const locale = getLocale(Astro.params);
 const t = await getI18n<I18nSubpage>("subpage", locale);
 
 export async function getStaticPaths() {
+  // NOTE: "skills" is intentionally excluded. Skill entries remain a content
+  // collection (the CV reads their names), but they are too thin to warrant
+  // their own indexable pages, so no /skills/<slug>/ routes are generated.
   const collections = [
     "projects",
     "research",
     "teaching",
     "publications",
-    "skills",
   ];
 
   const allSubpages = (

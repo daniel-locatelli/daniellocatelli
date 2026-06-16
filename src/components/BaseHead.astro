@@ -1,6 +1,6 @@
 ---
 import type { SiteMeta } from "@/types";
-import { siteConfig } from "@/config/site";
+import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import "../styles/fonts.css";
@@ -10,8 +10,23 @@ const locale = getLocale(Astro.params)
 
 type Props = SiteMeta;
 
-const { articleDate, description, coverImage, coverAlt, title, viewTransition } =
+const { articleDate, description, coverImage, coverAlt, title, viewTransition, alternateLocales } =
   Astro.props;
+
+// hreflang alternates. Strip the current locale prefix to get the bare path,
+// then re-prefix it for each locale this page exists in. x-default points at
+// the default locale (which is served without a prefix).
+const localesForPage = alternateLocales ?? SUPPORTED_LOCALES;
+const barePath =
+  locale === siteConfig.defaultLocale
+    ? Astro.url.pathname
+    : Astro.url.pathname.replace(new RegExp(`^/${locale}(?=/|$)`), "") || "/";
+const hreflangs = localesForPage.map((loc) => {
+  const prefix = loc === siteConfig.defaultLocale ? "" : `/${loc}`;
+  const path = `${prefix}${barePath}` || "/";
+  return { hreflang: loc, href: new URL(path, Astro.site).href };
+});
+const xDefaultHref = new URL(barePath || "/", Astro.site).href;
 
 // I removed the separator and the name from the title to make it cleaner when using it for references in Zotero etc.
 const siteTitle =
@@ -45,6 +60,14 @@ const socialImageURL = new URL(
 <meta name="apple-mobile-web-app-title" content="D Locatelli" />
 <link rel="manifest" href="/manifest.webmanifest?v=2" crossorigin="use-credentials" />
 <link href={canonicalURL} rel="canonical" />
+
+{/* hreflang alternates */}
+{
+  hreflangs.map(({ hreflang, href }) => (
+    <link rel="alternate" hreflang={hreflang} href={href} />
+  ))
+}
+<link rel="alternate" hreflang="x-default" href={xDefaultHref} />
 
 {/* Primary Meta Tags */}
 <meta content={siteTitle} name="title" />
