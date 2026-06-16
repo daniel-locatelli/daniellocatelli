@@ -46,9 +46,13 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Keep non-content utility pages out of the sitemap: the CS50 "*-cover"
-      // social-share pages and the localized 404 pages are not meant to be
-      // indexed or surfaced in search.
-      filter: (page) => !/-cover\/?$/.test(page) && !/\/404\/?$/.test(page),
+      // social-share pages, the localized 404 pages, and the "/deck/" slide
+      // viewers (full-screen presentations with little crawlable text) are not
+      // meant to be indexed or surfaced in search.
+      filter: (page) =>
+        !/-cover\/?$/.test(page) &&
+        !/\/404\/?$/.test(page) &&
+        !/\/deck\/?$/.test(page),
     }),
     icon(),
     react(),
