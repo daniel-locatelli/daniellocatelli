@@ -12,6 +12,7 @@ import { rehypeFootnoteTooltips } from "./src/lib/rehype-footnote-tooltips";
 import { remarkImageToAstroImage } from "./src/lib/remark-image-to-astro-image";
 import { presentationSlides } from "./src/lib/vite-presentation-slides";
 import linkMetadataCache from "./src/integrations/link-metadata-cache";
+import { serializeLastmod } from "./src/lib/sitemap-lastmod";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -53,6 +54,9 @@ export default defineConfig({
         !/-cover\/?$/.test(page) &&
         !/\/404\/?$/.test(page) &&
         !/\/deck\/?$/.test(page),
+      // Stamp each URL with its source file's last git commit date. Best-effort:
+      // falls back to no lastmod if git history is unavailable at build time.
+      serialize: serializeLastmod,
     }),
     icon(),
     react(),
