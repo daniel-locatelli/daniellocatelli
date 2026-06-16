@@ -6,6 +6,12 @@ export type SiteConfig = {
   title: string;
   description: string;
   defaultLocale: SupportedLocale;
+  /**
+   * Site-relative fallback image used for og:image/twitter:image when a page
+   * has no cover. Shared so the sitemap-images integration can recognise and
+   * skip it (a default banner is not a per-page cover worth listing).
+   */
+  defaultSocialImage: string;
 
   // Author Information
   author: string;
@@ -30,6 +36,8 @@ export const siteConfig: SiteConfig = {
   title: "Daniel Locatelli",
   description: "A place to record my most important work.",
   defaultLocale: "en",
+  defaultSocialImage:
+    "/building-across-scales_master-thesis_daniel-locatelli_nils-opgenorth.jpg",
 
   // Author Information
   author: "Daniel Nunes Locatelli",

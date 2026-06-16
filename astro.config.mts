@@ -13,6 +13,7 @@ import { remarkImageToAstroImage } from "./src/lib/remark-image-to-astro-image";
 import { presentationSlides } from "./src/lib/vite-presentation-slides";
 import linkMetadataCache from "./src/integrations/link-metadata-cache";
 import { serializeLastmod } from "./src/lib/sitemap-lastmod";
+import sitemapImages from "./src/integrations/sitemap-images";
 
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
@@ -58,6 +59,9 @@ export default defineConfig({
       // falls back to no lastmod if git history is unavailable at build time.
       serialize: serializeLastmod,
     }),
+    // Must come AFTER sitemap(): post-processes the written sitemap to add
+    // <image:image> entries from each page's resolved og:image.
+    sitemapImages(),
     icon(),
     react(),
     mdx(),

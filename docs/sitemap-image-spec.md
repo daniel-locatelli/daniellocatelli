@@ -1,6 +1,8 @@
 # Spec: image entries in the sitemap
 
-Status: proposed
+Status: implemented (`src/integrations/sitemap-images.ts`, wired after `sitemap()`
+in `astro.config.mts`). Two refinements emerged during implementation, recorded
+in the "Implementation notes" section below.
 Related: `src/lib/sitemap-lastmod.ts` (the `lastmod` work this mirrors), `astro.config.mts` (`@astrojs/sitemap` config), `src/lib/blog-helpers.ts` (`importCoverImage`), `src/components/BaseHead.astro` (og:image resolution).
 
 ## Goal
@@ -159,6 +161,31 @@ Helpers needed:
   `sitemap()` in `astro.config.mts`, plus a short build-output assertion.
 - No redirects or content changes; purely additive to the sitemap.
 - After deploy, optionally resubmit the sitemap in Google Search Console.
+
+## Implementation notes (what actually shipped)
+
+Two refinements to the sketch, both prompted by review:
+
+1. **Skip the default social image.** `BaseHead` falls back to a site-wide banner
+   (`siteConfig.defaultSocialImage`) for og:image when a page has no cover, so
+   *every* page has an og:image. Listing it would point dozens of cover-less URLs
+   (homepage, `/projects/` listings, `/cv/`, etc.) at the same banner: pure
+   crawler noise. The integration skips any og:image equal to the default. The
+   magic string was extracted to `siteConfig.defaultSocialImage` so BaseHead and
+   the integration cannot drift. Result of the first build: 140 images across 150
+   URLs, the 10 omissions being exactly the cover-less pages.
+
+2. **Parse with `linkedom`, not `htmlparser2`.** Review flagged regex HTML parsing
+   as fragile to attribute reordering. `linkedom` is already a direct dependency
+   (`htmlparser2` is only transitive), so we use `parseHTML` +
+   `querySelector('meta[property="og:image"]')`: attribute-order-immune and no new
+   dependency.
+
+Also implemented per review: a fail-fast disk check that throws if no
+`sitemap-<n>.xml` exists (i.e. the integration ran before `@astrojs/sitemap`), an
+idempotency guard (skip blocks that already contain `<image:image>`), and
+`escapeXml` on the emitted URL. XML well-formedness and counts are asserted from
+the built `dist/client/sitemap-0.xml`.
 
 ## Open questions for Daniel
 
