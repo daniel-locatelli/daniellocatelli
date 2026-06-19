@@ -1,5 +1,4 @@
 <h1 align="center">
-  <img src="https://github.com/daniel-locatelli/daniellocatelli/blob/main/public/android-chrome-512x512.png" width="150px"/><br/>
   Daniel Locatelli
 </h1>
 <h3 align="center">
