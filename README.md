@@ -1,3 +1,5 @@
+⚠️ Moved to https://gitlab.com/daniellocatelli/daniellocatelli
+
 <h1 align="center">
   <img src="https://github.com/daniel-locatelli/daniellocatelli/blob/main/public/android-chrome-512x512.png" width="150px"/><br/>
   Daniel Locatelli
