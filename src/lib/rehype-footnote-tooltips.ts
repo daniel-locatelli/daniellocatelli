@@ -157,9 +157,10 @@ function replaceBackrefArrows(tree: Root) {
   });
 }
 
-function mergeClass(existing: unknown, addition: string): (string | number)[] {
+function mergeClass(existing: unknown, addition: string): string[] {
   if (Array.isArray(existing)) {
-    return existing.includes(addition) ? (existing as (string | number)[]) : [...(existing as (string | number)[]), addition];
+    const parts = existing.map(String);
+    return parts.includes(addition) ? parts : [...parts, addition];
   }
   if (typeof existing === "string") {
     const parts = existing.split(/\s+/).filter(Boolean);

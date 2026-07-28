@@ -1,0 +1,6 @@
+allowBuilds:
+  esbuild: true
+  puppeteer: true
+  re2: true
+  sharp: true
+  workerd: true

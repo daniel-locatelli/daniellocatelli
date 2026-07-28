@@ -23,9 +23,9 @@ Personal portfolio website for Daniel Locatelli (AEC software engineer). Built w
 ## Commands
 
 ```bash
-npm run dev       # Start dev server
-npm run build     # Type-check then build (astro check && astro build)
-npm run preview   # Preview production build
+pnpm dev          # Start dev server
+pnpm build        # Type-check then build (astro check && astro build)
+pnpm preview      # Preview production build
 ```
 
 ## Project Structure
@@ -70,7 +70,7 @@ The knowledge pipeline generates:
 - A chronological CV timeline (always injected as core context)
 - **FAQ synthesis chunks** (`processFAQ()` in `src/scripts/generate-knowledge.ts`): 10 natural-language FAQ files per locale that pre-answer common visitor questions (current employment, skills, education, etc.). These bridge the semantic gap between user questions and structured data.
 
-**Benchmark:** Run `npx tsx scripts/benchmark-chat.ts` (with dev server running) to test ~26 common questions against the chat API. Use `--retry-failures` to skip previously passed tests. Target: 100% pass rate.
+**Benchmark:** Run `pnpm exec tsx scripts/benchmark-chat.ts` (with dev server running) to test ~26 common questions against the chat API. Use `--retry-failures` to skip previously passed tests. Target: 100% pass rate.
 
 ## Backlog
 

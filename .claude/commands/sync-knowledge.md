@@ -15,7 +15,7 @@ If any model uses an older generation (e.g. `claude-sonnet-4-5-*` when `4-6` exi
 ### Step 2: Generate knowledge files from content
 
 ```bash
-npx tsx src/scripts/generate-knowledge.ts
+pnpm exec tsx src/scripts/generate-knowledge.ts
 ```
 
 This reads all `src/content/` collections and generates `knowledge/*.md` files including:
@@ -35,7 +35,7 @@ Sync uses the **service_role key** (server-only secret in `.env`, never deployed
 First do a dry run:
 
 ```bash
-source .env 2>/dev/null && export SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY && npx tsx scripts/sync-knowledge.ts
+source .env 2>/dev/null && export SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY && pnpm exec tsx scripts/sync-knowledge.ts
 ```
 
 Report the entry count and type/locale breakdown to the user.
@@ -43,17 +43,17 @@ Report the entry count and type/locale breakdown to the user.
 Then apply:
 
 ```bash
-source .env 2>/dev/null && export SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY && npx tsx scripts/sync-knowledge.ts --apply
+source .env 2>/dev/null && export SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY && pnpm exec tsx scripts/sync-knowledge.ts --apply
 ```
 
 This deletes all existing rows in `knowledge_entries` and re-inserts every entry with a fresh embedding via the Supabase `embed` edge function (Voyage AI, 1024 dimensions). Takes ~7-10 minutes for ~450 entries across 3 locales (en, pt, de).
 
 ### Step 4: Run Q&A benchmark (optional)
 
-If the dev server is running (`npm run dev`), run the benchmark to verify chat quality:
+If the dev server is running (`pnpm dev`), run the benchmark to verify chat quality:
 
 ```bash
-source .env 2>/dev/null && export SUPABASE_URL SUPABASE_ANON_KEY && npx tsx scripts/benchmark-chat.ts
+source .env 2>/dev/null && export SUPABASE_URL SUPABASE_ANON_KEY && pnpm exec tsx scripts/benchmark-chat.ts
 ```
 
 This tests ~26 common questions against the chat API and checks for expected phrases in answers. Use `--retry-failures` to only re-test previously failed questions. Use `--url https://daniellocatelli.com` to test against production.

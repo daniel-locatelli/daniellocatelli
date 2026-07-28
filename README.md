@@ -61,7 +61,7 @@ src/
 ### Prerequisites
 
 - Node.js 18+
-- npm
+- pnpm
 
 ### Environment Variables
 
@@ -76,10 +76,10 @@ SUPABASE_ANON_KEY=       # Supabase anonymous key
 ### Commands
 
 ```bash
-npm install              # Install dependencies
-npm run dev              # Start dev server (localhost:4321)
-npm run build            # Type-check and build for production
-npm run preview          # Preview production build locally
+pnpm install             # Install dependencies
+pnpm dev                 # Start dev server (localhost:4321)
+pnpm build               # Type-check and build for production
+pnpm preview             # Preview production build locally
 ```
 
 ## License

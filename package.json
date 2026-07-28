@@ -51,10 +51,12 @@
     "@iconify-json/mdi": "^1.2.3",
     "@playwright/test": "^1.59.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@types/hast": "^3.0.5",
     "@types/katex": "^0.16.8",
     "@types/mdast": "^4.0.4",
     "@types/node": "^24.12.2",
     "@types/three": "^0.184.0",
+    "acorn": "^8.17.0",
     "astro-icon": "^1.1.5",
     "baseline-browser-mapping": "^2.9.19",
     "fast-glob": "^3.3.3",
@@ -75,6 +77,9 @@
     "tsx": "^4.21.0",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.1.0",
+    "unist-util-visit-parents": "^6.0.2",
+    "vfile": "^6.0.3",
+    "vite": "^7.3.2",
     "wrangler": "^4.83.0"
   }
 }
