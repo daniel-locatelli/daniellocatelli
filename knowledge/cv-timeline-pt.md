@@ -2,15 +2,17 @@ URL: https://daniellocatelli.com/pt/full-cv
 
 # Daniel Locatelli – Linha do Tempo
 
+July 2026 – Atual | [Trabalho] | Pesquisador de Doutorado | Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
+July 2026 | [Educação] | Doutorado em Ciências | Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
 May 2025 | [Ensino] | Trabalhando com dados geográficos no Grasshopper | Universidade de Ciências Applicadas de Munique | Munique
-February 2025 – Atual | [Trabalho] | Pesquisador Associado (60%) | Universidade de Ciências Aplicadas de Munique | Munique, Alemanha
+February 2025 – June 2026 | [Trabalho] | Pesquisador Associado (60%) | Universidade de Ciências Aplicadas de Munique | Munique, Alemanha
 July 2024 | [Ensino] | Sistema de fabricação robótica multiescalar para colagem à pressão no canteiro em edifícios de madeira | Forum Holzbau | Fellbach, Alemanha
 July 2024 | [Certificação] | Introdução à Ciência da Computação | Universidade Harvard & edX.org
 July 2024 | [Certificação] | Introdução a Banco de Dados com SQL | Universidade de Harvard & edX.org
 June 2024 – July 2024 | [Curso] | Introdução a Banco de Dados com SQL | Universidade Harvard | Online
 January 2024 – December 2024 | [Trabalho] | Engenheiro de Software AEC | BuildSystems GmbH | Munique, Alemanha
 December 2023 | [Ensino] | BuildSystems - Smart Sustainability Roadmaps | Graphisoft X - Online | Alemanha
-September 2023 | [Ensino] | Arquitetura Computacional na Alemanha | Curso de Arquitetura e Urbanismo do IFPR | Online
+November 2023 | [Ensino] | Arquitetura Computacional na Alemanha | UFT - Online | Palmas, Brasil
 July 2023 – October 2023 | [Curso] | CS50 - Introdução à Ciência da Computação | Universidade de Harvard | Online
 March 2023 | [Ensino] | Viabilidade de Construções Sustentáveis | Munich Urban Colab | Munique, Alemanha
 January 2023 – December 2023 | [Trabalho] | Engenheiro de Software AEC | Urban Scale Timber, Flügge Funding | Munique, Alemanha

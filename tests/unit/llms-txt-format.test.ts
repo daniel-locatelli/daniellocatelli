@@ -17,11 +17,11 @@ const sample: { sections: { title: string; entries: LlmsTxtEntry[] }[] } = {
 test("formatLlmsTxt: title + tagline + section headers", () => {
   const out = formatLlmsTxt({
     title: "Daniel Locatelli",
-    tagline: "AEC software engineer based in Berlin.",
+    tagline: "Doctoral researcher at ETH Zurich.",
     sections: sample.sections,
   });
   assert.ok(out.startsWith("# Daniel Locatelli\n"));
-  assert.ok(out.includes("> AEC software engineer based in Berlin.\n"));
+  assert.ok(out.includes("> Doctoral researcher at ETH Zurich.\n"));
   assert.ok(out.includes("\n## Projects\n"));
 });
 

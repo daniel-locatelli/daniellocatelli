@@ -5,7 +5,7 @@ URL: https://daniellocatelli.com/de/full-cv
 Organization: Hochschule München
 Location: München, Deutschland
 Category: Professional Experience
-Date: February 2025
+Date: February 2025 - June 2026
 Link: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 
 - Entwicklung eines Revit-Plugins (C#/.NET) zum Importieren von Aufbauten aus DOKwood in Revit als Systemfamilien.

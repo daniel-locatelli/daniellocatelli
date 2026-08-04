@@ -74,7 +74,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
   },
   terms: {
     title: "Terms & Conditions",
-    lastUpdated: "March 17, 2026",
+    lastUpdated: "August 4, 2026",
     sections: [
       {
         heading: "Scope",
@@ -120,7 +120,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Governing Law",
-        content: `<p>These terms are governed by the laws of the Federal Republic of Germany. The place of jurisdiction is Munich, Germany, to the extent permitted by law.</p>`,
+        content: `<p>These terms are governed by Swiss law. The place of jurisdiction is Zurich, Switzerland, to the extent permitted by law.</p>`,
       },
       {
         heading: "Changes to These Terms",
@@ -130,13 +130,13 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
   },
   impressum: {
     title: "Impressum",
-    lastUpdated: "March 17, 2026",
+    lastUpdated: "August 4, 2026",
     sections: [
       {
-        heading: "Information according to § 5 TMG",
+        heading: "Website Operator",
         content: `<p>Daniel Nunes Locatelli<br>
-        Klingsorstraße 3<br>
-        81927 Munich, Germany</p>`,
+        Schwandenacker 46<br>
+        8052 Zurich, Switzerland</p>`,
       },
       {
         heading: "Contact",
@@ -144,20 +144,20 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
         Phone: +49 178 324-0834</p>`,
       },
       {
-        heading: "Responsible for content according to § 18 Abs. 2 MStV",
+        heading: "Responsible for Content",
         content: `<p>Daniel Nunes Locatelli<br>
-        Klingsorstraße 3<br>
-        81927 Munich, Germany</p>`,
+        Schwandenacker 46<br>
+        8052 Zurich, Switzerland</p>`,
       },
       {
         heading: "Dispute Resolution",
-        content: `<p>We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board (§ 36 VSBG).</p>`,
+        content: `<p>We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>`,
       },
       {
         heading: "Liability for Content",
-        content: `<p>As a service provider, we are responsible for our own content on these pages in accordance with § 7 (1) TMG (German Telemedia Act). According to §§ 8 to 10 TMG, however, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.</p>
+        content: `<p>As the operator of this website, we are responsible for our own content on these pages in accordance with general legislation. We are, however, not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.</p>
 <p>Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the time of knowledge of a specific infringement. Upon becoming aware of such violations, we will remove the content immediately.</p>
-<p>The contents of this website have been carefully reviewed and created to the best of our knowledge. However, no claim is made regarding the completeness, accuracy, timeliness, or quality of the information provided. We shall not be liable for damages arising from reliance on the content of this website or its use, unless such damages were caused intentionally or through gross negligence. Statutory claims under the Product Liability Act (Produkthaftungsgesetz) are exempt from this limitation of liability.</p>`,
+<p>The contents of this website have been carefully reviewed and created to the best of our knowledge. However, no claim is made regarding the completeness, accuracy, timeliness, or quality of the information provided. We shall not be liable for damages arising from reliance on the content of this website or its use, unless such damages were caused intentionally or through gross negligence. Mandatory statutory liability claims remain unaffected by this limitation of liability.</p>`,
       },
       {
         heading: "Liability for Links",

@@ -2,6 +2,11 @@ URL: https://daniellocatelli.com/full-cv
 
 # Daniel Locatelli – Education & Scholarships
 
+### Doctor of Sciences
+Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland
+July 2026
+Computational Design-to-Fabrication for Timber Plate Building Systems
+
 ### Master of Sciences
 ITECH, University of Stuttgart | Stuttgart, Germany
 October 2019 – October 2021

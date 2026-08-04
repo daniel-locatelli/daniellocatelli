@@ -11,7 +11,7 @@ export const t: I18nCV = {
     coverAlt: "Daniel Locatelli.",
   },
   ui: {
-    title: "AEC Software Engineer",
+    title: "Doctoral Researcher at ETH Zurich",
     summary: "Summary",
     skills: "Skills",
     programming: "Programming",
@@ -44,5 +44,5 @@ export const t: I18nCV = {
   quote:
     '"Architecture is inherently transdisciplinary. Its future lies in the use of computational co-design with vernacular materials to create circular construction systems."',
   summary:
-    "Software engineer and computational design researcher specializing in timber construction. Expertise in bridging design and engineering through C#, Python and web technologies. M.Sc. from ITECH (University of Stuttgart) with a focus on multi-scalar robotic systems for engineered timber. Trilingual professional (English, German, and Portuguese) dedicated to solving complex structural problems through scalable software and data-driven fabrication.",
+    "Doctoral researcher at Gramazio Kohler Research, ETH Zurich, investigating computational design-to-fabrication for timber plate building systems. Background as a software engineer and computational design researcher specializing in timber construction, bridging design and engineering through C#, Python and web technologies. M.Sc. from ITECH (University of Stuttgart) with a focus on multi-scalar robotic systems for engineered timber. Trilingual professional (English, German, and Portuguese) dedicated to solving complex structural problems through scalable software and data-driven fabrication.",
 };

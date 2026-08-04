@@ -14,9 +14,9 @@ export const t: I18nHome = {
     id: "hero",
     hi: "Prazer,",
     greeting: "Daniel Locatelli",
-    title: "Engenheiro de software",
+    title: "Doutorando na ETH Zurique",
     description:
-      "Sou&nbsp;generalista. Eu desenvolvo plugins, aplicações web e soluções de design computacional para arquitetura, engenharia e construção (AEC).",
+      "Sou&nbsp;doutorando no Gramazio Kohler Research, ETH Zurique, pesquisando do design computacional à fabricação de sistemas construtivos em placas de madeira. Minha experiência inclui plugins, aplicações web e design computacional para arquitetura, engenharia e construção (AEC).",
     requestQuote: "Faça um orçamento",
     sendEmail: "Envie um Email",
     chat: {

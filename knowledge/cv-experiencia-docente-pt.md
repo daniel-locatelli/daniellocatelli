@@ -17,8 +17,9 @@ December 2023 | Talk
 Saiba mais sobre Smart Sustainability Roadmaps, que possibilitam inovações sistêmicas de processos no planejamento. Temas como planejamento orientado à demanda e à economia circular, eficiência energética, avaliação do ciclo de vida, certificações, financiamentos e Pre-BIM Modelling são abordados.
 
 ### Arquitetura Computacional na Alemanha
-Curso de Arquitetura e Urbanismo do IFPR | Online
-September 2023 | Talk
+UFT - Online | Palmas, Brasil
+November 2023 | Talk
+Nesta palestra apresentei as tecnologias mais recentes na área de design computacional na Alemanha, especialmente o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems.
 
 ### Viabilidade de Construções Sustentáveis
 Munich Urban Colab | Munique, Alemanha

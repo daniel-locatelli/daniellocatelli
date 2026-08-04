@@ -2,8 +2,10 @@ URL: https://daniellocatelli.com/de/full-cv
 
 # Daniel Locatelli – Zeitleiste
 
+July 2026 – Aktuell | [Beruf] | Doktorand | Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
+July 2026 | [Bildung] | Doctor of Sciences | Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
 May 2025 | [Lehre] | Arbeiten mit Geodaten in Grasshopper | Hochschule München | München
-February 2025 – Aktuell | [Beruf] | Wissenschaftlicher Mitarbeiter (60%) | Hochschule München | München, Deutschland
+February 2025 – June 2026 | [Beruf] | Wissenschaftlicher Mitarbeiter (60%) | Hochschule München | München, Deutschland
 July 2024 | [Lehre] | Multiskalares Roboterfertigungssystem für Vor-Ort-Pressklebung im mehrgeschossigen Holzbau | Forum Holzbau | Fellbach, Deutschland
 July 2024 | [Zertifizierung] | CS50's Einführung in die Informatik | Harvard University & edX.org
 July 2024 | [Zertifizierung] | CS50's Einführung in Datenbanken mit SQL | Harvard University & edX.org
@@ -11,7 +13,6 @@ June 2024 – July 2024 | [Kurs] | CS50's Einführung in Datenbanken mit SQL | H
 January 2024 – December 2024 | [Beruf] | AEC Software-Ingenieur | BuildSystems GmbH | München, Deutschland
 December 2023 | [Lehre] | BuildSystems - Smart Sustainability Roadmaps | Graphisoft X - Online | Deutschland
 November 2023 | [Lehre] | Computergestützte Architektur in Deutschland | UFT - Online | Palmas, Brasilien
-September 2023 | [Lehre] | Computergestützte Architektur in Deutschland | Architektur- und Stadtplanungskurs am IFPR | Online
 July 2023 – October 2023 | [Kurs] | CS50's Einführung in die Informatik | Harvard University | Online
 March 2023 | [Lehre] | Machbarkeit nachhaltigen Bauens | Munich Urban Colab | München, Deutschland
 January 2023 – December 2023 | [Beruf] | AEC Software-Ingenieur | Urban Scale Timber, Flügge Funding | München, Deutschland

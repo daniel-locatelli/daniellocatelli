@@ -2,6 +2,11 @@ URL: https://daniellocatelli.com/de/full-cv
 
 # Daniel Locatelli – Bildung & Stipendien
 
+### Doctor of Sciences
+Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
+July 2026
+Computational Design-to-Fabrication für Holzplatten-Bausysteme
+
 ### Master of Science
 ITECH, Universität Stuttgart | Stuttgart, Deutschland
 October 2019 – October 2021

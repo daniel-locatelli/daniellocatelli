@@ -74,7 +74,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
   },
   terms: {
     title: "Termos e Condições",
-    lastUpdated: "17 de março de 2026",
+    lastUpdated: "4 de agosto de 2026",
     sections: [
       {
         heading: "Âmbito",
@@ -120,7 +120,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Lei Aplicável",
-        content: `<p>Estes termos são regidos pelas leis da República Federal da Alemanha. O foro competente é Munique, Alemanha, na medida permitida por lei.</p>`,
+        content: `<p>Estes termos são regidos pelas leis da Suíça. O foro competente é Zurique, Suíça, na medida permitida por lei.</p>`,
       },
       {
         heading: "Alterações a Estes Termos",
@@ -130,13 +130,13 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
   },
   impressum: {
     title: "Impressum",
-    lastUpdated: "17 de março de 2026",
+    lastUpdated: "4 de agosto de 2026",
     sections: [
       {
-        heading: "Informações de acordo com § 5 TMG",
+        heading: "Responsável pelo website",
         content: `<p>Daniel Nunes Locatelli<br>
-        Klingsorstraße 3<br>
-        81927 Munique, Alemanha</p>`,
+        Schwandenacker 46<br>
+        8052 Zurique, Suíça</p>`,
       },
       {
         heading: "Contato",
@@ -144,20 +144,20 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
         Telefone: +49 178 324-0834</p>`,
       },
       {
-        heading: "Responsável pelo conteúdo de acordo com § 18 Abs. 2 MStV",
+        heading: "Responsável pelo conteúdo",
         content: `<p>Daniel Nunes Locatelli<br>
-        Klingsorstraße 3<br>
-        81927 Munique, Alemanha</p>`,
+        Schwandenacker 46<br>
+        8052 Zurique, Suíça</p>`,
       },
       {
         heading: "Resolução de Disputas",
-        content: `<p>Não estamos dispostos nem obrigados a participar de procedimentos de resolução de disputas perante um conselho de arbitragem do consumidor (§ 36 VSBG).</p>`,
+        content: `<p>Não estamos dispostos nem obrigados a participar de procedimentos de resolução de disputas perante um conselho de arbitragem do consumidor.</p>`,
       },
       {
         heading: "Responsabilidade pelo Conteúdo",
-        content: `<p>Como prestador de serviços, somos responsáveis pelo nosso próprio conteúdo nestas páginas de acordo com o § 7 (1) TMG (Lei Alemã de Telemídia). De acordo com os §§ 8 a 10 TMG, no entanto, não somos obrigados a monitorar informações transmitidas ou armazenadas de terceiros ou a investigar circunstâncias que indiquem atividade ilegal.</p>
+        content: `<p>Como operador deste website, somos responsáveis pelo nosso próprio conteúdo nestas páginas de acordo com a legislação geral. No entanto, não somos obrigados a monitorar informações transmitidas ou armazenadas de terceiros ou a investigar circunstâncias que indiquem atividade ilegal.</p>
 <p>As obrigações de remover ou bloquear o uso de informações sob a lei geral permanecem inalteradas. No entanto, a responsabilidade neste sentido só é possível a partir do momento do conhecimento de uma infração específica. Ao tomar conhecimento de tais violações, removeremos o conteúdo imediatamente.</p>
-<p>Os conteúdos deste website foram cuidadosamente verificados e criados com o melhor do nosso conhecimento. No entanto, não se garante a completude, precisão, atualidade ou qualidade das informações fornecidas. Não nos responsabilizamos por danos decorrentes da confiança no conteúdo deste website ou do seu uso, salvo se causados por dolo ou negligência grave. Reivindicações legais ao abrigo da Lei de Responsabilidade do Produto (Produkthaftungsgesetz) estão isentas desta limitação de responsabilidade.</p>`,
+<p>Os conteúdos deste website foram cuidadosamente verificados e criados com o melhor do nosso conhecimento. No entanto, não se garante a completude, precisão, atualidade ou qualidade das informações fornecidas. Não nos responsabilizamos por danos decorrentes da confiança no conteúdo deste website ou do seu uso, salvo se causados por dolo ou negligência grave. Reivindicações legais obrigatórias permanecem inalteradas por esta limitação de responsabilidade.</p>`,
       },
       {
         heading: "Responsabilidade por Links",

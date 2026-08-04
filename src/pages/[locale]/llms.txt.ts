@@ -9,8 +9,8 @@ const LOCALES = ["pt", "de"] as const;
 type Locale = (typeof LOCALES)[number];
 
 const TAGLINES: Record<Locale, string> = {
-  pt: "Engenheiro de software em AEC, baseado em Berlim. Arquitetura × Computação × IA.",
-  de: "AEC-Softwareingenieur in Berlin. Architektur × Computation × KI.",
+  pt: "Doutorando no Gramazio Kohler Research, ETH Zurique. Do design computacional à fabricação em madeira. Arquitetura × Computação × IA.",
+  de: "Doktorand bei Gramazio Kohler Research, ETH Zürich. Computational Design-to-Fabrication für den Holzbau. Architektur × Computation × KI.",
 };
 
 const ABOUT_LABELS: Record<Locale, { home: string; cv: string }> = {

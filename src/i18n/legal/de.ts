@@ -74,7 +74,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
   },
   terms: {
     title: "Nutzungsbedingungen",
-    lastUpdated: "17. März 2026",
+    lastUpdated: "4. August 2026",
     sections: [
       {
         heading: "Geltungsbereich",
@@ -120,7 +120,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Anwendbares Recht",
-        content: `<p>Diese Bedingungen unterliegen dem Recht der Bundesrepublik Deutschland. Gerichtsstand ist München, Deutschland, soweit gesetzlich zulässig.</p>`,
+        content: `<p>Diese Bedingungen unterliegen schweizerischem Recht. Gerichtsstand ist Zürich, Schweiz, soweit gesetzlich zulässig.</p>`,
       },
       {
         heading: "Änderungen dieser Bedingungen",
@@ -130,13 +130,13 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
   },
   impressum: {
     title: "Impressum",
-    lastUpdated: "17. März 2026",
+    lastUpdated: "4. August 2026",
     sections: [
       {
-        heading: "Angaben gemäß § 5 TMG",
+        heading: "Betreiber der Website",
         content: `<p>Daniel Nunes Locatelli<br>
-        Klingsorstraße 3<br>
-        81927 München, Deutschland</p>`,
+        Schwandenacker 46<br>
+        8052 Zürich, Schweiz</p>`,
       },
       {
         heading: "Kontakt",
@@ -144,20 +144,20 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
         Telefon: +49 178 324-0834</p>`,
       },
       {
-        heading: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+        heading: "Verantwortlich für den Inhalt",
         content: `<p>Daniel Nunes Locatelli<br>
-        Klingsorstraße 3<br>
-        81927 München, Deutschland</p>`,
+        Schwandenacker 46<br>
+        8052 Zürich, Schweiz</p>`,
       },
       {
         heading: "Streitbeilegung",
-        content: `<p>Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir nicht verpflichtet und nicht bereit (§ 36 VSBG).</p>`,
+        content: `<p>Zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle sind wir nicht verpflichtet und nicht bereit.</p>`,
       },
       {
         heading: "Haftung für Inhalte",
-        content: `<p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+        content: `<p>Als Betreiber dieser Website sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
 <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
-<p>Die Inhalte dieser Website wurden sorgfältig geprüft und nach bestem Wissen erstellt. Dennoch wird für die hier dargebotenen Informationen kein Anspruch auf Vollständigkeit, Aktualität, Qualität und Richtigkeit erhoben. Für Schäden, die durch das Vertrauen auf die Inhalte dieser Website oder deren Gebrauch entstehen, haften wir nicht, es sei denn, sie wurden vorsätzlich oder grob fahrlässig verursacht. Gesetzliche Ansprüche aus dem Produkthaftungsgesetz sind von dieser Haftungsbeschränkung ausgenommen.</p>`,
+<p>Die Inhalte dieser Website wurden sorgfältig geprüft und nach bestem Wissen erstellt. Dennoch wird für die hier dargebotenen Informationen kein Anspruch auf Vollständigkeit, Aktualität, Qualität und Richtigkeit erhoben. Für Schäden, die durch das Vertrauen auf die Inhalte dieser Website oder deren Gebrauch entstehen, haften wir nicht, es sei denn, sie wurden vorsätzlich oder grob fahrlässig verursacht. Zwingende gesetzliche Haftungsansprüche bleiben von dieser Haftungsbeschränkung unberührt.</p>`,
       },
       {
         heading: "Haftung für Links",

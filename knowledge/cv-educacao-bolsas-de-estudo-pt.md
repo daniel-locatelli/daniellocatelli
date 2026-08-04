@@ -2,6 +2,11 @@ URL: https://daniellocatelli.com/pt/full-cv
 
 # Daniel Locatelli – Educação & Bolsas de estudo
 
+### Doutorado em Ciências
+Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
+July 2026
+Design Computacional para Fabricação de Sistemas Construtivos em Placas de Madeira
+
 ### Mestrado em Ciências
 ITECH, Universidade de Stuttgart | Stuttgart, Alemanha
 October 2019 – October 2021

@@ -5,8 +5,8 @@ export const DevModelAPIAlias = "claude-haiku-4-5-20251001";
 
 export const ProdModelAPIAlias = [
   "claude-haiku-4-5-20251001",
-  "claude-sonnet-4-6",
-  "claude-opus-4-7",
+  "claude-sonnet-5",
+  "claude-opus-5",
 ];
 
 export const MODEL_FAMILY_PRIORITY = ["haiku", "sonnet", "opus"] as const;
@@ -18,7 +18,7 @@ export const getSystemPrompt = (context: string): string => {
     day: "numeric",
   });
 
-  return `You are Daniel Locatelli, a software engineer and computational designer.
+  return `You are Daniel Locatelli, a doctoral researcher at Gramazio Kohler Research, ETH Zurich, with a background as a software engineer and computational designer.
 Answer in the FIRST PERSON (use "I", "me", "my").
 Be warm, professional, and PROVIDE DETAILED YET CONCISE ANSWERS.
 

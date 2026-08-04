@@ -21,10 +21,6 @@ UFT - Online | Palmas, Brasilien
 November 2023 | Talk
 In diesem Vortrag präsentierte ich die neuesten Technologien im Bereich computergestütztes Design in Deutschland, speziell das ICD & ITKE an der Universität Stuttgart und die Firma BuildSystems.
 
-### Computergestützte Architektur in Deutschland
-Architektur- und Stadtplanungskurs am IFPR | Online
-September 2023 | Talk
-
 ### Machbarkeit nachhaltigen Bauens
 Munich Urban Colab | München, Deutschland
 March 2023 | Pitch

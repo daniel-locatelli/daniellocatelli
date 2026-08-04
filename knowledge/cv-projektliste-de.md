@@ -197,7 +197,7 @@ Verantwortlicher Architekt für parametrisches Design, Produktion und Überwachu
 ### Life Lamp von Estúdio Guto Requena für Decimal
 Estudio Guto Requena
 May 2018 – May 2018 | Product design
-Der Designprozess ist eine Mischung aus Top-down- und Bottom-up-Ansatz. Wir arbeiteten sowohl mit vordefinierten herzförmigen 3D-Modellen als Designgrundlage als auch mit agentenbasierter Modellierung, die in den 1980er-Jahren maßgeblich von Craig Reynolds erforscht wurde. Die Programmierung erfolgte mit Grasshopper 3D, dem erst zwei Wochen alten Plugin Culebra v2.0 für die agentenbasierte Modellierung in Verbindung mit dem Plugin Firefly zur Erfassung der Herzschläge. Diese Arbeit wurde später als Paper auf der ECAAD 2020 vorgestellt.
+Der Designprozess ist eine Mischung aus Top-down- und Bottom-up-Ansatz. Wir arbeiteten sowohl mit vordefinierten herzförmigen 3D-Modellen als Designgrundlage als auch mit agentenbasierter Modellierung, die in den 1980er-Jahren maßgeblich von Craig Reynolds erforscht wurde. Die Programmierung erfolgte mit Grasshopper 3D, dem erst zwei Wochen alten Plugin Culebra v2.0 für die agentenbasierte Modellierung in Verbindung mit dem Plugin Firefly zur Erfassung der Herzschläge. Diese Arbeit wurde später als Paper auf der eCAADe 2020 vorgestellt.
 
 ### Air Guitar von Atelier Marko Brajovic für Nike
 Atelier Marko Brajovic

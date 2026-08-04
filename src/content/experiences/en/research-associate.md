@@ -1,6 +1,7 @@
 ---
 Name: Research Associate (60%)
 DateStart: "2025-02"
+DateEnd: "2026-06"
 Organization: Munich University of Applied Sciences
 City:
   - Munich

@@ -5,7 +5,7 @@ URL: https://daniellocatelli.com/pt/full-cv
 Organization: Universidade de Ciências Aplicadas de Munique
 Location: Munique, Alemanha
 Category: Professional Experience
-Date: February 2025
+Date: February 2025 - June 2026
 Link: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 
 - Desenvolvimento de um plugin para Revit (C#/.NET) para importar elementos construtivos do app DOKwood para o Revit como famílias do sistema.

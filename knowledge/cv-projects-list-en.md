@@ -197,7 +197,7 @@ Architect in charge of the parametric design, production and supervision of the 
 ### Life Lamp by Estúdio Guto Requena for Decimal
 Estudio Guto Requena
 May 2018 – May 2018 | Product design
-The design process is a hybrid between a top-down and a bottom-up approach. We worked both with predefined heart-like 3D models as the design base and with agent-based modeling, widely explored by Craig Reynolds in the 1980s. The programming part was developed using Grasshopper 3D, the two-week-old plugin Culebra v2.0 for the agent-based modeling in conjunction with the plugin Firefly to capture the heartbeats. This work became later a paper presented at the ECAAD 2020.
+The design process is a hybrid between a top-down and a bottom-up approach. We worked both with predefined heart-like 3D models as the design base and with agent-based modeling, widely explored by Craig Reynolds in the 1980s. The programming part was developed using Grasshopper 3D, the two-week-old plugin Culebra v2.0 for the agent-based modeling in conjunction with the plugin Firefly to capture the heartbeats. This work became later a paper presented at the eCAADe 2020.
 
 ### Air Guitar by Atelier Marko Brajovic for Nike
 Atelier Marko Brajovic

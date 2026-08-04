@@ -5,7 +5,7 @@ URL: https://daniellocatelli.com/full-cv
 Organization: Munich University of Applied Sciences
 Location: Munich, Germany
 Category: Professional Experience
-Date: February 2025
+Date: February 2025 - June 2026
 Link: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 
 - Development of a Revit plugin (C#/.NET) to import buildups from DOKwood into Revit as System Families.

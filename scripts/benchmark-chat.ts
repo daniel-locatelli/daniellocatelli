@@ -25,28 +25,28 @@ const TEST_CASES: TestCase[] = [
   // ── Current Status ──
   {
     question: "Are you currently employed?",
-    expectedPhrases: ["Munich University of Applied Sciences", "Research Associate"],
+    expectedPhrases: ["Gramazio Kohler", "ETH Zurich", "Doctoral Researcher"],
     category: "Current Status",
   },
   {
     question: "Are you working right now?",
-    expectedPhrases: ["Munich University of Applied Sciences"],
+    expectedPhrases: ["Gramazio Kohler", "ETH Zurich"],
     category: "Current Status",
   },
   {
     question: "What is your current role?",
-    expectedPhrases: ["Research Associate", "Munich University of Applied Sciences"],
+    expectedPhrases: ["Doctoral Researcher", "Gramazio Kohler"],
     category: "Current Status",
   },
   {
     question: "What do you do?",
-    expectedPhrases: ["software engineer", "computational design"],
+    expectedPhrases: ["doctoral researcher", "computational design", "software engineer"],
     forbiddenPhrases: ["I don't have information"],
     category: "Current Status",
   },
   {
     question: "Where do you work?",
-    expectedPhrases: ["Munich University of Applied Sciences"],
+    expectedPhrases: ["Gramazio Kohler", "ETH Zurich"],
     category: "Current Status",
   },
 
@@ -100,7 +100,7 @@ const TEST_CASES: TestCase[] = [
   // ── Location & Contact ──
   {
     question: "Where are you located?",
-    expectedPhrases: ["Munich", "Germany"],
+    expectedPhrases: ["Zurich", "Switzerland"],
     category: "Location",
   },
   {
@@ -165,22 +165,22 @@ const TEST_CASES: TestCase[] = [
   },
   {
     question: "What is your PhD about?",
-    expectedPhrases: ["Master", "contact"],
-    forbiddenPhrases: [],
-    category: "Boundary",
+    expectedPhrases: ["timber", "Gramazio Kohler"],
+    forbiddenPhrases: ["I don't have information"],
+    category: "Research",
   },
 
   // ── Portuguese ──
   {
     question: "Voce esta trabalhando atualmente?",
-    expectedPhrases: ["Munich University of Applied Sciences", "Hochschule München", "Munique", "Pesquisador"],
+    expectedPhrases: ["Doutorando", "Pesquisador", "ETH", "Gramazio Kohler"],
     category: "Portuguese",
   },
 
   // ── German ──
   {
     question: "Arbeitest du gerade?",
-    expectedPhrases: ["Hochschule München", "Munich University of Applied Sciences"],
+    expectedPhrases: ["Doktorand", "ETH Zürich", "Gramazio Kohler"],
     category: "German",
   },
 ];

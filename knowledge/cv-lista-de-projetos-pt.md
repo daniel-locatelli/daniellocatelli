@@ -197,7 +197,7 @@ Arquiteto responsável pelo design paramétrico, produção e supervisão das in
 ### Life Lamp por Estúdio Guto Requena para Decimal
 Estudio Guto Requena
 May 2018 – May 2018 | Product design
-O processo de design é um híbrido entre uma abordagem de cima para baixo e de baixo para cima. Trabalhamos tanto com modelos 3D predefinidos em forma de coração como base de design quanto com modelagem baseada em agentes, amplamente explorada por Craig Reynolds na década de 1980. A parte de programação foi desenvolvida usando Grasshopper 3D, o plugin Culebra v2.0 de duas semanas para a modelagem baseada em agente em conjunto com o plugin Firefly para capturar os batimentos cardíacos. Este trabalho tornou-se posteriormente um paper apresentado na ECAAD 2020.
+O processo de design é um híbrido entre uma abordagem de cima para baixo e de baixo para cima. Trabalhamos tanto com modelos 3D predefinidos em forma de coração como base de design quanto com modelagem baseada em agentes, amplamente explorada por Craig Reynolds na década de 1980. A parte de programação foi desenvolvida usando Grasshopper 3D, o plugin Culebra v2.0 de duas semanas para a modelagem baseada em agente em conjunto com o plugin Firefly para capturar os batimentos cardíacos. Este trabalho tornou-se posteriormente um paper apresentado na eCAADe 2020.
 
 ### Air Guitar por Atelier Marko Brajovic para Nike
 Atelier Marko Brajovic

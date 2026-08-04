@@ -11,7 +11,7 @@ export const t: I18nCV = {
     coverAlt: "Daniel Locatelli.",
   },
   ui: {
-    title: "AEC Software-Ingenieur",
+    title: "Doktorand an der ETH Zürich",
     summary: "Zusammenfassung",
     skills: "Fähigkeiten",
     programming: "Programmierung",
@@ -44,5 +44,5 @@ export const t: I18nCV = {
   quote:
     '"Architektur ist von Natur aus fachübergreifend. Ihre Zukunft liegt in der Nutzung von computergestütztem Co-Design mit landestypischen Materialien zur Schaffung kreislauffähiger Bausysteme."',
   summary:
-    "Software-Ingenieur und Forscher im Bereich Computational Design mit Spezialisierung auf Holzbau. Expertise in der Verbindung von Design und Technik durch C#, Python und Webtechnologien. M.Sc. vom ITECH (Universität Stuttgart) mit Fokus auf multiskalare Robotersysteme für technisches Holz. Dreisprachiger Fachmann (Englisch, Deutsch und Portugiesisch), der sich der Lösung komplexer struktureller Probleme durch skalierbare Software und datengesteuerte Fertigung widmet.",
+    "Doktorand bei Gramazio Kohler Research an der ETH Zürich, mit Forschung zu Computational Design-to-Fabrication für Holzplatten-Bausysteme. Hintergrund als Software-Ingenieur und Forscher im Bereich Computational Design mit Spezialisierung auf Holzbau; Expertise in der Verbindung von Design und Technik durch C#, Python und Webtechnologien. M.Sc. vom ITECH (Universität Stuttgart) mit Fokus auf multiskalare Robotersysteme für technisches Holz. Dreisprachiger Fachmann (Englisch, Deutsch und Portugiesisch), der sich der Lösung komplexer struktureller Probleme durch skalierbare Software und datengesteuerte Fertigung widmet.",
 };

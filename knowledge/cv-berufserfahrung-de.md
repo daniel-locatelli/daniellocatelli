@@ -2,9 +2,16 @@ URL: https://daniellocatelli.com/de/full-cv
 
 # Daniel Locatelli – Berufserfahrung
 
+### Doktorand
+Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
+July 2026 – Current
+
+- Doktoratsforschung zu Computational Design-to-Fabrication für Holzplatten-Bausysteme.
+- Teil des CEDD-Projekts, gefördert durch den Schweizerischen Nationalfonds (SNF).
+
 ### Wissenschaftlicher Mitarbeiter (60%)
 Hochschule München | München, Deutschland
-February 2025 – Current
+February 2025 – June 2026
 
 - Entwicklung eines Revit-Plugins (C#/.NET) zum Importieren von Aufbauten aus DOKwood in Revit als Systemfamilien.
 - Entwicklung eines bSDD (building Smart Data Dictionary) zur Konsolidierung eines semantischen Datenmodells für DOKwood.

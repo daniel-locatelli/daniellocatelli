@@ -21,10 +21,6 @@ UFT - Online | Palmas, Brazil
 November 2023 | Talk
 In this talk I presented the latest technologies in the computational design field in Germany, specially the ICD & ITKE at the University of Stuttgart and the company BuildSystems.
 
-### Computational Architecture in Germany
-Architecture and Urbanism course at IFPR | Online
-September 2023 | Talk
-
 ### Feasibility of Sustainable Construction
 Munich Urban Colab | Munich, Germany
 March 2023 | Pitch

@@ -14,9 +14,9 @@ export const t: I18nHome = {
     id: "hero",
     hi: "Hi,",
     greeting: "I'm Daniel Locatelli",
-    title: "AEC Software Engineer",
+    title: "Doctoral Researcher at ETH Zurich",
     description:
-      "I&nbsp;am a generalist. I develop plugins, web applications, and computational design solutions for architecture, engineering, and construction (AEC).",
+      "I&nbsp;am a doctoral researcher at Gramazio Kohler Research, ETH Zurich, working on computational design-to-fabrication for timber plate building systems. My background spans plugins, web applications, and computational design for architecture, engineering, and construction (AEC).",
     requestQuote: "Request a quote",
     sendEmail: "Send an Email",
     chat: {

@@ -14,7 +14,7 @@ June 2023
 
 ### Life Lamp: Connecting Design and People Through Emotion
 Authors: Daniel Nunes Locatelli, Leonardo Prazeres, Guilherme Giantini, Vitor Curti, Carlos Augusto Requena
-ECAADE 2020 Anthropologic
+eCAADe 2020 Anthropologic
 June 2020
 
 ### Computational Design Strategies

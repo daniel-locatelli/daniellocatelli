@@ -4,6 +4,7 @@ URL: https://daniellocatelli.com/de/full-cv
 
 Daniel Locatelli's highest degree is a Master of Science. His academic background includes:
 
+- Doctor of Sciences at Gramazio Kohler Research, ETH Zürich, Zürich, Schweiz (July 2026 to )
 - Master of Science at ITECH, Universität Stuttgart, Stuttgart, Deutschland (October 2019 to October 2021)
 - Architektur-Austauschstudent at Auburn University – CADC, Auburn, USA (January 2014 to December 2014)
 - Bachelor für Architektur und Stadtplanung at FAU, Universität São Paulo, São Paulo, Brasilien (January 2010 to December 2016)

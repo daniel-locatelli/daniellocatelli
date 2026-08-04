@@ -2,9 +2,16 @@ URL: https://daniellocatelli.com/pt/full-cv
 
 # Daniel Locatelli – Experiência Profissional
 
+### Pesquisador de Doutorado
+Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
+July 2026 – Current
+
+- Pesquisa de doutorado em design computacional para fabricação de sistemas construtivos em placas de madeira.
+- Parte do projeto CEDD, financiado pelo Fundo Nacional Suíço para a Pesquisa Científica (SNSF).
+
 ### Pesquisador Associado (60%)
 Universidade de Ciências Aplicadas de Munique | Munique, Alemanha
-February 2025 – Current
+February 2025 – June 2026
 
 - Desenvolvimento de um plugin para Revit (C#/.NET) para importar elementos construtivos do app DOKwood para o Revit como famílias do sistema.
 - Desenvolvimento de um bSDD (building Smart Data Dictionary) para consolidar um modelo de dados semântico para o DOKwood.
