@@ -21,6 +21,14 @@ Non-critical ideas and improvements for the daniellocatelli portfolio repo. Use 
 
 **Open questions.** Does Astro's image optimization play well with widely-shared imports? Do we want one sidecar JSON per file, or one registry per source identity? Migration path for existing duplicated assets?
 
+## Dev server broken: "require is not defined" in workerd runner
+
+**Problem.** `pnpm dev` crashes on startup with `require is not defined` at `workers/runner-worker/index.js` (inside workerd), with astro 6.4.4 + @astrojs/cloudflare 13.6.1 + @cloudflare/vite-plugin 1.40.0. This is a known upstream incompatibility in the Cloudflare vite module runner with CommonJS shims (see cloudflare/workers-sdk#13063 and withastro/astro#16029). Reproduces with and without `.env`, so it is not config-related. Workaround: `pnpm build && pnpm preview` serves the built output through wrangler on port 4321 and works for manual checks and the chat benchmark.
+
+**Sketch.** Astro 7 and @astrojs/cloudflare 14 are out; the durable fix is likely the major upgrade (astro ^7, @astrojs/cloudflare ^14, @cloudflare/vite-plugin ^1.50). Alternatively, watch the two upstream issues for a backported fix to 6.x/13.x and `pnpm update` within ranges once it lands.
+
+**Trigger.** Next time fast dev iteration is needed (preview requires a full rebuild per change), or the next scheduled dependency-update pass.
+
 ## Astro Island `<style>` injection inside body flow
 
 **Problem.** Astro's `client:*` directive injects `<style>astro-island,astro-slot,astro-static-slot{display:contents}</style>` at the location of the first hydrated island. On the home page this lands inside the `<div class="w-full max-w-xl py-4">` wrapping `<HeroChat>`, which PowerMapper flags as "Element style not allowed as child element in this context." Per current HTML5 spec, `<style>` is metadata content and is only valid inside `<head>` (`scoped` was removed). Browsers tolerate it; strict validators do not.

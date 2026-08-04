@@ -40,7 +40,7 @@ src/
   layouts/          # Page layouts (Base.astro)
   lib/              # Blog helpers, route helpers
   pages/            # File-based routing with [...locale] dynamic segments
-    api/            # Server API endpoints (chat.ts)
+    api/            # Server API endpoints (ai.ts)
   scripts/          # Utility/migration scripts
   styles/           # Global CSS
 ```
@@ -70,7 +70,7 @@ The knowledge pipeline generates:
 - A chronological CV timeline (always injected as core context)
 - **FAQ synthesis chunks** (`processFAQ()` in `src/scripts/generate-knowledge.ts`): 10 natural-language FAQ files per locale that pre-answer common visitor questions (current employment, skills, education, etc.). These bridge the semantic gap between user questions and structured data.
 
-**Benchmark:** Run `pnpm exec tsx scripts/benchmark-chat.ts` (with dev server running) to test ~26 common questions against the chat API. Use `--retry-failures` to skip previously passed tests. Target: 100% pass rate.
+**Benchmark:** Run `pnpm exec tsx scripts/benchmark-chat.ts` (with a local server running; `pnpm dev` is currently broken, use `pnpm build && pnpm preview` instead, see docs/BACKLOG.md) to test ~26 common questions against the chat API. Use `--retry-failures` to skip previously passed tests. Target: 100% pass rate.
 
 ## Backlog
 
