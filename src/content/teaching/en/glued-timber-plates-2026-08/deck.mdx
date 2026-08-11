@@ -14,6 +14,12 @@ import SlideVideo from "@/components/slides/SlideVideo.astro";
 
 import demonstratorAtNight from "@/assets/content/research/building-across-scales/the-demonstrator-at-night-the-holes-for-the-clamping-robots-are-now-used-for-01.jpg";
 import admissibleRegionDiagram from "@/assets/content/teaching/glued-timber-plates-2026-08/admissible-region-diagram.png";
+import problemDesk from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-2.png";
+import testRig from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-3.png";
+import chipMacro from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-5.png";
+import chipTimber from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-6.png";
+import entangledRig from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-11.png";
+import failureTest from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-14.png";
 
 ---
 title: Small-group technical meeting
@@ -30,31 +36,25 @@ notes: "My segment: the computational side of the project, and one question I ne
 ---
 
 ---
+image: problemDesk
+imageAlt: "Engineers at a dim meeting table covered with structural drawings, calculation sheets, and laptops running different engineering tools (AI-generated image)"
+overlay: black/50
 text: |
   ### The problem
 
   ## Checking a building design takes weeks
-
-  It moves between specialists, each with their own models and tools.
-
-  Because checking is slow, it happens once or twice per project.
-
-  **Design stops at the first version that passes, not the best one that could.**
-notes: "This is the general problem. Nothing controversial here; every project in the room has lived it."
+notes: "It moves between specialists, each with their own models and tools. Because checking is slow, it happens once or twice per project. Design stops at the first version that passes, not the best one that could. Nothing controversial here; every project in the room has lived it."
 ---
 
 ---
+image: testRig
+imageAlt: "A timber specimen clamped in a loading frame in a dark testing lab, instrumented with sensors and cables (AI-generated image)"
+overlay: black/35
 text: |
   ### The problem, here
 
   ## Our loop is slower still
-
-  The standards do not cover side-by-side plate gluing.
-
-  That is why it needs physical testing and special approval.
-
-  **The tests close that gap. They are also the opening for the thesis.**
-notes: "Connect directly to Antonia's part: the test programme is not a side quest, it is the ground this whole idea stands on."
+notes: "The standards do not cover side-by-side plate gluing; that is why it needs physical testing and special approval. The tests close that gap. They are also the opening for the thesis. Connect directly to Antonia's part: the test programme is not a side quest, it is the ground this whole idea stands on."
 ---
 
 ---
@@ -68,31 +68,23 @@ notes: "Pause here. This flip is the whole thesis in one line. If checking were 
 ---
 
 ---
+image: chipMacro
+imageAlt: "Extreme macro of a silicon wafer with iridescent circuit patterns under cool blue and warm amber light (AI-generated image)"
+overlay: black/55
 text: |
   ### The precedent
 
   ## Another industry already made checking nearly free
-
-  *Chip design:* billions of components on a single chip.
-
-  Every module states its interface. Design rules are checked continuously.
-
-  **Designers explore freely inside a space the tools guarantee is manufacturable.**
-notes: "No chip vocabulary needed: the point is the workflow shape. Checking runs all the time, so exploring is safe."
+notes: "Chip design: billions of components on a single chip. Every module states its interface; design rules are checked continuously. Designers explore freely inside a space the tools guarantee is manufacturable. No chip vocabulary needed: the point is the workflow shape. Checking runs all the time, so exploring is safe."
 ---
 
 ---
+image: chipTimber
+imageAlt: "A single object half silicon chip and half glued timber plate cross-section, meeting edge to edge on a dark background (AI-generated image)"
+overlay: black/50
 text: |
-  ### The precedent
-
-  ## Chips are nothing like buildings
-
-  Different scale. Different materials. Their aim is to control electricity flow.
-
-  But one thing is the same, and it is the thing that matters:
-
-  # Both need to take a *final physical shape*.
-notes: "This framing convinced both the CS and the non-CS readers of the PhD application. Physicality is the bridge."
+  # Both need to take a final physical shape.
+notes: "Chips are nothing like buildings: different scale, different materials, their aim is to control electricity flow. But this one thing is the same, and it is the thing that matters. This framing convinced both the CS and the non-CS readers of the PhD application. Physicality is the bridge."
 ---
 
 ---
@@ -109,27 +101,17 @@ text: |
   ### The claim
 
   ## The answer stops being a verdict
-
-  The result is the set of all designs that work.
-
-  When a design is not possible: a named list of exactly which requirements exclude it.
-
-  **An engineer can trace which limit bound which decision.**
-notes: "This is the slide for whoever signs. Traceability, not a black box."
+notes: "The result is the set of all designs that work. When a design is not possible: a named list of exactly which requirements exclude it. An engineer can trace which limit bound which decision. This is the slide for whoever signs: traceability, not a black box."
 ---
 
 ---
 text: |
   ### What is a coupling?
 
-  ## The master thesis already lived this
-
-  On-site gluing of timber panels: the structural checks took fabrication variables as inputs.
+  ## How the panel is made decides what it can carry
 
   *Press force. Glue area. Stock thickness.*
-
-  **How the panel is made decides what it can carry.**
-notes: "Concrete before abstract: in the master thesis we called this a material-robotic system. Same material, same predicament as our plates."
+notes: "Master thesis, on-site gluing of timber panels: the structural checks took fabrication variables as inputs. Concrete before abstract: in the master thesis we called this a material-robotic system. Same material, same predicament as our plates."
 ---
 
 ---
@@ -137,23 +119,18 @@ text: |
   ### The vocabulary
 
   ## A coupling is *declared* when it travels as data
-
-  A shared variable both modules read: glue area, press force, stock thickness.
-
-  **Chip design rules are exactly this: written-down limits that every module respects.**
-notes: "Now the abstract term is safe to use: declared means written down as data, nothing more mysterious."
+notes: "A shared variable both modules read: glue area, press force, stock thickness. Chip design rules are exactly this: written-down limits that every module respects. Declared means written down as data, nothing more mysterious."
 ---
 
 ---
+image: entangledRig
+imageAlt: "A one-off timber test piece buried under clamps, glue squeeze-out, wires, and improvised sensors on a workshop bench (AI-generated image)"
+overlay: black/45
 text: |
   ### The risk
 
   ## Some couplings may not travel as data
-
-  If pressing or gluing changes load-bearing in ways only tests can reveal,
-
-  **the modules collapse into one entangled model: a one-off, built for this system only.**
-notes: "Honest failure mode. A one-off checker would still be worth building, but the broader claim would not survive it."
+notes: "If pressing or gluing changes load-bearing in ways only tests can reveal, the modules collapse into one entangled model: a one-off, built for this system only. Honest failure mode. A one-off checker would still be worth building, but the broader claim would not survive it."
 ---
 
 ---
@@ -163,39 +140,26 @@ text: |
   ## *Chips* declare their couplings.
 
   # Can we declare *ours*?
-
-  That is precisely what the test programme establishes.
-notes: "This is the question for this room. Where does the shared-variable picture break? Their fabrication and testing experience answers it, not my code."
+notes: "That is precisely what the test programme establishes. Where does the shared-variable picture break? Their fabrication and testing experience answers it, not my code."
 ---
 
 ---
 text: |
   ### Why now
 
-  ## The idea is decades old
-
-  Earlier attempts stayed prototypes. Every constraint was written and simplified by hand.
-
-  **What changed: when the design is code, LLMs excel at it.**
-
-  Constraint modules drafted from test protocols and documentation, iterated in minutes.
-notes: "If asked for names: SpaceSolver at EPFL around 2000 documents the hand-written-inequalities problem; SEED in the 1990s is the other reference point. Do not attribute a cause of death to SEED; the record does not support one."
+  ## When the design is code, LLMs excel at it
+notes: "The idea is decades old; earlier attempts stayed prototypes, and every constraint was written and simplified by hand. What changed: constraint modules can now be drafted from test protocols and documentation, iterated in minutes. If asked for names: SpaceSolver at EPFL around 2000 documents the hand-written-inequalities problem; SEED in the 1990s is the other reference point. Do not attribute a cause of death to SEED; the record does not support one."
 ---
 
 ---
+image: failureTest
+imageAlt: "A laminated timber beam failing in a universal testing machine, splinters frozen mid-air (AI-generated image)"
+overlay: black/40
 text: |
   ### The guardrail
 
-  ## What AI does not do
-
-  It cannot make a constraint true.
-
-  **Limit values and their uncertainty come from one place only: the physical tests.**
-
-  Every drafted constraint is checked against them before it counts.
-
-  The work shifts from writing to reviewing.
-notes: "The guardrail, and the onboarding move: the test programme is the ground truth that makes any of the AI usable."
+  ## AI cannot make a constraint true. Only the tests can.
+notes: "Limit values and their uncertainty come from one place only: the physical tests. Every drafted constraint is checked against them before it counts. The work shifts from writing to reviewing. The test programme is the ground truth that makes any of the AI usable."
 ---
 
 ---
@@ -203,23 +167,15 @@ text: |
   ### The SNF project
 
   ## *compas_timber* is already building the paths
-
-  The connection to fabrication exists today. Connecting structural analysis is the goal.
-
-  **Together they are the playground where this hypothesis gets tested.**
-notes: "Instrument, not subject: the thesis is the claim about declared couplings and the admissible region; compas_timber is where it runs."
+notes: "The connection to fabrication exists today; connecting structural analysis is the goal. Together they are already enough of a playground to test this hypothesis. Instrument, not subject: the thesis is the claim about declared couplings and the admissible region; compas_timber is where it runs."
 ---
 
 ---
 text: |
   ### The timeline
 
-  ## The first month
-
-  July: a field guide to *compas* and *compas_timber*, the instrument this thesis runs on.
-
-  **The codebase where the constraint modules will live is already mapped.**
-notes: "One month in, concrete evidence of being inside the instrument rather than pointing at it. The field guide is the entry point for the constraint work that starts next."
+  ## Month one: a field guide to *compas* and *compas_timber*
+notes: "July, the first month: a field guide to compas and compas_timber, the instrument this thesis runs on. The codebase where the constraint modules will live is already mapped. Concrete evidence of being inside the instrument rather than pointing at it."
 ---
 
 ---
@@ -228,33 +184,29 @@ text: |
 
   ## Encode the requirements. Measure what a machine can check.
 
-  That fraction is a result either way.
-
-  **Three questions for this room:**
-
   - Where should the structural and fabrication modules split?
   - Which couplings resist being declared as shared data?
   - Constraint authoring is shared work, currently unassigned. Who writes, who reviews?
-notes: "End on the assignment question deliberately: better to name the shared work now than discover it in year three."
+notes: "That fraction is a result either way. The three questions stay on screen for the discussion. End on the assignment question deliberately: better to name the shared work now than discover it in year three."
 ---
 
 {/*
   Deck-local theme. This <style> element only exists on this deck's page, so
   nothing here can leak into the other decks. Tokens are sampled from the
   demonstrator night photo: warm near-black canvas, timber-amber accent.
-  Silicon blue marks the chip world (slides 5 and 12 only).
+  Silicon blue marks the chip world (slide 12).
 
   Semantic markdown mapping used by the slides above:
     h3 (###)  = kicker, the act label of the argument
-    h2 (##)   = headline
+    h2 (##)   = the slide's single statement
     h1 (#)    = hero statement
     **strong** = key line, pops to ink white
-    *em*       = accent phrase, timber amber (silicon on chip slides)
+    *em*       = accent phrase, timber amber (silicon in slide 12's h2)
 
   The section:nth-of-type() indices below are load-bearing: renumber them if
   slides are added, removed, or reordered. Current order (17 slides):
-  1 title, 4 flip, 5 chip precedent, 7 claim diagram, 12 question,
-  16 timeline, 17 next steps.
+  1 title photo, 2 3 5 6 11 14 background-image slides, 4 flip,
+  7 claim diagram, 12 question, 16 timeline, 17 next steps.
 */}
 
 <style>{`
@@ -294,15 +246,6 @@ notes: "End on the assignment question deliberately: better to name the shared w
     color: var(--gtp-amber);
     margin: 0 0 2.25rem 0;
   }
-  #deck .slide-md h3::before {
-    content: "";
-    display: inline-block;
-    width: 2.25rem;
-    height: 1px;
-    background: var(--gtp-amber);
-    margin-right: 0.9rem;
-    vertical-align: middle;
-  }
 
   /* Headline */
   #deck .slide-md h2 {
@@ -329,8 +272,8 @@ notes: "End on the assignment question deliberately: better to name the shared w
 
   /* Body. The 50em measure exists so single-sentence lines fit on one
      line at presentation size. If a line still wraps badly, shorten the
-     sentence, not the CSS. (No text-wrap: balance here: it froze Chrome's
-     renderer on this page; the base styles' text-wrap: pretty remains.) */
+     sentence, not the CSS. (No text-wrap: balance on paragraphs: it froze
+     Chrome's renderer on this page; base text-wrap: pretty remains.) */
   #deck .slide-md p {
     font-family: "Poppins", sans-serif;
     font-weight: 300;
@@ -390,15 +333,6 @@ notes: "End on the assignment question deliberately: better to name the shared w
     font-size: clamp(0.7rem, 1vw, 0.85rem);
     color: var(--gtp-amber);
   }
-  #deck section.slide > div.z-20 h2::before {
-    content: "";
-    display: inline-block;
-    width: 2.25rem;
-    height: 1px;
-    background: var(--gtp-amber);
-    margin-right: 0.9rem;
-    vertical-align: middle;
-  }
   #deck section.slide > div.z-20 p {
     font-family: "Poppins", sans-serif !important;
     font-weight: 300;
@@ -429,24 +363,19 @@ notes: "End on the assignment question deliberately: better to name the shared w
     max-width: none;
   }
 
-  /* Slides 5 and 12: the chip world reads silicon blue */
-  #deck section.slide:nth-of-type(5) .slide-md em,
-  #deck section.slide:nth-of-type(12) .slide-md h2 em {
-    color: var(--gtp-silicon);
-  }
-
-  /* Slide 12 (the question): dim setup line over the hero answer */
+  /* Slide 12 (the question): the chip world reads silicon blue, and the
+     setup line is a dim thin echo of the hero answer */
   #deck section.slide:nth-of-type(12) .slide-md h2 {
     font-family: "Poppins", sans-serif;
     font-weight: 200;
-    font-size: clamp(2.1rem, 4.6vw, 4rem);
+    font-size: clamp(2.2rem, 4.8vw, 4.4rem);
     line-height: 1.18;
     letter-spacing: 0;
     color: var(--gtp-dim);
     margin: 0 0 0.4rem 0;
   }
-  #deck section.slide:nth-of-type(12) .slide-md p {
-    margin-top: 2rem;
+  #deck section.slide:nth-of-type(12) .slide-md h2 em {
+    color: var(--gtp-silicon);
   }
 
   /* Slide 7 (claim diagram): invert the light PNG onto the dark canvas */
