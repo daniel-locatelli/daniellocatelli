@@ -13,7 +13,6 @@ import SlideImage from "@/components/slides/SlideImage.astro";
 import SlideVideo from "@/components/slides/SlideVideo.astro";
 
 import demonstratorAtNight from "@/assets/content/research/building-across-scales/the-demonstrator-at-night-the-holes-for-the-clamping-robots-are-now-used-for-01.jpg";
-import pressureRobots from "@/assets/content/research/building-across-scales/the-pressure-robots-on-the-demonstrator-clamping-robots-on-the-demonstrator-01.jpg";
 import admissibleRegionDiagram from "@/assets/content/teaching/glued-timber-plates-2026-08/admissible-region-diagram.png";
 
 ---
@@ -120,14 +119,12 @@ notes: "This is the slide for whoever signs. Traceability, not a black box."
 ---
 
 ---
-title: What is a coupling?
-subtitle: "Master thesis: on-site gluing of timber panels"
-image: pressureRobots
-imageAlt: Clamping robots applying pressure on the master thesis demonstrator
-overlay: black/55
-copyright: Daniel Locatelli
 text: |
-  The structural checks took fabrication variables as inputs.
+  ### What is a coupling?
+
+  ## The master thesis already lived this
+
+  On-site gluing of timber panels: the structural checks took fabrication variables as inputs.
 
   *Press force. Glue area. Stock thickness.*
 
@@ -215,6 +212,18 @@ notes: "Instrument, not subject: the thesis is the claim about declared coupling
 
 ---
 text: |
+  ### The timeline
+
+  ## The first month
+
+  July: a field guide to *compas* and *compas_timber*, the instrument this thesis runs on.
+
+  **The codebase where the constraint modules will live is already mapped.**
+notes: "One month in, concrete evidence of being inside the instrument rather than pointing at it. The field guide is the entry point for the constraint work that starts next."
+---
+
+---
+text: |
   ### Next steps
 
   ## Encode the requirements. Measure what a machine can check.
@@ -243,7 +252,9 @@ notes: "End on the assignment question deliberately: better to name the shared w
     *em*       = accent phrase, timber amber (silicon on chip slides)
 
   The section:nth-of-type() indices below are load-bearing: renumber them if
-  slides are added, removed, or reordered.
+  slides are added, removed, or reordered. Current order (17 slides):
+  1 title, 4 flip, 5 chip precedent, 7 claim diagram, 12 question,
+  16 timeline, 17 next steps.
 */}
 
 <style>{`
@@ -267,7 +278,7 @@ notes: "End on the assignment question deliberately: better to name the shared w
     padding-right: clamp(2.5rem, 8vw, 9rem);
   }
   #deck section.slide:not(:has(> img)) .slide-md > div {
-    max-width: 50rem;
+    max-width: 70rem;
   }
   #deck section.slide:not(:has(> img)) .slide-md > div:has(h1) {
     max-width: 58rem;
@@ -316,15 +327,18 @@ notes: "End on the assignment question deliberately: better to name the shared w
     text-wrap: balance;
   }
 
-  /* Body */
+  /* Body. The 50em measure exists so single-sentence lines fit on one
+     line at presentation size. If a line still wraps badly, shorten the
+     sentence, not the CSS. (No text-wrap: balance here: it froze Chrome's
+     renderer on this page; the base styles' text-wrap: pretty remains.) */
   #deck .slide-md p {
     font-family: "Poppins", sans-serif;
     font-weight: 300;
-    font-size: clamp(1.05rem, 1.75vw, 1.5rem);
+    font-size: clamp(1rem, 1.55vw, 1.35rem);
     line-height: 1.55;
     color: var(--gtp-dim);
     margin: 0 0 1.15rem 0;
-    max-width: 36em;
+    max-width: 50em;
   }
   #deck section.slide:has(> img) .slide-md p {
     color: var(--gtp-ink);
@@ -343,13 +357,13 @@ notes: "End on the assignment question deliberately: better to name the shared w
   #deck .slide-md ol {
     font-family: "Poppins", sans-serif;
     font-weight: 300;
-    font-size: clamp(1.05rem, 1.75vw, 1.5rem);
+    font-size: clamp(1rem, 1.55vw, 1.35rem);
     line-height: 1.55;
     color: var(--gtp-ink);
     text-align: left;
     list-style: disc;
     margin: 0.4rem 0 1rem 0;
-    max-width: 36em;
+    max-width: 50em;
     padding-left: 1.4em;
   }
   #deck .slide-md li {
