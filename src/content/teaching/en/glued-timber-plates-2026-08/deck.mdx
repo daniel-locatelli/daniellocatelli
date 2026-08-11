@@ -26,65 +26,73 @@ copyright: Daniel Locatelli
 text: |
   # Glued Timber Plates
 
-  ## From structural tests to the set of designs that work
+  ## From structural tests to *the set of designs that work*
 notes: "My segment: the computational side of the project, and one question I need this room to answer."
 ---
 
 ---
 text: |
+  ### The problem
+
   ## Checking a building design takes weeks
 
   It moves between specialists, each with their own models and tools.
 
   Because checking is slow, it happens once or twice per project.
 
-  Design stops at the first version that passes, not the best one that could.
+  **Design stops at the first version that passes, not the best one that could.**
 notes: "This is the general problem. Nothing controversial here; every project in the room has lived it."
 ---
 
 ---
 text: |
+  ### The problem, here
+
   ## Our loop is slower still
 
   The standards do not cover side-by-side plate gluing.
 
   That is why it needs physical testing and special approval.
 
-  The tests close that gap. They are also the opening for the thesis.
+  **The tests close that gap. They are also the opening for the thesis.**
 notes: "Connect directly to Antonia's part: the test programme is not a side quest, it is the ground this whole idea stands on."
 ---
 
 ---
 text: |
-  ## If checking were nearly free, the question changes
+  ### The flip
 
   "Does this design pass?"
 
-  # "What is the full set of designs that would pass?"
-notes: "Pause here. This flip is the whole thesis in one line."
+  # "What is the *full set of designs* that would pass?"
+notes: "Pause here. This flip is the whole thesis in one line. If checking were nearly free, the question changes."
 ---
 
 ---
 text: |
+  ### The precedent
+
   ## Another industry already made checking nearly free
 
-  Chip design: billions of components on a single chip.
+  *Chip design:* billions of components on a single chip.
 
   Every module states its interface. Design rules are checked continuously.
 
-  Designers explore freely inside a space the tools guarantee is manufacturable.
+  **Designers explore freely inside a space the tools guarantee is manufacturable.**
 notes: "No chip vocabulary needed: the point is the workflow shape. Checking runs all the time, so exploring is safe."
 ---
 
 ---
 text: |
+  ### The precedent
+
   ## Chips are nothing like buildings
 
   Different scale. Different materials. Their aim is to control electricity flow.
 
   But one thing is the same, and it is the thing that matters:
 
-  # Both need to take a final physical shape.
+  # Both need to take a *final physical shape*.
 notes: "This framing convinced both the CS and the non-CS readers of the PhD application. Physicality is the bridge."
 ---
 
@@ -99,13 +107,15 @@ notes: "Structural holds capacity checks. Fabrication holds press, stock, and gl
 
 ---
 text: |
+  ### The claim
+
   ## The answer stops being a verdict
 
   The result is the set of all designs that work.
 
   When a design is not possible: a named list of exactly which requirements exclude it.
 
-  An engineer can trace which limit bound which decision.
+  **An engineer can trace which limit bound which decision.**
 notes: "This is the slide for whoever signs. Traceability, not a black box."
 ---
 
@@ -119,39 +129,43 @@ copyright: Daniel Locatelli
 text: |
   The structural checks took fabrication variables as inputs.
 
-  Press force. Glue area. Stock thickness.
+  *Press force. Glue area. Stock thickness.*
 
-  How the panel is made decides what it can carry.
+  **How the panel is made decides what it can carry.**
 notes: "Concrete before abstract: in the master thesis we called this a material-robotic system. Same material, same predicament as our plates."
 ---
 
 ---
 text: |
-  ## A coupling is declared when it travels as data
+  ### The vocabulary
+
+  ## A coupling is *declared* when it travels as data
 
   A shared variable both modules read: glue area, press force, stock thickness.
 
-  Chip design rules are exactly this: written-down limits that every module respects.
+  **Chip design rules are exactly this: written-down limits that every module respects.**
 notes: "Now the abstract term is safe to use: declared means written down as data, nothing more mysterious."
 ---
 
 ---
 text: |
-  ## The risk
+  ### The risk
 
-  Some couplings may not travel as data.
+  ## Some couplings may not travel as data
 
   If pressing or gluing changes load-bearing in ways only tests can reveal,
 
-  the modules collapse into one entangled model: a one-off, built for this system only.
+  **the modules collapse into one entangled model: a one-off, built for this system only.**
 notes: "Honest failure mode. A one-off checker would still be worth building, but the broader claim would not survive it."
 ---
 
 ---
 text: |
-  ## Chips declare their couplings.
+  ### The question for this room
 
-  # Can we declare ours?
+  ## *Chips* declare their couplings.
+
+  # Can we declare *ours*?
 
   That is precisely what the test programme establishes.
 notes: "This is the question for this room. Where does the shared-variable picture break? Their fabrication and testing experience answers it, not my code."
@@ -159,11 +173,13 @@ notes: "This is the question for this room. Where does the shared-variable pictu
 
 ---
 text: |
-  ## Why now? The idea is decades old.
+  ### Why now
+
+  ## The idea is decades old
 
   Earlier attempts stayed prototypes. Every constraint was written and simplified by hand.
 
-  What changed: when the design is code, LLMs excel at it.
+  **What changed: when the design is code, LLMs excel at it.**
 
   Constraint modules drafted from test protocols and documentation, iterated in minutes.
 notes: "If asked for names: SpaceSolver at EPFL around 2000 documents the hand-written-inequalities problem; SEED in the 1990s is the other reference point. Do not attribute a cause of death to SEED; the record does not support one."
@@ -171,11 +187,13 @@ notes: "If asked for names: SpaceSolver at EPFL around 2000 documents the hand-w
 
 ---
 text: |
+  ### The guardrail
+
   ## What AI does not do
 
   It cannot make a constraint true.
 
-  Limit values and their uncertainty come from one place only: the physical tests.
+  **Limit values and their uncertainty come from one place only: the physical tests.**
 
   Every drafted constraint is checked against them before it counts.
 
@@ -185,24 +203,241 @@ notes: "The guardrail, and the onboarding move: the test programme is the ground
 
 ---
 text: |
-  ## How this fits our SNF project
+  ### The SNF project
 
-  compas_timber is already building the paths.
+  ## *compas_timber* is already building the paths
 
   The connection to fabrication exists today. Connecting structural analysis is the goal.
 
-  Together they are the playground where this hypothesis gets tested.
+  **Together they are the playground where this hypothesis gets tested.**
 notes: "Instrument, not subject: the thesis is the claim about declared couplings and the admissible region; compas_timber is where it runs."
 ---
 
 ---
 text: |
-  ## Next steps, and three questions
+  ### Next steps
 
-  Encode the test-programme requirements as constraints. Measure what fraction a machine can check. That number is a result either way.
+  ## Encode the requirements. Measure what a machine can check.
+
+  That fraction is a result either way.
+
+  **Three questions for this room:**
 
   - Where should the structural and fabrication modules split?
   - Which couplings resist being declared as shared data?
   - Constraint authoring is shared work, currently unassigned. Who writes, who reviews?
 notes: "End on the assignment question deliberately: better to name the shared work now than discover it in year three."
 ---
+
+{/*
+  Deck-local theme. This <style> element only exists on this deck's page, so
+  nothing here can leak into the other decks. Tokens are sampled from the
+  demonstrator night photo: warm near-black canvas, timber-amber accent.
+  Silicon blue marks the chip world (slides 5 and 12 only).
+
+  Semantic markdown mapping used by the slides above:
+    h3 (###)  = kicker, the act label of the argument
+    h2 (##)   = headline
+    h1 (#)    = hero statement
+    **strong** = key line, pops to ink white
+    *em*       = accent phrase, timber amber (silicon on chip slides)
+
+  The section:nth-of-type() indices below are load-bearing: renumber them if
+  slides are added, removed, or reordered.
+*/}
+
+<style>{`
+  #deck {
+    --gtp-bg: #0e0c09;
+    --gtp-ink: #f2efe9;
+    --gtp-dim: #a49e92;
+    --gtp-amber: #e0a458;
+    --gtp-silicon: #85b7cb;
+  }
+
+  #deck section.slide {
+    background: radial-gradient(120% 130% at 18% 22%, #171310 0%, var(--gtp-bg) 58%);
+  }
+
+  /* Text slides: left-aligned editorial column. Photo slides keep centering. */
+  #deck section.slide:not(:has(> img)) .slide-md {
+    align-items: flex-start;
+    text-align: left;
+    padding-left: clamp(4rem, 12vw, 14rem);
+    padding-right: clamp(2.5rem, 8vw, 9rem);
+  }
+  #deck section.slide:not(:has(> img)) .slide-md > div {
+    max-width: 50rem;
+  }
+  #deck section.slide:not(:has(> img)) .slide-md > div:has(h1) {
+    max-width: 58rem;
+  }
+
+  /* Kicker */
+  #deck .slide-md h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    color: var(--gtp-amber);
+    margin: 0 0 2.25rem 0;
+  }
+  #deck .slide-md h3::before {
+    content: "";
+    display: inline-block;
+    width: 2.25rem;
+    height: 1px;
+    background: var(--gtp-amber);
+    margin-right: 0.9rem;
+    vertical-align: middle;
+  }
+
+  /* Headline */
+  #deck .slide-md h2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.6vw, 3.3rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    color: var(--gtp-ink);
+    margin: 0 0 1.9rem 0;
+    text-wrap: balance;
+  }
+
+  /* Hero statement */
+  #deck .slide-md h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+    line-height: 1.18;
+    color: var(--gtp-ink);
+    margin: 1.2rem 0 1.5rem 0;
+    text-wrap: balance;
+  }
+
+  /* Body */
+  #deck .slide-md p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.05rem, 1.75vw, 1.5rem);
+    line-height: 1.55;
+    color: var(--gtp-dim);
+    margin: 0 0 1.15rem 0;
+    max-width: 36em;
+  }
+  #deck section.slide:has(> img) .slide-md p {
+    color: var(--gtp-ink);
+  }
+
+  #deck .slide-md strong {
+    font-weight: 300;
+    color: var(--gtp-ink);
+  }
+  #deck .slide-md em {
+    font-style: normal;
+    color: var(--gtp-amber);
+  }
+
+  #deck .slide-md ul,
+  #deck .slide-md ol {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.05rem, 1.75vw, 1.5rem);
+    line-height: 1.55;
+    color: var(--gtp-ink);
+    text-align: left;
+    list-style: disc;
+    margin: 0.4rem 0 1rem 0;
+    max-width: 36em;
+    padding-left: 1.4em;
+  }
+  #deck .slide-md li {
+    margin-bottom: 0.7rem;
+  }
+  #deck .slide-md li::marker {
+    color: var(--gtp-amber);
+  }
+
+  /* Slide chrome (title/subtitle): drop the glass pill, restyle as kicker */
+  #deck section.slide > div.z-20:has(h2) {
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+    padding: 0;
+    top: clamp(2rem, 8vh, 3.5rem);
+    left: clamp(4rem, 12vw, 14rem);
+    max-width: 70%;
+  }
+  #deck section.slide > div.z-20 h2 {
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    color: var(--gtp-amber);
+  }
+  #deck section.slide > div.z-20 h2::before {
+    content: "";
+    display: inline-block;
+    width: 2.25rem;
+    height: 1px;
+    background: var(--gtp-amber);
+    margin-right: 0.9rem;
+    vertical-align: middle;
+  }
+  #deck section.slide > div.z-20 p {
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    margin-top: 0.8rem;
+    color: var(--gtp-dim);
+  }
+
+  /* Slide 1 (title): thin hero over the night photo, letterspaced subtitle */
+  #deck section.slide:nth-of-type(1) .slide-md h1 {
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    margin-bottom: 1.2rem;
+  }
+  #deck section.slide:nth-of-type(1) .slide-md h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: clamp(0.8rem, 1.3vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--gtp-ink);
+  }
+
+  /* Slide 4 (the flip): the old question is a thin setup line, not body text */
+  #deck section.slide:nth-of-type(4) .slide-md p {
+    font-weight: 200;
+    font-size: clamp(1.3rem, 2.4vw, 2rem);
+    max-width: none;
+  }
+
+  /* Slides 5 and 12: the chip world reads silicon blue */
+  #deck section.slide:nth-of-type(5) .slide-md em,
+  #deck section.slide:nth-of-type(12) .slide-md h2 em {
+    color: var(--gtp-silicon);
+  }
+
+  /* Slide 12 (the question): dim setup line over the hero answer */
+  #deck section.slide:nth-of-type(12) .slide-md h2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-size: clamp(2.1rem, 4.6vw, 4rem);
+    line-height: 1.18;
+    letter-spacing: 0;
+    color: var(--gtp-dim);
+    margin: 0 0 0.4rem 0;
+  }
+  #deck section.slide:nth-of-type(12) .slide-md p {
+    margin-top: 2rem;
+  }
+
+  /* Slide 7 (claim diagram): invert the light PNG onto the dark canvas */
+  #deck section.slide:nth-of-type(7) > img {
+    filter: invert(0.92) hue-rotate(180deg) saturate(0.9);
+    padding: clamp(5rem, 16vh, 8rem) clamp(3rem, 9vw, 8rem) clamp(3rem, 10vh, 5rem);
+  }
+`}</style>
