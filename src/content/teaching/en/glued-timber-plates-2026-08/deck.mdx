@@ -338,8 +338,14 @@ notes: "That fraction is a result either way. The three questions stay on screen
     color: var(--gtp-dim);
   }
 
-  /* Slide 1 (title): thin hero over the design-cloud cover,
-     letterspaced subtitle underneath */
+  /* Slide 1 (title): thin hero over the design-cloud cover, left-aligned
+     like the text slides so the type sits in the image's dark left half */
+  #deck section.slide:nth-of-type(1) .slide-md {
+    align-items: flex-start;
+    text-align: left;
+    padding-left: clamp(4rem, 12vw, 14rem);
+    padding-right: clamp(2.5rem, 8vw, 9rem);
+  }
   #deck section.slide:nth-of-type(1) .slide-md h1 {
     font-size: clamp(2.6rem, 6vw, 5rem);
     margin-bottom: 1.6rem;
