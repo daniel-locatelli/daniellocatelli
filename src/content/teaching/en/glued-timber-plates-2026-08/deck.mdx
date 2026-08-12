@@ -12,7 +12,6 @@ import SlideNotes from "@/components/slides/SlideNotes.astro";
 import SlideImage from "@/components/slides/SlideImage.astro";
 import SlideVideo from "@/components/slides/SlideVideo.astro";
 
-import demonstratorAtNight from "@/assets/content/research/building-across-scales/the-demonstrator-at-night-the-holes-for-the-clamping-robots-are-now-used-for-01.jpg";
 import admissibleRegionDiagram from "@/assets/content/teaching/glued-timber-plates-2026-08/admissible-region-diagram.png";
 import problemDesk from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-2.png";
 import testRig from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-3.png";
@@ -22,12 +21,6 @@ import entangledRig from "@/assets/content/teaching/glued-timber-plates-2026-08/
 import failureTest from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-14.png";
 
 ---
-title: Small-group technical meeting
-subtitle: 2026-08-12
-image: demonstratorAtNight
-imageAlt: The master thesis demonstrator at night, with the clamping-robot holes used as light fixtures
-overlay: black/40
-copyright: Daniel Locatelli
 text: |
   # Glued Timber Plates
 
@@ -205,7 +198,7 @@ notes: "That fraction is a result either way. The three questions stay on screen
 
   The section:nth-of-type() indices below are load-bearing: renumber them if
   slides are added, removed, or reordered. Current order (17 slides):
-  1 title photo, 2 3 5 6 11 14 background-image slides, 4 flip,
+  1 title (typographic), 2 3 5 6 11 14 background-image slides, 4 flip,
   7 claim diagram, 12 question, 16 timeline, 17 next steps.
 */}
 
@@ -341,10 +334,11 @@ notes: "That fraction is a result either way. The three questions stay on screen
     color: var(--gtp-dim);
   }
 
-  /* Slide 1 (title): thin hero over the night photo, letterspaced subtitle */
+  /* Slide 1 (title): thin typographic hero on the bare canvas,
+     letterspaced subtitle underneath */
   #deck section.slide:nth-of-type(1) .slide-md h1 {
     font-size: clamp(2.6rem, 6vw, 5rem);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.6rem;
   }
   #deck section.slide:nth-of-type(1) .slide-md h2 {
     font-family: "Montserrat", sans-serif;
@@ -352,8 +346,8 @@ notes: "That fraction is a result either way. The three questions stay on screen
     text-transform: uppercase;
     letter-spacing: 0.22em;
     font-size: clamp(0.8rem, 1.3vw, 1.05rem);
-    line-height: 1.6;
-    color: var(--gtp-ink);
+    line-height: 1.8;
+    color: var(--gtp-dim);
   }
 
   /* Slide 4 (the flip): the old question is a thin setup line, not body text */
