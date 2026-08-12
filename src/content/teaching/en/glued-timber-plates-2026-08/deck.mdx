@@ -1,5 +1,5 @@
 ---
-Name: "Glued Timber Plates: From Structural Tests to the Set of Designs That Work"
+Name: "The Set of Designs That Work: Glued Timber Plates from Structural Tests to Nearly Free Checking"
 Description: "Daniel's segment for the small-group technical meeting on 2026-08-12, framing the computational side of the glued timber plates project."
 DateStart: "2026-08-12"
 Event: Small-group technical meeting
@@ -12,6 +12,7 @@ import SlideNotes from "@/components/slides/SlideNotes.astro";
 import SlideImage from "@/components/slides/SlideImage.astro";
 import SlideVideo from "@/components/slides/SlideVideo.astro";
 
+import coverDesignCloud from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-1.png";
 import claimDiagram from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-7.png";
 import problemDesk from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-2.png";
 import testRig from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-3.png";
@@ -21,10 +22,13 @@ import entangledRig from "@/assets/content/teaching/glued-timber-plates-2026-08/
 import failureTest from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-14.png";
 
 ---
+image: coverDesignCloud
+imageAlt: "A dark field of faint wireframe folded-plate design variants; an amber contour encloses a few brighter ones, the set of designs that work (AI-generated image)"
+overlay: black/30
 text: |
-  # Glued Timber Plates
+  # The set of designs that work
 
-  ## From structural tests to *the set of designs that work*
+  ## Glued timber plates: from structural tests to *nearly free checking*
 notes: "My segment: the computational side of the project, and one question I need this room to answer."
 ---
 
@@ -198,7 +202,7 @@ notes: "That fraction is a result either way. The three questions stay on screen
 
   The section:nth-of-type() indices below are load-bearing: renumber them if
   slides are added, removed, or reordered. Current order (17 slides):
-  1 title (typographic), 2 3 5 6 11 14 background-image slides, 4 flip,
+  1 title cover, 2 3 5 6 11 14 background-image slides, 4 flip,
   7 claim diagram, 12 question, 16 timeline, 17 next steps.
 */}
 
@@ -334,7 +338,7 @@ notes: "That fraction is a result either way. The three questions stay on screen
     color: var(--gtp-dim);
   }
 
-  /* Slide 1 (title): thin typographic hero on the bare canvas,
+  /* Slide 1 (title): thin hero over the design-cloud cover,
      letterspaced subtitle underneath */
   #deck section.slide:nth-of-type(1) .slide-md h1 {
     font-size: clamp(2.6rem, 6vw, 5rem);
@@ -347,7 +351,7 @@ notes: "That fraction is a result either way. The three questions stay on screen
     letter-spacing: 0.22em;
     font-size: clamp(0.8rem, 1.3vw, 1.05rem);
     line-height: 1.8;
-    color: var(--gtp-dim);
+    color: var(--gtp-ink);
   }
 
   /* Slide 4 (the flip): the old question is a thin setup line, not body text */
