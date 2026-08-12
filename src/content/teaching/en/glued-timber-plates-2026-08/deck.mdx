@@ -12,7 +12,7 @@ import SlideNotes from "@/components/slides/SlideNotes.astro";
 import SlideImage from "@/components/slides/SlideImage.astro";
 import SlideVideo from "@/components/slides/SlideVideo.astro";
 
-import admissibleRegionDiagram from "@/assets/content/teaching/glued-timber-plates-2026-08/admissible-region-diagram.png";
+import claimDiagram from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-7.png";
 import problemDesk from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-2.png";
 import testRig from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-3.png";
 import chipMacro from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-5.png";
@@ -83,8 +83,8 @@ notes: "Chips are nothing like buildings: different scale, different materials, 
 ---
 title: The claim
 subtitle: Requirement modules, one solver
-image: admissibleRegionDiagram
-imageAlt: "Diagram: requirement modules for structural, fabrication, cost, and carbon feed one solver, which returns the admissible region and, for an excluded design, the named requirements that rule it out"
+image: claimDiagram
+imageAlt: "Flow diagram: Structural, Fabrication, Cost, and Carbon modules feed one solver, which returns all designs that work and why a design fails (AI-generated image)"
 fit: contain
 notes: "Structural holds capacity checks. Fabrication holds press, stock, and glue limits. Cost and carbon likewise. The solver holds every module at once."
 ---
@@ -372,9 +372,13 @@ notes: "That fraction is a result either way. The three questions stay on screen
     color: var(--gtp-silicon);
   }
 
-  /* Slide 7 (claim diagram): invert the light PNG onto the dark canvas */
+  /* Slide 7 (claim diagram): flat background matching the PNG's own
+     near-black (#120e08 sampled from its corners) so the contain letterbox
+     is invisible, plus padding to keep the diagram clear of the chrome */
+  #deck section.slide:nth-of-type(7) {
+    background: #120e08;
+  }
   #deck section.slide:nth-of-type(7) > img {
-    filter: invert(0.92) hue-rotate(180deg) saturate(0.9);
-    padding: clamp(5rem, 16vh, 8rem) clamp(3rem, 9vw, 8rem) clamp(3rem, 10vh, 5rem);
+    padding: clamp(4rem, 12vh, 6rem) clamp(2rem, 6vw, 5rem) clamp(2rem, 6vh, 4rem);
   }
 `}</style>
