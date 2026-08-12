@@ -21,13 +21,13 @@ Non-critical ideas and improvements for the daniellocatelli portfolio repo. Use 
 
 **Open questions.** Does Astro's image optimization play well with widely-shared imports? Do we want one sidecar JSON per file, or one registry per source identity? Migration path for existing duplicated assets?
 
-## Dev server broken: "require is not defined" in workerd runner
+## Deprecated markdown plugin config after Astro 7 upgrade
 
-**Problem.** `pnpm dev` crashes on startup with `require is not defined` at `workers/runner-worker/index.js` (inside workerd), with astro 6.4.4 + @astrojs/cloudflare 13.6.1 + @cloudflare/vite-plugin 1.40.0. This is a known upstream incompatibility in the Cloudflare vite module runner with CommonJS shims (see cloudflare/workers-sdk#13063 and withastro/astro#16029). Reproduces with and without `.env`, so it is not config-related. Workaround: `pnpm build && pnpm preview` serves the built output through wrangler on port 4321 and works for manual checks and the chat benchmark.
+**Problem.** Astro 7 (upgraded 2026-08-12; this also fixed the previously broken dev server) logs on dev startup: "`markdown.remarkPlugins`, `markdown.rehypePlugins`, and `markdown.remarkRehype` are deprecated. Pass them to `unified({...})` from `@astrojs/markdown-remark` directly instead." The site still builds and runs; the config in `astro.config.mts` keeps working for now.
 
-**Sketch.** Astro 7 and @astrojs/cloudflare 14 are out; the durable fix is likely the major upgrade (astro ^7, @astrojs/cloudflare ^14, @cloudflare/vite-plugin ^1.50). Alternatively, watch the two upstream issues for a backported fix to 6.x/13.x and `pnpm update` within ranges once it lands.
+**Sketch.** Migrate the markdown plugin configuration to the new `@astrojs/markdown-remark` `unified({...})` form per the Astro 7 migration guide. Note: `pnpm dev` in Astro 7 runs as a detached daemon (`astro dev stop` / `status` / `logs`), and `@iconify/utils` had to become a direct devDependency so vite can pre-bundle it for workerd (pnpm strict node_modules); keep it when touching deps.
 
-**Trigger.** Next time fast dev iteration is needed (preview requires a full rebuild per change), or the next scheduled dependency-update pass.
+**Trigger.** When Astro 8 approaches or the deprecation becomes a hard error; fold into the next dependency-update pass.
 
 ## Astro Island `<style>` injection inside body flow
 
