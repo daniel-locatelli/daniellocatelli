@@ -22,7 +22,6 @@ Astro.response.status = 404;
 
 const locale = getLocale(Astro.params, Astro.url);
 const t = await getI18n<I18nNotFound>("notFound", locale);
-const homeHref = locale === "en" ? "/" : `/${locale}`;
 ---
 
 <Base
@@ -36,7 +35,10 @@ const homeHref = locale === "en" ? "/" : `/${locale}`;
     class="font-body flex min-h-[70vh] flex-col items-center justify-center gap-8 py-16 text-center"
   >
     <div class="flex items-center gap-5">
-      <Logo aria-hidden="true" class="h-14 w-14 shrink-0" />
+      <Logo
+        aria-hidden="true"
+        class="h-[1em] w-auto shrink-0 text-6xl sm:text-7xl"
+      />
       <p
         class="font-title text-6xl leading-none font-extralight tracking-widest sm:text-7xl"
         aria-hidden="true"
@@ -45,12 +47,5 @@ const homeHref = locale === "en" ? "/" : `/${locale}`;
       </p>
     </div>
     <h1 class="font-title text-2xl font-light sm:text-3xl">{t.headline}</h1>
-    <a
-      class="inline-flex items-center rounded-full border border-zinc-600 px-5 py-2 text-base transition-colors hover:border-white hover:bg-white hover:text-black"
-      data-astro-prefetch
-      href={homeHref}
-    >
-      {t.home}
-    </a>
   </Container>
 </Base>

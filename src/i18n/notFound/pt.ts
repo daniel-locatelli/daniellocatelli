@@ -6,5 +6,4 @@ export const t: I18nNotFound = {
     description: "A página que você procurava não existe.",
   },
   headline: "Esta página não existe",
-  home: "Início",
 };
