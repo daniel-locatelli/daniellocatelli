@@ -32,7 +32,7 @@ const t = await getI18n<I18nNotFound>("notFound", locale);
   }}
 >
   <Container
-    class="font-body flex min-h-[70vh] flex-col items-center justify-center gap-8 py-16 text-center"
+    class="font-body flex min-h-svh flex-col items-center justify-center gap-8 py-16 text-center"
   >
     <div class="flex items-center gap-5">
       <Logo
@@ -49,3 +49,23 @@ const t = await getI18n<I18nNotFound>("notFound", locale);
     <h1 class="font-title text-2xl font-light sm:text-3xl">{t.headline}</h1>
   </Container>
 </Base>
+
+<style is:global>
+  /* Keep the message centered in the full viewport without the footer adding
+     scroll: main spans both grid rows (min 100svh via the Container) and the
+     footer overlays the bottom of that same area instead of stacking below. */
+  body {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 100%;
+    min-height: 100svh;
+  }
+  body > main {
+    grid-row: 1 / -1;
+    grid-column: 1;
+  }
+  body > footer {
+    grid-row: 2;
+    grid-column: 1;
+  }
+</style>
