@@ -9,7 +9,7 @@ import { Icon } from "astro-icon/components";
 import { getLocale, getFileSlug } from "src/lib/routes-helpers";
 import LanguagePicker from "./LanguagePicker.astro";
 
-const locale = getLocale(Astro.params);
+const locale = getLocale(Astro.params, Astro.url);
 
 const pages = (await getCollection("pages"))
   .filter((p) => p.id.startsWith(`${locale}/`) && getFileSlug(p.id) !== "index")

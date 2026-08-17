@@ -86,10 +86,17 @@ export const getStaticPaths = (() => {
   ];
 }) satisfies GetStaticPaths;
 
+/**
+ * Resolve the current locale from route params, falling back to the first
+ * URL path segment when the route has no `locale` param (e.g. the on-demand
+ * `src/pages/404.astro`, which is rendered for any missing URL and must
+ * still localize itself for `/pt/...` and `/de/...` requests).
+ */
 export const getLocale = (
   params: Record<string, string | undefined>,
+  url?: URL,
 ): SupportedLocale => {
-  const locale = params?.locale;
+  const locale = params?.locale ?? getLocaleFromPathname(url?.pathname);
 
   // If locale is undefined, return the default
   if (!locale) {
@@ -102,4 +109,15 @@ export const getLocale = (
   }
 
   return siteConfig.defaultLocale;
+};
+
+/**
+ * Extract a supported locale from the first segment of a pathname.
+ * e.g. "/pt/projects/x" -> "pt"; "/projects/x" -> undefined
+ */
+export const getLocaleFromPathname = (
+  pathname: string | undefined,
+): SupportedLocale | undefined => {
+  const first = pathname?.split("/").find(Boolean);
+  return first && isSupportedLocale(first) ? first : undefined;
 };

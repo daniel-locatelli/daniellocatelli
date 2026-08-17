@@ -6,7 +6,7 @@ import type { I18nFooter } from "src/i18n/footer/type";
 import type { I18nMeta } from "src/i18n/meta/types";
 import { getI18n } from "src/i18n/utils";
 
-const locale = getLocale(Astro.params);
+const locale = getLocale(Astro.params, Astro.url);
 const footer = await getI18n<I18nFooter>("footer", locale);
 const meta = await getI18n<I18nMeta>("meta", locale);
 

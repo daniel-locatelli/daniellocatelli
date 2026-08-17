@@ -30,7 +30,7 @@ import { getLocale } from "src/lib/routes-helpers";
 import { getI18n } from "src/i18n/utils";
 import type { I18nMeta } from "src/i18n/meta/types";
 
-const locale = getLocale(Astro.params);
+const locale = getLocale(Astro.params, Astro.url);
 const meta = await getI18n<I18nMeta>("meta", locale);
 const newTabHint = `(${meta.openNewTab})`;
 ---

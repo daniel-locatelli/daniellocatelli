@@ -9,7 +9,7 @@ interface Props {
   exitHref?: string;
 }
 
-const locale = getLocale(Astro.params);
+const locale = getLocale(Astro.params, Astro.url);
 
 const {
   meta: {

@@ -48,13 +48,12 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Keep non-content utility pages out of the sitemap: the CS50 "*-cover"
-      // social-share pages, the localized 404 pages, and the "/deck/" slide
-      // viewers (full-screen presentations with little crawlable text) are not
-      // meant to be indexed or surfaced in search.
+      // social-share pages and the "/deck/" slide viewers (full-screen
+      // presentations with little crawlable text) are not meant to be indexed
+      // or surfaced in search. (The 404 page is server-rendered, so it never
+      // reaches the sitemap.)
       filter: (page) =>
-        !/-cover\/?$/.test(page) &&
-        !/\/404\/?$/.test(page) &&
-        !/\/deck\/?$/.test(page),
+        !/-cover\/?$/.test(page) && !/\/deck\/?$/.test(page),
       // Stamp each URL with its source file's last git commit date. Best-effort:
       // falls back to no lastmod if git history is unavailable at build time.
       serialize: serializeLastmod,

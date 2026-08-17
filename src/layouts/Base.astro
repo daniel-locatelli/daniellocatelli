@@ -11,7 +11,7 @@ interface Props {
   meta: SiteMeta;
 }
 
-const locale = getLocale(Astro.params);
+const locale = getLocale(Astro.params, Astro.url);
 
 // ... existing imports
 

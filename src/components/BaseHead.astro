@@ -6,7 +6,7 @@ import "../styles/global.css";
 import "../styles/fonts.css";
 import { getLocale } from "src/lib/routes-helpers";
 
-const locale = getLocale(Astro.params)
+const locale = getLocale(Astro.params, Astro.url)
 
 type Props = SiteMeta;
 
