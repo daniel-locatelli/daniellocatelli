@@ -32,7 +32,7 @@ const t = await getI18n<I18nNotFound>("notFound", locale);
   }}
 >
   <Container
-    class="font-body flex min-h-svh flex-col items-center justify-center gap-8 py-16 text-center"
+    class="not-found font-body flex min-h-svh flex-col items-center justify-center gap-8 py-16 text-center"
   >
     <div class="flex items-center gap-5">
       <Logo
@@ -67,5 +67,16 @@ const t = await getI18n<I18nNotFound>("notFound", locale);
   body > footer {
     grid-row: 2;
     grid-column: 1;
+  }
+  /* Short viewports (landscape phones): the overlay would cover the text, so
+     stack normally and center the message in the space above the footer. */
+  @media (max-height: 560px) {
+    body > main {
+      grid-row: 1;
+    }
+    body > main > .not-found {
+      min-height: 100%;
+      padding-block: 3.5rem 0.5rem; /* clear the fixed header */
+    }
   }
 </style>
