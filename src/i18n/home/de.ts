@@ -14,7 +14,7 @@ export const t: I18nHome = {
     id: "hero",
     hi: "Hallo,",
     greeting: "Ich bin Daniel Locatelli",
-    title: "Doktorand an der ETH Zürich",
+    title: "Doktorand, ETH Zürich",
     description:
       "Ich&nbsp;bin Doktorand bei Gramazio Kohler Research an der ETH Zürich und forsche zu Computational Design-to-Fabrication für Holzplatten-Bausysteme. Mein Hintergrund umfasst Plugins, Webanwendungen und Computational-Design-Lösungen für Architektur, Ingenieur- und Bauwesen (AEC).",
     requestQuote: "Angebot anfordern",
