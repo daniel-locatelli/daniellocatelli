@@ -25,4 +25,6 @@ export type I18nSubpage = {
   references: string,
   otherLinks: string,
   openSlideDeck: string,
+  next: string,
+  previous: string,
 }

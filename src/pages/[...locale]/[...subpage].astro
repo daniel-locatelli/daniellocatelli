@@ -92,6 +92,31 @@ const deckHref = matchingDeck
   ? `${deckBasePath}/teaching/${fileSlug}/deck`
   : null;
 
+// Next / Previous siblings: same collection and locale, ordered newest-first
+// (mirrors the listing order in [...page].astro). "Next" is the newer
+// neighbour, "Previous" the older one.
+const siblings = (
+  (await getCollection(subpage.collection as any)) as SubpageEntry[]
+)
+  .filter((p) => getEntryLocale(p.id) === entryLocale)
+  .filter((p) => !getFileSlug(p.id).startsWith("_"))
+  .sort((a, b) => {
+    if (!a.data.DateStart) return 1;
+    if (!b.data.DateStart) return -1;
+    return (
+      new Date(b.data.DateStart).getTime() -
+      new Date(a.data.DateStart).getTime()
+    );
+  });
+const currentIndex = siblings.findIndex((p) => p.id === subpage.id);
+const nextEntry = currentIndex > 0 ? siblings[currentIndex - 1] : null;
+const previousEntry =
+  currentIndex >= 0 && currentIndex < siblings.length - 1
+    ? siblings[currentIndex + 1]
+    : null;
+const siblingHref = (entry: SubpageEntry) =>
+  `${deckBasePath}/${getEntrySlug(entry)}`;
+
 // Getting images dynamically with import.meta.glob()
 // It only accepts string literals
 // https://docs.astro.build/en/recipes/dynamically-importing-images/
@@ -634,6 +659,45 @@ const foregroundClass = isLetterbox
               ))}
             </div>
           </div>
+        )
+      }
+      {
+        (nextEntry || previousEntry) && (
+          <nav
+            aria-label="Content navigation"
+            class="mt-12 mb-8 grid grid-cols-2 gap-4 px-4 sm:px-0"
+          >
+            {nextEntry ? (
+              <a
+                href={siblingHref(nextEntry)}
+                class="group flex flex-col rounded-lg border border-zinc-700 p-4 transition hover:border-green-500"
+              >
+                <span class="text-xs uppercase tracking-wide text-zinc-400">
+                  &larr; {t.next}
+                </span>
+                <span class="font-title mt-1 text-zinc-100 transition group-hover:text-green-400">
+                  {nextEntry.data.Name}
+                </span>
+              </a>
+            ) : (
+              <span />
+            )}
+            {previousEntry ? (
+              <a
+                href={siblingHref(previousEntry)}
+                class="group flex flex-col rounded-lg border border-zinc-700 p-4 text-right transition hover:border-green-500"
+              >
+                <span class="text-xs uppercase tracking-wide text-zinc-400">
+                  {t.previous} &rarr;
+                </span>
+                <span class="font-title mt-1 text-zinc-100 transition group-hover:text-green-400">
+                  {previousEntry.data.Name}
+                </span>
+              </a>
+            ) : (
+              <span />
+            )}
+          </nav>
         )
       }
     </div>
