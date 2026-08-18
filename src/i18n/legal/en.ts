@@ -13,7 +13,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Data Processing Overview",
-        content: `<p>This website collects minimal personal data. There are no cookies, no analytics, no tracking pixels, and no third-party font loading. The following sections describe the limited data processing that occurs.</p>`,
+        content: `<p>This website collects minimal personal data. There are no cookies, no third-party font loading, and no advertising or fingerprinting trackers. The only analytics tool is Cloudflare Web Analytics, a cookieless, privacy-focused service described below. The following sections describe the limited data processing that occurs.</p>`,
       },
       {
         heading: "Hosting (Cloudflare)",
@@ -26,6 +26,19 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
 <p>This processing is necessary for the delivery of the website (Art. 6(1)(f) GDPR — legitimate interest). Cloudflare Inc. is based in the United States. Data transfers to the US are covered by Cloudflare's Data Processing Addendum and EU Standard Contractual Clauses.</p>
 <p>The site also uses Cloudflare Workers KV to store operational data (AI model availability status and daily usage counters). This storage contains no personal data.</p>
 <p>More information: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a></p>`,
+      },
+      {
+        heading: "Web Analytics (Cloudflare)",
+        content: `<p>This website uses Cloudflare Web Analytics to understand aggregate traffic and site performance. A small script (<code>beacon.min.js</code>, loaded from <code>static.cloudflareinsights.com</code>) runs in your browser and reports:</p>
+<ul>
+<li>The page URL and referrer</li>
+<li>Browser and operating system type, screen size</li>
+<li>Approximate country, derived from your IP address</li>
+<li>Page-load performance metrics (Core Web Vitals)</li>
+</ul>
+<p>The data is aggregated. Cloudflare Web Analytics sets no cookies, uses no local storage, does not fingerprint your device, and does not track you across websites or build individual profiles.</p>
+<p>Legal basis: Art. 6(1)(f) GDPR — legitimate interest in measuring the use and performance of this website with a privacy-preserving, cookieless tool. Data transfers to the US are covered by Cloudflare's Data Processing Addendum and EU Standard Contractual Clauses.</p>
+<p>More information: <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a> · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a></p>`,
       },
       {
         heading: "AI Chat Feature (Anthropic, Supabase & Voyage AI)",
@@ -57,7 +70,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "No Cookies or Tracking",
-        content: `<p>This website does not set any first-party cookies. There are no analytics tools, no tracking pixels, and no advertising networks in use. Note that embedded YouTube videos (in privacy-enhanced mode) may set cookies when you choose to play them.</p>`,
+        content: `<p>This website does not set any first-party cookies. There are no advertising networks and no tracking that identifies individual visitors. Aggregate, cookieless analytics are provided by Cloudflare Web Analytics (see above). Note that embedded YouTube videos (in privacy-enhanced mode) may set cookies when you choose to play them.</p>`,
       },
       {
         heading: "External Links",
@@ -65,7 +78,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Data Retention",
-        content: `<p>This website does not persistently store any personal user data. Server logs maintained by Cloudflare are subject to Cloudflare's own retention policies.</p>`,
+        content: `<p>This website does not persistently store any personal user data. Server logs and aggregated analytics data maintained by Cloudflare are subject to Cloudflare's own retention policies.</p>`,
       },
       {
         heading: "Changes to This Policy",

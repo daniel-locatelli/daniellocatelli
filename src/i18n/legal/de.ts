@@ -13,7 +13,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Übersicht der Datenverarbeitung",
-        content: `<p>Diese Website erhebt nur minimale personenbezogene Daten. Es werden keine Cookies gesetzt, keine Analysetools verwendet, keine Tracking-Pixel eingesetzt und keine Schriftarten von Drittanbietern geladen. Die folgenden Abschnitte beschreiben die begrenzte Datenverarbeitung, die stattfindet.</p>`,
+        content: `<p>Diese Website erhebt nur minimale personenbezogene Daten. Es werden keine Cookies gesetzt, keine Schriftarten von Drittanbietern geladen und keine Werbe- oder Fingerprinting-Tracker eingesetzt. Das einzige Analysetool ist Cloudflare Web Analytics, ein cookiefreier, datenschutzfreundlicher Dienst, der unten beschrieben wird. Die folgenden Abschnitte beschreiben die begrenzte Datenverarbeitung, die stattfindet.</p>`,
       },
       {
         heading: "Hosting (Cloudflare)",
@@ -26,6 +26,19 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
 <p>Diese Verarbeitung ist für die Bereitstellung der Website erforderlich (Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse). Cloudflare Inc. hat seinen Sitz in den Vereinigten Staaten. Datenübermittlungen in die USA werden durch den Auftragsverarbeitungsvertrag von Cloudflare und die EU-Standardvertragsklauseln abgesichert.</p>
 <p>Die Website nutzt außerdem Cloudflare Workers KV zur Speicherung betrieblicher Daten (Verfügbarkeitsstatus der KI-Modelle und tägliche Nutzungszähler). Dieser Speicher enthält keine personenbezogenen Daten.</p>
 <p>Weitere Informationen: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Datenschutzrichtlinie</a></p>`,
+      },
+      {
+        heading: "Webanalyse (Cloudflare Web Analytics)",
+        content: `<p>Diese Website verwendet Cloudflare Web Analytics, um den aggregierten Datenverkehr und die Leistung der Website zu verstehen. Ein kleines Skript (<code>beacon.min.js</code>, geladen von <code>static.cloudflareinsights.com</code>) wird in Ihrem Browser ausgeführt und meldet:</p>
+<ul>
+<li>Die Seiten-URL und die Referrer-URL</li>
+<li>Browser- und Betriebssystemtyp, Bildschirmgröße</li>
+<li>Ungefähres Land, abgeleitet aus Ihrer IP-Adresse</li>
+<li>Leistungsmetriken zum Seitenaufbau (Core Web Vitals)</li>
+</ul>
+<p>Die Daten werden aggregiert. Cloudflare Web Analytics setzt keine Cookies, verwendet keinen lokalen Speicher, erstellt keinen Fingerabdruck Ihres Geräts und verfolgt Sie weder über Websites hinweg, noch werden individuelle Profile erstellt.</p>
+<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an der Messung der Nutzung und Leistung dieser Website mit einem datenschutzfreundlichen, cookiefreien Werkzeug. Datenübermittlungen in die USA werden durch den Auftragsverarbeitungsvertrag von Cloudflare und die EU-Standardvertragsklauseln abgesichert.</p>
+<p>Weitere Informationen: <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a> · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Datenschutzrichtlinie</a></p>`,
       },
       {
         heading: "KI-Chat-Funktion (Anthropic, Supabase & Voyage AI)",
@@ -57,7 +70,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Keine Cookies oder Tracking",
-        content: `<p>Diese Website setzt keine eigenen Cookies. Es werden keine Analysetools, Tracking-Pixel oder Werbenetzwerke verwendet. Beachten Sie, dass eingebettete YouTube-Videos (im erweiterten Datenschutzmodus) Cookies setzen können, wenn Sie diese abspielen.</p>`,
+        content: `<p>Diese Website setzt keine eigenen Cookies. Es werden keine Werbenetzwerke und kein Tracking eingesetzt, das einzelne Besucher identifiziert. Aggregierte, cookiefreie Analysen werden von Cloudflare Web Analytics bereitgestellt (siehe oben). Beachten Sie, dass eingebettete YouTube-Videos (im erweiterten Datenschutzmodus) Cookies setzen können, wenn Sie diese abspielen.</p>`,
       },
       {
         heading: "Externe Links",
@@ -65,7 +78,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Datenspeicherung",
-        content: `<p>Diese Website speichert keine personenbezogenen Nutzerdaten dauerhaft. Serverprotokolle, die von Cloudflare verwaltet werden, unterliegen den eigenen Aufbewahrungsrichtlinien von Cloudflare.</p>`,
+        content: `<p>Diese Website speichert keine personenbezogenen Nutzerdaten dauerhaft. Serverprotokolle und aggregierte Analysedaten, die von Cloudflare verwaltet werden, unterliegen den eigenen Aufbewahrungsrichtlinien von Cloudflare.</p>`,
       },
       {
         heading: "Änderungen dieser Datenschutzerklärung",

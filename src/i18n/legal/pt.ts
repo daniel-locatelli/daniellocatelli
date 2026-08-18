@@ -13,7 +13,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Visão Geral do Tratamento de Dados",
-        content: `<p>Este website coleta dados pessoais mínimos. Não há cookies, análises, pixels de rastreamento ou carregamento de fontes de terceiros. As seções a seguir descrevem o tratamento limitado de dados que ocorre.</p>`,
+        content: `<p>Este website coleta dados pessoais mínimos. Não há cookies, carregamento de fontes de terceiros nem rastreadores de publicidade ou de impressão digital (fingerprinting). A única ferramenta de análise é o Cloudflare Web Analytics, um serviço sem cookies e focado em privacidade, descrito abaixo. As seções a seguir descrevem o tratamento limitado de dados que ocorre.</p>`,
       },
       {
         heading: "Hospedagem (Cloudflare)",
@@ -26,6 +26,19 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
 <p>Este processamento é necessário para a entrega do website (Art. 6(1)(f) RGPD — interesse legítimo). A Cloudflare Inc. está sediada nos Estados Unidos. As transferências de dados para os EUA são cobertas pelo Adendo de Processamento de Dados da Cloudflare e pelas Cláusulas Contratuais Padrão da UE.</p>
 <p>O site também usa o Cloudflare Workers KV para armazenar dados operacionais (status de disponibilidade dos modelos de IA e contadores diários de uso). Esse armazenamento não contém dados pessoais.</p>
 <p>Mais informações: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Política de Privacidade da Cloudflare</a></p>`,
+      },
+      {
+        heading: "Análise de Tráfego (Cloudflare Web Analytics)",
+        content: `<p>Este website usa o Cloudflare Web Analytics para entender o tráfego agregado e o desempenho do site. Um pequeno script (<code>beacon.min.js</code>, carregado de <code>static.cloudflareinsights.com</code>) é executado no seu navegador e reporta:</p>
+<ul>
+<li>A URL da página e a URL de referência</li>
+<li>Tipo de navegador e sistema operacional, tamanho da tela</li>
+<li>País aproximado, derivado do seu endereço IP</li>
+<li>Métricas de desempenho de carregamento da página (Core Web Vitals)</li>
+</ul>
+<p>Os dados são agregados. O Cloudflare Web Analytics não define cookies, não usa armazenamento local, não cria impressão digital do seu dispositivo e não rastreia você entre websites nem constrói perfis individuais.</p>
+<p>Base legal: Art. 6(1)(f) RGPD — interesse legítimo em medir o uso e o desempenho deste website com uma ferramenta sem cookies que preserva a privacidade. As transferências de dados para os EUA são cobertas pelo Adendo de Processamento de Dados da Cloudflare e pelas Cláusulas Contratuais Padrão da UE.</p>
+<p>Mais informações: <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a> · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Política de Privacidade da Cloudflare</a></p>`,
       },
       {
         heading: "Chat com IA (Anthropic, Supabase e Voyage AI)",
@@ -57,7 +70,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Sem Cookies ou Rastreamento",
-        content: `<p>Este website não define cookies próprios. Não há ferramentas de análise, pixels de rastreamento ou redes de publicidade em uso. Observe que vídeos incorporados do YouTube (no modo de privacidade aprimorada) podem definir cookies quando você optar por reproduzi-los.</p>`,
+        content: `<p>Este website não define cookies próprios. Não há redes de publicidade nem rastreamento que identifique visitantes individualmente. Análises agregadas e sem cookies são fornecidas pelo Cloudflare Web Analytics (veja acima). Observe que vídeos incorporados do YouTube (no modo de privacidade aprimorada) podem definir cookies quando você optar por reproduzi-los.</p>`,
       },
       {
         heading: "Links Externos",
@@ -65,7 +78,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Retenção de Dados",
-        content: `<p>Este website não armazena permanentemente nenhum dado pessoal de usuários. Os logs do servidor mantidos pela Cloudflare estão sujeitos às próprias políticas de retenção da Cloudflare.</p>`,
+        content: `<p>Este website não armazena permanentemente nenhum dado pessoal de usuários. Os logs do servidor e os dados de análise agregados mantidos pela Cloudflare estão sujeitos às próprias políticas de retenção da Cloudflare.</p>`,
       },
       {
         heading: "Alterações a Esta Política",
