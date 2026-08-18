@@ -682,7 +682,7 @@ const foregroundClass = isLetterbox
                 class="group flex min-h-24 items-stretch overflow-hidden rounded-lg border border-zinc-700 transition hover:border-green-500"
               >
                 {nextThumb && (
-                  <span class="relative block w-36 shrink-0 self-stretch overflow-hidden bg-zinc-800">
+                  <span class="relative hidden w-36 shrink-0 self-stretch overflow-hidden bg-zinc-800 md:block">
                     {nextThumb.format === "svg" ? (
                       <img
                         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -705,7 +705,7 @@ const foregroundClass = isLetterbox
                     )}
                   </span>
                 )}
-                <span class="flex min-w-0 flex-col justify-center p-4">
+                <span class="flex min-w-0 flex-col justify-center p-3 md:p-4">
                   <span class="flex items-center gap-1.5 text-xs uppercase tracking-wide text-zinc-400">
                     <svg
                       class="h-4 w-4 shrink-0"
@@ -735,7 +735,7 @@ const foregroundClass = isLetterbox
                 href={siblingHref(previousEntry)}
                 class="group flex min-h-24 items-stretch justify-end overflow-hidden rounded-lg border border-zinc-700 text-right transition hover:border-green-500"
               >
-                <span class="flex min-w-0 flex-col justify-center p-4">
+                <span class="flex min-w-0 flex-col justify-center p-3 md:p-4">
                   <span class="flex items-center justify-end gap-1.5 text-xs uppercase tracking-wide text-zinc-400">
                     {t.previous}
                     <svg
@@ -757,7 +757,7 @@ const foregroundClass = isLetterbox
                   </span>
                 </span>
                 {previousThumb && (
-                  <span class="relative block w-36 shrink-0 self-stretch overflow-hidden bg-zinc-800">
+                  <span class="relative hidden w-36 shrink-0 self-stretch overflow-hidden bg-zinc-800 md:block">
                     {previousThumb.format === "svg" ? (
                       <img
                         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
