@@ -3,23 +3,23 @@ Cover: /assets/content/projects/icd-research-assistant-in-web-development/icd-re
 CoverAlt: Página inicial do site do ICD com o Pavilhão de Fibra BUGA.
 CoverFit: contain
 Description: "Ajudei a migrar o site do ICD para o template centralizado da Universidade de Stuttgart baseado em OpenCMS. Este projeto me proporcionou meu primeiro contato com a língua alemã e uma profunda admiração pelo portfólio de pesquisa do ICD."
-Name: "Assistente de Pesquisa em Desenvolvimento\u00A0Web no ICD"
+Name: "Assistente de Pesquisa em Desenvolvimento Web no ICD"
 Tags:
-  - Web Development
+ - Web Development
 Organization: "ICD - University of Stuttgart"
 Category: Web development
 DateStart: "2019-12-20"
 DateEnd: "2020-10-19"
 Director:
-  - Achim Menges
+ - Achim Menges
 Manager:
-  - Tobias Schwinn
+ - Tobias Schwinn
 Team:
-  - Cody Tucker
-  - Daniel Nunes Locatelli
+ - Cody Tucker
+ - Daniel Nunes Locatelli
 Link:
-  Text: ICD Universidade de Stuttgart
-  Href: "https://www.icd.uni-stuttgart.de/"
+ Text: ICD Universidade de Stuttgart
+ Href: "https://www.icd.uni-stuttgart.de/"
 
 Disclosed: true
 ---

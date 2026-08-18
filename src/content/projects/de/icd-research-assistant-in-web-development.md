@@ -5,21 +5,21 @@ CoverFit: contain
 Description: "Ich half bei der Migration der ICD-Website auf das zentralisierte OpenCMS-Template der Universität Stuttgart. Dieses Projekt ermöglichte mir meinen ersten Kontakt mit der deutschen Sprache und eine tiefe Wertschätzung für das Forschungsportfolio des ICD."
 Name: ICD Wissenschaftliche Hilfskraft in der Webentwicklung
 Tags:
-  - Web Development
+ - Web Development
 Organization: "ICD - University of Stuttgart"
 Category: Web development
 DateStart: "2019-12-20"
 DateEnd: "2020-10-19"
 Director:
-  - Achim Menges
+ - Achim Menges
 Manager:
-  - Tobias Schwinn
+ - Tobias Schwinn
 Team:
-  - Cody Tucker
-  - Daniel Nunes Locatelli
+ - Cody Tucker
+ - Daniel Nunes Locatelli
 Link:
-  Text: ICD Universität Stuttgart
-  Href: "https://www.icd.uni-stuttgart.de/"
+ Text: ICD Universität Stuttgart
+ Href: "https://www.icd.uni-stuttgart.de/"
 
 Disclosed: true
 ---
