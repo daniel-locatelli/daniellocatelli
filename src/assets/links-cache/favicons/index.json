@@ -4,11 +4,6 @@
     "source": "https://hybridaproduction.com/wp-content/uploads/2021/03/hybrida-vertical-branco1x1-150x150.png",
     "timestamp": 1787046039026
   },
-  "www.sherpa42.com.br": {
-    "file": "www.sherpa42.com.br.gif",
-    "source": "https://static.wixstatic.com/media/28e7c5_3167339166674c978a0b306b405a21df%7Emv2.gif/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/28e7c5_3167339166674c978a0b306b405a21df%7Emv2.gif",
-    "timestamp": 1787046039941
-  },
   "olafureliasson.net": {
     "file": "olafureliasson.net.png",
     "source": "https://olafureliasson.net/images/icon/favicon-32x32.png",
@@ -63,5 +58,10 @@
     "file": "www.archdaily.com.png",
     "source": "https://assets.adsttc.com/doodles/flat/favicons/circle/Favicon32x32.png",
     "timestamp": 1787046072408
+  },
+  "www.sherpa42.com.br": {
+    "file": "www.sherpa42.com.br.png",
+    "source": "https://www.google.com/s2/favicons?domain=www.sherpa42.com.br&sz=32",
+    "timestamp": 1787046323772
   }
 }

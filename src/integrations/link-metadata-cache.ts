@@ -15,6 +15,9 @@ const TTL_MS = 3 * 365 * 24 * 60 * 60 * 1000; // 3 years
 // Favicons change more often than OG metadata; refresh them quarterly.
 const FAVICON_TTL_MS = 90 * 24 * 60 * 60 * 1000;
 const FAVICON_INDEX = path.join(CACHE_DIR, "favicons", "index.json");
+// Skip oversized candidates (e.g. animated GIF "favicons" on Wix sites) and
+// fall through to the next one; a 16px icon should never be this large.
+const FAVICON_MAX_BYTES = 200 * 1024;
 const IMAGE_EXT_PATTERN = /\.(jpe?g|png|webp|gif|svg|avif)$/i;
 const FAVICON_MIME_EXT: Record<string, string> = {
   "image/png": ".png",
@@ -211,7 +214,7 @@ async function cacheFavicon(
       const ext = FAVICON_MIME_EXT[mime];
       if (!ext) continue;
       const buffer = new Uint8Array(await response.arrayBuffer());
-      if (buffer.byteLength === 0) continue;
+      if (buffer.byteLength === 0 || buffer.byteLength > FAVICON_MAX_BYTES) continue;
 
       const file = `${hostname.replace(/[^a-z0-9.-]/gi, "_")}${ext}`;
       // Drop a stale file with a different extension so the folder stays clean.
