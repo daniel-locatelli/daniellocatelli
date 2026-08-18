@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import {
   importCoverImage,
+  importImage,
   generateBlurDataUrl,
 } from "../../lib/blog-helpers.ts";
 import { Image } from "astro:assets";
@@ -126,6 +127,15 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 
 // Cover image
 const image = await importCoverImage(subpage, images);
+
+// Thumbnails for the Next / Previous cards (Thumbnail field, else Cover)
+const siblingThumb = async (entry: SubpageEntry | null) =>
+  entry
+    ? (await importImage(entry, images, "Thumbnail")) ||
+      (await importCoverImage(entry, images))
+    : null;
+const nextThumb = await siblingThumb(nextEntry);
+const previousThumb = await siblingThumb(previousEntry);
 
 let coverUrl = "";
 let blurDataUrl = "";
@@ -670,13 +680,52 @@ const foregroundClass = isLetterbox
             {nextEntry ? (
               <a
                 href={siblingHref(nextEntry)}
-                class="group flex flex-col rounded-lg border border-zinc-700 p-4 transition hover:border-green-500"
+                class="group flex min-h-24 items-stretch overflow-hidden rounded-lg border border-zinc-700 transition hover:border-green-500"
               >
-                <span class="text-xs uppercase tracking-wide text-zinc-400">
-                  &larr; {t.next}
-                </span>
-                <span class="font-title mt-1 text-zinc-100 transition group-hover:text-green-400">
-                  {nextEntry.data.Name}
+                {nextThumb && (
+                  <span class="relative block w-36 shrink-0 self-stretch overflow-hidden bg-zinc-800">
+                    {nextThumb.format === "svg" ? (
+                      <img
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        src={nextThumb.src}
+                        alt=""
+                        width={nextThumb.width}
+                        height={nextThumb.height}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <Image
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        src={nextThumb}
+                        alt=""
+                        width={288}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                  </span>
+                )}
+                <span class="flex min-w-0 flex-col justify-center p-4">
+                  <span class="flex items-center gap-1.5 text-xs uppercase tracking-wide text-zinc-400">
+                    <svg
+                      class="h-4 w-4 shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M19 12H5" />
+                      <path d="m12 19-7-7 7-7" />
+                    </svg>
+                    {t.next}
+                  </span>
+                  <span class="font-title mt-1 text-zinc-100 transition group-hover:text-green-400">
+                    {nextEntry.data.Name}
+                  </span>
                 </span>
               </a>
             ) : (
@@ -685,14 +734,53 @@ const foregroundClass = isLetterbox
             {previousEntry ? (
               <a
                 href={siblingHref(previousEntry)}
-                class="group flex flex-col rounded-lg border border-zinc-700 p-4 text-right transition hover:border-green-500"
+                class="group flex min-h-24 items-stretch justify-end overflow-hidden rounded-lg border border-zinc-700 text-right transition hover:border-green-500"
               >
-                <span class="text-xs uppercase tracking-wide text-zinc-400">
-                  {t.previous} &rarr;
+                <span class="flex min-w-0 flex-col justify-center p-4">
+                  <span class="flex items-center justify-end gap-1.5 text-xs uppercase tracking-wide text-zinc-400">
+                    {t.previous}
+                    <svg
+                      class="h-4 w-4 shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                  <span class="font-title mt-1 text-zinc-100 transition group-hover:text-green-400">
+                    {previousEntry.data.Name}
+                  </span>
                 </span>
-                <span class="font-title mt-1 text-zinc-100 transition group-hover:text-green-400">
-                  {previousEntry.data.Name}
-                </span>
+                {previousThumb && (
+                  <span class="relative block w-36 shrink-0 self-stretch overflow-hidden bg-zinc-800">
+                    {previousThumb.format === "svg" ? (
+                      <img
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        src={previousThumb.src}
+                        alt=""
+                        width={previousThumb.width}
+                        height={previousThumb.height}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <Image
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        src={previousThumb}
+                        alt=""
+                        width={288}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                  </span>
+                )}
               </a>
             ) : (
               <span />
