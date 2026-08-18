@@ -1,6 +1,6 @@
 URL: https://daniellocatelli.com/pt/projects/bar-stage-heineken-by-atelier-marko-brajovic-for-sherpa42
 
-# Bar & Palco Heineken por Atelier Marko Brajovic
+# Bar & Palco Heineken por Atelier Marko Brajovic
 
 Description: Arquiteto responsável pelo design paramétrico, produção e supervisão das instalações do palco e bar Heineken no MECA Festival 2018. O projeto utilizou a estrela da Heineken como ponto de partida para gerar superfícies dinâmicas de bambu através de software paramétrico.
 Tags: Parametric Design, Grasshopper, Bamboo

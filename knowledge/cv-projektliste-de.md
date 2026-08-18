@@ -4,8 +4,8 @@ URL: https://daniellocatelli.com/de/full-cv
 
 ### Portfolio-Website
 Daniel Locatelli
-January 2026 | Software
-Entwicklung dieser Portfolio-Website mit Astro, Three.js, Notion-API, Supabase und Claude.
+April 2024 | Software
+Diese Website: eine Astro-Seite, deren Inhalte als reines Markdown vorliegen, damit Claude Code als CMS fungieren kann, mit einem Claude-gestützten Chat, einer scrollgesteuerten geodätischen Kugel, Folienpräsentationen im Browser und einer agentenfähigen Oberfläche auf Cloudflare.
 
 ### BuildSystems-Plugin für Grasshopper
 BuildSystems
@@ -21,7 +21,7 @@ Dieser Rechner simuliert Bankdarlehen und Förderungen und macht nachhaltiges Ba
 August 2023 – April 2026 | Software
 Entwicklung der BuildSystems-Website mit dem Astro-Framework unter Nutzung der Notion-API als CMS.
 
-### Circular Component Creator von BuildSystems
+### Circular Component Creator von BuildSystems
 BuildSystems GmbH
 June 2023 – July 2023 | UI/UX Design
 Konzeptionelle Designstudie für eine Web-Applikation zum Durchsuchen, Filtern und Vergleichen zirkulärer Baukomponenten. Entwicklung von UI/UX-Mockups in Figma und Definition der Datenarchitektur.
@@ -189,7 +189,7 @@ November 2018 | Computational Design
 Atelier Marko Brajovic
 July 2018 – October 2018 | Bühnenbild
 
-### Bar & Bühne Heineken von Atelier Marko Brajovic
+### Bar & Bühne Heineken von Atelier Marko Brajovic
 Atelier Marko Brajovic
 June 2018 – November 2018 | Computational Design
 Verantwortlicher Architekt für parametrisches Design, Produktion und Überwachung der Heineken-Bühne und Bar-Installationen beim MECA Festival 2018. Das Design nutzte den Heineken-Stern als Ausgangspunkt zur Erzeugung dynamischer Bambusoberflächen durch parametrische Software.

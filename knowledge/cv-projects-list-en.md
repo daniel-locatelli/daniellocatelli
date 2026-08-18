@@ -4,8 +4,8 @@ URL: https://daniellocatelli.com/full-cv
 
 ### Portfolio Website
 Daniel Locatelli
-January 2026 | Software
-Developed this portfolio website using Astro, Three.js, Notion API, Supabase, and Claude.
+April 2024 | Software
+This website: an Astro site whose content lives as plain markdown so that Claude Code can act as the CMS, with a Claude-powered chat, a scroll-driven geodesic sphere, in-browser slide decks, and an agent-ready surface on Cloudflare.
 
 ### BuildSystems plugin for Grasshopper
 BuildSystems
@@ -21,7 +21,7 @@ This calculator simulates bank loans and subsidies, making sustainable construct
 August 2023 – April 2026 | Software
 Developed the BuildSystems website using the Astro framework, leveraging the Notion API as a CMS.
 
-### Circular Component Creator by BuildSystems
+### Circular Component Creator by BuildSystems
 BuildSystems GmbH
 June 2023 – July 2023 | UI/UX Design
 Conceptual design study for a web application to browse, filter, and compare circular building components. Developed UI/UX mockups in Figma and defined the underlying data architecture.
@@ -146,7 +146,7 @@ ICD - University of Stuttgart
 March 2020 – April 2020 | Computational design
 It was interesting to understand the computational strategy to generate the geometry for a self-curving cross-laminated timber plate. The trick here is to work with cylinders because timber's natural curvature happens perpendicular to the direction of the fibers.
 
-### ICD Research Assistant in Web Development
+### ICD Research Assistant in Web Development
 ICD - University of Stuttgart
 December 2019 – October 2020 | Web development
 I helped migrate the ICD website to the University of Stuttgart's centralized OpenCMS template. This project gave me my first contact with the German language and a deep appreciation for the ICD's research portfolio.
@@ -189,7 +189,7 @@ November 2018 | Computational Design
 Atelier Marko Brajovic
 July 2018 – October 2018 | Scenic design
 
-### Bar & Stage Heineken by Atelier Marko Brajovic
+### Bar & Stage Heineken by Atelier Marko Brajovic
 Atelier Marko Brajovic
 June 2018 – November 2018 | Computational Design
 Architect in charge of the parametric design, production and supervision of the Heineken stage and bar installations at the MECA Festival 2018. The design used the Heineken star as the starting point for generating dynamic bamboo surfaces through parametric software.

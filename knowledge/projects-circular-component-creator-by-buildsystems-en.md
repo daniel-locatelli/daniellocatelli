@@ -1,6 +1,6 @@
 URL: https://daniellocatelli.com/projects/circular-component-creator-by-buildsystems
 
-# Circular Component Creator by BuildSystems
+# Circular Component Creator by BuildSystems
 
 Description: Conceptual design study for a web application to browse, filter, and compare circular building components. Developed UI/UX mockups in Figma and defined the underlying data architecture.
 Tags: UI/UX Design, Figma, Circular Construction

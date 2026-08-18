@@ -1,6 +1,6 @@
 URL: https://daniellocatelli.com/pt/projects/icd-research-assistant-in-web-development
 
-# Assistente de Pesquisa em Desenvolvimento Web no ICD
+# Assistente de Pesquisa em Desenvolvimento Web no ICD
 
 Description: Ajudei a migrar o site do ICD para o template centralizado da Universidade de Stuttgart baseado em OpenCMS. Este projeto me proporcionou meu primeiro contato com a língua alemã e uma profunda admiração pelo portfólio de pesquisa do ICD.
 Tags: Web Development

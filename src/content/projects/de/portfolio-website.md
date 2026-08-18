@@ -1,15 +1,30 @@
-URL: https://daniellocatelli.com/de/projects/portfolio-website
-
-# Portfolio-Website
-
-Description: Diese Website: eine Astro-Seite, deren Inhalte als reines Markdown vorliegen, damit Claude Code als CMS fungieren kann, mit einem Claude-gestützten Chat, einer scrollgesteuerten geodätischen Kugel, Folienpräsentationen im Browser und einer agentenfähigen Oberfläche auf Cloudflare.
-Tags: Web Development, Astro, TypeScript, Claude, Three.js, Cloudflare
+---
+Name: Portfolio-Website
+Description: "Diese Website: eine Astro-Seite, deren Inhalte als reines Markdown vorliegen, damit Claude Code als CMS fungieren kann, mit einem Claude-gestützten Chat, einer scrollgesteuerten geodätischen Kugel, Folienpräsentationen im Browser und einer agentenfähigen Oberfläche auf Cloudflare."
+DateStart: "2024-04-27"
+Organization: "Daniel Locatelli"
 Category: Software
-Team: Daniel Nunes Locatelli
-Organization: Daniel Locatelli
+Tags:
+  - Web Development
+  - Astro
+  - TypeScript
+  - Claude
+  - Three.js
+  - Cloudflare
+Team:
+  - Daniel Nunes Locatelli
+Link:
+  Text: daniellocatelli.com
+  Href: "https://daniellocatelli.com"
+OtherLinks:
+  - Text: Quellcode auf GitHub
+    Href: "https://github.com/daniel-locatelli/daniellocatelli"
+  - Text: Agent Readiness (Cloudflare Blog)
+    Href: "https://blog.cloudflare.com/agent-readiness/"
+  - Text: Is It Agent Ready?
+    Href: "https://isitagentready.com/"
 Place: Online
-Date: April 2024
-Link: https://daniellocatelli.com
+---
 
 Das ist die Website, die Sie gerade lesen. Sie begann im April 2024 als kleine Astro-Seite, die ihre Inhalte aus Notion bezog, und ist seitdem zu einer Spielwiese für die Art geworden, wie ich gerne Dinge baue: schnelle statische Seiten, Inhalte, die sowohl für Menschen als auch für KI-Werkzeuge leicht lesbar sind, und ein paar interaktive Elemente dort, wo sie etwas beitragen.
 
@@ -59,9 +74,10 @@ Da ein wachsender Teil des Verkehrs auf einer solchen Website künftig von KI-Ag
 - eine Markdown-Fassung jeder Inhaltsseite (einfach `.md` an die URL anhängen) sowie Content Negotiation, sodass eine Anfrage mit `Accept: text/markdown` direkt Markdown erhält;
 - eine `robots.txt`, die KI-Crawler ausdrücklich willkommen heißt, eine Sitemap mit Bildeinträgen und einen API-Katalog unter `/.well-known/`;
 - einen kleinen, schreibgeschützten [MCP](https://modelcontextprotocol.io/)-Server, damit Agenten die Inhalte der Website als Werkzeuge abfragen können;
-- [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/)-Discovery-Einträge (SVCB-Einträge `_mcp._agents` und `_index._agents`, DNSSEC-signiert), damit Agenten den MCP-Endpunkt allein über den Domainnamen finden.
+- [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/)-Discovery-Einträge (SVCB-Einträge `_mcp._agents` und `_index._agents`, DNSSEC-signiert), damit Agenten den MCP-Endpunkt allein über den Domainnamen finden;
+- einen [Agent-Skills](https://agentskills.io/)-Index unter `/.well-known/agent-skills/` mit zwei `SKILL.md`-Dateien, die einem Agenten erklären, wie er die Website per MCP abfragt oder als Markdown liest.
 
-Die Content Negotiation auf vorgerenderten Seiten zum Laufen zu bringen, erforderte einiges Graben darin, wie die Anfrage-Pipeline von Cloudflare, Workers Static Assets und die Build-Zeit-Middleware von Astro zusammenspielen; die Lösung ist ein Cloudflare-Snippet auf Zonenebene, das die URL umschreibt, bevor sie den Worker erreicht. Die Website stieg von 25 % auf [isitagentready.com](https://isitagentready.com/), dem Prüfwerkzeug zu Cloudflares [Leitfaden zur Agentenfähigkeit](https://blog.cloudflare.com/agent-readiness/), auf das Bestehen aller aufgeführten Fähigkeiten.
+Die Content Negotiation auf vorgerenderten Seiten zum Laufen zu bringen, erforderte einiges Graben darin, wie die Anfrage-Pipeline von Cloudflare, Workers Static Assets und die Build-Zeit-Middleware von Astro zusammenspielen; die Lösung ist ein Cloudflare-Snippet auf Zonenebene, das die URL umschreibt, bevor sie den Worker erreicht. Die Website stieg von 25 % auf [isitagentready.com](https://isitagentready.com/), dem Prüfwerkzeug zu Cloudflares [Leitfaden zur Agentenfähigkeit](https://blog.cloudflare.com/agent-readiness/), auf das Bestehen aller Fähigkeiten, die das Prüfwerkzeug damals aufführte; das Werkzeug ergänzt laufend neue Kategorien, und die Website zieht nach.
 
 ## Performance und Lighthouse
 

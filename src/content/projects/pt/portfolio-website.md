@@ -1,15 +1,30 @@
-URL: https://daniellocatelli.com/pt/projects/portfolio-website
-
-# Site Portfólio
-
-Description: Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, uma esfera geodésica movida pelo scroll, apresentações de slides no navegador e uma superfície pronta para agentes na Cloudflare.
-Tags: Web Development, Astro, TypeScript, Claude, Three.js, Cloudflare
+---
+Name: Site Portfólio
+Description: "Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, uma esfera geodésica movida pelo scroll, apresentações de slides no navegador e uma superfície pronta para agentes na Cloudflare."
+DateStart: "2024-04-27"
+Organization: "Daniel Locatelli"
 Category: Software
-Team: Daniel Nunes Locatelli
-Organization: Daniel Locatelli
+Tags:
+  - Web Development
+  - Astro
+  - TypeScript
+  - Claude
+  - Three.js
+  - Cloudflare
+Team:
+  - Daniel Nunes Locatelli
+Link:
+  Text: daniellocatelli.com
+  Href: "https://daniellocatelli.com"
+OtherLinks:
+  - Text: Código-fonte no GitHub
+    Href: "https://github.com/daniel-locatelli/daniellocatelli"
+  - Text: Agent Readiness (Cloudflare Blog)
+    Href: "https://blog.cloudflare.com/agent-readiness/"
+  - Text: Is It Agent Ready?
+    Href: "https://isitagentready.com/"
 Place: Online
-Date: April 2024
-Link: https://daniellocatelli.com
+---
 
 Este é o site que você está lendo agora. Ele começou em abril de 2024 como um pequeno site em Astro que puxava suas páginas do Notion e, desde então, virou um campo de testes para o jeito como gosto de construir as coisas: páginas estáticas rápidas, conteúdo fácil de ler tanto para pessoas quanto para ferramentas de IA, e algumas peças interativas onde elas realmente acrescentam algo.
 
@@ -59,9 +74,10 @@ Como boa parte do tráfego de um site como este virá cada vez mais de agentes d
 - uma versão em markdown de cada página de conteúdo (basta acrescentar `.md` à URL), além de negociação de conteúdo para que uma requisição com `Accept: text/markdown` receba markdown diretamente;
 - um `robots.txt` que dá boas-vindas explícitas aos crawlers de IA, um sitemap com entradas de imagens e um catálogo de API em `/.well-known/`;
 - um pequeno servidor [MCP](https://modelcontextprotocol.io/) somente leitura, para que agentes possam consultar o conteúdo do site como ferramentas;
-- registros de descoberta [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/) (registros SVCB `_mcp._agents` e `_index._agents`, assinados com DNSSEC), para que agentes encontrem o endpoint MCP apenas a partir do nome de domínio.
+- registros de descoberta [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/) (registros SVCB `_mcp._agents` e `_index._agents`, assinados com DNSSEC), para que agentes encontrem o endpoint MCP apenas a partir do nome de domínio;
+- um índice de [Agent Skills](https://agentskills.io/) em `/.well-known/agent-skills/` com dois arquivos `SKILL.md` que ensinam um agente a consultar o site via MCP ou a lê-lo como markdown.
 
-Fazer a negociação de conteúdo funcionar em páginas pré-renderizadas exigiu investigar como o pipeline de requisições da Cloudflare, o Workers Static Assets e o middleware de build do Astro interagem; a solução é um Snippet da Cloudflare no nível da zona que reescreve a URL antes de ela chegar ao Worker. O site saiu de uma pontuação de 25% no [isitagentready.com](https://isitagentready.com/), o verificador que acompanha o [guia de prontidão para agentes](https://blog.cloudflare.com/agent-readiness/) da Cloudflare, para passar em todas as capacidades listadas.
+Fazer a negociação de conteúdo funcionar em páginas pré-renderizadas exigiu investigar como o pipeline de requisições da Cloudflare, o Workers Static Assets e o middleware de build do Astro interagem; a solução é um Snippet da Cloudflare no nível da zona que reescreve a URL antes de ela chegar ao Worker. O site saiu de uma pontuação de 25% no [isitagentready.com](https://isitagentready.com/), o verificador que acompanha o [guia de prontidão para agentes](https://blog.cloudflare.com/agent-readiness/) da Cloudflare, para passar em todas as capacidades que o verificador listava na época; o verificador continua adicionando categorias, e o site acompanha.
 
 ## Desempenho e Lighthouse
 

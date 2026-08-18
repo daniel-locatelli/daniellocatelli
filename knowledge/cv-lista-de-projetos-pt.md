@@ -2,10 +2,10 @@ URL: https://daniellocatelli.com/pt/full-cv
 
 # Daniel Locatelli – Lista de Projetos
 
-### Website Portfólio
+### Site Portfólio
 Daniel Locatelli
-January 2026 | Software
-Desenvolvimento deste website portfólio utilizando Astro, Three.js, Notion API, Supabase e Claude.
+April 2024 | Software
+Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, uma esfera geodésica movida pelo scroll, apresentações de slides no navegador e uma superfície pronta para agentes na Cloudflare.
 
 ### Plugin da BuildSystems para o Grasshopper
 BuildSystems
@@ -21,7 +21,7 @@ Esta calculadora simula empréstimos e subsídios bancários, tornando construç
 August 2023 – April 2026 | Software
 Desenvolvimento do site da BuildSystems com o framework Astro, utilizando a API do Notion como CMS.
 
-### Criador de Componentes Circulares por BuildSystems
+### Criador de Componentes Circulares por BuildSystems
 BuildSystems GmbH
 June 2023 – July 2023 | Design UI/UX
 Estudo conceitual de design para um aplicativo web para navegar, filtrar e comparar componentes construtivos circulares. Desenvolvimento de mockups UI/UX no Figma e definição da arquitetura de dados.
@@ -146,7 +146,7 @@ ICD - University of Stuttgart
 March 2020 – April 2020 | Computational design
 Foi interessante entender a estratégia computacional para gerar a geometria de uma placa de madeira laminada cruzada autocurvante. O truque aqui é trabalhar com cilindros porque a curvatura natural da madeira acontece perpendicularmente à direção das fibras.
 
-### Assistente de Pesquisa em Desenvolvimento Web no ICD
+### Assistente de Pesquisa em Desenvolvimento Web no ICD
 ICD - University of Stuttgart
 December 2019 – October 2020 | Web development
 Ajudei a migrar o site do ICD para o template centralizado da Universidade de Stuttgart baseado em OpenCMS. Este projeto me proporcionou meu primeiro contato com a língua alemã e uma profunda admiração pelo portfólio de pesquisa do ICD.
@@ -189,7 +189,7 @@ November 2018 | Instalação
 Atelier Marko Brajovic
 July 2018 – October 2018 | Cenografia
 
-### Bar & Palco Heineken por Atelier Marko Brajovic
+### Bar & Palco Heineken por Atelier Marko Brajovic
 Atelier Marko Brajovic
 June 2018 – November 2018 | Computational Design
 Arquiteto responsável pelo design paramétrico, produção e supervisão das instalações do palco e bar Heineken no MECA Festival 2018. O projeto utilizou a estrela da Heineken como ponto de partida para gerar superfícies dinâmicas de bambu através de software paramétrico.

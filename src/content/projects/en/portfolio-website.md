@@ -1,15 +1,30 @@
-URL: https://daniellocatelli.com/projects/portfolio-website
-
-# Portfolio Website
-
-Description: This website: an Astro site whose content lives as plain markdown so that Claude Code can act as the CMS, with a Claude-powered chat, a scroll-driven geodesic sphere, in-browser slide decks, and an agent-ready surface on Cloudflare.
-Tags: Web Development, Astro, TypeScript, Claude, Three.js, Cloudflare
+---
+Name: Portfolio Website
+Description: "This website: an Astro site whose content lives as plain markdown so that Claude Code can act as the CMS, with a Claude-powered chat, a scroll-driven geodesic sphere, in-browser slide decks, and an agent-ready surface on Cloudflare."
+DateStart: "2024-04-27"
+Organization: "Daniel Locatelli"
 Category: Software
-Team: Daniel Nunes Locatelli
-Organization: Daniel Locatelli
+Tags:
+  - Web Development
+  - Astro
+  - TypeScript
+  - Claude
+  - Three.js
+  - Cloudflare
+Team:
+  - Daniel Nunes Locatelli
+Link:
+  Text: daniellocatelli.com
+  Href: "https://daniellocatelli.com"
+OtherLinks:
+  - Text: Source code on GitHub
+    Href: "https://github.com/daniel-locatelli/daniellocatelli"
+  - Text: Agent Readiness (Cloudflare Blog)
+    Href: "https://blog.cloudflare.com/agent-readiness/"
+  - Text: Is It Agent Ready?
+    Href: "https://isitagentready.com/"
 Place: Online
-Date: April 2024
-Link: https://daniellocatelli.com
+---
 
 This is the website you are reading right now. It started in April 2024 as a small Astro site pulling its pages from Notion, and it has since grown into a playground for the way I like to build things: fast static pages, content that is easy for both humans and AI tools to read, and a few interactive pieces where they add something.
 
@@ -59,9 +74,10 @@ Since much of the traffic to a site like this will increasingly come from AI age
 - a markdown companion for every content page (append `.md` to the URL), plus content negotiation so that a request with `Accept: text/markdown` receives markdown directly;
 - a `robots.txt` that explicitly welcomes AI crawlers, a sitemap with image entries, and an API catalog under `/.well-known/`;
 - a small read-only [MCP](https://modelcontextprotocol.io/) server, so that agents can query the site's content as tools;
-- [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/) discovery records (`_mcp._agents` and `_index._agents` SVCB records, DNSSEC-signed), so that agents can find the MCP endpoint from the domain name alone.
+- [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/) discovery records (`_mcp._agents` and `_index._agents` SVCB records, DNSSEC-signed), so that agents can find the MCP endpoint from the domain name alone;
+- an [Agent Skills](https://agentskills.io/) index under `/.well-known/agent-skills/` with two `SKILL.md` files that teach an agent how to query the site via MCP or read it as markdown.
 
-Getting content negotiation to work on prerendered pages took some digging into how Cloudflare's request pipeline, Workers Static Assets, and Astro's build-time middleware interact; the solution is a zone-level Cloudflare Snippet that rewrites the URL before it reaches the Worker. The site went from a 25% score on [isitagentready.com](https://isitagentready.com/), the checker that accompanies Cloudflare's [agent-readiness guide](https://blog.cloudflare.com/agent-readiness/), to passing every listed capability.
+Getting content negotiation to work on prerendered pages took some digging into how Cloudflare's request pipeline, Workers Static Assets, and Astro's build-time middleware interact; the solution is a zone-level Cloudflare Snippet that rewrites the URL before it reaches the Worker. The site went from a 25% score on [isitagentready.com](https://isitagentready.com/), the checker that accompanies Cloudflare's [agent-readiness guide](https://blog.cloudflare.com/agent-readiness/), to passing every capability the checker listed at the time; the checker keeps adding categories, and the site follows.
 
 ## Performance and Lighthouse
 

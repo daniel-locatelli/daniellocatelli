@@ -55,6 +55,14 @@ src/
 - **Components:** Astro components (`.astro`) for static content, React components (`.tsx`) for interactivity (e.g., `HeroChat.tsx`).
 - **Slide authoring:** Decks live at `src/content/teaching/<locale>/<slug>/deck.mdx`. See `docs/slides/AUTHORING.md` for the full schema. **Default to YAML fences for simple slides; drop to JSX (`<Slide>`/`<SlideImage>`/`<SlideVideo>`/`<SlideImageRow>`) only for overlays, multiple positioned children, or custom layouts.** Background image (full-bleed) is the top-level `image:` field; foreground positioned content currently requires JSX. The YAML plugin lives at `src/lib/vite-presentation-slides.ts`.
 
+## Agent Skills
+
+Public agent skills live in `public/.well-known/agent-skills/<name>/SKILL.md` and are listed in `index.json` next to them (with sha256 digests). **After adding or editing any SKILL.md, run `pnpm build:skills`** to regenerate the index; the e2e suite (`tests/e2e/agent-readiness.spec.ts`) checks that every listed skill resolves.
+
+## Website Self-Description
+
+The site describes its own technology in `src/content/projects/{en,pt,de}/portfolio-website.md`. **After any meaningful change to the website itself (adding or removing a feature, changing the stack, hosting, AI pipeline, performance work, etc.), update that content in all three locales** so the page stays an accurate account of how the site is built. Then run `/sync-knowledge` as with any content change.
+
 ## Environment Variables
 
 Required in `.env`:

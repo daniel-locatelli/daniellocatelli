@@ -21,5 +21,5 @@ Link: https://markobrajovic.com/parada-coca-cola/
 Parada Coca-Cola was my very first project where I applied computational design. This sensorial experience was inspired by the Coca-Cola bottle, mimicking the bubbles and colors of the drink. It also had many other activations, as they call in marketing agencies in Brazil.
 
 ## Computational Design
-My role in the project was to place the plastic spheres parametrically while avoiding colliding with each other and the cables that connected them to the ceiling. For that, I used Grasshopper and Galapagos.
+My role in the project was to place the plastic spheres parametrically, making sure that neither the spheres nor the cables suspending them from the ceiling collided with one another. For that, I used Grasshopper and Galapagos.
 Another task that came later was to generate a spreadsheet with all the cable lengths and the tags to properly organize all the material to be shipped and deployed. Well, at least this was the idea. Because, at some point, someone thought it would be nice to remove the tags 🤯. It was a nightmare for the girls coordinating the event.

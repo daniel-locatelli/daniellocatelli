@@ -63,5 +63,20 @@
     "file": "www.sherpa42.com.br.png",
     "source": "https://www.google.com/s2/favicons?domain=www.sherpa42.com.br&sz=32",
     "timestamp": 1787046323772
+  },
+  "github.com": {
+    "file": "github.com.png",
+    "source": "https://github.com/fluidicon.png",
+    "timestamp": 1787055371648
+  },
+  "blog.cloudflare.com": {
+    "file": "blog.cloudflare.com.svg",
+    "source": "https://blog.cloudflare.com/favicon.svg",
+    "timestamp": 1787057607380
+  },
+  "isitagentready.com": {
+    "file": "isitagentready.com.svg",
+    "source": "https://isitagentready.com/favicon.svg",
+    "timestamp": 1787057607577
   }
 }
