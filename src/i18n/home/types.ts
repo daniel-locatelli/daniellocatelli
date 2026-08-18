@@ -71,6 +71,8 @@ export type Project = {
   description: string;
   technologies: string;
   imageUrl: ImageMetadata;
+  /** Descriptive alt text; falls back to "Screenshot of {title}" when omitted. */
+  imageAlt?: string;
   internalLink: string;
 };
 

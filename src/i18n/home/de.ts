@@ -107,6 +107,8 @@ export const t: I18nHome = {
           "Unterstützung bei der digitalen Fertigung von Common Sky unter Verwendung von Grasshopper und Sandbox Topology. Fokus auf Geometrieverarbeitung und Automatisierung von Fertigungsabläufen.",
         technologies: "Scripting in Grasshopper/Rhino3D.",
         imageUrl: artEngineeringCommonSkies,
+        imageAlt:
+          "Common-Sky-Installation von Studio Other Spaces: ein geodätisches Glas- und Spiegeldach über dem Atrium des Buffalo AKG Art Museum",
         internalLink:
           "/projects/common-sky-by-artengineering-for-studio-other-spaces",
       },

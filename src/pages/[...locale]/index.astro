@@ -138,7 +138,7 @@ const newTabHint = `(${meta.openNewTab})`;
                     src={project.imageUrl}
                     widths={[480, 768, 1024, 1536]}
                     sizes="(min-width: 768px) 704px, 100vw"
-                    alt={`Screenshot of ${project.title}`}
+                    alt={project.imageAlt ?? `Screenshot of ${project.title}`}
                     class="h-full w-full object-cover"
                   />
                 </div>
