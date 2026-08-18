@@ -4,6 +4,8 @@ import { generateLinkKey } from "@/lib/link-metadata-helpers";
 import {
   metadataCache,
   imageCache,
+  faviconCache,
+  faviconIndex,
   getUserAssets,
 } from "@/components/link-preview-cache";
 import type {
@@ -63,7 +65,20 @@ const hostname = new URL(link.Href).hostname;
 const title = link.Text ?? cached?.title ?? hostname;
 const description = link.Description ?? cached?.description ?? null;
 const showImage = !link.HideMedia && resolvedImage !== null;
-const faviconSrc = `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`;
+
+// Favicon: served from the local cache so visitors make no third-party
+// request. If the cache has no entry for this host, no icon is rendered.
+let faviconSrc: string | null = null;
+const indexLoader =
+  faviconIndex["/src/assets/links-cache/favicons/index.json"];
+if (indexLoader) {
+  const index = (await indexLoader()).default;
+  const file = index[hostname]?.file;
+  const loader = file
+    ? faviconCache[`/src/assets/links-cache/favicons/${file}`]
+    : undefined;
+  if (loader) faviconSrc = await loader();
+}
 ---
 
 <a
@@ -80,15 +95,17 @@ const faviconSrc = `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`
       <span class="text-xs text-zinc-400 line-clamp-2">{description}</span>
     )}
     <span class="mt-1 flex items-center gap-2 text-xs text-zinc-500">
-      <img
-        src={faviconSrc}
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        width="16"
-        height="16"
-        class="inline-block h-4 w-4 shrink-0"
-      />
+      {faviconSrc && (
+        <img
+          src={faviconSrc}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          width="16"
+          height="16"
+          class="inline-block h-4 w-4 shrink-0"
+        />
+      )}
       <span class="truncate">{hostname}</span>
     </span>
   </div>

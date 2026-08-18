@@ -12,7 +12,19 @@ import type { CachedLinkMetadata, OtherLinkEntry } from "../types/link-preview";
 
 const CACHE_DIR = "src/assets/links-cache";
 const TTL_MS = 3 * 365 * 24 * 60 * 60 * 1000; // 3 years
+// Favicons change more often than OG metadata; refresh them quarterly.
+const FAVICON_TTL_MS = 90 * 24 * 60 * 60 * 1000;
+const FAVICON_INDEX = path.join(CACHE_DIR, "favicons", "index.json");
 const IMAGE_EXT_PATTERN = /\.(jpe?g|png|webp|gif|svg|avif)$/i;
+const FAVICON_MIME_EXT: Record<string, string> = {
+  "image/png": ".png",
+  "image/x-icon": ".ico",
+  "image/vnd.microsoft.icon": ".ico",
+  "image/svg+xml": ".svg",
+  "image/jpeg": ".jpg",
+  "image/gif": ".gif",
+  "image/webp": ".webp",
+};
 
 const scraper = metascraper([title(), description(), image()]);
 
@@ -111,6 +123,112 @@ async function scrapeOne(
   }
 }
 
+/**
+ * Locate a site's favicon: prefer `<link rel="icon">`-style declarations in
+ * the origin's HTML, fall back to `/favicon.ico`, and as a last resort ask
+ * Google's favicon service. All of this happens at cache-refresh time on the
+ * developer machine, so visitors never make third-party requests for icons.
+ */
+async function findFaviconCandidates(origin: string): Promise<string[]> {
+  const candidates: string[] = [];
+  try {
+    const response = await fetch(origin, {
+      headers: { "user-agent": "Mozilla/5.0 (link-metadata-cache)" },
+      redirect: "follow",
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (response.ok) {
+      const html = await response.text();
+      const linkTags = html.match(/<link\s[^>]*>/gi) ?? [];
+      const scored: { href: string; score: number }[] = [];
+      for (const tag of linkTags) {
+        const rel = /rel=["']([^"']+)["']/i.exec(tag)?.[1]?.toLowerCase();
+        if (!rel || !/\bicon\b/.test(rel) || rel.includes("mask-icon")) continue;
+        const href = /href=["']([^"']+)["']/i.exec(tag)?.[1];
+        if (!href) continue;
+        const sizes = /sizes=["']([^"']+)["']/i.exec(tag)?.[1] ?? "";
+        const type = /type=["']([^"']+)["']/i.exec(tag)?.[1] ?? "";
+        let score = 0;
+        if (rel.includes("apple-touch-icon")) score -= 2;
+        if (/png/.test(type) || /\.png(\?|$)/i.test(href)) score += 2;
+        if (/svg/.test(type) || /\.svg(\?|$)/i.test(href)) score += 1;
+        if (/\b(32|48)x\1\b/.test(sizes)) score += 3;
+        try {
+          scored.push({ href: new URL(href, response.url).href, score });
+        } catch {
+          /* ignore malformed href */
+        }
+      }
+      scored.sort((a, b) => b.score - a.score);
+      candidates.push(...scored.map((c) => c.href));
+    }
+  } catch {
+    /* fall through to defaults */
+  }
+  candidates.push(`${origin}/favicon.ico`);
+  candidates.push(
+    `https://www.google.com/s2/favicons?domain=${new URL(origin).hostname}&sz=32`,
+  );
+  return [...new Set(candidates)];
+}
+
+interface FaviconIndexEntry {
+  file: string;
+  source: string;
+  timestamp: number;
+}
+type FaviconIndex = Record<string, FaviconIndexEntry>;
+
+async function readFaviconIndex(): Promise<FaviconIndex> {
+  try {
+    return JSON.parse(await fs.readFile(FAVICON_INDEX, "utf-8")) as FaviconIndex;
+  } catch {
+    return {};
+  }
+}
+
+async function cacheFavicon(
+  hostname: string,
+  index: FaviconIndex,
+  logger: AstroIntegrationLogger,
+): Promise<void> {
+  const existing = index[hostname];
+  if (existing && Date.now() - existing.timestamp < FAVICON_TTL_MS) return;
+
+  logger.info(`fetching favicon for ${hostname}`);
+  for (const candidate of await findFaviconCandidates(`https://${hostname}`)) {
+    try {
+      const response = await fetch(candidate, {
+        headers: { "user-agent": "Mozilla/5.0 (link-metadata-cache)" },
+        redirect: "follow",
+        signal: AbortSignal.timeout(15_000),
+      });
+      if (!response.ok) continue;
+      const mime = (response.headers.get("content-type") ?? "")
+        .split(";")[0]
+        .trim()
+        .toLowerCase();
+      const ext = FAVICON_MIME_EXT[mime];
+      if (!ext) continue;
+      const buffer = new Uint8Array(await response.arrayBuffer());
+      if (buffer.byteLength === 0) continue;
+
+      const file = `${hostname.replace(/[^a-z0-9.-]/gi, "_")}${ext}`;
+      // Drop a stale file with a different extension so the folder stays clean.
+      if (existing && existing.file !== file) {
+        await fs.rm(path.join(CACHE_DIR, "favicons", existing.file), { force: true });
+      }
+      await fs.writeFile(path.join(CACHE_DIR, "favicons", file), buffer);
+      index[hostname] = { file, source: candidate, timestamp: Date.now() };
+      await fs.writeFile(FAVICON_INDEX, JSON.stringify(index, null, 2));
+      return;
+    } catch (err) {
+      logger.warn(`favicon candidate ${candidate} failed: ${(err as Error).message}`);
+    }
+  }
+  logger.warn(`no favicon found for ${hostname}`);
+}
+
 async function collectHrefs(logger: AstroIntegrationLogger): Promise<string[]> {
   const files = await glob("src/content/**/*.{md,mdx}", { absolute: true });
   const set = new Set<string>();
@@ -139,6 +257,7 @@ export default function linkMetadataCache(): AstroIntegration {
       "astro:server:setup": async ({ logger }) => {
         await ensureDir(path.join(CACHE_DIR, "metadata"));
         await ensureDir(path.join(CACHE_DIR, "images"));
+        await ensureDir(path.join(CACHE_DIR, "favicons"));
 
         const hrefs = await collectHrefs(logger);
         logger.info(`found ${hrefs.length} unique OtherLinks URLs`);
@@ -150,6 +269,18 @@ export default function linkMetadataCache(): AstroIntegration {
             logger.error(`scrape pipeline error for ${href}: ${err.message}`);
           });
         }
+
+        // Favicons are keyed per hostname and refreshed on a shorter TTL.
+        // Run sequentially so concurrent writes to index.json cannot race.
+        (async () => {
+          const index = await readFaviconIndex();
+          const hostnames = [...new Set(hrefs.map((h) => new URL(h).hostname))];
+          for (const hostname of hostnames) {
+            await cacheFavicon(hostname, index, logger).catch((err) => {
+              logger.error(`favicon pipeline error for ${hostname}: ${err.message}`);
+            });
+          }
+        })();
       },
     },
   };

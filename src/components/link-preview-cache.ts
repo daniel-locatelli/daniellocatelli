@@ -35,3 +35,18 @@ export function getUserAssets() {
   }
   return userAssetsCache;
 }
+
+/**
+ * Locally cached favicons (one per hostname), written by the
+ * `link-metadata-cache` integration into `src/assets/links-cache/favicons/`.
+ * Imported as URLs (not via astro:assets) because `.ico` is not a processable
+ * image format; the files are still hashed and served from `/_astro/`.
+ */
+export const faviconCache = import.meta.glob<string>(
+  "/src/assets/links-cache/favicons/*.{ico,png,svg,jpg,gif,webp}",
+  { eager: false, query: "?url", import: "default" },
+);
+
+export const faviconIndex = import.meta.glob<{
+  default: Record<string, { file: string }>;
+}>("/src/assets/links-cache/favicons/index.json", { eager: false });

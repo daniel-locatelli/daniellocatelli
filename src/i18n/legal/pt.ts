@@ -3,7 +3,7 @@ import type { I18nLegal } from "./type";
 export const t: I18nLegal = {
   privacyPolicy: {
     title: "Política de Privacidade",
-    lastUpdated: "17 de março de 2026",
+    lastUpdated: "18 de agosto de 2026",
     sections: [
       {
         heading: "Responsável pelo Tratamento de Dados",
@@ -17,25 +17,26 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Hospedagem (Cloudflare)",
-        content: `<p>Este website é hospedado no Cloudflare Pages e entregue via CDN da Cloudflare. Ao visitar este site, a Cloudflare processa automaticamente:</p>
+        content: `<p>Este website é hospedado no Cloudflare Workers (arquivos estáticos e um pequeno componente de servidor para o chat com IA) e entregue via CDN da Cloudflare. Ao visitar este site, a Cloudflare processa automaticamente:</p>
 <ul>
 <li>Seu endereço IP</li>
 <li>Cabeçalhos de requisição HTTP (tipo de navegador, sistema operacional, URL de referência)</li>
 <li>Data e hora do acesso</li>
 </ul>
 <p>Este processamento é necessário para a entrega do website (Art. 6(1)(f) RGPD — interesse legítimo). A Cloudflare Inc. está sediada nos Estados Unidos. As transferências de dados para os EUA são cobertas pelo Adendo de Processamento de Dados da Cloudflare e pelas Cláusulas Contratuais Padrão da UE.</p>
+<p>O site também usa o Cloudflare Workers KV para armazenar dados operacionais (status de disponibilidade dos modelos de IA e contadores diários de uso). Esse armazenamento não contém dados pessoais.</p>
 <p>Mais informações: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Política de Privacidade da Cloudflare</a></p>`,
       },
       {
-        heading: "Chat com IA (Anthropic e Supabase)",
+        heading: "Chat com IA (Anthropic, Supabase e Voyage AI)",
         content: `<p>Este website inclui um recurso opcional de chat com IA. Ao usar o chat:</p>
 <ul>
-<li>Sua pergunta é enviada ao <strong>Supabase</strong> para busca por similaridade vetorial (apenas consulta — sua entrada não é armazenada permanentemente)</li>
+<li>Sua pergunta é enviada ao <strong>Supabase</strong>, que a encaminha à <strong>Voyage AI</strong> para calcular uma representação numérica (embedding) usada na busca por similaridade vetorial (apenas consulta — sua entrada não é armazenada permanentemente por nenhum dos serviços)</li>
 <li>Sua pergunta e o contexto recuperado são enviados à <strong>API Anthropic Claude</strong> para gerar uma resposta (processados, mas não armazenados a longo prazo pela Anthropic)</li>
 </ul>
 <p>As mensagens do chat existem apenas no estado da sessão do seu navegador e são perdidas quando você fecha ou atualiza a página. Nenhum histórico de conversas é armazenado em qualquer servidor.</p>
-<p>Base legal: Art. 6(1)(a) RGPD — consentimento (você escolhe ativamente usar o chat). Tanto a Anthropic quanto o Supabase estão sediados nos EUA. As transferências de dados são cobertas por suas respectivas Cláusulas Contratuais Padrão.</p>
-<p>Mais informações: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade da Anthropic</a> · <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade do Supabase</a></p>`,
+<p>Base legal: Art. 6(1)(a) RGPD — consentimento (você escolhe ativamente usar o chat). Anthropic, Supabase e Voyage AI estão sediadas nos EUA. As transferências de dados são cobertas por suas respectivas Cláusulas Contratuais Padrão.</p>
+<p>Mais informações: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade da Anthropic</a> · <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade do Supabase</a> · <a href="https://www.voyageai.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade da Voyage AI</a></p>`,
       },
       {
         heading: "Vídeos Incorporados (YouTube)",
@@ -60,7 +61,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Links Externos",
-        content: `<p>Este website contém links para serviços externos, incluindo LinkedIn, GitHub, GitLab, Instagram, Bluesky, ORCID e WhatsApp. Ao seguir esses links, você sai deste website e a política de privacidade do respectivo serviço se aplica. O operador deste website não tem controle sobre as práticas de processamento de dados desses serviços de terceiros.</p>`,
+        content: `<p>Este website contém links para serviços externos, incluindo LinkedIn, GitHub, GitLab, Instagram, Bluesky e ORCID. Ao seguir esses links, você sai deste website e a política de privacidade do respectivo serviço se aplica. O operador deste website não tem controle sobre as práticas de processamento de dados desses serviços de terceiros.</p>`,
       },
       {
         heading: "Retenção de Dados",

@@ -3,7 +3,7 @@ import type { I18nLegal } from "./type";
 export const t: I18nLegal = {
   privacyPolicy: {
     title: "Privacy Policy",
-    lastUpdated: "March 17, 2026",
+    lastUpdated: "August 18, 2026",
     sections: [
       {
         heading: "Data Controller",
@@ -17,25 +17,26 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Hosting (Cloudflare)",
-        content: `<p>This website is hosted on Cloudflare Pages and delivered via the Cloudflare CDN. When you visit this site, Cloudflare automatically processes:</p>
+        content: `<p>This website is hosted on Cloudflare Workers (static assets plus a small server-side component for the AI chat) and delivered via the Cloudflare CDN. When you visit this site, Cloudflare automatically processes:</p>
 <ul>
 <li>Your IP address</li>
 <li>HTTP request headers (browser type, operating system, referrer URL)</li>
 <li>Timestamp of access</li>
 </ul>
 <p>This processing is necessary for the delivery of the website (Art. 6(1)(f) GDPR — legitimate interest). Cloudflare Inc. is based in the United States. Data transfers to the US are covered by Cloudflare's Data Processing Addendum and EU Standard Contractual Clauses.</p>
+<p>The site also uses Cloudflare Workers KV to store operational data (AI model availability status and daily usage counters). This storage contains no personal data.</p>
 <p>More information: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a></p>`,
       },
       {
-        heading: "AI Chat Feature (Anthropic & Supabase)",
+        heading: "AI Chat Feature (Anthropic, Supabase & Voyage AI)",
         content: `<p>This website includes an optional AI chat feature. When you use the chat:</p>
 <ul>
-<li>Your question is sent to <strong>Supabase</strong> for vector similarity search (query only — your input is not stored persistently)</li>
+<li>Your question is sent to <strong>Supabase</strong>, which forwards it to <strong>Voyage AI</strong> to compute a numerical embedding used for vector similarity search (query only — your input is not stored persistently by either service)</li>
 <li>Your question and the retrieved context are sent to the <strong>Anthropic Claude API</strong> for generating a response (processed but not stored long-term by Anthropic)</li>
 </ul>
 <p>Chat messages exist only in your browser session state and are lost when you close or refresh the page. No conversation history is stored on any server.</p>
-<p>Legal basis: Art. 6(1)(a) GDPR — consent (you actively choose to use the chat). Both Anthropic and Supabase are US-based. Data transfers are covered by their respective Standard Contractual Clauses.</p>
-<p>More information: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a> · <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase Privacy Policy</a></p>`,
+<p>Legal basis: Art. 6(1)(a) GDPR — consent (you actively choose to use the chat). Anthropic, Supabase, and Voyage AI are US-based. Data transfers are covered by their respective Standard Contractual Clauses.</p>
+<p>More information: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a> · <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase Privacy Policy</a> · <a href="https://www.voyageai.com/privacy" target="_blank" rel="noopener noreferrer">Voyage AI Privacy Policy</a></p>`,
       },
       {
         heading: "Embedded Videos (YouTube)",
@@ -60,7 +61,7 @@ Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
       },
       {
         heading: "External Links",
-        content: `<p>This website contains links to external services including LinkedIn, GitHub, GitLab, Instagram, Bluesky, ORCID, and WhatsApp. When you follow these links, you leave this website and the respective service's privacy policy applies. The operator of this website has no control over the data processing practices of these third-party services.</p>`,
+        content: `<p>This website contains links to external services including LinkedIn, GitHub, GitLab, Instagram, Bluesky, and ORCID. When you follow these links, you leave this website and the respective service's privacy policy applies. The operator of this website has no control over the data processing practices of these third-party services.</p>`,
       },
       {
         heading: "Data Retention",
