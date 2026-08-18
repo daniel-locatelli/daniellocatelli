@@ -16,7 +16,7 @@ export default {
         sans: [...defaultTheme.fontFamily.sans],
         serif: [...defaultTheme.fontFamily.serif],
         title: ["Montserrat", ...defaultTheme.fontFamily.sans],
-        body: ["Poppins Light", ...defaultTheme.fontFamily.sans],
+        body: [...defaultTheme.fontFamily.sans],
       },
       transitionProperty: {
         height: "height",
