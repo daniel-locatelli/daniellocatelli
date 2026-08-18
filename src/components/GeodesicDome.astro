@@ -51,9 +51,20 @@ const { height = "180px" } = Astro.props;
     if (!container) return;
 
     const start = () => {
-      loadModule().then((mod) => {
-        // The page may have navigated away while the chunk was downloading.
-        if (container.isConnected) mod.initGeodesicDome(container);
+      // Yield to hydration and the LCP paint first: fetch + evaluate Three.js
+      // only once the main thread is idle (bounded so it still shows promptly).
+      const whenIdle = (cb: () => void) => {
+        if (typeof window.requestIdleCallback === "function") {
+          window.requestIdleCallback(cb, { timeout: 1500 });
+        } else {
+          setTimeout(cb, 200);
+        }
+      };
+      whenIdle(() => {
+        loadModule().then((mod) => {
+          // The page may have navigated away while the chunk was downloading.
+          if (container.isConnected) mod.initGeodesicDome(container);
+        });
       });
     };
 

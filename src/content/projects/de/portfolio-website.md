@@ -81,7 +81,7 @@ Die Content Negotiation auf vorgerenderten Seiten zum Laufen zu bringen, erforde
 
 ## Performance und Lighthouse
 
-Die Website besteht überwiegend aus statischem HTML, was ihr bereits einen Vorsprung verschafft. Darüber hinaus werden Bilder in responsiven Größen mit expliziten Breiten ausgeliefert, damit sich beim Laden nichts verschiebt, Bilder im Textkörper werden bei Bedarf geladen und kurz vor dem sichtbaren Bereich vorgeladen, Schriften werden auf die benötigten Zeichen reduziert und vorgeladen, und schwere Skripte wie Three.js und der Chat werden aufgeschoben, bis sie tatsächlich gebraucht werden. Zusammen haben diese Änderungen die Lighthouse-Werte für Performance, Barrierefreiheit, Best Practices und SEO an die Spitze der Skala gebracht.
+Die Website besteht überwiegend aus statischem HTML, was ihr bereits einen Vorsprung verschafft. Darüber hinaus werden Bilder in responsiven Größen mit expliziten Breiten ausgeliefert, damit sich beim Laden nichts verschiebt, Bilder im Textkörper werden bei Bedarf geladen und kurz vor dem sichtbaren Bereich vorgeladen, Schriften werden auf die benötigten Zeichen reduziert und vorgeladen, und schwere Skripte werden aufgeschoben, bis sie tatsächlich gebraucht werden: Three.js wartet auf einen Leerlaufmoment und zeichnet die Kugel danach nur neu, solange sie sich tatsächlich bewegt, und das Chat-Fenster (mit Markdown-Renderer und Animationen) wird erst geladen, wenn ein Besucher zu tippen beginnt, sodass das Eingabefeld selbst nur wenige Kilobyte JavaScript mitbringt. Zusammen haben diese Änderungen die Lighthouse-Werte für Performance, Barrierefreiheit, Best Practices und SEO an die Spitze der Skala gebracht.
 
 ## Kleinere Details
 

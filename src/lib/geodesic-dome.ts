@@ -236,13 +236,13 @@ class GeodesicDomeComponent {
       alpha: true,
     });
     this.init();
-    this.animate();
+    this.requestRender();
   }
 
   private init(): void {
     const rect = this.container.getBoundingClientRect();
     this.camera.position.set(0, 0, 8);
-    this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setClearColor(0x000000, 0.0);
     this.renderer.setSize(rect.width, rect.height);
     this.renderer.shadowMap.enabled = true;
@@ -367,6 +367,7 @@ class GeodesicDomeComponent {
     this.camera.aspect = rect.width / rect.height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(rect.width, rect.height);
+    this.requestRender();
   }
 
   private setupScrollAnimation(): void {
@@ -378,12 +379,24 @@ class GeodesicDomeComponent {
       let percent = 1 - Math.max(0, Math.min(rect.bottom / windowHeight, 1));
       this.targetExplosion = percent * 1.75;
       this.targetRotation = percent * Math.PI;
+      this.requestRender();
     };
-    window.addEventListener("scroll", this.scrollHandler);
+    window.addEventListener("scroll", this.scrollHandler, { passive: true });
+    // Sync with the current scroll position before the first frame.
+    this.scrollHandler();
+  }
+
+  // Render on demand: the loop keeps running only while the spring is still
+  // moving. Once it settles the loop stops, and any change to the targets
+  // (scroll, resize) wakes it up again via requestRender().
+  private requestRender(): void {
+    if (this.animationId === null) {
+      this.animationId = requestAnimationFrame(() => this.animate());
+    }
   }
 
   private animate(): void {
-    this.animationId = requestAnimationFrame(() => this.animate());
+    this.animationId = null;
 
     const spring = 0.005;
     const damping = 0.9;
@@ -404,10 +417,19 @@ class GeodesicDomeComponent {
 
     this.explodeGeometry(this.currentExplosion);
     this.renderer.render(this.scene, this.camera);
+
+    const settled =
+      Math.abs(this.velocityExplosion) < 1e-4 &&
+      Math.abs(this.velocityRotation) < 1e-4 &&
+      Math.abs(this.targetExplosion - this.currentExplosion) < 1e-3 &&
+      Math.abs(this.targetRotation - this.currentRotation) < 1e-3;
+
+    if (!settled) this.requestRender();
   }
 
   public dispose(): void {
-    if (this.animationId) cancelAnimationFrame(this.animationId);
+    if (this.animationId !== null) cancelAnimationFrame(this.animationId);
+    this.animationId = null;
     if (this.resizeObserver) this.resizeObserver.disconnect();
     if (this.scrollHandler)
       window.removeEventListener("scroll", this.scrollHandler);

@@ -81,7 +81,7 @@ Fazer a negociação de conteúdo funcionar em páginas pré-renderizadas exigiu
 
 ## Desempenho e Lighthouse
 
-O site é em grande parte HTML estático, o que já lhe dá uma vantagem inicial. Além disso, as imagens são servidas em tamanhos responsivos com larguras explícitas para que nada se desloque durante o carregamento, as imagens do corpo são carregadas sob demanda e pré-carregadas pouco antes de entrarem na área visível, as fontes são reduzidas ao subconjunto necessário e pré-carregadas, e scripts pesados como o Three.js e o chat são adiados até que sejam realmente necessários. Juntas, essas mudanças levaram as pontuações do Lighthouse em desempenho, acessibilidade, boas práticas e SEO ao topo da escala.
+O site é em grande parte HTML estático, o que já lhe dá uma vantagem inicial. Além disso, as imagens são servidas em tamanhos responsivos com larguras explícitas para que nada se desloque durante o carregamento, as imagens do corpo são carregadas sob demanda e pré-carregadas pouco antes de entrarem na área visível, as fontes são reduzidas ao subconjunto necessário e pré-carregadas, e scripts pesados são adiados até que sejam realmente necessários: o Three.js espera um momento ocioso e depois só redesenha a esfera enquanto ela está de fato em movimento, e a janela do chat (com seu renderizador de markdown e animações) só é baixada quando o visitante começa a digitar, de modo que o campo de entrada da abertura carrega apenas alguns kilobytes de JavaScript. Juntas, essas mudanças levaram as pontuações do Lighthouse em desempenho, acessibilidade, boas práticas e SEO ao topo da escala.
 
 ## Detalhes menores
 

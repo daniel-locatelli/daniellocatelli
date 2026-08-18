@@ -81,7 +81,7 @@ Getting content negotiation to work on prerendered pages took some digging into 
 
 ## Performance and Lighthouse
 
-The site is mostly static HTML, which already gives it a head start. On top of that, images are served in responsive sizes with explicit widths so nothing shifts while loading, body images are lazy-loaded and preloaded just ahead of the viewport, fonts are subset and preloaded, and heavy scripts such as Three.js and the chat are deferred until they are actually needed. Together these changes pushed the Lighthouse scores for performance, accessibility, best practices, and SEO to the top of the scale.
+The site is mostly static HTML, which already gives it a head start. On top of that, images are served in responsive sizes with explicit widths so nothing shifts while loading, body images are lazy-loaded and preloaded just ahead of the viewport, fonts are subset and preloaded, and heavy scripts are deferred until they are actually needed: Three.js waits for an idle moment and then only redraws the sphere while it is actually moving, and the chat window (with its markdown renderer and animations) is fetched only when a visitor starts typing, so the hero input itself ships just a few kilobytes of JavaScript. Together these changes pushed the Lighthouse scores for performance, accessibility, best practices, and SEO to the top of the scale.
 
 ## Smaller details
 

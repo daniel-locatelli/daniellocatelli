@@ -136,7 +136,8 @@ const newTabHint = `(${meta.openNewTab})`;
                 <div class="aspect-video w-full overflow-hidden">
                   <Image
                     src={project.imageUrl}
-                    widths={[480, 768, 1024, 1536]}
+                    widths={[480, 640, 768, 1024, 1536]}
+                    quality={72}
                     sizes="(min-width: 768px) 704px, 100vw"
                     alt={project.imageAlt ?? `Screenshot of ${project.title}`}
                     class="h-full w-full object-cover"
