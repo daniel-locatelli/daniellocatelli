@@ -661,7 +661,7 @@ const foregroundClass = isLetterbox
       </div>
       {
         subpage.data.OtherLinks && subpage.data.OtherLinks.length > 0 && (
-          <div class="mt-8">
+          <div class="mt-8 px-4 sm:px-0">
             <h2 class="font-title mb-4 text-xl text-zinc-100">{t.otherLinks}</h2>
             <div class="flex flex-col gap-3">
               {subpage.data.OtherLinks.map((link) => (
@@ -674,7 +674,7 @@ const foregroundClass = isLetterbox
     </div>
     {
       (nextEntry || previousEntry) && (
-        <div class="mx-auto mt-12 mb-8 w-full max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto mt-12 mb-8 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="Content navigation" class="grid grid-cols-2 gap-4">
             {nextEntry ? (
               <a
