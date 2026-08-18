@@ -671,12 +671,11 @@ const foregroundClass = isLetterbox
           </div>
         )
       }
-      {
-        (nextEntry || previousEntry) && (
-          <nav
-            aria-label="Content navigation"
-            class="mt-12 mb-8 grid grid-cols-2 gap-4 px-4 sm:px-0"
-          >
+    </div>
+    {
+      (nextEntry || previousEntry) && (
+        <div class="mx-auto mt-12 mb-8 w-full max-w-7xl px-6 lg:px-8">
+          <nav aria-label="Content navigation" class="grid grid-cols-2 gap-4">
             {nextEntry ? (
               <a
                 href={siblingHref(nextEntry)}
@@ -786,9 +785,9 @@ const foregroundClass = isLetterbox
               <span />
             )}
           </nav>
-        )
-      }
-    </div>
+        </div>
+      )
+    }
   </section>
   <Fragment slot="after-body">
 <script>
