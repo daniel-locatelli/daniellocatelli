@@ -3,7 +3,7 @@ import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Slides from "@/layouts/Slides.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
-import { getEntryLocale, getDeckParentSlug } from "src/lib/routes-helpers";
+import { getEntryLocale, getDeckParentSlug, getFileSlug } from "src/lib/routes-helpers";
 
 export async function getStaticPaths() {
   const decks = (await getCollection("decks")) as CollectionEntry<"decks">[];
@@ -46,7 +46,16 @@ const cover = deck.data.Cover;
 const coverUrl = typeof cover === "string" ? cover : cover?.Url ?? "";
 
 const basePath = locale === siteConfig.defaultLocale ? "" : `/${locale}`;
-const exitHref = `${basePath}/teaching/${parentSlug}`;
+
+// Only link back to the teaching page if one is actually published for this
+// deck in this locale; otherwise "Exit" goes to the locale home instead of a 404.
+const hasTeachingPage = (await getCollection("teaching")).some(
+  (entry) =>
+    getEntryLocale(entry.id) === locale &&
+    getFileSlug(entry.id) === parentSlug &&
+    !getFileSlug(entry.id).startsWith("_"),
+);
+const exitHref = hasTeachingPage ? `${basePath}/teaching/${parentSlug}` : basePath || "/";
 ---
 
 <Slides
