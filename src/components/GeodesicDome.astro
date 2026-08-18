@@ -51,8 +51,6 @@ const { height = "180px" } = Astro.props;
     if (!container) return;
 
     const start = () => {
-      // Yield to hydration and the LCP paint first: fetch + evaluate Three.js
-      // only once the main thread is idle (bounded so it still shows promptly).
       const whenIdle = (cb: () => void) => {
         if (typeof window.requestIdleCallback === "function") {
           window.requestIdleCallback(cb, { timeout: 1500 });
@@ -60,12 +58,28 @@ const { height = "180px" } = Astro.props;
           setTimeout(cb, 200);
         }
       };
-      whenIdle(() => {
-        loadModule().then((mod) => {
-          // The page may have navigated away while the chunk was downloading.
-          if (container.isConnected) mod.initGeodesicDome(container);
-        });
-      });
+      // Wait for the load event, then for a frame to actually be painted, so
+      // the Three.js fetch never starts before the hero (LCP) is on screen.
+      const afterFirstPaint = (cb: () => void) => {
+        const paintThen = () =>
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => setTimeout(cb, 100)),
+          );
+        if (document.readyState === "complete") paintThen();
+        else window.addEventListener("load", paintThen, { once: true });
+      };
+      // Then two separate idle slots: one to fetch + evaluate the chunk,
+      // another to build the scene, so neither becomes a single long task.
+      afterFirstPaint(() =>
+        whenIdle(() => {
+          loadModule().then((mod) => {
+            whenIdle(() => {
+              // The page may have navigated away while the chunk was loading.
+              if (container.isConnected) mod.initGeodesicDome(container);
+            });
+          });
+        }),
+      );
     };
 
     if (!("IntersectionObserver" in window)) {

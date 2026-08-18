@@ -236,7 +236,12 @@ class GeodesicDomeComponent {
       alpha: true,
     });
     this.init();
-    this.requestRender();
+    // Compile shaders off the main thread where the driver supports it
+    // (KHR_parallel_shader_compile) instead of blocking on the first frame.
+    this.renderer
+      .compileAsync(this.scene, this.camera)
+      .catch(() => undefined)
+      .then(() => this.requestRender());
   }
 
   private init(): void {
