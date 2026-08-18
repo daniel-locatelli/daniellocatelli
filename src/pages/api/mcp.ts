@@ -7,7 +7,10 @@ import {
   getPage,
   type SearchEnv,
 } from "@/lib/mcp/tools";
-import { checkAndIncrementBudget, type KVNamespaceLike } from "@/lib/mcp/budget";
+import {
+  checkAndIncrementBudget,
+  type KVNamespaceLike,
+} from "@/lib/mcp/budget";
 
 export const prerender = false;
 
@@ -27,12 +30,48 @@ interface JsonRpcResult {
   error?: { code: number; message: string; data?: any };
 }
 
+const LOCALE_SCHEMA = {
+  type: "string",
+  enum: ["en", "pt", "de"],
+  default: "en",
+};
+
 const TOOLS = {
-  list_projects: { description: "List portfolio projects." },
-  list_research: { description: "List research entries." },
-  search_content: { description: "Vector search across all portfolio content." },
-  get_page: { description: "Fetch any daniellocatelli.com page as plain markdown." },
+  list_projects: {
+    description:
+      "List portfolio projects with title, summary, URL, and start date.",
+    inputSchema: { type: "object", properties: { locale: LOCALE_SCHEMA } },
+  },
+  list_research: {
+    description:
+      "List research entries with title, summary, URL, and start date.",
+    inputSchema: { type: "object", properties: { locale: LOCALE_SCHEMA } },
+  },
+  search_content: {
+    description:
+      "Vector search across all portfolio content. Returns up to 20 matches with title, URL, snippet, and similarity score.",
+    inputSchema: {
+      type: "object",
+      required: ["query"],
+      properties: {
+        query: { type: "string" },
+        locale: LOCALE_SCHEMA,
+        limit: { type: "integer", default: 5, minimum: 1, maximum: 20 },
+      },
+    },
+  },
+  get_page: {
+    description: "Fetch any daniellocatelli.com page as plain markdown.",
+    inputSchema: {
+      type: "object",
+      required: ["url"],
+      properties: { url: { type: "string", format: "uri" } },
+    },
+  },
 } as const;
+
+const SERVER_INFO = { name: "daniel-locatelli-portfolio", version: "1.0.0" };
+const PROTOCOL_VERSION = "2025-06-18";
 
 // MCP streamable-HTTP spec (2025-06-18) permits either application/json
 // (single response) or text/event-stream (multi-message stream). We don't
@@ -45,8 +84,16 @@ function ok(id: JsonRpcRequest["id"], result: any): Response {
   });
 }
 
-function err(id: JsonRpcRequest["id"], code: number, message: string): Response {
-  const payload: JsonRpcResult = { jsonrpc: "2.0", id, error: { code, message } };
+function err(
+  id: JsonRpcRequest["id"],
+  code: number,
+  message: string,
+): Response {
+  const payload: JsonRpcResult = {
+    jsonrpc: "2.0",
+    id,
+    error: { code, message },
+  };
   return new Response(JSON.stringify(payload), {
     status: 200,
     headers: { "Content-Type": "application/json" },
@@ -70,11 +117,30 @@ export const POST: APIRoute = async ({ request }) => {
 
   const env: any = cfEnv ?? process.env;
 
+  // Lifecycle handshake (MCP 2025-06-18). Stateless: no session IDs.
+  if (req.method === "initialize") {
+    return ok(req.id, {
+      protocolVersion: PROTOCOL_VERSION,
+      capabilities: { tools: {} },
+      serverInfo: SERVER_INFO,
+    });
+  }
+  if (
+    req.method === "notifications/initialized" ||
+    req.method.startsWith("notifications/")
+  ) {
+    return new Response(null, { status: 202 });
+  }
+  if (req.method === "ping") {
+    return ok(req.id, {});
+  }
+
   if (req.method === "tools/list") {
     return ok(req.id, {
       tools: Object.entries(TOOLS).map(([name, meta]) => ({
         name,
         description: meta.description,
+        inputSchema: meta.inputSchema,
       })),
     });
   }
@@ -104,9 +170,16 @@ export const POST: APIRoute = async ({ request }) => {
       if (!kv) {
         return err(req.id, -32004, "Budget storage unavailable");
       }
-      const budget = await checkAndIncrementBudget({ kv, cap: SEARCH_DAILY_CAP });
+      const budget = await checkAndIncrementBudget({
+        kv,
+        cap: SEARCH_DAILY_CAP,
+      });
       if (!budget.allowed) {
-        return err(req.id, -32004, "Daily search budget exhausted; try again tomorrow.");
+        return err(
+          req.id,
+          -32004,
+          "Daily search budget exhausted; try again tomorrow.",
+        );
       }
       const searchEnv: SearchEnv = {
         SUPABASE_URL: env.SUPABASE_URL,

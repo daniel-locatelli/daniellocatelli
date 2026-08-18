@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "portfolio-content",
+      "type": "skill-md",
+      "description": "Read Daniel Locatelli's website as plain markdown without MCP. Use when you need the text of a specific page, an index of all content, or a lightweight way to browse the site in English, Portuguese, or German.",
+      "url": "/.well-known/agent-skills/portfolio-content/SKILL.md",
+      "digest": "sha256:0e9abe9888595f63fb1b63e8582445cf3cbc7984bef49955eaa39a9d8d3a74a2"
+    },
+    {
+      "name": "portfolio-mcp",
+      "type": "skill-md",
+      "description": "Query Daniel Locatelli's portfolio (projects, research, teaching, publications, CV) through the site's read-only MCP server. Use when you need structured, up-to-date answers about Daniel Locatelli's work instead of scraping HTML.",
+      "url": "/.well-known/agent-skills/portfolio-mcp/SKILL.md",
+      "digest": "sha256:4d617a6bce20c80a539656ccbd1ecfca26f83d2d3a5ac07686d48057430fafcc"
+    }
+  ]
+}

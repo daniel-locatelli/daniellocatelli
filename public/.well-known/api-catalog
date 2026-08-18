@@ -7,6 +7,11 @@
           "href": "https://daniellocatelli.com/.well-known/mcp.json",
           "type": "application/json",
           "title": "Daniel Locatelli Portfolio - MCP Server"
+        },
+        {
+          "href": "https://daniellocatelli.com/.well-known/agent-skills/index.json",
+          "type": "application/json",
+          "title": "Daniel Locatelli Portfolio - Agent Skills"
         }
       ]
     }

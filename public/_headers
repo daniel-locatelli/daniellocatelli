@@ -5,6 +5,9 @@
 /.well-known/api-catalog
   Content-Type: application/linkset+json
 
+/.well-known/agent-skills/*/SKILL.md
+  Content-Type: text/markdown; charset=utf-8
+
 /llms.txt
   Content-Type: text/markdown; charset=utf-8
 
