@@ -46,6 +46,8 @@ const newTabHint = `(${meta.openNewTab})`;
         >
           <Image
             src={profilePhoto}
+            widths={[160, 256, 384]}
+            sizes="(min-width: 768px) 128px, (min-width: 640px) 80px, 128px"
             alt={home.meta.coverAlt}
             loading="eager"
             fetchpriority="high"
