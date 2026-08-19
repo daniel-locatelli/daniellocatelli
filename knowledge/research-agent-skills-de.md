@@ -40,10 +40,6 @@ Diese bleiben privat, weil sie kodieren, wie ich arbeite, und nicht, wie ein Wer
 
 Zwei weitere Skills laufen in die andere Richtung: Sie sind nicht für meinen Agenten, sondern für Ihren. Diese Website veröffentlicht unter `/.well-known/agent-skills/` **portfolio-content** (jede Seite als reines Markdown lesen, in drei Sprachen) und **portfolio-mcp** (Projekte, Forschung, Lehre, Publikationen und CV über den schreibgeschützten MCP-Server der Site abfragen), damit ein Agent, der hier landet, die Site lesen kann, ohne sie zu scrapen. Wie sie gebaut sind, steht auf der Seite [Portfolio-Website](/de/projects/portfolio-website).
 
-### Ausblick
-
-Bisher dreht sich jeder öffentliche Skill hier um Software: Plugins bauen, Werkzeuge steuern, Websites auditieren, upstream beitragen. Dort sind Agenten heute am offensichtlichsten nützlich, aber dort endet weder meine Expertise noch die des Fachgebiets. Die nächsten Skills, die ich schreiben will, kommen aus dem Computational Design und aus der Praxis von Architektur, Ingenieurwesen und Bau selbst: wie man ein parametrisches Modell so aufsetzt, dass es Entwurfsänderungen übersteht, wie man eine statische oder fertigungstechnische Randbedingung aus einer Zeichnung abliest, was ein Holzdetail erfüllen muss, bevor es die Maschine erreicht, und welche Fragen ein Praktiker stellt, bevor er einem Ergebnis vertraut. Der Test bleibt derselbe wie bei den Software-Skills: Würde ein Absatz in der `CLAUDE.md` genügen, oder braucht der Agent eine verifizierte Schleife, festgehaltene Fakten und die Fragen, die das Modell nicht zu stellen weiß?
-
 ## Matt Pococks Skills
 
 Zu [mattpocock/skills](https://github.com/mattpocock/skills) greife ich, wenn die Aufgabe Denken statt Tippen ist.
@@ -69,3 +65,7 @@ Zu [mattpocock/skills](https://github.com/mattpocock/skills) greife ich, wenn di
 ## Wie ich entscheide, was bleibt
 
 Würde ein gut geschriebener Absatz in `CLAUDE.md` dieselbe Arbeit leisten? Wenn ja, fliegt der Skill raus. Wenn er eine verifizierte Schleife ehrlich hält, Fakten fixiert, die das Modell falsch macht, oder die Fragen stellt, die ich vergesse, bleibt er.
+
+## Wohin sich Skills entwickeln
+
+Fast jeder Skill, der heute im Umlauf ist, meine eingeschlossen, dreht sich um Software: Plugins bauen, Werkzeuge steuern, Websites auditieren, upstream beitragen. Dort sind Agenten im Moment am offensichtlichsten nützlich, aber dort endet das Format nicht. Eine `SKILL.md` ist eine Einheit von Expertise, und die meiste Expertise in Architektur, Ingenieurwesen und Bau ist kein Softwarewissen: wie man ein parametrisches Modell so aufsetzt, dass es Entwurfsänderungen übersteht, wie man eine statische oder fertigungstechnische Randbedingung aus einer Zeichnung abliest, was ein Holzdetail erfüllen muss, bevor es die Maschine erreicht, welche Fragen ein Praktiker stellt, bevor er einem Ergebnis vertraut. Dieses Wissen wird, so erwarte ich, die nächste Generation von Skills tragen, geschrieben von den Menschen, die es besitzen, und dort will ich als Nächstes beitragen: Skills aus dem Computational Design und aus der AEC-Praxis selbst, gemessen am selben Test wie die Software-Skills. Würde ein Absatz in der `CLAUDE.md` genügen, oder braucht der Agent eine verifizierte Schleife, festgehaltene Fakten und die Fragen, die das Modell nicht zu stellen weiß?

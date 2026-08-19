@@ -40,10 +40,6 @@ These stay private because they encode how I work rather than how a tool works. 
 
 Two more skills run the other way: they are not for my agent but for yours. This site publishes **portfolio-content** (read any page as plain markdown, in three languages) and **portfolio-mcp** (query projects, research, teaching, publications, and CV through the site's read-only MCP server) under `/.well-known/agent-skills/`, so an agent that lands here knows how to read the site without scraping it. How they are built is described on the [portfolio website](/projects/portfolio-website) page.
 
-### Outlook
-
-So far every public skill here is about software: building plugins, driving tools, auditing websites, contributing upstream. That is where agents are most obviously useful today, but it is not where my expertise, or the field's, ends. The next skills I plan to write come from computational design and from architecture, engineering, and construction practice itself: how to set up a parametric model so it survives design changes, how to read a structural or fabrication constraint off a drawing, what a timber detail must satisfy before it reaches the machine, and which questions a practitioner asks before trusting a result. The test stays the same as for the software skills: would a paragraph in `CLAUDE.md` do the job, or does the agent need a verified loop, pinned facts, and the questions the model does not know to ask?
-
 ## Matt Pocock's skills
 
 [mattpocock/skills](https://github.com/mattpocock/skills) is what I reach for when the task is about thinking rather than typing.
@@ -69,3 +65,7 @@ So far every public skill here is about software: building plugins, driving tool
 ## How I decide what stays
 
 Would a well-written paragraph in `CLAUDE.md` do the same job? If yes, the skill goes. If it keeps a verified loop honest, pins facts the model gets wrong, or asks the questions I forget to ask, it stays.
+
+## Where skills are heading
+
+Almost every skill in circulation today, mine included, is about software: building plugins, driving tools, auditing websites, contributing upstream. That is where agents are most obviously useful now, but it is not where the format stops. A `SKILL.md` is a unit of expertise, and most expertise in architecture, engineering, and construction is not software knowledge: how to set up a parametric model so it survives design changes, how to read a structural or fabrication constraint off a drawing, what a timber detail must satisfy before it reaches the machine, which questions a practitioner asks before trusting a result. That is the knowledge I expect the next generation of skills to carry, written by the people who hold it, and it is where I plan to contribute next: skills from computational design and from AEC practice itself, held to the same test as the software ones. Would a paragraph in `CLAUDE.md` do the job, or does the agent need a verified loop, pinned facts, and the questions the model does not know to ask?
