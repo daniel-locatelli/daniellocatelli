@@ -25,7 +25,7 @@ Estas ficam no repositório público [daniel-locatelli/skills](https://github.co
 
 Uma skill privada de referência para compas_ifc acompanha estas, para que o agente consulte a especificação antes de responder a uma pergunta sobre parâmetro ou versão.
 
-### Software
+### Qualidade
 
 | Skill | O que faz |
 | --- | --- |

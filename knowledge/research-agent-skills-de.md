@@ -25,7 +25,7 @@ Diese liegen im öffentlichen Repository [daniel-locatelli/skills](https://githu
 
 Daneben steht ein privater Referenz-Skill für compas_ifc, damit der Agent die Spezifikation prüft, bevor er eine Parameter- oder Versionsfrage beantwortet.
 
-### Software
+### Qualität
 
 | Skill | Was er tut |
 | --- | --- |
