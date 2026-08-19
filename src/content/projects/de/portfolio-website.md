@@ -36,7 +36,7 @@ Das ist die Website, die Sie gerade lesen. Sie begann im April 2024 als kleine A
 - [**Three.js**](https://threejs.org/) für die geodätische Kugel.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) mit Static Assets für Hosting, Edge-Caching und die Endpunkte für Agenten; vorgerenderte Seiten werden direkt von der Edge ausgeliefert, der Worker läuft nur für die Chat- und MCP-Endpunkte.
 
-## Inhalte in Markdown, mit Claude Code als Content-Management-System
+## Claude Code als Content-Management-System
 
 Sämtliche Inhalte liegen als einfache Textdateien am selben Ort wie der Code: eine kleine Datei pro Projekt, Forschungseintrag, Publikation, Lehrbeitrag oder Lebenslaufabschnitt, mit einem kurzen Kopf, der die Fakten (Titel, Daten, Tags) über dem Seitentext festhält, und einer Kopie in jeder der drei Sprachen. Hinter den Seiten steht weder eine Datenbank noch ein separates Inhaltssystem.
 

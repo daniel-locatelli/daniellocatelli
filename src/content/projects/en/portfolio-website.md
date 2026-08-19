@@ -36,7 +36,7 @@ This is the website you are reading right now. It started in April 2024 as a sma
 - [**Three.js**](https://threejs.org/) for the geodesic sphere.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) with Static Assets for hosting, edge caching, and the agent-facing endpoints; prerendered pages are served straight from the edge, and the Worker only runs for the chat and MCP endpoints.
 
-## Markdown content, with Claude Code as content management system
+## Claude Code as content management system
 
 All the content lives as plain text files in the same place as the code: one small file per project, research entry, publication, teaching item, or CV section, with a short header that holds the facts (title, dates, tags) above the text of the page, and a copy in each of the three languages. There is no database and no separate content system behind the pages.
 

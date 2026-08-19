@@ -36,7 +36,7 @@ Este é o site que você está lendo agora. Ele começou em abril de 2024 como u
 - [**Three.js**](https://threejs.org/) para a esfera geodésica.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) com Static Assets para hospedagem, cache na borda e os endpoints voltados a agentes; as páginas pré-renderizadas são servidas direto da borda, e o Worker só roda para os endpoints de chat e MCP.
 
-## Conteúdo em markdown, com o Claude Code como sistema de gestão de conteúdo
+## Claude Code como sistema de gestão de conteúdo
 
 Todo o conteúdo vive como arquivos de texto simples no mesmo lugar que o código: um arquivo pequeno por projeto, entrada de pesquisa, publicação, item de ensino ou seção do currículo, com um cabeçalho curto que guarda os fatos (título, datas, tags) acima do texto da página, e uma cópia em cada um dos três idiomas. Não há banco de dados nem sistema de conteúdo separado por trás das páginas.
 
