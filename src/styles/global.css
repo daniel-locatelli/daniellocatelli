@@ -84,6 +84,14 @@
   display: contents;
 }
 
+/* Markdown tables in content: the first column holds short identifiers
+   (skill names, keys), so keep it unwrapped and let the prose columns
+   absorb the remaining width. */
+.prose table td:first-child,
+.prose table th:first-child {
+  white-space: nowrap;
+}
+
 /* Caption links (Figure's `captionHref`): a trailing external-link arrow
    signals the link at rest; the underline only appears on hover/focus so
    the caption stays visually quiet until the reader engages with it. */
