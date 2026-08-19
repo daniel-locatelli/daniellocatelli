@@ -202,7 +202,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
             placeholder={labels.inputPlaceholder}
             aria-label={labels.inputPlaceholder}
             autoComplete="off"
-            className="w-full rounded-full border border-zinc-800 bg-black/50 px-6 py-3 pr-12 text-zinc-200 shadow-sm backdrop-blur-sm transition-all focus:border-green-400 focus:ring-2 focus:ring-green-400/20 focus:outline-none"
+            className="w-full rounded-full border border-zinc-200 bg-black/50 px-6 py-3 pr-12 text-zinc-200 shadow-sm backdrop-blur-sm transition-all focus:border-green-400 focus:ring-2 focus:ring-green-400/20 focus:outline-none"
           />
           <button
             type="submit"
