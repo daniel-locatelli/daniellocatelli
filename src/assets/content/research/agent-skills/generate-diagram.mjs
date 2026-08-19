@@ -27,7 +27,7 @@ const rows = [
       groups: [
         { label: "AEC", tiles: ["creating-revit-plugin", "creating-grasshopper-plugin", "using-cordyceps", "working-with-btlx"] },
         { label: "WEB", tiles: ["optimizing-web-performance", "auditing-website-quality", "auditing-agent-readiness"] },
-        { label: "PERSONAL", tiles: [["system", true], ["phd", true], ["pre-pr-ritual", true]] },
+        { label: "PERSONAL", tiles: [["system", true], ["phd", true], ["pre-pr-ritual", true], ["backup-system", true], ["searching-librarian", true]] },
       ],
     },
   ],
