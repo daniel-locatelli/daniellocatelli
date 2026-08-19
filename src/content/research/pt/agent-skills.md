@@ -22,7 +22,7 @@ OtherLinks:
 
 Uma skill de agente é uma pasta com um `SKILL.md`: um conjunto curto e bem delimitado de instruções, referências e scripts que um agente de programação carrega quando uma tarefa corresponde à sua descrição. É a unidade em que a expertise viaja entre pessoas e agentes. Esta página é uma lista viva das skills que conquistaram um lugar permanente na minha configuração do Claude Code.
 
-![Blocos SKILL.md em três caixas (os meus, agrupados em AEC, software e pessoal; os do Matt Pocock; os da comunidade) alimentando um único agente de programação.](/assets/content/research/agent-skills/agent-skills-diagram.svg)
+![Blocos SKILL.md em três caixas (os meus, agrupados em AEC, qualidade e pessoal; os do Matt Pocock; os da comunidade) alimentando um único agente de programação.](/assets/content/research/agent-skills/agent-skills-diagram.svg)
 
 ## Minhas skills
 
@@ -39,7 +39,7 @@ Estas ficam no repositório público [daniel-locatelli/skills](https://github.co
 
 Uma skill privada de referência para compas_ifc acompanha estas, para que o agente consulte a especificação antes de responder a uma pergunta sobre parâmetro ou versão.
 
-### Software
+### Qualidade
 
 | Skill | O que faz |
 | --- | --- |
