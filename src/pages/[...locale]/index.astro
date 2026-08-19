@@ -78,10 +78,6 @@ const newTabHint = `(${meta.openNewTab})`;
       </div>
     </section>
 
-    <section class="mt-0!">
-      <GeodesicDome />
-    </section>
-
     <section id={home.service.id}>
       <div class="container mx-auto">
         <h2 class="md:text-center">{home.service.title}</h2>
@@ -106,6 +102,10 @@ const newTabHint = `(${meta.openNewTab})`;
           }
         </div>
       </div>
+    </section>
+
+    <section>
+      <GeodesicDome />
     </section>
 
     <section id={home.about.id}>
@@ -227,7 +227,7 @@ const newTabHint = `(${meta.openNewTab})`;
           {home.expertise.title}
         </h2>
         <p
-          class="mb-6 text-lg leading-relaxed text-pretty text-zinc-100 md:text-balance md:text-center"
+          class="mb-6 text-lg leading-relaxed text-pretty text-zinc-100 md:text-center md:text-balance"
         >
           {home.expertise.description}
         </p>
@@ -252,7 +252,8 @@ const newTabHint = `(${meta.openNewTab})`;
         <div
           class="flex flex-col items-center justify-center space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6"
         >
-          {/* WhatsApp link temporarily disabled (number cancelled). Restore by
+          {
+            /* WhatsApp link temporarily disabled (number cancelled). Restore by
               updating siteConfig.whatsapp and uncommenting this block + the
               WhatsApp import at the top of this file.
           <a
@@ -265,7 +266,8 @@ const newTabHint = `(${meta.openNewTab})`;
             <WhatsApp aria-hidden="true" class="size-5 md:size-4" />
             {home.contact.letsTalk}
           </a>
-          */}
+          */
+          }
           <a
             href={`mailto:${siteConfig.email}`}
             title="Email Daniel Locatelli"
@@ -285,7 +287,11 @@ const newTabHint = `(${meta.openNewTab})`;
               title={`Daniel Locatelli on LinkedIn ${newTabHint}`}
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
-              <Icon name="mdi:linkedin" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
+              <Icon
+                name="mdi:linkedin"
+                class="size-6 shrink-0 print:hidden"
+                aria-hidden="true"
+              />
             </a>
             <a
               href={siteConfig.instagram}
@@ -295,7 +301,11 @@ const newTabHint = `(${meta.openNewTab})`;
               title={`Daniel Locatelli on Instagram ${newTabHint}`}
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
-              <Icon name="mdi:instagram" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
+              <Icon
+                name="mdi:instagram"
+                class="size-6 shrink-0 print:hidden"
+                aria-hidden="true"
+              />
             </a>
             <a
               href={siteConfig.github}
@@ -305,7 +315,11 @@ const newTabHint = `(${meta.openNewTab})`;
               title={`Daniel Locatelli on GitHub ${newTabHint}`}
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
-              <Icon name="mdi:github" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
+              <Icon
+                name="mdi:github"
+                class="size-6 shrink-0 print:hidden"
+                aria-hidden="true"
+              />
             </a>
             <a
               href={siteConfig.gitlab}
@@ -315,7 +329,11 @@ const newTabHint = `(${meta.openNewTab})`;
               title={`Daniel Locatelli on GitLab ${newTabHint}`}
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
-              <Icon name="mdi:gitlab" class="size-6 shrink-0 print:hidden" aria-hidden="true" />
+              <Icon
+                name="mdi:gitlab"
+                class="size-6 shrink-0 print:hidden"
+                aria-hidden="true"
+              />
             </a>
           </div>
           <p class="text-center text-sm text-zinc-300">{siteConfig.email}</p>
