@@ -40,6 +40,15 @@ export default defineConfig({
   base: BASE_PATH,
   adapter: cloudflare({
     imageService: { build: "compile", runtime: "passthrough" },
+    // Prerender in Node rather than in a local workerd preview server. The
+    // default "workerd" mode proxies every page render over HTTP to a workerd
+    // process; on Cloudflare's build machines that connection has dropped
+    // mid-build with a bare "fetch failed" and no route or cause. Node mode
+    // renders in-process, so failures surface as normal Astro build errors
+    // with the failing route and stack trace. It also lets sharp generate the
+    // inline blur placeholders on letterboxed covers (sharp is unavailable in
+    // workerd, where those pages fell back to a 40px image variant).
+    prerenderEnvironment: "node",
   }),
   server: {
     port: 4321,
