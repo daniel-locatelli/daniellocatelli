@@ -11,7 +11,7 @@ export const t: I18nCV = {
     coverAlt: "Daniel Locatelli.",
   },
   ui: {
-    title: "Doctoral Researcher at ETH Zurich",
+    title: "PhD Candidate at ETH Zurich",
     summary: "Summary",
     skills: "Skills",
     programming: "Programming",
