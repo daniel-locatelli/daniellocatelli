@@ -35,8 +35,9 @@ These live in the public repository [daniel-locatelli/skills](https://github.com
 | **creating-revit-plugin** | Build native add-ins for Revit 2025 to 2027 |
 | **creating-grasshopper-plugin** | Build compiled Grasshopper plugins for Rhino 8 |
 | **using-cordyceps** | Drive Rhino and Grasshopper from the agent |
+| **btlx** | Work with BTLx, the timber CNC exchange format: processings, reference sides, schema versions |
 
-Two private reference skills sit next to these: one for BTLx, the timber CNC exchange format, and one for compas_ifc, so the agent checks the spec before answering a parameter or version question.
+A private reference skill for compas_ifc sits next to these, so the agent checks the spec before answering a parameter or version question.
 
 ### Web
 

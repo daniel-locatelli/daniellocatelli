@@ -21,7 +21,7 @@ const columns = [
   {
     label: "MINE",
     groups: [
-      { label: "AEC", tiles: ["creating-revit-plugin", "creating-grasshopper-plugin", "using-cordyceps"] },
+      { label: "AEC", tiles: ["creating-revit-plugin", "creating-grasshopper-plugin", "using-cordyceps", "btlx"] },
       { label: "WEB", tiles: ["optimizing-web-performance", "auditing-website-quality", "auditing-agent-readiness"] },
       { label: "PERSONAL", tiles: [["system", true], ["phd", true], ["pre-pr-ritual", true]] },
     ],
