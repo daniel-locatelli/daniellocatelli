@@ -26,7 +26,7 @@ OtherLinks:
 Place: Online
 ---
 
-This is the website you are reading right now. It started in April 2024 as a small Astro site pulling its pages from Notion, and it has since grown into a playground for the way I like to build things: fast static pages, content that is easy for both humans and AI tools to read, and a few interactive pieces where they add something.
+This is the website you are reading right now. It started in April 2024 as a small Astro site and has since grown into a playground for the way I like to build things: fast static pages, content that is easy for both humans and AI tools to read, and a few interactive pieces where they add something.
 
 ## Tech Stack
 
@@ -36,15 +36,13 @@ This is the website you are reading right now. It started in April 2024 as a sma
 - [**Three.js**](https://threejs.org/) for the geodesic sphere.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) with Static Assets for hosting, edge caching, and the agent-facing endpoints; prerendered pages are served straight from the edge, and the Worker only runs for the chat and MCP endpoints.
 
-## From Notion to markdown, with Claude Code as CMS
+## Markdown content, with Claude Code as CMS
 
-The first version used the Notion API as a headless CMS, the same setup I had built for the [BuildSystems website](/projects/buildsystems-website). Notion is pleasant to write in, but every page had to travel through an API, a block-to-HTML converter, and an image cache before it became a web page. More importantly, the content was locked behind an API that AI coding tools could not simply open and read.
+All content lives as plain markdown files inside the repository, organised as Astro Content Collections. Each project, research entry, publication, teaching item, and CV section is a file with typed frontmatter and a markdown body, one folder per locale. There is no database and no external CMS behind the pages.
 
-In early 2026 I migrated everything to plain markdown files inside the repository, organised as Astro Content Collections. Each project, research entry, publication, teaching item, and CV section is now a file with typed frontmatter and a markdown body, one folder per locale.
+The point of this setup is to make the content directly accessible to AI harnesses such as [Claude Code](https://claude.com/claude-code). Because the content is just files next to the code, Claude Code can read, edit, create, and cross-check entries the same way it works on source code. In practice this means I use Claude Code as the CMS: I describe a new project or a correction in a sentence, and it writes or updates the files, keeps the frontmatter consistent, and checks the related entries in the other languages. This very page was written that way. Everything on this site is co-created, from the code to the content.
 
-The point of the change was to make the content directly accessible to AI harnesses such as [Claude Code](https://claude.com/claude-code). Because the content is just files next to the code, Claude Code can read, edit, create, and cross-check entries the same way it works on source code. In practice this means I use Claude Code as the CMS: I describe a new project or a correction in a sentence, and it writes or updates the files, keeps the frontmatter consistent, and checks the related entries in the other languages. This very page was written that way. Everything on this site is co-created, from the code to the content.
-
-The migration had a second payoff: with all the content sitting in the repository as plain text, it became straightforward to chunk it, embed it, and feed it to a language model. That is what made the AI chat on the homepage possible.
+Keeping the content in the repository as plain text has a second payoff: it is straightforward to chunk it, embed it, and feed it to a language model. That is what makes the AI chat on the homepage possible.
 
 ## Translation by Claude Code
 

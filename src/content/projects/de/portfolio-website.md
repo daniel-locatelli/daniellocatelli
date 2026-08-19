@@ -26,7 +26,7 @@ OtherLinks:
 Place: Online
 ---
 
-Das ist die Website, die Sie gerade lesen. Sie begann im April 2024 als kleine Astro-Seite, die ihre Inhalte aus Notion bezog, und ist seitdem zu einer Spielwiese für die Art geworden, wie ich gerne Dinge baue: schnelle statische Seiten, Inhalte, die sowohl für Menschen als auch für KI-Werkzeuge leicht lesbar sind, und ein paar interaktive Elemente dort, wo sie etwas beitragen.
+Das ist die Website, die Sie gerade lesen. Sie begann im April 2024 als kleine Astro-Seite und ist seitdem zu einer Spielwiese für die Art geworden, wie ich gerne Dinge baue: schnelle statische Seiten, Inhalte, die sowohl für Menschen als auch für KI-Werkzeuge leicht lesbar sind, und ein paar interaktive Elemente dort, wo sie etwas beitragen.
 
 ## Tech-Stack
 
@@ -36,15 +36,13 @@ Das ist die Website, die Sie gerade lesen. Sie begann im April 2024 als kleine A
 - [**Three.js**](https://threejs.org/) für die geodätische Kugel.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) mit Static Assets für Hosting, Edge-Caching und die Endpunkte für Agenten; vorgerenderte Seiten werden direkt von der Edge ausgeliefert, der Worker läuft nur für die Chat- und MCP-Endpunkte.
 
-## Von Notion zu Markdown, mit Claude Code als CMS
+## Inhalte in Markdown, mit Claude Code als CMS
 
-Die erste Version nutzte die Notion-API als Headless-CMS, dieselbe Konfiguration, die ich für die [BuildSystems-Website](/de/projects/buildsystems-website) aufgebaut hatte. Notion ist angenehm zum Schreiben, aber jede Seite musste durch eine API, einen Block-zu-HTML-Konverter und einen Bild-Cache, bevor sie zu einer Webseite wurde. Wichtiger noch: Die Inhalte waren hinter einer API eingeschlossen, die KI-Programmierwerkzeuge nicht einfach öffnen und lesen konnten.
+Sämtliche Inhalte liegen als reine Markdown-Dateien innerhalb des Repositories, organisiert als Astro Content Collections. Jedes Projekt, jeder Forschungseintrag, jede Publikation, jeder Lehrbeitrag und jeder Lebenslaufabschnitt ist eine Datei mit typisiertem Frontmatter und einem Markdown-Textkörper, mit einem Ordner pro Sprache. Hinter den Seiten steht weder eine Datenbank noch ein externes CMS.
 
-Anfang 2026 habe ich alles in reine Markdown-Dateien innerhalb des Repositories migriert, organisiert als Astro Content Collections. Jedes Projekt, jeder Forschungseintrag, jede Publikation, jeder Lehrbeitrag und jeder Lebenslaufabschnitt ist jetzt eine Datei mit typisiertem Frontmatter und einem Markdown-Textkörper, mit einem Ordner pro Sprache.
+Sinn dieses Aufbaus ist, die Inhalte für KI-Harnesse wie [Claude Code](https://claude.com/claude-code) direkt zugänglich zu machen. Weil die Inhalte einfach Dateien neben dem Code sind, kann Claude Code Einträge genauso lesen, bearbeiten, anlegen und gegenprüfen, wie es mit Quellcode arbeitet. In der Praxis heißt das: Ich nutze Claude Code als CMS. Ich beschreibe ein neues Projekt oder eine Korrektur in einem Satz, und es schreibt oder aktualisiert die Dateien, hält das Frontmatter konsistent und prüft die zugehörigen Einträge in den anderen Sprachen. Genau diese Seite ist so entstanden. Alles auf dieser Website ist gemeinsam entstanden, vom Code bis zum Inhalt.
 
-Sinn der Umstellung war, die Inhalte für KI-Harnesse wie [Claude Code](https://claude.com/claude-code) direkt zugänglich zu machen. Weil die Inhalte einfach Dateien neben dem Code sind, kann Claude Code Einträge genauso lesen, bearbeiten, anlegen und gegenprüfen, wie es mit Quellcode arbeitet. In der Praxis heißt das: Ich nutze Claude Code als CMS. Ich beschreibe ein neues Projekt oder eine Korrektur in einem Satz, und es schreibt oder aktualisiert die Dateien, hält das Frontmatter konsistent und prüft die zugehörigen Einträge in den anderen Sprachen. Genau diese Seite ist so entstanden. Alles auf dieser Website ist gemeinsam entstanden, vom Code bis zum Inhalt.
-
-Die Migration hatte einen zweiten Nutzen: Da alle Inhalte als reiner Text im Repository liegen, war es einfach, sie in Abschnitte zu zerlegen, Embeddings zu erzeugen und sie einem Sprachmodell zuzuführen. Genau das hat den KI-Chat auf der Startseite möglich gemacht.
+Dass alle Inhalte als reiner Text im Repository liegen, hat einen zweiten Nutzen: Es ist einfach, sie in Abschnitte zu zerlegen, Embeddings zu erzeugen und sie einem Sprachmodell zuzuführen. Genau das macht den KI-Chat auf der Startseite möglich.
 
 ## Übersetzung durch Claude Code
 

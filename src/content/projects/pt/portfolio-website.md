@@ -26,7 +26,7 @@ OtherLinks:
 Place: Online
 ---
 
-Este é o site que você está lendo agora. Ele começou em abril de 2024 como um pequeno site em Astro que puxava suas páginas do Notion e, desde então, virou um campo de testes para o jeito como gosto de construir as coisas: páginas estáticas rápidas, conteúdo fácil de ler tanto para pessoas quanto para ferramentas de IA, e algumas peças interativas onde elas realmente acrescentam algo.
+Este é o site que você está lendo agora. Ele começou em abril de 2024 como um pequeno site em Astro e, desde então, virou um campo de testes para o jeito como gosto de construir as coisas: páginas estáticas rápidas, conteúdo fácil de ler tanto para pessoas quanto para ferramentas de IA, e algumas peças interativas onde elas realmente acrescentam algo.
 
 ## Stack Tecnológico
 
@@ -36,15 +36,13 @@ Este é o site que você está lendo agora. Ele começou em abril de 2024 como u
 - [**Three.js**](https://threejs.org/) para a esfera geodésica.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) com Static Assets para hospedagem, cache na borda e os endpoints voltados a agentes; as páginas pré-renderizadas são servidas direto da borda, e o Worker só roda para os endpoints de chat e MCP.
 
-## Do Notion ao markdown, com o Claude Code como CMS
+## Conteúdo em markdown, com o Claude Code como CMS
 
-A primeira versão usava a API do Notion como CMS headless, a mesma configuração que eu havia montado para o [site da BuildSystems](/pt/projects/buildsystems-website). O Notion é agradável para escrever, mas cada página precisava passar por uma API, um conversor de blocos para HTML e um cache de imagens antes de virar uma página web. Mais importante: o conteúdo ficava trancado atrás de uma API que as ferramentas de programação com IA não conseguiam simplesmente abrir e ler.
+Todo o conteúdo vive como arquivos markdown puros dentro do repositório, organizados como Astro Content Collections. Cada projeto, entrada de pesquisa, publicação, item de ensino e seção do currículo é um arquivo com frontmatter tipado e um corpo em markdown, com uma pasta por idioma. Não há banco de dados nem CMS externo por trás das páginas.
 
-No início de 2026 migrei tudo para arquivos markdown puros dentro do repositório, organizados como Astro Content Collections. Cada projeto, entrada de pesquisa, publicação, item de ensino e seção do currículo agora é um arquivo com frontmatter tipado e um corpo em markdown, com uma pasta por idioma.
+O objetivo dessa configuração é tornar o conteúdo diretamente acessível a harnesses de IA como o [Claude Code](https://claude.com/claude-code). Como o conteúdo é apenas um conjunto de arquivos ao lado do código, o Claude Code consegue ler, editar, criar e cruzar entradas do mesmo jeito que trabalha com código-fonte. Na prática, isso significa que uso o Claude Code como CMS: descrevo um novo projeto ou uma correção em uma frase, e ele escreve ou atualiza os arquivos, mantém o frontmatter consistente e confere as entradas relacionadas nos outros idiomas. Esta própria página foi escrita assim. Tudo neste site é cocriado, do código ao conteúdo.
 
-O objetivo da mudança foi tornar o conteúdo diretamente acessível a harnesses de IA como o [Claude Code](https://claude.com/claude-code). Como o conteúdo é apenas um conjunto de arquivos ao lado do código, o Claude Code consegue ler, editar, criar e cruzar entradas do mesmo jeito que trabalha com código-fonte. Na prática, isso significa que uso o Claude Code como CMS: descrevo um novo projeto ou uma correção em uma frase, e ele escreve ou atualiza os arquivos, mantém o frontmatter consistente e confere as entradas relacionadas nos outros idiomas. Esta própria página foi escrita assim. Tudo neste site é cocriado, do código ao conteúdo.
-
-A migração teve um segundo ganho: com todo o conteúdo no repositório em texto puro, ficou simples dividi-lo em trechos, gerar embeddings e alimentar um modelo de linguagem. Foi isso que tornou possível o chat com IA na página inicial.
+Manter o conteúdo no repositório em texto puro tem um segundo ganho: é simples dividi-lo em trechos, gerar embeddings e alimentar um modelo de linguagem. É isso que torna possível o chat com IA na página inicial.
 
 ## Tradução feita pelo Claude Code
 
