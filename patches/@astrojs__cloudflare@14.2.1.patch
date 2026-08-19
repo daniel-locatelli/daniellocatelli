@@ -1,0 +1,16 @@
+diff --git a/dist/utils/image-binding-transform.js b/dist/utils/image-binding-transform.js
+index 66ba9ec49f5e7c2ad55f84c94ae8407f64b28ecc..46eb314bac653b9dca424161c4454791380c4ade 100644
+--- a/dist/utils/image-binding-transform.js
++++ b/dist/utils/image-binding-transform.js
+@@ -9,6 +9,11 @@ const qualityTable = {
+   max: 100
+ };
+ async function transformStream(body, params, images) {
++  // SVGs are never rasterized by Astro image services; pass them through
++  // unchanged instead of rejecting them (the Images binding cannot emit svg).
++  if (params.get("f") === "svg") {
++    return new Response(body, { headers: { "content-type": "image/svg+xml" } });
++  }
+   const supportedFormats = {
+     jpeg: "image/jpeg",
+     jpg: "image/jpeg",

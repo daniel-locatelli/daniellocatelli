@@ -8,3 +8,5 @@ minimumReleaseAgeExclude:
   - '@astrojs/cloudflare@14.2.1'
   - '@astrojs/underscore-redirects@1.0.4'
   - astro@7.2.1
+patchedDependencies:
+  '@astrojs/cloudflare@14.2.1': patches/@astrojs__cloudflare@14.2.1.patch
