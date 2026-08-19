@@ -61,9 +61,9 @@ const glyph = (d, x, y, size, extra = "") =>
   // y=4.5, eyes y 7.5..10.5, feet bottom y=19.5. MDI "school" on its 24 grid:
   // mortarboard rhombus x 1..21 (centre 11, tassel to 23), top y=3, body
   // bottom V (5,17.18)-(12,21)-(19,17.18).
-  // Board ~1.35x head width; brim V tip lands just above the eyes; rhombus
+  // Board ~1.5x head width; brim V tip lands just above the eyes; rhombus
   // centred on the head. Only the brim gets a dark line; the rest merges.
-  const capS = (18 * 1.35 / 20) * S;
+  const capS = (18 * 1.5 / 20) * S;
   const k = capS / 24;
   // vertical centring of the combined silhouette (cap top .. glyph feet)
   const capTopRel = 7 * u - 21 * k + 3 * k; // relative to glyph y
