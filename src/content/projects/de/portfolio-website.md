@@ -56,19 +56,23 @@ Die Website ist auf Englisch, Portugiesisch und Deutsch verfügbar. Es gibt kein
 
 Die Startseite beginnt mit einem Chat, der von Claude angetrieben wird. Besucher können fragen, woran ich arbeite, wo ich studiert habe, welche Werkzeuge ich benutze oder alles andere, was die Website abdeckt, und erhalten eine Antwort, die auf den tatsächlichen Inhalten beruht statt auf einer generischen Auskunft.
 
+![Das Chat-Eingabefeld auf der Startseite: ein abgerundetes Textfeld mit "Ask me something..." und einem Sendepfeil, darunter der Hinweis "Powered by Claude Haiku 4.5".](../../../assets/content/projects/portfolio-website/chat-bot.png)
+
 Im Hintergrund verwandelt eine Wissens-Pipeline die Content Collections in kleine Textabschnitte pro Sprache (einzelne Seiten, Lebenslaufeinträge, eine chronologische Zeitleiste und einen Satz vorformulierter FAQ-Antworten auf die häufigsten Besucherfragen), erzeugt mit Voyage AI Embeddings und speichert die Vektoren in Supabase. Trifft eine Frage ein, ruft der API-Endpunkt die ähnlichsten Abschnitte ab und übergibt sie Claude als Kontext. Sobald sich Inhalte ändern, erzeugt ein einziger Befehl die Wissensdateien neu und lädt frische Embeddings hoch, und ein Benchmark-Skript stellt dem Chat einen festen Satz häufiger Fragen, um sicherzustellen, dass er sie weiterhin alle korrekt beantwortet.
 
 ![Architekturdiagramm: Beim Build werden die Markdown-Inhalte der Website in Wissensabschnitte zerlegt, mit Voyage AI eingebettet und in Supabase gespeichert; zur Laufzeit wird die Besucherfrage eingebettet, die nächstgelegenen Abschnitte werden abgerufen und an Claude übergeben, das eine fundierte Antwort zurück auf die Seite streamt.](/assets/content/projects/portfolio-website/chat-pipeline-de.svg)
 
 ## Die geodätische Kugel
 
-Unter dem Chat sitzt eine geodätische Kugel, gerendert mit Three.js. Sie folgt der Konstruktion, die Buckminster Fuller berühmt gemacht hat: Man beginnt mit einem Ikosaeder, unterteilt jede Fläche, projiziert die Eckpunkte auf eine Kugel und bildet das Dual, sodass die zwölf ursprünglichen Eckpunkte zu Fünfecken werden und alles andere zu Sechsecken. Die Kugel dreht sich beim Scrollen und verbindet so die Bewegung der Seite mit der Geometrie.
+Weiter unten auf der Startseite, zwischen den Dienstleistungen und dem Abschnitt "Architekt + Programmierer", sitzt eine geodätische Kugel, gerendert mit Three.js. Sie folgt der Konstruktion, die Buckminster Fuller berühmt gemacht hat: Man beginnt mit einem Ikosaeder, unterteilt jede Fläche, projiziert die Eckpunkte auf eine Kugel und bildet das Dual, sodass die zwölf ursprünglichen Eckpunkte zu Fünfecken werden und alles andere zu Sechsecken. Die Kugel dreht sich beim Scrollen und verbindet so die Bewegung der Seite mit der Geometrie. Die grünen Polygonkanten werden als dünne Streifen im Bildschirmraum gezeichnet statt als rohe, ein Pixel breite GL-Linien, damit sie auf jedem Bildschirm glatt und gleichmäßig dick bleiben, und die Flächen werden in der Tiefe leicht zurückgesetzt, damit die Kanten nie gegen die Oberfläche flackern. Ein leichter Nebel zum schwarzen Seitenhintergrund hin lässt die Flächen auf der Rückseite der Kugel verblassen und gibt der Ansicht Tiefe.
 
-Sie ist auch eine Anspielung auf meinen eigenen Weg: Geodätische und leichte Tragwerke sind ein wiederkehrendes Thema in den Projekten und Forschungsarbeiten auf dieser Website, von [Common Sky](/de/projects/common-sky-by-artengineering-for-studio-other-spaces) bis zu meiner Doktorarbeit über Holztragwerke. Three.js wird direkt nach dem ersten gezeichneten Bildschirm in einem Leerlaufmoment nachgeladen, sodass es nie im kritischen Pfad des ersten Seitenaufbaus liegt, aber bereit ist, sobald man zur Kugel hinunterscrollt.
+Sie ist auch eine Anspielung auf meinen eigenen Weg: Geodätische und leichte Tragwerke sind ein wiederkehrendes Thema in den Projekten und Forschungsarbeiten auf dieser Website, vom [O3-Pavillon](/de/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol), wo es wirklich begann, über [Common Sky](/de/projects/common-sky-by-artengineering-for-studio-other-spaces) und meine Masterarbeit [Building Across Scales](/de/research/building-across-scales) bis zu meiner Doktorarbeit über Holztragwerke. Three.js wird direkt nach dem ersten gezeichneten Bildschirm in einem Leerlaufmoment nachgeladen, sodass es nie im kritischen Pfad des ersten Seitenaufbaus liegt, aber bereit ist, sobald man zur Kugel hinunterscrollt.
 
 ## Präsentationsmodus
 
 Inhaltselemente können eine Folienpräsentation mitführen, die neben dem Text liegt, im selben Ordner und im selben Repository. Die Präsentationen werden in MDX geschrieben, mit einer kleinen YAML-Kurzschreibweise für die gängigen Folientypen (Titel, Text, Bild, Bildreihe, Video, Überlagerungen), und im Browser gerendert, mit Tastaturnavigation, einer Übersicht aller Folien und einem Präsentatorfenster. Ich nutze das für Lehre und Vorträge, damit eine Vorlesung und ihre Folien gemeinsam veröffentlicht, gemeinsam versioniert und gemeinsam übersetzt werden.
+
+![Die Folienübersicht der Präsentation "Computational Architecture in Germany": ein Raster aus Vorschaubildern, das erste grün hervorgehoben, mit Schaltflächen für Beenden, Hilfe und Vollbild oben rechts und einem Zähler 1 / 112 in der unteren Ecke.](../../../assets/content/projects/portfolio-website/presentation-deck.png)
 
 ## Agentenfähig auf Cloudflare
 
@@ -87,12 +91,20 @@ Die Content Negotiation auf vorgerenderten Seiten zum Laufen zu bringen, erforde
 
 ## Performance und Lighthouse
 
-Die Website besteht überwiegend aus statischem HTML, was ihr bereits einen Vorsprung verschafft. Darüber hinaus werden Bilder in responsiven Größen mit expliziten Breiten ausgeliefert, damit sich beim Laden nichts verschiebt, Bilder im Textkörper werden bei Bedarf geladen und kurz vor dem sichtbaren Bereich vorgeladen, Schriften werden auf die benötigten Zeichen reduziert und vorgeladen, und schwere Skripte werden aufgeschoben, bis sie tatsächlich gebraucht werden: Three.js wartet auf einen Leerlaufmoment und zeichnet die Kugel danach nur neu, solange sie sich tatsächlich bewegt, und das Chat-Fenster (mit Markdown-Renderer und Animationen) wird erst geladen, wenn ein Besucher zu tippen beginnt, sodass das Eingabefeld selbst nur wenige Kilobyte JavaScript mitbringt. Die Logos in der Kompetenzkarte werden als separate, bei Bedarf geladene Bilddateien ausgeliefert statt in die Seite eingebettet, was das HTML der Startseite von rund 350 KB auf unter 70 KB verkleinert hat, sodass das erste Rendern nicht mehr auf Hunderte Kilobyte Vektorpfade warten muss. Zusammen haben diese Änderungen die Lighthouse-Werte für Performance, Barrierefreiheit, Best Practices und SEO an die Spitze der Skala gebracht.
+Astro rendert die Website zu überwiegend statischem HTML, was ihr bereits einen Vorsprung verschafft. Die Lighthouse-Werte von 100 für Performance, Barrierefreiheit, Best Practices und SEO ergeben sich dann daraus, nichts zu laden, was der Besucher noch nicht braucht:
+
+- Bilder kommen in responsiven Größen mit expliziten Abmessungen und werden kurz vor dem sichtbaren Bereich nachgeladen; Schriften werden auf die benötigten Zeichen reduziert und vorgeladen.
+- Three.js lädt in einem Leerlaufmoment und zeichnet die Kugel nur neu, solange sie sich bewegt.
+- Das Chat-Fenster wird erst geladen, wenn ein Besucher zu tippen beginnt, sodass das Eingabefeld selbst nur wenige Kilobyte JavaScript mitbringt.
+- Die Logos der Kompetenzkarte sind separate, nachgeladene Bilder statt eingebettetem SVG, was das HTML der Startseite von rund 350 KB auf unter 70 KB verkleinert hat.
 
 ![Lighthouse-Ergebnis: 100 für Performance, Barrierefreiheit, Best Practices und SEO](../../../assets/content/projects/portfolio-website/result-lighthouse.png)
+
+## Ein persönlicher Werkzeugkasten hinter den öffentlichen Seiten
+
+Die Website enthält auch Seiten, die nirgends verlinkt sind und vor allem meinem eigenen Gebrauch dienen. Der Kurzlebenslauf, der vollständige Lebenslauf und der auf die Promotion ausgerichtete Lebenslauf liegen unter nicht gelisteten URLs, werden aus denselben Content Collections gerendert wie der Rest der Website (sodass eine Erfahrung oder Publikation nur ein einziges Mal eingetragen werden muss) und bringen Druckstile mit, sodass das Speichern der Seite als PDF jederzeit ein sauberes, aktuelles Dokument ergibt. Ein paar ebenfalls nicht gelistete Seiten dienen als Titelkarten für aufgezeichnete Vorlesungen. So ist die Website zugleich ein kleiner Arbeitsbereich und nicht nur ein Schaufenster für Besucher.
 
 ## Kleinere Details
 
 - **Link-Vorschauen zur Build-Zeit.** Externe Links, die auf einer Seite aufgeführt sind, werden als Vorschaukarten dargestellt. Titel, Beschreibungen, Bilder und Favicons werden einmal abgerufen und im Repository zwischengespeichert, sodass der Build reproduzierbar ist und beim Laden der Seite keine Anfrage an Dritte erfolgt.
 - **Fußnoten mit Tooltip.** Markdown-Fußnoten erhalten beim Überfahren mit der Maus einen Tooltip, der die Anmerkung direkt an Ort und Stelle zeigt, sodass Leser nicht ans Seitenende springen müssen.
-- **Eine Quelle für jeden Lebenslauf.** Der Kurzlebenslauf, der vollständige Lebenslauf und der auf die Promotion ausgerichtete Lebenslauf werden alle aus denselben Content Collections gerendert, sodass eine Erfahrung oder Publikation nur ein einziges Mal eingetragen werden muss.

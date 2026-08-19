@@ -56,19 +56,23 @@ O site está disponível em inglês, português e alemão. Não há nenhum servi
 
 A página inicial abre com um chat baseado no Claude. Os visitantes podem perguntar no que estou trabalhando, onde estudei, quais ferramentas uso ou qualquer outra coisa coberta pelo site, e recebem uma resposta baseada no conteúdo real, e não uma resposta genérica.
 
+![O campo de chat na página inicial: um campo de texto arredondado com "Ask me something..." e uma seta de envio, e a legenda "Powered by Claude Haiku 4.5" logo abaixo.](../../../assets/content/projects/portfolio-website/chat-bot.png)
+
 Por baixo dos panos, um pipeline de conhecimento transforma as coleções de conteúdo em pequenos trechos de texto por idioma (páginas individuais, entradas do currículo, uma linha do tempo cronológica e um conjunto de respostas de FAQ pré-escritas para as perguntas mais comuns dos visitantes), gera embeddings com a Voyage AI e armazena os vetores no Supabase. Quando chega uma pergunta, o endpoint da API recupera os trechos mais parecidos e os passa ao Claude como contexto. Sempre que o conteúdo muda, um único comando regenera os arquivos de conhecimento e envia embeddings novos, e um script de benchmark roda um conjunto fixo de perguntas comuns contra o chat para garantir que ele continua respondendo todas corretamente.
 
 ![Diagrama de arquitetura: no build, o conteúdo markdown do site é dividido em trechos de conhecimento, transformado em embeddings pela Voyage AI e armazenado no Supabase; em tempo de execução, a pergunta do visitante é embutida, os trechos mais próximos são recuperados e passados ao Claude, que transmite uma resposta fundamentada de volta à página.](/assets/content/projects/portfolio-website/chat-pipeline-pt.svg)
 
 ## A esfera geodésica
 
-Abaixo do chat fica uma esfera geodésica renderizada com Three.js. Ela segue a construção que Buckminster Fuller tornou famosa: partir de um icosaedro, subdividir cada face, projetar os vértices sobre uma esfera e tomar o dual, de modo que os doze vértices originais viram pentágonos e todo o resto vira hexágonos. A esfera gira conforme você rola a página, ligando o movimento da página à geometria.
+Mais abaixo na página inicial, entre as ofertas de serviços e a seção "Arquiteto + Programador", fica uma esfera geodésica renderizada com Three.js. Ela segue a construção que Buckminster Fuller tornou famosa: partir de um icosaedro, subdividir cada face, projetar os vértices sobre uma esfera e tomar o dual, de modo que os doze vértices originais viram pentágonos e todo o resto vira hexágonos. A esfera gira conforme você rola a página, ligando o movimento da página à geometria. As arestas verdes dos polígonos são desenhadas como faixas finas no espaço da tela, e não como linhas GL brutas de um pixel, para que permaneçam suaves e com espessura uniforme em qualquer tela, e as faces são levemente recuadas em profundidade para que as arestas nunca tremulem contra a superfície. Uma leve névoa em direção ao fundo preto da página esmaece as faces do lado de trás da esfera, dando profundidade à cena.
 
-É também uma referência à minha própria trajetória: estruturas geodésicas e leves são um tema recorrente nos projetos e pesquisas deste site, do [Common Sky](/pt/projects/common-sky-by-artengineering-for-studio-other-spaces) ao meu doutorado sobre estruturas de madeira. O Three.js é carregado logo depois que a primeira tela é desenhada, em um momento ocioso, para nunca ficar no caminho crítico do carregamento inicial da página, mas já estar pronto quando você rolar até a esfera.
+É também uma referência à minha própria trajetória: estruturas geodésicas e leves são um tema recorrente nos projetos e pesquisas deste site, do [Pavilhão O3](/pt/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol), onde tudo começou de verdade, passando pelo [Common Sky](/pt/projects/common-sky-by-artengineering-for-studio-other-spaces) e pela minha dissertação de mestrado [Building Across Scales](/pt/research/building-across-scales), até o meu doutorado sobre estruturas de madeira. O Three.js é carregado logo depois que a primeira tela é desenhada, em um momento ocioso, para nunca ficar no caminho crítico do carregamento inicial da página, mas já estar pronto quando você rolar até a esfera.
 
 ## Modo apresentação
 
 Itens de conteúdo podem carregar uma apresentação de slides que vive junto do texto, na mesma pasta e no mesmo repositório. As apresentações são escritas em MDX com um pequeno atalho em YAML para os tipos de slide mais comuns (título, texto, imagem, fileira de imagens, vídeo, sobreposições) e são renderizadas no navegador com navegação por teclado, uma visão geral de todos os slides e uma janela do apresentador. Uso isso para aulas e palestras, de modo que uma aula e seus slides sejam publicados juntos, versionados juntos e traduzidos juntos.
+
+![A visão geral de slides da apresentação "Computational Architecture in Germany": uma grade de miniaturas, a primeira destacada em verde, com controles de sair, ajuda e tela cheia no canto superior direito e um contador 1 / 112 no canto inferior.](../../../assets/content/projects/portfolio-website/presentation-deck.png)
 
 ## Pronto para agentes na Cloudflare
 
@@ -87,12 +91,20 @@ Fazer a negociação de conteúdo funcionar em páginas pré-renderizadas exigiu
 
 ## Desempenho e Lighthouse
 
-O site é em grande parte HTML estático, o que já lhe dá uma vantagem inicial. Além disso, as imagens são servidas em tamanhos responsivos com larguras explícitas para que nada se desloque durante o carregamento, as imagens do corpo são carregadas sob demanda e pré-carregadas pouco antes de entrarem na área visível, as fontes são reduzidas ao subconjunto necessário e pré-carregadas, e scripts pesados são adiados até que sejam realmente necessários: o Three.js espera um momento ocioso e depois só redesenha a esfera enquanto ela está de fato em movimento, e a janela do chat (com seu renderizador de markdown e animações) só é baixada quando o visitante começa a digitar, de modo que o campo de entrada da abertura carrega apenas alguns kilobytes de JavaScript. Os logotipos do mapa de competências são servidos como arquivos de imagem separados, carregados sob demanda, em vez de embutidos na página, o que reduziu o HTML da página inicial de cerca de 350 KB para menos de 70 KB, de modo que a primeira pintura não espera mais por centenas de kilobytes de caminhos vetoriais. Juntas, essas mudanças levaram as pontuações do Lighthouse em desempenho, acessibilidade, boas práticas e SEO ao topo da escala.
+O Astro renderiza o site em HTML majoritariamente estático, o que já lhe dá uma vantagem inicial. As pontuações de 100 no Lighthouse em desempenho, acessibilidade, boas práticas e SEO vêm então de não carregar o que o visitante ainda não precisa:
+
+- As imagens chegam em tamanhos responsivos com dimensões explícitas, carregadas sob demanda pouco antes de entrarem na área visível; as fontes são reduzidas ao subconjunto necessário e pré-carregadas.
+- O Three.js carrega num momento ocioso e só redesenha a esfera enquanto ela está em movimento.
+- A janela do chat só é baixada quando o visitante começa a digitar, de modo que o campo de entrada da abertura carrega apenas alguns kilobytes de JavaScript.
+- Os logotipos do mapa de competências são imagens separadas carregadas sob demanda, em vez de SVG embutido, o que reduziu o HTML da página inicial de cerca de 350 KB para menos de 70 KB.
 
 ![Resultado do Lighthouse: 100 em desempenho, acessibilidade, boas práticas e SEO](../../../assets/content/projects/portfolio-website/result-lighthouse.png)
+
+## Uma caixa de ferramentas pessoal por trás das páginas públicas
+
+O site também hospeda páginas que não são linkadas de lugar nenhum e existem sobretudo para meu próprio uso. O currículo resumido, o currículo completo e o currículo voltado ao doutorado ficam em URLs não listadas, são renderizados a partir das mesmas coleções de conteúdo que o resto do site (de modo que uma experiência ou publicação só precisa ser cadastrada uma vez) e trazem estilos de impressão, para que salvar a página como PDF gere um documento limpo e atualizado sempre que for preciso. Algumas páginas igualmente não listadas servem de cartões de abertura para aulas gravadas. Assim, o site funciona também como um pequeno espaço de trabalho, e não apenas como vitrine para visitantes.
 
 ## Detalhes menores
 
 - **Prévias de links no build.** Links externos listados em uma página são exibidos como cartões de prévia. Títulos, descrições, imagens e favicons são buscados uma única vez e guardados em cache no repositório, de modo que o build é reprodutível e nenhuma requisição a terceiros acontece ao carregar a página.
 - **Notas de rodapé com tooltip.** Notas de rodapé em markdown ganham um tooltip ao passar o mouse, mostrando a nota no próprio lugar, para que o leitor não precise pular até o fim da página.
-- **Uma única fonte para todos os currículos.** O currículo resumido, o currículo completo e o currículo voltado ao doutorado são todos renderizados a partir das mesmas coleções de conteúdo, de modo que uma experiência ou publicação só precisa ser cadastrada uma vez.

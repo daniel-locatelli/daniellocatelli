@@ -56,19 +56,23 @@ The site is available in English, Portuguese, and German. There is no translatio
 
 The homepage opens with a chat powered by Claude. Visitors can ask what I am working on, where I studied, which tools I use, or anything else covered by the site, and get an answer grounded in the actual content rather than a generic reply.
 
+![The chat input on the homepage: a rounded text field reading "Ask me something..." with a send arrow, and the caption "Powered by Claude Haiku 4.5" underneath.](../../../assets/content/projects/portfolio-website/chat-bot.png)
+
 Under the hood, a knowledge pipeline turns the content collections into small text chunks per locale (individual pages, CV entries, a chronological timeline, and a set of pre-written FAQ answers for the most common visitor questions), embeds them with Voyage AI, and stores the vectors in Supabase. When a question comes in, the API endpoint retrieves the most similar chunks and passes them to Claude as context. Whenever content changes, a single command regenerates the knowledge files and uploads fresh embeddings, and a benchmark script runs a fixed set of common questions against the chat to make sure it still answers all of them correctly.
 
 ![Architecture diagram: at build time the site's markdown content is split into knowledge chunks, embedded with Voyage AI and stored in Supabase; at runtime a visitor's question is embedded, the nearest chunks are retrieved and passed to Claude, which streams a grounded answer back to the page.](/assets/content/projects/portfolio-website/chat-pipeline-en.svg)
 
 ## The geodesic sphere
 
-Below the chat sits a geodesic sphere rendered with Three.js. It follows the construction Buckminster Fuller made famous: start from an icosahedron, subdivide each face, project the vertices onto a sphere, and take the dual, so that the twelve original vertices become pentagons and everything else becomes hexagons. The sphere rotates as you scroll, tying the motion of the page to the geometry.
+Further down the home page, between the service offerings and the "Architect + Programmer" section, sits a geodesic sphere rendered with Three.js. It follows the construction Buckminster Fuller made famous: start from an icosahedron, subdivide each face, project the vertices onto a sphere, and take the dual, so that the twelve original vertices become pentagons and everything else becomes hexagons. The sphere rotates as you scroll, tying the motion of the page to the geometry. The green polygon edges are drawn as thin screen-space strips rather than raw one-pixel GL lines, so they stay smooth and evenly thick on any screen, and the faces are nudged back slightly in depth so the edges never flicker against the surface. A light fog toward the black page background fades the faces at the back of the sphere, giving the view a sense of depth.
 
-It is also a nod to my own path: geodesic and lightweight structures are a recurring theme in the projects and research on this site, from [Common Sky](/projects/common-sky-by-artengineering-for-studio-other-spaces) to my doctoral work on timber structures. Three.js is fetched right after the first screen has painted, in an idle moment, so it never sits on the critical path of the initial page load but is ready by the time you scroll down to the sphere.
+It is also a nod to my own path: geodesic and lightweight structures are a recurring theme in the projects and research on this site, from the [O3 Pavilion](/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol), where it started for real, through [Common Sky](/projects/common-sky-by-artengineering-for-studio-other-spaces) and my master thesis [Building Across Scales](/research/building-across-scales) to my doctoral work on timber structures. Three.js is fetched right after the first screen has painted, in an idle moment, so it never sits on the critical path of the initial page load but is ready by the time you scroll down to the sphere.
 
 ## Presentation mode
 
 Content items can carry a slide deck that lives alongside the writeup, in the same folder and the same repository. Decks are authored in MDX with a small YAML shorthand for the common slide types (title, text, image, image row, video, overlays), and rendered in the browser with keyboard navigation, an overview of all slides, and a presenter window. I use this for teaching and talks, so that a lecture and its slides are published together, versioned together, and translated together.
+
+![The slide overview of the "Computational Architecture in Germany" deck: a grid of slide thumbnails, the first one highlighted in green, with Exit, help, and fullscreen controls in the top right and a 1 / 112 counter in the bottom corner.](../../../assets/content/projects/portfolio-website/presentation-deck.png)
 
 ## Agent-ready on Cloudflare
 
@@ -87,12 +91,20 @@ Getting content negotiation to work on prerendered pages took some digging into 
 
 ## Performance and Lighthouse
 
-The site is mostly static HTML, which already gives it a head start. On top of that, images are served in responsive sizes with explicit widths so nothing shifts while loading, body images are lazy-loaded and preloaded just ahead of the viewport, fonts are subset and preloaded, and heavy scripts are deferred until they are actually needed: Three.js waits for an idle moment and then only redraws the sphere while it is actually moving, and the chat window (with its markdown renderer and animations) is fetched only when a visitor starts typing, so the hero input itself ships just a few kilobytes of JavaScript. The logos in the skills map are served as separate lazily loaded image files rather than inlined into the page, which cut the homepage HTML from roughly 350 KB to under 70 KB, so the first paint no longer waits on hundreds of kilobytes of vector paths. Together these changes pushed the Lighthouse scores for performance, accessibility, best practices, and SEO to the top of the scale.
+Astro renders the site to mostly static HTML, which already gives it a head start. Lighthouse scores of 100 for performance, accessibility, best practices, and SEO then come from not loading what the visitor does not need yet:
+
+- Images ship in responsive sizes with explicit dimensions, lazy-loaded just ahead of the viewport; fonts are subset and preloaded.
+- Three.js loads during an idle moment and only redraws the sphere while it is moving.
+- The chat window is fetched only once a visitor starts typing, so the hero input itself ships a few kilobytes of JavaScript.
+- The skills-map logos are separate lazy-loaded images instead of inline SVG, which cut the homepage HTML from about 350 KB to under 70 KB.
 
 ![Lighthouse result: 100 for performance, accessibility, best practices, and SEO](../../../assets/content/projects/portfolio-website/result-lighthouse.png)
+
+## A personal toolbox behind the public pages
+
+The site also hosts pages that are not linked from anywhere and exist mainly for my own use. The short CV, the full CV, and the PhD-oriented CV live at unlisted URLs, are rendered from the same content collections as the rest of the site (so an experience or publication only ever needs to be entered once), and carry print styles so that saving the page as a PDF produces a clean, up-to-date document whenever one is needed. A couple of similarly unlisted pages serve as title cards for recorded lectures. In this way the site doubles as a small workspace, not only a showcase for visitors.
 
 ## Smaller details
 
 - **Link previews at build time.** External links listed on a page are rendered as preview cards. Their titles, descriptions, images, and favicons are fetched once and cached in the repository, so the build is reproducible and no third-party request happens at page load.
 - **Footnotes with tooltips.** Markdown footnotes get a hover tooltip showing the note inline, so readers do not have to jump to the bottom of the page.
-- **One source for every CV.** The short CV, the full CV, and the PhD-oriented CV are all rendered from the same content collections, so an experience or publication only ever needs to be entered once.
