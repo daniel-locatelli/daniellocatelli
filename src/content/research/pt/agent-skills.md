@@ -35,7 +35,7 @@ Estas ficam no repositório público [daniel-locatelli/skills](https://github.co
 | **creating-revit-plugin** | Cria add-ins nativos para Revit 2025 a 2027 |
 | **creating-grasshopper-plugin** | Cria plugins compilados do Grasshopper para Rhino 8 |
 | **using-cordyceps** | Controla o Rhino e o Grasshopper a partir do agente |
-| **btlx** | Trabalha com BTLx, o formato de intercâmbio para CNC de madeira: processamentos, faces de referência, versões do esquema |
+| **working-with-btlx** | Trabalha com BTLx, o formato de intercâmbio para CNC de madeira: processamentos, faces de referência, versões do esquema |
 
 Uma skill privada de referência para compas_ifc acompanha estas, para que o agente consulte a especificação antes de responder a uma pergunta sobre parâmetro ou versão.
 

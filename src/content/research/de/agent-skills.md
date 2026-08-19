@@ -35,7 +35,7 @@ Diese liegen im öffentlichen Repository [daniel-locatelli/skills](https://githu
 | **creating-revit-plugin** | Baut native Add-ins für Revit 2025 bis 2027 |
 | **creating-grasshopper-plugin** | Baut kompilierte Grasshopper-Plugins für Rhino 8 |
 | **using-cordyceps** | Steuert Rhino und Grasshopper aus dem Agenten heraus |
-| **btlx** | Arbeitet mit BTLx, dem Austauschformat für Holz-CNC: Bearbeitungen, Referenzseiten, Schema-Versionen |
+| **working-with-btlx** | Arbeitet mit BTLx, dem Austauschformat für Holz-CNC: Bearbeitungen, Referenzseiten, Schema-Versionen |
 
 Daneben steht ein privater Referenz-Skill für compas_ifc, damit der Agent die Spezifikation prüft, bevor er eine Parameter- oder Versionsfrage beantwortet.
 
