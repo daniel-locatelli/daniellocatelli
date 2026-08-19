@@ -89,7 +89,7 @@ for (const row of rows) {
         const stroke = priv ? `stroke="#71717a" stroke-dasharray="6 5"` : `stroke="#f4f4f5"`;
         push(`<rect x="${gx}" y="${ty}" width="${SUB_W}" height="${TILE_H}" rx="10" fill="#18181b" ${stroke} stroke-width="1.5"/>`);
         push(`<text x="${gx + 20}" y="${ty + 31}" fill="${priv ? "#d4d4d8" : "#f4f4f5"}" font-size="19" font-weight="600" font-family="${SANS}">${name}</text>`);
-        push(`<text x="${gx + SUB_W - 16}" y="${ty + 30}" fill="#71717a" font-size="13" font-family="${MONO}" text-anchor="end">${priv ? "private" : "SKILL.md"}</text>`);
+        if (priv) push(`<text x="${gx + SUB_W - 16}" y="${ty + 30}" fill="#71717a" font-size="13" font-family="${MONO}" text-anchor="end">private</text>`);
         ty += TILE_H + TILE_GAP;
       }
     });
