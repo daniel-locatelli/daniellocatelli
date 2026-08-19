@@ -1,4 +1,7 @@
 import * as THREE from "three";
+import { LineSegments2 } from "three/examples/jsm/lines/LineSegments2.js";
+import { LineSegmentsGeometry } from "three/examples/jsm/lines/LineSegmentsGeometry.js";
+import { LineMaterial } from "three/examples/jsm/lines/LineMaterial.js";
 
 // ─────────────────────────────────────────────────────────────────────────
 // Buckminster Fuller geodesic construction:
@@ -204,7 +207,9 @@ class GeodesicDomeComponent {
   private renderer: THREE.WebGLRenderer;
   private domeGroup: THREE.Group | null = null;
   private domeMesh: THREE.Mesh | null = null;
-  private wireframe: THREE.LineSegments | null = null;
+  private wireframe: LineSegments2 | null = null;
+  private edgeMaterial: LineMaterial | null = null;
+  private edgePositions: Float32Array | null = null;
   private animationId: number | null = null;
   private resizeObserver: ResizeObserver | null = null;
   private scrollHandler: (() => void) | null = null;
@@ -246,7 +251,13 @@ class GeodesicDomeComponent {
 
   private init(): void {
     const rect = this.container.getBoundingClientRect();
-    this.camera.position.set(0, 0, 8);
+    this.camera.position.set(0, 0, 7.5);
+    // Linear fog to the page background (always black) so faces and edges
+    // fade with distance. Camera sits at z=7.5, so the front of the sphere is
+    // ~4.5 away, the middle plane 7.5 and the back ~10.5 (up to 12 exploded).
+    // Starting well in front of the sphere puts the front face at ~15%, the
+    // middle plane at ~40% and the back at ~65%, a gentle overall gradient.
+    this.scene.fog = new THREE.Fog(0x000000, 3, 14.5);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setClearColor(0x000000, 0.0);
     this.renderer.setSize(rect.width, rect.height);
@@ -304,6 +315,12 @@ class GeodesicDomeComponent {
     const meshMaterial = new THREE.MeshPhongMaterial({
       color: 0x444444,
       side: THREE.DoubleSide,
+      // Push faces back in depth so the coplanar edge lines win the depth
+      // test cleanly instead of z-fighting with the surface.
+      polygonOffset: true,
+      polygonOffsetFactor: 1,
+      polygonOffsetUnits: 1,
+      fog: true,
     });
 
     this.domeMesh = new THREE.Mesh(meshGeometry, meshMaterial);
@@ -311,13 +328,20 @@ class GeodesicDomeComponent {
     this.domeMesh.receiveShadow = true;
 
     // Wireframe showing only pentagon/hexagon polygon edges (not triangulation edges)
-    const edgeGeometry = new THREE.BufferGeometry();
-    edgeGeometry.setAttribute(
-      "position",
-      new THREE.BufferAttribute(new Float32Array(edgePositions), 3),
-    );
-    const edgeMaterial = new THREE.LineBasicMaterial({ color: 0x05df72 });
-    this.wireframe = new THREE.LineSegments(edgeGeometry, edgeMaterial);
+    // Drawn with the fat-lines addon: each segment becomes a screen-space
+    // quad, so MSAA applies (raw GL_LINES are not antialiased on most
+    // browsers) and the width is in CSS pixels instead of 1 device pixel.
+    this.edgePositions = new Float32Array(edgePositions);
+    const edgeGeometry = new LineSegmentsGeometry();
+    edgeGeometry.setPositions(this.edgePositions);
+    const rect = this.container.getBoundingClientRect();
+    this.edgeMaterial = new LineMaterial({
+      color: 0x05df72,
+      linewidth: 1.5,
+      fog: true,
+      resolution: new THREE.Vector2(rect.width, rect.height),
+    });
+    this.wireframe = new LineSegments2(edgeGeometry, this.edgeMaterial);
 
     this.domeGroup = new THREE.Group();
     this.domeGroup.add(this.domeMesh);
@@ -330,14 +354,14 @@ class GeodesicDomeComponent {
       !this.domeMesh ||
       !this.wireframe ||
       !this.originalMeshPositions ||
-      !this.originalEdgePositions
+      !this.originalEdgePositions ||
+      !this.edgePositions
     )
       return;
 
     const meshPos = this.domeMesh.geometry.attributes.position
       .array as Float32Array;
-    const edgePos = this.wireframe.geometry.attributes.position
-      .array as Float32Array;
+    const edgePos = this.edgePositions;
 
     // Reset to original positions
     meshPos.set(this.originalMeshPositions);
@@ -364,7 +388,9 @@ class GeodesicDomeComponent {
 
     this.domeMesh.geometry.attributes.position.needsUpdate = true;
     this.domeMesh.geometry.computeVertexNormals();
-    this.wireframe.geometry.attributes.position.needsUpdate = true;
+    // LineSegmentsGeometry stores instanced start/end attributes, so the
+    // buffer is re-uploaded rather than flagged with needsUpdate.
+    this.wireframe.geometry.setPositions(edgePos);
   }
 
   private onResize(): void {
@@ -372,6 +398,7 @@ class GeodesicDomeComponent {
     this.camera.aspect = rect.width / rect.height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(rect.width, rect.height);
+    this.edgeMaterial?.resolution.set(rect.width, rect.height);
     this.requestRender();
   }
 
@@ -382,7 +409,9 @@ class GeodesicDomeComponent {
         window.innerHeight || document.documentElement.clientHeight;
       // percent: 0 when dome top is at viewport bottom, 1 when dome bottom is at viewport top
       let percent = 1 - Math.max(0, Math.min(rect.bottom / windowHeight, 1));
-      this.targetExplosion = percent * 1.75;
+      // 1.5 keeps the fully exploded sphere (radius 3 + 1.5) inside the 75°
+      // vertical frustum at camera distance 7.5, so nothing gets clipped.
+      this.targetExplosion = percent * 1.5;
       this.targetRotation = percent * Math.PI;
       this.requestRender();
     };
@@ -438,6 +467,7 @@ class GeodesicDomeComponent {
     if (this.resizeObserver) this.resizeObserver.disconnect();
     if (this.scrollHandler)
       window.removeEventListener("scroll", this.scrollHandler);
+    this.edgeMaterial?.dispose();
     if (this.renderer) this.renderer.dispose();
   }
 }
