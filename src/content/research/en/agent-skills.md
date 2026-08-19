@@ -22,7 +22,7 @@ OtherLinks:
 
 An agent skill is a folder with a `SKILL.md`: a short, well-scoped set of instructions, references, and scripts that a coding agent loads when a task matches its description. It is the unit in which expertise travels between people and agents. This page is a living list of the skills that have earned a permanent place in my Claude Code setup.
 
-![Three columns of SKILL.md tiles (my own, grouped into AEC, web and personal; Matt Pocock's; community) feeding a single coding agent.](/assets/content/research/agent-skills/agent-skills-diagram.svg)
+![SKILL.md tiles in three boxes (my own, grouped into AEC, web and personal; Matt Pocock's; community) feeding a single coding agent.](/assets/content/research/agent-skills/agent-skills-diagram.svg)
 
 ## My own skills
 
