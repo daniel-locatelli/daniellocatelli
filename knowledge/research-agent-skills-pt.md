@@ -23,8 +23,6 @@ Estas ficam no repositório público [daniel-locatelli/skills](https://github.co
 | **using-cordyceps** | Controla o Rhino e o Grasshopper a partir do agente |
 | **working-with-btlx** | Trabalha com BTLx, o formato de intercâmbio para CNC de madeira: processamentos, faces de referência, versões do esquema |
 
-Uma skill privada de referência para compas_ifc acompanha estas, para que o agente consulte a especificação antes de responder a uma pergunta sobre parâmetro ou versão.
-
 ### Qualidade
 
 | Skill | O que faz |
