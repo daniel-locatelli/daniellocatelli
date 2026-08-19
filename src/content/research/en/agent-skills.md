@@ -54,6 +54,10 @@ This website also serves **portfolio-content** and **portfolio-mcp** under `/.we
 
 These stay private because they encode how I work rather than how a tool works. The one I use most is `system`, a single source-of-truth map: it tells the agent which skills, repositories, operational systems, and life domains exist, where each one lives, how to start it, and which standard applies. Instead of guessing where a file or a convention belongs, the agent asks "where does X live" or "what is my rule for Y" and gets a definite answer. It is less a skill than a personal assistant the other skills plug into. Directly under it sits a backup skill that encodes my storage model (which drive a file belongs on, tiering kept separate from backup, and a two-copy rule for anything irreplaceable) and runs the drift checks. Alongside them sit a PhD assistant that grills me on the thesis and a librarian search skill that queries a personal library of research papers converted to markdown, hosted on a Mac mini reachable over Tailscale from any of my machines.
 
+### Outlook
+
+So far every public skill here is about software: building plugins, driving tools, auditing websites, contributing upstream. That is where agents are most obviously useful today, but it is not where my expertise, or the field's, ends. The next skills I plan to write come from computational design and from architecture, engineering, and construction practice itself: how to set up a parametric model so it survives design changes, how to read a structural or fabrication constraint off a drawing, what a timber detail must satisfy before it reaches the machine, and which questions a practitioner asks before trusting a result. The test stays the same as for the software skills: would a paragraph in `CLAUDE.md` do the job, or does the agent need a verified loop, pinned facts, and the questions the model does not know to ask?
+
 ## Matt Pocock's skills
 
 [mattpocock/skills](https://github.com/mattpocock/skills) is what I reach for when the task is about thinking rather than typing.
