@@ -44,3 +44,11 @@ Non-critical ideas and improvements for the daniellocatelli portfolio repo. Use 
 **Sketch.** Two routes: (a) keep current behavior and accept this as a PowerMapper false positive (most likely correct read; CSS is valid per the View Transitions spec). (b) Remove the `transition:animate={...}` attribute on `<html>` and accept the default ClientRouter fade, simplifying the generated CSS at the cost of a longer transition duration.
 
 **Trigger.** If the false positives clutter audits enough to obscure real issues, drop the explicit duration and revisit if the slower default fade hurts perceived UX.
+
+## Skills map: custom tooltips per tool
+
+**Problem.** The homepage skills map (`src/components/SkillsMap.astro`) shows only logos and names. A visitor cannot tell where or how each tool is actually used (which projects, research, or jobs).
+
+**Sketch.** On hover/focus (and tap on touch devices) show a custom shadcn-style tooltip, not the native `title` one: dark popover with arrow, short fade/zoom, positioned via a small floating-position helper or CSS anchor positioning. One short sentence per tool, localized in en/pt/de (draft from CV/projects content, then review). Keep the existing external link on the icon.
+
+**Trigger.** When there is time to write ~25 sentences x 3 locales; the mechanism itself is a small component.
