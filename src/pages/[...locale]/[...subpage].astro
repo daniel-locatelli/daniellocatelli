@@ -941,7 +941,7 @@ const foregroundClass = isLetterbox
     <img
       id="lightbox-img"
       draggable="false"
-      class="m-auto rounded object-contain max-h-[90vh] max-w-[90vw] data-[zoomed=true]:max-h-none data-[zoomed=true]:max-w-none"
+      class="m-auto rounded object-contain max-h-[90vh] max-w-[90vw] data-[zoomed=true]:max-h-none data-[zoomed=true]:max-w-none data-[vector=true]:h-[90vh] data-[vector=true]:w-[90vw]"
       alt=""
       src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E"
     />
@@ -975,6 +975,10 @@ const foregroundClass = isLetterbox
       if (bestUrl) return bestUrl;
     }
     return img.currentSrc || img.src;
+  }
+
+  function isVectorSrc(src: string): boolean {
+    return /\.svg(?:[?#]|$)/i.test(src) || src.startsWith("data:image/svg");
   }
 
   let lightboxAbort: AbortController | null = null;
@@ -1013,8 +1017,13 @@ const foregroundClass = isLetterbox
       if (index < 0 || index >= galleryImages.length) return;
       currentIndex = index;
       const img = galleryImages[index];
-      lightboxImg!.src = pickLargestSrc(img);
+      const src = pickLargestSrc(img);
+      lightboxImg!.src = src;
       lightboxImg!.alt = img.alt;
+      // SVG diagrams usually carry only a viewBox (no intrinsic size), so
+      // the <img> would collapse to 0x0 inside the flex box. Give vector
+      // images an explicit box; object-contain letterboxes them inside it.
+      lightboxImg!.dataset.vector = isVectorSrc(src) ? "true" : "false";
       setZoomed(false);
       const multiple = galleryImages.length > 1;
       prevBtn!.classList.toggle("hidden", !multiple || index === 0);
@@ -1077,6 +1086,8 @@ const foregroundClass = isLetterbox
     }
 
     function isImageLargerThanFit(): boolean {
+      // Vector images scale losslessly to the viewport; nothing to zoom into.
+      if (lightboxImg!.dataset.vector === "true") return false;
       const fitW = window.innerWidth * 0.9;
       const fitH = window.innerHeight * 0.9;
       return (
@@ -1101,7 +1112,11 @@ const foregroundClass = isLetterbox
       } else {
         scrollEl!.scrollTo(0, 0);
       }
-      lightboxImg!.style.cursor = zoomed ? "grab" : "zoom-in";
+      lightboxImg!.style.cursor = zoomed
+        ? "grab"
+        : lightboxImg!.dataset.vector === "true"
+          ? "default"
+          : "zoom-in";
     }
 
     // Close on backdrop click
