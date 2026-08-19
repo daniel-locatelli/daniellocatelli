@@ -22,7 +22,7 @@ OtherLinks:
 
 Uma skill de agente é uma pasta com um `SKILL.md`: um conjunto curto e bem delimitado de instruções, referências e scripts que um agente de programação carrega quando uma tarefa corresponde à sua descrição. É a unidade em que a expertise viaja entre pessoas e agentes. Esta página é uma lista viva das skills que conquistaram um lugar permanente na minha configuração do Claude Code.
 
-![Blocos SKILL.md em três caixas (os meus, agrupados em AEC, web e pessoal; os do Matt Pocock; os da comunidade) alimentando um único agente de programação.](/assets/content/research/agent-skills/agent-skills-diagram.svg)
+![Blocos SKILL.md em três caixas (os meus, agrupados em AEC, software e pessoal; os do Matt Pocock; os da comunidade) alimentando um único agente de programação.](/assets/content/research/agent-skills/agent-skills-diagram.svg)
 
 ## Minhas skills
 
@@ -39,7 +39,7 @@ Estas ficam no repositório público [daniel-locatelli/skills](https://github.co
 
 Uma skill privada de referência para compas_ifc acompanha estas, para que o agente consulte a especificação antes de responder a uma pergunta sobre parâmetro ou versão.
 
-### Web
+### Software
 
 | Skill | O que faz |
 | --- | --- |
@@ -47,11 +47,11 @@ Uma skill privada de referência para compas_ifc acompanha estas, para que o age
 | **auditing-website-quality** | Audita um site de ponta a ponta num scorecard ordenado |
 | **auditing-agent-readiness** | Verifica se um site é utilizável por agentes de IA |
 
-Este site também serve **portfolio-content** e **portfolio-mcp** em `/.well-known/agent-skills/`, descritas na página do [site do portfólio](/pt/projects/portfolio-website).
+Este site também serve **portfolio-content** e **portfolio-mcp** em `/.well-known/agent-skills/`, descritas na página do [site do portfólio](/pt/projects/portfolio-website). Um ritual pré-PR privado também pertence a este grupo: antes de eu abrir um pull request no repositório de outra pessoa, ele rastreia o histórico do defeito por blame, PRs anteriores e issues, e varre o rastreador upstream em busca de trabalho duplicado ou em andamento.
 
 ### Pessoal
 
-Estas permanecem privadas porque codificam como eu trabalho, e não como uma ferramenta funciona. A que mais uso é a `system`, um mapa único de referência: ela diz ao agente quais skills, repositórios, sistemas operacionais e domínios da vida existem, onde cada um fica, como iniciá-lo e qual padrão se aplica. Em vez de adivinhar onde um arquivo ou uma convenção pertence, o agente pergunta "onde fica X" ou "qual é a minha regra para Y" e recebe uma resposta definitiva. É menos uma skill do que um assistente pessoal ao qual as outras skills se conectam. Logo abaixo dela fica uma skill de backup que codifica meu modelo de armazenamento (em qual disco cada arquivo fica, separação entre camadas de armazenamento e backup, e a regra de duas cópias para tudo o que é insubstituível) e roda as verificações de desvio. Ao lado delas ficam um assistente de doutorado que me sabatina sobre a tese; um ritual pré-PR que rastreia o histórico de um defeito antes de eu abrir um pull request no repositório de outra pessoa; e uma skill de busca na biblioteca, que consulta um acervo pessoal de artigos científicos convertidos em markdown, hospedado num Mac mini acessível via Tailscale a partir de qualquer uma das minhas máquinas.
+Estas permanecem privadas porque codificam como eu trabalho, e não como uma ferramenta funciona. A que mais uso é a `system`, um mapa único de referência: ela diz ao agente quais skills, repositórios, sistemas operacionais e domínios da vida existem, onde cada um fica, como iniciá-lo e qual padrão se aplica. Em vez de adivinhar onde um arquivo ou uma convenção pertence, o agente pergunta "onde fica X" ou "qual é a minha regra para Y" e recebe uma resposta definitiva. É menos uma skill do que um assistente pessoal ao qual as outras skills se conectam. Logo abaixo dela fica uma skill de backup que codifica meu modelo de armazenamento (em qual disco cada arquivo fica, separação entre camadas de armazenamento e backup, e a regra de duas cópias para tudo o que é insubstituível) e roda as verificações de desvio. Ao lado delas ficam um assistente de doutorado que me sabatina sobre a tese e uma skill de busca na biblioteca, que consulta um acervo pessoal de artigos científicos convertidos em markdown, hospedado num Mac mini acessível via Tailscale a partir de qualquer uma das minhas máquinas.
 
 ## Skills do Matt Pocock
 

@@ -22,7 +22,7 @@ OtherLinks:
 
 Ein Agent Skill ist ein Ordner mit einer `SKILL.md`: ein kurzer, klar abgegrenzter Satz aus Anweisungen, Referenzen und Skripten, den ein Coding-Agent lädt, wenn eine Aufgabe zu seiner Beschreibung passt. Es ist die Einheit, in der Expertise zwischen Menschen und Agenten wandert. Diese Seite ist eine lebende Liste der Skills, die sich einen festen Platz in meinem Claude-Code-Setup verdient haben.
 
-![SKILL.md-Kacheln in drei Kästen (meine eigenen, gruppiert in AEC, Web und Persönlich; Matt Pococks; Community) speisen einen einzigen Coding-Agenten.](/assets/content/research/agent-skills/agent-skills-diagram.svg)
+![SKILL.md-Kacheln in drei Kästen (meine eigenen, gruppiert in AEC, Software und Persönlich; Matt Pococks; Community) speisen einen einzigen Coding-Agenten.](/assets/content/research/agent-skills/agent-skills-diagram.svg)
 
 ## Meine eigenen Skills
 
@@ -39,7 +39,7 @@ Diese liegen im öffentlichen Repository [daniel-locatelli/skills](https://githu
 
 Daneben steht ein privater Referenz-Skill für compas_ifc, damit der Agent die Spezifikation prüft, bevor er eine Parameter- oder Versionsfrage beantwortet.
 
-### Web
+### Software
 
 | Skill | Was er tut |
 | --- | --- |
@@ -47,11 +47,11 @@ Daneben steht ein privater Referenz-Skill für compas_ifc, damit der Agent die S
 | **auditing-website-quality** | Auditiert eine Site von Ende zu Ende in eine sortierte Scorecard |
 | **auditing-agent-readiness** | Prüft, ob eine Website für KI-Agenten nutzbar ist |
 
-Diese Website stellt unter `/.well-known/agent-skills/` auch **portfolio-content** und **portfolio-mcp** bereit, beschrieben auf der Seite [Portfolio-Website](/de/projects/portfolio-website).
+Diese Website stellt unter `/.well-known/agent-skills/` auch **portfolio-content** und **portfolio-mcp** bereit, beschrieben auf der Seite [Portfolio-Website](/de/projects/portfolio-website). Ein privates Pre-PR-Ritual gehört ebenfalls hierher: Bevor ich einen Pull Request in einem fremden Repository eröffne, zeichnet es die Geschichte des Defekts über Blame, frühere PRs und Issues nach und durchsucht den Upstream-Tracker nach doppelter oder bereits laufender Arbeit.
 
 ### Persönlich
 
-Diese bleiben privat, weil sie kodieren, wie ich arbeite, und nicht, wie ein Werkzeug funktioniert. Am häufigsten nutze ich `system`, eine einzige verbindliche Landkarte: Sie sagt dem Agenten, welche Skills, Repositories, operativen Systeme und Lebensbereiche es gibt, wo jedes davon liegt, wie man es startet und welcher Standard gilt. Statt zu raten, wohin eine Datei oder eine Konvention gehört, fragt der Agent "wo liegt X" oder "was ist meine Regel für Y" und bekommt eine eindeutige Antwort. Es ist weniger ein Skill als ein persönlicher Assistent, an den die anderen Skills andocken. Direkt darunter sitzt ein Backup-Skill, der mein Speichermodell kodiert (auf welches Laufwerk eine Datei gehört, Tiering getrennt von Backup, und eine Zwei-Kopien-Regel für alles Unersetzliche) und die Drift-Prüfungen ausführt. Daneben stehen ein PhD-Assistent, der mich zur Dissertation ins Kreuzverhör nimmt; ein Pre-PR-Ritual, das die Geschichte eines Defekts nachzeichnet, bevor ich einen Pull Request in einem fremden Repository eröffne; und ein Bibliotheks-Such-Skill, der eine persönliche Sammlung von Forschungsarbeiten abfragt, die in Markdown umgewandelt auf einem Mac mini liegen, der über Tailscale von jedem meiner Rechner erreichbar ist.
+Diese bleiben privat, weil sie kodieren, wie ich arbeite, und nicht, wie ein Werkzeug funktioniert. Am häufigsten nutze ich `system`, eine einzige verbindliche Landkarte: Sie sagt dem Agenten, welche Skills, Repositories, operativen Systeme und Lebensbereiche es gibt, wo jedes davon liegt, wie man es startet und welcher Standard gilt. Statt zu raten, wohin eine Datei oder eine Konvention gehört, fragt der Agent "wo liegt X" oder "was ist meine Regel für Y" und bekommt eine eindeutige Antwort. Es ist weniger ein Skill als ein persönlicher Assistent, an den die anderen Skills andocken. Direkt darunter sitzt ein Backup-Skill, der mein Speichermodell kodiert (auf welches Laufwerk eine Datei gehört, Tiering getrennt von Backup, und eine Zwei-Kopien-Regel für alles Unersetzliche) und die Drift-Prüfungen ausführt. Daneben stehen ein PhD-Assistent, der mich zur Dissertation ins Kreuzverhör nimmt, und ein Bibliotheks-Such-Skill, der eine persönliche Sammlung von Forschungsarbeiten abfragt, die in Markdown umgewandelt auf einem Mac mini liegen, der über Tailscale von jedem meiner Rechner erreichbar ist.
 
 ## Matt Pococks Skills
 
