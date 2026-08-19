@@ -54,10 +54,6 @@ Estas permanecem privadas porque codificam como eu trabalho, e não como uma fer
 
 Mais duas skills funcionam no sentido inverso: não são para o meu agente, mas para o seu. Este site publica **portfolio-content** (ler qualquer página como markdown simples, em três línguas) e **portfolio-mcp** (consultar projetos, pesquisa, ensino, publicações e CV através do servidor MCP somente leitura do site) em `/.well-known/agent-skills/`, para que um agente que chegue aqui saiba ler o site sem o raspar. Como são construídas está descrito na página do [site do portfólio](/pt/projects/portfolio-website).
 
-### Perspetivas
-
-Até agora, todas as skills públicas aqui são sobre software: construir plugins, conduzir ferramentas, auditar sites, contribuir upstream. É onde os agentes são mais obviamente úteis hoje, mas não é onde a minha experiência, nem a da área, termina. As próximas skills que planeio escrever vêm do design computacional e da própria prática de arquitetura, engenharia e construção: como montar um modelo paramétrico para que sobreviva a mudanças de projeto, como ler uma restrição estrutural ou de fabricação a partir de um desenho, o que um detalhe em madeira precisa de satisfazer antes de chegar à máquina e que perguntas um profissional faz antes de confiar num resultado. O teste continua o mesmo das skills de software: um parágrafo no `CLAUDE.md` resolveria, ou o agente precisa de um ciclo verificado, factos fixados e das perguntas que o modelo não sabe fazer?
-
 ## Skills do Matt Pocock
 
 [mattpocock/skills](https://github.com/mattpocock/skills) é o que uso quando a tarefa é pensar, não digitar.
@@ -83,3 +79,7 @@ Até agora, todas as skills públicas aqui são sobre software: construir plugin
 ## Como decido o que fica
 
 Um parágrafo bem escrito no `CLAUDE.md` faria o mesmo trabalho? Se sim, a skill sai. Se ela mantém honesto um ciclo verificado, fixa fatos que o modelo erra ou faz as perguntas que eu esqueço de fazer, ela fica.
+
+## Para onde as skills vão
+
+Quase todas as skills em circulação hoje, as minhas incluídas, são sobre software: construir plugins, conduzir ferramentas, auditar sites, contribuir upstream. É onde os agentes são mais obviamente úteis agora, mas não é onde o formato termina. Um `SKILL.md` é uma unidade de conhecimento especializado, e a maior parte do conhecimento em arquitetura, engenharia e construção não é conhecimento de software: como montar um modelo paramétrico para que sobreviva a mudanças de projeto, como ler uma restrição estrutural ou de fabricação a partir de um desenho, o que um detalhe em madeira precisa de satisfazer antes de chegar à máquina, que perguntas um profissional faz antes de confiar num resultado. É esse o conhecimento que espero que a próxima geração de skills carregue, escrito pelas pessoas que o detêm, e é aí que pretendo contribuir a seguir: skills vindas do design computacional e da própria prática de AEC, sujeitas ao mesmo teste das de software. Um parágrafo no `CLAUDE.md` resolveria, ou o agente precisa de um ciclo verificado, factos fixados e das perguntas que o modelo não sabe fazer?
