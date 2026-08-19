@@ -69,7 +69,7 @@ const glyph = (d, x, y, size, extra = "") =>
   const capTopRel = 7 * u - 21 * k + 3 * k; // relative to glyph y
   const total = 19.5 * u - capTopRel;
   const x = CX - S / 2, y = CY - total / 2 - capTopRel;
-  const capX = x + 12 * u - 12.2 * k + 1.5 * u; // rhombus centre nudged left (tassel side is heavier), then one glyph pixel right
+  const capX = x + 12 * u - 12.2 * k + 1; // rhombus centre nudged left (tassel side is heavier), then 1px right
   const capY = y + 7 * u - 21 * k;
   const brim = `<path d="M${capX + 5 * k} ${capY + 17.18 * k}L${capX + 12 * k} ${capY + 21 * k}L${capX + 19 * k} ${capY + 17.18 * k}" stroke="${BG_EDGE}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
   const body = [
