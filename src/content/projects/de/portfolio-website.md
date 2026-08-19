@@ -38,7 +38,7 @@ Das ist die Website, die Sie gerade lesen. Sie begann im April 2024 als kleine A
 
 ## Inhalte in Markdown, mit Claude Code als CMS
 
-Sämtliche Inhalte liegen als reine Markdown-Dateien innerhalb des Repositories, organisiert als Astro Content Collections. Jedes Projekt, jeder Forschungseintrag, jede Publikation, jeder Lehrbeitrag und jeder Lebenslaufabschnitt ist eine Datei mit typisiertem Frontmatter und einem Markdown-Textkörper, mit einem Ordner pro Sprache. Hinter den Seiten steht weder eine Datenbank noch ein externes CMS.
+Sämtliche Inhalte liegen als einfache Textdateien am selben Ort wie der Code: eine kleine Datei pro Projekt, Forschungseintrag, Publikation, Lehrbeitrag oder Lebenslaufabschnitt, mit einem kurzen Kopf, der die Fakten (Titel, Daten, Tags) über dem Seitentext festhält, und einer Kopie in jeder der drei Sprachen. Hinter den Seiten steht weder eine Datenbank noch ein separates Inhaltssystem.
 
 Sinn dieses Aufbaus ist, die Inhalte für KI-Harnesse wie [Claude Code](https://claude.com/claude-code) direkt zugänglich zu machen. Weil die Inhalte einfach Dateien neben dem Code sind, kann Claude Code Einträge genauso lesen, bearbeiten, anlegen und gegenprüfen, wie es mit Quellcode arbeitet. In der Praxis heißt das: Ich nutze Claude Code als CMS. Ich beschreibe ein neues Projekt oder eine Korrektur in einem Satz, und es schreibt oder aktualisiert die Dateien, hält das Frontmatter konsistent und prüft die zugehörigen Einträge in den anderen Sprachen. Genau diese Seite ist so entstanden. Alles auf dieser Website ist gemeinsam entstanden, vom Code bis zum Inhalt.
 

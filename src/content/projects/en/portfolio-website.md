@@ -38,7 +38,7 @@ This is the website you are reading right now. It started in April 2024 as a sma
 
 ## Markdown content, with Claude Code as CMS
 
-All content lives as plain markdown files inside the repository, organised as Astro Content Collections. Each project, research entry, publication, teaching item, and CV section is a file with typed frontmatter and a markdown body, one folder per locale. There is no database and no external CMS behind the pages.
+All the content lives as plain text files in the same place as the code: one small file per project, research entry, publication, teaching item, or CV section, with a short header that holds the facts (title, dates, tags) above the text of the page, and a copy in each of the three languages. There is no database and no separate content system behind the pages.
 
 The point of this setup is to make the content directly accessible to AI harnesses such as [Claude Code](https://claude.com/claude-code). Because the content is just files next to the code, Claude Code can read, edit, create, and cross-check entries the same way it works on source code. In practice this means I use Claude Code as the CMS: I describe a new project or a correction in a sentence, and it writes or updates the files, keeps the frontmatter consistent, and checks the related entries in the other languages. This very page was written that way. Everything on this site is co-created, from the code to the content.
 
