@@ -6,7 +6,7 @@
 <rect width="100%" height="100%" fill="url(#bg)"/>
 <g filter="url(#glow)">
 <g transform="translate(650 478.15000000000003) scale(12.5)" fill="#4ade80"><path d="M21 10.5h3v3h-3v3h-1.5v3H18v-3h-1.5v3H15v-3H9v3H7.5v-3H6v3H4.5v-3H3v-3H0v-3h3v-6h18Zm-15 0h1.5v-3H6Zm10.5 0H18v-3h-1.5z"/></g>
-<g transform="translate(614.69 230.17500000000007) scale(15.975000000000001)" fill="#4ade80"><path d="M12 3L1 9l11 6l9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></g>
-<path d="M694.565 504.6255000000001L806.3900000000001 565.6500000000001L918.2150000000001 504.6255000000001" stroke="#0c0f0d" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(605.105 230.17500000000007) scale(15.975000000000001)" fill="#4ade80"><path d="M12 3L1 9l11 6l9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17z"/></g>
+<path d="M684.98 504.6255000000001L796.8050000000001 565.6500000000001L908.6300000000001 504.6255000000001" stroke="#0c0f0d" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </svg>
