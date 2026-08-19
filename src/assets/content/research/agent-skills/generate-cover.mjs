@@ -58,12 +58,17 @@ const glyph = (d, x, y, size, extra = "") =>
   const S = 220; // glyph size
   const x = CX - S / 2, y = CY - S / 2 + 30;
   const capS = S * 0.8;
-  // cap sits on the head (head top is y=4.5 on the 24 grid); a dark outline
-  // separates the two solid shapes.
+  // cap sits on the head (head top is y=4.5 on the 24 grid) with its body
+  // overlapping the head. Only the cap's bottom edge (the V of the MDI "school"
+  // body: (5,17.18) -> (12,21) -> (19,17.18)) gets a dark line to separate it
+  // from the head; the rest of the cap merges into one silhouette.
   const capX = CX - capS / 2 + S * 0.02, capY = y + S * (4.5 / 24) - capS * (15 / 24);
+  const k = capS / 24;
+  const brim = `<path d="M${capX + 5 * k} ${capY + 17.18 * k}L${capX + 12 * k} ${capY + 21 * k}L${capX + 19 * k} ${capY + 17.18 * k}" stroke="${BG_EDGE}" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
   const body = [
     glyph(CLAUDE_CODE, x, y, S),
-    glyph(CAP, capX, capY, capS, ` stroke="${BG_EDGE}" stroke-width="1.2" paint-order="stroke" stroke-linejoin="round"`),
+    glyph(CAP, capX, capY, capS),
+    brim,
   ].join("\n");
   writeFileSync(join(here, "agent-skills-cover-wearing-cap.svg"),
     wrap("The Claude Code icon wearing a graduation cap: an agent with a skill", body));
