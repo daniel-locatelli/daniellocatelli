@@ -22,7 +22,7 @@ OtherLinks:
 
 Ein Agent Skill ist ein Ordner mit einer `SKILL.md`-Datei: ein kurzer, klar abgegrenzter Satz aus Anweisungen, Referenzen und Skripten, den ein Coding-Agent lädt, sobald eine Aufgabe zu seiner Beschreibung passt. Er ist die Einheit, in der Fachwissen zwischen Menschen und Agenten wandert. Das meiste, was ich 2026 über die Arbeit mit Claude Code gelernt habe, ist in Skills gelandet, eigenen oder fremden, deshalb hält diese Seite fest, welche sich einen festen Platz in meinem Setup verdient haben. Es ist eine lebende Liste: Ich ergänze sie, wenn sich Skills bewähren, und entferne die, die sich nicht mehr lohnen.
 
-![Drei Spalten mit SKILL.md-Kacheln (meine eigenen, die von Matt Pocock, aus der Community), die einen einzigen Coding-Agenten speisen.](../../../assets/content/research/agent-skills/agent-skills-diagram.svg)
+![Drei Spalten mit SKILL.md-Kacheln (meine eigenen, die von Matt Pocock, aus der Community), die einen einzigen Coding-Agenten speisen.](/assets/content/research/agent-skills/agent-skills-diagram.svg)
 
 ## Meine eigenen Skills
 
