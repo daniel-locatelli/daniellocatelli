@@ -56,74 +56,7 @@ Die Startseite beginnt mit einem Chat, der von Claude angetrieben wird. Besucher
 
 Im Hintergrund verwandelt eine Wissens-Pipeline die Content Collections in kleine Textabschnitte pro Sprache (einzelne Seiten, Lebenslaufeinträge, eine chronologische Zeitleiste und einen Satz vorformulierter FAQ-Antworten auf die häufigsten Besucherfragen), erzeugt mit Voyage AI Embeddings und speichert die Vektoren in Supabase. Trifft eine Frage ein, ruft der API-Endpunkt die ähnlichsten Abschnitte ab und übergibt sie Claude als Kontext. Sobald sich Inhalte ändern, erzeugt ein einziger Befehl die Wissensdateien neu und lädt frische Embeddings hoch, und ein Benchmark-Skript stellt dem Chat einen festen Satz häufiger Fragen, um sicherzustellen, dass er sie weiterhin alle korrekt beantwortet.
 
-<div class="chat-pipeline-diagram" style="overflow-x:auto;margin:1.5rem 0">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 344" role="img" aria-labelledby="chat-pipeline-de-title chat-pipeline-de-desc" style="display:block;width:100%;min-width:600px;height:auto">
-<title id="chat-pipeline-de-title">Wie der Chat auf der Startseite eine Frage beantwortet</title>
-<desc id="chat-pipeline-de-desc">Architekturdiagramm: Beim Build werden die Markdown-Inhalte der Website in Wissensabschnitte zerlegt, mit Voyage AI eingebettet und in Supabase gespeichert; zur Laufzeit wird die Besucherfrage eingebettet, die nächstgelegenen Abschnitte werden abgerufen und an Claude übergeben, das eine fundierte Antwort zurück auf die Seite streamt.</desc>
-<defs><marker id="chat-pipeline-de-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
-<rect width="100%" height="100%" fill="#000000"/>
-<rect x="16" y="24" width="728" height="104" rx="8" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="0.8"/>
-<rect x="28" y="28" width="136" height="12" rx="2" fill="#000000"/>
-<text x="32" y="37" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.14em">BUILD · INHALTSABGLEICH</text>
-<rect x="16" y="184" width="728" height="104" rx="8" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="0.8"/>
-<rect x="28" y="188" width="140" height="12" rx="2" fill="#000000"/>
-<text x="32" y="197" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.14em">LAUFZEIT · BESUCHERFRAGE</text>
-<line x1="176" y1="84" x2="216" y2="84" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#chat-pipeline-de-arrow)"/>
-<line x1="360" y1="84" x2="400" y2="84" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#chat-pipeline-de-arrow)"/>
-<line x1="544" y1="84" x2="584" y2="84" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#chat-pipeline-de-arrow)"/>
-<line x1="176" y1="244" x2="216" y2="244" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#chat-pipeline-de-arrow)"/>
-<line x1="360" y1="244" x2="400" y2="244" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#chat-pipeline-de-arrow)"/>
-<line x1="544" y1="244" x2="584" y2="244" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#chat-pipeline-de-arrow)"/>
-<path d="M656,112 V148 Q656,156 648,156 H296 Q288,156 288,164 V216" fill="none" stroke="#a1a1aa" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#chat-pipeline-de-arrow)"/>
-<rect x="454" y="136" width="36" height="12" rx="2" fill="#000000"/>
-<text x="472" y="145" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.06em">SUCHE</text>
-<rect x="32" y="56" width="144" height="56" rx="6" fill="#000000"/>
-<rect x="32" y="56" width="144" height="56" rx="6" fill="rgba(161,161,170,0.10)" stroke="#71717a" stroke-width="1"/>
-<text x="104" y="82" fill="#f4f4f5" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Content Collections</text>
-<text x="104" y="98" fill="#a1a1aa" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">Markdown, 3 Sprachen</text>
-<rect x="216" y="56" width="144" height="56" rx="6" fill="#000000"/>
-<rect x="216" y="56" width="144" height="56" rx="6" fill="#18181b" stroke="#f4f4f5" stroke-width="1"/>
-<text x="288" y="82" fill="#f4f4f5" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Wissensabschnitte</text>
-<text x="288" y="98" fill="#a1a1aa" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">Seiten, CV, FAQ</text>
-<rect x="400" y="56" width="144" height="56" rx="6" fill="#000000"/>
-<rect x="400" y="56" width="144" height="56" rx="6" fill="rgba(244,244,245,0.03)" stroke="rgba(244,244,245,0.30)" stroke-width="1"/>
-<text x="472" y="82" fill="#f4f4f5" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Voyage AI</text>
-<text x="472" y="98" fill="#a1a1aa" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">Embeddings</text>
-<rect x="584" y="56" width="144" height="56" rx="6" fill="#000000"/>
-<rect x="584" y="56" width="144" height="56" rx="6" fill="rgba(244,244,245,0.05)" stroke="#a1a1aa" stroke-width="1"/>
-<text x="656" y="82" fill="#f4f4f5" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Supabase</text>
-<text x="656" y="98" fill="#a1a1aa" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">Vektorspeicher</text>
-<rect x="32" y="216" width="144" height="56" rx="6" fill="#000000"/>
-<rect x="32" y="216" width="144" height="56" rx="6" fill="rgba(161,161,170,0.10)" stroke="#71717a" stroke-width="1"/>
-<text x="104" y="242" fill="#f4f4f5" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Besucherfrage</text>
-<text x="104" y="258" fill="#a1a1aa" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">Chat auf der Startseite</text>
-<rect x="216" y="216" width="144" height="56" rx="6" fill="#000000"/>
-<rect x="216" y="216" width="144" height="56" rx="6" fill="#18181b" stroke="#f4f4f5" stroke-width="1"/>
-<text x="288" y="242" fill="#f4f4f5" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Abruf</text>
-<text x="288" y="258" fill="#a1a1aa" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">einbetten, Treffer suchen</text>
-<rect x="400" y="216" width="144" height="56" rx="6" fill="#000000"/>
-<rect x="400" y="216" width="144" height="56" rx="6" fill="rgba(34,197,94,0.10)" stroke="#22c55e" stroke-width="1"/>
-<text x="472" y="242" fill="#f4f4f5" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Claude</text>
-<text x="472" y="258" fill="#a1a1aa" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">Antwort aus dem Kontext</text>
-<rect x="584" y="216" width="144" height="56" rx="6" fill="#000000"/>
-<rect x="584" y="216" width="144" height="56" rx="6" fill="#18181b" stroke="#f4f4f5" stroke-width="1"/>
-<text x="656" y="242" fill="#f4f4f5" font-size="12" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Antwort</text>
-<text x="656" y="258" fill="#a1a1aa" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">gestreamt auf die Seite</text>
-<line x1="16" y1="308" x2="744" y2="308" stroke="rgba(244,244,245,0.12)" stroke-width="0.8"/>
-<rect x="16" y="321" width="12" height="8" rx="2" fill="rgba(161,161,170,0.10)" stroke="#71717a" stroke-width="1"/>
-<text x="34" y="328" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.06em">Eingabe</text>
-<rect x="92" y="321" width="12" height="8" rx="2" fill="#18181b" stroke="#f4f4f5" stroke-width="1"/>
-<text x="110" y="328" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.06em">Schritt</text>
-<rect x="168" y="321" width="12" height="8" rx="2" fill="rgba(244,244,245,0.03)" stroke="rgba(244,244,245,0.30)" stroke-width="1"/>
-<text x="186" y="328" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.06em">Externer Dienst</text>
-<rect x="288" y="321" width="12" height="8" rx="2" fill="rgba(244,244,245,0.05)" stroke="#a1a1aa" stroke-width="1"/>
-<text x="306" y="328" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.06em">Datenspeicher</text>
-<rect x="396" y="321" width="12" height="8" rx="2" fill="rgba(34,197,94,0.10)" stroke="#22c55e" stroke-width="1"/>
-<text x="414" y="328" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.06em">Fokus</text>
-<line x1="464" y1="325" x2="476" y2="325" stroke="#a1a1aa" stroke-width="1" stroke-dasharray="4,3"/>
-<text x="482" y="328" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.06em">Lesen bei Abfrage</text>
-</svg>
-</div>
+![Architekturdiagramm: Beim Build werden die Markdown-Inhalte der Website in Wissensabschnitte zerlegt, mit Voyage AI eingebettet und in Supabase gespeichert; zur Laufzeit wird die Besucherfrage eingebettet, die nächstgelegenen Abschnitte werden abgerufen und an Claude übergeben, das eine fundierte Antwort zurück auf die Seite streamt.](/assets/content/projects/portfolio-website/chat-pipeline-de.svg)
 
 ## Die geodätische Kugel
 

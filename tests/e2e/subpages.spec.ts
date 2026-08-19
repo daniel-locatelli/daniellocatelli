@@ -92,17 +92,19 @@ test.describe("Subpages", () => {
     await expect(lightbox).toHaveAttribute("data-zoomed", "false");
   });
 
-  test("lightbox renders SVG diagrams without intrinsic size", async ({ page }) => {
-    // Vector diagrams only carry a viewBox, so the <img> has no intrinsic
-    // size and would otherwise collapse to 0x0 inside the lightbox.
-    await page.goto("/research/agent-skills");
-    await page.locator('.prose img[src$=".svg"]').first().click();
-    await expect(page.locator("#lightbox")).not.toHaveClass(/hidden/);
-    const box = await page.locator("#lightbox-img").boundingBox();
-    expect(box).not.toBeNull();
-    expect(box!.width).toBeGreaterThan(300);
-    expect(box!.height).toBeGreaterThan(200);
-  });
+  for (const path of ["/research/agent-skills", "/projects/portfolio-website"]) {
+    test(`lightbox renders SVG diagrams without intrinsic size on ${path}`, async ({ page }) => {
+      // Vector diagrams only carry a viewBox, so the <img> has no intrinsic
+      // size and would otherwise collapse to 0x0 inside the lightbox.
+      await page.goto(path);
+      await page.locator('.prose img[src$=".svg"]').first().click();
+      await expect(page.locator("#lightbox")).not.toHaveClass(/hidden/);
+      const box = await page.locator("#lightbox-img").boundingBox();
+      expect(box).not.toBeNull();
+      expect(box!.width).toBeGreaterThan(300);
+      expect(box!.height).toBeGreaterThan(200);
+    });
+  }
 
   test("Portuguese subpage renders", async ({ page }) => {
     await page.goto(localeUrl("pt", `/${KNOWN_SUBPAGE.slug}`));
