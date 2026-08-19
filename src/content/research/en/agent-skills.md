@@ -46,11 +46,13 @@ These live in the public repository [daniel-locatelli/skills](https://github.com
 | **auditing-agent-readiness** | Check whether a site is usable by AI agents |
 | **preparing-pull-request** | Trace a defect's origin and sweep the upstream tracker before opening a PR on someone else's repository |
 
-This website also serves **portfolio-content** and **portfolio-mcp** under `/.well-known/agent-skills/`, described on the [portfolio website](/projects/portfolio-website) page.
-
 ### Personal
 
 These stay private because they encode how I work rather than how a tool works. The one I use most is `system`, a single source-of-truth map: it tells the agent which skills, repositories, operational systems, and life domains exist, where each one lives, how to start it, and which standard applies. Instead of guessing where a file or a convention belongs, the agent asks "where does X live" or "what is my rule for Y" and gets a definite answer. It is less a skill than a personal assistant the other skills plug into. Directly under it sits a backup skill that encodes my storage model (which drive a file belongs on, tiering kept separate from backup, and a two-copy rule for anything irreplaceable) and runs the drift checks. Alongside them sit a PhD assistant that grills me on the thesis and a librarian search skill that queries a personal library of research papers converted to markdown, hosted on a Mac mini reachable over Tailscale from any of my machines.
+
+### Served by this website
+
+Two more skills run the other way: they are not for my agent but for yours. This site publishes **portfolio-content** (read any page as plain markdown, in three languages) and **portfolio-mcp** (query projects, research, teaching, publications, and CV through the site's read-only MCP server) under `/.well-known/agent-skills/`, so an agent that lands here knows how to read the site without scraping it. How they are built is described on the [portfolio website](/projects/portfolio-website) page.
 
 ### Outlook
 

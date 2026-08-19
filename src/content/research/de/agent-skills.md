@@ -46,11 +46,13 @@ Diese liegen im öffentlichen Repository [daniel-locatelli/skills](https://githu
 | **auditing-agent-readiness** | Prüft, ob eine Website für KI-Agenten nutzbar ist |
 | **preparing-pull-request** | Zeichnet die Herkunft eines Defekts nach und durchsucht den Upstream-Tracker, bevor ein PR in einem fremden Repository eröffnet wird |
 
-Diese Website stellt unter `/.well-known/agent-skills/` auch **portfolio-content** und **portfolio-mcp** bereit, beschrieben auf der Seite [Portfolio-Website](/de/projects/portfolio-website).
-
 ### Persönlich
 
 Diese bleiben privat, weil sie kodieren, wie ich arbeite, und nicht, wie ein Werkzeug funktioniert. Am häufigsten nutze ich `system`, eine einzige verbindliche Landkarte: Sie sagt dem Agenten, welche Skills, Repositories, operativen Systeme und Lebensbereiche es gibt, wo jedes davon liegt, wie man es startet und welcher Standard gilt. Statt zu raten, wohin eine Datei oder eine Konvention gehört, fragt der Agent "wo liegt X" oder "was ist meine Regel für Y" und bekommt eine eindeutige Antwort. Es ist weniger ein Skill als ein persönlicher Assistent, an den die anderen Skills andocken. Direkt darunter sitzt ein Backup-Skill, der mein Speichermodell kodiert (auf welches Laufwerk eine Datei gehört, Tiering getrennt von Backup, und eine Zwei-Kopien-Regel für alles Unersetzliche) und die Drift-Prüfungen ausführt. Daneben stehen ein PhD-Assistent, der mich zur Dissertation ins Kreuzverhör nimmt, und ein Bibliotheks-Such-Skill, der eine persönliche Sammlung von Forschungsarbeiten abfragt, die in Markdown umgewandelt auf einem Mac mini liegen, der über Tailscale von jedem meiner Rechner erreichbar ist.
+
+### Von dieser Website bereitgestellt
+
+Zwei weitere Skills laufen in die andere Richtung: Sie sind nicht für meinen Agenten, sondern für Ihren. Diese Website veröffentlicht unter `/.well-known/agent-skills/` **portfolio-content** (jede Seite als reines Markdown lesen, in drei Sprachen) und **portfolio-mcp** (Projekte, Forschung, Lehre, Publikationen und CV über den schreibgeschützten MCP-Server der Site abfragen), damit ein Agent, der hier landet, die Site lesen kann, ohne sie zu scrapen. Wie sie gebaut sind, steht auf der Seite [Portfolio-Website](/de/projects/portfolio-website).
 
 ### Ausblick
 

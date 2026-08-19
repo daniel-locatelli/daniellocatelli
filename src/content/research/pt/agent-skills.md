@@ -46,11 +46,13 @@ Estas ficam no repositório público [daniel-locatelli/skills](https://github.co
 | **auditing-agent-readiness** | Verifica se um site é utilizável por agentes de IA |
 | **preparing-pull-request** | Rastreia a origem de um defeito e varre o rastreador upstream antes de abrir um PR no repositório de outra pessoa |
 
-Este site também serve **portfolio-content** e **portfolio-mcp** em `/.well-known/agent-skills/`, descritas na página do [site do portfólio](/pt/projects/portfolio-website).
-
 ### Pessoal
 
 Estas permanecem privadas porque codificam como eu trabalho, e não como uma ferramenta funciona. A que mais uso é a `system`, um mapa único de referência: ela diz ao agente quais skills, repositórios, sistemas operacionais e domínios da vida existem, onde cada um fica, como iniciá-lo e qual padrão se aplica. Em vez de adivinhar onde um arquivo ou uma convenção pertence, o agente pergunta "onde fica X" ou "qual é a minha regra para Y" e recebe uma resposta definitiva. É menos uma skill do que um assistente pessoal ao qual as outras skills se conectam. Logo abaixo dela fica uma skill de backup que codifica meu modelo de armazenamento (em qual disco cada arquivo fica, separação entre camadas de armazenamento e backup, e a regra de duas cópias para tudo o que é insubstituível) e roda as verificações de desvio. Ao lado delas ficam um assistente de doutorado que me sabatina sobre a tese e uma skill de busca na biblioteca, que consulta um acervo pessoal de artigos científicos convertidos em markdown, hospedado num Mac mini acessível via Tailscale a partir de qualquer uma das minhas máquinas.
+
+### Servidas por este site
+
+Mais duas skills funcionam no sentido inverso: não são para o meu agente, mas para o seu. Este site publica **portfolio-content** (ler qualquer página como markdown simples, em três línguas) e **portfolio-mcp** (consultar projetos, pesquisa, ensino, publicações e CV através do servidor MCP somente leitura do site) em `/.well-known/agent-skills/`, para que um agente que chegue aqui saiba ler o site sem o raspar. Como são construídas está descrito na página do [site do portfólio](/pt/projects/portfolio-website).
 
 ### Perspetivas
 
