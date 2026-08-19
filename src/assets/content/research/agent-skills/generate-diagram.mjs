@@ -26,7 +26,7 @@ const rows = [
       label: "MINE",
       groups: [
         { label: "AEC", tiles: ["creating-revit-plugin", "creating-grasshopper-plugin", "using-cordyceps", "working-with-btlx"] },
-        { label: "QUALITY", tiles: ["optimizing-web-performance", "auditing-website-quality", "auditing-agent-readiness", ["pre-pr-ritual", true]] },
+        { label: "QUALITY", tiles: ["optimizing-web-performance", "auditing-website-quality", "auditing-agent-readiness", "preparing-pull-request"] },
         { label: "PERSONAL", tiles: [["system", true], ["backup-system", true], ["phd", true], ["searching-librarian", true]] },
       ],
     },

@@ -46,8 +46,9 @@ Uma skill privada de referência para compas_ifc acompanha estas, para que o age
 | **optimizing-web-performance** | Audita um site em produção e corrige o que move a pontuação |
 | **auditing-website-quality** | Audita um site de ponta a ponta num scorecard ordenado |
 | **auditing-agent-readiness** | Verifica se um site é utilizável por agentes de IA |
+| **preparing-pull-request** | Rastreia a origem de um defeito e varre o rastreador upstream antes de abrir um PR no repositório de outra pessoa |
 
-Este site também serve **portfolio-content** e **portfolio-mcp** em `/.well-known/agent-skills/`, descritas na página do [site do portfólio](/pt/projects/portfolio-website). Um ritual pré-PR privado também pertence a este grupo: antes de eu abrir um pull request no repositório de outra pessoa, ele rastreia o histórico do defeito por blame, PRs anteriores e issues, e varre o rastreador upstream em busca de trabalho duplicado ou em andamento.
+Este site também serve **portfolio-content** e **portfolio-mcp** em `/.well-known/agent-skills/`, descritas na página do [site do portfólio](/pt/projects/portfolio-website).
 
 ### Pessoal
 

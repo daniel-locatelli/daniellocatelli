@@ -29,9 +29,9 @@
 <rect x="568" y="318" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
 <text x="588" y="349" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">auditing-agent-readiness</text>
 <text x="904" y="348" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
-<rect x="568" y="378" width="352" height="48" rx="10" fill="#18181b" stroke="#71717a" stroke-dasharray="6 5" stroke-width="1.5"/>
-<text x="588" y="409" fill="#d4d4d8" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">pre-pr-ritual</text>
-<text x="904" y="408" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">private</text>
+<rect x="568" y="378" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="588" y="409" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">preparing-pull-request</text>
+<text x="904" y="408" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
 <text x="948" y="186" fill="#52525b" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.18em">PERSONAL</text>
 <line x1="1048" y1="181" x2="1296" y2="181" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
 <rect x="944" y="198" width="352" height="48" rx="10" fill="#18181b" stroke="#71717a" stroke-dasharray="6 5" stroke-width="1.5"/>

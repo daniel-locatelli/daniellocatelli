@@ -46,8 +46,9 @@ Daneben steht ein privater Referenz-Skill für compas_ifc, damit der Agent die S
 | **optimizing-web-performance** | Auditiert eine Live-Site und behebt, was den Score bewegt |
 | **auditing-website-quality** | Auditiert eine Site von Ende zu Ende in eine sortierte Scorecard |
 | **auditing-agent-readiness** | Prüft, ob eine Website für KI-Agenten nutzbar ist |
+| **preparing-pull-request** | Zeichnet die Herkunft eines Defekts nach und durchsucht den Upstream-Tracker, bevor ein PR in einem fremden Repository eröffnet wird |
 
-Diese Website stellt unter `/.well-known/agent-skills/` auch **portfolio-content** und **portfolio-mcp** bereit, beschrieben auf der Seite [Portfolio-Website](/de/projects/portfolio-website). Ein privates Pre-PR-Ritual gehört ebenfalls hierher: Bevor ich einen Pull Request in einem fremden Repository eröffne, zeichnet es die Geschichte des Defekts über Blame, frühere PRs und Issues nach und durchsucht den Upstream-Tracker nach doppelter oder bereits laufender Arbeit.
+Diese Website stellt unter `/.well-known/agent-skills/` auch **portfolio-content** und **portfolio-mcp** bereit, beschrieben auf der Seite [Portfolio-Website](/de/projects/portfolio-website).
 
 ### Persönlich
 
