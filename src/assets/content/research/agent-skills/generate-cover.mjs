@@ -2,7 +2,9 @@
 //   node src/assets/content/research/agent-skills/generate-cover.mjs
 // Icons: Claude Code glyph from Simple Icons (CC0), graduation cap from
 // @iconify-json/mdi ("school"). Output is written next to this file.
-import { readFileSync, writeFileSync } from "node:fs";
+// agent-skills-cover-side-by-side.svg is generated verbatim; the wearing-cap
+// variant is emitted as a .draft.svg because the committed one was hand-edited.
+import { writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
@@ -77,6 +79,8 @@ const glyph = (d, x, y, size, extra = "") =>
     glyph(CAP, capX, capY, capS),
     brim,
   ].join("\n");
-  writeFileSync(join(here, "agent-skills-cover-wearing-cap.svg"),
+  // The live cover (agent-skills-cover-wearing-cap.svg) was hand-finished in a
+  // vector editor on top of this output; write the draft next to it instead.
+  writeFileSync(join(here, "agent-skills-cover-wearing-cap.draft.svg"),
     wrap("The Claude Code icon wearing a graduation cap: an agent with a skill", body));
 }

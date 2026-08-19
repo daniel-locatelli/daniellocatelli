@@ -1,6 +1,6 @@
 ---
-Cover: /assets/content/research/agent-skills/agent-skills-cover.svg
-CoverAlt: "O ícone do Claude Code e um ícone de capelo de formatura, verdes e brilhantes, lado a lado: um agente mais uma skill."
+Cover: /assets/content/research/agent-skills/agent-skills-cover-wearing-cap.svg
+CoverAlt: "O ícone verde do Claude Code usando um capelo de formatura: um agente com uma skill."
 CoverFit: contain
 Description: "Uma lista viva das skills de agente de que dependo ao trabalhar com o Claude Code: as que eu escrevi, as skills de engenharia e produtividade do Matt Pocock e skills da comunidade como a Diagram Design."
 Name: Agent skills

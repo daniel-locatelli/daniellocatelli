@@ -1,6 +1,6 @@
 ---
-Cover: /assets/content/research/agent-skills/agent-skills-cover.svg
-CoverAlt: "Das leuchtend grüne Claude-Code-Symbol neben einem Doktorhut-Symbol: ein Agent plus ein Skill."
+Cover: /assets/content/research/agent-skills/agent-skills-cover-wearing-cap.svg
+CoverAlt: "Das grüne Claude-Code-Symbol mit Doktorhut: ein Agent mit einem Skill."
 CoverFit: contain
 Description: "Eine lebende Liste der Agent Skills, auf die ich mich bei der Arbeit mit Claude Code verlasse: die von mir geschriebenen, Matt Pococks Engineering- und Produktivitäts-Skills und Community-Skills wie Diagram Design."
 Name: Agent Skills
