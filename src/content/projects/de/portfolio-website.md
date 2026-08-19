@@ -11,8 +11,6 @@ Tags:
   - Claude
   - Three.js
   - Cloudflare
-Team:
-  - Daniel Nunes Locatelli
 Link:
   Text: daniellocatelli.com
   Href: "https://daniellocatelli.com"
