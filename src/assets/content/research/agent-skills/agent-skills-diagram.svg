@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="skills-cover-title"><title id="skills-cover-title">Agent skills I use: my own, Matt Pocock's, and community skills feeding one coding agent</title>
+<defs><marker id="skills-cover-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<line x1="368" y1="628" x2="368" y2="692" stroke="#a1a1aa" stroke-width="2" marker-end="url(#skills-cover-arrow)"/>
+<line x1="800" y1="628" x2="800" y2="692" stroke="#a1a1aa" stroke-width="2" marker-end="url(#skills-cover-arrow)"/>
+<line x1="1232" y1="628" x2="1232" y2="692" stroke="#a1a1aa" stroke-width="2" marker-end="url(#skills-cover-arrow)"/>
+<rect x="168" y="220" width="400" height="408" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="184" y="228" width="76" height="28" rx="4" fill="#000000"/>
+<text x="196" y="248" fill="#71717a" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">MINE</text>
+<rect x="192" y="268" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="212" y="299" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">creating-revit-plugin</text>
+<text x="528" y="298" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="192" y="328" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="212" y="359" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">creating-grasshopper-plugin</text>
+<text x="528" y="358" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="192" y="388" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="212" y="419" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">using-cordyceps</text>
+<text x="528" y="418" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="192" y="448" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="212" y="479" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">optimizing-web-performance</text>
+<text x="528" y="478" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="192" y="508" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="212" y="539" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">auditing-website-quality</text>
+<text x="528" y="538" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="192" y="568" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="212" y="599" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">auditing-agent-readiness</text>
+<text x="528" y="598" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="600" y="220" width="400" height="408" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="616" y="228" width="167" height="28" rx="4" fill="#000000"/>
+<text x="628" y="248" fill="#71717a" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">MATT POCOCK</text>
+<rect x="624" y="268" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="644" y="299" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">grill-me</text>
+<text x="960" y="298" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="624" y="328" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="644" y="359" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">grill-with-docs</text>
+<text x="960" y="358" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="624" y="388" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="644" y="419" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">handoff</text>
+<text x="960" y="418" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="624" y="448" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="644" y="479" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">teach</text>
+<text x="960" y="478" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="624" y="508" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="644" y="539" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">codebase-design</text>
+<text x="960" y="538" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="624" y="568" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="644" y="599" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">domain-modeling</text>
+<text x="960" y="598" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="1032" y="220" width="400" height="408" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="1048" y="228" width="141" height="28" rx="4" fill="#000000"/>
+<text x="1060" y="248" fill="#71717a" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">COMMUNITY</text>
+<rect x="1056" y="268" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1076" y="299" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">diagram-design</text>
+<text x="1392" y="298" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="1056" y="328" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1076" y="359" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">superpowers</text>
+<text x="1392" y="358" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="1056" y="388" width="352" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1076" y="419" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">frontend-design</text>
+<text x="1392" y="418" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">SKILL.md</text>
+<rect x="168" y="692" width="1264" height="88" rx="12" fill="rgba(34,197,94,0.10)" stroke="#22c55e" stroke-width="2"/>
+<text x="800" y="732" fill="#f4f4f5" font-size="30" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Coding agent</text>
+<text x="800" y="760" fill="#a1a1aa" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">skills loaded on demand, by task</text>
+</svg>

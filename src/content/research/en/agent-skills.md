@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/research/agent-skills/agent-skills-cover.svg
-CoverAlt: "Three columns of SKILL.md tiles (my own, Matt Pocock's, community) feeding a single coding agent."
+CoverAlt: "A glowing green robot icon and puzzle-piece icon side by side: an agent plus a skill."
 CoverFit: contain
 Description: "A living list of the agent skills I rely on when working with Claude Code: the ones I wrote, Matt Pocock's engineering and productivity skills, and community skills such as Diagram Design."
 Name: Agent skills
@@ -21,6 +21,8 @@ OtherLinks:
 ---
 
 An agent skill is a folder with a `SKILL.md` file: a short, well-scoped set of instructions, references, and scripts that a coding agent loads when a task matches its description. It is the unit in which expertise travels between people and agents. Most of what I have learned about working with Claude Code in 2026 has ended up in skills, either mine or other people's, so this page keeps track of the ones that have earned a permanent place in my setup. It is a living list; I add to it as skills prove themselves and remove the ones that stop pulling their weight.
+
+![Three columns of SKILL.md tiles (my own, Matt Pocock's, community) feeding a single coding agent.](../../../assets/content/research/agent-skills/agent-skills-diagram.svg)
 
 ## My own skills
 

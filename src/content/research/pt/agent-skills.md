@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/research/agent-skills/agent-skills-cover.svg
-CoverAlt: "Três colunas de blocos SKILL.md (os meus, os do Matt Pocock, da comunidade) alimentando um único agente de programação."
+CoverAlt: "Um ícone de robô e um ícone de peça de quebra-cabeça, verdes e brilhantes, lado a lado: um agente mais uma skill."
 CoverFit: contain
 Description: "Uma lista viva das skills de agente de que dependo ao trabalhar com o Claude Code: as que eu escrevi, as skills de engenharia e produtividade do Matt Pocock e skills da comunidade como a Diagram Design."
 Name: Agent skills
@@ -21,6 +21,8 @@ OtherLinks:
 ---
 
 Uma skill de agente é uma pasta com um arquivo `SKILL.md`: um conjunto curto e bem delimitado de instruções, referências e scripts que um agente de programação carrega quando uma tarefa corresponde à sua descrição. É a unidade em que o conhecimento viaja entre pessoas e agentes. Quase tudo o que aprendi sobre trabalhar com o Claude Code em 2026 acabou virando skill, minha ou de outras pessoas, então esta página registra as que conquistaram um lugar permanente na minha configuração. É uma lista viva: acrescento à medida que as skills se provam e removo as que deixam de valer a pena.
+
+![Três colunas de blocos SKILL.md (os meus, os do Matt Pocock, da comunidade) alimentando um único agente de programação.](../../../assets/content/research/agent-skills/agent-skills-diagram.svg)
 
 ## As minhas skills
 
