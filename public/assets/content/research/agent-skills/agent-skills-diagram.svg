@@ -35,13 +35,13 @@
 <text x="964" y="229" fill="#d4d4d8" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">system</text>
 <text x="1280" y="228" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">private</text>
 <rect x="944" y="258" width="352" height="48" rx="10" fill="#18181b" stroke="#71717a" stroke-dasharray="6 5" stroke-width="1.5"/>
-<text x="964" y="289" fill="#d4d4d8" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">phd</text>
+<text x="964" y="289" fill="#d4d4d8" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">backup-system</text>
 <text x="1280" y="288" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">private</text>
 <rect x="944" y="318" width="352" height="48" rx="10" fill="#18181b" stroke="#71717a" stroke-dasharray="6 5" stroke-width="1.5"/>
-<text x="964" y="349" fill="#d4d4d8" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">pre-pr-ritual</text>
+<text x="964" y="349" fill="#d4d4d8" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">phd</text>
 <text x="1280" y="348" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">private</text>
 <rect x="944" y="378" width="352" height="48" rx="10" fill="#18181b" stroke="#71717a" stroke-dasharray="6 5" stroke-width="1.5"/>
-<text x="964" y="409" fill="#d4d4d8" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">backup-system</text>
+<text x="964" y="409" fill="#d4d4d8" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">pre-pr-ritual</text>
 <text x="1280" y="408" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">private</text>
 <rect x="944" y="438" width="352" height="48" rx="10" fill="#18181b" stroke="#71717a" stroke-dasharray="6 5" stroke-width="1.5"/>
 <text x="964" y="469" fill="#d4d4d8" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">searching-librarian</text>
