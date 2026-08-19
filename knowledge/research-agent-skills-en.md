@@ -32,8 +32,9 @@ A private reference skill for compas_ifc sits next to these, so the agent checks
 | **optimizing-web-performance** | Audit a live site and fix what moves the score |
 | **auditing-website-quality** | Audit a site end to end into a ranked scorecard |
 | **auditing-agent-readiness** | Check whether a site is usable by AI agents |
+| **preparing-pull-request** | Trace a defect's origin and sweep the upstream tracker before opening a PR on someone else's repository |
 
-This website also serves **portfolio-content** and **portfolio-mcp** under `/.well-known/agent-skills/`, described on the [portfolio website](/projects/portfolio-website) page. A private pre-PR ritual belongs here too: before I open a pull request on someone else's repository, it traces the defect's history through blame, past PRs, and issues, and sweeps the upstream tracker for duplicate or in-flight work.
+This website also serves **portfolio-content** and **portfolio-mcp** under `/.well-known/agent-skills/`, described on the [portfolio website](/projects/portfolio-website) page.
 
 ### Personal
 
