@@ -60,7 +60,7 @@ Por baixo dos panos, um pipeline de conhecimento transforma as coleções de con
 
 Abaixo do chat fica uma esfera geodésica renderizada com Three.js. Ela segue a construção que Buckminster Fuller tornou famosa: partir de um icosaedro, subdividir cada face, projetar os vértices sobre uma esfera e tomar o dual, de modo que os doze vértices originais viram pentágonos e todo o resto vira hexágonos. A esfera gira conforme você rola a página, ligando o movimento da página à geometria.
 
-É também uma referência à minha própria trajetória: estruturas geodésicas e leves são um tema recorrente nos projetos e pesquisas deste site, do [Common Sky](/pt/projects/common-sky-by-artengineering-for-studio-other-spaces) ao meu doutorado sobre estruturas de madeira. O Three.js é carregado sob demanda, apenas quando a esfera se aproxima da área visível, para nunca ficar no caminho crítico do carregamento inicial da página.
+É também uma referência à minha própria trajetória: estruturas geodésicas e leves são um tema recorrente nos projetos e pesquisas deste site, do [Common Sky](/pt/projects/common-sky-by-artengineering-for-studio-other-spaces) ao meu doutorado sobre estruturas de madeira. O Three.js é carregado logo depois que a primeira tela é desenhada, em um momento ocioso, para nunca ficar no caminho crítico do carregamento inicial da página, mas já estar pronto quando você rolar até a esfera.
 
 ## Modo apresentação
 

@@ -60,7 +60,7 @@ Under the hood, a knowledge pipeline turns the content collections into small te
 
 Below the chat sits a geodesic sphere rendered with Three.js. It follows the construction Buckminster Fuller made famous: start from an icosahedron, subdivide each face, project the vertices onto a sphere, and take the dual, so that the twelve original vertices become pentagons and everything else becomes hexagons. The sphere rotates as you scroll, tying the motion of the page to the geometry.
 
-It is also a nod to my own path: geodesic and lightweight structures are a recurring theme in the projects and research on this site, from [Common Sky](/projects/common-sky-by-artengineering-for-studio-other-spaces) to my doctoral work on timber structures. Three.js is loaded lazily, only once the sphere scrolls near the viewport, so it never sits on the critical path of the initial page load.
+It is also a nod to my own path: geodesic and lightweight structures are a recurring theme in the projects and research on this site, from [Common Sky](/projects/common-sky-by-artengineering-for-studio-other-spaces) to my doctoral work on timber structures. Three.js is fetched right after the first screen has painted, in an idle moment, so it never sits on the critical path of the initial page load but is ready by the time you scroll down to the sphere.
 
 ## Presentation mode
 

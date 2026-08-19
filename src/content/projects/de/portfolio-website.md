@@ -60,7 +60,7 @@ Im Hintergrund verwandelt eine Wissens-Pipeline die Content Collections in klein
 
 Unter dem Chat sitzt eine geodätische Kugel, gerendert mit Three.js. Sie folgt der Konstruktion, die Buckminster Fuller berühmt gemacht hat: Man beginnt mit einem Ikosaeder, unterteilt jede Fläche, projiziert die Eckpunkte auf eine Kugel und bildet das Dual, sodass die zwölf ursprünglichen Eckpunkte zu Fünfecken werden und alles andere zu Sechsecken. Die Kugel dreht sich beim Scrollen und verbindet so die Bewegung der Seite mit der Geometrie.
 
-Sie ist auch eine Anspielung auf meinen eigenen Weg: Geodätische und leichte Tragwerke sind ein wiederkehrendes Thema in den Projekten und Forschungsarbeiten auf dieser Website, von [Common Sky](/de/projects/common-sky-by-artengineering-for-studio-other-spaces) bis zu meiner Doktorarbeit über Holztragwerke. Three.js wird erst dann nachgeladen, wenn die Kugel in die Nähe des sichtbaren Bereichs scrollt, sodass es nie im kritischen Pfad des ersten Seitenaufbaus liegt.
+Sie ist auch eine Anspielung auf meinen eigenen Weg: Geodätische und leichte Tragwerke sind ein wiederkehrendes Thema in den Projekten und Forschungsarbeiten auf dieser Website, von [Common Sky](/de/projects/common-sky-by-artengineering-for-studio-other-spaces) bis zu meiner Doktorarbeit über Holztragwerke. Three.js wird direkt nach dem ersten gezeichneten Bildschirm in einem Leerlaufmoment nachgeladen, sodass es nie im kritischen Pfad des ersten Seitenaufbaus liegt, aber bereit ist, sobald man zur Kugel hinunterscrollt.
 
 ## Präsentationsmodus
 

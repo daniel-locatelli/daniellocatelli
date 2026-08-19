@@ -31,11 +31,12 @@ const { height = "180px" } = Astro.props;
 </style>
 
 <script>
-  // Three.js (~125 KiB) is loaded lazily, only once the dome scrolls near
-  // the viewport, so it stays off the initial critical request chain.
+  // Three.js (~125 KiB) is loaded eagerly but deferred: the fetch starts only
+  // after the load event and the first painted frame, in idle slots, so it
+  // never competes with the hero (LCP) yet is ready before the user can
+  // scroll down to the dome.
   type DomeModule = typeof import("@/lib/geodesic-dome");
   let modulePromise: Promise<DomeModule> | null = null;
-  let observer: IntersectionObserver | null = null;
 
   function loadModule(): Promise<DomeModule> {
     if (!modulePromise) modulePromise = import("@/lib/geodesic-dome");
@@ -43,60 +44,38 @@ const { height = "180px" } = Astro.props;
   }
 
   function setup() {
-    if (observer) {
-      observer.disconnect();
-      observer = null;
-    }
     const container = document.getElementById("geodesic-canvas");
     if (!container) return;
 
-    const start = () => {
-      const whenIdle = (cb: () => void) => {
-        if (typeof window.requestIdleCallback === "function") {
-          window.requestIdleCallback(cb, { timeout: 1500 });
-        } else {
-          setTimeout(cb, 200);
-        }
-      };
-      // Wait for the load event, then for a frame to actually be painted, so
-      // the Three.js fetch never starts before the hero (LCP) is on screen.
-      const afterFirstPaint = (cb: () => void) => {
-        const paintThen = () =>
-          requestAnimationFrame(() =>
-            requestAnimationFrame(() => setTimeout(cb, 100)),
-          );
-        if (document.readyState === "complete") paintThen();
-        else window.addEventListener("load", paintThen, { once: true });
-      };
-      // Then two separate idle slots: one to fetch + evaluate the chunk,
-      // another to build the scene, so neither becomes a single long task.
-      afterFirstPaint(() =>
-        whenIdle(() => {
-          loadModule().then((mod) => {
-            whenIdle(() => {
-              // The page may have navigated away while the chunk was loading.
-              if (container.isConnected) mod.initGeodesicDome(container);
-            });
-          });
-        }),
-      );
+    const whenIdle = (cb: () => void) => {
+      if (typeof window.requestIdleCallback === "function") {
+        window.requestIdleCallback(cb, { timeout: 1500 });
+      } else {
+        setTimeout(cb, 200);
+      }
     };
-
-    if (!("IntersectionObserver" in window)) {
-      start();
-      return;
-    }
-    observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          observer?.disconnect();
-          observer = null;
-          start();
-        }
-      },
-      { rootMargin: "300px 0px" },
+    // Wait for the load event, then for a frame to actually be painted, so
+    // the Three.js fetch never starts before the hero (LCP) is on screen.
+    const afterFirstPaint = (cb: () => void) => {
+      const paintThen = () =>
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => setTimeout(cb, 100)),
+        );
+      if (document.readyState === "complete") paintThen();
+      else window.addEventListener("load", paintThen, { once: true });
+    };
+    // Then two separate idle slots: one to fetch + evaluate the chunk,
+    // another to build the scene, so neither becomes a single long task.
+    afterFirstPaint(() =>
+      whenIdle(() => {
+        loadModule().then((mod) => {
+          whenIdle(() => {
+            // The page may have navigated away while the chunk was loading.
+            if (container.isConnected) mod.initGeodesicDome(container);
+          });
+        });
+      }),
     );
-    observer.observe(container);
   }
 
   // astro:page-load fires on initial load AND after every client-side navigation
@@ -104,10 +83,6 @@ const { height = "180px" } = Astro.props;
 
   // Clean up WebGL resources before the page transition swaps the DOM
   document.addEventListener("astro:before-preparation", () => {
-    if (observer) {
-      observer.disconnect();
-      observer = null;
-    }
     if (modulePromise) modulePromise.then((mod) => mod.disposeGeodesicDome());
   });
 </script>
