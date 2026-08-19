@@ -16,7 +16,7 @@ export const t: I18nHome = {
     greeting: "Daniel Locatelli",
     title: "Doutorando, ETH Zurique",
     description:
-      "Sou&nbsp;doutorando no Gramazio Kohler Research, ETH Zurique, pesquisando do design computacional à fabricação de sistemas construtivos em placas de madeira. Minha experiência inclui plugins, aplicações web e design computacional para arquitetura, engenharia e construção (AEC).",
+      "Sou&nbsp;doutorando no Gramazio Kohler Research, ETH Zurique, pesquisando do design computacional à fabricação de sistemas construtivos em placas de madeira e explorando como a IA pode apoiar o processo de projeto. Minha experiência inclui plugins, aplicações web e design computacional para arquitetura, engenharia e construção (AEC).",
     requestQuote: "Faça um orçamento",
     sendEmail: "Envie um Email",
     chat: {
