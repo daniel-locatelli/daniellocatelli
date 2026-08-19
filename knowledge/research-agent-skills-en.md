@@ -25,7 +25,7 @@ These live in the public repository [daniel-locatelli/skills](https://github.com
 
 A private reference skill for compas_ifc sits next to these, so the agent checks the spec before answering a parameter or version question.
 
-### Web
+### Software
 
 | Skill | What it does |
 | --- | --- |
@@ -33,11 +33,11 @@ A private reference skill for compas_ifc sits next to these, so the agent checks
 | **auditing-website-quality** | Audit a site end to end into a ranked scorecard |
 | **auditing-agent-readiness** | Check whether a site is usable by AI agents |
 
-This website also serves **portfolio-content** and **portfolio-mcp** under `/.well-known/agent-skills/`, described on the [portfolio website](/projects/portfolio-website) page.
+This website also serves **portfolio-content** and **portfolio-mcp** under `/.well-known/agent-skills/`, described on the [portfolio website](/projects/portfolio-website) page. A private pre-PR ritual belongs here too: before I open a pull request on someone else's repository, it traces the defect's history through blame, past PRs, and issues, and sweeps the upstream tracker for duplicate or in-flight work.
 
 ### Personal
 
-These stay private because they encode how I work rather than how a tool works. The one I use most is `system`, a single source-of-truth map: it tells the agent which skills, repositories, operational systems, and life domains exist, where each one lives, how to start it, and which standard applies. Instead of guessing where a file or a convention belongs, the agent asks "where does X live" or "what is my rule for Y" and gets a definite answer. It is less a skill than a personal assistant the other skills plug into. Directly under it sits a backup skill that encodes my storage model (which drive a file belongs on, tiering kept separate from backup, and a two-copy rule for anything irreplaceable) and runs the drift checks. Alongside them sit a PhD assistant that grills me on the thesis; a pre-PR ritual that traces a defect's history before I open a pull request on someone else's repository; and a librarian search skill that queries a personal library of research papers converted to markdown, hosted on a Mac mini reachable over Tailscale from any of my machines.
+These stay private because they encode how I work rather than how a tool works. The one I use most is `system`, a single source-of-truth map: it tells the agent which skills, repositories, operational systems, and life domains exist, where each one lives, how to start it, and which standard applies. Instead of guessing where a file or a convention belongs, the agent asks "where does X live" or "what is my rule for Y" and gets a definite answer. It is less a skill than a personal assistant the other skills plug into. Directly under it sits a backup skill that encodes my storage model (which drive a file belongs on, tiering kept separate from backup, and a two-copy rule for anything irreplaceable) and runs the drift checks. Alongside them sit a PhD assistant that grills me on the thesis and a librarian search skill that queries a personal library of research papers converted to markdown, hosted on a Mac mini reachable over Tailscale from any of my machines.
 
 ## Matt Pocock's skills
 
