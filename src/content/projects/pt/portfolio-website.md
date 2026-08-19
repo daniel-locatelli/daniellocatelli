@@ -79,9 +79,13 @@ Como boa parte do tráfego de um site como este virá cada vez mais de agentes d
 
 Fazer a negociação de conteúdo funcionar em páginas pré-renderizadas exigiu investigar como o pipeline de requisições da Cloudflare, o Workers Static Assets e o middleware de build do Astro interagem; a solução é um Snippet da Cloudflare no nível da zona que reescreve a URL antes de ela chegar ao Worker. No [isitagentready.com](https://isitagentready.com/), o verificador que acompanha o [guia de prontidão para agentes](https://blog.cloudflare.com/agent-readiness/) da Cloudflare, o site saiu de uma pontuação de 25% para 71/100, "Nível 5, Agent-Native", com nota máxima em descoberta, conteúdo e controle de acesso de bots. Os pontos restantes estão na categoria de API e autenticação e ficam deliberadamente em aberto: descoberta OAuth, metadados de recurso protegido e um `auth.md` só fazem sentido quando há algo em que fazer login, um agent card A2A descreve um agente que oferece serviços a outros agentes, e o WebMCP expõe ações dentro da página, como formulários ou checkouts. Um portfólio somente leitura não tem nada disso, então o verificador continua listando esses itens e o site continua dispensando-os.
 
+![Resultado do Is It Agent Ready?: 71/100, Nível 5, Agent-Native](../../../assets/content/projects/portfolio-website/result-isitagentready.png)
+
 ## Desempenho e Lighthouse
 
 O site é em grande parte HTML estático, o que já lhe dá uma vantagem inicial. Além disso, as imagens são servidas em tamanhos responsivos com larguras explícitas para que nada se desloque durante o carregamento, as imagens do corpo são carregadas sob demanda e pré-carregadas pouco antes de entrarem na área visível, as fontes são reduzidas ao subconjunto necessário e pré-carregadas, e scripts pesados são adiados até que sejam realmente necessários: o Three.js espera um momento ocioso e depois só redesenha a esfera enquanto ela está de fato em movimento, e a janela do chat (com seu renderizador de markdown e animações) só é baixada quando o visitante começa a digitar, de modo que o campo de entrada da abertura carrega apenas alguns kilobytes de JavaScript. Os logotipos do mapa de competências são servidos como arquivos de imagem separados, carregados sob demanda, em vez de embutidos na página, o que reduziu o HTML da página inicial de cerca de 350 KB para menos de 70 KB, de modo que a primeira pintura não espera mais por centenas de kilobytes de caminhos vetoriais. Juntas, essas mudanças levaram as pontuações do Lighthouse em desempenho, acessibilidade, boas práticas e SEO ao topo da escala.
+
+![Resultado do Lighthouse: 100 em desempenho, acessibilidade, boas práticas e SEO](../../../assets/content/projects/portfolio-website/result-lighthouse.png)
 
 ## Detalhes menores
 

@@ -79,9 +79,13 @@ Since much of the traffic to a site like this will increasingly come from AI age
 
 Getting content negotiation to work on prerendered pages took some digging into how Cloudflare's request pipeline, Workers Static Assets, and Astro's build-time middleware interact; the solution is a zone-level Cloudflare Snippet that rewrites the URL before it reaches the Worker. On [isitagentready.com](https://isitagentready.com/), the checker that accompanies Cloudflare's [agent-readiness guide](https://blog.cloudflare.com/agent-readiness/), the site went from a 25% score to 71/100, "Level 5, Agent-Native", with full marks for discoverability, content, and bot access control. The remaining points sit in the API and auth category and are deliberately left open: OAuth discovery, protected-resource metadata, and an `auth.md` only make sense when there is something to log in to, an A2A agent card describes an agent that offers services to other agents, and WebMCP exposes in-page actions such as forms or checkouts. A read-only portfolio has none of these, so the checker keeps listing them and the site keeps declining them.
 
+![Is It Agent Ready? result: 71/100, Level 5, Agent-Native](../../../assets/content/projects/portfolio-website/result-isitagentready.png)
+
 ## Performance and Lighthouse
 
 The site is mostly static HTML, which already gives it a head start. On top of that, images are served in responsive sizes with explicit widths so nothing shifts while loading, body images are lazy-loaded and preloaded just ahead of the viewport, fonts are subset and preloaded, and heavy scripts are deferred until they are actually needed: Three.js waits for an idle moment and then only redraws the sphere while it is actually moving, and the chat window (with its markdown renderer and animations) is fetched only when a visitor starts typing, so the hero input itself ships just a few kilobytes of JavaScript. The logos in the skills map are served as separate lazily loaded image files rather than inlined into the page, which cut the homepage HTML from roughly 350 KB to under 70 KB, so the first paint no longer waits on hundreds of kilobytes of vector paths. Together these changes pushed the Lighthouse scores for performance, accessibility, best practices, and SEO to the top of the scale.
+
+![Lighthouse result: 100 for performance, accessibility, best practices, and SEO](../../../assets/content/projects/portfolio-website/result-lighthouse.png)
 
 ## Smaller details
 
