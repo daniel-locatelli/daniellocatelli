@@ -1,24 +1,19 @@
 <svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t">
 <title id="t">The Claude Code icon wearing a graduation cap: an agent with a skill</title>
-<g clip-path="url(#clip0_527_2)">
-<path d="M1600 0H0V1000H1600V0Z" fill="url(#paint0_radial_527_2)"/>
+<g clip-path="url(#clip0_527_23)">
+<path d="M1600 0H0V1000H1600V0Z" fill="url(#paint0_radial_527_23)"/>
 <g filter="url(#glow)">
-<path d="M912.5 609.4H950V646.9H912.5V684.4H893.75V721.9H875V684.4H856.25V721.9H837.5V684.4H762.5V721.9H743.75V684.4H725V721.9H706.25V684.4H687.5V646.9H650V609.4H687.5V534.4H912.5V609.4ZM725 609.4H743.75V571.9H725V609.4ZM856.25 609.4H875V571.9H856.25V609.4Z" fill="#4ADE80"/>
-<path d="M687 534.672V506.524L800 567.853L913 506.524V534.672L800 596L687 534.672Z" fill="url(#paint1_radial_527_2)"/>
+<path d="M912.5 609.4H950V646.9H912.5V684.4H893.75V721.9H875V684.4H856.25V721.9H837.5V684.4H762.5V721.9H743.75V684.4H725V721.9H706.25V684.4H687.5V646.9H650V609.4H687.5V535.418L800 596.476L912.5 535.418V609.4ZM725 609.4H743.75V571.9H725V609.4ZM856.25 609.4H875V571.9H856.25V609.4Z" fill="#4ADE80"/>
 <path d="M800 378L623 474.429L800 570.857L944.818 491.946L944.818 574.976H977L977 474.429" fill="#4ADE80"/>
 </g>
 </g>
 <defs>
 <filter id="glow" filterUnits="userSpaceOnUse" x="0" y="0" width="1600" height="1000"><feGaussianBlur stdDeviation="10" result="b"/><feComponentTransfer in="b" result="bf"><feFuncA type="linear" slope="0.6"/></feComponentTransfer><feMerge><feMergeNode in="bf"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<radialGradient id="paint0_radial_527_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800 500) scale(960 600)">
+<radialGradient id="paint0_radial_527_23" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800 500) scale(960 600)">
 <stop stop-color="#102A1A"/>
 <stop offset="1" stop-color="#0C0F0D"/>
 </radialGradient>
-<radialGradient id="paint1_radial_527_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800 569.298) scale(135.6 75.3279)">
-<stop stop-color="#102A1A"/>
-<stop offset="1" stop-color="#0C0F0D"/>
-</radialGradient>
-<clipPath id="clip0_527_2">
+<clipPath id="clip0_527_23">
 <rect width="1600" height="1000" fill="white"/>
 </clipPath>
 </defs>
