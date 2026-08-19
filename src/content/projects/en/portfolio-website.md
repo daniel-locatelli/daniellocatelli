@@ -50,6 +50,8 @@ Keeping the content in the repository as plain text has a second payoff: it is s
 
 The site is available in English, Portuguese, and German. There is no translation service in the pipeline: when a content file changes in one locale, Claude Code translates it and updates the corresponding files in the other two. Structural fields such as dates, links, and places are kept in sync, while translatable fields such as country and city names are localised. The same applies to the interface strings, which live as typed objects per locale.
 
+![How a change in one language reaches the other two: Claude Code reads the repository rule and writes the matching files, keeping dates and links identical and translating names and text.](/assets/content/projects/portfolio-website/translation-en.svg)
+
 ## AI chat on the homepage
 
 The homepage opens with a chat powered by Claude. Visitors can ask what I am working on, where I studied, which tools I use, or anything else covered by the site, and get an answer grounded in the actual content rather than a generic reply.

@@ -50,6 +50,8 @@ Manter o conteúdo no repositório em texto puro tem um segundo ganho: é simple
 
 O site está disponível em inglês, português e alemão. Não há nenhum serviço de tradução no pipeline: quando um arquivo de conteúdo muda em um idioma, o Claude Code o traduz e atualiza os arquivos correspondentes nos outros dois. Campos estruturais como datas, links e lugares são mantidos em sincronia, enquanto campos traduzíveis como nomes de países e cidades são localizados. O mesmo vale para os textos da interface, que vivem como objetos tipados por idioma.
 
+![Como uma mudança em um idioma chega aos outros dois: o Claude Code lê a regra do repositório e escreve os arquivos correspondentes, mantendo datas e links idênticos e traduzindo nomes e texto.](/assets/content/projects/portfolio-website/translation-pt.svg)
+
 ## Chat com IA na página inicial
 
 A página inicial abre com um chat baseado no Claude. Os visitantes podem perguntar no que estou trabalhando, onde estudei, quais ferramentas uso ou qualquer outra coisa coberta pelo site, e recebem uma resposta baseada no conteúdo real, e não uma resposta genérica.

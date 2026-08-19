@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" role="img" aria-labelledby="translation-de-title translation-de-desc">
+<title id="translation-de-title">Wie eine Inhaltsänderung in die anderen beiden Sprachen gelangt</title>
+<desc id="translation-de-desc">Diagramm: Ändert sich eine Inhaltsdatei oder eine Datei mit Oberflächentexten in einer Sprache, liest Claude Code die Regel des Repositories und schreibt die entsprechenden Dateien in den anderen beiden Sprachen. Strukturelle Felder wie Daten und Links bleiben identisch; übersetzbare Felder wie Ländernamen und der Fließtext werden übersetzt. Ein Übersetzungsdienst ist nicht beteiligt.</desc>
+<defs><marker id="translation-de-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<rect x="16" y="24" width="232" height="320" rx="8" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="0.8"/>
+<rect x="28" y="28" width="152" height="12" rx="2" fill="#000000"/>
+<text x="32" y="37" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.14em">ICH BEARBEITE EINE SPRACHE</text>
+<rect x="280" y="24" width="464" height="320" rx="8" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="0.8"/>
+<rect x="292" y="28" width="224" height="12" rx="2" fill="#000000"/>
+<text x="296" y="37" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.14em">CLAUDE CODE SCHREIBT DIE ANDEREN BEIDEN</text>
+<text x="544" y="48" fill="#71717a" font-size="7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.18em">INHALTSDATEI</text>
+<text x="544" y="232" fill="#71717a" font-size="7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.18em">OBERFLÄCHENTEXTE</text>
+<line x1="216" y1="136" x2="288" y2="136" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#translation-de-arrow)"/>
+<line x1="216" y1="286" x2="288" y2="286" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#translation-de-arrow)"/>
+<path d="M468,136 H498 Q506,136 506,128 V100 Q506,92 514,92 H544" fill="none" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#translation-de-arrow)"/>
+<path d="M468,136 H498 Q506,136 506,144 V172 Q506,180 514,180 H544" fill="none" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#translation-de-arrow)"/>
+<path d="M468,286 H498 Q506,286 506,278 V268 Q506,260 514,260 H544" fill="none" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#translation-de-arrow)"/>
+<path d="M468,286 H498 Q506,286 506,294 V304 Q506,312 514,312 H544" fill="none" stroke="#a1a1aa" stroke-width="1.2" marker-end="url(#translation-de-arrow)"/>
+<rect x="32" y="100" width="184" height="72" rx="6" fill="#000000"/>
+<rect x="32" y="100" width="184" height="72" rx="6" fill="rgba(161,161,170,0.10)" stroke="#71717a" stroke-width="1"/>
+<text x="44" y="116" fill="#f4f4f5" font-size="11" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">en/ Projektdatei</text>
+<line x1="44" y1="122" x2="204" y2="122" stroke="rgba(244,244,245,0.12)" stroke-width="0.8"/>
+<text x="44" y="134" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">DateStart: 2018-03-01</text>
+<text x="44" y="147" fill="#f4f4f5" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Country: Brazil</text>
+<text x="44" y="160" fill="#f4f4f5" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Text auf Englisch</text>
+<rect x="32" y="266" width="184" height="40" rx="6" fill="#000000"/>
+<rect x="32" y="266" width="184" height="40" rx="6" fill="rgba(161,161,170,0.10)" stroke="#71717a" stroke-width="1"/>
+<text x="44" y="282" fill="#f4f4f5" font-size="11" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">i18n/home/en.ts</text>
+<line x1="44" y1="288" x2="204" y2="288" stroke="rgba(244,244,245,0.12)" stroke-width="0.8"/>
+<text x="44" y="300" fill="#f4f4f5" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">hi: "Hi,"</text>
+<rect x="544" y="56" width="184" height="72" rx="6" fill="#000000"/>
+<rect x="544" y="56" width="184" height="72" rx="6" fill="#18181b" stroke="#f4f4f5" stroke-width="1"/>
+<text x="556" y="72" fill="#f4f4f5" font-size="11" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">pt/ Projektdatei</text>
+<line x1="556" y1="78" x2="716" y2="78" stroke="rgba(244,244,245,0.12)" stroke-width="0.8"/>
+<text x="556" y="90" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">DateStart: 2018-03-01</text>
+<text x="556" y="103" fill="#f4f4f5" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Country: Brasil</text>
+<text x="556" y="116" fill="#f4f4f5" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Text auf Portugiesisch</text>
+<rect x="544" y="144" width="184" height="72" rx="6" fill="#000000"/>
+<rect x="544" y="144" width="184" height="72" rx="6" fill="#18181b" stroke="#f4f4f5" stroke-width="1"/>
+<text x="556" y="160" fill="#f4f4f5" font-size="11" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">de/ Projektdatei</text>
+<line x1="556" y1="166" x2="716" y2="166" stroke="rgba(244,244,245,0.12)" stroke-width="0.8"/>
+<text x="556" y="178" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">DateStart: 2018-03-01</text>
+<text x="556" y="191" fill="#f4f4f5" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Country: Brasilien</text>
+<text x="556" y="204" fill="#f4f4f5" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Text auf Deutsch</text>
+<rect x="544" y="240" width="184" height="40" rx="6" fill="#000000"/>
+<rect x="544" y="240" width="184" height="40" rx="6" fill="#18181b" stroke="#f4f4f5" stroke-width="1"/>
+<text x="556" y="256" fill="#f4f4f5" font-size="11" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">i18n/home/pt.ts</text>
+<line x1="556" y1="262" x2="716" y2="262" stroke="rgba(244,244,245,0.12)" stroke-width="0.8"/>
+<text x="556" y="274" fill="#f4f4f5" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">hi: "Prazer,"</text>
+<rect x="544" y="292" width="184" height="40" rx="6" fill="#000000"/>
+<rect x="544" y="292" width="184" height="40" rx="6" fill="#18181b" stroke="#f4f4f5" stroke-width="1"/>
+<text x="556" y="308" fill="#f4f4f5" font-size="11" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">i18n/home/de.ts</text>
+<line x1="556" y1="314" x2="716" y2="314" stroke="rgba(244,244,245,0.12)" stroke-width="0.8"/>
+<text x="556" y="326" fill="#f4f4f5" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">hi: "Hallo,"</text>
+<rect x="288" y="80" width="180" height="240" rx="6" fill="#000000"/>
+<rect x="288" y="80" width="180" height="240" rx="6" fill="rgba(34,197,94,0.10)" stroke="#22c55e" stroke-width="1"/>
+<text x="378" y="120" fill="#f4f4f5" font-size="13" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Claude Code</text>
+<text x="378" y="136" fill="#a1a1aa" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">liest die Regel des Repositories</text>
+<text x="378" y="184" fill="#f4f4f5" font-size="10" font-style="italic" font-family="Montserrat, ui-sans-serif, system-ui, sans-serif" text-anchor="middle">„Ändert sich eine Datei in einer</text>
+<text x="378" y="200" fill="#f4f4f5" font-size="10" font-style="italic" font-family="Montserrat, ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Sprache, aktualisiere die Dateien</text>
+<text x="378" y="216" fill="#f4f4f5" font-size="10" font-style="italic" font-family="Montserrat, ui-sans-serif, system-ui, sans-serif" text-anchor="middle">in den anderen beiden.“</text>
+<text x="378" y="248" fill="#71717a" font-size="7" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle" letter-spacing="0.14em">CLAUDE.md</text>
+<line x1="304" y1="280" x2="452" y2="280" stroke="rgba(244,244,245,0.12)" stroke-width="0.8"/>
+<text x="378" y="300" fill="#a1a1aa" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">kein Übersetzungsdienst</text>
+<line x1="16" y1="364" x2="744" y2="364" stroke="rgba(244,244,245,0.12)" stroke-width="0.8"/>
+<text x="16" y="384" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Aa</text>
+<text x="34" y="384" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.06em">Bleibt identisch (Daten, Links, Orte)</text>
+<text x="256" y="384" fill="#f4f4f5" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Aa</text>
+<text x="274" y="384" fill="#71717a" font-size="8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.06em">Übersetzt (Namen, Text)</text>
+</svg>

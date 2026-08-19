@@ -50,6 +50,8 @@ Dass alle Inhalte als reiner Text im Repository liegen, hat einen zweiten Nutzen
 
 Die Website ist auf Englisch, Portugiesisch und Deutsch verfügbar. Es gibt keinen Übersetzungsdienst in der Pipeline: Wenn sich eine Inhaltsdatei in einer Sprache ändert, übersetzt Claude Code sie und aktualisiert die entsprechenden Dateien in den beiden anderen. Strukturelle Felder wie Daten, Links und Orte werden synchron gehalten, während übersetzbare Felder wie Länder- und Städtenamen lokalisiert werden. Dasselbe gilt für die Texte der Benutzeroberfläche, die als typisierte Objekte pro Sprache vorliegen.
 
+![Wie eine Änderung in einer Sprache die anderen beiden erreicht: Claude Code liest die Regel des Repositories und schreibt die passenden Dateien, hält Daten und Links identisch und übersetzt Namen und Text.](/assets/content/projects/portfolio-website/translation-de.svg)
+
 ## KI-Chat auf der Startseite
 
 Die Startseite beginnt mit einem Chat, der von Claude angetrieben wird. Besucher können fragen, woran ich arbeite, wo ich studiert habe, welche Werkzeuge ich benutze oder alles andere, was die Website abdeckt, und erhalten eine Antwort, die auf den tatsächlichen Inhalten beruht statt auf einer generischen Auskunft.
