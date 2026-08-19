@@ -61,6 +61,9 @@ export default {
             h4: {
               color: "var(--color-zinc-200)",
             },
+            li: {
+              lineHeight: "1.5",
+            },
             a: {
               textDecoration: "none",
               transition: "color 300ms",
