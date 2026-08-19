@@ -104,6 +104,8 @@ Astro rendert die Website zu überwiegend statischem HTML, was ihr bereits einen
 
 Die Website enthält auch Seiten, die nirgends verlinkt sind und vor allem meinem eigenen Gebrauch dienen. Der Kurzlebenslauf, der vollständige Lebenslauf und der auf die Promotion ausgerichtete Lebenslauf liegen unter nicht gelisteten URLs, werden aus denselben Content Collections gerendert wie der Rest der Website (sodass eine Erfahrung oder Publikation nur ein einziges Mal eingetragen werden muss) und bringen Druckstile mit, sodass das Speichern der Seite als PDF jederzeit ein sauberes, aktuelles Dokument ergibt. Ein paar ebenfalls nicht gelistete Seiten dienen als Titelkarten für aufgezeichnete Vorlesungen. So ist die Website zugleich ein kleiner Arbeitsbereich und nicht nur ein Schaufenster für Besucher.
 
+![Der Druckdialog des Browsers über der Lebenslaufseite: Die Vorschau zeigt den Lebenslauf als sauberes weisses Dokument mit Foto, Name, "PhD Candidate at ETH Zurich", Zusammenfassung, Kenntnissen und Berufserfahrung, bereit zum Speichern als PDF.](../../../assets/content/projects/portfolio-website/printing-cv.png)
+
 ## Kleinere Details
 
 - **Link-Vorschauen zur Build-Zeit.** Externe Links, die auf einer Seite aufgeführt sind, werden als Vorschaukarten dargestellt. Titel, Beschreibungen, Bilder und Favicons werden einmal abgerufen und im Repository zwischengespeichert, sodass der Build reproduzierbar ist und beim Laden der Seite keine Anfrage an Dritte erfolgt.

@@ -104,6 +104,8 @@ Astro renders the site to mostly static HTML, which already gives it a head star
 
 The site also hosts pages that are not linked from anywhere and exist mainly for my own use. The short CV, the full CV, and the PhD-oriented CV live at unlisted URLs, are rendered from the same content collections as the rest of the site (so an experience or publication only ever needs to be entered once), and carry print styles so that saving the page as a PDF produces a clean, up-to-date document whenever one is needed. A couple of similarly unlisted pages serve as title cards for recorded lectures. In this way the site doubles as a small workspace, not only a showcase for visitors.
 
+![The browser print dialog over the CV page: the preview shows the CV laid out as a clean white document with photo, name, "PhD Candidate at ETH Zurich", summary, skills, and professional experience, ready to be saved as a PDF.](../../../assets/content/projects/portfolio-website/printing-cv.png)
+
 ## Smaller details
 
 - **Link previews at build time.** External links listed on a page are rendered as preview cards. Their titles, descriptions, images, and favicons are fetched once and cached in the repository, so the build is reproducible and no third-party request happens at page load.

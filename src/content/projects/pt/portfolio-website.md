@@ -104,6 +104,8 @@ O Astro renderiza o site em HTML majoritariamente estático, o que já lhe dá u
 
 O site também hospeda páginas que não são linkadas de lugar nenhum e existem sobretudo para meu próprio uso. O currículo resumido, o currículo completo e o currículo voltado ao doutorado ficam em URLs não listadas, são renderizados a partir das mesmas coleções de conteúdo que o resto do site (de modo que uma experiência ou publicação só precisa ser cadastrada uma vez) e trazem estilos de impressão, para que salvar a página como PDF gere um documento limpo e atualizado sempre que for preciso. Algumas páginas igualmente não listadas servem de cartões de abertura para aulas gravadas. Assim, o site funciona também como um pequeno espaço de trabalho, e não apenas como vitrine para visitantes.
 
+![A caixa de diálogo de impressão do navegador sobre a página do currículo: a pré-visualização mostra o currículo como um documento branco e limpo, com foto, nome, "PhD Candidate at ETH Zurich", resumo, habilidades e experiência profissional, pronto para ser salvo como PDF.](../../../assets/content/projects/portfolio-website/printing-cv.png)
+
 ## Detalhes menores
 
 - **Prévias de links no build.** Links externos listados em uma página são exibidos como cartões de prévia. Títulos, descrições, imagens e favicons são buscados uma única vez e guardados em cache no repositório, de modo que o build é reprodutível e nenhuma requisição a terceiros acontece ao carregar a página.
