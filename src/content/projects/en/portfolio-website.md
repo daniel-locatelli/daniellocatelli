@@ -36,11 +36,11 @@ This is the website you are reading right now. It started in April 2024 as a sma
 - [**Three.js**](https://threejs.org/) for the geodesic sphere.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) with Static Assets for hosting, edge caching, and the agent-facing endpoints; prerendered pages are served straight from the edge, and the Worker only runs for the chat and MCP endpoints.
 
-## Markdown content, with Claude Code as CMS
+## Markdown content, with Claude Code as content management system
 
 All the content lives as plain text files in the same place as the code: one small file per project, research entry, publication, teaching item, or CV section, with a short header that holds the facts (title, dates, tags) above the text of the page, and a copy in each of the three languages. There is no database and no separate content system behind the pages.
 
-The point of this setup is to make the content directly accessible to AI harnesses such as [Claude Code](https://claude.com/claude-code). Because the content is just files next to the code, Claude Code can read, edit, create, and cross-check entries the same way it works on source code. In practice this means I use Claude Code as the CMS, the content management system, the tool you would normally log into to add a page or fix a typo: I describe a new project or a correction in a sentence, and it writes or updates the files, keeps the headers consistent, and checks the related entries in the other languages. This very page was written that way. Everything on this site is co-created, from the code to the content.
+The point of this setup is to make the content directly accessible to AI harnesses such as [Claude Code](https://claude.com/claude-code). Because the content is just files next to the code, Claude Code can read, edit, create, and cross-check entries the same way it works on source code. In practice this means I use Claude Code as the content management system (CMS), the tool you would normally log into to add a page or fix a typo: I describe a new project or a correction in a sentence, and it writes or updates the files, keeps the headers consistent, and checks the related entries in the other languages. This very page was written that way. Everything on this site is co-created, from the code to the content.
 
 Keeping the content in the repository as plain text has a second payoff: it is straightforward to chunk it, embed it, and feed it to a language model. That is what makes the AI chat on the homepage possible.
 

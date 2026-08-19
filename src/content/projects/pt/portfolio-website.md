@@ -36,11 +36,11 @@ Este é o site que você está lendo agora. Ele começou em abril de 2024 como u
 - [**Three.js**](https://threejs.org/) para a esfera geodésica.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) com Static Assets para hospedagem, cache na borda e os endpoints voltados a agentes; as páginas pré-renderizadas são servidas direto da borda, e o Worker só roda para os endpoints de chat e MCP.
 
-## Conteúdo em markdown, com o Claude Code como CMS
+## Conteúdo em markdown, com o Claude Code como sistema de gestão de conteúdo
 
 Todo o conteúdo vive como arquivos de texto simples no mesmo lugar que o código: um arquivo pequeno por projeto, entrada de pesquisa, publicação, item de ensino ou seção do currículo, com um cabeçalho curto que guarda os fatos (título, datas, tags) acima do texto da página, e uma cópia em cada um dos três idiomas. Não há banco de dados nem sistema de conteúdo separado por trás das páginas.
 
-O objetivo dessa configuração é tornar o conteúdo diretamente acessível a harnesses de IA como o [Claude Code](https://claude.com/claude-code). Como o conteúdo é apenas um conjunto de arquivos ao lado do código, o Claude Code consegue ler, editar, criar e cruzar entradas do mesmo jeito que trabalha com código-fonte. Na prática, isso significa que uso o Claude Code como CMS, o sistema de gestão de conteúdo, a ferramenta em que normalmente se faria login para adicionar uma página ou corrigir um erro de digitação: descrevo um novo projeto ou uma correção em uma frase, e ele escreve ou atualiza os arquivos, mantém os cabeçalhos consistentes e confere as entradas relacionadas nos outros idiomas. Esta própria página foi escrita assim. Tudo neste site é cocriado, do código ao conteúdo.
+O objetivo dessa configuração é tornar o conteúdo diretamente acessível a harnesses de IA como o [Claude Code](https://claude.com/claude-code). Como o conteúdo é apenas um conjunto de arquivos ao lado do código, o Claude Code consegue ler, editar, criar e cruzar entradas do mesmo jeito que trabalha com código-fonte. Na prática, isso significa que uso o Claude Code como sistema de gestão de conteúdo (CMS), a ferramenta em que normalmente se faria login para adicionar uma página ou corrigir um erro de digitação: descrevo um novo projeto ou uma correção em uma frase, e ele escreve ou atualiza os arquivos, mantém os cabeçalhos consistentes e confere as entradas relacionadas nos outros idiomas. Esta própria página foi escrita assim. Tudo neste site é cocriado, do código ao conteúdo.
 
 Manter o conteúdo no repositório em texto puro tem um segundo ganho: é simples dividi-lo em trechos, gerar embeddings e alimentar um modelo de linguagem. É isso que torna possível o chat com IA na página inicial.
 
