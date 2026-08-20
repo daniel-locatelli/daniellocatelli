@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg
-CoverAlt: "Two planes: the public bSDD dictionary with classes, properties and generic data templates above, and the DOKwood platform with tenant templates, requirement sheets, data sheets and the digital product passport below."
+CoverAlt: "Two planes: the public bSDD dictionary with data templates, properties and classes above, and the DOKwood platform with company templates, requirement sheets, data sheets and the digital product passport below."
 CoverFit: contain
 Description: "The hm/dokwood buildingSMART Data Dictionary: a versioned, machine-readable vocabulary for timber buildups and products, built on ISO 23387 data templates, published through bSDD, and designed as the semantic backbone for DOKwood's Revit, Cadwork and MCP interfaces and a future digital product passport."
 Name: DOKwood bSDD data dictionary

@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg
-CoverAlt: "Zwei Ebenen: oben das öffentliche bSDD-Wörterbuch mit Klassen, Merkmalen und generischen Datenvorlagen, unten die DOKwood-Plattform mit Mandantenvorlagen, Anforderungsblättern, Datenblättern und dem digitalen Produktpass."
+CoverAlt: "Zwei Ebenen: oben das öffentliche bSDD-Wörterbuch mit Datenvorlagen, Merkmalen und Klassen, unten die DOKwood-Plattform mit Unternehmensvorlagen, Anforderungsblättern, Datenblättern und dem digitalen Produktpass."
 CoverFit: contain
 Description: "Das buildingSMART Data Dictionary hm/dokwood: ein versioniertes, maschinenlesbares Vokabular für Holzbau-Aufbauten und -Produkte, aufgebaut auf den Datenvorlagen der ISO 23387, im bSDD veröffentlicht und als semantisches Rückgrat der Revit-, Cadwork- und MCP-Schnittstellen von DOKwood sowie eines künftigen digitalen Produktpasses entworfen."
 Name: DOKwood bSDD-Datenwörterbuch
