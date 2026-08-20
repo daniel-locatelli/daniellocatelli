@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/projects/dokwood/dokwood-cover-laptop.png
+Cover: /assets/content/projects/dokwood/dokwood-cover-platform.png
 CoverAlt: "The DOKwood platform on a laptop, showing the layer structure of a 320 mm timber wall buildup: seven layers, a section drawing and the layer table."
 Description: "DOKwood is a web platform for defining, verifying, versioning and exchanging multilayer timber buildups. As research associate at Hochschule München I worked on its standards foundation, its bSDD data dictionary, and its Revit, Cadwork and MCP interfaces."
 Name: DOKwood
@@ -48,8 +48,6 @@ OtherLinks:
 DOKwood is a research project and a software platform for the documentation of multilayer buildups in prefabricated timber construction. In a timber building, the buildup of a wall, floor or roof (the ordered stack of boards, studs, insulation and cladding) is where structural, fire, acoustic, thermal and cost decisions meet. Today that information lives in PDFs and spreadsheets that are re-typed at every step from tender to workshop. DOKwood gives buildups a home: a web platform where a company defines its buildups once, verifies them against requirements, versions them like code, and hands them to the tools downstream without re-entering data.
 
 The project is funded by ZIM (Germany) and Innosuisse (Switzerland) under the IraSME programme. The consortium pairs a university with a timber contractor in each country: Hochschule München with Gumpp & Maier, and Berner Fachhochschule with Schärholzbau. I joined the project as a research associate at Hochschule München from February 2025 to June 2026. My work focused on the parts that make the platform interoperable: the standards it builds on, the data dictionary that gives its terms a shared meaning, and the interfaces to the tools timber builders already use.
-
-![DOKwood logo: a grid of isometric cubes, one highlighted, framed by corner brackets.](../../../assets/content/projects/dokwood/dokwood-logo-dark.png)
 
 ![Four stacked bands: standards at the base, the bSDD vocabulary above, the DOKwood platform in the middle, and the Revit, Cadwork and MCP interfaces on top, connected by import, verify and sync arrows.](/assets/content/projects/dokwood/dokwood-architecture.svg)
 

@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/projects/dokwood/dokwood-cover-laptop.png
+Cover: /assets/content/projects/dokwood/dokwood-cover-platform.png
 CoverAlt: "Die DOKwood-Plattform auf einem Laptop mit dem Schichtaufbau einer 320 mm starken Holzwand: sieben Schichten, eine Schnittzeichnung und die Schichttabelle."
 Description: "DOKwood ist eine Webplattform zum Definieren, Prüfen, Versionieren und Austauschen mehrschichtiger Holzbau-Aufbauten. Als wissenschaftlicher Mitarbeiter an der Hochschule München habe ich an ihrer Normengrundlage, ihrem bSDD-Datenwörterbuch und ihren Schnittstellen zu Revit, Cadwork und MCP gearbeitet."
 Name: DOKwood
@@ -48,8 +48,6 @@ OtherLinks:
 DOKwood ist ein Forschungsprojekt und eine Softwareplattform für die Dokumentation mehrschichtiger Aufbauten im vorgefertigten Holzbau. In einem Holzgebäude ist der Aufbau einer Wand, einer Decke oder eines Dachs (die geordnete Abfolge von Platten, Ständern, Dämmung und Bekleidung) der Ort, an dem Entscheidungen zu Tragwerk, Brandschutz, Schallschutz, Wärmeschutz und Kosten zusammenlaufen. Heute lebt diese Information in PDFs und Tabellen, die bei jedem Schritt von der Ausschreibung bis zur Werkstatt neu abgetippt werden. DOKwood gibt Aufbauten ein Zuhause: eine Webplattform, in der ein Unternehmen seine Aufbauten einmal definiert, gegen Anforderungen prüft, wie Code versioniert und ohne erneute Dateneingabe an die nachgelagerten Werkzeuge übergibt.
 
 Das Projekt wird vom ZIM (Deutschland) und von der Innosuisse (Schweiz) im Rahmen des IraSME-Programms gefördert. Das Konsortium verbindet in jedem Land eine Hochschule mit einem Holzbauunternehmen: die Hochschule München mit Gumpp & Maier und die Berner Fachhochschule mit Schärholzbau. Von Februar 2025 bis Juni 2026 war ich als wissenschaftlicher Mitarbeiter an der Hochschule München am Projekt beteiligt. Meine Arbeit galt den Teilen, die die Plattform interoperabel machen: den Normen, auf denen sie aufbaut, dem Datenwörterbuch, das ihren Begriffen eine gemeinsame Bedeutung gibt, und den Schnittstellen zu den Werkzeugen, die Holzbauer bereits nutzen.
-
-![DOKwood-Logo: ein Raster isometrischer Würfel, einer hervorgehoben, eingerahmt von Eckklammern.](../../../assets/content/projects/dokwood/dokwood-logo-dark.png)
 
 ![Vier gestapelte Bänder: Normen an der Basis, darüber das bSDD-Vokabular, in der Mitte die DOKwood-Plattform und oben die Schnittstellen Revit, Cadwork und MCP, verbunden durch Pfeile für Import, Prüfung und Synchronisation.](/assets/content/projects/dokwood/dokwood-architecture.svg)
 
