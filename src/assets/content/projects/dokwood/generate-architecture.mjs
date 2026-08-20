@@ -41,11 +41,11 @@ for (let i = 0; i < 3; i++) {
 // Row 3: vocabulary (left) with a free corridor on the right for the domain standards
 const r3y = 590;
 const r3h = 150;
-const vocW = 800;
+const vocW = 820;
 b.push(frame(X0, r3y, vocW, r3h, "VOCABULARY"));
-b.push(tile(X0 + 32, r3y + 34, vocW - 64, 82, "bSDD dictionary hm/dokwood", "classes · properties · groups of properties · data templates (ISO 23387) · v0.1 to v0.13"));
+b.push(tile(X0 + 32, r3y + 34, vocW - 64, 82, "bSDD dictionary hm/dokwood", "classes · properties · System and Product Data Templates (ISO 23387) · v0.1 to v0.13"));
 const vocCx = X0 + vocW / 2;
-b.push(arrow(ID, vocCx, r3y - 2, vocCx, r2y + r2h + 2, "describes every buildup and product", { labelDy: 4 }));
+b.push(arrow(ID, vocCx, r3y - 2, vocCx, r2y + r2h + 2, "describes every buildup (SDT) and product (PDT)", { labelDy: 4 }));
 
 // Row 4: standards, two groups
 const r4y = 830;
@@ -73,8 +73,8 @@ b.push(note(dictCx, r4y + 86, "dictionary framework", { anchor: "middle", size: 
 b.push(note(domainCx, r4y + 86, "domain rules and regulation", { anchor: "middle", size: 14 }));
 // dictionary standards structure the vocabulary
 b.push(arrow(ID, dictCx, r4y - 2, dictCx, r3y + r3h + 2, "structure the dictionary", { labelDy: 4 }));
-// domain standards feed the platform directly: values, rules and calculations for buildups
-b.push(arrow(ID, domainCx, r4y - 2, domainCx, r2y + r2h + 2, "rules, values and calculations for buildups", { labelDy: 4 }));
+// domain standards feed the platform directly: values, rules and calculations for buildups and products
+b.push(arrow(ID, domainCx, r4y - 2, domainCx, r2y + r2h + 2, "rules, values and calculations for buildups and products", { labelDy: 4 }));
 
 const svg = svgDoc({
   w: W,
