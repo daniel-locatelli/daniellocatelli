@@ -30,11 +30,7 @@ OtherLinks:
 
 The [DOKwood](/projects/dokwood) platform exchanges buildups with Revit, Cadwork and, eventually, AI assistants and a digital product passport. Every one of those exchanges is only as interoperable as the vocabulary beneath it: if "fire resistance class" means one thing in the platform, another in the Revit template and a third in the partner's PDF, nothing downstream can be trusted. The buildingSMART Data Dictionary (bSDD) is the industry's answer to that problem, a public, versioned registry of classes and properties with stable URIs that any tool can resolve. This page is about the dictionary I built there for DOKwood.
 
-## The hm/dokwood dictionary
-
-The dictionary is published under the Hochschule München organisation code as `hm/dokwood` and went through thirteen versions, v0.1 to v0.13, during my time there.
-
-Two of those versions were driven by the interfaces: v0.12 closed the property surface the Revit add-in needs (layer function, core boundary, host category via IFC entity, material colour and hatch) and v0.13 closed the one the Cadwork plugin needs for element construction. Each tool gets its own group of properties, so a plugin can ask for exactly the bundle it consumes.
+The dictionary is published under the Hochschule München organisation code as `hm/dokwood` and went through thirteen versions, v0.1 to v0.13, during my time there. Each tool that consumes it, such as the Revit add-in or the Cadwork plugin, gets its own group of properties, so a plugin can ask for exactly the bundle it needs.
 
 ## ISO 23387 data templates
 
