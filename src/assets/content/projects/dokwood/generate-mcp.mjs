@@ -2,11 +2,11 @@
 // Run: node src/assets/content/projects/dokwood/generate-mcp.mjs
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
-import { svgDoc, frame, tile, arrow, note, write, C, MONO, SANS } from "../../svg-kit.mjs";
+import { svgDoc, frame, tile, arrow, write, C, MONO, SANS } from "../../svg-kit.mjs";
 
 const ID = "dokwood-mcp";
 const W = 1600;
-const H = 600;
+const H = 540;
 const b = [];
 
 // Three columns: AI clients (left), the MCP server (centre), the DOKwood platform (right)
@@ -28,13 +28,13 @@ b.push(frame(xR, fy, colW, fh, "DOKWOOD PLATFORM"));
 
 const clients = [
   ["Chat interfaces", "Claude Desktop, ChatGPT"],
-  ["IDEs and code editors", "Claude Code, Cursor, VS Code"],
-  ["Agents and automation", "Codex, n8n, custom agents"],
+  ["IDEs and coding agents", "Claude Code, Codex, Cursor, VS Code"],
+  ["Agents and automation", "n8n, custom agents"],
 ];
 const platform = [
   ["Products and data sheets", "search, compare, certificates"],
   ["Buildups and catalogue", "layers, versions, tenant catalogue"],
-  ["Projects, calculations, bSDD", "requirements, U-values, dictionary"],
+  ["Projects and dictionary", "requirements, U-values, classes, properties"],
 ];
 const tw = colW - 64;
 const tileY = (i) => ty0 + i * (tileH + tileGap);
@@ -67,13 +67,12 @@ b.push(arrow(ID, xC - 2, midY + 10, xL + colW + 2, midY + 10, "", { dashed: true
 b.push(arrow(ID, xC + midW + 2, midY - 10, xR - 2, midY - 10, "GraphQL", { labelDy: -16 }));
 b.push(arrow(ID, xR - 2, midY + 10, xC + midW + 2, midY + 10, "", { dashed: true }));
 
-b.push(note(W / 2, H - 48, "MCP over stdio or HTTP on the client side, authenticated GraphQL with tenant context on the platform side: one interface for every MCP-aware tool instead of one ERP connector per partner", { anchor: "middle", size: 15 }));
 
 const svg = svgDoc({
   w: W,
   h: H,
   id: ID,
-  title: "Three columns: AI clients (chat interfaces, IDEs, agents) on the left, the proposed DOKwood MCP server in the centre with its tools, resources, prompts and auth bridge, and the DOKwood platform's GraphQL API on the right with products, buildups, projects and bSDD; two-way arrows labelled MCP and GraphQL connect them",
+  title: "Three columns: AI clients (chat interfaces, IDEs and coding agents, automation) on the left, the proposed DOKwood MCP server in the centre with its tools, resources, prompts and auth bridge, and the DOKwood platform on the right with products, buildups, projects, calculations and the data dictionary; two-way arrows labelled MCP and GraphQL connect them",
   body: b,
 });
 write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/projects/dokwood/dokwood-mcp.svg"), svg);
