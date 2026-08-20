@@ -73,8 +73,8 @@ b.push(note(dictCx, r4y + 86, "dictionary framework", { anchor: "middle", size: 
 b.push(note(domainCx, r4y + 86, "domain rules and regulation", { anchor: "middle", size: 14 }));
 // dictionary standards structure the vocabulary
 b.push(arrow(ID, dictCx, r4y - 2, dictCx, r3y + r3h + 2, "structure the dictionary", { labelDy: 4 }));
-// domain standards feed the platform directly: values, rules and calculations for buildups and products
-b.push(arrow(ID, domainCx, r4y - 2, domainCx, r2y + r2h + 2, "rules, values and calculations for buildups and products", { labelDy: 4 }));
+// domain standards feed the platform directly: rules, values, calculations and classifications (e.g. fire classes)
+b.push(arrow(ID, domainCx, r4y - 2, domainCx, r2y + r2h + 2, "rules, values, calculations and classifications", { labelDy: 4 }));
 
 const svg = svgDoc({
   w: W,
