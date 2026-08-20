@@ -32,7 +32,7 @@ A plataforma [DOKwood](/pt/projects/dokwood) troca composições construtivas co
 
 ## O dicionário hm/dokwood
 
-O dicionário é publicado sob o código de organização da Hochschule München como `hm/dokwood` e passou por treze versões, de v0.1 a v0.13, durante o tempo em que trabalhei lá. O conteúdo é redigido em Excel usando o template da buildingSMART, convertido para o modelo de importação JSON do bSDD pelo conversor da própria buildingSMART e enviado. A partir da v0.8, cada versão é produzida por um pequeno script de build em Python que modifica a planilha da versão anterior; assim, a docstring do script é o registro de mudanças canônico daquela versão e cada lançamento é reproduzível a partir do anterior.
+O dicionário é publicado sob o código de organização da Hochschule München como `hm/dokwood` e passou por treze versões, de v0.1 a v0.13, durante o tempo em que trabalhei lá.
 
 A v0.13, o conteúdo publicado atualmente, contém 32 classes (15 classes de objeto e 17 grupos de propriedades), 129 propriedades, 349 ligações classe-propriedade, 100 valores permitidos e 65 relações entre propriedades. Duas dessas versões foram impulsionadas pelas interfaces: a v0.12 fechou a superfície de propriedades de que o add-in do Revit precisa (função da camada, limite do núcleo, categoria hospedeira via entidade IFC, cor e hachura do material) e a v0.13 fechou a que o plugin do Cadwork precisa para a construção de elementos. Cada ferramenta tem o seu próprio grupo de propriedades, de modo que um plugin pode pedir exatamente o pacote que consome.
 
