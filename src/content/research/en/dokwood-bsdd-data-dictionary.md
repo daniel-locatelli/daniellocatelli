@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg
-CoverAlt: "Two planes: the public bSDD dictionary with data templates, properties and classes above, and the DOKwood platform with company templates, requirement sheets, data sheets and the digital product passport below."
+CoverAlt: "Two planes: the public bSDD dictionary with properties and classes above, and the DOKwood platform with company data templates, requirement sheets, data sheets and the digital product passport below."
 CoverFit: contain
 Description: "The hm/dokwood buildingSMART Data Dictionary: a versioned, machine-readable vocabulary for timber buildups and products, built on ISO 23387 data templates, published through bSDD, and designed as the semantic backbone for DOKwood's Revit, Cadwork and MCP interfaces and a future digital product passport."
 Name: DOKwood bSDD data dictionary
@@ -42,7 +42,7 @@ The shape of the dictionary follows ISO 23387, the standard for data templates o
 
 ![Left: Wall, Roof and Slab are kinds of Buildup, a System Data Template composed of layers and products, each product a Product Data Template. Right: a data template lists properties, a requirement sheet tightens them to required values, and a data sheet satisfies them with declared values.](/assets/content/research/dokwood-bsdd-data-dictionary/data-templates.svg)
 
-Modelling a whole assembly as a data template is still rare; most dictionaries stop at single products. Encoding the composition is where DOKwood goes a step further, and it is what allows the second half of the picture. The public dictionary holds the generic templates. A tenant, one timber company, specialises them into its own templates (a Schärholzbau external wall) and tightens them into requirement templates (Rw at least 56 dB). In a project those become sheets: a requirement sheet says what is required, a data sheet says what was declared or measured, and one nesting rule ties the chain together: generic contains requirement contains value. The filled data sheet of a fabricated buildup is precisely what a digital product passport carries.
+Modelling a whole assembly as a data template is still rare; most dictionaries stop at single products. Encoding the composition is where DOKwood goes a step further, and it is what allows the second half of the picture. The public dictionary offers the properties and classes. Each timber company composes its own data templates from them (a Schärholzbau external wall) and tightens them into requirement templates (Rw at least 56 dB). In a project those become sheets: a requirement sheet says what is required, a data sheet says what was declared or measured, and one nesting rule ties the chain together: generic contains requirement contains value. The filled data sheet of a fabricated buildup is precisely what a digital product passport carries.
 
 ## Where it goes next
 

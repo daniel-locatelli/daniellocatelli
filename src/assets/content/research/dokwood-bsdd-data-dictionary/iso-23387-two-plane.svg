@@ -1,31 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" role="img" aria-labelledby="bsdd-two-plane-title"><title id="bsdd-two-plane-title">Two planes: the public bSDD dictionary with data templates, properties and classes above, and the DOKwood platform below, where each company specialises templates into requirement templates, projects fill requirement and data sheets, and the data sheet feeds the digital product passport</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" role="img" aria-labelledby="bsdd-two-plane-title"><title id="bsdd-two-plane-title">Two planes: the public bSDD dictionary with properties and classes above, and the DOKwood platform below, where each company composes its own data templates from them and tightens them into requirement templates, projects fill requirement and data sheets, and the data sheet feeds the digital product passport</title>
 <defs><marker id="bsdd-two-plane-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
 <rect width="100%" height="100%" fill="#000000"/>
 <rect x="80" y="80" width="1440" height="240" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
 <rect x="96" y="66" width="261.5" height="28" rx="4" fill="#000000"/>
 <text x="108" y="86" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">Public DOKwood bSDD</text>
-<rect x="104" y="130" width="424" height="90" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="316" y="169" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Data Templates</text>
-<text x="316" y="195" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">System Data Template · Product Data Template</text>
-<rect x="588" y="130" width="424" height="90" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="800" y="169" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Properties</text>
-<text x="800" y="195" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">129 properties in 17 groups (v0.13)</text>
-<rect x="1072" y="130" width="424" height="90" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="1284" y="169" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Classes</text>
-<text x="1284" y="195" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">Buildup · Wall · Roof · Slab · Product</text>
-<line x1="586" y1="175" x2="528" y2="175" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-two-plane-arrow)"/>
-<rect x="519.25" y="150" width="75.5" height="22" rx="4" fill="#000000"/>
-<text x="557" y="166" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">compose</text>
-<line x1="1012" y1="175" x2="1070" y2="175" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="6 6" marker-end="url(#bsdd-two-plane-arrow)"/>
-<rect x="166" y="250" width="300" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
-<text x="316" y="272" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 23387 · templates</text>
-<rect x="650" y="250" width="300" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
-<text x="800" y="272" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 23386 · properties</text>
-<rect x="1134" y="250" width="300" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
-<text x="1284" y="272" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 12006-3 · data model</text>
+<rect x="104" y="130" width="666" height="90" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="437" y="169" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Properties</text>
+<text x="437" y="195" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">129 properties in 17 groups (v0.13)</text>
+<rect x="830" y="130" width="666" height="90" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1163" y="169" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Classes</text>
+<text x="1163" y="195" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">Buildup · Wall · Roof · Slab · Product</text>
+<line x1="770" y1="175" x2="828" y2="175" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="6 6" marker-end="url(#bsdd-two-plane-arrow)"/>
+<rect x="287" y="250" width="300" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="437" y="272" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 23386 · properties</text>
+<rect x="1013" y="250" width="300" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="1163" y="272" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 12006-3 · data model</text>
 <line x1="392" y1="320" x2="392" y2="488" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-two-plane-arrow)"/>
-<rect x="290.5" y="347" width="203" height="22" rx="4" fill="#000000"/>
-<text x="392" y="363" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">specialise (IsChildOf)</text>
+<rect x="303.25" y="347" width="177.5" height="22" rx="4" fill="#000000"/>
+<text x="392" y="363" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">compose (ISO 23387)</text>
 <rect x="80" y="400" width="1440" height="400" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
 <rect x="96" y="386" width="224" height="28" rx="4" fill="#000000"/>
 <text x="108" y="406" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">DOKwood platform</text>
@@ -36,7 +28,7 @@
 <rect x="836" y="436" width="186.5" height="28" rx="4" fill="#000000"/>
 <text x="848" y="456" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">PROJECT STORE</text>
 <rect x="128" y="490" width="294" height="90" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="275" y="529" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Company template</text>
+<text x="275" y="529" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Company data template</text>
 <text x="275" y="555" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">e.g. Schärholzbau external wall</text>
 <rect x="462" y="490" width="294" height="90" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
 <text x="609" y="529" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Requirement template</text>

@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg
-CoverAlt: "Dois planos: o dicionário bSDD público com modelos de dados, propriedades e classes acima, e a plataforma DOKwood com modelos de empresa, folhas de requisitos, folhas de dados e o passaporte digital de produto abaixo."
+CoverAlt: "Dois planos: o dicionário bSDD público com propriedades e classes acima, e a plataforma DOKwood com modelos de dados de empresa, folhas de requisitos, folhas de dados e o passaporte digital de produto abaixo."
 CoverFit: contain
 Description: "O buildingSMART Data Dictionary hm/dokwood: um vocabulário versionado e legível por máquina para composições e produtos de madeira, construído sobre os modelos de dados da ISO 23387, publicado no bSDD e projetado como espinha dorsal semântica das interfaces Revit, Cadwork e MCP do DOKwood e de um futuro passaporte digital de produto."
 Name: Dicionário de dados bSDD do DOKwood
@@ -42,7 +42,7 @@ A forma do dicionário segue a ISO 23387, a norma de modelos de dados para objet
 
 ![À esquerda: Wall, Roof e Slab são tipos de Buildup, um System Data Template composto de camadas e produtos, cada produto um Product Data Template. À direita: um modelo de dados lista propriedades, uma folha de requisitos os restringe a valores exigidos e uma folha de dados os satisfaz com valores declarados.](/assets/content/research/dokwood-bsdd-data-dictionary/data-templates.svg)
 
-Modelar um conjunto inteiro como modelo de dados ainda é raro; a maioria dos dicionários para em produtos isolados. Codificar a composição é onde o DOKwood vai um passo além, e é o que permite a segunda metade da imagem. O dicionário público guarda os modelos genéricos. Um tenant, uma empresa de madeira, os especializa nos seus próprios modelos (uma parede externa da Schärholzbau) e os restringe em modelos de requisitos (Rw de pelo menos 56 dB). Em um projeto eles se tornam folhas: uma folha de requisitos diz o que é exigido, uma folha de dados diz o que foi declarado ou medido, e uma única regra de aninhamento amarra a cadeia: o genérico contém o requisito, que contém o valor. A folha de dados preenchida de uma composição fabricada é precisamente o que um passaporte digital de produto carrega.
+Modelar um conjunto inteiro como modelo de dados ainda é raro; a maioria dos dicionários para em produtos isolados. Codificar a composição é onde o DOKwood vai um passo além, e é o que permite a segunda metade da imagem. O dicionário público oferece as propriedades e classes. Cada empresa de madeira compõe a partir delas os seus próprios modelos de dados (uma parede externa da Schärholzbau) e os restringe em modelos de requisitos (Rw de pelo menos 56 dB). Em um projeto eles se tornam folhas: uma folha de requisitos diz o que é exigido, uma folha de dados diz o que foi declarado ou medido, e uma única regra de aninhamento amarra a cadeia: o genérico contém o requisito, que contém o valor. A folha de dados preenchida de uma composição fabricada é precisamente o que um passaporte digital de produto carrega.
 
 ## Para onde vai
 

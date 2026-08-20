@@ -11,35 +11,31 @@ const X0 = 80;
 const CW = W - 2 * X0;
 const b = [];
 
-// Plane 1: bSDD (public). Data Templates sit in the left column, directly above
-// the company template in Plane 2, so the "specialise" arrow runs straight down.
+// Plane 1: bSDD (public) offers properties and classes only; data templates
+// are created by each company in Plane 2 by composing these properties.
 const p1y = 80;
 const p1h = 240;
 b.push(frame(X0, p1y, CW, p1h, "Public DOKwood bSDD"));
-const colW = (CW - 48 - 2 * 60) / 3;
-const cols = [X0 + 24, X0 + 24 + colW + 60, X0 + 24 + 2 * (colW + 60)];
+const colW = (CW - 48 - 60) / 2;
+const cols = [X0 + 24, X0 + 24 + colW + 60];
 const ty = p1y + 50;
-b.push(tile(cols[0], ty, colW, 90, "Data Templates", "System Data Template · Product Data Template"));
-b.push(tile(cols[1], ty, colW, 90, "Properties", "129 properties in 17 groups (v0.13)"));
-b.push(tile(cols[2], ty, colW, 90, "Classes", "Buildup · Wall · Roof · Slab · Product"));
-b.push(arrow(ID, cols[1] - 2, ty + 45, cols[0] + colW, ty + 45, "compose", { labelDy: -12 }));
-b.push(arrow(ID, cols[1] + colW, ty + 45, cols[2] - 2, ty + 45, "", { dashed: true }));
+b.push(tile(cols[0], ty, colW, 90, "Properties", "129 properties in 17 groups (v0.13)"));
+b.push(tile(cols[1], ty, colW, 90, "Classes", "Buildup · Wall · Roof · Slab · Product"));
+b.push(arrow(ID, cols[0] + colW, ty + 45, cols[1] - 2, ty + 45, "", { dashed: true }));
 // ISO chips under each column
 const chipRow = ty + 120;
-b.push(chip(cols[0] + colW / 2 - 150, chipRow, "ISO 23387 · templates", { w: 300 }));
-b.push(chip(cols[1] + colW / 2 - 150, chipRow, "ISO 23386 · properties", { w: 300 }));
-b.push(chip(cols[2] + colW / 2 - 150, chipRow, "ISO 12006-3 · data model", { w: 300 }));
+b.push(chip(cols[0] + colW / 2 - 150, chipRow, "ISO 23386 · properties", { w: 300 }));
+b.push(chip(cols[1] + colW / 2 - 150, chipRow, "ISO 12006-3 · data model", { w: 300 }));
 
 // Plane 2: DOKwood platform
 const p2y = 400;
 const p2h = 400;
-// specialise arrow from Data Templates straight down to the company template.
-// Drawn before the Plane 2 frames so their title chips sit on top of the line;
-// the label lives in the gap between the planes.
-const sx = X0 + 24 + 24 + ((CW - 48 - 40) / 2 - 48 - 40) / 2 - 30; // near the right edge of the Company template tile, clear of the frame titles
+// compose arrow from the public properties straight down into the company data template.
+// Drawn before the Plane 2 frames; x chosen to clear the frame title chips.
+const sx = X0 + 24 + 24 + ((CW - 48 - 40) / 2 - 48 - 40) / 2 - 30; // near the right edge of the company template tile
 const sy1 = p1y + p1h;
 const sy2 = p2y + 50 + 40 - 2; // top of the company template tile
-b.push(arrow(ID, sx, sy1, sx, sy2, "specialise (IsChildOf)", { labelDx: 0, labelDy: (p1y + p1h + p2y) / 2 - (sy1 + sy2) / 2 }));
+b.push(arrow(ID, sx, sy1, sx, sy2, "compose (ISO 23387)", { labelDx: 0, labelDy: (p1y + p1h + p2y) / 2 - (sy1 + sy2) / 2 }));
 b.push(frame(X0, p2y, CW, p2h, "DOKwood platform"));
 const fw = (CW - 48 - 40) / 2;
 const f1x = X0 + 24;
@@ -50,7 +46,7 @@ b.push(frame(f1x, fy, fw, fh, "COMPANY DICTIONARY"));
 b.push(frame(f2x, fy, fw, fh, "PROJECT STORE"));
 const half = (fw - 48 - 40) / 2;
 const r = fy + 40;
-b.push(tile(f1x + 24, r, half, 90, "Company template", "e.g. Schärholzbau external wall"));
+b.push(tile(f1x + 24, r, half, 90, "Company data template", "e.g. Schärholzbau external wall"));
 b.push(tile(f1x + 24 + half + 40, r, half, 90, "Requirement template", "Rw ≥ 56 dB"));
 b.push(tile(f2x + 24, r, half, 90, "Requirement sheet", "Rw ≥ 58 dB"));
 b.push(tile(f2x + 24 + half + 40, r, half, 90, "Data sheet", "Rw = 59 dB, declared", { accent: true }));
@@ -70,7 +66,7 @@ const svg = svgDoc({
   w: W,
   h: H,
   id: ID,
-  title: "Two planes: the public bSDD dictionary with data templates, properties and classes above, and the DOKwood platform below, where each company specialises templates into requirement templates, projects fill requirement and data sheets, and the data sheet feeds the digital product passport",
+  title: "Two planes: the public bSDD dictionary with properties and classes above, and the DOKwood platform below, where each company composes its own data templates from them and tightens them into requirement templates, projects fill requirement and data sheets, and the data sheet feeds the digital product passport",
   body: b,
 });
 write(resolve(dirname(fileURLToPath(import.meta.url)), "./iso-23387-two-plane.svg"), svg);

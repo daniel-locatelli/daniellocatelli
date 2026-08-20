@@ -1,6 +1,6 @@
 ---
 Cover: /assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg
-CoverAlt: "Zwei Ebenen: oben das öffentliche bSDD-Wörterbuch mit Datenvorlagen, Merkmalen und Klassen, unten die DOKwood-Plattform mit Unternehmensvorlagen, Anforderungsblättern, Datenblättern und dem digitalen Produktpass."
+CoverAlt: "Zwei Ebenen: oben das öffentliche bSDD-Wörterbuch mit Merkmalen und Klassen, unten die DOKwood-Plattform mit Unternehmens-Datenvorlagen, Anforderungsblättern, Datenblättern und dem digitalen Produktpass."
 CoverFit: contain
 Description: "Das buildingSMART Data Dictionary hm/dokwood: ein versioniertes, maschinenlesbares Vokabular für Holzbau-Aufbauten und -Produkte, aufgebaut auf den Datenvorlagen der ISO 23387, im bSDD veröffentlicht und als semantisches Rückgrat der Revit-, Cadwork- und MCP-Schnittstellen von DOKwood sowie eines künftigen digitalen Produktpasses entworfen."
 Name: DOKwood bSDD-Datenwörterbuch
@@ -42,7 +42,7 @@ Die Form des Wörterbuchs folgt der ISO 23387, der Norm für Datenvorlagen von B
 
 ![Links: Wall, Roof und Slab sind Arten von Buildup, einem System Data Template aus Schichten und Produkten, wobei jedes Produkt ein Product Data Template ist. Rechts: Eine Datenvorlage listet Merkmale, ein Anforderungsblatt verschärft sie zu geforderten Werten, und ein Datenblatt erfüllt sie mit deklarierten Werten.](/assets/content/research/dokwood-bsdd-data-dictionary/data-templates.svg)
 
-Eine ganze Baugruppe als Datenvorlage zu modellieren ist noch selten; die meisten Wörterbücher hören bei einzelnen Produkten auf. Die Komposition zu kodieren ist der Schritt, den DOKwood weitergeht, und er ermöglicht die zweite Hälfte des Bildes. Das öffentliche Wörterbuch hält die generischen Vorlagen. Ein Mandant, ein Holzbauunternehmen, spezialisiert sie zu eigenen Vorlagen (eine Schärholzbau-Außenwand) und verschärft sie zu Anforderungsvorlagen (Rw mindestens 56 dB). In einem Projekt werden daraus Blätter: Ein Anforderungsblatt sagt, was gefordert ist, ein Datenblatt sagt, was deklariert oder gemessen wurde, und eine einzige Schachtelungsregel hält die Kette zusammen: generisch enthält Anforderung enthält Wert. Das ausgefüllte Datenblatt eines gefertigten Aufbaus ist genau das, was ein digitaler Produktpass trägt.
+Eine ganze Baugruppe als Datenvorlage zu modellieren ist noch selten; die meisten Wörterbücher hören bei einzelnen Produkten auf. Die Komposition zu kodieren ist der Schritt, den DOKwood weitergeht, und er ermöglicht die zweite Hälfte des Bildes. Das öffentliche Wörterbuch bietet die Merkmale und Klassen. Jedes Holzbauunternehmen stellt daraus eigene Datenvorlagen zusammen (eine Schärholzbau-Außenwand) und verschärft sie zu Anforderungsvorlagen (Rw mindestens 56 dB). In einem Projekt werden daraus Blätter: Ein Anforderungsblatt sagt, was gefordert ist, ein Datenblatt sagt, was deklariert oder gemessen wurde, und eine einzige Schachtelungsregel hält die Kette zusammen: generisch enthält Anforderung enthält Wert. Das ausgefüllte Datenblatt eines gefertigten Aufbaus ist genau das, was ein digitaler Produktpass trägt.
 
 ## Wohin es geht
 
