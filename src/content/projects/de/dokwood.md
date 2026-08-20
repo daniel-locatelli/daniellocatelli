@@ -39,7 +39,7 @@ Link:
   Text: DOKwood an der Hochschule München
   Href: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 OtherLinks:
-  - Text: Normen für Spezifikationen im Holzbau
+  - Text: Normen hinter digitalen Holzbau-Aufbauten
     Href: https://daniellocatelli.com/de/research/timber-construction-standards
   - Text: DOKwood bSDD-Datenwörterbuch
     Href: https://daniellocatelli.com/de/research/dokwood-bsdd-data-dictionary
@@ -53,9 +53,9 @@ Das Projekt wird vom ZIM (Deutschland) und von der Innosuisse (Schweiz) im Rahme
 
 ## Normenrecherche
 
-Das erste Ergebnis war eine systematische Recherche der Normen, die die Spezifikation von Materialien und Aufbauten im Holzbau in Deutschland und der Schweiz regeln: ISO und GS1 auf internationaler Ebene, CEN und die harmonisierten EN-Normen in Europa, DIN, VDI und die Muster-Holzbau-Richtlinie in Deutschland, SIA, KBOB und VKF in der Schweiz. Sie umfasst Brandschutz, Akustik, Bauphysik, Tragwerksplanung, technische Zeichnungen, BIM und den kommenden digitalen Produktpass nach der Bauprodukteverordnung von 2024. Ihr praktisches Ergebnis war eine Zuordnung der internen Terminologie der Partner zu kontrollierten Normbegriffen und der Vorschlag eines gemeinsamen Vokabulars. Mehr über diese Studie lesen Sie auf meiner eigenen Seite zu [Normen für Spezifikationen im Holzbau](/de/research/timber-construction-standards).
+Das erste Ergebnis war eine systematische Recherche der Normen, die die Spezifikation von Materialien und Aufbauten im Holzbau in Deutschland und der Schweiz regeln: ISO und GS1 auf internationaler Ebene, CEN und die harmonisierten EN-Normen in Europa, DIN, VDI und die Muster-Holzbau-Richtlinie in Deutschland, SIA, KBOB und VKF in der Schweiz. Sie umfasst Brandschutz, Akustik, Bauphysik, Tragwerksplanung, technische Zeichnungen, BIM und den kommenden digitalen Produktpass nach der Bauprodukteverordnung von 2024. Ihr praktisches Ergebnis war eine Zuordnung der internen Terminologie der Partner zu kontrollierten Normbegriffen und der Vorschlag eines gemeinsamen Vokabulars. Mehr über diese Studie lesen Sie auf meiner eigenen Seite zu [Normen hinter digitalen Holzbau-Aufbauten](/de/research/timber-construction-standards).
 
-![Die Bezeichnung DIN EN ISO 19650-1 in ihre Teile zerlegt: DIN für das nationale Gremium, EN für die europäische Norm, ISO für die internationale Norm sowie Nummer und Teil; darunter die von der Recherche erfassten Gremien.](../../../assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg "Aufbau einer Normbezeichnung und die geprüften Gremien")
+![Die Bezeichnung DIN EN ISO 19650-1 in ihre Teile zerlegt: DIN für das nationale Gremium, EN für die europäische Norm, ISO für die internationale Norm sowie Nummer und Teil.](../../../assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg "Aufbau einer Normbezeichnung")
 
 ## buildingSMART Data Dictionary (bSDD)
 

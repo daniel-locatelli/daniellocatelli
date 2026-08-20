@@ -39,7 +39,7 @@ Link:
   Text: DOKwood at Hochschule München
   Href: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 OtherLinks:
-  - Text: Standards for timber construction specifications
+  - Text: Standards behind digital timber buildups
     Href: https://daniellocatelli.com/research/timber-construction-standards
   - Text: DOKwood bSDD data dictionary
     Href: https://daniellocatelli.com/research/dokwood-bsdd-data-dictionary
@@ -55,7 +55,7 @@ The project is funded by ZIM (Germany) and Innosuisse (Switzerland) under the Ir
 
 The first deliverable was a systematic review of the standards that govern how materials and buildups are specified in timber construction in Germany and Switzerland: ISO and GS1 at the international level, CEN and the harmonised EN standards in Europe, DIN, VDI and the Muster-Holzbau-Richtlinie in Germany, SIA, KBOB and VKF in Switzerland. It covers fire, acoustics, building physics, structural design, technical drawings, BIM, and the incoming Digital Product Passport under the 2024 Construction Products Regulation. Its practical output was a mapping of the partners' internal terminology to governed standard terms and a proposed shared vocabulary. You can read more about this study on my dedicated [standards for timber construction specifications](/research/timber-construction-standards) page.
 
-![The designation DIN EN ISO 19650-1 broken into its parts: DIN for the national body, EN for the European standard, ISO for the international standard, and the number and part; below, the bodies covered by the review.](../../../assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg "Anatomy of a standard designation and the bodies reviewed")
+![The designation DIN EN ISO 19650-1 broken into its parts: DIN for the national body, EN for the European standard, ISO for the international standard, and the number and part.](../../../assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg "Anatomy of a standard designation")
 
 ## buildingSMART Data Dictionary (bSDD)
 

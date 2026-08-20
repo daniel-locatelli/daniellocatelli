@@ -3,7 +3,7 @@ Cover: /assets/content/research/timber-construction-standards/timber-constructio
 CoverAlt: "Die Bezeichnung DIN EN ISO 19650-1 in ihre Teile zerlegt: nationales Gremium, europäische Norm, internationale Norm sowie Nummer und Teil."
 CoverFit: contain
 Description: "Eine systematische Recherche der ISO-, GS1-, CEN-, DIN-, SIA- und KBOB-Normen, die die Spezifikation von Materialien und mehrschichtigen Aufbauten im Holzbau regeln, von Brandschutz und Bauphysik bis zu BIM-Datenvorlagen und dem digitalen Produktpass. Arbeitspaket 1.2 des Projekts DOKwood."
-Name: Normen für Spezifikationen im Holzbau
+Name: Normen hinter digitalen Holzbau-Aufbauten
 Tags:
   - Normen
   - Holzbau

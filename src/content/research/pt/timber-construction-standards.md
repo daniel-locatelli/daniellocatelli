@@ -3,7 +3,7 @@ Cover: /assets/content/research/timber-construction-standards/timber-constructio
 CoverAlt: "A designação DIN EN ISO 19650-1 decomposta nas suas partes: organismo nacional, norma europeia, norma internacional, e número e parte."
 CoverFit: contain
 Description: "Uma revisão sistemática das normas ISO, GS1, CEN, DIN, SIA e KBOB que regem a especificação de materiais e composições multicamadas na construção em madeira, do incêndio e da física das construções aos modelos de dados BIM e ao passaporte digital de produto. Pacote de trabalho 1.2 do projeto DOKwood."
-Name: Normas para especificações em construção de madeira
+Name: Normas por trás das composições digitais em madeira
 Tags:
   - Normas
   - Construção em madeira

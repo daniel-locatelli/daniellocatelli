@@ -39,7 +39,7 @@ Link:
   Text: DOKwood na Hochschule München
   Href: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 OtherLinks:
-  - Text: Normas para especificações em construção de madeira
+  - Text: Normas por trás das composições digitais em madeira
     Href: https://daniellocatelli.com/pt/research/timber-construction-standards
   - Text: Dicionário de dados bSDD do DOKwood
     Href: https://daniellocatelli.com/pt/research/dokwood-bsdd-data-dictionary
@@ -55,7 +55,7 @@ O projeto é financiado pelo ZIM (Alemanha) e pela Innosuisse (Suíça) no âmbi
 
 A primeira entrega foi uma revisão sistemática das normas que regem a especificação de materiais e composições na construção em madeira na Alemanha e na Suíça: ISO e GS1 no nível internacional, CEN e as normas EN harmonizadas na Europa, DIN, VDI e a Muster-Holzbau-Richtlinie na Alemanha, SIA, KBOB e VKF na Suíça. Ela cobre incêndio, acústica, física das construções, projeto estrutural, desenho técnico, BIM e o Passaporte Digital de Produto que chega com o Regulamento dos Produtos de Construção de 2024. O seu resultado prático foi um mapeamento da terminologia interna dos parceiros para termos normativos governados e a proposta de um vocabulário comum. Você pode ler mais sobre esse estudo na minha página dedicada às [normas para especificações em construção de madeira](/pt/research/timber-construction-standards).
 
-![A designação DIN EN ISO 19650-1 dividida em suas partes: DIN para o órgão nacional, EN para a norma europeia, ISO para a norma internacional e o número e a parte; abaixo, os órgãos cobertos pela revisão.](../../../assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg "Anatomia da designação de uma norma e os órgãos revisados")
+![A designação DIN EN ISO 19650-1 dividida em suas partes: DIN para o órgão nacional, EN para a norma europeia, ISO para a norma internacional e o número e a parte.](../../../assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg "Anatomia da designação de uma norma")
 
 ## buildingSMART Data Dictionary (bSDD)
 
