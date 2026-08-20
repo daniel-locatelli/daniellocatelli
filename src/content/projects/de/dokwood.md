@@ -49,7 +49,7 @@ DOKwood ist ein Forschungsprojekt und eine Softwareplattform für die Dokumentat
 
 Das Projekt wird vom ZIM (Deutschland) und von der Innosuisse (Schweiz) im Rahmen des IraSME-Programms gefördert. Das Konsortium verbindet in jedem Land eine Hochschule mit einem Holzbauunternehmen: die Hochschule München mit Gumpp & Maier und die Berner Fachhochschule mit Schärholzbau. Von Februar 2025 bis Juni 2026 war ich als wissenschaftlicher Mitarbeiter an der Hochschule München am Projekt beteiligt. Meine Arbeit galt den Teilen, die die Plattform interoperabel machen: den Normen, auf denen sie aufbaut, dem Datenwörterbuch, das ihren Begriffen eine gemeinsame Bedeutung gibt, und den Schnittstellen zu den Werkzeugen, die Holzbauer bereits nutzen.
 
-![Vier gestapelte Bänder: Normen an der Basis, darüber das bSDD-Vokabular, in der Mitte die DOKwood-Plattform und oben die Schnittstellen Revit, Cadwork und MCP, verbunden durch Pfeile für Import, Prüfung und Synchronisation.](/assets/content/projects/dokwood/dokwood-architecture.svg)
+![Vier gestapelte Bänder: Normen an der Basis, aufgeteilt in den Wörterbuchrahmen (ISO 12006-3, 23386, 23387, IFC), der das bSDD-Vokabular strukturiert, und die Fachnormen (EN, DIN, SIA, KBOB, CPR 2024, GS1), die direkt in die DOKwood-Plattform einfließen; in der Mitte die Plattform und oben die Schnittstellen Revit, Cadwork und MCP, verbunden durch Pfeile für Import, Prüfung und Synchronisation.](/assets/content/projects/dokwood/dokwood-architecture.svg)
 
 ## Normenrecherche
 

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" role="img" aria-labelledby="dokwood-arch-title"><title id="dokwood-arch-title">DOKwood architecture: standards at the base, the bSDD vocabulary above them, the DOKwood platform in the middle, and the Revit, Cadwork and MCP interfaces on top</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" role="img" aria-labelledby="dokwood-arch-title"><title id="dokwood-arch-title">DOKwood architecture: standards at the base, split into the dictionary framework that structures the bSDD vocabulary and the domain standards that feed the DOKwood platform directly; the platform in the middle, and the Revit, Cadwork and MCP interfaces on top</title>
 <defs><marker id="dokwood-arch-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
 <rect width="100%" height="100%" fill="#000000"/>
 <rect x="120" y="90" width="1360" height="150" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
@@ -39,18 +39,18 @@
 <rect x="1158.3333333333333" y="294" width="50" height="22" rx="4" fill="#000000"/>
 <text x="1183.3333333333333" y="310" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">read</text>
 <line x1="1259.3333333333333" y1="238" x2="1259.3333333333333" y2="362" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="6 6" marker-end="url(#dokwood-arch-arrow)"/>
-<rect x="120" y="590" width="1360" height="150" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="120" y="590" width="800" height="150" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
 <rect x="136" y="576" width="149" height="28" rx="4" fill="#000000"/>
 <text x="148" y="596" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">VOCABULARY</text>
-<rect x="152" y="624" width="1296" height="82" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="800" y="659" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">bSDD dictionary hm/dokwood</text>
-<text x="800" y="685" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">classes · properties · groups of properties · System and Product Data Templates (ISO 23387) · v0.1 to v0.13</text>
-<line x1="800" y1="588" x2="800" y2="502" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#dokwood-arch-arrow)"/>
-<rect x="643.25" y="536" width="313.5" height="22" rx="4" fill="#000000"/>
-<text x="800" y="552" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">describes every buildup and product</text>
+<rect x="152" y="624" width="736" height="82" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="520" y="659" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">bSDD dictionary hm/dokwood</text>
+<text x="520" y="685" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">classes · properties · groups of properties · data templates (ISO 23387) · v0.1 to v0.13</text>
+<line x1="520" y1="588" x2="520" y2="502" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#dokwood-arch-arrow)"/>
+<rect x="363.25" y="536" width="313.5" height="22" rx="4" fill="#000000"/>
+<text x="520" y="552" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">describes every buildup and product</text>
 <rect x="120" y="830" width="1360" height="96" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
-<rect x="136" y="816" width="136.5" height="28" rx="4" fill="#000000"/>
-<text x="148" y="836" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">STANDARDS</text>
+<rect x="136" y="816" width="249" height="28" rx="4" fill="#000000"/>
+<text x="148" y="836" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">STANDARDS · WP 1.2</text>
 <rect x="152" y="861" width="143.5" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
 <text x="223.75" y="883" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 12006-3</text>
 <rect x="309.5" y="861" width="122.5" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
@@ -59,13 +59,18 @@
 <text x="507.25" y="883" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 23387</text>
 <rect x="582.5" y="861" width="185.5" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
 <text x="675.25" y="883" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">IFC (ISO 16739)</text>
-<rect x="782" y="861" width="248.5" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
-<text x="906.25" y="883" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">EN · DIN · SIA · KBOB</text>
-<rect x="1044.5" y="861" width="175" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
-<text x="1132" y="883" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CPR 2024 · DPP</text>
-<rect x="1233.5" y="861" width="59.5" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
-<text x="1263.25" y="883" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">GS1</text>
-<line x1="800" y1="828" x2="800" y2="742" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#dokwood-arch-arrow)"/>
-<rect x="600.75" y="776" width="398.5" height="22" rx="4" fill="#000000"/>
-<text x="800" y="792" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">reviewed in WP 1.2, encoded in the dictionary</text>
+<rect x="937" y="861" width="248.5" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="1061.25" y="883" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">EN · DIN · SIA · KBOB</text>
+<rect x="1199.5" y="861" width="175" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="1287" y="883" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CPR 2024 · DPP</text>
+<rect x="1388.5" y="861" width="59.5" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="1418.25" y="883" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">GS1</text>
+<text x="460" y="916" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-sans-serif, system-ui, sans-serif">dictionary framework</text>
+<text x="1192.5" y="916" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-sans-serif, system-ui, sans-serif">domain rules and regulation</text>
+<line x1="460" y1="828" x2="460" y2="742" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#dokwood-arch-arrow)"/>
+<rect x="350" y="776" width="220" height="22" rx="4" fill="#000000"/>
+<text x="460" y="792" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">structure the dictionary</text>
+<line x1="1192.5" y1="828" x2="1192.5" y2="502" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#dokwood-arch-arrow)"/>
+<rect x="1001.75" y="656" width="381.5" height="22" rx="4" fill="#000000"/>
+<text x="1192.5" y="672" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">rules, values and calculations for buildups</text>
 </svg>

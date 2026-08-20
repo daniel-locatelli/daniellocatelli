@@ -49,7 +49,7 @@ DOKwood is a research project and a software platform for the documentation of m
 
 The project is funded by ZIM (Germany) and Innosuisse (Switzerland) under the IraSME programme. The consortium pairs a university with a timber contractor in each country: Hochschule München with Gumpp & Maier, and Berner Fachhochschule with Schärholzbau. I joined the project as a research associate at Hochschule München from February 2025 to June 2026. My work focused on the parts that make the platform interoperable: the standards it builds on, the data dictionary that gives its terms a shared meaning, and the interfaces to the tools timber builders already use.
 
-![Four stacked bands: standards at the base, the bSDD vocabulary above, the DOKwood platform in the middle, and the Revit, Cadwork and MCP interfaces on top, connected by import, verify and sync arrows.](/assets/content/projects/dokwood/dokwood-architecture.svg)
+![Four stacked bands: standards at the base, split into the dictionary framework (ISO 12006-3, 23386, 23387, IFC) that structures the bSDD vocabulary and the domain standards (EN, DIN, SIA, KBOB, CPR 2024, GS1) that feed the DOKwood platform directly; the platform in the middle, and the Revit, Cadwork and MCP interfaces on top, connected by import, verify and sync arrows.](/assets/content/projects/dokwood/dokwood-architecture.svg)
 
 ## Standards review
 
