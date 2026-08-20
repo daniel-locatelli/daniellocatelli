@@ -1,7 +1,6 @@
 ---
-Cover: /assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg
-CoverAlt: "Two planes: the public bSDD dictionary with properties and classes above, and the DOKwood platform with company data templates, requirement sheets, data sheets and the digital product passport below."
-CoverFit: contain
+Cover: /assets/content/research/dokwood-bsdd-data-dictionary/buildup-passport-cover.png
+CoverAlt: "An open passport for a timber exterior wall: the left page shows the layered buildup in place of a photo, with Rw 59 dB, REI 90, U 0.14 W/m²K and version v0.13; the right page carries stamps for ISO 23387, ISO 23386, ISO 12006-3, ISO 19650, EN 1995, ISO 717-1, EN 13501-2 and ISO 6946."
 Description: "The hm/dokwood buildingSMART Data Dictionary: a versioned, machine-readable vocabulary for timber buildups and products, built on ISO 23387 data templates, published through bSDD, and designed as the semantic backbone for DOKwood's Revit, Cadwork and MCP interfaces and a future digital product passport."
 Name: DOKwood bSDD data dictionary
 Tags:
@@ -45,6 +44,8 @@ OtherLinks:
 The [DOKwood](/projects/dokwood) platform exchanges buildups with Revit, Cadwork and, eventually, AI assistants and a digital product passport. Every one of those exchanges is only as interoperable as the vocabulary beneath it: if "fire resistance class" means one thing in the platform, another in the Revit template and a third in the partner's PDF, nothing downstream can be trusted. The buildingSMART Data Dictionary (bSDD) is the industry's answer to that problem, a public, versioned registry of classes and properties with stable URIs that any tool can resolve. This page is about the dictionary I built there for DOKwood.
 
 The dictionary is published under the Hochschule München organisation code as `hm/dokwood` and went through thirteen versions, v0.1 to v0.13, during my time there. Each tool that consumes it, such as the Revit add-in or the Cadwork plugin, gets its own group of properties, so a plugin can ask for exactly the bundle it needs.
+
+![Two planes: the public bSDD dictionary with properties and classes above, and the DOKwood platform below, where each company composes its own data templates from them, projects tighten them into requirement sheets and fill data sheets, and the data sheet feeds the digital product passport.](/assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg "From the public dictionary to the digital product passport")
 
 ## ISO 23387 data templates
 

@@ -1,7 +1,6 @@
 ---
-Cover: /assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg
-CoverAlt: "Dois planos: o dicionário bSDD público com propriedades e classes acima, e a plataforma DOKwood com modelos de dados de empresa, folhas de requisitos, folhas de dados e o passaporte digital de produto abaixo."
-CoverFit: contain
+Cover: /assets/content/research/dokwood-bsdd-data-dictionary/buildup-passport-cover.png
+CoverAlt: "Um passaporte aberto de uma parede externa de madeira: a página esquerda mostra a composição em camadas no lugar da foto, com Rw 59 dB, REI 90, U 0,14 W/m²K e versão v0.13; a página direita traz carimbos das normas ISO 23387, ISO 23386, ISO 12006-3, ISO 19650, EN 1995, ISO 717-1, EN 13501-2 e ISO 6946."
 Description: "O buildingSMART Data Dictionary hm/dokwood: um vocabulário versionado e legível por máquina para composições e produtos de madeira, construído sobre os modelos de dados da ISO 23387, publicado no bSDD e projetado como espinha dorsal semântica das interfaces Revit, Cadwork e MCP do DOKwood e de um futuro passaporte digital de produto."
 Name: Dicionário de dados bSDD do DOKwood
 Tags:
@@ -45,6 +44,8 @@ OtherLinks:
 A plataforma [DOKwood](/pt/projects/dokwood) troca composições construtivas com o Revit, o Cadwork e, futuramente, com assistentes de IA e um passaporte digital de produto. Cada uma dessas trocas é tão interoperável quanto o vocabulário que a sustenta: se "classe de resistência ao fogo" significa uma coisa na plataforma, outra no template do Revit e uma terceira no PDF do parceiro, nada a jusante merece confiança. O buildingSMART Data Dictionary (bSDD) é a resposta da indústria a esse problema, um registro público e versionado de classes e propriedades com URIs estáveis que qualquer ferramenta pode resolver. Esta página trata do dicionário que construí lá para o DOKwood.
 
 O dicionário é publicado sob o código de organização da Hochschule München como `hm/dokwood` e passou por treze versões, de v0.1 a v0.13, durante o tempo em que trabalhei lá. Cada ferramenta que o consome, como o add-in do Revit ou o plugin do Cadwork, tem o seu próprio grupo de propriedades, de modo que um plugin pode pedir exatamente o pacote de que precisa.
+
+![Dois planos: o dicionário bSDD público com propriedades e classes acima, e a plataforma DOKwood abaixo, onde cada empresa compõe a partir deles os seus próprios modelos de dados, os projetos os restringem em folhas de requisitos e preenchem folhas de dados, e a folha de dados alimenta o passaporte digital de produto.](/assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg "Do dicionário público ao passaporte digital de produto")
 
 ## Modelos de dados da ISO 23387
 

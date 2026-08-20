@@ -1,4 +1,4 @@
-// Generates src/assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg (page cover)
+// Generates public/assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg
 // Run: node src/assets/content/research/dokwood-bsdd-data-dictionary/generate-two-plane.mjs
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
@@ -70,4 +70,4 @@ const svg = svgDoc({
   title: "Two planes: the public bSDD dictionary with properties and classes above, and the DOKwood platform below, where each company composes its own data templates from them and projects tighten them into requirement sheets and fill data sheets, and the data sheet feeds the digital product passport",
   body: b,
 });
-write(resolve(dirname(fileURLToPath(import.meta.url)), "./iso-23387-two-plane.svg"), svg);
+write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg"), svg);

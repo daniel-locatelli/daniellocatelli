@@ -1,7 +1,6 @@
 ---
-Cover: /assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg
-CoverAlt: "Zwei Ebenen: oben das öffentliche bSDD-Wörterbuch mit Merkmalen und Klassen, unten die DOKwood-Plattform mit Unternehmens-Datenvorlagen, Anforderungsblättern, Datenblättern und dem digitalen Produktpass."
-CoverFit: contain
+Cover: /assets/content/research/dokwood-bsdd-data-dictionary/buildup-passport-cover.png
+CoverAlt: "Ein aufgeschlagener Pass für eine Holz-Außenwand: Die linke Seite zeigt den geschichteten Aufbau anstelle eines Fotos, mit Rw 59 dB, REI 90, U 0,14 W/m²K und Version v0.13; die rechte Seite trägt Stempel für ISO 23387, ISO 23386, ISO 12006-3, ISO 19650, EN 1995, ISO 717-1, EN 13501-2 und ISO 6946."
 Description: "Das buildingSMART Data Dictionary hm/dokwood: ein versioniertes, maschinenlesbares Vokabular für Holzbau-Aufbauten und -Produkte, aufgebaut auf den Datenvorlagen der ISO 23387, im bSDD veröffentlicht und als semantisches Rückgrat der Revit-, Cadwork- und MCP-Schnittstellen von DOKwood sowie eines künftigen digitalen Produktpasses entworfen."
 Name: DOKwood bSDD-Datenwörterbuch
 Tags:
@@ -45,6 +44,8 @@ OtherLinks:
 Die Plattform [DOKwood](/de/projects/dokwood) tauscht Aufbauten mit Revit, Cadwork und künftig mit KI-Assistenten und einem digitalen Produktpass aus. Jeder dieser Austausche ist nur so interoperabel wie das Vokabular darunter: Wenn "Feuerwiderstandsklasse" in der Plattform eines, in der Revit-Vorlage etwas anderes und im PDF des Partners ein Drittes bedeutet, ist nichts Nachgelagertes vertrauenswürdig. Das buildingSMART Data Dictionary (bSDD) ist die Antwort der Branche auf dieses Problem, ein öffentliches, versioniertes Register von Klassen und Merkmalen mit stabilen URIs, die jedes Werkzeug auflösen kann. Diese Seite handelt von dem Wörterbuch, das ich dort für DOKwood aufgebaut habe.
 
 Das Wörterbuch ist unter dem Organisationscode der Hochschule München als `hm/dokwood` veröffentlicht und durchlief während meiner Zeit dort dreizehn Versionen, v0.1 bis v0.13. Jedes Werkzeug, das es nutzt, etwa das Revit-Add-in oder das Cadwork-Plugin, bekommt seine eigene Merkmalsgruppe, sodass ein Plugin genau das Bündel abfragen kann, das es braucht.
+
+![Zwei Ebenen: oben das öffentliche bSDD-Wörterbuch mit Merkmalen und Klassen, unten die DOKwood-Plattform, in der jedes Unternehmen daraus eigene Datenvorlagen zusammenstellt, Projekte sie zu Anforderungsblättern verschärfen und Datenblätter ausfüllen, und das Datenblatt den digitalen Produktpass speist.](/assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg "Vom öffentlichen Wörterbuch zum digitalen Produktpass")
 
 ## Datenvorlagen nach ISO 23387
 
