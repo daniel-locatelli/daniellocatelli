@@ -12,7 +12,7 @@ const b = [];
 // Left: composition chain (what a System Data Template contains)
 const lx = 100;
 const lw = 700;
-b.push(frame(lx, 80, lw, 560, "COMPOSITION · ISO 23387 HasPart"));
+b.push(frame(lx, 80, lw, 560, "COMPOSITION"));
 const tw = 200;
 const gap = (lw - 48 - 3 * tw) / 2;
 const rowY = 140;
@@ -36,19 +36,23 @@ const rw = 620;
 b.push(frame(rx, 80, rw, 560, "FROM TEMPLATE TO SHEET"));
 const bw = rw - 48;
 const bx = rx + 24;
-b.push(tile(bx, 140, bw, 80, "Data template", "which properties describe this object · no values"));
-b.push(tile(bx, 290, bw, 80, "Requirement sheet", "required values · Rw ≥ 58 dB, REI 90, U ≤ 0.15"));
-b.push(tile(bx, 440, bw, 80, "Data sheet", "declared or measured values · Rw = 59 dB", { accent: true }));
-b.push(arrow(ID, rx + rw / 2, 220, rx + rw / 2, 288, "tighten", { labelDx: 60, labelDy: 4 }));
-b.push(arrow(ID, rx + rw / 2, 370, rx + rw / 2, 438, "satisfy", { labelDx: 56, labelDy: 4 }));
-b.push(note(rx + rw / 2, 570, "generic ⊇ requirement ⊇ value", { anchor: "middle" }));
-b.push(note(rx + rw / 2, 600, "a fabricated buildup's data sheet is what the digital product passport carries", { anchor: "middle", size: 14 }));
+const rows = [130, 255, 380, 505];
+const th = 72;
+b.push(tile(bx, rows[0], bw, th, "Data template", "which properties describe this object · no values"));
+b.push(tile(bx, rows[1], bw, th, "Requirement template", "company requirements · Rw ≥ 56 dB"));
+b.push(tile(bx, rows[2], bw, th, "Requirement sheet", "project requirements · Rw ≥ 58 dB, REI 90, U ≤ 0.15"));
+b.push(tile(bx, rows[3], bw, th, "Data sheet", "declared or measured values · Rw = 59 dB", { accent: true }));
+const mx = rx + rw / 2;
+b.push(arrow(ID, mx, rows[0] + th, mx, rows[1] - 2, "tighten", { labelDx: 60, labelDy: 4 }));
+b.push(arrow(ID, mx, rows[1] + th, mx, rows[2] - 2, "tighten", { labelDx: 60, labelDy: 4 }));
+b.push(arrow(ID, mx, rows[2] + th, mx, rows[3] - 2, "satisfy", { labelDx: 56, labelDy: 4 }));
+b.push(note(mx, 612, "generic ⊇ requirement ⊇ value", { anchor: "middle" }));
 
 const svg = svgDoc({
   w: W,
   h: H,
   id: ID,
-  title: "Left: Wall, Roof and Slab are kinds of Buildup, a System Data Template composed of layers and products, where a product is a Product Data Template. Right: a data template lists properties, a requirement sheet tightens them to required values, and a data sheet satisfies them with declared values",
+  title: "Left: Wall, Roof and Slab are kinds of Buildup, a System Data Template composed of layers and products, where a product is a Product Data Template. Right: a data template lists properties, a requirement template and then a requirement sheet tighten them to required values, and a data sheet satisfies them with declared values",
   body: b,
 });
 write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/dokwood-bsdd-data-dictionary/data-templates.svg"), svg);
