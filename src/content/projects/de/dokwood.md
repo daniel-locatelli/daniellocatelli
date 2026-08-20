@@ -61,7 +61,7 @@ Das erste Ergebnis war eine systematische Recherche der Normen, die die Spezifik
 
 Das in der Normenstudie vorgeschlagene gemeinsame Vokabular wurde zu einem Wörterbuch im buildingSMART Data Dictionary (bSDD), `hm/dokwood`, versioniert von v0.1 bis v0.13. Es definiert die Klassen (Buildup, Wall, Roof, Slab, Product), 129 Merkmale und ihre Gruppen und folgt den Datenvorlagen der ISO 23387: ein System Data Template für einen Aufbau, ein Product Data Template für ein Produkt und eine HasPart-Komposition, die beide verbindet. Jede der folgenden Schnittstellen liest dasselbe Wörterbuch, und genau das macht sie interoperabel. Entwurf, Build-Pipeline und der Weg zu einem DPP-fähigen Export stehen auf der Seite [DOKwood bSDD-Datenwörterbuch](/de/research/dokwood-bsdd-data-dictionary).
 
-![Zwei Ebenen: oben das öffentliche bSDD-Wörterbuch mit Klassen, Merkmalen und generischen Datenvorlagen, unten die DOKwood-Plattform mit Mandantenvorlagen, Anforderungsblättern, Datenblättern und dem digitalen Produktpass.](../../../assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg)
+![Das Wörterbuch hm/dokwood im bSDD mit seinen Klassen, Merkmalen und ISO-23387-Datenvorlagen; darunter ein Aufbau als System Data Template, über HasPart mit seinen Produkten als Product Data Templates verknüpft.](/assets/content/projects/dokwood/dokwood-bsdd.svg)
 
 ## Revit-Add-in
 

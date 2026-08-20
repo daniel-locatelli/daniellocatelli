@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 560" role="img" aria-labelledby="dokwood-bsdd-title"><title id="dokwood-bsdd-title">The hm/dokwood dictionary on bSDD with its classes, properties and ISO 23387 data templates, and below it a buildup as a System Data Template linked by HasPart to its products as Product Data Templates</title>
+<defs><marker id="dokwood-bsdd-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<rect x="120" y="70" width="1360" height="200" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="136" y="56" width="449" height="28" rx="4" fill="#000000"/>
+<text x="148" y="76" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">bSDD · hm/dokwood · v0.13 · public</text>
+<rect x="152" y="110" width="405.3333333333333" height="90" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="354.66666666666663" y="149" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Classes</text>
+<text x="354.66666666666663" y="175" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">Buildup · Wall · Roof · Slab · Product</text>
+<rect x="597.3333333333333" y="110" width="405.3333333333333" height="90" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="799.9999999999999" y="149" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Properties</text>
+<text x="799.9999999999999" y="175" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">129 properties in 17 groups</text>
+<rect x="1042.6666666666665" y="110" width="405.3333333333333" height="90" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1245.3333333333333" y="149" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Data templates</text>
+<text x="1245.3333333333333" y="175" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">ISO 23387 · one template per class</text>
+<text x="800" y="238" text-anchor="middle" fill="#71717a" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">one shared vocabulary, read by the platform and by every interface</text>
+<rect x="120" y="340" width="1360" height="150" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="136" y="326" width="349" height="28" rx="4" fill="#000000"/>
+<text x="148" y="346" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">HOW A BUILDUP IS DESCRIBED</text>
+<rect x="152" y="374" width="568" height="82" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<text x="436" y="409" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Buildup = System Data Template</text>
+<text x="436" y="435" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">the wall, roof or slab with its ordered layers</text>
+<rect x="880" y="374" width="568" height="82" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<text x="1164" y="409" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Product = Product Data Template</text>
+<text x="1164" y="435" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">the board, stud, insulation or cladding in a layer</text>
+<line x1="722" y1="415" x2="878" y2="415" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#dokwood-bsdd-arrow)"/>
+<rect x="762.25" y="388" width="75.5" height="22" rx="4" fill="#000000"/>
+<text x="800" y="404" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">HasPart</text>
+<line x1="1245.3333333333333" y1="272" x2="1245.3333333333333" y2="338" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#dokwood-bsdd-arrow)"/>
+<rect x="1263.5833333333333" y="296" width="143.5" height="22" rx="4" fill="#000000"/>
+<text x="1335.3333333333333" y="312" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">instantiated as</text>
+</svg>

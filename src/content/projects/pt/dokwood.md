@@ -61,7 +61,7 @@ A primeira entrega foi uma revisão sistemática das normas que regem a especifi
 
 O vocabulário comum proposto na revisão de normas tornou-se um dicionário no buildingSMART Data Dictionary (bSDD), `hm/dokwood`, versionado de v0.1 a v0.13. Ele define as classes (Buildup, Wall, Roof, Slab, Product), 129 propriedades e os seus grupos, e segue os modelos de dados da ISO 23387: um System Data Template para uma composição, um Product Data Template para um produto e uma composição HasPart que os liga. Todas as interfaces abaixo leem o mesmo dicionário, e é isso que as torna interoperáveis. O projeto, o pipeline de construção e o caminho até uma exportação pronta para o DPP estão na página [dicionário de dados bSDD do DOKwood](/pt/research/dokwood-bsdd-data-dictionary).
 
-![Dois planos: o dicionário público bSDD com classes, propriedades e modelos de dados genéricos acima, e a plataforma DOKwood com modelos do inquilino, fichas de requisitos, fichas de dados e o passaporte digital do produto abaixo.](../../../assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg)
+![O dicionário hm/dokwood no bSDD com suas classes, propriedades e modelos de dados da ISO 23387; abaixo, uma composição como System Data Template ligada por HasPart aos seus produtos como Product Data Templates.](/assets/content/projects/dokwood/dokwood-bsdd.svg)
 
 ## Add-in para Revit
 

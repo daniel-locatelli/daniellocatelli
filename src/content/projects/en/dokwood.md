@@ -61,7 +61,7 @@ The first deliverable was a systematic review of the standards that govern how m
 
 The shared vocabulary proposed in the standards review became a dictionary in the buildingSMART Data Dictionary (bSDD), `hm/dokwood`, versioned from v0.1 to v0.13. It defines the classes (Buildup, Wall, Roof, Slab, Product), 129 properties and their groups, and follows ISO 23387 data templates: a System Data Template for a buildup, a Product Data Template for a product, and a HasPart composition that links them. Every interface below reads the same dictionary, which is what makes them interoperable. The design, the build pipeline and the road to a DPP-ready export are on the [DOKwood bSDD data dictionary](/research/dokwood-bsdd-data-dictionary) page.
 
-![Two planes: the public bSDD dictionary with classes, properties and generic data templates above, and the DOKwood platform with tenant templates, requirement sheets, data sheets and the digital product passport below.](../../../assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg)
+![The hm/dokwood dictionary on bSDD with its classes, properties and ISO 23387 data templates; below, a buildup as a System Data Template linked by HasPart to its products as Product Data Templates.](/assets/content/projects/dokwood/dokwood-bsdd.svg)
 
 ## Revit add-in
 
