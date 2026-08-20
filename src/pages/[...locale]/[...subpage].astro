@@ -81,6 +81,12 @@ const hasPeople = peopleFields.some((k) => {
   return Array.isArray(v) && v.length > 0;
 });
 const entryLocale = getEntryLocale(subpage.id);
+// Organization is normalised to a comma-joined string by the schema; split it
+// back so several organizations each get their own line in the table.
+const organizations = (subpage.data.Organization ?? "")
+  .split(", ")
+  .map((o) => o.trim())
+  .filter(Boolean);
 
 const { Content } = await render(subpage);
 
@@ -310,10 +316,14 @@ const foregroundClass = isLetterbox
           ) : null
         }
         {
-          subpage.data.Organization && (
+          organizations.length > 0 && (
               <tr>
-                <th scope="row">{t.organization}</th>
-                <td>{subpage.data.Organization}</td>
+                <th scope="row">{organizations.length === 1 ? t.organization : t.organizations}</th>
+                <td>
+                  {organizations.map((org) => (
+                    <span class="block">{org}</span>
+                  ))}
+                </td>
               </tr>
             )
         }

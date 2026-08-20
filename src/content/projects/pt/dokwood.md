@@ -8,14 +8,33 @@ Tags:
   - Desenvolvimento de Software
   - BIM
 Category: Software Development
-Organization: Universidade de Ciências Aplicadas de Munique
+Organization:
+  - Universidade de Ciências Aplicadas de Munique
+  - Universidade de Ciências Aplicadas de Berna
+  - Gumpp & Maier
+  - Schärholzbau
 City:
-  - Munique
-Country: Alemanha
+  - Online
 DateStart: "2025-02-01"
 DateEnd: "2026-06-30"
 Team:
   - Daniel Nunes Locatelli
+  - Fabian Scheurer
+  - Parisa Shafiee
+  - Edyta Augustynowicz
+  - Ronny Standtke
+  - Matias Penrroz
+  - Louis Trümpler
+  - Ian Law
+  - Alexander Gumpp
+  - Andreas Dengl
+  - Sebastián Hernández-Maetschl
+  - Franz Liebl
+  - Michael Schär
+  - Samuel Birrer
+  - Boas Hänseler
+  - Dominik Wicki
+  - Joel Karolin
 Link:
   Text: DOKwood na Hochschule München
   Href: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
@@ -28,7 +47,7 @@ OtherLinks:
 
 O DOKwood é um projeto de pesquisa e uma plataforma de software para a documentação de composições construtivas multicamadas na construção pré-fabricada em madeira. Em um edifício de madeira, a composição de uma parede, de um piso ou de uma cobertura (a sequência ordenada de placas, montantes, isolamento e revestimento) é onde se encontram as decisões estruturais, de incêndio, acústicas, térmicas e de custo. Hoje essa informação vive em PDFs e planilhas que são redigitados a cada etapa, da licitação à oficina. O DOKwood dá uma casa às composições: uma plataforma web na qual uma empresa define as suas composições uma única vez, verifica-as contra requisitos, versiona-as como código e entrega-as às ferramentas a jusante sem reinserir dados.
 
-O projeto é financiado pelo ZIM (Alemanha) e pela Innosuisse (Suíça) no âmbito do programa IraSME. O consórcio reúne uma universidade e uma construtora de madeira em cada país: a Hochschule München com a Gumpp & Maier, e a Berner Fachhochschule com a Schärholzbau. De fevereiro de 2025 a junho de 2026 trabalhei nele como pesquisador associado na Hochschule München, nas partes que tornam a plataforma interoperável: a sua base normativa, o seu dicionário de dados e as interfaces com as ferramentas que os construtores de madeira já usam.
+O projeto é financiado pelo ZIM (Alemanha) e pela Innosuisse (Suíça) no âmbito do programa IraSME. O consórcio reúne uma universidade e uma construtora de madeira em cada país: a Hochschule München com a Gumpp & Maier, e a Berner Fachhochschule com a Schärholzbau. Participei do projeto como pesquisador associado na Hochschule München, de fevereiro de 2025 a junho de 2026. Meu trabalho se concentrou nas partes que tornam a plataforma interoperável: as normas em que ela se apoia, o dicionário de dados que dá um significado comum aos seus termos e as interfaces com as ferramentas que os construtores de madeira já usam.
 
 ![Logotipo do DOKwood: uma grade de cubos isométricos, um deles destacado, emoldurada por cantoneiras.](../../../assets/content/projects/dokwood/dokwood-logo-dark.png)
 

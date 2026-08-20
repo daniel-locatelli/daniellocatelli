@@ -9,6 +9,7 @@ export type I18nSubpage = {
   coordinator: string,
   coordinators: string,
   organization: string,
+  organizations: string,
   client: string,
   director: string,
   directors: string,

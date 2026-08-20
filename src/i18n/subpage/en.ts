@@ -11,6 +11,7 @@ export const t: I18nSubpage = {
   coordinator: "Coordinator",
   coordinators: "Coordinators",
   organization: "Organization",
+  organizations: "Organizations",
   client: "Client",
   director: "Director",
   directors: "Directors",

@@ -8,14 +8,33 @@ Tags:
   - Softwareentwicklung
   - BIM
 Category: Software Development
-Organization: Hochschule München
+Organization:
+  - Hochschule München
+  - Berner Fachhochschule
+  - Gumpp & Maier
+  - Schärholzbau
 City:
-  - München
-Country: Deutschland
+  - Online
 DateStart: "2025-02-01"
 DateEnd: "2026-06-30"
 Team:
   - Daniel Nunes Locatelli
+  - Fabian Scheurer
+  - Parisa Shafiee
+  - Edyta Augustynowicz
+  - Ronny Standtke
+  - Matias Penrroz
+  - Louis Trümpler
+  - Ian Law
+  - Alexander Gumpp
+  - Andreas Dengl
+  - Sebastián Hernández-Maetschl
+  - Franz Liebl
+  - Michael Schär
+  - Samuel Birrer
+  - Boas Hänseler
+  - Dominik Wicki
+  - Joel Karolin
 Link:
   Text: DOKwood an der Hochschule München
   Href: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
@@ -28,7 +47,7 @@ OtherLinks:
 
 DOKwood ist ein Forschungsprojekt und eine Softwareplattform für die Dokumentation mehrschichtiger Aufbauten im vorgefertigten Holzbau. In einem Holzgebäude ist der Aufbau einer Wand, einer Decke oder eines Dachs (die geordnete Abfolge von Platten, Ständern, Dämmung und Bekleidung) der Ort, an dem Entscheidungen zu Tragwerk, Brandschutz, Schallschutz, Wärmeschutz und Kosten zusammenlaufen. Heute lebt diese Information in PDFs und Tabellen, die bei jedem Schritt von der Ausschreibung bis zur Werkstatt neu abgetippt werden. DOKwood gibt Aufbauten ein Zuhause: eine Webplattform, in der ein Unternehmen seine Aufbauten einmal definiert, gegen Anforderungen prüft, wie Code versioniert und ohne erneute Dateneingabe an die nachgelagerten Werkzeuge übergibt.
 
-Das Projekt wird vom ZIM (Deutschland) und von der Innosuisse (Schweiz) im Rahmen des IraSME-Programms gefördert. Das Konsortium verbindet in jedem Land eine Hochschule mit einem Holzbauunternehmen: die Hochschule München mit Gumpp & Maier und die Berner Fachhochschule mit Schärholzbau. Von Februar 2025 bis Juni 2026 habe ich als wissenschaftlicher Mitarbeiter an der Hochschule München daran gearbeitet, und zwar an den Teilen, die die Plattform interoperabel machen: ihrer Normengrundlage, ihrem Datenwörterbuch und den Schnittstellen zu den Werkzeugen, die Holzbauer bereits nutzen.
+Das Projekt wird vom ZIM (Deutschland) und von der Innosuisse (Schweiz) im Rahmen des IraSME-Programms gefördert. Das Konsortium verbindet in jedem Land eine Hochschule mit einem Holzbauunternehmen: die Hochschule München mit Gumpp & Maier und die Berner Fachhochschule mit Schärholzbau. Von Februar 2025 bis Juni 2026 war ich als wissenschaftlicher Mitarbeiter an der Hochschule München am Projekt beteiligt. Meine Arbeit galt den Teilen, die die Plattform interoperabel machen: den Normen, auf denen sie aufbaut, dem Datenwörterbuch, das ihren Begriffen eine gemeinsame Bedeutung gibt, und den Schnittstellen zu den Werkzeugen, die Holzbauer bereits nutzen.
 
 ![DOKwood-Logo: ein Raster isometrischer Würfel, einer hervorgehoben, eingerahmt von Eckklammern.](../../../assets/content/projects/dokwood/dokwood-logo-dark.png)
 

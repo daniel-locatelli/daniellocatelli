@@ -166,7 +166,12 @@ const pageSchema = z.object({
       z.array(z.string()),
     ])
     .optional(),
-  Organization: z.string().optional(),
+  // A single organization or several; normalised to one comma-separated string
+  // so every consumer keeps treating it as text.
+  Organization: z
+    .union([z.string(), z.array(z.string())])
+    .optional()
+    .transform((v) => (Array.isArray(v) ? v.join(", ") : v)),
   Event: z.string().optional(),
   Place: z.string().optional(),
   Language: z
