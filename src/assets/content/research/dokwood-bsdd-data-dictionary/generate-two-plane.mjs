@@ -55,7 +55,7 @@ b.push(arrow(ID, f1x + 24 + 2 * half + 40, r + 45, f2x + 22, r + 45, "tighten", 
 b.push(arrow(ID, f2x + 24 + half, r + 45, f2x + 24 + half + 38, r + 45, "satisfy", { labelDy: -12 }));
 
 // ISO 23387 is the substrate of the whole platform data model (company dictionary and project store)
-b.push(chip(X0 + CW / 2 - 330, fy + fh + 26, "ISO 23387 · data templates: the data model of both stores, leading to the DPP", { w: 660 }));
+b.push(chip(X0 + CW / 2 - 480, fy + fh + 26, "ISO 23387 · data templates: the data model behind company dictionary, project store and DPP", { w: 960 }));
 
 // DPP band: full-width strip below both frames; the data sheet feeds it
 const dppX = f1x;

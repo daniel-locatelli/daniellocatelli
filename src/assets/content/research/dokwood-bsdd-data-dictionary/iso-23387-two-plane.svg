@@ -48,8 +48,8 @@
 <line x1="1138" y1="535" x2="1176" y2="535" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-two-plane-arrow)"/>
 <rect x="1119.25" y="510" width="75.5" height="22" rx="4" fill="#000000"/>
 <text x="1157" y="526" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">satisfy</text>
-<rect x="470" y="636" width="660" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
-<text x="800" y="658" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 23387 · data templates: the data model of both stores, leading to the DPP</text>
+<rect x="320" y="636" width="960" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="800" y="658" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 23387 · data templates: the data model behind company dictionary, project store and DPP</text>
 <rect x="104" y="700" width="1392" height="90" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
 <text x="800" y="739" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Digital Product Passport</text>
 <text x="800" y="765" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">JSON-LD · persistent identifier · data carrier  |  EU CPR 2024 / ESPR, mandatory from about 2028</text>
