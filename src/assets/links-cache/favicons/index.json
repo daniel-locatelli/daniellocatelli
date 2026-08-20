@@ -83,5 +83,25 @@
     "file": "daniellocatelli.com.png",
     "source": "https://daniellocatelli.com/favicon-32x32.png?v=2",
     "timestamp": 1787238282112
+  },
+  "www.iso.org": {
+    "file": "www.iso.org.png",
+    "source": "https://www.google.com/s2/favicons?domain=www.iso.org&sz=32",
+    "timestamp": 1787258473150
+  },
+  "standards.iteh.ai": {
+    "file": "standards.iteh.ai.png",
+    "source": "https://cdn.iteh.ai/standards/www/favicon/favicon-32x32.png",
+    "timestamp": 1787258473511
+  },
+  "eur-lex.europa.eu": {
+    "file": "eur-lex.europa.eu.ico",
+    "source": "https://eur-lex.europa.eu/images/eurlex.ico",
+    "timestamp": 1787258473798
+  },
+  "cirpass2.eu": {
+    "file": "cirpass2.eu.png",
+    "source": "https://cirpass2.eu/wp-content/uploads/2024/07/cropped-Favicon-32x32.png",
+    "timestamp": 1787258473917
   }
 }

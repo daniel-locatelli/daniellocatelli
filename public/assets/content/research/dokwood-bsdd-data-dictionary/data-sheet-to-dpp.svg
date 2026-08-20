@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 640" role="img" aria-labelledby="bsdd-data-sheet-to-dpp-title"><title id="bsdd-data-sheet-to-dpp-title">A filled data sheet of a fabricated buildup, with values such as Rw 59 dB and REI 90, feeds a digital product passport card listing what the passport adds around those values: a persistent identifier, property values with version-pinned bSDD URIs, a document trail of certificates, datasheets and EPDs, a lifecycle state from as-designed to as-built, a data carrier on the fabricated item, and a JSON-LD format</title>
+<defs><marker id="bsdd-data-sheet-to-dpp-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<path d="M130 95 H498 L520 117 V515 a10 10 0 0 1 -10 10 H130 a10 10 0 0 1 -10 -10 V105 a10 10 0 0 1 10 -10 Z" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<path d="M498 95 V117 H520" fill="#09090b" stroke="#34d399" stroke-width="1.5"/>
+<text x="148" y="135" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Data sheet</text>
+<text x="148" y="161" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">declared or measured values</text>
+<line x1="140" y1="185" x2="500" y2="185" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="148" y="218" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Sound reduction index</text>
+<text x="148" y="238" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Rw · dB</text>
+<text x="492" y="228" text-anchor="end" fill="#34d399" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">59</text>
+<line x1="140" y1="253" x2="500" y2="253" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="148" y="280" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Fire resistance</text>
+<text x="148" y="300" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">REI · min</text>
+<text x="492" y="290" text-anchor="end" fill="#34d399" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">90</text>
+<line x1="140" y1="315" x2="500" y2="315" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="148" y="342" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Thermal transmittance</text>
+<text x="148" y="362" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">U · W/(m²·K)</text>
+<text x="492" y="352" text-anchor="end" fill="#34d399" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">0.14</text>
+<line x1="140" y1="377" x2="500" y2="377" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="148" y="404" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Thickness</text>
+<text x="148" y="424" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">d · mm</text>
+<text x="492" y="414" text-anchor="end" fill="#34d399" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">392</text>
+<line x1="140" y1="439" x2="500" y2="439" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="148" y="466" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Timber species</text>
+<text x="492" y="476" text-anchor="end" fill="#34d399" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">spruce</text>
+<text x="320" y="555" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">fabricated buildup · one sheet per instance</text>
+<path d="M670 64 H1458 L1480 86 V546 a10 10 0 0 1 -10 10 H670 a10 10 0 0 1 -10 -10 V74 a10 10 0 0 1 10 -10 Z" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<path d="M1458 64 V86 H1480" fill="#09090b" stroke="#34d399" stroke-width="1.5"/>
+<text x="688" y="104" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Digital Product Passport</text>
+<text x="688" y="130" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">EU CPR 2024 / ESPR · mandatory for construction products from about 2028</text>
+<line x1="680" y1="154" x2="1460" y2="154" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="688" y="197" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Identifier</text>
+<text x="860" y="187" fill="#34d399" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">urn:dokwood:buildup:aw-01@v0.13</text>
+<text x="860" y="207" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">persistent, resolves to this sheet</text>
+<line x1="680" y1="222" x2="1460" y2="222" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="688" y="259" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Property values</text>
+<text x="860" y="249" fill="#34d399" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Rw 59 dB → bsdd …/dokwood/0.13/prop/SoundReductionIndex</text>
+<text x="860" y="269" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">every value with its version-pinned bSDD URI</text>
+<line x1="680" y1="284" x2="1460" y2="284" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="688" y="321" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Documents</text>
+<text x="860" y="311" fill="#34d399" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">certificates · datasheets · EPDs</text>
+<text x="860" y="331" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">attached through the Document class</text>
+<line x1="680" y1="346" x2="1460" y2="346" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="688" y="383" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Lifecycle</text>
+<text x="860" y="373" fill="#34d399" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">as-designed → as-built</text>
+<text x="860" y="393" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">the sheet carries its state</text>
+<line x1="680" y1="408" x2="1460" y2="408" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="688" y="445" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Data carrier</text>
+<text x="860" y="435" fill="#34d399" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">QR / RFID on the fabricated item</text>
+<text x="860" y="455" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">scan the wall, get the passport</text>
+<line x1="680" y1="470" x2="1460" y2="470" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="688" y="507" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Format</text>
+<text x="860" y="497" fill="#34d399" font-size="15" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">JSON-LD</text>
+<text x="860" y="517" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">as CIRPASS-2 recommends</text>
+<rect x="1404" y="415" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1408" y="415" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1412" y="415" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1416" y="415" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1420" y="415" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1424" y="415" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1428" y="415" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1436" y="415" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1444" y="415" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1448" y="415" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1404" y="419" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1428" y="419" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1440" y="419" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1444" y="419" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1404" y="423" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1412" y="423" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1416" y="423" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1420" y="423" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1428" y="423" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1436" y="423" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1448" y="423" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1404" y="427" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1412" y="427" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1416" y="427" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1420" y="427" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1428" y="427" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1432" y="427" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1440" y="427" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1448" y="427" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1404" y="431" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1412" y="431" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1416" y="431" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1420" y="431" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1428" y="431" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1444" y="431" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1448" y="431" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1404" y="435" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1428" y="435" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1436" y="435" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1440" y="435" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1404" y="439" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1408" y="439" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1412" y="439" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1416" y="439" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1420" y="439" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1424" y="439" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1428" y="439" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1436" y="439" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1444" y="439" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1436" y="443" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1440" y="443" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1448" y="443" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1404" y="447" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1408" y="447" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1416" y="447" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1424" y="447" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1428" y="447" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1432" y="447" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1444" y="447" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1448" y="447" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1408" y="451" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1412" y="451" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1420" y="451" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1428" y="451" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1440" y="451" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1444" y="451" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1404" y="455" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1416" y="455" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1424" y="455" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1432" y="455" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1436" y="455" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1440" y="455" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1448" y="455" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1412" y="459" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1416" y="459" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1420" y="459" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1428" y="459" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1432" y="459" width="4" height="4" fill="#a1a1aa"/>
+<rect x="1444" y="459" width="4" height="4" fill="#a1a1aa"/>
+<text x="1070" y="586" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">the sheet, wrapped so anyone can find, trust and read it</text>
+<line x1="530" y1="346" x2="648" y2="346" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-data-sheet-to-dpp-arrow)"/>
+<rect x="559.75" y="319" width="58.5" height="22" rx="4" fill="#000000"/>
+<text x="589" y="335" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">feeds</text>
+</svg>

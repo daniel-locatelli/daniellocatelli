@@ -26,6 +26,20 @@ Link:
 OtherLinks:
   - Text: Projektseite DOKwood
     Href: https://daniellocatelli.com/de/projects/dokwood
+  - Text: ISO 23387:2025 Datenvorlagen
+    Href: https://www.iso.org/standard/85391.html
+  - Text: ISO 23386:2020 Merkmale in Datenkatalogen
+    Href: https://www.iso.org/standard/75401.html
+  - Text: ISO 12006-3:2022 Rahmen für objektorientierte Informationen
+    Href: https://www.iso.org/standard/74932.html
+  - Text: EN 17549-2:2023 konfigurierbare Bauobjekte und Anforderungen
+    Href: https://standards.iteh.ai/catalog/standards/cen/d1d7f084-fe17-4e3e-bc06-b17a936ae485/en-17549-2-2023
+  - Text: Verordnung (EU) 2024/3110, Bauprodukteverordnung
+    Href: https://eur-lex.europa.eu/eli/reg/2024/3110/oj/eng
+  - Text: Verordnung (EU) 2024/1781, Ökodesign für nachhaltige Produkte (ESPR)
+    Href: https://eur-lex.europa.eu/eli/reg/2024/1781/oj/eng
+  - Text: CIRPASS-2 Pilotprojekte zum digitalen Produktpass
+    Href: https://cirpass2.eu/
 ---
 
 Die Plattform [DOKwood](/de/projects/dokwood) tauscht Aufbauten mit Revit, Cadwork und künftig mit KI-Assistenten und einem digitalen Produktpass aus. Jeder dieser Austausche ist nur so interoperabel wie das Vokabular darunter: Wenn "Feuerwiderstandsklasse" in der Plattform eines, in der Revit-Vorlage etwas anderes und im PDF des Partners ein Drittes bedeutet, ist nichts Nachgelagertes vertrauenswürdig. Das buildingSMART Data Dictionary (bSDD) ist die Antwort der Branche auf dieses Problem, ein öffentliches, versioniertes Register von Klassen und Merkmalen mit stabilen URIs, die jedes Werkzeug auflösen kann. Diese Seite handelt von dem Wörterbuch, das ich dort für DOKwood aufgebaut habe.
@@ -44,6 +58,6 @@ Eine ganze Baugruppe als Datenvorlage zu modellieren ist noch selten; die meiste
 
 ## Wohin es geht
 
-Die nächste Version, v0.14, war bei meinem Weggang bis zum Abschluss spezifiziert, aber noch nicht gebaut. Ihre Schritte: die zwölf benannten Aufbau-Unterklassen zu einer Klasse pro IFC-Entität zusammenfassen (Wall, Roof, Slab plus ein generischer Buildup); ein Umgebungsmodell mit Randbedingungen (beheizter Raum, Außenluft, Erdreich) ergänzen, damit eine Rechenmaschine Oberflächenwiderstände und U-Werte nach EN ISO 6946 und SIA 180 ableiten kann; die erste HasPart-Kompositionskette ergänzen; und die Klassen Document und Project ergänzen, erstere, um Zertifikate, Datenblätter und EPDs als Dokumentenspur des Passes anzuhängen. Parallel dazu beschloss das Team, von einem starren Wörterbuch für alle zu einem Rahmenwerk überzugehen: ein minimaler, erweiterbarer Kern, wobei jeder Mandant einen eigenen Katalog besitzt, der darauf verweist, denn Schweizer und deutsches Recht sowie die Arbeitsabläufe der Unternehmen unterscheiden sich. Das heutige Wörterbuch wird zum Startkatalog, den ein neuer Mandant abzweigt.
-
 Das Ziel, das all das einrahmt, ist der digitale Produktpass, der unter der Bauprodukteverordnung von 2024 und der ESPR ab etwa 2028 für Bauprodukte verpflichtend wird. DOKwoods versionierte, bSDD-beschriebene Aufbauten sind die richtige Grundlage, und die Lückenanalyse, die ich hinterlassen habe, listet auf, was der Plattform noch fehlt: ein offenes Merkmalsmodell, in dem jeder Wert seine versionsgebundene bSDD-URI trägt, statt zweier fest verdrahteter physikalischer Größen; persistente Kennungen; ein schlanker JSON-LD-Export, wie ihn CIRPASS-2 empfiehlt; Lebenszyklusstufen von geplant bis gebaut; verifizierbare Zertifikate über die Klasse Document; und ein Datenträger am gefertigten Bauteil. Das meiste davon ist grundlegende Datenmodellarbeit, die sich unabhängig vom Pass auszahlt, denn es ist dieselbe Arbeit, die die Revit-, Cadwork- und MCP-Schnittstellen verlässlich macht.
+
+![Ein ausgefülltes Datenblatt eines gefertigten Aufbaus mit Werten wie Rw 59 dB und REI 90 speist einen digitalen Produktpass, der diese Werte mit einer persistenten Kennung, versionsgebundenen bSDD-URIs an jedem Merkmal, einer Dokumentenspur aus Zertifikaten, Datenblättern und EPDs, einem Lebenszyklusstatus von geplant bis gebaut, einem Datenträger am Bauteil und einem JSON-LD-Export umhüllt.](/assets/content/research/dokwood-bsdd-data-dictionary/data-sheet-to-dpp.svg "Das Datenblatt speist den digitalen Produktpass")

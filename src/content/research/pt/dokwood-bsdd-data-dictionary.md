@@ -26,6 +26,20 @@ Link:
 OtherLinks:
   - Text: Página do projeto DOKwood
     Href: https://daniellocatelli.com/pt/projects/dokwood
+  - Text: ISO 23387:2025 modelos de dados
+    Href: https://www.iso.org/standard/85391.html
+  - Text: ISO 23386:2020 propriedades em dicionários de dados
+    Href: https://www.iso.org/standard/75401.html
+  - Text: ISO 12006-3:2022 estrutura para informação orientada a objetos
+    Href: https://www.iso.org/standard/74932.html
+  - Text: EN 17549-2:2023 objetos de construção configuráveis e requisitos
+    Href: https://standards.iteh.ai/catalog/standards/cen/d1d7f084-fe17-4e3e-bc06-b17a936ae485/en-17549-2-2023
+  - Text: Regulamento (UE) 2024/3110, Regulamento dos Produtos de Construção
+    Href: https://eur-lex.europa.eu/eli/reg/2024/3110/oj/eng
+  - Text: Regulamento (UE) 2024/1781, Conceção Ecológica de Produtos Sustentáveis (ESPR)
+    Href: https://eur-lex.europa.eu/eli/reg/2024/1781/oj/eng
+  - Text: CIRPASS-2 pilotos de passaporte digital de produto
+    Href: https://cirpass2.eu/
 ---
 
 A plataforma [DOKwood](/pt/projects/dokwood) troca composições construtivas com o Revit, o Cadwork e, futuramente, com assistentes de IA e um passaporte digital de produto. Cada uma dessas trocas é tão interoperável quanto o vocabulário que a sustenta: se "classe de resistência ao fogo" significa uma coisa na plataforma, outra no template do Revit e uma terceira no PDF do parceiro, nada a jusante merece confiança. O buildingSMART Data Dictionary (bSDD) é a resposta da indústria a esse problema, um registro público e versionado de classes e propriedades com URIs estáveis que qualquer ferramenta pode resolver. Esta página trata do dicionário que construí lá para o DOKwood.
@@ -44,6 +58,6 @@ Modelar um conjunto inteiro como modelo de dados ainda é raro; a maioria dos di
 
 ## Para onde vai
 
-A próxima versão, v0.14, foi especificada até o fechamento mas ainda não construída quando saí. Os seus movimentos: colapsar as doze subclasses nomeadas de composição em uma classe por entidade IFC (Wall, Roof, Slab, mais um Buildup genérico); acrescentar um modelo de Ambiente com condições de contorno (ambiente aquecido, ar exterior, solo) para que um motor de cálculo possa derivar resistências superficiais e valores U segundo a EN ISO 6946 e a SIA 180; acrescentar a primeira cadeia de composição HasPart; e acrescentar as classes Document e Project, a primeira para anexar certificados, fichas técnicas e EPDs como trilha documental do passaporte. Em paralelo, a equipe decidiu passar de um único dicionário rígido para todos a um framework: um núcleo mínimo e extensível, com cada tenant dono do seu próprio catálogo que o referencia, já que as leis suíça e alemã e os fluxos de trabalho de cada empresa diferem. O dicionário de hoje torna-se o catálogo inicial que um novo tenant bifurca.
-
 O objetivo que enquadra tudo isso é o Passaporte Digital de Produto, obrigatório para produtos de construção a partir de cerca de 2028 sob o Regulamento dos Produtos de Construção de 2024 e o ESPR. As composições versionadas e descritas em bSDD do DOKwood são a base certa, e a análise de lacunas que deixei lista o que ainda falta à plataforma: um modelo de propriedades aberto em que cada valor carrega o seu URI bSDD com versão fixada, em vez de duas grandezas físicas codificadas à mão; identificadores persistentes; uma exportação enxuta em JSON-LD, como recomenda o CIRPASS-2; estados de ciclo de vida do projetado ao construído; certificados verificáveis por meio da classe Document; e um portador de dados no item fabricado. A maior parte disso é trabalho fundamental de modelo de dados que compensa independentemente do passaporte, porque é o mesmo trabalho que torna confiáveis as interfaces Revit, Cadwork e MCP.
+
+![Uma folha de dados preenchida de uma composição fabricada, com valores como Rw 59 dB e REI 90, alimenta um passaporte digital de produto que envolve esses valores com um identificador persistente, URIs bSDD com versão fixada em cada propriedade, uma trilha documental de certificados, fichas técnicas e EPDs, um estado de ciclo de vida do projetado ao construído, um portador de dados no item e uma exportação JSON-LD.](/assets/content/research/dokwood-bsdd-data-dictionary/data-sheet-to-dpp.svg "A folha de dados alimenta o passaporte digital de produto")

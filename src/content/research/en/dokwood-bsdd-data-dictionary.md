@@ -26,6 +26,20 @@ Link:
 OtherLinks:
   - Text: DOKwood project page
     Href: https://daniellocatelli.com/projects/dokwood
+  - Text: ISO 23387:2025 data templates
+    Href: https://www.iso.org/standard/85391.html
+  - Text: ISO 23386:2020 properties in data dictionaries
+    Href: https://www.iso.org/standard/75401.html
+  - Text: ISO 12006-3:2022 object-oriented information framework
+    Href: https://www.iso.org/standard/74932.html
+  - Text: EN 17549-2:2023 configurable construction objects and requirements
+    Href: https://standards.iteh.ai/catalog/standards/cen/d1d7f084-fe17-4e3e-bc06-b17a936ae485/en-17549-2-2023
+  - Text: Regulation (EU) 2024/3110, Construction Products Regulation
+    Href: https://eur-lex.europa.eu/eli/reg/2024/3110/oj/eng
+  - Text: Regulation (EU) 2024/1781, Ecodesign for Sustainable Products (ESPR)
+    Href: https://eur-lex.europa.eu/eli/reg/2024/1781/oj/eng
+  - Text: CIRPASS-2 digital product passport pilots
+    Href: https://cirpass2.eu/
 ---
 
 The [DOKwood](/projects/dokwood) platform exchanges buildups with Revit, Cadwork and, eventually, AI assistants and a digital product passport. Every one of those exchanges is only as interoperable as the vocabulary beneath it: if "fire resistance class" means one thing in the platform, another in the Revit template and a third in the partner's PDF, nothing downstream can be trusted. The buildingSMART Data Dictionary (bSDD) is the industry's answer to that problem, a public, versioned registry of classes and properties with stable URIs that any tool can resolve. This page is about the dictionary I built there for DOKwood.
@@ -44,6 +58,6 @@ Modelling a whole assembly as a data template is still rare; most dictionaries s
 
 ## Where it goes next
 
-The next version, v0.14, was specified to closure but not yet built when I left. Its moves: collapse the twelve named buildup subclasses into one class per IFC entity (Wall, Roof, Slab, plus a generic Buildup); add an Environment model of boundary conditions (heated room, exterior air, ground) so a calculation engine can derive surface resistances and U-values per EN ISO 6946 and SIA 180; add the first HasPart composition chain; and add Document and Project classes, the former to attach certificates, datasheets and EPDs as the passport's document trail. In parallel the team decided to move from one rigid dictionary for everyone to a framework: a minimal, extensible core with each tenant owning its own catalog that references it, since Swiss and German law and per-company workflows differ. Today's dictionary becomes the starter catalog a new tenant forks.
-
 The goal that frames all of it is the Digital Product Passport, mandatory for construction products from around 2028 under the 2024 Construction Products Regulation and the ESPR. DOKwood's versioned, bSDD-described buildups are the right foundation, and the gap analysis I left behind lists what the platform still needs: an open property model where every value carries its version-pinned bSDD URI instead of two hard-coded physical quantities, persistent identifiers, a lean JSON-LD export as CIRPASS-2 recommends, lifecycle states from as-designed to as-built, verifiable certificates through the Document class, and a data carrier on the fabricated item. Most of that is foundational data-model work that pays off regardless of the passport, because it is the same work that makes the Revit, Cadwork and MCP interfaces reliable.
+
+![A filled data sheet of a fabricated buildup, with values such as Rw 59 dB and REI 90, feeds a digital product passport that wraps those values with a persistent identifier, version-pinned bSDD URIs on every property, a document trail of certificates, datasheets and EPDs, a lifecycle state from as-designed to as-built, a data carrier on the item, and a JSON-LD export.](/assets/content/research/dokwood-bsdd-data-dictionary/data-sheet-to-dpp.svg "The data sheet feeds the digital product passport")
