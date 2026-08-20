@@ -53,7 +53,7 @@ The project is funded by ZIM (Germany) and Innosuisse (Switzerland) under the Ir
 
 ## Standards review
 
-The first deliverable was a systematic review of the standards that govern how materials and buildups are specified in timber construction in Germany and Switzerland: ISO and GS1 at the international level, CEN and the harmonised EN standards in Europe, DIN, VDI and the Muster-Holzbau-Richtlinie in Germany, SIA, KBOB and VKF in Switzerland. It covers fire, acoustics, building physics, structural design, technical drawings, BIM, and the incoming Digital Product Passport under the 2024 Construction Products Regulation. Its practical output was a mapping of the partners' internal terminology to governed standard terms and a proposed shared vocabulary. The full account is on the [standards for timber construction specifications](/research/timber-construction-standards) page.
+The first deliverable was a systematic review of the standards that govern how materials and buildups are specified in timber construction in Germany and Switzerland: ISO and GS1 at the international level, CEN and the harmonised EN standards in Europe, DIN, VDI and the Muster-Holzbau-Richtlinie in Germany, SIA, KBOB and VKF in Switzerland. It covers fire, acoustics, building physics, structural design, technical drawings, BIM, and the incoming Digital Product Passport under the 2024 Construction Products Regulation. Its practical output was a mapping of the partners' internal terminology to governed standard terms and a proposed shared vocabulary. You can read more about this study on my dedicated [standards for timber construction specifications](/research/timber-construction-standards) page.
 
 ## bSDD data dictionary
 

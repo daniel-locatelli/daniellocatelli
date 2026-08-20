@@ -53,7 +53,7 @@ Das Projekt wird vom ZIM (Deutschland) und von der Innosuisse (Schweiz) im Rahme
 
 ## Normenrecherche
 
-Das erste Ergebnis war eine systematische Recherche der Normen, die die Spezifikation von Materialien und Aufbauten im Holzbau in Deutschland und der Schweiz regeln: ISO und GS1 auf internationaler Ebene, CEN und die harmonisierten EN-Normen in Europa, DIN, VDI und die Muster-Holzbau-Richtlinie in Deutschland, SIA, KBOB und VKF in der Schweiz. Sie umfasst Brandschutz, Akustik, Bauphysik, Tragwerksplanung, technische Zeichnungen, BIM und den kommenden digitalen Produktpass nach der Bauprodukteverordnung von 2024. Ihr praktisches Ergebnis war eine Zuordnung der internen Terminologie der Partner zu kontrollierten Normbegriffen und der Vorschlag eines gemeinsamen Vokabulars. Die vollständige Darstellung steht auf der Seite [Normen für Spezifikationen im Holzbau](/de/research/timber-construction-standards).
+Das erste Ergebnis war eine systematische Recherche der Normen, die die Spezifikation von Materialien und Aufbauten im Holzbau in Deutschland und der Schweiz regeln: ISO und GS1 auf internationaler Ebene, CEN und die harmonisierten EN-Normen in Europa, DIN, VDI und die Muster-Holzbau-Richtlinie in Deutschland, SIA, KBOB und VKF in der Schweiz. Sie umfasst Brandschutz, Akustik, Bauphysik, Tragwerksplanung, technische Zeichnungen, BIM und den kommenden digitalen Produktpass nach der Bauprodukteverordnung von 2024. Ihr praktisches Ergebnis war eine Zuordnung der internen Terminologie der Partner zu kontrollierten Normbegriffen und der Vorschlag eines gemeinsamen Vokabulars. Mehr über diese Studie lesen Sie auf meiner eigenen Seite zu [Normen für Spezifikationen im Holzbau](/de/research/timber-construction-standards).
 
 ## bSDD-Datenwörterbuch
 
