@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" role="img" aria-labelledby="bsdd-two-plane-title"><title id="bsdd-two-plane-title">Two planes: the public bSDD dictionary with properties and classes above, and the DOKwood platform below, where each company composes its own data templates from them and tightens them into requirement templates, projects fill requirement and data sheets, and the data sheet feeds the digital product passport</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 880" role="img" aria-labelledby="bsdd-two-plane-title"><title id="bsdd-two-plane-title">Two planes: the public bSDD dictionary with properties and classes above, and the DOKwood platform below, where each company composes its own data templates from them and tightens them into requirement templates, projects fill requirement and data sheets, and the data sheet feeds the digital product passport</title>
 <defs><marker id="bsdd-two-plane-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
 <rect width="100%" height="100%" fill="#000000"/>
 <rect x="80" y="80" width="1440" height="240" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
@@ -16,9 +16,9 @@
 <rect x="1013" y="250" width="300" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
 <text x="1163" y="272" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 12006-3 · data model</text>
 <line x1="392" y1="320" x2="392" y2="488" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-two-plane-arrow)"/>
-<rect x="303.25" y="347" width="177.5" height="22" rx="4" fill="#000000"/>
-<text x="392" y="363" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">compose (ISO 23387)</text>
-<rect x="80" y="400" width="1440" height="400" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="354.25" y="347" width="75.5" height="22" rx="4" fill="#000000"/>
+<text x="392" y="363" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">compose</text>
+<rect x="80" y="400" width="1440" height="420" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
 <rect x="96" y="386" width="224" height="28" rx="4" fill="#000000"/>
 <text x="108" y="406" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">DOKwood platform</text>
 <rect x="104" y="450" width="676" height="160" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
@@ -48,10 +48,12 @@
 <line x1="1138" y1="535" x2="1176" y2="535" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-two-plane-arrow)"/>
 <rect x="1119.25" y="510" width="75.5" height="22" rx="4" fill="#000000"/>
 <text x="1157" y="526" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">satisfy</text>
-<rect x="104" y="680" width="1392" height="90" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
-<text x="800" y="719" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Digital Product Passport</text>
-<text x="800" y="745" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">JSON-LD · persistent identifier · data carrier  |  EU CPR 2024 / ESPR, mandatory from about 2028</text>
-<line x1="1325" y1="580" x2="1325" y2="678" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-two-plane-arrow)"/>
-<rect x="1345.75" y="620" width="58.5" height="22" rx="4" fill="#000000"/>
-<text x="1375" y="636" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">feeds</text>
+<rect x="470" y="636" width="660" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="800" y="658" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO 23387 · data templates: the data model of both stores, leading to the DPP</text>
+<rect x="104" y="700" width="1392" height="90" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<text x="800" y="739" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Digital Product Passport</text>
+<text x="800" y="765" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">JSON-LD · persistent identifier · data carrier  |  EU CPR 2024 / ESPR, mandatory from about 2028</text>
+<line x1="1325" y1="580" x2="1325" y2="698" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-two-plane-arrow)"/>
+<rect x="1345.75" y="630" width="58.5" height="22" rx="4" fill="#000000"/>
+<text x="1375" y="646" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">feeds</text>
 </svg>

@@ -6,7 +6,7 @@ import { svgDoc, frame, tile, chip, arrow, write } from "../../svg-kit.mjs";
 
 const ID = "bsdd-two-plane";
 const W = 1600;
-const H = 860;
+const H = 880;
 const X0 = 80;
 const CW = W - 2 * X0;
 const b = [];
@@ -29,13 +29,13 @@ b.push(chip(cols[1] + colW / 2 - 150, chipRow, "ISO 12006-3 · data model", { w:
 
 // Plane 2: DOKwood platform
 const p2y = 400;
-const p2h = 400;
+const p2h = 420;
 // compose arrow from the public properties straight down into the company data template.
 // Drawn before the Plane 2 frames; x chosen to clear the frame title chips.
 const sx = X0 + 24 + 24 + ((CW - 48 - 40) / 2 - 48 - 40) / 2 - 30; // near the right edge of the company template tile
 const sy1 = p1y + p1h;
 const sy2 = p2y + 50 + 40 - 2; // top of the company template tile
-b.push(arrow(ID, sx, sy1, sx, sy2, "compose (ISO 23387)", { labelDx: 0, labelDy: (p1y + p1h + p2y) / 2 - (sy1 + sy2) / 2 }));
+b.push(arrow(ID, sx, sy1, sx, sy2, "compose", { labelDx: 0, labelDy: (p1y + p1h + p2y) / 2 - (sy1 + sy2) / 2 }));
 b.push(frame(X0, p2y, CW, p2h, "DOKwood platform"));
 const fw = (CW - 48 - 40) / 2;
 const f1x = X0 + 24;
@@ -54,10 +54,13 @@ b.push(arrow(ID, f1x + 24 + half, r + 45, f1x + 24 + half + 38, r + 45, "tighten
 b.push(arrow(ID, f1x + 24 + 2 * half + 40, r + 45, f2x + 22, r + 45, "tighten", { labelDy: -12 })); // Requirement template → Requirement sheet
 b.push(arrow(ID, f2x + 24 + half, r + 45, f2x + 24 + half + 38, r + 45, "satisfy", { labelDy: -12 }));
 
+// ISO 23387 is the substrate of the whole platform data model (company dictionary and project store)
+b.push(chip(X0 + CW / 2 - 330, fy + fh + 26, "ISO 23387 · data templates: the data model of both stores, leading to the DPP", { w: 660 }));
+
 // DPP band: full-width strip below both frames; the data sheet feeds it
 const dppX = f1x;
 const dppW = f2x + fw - f1x;
-const dppY = p2y + 280;
+const dppY = p2y + 300;
 b.push(tile(dppX, dppY, dppW, 90, "Digital Product Passport", "JSON-LD · persistent identifier · data carrier  |  EU CPR 2024 / ESPR, mandatory from about 2028", { accent: true }));
 const dsx = f2x + 24 + half + 40 + half / 2; // centre of the Data sheet tile
 b.push(arrow(ID, dsx, r + 90, dsx, dppY - 2, "feeds", { labelDx: 50, labelDy: 4 }));
