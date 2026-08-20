@@ -1,6 +1,6 @@
 ---
-Cover: /assets/content/research/timber-construction-standards/timber-construction-standards-cover.png
-CoverAlt: "Zeitleiste der Bauprodukteverordnung von 2024 vom Inkrafttreten im Dezember 2024 bis 2030, mit der auslaufenden Verordnung parallel dazu."
+Cover: /assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg
+CoverAlt: "Die Bezeichnung DIN EN ISO 19650-1 in ihre Teile zerlegt: nationales Gremium, europäische Norm, internationale Norm sowie Nummer und Teil."
 CoverFit: contain
 Description: "Eine systematische Recherche der ISO-, GS1-, CEN-, DIN-, SIA-, KBOB- und ÖNORM-Normen, die die Spezifikation von Materialien und mehrschichtigen Aufbauten im Holzbau regeln, von Brandschutz und Bauphysik bis zu BIM-Datenvorlagen und dem digitalen Produktpass. Arbeitspaket 1.2 des Projekts DOKwood."
 Name: Normen für Spezifikationen im Holzbau

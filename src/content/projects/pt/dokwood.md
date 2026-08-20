@@ -31,7 +31,7 @@ O DOKwood é um projeto de pesquisa e uma plataforma de software para a document
 
 O projeto é financiado pelo ZIM (Alemanha) e pela Innosuisse (Suíça) no âmbito do programa IraSME. O consórcio reúne uma universidade e uma construtora de madeira em cada país: a Hochschule München com a Gumpp & Maier, e a Berner Fachhochschule com a Schärholzbau. De fevereiro de 2025 a junho de 2026 trabalhei nele como pesquisador associado na Hochschule München, nas partes que tornam a plataforma interoperável: a sua base normativa, o seu dicionário de dados e as interfaces com as ferramentas que os construtores de madeira já usam.
 
-![Logotipo do DOKwood: uma grade de cubos isométricos, um deles destacado, emoldurada por cantoneiras.](../../../assets/content/projects/dokwood/dokwood-logo.png)
+![Logotipo do DOKwood: uma grade de cubos isométricos, um deles destacado, emoldurada por cantoneiras.](../../../assets/content/projects/dokwood/dokwood-logo-dark.png)
 
 ![Quatro faixas empilhadas: normas na base, o vocabulário bSDD acima, a plataforma DOKwood no meio e as interfaces Revit, Cadwork e MCP no topo, ligadas por setas de importação, verificação e sincronização.](/assets/content/projects/dokwood/dokwood-architecture.svg)
 

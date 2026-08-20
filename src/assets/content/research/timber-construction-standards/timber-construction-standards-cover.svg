@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="standards-cover-title"><title id="standards-cover-title">The designation DIN EN ISO 19650-1 broken into its parts: the national body, the European standard, the international standard, and the number and part; below, the bodies covered by the review</title>
+<defs><marker id="standards-cover-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<text x="240" y="400" text-anchor="middle" fill="#f4f4f5" font-size="120" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="-0.02em">DIN</text>
+<path d="M 108 450 v 18 h 264 v -18" fill="none" stroke="#a1a1aa" stroke-width="2"/>
+<line x1="240" y1="468" x2="240" y2="490" stroke="#a1a1aa" stroke-width="2"/>
+<text x="240" y="528" text-anchor="middle" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">national body</text>
+<text x="240" y="560" text-anchor="middle" fill="#71717a" font-size="17" font-family="ui-sans-serif, system-ui, sans-serif">DE · CH: SN · AT: ÖNORM</text>
+<text x="530" y="400" text-anchor="middle" fill="#f4f4f5" font-size="120" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="-0.02em">EN</text>
+<path d="M 428 450 v 18 h 204 v -18" fill="none" stroke="#a1a1aa" stroke-width="2"/>
+<line x1="530" y1="468" x2="530" y2="490" stroke="#a1a1aa" stroke-width="2"/>
+<text x="530" y="528" text-anchor="middle" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">European standard</text>
+<text x="530" y="560" text-anchor="middle" fill="#71717a" font-size="17" font-family="ui-sans-serif, system-ui, sans-serif">CEN · harmonised on EU mandate</text>
+<text x="820" y="400" text-anchor="middle" fill="#f4f4f5" font-size="120" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="-0.02em">ISO</text>
+<path d="M 688 450 v 18 h 264 v -18" fill="none" stroke="#a1a1aa" stroke-width="2"/>
+<line x1="820" y1="468" x2="820" y2="490" stroke="#a1a1aa" stroke-width="2"/>
+<text x="820" y="528" text-anchor="middle" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">international standard</text>
+<text x="820" y="560" text-anchor="middle" fill="#71717a" font-size="17" font-family="ui-sans-serif, system-ui, sans-serif">ISO / IEC · Geneva</text>
+<text x="1250" y="400" text-anchor="middle" fill="#f4f4f5" font-size="120" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="-0.02em">19650-1</text>
+<path d="M 1008 450 v 18 h 484 v -18" fill="none" stroke="#a1a1aa" stroke-width="2"/>
+<line x1="1250" y1="468" x2="1250" y2="490" stroke="#a1a1aa" stroke-width="2"/>
+<text x="1250" y="528" text-anchor="middle" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">number and part</text>
+<text x="1250" y="560" text-anchor="middle" fill="#71717a" font-size="17" font-family="ui-sans-serif, system-ui, sans-serif">information management with BIM</text>
+<text x="800" y="200" text-anchor="middle" fill="#71717a" font-size="20" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.2em">HOW A STANDARD GETS ITS NAME</text>
+<rect x="229.5" y="700" width="122.5" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="290.75" y="722" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ISO · GS1</text>
+<rect x="366" y="700" width="112" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="422" y="722" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CEN · EN</text>
+<rect x="492" y="700" width="196" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="590" y="722" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">DIN · VDI · DIBt</text>
+<rect x="702" y="700" width="259" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="831.5" y="722" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">SNV · SIA · KBOB · VKF</text>
+<rect x="975" y="700" width="206.5" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="1078.25" y="722" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">ASI · OIB · ÖNORM</text>
+<rect x="1195.5" y="700" width="175" height="34" rx="17" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="1283" y="722" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">CPR 2024 · DPP</text>
+</svg>

@@ -1,6 +1,6 @@
 ---
-Cover: /assets/content/research/timber-construction-standards/timber-construction-standards-cover.png
-CoverAlt: "Timeline of the 2024 Construction Products Regulation from entry into force in December 2024 to 2030, with the outgoing regulation running in parallel."
+Cover: /assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg
+CoverAlt: "The designation DIN EN ISO 19650-1 broken into its parts: national body, European standard, international standard, and number and part."
 CoverFit: contain
 Description: "A systematic review of the ISO, GS1, CEN, DIN, SIA, KBOB and ÖNORM standards that govern how materials and multilayer buildups are specified in timber construction, from fire and building physics to BIM data templates and the digital product passport. Work package 1.2 of the DOKwood project."
 Name: Standards for timber construction specifications
