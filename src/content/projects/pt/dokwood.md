@@ -1,5 +1,5 @@
 ---
-Cover: /assets/content/projects/dokwood/dokwood-cover.png
+Cover: /assets/content/projects/dokwood/dokwood-cover-laptop.png
 CoverAlt: "A plataforma DOKwood em um laptop, mostrando a estrutura de camadas de uma parede de madeira com 320 mm: sete camadas, um desenho de corte e a tabela de camadas."
 Description: "O DOKwood é uma plataforma web para definir, verificar, versionar e trocar composições construtivas multicamadas em madeira. Como pesquisador associado na Hochschule München, trabalhei na sua base normativa, no seu dicionário de dados bSDD e nas suas interfaces com Revit, Cadwork e MCP."
 Name: DOKwood
