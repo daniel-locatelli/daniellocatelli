@@ -34,7 +34,7 @@ The [DOKwood](/projects/dokwood) platform exchanges buildups with Revit, Cadwork
 
 The dictionary is published under the Hochschule München organisation code as `hm/dokwood` and went through thirteen versions, v0.1 to v0.13, during my time there.
 
-v0.13, the current published content, holds 32 classes (15 object classes and 17 groups of properties), 129 properties, 349 class-to-property links, 100 allowed values and 65 property relations. Two of those versions were driven by the interfaces: v0.12 closed the property surface the Revit add-in needs (layer function, core boundary, host category via IFC entity, material colour and hatch) and v0.13 closed the one the Cadwork plugin needs for element construction. Each tool gets its own group of properties, so a plugin can ask for exactly the bundle it consumes.
+Two of those versions were driven by the interfaces: v0.12 closed the property surface the Revit add-in needs (layer function, core boundary, host category via IFC entity, material colour and hatch) and v0.13 closed the one the Cadwork plugin needs for element construction. Each tool gets its own group of properties, so a plugin can ask for exactly the bundle it consumes.
 
 ## ISO 23387 data templates
 

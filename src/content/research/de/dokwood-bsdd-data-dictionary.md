@@ -34,7 +34,7 @@ Die Plattform [DOKwood](/de/projects/dokwood) tauscht Aufbauten mit Revit, Cadwo
 
 Das Wörterbuch ist unter dem Organisationscode der Hochschule München als `hm/dokwood` veröffentlicht und durchlief während meiner Zeit dort dreizehn Versionen, v0.1 bis v0.13.
 
-v0.13, der aktuell veröffentlichte Inhalt, umfasst 32 Klassen (15 Objektklassen und 17 Merkmalsgruppen), 129 Merkmale, 349 Klassen-Merkmal-Verknüpfungen, 100 zulässige Werte und 65 Merkmalsbeziehungen. Zwei dieser Versionen wurden von den Schnittstellen getrieben: v0.12 schloss die Merkmalsoberfläche, die das Revit-Add-in braucht (Schichtfunktion, Kerngrenze, Hostkategorie über die IFC-Entität, Materialfarbe und -schraffur), und v0.13 die, die das Cadwork-Plugin für den Elementbau braucht. Jedes Werkzeug bekommt seine eigene Merkmalsgruppe, sodass ein Plugin genau das Bündel abfragen kann, das es verarbeitet.
+Zwei dieser Versionen wurden von den Schnittstellen getrieben: v0.12 schloss die Merkmalsoberfläche, die das Revit-Add-in braucht (Schichtfunktion, Kerngrenze, Hostkategorie über die IFC-Entität, Materialfarbe und -schraffur), und v0.13 die, die das Cadwork-Plugin für den Elementbau braucht. Jedes Werkzeug bekommt seine eigene Merkmalsgruppe, sodass ein Plugin genau das Bündel abfragen kann, das es verarbeitet.
 
 ## Datenvorlagen nach ISO 23387
 
