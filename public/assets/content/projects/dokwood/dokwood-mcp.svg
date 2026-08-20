@@ -23,8 +23,8 @@
 <text x="1360" y="276" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Buildups and catalogue</text>
 <text x="1360" y="302" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">layers, versions, tenant catalogue</text>
 <rect x="1212" y="354" width="296" height="96" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="1360" y="396" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Projects and dictionary</text>
-<text x="1360" y="422" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">requirements, U-values, classes, properties</text>
+<text x="1360" y="396" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Projects and calculations</text>
+<text x="1360" y="422" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">requirements, U-values, dictionary</text>
 <rect x="520" y="114" width="560" height="336" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
 <text x="800" y="188" text-anchor="middle" fill="#f4f4f5" font-size="28" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif">DOKwood MCP server</text>
 <text x="800" y="218" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">proposal · thin, stateless adapter</text>

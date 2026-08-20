@@ -34,7 +34,7 @@ const clients = [
 const platform = [
   ["Products and data sheets", "search, compare, certificates"],
   ["Buildups and catalogue", "layers, versions, tenant catalogue"],
-  ["Projects and dictionary", "requirements, U-values, classes, properties"],
+  ["Projects and calculations", "requirements, U-values, dictionary"],
 ];
 const tw = colW - 64;
 const tileY = (i) => ty0 + i * (tileH + tileGap);
