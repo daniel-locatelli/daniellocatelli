@@ -61,7 +61,7 @@ Public agent skills live in `public/.well-known/agent-skills/<name>/SKILL.md` an
 
 ## Website Self-Description
 
-The site describes its own technology in `src/content/projects/{en,pt,de}/portfolio-website.md`. **After any meaningful change to the website itself (adding or removing a feature, changing the stack, hosting, AI pipeline, performance work, etc.), update that content in all three locales** so the page stays an accurate account of how the site is built. Then run `/sync-knowledge` as with any content change.
+The site describes its own technology in `src/content/projects/{en,pt,de}/portfolio-website.md`. **After any meaningful change to the website itself (adding or removing a feature, changing the stack, hosting, AI pipeline, performance work, etc.), update that content in all three locales** so the page stays an accurate account of how the site is built. Then ask whether to run `/sync-knowledge`, as with any content change.
 
 ## Environment Variables
 
@@ -71,7 +71,7 @@ Required in `.env`:
 
 ## AI Chat Knowledge Pipeline
 
-The HeroChat assistant is powered by vector embeddings in Supabase (Voyage AI, 1024-dim). **After any content change in `src/content/`, run `/sync-knowledge`** to regenerate knowledge files and upload fresh embeddings. This also checks whether AI model IDs in `src/config/ai.ts` are still current.
+The HeroChat assistant is powered by vector embeddings in Supabase (Voyage AI, 1024-dim). **After any content change in `src/content/`, ask the user whether to run `/sync-knowledge`** (it regenerates knowledge files and re-embeds all entries, which takes several minutes; batch small edits and skip it for changes that do not alter prose, such as images or alt text). This also checks whether AI model IDs in `src/config/ai.ts` are still current.
 
 The knowledge pipeline generates:
 - Individual content pages and CV entries (per locale)
