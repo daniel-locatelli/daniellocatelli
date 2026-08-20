@@ -46,7 +46,7 @@ Follow existing patterns. Common fields: `Name`, `Cover`, `CoverAlt`, `Descripti
 
 ### Standards research page (about 700 words)
 
-Abstract-level summary of `report.md`: scope and organisations (ISO/IEC, GS1, CEN, DIN, SIA, KBOB, Austrian level); method (ICS-based systematic identification, application and process baseline review, terminology mapping); standards by domain (materials and products; structural and fire design; buildup physics: fire, acoustic, thermal/hygrothermal; technical drawings; digitalisation: BIM, ISO 12006-3 / 23386 / 23387, DPP and CPR-2024); findings and the proposed internal vocabulary. Reuse the 6 PNG figures with captions. Closing paragraph bridges to the bSDD page.
+Abstract-level summary of `report.md`: scope and organisations (ISO/IEC, GS1, CEN, DIN, SIA, KBOB); method (ICS-based systematic identification, application and process baseline review, terminology mapping); standards by domain (materials and products; structural and fire design; buildup physics: fire, acoustic, thermal/hygrothermal; technical drawings; digitalisation: BIM, ISO 12006-3 / 23386 / 23387, DPP and CPR-2024); findings and the proposed internal vocabulary. Reuse the 6 PNG figures with captions. Closing paragraph bridges to the bSDD page.
 
 ### bSDD research page (about 800 words)
 

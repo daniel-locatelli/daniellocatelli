@@ -2,7 +2,7 @@
 Cover: /assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg
 CoverAlt: "A designação DIN EN ISO 19650-1 decomposta nas suas partes: organismo nacional, norma europeia, norma internacional, e número e parte."
 CoverFit: contain
-Description: "Uma revisão sistemática das normas ISO, GS1, CEN, DIN, SIA, KBOB e ÖNORM que regem a especificação de materiais e composições multicamadas na construção em madeira, do incêndio e da física das construções aos modelos de dados BIM e ao passaporte digital de produto. Pacote de trabalho 1.2 do projeto DOKwood."
+Description: "Uma revisão sistemática das normas ISO, GS1, CEN, DIN, SIA e KBOB que regem a especificação de materiais e composições multicamadas na construção em madeira, do incêndio e da física das construções aos modelos de dados BIM e ao passaporte digital de produto. Pacote de trabalho 1.2 do projeto DOKwood."
 Name: Normas para especificações em construção de madeira
 Tags:
   - Normas
@@ -21,7 +21,7 @@ Link:
   Href: /pt/projects/dokwood
 ---
 
-Antes que uma plataforma possa documentar composições de madeira de um modo que outras empresas e ferramentas entendam, alguém precisa responder a uma pergunta simples: quais normas definem as palavras, os valores e os ensaios? Este pacote de trabalho do projeto [DOKwood](/pt/projects/dokwood) respondeu a essa pergunta para a indústria da madeira alemã e suíça, com a Áustria como terceiro pilar da comparação DACH. O resultado é um relatório que mapeia o panorama desde os organismos internacionais até os regulamentos cantonais de incêndio, e um vocabulário interno proposto, ancorado em termos normativos governados.
+Antes que uma plataforma possa documentar composições de madeira de um modo que outras empresas e ferramentas entendam, alguém precisa responder a uma pergunta simples: quais normas definem as palavras, os valores e os ensaios? Este pacote de trabalho do projeto [DOKwood](/pt/projects/dokwood) respondeu a essa pergunta para a indústria da madeira alemã e suíça. O resultado é um relatório que mapeia o panorama desde os organismos internacionais até os regulamentos cantonais de incêndio, e um vocabulário interno proposto, ancorado em termos normativos governados.
 
 ## Método
 
@@ -31,9 +31,9 @@ A identificação em si foi sistemática, não anedótica. A Classificação Int
 
 ## Quem escreve as regras
 
-O relatório dedica um capítulo às organizações, porque o seu alcance explica por que o mesmo tema pode ter três documentos diferentes em três países. No nível internacional, a ISO e a IEC produzem normas voluntárias que ganham peso legal quando regulamentos ou contratos as citam, enquanto a GS1 fornece a camada de identificação (GTIN, GLN, GS1 Digital Link) que liga um produto físico ao seu registro digital. Na Europa, o CEN desenvolve normas harmonizadas por mandato da Comissão Europeia; aplicar uma delas confere presunção de conformidade com o direito da UE, e os organismos nacionais devem publicá-la e retirar as normas nacionais conflitantes.
+O relatório dedica um capítulo às organizações, porque o seu alcance explica por que o mesmo tema pode ter documentos diferentes na Alemanha e na Suíça. No nível internacional, a ISO e a IEC produzem normas voluntárias que ganham peso legal quando regulamentos ou contratos as citam, enquanto a GS1 fornece a camada de identificação (GTIN, GLN, GS1 Digital Link) que liga um produto físico ao seu registro digital. Na Europa, o CEN desenvolve normas harmonizadas por mandato da Comissão Europeia; aplicar uma delas confere presunção de conformidade com o direito da UE, e os organismos nacionais devem publicá-la e retirar as normas nacionais conflitantes.
 
-A Alemanha sobrepõe a DIN, as diretrizes VDI e o DIBt, cuja Muster-Holzbau-Richtlinie leva as regras de incêndio e estabilidade da madeira para os códigos de obras estaduais. A Suíça adota as normas EN por meio da SNV, mas delega a autoridade real às normas SIA, que misturam requisitos técnicos e contratuais, às recomendações da KBOB para clientes públicos e aos regulamentos de incêndio da VKF, que são juridicamente vinculantes. A Áustria harmoniza por meio das diretrizes OIB adotadas pelos nove estados e mantém a sua própria série de física das construções (ÖNORM B 8110, B 8115) e o banco de dados ambiental baubook.
+A Alemanha sobrepõe a DIN, as diretrizes VDI e o DIBt, cuja Muster-Holzbau-Richtlinie leva as regras de incêndio e estabilidade da madeira para os códigos de obras estaduais. A Suíça adota as normas EN por meio da SNV, mas delega a autoridade real às normas SIA, que misturam requisitos técnicos e contratuais, às recomendações da KBOB para clientes públicos e aos regulamentos de incêndio da VKF, que são juridicamente vinculantes.
 
 ![Decomposição de uma designação de norma alemã, DIN EN ISO 19650-1, nas suas partes nacional, europeia e internacional.](../../../assets/content/research/timber-construction-standards/figure-1-german-standard-designation.png)
 

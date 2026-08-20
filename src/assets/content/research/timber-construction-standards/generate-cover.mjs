@@ -11,7 +11,7 @@ const b = [];
 
 // The designation, one token per column, with a bracket and a label under each.
 const tokens = [
-  { text: "DIN", label: "national body", sub: "DE · CH: SN · AT: ÖNORM" },
+  { text: "DIN", label: "national body", sub: "DE · CH: SN" },
   { text: "EN", label: "European standard", sub: "CEN · harmonised on EU mandate" },
   { text: "ISO", label: "international standard", sub: "ISO / IEC · Geneva" },
   { text: "19650-1", label: "number and part", sub: "information management with BIM" },
@@ -36,7 +36,7 @@ tokens.forEach((t, i) => {
 
 // Eyebrow and footer chips
 b.push(`<text x="${W / 2}" y="200" text-anchor="middle" fill="${C.dim}" font-size="20" font-family="${MONO}" letter-spacing="0.2em">HOW A STANDARD GETS ITS NAME</text>`);
-const chips = ["ISO · GS1", "CEN · EN", "DIN · VDI · DIBt", "SNV · SIA · KBOB · VKF", "ASI · OIB · ÖNORM", "CPR 2024 · DPP"];
+const chips = ["ISO · GS1", "CEN · EN", "DIN · VDI · DIBt", "SNV · SIA · KBOB · VKF", "CPR 2024 · DPP"];
 const cw = chips.map((c) => 28 + c.length * 10.5);
 const ctotal = cw.reduce((a, w) => a + w, 0) + 14 * (chips.length - 1);
 let cx0 = (W - ctotal) / 2;
