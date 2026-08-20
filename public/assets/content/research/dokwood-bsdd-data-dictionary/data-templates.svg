@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" role="img" aria-labelledby="bsdd-templates-title"><title id="bsdd-templates-title">Left: Wall, Roof and Slab are kinds of Buildup, a System Data Template composed of layers and products, where a product is a Product Data Template. Right: a data template lists properties, a requirement sheet tightens them to required values, and a data sheet satisfies them with declared values</title>
+<defs><marker id="bsdd-templates-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<rect x="100" y="80" width="700" height="560" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="116" y="66" width="411.5" height="28" rx="4" fill="#000000"/>
+<text x="128" y="86" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">COMPOSITION · ISO 23387 HasPart</text>
+<rect x="124" y="140" width="200" height="72" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="224" y="170" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Wall</text>
+<text x="224" y="196" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">IfcWall</text>
+<rect x="350" y="140" width="200" height="72" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="450" y="170" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Roof</text>
+<text x="450" y="196" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">IfcRoof</text>
+<rect x="576" y="140" width="200" height="72" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="676" y="170" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Slab</text>
+<text x="676" y="196" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">IfcSlab</text>
+<rect x="290" y="280" width="320" height="80" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<text x="450" y="314" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Buildup</text>
+<text x="450" y="340" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">System Data Template (SDT)</text>
+<line x1="224" y1="212" x2="340" y2="278" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-templates-arrow)"/>
+<line x1="450" y1="212" x2="450" y2="278" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-templates-arrow)"/>
+<rect x="465" y="232" width="50" height="22" rx="4" fill="#000000"/>
+<text x="490" y="248" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">is a</text>
+<line x1="676" y1="212" x2="560" y2="278" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-templates-arrow)"/>
+<rect x="290" y="420" width="320" height="72" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="450" y="450" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Layer</text>
+<text x="450" y="476" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">layer data template, open question</text>
+<line x1="450" y1="360" x2="450" y2="418" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-templates-arrow)"/>
+<rect x="482.25" y="380" width="75.5" height="22" rx="4" fill="#000000"/>
+<text x="520" y="396" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">HasPart</text>
+<rect x="290" y="540" width="320" height="72" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<text x="450" y="570" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Product</text>
+<text x="450" y="596" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">Product Data Template (PDT)</text>
+<line x1="450" y1="492" x2="450" y2="538" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-templates-arrow)"/>
+<rect x="482.25" y="506" width="75.5" height="22" rx="4" fill="#000000"/>
+<text x="520" y="522" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">HasPart</text>
+<rect x="880" y="80" width="620" height="560" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="896" y="66" width="299" height="28" rx="4" fill="#000000"/>
+<text x="908" y="86" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">FROM TEMPLATE TO SHEET</text>
+<rect x="904" y="140" width="572" height="80" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1190" y="174" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Data template</text>
+<text x="1190" y="200" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">which properties describe this object · no values</text>
+<rect x="904" y="290" width="572" height="80" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1190" y="324" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Requirement sheet</text>
+<text x="1190" y="350" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">required values · Rw ≥ 58 dB, REI 90, U ≤ 0.15</text>
+<rect x="904" y="440" width="572" height="80" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<text x="1190" y="474" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Data sheet</text>
+<text x="1190" y="500" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">declared or measured values · Rw = 59 dB</text>
+<line x1="1190" y1="220" x2="1190" y2="288" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-templates-arrow)"/>
+<rect x="1212.25" y="245" width="75.5" height="22" rx="4" fill="#000000"/>
+<text x="1250" y="261" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">tighten</text>
+<line x1="1190" y1="370" x2="1190" y2="438" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-templates-arrow)"/>
+<rect x="1208.25" y="395" width="75.5" height="22" rx="4" fill="#000000"/>
+<text x="1246" y="411" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">satisfy</text>
+<text x="1190" y="570" text-anchor="middle" fill="#71717a" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">generic ⊇ requirement ⊇ value</text>
+<text x="1190" y="600" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-sans-serif, system-ui, sans-serif">a fabricated buildup's data sheet is what the digital product passport carries</text>
+</svg>
