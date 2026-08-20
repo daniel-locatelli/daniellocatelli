@@ -38,23 +38,21 @@ const rw = 620;
 b.push(frame(rx, 80, rw, 560, "FROM TEMPLATE TO SHEET"));
 const bw = rw - 48;
 const bx = rx + 24;
-const rows = [130, 255, 380, 505];
+const rows = [150, 300, 450];
 const th = 72;
 b.push(tile(bx, rows[0], bw, th, "Data template", "which properties describe this object · no values"));
-b.push(tile(bx, rows[1], bw, th, "Requirement template", "company requirements · Rw ≥ 56 dB"));
-b.push(tile(bx, rows[2], bw, th, "Requirement sheet", "project requirements · Rw ≥ 58 dB, REI 90, U ≤ 0.15"));
-b.push(tile(bx, rows[3], bw, th, "Data sheet", "declared or measured values · Rw = 59 dB", { accent: true }));
+b.push(tile(bx, rows[1], bw, th, "Requirement sheet", "required values, company-wide or per project · Rw ≥ 56 dB, REI 90"));
+b.push(tile(bx, rows[2], bw, th, "Data sheet", "declared or measured values · Rw = 59 dB", { accent: true }));
 const mx = rx + rw / 2;
 b.push(arrow(ID, mx, rows[0] + th, mx, rows[1] - 2, "tighten", { labelDx: leftAlign("tighten", 14), labelDy: 4 }));
-b.push(arrow(ID, mx, rows[1] + th, mx, rows[2] - 2, "tighten", { labelDx: leftAlign("tighten", 14), labelDy: 4 }));
-b.push(arrow(ID, mx, rows[2] + th, mx, rows[3] - 2, "satisfy", { labelDx: leftAlign("satisfy", 14), labelDy: 4 }));
+b.push(arrow(ID, mx, rows[1] + th, mx, rows[2] - 2, "satisfy", { labelDx: leftAlign("satisfy", 14), labelDy: 4 }));
 b.push(note(mx, 612, "generic ⊇ requirement ⊇ value", { anchor: "middle" }));
 
 const svg = svgDoc({
   w: W,
   h: H,
   id: ID,
-  title: "Left: Wall, Roof and Slab are kinds of Buildup, a System Data Template composed of layers and products, where a product is a Product Data Template. Right: a data template lists properties, a requirement template and then a requirement sheet tighten them to required values, and a data sheet satisfies them with declared values",
+  title: "Left: Wall, Roof and Slab are kinds of Buildup, a System Data Template composed of layers and products, where a product is a Product Data Template. Right: a data template lists properties, a requirement sheet tightens them to required values, and a data sheet satisfies them with declared values",
   body: b,
 });
 write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/dokwood-bsdd-data-dictionary/data-templates.svg"), svg);
