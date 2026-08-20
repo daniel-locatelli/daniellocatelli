@@ -11,6 +11,9 @@ Tags:
   - Holzbau
 Authors:
   - Daniel Nunes Locatelli
+  - Fabian Scheurer
+  - Sebastián Hernández-Maetschl
+  - Joel Karolin
 Organization: Hochschule München
 City:
   - München

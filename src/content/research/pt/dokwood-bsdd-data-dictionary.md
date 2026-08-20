@@ -11,6 +11,9 @@ Tags:
   - Construção em madeira
 Authors:
   - Daniel Nunes Locatelli
+  - Fabian Scheurer
+  - Sebastián Hernández-Maetschl
+  - Joel Karolin
 Organization: Universidade de Ciências Aplicadas de Munique
 City:
   - Munique

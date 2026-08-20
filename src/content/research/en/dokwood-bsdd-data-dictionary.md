@@ -11,6 +11,9 @@ Tags:
   - Timber construction
 Authors:
   - Daniel Nunes Locatelli
+  - Fabian Scheurer
+  - Sebastián Hernández-Maetschl
+  - Joel Karolin
 Organization: Munich University of Applied Sciences
 City:
   - Munich
