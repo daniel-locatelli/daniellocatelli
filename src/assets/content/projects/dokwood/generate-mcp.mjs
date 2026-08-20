@@ -32,9 +32,9 @@ const clients = [
   ["Agents and automation", "n8n, custom agents"],
 ];
 const platform = [
-  ["Products and data sheets", "search, compare, certificates"],
-  ["Buildups and catalogue", "layers, versions, tenant catalogue"],
-  ["Projects and calculations", "requirements, U-values, dictionary"],
+  ["Projects and buildups", "requirements, versions, compare"],
+  ["Layers and products", "data sheets, certificates, search"],
+  ["Calculations and dictionary", "U-values, classes, properties"],
 ];
 const tw = colW - 64;
 const tileY = (i) => ty0 + i * (tileH + tileGap);
@@ -72,7 +72,7 @@ const svg = svgDoc({
   w: W,
   h: H,
   id: ID,
-  title: "Three columns: AI clients (chat interfaces, IDEs and coding agents, automation) on the left, the proposed DOKwood MCP server in the centre with its tools, resources, prompts and auth bridge, and the DOKwood platform on the right with products, buildups, projects, calculations and the data dictionary; two-way arrows labelled MCP and GraphQL connect them",
+  title: "Three columns: AI clients (chat interfaces, IDEs and coding agents, automation) on the left, the proposed DOKwood MCP server in the centre with its tools, resources, prompts and auth bridge, and the DOKwood platform on the right with projects and buildups, layers and products, calculations and the data dictionary; two-way arrows labelled MCP and GraphQL connect them",
   body: b,
 });
 write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/projects/dokwood/dokwood-mcp.svg"), svg);
