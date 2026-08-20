@@ -2,10 +2,10 @@ URL: https://daniellocatelli.com/full-cv
 
 # Daniel Locatelli – Timeline
 
-July 2026 – Current | [Work] | Doctoral Researcher | Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland
+July 2026 – Current | [Work] | PhD Candidate | Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland
 July 2026 | [Education] | Doctor of Sciences | Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland
 May 2025 | [Teaching] | Working with Geographic Data in Grasshopper | Munich University of Applied Sciences | Munich
-February 2025 – June 2026 | [Work] | Research Associate (60%) | Munich University of Applied Sciences | Munich, Germany
+February 2025 – June 2026 | [Work] | Research Associate | Munich University of Applied Sciences | Munich, Germany
 July 2024 | [Teaching] | Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings | Forum Holzbau | Fellbach, Germany
 July 2024 | [Certification] | CS50's Introduction to Computer Science | Harvard University & edX.org
 July 2024 | [Certification] | CS50's Introduction to Databases with SQL | Harvard University & edX.org

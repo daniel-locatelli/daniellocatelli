@@ -10,7 +10,7 @@ Place: Online
 Date: April 2024
 Link: https://daniellocatelli.com
 
-This is the website you are reading right now. It started in April 2024 as a small Astro site pulling its pages from Notion, and it has since grown into a playground for the way I like to build things: fast static pages, content that is easy for both humans and AI tools to read, and a few interactive pieces where they add something.
+This is the website you are reading right now. It started in April 2024 as a small Astro site and has since grown into a playground for the way I like to build things: fast static pages, content that is easy for both humans and AI tools to read, and a few interactive pieces to spice things&nbsp;up.
 
 ## Tech Stack
 
@@ -20,15 +20,13 @@ This is the website you are reading right now. It started in April 2024 as a sma
 - [**Three.js**](https://threejs.org/) for the geodesic sphere.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) with Static Assets for hosting, edge caching, and the agent-facing endpoints; prerendered pages are served straight from the edge, and the Worker only runs for the chat and MCP endpoints.
 
-## From Notion to markdown, with Claude Code as CMS
+## Claude Code as content management system
 
-The first version used the Notion API as a headless CMS, the same setup I had built for the [BuildSystems website](/projects/buildsystems-website). Notion is pleasant to write in, but every page had to travel through an API, a block-to-HTML converter, and an image cache before it became a web page. More importantly, the content was locked behind an API that AI coding tools could not simply open and read.
+All the content lives as plain text files (written in [markdown](https://commonmark.org/help/)) in the same place as the code, the [public repository on GitHub](https://github.com/daniel-locatelli/daniellocatelli): one small file per project, research entry, publication, teaching item, or CV section, with a short header that holds the facts (title, dates, tags) above the text of the page, and a copy in each of the three languages. There is no database and no separate content system behind the pages.
 
-In early 2026 I migrated everything to plain markdown files inside the repository, organised as Astro Content Collections. Each project, research entry, publication, teaching item, and CV section is now a file with typed frontmatter and a markdown body, one folder per locale.
+The point of this setup is to make the content directly accessible to AI harnesses such as [Claude Code](https://claude.com/claude-code). Because the content is just files next to the code, Claude Code can read, edit, create, and cross-check entries the same way it works on source code. In practice this means I use Claude Code as the content management system (CMS), the tool you would normally log into to add a page or fix a typo: I describe a new project or a correction in a sentence, and it writes or updates the files, keeps the headers consistent, and checks the related entries in the other languages. This very page was written that way. Everything on this site is co-created, from the code to the content.
 
-The point of the change was to make the content directly accessible to AI harnesses such as [Claude Code](https://claude.com/claude-code). Because the content is just files next to the code, Claude Code can read, edit, create, and cross-check entries the same way it works on source code. In practice this means I use Claude Code as the CMS: I describe a new project or a correction in a sentence, and it writes or updates the files, keeps the frontmatter consistent, and checks the related entries in the other languages. This very page was written that way. Everything on this site is co-created, from the code to the content.
-
-The migration had a second payoff: with all the content sitting in the repository as plain text, it became straightforward to chunk it, embed it, and feed it to a language model. That is what made the AI chat on the homepage possible.
+Keeping the content in the repository as plain text has a second payoff: it is straightforward to chunk it, embed it, and feed it to a language model. That is what makes the AI chat on the homepage possible (more on it below).
 
 ## Translation by Claude Code
 
@@ -42,9 +40,9 @@ Under the hood, a knowledge pipeline turns the content collections into small te
 
 ## The geodesic sphere
 
-Below the chat sits a geodesic sphere rendered with Three.js. It follows the construction Buckminster Fuller made famous: start from an icosahedron, subdivide each face, project the vertices onto a sphere, and take the dual, so that the twelve original vertices become pentagons and everything else becomes hexagons. The sphere rotates as you scroll, tying the motion of the page to the geometry.
+Further down the home page, between the service offerings and the "Architect + Programmer" section, sits a geodesic sphere rendered with Three.js. It follows the construction Buckminster Fuller made famous: start from an icosahedron, subdivide each face, project the vertices onto a sphere, and take the dual, so that the twelve original vertices become pentagons and everything else becomes hexagons. The sphere rotates as you scroll, tying the motion of the page to the geometry. The green polygon edges are drawn as thin screen-space strips rather than raw one-pixel GL lines, so they stay smooth and evenly thick on any screen, and the faces are nudged back slightly in depth so the edges never flicker against the surface. A light fog toward the black page background fades the faces at the back of the sphere, giving the view a sense of depth.
 
-It is also a nod to my own path: geodesic and lightweight structures are a recurring theme in the projects and research on this site, from [Common Sky](/projects/common-sky-by-artengineering-for-studio-other-spaces) to my doctoral work on timber structures. Three.js is fetched right after the first screen has painted, in an idle moment, so it never sits on the critical path of the initial page load but is ready by the time you scroll down to the sphere.
+It is also a nod to my own path: geodesic and lightweight structures are a recurring theme in the projects and research on this site, from the [O3 Pavilion](/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol), where it started for real, through [Common Sky](/projects/common-sky-by-artengineering-for-studio-other-spaces) and my master thesis [Building Across Scales](/research/building-across-scales) to my doctoral work on timber structures. Three.js is fetched right after the first screen has painted, in an idle moment, so it never sits on the critical path of the initial page load but is ready by the time you scroll down to the sphere.
 
 ## Presentation mode
 
@@ -59,16 +57,24 @@ Since much of the traffic to a site like this will increasingly come from AI age
 - a `robots.txt` that explicitly welcomes AI crawlers, a sitemap with image entries, and an API catalog under `/.well-known/`;
 - a small read-only [MCP](https://modelcontextprotocol.io/) server, so that agents can query the site's content as tools;
 - [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/) discovery records (`_mcp._agents` and `_index._agents` SVCB records, DNSSEC-signed), so that agents can find the MCP endpoint from the domain name alone;
-- an [Agent Skills](https://agentskills.io/) index under `/.well-known/agent-skills/` with two `SKILL.md` files that teach an agent how to query the site via MCP or read it as markdown.
+- a skills index under `/.well-known/agent-skills/`, following Cloudflare's [Agent Skills discovery RFC](https://github.com/cloudflare/agent-skills-discovery-rfc), with two `SKILL.md` files in the [Agent Skills](https://agentskills.io/specification) format that teach an agent how to query the site via MCP or read it as markdown.
 
 Getting content negotiation to work on prerendered pages took some digging into how Cloudflare's request pipeline, Workers Static Assets, and Astro's build-time middleware interact; the solution is a zone-level Cloudflare Snippet that rewrites the URL before it reaches the Worker. On [isitagentready.com](https://isitagentready.com/), the checker that accompanies Cloudflare's [agent-readiness guide](https://blog.cloudflare.com/agent-readiness/), the site went from a 25% score to 71/100, "Level 5, Agent-Native", with full marks for discoverability, content, and bot access control. The remaining points sit in the API and auth category and are deliberately left open: OAuth discovery, protected-resource metadata, and an `auth.md` only make sense when there is something to log in to, an A2A agent card describes an agent that offers services to other agents, and WebMCP exposes in-page actions such as forms or checkouts. A read-only portfolio has none of these, so the checker keeps listing them and the site keeps declining them.
 
 ## Performance and Lighthouse
 
-The site is mostly static HTML, which already gives it a head start. On top of that, images are served in responsive sizes with explicit widths so nothing shifts while loading, body images are lazy-loaded and preloaded just ahead of the viewport, fonts are subset and preloaded, and heavy scripts are deferred until they are actually needed: Three.js waits for an idle moment and then only redraws the sphere while it is actually moving, and the chat window (with its markdown renderer and animations) is fetched only when a visitor starts typing, so the hero input itself ships just a few kilobytes of JavaScript. The logos in the skills map are served as separate lazily loaded image files rather than inlined into the page, which cut the homepage HTML from roughly 350 KB to under 70 KB, so the first paint no longer waits on hundreds of kilobytes of vector paths. Together these changes pushed the Lighthouse scores for performance, accessibility, best practices, and SEO to the top of the scale.
+Astro renders the site to mostly static HTML, which already gives it a head start. Lighthouse scores of 100 for performance, accessibility, best practices, and SEO then come from not loading what the visitor does not need yet:
+
+- Images ship in responsive sizes with explicit dimensions, lazy-loaded just ahead of the viewport; fonts are subset and preloaded.
+- Three.js loads during an idle moment and only redraws the sphere while it is moving.
+- The chat window is fetched only once a visitor starts typing, so the hero input itself ships a few kilobytes of JavaScript.
+- The skills-map logos are separate lazy-loaded images instead of inline SVG, which cut the homepage HTML from about 350 KB to under 70 KB.
+
+## A personal toolbox behind the public pages
+
+The site also hosts pages that are not linked from anywhere and exist mainly for my own use. The [short CV](/cv), the [full CV](/full-cv), and the [PhD-oriented CV](/phd-cv) live at unlisted URLs, are rendered from the same content collections as the rest of the site (so an experience or publication only ever needs to be entered once), and carry print styles so that saving the page as a PDF produces a clean, up-to-date document whenever one is needed. A couple of similarly unlisted pages serve as title cards for recorded lectures. In this way the site doubles as a small workspace, not only a showcase for visitors.
 
 ## Smaller details
 
 - **Link previews at build time.** External links listed on a page are rendered as preview cards. Their titles, descriptions, images, and favicons are fetched once and cached in the repository, so the build is reproducible and no third-party request happens at page load.
 - **Footnotes with tooltips.** Markdown footnotes get a hover tooltip showing the note inline, so readers do not have to jump to the bottom of the page.
-- **One source for every CV.** The short CV, the full CV, and the PhD-oriented CV are all rendered from the same content collections, so an experience or publication only ever needs to be entered once.

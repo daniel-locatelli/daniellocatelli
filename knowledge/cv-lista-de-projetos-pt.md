@@ -2,6 +2,11 @@ URL: https://daniellocatelli.com/pt/full-cv
 
 # Daniel Locatelli – Lista de Projetos
 
+### DOKwood
+Universidade de Ciências Aplicadas de Munique
+February 2025 – June 2026 | Software Development
+O DOKwood é uma plataforma web para definir, verificar, versionar e trocar composições construtivas multicamadas em madeira. Como pesquisador associado na Hochschule München, trabalhei na sua base normativa, no seu dicionário de dados bSDD e nas suas interfaces com Revit, Cadwork e MCP.
+
 ### Site Portfólio
 Daniel Locatelli
 April 2024 | Software

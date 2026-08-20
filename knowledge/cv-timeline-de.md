@@ -5,7 +5,7 @@ URL: https://daniellocatelli.com/de/full-cv
 July 2026 – Aktuell | [Beruf] | Doktorand | Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
 July 2026 | [Bildung] | Doctor of Sciences | Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
 May 2025 | [Lehre] | Arbeiten mit Geodaten in Grasshopper | Hochschule München | München
-February 2025 – June 2026 | [Beruf] | Wissenschaftlicher Mitarbeiter (60%) | Hochschule München | München, Deutschland
+February 2025 – June 2026 | [Beruf] | Wissenschaftlicher Mitarbeiter | Hochschule München | München, Deutschland
 July 2024 | [Lehre] | Multiskalares Roboterfertigungssystem für Vor-Ort-Pressklebung im mehrgeschossigen Holzbau | Forum Holzbau | Fellbach, Deutschland
 July 2024 | [Zertifizierung] | CS50's Einführung in die Informatik | Harvard University & edX.org
 July 2024 | [Zertifizierung] | CS50's Einführung in Datenbanken mit SQL | Harvard University & edX.org

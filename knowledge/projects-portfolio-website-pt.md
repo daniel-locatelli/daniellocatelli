@@ -10,7 +10,7 @@ Place: Online
 Date: April 2024
 Link: https://daniellocatelli.com
 
-Este é o site que você está lendo agora. Ele começou em abril de 2024 como um pequeno site em Astro que puxava suas páginas do Notion e, desde então, virou um campo de testes para o jeito como gosto de construir as coisas: páginas estáticas rápidas, conteúdo fácil de ler tanto para pessoas quanto para ferramentas de IA, e algumas peças interativas onde elas realmente acrescentam algo.
+Este é o site que você está lendo agora. Ele começou em abril de 2024 como um pequeno site em Astro e, desde então, virou um campo de testes para o jeito como gosto de construir as coisas: páginas estáticas rápidas, conteúdo fácil de ler tanto para pessoas quanto para ferramentas de IA, e algumas peças interativas para apimentar as&nbsp;coisas.
 
 ## Stack Tecnológico
 
@@ -20,15 +20,13 @@ Este é o site que você está lendo agora. Ele começou em abril de 2024 como u
 - [**Three.js**](https://threejs.org/) para a esfera geodésica.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) com Static Assets para hospedagem, cache na borda e os endpoints voltados a agentes; as páginas pré-renderizadas são servidas direto da borda, e o Worker só roda para os endpoints de chat e MCP.
 
-## Do Notion ao markdown, com o Claude Code como CMS
+## Claude Code como sistema de gestão de conteúdo
 
-A primeira versão usava a API do Notion como CMS headless, a mesma configuração que eu havia montado para o [site da BuildSystems](/pt/projects/buildsystems-website). O Notion é agradável para escrever, mas cada página precisava passar por uma API, um conversor de blocos para HTML e um cache de imagens antes de virar uma página web. Mais importante: o conteúdo ficava trancado atrás de uma API que as ferramentas de programação com IA não conseguiam simplesmente abrir e ler.
+Todo o conteúdo vive como arquivos de texto simples (escritos em [markdown](https://commonmark.org/help/)) no mesmo lugar que o código, o [repositório público no GitHub](https://github.com/daniel-locatelli/daniellocatelli): um arquivo pequeno por projeto, entrada de pesquisa, publicação, item de ensino ou seção do currículo, com um cabeçalho curto que guarda os fatos (título, datas, tags) acima do texto da página, e uma cópia em cada um dos três idiomas. Não há banco de dados nem sistema de conteúdo separado por trás das páginas.
 
-No início de 2026 migrei tudo para arquivos markdown puros dentro do repositório, organizados como Astro Content Collections. Cada projeto, entrada de pesquisa, publicação, item de ensino e seção do currículo agora é um arquivo com frontmatter tipado e um corpo em markdown, com uma pasta por idioma.
+O objetivo dessa configuração é tornar o conteúdo diretamente acessível a harnesses de IA como o [Claude Code](https://claude.com/claude-code). Como o conteúdo é apenas um conjunto de arquivos ao lado do código, o Claude Code consegue ler, editar, criar e cruzar entradas do mesmo jeito que trabalha com código-fonte. Na prática, isso significa que uso o Claude Code como sistema de gestão de conteúdo (CMS), a ferramenta em que normalmente se faria login para adicionar uma página ou corrigir um erro de digitação: descrevo um novo projeto ou uma correção em uma frase, e ele escreve ou atualiza os arquivos, mantém os cabeçalhos consistentes e confere as entradas relacionadas nos outros idiomas. Esta própria página foi escrita assim. Tudo neste site é cocriado, do código ao conteúdo.
 
-O objetivo da mudança foi tornar o conteúdo diretamente acessível a harnesses de IA como o [Claude Code](https://claude.com/claude-code). Como o conteúdo é apenas um conjunto de arquivos ao lado do código, o Claude Code consegue ler, editar, criar e cruzar entradas do mesmo jeito que trabalha com código-fonte. Na prática, isso significa que uso o Claude Code como CMS: descrevo um novo projeto ou uma correção em uma frase, e ele escreve ou atualiza os arquivos, mantém o frontmatter consistente e confere as entradas relacionadas nos outros idiomas. Esta própria página foi escrita assim. Tudo neste site é cocriado, do código ao conteúdo.
-
-A migração teve um segundo ganho: com todo o conteúdo no repositório em texto puro, ficou simples dividi-lo em trechos, gerar embeddings e alimentar um modelo de linguagem. Foi isso que tornou possível o chat com IA na página inicial.
+Manter o conteúdo no repositório em texto puro tem um segundo ganho: é simples dividi-lo em trechos, gerar embeddings e alimentar um modelo de linguagem. É isso que torna possível o chat com IA na página inicial (mais sobre ele abaixo).
 
 ## Tradução feita pelo Claude Code
 
@@ -42,9 +40,9 @@ Por baixo dos panos, um pipeline de conhecimento transforma as coleções de con
 
 ## A esfera geodésica
 
-Abaixo do chat fica uma esfera geodésica renderizada com Three.js. Ela segue a construção que Buckminster Fuller tornou famosa: partir de um icosaedro, subdividir cada face, projetar os vértices sobre uma esfera e tomar o dual, de modo que os doze vértices originais viram pentágonos e todo o resto vira hexágonos. A esfera gira conforme você rola a página, ligando o movimento da página à geometria.
+Mais abaixo na página inicial, entre as ofertas de serviços e a seção "Arquiteto + Programador", fica uma esfera geodésica renderizada com Three.js. Ela segue a construção que Buckminster Fuller tornou famosa: partir de um icosaedro, subdividir cada face, projetar os vértices sobre uma esfera e tomar o dual, de modo que os doze vértices originais viram pentágonos e todo o resto vira hexágonos. A esfera gira conforme você rola a página, ligando o movimento da página à geometria. As arestas verdes dos polígonos são desenhadas como faixas finas no espaço da tela, e não como linhas GL brutas de um pixel, para que permaneçam suaves e com espessura uniforme em qualquer tela, e as faces são levemente recuadas em profundidade para que as arestas nunca tremulem contra a superfície. Uma leve névoa em direção ao fundo preto da página esmaece as faces do lado de trás da esfera, dando profundidade à cena.
 
-É também uma referência à minha própria trajetória: estruturas geodésicas e leves são um tema recorrente nos projetos e pesquisas deste site, do [Common Sky](/pt/projects/common-sky-by-artengineering-for-studio-other-spaces) ao meu doutorado sobre estruturas de madeira. O Three.js é carregado logo depois que a primeira tela é desenhada, em um momento ocioso, para nunca ficar no caminho crítico do carregamento inicial da página, mas já estar pronto quando você rolar até a esfera.
+É também uma referência à minha própria trajetória: estruturas geodésicas e leves são um tema recorrente nos projetos e pesquisas deste site, do [Pavilhão O3](/pt/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol), onde tudo começou de verdade, passando pelo [Common Sky](/pt/projects/common-sky-by-artengineering-for-studio-other-spaces) e pela minha dissertação de mestrado [Building Across Scales](/pt/research/building-across-scales), até o meu doutorado sobre estruturas de madeira. O Three.js é carregado logo depois que a primeira tela é desenhada, em um momento ocioso, para nunca ficar no caminho crítico do carregamento inicial da página, mas já estar pronto quando você rolar até a esfera.
 
 ## Modo apresentação
 
@@ -59,16 +57,24 @@ Como boa parte do tráfego de um site como este virá cada vez mais de agentes d
 - um `robots.txt` que dá boas-vindas explícitas aos crawlers de IA, um sitemap com entradas de imagens e um catálogo de API em `/.well-known/`;
 - um pequeno servidor [MCP](https://modelcontextprotocol.io/) somente leitura, para que agentes possam consultar o conteúdo do site como ferramentas;
 - registros de descoberta [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/) (registros SVCB `_mcp._agents` e `_index._agents`, assinados com DNSSEC), para que agentes encontrem o endpoint MCP apenas a partir do nome de domínio;
-- um índice de [Agent Skills](https://agentskills.io/) em `/.well-known/agent-skills/` com dois arquivos `SKILL.md` que ensinam um agente a consultar o site via MCP ou a lê-lo como markdown.
+- um índice de skills em `/.well-known/agent-skills/`, seguindo o [RFC de descoberta de Agent Skills](https://github.com/cloudflare/agent-skills-discovery-rfc) da Cloudflare, com dois arquivos `SKILL.md` no formato [Agent Skills](https://agentskills.io/specification) que ensinam um agente a consultar o site via MCP ou a lê-lo como markdown.
 
 Fazer a negociação de conteúdo funcionar em páginas pré-renderizadas exigiu investigar como o pipeline de requisições da Cloudflare, o Workers Static Assets e o middleware de build do Astro interagem; a solução é um Snippet da Cloudflare no nível da zona que reescreve a URL antes de ela chegar ao Worker. No [isitagentready.com](https://isitagentready.com/), o verificador que acompanha o [guia de prontidão para agentes](https://blog.cloudflare.com/agent-readiness/) da Cloudflare, o site saiu de uma pontuação de 25% para 71/100, "Nível 5, Agent-Native", com nota máxima em descoberta, conteúdo e controle de acesso de bots. Os pontos restantes estão na categoria de API e autenticação e ficam deliberadamente em aberto: descoberta OAuth, metadados de recurso protegido e um `auth.md` só fazem sentido quando há algo em que fazer login, um agent card A2A descreve um agente que oferece serviços a outros agentes, e o WebMCP expõe ações dentro da página, como formulários ou checkouts. Um portfólio somente leitura não tem nada disso, então o verificador continua listando esses itens e o site continua dispensando-os.
 
 ## Desempenho e Lighthouse
 
-O site é em grande parte HTML estático, o que já lhe dá uma vantagem inicial. Além disso, as imagens são servidas em tamanhos responsivos com larguras explícitas para que nada se desloque durante o carregamento, as imagens do corpo são carregadas sob demanda e pré-carregadas pouco antes de entrarem na área visível, as fontes são reduzidas ao subconjunto necessário e pré-carregadas, e scripts pesados são adiados até que sejam realmente necessários: o Three.js espera um momento ocioso e depois só redesenha a esfera enquanto ela está de fato em movimento, e a janela do chat (com seu renderizador de markdown e animações) só é baixada quando o visitante começa a digitar, de modo que o campo de entrada da abertura carrega apenas alguns kilobytes de JavaScript. Os logotipos do mapa de competências são servidos como arquivos de imagem separados, carregados sob demanda, em vez de embutidos na página, o que reduziu o HTML da página inicial de cerca de 350 KB para menos de 70 KB, de modo que a primeira pintura não espera mais por centenas de kilobytes de caminhos vetoriais. Juntas, essas mudanças levaram as pontuações do Lighthouse em desempenho, acessibilidade, boas práticas e SEO ao topo da escala.
+O Astro renderiza o site em HTML majoritariamente estático, o que já lhe dá uma vantagem inicial. As pontuações de 100 no Lighthouse em desempenho, acessibilidade, boas práticas e SEO vêm então de não carregar o que o visitante ainda não precisa:
+
+- As imagens chegam em tamanhos responsivos com dimensões explícitas, carregadas sob demanda pouco antes de entrarem na área visível; as fontes são reduzidas ao subconjunto necessário e pré-carregadas.
+- O Three.js carrega num momento ocioso e só redesenha a esfera enquanto ela está em movimento.
+- A janela do chat só é baixada quando o visitante começa a digitar, de modo que o campo de entrada da abertura carrega apenas alguns kilobytes de JavaScript.
+- Os logotipos do mapa de competências são imagens separadas carregadas sob demanda, em vez de SVG embutido, o que reduziu o HTML da página inicial de cerca de 350 KB para menos de 70 KB.
+
+## Uma caixa de ferramentas pessoal por trás das páginas públicas
+
+O site também hospeda páginas que não são linkadas de lugar nenhum e existem sobretudo para meu próprio uso. O [currículo resumido](/pt/cv), o [currículo completo](/pt/full-cv) e o [currículo voltado ao doutorado](/pt/phd-cv) ficam em URLs não listadas, são renderizados a partir das mesmas coleções de conteúdo que o resto do site (de modo que uma experiência ou publicação só precisa ser cadastrada uma vez) e trazem estilos de impressão, para que salvar a página como PDF gere um documento limpo e atualizado sempre que for preciso. Algumas páginas igualmente não listadas servem de cartões de abertura para aulas gravadas. Assim, o site funciona também como um pequeno espaço de trabalho, e não apenas como vitrine para visitantes.
 
 ## Detalhes menores
 
 - **Prévias de links no build.** Links externos listados em uma página são exibidos como cartões de prévia. Títulos, descrições, imagens e favicons são buscados uma única vez e guardados em cache no repositório, de modo que o build é reprodutível e nenhuma requisição a terceiros acontece ao carregar a página.
 - **Notas de rodapé com tooltip.** Notas de rodapé em markdown ganham um tooltip ao passar o mouse, mostrando a nota no próprio lugar, para que o leitor não precise pular até o fim da página.
-- **Uma única fonte para todos os currículos.** O currículo resumido, o currículo completo e o currículo voltado ao doutorado são todos renderizados a partir das mesmas coleções de conteúdo, de modo que uma experiência ou publicação só precisa ser cadastrada uma vez.

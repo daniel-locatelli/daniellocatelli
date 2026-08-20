@@ -2,19 +2,20 @@ URL: https://daniellocatelli.com/full-cv
 
 # Daniel Locatelli – Professional Experience
 
-### Doctoral Researcher
+### PhD Candidate
 Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland
 July 2026 – Current
 
-- Doctoral research on computational design-to-fabrication for timber plate building systems.
+- Computational design-to-fabrication for timber plate building systems.
 - Part of the CEDD project, funded by the Swiss National Science Foundation (SNSF).
 - Exploring how AI (large language models and agents) can support the design process, from early design exploration to fabrication-ready data.
 
-### Research Associate (60%)
+### Research Associate
 Munich University of Applied Sciences | Munich, Germany
 February 2025 – June 2026
 
-- Development of a Revit plugin (C#/.NET) to import buildups from DOKwood into Revit as System Families.
+- Research associate on the [DOKwood](/projects/dokwood) project: a web platform for documenting multilayer timber buildups, funded by ZIM and Innosuisse.
+- Revit plugin (C#/.NET) importing DOKwood buildups into Revit as System Families.
 - Development of a bSDD (building Smart Data Dictionary) to consolidate a semantic data model for DOKwood.
 - Research on standards, databases, CAD and BIM tools with focus on timber technology. Foundations to develop the app DOKwood.
 

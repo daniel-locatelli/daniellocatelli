@@ -6,15 +6,16 @@ URL: https://daniellocatelli.com/de/full-cv
 Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
 July 2026 – Current
 
-- Doktoratsforschung zu Computational Design-to-Fabrication für Holzplatten-Bausysteme.
+- Computational Design-to-Fabrication für Holzplatten-Bausysteme.
 - Teil des CEDD-Projekts, gefördert durch den Schweizerischen Nationalfonds (SNF).
 - Untersuchung, wie KI (grosse Sprachmodelle und Agenten) den Entwurfsprozess unterstützen kann, von der frühen Entwurfsexploration bis zu fertigungsreifen Daten.
 
-### Wissenschaftlicher Mitarbeiter (60%)
+### Wissenschaftlicher Mitarbeiter
 Hochschule München | München, Deutschland
 February 2025 – June 2026
 
-- Entwicklung eines Revit-Plugins (C#/.NET) zum Importieren von Aufbauten aus DOKwood in Revit als Systemfamilien.
+- Wissenschaftlicher Mitarbeiter im Projekt [DOKwood](/de/projects/dokwood): eine Webplattform zur Dokumentation mehrschichtiger Holzbau-Aufbauten, gefördert von ZIM und Innosuisse.
+- Revit-Plugin (C#/.NET) zum Import von DOKwood-Aufbauten als Systemfamilien.
 - Entwicklung eines bSDD (building Smart Data Dictionary) zur Konsolidierung eines semantischen Datenmodells für DOKwood.
 - Forschung an Standards, Datenbanken, CAD- und BIM-Tools mit Fokus auf Holztechnologie. Grundlagen zur Entwicklung der App DOKwood.
 

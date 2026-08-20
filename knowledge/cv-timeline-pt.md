@@ -2,10 +2,10 @@ URL: https://daniellocatelli.com/pt/full-cv
 
 # Daniel Locatelli – Linha do Tempo
 
-July 2026 – Atual | [Trabalho] | Pesquisador de Doutorado | Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
+July 2026 – Atual | [Trabalho] | Doutorando | Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
 July 2026 | [Educação] | Doutorado em Ciências | Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
 May 2025 | [Ensino] | Trabalhando com dados geográficos no Grasshopper | Universidade de Ciências Applicadas de Munique | Munique
-February 2025 – June 2026 | [Trabalho] | Pesquisador Associado (60%) | Universidade de Ciências Aplicadas de Munique | Munique, Alemanha
+February 2025 – June 2026 | [Trabalho] | Pesquisador Associado | Universidade de Ciências Aplicadas de Munique | Munique, Alemanha
 July 2024 | [Ensino] | Sistema de fabricação robótica multiescalar para colagem à pressão no canteiro em edifícios de madeira | Forum Holzbau | Fellbach, Alemanha
 July 2024 | [Certificação] | Introdução à Ciência da Computação | Universidade Harvard & edX.org
 July 2024 | [Certificação] | Introdução a Banco de Dados com SQL | Universidade de Harvard & edX.org

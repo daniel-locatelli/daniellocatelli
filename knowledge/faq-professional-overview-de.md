@@ -6,7 +6,7 @@ Daniel Locatelli is a software engineer and computational designer with over 15 
 
 Recent positions:
 - Doktorand at Gramazio Kohler Research, ETH Zürich (July 2026 to Aktuell)
-- Wissenschaftlicher Mitarbeiter (60%) at Hochschule München (February 2025 to June 2026)
+- Wissenschaftlicher Mitarbeiter at Hochschule München (February 2025 to June 2026)
 - AEC Software-Ingenieur at BuildSystems GmbH (January 2024 to December 2024)
 - AEC Software-Ingenieur at Urban Scale Timber, Flügge Funding (January 2023 to December 2023)
 - Computational Designer at ArtEngineering GmbH (December 2021 to December 2022)
