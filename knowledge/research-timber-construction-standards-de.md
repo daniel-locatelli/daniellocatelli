@@ -2,7 +2,7 @@ URL: https://daniellocatelli.com/de/research/timber-construction-standards
 
 # Normen für Spezifikationen im Holzbau
 
-Description: Eine systematische Recherche der ISO-, GS1-, CEN-, DIN-, SIA-, KBOB- und ÖNORM-Normen, die die Spezifikation von Materialien und mehrschichtigen Aufbauten im Holzbau regeln, von Brandschutz und Bauphysik bis zu BIM-Datenvorlagen und dem digitalen Produktpass. Arbeitspaket 1.2 des Projekts DOKwood.
+Description: Eine systematische Recherche der ISO-, GS1-, CEN-, DIN-, SIA- und KBOB-Normen, die die Spezifikation von Materialien und mehrschichtigen Aufbauten im Holzbau regeln, von Brandschutz und Bauphysik bis zu BIM-Datenvorlagen und dem digitalen Produktpass. Arbeitspaket 1.2 des Projekts DOKwood.
 Tags: Normen, Holzbau, Digitaler Produktpass
 Authors: Daniel Nunes Locatelli
 Organization: Hochschule München
@@ -10,7 +10,7 @@ Location: München
 Date: February 2025 - June 2026
 Link: /de/projects/dokwood
 
-Bevor eine Plattform Holzbau-Aufbauten so dokumentieren kann, dass andere Unternehmen und Werkzeuge sie verstehen, muss jemand eine einfache Frage beantworten: Welche Normen definieren die Begriffe, die Werte und die Prüfverfahren? Dieses Arbeitspaket des Projekts [DOKwood](/de/projects/dokwood) hat sie für die deutsche und die Schweizer Holzbauindustrie beantwortet, mit Österreich als drittem Standbein des DACH-Vergleichs. Das Ergebnis ist ein Bericht, der die Landschaft von den internationalen Gremien bis zu den kantonalen Brandschutzvorschriften kartiert, und ein vorgeschlagenes internes Vokabular, das an kontrollierten Normbegriffen verankert ist.
+Bevor eine Plattform Holzbau-Aufbauten so dokumentieren kann, dass andere Unternehmen und Werkzeuge sie verstehen, muss jemand eine einfache Frage beantworten: Welche Normen definieren die Begriffe, die Werte und die Prüfverfahren? Dieses Arbeitspaket des Projekts [DOKwood](/de/projects/dokwood) hat sie für die deutsche und die Schweizer Holzbauindustrie beantwortet. Das Ergebnis ist ein Bericht, der die Landschaft von den internationalen Gremien bis zu den kantonalen Brandschutzvorschriften kartiert, und ein vorgeschlagenes internes Vokabular, das an kontrollierten Normbegriffen verankert ist.
 
 ## Methode
 
@@ -20,9 +20,9 @@ Die Identifikation selbst war systematisch und nicht anekdotisch. Die Internatio
 
 ## Wer die Regeln schreibt
 
-Der Bericht widmet den Organisationen ein eigenes Kapitel, weil ihre Reichweite erklärt, warum dasselbe Thema in drei Ländern drei verschiedene Dokumente haben kann. Auf internationaler Ebene erarbeiten ISO und IEC freiwillige Normen, die rechtliches Gewicht bekommen, sobald Verordnungen oder Verträge sie zitieren, während GS1 die Identifikationsschicht (GTIN, GLN, GS1 Digital Link) liefert, die ein physisches Produkt mit seinem digitalen Datensatz verknüpft. In Europa entwickelt das CEN harmonisierte Normen im Auftrag der Europäischen Kommission; ihre Anwendung begründet die Konformitätsvermutung mit EU-Recht, und die nationalen Gremien müssen sie veröffentlichen und widersprechende nationale Normen zurückziehen.
+Der Bericht widmet den Organisationen ein eigenes Kapitel, weil ihre Reichweite erklärt, warum dasselbe Thema in Deutschland und der Schweiz unterschiedliche Dokumente haben kann. Auf internationaler Ebene erarbeiten ISO und IEC freiwillige Normen, die rechtliches Gewicht bekommen, sobald Verordnungen oder Verträge sie zitieren, während GS1 die Identifikationsschicht (GTIN, GLN, GS1 Digital Link) liefert, die ein physisches Produkt mit seinem digitalen Datensatz verknüpft. In Europa entwickelt das CEN harmonisierte Normen im Auftrag der Europäischen Kommission; ihre Anwendung begründet die Konformitätsvermutung mit EU-Recht, und die nationalen Gremien müssen sie veröffentlichen und widersprechende nationale Normen zurückziehen.
 
-Deutschland schichtet DIN, VDI-Richtlinien und das DIBt übereinander, dessen Muster-Holzbau-Richtlinie die Brandschutz- und Standsicherheitsregeln für Holz in die Landesbauordnungen trägt. Die Schweiz übernimmt EN-Normen über die SNV, delegiert die eigentliche Autorität aber an die SIA-Normen, die technische und vertragliche Anforderungen mischen, an die KBOB-Empfehlungen für öffentliche Bauherren und an die VKF-Brandschutzvorschriften, die rechtlich verbindlich sind. Österreich harmonisiert über die von allen neun Bundesländern übernommenen OIB-Richtlinien und führt eine eigene Bauphysikreihe (ÖNORM B 8110, B 8115) sowie die Umweltdatenbank baubook.
+Deutschland schichtet DIN, VDI-Richtlinien und das DIBt übereinander, dessen Muster-Holzbau-Richtlinie die Brandschutz- und Standsicherheitsregeln für Holz in die Landesbauordnungen trägt. Die Schweiz übernimmt EN-Normen über die SNV, delegiert die eigentliche Autorität aber an die SIA-Normen, die technische und vertragliche Anforderungen mischen, an die KBOB-Empfehlungen für öffentliche Bauherren und an die VKF-Brandschutzvorschriften, die rechtlich verbindlich sind.
 
 ## Normen nach Sachgebiet
 

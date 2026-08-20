@@ -2,7 +2,7 @@ URL: https://daniellocatelli.com/research/timber-construction-standards
 
 # Standards for timber construction specifications
 
-Description: A systematic review of the ISO, GS1, CEN, DIN, SIA, KBOB and ÖNORM standards that govern how materials and multilayer buildups are specified in timber construction, from fire and building physics to BIM data templates and the digital product passport. Work package 1.2 of the DOKwood project.
+Description: A systematic review of the ISO, GS1, CEN, DIN, SIA and KBOB standards that govern how materials and multilayer buildups are specified in timber construction, from fire and building physics to BIM data templates and the digital product passport. Work package 1.2 of the DOKwood project.
 Tags: Standards, Timber construction, Digital Product Passport
 Authors: Daniel Nunes Locatelli
 Organization: Munich University of Applied Sciences
@@ -10,7 +10,7 @@ Location: Munich
 Date: February 2025 - June 2026
 Link: /projects/dokwood
 
-Before a platform can document timber buildups in a way that other companies and tools understand, someone has to answer a plain question: which standards define the words, the values and the tests? This work package of the [DOKwood](/projects/dokwood) project answered it for the German and Swiss timber industry, with Austria as the third leg of the DACH comparison. The result is a report that maps the landscape from international bodies down to cantonal fire regulations, and a proposed internal vocabulary anchored to governed standard terms.
+Before a platform can document timber buildups in a way that other companies and tools understand, someone has to answer a plain question: which standards define the words, the values and the tests? This work package of the [DOKwood](/projects/dokwood) project answered it for the German and Swiss timber industry. The result is a report that maps the landscape from international bodies down to cantonal fire regulations, and a proposed internal vocabulary anchored to governed standard terms.
 
 ## Method
 
@@ -20,9 +20,9 @@ The identification itself was systematic rather than anecdotal. ISO's Internatio
 
 ## Who writes the rules
 
-The report devotes a chapter to the organisations, because their reach explains why the same topic can have three different documents in three countries. At the international level ISO and IEC produce voluntary standards that gain legal weight once regulations or contracts cite them, while GS1 provides the identification layer (GTIN, GLN, GS1 Digital Link) that links a physical product to its digital record. In Europe, CEN develops harmonised standards on mandate from the European Commission; applying one grants presumption of conformity with EU law, and national bodies must publish it and withdraw conflicting national standards.
+The report devotes a chapter to the organisations, because their reach explains why the same topic can have different documents in Germany and Switzerland. At the international level ISO and IEC produce voluntary standards that gain legal weight once regulations or contracts cite them, while GS1 provides the identification layer (GTIN, GLN, GS1 Digital Link) that links a physical product to its digital record. In Europe, CEN develops harmonised standards on mandate from the European Commission; applying one grants presumption of conformity with EU law, and national bodies must publish it and withdraw conflicting national standards.
 
-Germany layers DIN, VDI guidelines and the DIBt, whose Muster-Holzbau-Richtlinie carries the fire and stability rules for timber into the state building codes. Switzerland adopts EN standards through SNV but delegates real authority to SIA norms, which mix technical and contractual requirements, to KBOB recommendations for public clients, and to the VKF fire regulations, which are legally binding. Austria harmonises through the OIB guidelines adopted by all nine states and keeps its own building physics series (ÖNORM B 8110, B 8115) and the baubook environmental database.
+Germany layers DIN, VDI guidelines and the DIBt, whose Muster-Holzbau-Richtlinie carries the fire and stability rules for timber into the state building codes. Switzerland adopts EN standards through SNV but delegates real authority to SIA norms, which mix technical and contractual requirements, to KBOB recommendations for public clients, and to the VKF fire regulations, which are legally binding.
 
 ## Standards by domain
 
