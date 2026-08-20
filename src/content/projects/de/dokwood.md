@@ -1,7 +1,6 @@
 ---
 Cover: /assets/content/projects/dokwood/dokwood-cover.png
-CoverAlt: "Schichtaufbau-Ansicht einer 320 mm starken Holzwand in der DOKwood-Plattform: sieben Schichten, eine Schnittzeichnung und die Schichttabelle."
-CoverFit: contain
+CoverAlt: "Die DOKwood-Plattform auf einem Laptop mit dem Schichtaufbau einer 320 mm starken Holzwand: sieben Schichten, eine Schnittzeichnung und die Schichttabelle."
 Description: "DOKwood ist eine Webplattform zum Definieren, Prüfen, Versionieren und Austauschen mehrschichtiger Holzbau-Aufbauten. Als wissenschaftlicher Mitarbeiter an der Hochschule München habe ich an ihrer Normengrundlage, ihrem bSDD-Datenwörterbuch und ihren Schnittstellen zu Revit, Cadwork und MCP gearbeitet."
 Name: DOKwood
 Tags:

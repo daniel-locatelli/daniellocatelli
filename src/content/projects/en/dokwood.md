@@ -1,7 +1,6 @@
 ---
 Cover: /assets/content/projects/dokwood/dokwood-cover.png
-CoverAlt: "Layer-structure view of a 320 mm timber wall buildup in the DOKwood platform: seven layers, a section drawing and the layer table."
-CoverFit: contain
+CoverAlt: "The DOKwood platform on a laptop, showing the layer structure of a 320 mm timber wall buildup: seven layers, a section drawing and the layer table."
 Description: "DOKwood is a web platform for defining, verifying, versioning and exchanging multilayer timber buildups. As research associate at Hochschule München I worked on its standards foundation, its bSDD data dictionary, and its Revit, Cadwork and MCP interfaces."
 Name: DOKwood
 Tags:
