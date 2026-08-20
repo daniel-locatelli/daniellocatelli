@@ -2,6 +2,7 @@ import type { Root, Image as MdImage } from "mdast";
 import type { VFile } from "vfile";
 import { Parser } from "acorn";
 import { visitParents } from "unist-util-visit-parents";
+import { figureCaption } from "./figure-caption";
 
 // Markdown body images get auto-converted to WebP by Astro's content
 // collection pipeline, but at *original* dimensions and a single resolution.
@@ -11,7 +12,9 @@ import { visitParents } from "unist-util-visit-parents";
 // derivative on narrow viewports.
 //
 // Top-level images with alt text also get wrapped in a <figure>+<figcaption>
-// pair to preserve the visible caption that rehype-figure used to emit.
+// pair to preserve the visible caption that rehype-figure used to emit. As
+// there, the image title steers the caption (figureCaption): "-" suppresses
+// it, any other title replaces the alt as the visible text.
 // rehype-figure cannot do this anymore because the inner element is now an
 // Image JSX node, not a hast <img>, by the time rehype runs.
 //
@@ -141,19 +144,20 @@ export function remarkImageToAstroImage() {
       });
 
       const imageJsx = buildImage(importName, node.alt || "");
+      const caption = figureCaption(node.alt, node.title);
 
       const grandparent =
         ancestors.length >= 2 ? ancestors[ancestors.length - 2] : null;
       const shouldWrap =
         !insideJsx &&
-        !!node.alt &&
+        !!caption &&
         parent.type === "paragraph" &&
         parent.children.length === 1 &&
         grandparent &&
         Array.isArray(grandparent.children);
 
       if (shouldWrap) {
-        const figure = buildFigure(imageJsx, node.alt || "");
+        const figure = buildFigure(imageJsx, caption as string);
         const pIndex = grandparent.children.indexOf(parent);
         if (pIndex !== -1) {
           grandparent.children[pIndex] = figure;
