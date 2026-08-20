@@ -55,7 +55,7 @@ What bSDD is; the `hm/dokwood` dictionary lineage v0.1 to v0.13 (Excel authoring
 ## Assets
 
 - Covers must live under `src/assets/content/...` (the subpage layout resolves them through `import.meta.glob`; a `public/` path only feeds meta tags). Inline SVG diagrams live in `public/assets/content/...` and are referenced by absolute path; inline rasters live in `src/assets/` and are referenced relatively.
-- `src/assets/content/projects/dokwood/`: `dokwood-cover.png` (platform screenshot), `dokwood-logo-dark.png` (logo inverted for the dark theme), `generate-architecture.mjs` writing `public/.../dokwood-architecture.svg`.
+- `src/assets/content/projects/dokwood/`: `dokwood-cover.png` (platform screenshot), `dokwood-logo-dark.png` (logo inverted for the dark theme), `generate-architecture.mjs` writing `public/.../dokwood-architecture.svg`, `generate-mcp.mjs` writing `public/.../dokwood-mcp.svg`, plus the Revit import and Cadwork part-tagging illustrations from the reports.
 - `src/assets/content/research/timber-construction-standards/`: the 6 report figures in kebab-case plus `generate-cover.mjs` writing the SVG cover.
 - `src/assets/content/research/dokwood-bsdd-data-dictionary/`: `generate-two-plane.mjs` (SVG cover, written next to it) and `generate-data-templates.mjs` (writes `public/.../data-templates.svg`).
 - Generators share `src/assets/content/svg-kit.mjs` and follow the site's dark zinc style (the site is dark-only).

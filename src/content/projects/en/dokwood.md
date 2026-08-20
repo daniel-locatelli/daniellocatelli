@@ -55,18 +55,28 @@ The project is funded by ZIM (Germany) and Innosuisse (Switzerland) under the Ir
 
 The first deliverable was a systematic review of the standards that govern how materials and buildups are specified in timber construction in Germany and Switzerland: ISO and GS1 at the international level, CEN and the harmonised EN standards in Europe, DIN, VDI and the Muster-Holzbau-Richtlinie in Germany, SIA, KBOB and VKF in Switzerland. It covers fire, acoustics, building physics, structural design, technical drawings, BIM, and the incoming Digital Product Passport under the 2024 Construction Products Regulation. Its practical output was a mapping of the partners' internal terminology to governed standard terms and a proposed shared vocabulary. You can read more about this study on my dedicated [standards for timber construction specifications](/research/timber-construction-standards) page.
 
+![The designation DIN EN ISO 19650-1 broken into its parts: DIN for the national body, EN for the European standard, ISO for the international standard, and the number and part; below, the bodies covered by the review.](../../../assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg)
+
 ## buildingSMART Data Dictionary (bSDD)
 
 The shared vocabulary proposed in the standards review became a dictionary in the buildingSMART Data Dictionary (bSDD), `hm/dokwood`, versioned from v0.1 to v0.13. It defines the classes (Buildup, Wall, Roof, Slab, Product), 129 properties and their groups, and follows ISO 23387 data templates: a System Data Template for a buildup, a Product Data Template for a product, and a HasPart composition that links them. Every interface below reads the same dictionary, which is what makes them interoperable. The design, the build pipeline and the road to a DPP-ready export are on the [DOKwood bSDD data dictionary](/research/dokwood-bsdd-data-dictionary) page.
+
+![Two planes: the public bSDD dictionary with classes, properties and generic data templates above, and the DOKwood platform with tenant templates, requirement sheets, data sheets and the digital product passport below.](../../../assets/content/research/dokwood-bsdd-data-dictionary/iso-23387-two-plane.svg)
 
 ## Revit add-in
 
 For Gumpp & Maier I built a Revit 2026 add-in in C# and .NET 8 that imports a DOKwood buildup as a ready-to-use System Family Type: it picks the host category from the IFC entity the bSDD class maps to, builds the compound structure through the Revit API, and applies layer function, thickness, conductivity, colour and core-layer flags. The context matters: Gumpp & Maier's cost estimation runs from a company Revit template through a GAEB export into Nevaris, and the template's material names are what the quantity takeoff keys on. The add-in therefore has to align with the existing named materials rather than inject new ones, and the main roadmap item that came out of the partner workshops is a two-way sync of the Revit material database with the platform as the template evolves.
 
+![A DOKwood buildup JSON file on the left becomes a Revit wall type on the right: the Edit Assembly dialog lists the compound structure with function, material, thickness and priority for each layer, core boundaries included.](../../../assets/content/projects/dokwood/dokwood-revit-import.png)
+
 ## Cadwork plugin
 
 For Schärholzbau I built the first feature of a Cadwork 25 plugin in Python on the cwapi3d API: login, tenant and product selection, and import of DOKwood products with their bSDD properties as Cadwork materials, idempotent across re-imports. The decisive finding from the partner meetings was that Schärholzbau does not use Cadwork's multi-layer-cover module; they model buildups part by part. So the plugin pivoted from driving that module to two things that fit their workflow: keep the material catalogue in sync, and tag each part with the DOKwood buildup, layer and product GUIDs so the production model can be validated against the specification before it goes to the saw. The architecture is strictly layered, with only two files touching the Cadwork API, and 48 unit tests cover the rest.
 
+![The Cadwork 3D window with a timber frame wall; a selected part carries three tags, buildup, layer and product GUIDs, and the DOKwood panel on the right shows the inherited buildup, the layer list and the product choice for that layer.](../../../assets/content/projects/dokwood/dokwood-cadwork-tag-parts.png)
+
 ## MCP server proposal
 
 The last piece is a proposal, reviewed but not yet built, for a Model Context Protocol server in front of the platform: a thin, stateless adapter that translates MCP tools, resources and prompts into authenticated GraphQL calls, so an AI assistant can search products, compare buildups or run a certificate gap check under the same tenant rules as a human user. Strategically it replaces the original plan of one bespoke ERP connector per partner with one standards-based interface that any MCP-aware tool can use. The reviewer's main open question, whether write access belongs in MCP at all, shapes the roadmap: start read-only, and treat writes as a separate decision.
+
+![Three columns: AI clients such as chat interfaces, IDEs and agents on the left, the proposed DOKwood MCP server in the centre with its tools, resources, prompts and auth bridge, and the DOKwood platform with products, buildups, projects and bSDD on the right, connected by MCP and GraphQL arrows.](/assets/content/projects/dokwood/dokwood-mcp.svg)

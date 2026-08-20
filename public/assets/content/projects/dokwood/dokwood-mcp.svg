@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" role="img" aria-labelledby="dokwood-mcp-title"><title id="dokwood-mcp-title">Three columns: AI clients (chat interfaces, IDEs, agents) on the left, the proposed DOKwood MCP server in the centre with its tools, resources, prompts and auth bridge, and the DOKwood platform's GraphQL API on the right with products, buildups, projects and bSDD; two-way arrows labelled MCP and GraphQL connect them</title>
+<defs><marker id="dokwood-mcp-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<rect x="60" y="70" width="360" height="412" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="76" y="56" width="299" height="28" rx="4" fill="#000000"/>
+<text x="88" y="76" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">AI CLIENTS · MCP HOSTS</text>
+<rect x="1180" y="70" width="360" height="412" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="1196" y="56" width="224" height="28" rx="4" fill="#000000"/>
+<text x="1208" y="76" fill="#71717a" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">DOKWOOD PLATFORM</text>
+<rect x="92" y="114" width="296" height="96" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="240" y="156" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Chat interfaces</text>
+<text x="240" y="182" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">Claude Desktop, ChatGPT</text>
+<rect x="92" y="234" width="296" height="96" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="240" y="276" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">IDEs and code editors</text>
+<text x="240" y="302" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">Claude Code, Cursor, VS Code</text>
+<rect x="92" y="354" width="296" height="96" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="240" y="396" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Agents and automation</text>
+<text x="240" y="422" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">Codex, n8n, custom agents</text>
+<rect x="1212" y="114" width="296" height="96" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1360" y="156" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Products and data sheets</text>
+<text x="1360" y="182" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">search, compare, certificates</text>
+<rect x="1212" y="234" width="296" height="96" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1360" y="276" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Buildups and catalogue</text>
+<text x="1360" y="302" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">layers, versions, tenant catalogue</text>
+<rect x="1212" y="354" width="296" height="96" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1360" y="396" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Projects, calculations, bSDD</text>
+<text x="1360" y="422" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">requirements, U-values, dictionary</text>
+<rect x="520" y="114" width="560" height="336" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<text x="800" y="188" text-anchor="middle" fill="#f4f4f5" font-size="28" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif">DOKwood MCP server</text>
+<text x="800" y="218" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">proposal · thin, stateless adapter</text>
+<text x="548" y="264" fill="#34d399" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.12em">TOOLS</text>
+<text x="548" y="284" fill="#a1a1aa" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">search_products · get_buildup · compare_buildups · search_bsdd</text>
+<text x="548" y="308" fill="#34d399" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.12em">RESOURCES</text>
+<text x="548" y="328" fill="#a1a1aa" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">dokwood://products/{id} · buildups/{id} · catalog/{tenant}</text>
+<text x="548" y="352" fill="#34d399" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.12em">PROMPTS</text>
+<text x="548" y="372" fill="#a1a1aa" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">compare buildups by U-value · certificate gap analysis</text>
+<text x="548" y="396" fill="#34d399" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.12em">AUTH</text>
+<text x="548" y="416" fill="#a1a1aa" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">OAuth2 / JWT · tenant rules of a human user · read-only first</text>
+<line x1="422" y1="272" x2="518" y2="272" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#dokwood-mcp-arrow)"/>
+<rect x="449.25" y="243" width="41.5" height="22" rx="4" fill="#000000"/>
+<text x="470" y="259" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">MCP</text>
+<line x1="518" y1="292" x2="422" y2="292" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="6 6" marker-end="url(#dokwood-mcp-arrow)"/>
+<line x1="1082" y1="272" x2="1178" y2="272" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#dokwood-mcp-arrow)"/>
+<rect x="1092.25" y="243" width="75.5" height="22" rx="4" fill="#000000"/>
+<text x="1130" y="259" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">GraphQL</text>
+<line x1="1178" y1="292" x2="1082" y2="292" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="6 6" marker-end="url(#dokwood-mcp-arrow)"/>
+<text x="800" y="552" text-anchor="middle" fill="#71717a" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">MCP over stdio or HTTP on the client side, authenticated GraphQL with tenant context on the platform side: one interface for every MCP-aware tool instead of one ERP connector per partner</text>
+</svg>
