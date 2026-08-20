@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" role="img" aria-labelledby="bsdd-template-to-sheet-title"><title id="bsdd-template-to-sheet-title">Three sheets listing the same five properties: a data template with empty value fields, a requirement sheet with required values such as Rw at least 56 dB and REI at least 90, and a data sheet with declared values such as Rw 59 dB and REI 90; arrows labelled tighten and satisfy connect them</title>
+<defs><marker id="bsdd-template-to-sheet-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<path d="M80 80 H448 L470 102 V500 a10 10 0 0 1 -10 10 H80 a10 10 0 0 1 -10 -10 V90 a10 10 0 0 1 10 -10 Z" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<path d="M448 80 V102 H470" fill="#09090b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="98" y="120" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Data template</text>
+<text x="98" y="146" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">which properties · no values</text>
+<line x1="90" y1="170" x2="450" y2="170" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="98" y="203" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Sound reduction index</text>
+<text x="98" y="223" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Rw · dB</text>
+<rect x="346" y="195" width="96" height="24" rx="4" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="90" y1="238" x2="450" y2="238" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="98" y="265" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Fire resistance</text>
+<text x="98" y="285" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">REI · min</text>
+<rect x="346" y="257" width="96" height="24" rx="4" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="90" y1="300" x2="450" y2="300" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="98" y="327" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Thermal transmittance</text>
+<text x="98" y="347" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">U · W/(m²·K)</text>
+<rect x="346" y="319" width="96" height="24" rx="4" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="90" y1="362" x2="450" y2="362" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="98" y="389" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Thickness</text>
+<text x="98" y="409" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">d · mm</text>
+<rect x="346" y="381" width="96" height="24" rx="4" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="90" y1="424" x2="450" y2="424" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="98" y="451" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Timber species</text>
+<rect x="346" y="443" width="96" height="24" rx="4" fill="#09090b" stroke="rgba(244,244,245,0.10)" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="270" y="540" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">company dictionary</text>
+<path d="M610 80 H978 L1000 102 V500 a10 10 0 0 1 -10 10 H610 a10 10 0 0 1 -10 -10 V90 a10 10 0 0 1 10 -10 Z" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<path d="M978 80 V102 H1000" fill="#09090b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="628" y="120" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Requirement sheet</text>
+<text x="628" y="146" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">required values</text>
+<line x1="620" y1="170" x2="980" y2="170" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="628" y="203" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Sound reduction index</text>
+<text x="628" y="223" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Rw · dB</text>
+<text x="972" y="213" text-anchor="end" fill="#f4f4f5" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">≥ 56</text>
+<line x1="620" y1="238" x2="980" y2="238" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="628" y="265" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Fire resistance</text>
+<text x="628" y="285" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">REI · min</text>
+<text x="972" y="275" text-anchor="end" fill="#f4f4f5" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">≥ 90</text>
+<line x1="620" y1="300" x2="980" y2="300" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="628" y="327" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Thermal transmittance</text>
+<text x="628" y="347" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">U · W/(m²·K)</text>
+<text x="972" y="337" text-anchor="end" fill="#f4f4f5" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">≤ 0.15</text>
+<line x1="620" y1="362" x2="980" y2="362" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="628" y="389" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Thickness</text>
+<text x="628" y="409" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">d · mm</text>
+<text x="972" y="399" text-anchor="end" fill="#f4f4f5" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">≤ 400</text>
+<line x1="620" y1="424" x2="980" y2="424" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="628" y="451" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Timber species</text>
+<text x="972" y="461" text-anchor="end" fill="#f4f4f5" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">spruce or fir</text>
+<text x="800" y="540" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">project, before fabrication</text>
+<path d="M1140 80 H1508 L1530 102 V500 a10 10 0 0 1 -10 10 H1140 a10 10 0 0 1 -10 -10 V90 a10 10 0 0 1 10 -10 Z" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<path d="M1508 80 V102 H1530" fill="#09090b" stroke="#34d399" stroke-width="1.5"/>
+<text x="1158" y="120" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Data sheet</text>
+<text x="1158" y="146" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">declared or measured values</text>
+<line x1="1150" y1="170" x2="1510" y2="170" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="1158" y="203" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Sound reduction index</text>
+<text x="1158" y="223" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">Rw · dB</text>
+<text x="1502" y="213" text-anchor="end" fill="#34d399" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">59</text>
+<line x1="1150" y1="238" x2="1510" y2="238" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="1158" y="265" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Fire resistance</text>
+<text x="1158" y="285" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">REI · min</text>
+<text x="1502" y="275" text-anchor="end" fill="#34d399" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">90</text>
+<line x1="1150" y1="300" x2="1510" y2="300" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="1158" y="327" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Thermal transmittance</text>
+<text x="1158" y="347" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">U · W/(m²·K)</text>
+<text x="1502" y="337" text-anchor="end" fill="#34d399" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">0.14</text>
+<line x1="1150" y1="362" x2="1510" y2="362" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="1158" y="389" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Thickness</text>
+<text x="1158" y="409" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">d · mm</text>
+<text x="1502" y="399" text-anchor="end" fill="#34d399" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">392</text>
+<line x1="1150" y1="424" x2="1510" y2="424" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="1158" y="451" fill="#f4f4f5" font-size="16" font-family="ui-sans-serif, system-ui, sans-serif">Timber species</text>
+<text x="1502" y="461" text-anchor="end" fill="#34d399" font-size="18" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">spruce</text>
+<text x="1330" y="540" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">project, fabricated buildup → DPP</text>
+<line x1="480" y1="331" x2="588" y2="331" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-template-to-sheet-arrow)"/>
+<rect x="496.25" y="304" width="75.5" height="22" rx="4" fill="#000000"/>
+<text x="534" y="320" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">tighten</text>
+<line x1="1010" y1="331" x2="1118" y2="331" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-template-to-sheet-arrow)"/>
+<rect x="1026.25" y="304" width="75.5" height="22" rx="4" fill="#000000"/>
+<text x="1064" y="320" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">satisfy</text>
+</svg>

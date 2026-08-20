@@ -41,7 +41,7 @@ const bx = rx + 24;
 const rows = [150, 300, 450];
 const th = 72;
 b.push(tile(bx, rows[0], bw, th, "Data template", "which properties describe this object · no values"));
-b.push(tile(bx, rows[1], bw, th, "Requirement sheet", "required values, company-wide or per project · Rw ≥ 56 dB, REI 90"));
+b.push(tile(bx, rows[1], bw, th, "Requirement sheet", "required values · Rw ≥ 56 dB, REI 90"));
 b.push(tile(bx, rows[2], bw, th, "Data sheet", "declared or measured values · Rw = 59 dB", { accent: true }));
 const mx = rx + rw / 2;
 b.push(arrow(ID, mx, rows[0] + th, mx, rows[1] - 2, "tighten", { labelDx: leftAlign("tighten", 14), labelDy: 4 }));

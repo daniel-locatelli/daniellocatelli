@@ -41,7 +41,7 @@
 <text x="1190" y="206" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">which properties describe this object · no values</text>
 <rect x="904" y="300" width="572" height="72" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
 <text x="1190" y="330" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Requirement sheet</text>
-<text x="1190" y="356" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">required values, company-wide or per project · Rw ≥ 56 dB, REI 90</text>
+<text x="1190" y="356" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">required values · Rw ≥ 56 dB, REI 90</text>
 <rect x="904" y="450" width="572" height="72" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
 <text x="1190" y="480" text-anchor="middle" fill="#f4f4f5" font-size="20" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Data sheet</text>
 <text x="1190" y="506" text-anchor="middle" fill="#a1a1aa" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">declared or measured values · Rw = 59 dB</text>
