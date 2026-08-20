@@ -1,50 +1,72 @@
 // Generates public/assets/content/projects/dokwood/dokwood-bsdd.svg
-// A reduced view of the hm/dokwood dictionary for the project page; the full two-plane
-// diagram lives on the bSDD research page.
+// The two levels of data dictionaries in DOKwood: the public bSDD dictionary above, and the
+// private dictionary of each tenant below, forked from it or started from a clean slate.
 // Run: node src/assets/content/projects/dokwood/generate-bsdd.mjs
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
-import { svgDoc, frame, tile, chip, arrow, note, write } from "../../svg-kit.mjs";
+import { svgDoc, frame, tile, arrow, note, write, C, MONO } from "../../svg-kit.mjs";
 
 const ID = "dokwood-bsdd";
 const W = 1600;
-const H = 560;
+const H = 800;
 const X0 = 120;
 const CW = W - 2 * X0;
 const b = [];
 
-// Row 1: the dictionary, three tiles
+// Row 1: the public dictionary
 const r1y = 70;
-const r1h = 200;
-b.push(frame(X0, r1y, CW, r1h, "bSDD · hm/dokwood · v0.13 · public"));
-const colW = (CW - 64 - 2 * 40) / 3;
-const cols = [X0 + 32, X0 + 32 + colW + 40, X0 + 32 + 2 * (colW + 40)];
-const ty = r1y + 40;
-b.push(tile(cols[0], ty, colW, 90, "Classes", "Buildup · Wall · Roof · Slab · Product"));
-b.push(tile(cols[1], ty, colW, 90, "Properties", "129 properties in 17 groups"));
-b.push(tile(cols[2], ty, colW, 90, "Data templates", "ISO 23387 · one template per class"));
-b.push(note(X0 + CW / 2, r1y + 168, "one shared vocabulary, read by the platform and by every interface", { anchor: "middle", size: 15 }));
+const r1h = 170;
+b.push(frame(X0, r1y, CW, r1h, "PUBLIC"));
+b.push(tile(X0 + 32, r1y + 36, CW - 64, 84, "DOKwood dictionary · hm/dokwood", "generic, high-level vocabulary for timber buildups: classes · 129 properties · ISO 23387 data templates", { accent: true }));
+b.push(note(X0 + CW / 2, r1y + 150, "anyone can read it and reference it", { anchor: "middle", size: 15 }));
 
-// Row 2: how a buildup and its products use the templates
-const r2y = 340;
-const r2h = 150;
-b.push(frame(X0, r2y, CW, r2h, "HOW A BUILDUP IS DESCRIBED"));
-const tw = (CW - 64 - 160) / 2;
-const sx = X0 + 32;
-const px = sx + tw + 160;
-const sy = r2y + 34;
-b.push(tile(sx, sy, tw, 82, "Buildup = System Data Template", "the wall, roof or slab with its ordered layers", { accent: true }));
-b.push(tile(px, sy, tw, 82, "Product = Product Data Template", "the board, stud, insulation or cladding in a layer", { accent: true }));
-b.push(arrow(ID, sx + tw + 2, sy + 41, px - 2, sy + 41, "HasPart", { labelDy: -14 }));
+// Row 2: the tenants inside the platform
+const r2y = 360;
+const r2h = 230;
+b.push(frame(X0, r2y, CW, r2h, "PRIVATE"));
+const gap = 40;
+const tw = (CW - 64 - 2 * gap) / 3;
+const tx = [X0 + 32, X0 + 32 + tw + gap, X0 + 32 + 2 * (tw + gap)];
+const ty = r2y + 40;
+const th = 100;
+b.push(tile(tx[0], ty, tw, th, "Tenant A dictionary", "forked from hm/dokwood, then specialised"));
+b.push(tile(tx[1], ty, tw, th, "Tenant B dictionary", "forked from hm/dokwood, then specialised"));
+b.push(tile(tx[2], ty, tw, th, "Tenant C dictionary", "clean slate, its own vocabulary", { soft: true }));
 
-// template row feeds the buildup row
-b.push(arrow(ID, cols[2] + colW / 2, r1y + r1h + 2, cols[2] + colW / 2, r2y - 2, "instantiated as", { labelDx: 90, labelDy: 4 }));
+// fork arrows: public dictionary -> tenants A and B
+for (const i of [0, 1]) {
+  const cx = tx[i] + tw / 2;
+  b.push(arrow(ID, cx, r1y + r1h + 2, cx, ty - 2, "fork as base", { labelDx: 0, labelDy: 4 }));
+}
+// tenant C: no fork, optional reference only
+{
+  const cx = tx[2] + tw / 2;
+  b.push(arrow(ID, cx, r1y + r1h + 2, cx, ty - 2, "may reference", { dashed: true, labelDx: 0, labelDy: 4 }));
+}
+
+// opened and interlinked: A <-> B
+{
+  const y = ty + th + 0;
+  const x1 = tx[0] + tw - 40;
+  const x2 = tx[1] + 40;
+  const ly = y + 40;
+  // a short bracket below A and B
+  b.push(`<path d="M ${x1} ${y + 2} V ${ly} H ${x2} V ${y + 2}" fill="none" stroke="${C.muted}" stroke-width="1.5" stroke-dasharray="6 6"/>`);
+  b.push(`<text x="${(x1 + x2) / 2}" y="${ly + 20}" text-anchor="middle" fill="${C.dim}" font-size="14" font-family="${MONO}" letter-spacing="0.08em">optional: open and interlink</text>`);
+}
+
+// Row 3: the interfaces read through the dictionary layer
+const r3y = r2y + r2h + 80;
+const r3h = 120;
+b.push(frame(X0, r3y, CW, r3h, "INTERFACES"));
+b.push(tile(X0 + 32, r3y + 30, CW - 64, 64, "Revit add-in · Cadwork plugin · MCP server", "all read through the dictionary layer, which is what makes them interoperable", { soft: true }));
+b.push(arrow(ID, X0 + CW / 2, r3y - 2, X0 + CW / 2, r2y + r2h + 2, "", {}));
 
 const svg = svgDoc({
   w: W,
   h: H,
   id: ID,
-  title: "The hm/dokwood dictionary on bSDD with its classes, properties and ISO 23387 data templates, and below it a buildup as a System Data Template linked by HasPart to its products as Product Data Templates",
+  title: "Two levels of data dictionaries: the public hm/dokwood dictionary on bSDD above, and below it the private dictionary of each tenant, forked from the public one and specialised, or started from a clean slate; tenants can optionally open and interlink their dictionaries, and an interfaces box at the bottom: the Revit add-in, Cadwork plugin and MCP server all read through this dictionary layer",
   body: b,
 });
 write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/projects/dokwood/dokwood-bsdd.svg"), svg);
