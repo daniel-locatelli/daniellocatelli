@@ -59,8 +59,20 @@ function renderStructuredFallback(entry: CollectionEntry<Coll>, props: PathProps
     lines.push(`**Date:** ${data.DateStart ?? ""}${data.DateEnd ? ` - ${data.DateEnd}` : ""}`);
   }
   if (data.Link) {
+    const link =
+      typeof data.Link === "string"
+        ? data.Link
+        : Array.isArray(data.Link)
+          ? data.Link
+              .map((l: any) => (typeof l === "string" ? l : `${l.Text ?? l.Href} (${l.Href})`))
+              .join(", ")
+          : `${data.Link.Text} (${data.Link.Href})`;
     lines.push("");
-    lines.push(`**Link:** ${data.Link}`);
+    lines.push(`**Link:** ${link}`);
+  }
+  if (data.Presentation) {
+    lines.push("");
+    lines.push(`**Presentation:** ${data.Presentation}`);
   }
   return lines.join("\n") + "\n";
 }
