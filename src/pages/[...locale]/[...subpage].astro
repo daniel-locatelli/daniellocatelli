@@ -894,39 +894,6 @@ const foregroundClass = isLetterbox
     }
   </section>
   <Fragment slot="after-body">
-    <script>
-      import mermaid from "mermaid";
-      mermaid.initialize({
-        startOnLoad: false,
-        theme: "dark",
-        darkMode: true,
-      });
-      document.addEventListener("astro:page-load", async () => {
-        const blocks = document.querySelectorAll(
-          'pre[data-language="mermaid"]',
-        );
-        if (blocks.length === 0) return;
-        for (const block of blocks) {
-          const code = block.textContent ?? "";
-          const wrapper = document.createElement("div");
-          wrapper.className = "mermaid-diagram my-4 overflow-x-auto";
-          const pre = document.createElement("pre");
-          pre.className = "mermaid";
-          pre.textContent = code;
-          wrapper.appendChild(pre);
-          block.replaceWith(wrapper);
-        }
-        try {
-          await mermaid.run({ querySelector: ".mermaid" });
-          document
-            .querySelectorAll<SVGElement>(".mermaid-diagram svg")
-            .forEach((svg) => svg.setAttribute("role", "img"));
-        } catch (e) {
-          console.warn("Mermaid run failed", e);
-        }
-      });
-    </script>
-
     <style>
       th {
         font-weight: 300;
