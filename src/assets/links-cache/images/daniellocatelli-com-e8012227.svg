@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="standards-cover-title"><title id="standards-cover-title">The designation DIN EN ISO 19650-1 broken into its parts: the national body, the European standard, the international standard, and the number and part</title>
+<defs><marker id="standards-cover-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<text x="240" y="460" text-anchor="middle" fill="#f4f4f5" font-size="120" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="-0.02em">DIN</text>
+<path d="M 108 510 v 18 h 264 v -18" fill="none" stroke="#a1a1aa" stroke-width="2"/>
+<line x1="240" y1="528" x2="240" y2="550" stroke="#a1a1aa" stroke-width="2"/>
+<text x="240" y="588" text-anchor="middle" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">national body</text>
+<text x="530" y="460" text-anchor="middle" fill="#f4f4f5" font-size="120" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="-0.02em">EN</text>
+<path d="M 428 510 v 18 h 204 v -18" fill="none" stroke="#a1a1aa" stroke-width="2"/>
+<line x1="530" y1="528" x2="530" y2="550" stroke="#a1a1aa" stroke-width="2"/>
+<text x="530" y="588" text-anchor="middle" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">European standard</text>
+<text x="820" y="460" text-anchor="middle" fill="#f4f4f5" font-size="120" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="-0.02em">ISO</text>
+<path d="M 688 510 v 18 h 264 v -18" fill="none" stroke="#a1a1aa" stroke-width="2"/>
+<line x1="820" y1="528" x2="820" y2="550" stroke="#a1a1aa" stroke-width="2"/>
+<text x="820" y="588" text-anchor="middle" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">international standard</text>
+<text x="1250" y="460" text-anchor="middle" fill="#f4f4f5" font-size="120" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="-0.02em">19650-1</text>
+<path d="M 1008 510 v 18 h 484 v -18" fill="none" stroke="#a1a1aa" stroke-width="2"/>
+<line x1="1250" y1="528" x2="1250" y2="550" stroke="#a1a1aa" stroke-width="2"/>
+<text x="1250" y="588" text-anchor="middle" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">number and part</text>
+</svg>
