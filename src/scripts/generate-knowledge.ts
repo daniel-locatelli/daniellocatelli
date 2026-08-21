@@ -93,6 +93,7 @@ function readContentFiles(
   if (!fs.existsSync(dir)) return [];
 
   const sources: { file: string; filename: string }[] = [];
+  const seenStems = new Set<string>();
   for (const name of fs.readdirSync(dir)) {
     const full = path.join(dir, name);
     if (fs.statSync(full).isDirectory()) {
@@ -101,8 +102,26 @@ function readContentFiles(
       const idx = ["index.md", "index.mdx"]
         .map((f) => path.join(full, f))
         .find((f) => fs.existsSync(f));
-      if (idx) sources.push({ file: idx, filename: `${name}.md` });
+      if (idx) {
+        const stem = `${name}.md`.replace(/\.(md|mdx)$/, "");
+        if (seenStems.has(stem)) {
+          console.warn(
+            `Duplicate knowledge stem "${stem}" in ${collection}/${locale}: keeping first source seen, ignoring ${idx}`,
+          );
+          continue;
+        }
+        seenStems.add(stem);
+        sources.push({ file: idx, filename: `${name}.md` });
+      }
     } else if (name.endsWith(".md") || name.endsWith(".mdx")) {
+      const stem = name.replace(/\.(md|mdx)$/, "");
+      if (seenStems.has(stem)) {
+        console.warn(
+          `Duplicate knowledge stem "${stem}" in ${collection}/${locale}: keeping first source seen, ignoring ${full}`,
+        );
+        continue;
+      }
+      seenStems.add(stem);
       sources.push({ file: full, filename: name });
     }
   }

@@ -154,6 +154,7 @@ test.describe("Subpages", () => {
     await expect(watch).toBeVisible();
     await expect(watch).toHaveAttribute("href", /youtube\.com/);
     await expect(watch).toHaveAttribute("target", "_blank");
+    await expect(watch).toHaveAttribute("rel", "noopener noreferrer");
     const deck = page.getByRole("link", { name: "Open slide deck" });
     await expect(deck).toBeVisible();
     await expect(deck).toHaveAttribute("href", /\/teaching\/digital-futures-2026\/deck$/);
@@ -163,5 +164,12 @@ test.describe("Subpages", () => {
     await page.goto("/teaching/digital-futures-2023");
     await expect(page.getByRole("link", { name: /Watch presentation/ })).toBeVisible();
     await expect(page.getByRole("link", { name: "Open slide deck" })).toHaveCount(0);
+  });
+
+  test("page without video or deck shows no pill row", async ({ page }) => {
+    await page.goto(`/${KNOWN_SUBPAGE.slug}`);
+    await expect(
+      page.getByRole("link", { name: /Watch presentation|Open slide deck/ }),
+    ).toHaveCount(0);
   });
 });
