@@ -1,5 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
+import profilePhoto from "@/assets/avatars/daniel-locatelli-v1.png";
 import CvContainer from "@/components/cv/CvContainer.astro";
 import CvHeader from "@/components/cv/CvHeader.astro";
 import CvExperiences from "@/components/cv/CvExperiences.astro";
@@ -106,7 +107,7 @@ const scholarships = (
     description:
       "Curriculum Vitae for PhD application with full chronological history of educational background and work experiences.",
     coverAlt: cv.meta.coverAlt,
-    coverImage: "@/assets/avatars/daniel-locatelli-v1.png",
+    coverImage: profilePhoto.src,
     slug: "phd-cv",
   }}
 >

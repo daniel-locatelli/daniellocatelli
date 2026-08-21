@@ -1,5 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
+import profilePhoto from "@/assets/avatars/daniel-locatelli-v1.png";
 import CvContainer from "@/components/cv/CvContainer.astro";
 import CvHeader from "@/components/cv/CvHeader.astro";
 import CvSkills from "@/components/cv/CvSkills.astro";
@@ -159,7 +160,7 @@ const certifications = (
     title: cv.meta.titleSimple,
     description: cv.meta.descriptionSimple,
     coverAlt: cv.meta.coverAlt,
-    coverImage: "@/assets/avatars/daniel-locatelli-v1.png",
+    coverImage: profilePhoto.src,
     slug: "cv",
   }}
 >
