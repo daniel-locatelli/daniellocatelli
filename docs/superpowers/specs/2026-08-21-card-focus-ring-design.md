@@ -46,6 +46,11 @@ rounded-2xl bg-zinc-900 transition-all hover:shadow-2xl`):
   the black page. `has-[a:focus-visible]` (not `focus-within`) means mouse
   clicks never trigger it. Tailwind v4 composes `ring-*` and `hover:shadow-2xl`
   through its `--tw-*-shadow` variables, so hover and focus can coexist.
+- Also add `has-[a:focus-visible]:forced-colors:outline-2
+  has-[a:focus-visible]:forced-colors:outline-offset-2` on the article: the
+  ring is a box-shadow, which forced-colors mode (Windows High Contrast) does
+  not paint, so under forced colors the focused card gets a 2 px system-colour
+  outline instead.
 
 Hover/focus parity, using `group-has-[a:focus-visible]:` twins (same predicate as
 the ring; unlike `group-focus-within:` it does not stick after a ctrl/middle
@@ -100,10 +105,14 @@ via the existing `webServer` config:
    `color` differs from the value recorded before focusing (Tailwind v4 emits
    oklch colours, so the test compares before/after rather than hard-coding a
    colour string).
-3. **Mouse does not trigger the ring:** hover the first card with the mouse
-   (no click) and assert the article's `box-shadow` equals what hover alone
-   produces (contains no green ring colour), guarding the `has-[a:focus-visible]`
-   choice.
+3. **Mouse focus does not trigger the ring:** press (mousedown, without
+   releasing, so no navigation) on the first card link; Chromium focuses the
+   anchor, which is `:focus` but not `:focus-visible`. Assert the link is
+   focused and that the article's `--tw-ring-color` (Tailwind's ring colour
+   variable, set only while the ring variant applies) stays empty. This is the
+   case that distinguishes `has-[a:focus-visible]` from `focus-within`.
+   The keyboard tests assert the same variable is non-empty before checking
+   the painted `box-shadow`.
 
 Manual check: `pnpm dev`, tab through `/projects`, `/research`, `/teaching` at
 desktop and mobile widths, confirm ring plus hover state, and that mouse click

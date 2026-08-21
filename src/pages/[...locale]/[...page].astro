@@ -145,7 +145,7 @@ if (pageImage) {
               return (
                 <article
                   data-chron-index={idx}
-                  class="group relative flex flex-col overflow-hidden rounded-2xl bg-zinc-900 transition-shadow hover:shadow-2xl has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-green-400 has-[a:focus-visible]:ring-offset-2 has-[a:focus-visible]:ring-offset-black"
+                  class="group relative flex flex-col overflow-hidden rounded-2xl bg-zinc-900 transition-shadow hover:shadow-2xl has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-green-400 has-[a:focus-visible]:ring-offset-2 has-[a:focus-visible]:ring-offset-black has-[a:focus-visible]:forced-colors:outline-2 has-[a:focus-visible]:forced-colors:outline-offset-2"
                 >
                   <a
                     href={`/${locale === siteConfig.defaultLocale ? "" : `${locale}/`}${getEntrySlug(subpage)}`}

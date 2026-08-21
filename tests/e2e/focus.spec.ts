@@ -1,4 +1,4 @@
-import { test, expect, type Page } from "@playwright/test";
+import { test, expect, type Locator, type Page } from "@playwright/test";
 
 /**
  * Keyboard focus on listing-grid cards (projects / research / teaching).
@@ -23,6 +23,15 @@ async function tabToFirstCard(page: Page): Promise<void> {
   throw new Error("Tab never reached a listing card link");
 }
 
+/** Tailwind's ring colour variable. It is set on the article only while the
+ *  `has-[a:focus-visible]:ring-*` variant applies, so a non-empty value proves
+ *  the focus-visible predicate matched and an empty one proves it did not. */
+function ringColor(article: Locator): Promise<string> {
+  return article.evaluate((el) =>
+    getComputedStyle(el).getPropertyValue("--tw-ring-color").trim(),
+  );
+}
+
 test.describe("Keyboard focus on listing cards", () => {
   test("desktop: focused card shows a ring and reveals the title overlay", async ({
     page,
@@ -37,7 +46,9 @@ test.describe("Keyboard focus on listing cards", () => {
     await expect(focusedLink).toHaveCount(1);
     const article = focusedLink.locator("xpath=ancestor::article[1]");
 
-    // Ring is a box-shadow on the article itself (not clipped by overflow-hidden).
+    // The ring predicate matched and the ring (a box-shadow on the article
+    // itself, so not clipped by overflow-hidden) is painted.
+    await expect.poll(() => ringColor(article)).not.toBe("");
     await expect(article).not.toHaveCSS("box-shadow", "none");
 
     // Desktop hover overlay (hidden lg:flex, opacity-0 at rest) becomes opaque.
@@ -45,14 +56,14 @@ test.describe("Keyboard focus on listing cards", () => {
     await expect(overlay).toHaveCSS("opacity", "1");
   });
 
-  test("mobile: focused card shows a ring and highlights the title", async ({
+  test("narrow viewport: focused card shows a ring and highlights the title", async ({
     page,
   }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/projects");
     await expect(page.locator("[data-subpage-container]")).toBeVisible();
 
-    // On mobile the visible title is the one inside the lg:hidden text block;
+    // Below lg the visible title is the one inside the lg:hidden text block;
     // the overlay h2 is display:none so its computed colour is irrelevant.
     const restingColor = await page
       .locator("[data-subpage-container] article div.lg\\:hidden h2")
@@ -64,6 +75,7 @@ test.describe("Keyboard focus on listing cards", () => {
     const focusedLink = page.locator(`${CARD_LINK}:focus`);
     await expect(focusedLink).toHaveCount(1);
     const article = focusedLink.locator("xpath=ancestor::article[1]");
+    await expect.poll(() => ringColor(article)).not.toBe("");
     await expect(article).not.toHaveCSS("box-shadow", "none");
 
     const title = article.locator("div.lg\\:hidden h2");
@@ -72,18 +84,27 @@ test.describe("Keyboard focus on listing cards", () => {
       .not.toBe(restingColor);
   });
 
-  test("mouse hover alone does not draw the focus ring", async ({ page }) => {
+  test("mouse press focuses the link without drawing the focus ring", async ({
+    page,
+  }) => {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto("/projects");
-    const article = page.locator("[data-subpage-container] article").first();
-    await expect(article).toBeVisible();
+    const link = page.locator(CARD_LINK).first();
+    await expect(link).toBeVisible();
+    const box = await link.boundingBox();
+    if (!box) throw new Error("card link has no bounding box");
 
-    await article.hover();
-    // hover:shadow-2xl is present but no ring colour: Tailwind's ring uses
-    // the --tw-ring-color, which stays transparent/unset without focus.
-    const ringColor = await article.evaluate((el) =>
-      getComputedStyle(el).getPropertyValue("--tw-ring-color").trim(),
-    );
-    expect(ringColor).toBe("");
+    // Press without releasing: Chromium focuses the anchor on mousedown, and
+    // not releasing avoids navigating away.
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.mouse.down();
+    // Guard that the test exercised mouse focus at all.
+    await expect(link).toBeFocused();
+
+    // Mouse focus is :focus but not :focus-visible, so the
+    // has-[a:focus-visible] ring predicate must not match.
+    const article = link.locator("xpath=ancestor::article[1]");
+    await expect.poll(() => ringColor(article)).toBe("");
+    await page.mouse.up();
   });
 });

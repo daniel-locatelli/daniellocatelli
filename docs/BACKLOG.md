@@ -48,7 +48,7 @@ Non-critical ideas and improvements for the daniellocatelli portfolio repo. Use 
 
 ## Listing-grid keyboard tab order runs column-wise
 
-**Problem.** `layoutColumns()` in `src/pages/[...locale]/[...page].astro` distributes cards into column wrapper `<div>`s with `wrappers[i % cols].appendChild(card)`. DOM order (and therefore Tab order) becomes 0,3,6,... then 1,4,7,... while the visual order is row-major. Since the cards now show a focus ring, the jump down column 1 before column 2 is noticeable for keyboard users.
+**Problem.** `layoutColumns()` in `src/pages/[...locale]/[...page].astro` distributes cards into column wrapper `<div>`s with `wrappers[i % cols].appendChild(card)`. DOM order (and therefore Tab order) becomes 0,3,6,... then 1,4,7,... while the visual order is row-major. Since the cards now show a focus ring, the jump down column 1 before column 2 is noticeable for keyboard users. The same relayout (`container.replaceChildren()` on breakpoint crossings and `astro:page-load`) detaches and re-appends the cards, which blurs a focused card, so a keyboard user who resizes across a breakpoint loses the focus ring and lands back on `<body>`; the fix should re-focus the previously focused card after relayout.
 
 **Sketch.** Keep cards in a single flat container in chronological DOM order and achieve the column placement with CSS (`grid-auto-flow: row` with one card per cell, or `order` / `grid-column` per card) instead of moving DOM nodes; update `tests/e2e/tile-ordering.spec.ts` to assert visual positions rather than wrapper membership.
 

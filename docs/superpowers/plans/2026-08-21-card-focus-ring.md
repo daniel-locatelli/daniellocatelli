@@ -301,7 +301,9 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 
 **Interfaces:** none.
 
-- [ ] **Step 1: Append two entries**
+- [ ] **Step 1: Append three entries**
+
+A third entry about Playwright reusing whatever dev server owns port 4321 was added during execution.
 
 Append to the end of `docs/BACKLOG.md` (keep the existing `## Title` / **Problem.** / **Sketch.** / **Trigger.** format):
 
