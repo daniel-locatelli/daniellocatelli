@@ -72,3 +72,34 @@ Overall: **82/100** (mean of dimension scores).
 | ar.negotiation.missing | info | agent-readiness | No Accept: text/markdown negotiation on canonical URLs | /cv → text/html | https://daniellocatelli.com/cv | M | no |
 | sec.permissions-policy.missing | info | security-headers | No Permissions-Policy header | permissions-policy absent | https://daniellocatelli.com/ | S | yes |
 | sec.security-txt.missing | info | security-headers | No /.well-known/security.txt | GET /.well-known/security.txt -> 404 | https://daniellocatelli.com/.well-known/security.txt | S | yes |
+
+## Re-check 2026-08-21 (post-fix, pre-deploy)
+
+Fixes applied in commits `2822936..` on `feat/presentation-pill`; `pnpm build` passes.
+
+| Dimension | Before | After | Verified how |
+|---|---|---|---|
+| content-integrity | 94 | **100** | sub-skill re-run on the repo: 0 findings |
+| security-headers | 46 | pending deploy | `_headers` hardening block + security.txt confirmed in `dist/client`; middleware 301 for HTTP document routes |
+| seo-and-social | 80 | pending deploy | built sitemap contains no legal pages; `/cv` og:image resolves to `/_astro/daniel-locatelli-v1.mPvibotj.png` (asset exists in build) |
+| performance | 91 | 91 (unchanged) | M-effort code refactors deferred (see below) |
+| agent-readiness | 97 | 97 (unchanged) | `.md` variants / llms-full.txt deferred (M effort) |
+
+Fixed: sec.tls.http-not-redirected (document routes), sec.hsts.missing, sec.csp.missing,
+sec.xcto.missing, sec.xfo.missing, sec.referrer-policy.missing, sec.permissions-policy.missing,
+sec.security-txt.missing, seo.noindex.in-sitemap, seo.og.image-broken, ci.style.em-dash,
+ci.structure.missing-fields.
+
+Deliberately not fixed here:
+- **Cloudflare "Always Use HTTPS" toggle** — API token is zone-read-only; flip it in the
+  dashboard (SSL/TLS → Edge Certificates). Until then, static assets excluded from
+  `run_worker_first` still serve over plain HTTP.
+- **CSP `'unsafe-inline'`** — Astro inline scripts + mermaid inline styles set the current
+  ceiling; nonce/hash tightening is an M/L follow-up.
+- **HSTS `preload`** — omitted until subdomain HTTPS coverage is verified.
+- **Performance minors** (lazy-load geodesic-dome, critical CSS, forced reflow) and
+  **agent-readiness minors** (.md variants, llms-full.txt) — M-effort refactors, separate PRs.
+
+After deploy, re-run:
+`node ~/.claude/skills/auditing-security-headers/scripts/check-headers.mjs https://daniellocatelli.com --json`
+`node ~/.claude/skills/auditing-seo-and-social/scripts/check-seo.mjs https://daniellocatelli.com --locales de,pt --json`
