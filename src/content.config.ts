@@ -203,6 +203,7 @@ const pageSchema = z.object({
       z.object({ Text: z.string(), Href: z.string() }),
     ])
     .optional(),
+  Presentation: z.string().url().optional(),
   OtherLinks: z
     .array(
       z.object({

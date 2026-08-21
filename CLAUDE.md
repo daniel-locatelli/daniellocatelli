@@ -82,7 +82,7 @@ The knowledge pipeline generates:
 
 ## Backlog
 
-Non-critical improvement ideas, structural refactors, and quality-of-life cleanups live in [`docs/BACKLOG.md`](docs/BACKLOG.md). When you notice something worth doing but not urgent enough to interrupt current work, add it there rather than implementing it inline or letting the thought disappear.
+Non-critical improvement ideas, structural refactors, and quality-of-life cleanups live in the thoughts store, folder `daniellocatelli.com/`, on the Mac mini (`ssh macmini`, repo `/home/dnl/repos/gitlab/daniellocatelli/thoughts`; web UI on the tailnet at `http://macmini:8770`). When you notice something worth doing but not urgent enough to interrupt current work, capture it there as a `status: todo` thought (`YYYY-MM-DD_slug.md`, front-matter per the store's `CLAUDE.md`, files owned by `dnl`, commit as `dnl` with `capture: <slug>`) rather than implementing it inline or letting the thought disappear. There is no in-repo backlog file.
 
 ## Code Style
 

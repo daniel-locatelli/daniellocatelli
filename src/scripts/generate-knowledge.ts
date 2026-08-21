@@ -92,13 +92,45 @@ function readContentFiles(
   const dir = path.join(CONTENT_DIR, collection, locale);
   if (!fs.existsSync(dir)) return [];
 
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith(".md") || f.endsWith(".mdx"))
-    .map((file) => {
-      const raw = fs.readFileSync(path.join(dir, file), "utf-8");
+  const sources: { file: string; filename: string }[] = [];
+  const seenStems = new Set<string>();
+  for (const name of fs.readdirSync(dir)) {
+    const full = path.join(dir, name);
+    if (fs.statSync(full).isDirectory()) {
+      // Folder entries: teaching/<locale>/<slug>/index.md(x) next to deck.mdx.
+      // Expose them under "<slug>.md" so downstream slug/URL logic is unchanged.
+      const idx = ["index.md", "index.mdx"]
+        .map((f) => path.join(full, f))
+        .find((f) => fs.existsSync(f));
+      if (idx) {
+        const stem = `${name}.md`.replace(/\.(md|mdx)$/, "");
+        if (seenStems.has(stem)) {
+          console.warn(
+            `Duplicate knowledge stem "${stem}" in ${collection}/${locale}: keeping first source seen, ignoring ${idx}`,
+          );
+          continue;
+        }
+        seenStems.add(stem);
+        sources.push({ file: idx, filename: `${name}.md` });
+      }
+    } else if (name.endsWith(".md") || name.endsWith(".mdx")) {
+      const stem = name.replace(/\.(md|mdx)$/, "");
+      if (seenStems.has(stem)) {
+        console.warn(
+          `Duplicate knowledge stem "${stem}" in ${collection}/${locale}: keeping first source seen, ignoring ${full}`,
+        );
+        continue;
+      }
+      seenStems.add(stem);
+      sources.push({ file: full, filename: name });
+    }
+  }
+
+  return sources
+    .map(({ file, filename }) => {
+      const raw = fs.readFileSync(file, "utf-8");
       const { data, body } = parseFrontmatter(raw);
-      return { data, body, filename: file };
+      return { data, body, filename };
     })
     .filter((entry) => entry.data.Name);
 }
@@ -158,6 +190,7 @@ function processContentCollections() {
               : data.Link.Href || data.Link.href;
           if (link) metaParts.push(`Link: ${link}`);
         }
+        if (data.Presentation) metaParts.push(`Presentation: ${data.Presentation}`);
         if (data.Event) metaParts.push(`Event: ${data.Event}`);
         if (data.Language) metaParts.push(`Language: ${data.Language}`);
 

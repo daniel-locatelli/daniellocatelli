@@ -4,6 +4,7 @@ URL: https://daniellocatelli.com/full-cv
 
 July 2026 – Current | [Work] | PhD Candidate | Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland
 July 2026 | [Education] | Doctor of Sciences | Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland
+April 2026 | [Teaching] | Digital Futures 2026: Entre o Prompt e a Obra | DigitalFUTURES
 May 2025 | [Teaching] | Working with Geographic Data in Grasshopper | Munich University of Applied Sciences | Munich
 February 2025 – June 2026 | [Work] | Research Associate | Munich University of Applied Sciences | Munich, Germany
 July 2024 | [Teaching] | Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings | Forum Holzbau | Fellbach, Germany
@@ -12,6 +13,7 @@ July 2024 | [Certification] | CS50's Introduction to Databases with SQL | Harvar
 June 2024 – July 2024 | [Course] | CS50's Introduction to Databases with SQL | Harvard University | Online
 January 2024 – December 2024 | [Work] | AEC Software Engineer | BuildSystems GmbH | Munich, Germany
 December 2023 | [Teaching] | BuildSystems - Smart Sustainability Roadmaps | Graphisoft X - Online | Germany
+November 2023 | [Teaching] | Computational Architecture in Germany | UFT, Online | Palmas, Brazil
 November 2023 | [Teaching] | Computational Architecture in Germany | UFT - Online | Palmas, Brazil
 July 2023 – October 2023 | [Course] | CS50's Introduction to Computer Science | Harvard University | Online
 March 2023 | [Teaching] | Feasibility of Sustainable Construction | Munich Urban Colab | Munich, Germany

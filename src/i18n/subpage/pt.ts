@@ -29,6 +29,7 @@ export const t: I18nSubpage = {
   references: "Referências",
   otherLinks: "Outros Links",
   openSlideDeck: "Abrir slides",
+  watchPresentation: "Assistir apresentação",
   next: "Próximo",
   previous: "Anterior",
 };

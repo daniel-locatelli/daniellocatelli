@@ -61,8 +61,14 @@ export default defineConfig({
       // presentations with little crawlable text) are not meant to be indexed
       // or surfaced in search. (The 404 page is server-rendered, so it never
       // reaches the sitemap.)
+      // The legal pages (impressum, privacy-policy, terms-and-conditions)
+      // are deliberately noindexed, so they must not be listed either —
+      // a noindex URL inside the sitemap is a contradictory signal
+      // (audit 2026-08-21, seo.noindex.in-sitemap).
       filter: (page) =>
-        !/-cover\/?$/.test(page) && !/\/deck\/?$/.test(page),
+        !/-cover\/?$/.test(page) &&
+        !/\/deck\/?$/.test(page) &&
+        !/\/(impressum|privacy-policy|terms-and-conditions)\/?$/.test(page),
       // Stamp each URL with its source file's last git commit date. Best-effort:
       // falls back to no lastmod if git history is unavailable at build time.
       serialize: serializeLastmod,

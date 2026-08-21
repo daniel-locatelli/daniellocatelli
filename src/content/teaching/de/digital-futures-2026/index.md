@@ -20,9 +20,7 @@ Coordinators:
   - name: Henrique Lattes Borçato
 Place: Online
 Language: Portugiesisch
-Link:
-  Text: "Vortrag auf YouTube"
-  Href: "https://www.youtube.com/watch?v=E0wMJIbP9r8"
+Presentation: "https://www.youtube.com/watch?v=E0wMJIbP9r8"
 Event: DigitalFutures
 ---
 

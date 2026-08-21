@@ -6,7 +6,7 @@ DateStart: "2023-12-04"
 Place: Graphisoft X - Online
 Country: Deutschland
 Language: Englisch
-Link: "https://www.youtube.com/watch?v=baVNIbWtMQo"
+Presentation: "https://www.youtube.com/watch?v=baVNIbWtMQo"
 Authors:
   - Daniel Nunes Locatelli
 ---

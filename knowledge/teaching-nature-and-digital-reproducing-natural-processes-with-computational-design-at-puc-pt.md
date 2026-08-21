@@ -8,7 +8,7 @@ Authors: Daniel Nunes Locatelli
 Location: Belo Horizonte
 Place: PUC Minas - Online
 Date: August 2021
-Link: https://youtu.be/J303rzg7y0U
+Presentation: https://youtu.be/J303rzg7y0U
 Event: Design Paramétrico em Arquitetura
 Language: Português
 

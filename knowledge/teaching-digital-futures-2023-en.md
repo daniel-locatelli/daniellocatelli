@@ -7,7 +7,7 @@ Category: Talk
 Authors: Mariana Cabugueira, Rebeca Duque Estrada, Victor Sardenberg, Paulo Duca, Daniel Nunes Locatelli
 Place: YouTube - Online
 Date: March 2022
-Link: https://www.youtube.com/watch?v=s-hKf0NhooA
+Presentation: https://www.youtube.com/watch?v=s-hKf0NhooA
 Event: DigitalFutures
 Language: Portuguese
 

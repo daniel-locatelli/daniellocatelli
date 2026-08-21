@@ -4,6 +4,7 @@ URL: https://daniellocatelli.com/de/full-cv
 
 July 2026 – Aktuell | [Beruf] | Doktorand | Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
 July 2026 | [Bildung] | Doctor of Sciences | Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
+April 2026 | [Lehre] | Digital Futures 2026: Entre o Prompt e a Obra | DigitalFUTURES
 May 2025 | [Lehre] | Arbeiten mit Geodaten in Grasshopper | Hochschule München | München
 February 2025 – June 2026 | [Beruf] | Wissenschaftlicher Mitarbeiter | Hochschule München | München, Deutschland
 July 2024 | [Lehre] | Multiskalares Roboterfertigungssystem für Vor-Ort-Pressklebung im mehrgeschossigen Holzbau | Forum Holzbau | Fellbach, Deutschland
@@ -12,6 +13,7 @@ July 2024 | [Zertifizierung] | CS50's Einführung in Datenbanken mit SQL | Harva
 June 2024 – July 2024 | [Kurs] | CS50's Einführung in Datenbanken mit SQL | Harvard University | Online
 January 2024 – December 2024 | [Beruf] | AEC Software-Ingenieur | BuildSystems GmbH | München, Deutschland
 December 2023 | [Lehre] | BuildSystems - Smart Sustainability Roadmaps | Graphisoft X - Online | Deutschland
+November 2023 | [Lehre] | Computergestützte Architektur in Deutschland | UFT, Online | Palmas, Brasilien
 November 2023 | [Lehre] | Computergestützte Architektur in Deutschland | UFT - Online | Palmas, Brasilien
 July 2023 – October 2023 | [Kurs] | CS50's Einführung in die Informatik | Harvard University | Online
 March 2023 | [Lehre] | Machbarkeit nachhaltigen Bauens | Munich Urban Colab | München, Deutschland
