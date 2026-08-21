@@ -11,6 +11,7 @@ import Base from "@/layouts/Base.astro";
 import Container from "@/components/Container.astro";
 import { Icon } from "astro-icon/components";
 import SkillsMap from "@/components/SkillsMap.astro";
+import Tooltip from "@/components/Tooltip.astro";
 import GeodesicDome from "@/components/GeodesicDome.astro";
 import type { I18nHome } from "src/i18n/home/types";
 import type { I18nMeta } from "src/i18n/meta/types";
@@ -270,7 +271,6 @@ const newTabHint = `(${meta.openNewTab})`;
           }
           <a
             href={`mailto:${siteConfig.email}`}
-            title="Email Daniel Locatelli"
             class="inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 px-8 py-3 text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-300 md:w-fit"
           >
             <Icon name="mdi:email-outline" class="size-5 md:size-4" />
@@ -283,8 +283,8 @@ const newTabHint = `(${meta.openNewTab})`;
               href={siteConfig.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Daniel Locatelli on LinkedIn ${newTabHint}`}
-              title={`Daniel Locatelli on LinkedIn ${newTabHint}`}
+              aria-label={`LinkedIn ${newTabHint}`}
+              data-tooltip="contact-tip-linkedin"
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon
@@ -293,12 +293,13 @@ const newTabHint = `(${meta.openNewTab})`;
                 aria-hidden="true"
               />
             </a>
+            <Tooltip id="contact-tip-linkedin" describes={false}>LinkedIn</Tooltip>
             <a
               href={siteConfig.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Daniel Locatelli on Instagram ${newTabHint}`}
-              title={`Daniel Locatelli on Instagram ${newTabHint}`}
+              aria-label={`Instagram ${newTabHint}`}
+              data-tooltip="contact-tip-instagram"
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon
@@ -307,12 +308,13 @@ const newTabHint = `(${meta.openNewTab})`;
                 aria-hidden="true"
               />
             </a>
+            <Tooltip id="contact-tip-instagram" describes={false}>Instagram</Tooltip>
             <a
               href={siteConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Daniel Locatelli on GitHub ${newTabHint}`}
-              title={`Daniel Locatelli on GitHub ${newTabHint}`}
+              aria-label={`GitHub ${newTabHint}`}
+              data-tooltip="contact-tip-github"
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon
@@ -321,12 +323,13 @@ const newTabHint = `(${meta.openNewTab})`;
                 aria-hidden="true"
               />
             </a>
+            <Tooltip id="contact-tip-github" describes={false}>GitHub</Tooltip>
             <a
               href={siteConfig.gitlab}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Daniel Locatelli on GitLab ${newTabHint}`}
-              title={`Daniel Locatelli on GitLab ${newTabHint}`}
+              aria-label={`GitLab ${newTabHint}`}
+              data-tooltip="contact-tip-gitlab"
               class="text-zinc-300 transition duration-300 hover:text-green-400"
             >
               <Icon
@@ -335,6 +338,7 @@ const newTabHint = `(${meta.openNewTab})`;
                 aria-hidden="true"
               />
             </a>
+            <Tooltip id="contact-tip-gitlab" describes={false}>GitLab</Tooltip>
           </div>
           <p class="text-center text-sm text-zinc-300">{siteConfig.email}</p>
         </div>

@@ -2,6 +2,7 @@
 import type { SiteMeta } from "@/types";
 import BaseHead from "@/components/BaseHead.astro";
 import { siteConfig } from "@/config/site";
+import Tooltip from "@/components/Tooltip.astro";
 import { getLocale } from "src/lib/routes-helpers";
 
 interface Props {
@@ -62,40 +63,51 @@ const {
         </div>
         {
           exitHref && (
-            <a
-              href={exitHref}
-              aria-label="Exit presentation"
-              class="cursor-pointer rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm transition hover:bg-black/65 hover:text-zinc-100"
-            >
-              ← Exit
-            </a>
+            <>
+              <a
+                href={exitHref}
+                aria-label="Exit presentation"
+                data-tooltip="deck-tip-exit"
+                class="cursor-pointer rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm transition hover:bg-black/65 hover:text-zinc-100"
+              >
+                ← Exit
+              </a>
+              <Tooltip id="deck-tip-exit" describes={false}>
+                Exit presentation
+              </Tooltip>
+            </>
           )
         }
         <button
           id="deck-help"
           aria-label="Show keyboard shortcuts"
+          data-tooltip="deck-tip-help"
           class="cursor-pointer rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm transition hover:bg-black/65 hover:text-zinc-100"
           type="button"
         >
           ?
         </button>
+        <Tooltip id="deck-tip-help" describes={false}>Keyboard shortcuts (?)</Tooltip>
         <button
           id="deck-presenter-btn"
           aria-label="Open presenter window"
-          title="Open presenter window (P)"
+          data-tooltip="deck-tip-presenter"
           class="cursor-pointer rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm transition hover:bg-black/65 hover:text-zinc-100"
           type="button"
         >
           ◫
         </button>
+        <Tooltip id="deck-tip-presenter" describes={false}>Presenter window (P)</Tooltip>
         <button
           id="deck-fullscreen"
           aria-label="Toggle fullscreen"
+          data-tooltip="deck-tip-fullscreen"
           class="cursor-pointer rounded-full bg-black/50 px-3 py-1.5 text-xs text-white/60 backdrop-blur-sm transition hover:bg-black/65 hover:text-zinc-100"
           type="button"
         >
           ⛶
         </button>
+        <Tooltip id="deck-tip-fullscreen" describes={false}>Fullscreen (F)</Tooltip>
       </div>
     </div>
 
@@ -298,6 +310,9 @@ const {
 </style>
 
 <script>
+  import { setupTooltips } from "@/lib/tooltips-client";
+  setupTooltips();
+
   async function prefetchAll() {
     const preloadEl = document.getElementById("deck-preload");
     const preloadTextEl = document.getElementById("deck-preload-text");
