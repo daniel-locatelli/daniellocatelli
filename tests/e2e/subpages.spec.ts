@@ -147,4 +147,21 @@ test.describe("Subpages", () => {
     await page.waitForURL(`**/de/${KNOWN_SUBPAGE.slug}`);
     await expect(page.locator("html")).toHaveAttribute("lang", "de");
   });
+
+  test("talk with video and deck shows both pills", async ({ page }) => {
+    await page.goto("/teaching/digital-futures-2026");
+    const watch = page.getByRole("link", { name: /Watch presentation/ });
+    await expect(watch).toBeVisible();
+    await expect(watch).toHaveAttribute("href", /youtube\.com/);
+    await expect(watch).toHaveAttribute("target", "_blank");
+    const deck = page.getByRole("link", { name: "Open slide deck" });
+    await expect(deck).toBeVisible();
+    await expect(deck).toHaveAttribute("href", /\/teaching\/digital-futures-2026\/deck$/);
+  });
+
+  test("talk with video only shows no deck pill", async ({ page }) => {
+    await page.goto("/teaching/digital-futures-2023");
+    await expect(page.getByRole("link", { name: /Watch presentation/ })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Open slide deck" })).toHaveCount(0);
+  });
 });
