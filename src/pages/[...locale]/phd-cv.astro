@@ -53,7 +53,7 @@ const engagements = teachingCollection
     title: t.data.Name,
     startDate: t.data.DateStart || "",
     endDate: t.data.DateEnd,
-    link: localizeLink(extractLink(t.data.Link), locale),
+    link: localizeLink(extractLink(t.data.Link) || t.data.Presentation || "", locale),
     organization: t.data.Place || t.data.Event || t.data.Organization || "",
     location: buildLocation(t.data),
     type: (t.data.Category || "talk").toLowerCase() as any,
