@@ -11,7 +11,12 @@ import Base from "@/layouts/Base.astro";
 import Credit from "@/components/Credit.astro";
 import LinkPreview from "@/components/LinkPreview.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
-import { getLocale, getEntrySlug, getEntryLocale, getFileSlug } from "src/lib/routes-helpers";
+import {
+  getLocale,
+  getEntrySlug,
+  getEntryLocale,
+  getFileSlug,
+} from "src/lib/routes-helpers";
 import { getI18n } from "src/i18n/utils";
 import type { I18nSubpage } from "src/i18n/subpage/type";
 
@@ -30,12 +35,7 @@ export async function getStaticPaths() {
   // NOTE: "skills" is intentionally excluded. Skill entries remain a content
   // collection (the CV reads their names), but they are too thin to warrant
   // their own indexable pages, so no /skills/<slug>/ routes are generated.
-  const collections = [
-    "projects",
-    "research",
-    "teaching",
-    "publications",
-  ];
+  const collections = ["projects", "research", "teaching", "publications"];
 
   const allSubpages = (
     await Promise.all(collections.map((c) => getCollection(c as any)))
@@ -75,7 +75,15 @@ interface Props {
 const { subpage } = Astro.props as Props;
 const slug = getEntrySlug(subpage);
 const fileSlug = getFileSlug(subpage.id);
-const peopleFields = ["Authors", "Supervisors", "Advisors", "Coordinators", "Director", "Manager", "Team"] as const;
+const peopleFields = [
+  "Authors",
+  "Supervisors",
+  "Advisors",
+  "Coordinators",
+  "Director",
+  "Manager",
+  "Team",
+] as const;
 const hasPeople = peopleFields.some((k) => {
   const v = (subpage.data as Record<string, unknown>)[k];
   return Array.isArray(v) && v.length > 0;
@@ -179,7 +187,7 @@ const foregroundClass = isLetterbox
     slug: slug,
   }}
 >
-  <Fragment slot="after-head" />
+  <Fragment slot="after-head"></Fragment>
   {
     image && (
       <div class="hero-image relative mb-8 h-[60svh] w-full overflow-hidden md:h-svh">
@@ -187,7 +195,7 @@ const foregroundClass = isLetterbox
           (blurDataUrl ? (
             <img
               src={blurDataUrl}
-              class="absolute inset-0 h-full w-full object-cover scale-110 blur-xl md:hidden"
+              class="absolute inset-0 h-full w-full scale-110 object-cover blur-xl md:hidden"
               aria-hidden="true"
               alt=""
               loading="eager"
@@ -196,7 +204,7 @@ const foregroundClass = isLetterbox
           ) : image.format === "svg" ? (
             <img
               src={image.src}
-              class="absolute inset-0 h-full w-full object-cover scale-110 blur-2xl md:hidden"
+              class="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl md:hidden"
               aria-hidden="true"
               alt=""
               width={image.width}
@@ -208,7 +216,7 @@ const foregroundClass = isLetterbox
             <Image
               src={image}
               width={40}
-              class="absolute inset-0 h-full w-full object-cover scale-110 blur-2xl md:hidden"
+              class="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl md:hidden"
               aria-hidden="true"
               alt=""
               loading="eager"
@@ -261,7 +269,7 @@ const foregroundClass = isLetterbox
               stroke-linejoin="round"
               class="text-white"
             >
-              <polyline points="6 9 12 15 18 9"></polyline>
+              <polyline points="6 9 12 15 18 9" />
             </svg>
           </div>
         </a>
@@ -270,7 +278,7 @@ const foregroundClass = isLetterbox
   }
   <section
     id="content"
-    class="font-body flex w-full max-w-full flex-col items-center justify-center scroll-mt-16"
+    class="font-body flex w-full max-w-full scroll-mt-16 flex-col items-center justify-center"
   >
     <div class="w-full max-w-full overflow-x-hidden sm:max-w-2xl">
       <h1
@@ -299,26 +307,34 @@ const foregroundClass = isLetterbox
         )
       }
       <table
-        class="table-auto border-separate border-spacing-x-4 px-4 text-left text-zinc-200 sm:px-0 *:align-text-top"
+        class="table-auto border-separate border-spacing-x-4 px-4 text-left text-zinc-200 *:align-text-top sm:px-0"
       >
         <tbody>
-        {
-          subpage.data.DateEnd ? (
-            <tr>
-              <th scope="row" class="font-body font-bold">{t.date}</th>
-              <td>{subpage.data.DateEnd}</td>
-            </tr>
-          ) : subpage.data.DateStart ? (
-            <tr>
-              <th scope="row" class="font-body font-bold">{t.date}</th>
-              <td>{subpage.data.DateStart}</td>
-            </tr>
-          ) : null
-        }
-        {
-          organizations.length > 0 && (
+          {
+            subpage.data.DateEnd ? (
               <tr>
-                <th scope="row">{organizations.length === 1 ? t.organization : t.organizations}</th>
+                <th scope="row" class="font-body font-bold">
+                  {t.date}
+                </th>
+                <td>{subpage.data.DateEnd}</td>
+              </tr>
+            ) : subpage.data.DateStart ? (
+              <tr>
+                <th scope="row" class="font-body font-bold">
+                  {t.date}
+                </th>
+                <td>{subpage.data.DateStart}</td>
+              </tr>
+            ) : null
+          }
+          {
+            organizations.length > 0 && (
+              <tr>
+                <th scope="row">
+                  {organizations.length === 1
+                    ? t.organization
+                    : t.organizations}
+                </th>
                 <td>
                   {organizations.map((org) => (
                     <span class="block">{org}</span>
@@ -326,206 +342,225 @@ const foregroundClass = isLetterbox
                 </td>
               </tr>
             )
-        }
-        {
-          subpage.data.Client && (
-            <tr>
-              <th scope="row">{t.client}</th>
-              <td>{subpage.data.Client}</td>
-            </tr>
-          )
-        }
+          }
+          {
+            subpage.data.Client && (
+              <tr>
+                <th scope="row">{t.client}</th>
+                <td>{subpage.data.Client}</td>
+              </tr>
+            )
+          }
         </tbody>
         <tbody>
-        {
-          hasPeople && (
-            <tr><td colspan="2" class="py-1.5"><hr class="border-zinc-800" /></td></tr>
-          )
-        }
-        {
-          subpage.data.Authors &&
-            Array.isArray(subpage.data.Authors) &&
-            subpage.data.Authors.length > 0 && (
+          {
+            hasPeople && (
               <tr>
-                {subpage.data.Authors.length === 1 ? (
-                  <th scope="row">{t.author}</th>
-                ) : (
-                  <th scope="row">{t.authors}</th>
-                )}
-                <td>
-                  {subpage.data.Authors.map((author: any, index: number) => {
-                    const name =
-                      typeof author === "string" ? author : author.name;
-                    if (index === 0) {
-                      return <span>{name}</span>;
-                    } else {
-                      return <span>, {name}</span>;
-                    }
-                  })}
+                <td colspan="2" class="py-1.5">
+                  <hr class="border-zinc-800" />
                 </td>
               </tr>
             )
-        }
-        {
-          subpage.data.Supervisors &&
-            Array.isArray(subpage.data.Supervisors) &&
-            subpage.data.Supervisors.length > 0 && (
-              <tr>
-                {subpage.data.Supervisors.length === 1 ? (
-                  <th scope="row">{t.supervisor}</th>
-                ) : (
-                  <th scope="row">{t.supervisors}</th>
-                )}
-                <td>
-                  {subpage.data.Supervisors.map((sup: any, index: number) => {
-                    const name = typeof sup === "string" ? sup : sup.name;
-                    if (index === 0) {
-                      return <span>{name}</span>;
-                    } else {
-                      return <span>, {name}</span>;
-                    }
-                  })}
-                </td>
-              </tr>
-            )
-        }
-        {
-          subpage.data.Advisors &&
-            Array.isArray(subpage.data.Advisors) &&
-            subpage.data.Advisors.length > 0 && (
-              <tr>
-                {subpage.data.Advisors.length === 1 ? (
-                  <th scope="row">{t.advisor}</th>
-                ) : (
-                  <th scope="row">{t.advisors}</th>
-                )}
-                <td>
-                  {subpage.data.Advisors.map((adv: any, index: number) => {
-                    const name = typeof adv === "string" ? adv : adv.name;
-                    if (index === 0) {
-                      return <span>{name}</span>;
-                    } else {
-                      return <span>, {name}</span>;
-                    }
-                  })}
-                </td>
-              </tr>
-            )
-        }
-        {
-          subpage.data.Coordinators &&
-            Array.isArray(subpage.data.Coordinators) &&
-            subpage.data.Coordinators.length > 0 && (
-              <tr>
-                {subpage.data.Coordinators.length === 1 ? (
-                  <th scope="row">{t.coordinator}</th>
-                ) : (
-                  <th scope="row">{t.coordinators}</th>
-                )}
-                <td>
-                  {subpage.data.Coordinators.map((c: any, index: number) => {
-                    const name = typeof c === "string" ? c : c.name;
-                    const role = typeof c === "string" ? null : c.role;
-                    const prefix = index === 0 ? "" : ", ";
-                    return role ? (
-                      <span>{prefix}{name} ({role})</span>
-                    ) : (
-                      <span>{prefix}{name}</span>
-                    );
-                  })}
-                </td>
-              </tr>
-            )
-        }
-        {
-          subpage.data.Director &&
-            Array.isArray(subpage.data.Director) &&
-            subpage.data.Director.length > 0 && (
-              <tr>
-                {subpage.data.Director.length === 1 ? (
-                  <th scope="row">{t.director}</th>
-                ) : (
-                  <th scope="row">{t.directors}</th>
-                )}
-                <td>
-                  {subpage.data.Director.map((director: any, index: number) => {
-                    const name =
-                      typeof director === "string" ? director : director.name;
-                    if (index === 0) {
-                      return <span>{name}</span>;
-                    } else {
-                      return <span>, {name}</span>;
-                    }
-                  })}
-                </td>
-              </tr>
-            )
-        }
-        {
-          subpage.data.Manager &&
-            Array.isArray(subpage.data.Manager) &&
-            subpage.data.Manager.length > 0 && (
-              <tr>
-                {subpage.data.Manager.length === 1 ? (
-                  <th scope="row">{t.manager}</th>
-                ) : (
-                  <th scope="row">{t.managers}</th>
-                )}
-                <td>
-                  {subpage.data.Manager.map((manager: any, index: number) => {
-                    const name =
-                      typeof manager === "string" ? manager : manager.name;
-                    if (index === 0) {
-                      return <span>{name}</span>;
-                    } else {
-                      return <span>, {name}</span>;
-                    }
-                  })}
-                </td>
-              </tr>
-            )
-        }
-        {
-          subpage.data.Team &&
-            Array.isArray(subpage.data.Team) &&
-            subpage.data.Team.length > 0 && (
-              <tr>
-                <th scope="row">{t.team}</th>
-                <td class="text-balance">
-                  {subpage.data.Team.map((member: any, index: number) => {
-                    const name =
-                      typeof member === "string" ? member : member.name;
-                    if (index === 0) {
-                      return <span>{name}</span>;
-                    } else {
-                      return <span>, {name}</span>;
-                    }
-                  })}
-                </td>
-              </tr>
-            )
-        }
+          }
+          {
+            subpage.data.Authors &&
+              Array.isArray(subpage.data.Authors) &&
+              subpage.data.Authors.length > 0 && (
+                <tr>
+                  {subpage.data.Authors.length === 1 ? (
+                    <th scope="row">{t.author}</th>
+                  ) : (
+                    <th scope="row">{t.authors}</th>
+                  )}
+                  <td>
+                    {subpage.data.Authors.map((author: any, index: number) => {
+                      const name =
+                        typeof author === "string" ? author : author.name;
+                      if (index === 0) {
+                        return <span>{name}</span>;
+                      } else {
+                        return <span>, {name}</span>;
+                      }
+                    })}
+                  </td>
+                </tr>
+              )
+          }
+          {
+            subpage.data.Supervisors &&
+              Array.isArray(subpage.data.Supervisors) &&
+              subpage.data.Supervisors.length > 0 && (
+                <tr>
+                  {subpage.data.Supervisors.length === 1 ? (
+                    <th scope="row">{t.supervisor}</th>
+                  ) : (
+                    <th scope="row">{t.supervisors}</th>
+                  )}
+                  <td>
+                    {subpage.data.Supervisors.map((sup: any, index: number) => {
+                      const name = typeof sup === "string" ? sup : sup.name;
+                      if (index === 0) {
+                        return <span>{name}</span>;
+                      } else {
+                        return <span>, {name}</span>;
+                      }
+                    })}
+                  </td>
+                </tr>
+              )
+          }
+          {
+            subpage.data.Advisors &&
+              Array.isArray(subpage.data.Advisors) &&
+              subpage.data.Advisors.length > 0 && (
+                <tr>
+                  {subpage.data.Advisors.length === 1 ? (
+                    <th scope="row">{t.advisor}</th>
+                  ) : (
+                    <th scope="row">{t.advisors}</th>
+                  )}
+                  <td>
+                    {subpage.data.Advisors.map((adv: any, index: number) => {
+                      const name = typeof adv === "string" ? adv : adv.name;
+                      if (index === 0) {
+                        return <span>{name}</span>;
+                      } else {
+                        return <span>, {name}</span>;
+                      }
+                    })}
+                  </td>
+                </tr>
+              )
+          }
+          {
+            subpage.data.Coordinators &&
+              Array.isArray(subpage.data.Coordinators) &&
+              subpage.data.Coordinators.length > 0 && (
+                <tr>
+                  {subpage.data.Coordinators.length === 1 ? (
+                    <th scope="row">{t.coordinator}</th>
+                  ) : (
+                    <th scope="row">{t.coordinators}</th>
+                  )}
+                  <td>
+                    {subpage.data.Coordinators.map((c: any, index: number) => {
+                      const name = typeof c === "string" ? c : c.name;
+                      const role = typeof c === "string" ? null : c.role;
+                      const prefix = index === 0 ? "" : ", ";
+                      return role ? (
+                        <span>
+                          {prefix}
+                          {name} ({role})
+                        </span>
+                      ) : (
+                        <span>
+                          {prefix}
+                          {name}
+                        </span>
+                      );
+                    })}
+                  </td>
+                </tr>
+              )
+          }
+          {
+            subpage.data.Director &&
+              Array.isArray(subpage.data.Director) &&
+              subpage.data.Director.length > 0 && (
+                <tr>
+                  {subpage.data.Director.length === 1 ? (
+                    <th scope="row">{t.director}</th>
+                  ) : (
+                    <th scope="row">{t.directors}</th>
+                  )}
+                  <td>
+                    {subpage.data.Director.map(
+                      (director: any, index: number) => {
+                        const name =
+                          typeof director === "string"
+                            ? director
+                            : director.name;
+                        if (index === 0) {
+                          return <span>{name}</span>;
+                        } else {
+                          return <span>, {name}</span>;
+                        }
+                      },
+                    )}
+                  </td>
+                </tr>
+              )
+          }
+          {
+            subpage.data.Manager &&
+              Array.isArray(subpage.data.Manager) &&
+              subpage.data.Manager.length > 0 && (
+                <tr>
+                  {subpage.data.Manager.length === 1 ? (
+                    <th scope="row">{t.manager}</th>
+                  ) : (
+                    <th scope="row">{t.managers}</th>
+                  )}
+                  <td>
+                    {subpage.data.Manager.map((manager: any, index: number) => {
+                      const name =
+                        typeof manager === "string" ? manager : manager.name;
+                      if (index === 0) {
+                        return <span>{name}</span>;
+                      } else {
+                        return <span>, {name}</span>;
+                      }
+                    })}
+                  </td>
+                </tr>
+              )
+          }
+          {
+            subpage.data.Team &&
+              Array.isArray(subpage.data.Team) &&
+              subpage.data.Team.length > 0 && (
+                <tr>
+                  <th scope="row">{t.team}</th>
+                  <td class="text-balance">
+                    {subpage.data.Team.map((member: any, index: number) => {
+                      const name =
+                        typeof member === "string" ? member : member.name;
+                      if (index === 0) {
+                        return <span>{name}</span>;
+                      } else {
+                        return <span>, {name}</span>;
+                      }
+                    })}
+                  </td>
+                </tr>
+              )
+          }
         </tbody>
         <tbody>
-        <tr><td colspan="2" class="py-1.5"><hr class="border-zinc-800" /></td></tr>
-        {
-          subpage.data.Place && subpage.data.Place !== "" && (
-            <tr>
-              <th scope="row">{t.place}</th>
-              <td>{subpage.data.Place}</td>
-            </tr>
-          )
-        }
-        {
-          ((subpage.data.City &&
-            Array.isArray(subpage.data.City) &&
-            subpage.data.City.length > 0) ||
-            (subpage.data.Country && subpage.data.Country !== "")) && (
+          <tr
+            ><td colspan="2" class="py-1.5"><hr class="border-zinc-800" /></td
+            ></tr
+          >
+          {
+            subpage.data.Place && subpage.data.Place !== "" && (
+              <tr>
+                <th scope="row">{t.place}</th>
+                <td>{subpage.data.Place}</td>
+              </tr>
+            )
+          }
+          {
+            ((subpage.data.City &&
+              Array.isArray(subpage.data.City) &&
+              subpage.data.City.length > 0) ||
+              (subpage.data.Country && subpage.data.Country !== "")) && (
               <tr>
                 <th scope="row">{t.location}</th>
                 <td>
                   {[
-                    ...(subpage.data.City && Array.isArray(subpage.data.City) && subpage.data.City.length > 0
+                    ...(subpage.data.City &&
+                    Array.isArray(subpage.data.City) &&
+                    subpage.data.City.length > 0
                       ? [subpage.data.City.join(", ")]
                       : []),
                     ...(subpage.data.Country && subpage.data.Country !== ""
@@ -535,146 +570,164 @@ const foregroundClass = isLetterbox
                 </td>
               </tr>
             )
-        }
-        {
-          subpage.data.Development && subpage.data.Development.length > 0 && (
-            <tr>
-              <th scope="row">{t.development}</th>
-              <td>
-                {subpage.data.Development.map((dev: any, index: number) => {
-                  const name = typeof dev === "string" ? dev : dev.name;
-                  if (index === 0) {
-                    return <span>{name}</span>;
-                  } else {
-                    return <span>, {name}</span>;
-                  }
-                })}
-              </td>
-            </tr>
-          )
-        }
-        {
-          subpage.data.Language && subpage.data.Language.length > 0 && (
-            <tr>
-              {!Array.isArray(subpage.data.Language) || subpage.data.Language.length === 1 ? (
-                <th scope="row">{t.language}</th>
-              ) : (
-                <th scope="row">{t.languages}</th>
-              )}
-              <td>
-                {Array.isArray(subpage.data.Language) ? (
-                  subpage.data.Language.map((lang: any, index: number) => {
-                    const name = typeof lang === "string" ? lang : lang.name;
+          }
+          {
+            subpage.data.Development && subpage.data.Development.length > 0 && (
+              <tr>
+                <th scope="row">{t.development}</th>
+                <td>
+                  {subpage.data.Development.map((dev: any, index: number) => {
+                    const name = typeof dev === "string" ? dev : dev.name;
                     if (index === 0) {
                       return <span>{name}</span>;
                     } else {
                       return <span>, {name}</span>;
                     }
-                  })
-                ) : (
-                  <span>{subpage.data.Language}</span>
-                )}
-              </td>
-            </tr>
-          )
-        }
-        {
-          subpage.data.Link !== undefined &&
-            ((Array.isArray(subpage.data.Link) &&
-              subpage.data.Link.length > 0) ||
-              typeof subpage.data.Link === "string" ||
-              (typeof subpage.data.Link === "object" && "Href" in subpage.data.Link)) && (
+                  })}
+                </td>
+              </tr>
+            )
+          }
+          {
+            subpage.data.Language && subpage.data.Language.length > 0 && (
               <tr>
-                <th scope="row">{t.link}</th>
+                {!Array.isArray(subpage.data.Language) ||
+                subpage.data.Language.length === 1 ? (
+                  <th scope="row">{t.language}</th>
+                ) : (
+                  <th scope="row">{t.languages}</th>
+                )}
                 <td>
-                  {(() => {
-                    const link = subpage.data.Link;
-                    if (!link) return null;
+                  {Array.isArray(subpage.data.Language) ? (
+                    subpage.data.Language.map((lang: any, index: number) => {
+                      const name = typeof lang === "string" ? lang : lang.name;
+                      if (index === 0) {
+                        return <span>{name}</span>;
+                      } else {
+                        return <span>, {name}</span>;
+                      }
+                    })
+                  ) : (
+                    <span>{subpage.data.Language}</span>
+                  )}
+                </td>
+              </tr>
+            )
+          }
+          {
+            subpage.data.Link !== undefined &&
+              ((Array.isArray(subpage.data.Link) &&
+                subpage.data.Link.length > 0) ||
+                typeof subpage.data.Link === "string" ||
+                (typeof subpage.data.Link === "object" &&
+                  "Href" in subpage.data.Link)) && (
+                <tr>
+                  <th scope="row">{t.link}</th>
+                  <td>
+                    {(() => {
+                      const link = subpage.data.Link;
+                      if (!link) return null;
 
-                    if (Array.isArray(link)) {
-                      return link.map((item: any) => {
-                        const href = typeof item === "string" ? item : (item.Href || item.Text || "#");
-                        const text = typeof item === "string" ? item : (item.Text || item.Href || "");
+                      if (Array.isArray(link)) {
+                        return link.map((item: any) => {
+                          const href =
+                            typeof item === "string"
+                              ? item
+                              : item.Href || item.Text || "#";
+                          const text =
+                            typeof item === "string"
+                              ? item
+                              : item.Text || item.Href || "";
+                          return (
+                            <a
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="mr-2 text-green-500 transition hover:text-green-400"
+                            >
+                              {text}
+                            </a>
+                          );
+                        });
+                      }
+
+                      if (typeof link === "object" && "Href" in link) {
+                        const l = link as { Text: string; Href: string };
                         return (
                           <a
-                            href={href}
+                            href={l.Href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-green-500 transition hover:text-green-400"
+                          >
+                            {l.Text}
+                          </a>
+                        );
+                      }
+
+                      if (typeof link === "string") {
+                        return (
+                          <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-green-500 transition hover:text-green-400"
+                          >
+                            {link}
+                          </a>
+                        );
+                      }
+
+                      return null;
+                    })()}
+                  </td>
+                </tr>
+              )
+          }
+          {
+            subpage.data.Apps &&
+              Array.isArray(subpage.data.Apps) &&
+              subpage.data.Apps.length > 0 && (
+                <tr>
+                  <th scope="row">{t.apps}</th>
+                  <td>
+                    {subpage.data.Apps.map((app: any, index: number) => {
+                      const name = typeof app === "string" ? app : app.name;
+                      if (index === 0) {
+                        return <span>{name}</span>;
+                      } else {
+                        return <span>, {name}</span>;
+                      }
+                    })}
+                  </td>
+                </tr>
+              )
+          }
+          {
+            subpage.data.References !== undefined &&
+              subpage.data.References.length > 0 && (
+                <tr>
+                  <th scope="row">{t.references}</th>
+                  <td>
+                    {subpage.data.References.map((ref: any) => {
+                      if (typeof ref === "string") return <span>{ref}</span>;
+                      if (ref.Href)
+                        return (
+                          <a
+                            href={ref.Href}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="mr-2 text-green-500 transition hover:text-green-400"
                           >
-                            {text}
+                            {ref.Text || ref.Href}
                           </a>
                         );
-                      });
-                    }
-
-                    if (typeof link === "object" && "Href" in link) {
-                      const l = link as { Text: string; Href: string };
-                      return (
-                        <a
-                          href={l.Href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="text-green-500 transition hover:text-green-400"
-                        >
-                          {l.Text}
-                        </a>
-                      );
-                    }
-
-                    if (typeof link === "string") {
-                      return (
-                        <a
-                          href={link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="text-green-500 transition hover:text-green-400"
-                        >
-                          {link}
-                        </a>
-                      );
-                    }
-
-                    return null;
-                  })()}
-                </td>
-              </tr>
-            )
-        }
-        {
-          subpage.data.Apps &&
-            Array.isArray(subpage.data.Apps) &&
-            subpage.data.Apps.length > 0 && (
-              <tr>
-                <th scope="row">{t.apps}</th>
-                <td>
-                  {subpage.data.Apps.map((app: any, index: number) => {
-                    const name = typeof app === "string" ? app : app.name;
-                    if (index === 0) {
-                      return <span>{name}</span>;
-                    } else {
-                      return <span>, {name}</span>;
-                    }
-                  })}
-                </td>
-              </tr>
-            )
-        }
-        {
-          subpage.data.References !== undefined &&
-            subpage.data.References.length > 0 && (
-              <tr>
-                <th scope="row">{t.references}</th>
-                <td>
-                  {subpage.data.References.map((ref: any) => {
-                    if (typeof ref === "string") return <span>{ref}</span>;
-                    if (ref.Href) return <a href={ref.Href} target="_blank" rel="noopener noreferrer" class="mr-2 text-green-500 transition hover:text-green-400">{ref.Text || ref.Href}</a>;
-                    return <span>{ref.PlainText || ref.Text || ""}</span>;
-                  })}
-                </td>
-              </tr>
-            )
-        }
+                      return <span>{ref.PlainText || ref.Text || ""}</span>;
+                    })}
+                  </td>
+                </tr>
+              )
+          }
         </tbody>
       </table>
       <div class="prose my-8 max-w-none px-4 text-zinc-200 sm:px-0">
@@ -683,7 +736,9 @@ const foregroundClass = isLetterbox
       {
         subpage.data.OtherLinks && subpage.data.OtherLinks.length > 0 && (
           <div class="mt-8 px-4 sm:px-0">
-            <h2 class="font-title mb-4 text-xl text-zinc-100">{t.otherLinks}</h2>
+            <h2 class="font-title mb-4 text-xl text-zinc-100">
+              {t.otherLinks}
+            </h2>
             <div class="flex flex-col gap-3">
               {subpage.data.OtherLinks.map((link) => (
                 <LinkPreview link={link} />
@@ -727,7 +782,7 @@ const foregroundClass = isLetterbox
                   </span>
                 )}
                 <span class="flex min-w-0 flex-col justify-center p-3 md:p-4">
-                  <span class="flex items-center gap-1.5 text-xs uppercase tracking-wide text-zinc-400">
+                  <span class="flex items-center gap-1.5 text-xs tracking-wide text-zinc-400 uppercase">
                     <svg
                       class="h-4 w-4 shrink-0"
                       viewBox="0 0 24 24"
@@ -757,7 +812,7 @@ const foregroundClass = isLetterbox
                 class="group flex min-h-24 items-stretch justify-end overflow-hidden rounded-lg border border-zinc-700 text-right transition hover:border-green-500"
               >
                 <span class="flex min-w-0 flex-col justify-center p-3 md:p-4">
-                  <span class="flex items-center justify-end gap-1.5 text-xs uppercase tracking-wide text-zinc-400">
+                  <span class="flex items-center justify-end gap-1.5 text-xs tracking-wide text-zinc-400 uppercase">
                     {t.previous}
                     <svg
                       class="h-4 w-4 shrink-0"
@@ -811,526 +866,535 @@ const foregroundClass = isLetterbox
     }
   </section>
   <Fragment slot="after-body">
-<script>
-  import mermaid from "mermaid";
-  mermaid.initialize({
-    startOnLoad: false,
-    theme: "dark",
-    darkMode: true,
-  });
-  document.addEventListener("astro:page-load", async () => {
-    const blocks = document.querySelectorAll('pre[data-language="mermaid"]');
-    if (blocks.length === 0) return;
-    for (const block of blocks) {
-      const code = block.textContent ?? "";
-      const wrapper = document.createElement("div");
-      wrapper.className = "mermaid-diagram my-4 overflow-x-auto";
-      const pre = document.createElement("pre");
-      pre.className = "mermaid";
-      pre.textContent = code;
-      wrapper.appendChild(pre);
-      block.replaceWith(wrapper);
-    }
-    try {
-      await mermaid.run({ querySelector: ".mermaid" });
-      document
-        .querySelectorAll<SVGElement>(".mermaid-diagram svg")
-        .forEach((svg) => svg.setAttribute("role", "img"));
-    } catch (e) {
-      console.warn("Mermaid run failed", e);
-    }
-  });
-</script>
-
-<style>
-  th {
-    font-weight: 300;
-  }
-
-  @media (max-width: 639px) {
-    .prose :global(img),
-    .prose :global(figure),
-    .prose :global(video) {
-      margin-left: -1rem;
-      margin-right: -1rem;
-      max-width: calc(100% + 2rem);
-      width: calc(100% + 2rem);
-    }
-  }
-
-  .hero-img {
-    transition: opacity 0.3s ease;
-  }
-</style>
-
-<script>
-  function setupScrollChevron() {
-    const chevron = document.querySelector(".scroll-chevron");
-    if (!chevron) return;
-
-    const hero = chevron.closest(".hero-image");
-    if (!hero) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        (chevron as HTMLElement).style.opacity = entry.isIntersecting
-          ? "1"
-          : "0";
-        (chevron as HTMLElement).style.pointerEvents = entry.isIntersecting
-          ? "auto"
-          : "none";
-      },
-      { threshold: 0.5 },
-    );
-
-    observer.observe(hero);
-  }
-
-  document.addEventListener("astro:page-load", setupScrollChevron);
-</script>
-
-<script>
-  function setupHeroReveal(skipTransition: boolean) {
-    document.querySelectorAll<HTMLImageElement>(".hero-img").forEach((img) => {
-      if (skipTransition) {
-        img.style.transition = "none";
-      }
-
-      if (img.complete) {
-        img.style.opacity = "1";
-      } else {
-        img.addEventListener(
-          "load",
-          () => {
-            img.style.opacity = "1";
-          },
-          { once: true },
+    <script>
+      import mermaid from "mermaid";
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "dark",
+        darkMode: true,
+      });
+      document.addEventListener("astro:page-load", async () => {
+        const blocks = document.querySelectorAll(
+          'pre[data-language="mermaid"]',
         );
+        if (blocks.length === 0) return;
+        for (const block of blocks) {
+          const code = block.textContent ?? "";
+          const wrapper = document.createElement("div");
+          wrapper.className = "mermaid-diagram my-4 overflow-x-auto";
+          const pre = document.createElement("pre");
+          pre.className = "mermaid";
+          pre.textContent = code;
+          wrapper.appendChild(pre);
+          block.replaceWith(wrapper);
+        }
+        try {
+          await mermaid.run({ querySelector: ".mermaid" });
+          document
+            .querySelectorAll<SVGElement>(".mermaid-diagram svg")
+            .forEach((svg) => svg.setAttribute("role", "img"));
+        } catch (e) {
+          console.warn("Mermaid run failed", e);
+        }
+      });
+    </script>
+
+    <style>
+      th {
+        font-weight: 300;
       }
-    });
-  }
 
-  // Client-side navigation (cached): skip transition to avoid flash
-  document.addEventListener("astro:after-swap", () => setupHeroReveal(true));
-  // Initial page load: normal 300ms fade-in
-  document.addEventListener("astro:page-load", () => setupHeroReveal(false));
-</script>
-
-<div
-  id="lightbox"
-  data-zoomed="false"
-  data-dragging="false"
-  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
->
-  <button
-    id="lightbox-close"
-    aria-label="Close lightbox"
-    class="absolute top-4 right-4 z-10 cursor-pointer text-3xl text-white/70 transition hover:text-white"
-    >&times;</button
-  >
-  <button
-    id="lightbox-prev"
-    aria-label="Previous image"
-    class="absolute top-1/2 left-2 z-10 hidden -translate-y-1/2 cursor-pointer rounded-full bg-black/40 px-3 py-1 text-4xl leading-none text-white/70 transition hover:text-white sm:left-4"
-    >&lsaquo;</button
-  >
-  <button
-    id="lightbox-next"
-    aria-label="Next image"
-    class="absolute top-1/2 right-2 z-10 hidden -translate-y-1/2 cursor-pointer rounded-full bg-black/40 px-3 py-1 text-4xl leading-none text-white/70 transition hover:text-white sm:right-4"
-    >&rsaquo;</button
-  >
-  <span
-    id="lightbox-counter"
-    class="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 text-sm text-white/60"
-  ></span>
-  <div
-    id="lightbox-scroll"
-    class="flex max-h-[95vh] max-w-[95vw] select-none data-[zoomed=true]:overflow-auto"
-  >
-    <img
-      id="lightbox-img"
-      draggable="false"
-      class="m-auto rounded object-contain max-h-[90vh] max-w-[90vw] data-[zoomed=true]:max-h-none data-[zoomed=true]:max-w-none data-[vector=true]:h-[90vh] data-[vector=true]:w-[90vw]"
-      alt=""
-      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E"
-    />
-  </div>
-</div>
-
-<script>
-  function pickLargestSrc(img: HTMLImageElement): string {
-    // Body images processed by remark-image-to-astro-image carry
-    // data-zoom-src pointing at the unresized original asset, so the
-    // lightbox can zoom to true natural resolution rather than to the
-    // largest srcset derivative (capped at 1600w).
-    const zoomSrc = img.dataset.zoomSrc;
-    if (zoomSrc) return zoomSrc;
-    const srcset = img.getAttribute("srcset");
-    if (srcset) {
-      let bestUrl = "";
-      let bestWidth = 0;
-      for (const entry of srcset.split(",")) {
-        const parts = entry.trim().split(/\s+/);
-        if (parts.length < 2) continue;
-        const url = parts[0];
-        const descriptor = parts[parts.length - 1];
-        if (!descriptor.endsWith("w")) continue;
-        const width = parseInt(descriptor.slice(0, -1), 10);
-        if (Number.isFinite(width) && width > bestWidth) {
-          bestWidth = width;
-          bestUrl = url;
+      @media (max-width: 639px) {
+        .prose :global(img),
+        .prose :global(figure),
+        .prose :global(video) {
+          margin-left: -1rem;
+          margin-right: -1rem;
+          max-width: calc(100% + 2rem);
+          width: calc(100% + 2rem);
         }
       }
-      if (bestUrl) return bestUrl;
-    }
-    return img.currentSrc || img.src;
-  }
 
-  function isVectorSrc(src: string): boolean {
-    return /\.svg(?:[?#]|$)/i.test(src) || src.startsWith("data:image/svg");
-  }
-
-  let lightboxAbort: AbortController | null = null;
-
-  function setupLightbox() {
-    if (lightboxAbort) lightboxAbort.abort();
-    lightboxAbort = new AbortController();
-    const signal = lightboxAbort.signal;
-
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById(
-      "lightbox-img",
-    ) as HTMLImageElement | null;
-    const lightboxClose = document.getElementById("lightbox-close");
-    if (!lightbox || !lightboxImg || !lightboxClose) return;
-    const scrollEl = document.getElementById("lightbox-scroll");
-    if (!scrollEl) return;
-    const prevBtn = document.getElementById("lightbox-prev");
-    const nextBtn = document.getElementById("lightbox-next");
-    const counter = document.getElementById("lightbox-counter");
-    if (!prevBtn || !nextBtn || !counter) return;
-
-    const prose = document.querySelector(".prose");
-    if (!prose) return;
-
-    // Gallery sequence: every image in the body, in document order.
-    const galleryImages = Array.from(prose.querySelectorAll("img"));
-    let currentIndex = -1;
-
-    // Make prose images look clickable
-    galleryImages.forEach((img) => {
-      img.style.cursor = "zoom-in";
-    });
-
-    function showImage(index: number) {
-      if (index < 0 || index >= galleryImages.length) return;
-      currentIndex = index;
-      const img = galleryImages[index];
-      const src = pickLargestSrc(img);
-      lightboxImg!.src = src;
-      lightboxImg!.alt = img.alt;
-      // SVG diagrams usually carry only a viewBox (no intrinsic size), so
-      // the <img> would collapse to 0x0 inside the flex box. Give vector
-      // images an explicit box; object-contain letterboxes them inside it.
-      lightboxImg!.dataset.vector = isVectorSrc(src) ? "true" : "false";
-      setZoomed(false);
-      const multiple = galleryImages.length > 1;
-      prevBtn!.classList.toggle("hidden", !multiple || index === 0);
-      nextBtn!.classList.toggle(
-        "hidden",
-        !multiple || index === galleryImages.length - 1,
-      );
-      counter!.textContent = multiple
-        ? `${index + 1} / ${galleryImages.length}`
-        : "";
-      // Preload neighbours so navigation feels instant.
-      for (const n of [index - 1, index + 1]) {
-        if (galleryImages[n]) new Image().src = pickLargestSrc(galleryImages[n]);
+      .hero-img {
+        transition: opacity 0.3s ease;
       }
-    }
+    </style>
 
-    // Event delegation: click on any image inside .prose
-    prose.addEventListener("click", (e) => {
-      const target = e.target as HTMLElement;
-      if (target.tagName !== "IMG") return;
-      const index = galleryImages.indexOf(target as HTMLImageElement);
-      if (index === -1) return;
-      showImage(index);
-      lightbox.classList.remove("hidden");
-      lightbox.classList.add("flex");
-      document.body.style.overflow = "hidden";
-    }, { signal });
+    <script>
+      function setupScrollChevron() {
+        const chevron = document.querySelector(".scroll-chevron");
+        if (!chevron) return;
 
-    prevBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      showImage(currentIndex - 1);
-    }, { signal });
-    nextBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      showImage(currentIndex + 1);
-    }, { signal });
+        const hero = chevron.closest(".hero-image");
+        if (!hero) return;
 
-    // Swipe left/right on touch devices. Only a single-finger horizontal
-    // swipe counts: a second finger (pinch-zoom) cancels the gesture, and
-    // nothing fires while the image is zoomed (lightbox zoom or browser
-    // pinch-zoom), so panning a zoomed image is not hijacked.
-    let touchStartX: number | null = null;
-    let touchStartY: number | null = null;
-    const cancelSwipe = () => {
-      touchStartX = null;
-      touchStartY = null;
-    };
-    const browserZoomed = () => (window.visualViewport?.scale ?? 1) > 1.01;
-    lightbox.addEventListener("touchstart", (e) => {
-      if (e.touches.length !== 1 || lightbox!.dataset.zoomed === "true" || browserZoomed()) {
-        cancelSwipe();
-        return;
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            (chevron as HTMLElement).style.opacity = entry.isIntersecting
+              ? "1"
+              : "0";
+            (chevron as HTMLElement).style.pointerEvents = entry.isIntersecting
+              ? "auto"
+              : "none";
+          },
+          { threshold: 0.5 },
+        );
+
+        observer.observe(hero);
       }
-      touchStartX = e.touches[0]!.clientX;
-      touchStartY = e.touches[0]!.clientY;
-    }, { signal, passive: true });
-    lightbox.addEventListener("touchcancel", cancelSwipe, { signal, passive: true });
-    lightbox.addEventListener("touchend", (e) => {
-      if (touchStartX === null || touchStartY === null) return;
-      // Another finger is still down (pinch in progress): not a swipe.
-      if (e.touches.length > 0 || browserZoomed()) {
-        cancelSwipe();
-        return;
-      }
-      const t = e.changedTouches[0];
-      const dx = (t?.clientX ?? touchStartX) - touchStartX;
-      const dy = (t?.clientY ?? touchStartY) - touchStartY;
-      cancelSwipe();
-      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
-      showImage(dx < 0 ? currentIndex + 1 : currentIndex - 1);
-    }, { signal, passive: true });
 
-    function closeLightbox() {
-      setZoomed(false);
-      lightbox!.dataset.dragging = "false";
-      lightbox!.classList.add("hidden");
-      lightbox!.classList.remove("flex");
-      lightboxImg!.src = "";
-      document.body.style.overflow = "";
-    }
+      document.addEventListener("astro:page-load", setupScrollChevron);
+    </script>
 
-    function isImageLargerThanFit(): boolean {
-      // Vector images scale losslessly to the viewport; nothing to zoom into.
-      if (lightboxImg!.dataset.vector === "true") return false;
-      const fitW = window.innerWidth * 0.9;
-      const fitH = window.innerHeight * 0.9;
-      return (
-        lightboxImg!.naturalWidth > fitW || lightboxImg!.naturalHeight > fitH
-      );
-    }
-
-    function setZoomed(zoomed: boolean, anchorX = 0.5, anchorY = 0.5) {
-      const value = zoomed ? "true" : "false";
-      lightbox!.dataset.zoomed = value;
-      scrollEl!.dataset.zoomed = value;
-      lightboxImg!.dataset.zoomed = value;
-      if (zoomed) {
-        // Wait for layout to apply natural-size constraints, then place the
-        // anchor point at the centre of the visible viewport.
-        requestAnimationFrame(() => {
-          const targetX = lightboxImg!.offsetLeft + anchorX * lightboxImg!.naturalWidth - scrollEl!.clientWidth / 2;
-          const targetY = lightboxImg!.offsetTop + anchorY * lightboxImg!.naturalHeight - scrollEl!.clientHeight / 2;
-          scrollEl!.scrollLeft = Math.max(0, Math.min(scrollEl!.scrollWidth - scrollEl!.clientWidth, targetX));
-          scrollEl!.scrollTop = Math.max(0, Math.min(scrollEl!.scrollHeight - scrollEl!.clientHeight, targetY));
-        });
-      } else {
-        scrollEl!.scrollTo(0, 0);
-      }
-      lightboxImg!.style.cursor = zoomed
-        ? "grab"
-        : lightboxImg!.dataset.vector === "true"
-          ? "default"
-          : "zoom-in";
-    }
-
-    // Close on backdrop click
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox || e.target === lightboxClose) {
-        closeLightbox();
-      }
-    }, { signal });
-
-    lightboxImg.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (lightbox!.dataset.dragging === "true") {
-        lightbox!.dataset.dragging = "false";
-        return;
-      }
-      const isZoomed = lightbox!.dataset.zoomed === "true";
-      if (!isZoomed && !isImageLargerThanFit()) return;
-      // Anchor zoom-in on the click point; reset to centre on zoom-out.
-      const anchorX = isZoomed ? 0.5 : e.offsetX / lightboxImg.clientWidth;
-      const anchorY = isZoomed ? 0.5 : e.offsetY / lightboxImg.clientHeight;
-      setZoomed(!isZoomed, anchorX, anchorY);
-    }, { signal });
-
-    const DRAG_THRESHOLD = 5;
-    let dragStart: { x: number; y: number; scrollLeft: number; scrollTop: number } | null = null;
-
-    scrollEl.addEventListener("mousedown", (e) => {
-      if (lightbox!.dataset.zoomed !== "true") return;
-      if (e.target !== lightboxImg) return;
-      e.preventDefault();
-      dragStart = {
-        x: e.clientX,
-        y: e.clientY,
-        scrollLeft: scrollEl!.scrollLeft,
-        scrollTop: scrollEl!.scrollTop,
-      };
-      lightbox!.dataset.dragging = "false";
-    }, { signal });
-
-    window.addEventListener("mousemove", (e) => {
-      if (!dragStart) return;
-      const dx = e.clientX - dragStart.x;
-      const dy = e.clientY - dragStart.y;
-      if (
-        lightbox!.dataset.dragging !== "true" &&
-        Math.hypot(dx, dy) >= DRAG_THRESHOLD
-      ) {
-        lightbox!.dataset.dragging = "true";
-        lightboxImg!.style.cursor = "grabbing";
-      }
-      if (lightbox!.dataset.dragging === "true") {
-        scrollEl!.scrollLeft = dragStart.scrollLeft - dx;
-        scrollEl!.scrollTop = dragStart.scrollTop - dy;
-      }
-    }, { signal });
-
-    window.addEventListener("mouseup", () => {
-      if (!dragStart) return;
-      dragStart = null;
-      if (lightbox!.dataset.zoomed === "true") {
-        lightboxImg!.style.cursor = "grab";
-      }
-      // dataset.dragging stays "true" until the matching click consumes it (Task 3).
-    }, { signal });
-
-    // Keyboard: Escape closes, arrows navigate
-    document.addEventListener("keydown", (e) => {
-      if (lightbox.classList.contains("hidden")) return;
-      if (e.key === "Escape") closeLightbox();
-      else if (e.key === "ArrowRight") showImage(currentIndex + 1);
-      else if (e.key === "ArrowLeft") showImage(currentIndex - 1);
-    }, { signal });
-  }
-
-  document.addEventListener("astro:page-load", setupLightbox);
-</script>
-
-<script>
-  // Footnote tooltips. The rehype-footnote-tooltips plugin emits each
-  // tooltip with `popover="manual"` so we can promote it into the top layer
-  // (escaping ancestor overflow clipping). We position it manually relative
-  // to the pill on hover/focus, with viewport-edge clamping and an
-  // above-then-below flip when the pill is near the top of the viewport.
-  function setupFootnoteTooltips() {
-    const refs = document.querySelectorAll<HTMLAnchorElement>("a.footnote-ref");
-    refs.forEach((ref) => {
-      const sup = ref.parentElement;
-      const tooltip = sup?.querySelector<HTMLElement>(".footnote-tooltip");
-      if (!sup || !tooltip) return;
-
-      // Defensive: ensure the popover attribute is present even if the rehype
-      // plugin's hast property was dropped during HTML serialization. Without
-      // it, showPopover() throws silently and the tooltip stays hidden.
-      tooltip.setAttribute("popover", "manual");
-
-      let hoverTimer: number | undefined;
-      const cancelHide = () => {
-        if (hoverTimer !== undefined) {
-          window.clearTimeout(hoverTimer);
-          hoverTimer = undefined;
-        }
-      };
-      const queueHide = () => {
-        cancelHide();
-        hoverTimer = window.setTimeout(() => {
-          try {
-            tooltip.hidePopover();
-          } catch {}
-        }, 100);
-      };
-
-      const show = () => {
-        cancelHide();
-        // Close any sibling tooltips first so a fast cursor between pills
-        // never leaves more than one tooltip on screen.
+    <script>
+      function setupHeroReveal(skipTransition: boolean) {
         document
-          .querySelectorAll<HTMLElement>(".footnote-tooltip")
-          .forEach((other) => {
-            if (other !== tooltip) {
-              try {
-                other.hidePopover();
-              } catch {}
+          .querySelectorAll<HTMLImageElement>(".hero-img")
+          .forEach((img) => {
+            if (skipTransition) {
+              img.style.transition = "none";
+            }
+
+            if (img.complete) {
+              img.style.opacity = "1";
+            } else {
+              img.addEventListener(
+                "load",
+                () => {
+                  img.style.opacity = "1";
+                },
+                { once: true },
+              );
             }
           });
-        try {
-          tooltip.showPopover();
-        } catch {
-          return;
+      }
+
+      // Client-side navigation (cached): skip transition to avoid flash
+      document.addEventListener("astro:after-swap", () =>
+        setupHeroReveal(true),
+      );
+      // Initial page load: normal 300ms fade-in
+      document.addEventListener("astro:page-load", () =>
+        setupHeroReveal(false),
+      );
+    </script>
+
+    <div
+      id="lightbox"
+      data-zoomed="false"
+      data-dragging="false"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
+    >
+      <button
+        id="lightbox-close"
+        aria-label="Close lightbox"
+        class="absolute top-4 right-4 z-10 cursor-pointer text-3xl text-white/70 transition hover:text-white"
+        >&times;</button
+      >
+      <button
+        id="lightbox-prev"
+        aria-label="Previous image"
+        class="absolute top-1/2 left-2 z-10 hidden -translate-y-1/2 cursor-pointer rounded-full bg-black/40 px-3 py-1 text-4xl leading-none text-white/70 transition hover:text-white sm:left-4"
+        >&lsaquo;</button
+      >
+      <button
+        id="lightbox-next"
+        aria-label="Next image"
+        class="absolute top-1/2 right-2 z-10 hidden -translate-y-1/2 cursor-pointer rounded-full bg-black/40 px-3 py-1 text-4xl leading-none text-white/70 transition hover:text-white sm:right-4"
+        >&rsaquo;</button
+      >
+      <span
+        id="lightbox-counter"
+        class="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 text-sm text-white/60"
+      ></span>
+      <div
+        id="lightbox-scroll"
+        class="flex max-h-[95vh] max-w-[95vw] select-none data-[zoomed=true]:overflow-auto"
+      >
+        <img
+          id="lightbox-img"
+          draggable="false"
+          class="m-auto max-h-[90vh] max-w-[90vw] rounded object-contain data-[vector=true]:h-[90vh] data-[vector=true]:w-[90vw] data-[zoomed=true]:max-h-none data-[zoomed=true]:max-w-none"
+          alt=""
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E"
+        />
+      </div>
+    </div>
+
+    <script>
+      function pickLargestSrc(img: HTMLImageElement): string {
+        // Body images processed by remark-image-to-astro-image carry
+        // data-zoom-src pointing at the unresized original asset, so the
+        // lightbox can zoom to true natural resolution rather than to the
+        // largest srcset derivative (capped at 1600w).
+        const zoomSrc = img.dataset.zoomSrc;
+        if (zoomSrc) return zoomSrc;
+        const srcset = img.getAttribute("srcset");
+        if (srcset) {
+          let bestUrl = "";
+          let bestWidth = 0;
+          for (const entry of srcset.split(",")) {
+            const parts = entry.trim().split(/\s+/);
+            if (parts.length < 2) continue;
+            const url = parts[0];
+            const descriptor = parts[parts.length - 1];
+            if (!descriptor.endsWith("w")) continue;
+            const width = parseInt(descriptor.slice(0, -1), 10);
+            if (Number.isFinite(width) && width > bestWidth) {
+              bestWidth = width;
+              bestUrl = url;
+            }
+          }
+          if (bestUrl) return bestUrl;
         }
-        const r = ref.getBoundingClientRect();
-        const tw = tooltip.offsetWidth;
-        const th = tooltip.offsetHeight;
-        const margin = 8;
-        let left = r.left + r.width / 2 - tw / 2;
-        left = Math.max(
-          margin,
-          Math.min(left, window.innerWidth - tw - margin),
+        return img.currentSrc || img.src;
+      }
+
+      function isVectorSrc(src: string): boolean {
+        return /\.svg(?:[?#]|$)/i.test(src) || src.startsWith("data:image/svg");
+      }
+
+      let lightboxAbort: AbortController | null = null;
+
+      function setupLightbox() {
+        if (lightboxAbort) lightboxAbort.abort();
+        lightboxAbort = new AbortController();
+        const signal = lightboxAbort.signal;
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById(
+          "lightbox-img",
+        ) as HTMLImageElement | null;
+        const lightboxClose = document.getElementById("lightbox-close");
+        if (!lightbox || !lightboxImg || !lightboxClose) return;
+        const scrollEl = document.getElementById("lightbox-scroll");
+        if (!scrollEl) return;
+        const prevBtn = document.getElementById("lightbox-prev");
+        const nextBtn = document.getElementById("lightbox-next");
+        const counter = document.getElementById("lightbox-counter");
+        if (!prevBtn || !nextBtn || !counter) return;
+
+        const prose = document.querySelector(".prose");
+        if (!prose) return;
+
+        // Gallery sequence: every image in the body, in document order.
+        const galleryImages = Array.from(prose.querySelectorAll("img"));
+        let currentIndex = -1;
+
+        // Make prose images look clickable
+        galleryImages.forEach((img) => {
+          img.style.cursor = "zoom-in";
+        });
+
+        function showImage(index: number) {
+          if (index < 0 || index >= galleryImages.length) return;
+          currentIndex = index;
+          const img = galleryImages[index];
+          const src = pickLargestSrc(img);
+          lightboxImg!.src = src;
+          lightboxImg!.alt = img.alt;
+          // SVG diagrams usually carry only a viewBox (no intrinsic size), so
+          // the <img> would collapse to 0x0 inside the flex box. Give vector
+          // images an explicit box; object-contain letterboxes them inside it.
+          lightboxImg!.dataset.vector = isVectorSrc(src) ? "true" : "false";
+          setZoomed(false);
+          const multiple = galleryImages.length > 1;
+          prevBtn!.classList.toggle("hidden", !multiple || index === 0);
+          nextBtn!.classList.toggle(
+            "hidden",
+            !multiple || index === galleryImages.length - 1,
+          );
+          counter!.textContent = multiple
+            ? `${index + 1} / ${galleryImages.length}`
+            : "";
+          // Preload neighbours so navigation feels instant.
+          for (const n of [index - 1, index + 1]) {
+            if (galleryImages[n])
+              new Image().src = pickLargestSrc(galleryImages[n]);
+          }
+        }
+
+        // Event delegation: click on any image inside .prose
+        prose.addEventListener(
+          "click",
+          (e) => {
+            const target = e.target as HTMLElement;
+            if (target.tagName !== "IMG") return;
+            const index = galleryImages.indexOf(target as HTMLImageElement);
+            if (index === -1) return;
+            showImage(index);
+            lightbox.classList.remove("hidden");
+            lightbox.classList.add("flex");
+            document.body.style.overflow = "hidden";
+          },
+          { signal },
         );
-        let top = r.top - th - margin;
-        if (top < margin) top = r.bottom + margin;
-        tooltip.style.left = `${Math.round(left)}px`;
-        tooltip.style.top = `${Math.round(top)}px`;
-      };
 
-      ref.addEventListener("mouseenter", show);
-      ref.addEventListener("mouseleave", queueHide);
-      ref.addEventListener("focus", show);
-      ref.addEventListener("blur", queueHide);
-      tooltip.addEventListener("mouseenter", cancelHide);
-      tooltip.addEventListener("mouseleave", queueHide);
-    });
-  }
+        prevBtn.addEventListener(
+          "click",
+          (e) => {
+            e.stopPropagation();
+            showImage(currentIndex - 1);
+          },
+          { signal },
+        );
+        nextBtn.addEventListener(
+          "click",
+          (e) => {
+            e.stopPropagation();
+            showImage(currentIndex + 1);
+          },
+          { signal },
+        );
 
-  document.addEventListener("astro:page-load", setupFootnoteTooltips);
-</script>
+        // Swipe left/right on touch devices. Only a single-finger horizontal
+        // swipe counts: a second finger (pinch-zoom) cancels the gesture, and
+        // nothing fires while the image is zoomed (lightbox zoom or browser
+        // pinch-zoom), so panning a zoomed image is not hijacked.
+        let touchStartX: number | null = null;
+        let touchStartY: number | null = null;
+        const cancelSwipe = () => {
+          touchStartX = null;
+          touchStartY = null;
+        };
+        const browserZoomed = () => (window.visualViewport?.scale ?? 1) > 1.01;
+        lightbox.addEventListener(
+          "touchstart",
+          (e) => {
+            if (
+              e.touches.length !== 1 ||
+              lightbox!.dataset.zoomed === "true" ||
+              browserZoomed()
+            ) {
+              cancelSwipe();
+              return;
+            }
+            touchStartX = e.touches[0]!.clientX;
+            touchStartY = e.touches[0]!.clientY;
+          },
+          { signal, passive: true },
+        );
+        lightbox.addEventListener("touchcancel", cancelSwipe, {
+          signal,
+          passive: true,
+        });
+        lightbox.addEventListener(
+          "touchend",
+          (e) => {
+            if (touchStartX === null || touchStartY === null) return;
+            // Another finger is still down (pinch in progress): not a swipe.
+            if (e.touches.length > 0 || browserZoomed()) {
+              cancelSwipe();
+              return;
+            }
+            const t = e.changedTouches[0];
+            const dx = (t?.clientX ?? touchStartX) - touchStartX;
+            const dy = (t?.clientY ?? touchStartY) - touchStartY;
+            cancelSwipe();
+            if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+            showImage(dx < 0 ? currentIndex + 1 : currentIndex - 1);
+          },
+          { signal, passive: true },
+        );
 
-<script>
-  // Body images are tagged with data-preload by rehype-lazy-images. We keep
-  // loading="lazy" as a no-JS fallback, but proactively flip to eager once
-  // the image is within ~1.5 viewports of the user, so fast scrolls don't
-  // hit a per-row network wait. Native loading="lazy" alone has too tight a
-  // preload distance for a reading experience.
-  function setupBodyImagePreload() {
-    const images = document.querySelectorAll<HTMLImageElement>(
-      'img[data-preload="true"]',
-    );
-    if (!("IntersectionObserver" in window) || images.length === 0) return;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          const img = entry.target as HTMLImageElement;
-          img.loading = "eager";
-          io.unobserve(img);
+        function closeLightbox() {
+          setZoomed(false);
+          lightbox!.dataset.dragging = "false";
+          lightbox!.classList.add("hidden");
+          lightbox!.classList.remove("flex");
+          lightboxImg!.src = "";
+          document.body.style.overflow = "";
         }
-      },
-      { rootMargin: "1500px 0px" },
-    );
 
-    images.forEach((img) => io.observe(img));
-  }
+        function isImageLargerThanFit(): boolean {
+          // Vector images scale losslessly to the viewport; nothing to zoom into.
+          if (lightboxImg!.dataset.vector === "true") return false;
+          const fitW = window.innerWidth * 0.9;
+          const fitH = window.innerHeight * 0.9;
+          return (
+            lightboxImg!.naturalWidth > fitW ||
+            lightboxImg!.naturalHeight > fitH
+          );
+        }
 
-  document.addEventListener("astro:page-load", setupBodyImagePreload);
-</script>
+        function setZoomed(zoomed: boolean, anchorX = 0.5, anchorY = 0.5) {
+          const value = zoomed ? "true" : "false";
+          lightbox!.dataset.zoomed = value;
+          scrollEl!.dataset.zoomed = value;
+          lightboxImg!.dataset.zoomed = value;
+          if (zoomed) {
+            // Wait for layout to apply natural-size constraints, then place the
+            // anchor point at the centre of the visible viewport.
+            requestAnimationFrame(() => {
+              const targetX =
+                lightboxImg!.offsetLeft +
+                anchorX * lightboxImg!.naturalWidth -
+                scrollEl!.clientWidth / 2;
+              const targetY =
+                lightboxImg!.offsetTop +
+                anchorY * lightboxImg!.naturalHeight -
+                scrollEl!.clientHeight / 2;
+              scrollEl!.scrollLeft = Math.max(
+                0,
+                Math.min(
+                  scrollEl!.scrollWidth - scrollEl!.clientWidth,
+                  targetX,
+                ),
+              );
+              scrollEl!.scrollTop = Math.max(
+                0,
+                Math.min(
+                  scrollEl!.scrollHeight - scrollEl!.clientHeight,
+                  targetY,
+                ),
+              );
+            });
+          } else {
+            scrollEl!.scrollTo(0, 0);
+          }
+          lightboxImg!.style.cursor = zoomed
+            ? "grab"
+            : lightboxImg!.dataset.vector === "true"
+              ? "default"
+              : "zoom-in";
+        }
+
+        // Close on backdrop click
+        lightbox.addEventListener(
+          "click",
+          (e) => {
+            if (e.target === lightbox || e.target === lightboxClose) {
+              closeLightbox();
+            }
+          },
+          { signal },
+        );
+
+        lightboxImg.addEventListener(
+          "click",
+          (e) => {
+            e.stopPropagation();
+            if (lightbox!.dataset.dragging === "true") {
+              lightbox!.dataset.dragging = "false";
+              return;
+            }
+            const isZoomed = lightbox!.dataset.zoomed === "true";
+            if (!isZoomed && !isImageLargerThanFit()) return;
+            // Anchor zoom-in on the click point; reset to centre on zoom-out.
+            const anchorX = isZoomed
+              ? 0.5
+              : e.offsetX / lightboxImg.clientWidth;
+            const anchorY = isZoomed
+              ? 0.5
+              : e.offsetY / lightboxImg.clientHeight;
+            setZoomed(!isZoomed, anchorX, anchorY);
+          },
+          { signal },
+        );
+
+        const DRAG_THRESHOLD = 5;
+        let dragStart: {
+          x: number;
+          y: number;
+          scrollLeft: number;
+          scrollTop: number;
+        } | null = null;
+
+        scrollEl.addEventListener(
+          "mousedown",
+          (e) => {
+            if (lightbox!.dataset.zoomed !== "true") return;
+            if (e.target !== lightboxImg) return;
+            e.preventDefault();
+            dragStart = {
+              x: e.clientX,
+              y: e.clientY,
+              scrollLeft: scrollEl!.scrollLeft,
+              scrollTop: scrollEl!.scrollTop,
+            };
+            lightbox!.dataset.dragging = "false";
+          },
+          { signal },
+        );
+
+        window.addEventListener(
+          "mousemove",
+          (e) => {
+            if (!dragStart) return;
+            const dx = e.clientX - dragStart.x;
+            const dy = e.clientY - dragStart.y;
+            if (
+              lightbox!.dataset.dragging !== "true" &&
+              Math.hypot(dx, dy) >= DRAG_THRESHOLD
+            ) {
+              lightbox!.dataset.dragging = "true";
+              lightboxImg!.style.cursor = "grabbing";
+            }
+            if (lightbox!.dataset.dragging === "true") {
+              scrollEl!.scrollLeft = dragStart.scrollLeft - dx;
+              scrollEl!.scrollTop = dragStart.scrollTop - dy;
+            }
+          },
+          { signal },
+        );
+
+        window.addEventListener(
+          "mouseup",
+          () => {
+            if (!dragStart) return;
+            dragStart = null;
+            if (lightbox!.dataset.zoomed === "true") {
+              lightboxImg!.style.cursor = "grab";
+            }
+            // dataset.dragging stays "true" until the matching click consumes it (Task 3).
+          },
+          { signal },
+        );
+
+        // Keyboard: Escape closes, arrows navigate
+        document.addEventListener(
+          "keydown",
+          (e) => {
+            if (lightbox.classList.contains("hidden")) return;
+            if (e.key === "Escape") closeLightbox();
+            else if (e.key === "ArrowRight") showImage(currentIndex + 1);
+            else if (e.key === "ArrowLeft") showImage(currentIndex - 1);
+          },
+          { signal },
+        );
+      }
+
+      document.addEventListener("astro:page-load", setupLightbox);
+    </script>
+
+    <script>
+      // Body images are tagged with data-preload by rehype-lazy-images. We keep
+      // loading="lazy" as a no-JS fallback, but proactively flip to eager once
+      // the image is within ~1.5 viewports of the user, so fast scrolls don't
+      // hit a per-row network wait. Native loading="lazy" alone has too tight a
+      // preload distance for a reading experience.
+      function setupBodyImagePreload() {
+        const images = document.querySelectorAll<HTMLImageElement>(
+          'img[data-preload="true"]',
+        );
+        if (!("IntersectionObserver" in window) || images.length === 0) return;
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const img = entry.target as HTMLImageElement;
+              img.loading = "eager";
+              io.unobserve(img);
+            }
+          },
+          { rootMargin: "1500px 0px" },
+        );
+
+        images.forEach((img) => io.observe(img));
+      }
+
+      document.addEventListener("astro:page-load", setupBodyImagePreload);
+    </script>
   </Fragment>
 </Base>

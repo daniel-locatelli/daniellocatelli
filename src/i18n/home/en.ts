@@ -141,6 +141,52 @@ export const t: I18nHome = {
     title: "Map of Knowledge",
     description:
       "I’m constantly learning the latest tools to ensure I’m building the right system for each task.",
+    tools: {
+      autocad:
+        "Autodesk's standard 2D/3D drafting tool. I build AutoCAD plugins (C#/.NET) that automate repetitive drawing work.",
+      civil3d:
+        "AutoCAD with parametric tools for infrastructure design. I build Civil 3D plugins that automate terrain modelling and drawing production.",
+      revit:
+        "Autodesk's BIM authoring tool. Certified Professional since 2014; I build Revit add-ins (C#/.NET) for modelling automation and data exchange, like the [DOKwood](/projects/dokwood) importer.",
+      dynamo:
+        "Visual scripting for Revit. I use it for batch edits, parameter mapping and model checks that would be tedious by hand.",
+      grasshopper:
+        "Visual programming for Rhino, my main design environment since 2015. I build form-finding workflows, fabrication data and [C# plugins](/projects/buildsystems-plugin-for-grasshopper), and [teach it](/teaching/adaptive-grasshopper-workshop).",
+      kangaroo:
+        "Physics engine for Grasshopper. I use it for form finding of membranes and meshes, as in [Canyon](/projects/canyon-by-artengineering-for-katharina-grosse) and [Radom Raisting](/projects/radom-raisting-by-ar-ingenieure).",
+      galapagos:
+        "Evolutionary solver built into Grasshopper. I use it for optimisation, like the collision-free placement of suspended spheres in [Parada Coca-Cola](/projects/parada-coca-cola-by-atelier-marko-brajovic) and [bobbin-lace patterns](/publications/algorithmic-design-for-traditional-bobbin-lace-methods).",
+      weaverbird:
+        "Mesh subdivision and smoothing for Grasshopper. I use it for organic geometry, as in [Models by Nature](/teaching/models-bynature-20) and my [biomimicry research](/research/architecture-biomimicry-algorithm).",
+      ladybug:
+        "Environmental analysis (sun, radiation, daylight) for Grasshopper. I use it for early design studies and in [teaching](/teaching/a-decade-after-unemat).",
+      culebra:
+        "Multi-agent behaviours for Grasshopper. I used it for the [Life Lamp](/projects/life-lamp-by-estudio-guto-requena-for-decimal), where emotions drive the lamp's growth.",
+      karamba:
+        "Parametric structural analysis for Grasshopper. I use it for quick bending and buckling checks, as in [Building Across Scales](/research/building-across-scales).",
+      python:
+        "My scripting and research language. Grasshopper components, COMPAS at ETH, a Cadwork plugin for [DOKwood](/projects/dokwood) and data pipelines.",
+      csharp:
+        "My language for AEC plugins. The [BuildSystems Grasshopper plugin](/projects/buildsystems-plugin-for-grasshopper), the [DOKwood](/projects/dokwood) Revit add-in and the data models behind them.",
+      html: "The structure of every site I ship. Written semantically so pages stay accessible and readable by agents, as on [this website](/projects/portfolio-website).",
+      css: "Tailwind for most layouts, handwritten CSS where it matters. Typography, print styles and the animations of [this website](/projects/portfolio-website).",
+      typescript:
+        "My daily language for the web. [This site](/projects/portfolio-website), the [BuildSystems website](/projects/buildsystems-website) and the [Funding Calculator](/projects/kfw-funding-calculator-by-buildsystems).",
+      flask:
+        "Lightweight Python web framework. I use it for small APIs and prototypes that expose research or Grasshopper logic over HTTP.",
+      tanstack:
+        "Full-stack React framework (Start, Query, Router). I use it for apps that need type-safe data loading.",
+      astro:
+        "Content-first web framework. [This portfolio](/projects/portfolio-website) and the [BuildSystems website](/projects/buildsystems-website), with Notion as CMS.",
+      react:
+        "UI library for interactive interfaces. The AI chat on [this site](/projects/portfolio-website) and the web apps I build for clients.",
+      mongodb:
+        "Document database. I use it for prototypes and tools with flexible, nested data.",
+      sqlite:
+        "Embedded SQL database. I use it for local tools, tests and small research datasets.",
+      postgresql:
+        "My main relational database. Supabase behind the [Funding Calculator](/projects/kfw-funding-calculator-by-buildsystems) and the vector store of [this site's AI chat](/projects/portfolio-website).",
+    },
   },
   contact: {
     id: "contact",

@@ -10,11 +10,12 @@ import type { Root, Element, ElementContent } from "hast";
  * this plugin:
  *   1. Builds a map from each footnote `<li>` id to its content (with the
  *      back-reference `↩` link stripped).
- *   2. Appends a sibling `<span class="footnote-tooltip">` inside each
- *      inline `<sup>`, containing the matching footnote content.
+ *   2. Appends a sibling `<span class="tooltip tooltip--footnote">` inside
+ *      each inline `<sup>`, containing the matching footnote content, and
+ *      links the ref to it with `data-tooltip`.
  *
- * The tooltip is then revealed purely via CSS on hover/focus of the
- * adjacent `.footnote-ref` link — no client-side JS required.
+ * The panel follows the shared tooltip contract (src/lib/tooltips-client.ts,
+ * wired up in Base.astro), which shows and positions it on hover/focus.
  */
 export function rehypeFootnoteTooltips() {
   return (tree: Root) => {
@@ -51,19 +52,33 @@ export function rehypeFootnoteTooltips() {
         }
       }
 
-      ref.properties = { ...ref.properties, className: mergeClass(ref.properties?.className, "footnote-ref") };
+      const tooltipId = `${href.slice(1)}-tooltip`;
+      ref.properties = {
+        ...ref.properties,
+        className: mergeClass(ref.properties?.className, "footnote-ref"),
+        dataTooltip: tooltipId,
+      };
 
       sup.children.push({
         type: "element",
         tagName: "span",
         properties: {
-          className: ["footnote-tooltip"],
+          id: tooltipId,
+          className: ["tooltip", "tooltip--footnote"],
           role: "tooltip",
           // Promote the tooltip into the browser top layer so it escapes the
           // overflow-x-hidden / max-width clipping of any ancestor container.
           popover: "manual",
         },
-        children: flattenBlockElements(content),
+        children: [
+          ...flattenBlockElements(content),
+          {
+            type: "element",
+            tagName: "span",
+            properties: { className: ["tooltip-arrow"], ariaHidden: "true" },
+            children: [],
+          },
+        ],
       });
     });
   };
@@ -89,7 +104,10 @@ function stripBackrefs(children: ElementContent[]): ElementContent[] {
   const result: ElementContent[] = [];
   for (const child of children) {
     if (child.type === "element") {
-      if (child.tagName === "a" && child.properties?.dataFootnoteBackref !== undefined) {
+      if (
+        child.tagName === "a" &&
+        child.properties?.dataFootnoteBackref !== undefined
+      ) {
         continue;
       }
       result.push({
@@ -118,7 +136,12 @@ function flattenBlockElements(children: ElementContent[]): ElementContent[] {
       child.type === "element" && (child as Element).tagName === "p";
     if (isParagraph) {
       if (lastWasParagraph) {
-        out.push({ type: "element", tagName: "br", properties: {}, children: [] });
+        out.push({
+          type: "element",
+          tagName: "br",
+          properties: {},
+          children: [],
+        });
       }
       out.push(...flattenBlockElements((child as Element).children));
       lastWasParagraph = true;
@@ -150,7 +173,10 @@ function replaceBackrefArrows(tree: Root) {
       if (a.properties?.dataFootnoteBackref === undefined) return;
       for (const child of a.children) {
         if (child.type === "text") {
-          child.value = child.value.replace(UNANNOTATED_ARROW, BACKREF_ARROW_TEXT);
+          child.value = child.value.replace(
+            UNANNOTATED_ARROW,
+            BACKREF_ARROW_TEXT,
+          );
         }
       }
     });

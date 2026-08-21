@@ -141,15 +141,13 @@
   }
 }
 
-/* Footnote hover tooltips. The rehype-footnote-tooltips plugin appends a
-   .footnote-tooltip <span> inside each inline footnote <sup>. The tooltip
-   is positioned absolutely and revealed on hover/focus of the adjacent
-   a.footnote-ref link via the CSS sibling selector — no JS needed. */
+/* Footnote markers. The rehype-footnote-tooltips plugin wraps each inline
+   footnote reference in a pill and pairs it with a shared `.tooltip` panel
+   (see below) holding the note text. */
 
-/* The wrapping <sup> is the positioning context for the absolutely
-   positioned tooltip. We override the default font-size/line-height so
-   the pill renders at the surrounding text size, then nudge it up half
-   an em so it reads as a citation marker. */
+/* The wrapping <sup> is the positioning context for the pill. We override
+   the default font-size/line-height so the pill renders at the surrounding
+   text size, then nudge it up half an em so it reads as a citation marker. */
 sup:has(a.footnote-ref) {
   position: relative;
   vertical-align: baseline;
@@ -182,50 +180,117 @@ a.footnote-ref:focus-visible {
   color: #4ade80; /* green-400, matches site link accent */
 }
 
-/* The tooltip is rendered via the Popover API so it lives in the browser's
-   top layer. That escapes any ancestor `overflow: hidden` clipping (the
-   prose container uses `overflow-x-hidden`) without needing z-index hacks.
-   Visibility is driven by JS calling .showPopover() / .hidePopover() in
-   src/pages/[...locale]/[...subpage].astro; CSS only handles the chrome.
-   Hide explicitly (independent of any UA `[popover]` rule) so the tooltip
-   never spills inline into the prose if popover support is missing. */
-.footnote-tooltip {
+/* Shared tooltip panel (shadcn-style), used by the Map of Knowledge icons,
+   the footer social links and footnotes. Rendered via the Popover API so it
+   lives in the browser's top layer and escapes any ancestor `overflow`
+   clipping. Visibility and position are driven by src/lib/tooltips-client.ts
+   (showPopover()/hidePopover() plus fixed left/top and data-side); CSS only
+   handles the chrome and the open/close animation. Hidden explicitly so the
+   panel never spills inline if popover support is missing. */
+.tooltip {
   display: none;
 }
 
-.footnote-tooltip:popover-open {
+.tooltip:popover-open {
   display: block;
 }
 
-.footnote-tooltip[popover] {
+.tooltip[popover] {
+  --tooltip-bg: #18181b; /* zinc-900 */
+  --tooltip-border: #3f3f46; /* zinc-700 */
   margin: 0;
   inset: auto;
   position: fixed;
+  z-index: 50;
   width: max-content;
-  max-width: min(28rem, calc(100vw - 2rem));
-  padding: 0.75rem 1rem;
-  background-color: #18181b; /* zinc-900 */
-  border: 1px solid #3f3f46; /* zinc-700 */
-  border-radius: 0.5rem;
+  max-width: min(18rem, calc(100vw - 2rem));
+  padding: 0.375rem 0.75rem;
+  background-color: var(--tooltip-bg);
+  border: 1px solid var(--tooltip-border);
+  border-radius: 0.375rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
+  font-style: normal;
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.5;
   color: #e4e4e7; /* zinc-200 */
-  text-align: left;
-  text-wrap: pretty;
-  /* Long URLs in citations would otherwise force the tooltip wider than
-     max-width and trigger a horizontal scrollbar. Allow mid-word breaks
-     so the content always fits the box. */
+  text-align: center;
+  text-wrap: balance;
   overflow-wrap: anywhere;
+  pointer-events: auto;
+  overflow: visible;
+  /* Fade + zoom in from the trigger side, matching shadcn's tooltip motion. */
+  opacity: 1;
+  transform: scale(1);
+  transform-origin: bottom center;
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease,
+    display 150ms allow-discrete,
+    overlay 150ms allow-discrete;
 }
 
-.footnote-tooltip p {
+.tooltip[data-side="bottom"] {
+  transform-origin: top center;
+}
+
+@starting-style {
+  .tooltip:popover-open {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip[popover] {
+    transition: none;
+  }
+}
+
+/* Arrow: a rotated square sharing the panel background and border, clipped
+   so only the outward-facing half shows. Horizontal position is set inline
+   by the client script (aligned with the trigger centre). */
+.tooltip-arrow {
+  position: absolute;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: var(--tooltip-bg);
+  border: 1px solid var(--tooltip-border);
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.tooltip[data-side="top"] .tooltip-arrow,
+.tooltip:not([data-side]) .tooltip-arrow {
+  bottom: -6px;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+.tooltip[data-side="bottom"] .tooltip-arrow {
+  top: -6px;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* Footnote variant: wider, left-aligned prose with links. */
+.tooltip--footnote[popover] {
+  max-width: min(28rem, calc(100vw - 2rem));
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.tooltip--footnote p {
   margin: 0;
   display: inline;
 }
 
-.footnote-tooltip a {
+.tooltip a {
   color: #4ade80; /* green-400 */
   text-decoration: underline;
+  text-underline-offset: 2px;
 }

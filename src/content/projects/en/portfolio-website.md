@@ -109,4 +109,4 @@ The site also hosts pages that are not linked from anywhere and exist mainly for
 ## Smaller details
 
 - **Link previews at build time.** External links listed on a page are rendered as preview cards. Their titles, descriptions, images, and favicons are fetched once and cached in the repository, so the build is reproducible and no third-party request happens at page load.
-- **Footnotes with tooltips.** Markdown footnotes get a hover tooltip showing the note inline, so readers do not have to jump to the bottom of the page.
+- **Tooltips everywhere.** One small tooltip system (a popover panel with an arrow, positioned and flipped by a few lines of JavaScript) serves three places: markdown footnotes show the note inline on hover so readers do not have to jump to the bottom of the page; each tool in the homepage Map of Knowledge explains where and how I use it; and the footer social icons name their destination.

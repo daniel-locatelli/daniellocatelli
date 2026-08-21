@@ -1,6 +1,5 @@
 ---
 import AutoCad from "../assets/tech-stack/autocad.svg";
-import { Image } from "astro:assets";
 import Revit from "../assets/tech-stack/revit.svg";
 import Civil3D from "../assets/tech-stack/civil3d.svg";
 import Dynamo from "../assets/tech-stack/dynamo.svg";
@@ -15,7 +14,6 @@ import Python from "../assets/tech-stack/python.svg";
 import CSharp from "../assets/tech-stack/c-sharp.svg";
 import HTML from "../assets/tech-stack/html-5.svg";
 import CSS from "../assets/tech-stack/css.svg";
-// import JavascriptLogo from "../assets/tech-stack/javascript.svg";
 import TypescriptLogo from "../assets/tech-stack/typescript.svg";
 import FlaskLogo from "../assets/tech-stack/flask.svg";
 import TanStackStartLogo from "../assets/tech-stack/tanstack-start.png";
@@ -24,15 +22,19 @@ import ReactLogo from "../assets/tech-stack/react.svg";
 import MongoDB from "../assets/tech-stack/mongo-db.svg";
 import SQLite from "../assets/tech-stack/sqlite.svg";
 import PostgreSQL from "../assets/tech-stack/postgresql.svg";
-// import RFEM from "../assets/tech-stack/rfem.svg";
-// import Sofistik from "../assets/tech-stack/sofistik.svg";
+import SkillsMapItem from "@/components/SkillsMapItem.astro";
 import { getLocale } from "src/lib/routes-helpers";
 import { getI18n } from "src/i18n/utils";
 import type { I18nMeta } from "src/i18n/meta/types";
+import type { I18nHome } from "src/i18n/home/types";
 
 const locale = getLocale(Astro.params, Astro.url);
 const meta = await getI18n<I18nMeta>("meta", locale);
+const home = await getI18n<I18nHome>("home", locale);
 const newTabHint = `(${meta.openNewTab})`;
+const tips = home.expertise.tools;
+const localePrefix = locale === "en" ? "" : "/" + locale;
+const shared = { newTabHint, localePrefix };
 ---
 
 <div id="chart-container" class="w-full">
@@ -47,54 +49,33 @@ const newTabHint = `(${meta.openNewTab})`;
     <div
       class="grid w-full grid-cols-3 items-center justify-around gap-4 py-4 md:py-10"
     >
-      <a
+      <SkillsMapItem
+        {...shared}
+        id="autocad"
         href="https://www.autodesk.com/products/autocad/overview"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-      >
-        <Image
-          src={AutoCad}
-          alt="AutoCAD logo"
-          width={40}
-          height={40}
-          class="inline-block w-10 cursor-pointer rounded bg-white"
-        />
-        <div class="text-center text-xs">AutoCAD</div>
-        <span class="sr-only">{newTabHint}</span>
-      </a>
-      <a
+        src={AutoCad}
+        alt="AutoCAD logo"
+        label="AutoCAD"
+        tip={tips.autocad}
+      />
+      <SkillsMapItem
+        {...shared}
+        id="civil3d"
         href="https://www.autodesk.com/products/civil-3d/overview"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-      >
-        <Image
-          src={Civil3D}
-          alt="Civil 3D logo"
-          width={40}
-          height={40}
-          class="inline-block w-10 cursor-pointer rounded bg-white"
-        />
-        <div class="text-center text-xs">Civil&nbsp;3D</div>
-        <span class="sr-only">{newTabHint}</span>
-      </a>
-      <a
+        src={Civil3D}
+        alt="Civil 3D logo"
+        label="Civil 3D"
+        tip={tips.civil3d}
+      />
+      <SkillsMapItem
+        {...shared}
+        id="revit"
         href="https://www.autodesk.com/products/revit/overview"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-      >
-        <Image
-          src={Revit}
-          alt="Revit logo"
-          width={40}
-          height={40}
-          class="inline-block w-10 cursor-pointer rounded bg-white"
-        />
-        <div class="text-center text-xs">Revit</div>
-        <span class="sr-only">{newTabHint}</span>
-      </a>
+        src={Revit}
+        alt="Revit logo"
+        label="Revit"
+        tip={tips.revit}
+      />
     </div>
   </div>
 
@@ -107,38 +88,25 @@ const newTabHint = `(${meta.openNewTab})`;
     </div>
     <div class="flex flex-col items-center justify-around gap-12 py-4 md:py-10">
       <div class="flex w-full items-center justify-around">
-        <a
+        <SkillsMapItem
+          {...shared}
+          id="dynamo"
           href="https://dynamobim.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-        >
-          <Image
-            src={Dynamo}
-            alt="Dynamo logo"
-            width={40}
-            height={40}
-            class="inline-block w-10 cursor-pointer rounded bg-white"
-          />
-          <div class="text-center text-xs">Dynamo</div>
-          <span class="sr-only">{newTabHint}</span>
-        </a>
-        <a
+          src={Dynamo}
+          alt="Dynamo logo"
+          label="Dynamo"
+          tip={tips.dynamo}
+        />
+        <SkillsMapItem
+          {...shared}
+          id="grasshopper"
           href="https://en.wikipedia.org/wiki/Grasshopper_3D"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-        >
-          <Image
-            src={Grasshopper}
-            alt="Grasshopper logo"
-            width={40}
-            height={40}
-            class="inline-block w-10 cursor-pointer rounded bg-[#579141]"
-          />
-          <div class="text-center text-xs">Grasshopper</div>
-          <span class="sr-only">{newTabHint}</span>
-        </a>
+          src={Grasshopper}
+          alt="Grasshopper logo"
+          label="Grasshopper"
+          tip={tips.grasshopper}
+          logoBg="bg-[#579141]"
+        />
       </div>
       <div
         class="relative w-full rounded-lg border border-dashed border-white p-4"
@@ -149,143 +117,64 @@ const newTabHint = `(${meta.openNewTab})`;
         <div
           class="grid w-full grid-cols-3 items-center justify-around gap-4 py-4 md:flex"
         >
-          <a
+          <SkillsMapItem
+            {...shared}
+            id="kangaroo"
             href="https://kangaroo3d.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={Kangaroo}
-              alt="Kangaroo logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">Kangaroo</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={Kangaroo}
+            alt="Kangaroo logo"
+            label="Kangaroo"
+            tip={tips.kangaroo}
+          />
+          <SkillsMapItem
+            {...shared}
+            id="galapagos"
             href="https://www.grasshopper3d.com/group/galapagos"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={Galapagos}
-              alt="Galapagos logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">Galapagos</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={Galapagos}
+            alt="Galapagos logo"
+            label="Galapagos"
+            tip={tips.galapagos}
+          />
+          <SkillsMapItem
+            {...shared}
+            id="weaverbird"
             href="https://www.giuliopiacentino.com/weaverbird/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={Weaverbird}
-              alt="Weaverbird logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">Weaverbird</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={Weaverbird}
+            alt="Weaverbird logo"
+            label="Weaverbird"
+            tip={tips.weaverbird}
+          />
+          <SkillsMapItem
+            {...shared}
+            id="ladybug"
             href="https://www.ladybug.tools/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={Ladybug}
-              alt="Ladybug Tools logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">Ladybug Tools</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={Ladybug}
+            alt="Ladybug Tools logo"
+            label="Ladybug Tools"
+            tip={tips.ladybug}
+          />
+          <SkillsMapItem
+            {...shared}
+            id="culebra"
             href="https://www.complicitmatter.com/culebra-net/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={Culebra}
-              alt="Culebra logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">Culebra</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={Culebra}
+            alt="Culebra logo"
+            label="Culebra"
+            tip={tips.culebra}
+          />
+          <SkillsMapItem
+            {...shared}
+            id="karamba"
             href="https://karamba3d.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={Karamba}
-              alt="Karamba3D logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">Karamba3D</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
+            src={Karamba}
+            alt="Karamba3D logo"
+            label="Karamba3D"
+            tip={tips.karamba}
+          />
         </div>
       </div>
     </div>
   </div>
-
-  <!-- FEA Section -->
-  {
-    /*
- <div class="section">
-    <div
-      class="absolute top-0 left-5 z-10 flex h-7 -translate-y-3.5 items-center justify-center rounded-sm bg-zinc-800 px-2 pb-1 font-sans text-sm"
-    >
-      Finite Element Analysis
-    </div>
-    <div class="flex flex-col items-center justify-around gap-12 py-4 md:py-10">
-      <div class="flex w-full items-center justify-around">
-        <a
-          href="https://www.dlubal.com/en/products/rfem-fea-software/rfem/what-is-rfem"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-        >
-          <RFEM class="inline-block w-10 cursor-pointer rounded bg-white" />
-          <div class="text-center text-xs">RFEM</div>
-          <span class="sr-only">{newTabHint}</span>
-        </a>
-        <a
-          href="https://www.sofistik.com/en/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-        >
-          <Sofistik class="inline-block w-10 cursor-pointer rounded bg-white" />
-          <div class="text-center text-xs">SOFiSTiK</div>
-          <span class="sr-only">{newTabHint}</span>
-        </a>
-      </div>
-    </div>
-  </div>
-*/
-  }
 
   <!-- Programming Section -->
   <div class="section">
@@ -304,38 +193,24 @@ const newTabHint = `(${meta.openNewTab})`;
           Languages
         </div>
         <div class="flex flex-wrap items-center justify-around gap-8 py-4">
-          <a
+          <SkillsMapItem
+            {...shared}
+            id="python"
             href="https://www.python.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={Python}
-              alt="Python logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">Python</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={Python}
+            alt="Python logo"
+            label="Python"
+            tip={tips.python}
+          />
+          <SkillsMapItem
+            {...shared}
+            id="csharp"
             href="https://dotnet.microsoft.com/en-us/languages/csharp"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={CSharp}
-              alt="C# logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">C#</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
+            src={CSharp}
+            alt="C# logo"
+            label="C#"
+            tip={tips.csharp}
+          />
           <div
             class="relative flex w-full items-center justify-around rounded-xl border border-dashed border-white py-6 md:w-fit md:justify-between md:gap-8 md:px-8"
           >
@@ -344,54 +219,36 @@ const newTabHint = `(${meta.openNewTab})`;
             >
               Web development
             </div>
-            <a
+            <SkillsMapItem
+              {...shared}
+              id="html"
               href="https://html.spec.whatwg.org/multipage/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-            >
-              <Image
-                src={HTML}
-                alt="HTML logo"
-                width={40}
-                height={40}
-                class="inline-block w-10 cursor-pointer"
-              />
-              <div class="text-center text-xs">HTML</div>
-              <span class="sr-only">{newTabHint}</span>
-            </a>
-            <a
+              src={HTML}
+              alt="HTML logo"
+              label="HTML"
+              tip={tips.html}
+              logoBg=""
+            />
+            <SkillsMapItem
+              {...shared}
+              id="css"
               href="https://www.w3.org/Style/CSS/Overview.en.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-            >
-              <Image
-                src={CSS}
-                alt="CSS logo"
-                width={40}
-                height={40}
-                class="inline-block w-10 cursor-pointer"
-              />
-              <div class="text-center text-xs">CSS</div>
-              <span class="sr-only">{newTabHint}</span>
-            </a>
-            <a
-              href="https://en.wikipedia.org/wiki/JavaScript"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-            >
-              <Image
-                src={TypescriptLogo}
-                alt="TypeScript logo"
-                width={40}
-                height={40}
-                class="inline-block w-10 cursor-pointer"
-              />
-              <div class="text-center text-xs">TypeScript</div>
-              <span class="sr-only">{newTabHint}</span>
-            </a>
+              src={CSS}
+              alt="CSS logo"
+              label="CSS"
+              tip={tips.css}
+              logoBg=""
+            />
+            <SkillsMapItem
+              {...shared}
+              id="typescript"
+              href="https://www.typescriptlang.org/"
+              src={TypescriptLogo}
+              alt="TypeScript logo"
+              label="TypeScript"
+              tip={tips.typescript}
+              logoBg=""
+            />
           </div>
         </div>
       </div>
@@ -407,68 +264,43 @@ const newTabHint = `(${meta.openNewTab})`;
         <div
           class="grid w-full grid-cols-4 items-center justify-around py-4 md:py-10"
         >
-          <a
+          <SkillsMapItem
+            {...shared}
+            id="flask"
             href="https://palletsprojects.com/projects/flask/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={FlaskLogo}
-              alt="Flask logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">Flask</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={FlaskLogo}
+            alt="Flask logo"
+            label="Flask"
+            tip={tips.flask}
+          />
+          <SkillsMapItem
+            {...shared}
+            id="tanstack"
             href="https://tanstack.com/start"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={TanStackStartLogo}
-              alt="TanStack Start Logo"
-              class="inline-block w-10 cursor-pointer rounded bg-white p-1"
-            />
-            <div class="text-center text-xs">TanStack</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={TanStackStartLogo}
+            alt="TanStack Start logo"
+            label="TanStack"
+            tip={tips.tanstack}
+            logoBg="bg-white p-1"
+          />
+          <SkillsMapItem
+            {...shared}
+            id="astro"
             href="https://astro.build/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={AstroLogo}
-              alt="Astro logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">Astro</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={AstroLogo}
+            alt="Astro logo"
+            label="Astro"
+            tip={tips.astro}
+          />
+          <SkillsMapItem
+            {...shared}
+            id="react"
             href="https://react.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={ReactLogo}
-              alt="React logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">React</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
+            src={ReactLogo}
+            alt="React logo"
+            label="React"
+            tip={tips.react}
+          />
         </div>
       </div>
       <div
@@ -482,54 +314,33 @@ const newTabHint = `(${meta.openNewTab})`;
         <div
           class="grid w-full grid-cols-3 items-center justify-around py-4 md:py-10"
         >
-          <a
+          <SkillsMapItem
+            {...shared}
+            id="mongodb"
             href="https://www.mongodb.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={MongoDB}
-              alt="MongoDB logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">NoSQL</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={MongoDB}
+            alt="MongoDB logo"
+            label="NoSQL"
+            tip={tips.mongodb}
+          />
+          <SkillsMapItem
+            {...shared}
+            id="sqlite"
             href="https://sqlite.org/index.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={SQLite}
-              alt="SQLite logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">SQLite</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
-          <a
+            src={SQLite}
+            alt="SQLite logo"
+            label="SQLite"
+            tip={tips.sqlite}
+          />
+          <SkillsMapItem
+            {...shared}
+            id="postgresql"
             href="https://www.postgresql.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Image
-              src={PostgreSQL}
-              alt="PostgreSQL logo"
-              width={40}
-              height={40}
-              class="inline-block w-10 cursor-pointer rounded bg-white"
-            />
-            <div class="text-center text-xs">PostgreSQL</div>
-            <span class="sr-only">{newTabHint}</span>
-          </a>
+            src={PostgreSQL}
+            alt="PostgreSQL logo"
+            label="PostgreSQL"
+            tip={tips.postgresql}
+          />
         </div>
       </div>
     </div>
@@ -545,14 +356,5 @@ const newTabHint = `(${meta.openNewTab})`;
     border-radius: 1rem;
     border: 1px dashed white;
     padding: 1rem;
-  }
-
-  .section-title {
-    font-size: 0.85rem;
-    position: absolute;
-    top: -0.75rem;
-    background-color: var(--color-zinc-800);
-    padding: 0 0.5rem;
-    border-radius: 0.25rem;
   }
 </style>

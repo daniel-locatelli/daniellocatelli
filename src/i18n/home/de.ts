@@ -142,6 +142,52 @@ export const t: I18nHome = {
     title: "Wissenskarte",
     description:
       "Ich lerne ständig die neuesten Tools, um sicherzustellen, dass ich für jede Aufgabe das richtige System baue.",
+    tools: {
+      autocad:
+        "Das Standardwerkzeug von Autodesk für technisches Zeichnen in 2D/3D. Ich entwickle AutoCAD-Plugins (C#/.NET), die wiederkehrende Zeichenarbeit automatisieren.",
+      civil3d:
+        "AutoCAD mit parametrischen Werkzeugen für die Infrastrukturplanung. Ich entwickle Civil-3D-Plugins, die Geländemodellierung und Planerstellung automatisieren.",
+      revit:
+        "Das BIM-Werkzeug von Autodesk. Certified Professional seit 2014; ich entwickle Revit-Add-ins (C#/.NET) für Modellierungsautomatisierung und Datenaustausch, etwa den [DOKwood](/projects/dokwood)-Importer.",
+      dynamo:
+        "Visuelle Programmierung für Revit. Ich nutze es für Stapeländerungen, Parameter-Mapping und Modellprüfungen, die von Hand mühsam wären.",
+      grasshopper:
+        "Visuelle Programmierung für Rhino, meine wichtigste Entwurfsumgebung seit 2015. Ich baue Formfindungs-Workflows, Fertigungsdaten und [C#-Plugins](/projects/buildsystems-plugin-for-grasshopper) und [unterrichte das Werkzeug](/teaching/adaptive-grasshopper-workshop).",
+      kangaroo:
+        "Physik-Engine für Grasshopper. Ich nutze sie zur Formfindung von Membranen und Netzen, etwa bei [Canyon](/projects/canyon-by-artengineering-for-katharina-grosse) und [Radom Raisting](/projects/radom-raisting-by-ar-ingenieure).",
+      galapagos:
+        "In Grasshopper eingebauter evolutionärer Solver. Ich nutze ihn zur Optimierung, etwa für die kollisionsfreie Anordnung hängender Kugeln bei [Parada Coca-Cola](/projects/parada-coca-cola-by-atelier-marko-brajovic) und [Klöppelspitzenmuster](/publications/algorithmic-design-for-traditional-bobbin-lace-methods).",
+      weaverbird:
+        "Netzunterteilung und -glättung für Grasshopper. Ich nutze es für organische Geometrien, etwa bei [Models by Nature](/teaching/models-bynature-20) und in meiner [Biomimetik-Forschung](/research/architecture-biomimicry-algorithm).",
+      ladybug:
+        "Umweltanalysen (Sonne, Strahlung, Tageslicht) für Grasshopper. Ich nutze es für frühe Entwurfsstudien und in der [Lehre](/teaching/a-decade-after-unemat).",
+      culebra:
+        "Multiagenten-Verhalten für Grasshopper. Genutzt für die [Life Lamp](/projects/life-lamp-by-estudio-guto-requena-for-decimal), bei der Emotionen das Wachstum der Leuchte steuern.",
+      karamba:
+        "Parametrische Tragwerksanalyse für Grasshopper. Ich nutze es für schnelle Biege- und Knickprüfungen, etwa in [Building Across Scales](/research/building-across-scales).",
+      python:
+        "Meine Sprache für Skripte und Forschung. Grasshopper-Komponenten, COMPAS an der ETH, ein Cadwork-Plugin für [DOKwood](/projects/dokwood) und Datenpipelines.",
+      csharp:
+        "Meine Sprache für AEC-Plugins. Das [BuildSystems-Grasshopper-Plugin](/projects/buildsystems-plugin-for-grasshopper), das [DOKwood](/projects/dokwood)-Revit-Add-in und die Datenmodelle dahinter.",
+      html: "Das Gerüst jeder Website, die ich ausliefere. Semantisch geschrieben, damit Seiten zugänglich und für Agenten lesbar bleiben, wie auf [dieser Website](/projects/portfolio-website).",
+      css: "Tailwind für die meisten Layouts, handgeschriebenes CSS, wo es zählt. Typografie, Druckstile und die Animationen [dieser Website](/projects/portfolio-website).",
+      typescript:
+        "Meine tägliche Sprache für das Web. [Diese Website](/projects/portfolio-website), die [BuildSystems-Website](/projects/buildsystems-website) und der [Förderrechner](/projects/kfw-funding-calculator-by-buildsystems).",
+      flask:
+        "Leichtgewichtiges Python-Webframework. Ich nutze es für kleine APIs und Prototypen, die Forschungs- oder Grasshopper-Logik über HTTP bereitstellen.",
+      tanstack:
+        "Full-Stack-React-Framework (Start, Query, Router). Ich nutze es für Apps, die typsicheres Laden von Daten brauchen.",
+      astro:
+        "Content-orientiertes Webframework. [Dieses Portfolio](/projects/portfolio-website) und die [BuildSystems-Website](/projects/buildsystems-website), mit Notion als CMS.",
+      react:
+        "UI-Bibliothek für interaktive Oberflächen. Der KI-Chat auf [dieser Website](/projects/portfolio-website) und die Web-Apps, die ich für Kunden baue.",
+      mongodb:
+        "Dokumentendatenbank. Ich nutze sie für Prototypen und Werkzeuge mit flexiblen, verschachtelten Daten.",
+      sqlite:
+        "Eingebettete SQL-Datenbank. Ich nutze sie für lokale Werkzeuge, Tests und kleine Forschungsdatensätze.",
+      postgresql:
+        "Meine wichtigste relationale Datenbank. Supabase hinter dem [Förderrechner](/projects/kfw-funding-calculator-by-buildsystems) und dem Vektorspeicher des [KI-Chats dieser Website](/projects/portfolio-website).",
+    },
   },
   contact: {
     id: "contact",

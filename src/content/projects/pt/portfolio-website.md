@@ -109,4 +109,4 @@ O site também hospeda páginas que não são linkadas de lugar nenhum e existem
 ## Detalhes menores
 
 - **Prévias de links no build.** Links externos listados em uma página são exibidos como cartões de prévia. Títulos, descrições, imagens e favicons são buscados uma única vez e guardados em cache no repositório, de modo que o build é reprodutível e nenhuma requisição a terceiros acontece ao carregar a página.
-- **Notas de rodapé com tooltip.** Notas de rodapé em markdown ganham um tooltip ao passar o mouse, mostrando a nota no próprio lugar, para que o leitor não precise pular até o fim da página.
+- **Tooltips em toda parte.** Um único sistema de tooltip (um painel popover com seta, posicionado e invertido por poucas linhas de JavaScript) atende três lugares: notas de rodapé em markdown mostram a nota no próprio lugar ao passar o mouse, para que o leitor não precise pular até o fim da página; cada ferramenta do Mapa de Conhecimento na página inicial explica onde e como eu a uso; e os ícones sociais do rodapé indicam seu destino.

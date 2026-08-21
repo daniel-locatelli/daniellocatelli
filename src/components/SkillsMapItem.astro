@@ -1,0 +1,74 @@
+---
+/**
+ * One tool in the homepage Map of Knowledge: logo + label linking to the
+ * tool's website, with a hover/focus tooltip describing where or how the
+ * tool is used. Tooltip behaviour comes from the shared system (see
+ * Tooltip.astro / src/lib/tooltips-client.ts).
+ */
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Tooltip from "@/components/Tooltip.astro";
+
+interface Props {
+  id: string;
+  href: string;
+  src: ImageMetadata;
+  alt: string;
+  label: string;
+  /** Plain text; `[label](/internal/path)` becomes a locale-prefixed link. */
+  tip: string;
+  newTabHint: string;
+  localePrefix: string;
+  /** Logo background (logos are designed for a light plate by default). */
+  logoBg?: string;
+}
+
+const {
+  id,
+  href,
+  src,
+  alt,
+  label,
+  tip,
+  newTabHint,
+  localePrefix,
+  logoBg = "bg-white",
+} = Astro.props;
+const tooltipId = `skill-tip-${id}`;
+
+const escapeHtml = (str: string) =>
+  str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
+// Render the tip as HTML: escape everything, then turn markdown-style
+// `[label](/path)` into internal links so each tooltip can point at the
+// projects, research or teaching where the tool was used.
+const tipHtml = escapeHtml(tip).replace(
+  /\[([^\]]+)\]\((\/[^)\s]*)\)/g,
+  (_m, label: string, path: string) =>
+    `<a href="${localePrefix}${path}">${label}</a>`,
+);
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-tooltip={tooltipId}
+  aria-describedby={tooltipId}
+  class="flex flex-col items-center justify-center gap-1 transition-all duration-200 hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
+>
+  <Image
+    src={src}
+    alt={alt}
+    width={40}
+    height={40}
+    class:list={["inline-block w-10 cursor-pointer rounded", logoBg]}
+  />
+  <div class="text-center text-xs" set:html={label} />
+  <span class="sr-only">{newTabHint}</span>
+</a>
+<Tooltip id={tooltipId}><Fragment set:html={tipHtml} /></Tooltip>

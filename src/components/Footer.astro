@@ -2,6 +2,7 @@
 import { siteConfig } from "@/config/site";
 import { getLocale } from "src/lib/routes-helpers";
 import { Icon } from "astro-icon/components";
+import Tooltip from "@/components/Tooltip.astro";
 import type { I18nFooter } from "src/i18n/footer/type";
 import type { I18nMeta } from "src/i18n/meta/types";
 import { getI18n } from "src/i18n/utils";
@@ -29,41 +30,45 @@ const newTabHint = `(${meta.openNewTab})`;
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`LinkedIn ${newTabHint}`}
-          title={`LinkedIn ${newTabHint}`}
+          data-tooltip="footer-tip-linkedin"
           class="text-zinc-400 transition-colors hover:text-zinc-200"
         >
           <Icon name="mdi:linkedin" class="size-5" aria-hidden="true" />
         </a>
+        <Tooltip id="footer-tip-linkedin" describes={false}>LinkedIn</Tooltip>
         <a
           href={siteConfig.instagram}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Instagram ${newTabHint}`}
-          title={`Instagram ${newTabHint}`}
+          data-tooltip="footer-tip-instagram"
           class="text-zinc-400 transition-colors hover:text-zinc-200"
         >
           <Icon name="mdi:instagram" class="size-5" aria-hidden="true" />
         </a>
+        <Tooltip id="footer-tip-instagram" describes={false}>Instagram</Tooltip>
         <a
           href={siteConfig.github}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`GitHub ${newTabHint}`}
-          title={`GitHub ${newTabHint}`}
+          data-tooltip="footer-tip-github"
           class="text-zinc-400 transition-colors hover:text-zinc-200"
         >
           <Icon name="mdi:github" class="size-5" aria-hidden="true" />
         </a>
+        <Tooltip id="footer-tip-github" describes={false}>GitHub</Tooltip>
         <a
           href={siteConfig.gitlab}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`GitLab ${newTabHint}`}
-          title={`GitLab ${newTabHint}`}
+          data-tooltip="footer-tip-gitlab"
           class="text-zinc-400 transition-colors hover:text-zinc-200"
         >
           <Icon name="mdi:gitlab" class="size-5" aria-hidden="true" />
         </a>
+        <Tooltip id="footer-tip-gitlab" describes={false}>GitLab</Tooltip>
       </address>
 
       <!-- Copyright + Legal -->
@@ -71,7 +76,7 @@ const newTabHint = `(${meta.openNewTab})`;
         class="font-body flex flex-col items-center gap-3 text-xs text-zinc-400 sm:flex-row sm:gap-0"
       >
         <span>&copy; {currentYear} {siteConfig.title}</span>
-        <span class="hidden sm:inline sm:mx-3">&middot;</span>
+        <span class="hidden sm:mx-3 sm:inline">&middot;</span>
         <div class="flex items-center gap-3">
           <a
             href={`${localePrefix}/privacy-policy`}

@@ -141,6 +141,52 @@ export const t: I18nHome = {
     title: "Expertise",
     description:
       "Estou constantemente aprendendo as ferramentas mais recentes para garantir que estou desenvolvendo o sistema certo para cada tarefa.",
+    tools: {
+      autocad:
+        "A ferramenta padrão da Autodesk para desenho técnico 2D/3D. Desenvolvo plugins para o AutoCAD (C#/.NET) que automatizam tarefas repetitivas de desenho.",
+      civil3d:
+        "O AutoCAD com ferramentas paramétricas para infraestrutura. Desenvolvo plugins para o Civil 3D que automatizam modelagem de terreno e produção de desenhos.",
+      revit:
+        "A ferramenta de modelagem BIM da Autodesk. Certified Professional desde 2014; desenvolvo add-ins para o Revit (C#/.NET) para automação de modelagem e troca de dados, como o importador do [DOKwood](/projects/dokwood).",
+      dynamo:
+        "Programação visual para o Revit. Uso para edições em lote, mapeamento de parâmetros e verificações de modelo que seriam tediosas à mão.",
+      grasshopper:
+        "Programação visual para o Rhino, meu principal ambiente de projeto desde 2015. Construo fluxos de form finding, dados de fabricação e [plugins em C#](/projects/buildsystems-plugin-for-grasshopper), e [ensino a ferramenta](/teaching/adaptive-grasshopper-workshop).",
+      kangaroo:
+        "Motor de física para o Grasshopper. Uso para form finding de membranas e malhas, como em [Canyon](/projects/canyon-by-artengineering-for-katharina-grosse) e [Radom Raisting](/projects/radom-raisting-by-ar-ingenieure).",
+      galapagos:
+        "Solver evolutivo integrado ao Grasshopper. Uso para otimização, como o posicionamento sem colisões das esferas suspensas da [Parada Coca-Cola](/projects/parada-coca-cola-by-atelier-marko-brajovic) e os [padrões de renda de bilro](/publications/algorithmic-design-for-traditional-bobbin-lace-methods).",
+      weaverbird:
+        "Subdivisão e suavização de malhas para o Grasshopper. Uso para geometrias orgânicas, como em [Models by Nature](/teaching/models-bynature-20) e na minha [pesquisa em biomimética](/research/architecture-biomimicry-algorithm).",
+      ladybug:
+        "Análise ambiental (sol, radiação, luz natural) para o Grasshopper. Uso em estudos iniciais de projeto e no [ensino](/teaching/a-decade-after-unemat).",
+      culebra:
+        "Comportamentos multiagente para o Grasshopper. Usei na [Life Lamp](/projects/life-lamp-by-estudio-guto-requena-for-decimal), em que emoções guiam o crescimento da luminária.",
+      karamba:
+        "Análise estrutural paramétrica para o Grasshopper. Uso para verificações rápidas de flexão e flambagem, como em [Building Across Scales](/research/building-across-scales).",
+      python:
+        "Minha linguagem de scripts e pesquisa. Componentes do Grasshopper, COMPAS na ETH, um plugin do Cadwork para o [DOKwood](/projects/dokwood) e pipelines de dados.",
+      csharp:
+        "Minha linguagem para plugins AEC. O [plugin da BuildSystems para o Grasshopper](/projects/buildsystems-plugin-for-grasshopper), o add-in do [DOKwood](/projects/dokwood) para o Revit e os modelos de dados por trás deles.",
+      html: "A estrutura de todo site que entrego. Escrita de forma semântica para que as páginas continuem acessíveis e legíveis por agentes, como [neste site](/projects/portfolio-website).",
+      css: "Tailwind na maioria dos layouts, CSS escrito à mão onde importa. Tipografia, estilos de impressão e as animações [deste site](/projects/portfolio-website).",
+      typescript:
+        "Minha linguagem do dia a dia para a web. [Este site](/projects/portfolio-website), o [site da BuildSystems](/projects/buildsystems-website) e a [Calculadora de Financiamento](/projects/kfw-funding-calculator-by-buildsystems).",
+      flask:
+        "Framework web leve em Python. Uso para APIs pequenas e protótipos que expõem lógica de pesquisa ou do Grasshopper via HTTP.",
+      tanstack:
+        "Framework React full-stack (Start, Query, Router). Uso em apps que precisam de carregamento de dados com tipagem segura.",
+      astro:
+        "Framework web focado em conteúdo. [Este portfólio](/projects/portfolio-website) e o [site da BuildSystems](/projects/buildsystems-website), com o Notion como CMS.",
+      react:
+        "Biblioteca de UI para interfaces interativas. O chat com IA [deste site](/projects/portfolio-website) e os web apps que construo para clientes.",
+      mongodb:
+        "Banco de dados de documentos. Uso em protótipos e ferramentas com dados flexíveis e aninhados.",
+      sqlite:
+        "Banco de dados SQL embutido. Uso em ferramentas locais, testes e pequenos conjuntos de dados de pesquisa.",
+      postgresql:
+        "Meu principal banco de dados relacional. Supabase por trás da [Calculadora de Financiamento](/projects/kfw-funding-calculator-by-buildsystems) e do vector store do [chat com IA deste site](/projects/portfolio-website).",
+    },
   },
   contact: {
     id: "contact",

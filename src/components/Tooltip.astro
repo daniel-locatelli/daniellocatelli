@@ -1,0 +1,31 @@
+---
+/**
+ * Tooltip panel for the shared hover/focus tooltip system. Pair it with a
+ * trigger element carrying `data-tooltip={id}`; behaviour lives in
+ * src/lib/tooltips-client.ts (wired up in Base.astro) and chrome in
+ * src/styles/global.css (`.tooltip`).
+ *
+ * `describes` controls the a11y relation: when true (default) the trigger
+ * should also carry `aria-describedby={id}`, and the panel is exposed as a
+ * tooltip. Set it to false when the content merely repeats the trigger's
+ * accessible name (e.g. an icon link that already has an aria-label), so
+ * screen readers are not read the same text twice.
+ */
+interface Props {
+  id: string;
+  describes?: boolean;
+  class?: string;
+}
+const { id, describes = true, class: className } = Astro.props;
+---
+
+<span
+  id={id}
+  class:list={["tooltip", className]}
+  popover="manual"
+  role={describes ? "tooltip" : undefined}
+  aria-hidden={describes ? undefined : "true"}
+>
+  <slot />
+  <span class="tooltip-arrow" aria-hidden="true"></span>
+</span>

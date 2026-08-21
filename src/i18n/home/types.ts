@@ -1,3 +1,28 @@
+export type SkillsMapTool =
+  | "autocad"
+  | "civil3d"
+  | "revit"
+  | "dynamo"
+  | "grasshopper"
+  | "kangaroo"
+  | "galapagos"
+  | "weaverbird"
+  | "ladybug"
+  | "culebra"
+  | "karamba"
+  | "python"
+  | "csharp"
+  | "html"
+  | "css"
+  | "typescript"
+  | "flask"
+  | "tanstack"
+  | "astro"
+  | "react"
+  | "mongodb"
+  | "sqlite"
+  | "postgresql";
+
 export type I18nHome = {
   meta: {
     title: string;
@@ -48,6 +73,8 @@ export type I18nHome = {
     id: string;
     title: string;
     description: string;
+    /** One-sentence "where / how I use it" tooltip per tool in the Map of Knowledge. */
+    tools: Record<SkillsMapTool, string>;
   };
   contact: {
     id: string;

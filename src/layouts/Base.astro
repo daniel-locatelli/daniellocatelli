@@ -27,7 +27,10 @@ const {
 } = Astro.props;
 ---
 
-<html lang={locale ? locale : siteConfig.defaultLocale} transition:animate={fade({ duration: "0.15s" })}>
+<html
+  lang={locale ? locale : siteConfig.defaultLocale}
+  transition:animate={fade({ duration: "0.15s" })}
+>
   <head>
     <BaseHead
       articleDate={articleDate}
@@ -88,9 +91,7 @@ const {
             }
             const target = document.getElementById(id);
             if (!target) return;
-            if (
-              window.matchMedia("(prefers-reduced-motion: reduce)").matches
-            ) {
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
               return; // let the browser handle it (it will jump instantly)
             }
             e.preventDefault();
@@ -121,6 +122,11 @@ const {
       }
       bindFastAnchorScroll();
       document.addEventListener("astro:after-swap", bindFastAnchorScroll);
+    </script>
+    <script>
+      import { setupTooltips } from "@/lib/tooltips-client";
+      setupTooltips();
+      document.addEventListener("astro:page-load", setupTooltips);
     </script>
     <slot name="after-body" />
   </body>
