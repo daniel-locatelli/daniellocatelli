@@ -45,3 +45,27 @@ Non-critical ideas and improvements for the daniellocatelli portfolio repo. Use 
 
 **Trigger.** If the false positives clutter audits enough to obscure real issues, drop the explicit duration and revisit if the slower default fade hurts perceived UX.
 
+
+## Listing-grid keyboard tab order runs column-wise
+
+**Problem.** `layoutColumns()` in `src/pages/[...locale]/[...page].astro` distributes cards into column wrapper `<div>`s with `wrappers[i % cols].appendChild(card)`. DOM order (and therefore Tab order) becomes 0,3,6,... then 1,4,7,... while the visual order is row-major. Since the cards now show a focus ring, the jump down column 1 before column 2 is noticeable for keyboard users.
+
+**Sketch.** Keep cards in a single flat container in chronological DOM order and achieve the column placement with CSS (`grid-auto-flow: row` with one card per cell, or `order` / `grid-column` per card) instead of moving DOM nodes; update `tests/e2e/tile-ordering.spec.ts` to assert visual positions rather than wrapper membership.
+
+**Trigger.** Next accessibility pass, or if a keyboard user reports the ordering.
+
+## Focus twins for bordered link cards
+
+**Problem.** The subpage prev/next navigation (`src/pages/[...locale]/[...subpage].astro`, the two `<a class="group ... hover:border-green-500">` links) and `src/components/LinkPreview.astro` (`hover:border-green-600 hover:bg-zinc-900`) change on hover only. Their UA focus outline is visible (the `<a>` itself is the overflow-hidden element), so focus is not invisible, but it does not match the hover look.
+
+**Sketch.** Add `focus-visible:border-green-500` / `focus-visible:border-green-600 focus-visible:bg-zinc-900` twins and, if desired, `focus-visible:outline-none` once the border change is the indicator. Consider a global `:focus-visible` baseline (2 px green outline, 2 px offset) in `src/styles/global.css` for header nav links at the same time.
+
+**Trigger.** Next accessibility pass.
+
+## Playwright reuses whatever dev server owns port 4321
+
+**Problem.** `playwright.config.ts` hard-codes `baseURL` to `http://localhost:4321` with `reuseExistingServer: true` outside CI. When a dev server from another checkout (the main repo while working in a worktree, or vice versa) already holds that port, the e2e suite silently tests that other checkout's code and reports green or red against the wrong tree. Observed while verifying the card focus ring in a worktree: the suite kept failing against stale markup until the worktree server was started on a spare port with a temporary config.
+
+**Sketch.** Read the port from an env var (`PW_PORT`, default 4321) in `playwright.config.ts` for both `baseURL` and `webServer`, or pick a free port per run, and have `webServer.command` pass `--port` through; optionally assert in a global setup that the served HTML comes from the current checkout (e.g. compare a build-time marker).
+
+**Trigger.** Next time e2e is run from a worktree, or when adding CI matrix jobs that run several checkouts on one machine.
