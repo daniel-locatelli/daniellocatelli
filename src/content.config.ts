@@ -8,6 +8,14 @@ const pageSchema = z.object({
   Slug: z.string().optional(),
   DateStart: z.string().optional(),
   DateEnd: z.string().optional(),
+  /**
+   * Optional editorial "last updated" date (ISO 8601, e.g. "2026-08-21").
+   * Overrides the git-derived date shown as "Last updated" and emitted as
+   * article:modified_time / dateModified. Bump it only for significant content
+   * revisions, and keep it in sync across locales. The sitemap lastmod still
+   * comes from git (any edit to the file counts there), by design.
+   */
+  Updated: z.string().optional(),
   Description: z.string().optional(),
   Description_de: z.string().optional(),
   Description_pt: z.string().optional(),

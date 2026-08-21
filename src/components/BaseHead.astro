@@ -10,7 +10,7 @@ const locale = getLocale(Astro.params, Astro.url)
 
 type Props = SiteMeta;
 
-const { articleDate, description, coverImage, coverAlt, title, viewTransition, alternateLocales } =
+const { articleDate, modifiedDate, description, coverImage, coverAlt, title, viewTransition, alternateLocales } =
   Astro.props;
 
 // hreflang alternates. Strip the current locale prefix to get the bare path,
@@ -38,6 +38,22 @@ const socialImageURL = new URL(
   coverImage || siteConfig.defaultSocialImage,
   Astro.site,
 ).href;
+
+// WebPage structured data with publish / modified dates, only for pages that
+// carry at least one of them (content entries).
+const webPageJsonLd =
+  articleDate || modifiedDate
+    ? JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: siteTitle,
+        url: canonicalURL,
+        inLanguage: locale ? locale : siteConfig.defaultLocale,
+        author: { "@type": "Person", name: siteConfig.author },
+        ...(articleDate ? { datePublished: articleDate } : {}),
+        ...(modifiedDate ? { dateModified: modifiedDate } : {}),
+      })
+    : undefined;
 ---
 
 <meta charset="utf-8" />
@@ -107,6 +123,14 @@ const socialImageURL = new URL(
     </>
   )
 }
+{
+  modifiedDate && (
+    <>
+      <meta content={modifiedDate} property="article:modified_time" />
+      <meta content={modifiedDate} property="og:updated_time" />
+    </>
+  )
+}
 
 {/* Twitter */}
 <meta content="summary_large_image" name="twitter:card" />
@@ -129,5 +153,10 @@ const socialImageURL = new URL(
   "url": Astro.site,
 })}>
 </script>
+{
+  webPageJsonLd && (
+    <script type="application/ld+json" is:inline set:html={webPageJsonLd}></script>
+  )
+}
 
 {viewTransition && <ClientRouter />}

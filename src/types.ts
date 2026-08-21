@@ -10,6 +10,8 @@ export type SiteMeta = {
   coverImage?: string | undefined;
   coverAlt?: string | undefined;
   articleDate?: string | undefined;
+  /** ISO 8601 date of the last content edit (emitted as article:modified_time / dateModified). */
+  modifiedDate?: string | undefined;
   slug: string | undefined;
   viewTransition?: boolean;
   /**

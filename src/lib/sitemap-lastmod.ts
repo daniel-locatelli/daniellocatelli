@@ -71,11 +71,15 @@ const STATIC_PAGES: Record<string, string> = {
 const LISTING_COLLECTIONS = ["projects", "research", "teaching"] as const;
 
 /**
- * Build a `pathname -> ISO date` map from git history in a single `git log`
- * pass. Newest commit wins per file (first occurrence in the log).
+ * `source file -> ISO date` of each file's newest commit, from a single
+ * `git log` pass. Cached for the process lifetime. Empty when git is
+ * unavailable or the clone is shallow.
  */
-export function buildLastmodMap(): Map<string, string> {
-  const map = new Map<string, string>();
+let fileDateCache: Map<string, string> | null = null;
+export function buildFileDateMap(): Map<string, string> {
+  if (fileDateCache) return fileDateCache;
+  const fileDate = new Map<string, string>();
+  fileDateCache = fileDate;
 
   let log: string;
   try {
@@ -84,11 +88,10 @@ export function buildLastmodMap(): Map<string, string> {
       maxBuffer: 64 * 1024 * 1024,
     });
   } catch {
-    return map; // git unavailable / shallow clone: degrade to no lastmod
+    return fileDate; // git unavailable / shallow clone: degrade to no dates
   }
 
   // First (newest) date seen for each source file.
-  const fileDate = new Map<string, string>();
   let currentDate = "";
   for (const line of log.split("\n")) {
     const trimmed = line.trim();
@@ -99,6 +102,32 @@ export function buildLastmodMap(): Map<string, string> {
     }
     if (!fileDate.has(trimmed)) fileDate.set(trimmed, currentDate);
   }
+  return fileDate;
+}
+
+/**
+ * ISO date of the newest commit touching `file` (repo-relative, forward
+ * slashes, e.g. `src/content/projects/en/portfolio-website.md`), or undefined
+ * when unknown. Absolute paths are accepted and made repo-relative.
+ */
+export function getFileLastModified(file: string): string | undefined {
+  const normalized = file.replace(/\\/g, "/");
+  const idx = normalized.indexOf("/src/");
+  const rel = normalized.startsWith("src/")
+    ? normalized
+    : idx >= 0
+      ? normalized.slice(idx + 1)
+      : normalized;
+  return buildFileDateMap().get(rel);
+}
+
+/**
+ * Build a `pathname -> ISO date` map from git history. Newest commit wins per
+ * file.
+ */
+export function buildLastmodMap(): Map<string, string> {
+  const map = new Map<string, string>();
+  const fileDate = buildFileDateMap();
 
   // Track newest entry date per collection for listing pages.
   const collectionMax = new Map<string, string>();

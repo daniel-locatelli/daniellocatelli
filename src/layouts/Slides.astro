@@ -15,6 +15,7 @@ const locale = getLocale(Astro.params, Astro.url);
 const {
   meta: {
     articleDate,
+    modifiedDate,
     description = siteConfig.description,
     coverImage,
     coverAlt,
@@ -29,6 +30,7 @@ const {
   <head>
     <BaseHead
       articleDate={articleDate}
+      modifiedDate={modifiedDate}
       description={description}
       coverImage={coverImage}
       coverAlt={coverAlt}

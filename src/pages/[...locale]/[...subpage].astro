@@ -18,6 +18,8 @@ import {
   getFileSlug,
 } from "src/lib/routes-helpers";
 import { getI18n } from "src/i18n/utils";
+import { getFileLastModified } from "src/lib/sitemap-lastmod";
+import { formatContentDate } from "src/lib/utils";
 import type { I18nSubpage } from "src/i18n/subpage/type";
 
 type SubpageEntry =
@@ -97,6 +99,21 @@ const organizations = (subpage.data.Organization ?? "")
   .filter(Boolean);
 
 const { Content } = await render(subpage);
+
+// "Last updated": an explicit `Updated:` frontmatter date wins (editorial
+// intent, bumped only for significant revisions); otherwise fall back to the
+// newest git commit touching this entry's source file (best effort, undefined
+// without git history). Rendered in the metadata table and emitted as
+// article:modified_time / dateModified in <head>. The sitemap lastmod stays
+// git-based on purpose: it tracks any change to the URL, not editorial ones.
+const lastModified =
+  subpage.data.Updated ??
+  (subpage.filePath ? getFileLastModified(subpage.filePath) : undefined);
+const lastModifiedLabel = lastModified
+  ? formatContentDate(lastModified, entryLocale)
+  : undefined;
+// Primary date shown in the table: DateEnd when present, else DateStart.
+const primaryDate = subpage.data.DateEnd || subpage.data.DateStart;
 
 // Detect a matching deck. Decks live as `teaching/<locale>/<slug>/deck.mdx`,
 // so a deck's id ends in "<locale>/<slug>/deck". Only teaching entries can
@@ -185,6 +202,8 @@ const foregroundClass = isLetterbox
     coverImage: coverUrl,
     coverAlt: subpage.data.CoverAlt || "Cover image",
     slug: slug,
+    articleDate: subpage.data.DateStart,
+    modifiedDate: lastModified,
   }}
 >
   <Fragment slot="after-head"></Fragment>
@@ -311,21 +330,30 @@ const foregroundClass = isLetterbox
       >
         <tbody>
           {
-            subpage.data.DateEnd ? (
+            primaryDate && (
               <tr>
                 <th scope="row" class="font-body font-bold">
                   {t.date}
                 </th>
-                <td>{subpage.data.DateEnd}</td>
+                <td>
+                  <time datetime={primaryDate}>
+                    {formatContentDate(primaryDate, entryLocale)}
+                  </time>
+                </td>
               </tr>
-            ) : subpage.data.DateStart ? (
+            )
+          }
+          {
+            lastModified && (
               <tr>
                 <th scope="row" class="font-body font-bold">
-                  {t.date}
+                  {t.lastUpdated}
                 </th>
-                <td>{subpage.data.DateStart}</td>
+                <td>
+                  <time datetime={lastModified}>{lastModifiedLabel}</time>
+                </td>
               </tr>
-            ) : null
+            )
           }
           {
             organizations.length > 0 && (

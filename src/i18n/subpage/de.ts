@@ -1,6 +1,7 @@
 import type { I18nSubpage } from "./type";
 
 export const t: I18nSubpage = {
+  lastUpdated: "Zuletzt aktualisiert",
   date: "Datum",
   author: "Autor",
   authors: "Autoren",

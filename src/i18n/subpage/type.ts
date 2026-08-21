@@ -1,4 +1,5 @@
 export type I18nSubpage = {
+  lastUpdated: string,
   date: string,
   author: string,
   authors: string,

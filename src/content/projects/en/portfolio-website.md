@@ -4,6 +4,7 @@ CoverAlt: "The homepage of daniellocatelli.com displayed on a laptop."
 Name: Portfolio Website
 Description: "This website: an Astro site whose content lives as plain markdown so that Claude Code can act as the CMS, with a Claude-powered chat, a scroll-driven geodesic sphere, in-browser slide decks, and an agent-ready surface on Cloudflare."
 DateStart: "2024-04-27"
+Updated: "2026-08-21"
 Organization: "Daniel Locatelli"
 Category: Software
 Tags:
@@ -80,7 +81,7 @@ Since much of the traffic to a site like this will increasingly come from AI age
 
 - an `llms.txt` index per locale, generated from the content collections at build time;
 - a markdown companion for every content page (append `.md` to the URL), plus content negotiation so that a request with `Accept: text/markdown` receives markdown directly;
-- a `robots.txt` that explicitly welcomes AI crawlers, a sitemap with image entries, and an API catalog under `/.well-known/`;
+- a `robots.txt` that explicitly welcomes AI crawlers, a sitemap with image entries and per-URL `lastmod` dates taken from git history (the same date appears as "Last updated" on every content page and as `article:modified_time` and `dateModified` structured data in its head), and an API catalog under `/.well-known/`;
 - a small read-only [MCP](https://modelcontextprotocol.io/) server, so that agents can query the site's content as tools;
 - [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/) discovery records (`_mcp._agents` and `_index._agents` SVCB records, DNSSEC-signed), so that agents can find the MCP endpoint from the domain name alone;
 - a skills index under `/.well-known/agent-skills/`, following Cloudflare's [Agent Skills discovery RFC](https://github.com/cloudflare/agent-skills-discovery-rfc), with two `SKILL.md` files in the [Agent Skills](https://agentskills.io/specification) format that teach an agent how to query the site via MCP or read it as markdown.
