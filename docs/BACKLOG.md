@@ -45,3 +45,5 @@ Non-critical ideas and improvements for the daniellocatelli portfolio repo. Use 
 
 **Trigger.** If the false positives clutter audits enough to obscure real issues, drop the explicit duration and revisit if the slower default fade hurts perceived UX.
 
+
+- Chat benchmark: add a question like "where can I watch Daniel's Digital Futures talk?" so the `Presentation` URL of talks is covered (`scripts/benchmark-chat.ts`).
