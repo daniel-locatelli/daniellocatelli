@@ -68,6 +68,34 @@ test.describe("Subpages", () => {
     await expect(page.locator("#lightbox")).toHaveClass(/hidden/);
   });
 
+  test("lightbox pinch gesture does not navigate to another image", async ({ page }) => {
+    await page.goto(`/${KNOWN_SUBPAGE.slug}`);
+    const lightbox = page.locator("#lightbox");
+    const counter = page.locator("#lightbox-counter");
+    await page.locator(".prose img").first().click();
+    await expect(lightbox).not.toHaveClass(/hidden/);
+    await expect(counter).toHaveText(/^1 \/ \d+$/);
+
+    // Two-finger pinch-out: both fingers move apart, then lift one at a time.
+    await page.evaluate(() => {
+      const el = document.getElementById("lightbox")!;
+      const touch = (id: number, x: number) =>
+        new Touch({ identifier: id, target: el, clientX: x, clientY: 300 });
+      const fire = (type: string, touches: Touch[], changed: Touch[]) =>
+        el.dispatchEvent(
+          new TouchEvent(type, { touches, changedTouches: changed, bubbles: true, cancelable: true }),
+        );
+      const a0 = touch(1, 180), b0 = touch(2, 220);
+      fire("touchstart", [a0], [a0]);
+      fire("touchstart", [a0, b0], [b0]);
+      const a1 = touch(1, 60), b1 = touch(2, 340);
+      fire("touchmove", [a1, b1], [a1, b1]);
+      fire("touchend", [b1], [a1]);
+      fire("touchend", [], [b1]);
+    });
+    await expect(counter).toHaveText(/^1 \/ \d+$/);
+  });
+
   test("lightbox image click toggles zoom", async ({ page }) => {
     await page.goto(`/${KNOWN_SUBPAGE.slug}`);
     const lightbox = page.locator("#lightbox");

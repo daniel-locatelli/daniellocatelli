@@ -1071,18 +1071,38 @@ const foregroundClass = isLetterbox
       showImage(currentIndex + 1);
     }, { signal });
 
-    // Swipe left/right on touch devices (only when not zoomed, so panning
-    // a zoomed image is not hijacked).
+    // Swipe left/right on touch devices. Only a single-finger horizontal
+    // swipe counts: a second finger (pinch-zoom) cancels the gesture, and
+    // nothing fires while the image is zoomed (lightbox zoom or browser
+    // pinch-zoom), so panning a zoomed image is not hijacked.
     let touchStartX: number | null = null;
-    lightbox.addEventListener("touchstart", (e) => {
-      if (lightbox!.dataset.zoomed === "true") return;
-      touchStartX = e.touches[0]?.clientX ?? null;
-    }, { signal, passive: true });
-    lightbox.addEventListener("touchend", (e) => {
-      if (touchStartX === null) return;
-      const dx = (e.changedTouches[0]?.clientX ?? touchStartX) - touchStartX;
+    let touchStartY: number | null = null;
+    const cancelSwipe = () => {
       touchStartX = null;
-      if (Math.abs(dx) < 50) return;
+      touchStartY = null;
+    };
+    const browserZoomed = () => (window.visualViewport?.scale ?? 1) > 1.01;
+    lightbox.addEventListener("touchstart", (e) => {
+      if (e.touches.length !== 1 || lightbox!.dataset.zoomed === "true" || browserZoomed()) {
+        cancelSwipe();
+        return;
+      }
+      touchStartX = e.touches[0]!.clientX;
+      touchStartY = e.touches[0]!.clientY;
+    }, { signal, passive: true });
+    lightbox.addEventListener("touchcancel", cancelSwipe, { signal, passive: true });
+    lightbox.addEventListener("touchend", (e) => {
+      if (touchStartX === null || touchStartY === null) return;
+      // Another finger is still down (pinch in progress): not a swipe.
+      if (e.touches.length > 0 || browserZoomed()) {
+        cancelSwipe();
+        return;
+      }
+      const t = e.changedTouches[0];
+      const dx = (t?.clientX ?? touchStartX) - touchStartX;
+      const dy = (t?.clientY ?? touchStartY) - touchStartY;
+      cancelSwipe();
+      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
       showImage(dx < 0 ? currentIndex + 1 : currentIndex - 1);
     }, { signal, passive: true });
 
