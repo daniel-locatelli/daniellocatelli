@@ -1,6 +1,6 @@
 URL: https://daniellocatelli.com/de/research/timber-construction-standards
 
-# Normen für Spezifikationen im Holzbau
+# Normen hinter digitalen Holzbau-Aufbauten
 
 Description: Eine systematische Recherche der ISO-, GS1-, CEN-, DIN-, SIA- und KBOB-Normen, die die Spezifikation von Materialien und mehrschichtigen Aufbauten im Holzbau regeln, von Brandschutz und Bauphysik bis zu BIM-Datenvorlagen und dem digitalen Produktpass. Arbeitspaket 1.2 des Projekts DOKwood.
 Tags: Normen, Holzbau, Digitaler Produktpass

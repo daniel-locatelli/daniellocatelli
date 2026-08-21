@@ -4,6 +4,7 @@ URL: https://daniellocatelli.com/pt/full-cv
 
 July 2026 – Atual | [Trabalho] | Doutorando | Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
 July 2026 | [Educação] | Doutorado em Ciências | Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
+April 2026 | [Ensino] | Digital Futures 2026: Entre o Prompt e a Obra | DigitalFUTURES
 May 2025 | [Ensino] | Trabalhando com dados geográficos no Grasshopper | Universidade de Ciências Applicadas de Munique | Munique
 February 2025 – June 2026 | [Trabalho] | Pesquisador Associado | Universidade de Ciências Aplicadas de Munique | Munique, Alemanha
 July 2024 | [Ensino] | Sistema de fabricação robótica multiescalar para colagem à pressão no canteiro em edifícios de madeira | Forum Holzbau | Fellbach, Alemanha
@@ -12,6 +13,7 @@ July 2024 | [Certificação] | Introdução a Banco de Dados com SQL | Universid
 June 2024 – July 2024 | [Curso] | Introdução a Banco de Dados com SQL | Universidade Harvard | Online
 January 2024 – December 2024 | [Trabalho] | Engenheiro de Software AEC | BuildSystems GmbH | Munique, Alemanha
 December 2023 | [Ensino] | BuildSystems - Smart Sustainability Roadmaps | Graphisoft X - Online | Alemanha
+November 2023 | [Ensino] | Arquitetura Computacional na Alemanha | UFT, Online | Palmas, Brasil
 November 2023 | [Ensino] | Arquitetura Computacional na Alemanha | UFT - Online | Palmas, Brasil
 July 2023 – October 2023 | [Curso] | CS50 - Introdução à Ciência da Computação | Universidade de Harvard | Online
 March 2023 | [Ensino] | Viabilidade de Construções Sustentáveis | Munich Urban Colab | Munique, Alemanha

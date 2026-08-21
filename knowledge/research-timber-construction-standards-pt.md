@@ -1,6 +1,6 @@
 URL: https://daniellocatelli.com/pt/research/timber-construction-standards
 
-# Normas para especificações em construção de madeira
+# Normas por trás das composições digitais em madeira
 
 Description: Uma revisão sistemática das normas ISO, GS1, CEN, DIN, SIA e KBOB que regem a especificação de materiais e composições multicamadas na construção em madeira, do incêndio e da física das construções aos modelos de dados BIM e ao passaporte digital de produto. Pacote de trabalho 1.2 do projeto DOKwood.
 Tags: Normas, Construção em madeira, Passaporte Digital de Produto

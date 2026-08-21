@@ -2,6 +2,11 @@ URL: https://daniellocatelli.com/de/full-cv
 
 # Daniel Locatelli – Lehrerfahrung
 
+### Digital Futures 2026: Entre o Prompt e a Obra
+DigitalFUTURES
+April 2026 | Talk
+Vortrag über den Weg von der Biomimetik zum Systemdenken und was der KI in der Architektur noch fehlt: die Perspektive eines in Deutschland ausgebildeten und tätigen brasilianischen Architekten.
+
 ### Arbeiten mit Geodaten in Grasshopper
 Hochschule München | München
 May 2025 | Lecture
@@ -15,6 +20,11 @@ In diesem Vortrag haben wir die Ergebnisse unseres Abschlussprojekts im ITECH-Ma
 Graphisoft X - Online | Deutschland
 December 2023 | Talk
 Erfahren Sie mehr über Smart Sustainability Roadmaps, die systemische Prozessinnovationen in der Planung ermöglichen. Themen wie bedarfs- und kreislaufgerechte Planung, Energieeffizienz, Ökobilanzierung, Zertifizierungen, Förderungen und Pre-BIM-Modelling werden behandelt.
+
+### Computergestützte Architektur in Deutschland
+UFT, Online | Palmas, Brasilien
+November 2023 | Talk
+In diesem Vortrag stellte ich die wichtigsten Technologien des computergestützten Designs in Deutschland vor, insbesondere das ICD & ITKE der Universität Stuttgart und das Unternehmen BuildSystems, und verband diesen Werdegang mit meinem eigenen Weg zwischen dem Atelier Marko Brajovic, dem ITECH in Stuttgart und der Industrie in München.
 
 ### Computergestützte Architektur in Deutschland
 UFT - Online | Palmas, Brasilien

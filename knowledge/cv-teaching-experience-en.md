@@ -2,6 +2,11 @@ URL: https://daniellocatelli.com/full-cv
 
 # Daniel Locatelli – Teaching Experience
 
+### Digital Futures 2026: Entre o Prompt e a Obra
+DigitalFUTURES
+April 2026 | Talk
+Talk on the journey from biomimicry to systems thinking and what's missing in AI for architecture: the perspective of a Brazilian architect trained and working in Germany.
+
 ### Working with Geographic Data in Grasshopper
 Munich University of Applied Sciences | Munich
 May 2025 | Lecture
@@ -15,6 +20,11 @@ In this talk we presented the results of our thesis project at the ITECH Master 
 Graphisoft X - Online | Germany
 December 2023 | Talk
 Learn about Smart Sustainability Roadmaps that enable systemic process innovations in planning. Topics such as demand-oriented and circular design, energy efficiency, life-cycle assessment, certifications, funding, and Pre-BIM Modelling are covered.
+
+### Computational Architecture in Germany
+UFT, Online | Palmas, Brazil
+November 2023 | Talk
+In this talk I presented the main computational design technologies in Germany, especially the ICD & ITKE at the University of Stuttgart and the company BuildSystems, connecting that trajectory to my own path between Atelier Marko Brajovic, ITECH in Stuttgart, and industry in Munich.
 
 ### Computational Architecture in Germany
 UFT - Online | Palmas, Brazil

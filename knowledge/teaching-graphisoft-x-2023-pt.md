@@ -7,5 +7,5 @@ Category: Talk
 Authors: Daniel Nunes Locatelli
 Place: Graphisoft X - Online
 Date: December 2023
-Link: https://www.youtube.com/watch?v=baVNIbWtMQo
+Presentation: https://www.youtube.com/watch?v=baVNIbWtMQo
 Language: Inglês

@@ -1,6 +1,6 @@
 URL: https://daniellocatelli.com/research/timber-construction-standards
 
-# Standards for timber construction specifications
+# Standards behind digital timber buildups
 
 Description: A systematic review of the ISO, GS1, CEN, DIN, SIA and KBOB standards that govern how materials and multilayer buildups are specified in timber construction, from fire and building physics to BIM data templates and the digital product passport. Work package 1.2 of the DOKwood project.
 Tags: Standards, Timber construction, Digital Product Passport
