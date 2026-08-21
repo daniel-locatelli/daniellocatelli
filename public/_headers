@@ -1,6 +1,19 @@
+# Security hardening (audit 2026-08-21). Notes:
+# - script/style 'unsafe-inline' is the current ceiling: Astro emits inline
+#   scripts and mermaid injects inline styles; tightening to nonces/hashes
+#   needs SSR header injection (follow-up).
+# - static.cloudflareinsights.com / cloudflareinsights.com: the Web Analytics
+#   beacon Cloudflare injects at the edge.
+# - HSTS without `preload` on purpose: subdomain HTTPS coverage unverified.
 /*
   Link: </sitemap-index.xml>; rel="sitemap", </.well-known/api-catalog>; rel="api-catalog"
   X-Robots-Tag: all
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
 
 /.well-known/api-catalog
   Content-Type: application/linkset+json

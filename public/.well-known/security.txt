@@ -1,0 +1,4 @@
+Contact: mailto:daniel.nlocatelli@gmail.com
+Expires: 2027-08-21T00:00:00.000Z
+Preferred-Languages: en, de, pt
+Canonical: https://daniellocatelli.com/.well-known/security.txt
