@@ -248,8 +248,11 @@ a.footnote-ref:focus-visible {
 }
 
 /* Arrow: a rotated square sharing the panel background and border, clipped
-   so only the outward-facing half shows. Horizontal position is set inline
-   by the client script (aligned with the trigger centre). */
+   so only the outward-facing half shows. It is pulled 1px inside the panel
+   (offset -4px rather than -5px) so its clipped edge overlaps the panel's
+   border and the two read as one shape instead of a triangle hanging below
+   a visible border line. Horizontal position is set inline by the client
+   script (aligned with the trigger centre). */
 .tooltip-arrow {
   position: absolute;
   left: 50%;
@@ -264,12 +267,12 @@ a.footnote-ref:focus-visible {
 
 .tooltip[data-side="top"] .tooltip-arrow,
 .tooltip:not([data-side]) .tooltip-arrow {
-  bottom: -6px;
+  bottom: -4px;
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
 .tooltip[data-side="bottom"] .tooltip-arrow {
-  top: -6px;
+  top: -4px;
   clip-path: polygon(0 0, 100% 0, 0 100%);
 }
 
