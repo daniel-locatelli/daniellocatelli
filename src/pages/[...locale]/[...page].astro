@@ -145,18 +145,18 @@ if (pageImage) {
               return (
                 <article
                   data-chron-index={idx}
-                  class="group relative flex flex-col overflow-hidden rounded-2xl bg-zinc-900 transition-all hover:shadow-2xl"
+                  class="group relative flex flex-col overflow-hidden rounded-2xl bg-zinc-900 transition-shadow hover:shadow-2xl has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-green-400 has-[a:focus-visible]:ring-offset-2 has-[a:focus-visible]:ring-offset-black has-[a:focus-visible]:forced-colors:outline-2 has-[a:focus-visible]:forced-colors:outline-offset-2"
                 >
                   <a
                     href={`/${locale === siteConfig.defaultLocale ? "" : `${locale}/`}${getEntrySlug(subpage)}`}
-                    class="flex h-full flex-col"
+                    class="flex h-full flex-col focus-visible:outline-none"
                     data-astro-prefetch
                     data-cover-src={subpage.coverSrc || undefined}
                   >
                     <div class="relative overflow-hidden">
                       {image && (image.format === "svg" ? (
                         <img
-                          class="object-cover transition-transform duration-500 group-hover:scale-110"
+                          class="object-cover transition-transform duration-500 group-hover:scale-110 group-has-[a:focus-visible]:scale-110"
                           src={image.src}
                           alt={subpage.data.CoverAlt || ""}
                           width={image.width}
@@ -166,7 +166,7 @@ if (pageImage) {
                         />
                       ) : (
                         <Image
-                          class="object-cover transition-transform duration-500 group-hover:scale-110"
+                          class="object-cover transition-transform duration-500 group-hover:scale-110 group-has-[a:focus-visible]:scale-110"
                           src={image}
                           alt={subpage.data.CoverAlt || ""}
                           loading={idx < 8 ? "eager" : "lazy"}
@@ -175,9 +175,9 @@ if (pageImage) {
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                       ))}
-                      <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity group-hover:opacity-40 lg:hidden" />
+                      <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity group-hover:opacity-40 group-has-[a:focus-visible]:opacity-40 lg:hidden" />
                       {/* Desktop Hover Overlay */}
-                      <div class="absolute inset-0 hidden items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:flex">
+                      <div class="absolute inset-0 hidden items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-has-[a:focus-visible]:opacity-100 lg:flex">
                         <h2
                           class="px-6 text-center text-2xl text-pretty text-white"
                           aria-label={subpage.data.Name}
@@ -188,7 +188,7 @@ if (pageImage) {
                     </div>
                     <div class="flex flex-1 flex-col justify-end p-6 lg:hidden">
                       <h2
-                        class="group-hover:text-primary-400 text-xl font-bold text-white transition-colors"
+                        class="text-xl font-bold text-white transition-colors group-hover:text-green-400 group-has-[a:focus-visible]:text-green-400"
                         aria-label={subpage.data.Name}
                       >
                         {subpage.data.Name}
