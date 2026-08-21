@@ -41,19 +41,76 @@ export function frame(x, y, w, h, label) {
   return out.join("\n");
 }
 
-/** Solid tile with a title and optional second line. `accent` draws the border in the accent colour. */
-export function tile(x, y, w, h, title, sub, { accent = false, soft = false } = {}) {
+/** Solid tile with a title and optional second line. `accent` draws the border in the accent colour; `size` scales the title font. */
+export function tile(x, y, w, h, title, sub, { accent = false, soft = false, size = 20 } = {}) {
   const out = [
     `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${soft ? C.boxSoft : C.box}" stroke="${accent ? C.accent : C.ink}" stroke-width="1.5"/>`,
   ];
   const cx = x + w / 2;
   if (sub) {
-    out.push(`<text x="${cx}" y="${y + h / 2 - 6}" text-anchor="middle" fill="${C.ink}" font-size="20" font-weight="600" font-family="${SANS}">${esc(title)}</text>`);
+    out.push(`<text x="${cx}" y="${y + h / 2 - 6}" text-anchor="middle" fill="${C.ink}" font-size="${size}" font-weight="600" font-family="${SANS}">${esc(title)}</text>`);
     out.push(`<text x="${cx}" y="${y + h / 2 + 20}" text-anchor="middle" fill="${C.muted}" font-size="15" font-family="${SANS}">${esc(sub)}</text>`);
   } else {
-    out.push(`<text x="${cx}" y="${y + h / 2 + 7}" text-anchor="middle" fill="${C.ink}" font-size="20" font-weight="600" font-family="${SANS}">${esc(title)}</text>`);
+    out.push(`<text x="${cx}" y="${y + h / 2 + 7}" text-anchor="middle" fill="${C.ink}" font-size="${size}" font-weight="600" font-family="${SANS}">${esc(title)}</text>`);
   }
   return out.join("\n");
+}
+
+/**
+ * Orthogonal arrow through `pts` ([[x, y], ...]) with rounded corners.
+ * Consecutive points must share an x or a y. The optional label sits on the
+ * midpoint of segment `labelAt` (0-based).
+ */
+export function elbow(id, pts, label, { dashed = false, r = 8, labelAt = 0, labelDx = 0, labelDy = -8, marker = true } = {}) {
+  const d = [`M ${pts[0][0]} ${pts[0][1]}`];
+  for (let i = 1; i < pts.length - 1; i++) {
+    const [px, py] = pts[i - 1];
+    const [cx, cy] = pts[i];
+    const [nx, ny] = pts[i + 1];
+    const inx = Math.sign(cx - px);
+    const iny = Math.sign(cy - py);
+    const outx = Math.sign(nx - cx);
+    const outy = Math.sign(ny - cy);
+    d.push(`L ${cx - inx * r} ${cy - iny * r}`);
+    d.push(`Q ${cx} ${cy} ${cx + outx * r} ${cy + outy * r}`);
+  }
+  const [lx, ly] = pts[pts.length - 1];
+  d.push(`L ${lx} ${ly}`);
+  const out = [
+    `<path d="${d.join(" ")}" fill="none" stroke="${C.muted}" stroke-width="1.5" ${dashed ? 'stroke-dasharray="6 6"' : ""} ${marker ? `marker-end="url(#${id}-arrow)"` : ""}/>`,
+  ];
+  if (label) {
+    const [ax, ay] = pts[labelAt];
+    const [bx, by] = pts[labelAt + 1];
+    const mx = (ax + bx) / 2 + labelDx;
+    const my = (ay + by) / 2 + labelDy;
+    const lw = 16 + label.length * 8.5;
+    out.push(`<rect x="${mx - lw / 2}" y="${my - 13}" width="${lw}" height="22" rx="4" fill="${C.bg}"/>`);
+    out.push(`<text x="${mx}" y="${my + 3}" text-anchor="middle" fill="${C.dim}" font-size="14" font-family="${MONO}">${esc(label)}</text>`);
+  }
+  return out.join("\n");
+}
+
+/**
+ * ER entity: header with the table name, then one mono line per field.
+ * `fields` is [[type, name, key?], ...] with key "pk" or "fk". Returns { svg, h }.
+ */
+export function entity(x, y, w, name, fields, { accent = false, sub } = {}) {
+  const headH = sub ? 58 : 40;
+  const lineH = 22;
+  const h = headH + fields.length * lineH + 14;
+  const out = [
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${C.boxSoft}" stroke="${accent ? C.accent : C.ink}" stroke-width="1.5"/>`,
+    `<path d="M ${x} ${y + headH} H ${x + w}" stroke="${C.frameStroke}" stroke-width="1.5"/>`,
+    `<text x="${x + 16}" y="${y + 26}" fill="${C.ink}" font-size="17" font-weight="600" font-family="${MONO}">${esc(name)}</text>`,
+  ];
+  if (sub) out.push(`<text x="${x + 16}" y="${y + 46}" fill="${C.dim}" font-size="13" font-family="${SANS}">${esc(sub)}</text>`);
+  fields.forEach(([type, field, key], i) => {
+    const ty = y + headH + 18 + i * lineH;
+    const mark = key === "pk" ? "#" : key === "fk" ? "→" : "";
+    out.push(`<text x="${x + 16}" y="${ty}" fill="${key ? C.ink : C.muted}" font-size="14" font-family="${MONO}" xml:space="preserve">${esc(mark.padEnd(2))}${esc(type.padEnd(10))}${esc(field)}</text>`);
+  });
+  return { svg: out.join("\n"), h };
 }
 
 /** Small pill used for lists of standards or chips. */

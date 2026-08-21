@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 720" role="img" aria-labelledby="kfw-schema-title"><title id="kfw-schema-title">Supabase schema: auth_users at the top; below it the three project tables neubau_projects, sanierung_projects and einzelmassnahmen_projects, each with id, title, created_by, created_at, owned_by, last_edited_by, last_edited_at and project values, all referencing auth_users through created_by, owned_by and last_edited_by; a user_*_projects join table (one per calculator) linking users to their projects; and einzelmassnahmen_items and einzelmassnahmen_values hanging off einzelmassnahmen_projects.</title>
+<defs><marker id="kfw-schema-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<path d="M 635 138 L 635 172 Q 635 180 627 180 L 233 180 Q 225 180 225 188 L 225 228" fill="none" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#kfw-schema-arrow)"/>
+<rect x="260.5" y="167" width="339" height="22" rx="4" fill="#000000"/>
+<text x="430" y="183" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">created_by · owned_by · last_edited_by</text>
+<path d="M 635 138 L 635 172 Q 635 180 643 180 L 1037 180 Q 1045 180 1045 188 L 1045 228" fill="none" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#kfw-schema-arrow)"/>
+<line x1="635" y1="138" x2="635" y2="228" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#kfw-schema-arrow)"/>
+<text x="645" y="152" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">1</text>
+<text x="235" y="222" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">N</text>
+<text x="645" y="222" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">N</text>
+<text x="1055" y="222" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">N</text>
+<path d="M 488 98 L 48 98 Q 40 98 40 106 L 40 622 Q 40 630 48 630 L 488 630" fill="none" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#kfw-schema-arrow)"/>
+<rect x="222" y="607" width="84" height="22" rx="4" fill="#000000"/>
+<text x="264" y="623" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">has many</text>
+<text x="480" y="90" text-anchor="end" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">1</text>
+<text x="480" y="622" text-anchor="end" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">N</text>
+<path d="M 225 462 L 225 512 Q 225 520 233 520 L 587 520 Q 595 520 595 528 L 595 558" fill="none" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#kfw-schema-arrow)"/>
+<line x1="635" y1="462" x2="635" y2="558" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#kfw-schema-arrow)"/>
+<path d="M 1045 484 L 1045 512 Q 1045 520 1037 520 L 683 520 Q 675 520 675 528 L 675 558" fill="none" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#kfw-schema-arrow)"/>
+<text x="235" y="476" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">1</text>
+<text x="645" y="476" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">1</text>
+<text x="1055" y="498" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">1</text>
+<text x="603" y="552" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">N</text>
+<text x="643" y="552" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">N</text>
+<text x="683" y="552" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">N</text>
+<line x1="1192" y1="300" x2="1318" y2="300" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#kfw-schema-arrow)"/>
+<rect x="1213" y="279" width="84" height="22" rx="4" fill="#000000"/>
+<text x="1255" y="295" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">contains</text>
+<line x1="1192" y1="456" x2="1318" y2="456" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#kfw-schema-arrow)"/>
+<rect x="1213" y="435" width="84" height="22" rx="4" fill="#000000"/>
+<text x="1255" y="451" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">contains</text>
+<line x1="1465" y1="374" x2="1465" y2="428" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#kfw-schema-arrow)"/>
+<text x="1198" y="292" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">1</text>
+<text x="1312" y="292" text-anchor="end" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">N</text>
+<text x="1198" y="448" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">1</text>
+<text x="1312" y="448" text-anchor="end" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">N</text>
+<text x="1475" y="388" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">1</text>
+<text x="1475" y="422" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">N</text>
+<rect x="490" y="60" width="290" height="76" rx="10" fill="#09090b" stroke="#34d399" stroke-width="1.5"/>
+<path d="M 490 100 H 780" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="506" y="86" fill="#f4f4f5" font-size="17" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">auth_users</text>
+<text x="506" y="118" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve"># uuid      id</text>
+<rect x="80" y="230" width="290" height="230" rx="10" fill="#09090b" stroke="#f4f4f5" stroke-width="1.5"/>
+<path d="M 80 270 H 370" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="96" y="256" fill="#f4f4f5" font-size="17" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">neubau_projects</text>
+<text x="96" y="288" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve"># bigint    id</text>
+<text x="96" y="310" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  text      title</text>
+<text x="96" y="332" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ uuid      created_by</text>
+<text x="96" y="354" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  timestamp created_at</text>
+<text x="96" y="376" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ uuid      owned_by</text>
+<text x="96" y="398" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ uuid      last_edited_by</text>
+<text x="96" y="420" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  timestamp last_edited_at</text>
+<text x="96" y="442" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  text      other_project_values</text>
+<rect x="490" y="230" width="290" height="230" rx="10" fill="#09090b" stroke="#f4f4f5" stroke-width="1.5"/>
+<path d="M 490 270 H 780" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="506" y="256" fill="#f4f4f5" font-size="17" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">sanierung_projects</text>
+<text x="506" y="288" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve"># bigint    id</text>
+<text x="506" y="310" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  text      title</text>
+<text x="506" y="332" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ uuid      created_by</text>
+<text x="506" y="354" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  timestamp created_at</text>
+<text x="506" y="376" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ uuid      owned_by</text>
+<text x="506" y="398" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ uuid      last_edited_by</text>
+<text x="506" y="420" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  timestamp last_edited_at</text>
+<text x="506" y="442" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  text      other_project_values</text>
+<rect x="900" y="230" width="290" height="252" rx="10" fill="#09090b" stroke="#f4f4f5" stroke-width="1.5"/>
+<path d="M 900 270 H 1190" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="916" y="256" fill="#f4f4f5" font-size="17" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">einzelmassnahmen_projects</text>
+<text x="916" y="288" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve"># bigint    id</text>
+<text x="916" y="310" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  text      title</text>
+<text x="916" y="332" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ uuid      created_by</text>
+<text x="916" y="354" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  timestamp created_at</text>
+<text x="916" y="376" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ uuid      owned_by</text>
+<text x="916" y="398" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ uuid      last_edited_by</text>
+<text x="916" y="420" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  timestamp last_edited_at</text>
+<text x="916" y="442" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  float     vollkosten</text>
+<text x="916" y="464" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  float     bafa_foerderung</text>
+<rect x="490" y="560" width="290" height="138" rx="10" fill="#09090b" stroke="#f4f4f5" stroke-width="1.5"/>
+<path d="M 490 618 H 780" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="506" y="586" fill="#f4f4f5" font-size="17" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">user_*_projects</text>
+<text x="506" y="606" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif">one table per calculator (×3)</text>
+<text x="506" y="636" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve"># bigint    id</text>
+<text x="506" y="658" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ uuid      user_id</text>
+<text x="506" y="680" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ bigint    project_id</text>
+<rect x="1320" y="230" width="290" height="142" rx="10" fill="#09090b" stroke="#f4f4f5" stroke-width="1.5"/>
+<path d="M 1320 270 H 1610" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="1336" y="256" fill="#f4f4f5" font-size="17" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">einzelmassnahmen_items</text>
+<text x="1336" y="288" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve"># bigint    id</text>
+<text x="1336" y="310" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ bigint    project_id</text>
+<text x="1336" y="332" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  text      title</text>
+<text x="1336" y="354" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  int       position</text>
+<rect x="1320" y="430" width="290" height="208" rx="10" fill="#09090b" stroke="#f4f4f5" stroke-width="1.5"/>
+<path d="M 1320 470 H 1610" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="1336" y="456" fill="#f4f4f5" font-size="17" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">einzelmassnahmen_values</text>
+<text x="1336" y="488" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve"># bigint    id</text>
+<text x="1336" y="510" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ bigint    item_id</text>
+<text x="1336" y="532" fill="#f4f4f5" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">→ bigint    project_id</text>
+<text x="1336" y="554" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  text      title</text>
+<text x="1336" y="576" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  float     value</text>
+<text x="1336" y="598" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  text      unit</text>
+<text x="1336" y="620" fill="#a1a1aa" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" xml:space="preserve">  int       position</text>
+<text x="80" y="696" text-anchor="start" fill="#71717a" font-size="13" font-family="ui-sans-serif, system-ui, sans-serif"># primary key · → foreign key · 1 / N cardinality</text>
+</svg>
