@@ -39,19 +39,19 @@ The main challenge during this development was that McNeel, the company behind R
     - More learning resources available online, making debugging and development easier
 - **Cons**
     - Being phased out, which would require migrating the plugin in the near future
-    - Not cross-platform — separate plugins would be needed for Windows and macOS
+    - Not cross-platform: separate plugins would be needed for Windows and macOS
     - Lower performance
 
 ### .NET Core
 - **Pros**
     - Future-proof, as it's the base for upcoming Rhino/Grasshopper versions
-    - Cross-platform support — one plugin works on both Windows and macOS
+    - Cross-platform support: one plugin works on both Windows and macOS
     - Higher performance
 - **Cons**
     - Not compatible with older versions of Rhino/Grasshopper
     - Incompatible with the current version of Rhino.Inside Revit
     - Fewer resources and examples available online for development and debugging
-McNeel recommends a [multi-targeting](https://learn.microsoft.com/en-us/nuget/create-packages/multiple-target-frameworks-project-file) approach — meaning the plugin should support both versions of .NET — which added an extra layer of complexity to the project.
+McNeel recommends a [multi-targeting](https://learn.microsoft.com/en-us/nuget/create-packages/multiple-target-frameworks-project-file) approach (meaning the plugin should support both versions of .NET), which added an extra layer of complexity to the project.
 
 ## BuildSystems Object Model (BSoM)
 The **BuildSystems Object Model (BSoM)** was an integral part of the project, the shared data model that underpinned the plugin's extensibility and maintainability.

@@ -34,7 +34,7 @@ O design foi criado pela [HAND](https://www.hand.international/). Meu papel foi 
 
 - [**Astro**](https://astro.build/): Gerador de sites estáticos com TypeScript, escolhido por sua abordagem performance-first e filosofia de zero JavaScript por padrão.
 - [**Tailwind CSS**](https://tailwindcss.com/): Estilização utility-first com variáveis CSS customizadas para tipografia responsiva em quatro breakpoints.
-- [**API do Notion**](https://developers.notion.com/): Integração CMS headless — a equipe gerencia todo o conteúdo (posts do blog, membros da equipe, parceiros, portfólio) diretamente pelo Notion.
+- [**API do Notion**](https://developers.notion.com/): Integração CMS headless. A equipe gerencia todo o conteúdo (posts do blog, membros da equipe, parceiros, portfólio) diretamente pelo Notion.
 - [**Cloudflare Pages**](https://pages.cloudflare.com/): Deploy com cache de borda, HTTPS automático e proteção contra DDoS.
 
 ## Por que o Notion como CMS?
@@ -66,7 +66,7 @@ Cada post é escrito no Notion e renderizado no site em tempo de build. Suporta 
 
 ## Arquitetura
 
-O projeto segue uma abordagem puramente Astro — sem React ou outros frameworks JavaScript. Toda a interatividade é construída com TypeScript puro e CSS, resultando em mínimo JavaScript no lado do cliente.
+O projeto segue uma abordagem puramente Astro, sem React ou outros frameworks JavaScript. Toda a interatividade é construída com TypeScript puro e CSS, resultando em mínimo JavaScript no lado do cliente.
 
 Um pipeline de build customizado cuida do cache de conteúdo do Notion. Executando `npm run cache:fetch`, todo o conteúdo e imagens são baixados do Notion, processados com Sharp (removendo dados EXIF e otimizando formatos) e armazenados localmente. Isso garante builds rápidos e evita chamadas desnecessárias à API durante o desenvolvimento.
 

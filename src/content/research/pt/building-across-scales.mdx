@@ -1,7 +1,7 @@
 ---
 Cover: /assets/content/research/building-across-scales/building-across-scales-cover.jpeg
 CoverAlt: Protótipo final em escala real à noite. Os furos da laje se tornaram luminárias.
-Description: "A pesquisa propõe um sistema de construção robótica heterogêneo e multiescalar para ampliar a automação da construção em madeira no canteiro de obras. Especificamente, apresenta o próximo passo na automação da colagem in loco ao introduzir um robô de fixação (clamping) customizado para a prensagem de elementos de madeira. Portanto, o cerne da pesquisa reside no desenvolvimento deste robô como parte de uma equipe robótica de construção mais ampla — incluindo um braço robótico industrial e um guindaste automatizado — operando em co-design com o material e o sistema construtivo."
+Description: "A pesquisa propõe um sistema de construção robótica heterogêneo e multiescalar para ampliar a automação da construção em madeira no canteiro de obras. Especificamente, apresenta o próximo passo na automação da colagem in loco ao introduzir um robô de fixação (clamping) customizado para a prensagem de elementos de madeira. Portanto, o cerne da pesquisa reside no desenvolvimento deste robô como parte de uma equipe robótica de construção mais ampla (incluindo um braço robótico industrial e um guindaste automatizado), operando em co-design com o material e o sistema construtivo."
 Name: Building Across Scales
 Tags:
   - Computational design
@@ -43,7 +43,7 @@ Habilitado pelo dispositivo de prensa, esse sistema visa continuar a lógica de 
 
 ## **Introdução**
 > Esta pesquisa tem o objetivo de automatizar a construção em madeira no canteiro de obras através do desenvolvimento de um dispositivo robótico para a prensagem de conexões coladas in loco.
-A madeira engenheirada abriu novas possibilidades na forma como as estruturas modernas de madeira são projetadas e construídas[^kaufmann-2018]. Ao simplesmente empilhar pranchas de madeira e laminá-las de forma cruzada, é possível obter uma união forte entre as camadas individuais criando a CLT — [Madeira laminada cruzada](https://pt.wikipedia.org/wiki/Madeira_laminada_cruzada). No entanto, no canteiro de obras, essa lógica é interrompida, pois os elementos individuais — como vigas, lajes e paredes — são apenas posicionados uns ao lado dos outros. Isso cria juntas fracas entre esses membros, o que limita o sistema a vãos lineares, resultando em uma arquitetura baseada em grelhas.
+A madeira engenheirada abriu novas possibilidades na forma como as estruturas modernas de madeira são projetadas e construídas[^kaufmann-2018]. Ao simplesmente empilhar pranchas de madeira e laminá-las de forma cruzada, é possível obter uma união forte entre as camadas individuais criando a CLT ([Madeira laminada cruzada](https://pt.wikipedia.org/wiki/Madeira_laminada_cruzada)). No entanto, no canteiro de obras, essa lógica é interrompida, pois os elementos individuais (como vigas, lajes e paredes) são apenas posicionados uns ao lado dos outros. Isso cria juntas fracas entre esses membros, o que limita o sistema a vãos lineares, resultando em uma arquitetura baseada em grelhas.
 Em vez disso, esta pesquisa dá continuidade à lógica de fabricação da madeira engenheirada. Ao elevar a escala, o objetivo é criar uma laje quase monolítica que cubra todo o pavimento, permitindo maior liberdade arquitetônica.
 Como a escala de um pavimento inteiro é muito superior à de um único painel de CLT, não existe atualmente tecnologia para automatizar essa abordagem. Através do desenvolvimento de um grampo robótico customizado, a intenção é automatizar esse processo.
 
@@ -109,7 +109,7 @@ Analisando pesquisas de ponta, vemos que a combinação de robôs já ocorre em 
 
 
 #### **Construção em Madeira**
-A madeira é uma escolha adequada para auxiliar os processos de automação in loco, pois é um material de construção consolidado, com uma **alta relação resistência-peso** e facilidade de processamento[^ramage-2017]. Especialmente através da implementação precoce de tecnologias de fabricação de ponta e da facilidade com que o material pode ser usinado, permitiu-se a automação de técnicas de pré-fabricação — como, por exemplo, a **fresagem por controle numérico computadorizado (CNC)** já na década de 1970[^menges-2015].
+A madeira é uma escolha adequada para auxiliar os processos de automação in loco, pois é um material de construção consolidado, com uma **alta relação resistência-peso** e facilidade de processamento[^ramage-2017]. Especialmente através da implementação precoce de tecnologias de fabricação de ponta e da facilidade com que o material pode ser usinado, permitiu-se a automação de técnicas de pré-fabricação, como, por exemplo, a **fresagem por controle numérico computadorizado (CNC)** já na década de 1970[^menges-2015].
 Além dos benefícios técnicos e estruturais, com o aumento da conscientização sobre a construção sustentável, observa-se uma forte pressão política em direção ao uso da madeira. Por exemplo, a *Holzbau Offensive Baden-Württemberg* determina que todo novo edifício público seja construído em madeira (Figura 10)[^holzbau-offensive-bw]. No entanto, os elementos de madeira são limitados em tamanho devido a restrições de transporte, resultando em peças de construção modulares que precisam ser unidas no canteiro. Isso cria uma junta fraca entre os membros e, consequentemente, produz vãos lineares, derivando em uma arquitetura baseada em grelhas direcionais (Figura 11).
 
 <Figure credit="Holzbau Offensive Baden-Württemberg, MLR">
@@ -132,7 +132,7 @@ O escopo da tese é a automação de uma junta colada *in loco* integrada a um s
 Discute-se, adiante, a possibilidade de automatizar toda a cadeia de construção, alcançada através da implementação de uma plataforma ciber-física de fabricação de madeira (TIM), responsável pela pré-fabricação de elementos de madeira no canteiro. Estratégias de sensoriamento embarcado no dispositivo robótico permitem a localização e o monitoramento do processo de montagem em tempo real, possibilitando a comunicação e a coordenação com um guindaste para automatizar o posicionamento *in situ* de elementos pré-fabricados.
 O escopo da pesquisa pode ser dividido em duas partes:
 - A investigação de um sistema material que utiliza elementos de madeira e a automação de uma junta *in loco*.
-- O desenvolvimento de um sistema robótico heterogêneo, incluindo a coordenação entre todos os atores — desde a fabricação no canteiro até a união (*joinery*) *in situ*.
+- O desenvolvimento de um sistema robótico heterogêneo, incluindo a coordenação entre todos os atores, desde a fabricação no canteiro até a união (*joinery*) *in situ*.
 Ambos os sistemas precisam ser projetados em coordenação, de modo que as limitações e os parâmetros informem-se mutuamente de forma contínua (Figura 13).
 
 <Figure>
@@ -215,7 +215,7 @@ Como mencionado anteriormente, nossos métodos podem ser divididos em duas parte
 </Figure>
 
 ### Desenvolvimento da Pesquisa
-A pesquisa iniciou-se investigando agentes acadêmicos e industriais no canteiro de obras e comparando-os sob diferentes aspectos para buscar potenciais combinações para um cenário de construção colaborativa. Demonstra-se que nenhum dos agentes consegue cobrir todas as áreas sozinho, mas, ao combinar vários agentes, as fraquezas de cada sistema podem ser compensadas. Por exemplo, embora robôs distribuídos não consigam atingir as capacidades de carga de um guindaste tradicional, eles se destacam em outras áreas, como a precisão, pois podem ser customizados para uma tarefa específica. Ao combinar ambos os sistemas — o guindaste e os robôs distribuídos — eles poderiam se beneficiar mutuamente, permitindo a execução de tarefas de alta carga e, ao mesmo tempo, alcançando alta precisão. Uma combinação potencial entre o uso de um guindaste, a plataforma TIM e robôs distribuídos guiou os próximos passos desta pesquisa.
+A pesquisa iniciou-se investigando agentes acadêmicos e industriais no canteiro de obras e comparando-os sob diferentes aspectos para buscar potenciais combinações para um cenário de construção colaborativa. Demonstra-se que nenhum dos agentes consegue cobrir todas as áreas sozinho, mas, ao combinar vários agentes, as fraquezas de cada sistema podem ser compensadas. Por exemplo, embora robôs distribuídos não consigam atingir as capacidades de carga de um guindaste tradicional, eles se destacam em outras áreas, como a precisão, pois podem ser customizados para uma tarefa específica. Ao combinar ambos os sistemas (o guindaste e os robôs distribuídos), eles poderiam se beneficiar mutuamente, permitindo a execução de tarefas de alta carga e, ao mesmo tempo, alcançando alta precisão. Uma combinação potencial entre o uso de um guindaste, a plataforma TIM e robôs distribuídos guiou os próximos passos desta pesquisa.
 
 
 
@@ -225,7 +225,7 @@ A pesquisa iniciou-se investigando agentes acadêmicos e industriais no canteiro
 Figura 23 - Comparação de diferentes agentes robóticos no canteiro de obras.
 
 #### Dispositivo Robótico Customizado
-Baseando-se na tecnologia de construção disponível, uma nova "espécie robótica" foi proposta para a conexão in situ. O objetivo era alcançar uma união colada entre os diferentes elementos de madeira. Em vez de desenvolver uma máquina de grande porte para parafusar e atingir a pressão necessária — como está sendo desenvolvido no estado da arte "Mass Timber Fastening" (Figura 24) — nossa pesquisa segue uma direção semelhante ao outro projeto de ponta mencionado, "Automatic Assembly of Jointed Timber Structure Using Distributed Robotic Clamps"[^leung-2021]. Pensamos: por que não criar um dispositivo menor, capaz de aplicar a pressão tão bem quanto um conjunto de parafusos, mas que pudesse ser removido automaticamente depois? (Figura 25).
+Baseando-se na tecnologia de construção disponível, uma nova "espécie robótica" foi proposta para a conexão in situ. O objetivo era alcançar uma união colada entre os diferentes elementos de madeira. Em vez de desenvolver uma máquina de grande porte para parafusar e atingir a pressão necessária, como está sendo desenvolvido no estado da arte "Mass Timber Fastening" (Figura 24), nossa pesquisa segue uma direção semelhante ao outro projeto de ponta mencionado, "Automatic Assembly of Jointed Timber Structure Using Distributed Robotic Clamps"[^leung-2021]. Pensamos: por que não criar um dispositivo menor, capaz de aplicar a pressão tão bem quanto um conjunto de parafusos, mas que pudesse ser removido automaticamente depois? (Figura 25).
 
 <Figure>
   ![Figura 24 - Esquema do estado da arte atual.](../../../assets/content/research/building-across-scales/esquema-do-estado-da-arte-atual.jpg)
