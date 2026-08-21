@@ -45,29 +45,25 @@ const { cv, items } = Astro.props;
             <div class="timeline" />
           </div>
 
-          {link ? (
-            <a href={link} class={`item-text ${bgClass}`}>
-              <h3 class="mb-0 flex">
-                <span class="grow">{data.Name}</span>
-                <Icon
-                  name="mdi:external-link"
-                  class="mt-2 size-3 shrink-0 print:hidden"
-                />
-              </h3>
-              <h4>
-                {data.Organization} | {buildLocation(data)}
-              </h4>
-              <Content />
-            </a>
-          ) : (
-            <div class={`item-text ${bgClass}`}>
-              <h3 class="mb-0">{data.Name}</h3>
-              <h4>
-                {data.Organization} | {buildLocation(data)}
-              </h4>
-              <Content />
-            </div>
-          )}
+          <div class={`item-text ${bgClass}`}>
+            <h3 class="mb-0">
+              {link ? (
+                <a href={link} class="flex">
+                  <span class="grow">{data.Name}</span>
+                  <Icon
+                    name="mdi:external-link"
+                    class="mt-2 size-3 shrink-0 print:hidden"
+                  />
+                </a>
+              ) : (
+                data.Name
+              )}
+            </h3>
+            <h4>
+              {data.Organization} | {buildLocation(data)}
+            </h4>
+            <Content />
+          </div>
         </div>
       );
     })
