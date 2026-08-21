@@ -10,7 +10,7 @@ Give content pages two clearly distinct call-to-action pills below the title: on
 
 - No `SlideDeck` frontmatter. The deck stays auto-detected from `teaching/<locale>/<slug>/deck.mdx`.
 - New dedicated `Presentation` frontmatter field (plain URL string). It replaces `Link` on entries whose link was the YouTube recording; `Link` returns to meaning "event page / article".
-- Two labelled pills side by side (same green style as the current pill); no icon-only buttons.
+- Two labelled pills side by side, same shape but different colours: the presentation pill is rose (video cue, `border-rose-500 bg-rose-500/10 text-rose-400`, hover `bg-rose-500/20 text-rose-300`), the deck pill keeps the current green. No icon-only buttons.
 
 ## Changes
 
@@ -38,7 +38,7 @@ Replace the single deck pill with a `flex flex-wrap gap-2` row rendered only whe
 - Presentation pill: inline SVG play triangle, label `t.watchPresentation`, `href={Presentation}`, `target="_blank" rel="noopener noreferrer"`, and `aria-label={`${t.watchPresentation} (${meta.openNewTab})`}` following the site convention for new-tab links (`Footer.astro`, `SkillsMap.astro`).
 - Deck pill: inline SVG "slides" glyph (front rectangle with an offset rectangle behind it), label `t.openSlideDeck`, `href={deckHref}`, same tab.
 
-Both reuse the existing pill classes. Icons are `aria-hidden`; labels carry the meaning.
+Both share the pill shape classes; the presentation pill swaps the green colour classes for rose so the two are distinguishable at a glance. Icons are `aria-hidden`; labels carry the meaning.
 
 ### i18n (`src/i18n/subpage/{type,en,pt,de}.ts`)
 
