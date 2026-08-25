@@ -34,7 +34,7 @@ In diesem Vortrag präsentierte ich die neuesten Technologien im Bereich compute
 ### Machbarkeit nachhaltigen Bauens
 Munich Urban Colab | München, Deutschland
 March 2023 | Pitch
-Ein Pitch auf der Siemens RIE München Konferenz darüber, wie computergestützte Werkzeuge Daten generieren können, um Nachhaltigkeit in der Bauindustrie greifbar zu machen — von der Stadtanalyse bis zur Ökobilanzierung.
+Ein Pitch auf der Siemens RIE München Konferenz darüber, wie computergestützte Werkzeuge Daten generieren können, um Nachhaltigkeit in der Bauindustrie greifbar zu machen, von der Stadtanalyse bis zur Ökobilanzierung.
 
 ### Digital Futures 2023: Novos Hibridismos
 YouTube - Online

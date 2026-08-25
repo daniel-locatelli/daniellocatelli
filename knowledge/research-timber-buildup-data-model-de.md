@@ -1,8 +1,8 @@
-URL: https://daniellocatelli.com/de/research/dokwood-bsdd-data-dictionary
+URL: https://daniellocatelli.com/de/research/timber-buildup-data-model
 
-# DOKwood bSDD-Datenwörterbuch
+# Ein Datenmodell für Holzbau-Aufbauten
 
-Description: Das buildingSMART Data Dictionary hm/dokwood: ein versioniertes, maschinenlesbares Vokabular für Holzbau-Aufbauten und -Produkte, aufgebaut auf den Datenvorlagen der ISO 23387, im bSDD veröffentlicht und als semantisches Rückgrat der Revit-, Cadwork- und MCP-Schnittstellen von DOKwood sowie eines künftigen digitalen Produktpasses entworfen.
+Description: Wie ein Holzbau-Aufbau maschinenlesbar wird: ein Datenmodell nach ISO 23387, das Schichten und Produkte in einem Aufbau verschachtelt, eine Datenvorlage zu einem Anforderungsblatt verschärft und sie mit einem Datenblatt erfüllt, veröffentlicht als versioniertes Wörterbuch hm/dokwood im bSDD und entworfen, um die Revit-, Cadwork- und MCP-Schnittstellen von DOKwood und einen künftigen digitalen Produktpass zu tragen.
 Tags: bSDD, ISO 23387, Datenvorlagen, Holzbau
 Authors: Daniel Nunes Locatelli, Fabian Scheurer, Sebastián Hernández-Maetschl, Joel Karolin
 Organization: Hochschule München

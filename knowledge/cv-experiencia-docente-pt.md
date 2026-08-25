@@ -34,7 +34,7 @@ Nesta palestra apresentei as tecnologias mais recentes na área de design comput
 ### Viabilidade de Construções Sustentáveis
 Munich Urban Colab | Munique, Alemanha
 March 2023 | Pitch
-Um pitch na Conferência Siemens RIE Munique sobre como ferramentas computacionais podem gerar dados para viabilizar a sustentabilidade na indústria da construção — da análise urbana à avaliação do ciclo de vida.
+Um pitch na Conferência Siemens RIE Munique sobre como ferramentas computacionais podem gerar dados para viabilizar a sustentabilidade na indústria da construção, da análise urbana à avaliação do ciclo de vida.
 
 ### Digital Futures 2023: Novos Hibridismos
 YouTube - Online

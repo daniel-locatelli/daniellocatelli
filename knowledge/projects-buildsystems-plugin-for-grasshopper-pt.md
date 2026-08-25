@@ -29,13 +29,13 @@ O principal desafio durante esse desenvolvimento foi que a McNeel, a empresa por
     - Mais recursos de aprendizado disponíveis online, facilitando a depuração e o desenvolvimento
 - **Contras**
     - Sendo descontinuado, o que exigiria migrar o plugin em um futuro próximo
-    - Não é multiplataforma — seriam necessários plugins separados para Windows e macOS
+    - Não é multiplataforma: seriam necessários plugins separados para Windows e macOS
     - Menor desempenho
 
 ### .NET Core
 - **Prós**
     - À prova de futuro, pois é a base para as próximas versões do Rhino/Grasshopper
-    - Suporte multiplataforma — um plugin funciona tanto no Windows quanto no macOS
+    - Suporte multiplataforma: um plugin funciona tanto no Windows quanto no macOS
     - Maior desempenho
 - **Contras**
     - Não é compatível com versões mais antigas do Rhino/Grasshopper

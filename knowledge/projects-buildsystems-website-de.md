@@ -12,7 +12,7 @@ Place: Online
 Date: August 2023 - April 2026
 Link: https://buildsystems.de
 
-Ich habe die Unternehmenswebsite für [BuildSystems](https://buildsystems.de) entwickelt — eine Nachhaltigkeitsberatung, die die klimaneutrale Transformation im Bau- und Immobiliensektor vorantreibt. Die Website dient als digitale Präsenz des Unternehmens und zeigt Dienstleistungen, Projektportfolio, Team und Blog-Inhalte. Alles verwaltet über Notion als CMS.
+Ich habe die Unternehmenswebsite für [BuildSystems](https://buildsystems.de) entwickelt: eine Nachhaltigkeitsberatung, die die klimaneutrale Transformation im Bau- und Immobiliensektor vorantreibt. Die Website dient als digitale Präsenz des Unternehmens und zeigt Dienstleistungen, Projektportfolio, Team und Blog-Inhalte. Alles verwaltet über Notion als CMS.
 
 Das Design wurde von [HAND](https://www.hand.international/) erstellt. Meine Aufgabe war es, das Design und die Funktionalität mit einem hochmodernen Tech-Stack umzusetzen, der auf Performance ausgerichtet ist, um ein hervorragendes SEO zu erzielen.
 
@@ -20,12 +20,12 @@ Das Design wurde von [HAND](https://www.hand.international/) erstellt. Meine Auf
 
 - [**Astro**](https://astro.build/): Statischer Site-Generator mit TypeScript, gewählt wegen seines Performance-First-Ansatzes und der standardmäßig JavaScript-freien Philosophie.
 - [**Tailwind CSS**](https://tailwindcss.com/): Utility-First-Styling mit benutzerdefinierten CSS-Variablen für responsive Typografie über vier Breakpoints.
-- [**Notion API**](https://developers.notion.com/): Headless-CMS-Integration — das Team verwaltet alle Inhalte (Blogbeiträge, Teammitglieder, Partner, Portfolio) direkt über Notion.
+- [**Notion API**](https://developers.notion.com/): Headless-CMS-Integration. Das Team verwaltet alle Inhalte (Blogbeiträge, Teammitglieder, Partner, Portfolio) direkt über Notion.
 - [**Cloudflare Pages**](https://pages.cloudflare.com/): Deployment mit Edge-Caching, automatischem HTTPS und DDoS-Schutz.
 
 ## Warum Notion als CMS?
 
-BuildSystems nutzte Notion bereits intensiv für interne Dokumentation und Projektmanagement. Anstatt ein separates CMS einzuführen, das das Team erst erlernen müsste, habe ich die Notion-API direkt in die Build-Pipeline integriert. So kann das Team Blogbeiträge schreiben und veröffentlichen, Teamprofile aktualisieren und Portfolio-Inhalte verwalten — alles direkt in Notion.
+BuildSystems nutzte Notion bereits intensiv für interne Dokumentation und Projektmanagement. Anstatt ein separates CMS einzuführen, das das Team erst erlernen müsste, habe ich die Notion-API direkt in die Build-Pipeline integriert. So kann das Team Blogbeiträge schreiben und veröffentlichen, Teamprofile aktualisieren und Portfolio-Inhalte verwalten, alles direkt in Notion.
 
 Die Integration ruft Inhalte zur Build-Zeit aus mehreren Notion-Datenbanken ab (Blogbeiträge, Teammitglieder, Partner, Organisationen) und rendert sie mit über 30 benutzerdefinierten Notion-Komponenten für Überschriften, Absätze, Bilder, Codeblöcke, Tabellen, Embeds und mehr.
 
@@ -44,7 +44,7 @@ Jeder Blogbeitrag wird in Notion verfasst und zur Build-Zeit auf der Website ger
 
 ## Architektur
 
-Das Projekt folgt einem reinen Astro-Ansatz — ohne React oder andere JavaScript-Frameworks. Alle Interaktivität ist mit reinem TypeScript und CSS umgesetzt, was zu minimalem clientseitigem JavaScript führt.
+Das Projekt folgt einem reinen Astro-Ansatz, ohne React oder andere JavaScript-Frameworks. Alle Interaktivität ist mit reinem TypeScript und CSS umgesetzt, was zu minimalem clientseitigem JavaScript führt.
 
 Eine eigene Build-Pipeline übernimmt das Caching von Notion-Inhalten. Mit `npm run cache:fetch` werden alle Inhalte und Bilder aus Notion heruntergeladen, mit Sharp verarbeitet (EXIF-Daten entfernt und Formate optimiert) und lokal gespeichert. Das sorgt für schnelle Builds und verhindert unnötige API-Aufrufe während der Entwicklung.
 

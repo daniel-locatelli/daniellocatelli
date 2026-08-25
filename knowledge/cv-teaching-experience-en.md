@@ -34,7 +34,7 @@ In this talk I presented the latest technologies in the computational design fie
 ### Feasibility of Sustainable Construction
 Munich Urban Colab | Munich, Germany
 March 2023 | Pitch
-A pitch at the Siemens RIE Munich Conference on how computational tools can generate data to make sense of sustainability in the construction industry — from urban analysis to life-cycle assessment.
+A pitch at the Siemens RIE Munich Conference on how computational tools can generate data to make sense of sustainability in the construction industry, from urban analysis to life-cycle assessment.
 
 ### Digital Futures 2023: Novos Hibridismos
 YouTube - Online

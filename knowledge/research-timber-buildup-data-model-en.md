@@ -1,8 +1,8 @@
-URL: https://daniellocatelli.com/research/dokwood-bsdd-data-dictionary
+URL: https://daniellocatelli.com/research/timber-buildup-data-model
 
-# DOKwood bSDD data dictionary
+# A data model for timber buildups
 
-Description: The hm/dokwood buildingSMART Data Dictionary: a versioned, machine-readable vocabulary for timber buildups and products, built on ISO 23387 data templates, published through bSDD, and designed as the semantic backbone for DOKwood's Revit, Cadwork and MCP interfaces and a future digital product passport.
+Description: How a timber buildup becomes machine-readable: an ISO 23387 data model that nests layers and products inside a buildup, tightens a data template into a requirement sheet and satisfies it with a data sheet, published as the versioned hm/dokwood dictionary on bSDD and designed to carry DOKwood's Revit, Cadwork and MCP interfaces and a future digital product passport.
 Tags: bSDD, ISO 23387, Data templates, Timber construction
 Authors: Daniel Nunes Locatelli, Fabian Scheurer, Sebastián Hernández-Maetschl, Joel Karolin
 Organization: Munich University of Applied Sciences
