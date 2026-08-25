@@ -1,0 +1,8 @@
+{
+  "url": "https://daniellocatelli.com/research/timber-buildup-data-model",
+  "title": "A data model for timber buildups",
+  "description": "How a timber buildup becomes machine-readable: an ISO 23387 data model that nests layers and products inside a buildup, tightens a data template into a requirement sheet and satisfies it with a data sheet, published as the versioned hm/dokwood dictionary on bSDD and designed to carry DOKwood’s Revit, Cadwork and MCP interfaces and a future digital product passport.",
+  "image": "https://daniellocatelli.com/_astro/buildup-composition-cover.CSYxhgOS.png",
+  "timestamp": 1787686131858,
+  "localImagePath": "daniellocatelli-com-d3206683.png"
+}

@@ -1,0 +1,8 @@
+{
+  "url": "https://daniellocatelli.com/pt/research/timber-buildup-data-model",
+  "title": "Um modelo de dados para composições construtivas em madeira",
+  "description": "Como uma composição construtiva em madeira se torna legível por máquina: um modelo de dados ISO 23387 que aninha camadas e produtos dentro de uma composição, restringe um modelo de dados em folha de requisitos e a satisfaz com uma folha de dados, publicado como o dicionário versionado hm/dokwood no bSDD e projetado para sustentar as interfaces Revit, Cadwork e MCP do DOKwood e um futuro passaporte digital de produto.",
+  "image": "https://daniellocatelli.com/_astro/buildup-composition-cover.CSYxhgOS.png",
+  "timestamp": 1787686132162,
+  "localImagePath": "daniellocatelli-com-8233566d.png"
+}

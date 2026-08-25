@@ -1,0 +1,8 @@
+{
+  "url": "https://daniellocatelli.com/de/research/timber-buildup-data-model",
+  "title": "Ein Datenmodell für Holzbau-Aufbauten",
+  "description": "Wie ein Holzbau-Aufbau maschinenlesbar wird: ein Datenmodell nach ISO 23387, das Schichten und Produkte in einem Aufbau verschachtelt, eine Datenvorlage zu einem Anforderungsblatt verschärft und sie mit einem Datenblatt erfüllt, veröffentlicht als versioniertes Wörterbuch hm/dokwood im bSDD und entworfen, um die Revit-, Cadwork- und MCP-Schnittstellen von DOKwood und einen künftigen digitalen Produktpass zu tragen.",
+  "image": "https://daniellocatelli.com/_astro/buildup-composition-cover.CSYxhgOS.png",
+  "timestamp": 1787686132166,
+  "localImagePath": "daniellocatelli-com-7cc68d94.png"
+}
