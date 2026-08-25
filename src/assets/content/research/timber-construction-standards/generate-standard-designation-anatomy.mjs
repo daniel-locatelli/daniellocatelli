@@ -1,5 +1,5 @@
-// Generates src/assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg
-// Run: node src/assets/content/research/timber-construction-standards/generate-cover.mjs
+// Generates src/assets/content/research/timber-construction-standards/standard-designation-anatomy.svg
+// Run: node src/assets/content/research/timber-construction-standards/generate-standard-designation-anatomy.mjs
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { svgDoc, write, C, SANS } from "../../svg-kit.mjs";
@@ -40,4 +40,4 @@ const svg = svgDoc({
   title: "The designation DIN EN ISO 19650-1 broken into its parts: the national body, the European standard, the international standard, and the number and part",
   body: b,
 });
-write(resolve(dirname(fileURLToPath(import.meta.url)), "./timber-construction-standards-cover.svg"), svg);
+write(resolve(dirname(fileURLToPath(import.meta.url)), "./standard-designation-anatomy.svg"), svg);

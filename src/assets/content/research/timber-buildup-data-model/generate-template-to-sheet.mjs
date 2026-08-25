@@ -1,6 +1,6 @@
-// Generates public/assets/content/research/dokwood-bsdd-data-dictionary/template-to-sheet.svg
+// Generates public/assets/content/research/timber-buildup-data-model/template-to-sheet.svg
 // A 2x PNG export (template-to-sheet.png) lives next to it, rendered from the SVG with playwright (@playwright/test, viewport 1600x600, deviceScaleFactor 2).
-// Run: node src/assets/content/research/dokwood-bsdd-data-dictionary/generate-template-to-sheet.mjs
+// Run: node src/assets/content/research/timber-buildup-data-model/generate-template-to-sheet.mjs
 // Three document cards with the same properties: the data template (no values), the
 // requirement sheet (required values) and the data sheet (declared or measured values).
 import { fileURLToPath } from "node:url";
@@ -111,4 +111,4 @@ const svg = svgDoc({
   title: "Three sheets listing the same five properties: a data template with empty value fields, a requirement sheet with required values such as Rw at least 56 dB and REI at least 90, and a data sheet with declared values such as Rw 59 dB and REI 90; arrows labelled tighten and satisfy connect them",
   body: b,
 });
-write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/dokwood-bsdd-data-dictionary/template-to-sheet.svg"), svg);
+write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/timber-buildup-data-model/template-to-sheet.svg"), svg);

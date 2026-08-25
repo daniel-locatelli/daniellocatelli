@@ -246,5 +246,11 @@ export default defineConfig({
       "/pt/projects/parada-coca-cola-by-atelier-marko-brajovic",
     "/de/projects/parada-coca-cola-by-atelier-marko-brajovic-for-coca-cola":
       "/de/projects/parada-coca-cola-by-atelier-marko-brajovic",
+    "/research/dokwood-bsdd-data-dictionary":
+      "/research/timber-buildup-data-model",
+    "/pt/research/dokwood-bsdd-data-dictionary":
+      "/pt/research/timber-buildup-data-model",
+    "/de/research/dokwood-bsdd-data-dictionary":
+      "/de/research/timber-buildup-data-model",
   },
 });

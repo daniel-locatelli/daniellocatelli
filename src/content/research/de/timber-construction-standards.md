@@ -1,7 +1,6 @@
 ---
-Cover: /assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg
-CoverAlt: "Die Bezeichnung DIN EN ISO 19650-1 in ihre Teile zerlegt: nationales Gremium, europäische Norm, internationale Norm sowie Nummer und Teil."
-CoverFit: contain
+Cover: /assets/content/research/timber-construction-standards/buildup-passport-cover.png
+CoverAlt: "Ein aufgeschlagener Pass für eine Holz-Außenwand: Die linke Seite zeigt den geschichteten Aufbau anstelle eines Fotos, mit Rw 59 dB, REI 90, U 0,14 W/m²K und Version v0.13; die rechte Seite trägt Stempel für ISO 23387, ISO 23386, ISO 12006-3, ISO 19650, EN 1995, ISO 717-1, EN 13501-2 und ISO 6946."
 Description: "Eine systematische Recherche der ISO-, GS1-, CEN-, DIN-, SIA- und KBOB-Normen, die die Spezifikation von Materialien und mehrschichtigen Aufbauten im Holzbau regeln, von Brandschutz und Bauphysik bis zu BIM-Datenvorlagen und dem digitalen Produktpass. Arbeitspaket 1.2 des Projekts DOKwood."
 Name: Normen hinter digitalen Holzbau-Aufbauten
 Tags:
@@ -66,4 +65,4 @@ Für vorgefertigte Holzbauelemente, die viele Produkte zu einem gelieferten Baut
 
 ## Was das für DOKwood bedeutet
 
-Drei Schlussfolgerungen gingen in den Rest des Projekts ein. Erstens: Die Tragwerksbemessung ist über die Eurocodes harmonisiert, aber Brandschutz, Akustik, Wärmeschutz und Ökobilanz behalten erhebliche nationale Eigenheiten, sodass ein grenzüberschreitendes Werkzeug eine Datenarchitektur braucht, die gleichzeitig gegen deutsche und Schweizer Regeln speichern und prüfen kann. Zweitens: Die interne Terminologie der Partner wich von den Normbegriffen auf eine Weise ab, die jeden maschinenlesbaren Austausch untergraben würde, weshalb der Bericht mit dem Vorschlag eines gemeinsamen Vokabulars endet, das an ISO 12006-3, 23386 und 23387 verankert ist. Drittens: Der DPP kommt, ob sich ein Unternehmen darauf vorbereitet oder nicht, und ein normenkonformer Aufbau-Datensatz ist das richtige Substrat dafür. Aus diesem Vokabular wurde das [DOKwood bSDD-Datenwörterbuch](/de/research/dokwood-bsdd-data-dictionary).
+Drei Schlussfolgerungen gingen in den Rest des Projekts ein. Erstens: Die Tragwerksbemessung ist über die Eurocodes harmonisiert, aber Brandschutz, Akustik, Wärmeschutz und Ökobilanz behalten erhebliche nationale Eigenheiten, sodass ein grenzüberschreitendes Werkzeug eine Datenarchitektur braucht, die gleichzeitig gegen deutsche und Schweizer Regeln speichern und prüfen kann. Zweitens: Die interne Terminologie der Partner wich von den Normbegriffen auf eine Weise ab, die jeden maschinenlesbaren Austausch untergraben würde, weshalb der Bericht mit dem Vorschlag eines gemeinsamen Vokabulars endet, das an ISO 12006-3, 23386 und 23387 verankert ist. Drittens: Der DPP kommt, ob sich ein Unternehmen darauf vorbereitet oder nicht, und ein normenkonformer Aufbau-Datensatz ist das richtige Substrat dafür. Aus diesem Vokabular wurde das [Datenmodell für Holzbau-Aufbauten](/de/research/timber-buildup-data-model).

@@ -41,8 +41,8 @@ Link:
 OtherLinks:
   - Text: Normas por trás das composições digitais em madeira
     Href: https://daniellocatelli.com/pt/research/timber-construction-standards
-  - Text: Dicionário de dados bSDD do DOKwood
-    Href: https://daniellocatelli.com/pt/research/dokwood-bsdd-data-dictionary
+  - Text: Um modelo de dados para composições construtivas em madeira
+    Href: https://daniellocatelli.com/pt/research/timber-buildup-data-model
 ---
 
 O DOKwood é um projeto de pesquisa e uma plataforma de software para a documentação de composições construtivas multicamadas na construção pré-fabricada em madeira. Em um edifício de madeira, a composição de uma parede, de um piso ou de uma cobertura (a sequência ordenada de placas, montantes, isolamento e revestimento) é onde se encontram as decisões estruturais, de incêndio, acústicas, térmicas e de custo. Hoje essa informação vive em PDFs e planilhas que são redigitados a cada etapa, da licitação à oficina. O DOKwood dá uma casa às composições: uma plataforma web na qual uma empresa define as suas composições uma única vez, verifica-as contra requisitos, versiona-as como código e entrega-as às ferramentas a jusante sem reinserir dados.
@@ -55,7 +55,7 @@ O projeto é financiado pelo ZIM (Alemanha) e pela Innosuisse (Suíça) no âmbi
 
 A primeira entrega foi uma revisão sistemática das normas que regem a especificação de materiais e composições na construção em madeira na Alemanha e na Suíça: ISO e GS1 no nível internacional, CEN e as normas EN harmonizadas na Europa, DIN, VDI e a Muster-Holzbau-Richtlinie na Alemanha, SIA, KBOB e VKF na Suíça. Ela cobre incêndio, acústica, física das construções, projeto estrutural, desenho técnico, BIM e o Passaporte Digital de Produto que chega com o Regulamento dos Produtos de Construção de 2024. O seu resultado prático foi um mapeamento da terminologia interna dos parceiros para termos normativos governados e a proposta de um vocabulário comum. Você pode ler mais sobre esse estudo na minha página dedicada às [normas para especificações em construção de madeira](/pt/research/timber-construction-standards).
 
-![A designação DIN EN ISO 19650-1 dividida em suas partes: DIN para o órgão nacional, EN para a norma europeia, ISO para a norma internacional e o número e a parte.](../../../assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg "Anatomia da designação de uma norma")
+![A designação DIN EN ISO 19650-1 dividida em suas partes: DIN para o órgão nacional, EN para a norma europeia, ISO para a norma internacional e o número e a parte.](../../../assets/content/research/timber-construction-standards/standard-designation-anatomy.svg "Anatomia da designação de uma norma")
 
 ## buildingSMART Data Dictionary (bSDD)
 
@@ -63,7 +63,7 @@ O vocabulário comum proposto na revisão de normas tornou-se um dicionário no 
 
 Vale explicar o papel desse dicionário na plataforma, porque é ele que transforma o DOKwood de uma ferramenta em um framework. Os dicionários de dados existem em dois níveis. O dicionário no bSDD é o público, genérico e de alto nível: um vocabulário comum para composições em madeira que qualquer pessoa pode ler e referenciar. Dentro do aplicativo, cada tenant (uma empresa de construção em madeira) tem o seu próprio dicionário de dados, que é privado: as suas classes, propriedades, modelos e requisitos, moldados pelos seus produtos, pelas normas do seu país e pelo seu fluxo de trabalho. Um novo tenant pode derivar o dicionário bSDD do DOKwood como base do seu dicionário privado e especializá-lo a partir daí, ou começar do zero e trazer o seu próprio vocabulário. O DOKwood, portanto, não impõe um único dicionário para todos; ele fornece o framework em que dicionários são definidos, versionados e usados, além de um ponto de partida público bem fundamentado. Como um dicionário de tenant pode referenciar o público, a mesma arquitetura permite também que um tenant abra o seu dicionário mais tarde e o interligue com os dicionários de outras empresas, de modo que dois parceiros troquem composições e produtos com base em um vocabulário compartilhado, e não em um mapeamento bilateral.
 
-Todas as interfaces abaixo leem através dessa camada de dicionários, e é isso que as torna interoperáveis. O projeto, o pipeline de construção e o caminho até uma exportação pronta para o DPP estão na página [dicionário de dados bSDD do DOKwood](/pt/research/dokwood-bsdd-data-dictionary).
+Todas as interfaces abaixo leem através dessa camada de dicionários, e é isso que as torna interoperáveis. O projeto, o pipeline de construção e o caminho até uma exportação pronta para o DPP estão na página [modelo de dados para composições construtivas em madeira](/pt/research/timber-buildup-data-model).
 
 ![Dois níveis de dicionários de dados: acima, o dicionário público hm/dokwood no bSDD; abaixo, o dicionário privado de cada tenant, dois derivados do público e especializados, um começado do zero, com uma ligação opcional para abri-los e interligá-los; na base, uma caixa de interfaces: add-in Revit, plugin Cadwork e servidor MCP leem todos através dessa camada de dicionários.](/assets/content/projects/dokwood/dokwood-bsdd.svg "Dicionário bSDD público e dicionários privados das empresas")
 

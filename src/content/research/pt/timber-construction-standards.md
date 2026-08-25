@@ -1,7 +1,6 @@
 ---
-Cover: /assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg
-CoverAlt: "A designação DIN EN ISO 19650-1 decomposta nas suas partes: organismo nacional, norma europeia, norma internacional, e número e parte."
-CoverFit: contain
+Cover: /assets/content/research/timber-construction-standards/buildup-passport-cover.png
+CoverAlt: "Um passaporte aberto de uma parede externa de madeira: a página esquerda mostra a composição em camadas no lugar da foto, com Rw 59 dB, REI 90, U 0,14 W/m²K e versão v0.13; a página direita traz carimbos das normas ISO 23387, ISO 23386, ISO 12006-3, ISO 19650, EN 1995, ISO 717-1, EN 13501-2 e ISO 6946."
 Description: "Uma revisão sistemática das normas ISO, GS1, CEN, DIN, SIA e KBOB que regem a especificação de materiais e composições multicamadas na construção em madeira, do incêndio e da física das construções aos modelos de dados BIM e ao passaporte digital de produto. Pacote de trabalho 1.2 do projeto DOKwood."
 Name: Normas por trás das composições digitais em madeira
 Tags:
@@ -66,4 +65,4 @@ Para elementos pré-fabricados de madeira, que combinam muitos produtos em um ú
 
 ## O que isso significa para o DOKwood
 
-Três conclusões seguiram para o restante do projeto. Primeira: o projeto estrutural está harmonizado nos Eurocódigos, mas incêndio, acústica, proteção térmica e ACV mantêm especificidade nacional substancial, de modo que uma ferramenta transfronteiriça precisa de uma arquitetura de dados capaz de armazenar e validar contra as regras alemãs e suíças ao mesmo tempo. Segunda: a terminologia interna dos parceiros divergia dos termos normativos de maneiras que minariam qualquer troca legível por máquina, e é por isso que o relatório termina com a proposta de um vocabulário comum ancorado nas ISO 12006-3, 23386 e 23387. Terceira: o DPP chegará quer uma empresa se prepare ou não, e um registro de composições alinhado às normas é o substrato certo para ele. Esse vocabulário é o que se tornou o [dicionário de dados bSDD do DOKwood](/pt/research/dokwood-bsdd-data-dictionary).
+Três conclusões seguiram para o restante do projeto. Primeira: o projeto estrutural está harmonizado nos Eurocódigos, mas incêndio, acústica, proteção térmica e ACV mantêm especificidade nacional substancial, de modo que uma ferramenta transfronteiriça precisa de uma arquitetura de dados capaz de armazenar e validar contra as regras alemãs e suíças ao mesmo tempo. Segunda: a terminologia interna dos parceiros divergia dos termos normativos de maneiras que minariam qualquer troca legível por máquina, e é por isso que o relatório termina com a proposta de um vocabulário comum ancorado nas ISO 12006-3, 23386 e 23387. Terceira: o DPP chegará quer uma empresa se prepare ou não, e um registro de composições alinhado às normas é o substrato certo para ele. Esse vocabulário é o que se tornou o [modelo de dados para composições construtivas em madeira](/pt/research/timber-buildup-data-model).

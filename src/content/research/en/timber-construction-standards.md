@@ -1,7 +1,6 @@
 ---
-Cover: /assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg
-CoverAlt: "The designation DIN EN ISO 19650-1 broken into its parts: national body, European standard, international standard, and number and part."
-CoverFit: contain
+Cover: /assets/content/research/timber-construction-standards/buildup-passport-cover.png
+CoverAlt: "An open passport for a timber exterior wall: the left page shows the layered buildup in place of a photo, with Rw 59 dB, REI 90, U 0.14 W/m²K and version v0.13; the right page carries stamps for ISO 23387, ISO 23386, ISO 12006-3, ISO 19650, EN 1995, ISO 717-1, EN 13501-2 and ISO 6946."
 Description: "A systematic review of the ISO, GS1, CEN, DIN, SIA and KBOB standards that govern how materials and multilayer buildups are specified in timber construction, from fire and building physics to BIM data templates and the digital product passport. Work package 1.2 of the DOKwood project."
 Name: Standards behind digital timber buildups
 Tags:
@@ -66,4 +65,4 @@ For prefabricated timber elements, which combine many products into one delivere
 
 ## What it means for DOKwood
 
-Three conclusions carried into the rest of the project. First, structural design is harmonised under the Eurocodes, but fire, acoustics, thermal protection and LCA keep substantial national specificity, so a cross-border tool needs a data architecture that can store and validate against German and Swiss rules at once. Second, the partners' internal terminology diverged from the standard terms in ways that would undermine any machine-readable exchange, which is why the report ends with a proposed shared vocabulary anchored to ISO 12006-3, 23386 and 23387. Third, the DPP will arrive whether or not a company prepares for it, and a standards-aligned buildup record is the right substrate for one. That vocabulary is what became the [DOKwood bSDD data dictionary](/research/dokwood-bsdd-data-dictionary).
+Three conclusions carried into the rest of the project. First, structural design is harmonised under the Eurocodes, but fire, acoustics, thermal protection and LCA keep substantial national specificity, so a cross-border tool needs a data architecture that can store and validate against German and Swiss rules at once. Second, the partners' internal terminology diverged from the standard terms in ways that would undermine any machine-readable exchange, which is why the report ends with a proposed shared vocabulary anchored to ISO 12006-3, 23386 and 23387. Third, the DPP will arrive whether or not a company prepares for it, and a standards-aligned buildup record is the right substrate for one. That vocabulary is what became the [data model for timber buildups](/research/timber-buildup-data-model).

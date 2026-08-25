@@ -1,5 +1,5 @@
-// Generates public/assets/content/research/dokwood-bsdd-data-dictionary/data-templates.svg
-// Run: node src/assets/content/research/dokwood-bsdd-data-dictionary/generate-data-templates.mjs
+// Generates public/assets/content/research/timber-buildup-data-model/data-templates.svg
+// Run: node src/assets/content/research/timber-buildup-data-model/generate-data-templates.mjs
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import { svgDoc, frame, tile, arrow, note, write } from "../../svg-kit.mjs";
@@ -55,4 +55,4 @@ const svg = svgDoc({
   title: "Left: Wall, Roof and Slab are kinds of Buildup, a System Data Template composed of layers and products, where a product is a Product Data Template. Right: a data template lists properties, a requirement sheet tightens them to required values, and a data sheet satisfies them with declared values",
   body: b,
 });
-write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/dokwood-bsdd-data-dictionary/data-templates.svg"), svg);
+write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/timber-buildup-data-model/data-templates.svg"), svg);

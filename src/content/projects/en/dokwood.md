@@ -41,8 +41,8 @@ Link:
 OtherLinks:
   - Text: Standards behind digital timber buildups
     Href: https://daniellocatelli.com/research/timber-construction-standards
-  - Text: DOKwood bSDD data dictionary
-    Href: https://daniellocatelli.com/research/dokwood-bsdd-data-dictionary
+  - Text: A data model for timber buildups
+    Href: https://daniellocatelli.com/research/timber-buildup-data-model
 ---
 
 DOKwood is a research project and a software platform for the documentation of multilayer buildups in prefabricated timber construction. In a timber building, the buildup of a wall, floor or roof (the ordered stack of boards, studs, insulation and cladding) is where structural, fire, acoustic, thermal and cost decisions meet. Today that information lives in PDFs and spreadsheets that are re-typed at every step from tender to workshop. DOKwood gives buildups a home: a web platform where a company defines its buildups once, verifies them against requirements, versions them like code, and hands them to the tools downstream without re-entering data.
@@ -55,7 +55,7 @@ The project is funded by ZIM (Germany) and Innosuisse (Switzerland) under the Ir
 
 The first deliverable was a systematic review of the standards that govern how materials and buildups are specified in timber construction in Germany and Switzerland: ISO and GS1 at the international level, CEN and the harmonised EN standards in Europe, DIN, VDI and the Muster-Holzbau-Richtlinie in Germany, SIA, KBOB and VKF in Switzerland. It covers fire, acoustics, building physics, structural design, technical drawings, BIM, and the incoming Digital Product Passport under the 2024 Construction Products Regulation. Its practical output was a mapping of the partners' internal terminology to governed standard terms and a proposed shared vocabulary. You can read more about this study on my dedicated [standards for timber construction specifications](/research/timber-construction-standards) page.
 
-![The designation DIN EN ISO 19650-1 broken into its parts: DIN for the national body, EN for the European standard, ISO for the international standard, and the number and part.](../../../assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg "Anatomy of a standard designation")
+![The designation DIN EN ISO 19650-1 broken into its parts: DIN for the national body, EN for the European standard, ISO for the international standard, and the number and part.](../../../assets/content/research/timber-construction-standards/standard-designation-anatomy.svg "Anatomy of a standard designation")
 
 ## buildingSMART Data Dictionary (bSDD)
 
@@ -63,7 +63,7 @@ The shared vocabulary proposed in the standards review became a dictionary in th
 
 The role of that dictionary in the platform is worth spelling out, because it is what turns DOKwood from a tool into a framework. Data dictionaries sit at two levels. The bSDD dictionary is the public, generic, high-level one: a common vocabulary for timber buildups that anyone can read and reference. Inside the app, each tenant (one timber company) owns its own data dictionary, which is private: its own classes, properties, templates and requirements, shaped by its products, its national standards and its workflow. A new tenant can fork the DOKwood bSDD dictionary as the base for its private dictionary and specialise it from there, or start from a clean slate and bring its own vocabulary. DOKwood therefore does not prescribe one dictionary for everyone; it provides the framework in which dictionaries are defined, versioned and used, plus a well-founded public starting point. Because a tenant dictionary can reference the public one, the same architecture also lets a tenant open its dictionary later and interlink it with other companies' dictionaries, so that two partners can exchange buildups and products against a shared vocabulary rather than a bilateral mapping.
 
-Every interface below reads through this dictionary layer, which is what makes them interoperable. The design, the build pipeline and the road to a DPP-ready export are on the [DOKwood bSDD data dictionary](/research/dokwood-bsdd-data-dictionary) page.
+Every interface below reads through this dictionary layer, which is what makes them interoperable. The design, the build pipeline and the road to a DPP-ready export are on the [data model for timber buildups](/research/timber-buildup-data-model) page.
 
 ![Two levels of data dictionaries: the public hm/dokwood dictionary on bSDD above; below, the private dictionary of each tenant, two forked from the public one and specialised, one started from a clean slate, with an optional link to open and interlink them; at the bottom, an interfaces box: Revit add-in, Cadwork plugin and MCP server all read through this dictionary layer.](/assets/content/projects/dokwood/dokwood-bsdd.svg "Public bSDD dictionary and private company dictionaries")
 

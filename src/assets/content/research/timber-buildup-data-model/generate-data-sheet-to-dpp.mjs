@@ -1,6 +1,6 @@
-// Generates public/assets/content/research/dokwood-bsdd-data-dictionary/data-sheet-to-dpp.svg
+// Generates public/assets/content/research/timber-buildup-data-model/data-sheet-to-dpp.svg
 // A 2x PNG export (data-sheet-to-dpp.png) lives next to it, rendered from the SVG with playwright (@playwright/test, viewport 1600x640, deviceScaleFactor 2).
-// Run: node src/assets/content/research/dokwood-bsdd-data-dictionary/generate-data-sheet-to-dpp.mjs
+// Run: node src/assets/content/research/timber-buildup-data-model/generate-data-sheet-to-dpp.mjs
 // The filled data sheet of a fabricated buildup feeds the digital product passport,
 // which wraps those values with an identifier, a document trail, a lifecycle state and a data carrier.
 import { fileURLToPath } from "node:url";
@@ -128,4 +128,4 @@ const svg = svgDoc({
   title: "A filled data sheet of a fabricated buildup, with values such as Rw 59 dB and REI 90, feeds a digital product passport card listing what the passport adds around those values: a persistent identifier, property values with version-pinned bSDD URIs, a document trail of certificates, datasheets and EPDs, a lifecycle state from as-designed to as-built, a data carrier on the fabricated item, and a JSON-LD format",
   body: b,
 });
-write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/dokwood-bsdd-data-dictionary/data-sheet-to-dpp.svg"), svg);
+write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/timber-buildup-data-model/data-sheet-to-dpp.svg"), svg);

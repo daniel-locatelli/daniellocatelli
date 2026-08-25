@@ -41,8 +41,8 @@ Link:
 OtherLinks:
   - Text: Normen hinter digitalen Holzbau-Aufbauten
     Href: https://daniellocatelli.com/de/research/timber-construction-standards
-  - Text: DOKwood bSDD-Datenwörterbuch
-    Href: https://daniellocatelli.com/de/research/dokwood-bsdd-data-dictionary
+  - Text: Ein Datenmodell für Holzbau-Aufbauten
+    Href: https://daniellocatelli.com/de/research/timber-buildup-data-model
 ---
 
 DOKwood ist ein Forschungsprojekt und eine Softwareplattform für die Dokumentation mehrschichtiger Aufbauten im vorgefertigten Holzbau. In einem Holzgebäude ist der Aufbau einer Wand, einer Decke oder eines Dachs (die geordnete Abfolge von Platten, Ständern, Dämmung und Bekleidung) der Ort, an dem Entscheidungen zu Tragwerk, Brandschutz, Schallschutz, Wärmeschutz und Kosten zusammenlaufen. Heute lebt diese Information in PDFs und Tabellen, die bei jedem Schritt von der Ausschreibung bis zur Werkstatt neu abgetippt werden. DOKwood gibt Aufbauten ein Zuhause: eine Webplattform, in der ein Unternehmen seine Aufbauten einmal definiert, gegen Anforderungen prüft, wie Code versioniert und ohne erneute Dateneingabe an die nachgelagerten Werkzeuge übergibt.
@@ -55,7 +55,7 @@ Das Projekt wird vom ZIM (Deutschland) und von der Innosuisse (Schweiz) im Rahme
 
 Das erste Ergebnis war eine systematische Recherche der Normen, die die Spezifikation von Materialien und Aufbauten im Holzbau in Deutschland und der Schweiz regeln: ISO und GS1 auf internationaler Ebene, CEN und die harmonisierten EN-Normen in Europa, DIN, VDI und die Muster-Holzbau-Richtlinie in Deutschland, SIA, KBOB und VKF in der Schweiz. Sie umfasst Brandschutz, Akustik, Bauphysik, Tragwerksplanung, technische Zeichnungen, BIM und den kommenden digitalen Produktpass nach der Bauprodukteverordnung von 2024. Ihr praktisches Ergebnis war eine Zuordnung der internen Terminologie der Partner zu kontrollierten Normbegriffen und der Vorschlag eines gemeinsamen Vokabulars. Mehr über diese Studie lesen Sie auf meiner eigenen Seite zu [Normen hinter digitalen Holzbau-Aufbauten](/de/research/timber-construction-standards).
 
-![Die Bezeichnung DIN EN ISO 19650-1 in ihre Teile zerlegt: DIN für das nationale Gremium, EN für die europäische Norm, ISO für die internationale Norm sowie Nummer und Teil.](../../../assets/content/research/timber-construction-standards/timber-construction-standards-cover.svg "Aufbau einer Normbezeichnung")
+![Die Bezeichnung DIN EN ISO 19650-1 in ihre Teile zerlegt: DIN für das nationale Gremium, EN für die europäische Norm, ISO für die internationale Norm sowie Nummer und Teil.](../../../assets/content/research/timber-construction-standards/standard-designation-anatomy.svg "Aufbau einer Normbezeichnung")
 
 ## buildingSMART Data Dictionary (bSDD)
 
@@ -63,7 +63,7 @@ Das in der Normenstudie vorgeschlagene gemeinsame Vokabular wurde zu einem Wört
 
 Die Rolle dieses Wörterbuchs in der Plattform verdient eine Erklärung, denn sie macht aus DOKwood ein Framework statt eines Werkzeugs. Datenwörterbücher liegen auf zwei Ebenen. Das bSDD-Wörterbuch ist das öffentliche, generische, übergeordnete: ein gemeinsames Vokabular für Holzbau-Aufbauten, das jeder lesen und referenzieren kann. In der App besitzt jeder Mandant (ein Holzbauunternehmen) zusätzlich ein eigenes Datenwörterbuch, und das ist privat: eigene Klassen, Merkmale, Vorlagen und Anforderungen, geprägt von den eigenen Produkten, den nationalen Normen und dem eigenen Arbeitsablauf. Ein neuer Mandant kann das DOKwood-bSDD-Wörterbuch als Basis seines privaten Wörterbuchs übernehmen und von dort aus spezialisieren, oder bei null anfangen und sein eigenes Vokabular mitbringen. DOKwood schreibt also nicht ein Wörterbuch für alle vor; es stellt das Framework bereit, in dem Wörterbücher definiert, versioniert und genutzt werden, plus einen fundierten öffentlichen Ausgangspunkt. Weil ein Mandanten-Wörterbuch das öffentliche referenzieren kann, erlaubt dieselbe Architektur einem Mandanten auch, sein Wörterbuch später zu öffnen und mit den Wörterbüchern anderer Unternehmen zu verknüpfen, sodass zwei Partner Aufbauten und Produkte über ein gemeinsames Vokabular austauschen statt über eine bilaterale Zuordnung.
 
-Jede der folgenden Schnittstellen liest über diese Wörterbuchschicht, und genau das macht sie interoperabel. Entwurf, Build-Pipeline und der Weg zu einem DPP-fähigen Export stehen auf der Seite [DOKwood bSDD-Datenwörterbuch](/de/research/dokwood-bsdd-data-dictionary).
+Jede der folgenden Schnittstellen liest über diese Wörterbuchschicht, und genau das macht sie interoperabel. Entwurf, Build-Pipeline und der Weg zu einem DPP-fähigen Export stehen auf der Seite [Datenmodell für Holzbau-Aufbauten](/de/research/timber-buildup-data-model).
 
 ![Zwei Ebenen von Datenwörterbüchern: oben das öffentliche Wörterbuch hm/dokwood im bSDD; darunter das private Wörterbuch jedes Mandanten, zwei vom öffentlichen abgeleitet und spezialisiert, eines bei null begonnen, mit einer optionalen Verbindung zum Öffnen und Verknüpfen; ganz unten ein Schnittstellen-Kasten: Revit-Add-in, Cadwork-Plugin und MCP-Server lesen alle über diese Wörterbuchschicht.](/assets/content/projects/dokwood/dokwood-bsdd.svg "Öffentliches bSDD-Wörterbuch und private Unternehmenswörterbücher")
 
