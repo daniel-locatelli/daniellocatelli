@@ -77,7 +77,11 @@ jobs:
       - name: Nominate broken external links
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --config lychee.toml --no-progress 'dist/client/**/*.html'
+          # --root-dir must be an absolute path and differs per checkout, so
+          # it cannot live in lychee.toml; it lets lychee resolve
+          # root-relative hrefs (href="/foo") in the crawled HTML instead of
+          # failing to build a URL for them (see lychee.toml for details).
+          args: --config lychee.toml --root-dir "$GITHUB_WORKSPACE/dist/client" --no-progress 'dist/client/**/*.html'
           format: json
           output: lychee-out.json
           fail: false

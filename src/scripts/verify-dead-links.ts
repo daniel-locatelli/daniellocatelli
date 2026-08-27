@@ -20,13 +20,13 @@ interface LycheeEntry {
   status?: { text?: string; code?: number };
 }
 
-/** lychee writes `fail_map` as { sourceFile: [ { url, status }, ... ] }. */
+/** lychee writes `error_map` as { sourceFile: [ { url, status }, ... ] }. */
 function collectFailures(json: unknown): Map<string, Set<string>> {
   const sources = new Map<string, Set<string>>();
-  const failMap =
-    (json as { fail_map?: Record<string, LycheeEntry[]> })?.fail_map ?? {};
+  const errorMap =
+    (json as { error_map?: Record<string, LycheeEntry[]> })?.error_map ?? {};
 
-  for (const [source, entries] of Object.entries(failMap)) {
+  for (const [source, entries] of Object.entries(errorMap)) {
     const list = Array.isArray(entries) ? entries : [];
     for (const entry of list) {
       if (!entry || typeof entry !== "object" || !entry.url) continue;
@@ -112,14 +112,14 @@ async function readLycheeOutput(inputPath: string): Promise<LycheeReadResult> {
     console.warn(
       `Could not read lychee output at ${inputPath} (${(error as Error).message}); treating as zero nominations.`,
     );
-    return { data: { fail_map: {} }, readError: true };
+    return { data: { error_map: {} }, readError: true };
   }
 
   if (raw.trim() === "") {
     console.warn(
       `Lychee output at ${inputPath} was empty; treating as zero nominations.`,
     );
-    return { data: { fail_map: {} }, readError: true };
+    return { data: { error_map: {} }, readError: true };
   }
 
   try {
@@ -128,7 +128,7 @@ async function readLycheeOutput(inputPath: string): Promise<LycheeReadResult> {
     console.warn(
       `Lychee output at ${inputPath} was not valid JSON (${(error as Error).message}); treating as zero nominations.`,
     );
-    return { data: { fail_map: {} }, readError: true };
+    return { data: { error_map: {} }, readError: true };
   }
 }
 

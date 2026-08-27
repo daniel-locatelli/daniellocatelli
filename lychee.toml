@@ -25,7 +25,25 @@ max_cache_age = "8d"
 # links, images, scripts, stylesheets) are the internal checker's job, not
 # lychee's; without this, lychee nominates hundreds of local paths that the
 # verifier then rejects as malformed, drowning the report.
+#
+# scheme filters by URL scheme AFTER a link has been resolved into a URI, so
+# it correctly drops file:// and mailto: links once they resolve. It cannot
+# rescue a link that fails to resolve in the first place: root-relative hrefs
+# (href="/foo") in local HTML files need a root dir to resolve against (see
+# `root_dir` note below), and lychee has no config knob to skip resolving
+# them. Without a root dir every root-relative href/src/srcset in the crawled
+# HTML fails URL construction and is reported as a bare "error:" entry, not
+# filtered by scheme at all. That was the actual source of the ~14k junk
+# nominations on the first run, not a scheme misconfiguration.
 scheme = ["http", "https"]
+
+# lychee needs a root dir to resolve root-relative links (href="/foo") found
+# in local files; without one, every such link fails to even become a URI and
+# is reported as an opaque "error:" entry (see the scheme comment above).
+# This can't be a fixed path here because it differs between a developer's
+# checkout and the CI runner's $GITHUB_WORKSPACE, so it is passed on the
+# command line in .github/workflows/links.yml (--root-dir) instead of set
+# here.
 
 # Internal links are the internal checker's job; it understands _redirects.
 exclude = ["^https?://(www\\.)?daniellocatelli\\.com"]
