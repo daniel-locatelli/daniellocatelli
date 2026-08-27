@@ -13,7 +13,7 @@ import { appendFile, readFile, writeFile } from "node:fs/promises";
 import { createProbe, verifyUrl, type Outcome } from "../lib/link-check/verify";
 
 const CONCURRENCY = 4;
-const PER_HOST_DELAY_MS = 500;
+const REQUEST_DELAY_MS = 500;
 
 interface LycheeEntry {
   url: string;
@@ -27,8 +27,9 @@ function collectFailures(json: unknown): Map<string, Set<string>> {
     (json as { fail_map?: Record<string, LycheeEntry[]> })?.fail_map ?? {};
 
   for (const [source, entries] of Object.entries(failMap)) {
-    for (const entry of entries) {
-      if (!entry?.url) continue;
+    const list = Array.isArray(entries) ? entries : [];
+    for (const entry of list) {
+      if (!entry || typeof entry !== "object" || !entry.url) continue;
       const set = sources.get(entry.url) ?? new Set<string>();
       set.add(source);
       sources.set(entry.url, set);
@@ -49,9 +50,13 @@ async function runPool(urls: string[]): Promise<Outcome[]> {
     while (cursor < urls.length) {
       const url = urls[cursor++];
       results.push(await verifyUrl(url, probe));
-      // Space out requests so we do not trip the rate limiting we are trying
-      // to distinguish from real breakage.
-      await sleep(PER_HOST_DELAY_MS);
+      // Global pacing delay applied by each worker after every request. This
+      // does not coordinate per host: with CONCURRENCY workers, up to
+      // CONCURRENCY requests to the same host can be in flight at once. The
+      // delay, combined with the concurrency cap, just keeps aggregate
+      // throughput low enough that we do not trip the rate limiting we are
+      // trying to distinguish from real breakage.
+      await sleep(REQUEST_DELAY_MS);
     }
   }
 
