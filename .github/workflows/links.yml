@@ -81,7 +81,7 @@ jobs:
           # it cannot live in lychee.toml; it lets lychee resolve
           # root-relative hrefs (href="/foo") in the crawled HTML instead of
           # failing to build a URL for them (see lychee.toml for details).
-          args: --config lychee.toml --root-dir "$GITHUB_WORKSPACE/dist/client" --no-progress 'dist/client/**/*.html'
+          args: --config lychee.toml --root-dir "${{ github.workspace }}/dist/client" --no-progress 'dist/client/**/*.html'
           format: json
           output: lychee-out.json
           fail: false
