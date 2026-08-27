@@ -14,6 +14,9 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "validate:links": "tsx src/scripts/validate-internal-links.ts",
+    "check:links:internal": "tsx src/scripts/check-links-internal.ts",
+    "check:links:external": "lychee --config lychee.toml 'dist/client/**/*.html'",
+    "check:links": "pnpm build && pnpm check:links:internal",
     "check:decks": "tsx src/scripts/check-decks.ts",
     "build:skills": "tsx src/scripts/build-agent-skills-index.ts"
   },
