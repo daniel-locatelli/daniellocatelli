@@ -51,20 +51,55 @@ test("a host that rejects HEAD but serves GET is alive", async () => {
   assert.match(out.reason, /GET succeeded/);
 });
 
-test("food4rhino shape: page 403 but origin root 200, so confirmed broken", async () => {
-  const url = "https://www.food4rhino.com/en/app/dloft";
+test("nanotourism/achimmenges shape: page 404 with a live origin root is confirmed broken", async () => {
+  const url = "https://www.achimmenges.net/?p=4866";
   const probe = fakeProbe({
-    [`HEAD ${url}`]: { status: 403, finalUrl: url },
-    [`GET ${url}`]: { status: 403, finalUrl: url },
-    "GET https://www.food4rhino.com/": ok("https://www.food4rhino.com/en"),
+    [`HEAD ${url}`]: { status: 404, finalUrl: url },
+    [`GET ${url}`]: { status: 404, finalUrl: url },
+    "GET https://www.achimmenges.net/": ok("https://www.achimmenges.net/"),
   });
   const out = await verifyUrl(url, probe);
   assert.equal(out.verdict, "confirmed-broken");
+  assert.equal(out.status, 404);
+});
+
+test("a 410 is confirmed broken", async () => {
+  const url = "https://example.com/removed";
+  const probe = fakeProbe({
+    [`HEAD ${url}`]: { status: 410, finalUrl: url },
+    [`GET ${url}`]: { status: 410, finalUrl: url },
+  });
+  const out = await verifyUrl(url, probe);
+  assert.equal(out.verdict, "confirmed-broken");
+});
+
+test("REGRESSION: doi.org-to-Wiley shape, a 403 with a live origin root must be unverifiable, not confirmed-broken", async () => {
+  const url = "https://doi.org/10.1002/ad.1950";
+  const probe = fakeProbe({
+    [`HEAD ${url}`]: { status: 403, finalUrl: url },
+    [`GET ${url}`]: { status: 403, finalUrl: url },
+    "GET https://doi.org/": ok("https://doi.org/"),
+  });
+  const out = await verifyUrl(url, probe);
+  assert.equal(out.verdict, "unverifiable");
   assert.equal(out.status, 403);
   assert.match(out.reason, /origin root/);
 });
 
-test("bot-walled host: page and root both refuse, so unverifiable", async () => {
+test("LinkedIn shape: a 999 bot-block with a live origin root is unverifiable", async () => {
+  const url = "https://www.linkedin.com/in/daniel-locatelli";
+  const probe = fakeProbe({
+    [`HEAD ${url}`]: { status: 999, finalUrl: url },
+    [`GET ${url}`]: { status: 999, finalUrl: url },
+    "GET https://www.linkedin.com/": ok("https://www.linkedin.com/"),
+  });
+  const out = await verifyUrl(url, probe);
+  assert.equal(out.verdict, "unverifiable");
+  assert.equal(out.status, 999);
+  assert.match(out.reason, /origin root/);
+});
+
+test("bot-walled host: page 403 and root also failing (host down or blocking) is unverifiable", async () => {
   const url = "https://walled.example/page";
   const probe = fakeProbe({
     [`HEAD ${url}`]: { status: 403, finalUrl: url },
@@ -73,6 +108,7 @@ test("bot-walled host: page and root both refuse, so unverifiable", async () => 
   });
   const out = await verifyUrl(url, probe);
   assert.equal(out.verdict, "unverifiable");
+  assert.match(out.reason, /host is likely down or blocking/);
 });
 
 test("404 is confirmed broken without probing the root", async () => {
@@ -86,16 +122,6 @@ test("404 is confirmed broken without probing the root", async () => {
   const out = await verifyUrl(url, probe);
   assert.equal(out.verdict, "confirmed-broken");
   assert.equal(rootProbed, false);
-});
-
-test("410 is confirmed broken", async () => {
-  const url = "https://example.com/removed";
-  const probe = fakeProbe({
-    [`HEAD ${url}`]: { status: 410, finalUrl: url },
-    [`GET ${url}`]: { status: 410, finalUrl: url },
-  });
-  const out = await verifyUrl(url, probe);
-  assert.equal(out.verdict, "confirmed-broken");
 });
 
 test("network error on both page and root is unverifiable, never throws", async () => {

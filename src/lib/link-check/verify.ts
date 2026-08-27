@@ -4,12 +4,25 @@
  * lychee only nominates suspects. Bot-protected hosts refuse CI runners even
  * when their pages are perfectly healthy: food4rhino.com answers 403 to a
  * default-UA HEAD on its own homepage. Reporting that as a dead link is a
- * false positive that erodes trust in the whole pipeline.
+ * false positive that erodes trust in the whole pipeline, and it is the
+ * worst failure mode for this project: it sends a human off editing content
+ * that was never broken.
  *
- * So each nominated URL is retested with a browser user agent, and when it
- * still fails we probe the origin root. A live root beside a dead page means
- * the page is genuinely gone; a dead root means the host is refusing us and
- * the result is unknowable from CI.
+ * The first real run proved this out. Every 404 it found was a genuine dead
+ * link, but every 403 and every 999 (LinkedIn's bot-block code) was a false
+ * alarm: academic publishers (doi.org, Wiley, Science.org, ResearchGate,
+ * MDPI, ETH Research Collection) and social networks like LinkedIn block
+ * automated requests to deep pages while happily serving their homepage.
+ * A live origin root beside a failing page is evidence the HOST is up, not
+ * evidence the PAGE is gone.
+ *
+ * So `confirmed-broken` is reserved for the only two statuses that are
+ * unambiguous "this resource no longer exists" signals: 404 and 410.
+ * Everything else that fails (403, 999, 429, 401, 5xx, network errors, or
+ * anything else non-2xx/3xx) becomes `unverifiable`, no matter what the
+ * origin root does. The origin-root probe is kept only to make the reason
+ * string more useful for a human doing the manual look, never to change the
+ * verdict.
  */
 
 export const BROWSER_UA =
@@ -94,25 +107,29 @@ export async function verifyUrl(url: string, probe: Probe): Promise<Outcome> {
     };
   }
 
-  // Rung 3: is the host refusing us, or is this page really gone?
+  // Neither rung produced a definitive gone signal. The status alone (403,
+  // 999, 429, 401, 5xx, or a network error) cannot distinguish "dead page"
+  // from "host is blocking us", so this can never be confirmed-broken.
+  // Probe the origin root only to make the reason string more informative.
   const root = await probe(origin, "GET");
+  const pageDetail = get.status ?? get.error ?? "no response";
   if (isSuccess(root.status)) {
     return {
       url,
-      verdict: "confirmed-broken",
+      verdict: "unverifiable",
       status: get.status,
       finalUrl: get.finalUrl,
-      reason: `page returned ${get.status ?? get.error ?? "no response"} while origin root answered ${root.status}`,
+      reason: `page returned ${pageDetail} while origin root answered ${root.status}, the host is likely blocking automated requests`,
     };
   }
 
-  const detail = get.error ?? root.error ?? "unreachable";
+  const rootDetail = root.status ?? root.error ?? "unreachable";
   return {
     url,
     verdict: "unverifiable",
     status: get.status,
     finalUrl: get.finalUrl,
-    reason: `page returned ${get.status ?? detail} and origin root also failed (${root.status ?? detail}), host is likely bot-walled or down`,
+    reason: `page returned ${pageDetail} and origin root also failed (${rootDetail}), host is likely down or blocking`,
   };
 }
 

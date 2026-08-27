@@ -85,7 +85,16 @@ function renderSection(
     }
     const files = [...(sources.get(o.url) ?? [])].sort();
     if (files.length > 0) {
-      lines.push(`  - linked from: ${files.join(", ")}`);
+      const SOURCE_DISPLAY_LIMIT = 5;
+      if (files.length > SOURCE_DISPLAY_LIMIT) {
+        const shown = files.slice(0, SOURCE_DISPLAY_LIMIT);
+        const remaining = files.length - SOURCE_DISPLAY_LIMIT;
+        lines.push(
+          `  - linked from: ${shown.join(", ")}, and ${remaining} more`,
+        );
+      } else {
+        lines.push(`  - linked from: ${files.join(", ")}`);
+      }
     }
   }
   if (title === UNVERIFIABLE_TITLE) {
