@@ -919,15 +919,29 @@ test("alive when HEAD succeeds", async () => {
   assert.equal(out.status, 200);
 });
 
-test("doi.org shape: HEAD redirects, GET succeeds, so alive", async () => {
+test("doi.org shape: a 3xx from HEAD is already success, no GET needed", async () => {
   const url = "https://doi.org/10.1016/j.autcon.2021.103571";
+  let getCalled = false;
+  const probe: Probe = async (target, method) => {
+    if (method === "GET") getCalled = true;
+    return { status: 302, finalUrl: target };
+  };
+  const out = await verifyUrl(url, probe);
+  assert.equal(out.verdict, "alive");
+  assert.equal(out.status, 302);
+  // The ladder must stop at rung 1 rather than spending a second request.
+  assert.equal(getCalled, false);
+});
+
+test("a host that rejects HEAD but serves GET is alive", async () => {
+  const url = "https://picky.example/page";
   const probe = fakeProbe({
-    [`HEAD ${url}`]: { status: 302, finalUrl: url },
-    [`GET ${url}`]: { status: 200, finalUrl: "https://linkinghub.elsevier.com/x" },
+    [`HEAD ${url}`]: { status: 405, finalUrl: url },
+    [`GET ${url}`]: { status: 200, finalUrl: url },
   });
   const out = await verifyUrl(url, probe);
-  // A 3xx is a success status, so the ladder stops at HEAD.
   assert.equal(out.verdict, "alive");
+  assert.match(out.reason, /GET succeeded/);
 });
 
 test("food4rhino shape: page 403 but origin root 200, so confirmed broken", async () => {
@@ -1155,7 +1169,7 @@ export function createProbe(timeoutMs = 25_000): Probe {
 - [ ] **Step 4: Run test to verify it passes**
 
 Run: `pnpm exec tsx --test tests/unit/link-check-verify.test.ts`
-Expected: PASS, 8 tests, 0 failures.
+Expected: PASS, 9 tests, 0 failures.
 
 - [ ] **Step 5: Sanity-check the ladder against the live network**
 
@@ -1616,4 +1630,4 @@ pnpm build
 pnpm check:links:internal
 ```
 
-Expected: all unit tests pass (34 new tests across the three new files: 16 for `paths`, 10 for `extract`, 8 for `verify`), the build succeeds, and the internal checker reports its page count with 0 errors.
+Expected: all unit tests pass (35 new tests across the three new files: 16 for `paths`, 10 for `extract`, 9 for `verify`), the build succeeds, and the internal checker reports its page count with 0 errors.
