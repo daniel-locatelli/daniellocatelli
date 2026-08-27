@@ -29,7 +29,8 @@ scheme = ["http", "https"]
 
 # Internal links are the internal checker's job; it understands _redirects.
 exclude = ["^https?://(www\\.)?daniellocatelli\\.com"]
-exclude_mail = true
+# lychee v0.24 renamed this: mail links are skipped unless include_mail is on.
+include_mail = false
 
 # Private and loopback addresses can never resolve from CI.
 exclude_private = true
