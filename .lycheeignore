@@ -1,0 +1,8 @@
+# URLs that are not real targets. Deliberately minimal.
+#
+# Do NOT add genuinely dead links here to make the run green. The pipeline is
+# report-only by design: a red external report is the deliverable, not a
+# failure. Entries here are for placeholders and examples only.
+^https?://example\.(com|org|net)
+^https?://localhost
+^https?://your-domain
