@@ -52,6 +52,27 @@ export function getDeckParentSlug(id: string): string {
 }
 
 /**
+ * Locales in which a content entry actually exists, in SUPPORTED_LOCALES
+ * order. Pass the ids of every entry in the same collection, plus the slug to
+ * look for; ids are matched with `slugOf` (getFileSlug by default, or
+ * getDeckParentSlug for decks).
+ *
+ * Routes hand the result to BaseHead as `alternateLocales` so hreflang only
+ * ever advertises locales that were actually built. Without it BaseHead falls
+ * back to all SUPPORTED_LOCALES, which makes a single-locale entry point
+ * search engines at two 404s.
+ */
+export function getAlternateLocales(
+  ids: readonly string[],
+  slug: string,
+  slugOf: (id: string) => string = getFileSlug,
+): SupportedLocale[] {
+  return SUPPORTED_LOCALES.filter((locale) =>
+    ids.some((id) => getEntryLocale(id) === locale && slugOf(id) === slug),
+  );
+}
+
+/**
  * Get the locale from a content entry ID.
  * e.g. "en/air-guitar" → "en", "projects" → defaultLocale
  *

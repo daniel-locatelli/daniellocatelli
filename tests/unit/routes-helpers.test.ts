@@ -5,6 +5,8 @@ import {
   getEntrySlug,
   getEntryLocale,
   getLocale,
+  getAlternateLocales,
+  getDeckParentSlug,
 } from "../../src/lib/routes-helpers";
 
 // IMPORTANT: Astro 5's glob() loader collapses `pt/index.md` to id `pt`
@@ -80,4 +82,64 @@ test("getLocale: returns supported locale from params", () => {
 
 test("getLocale: unknown locale falls back to default", () => {
   assert.equal(getLocale({ locale: "fr" }), "en");
+});
+
+// Regression: the deck `en/glued-timber-plates-2026-08/deck` exists only in
+// English, yet BaseHead defaulted hreflang to all SUPPORTED_LOCALES, so every
+// page advertised /pt/ and /de/ alternates that 404. getAlternateLocales
+// narrows the list to the locales an entry actually has.
+
+test("getAlternateLocales: entry present in every locale", () => {
+  const ids = [
+    "en/adaptive-grasshopper-workshop",
+    "pt/adaptive-grasshopper-workshop",
+    "de/adaptive-grasshopper-workshop",
+  ];
+  assert.deepEqual(getAlternateLocales(ids, "adaptive-grasshopper-workshop"), [
+    "en",
+    "pt",
+    "de",
+  ]);
+});
+
+test("getAlternateLocales: entry present in one locale only", () => {
+  const ids = [
+    "en/a-decade-after-unemat",
+    "pt/a-decade-after-unemat",
+    "de/a-decade-after-unemat",
+  ];
+  assert.deepEqual(getAlternateLocales(ids, "english-only-entry"), []);
+  assert.deepEqual(
+    getAlternateLocales(
+      [...ids, "en/english-only-entry"],
+      "english-only-entry",
+    ),
+    ["en"],
+  );
+});
+
+test("getAlternateLocales: result follows SUPPORTED_LOCALES order, not input order", () => {
+  const ids = ["de/x", "en/x"];
+  assert.deepEqual(getAlternateLocales(ids, "x"), ["en", "de"]);
+});
+
+test("getAlternateLocales: honours a custom slug extractor (decks)", () => {
+  const deckIds = [
+    "en/digital-futures-2026/deck",
+    "pt/digital-futures-2026/deck",
+    "de/digital-futures-2026/deck",
+    "en/glued-timber-plates-2026-08/deck",
+  ];
+  assert.deepEqual(
+    getAlternateLocales(
+      deckIds,
+      "glued-timber-plates-2026-08",
+      getDeckParentSlug,
+    ),
+    ["en"],
+  );
+  assert.deepEqual(
+    getAlternateLocales(deckIds, "digital-futures-2026", getDeckParentSlug),
+    ["en", "pt", "de"],
+  );
 });

@@ -16,6 +16,7 @@ import {
   getEntrySlug,
   getEntryLocale,
   getFileSlug,
+  getAlternateLocales,
 } from "src/lib/routes-helpers";
 import { getI18n } from "src/i18n/utils";
 import { getFileLastModified } from "src/lib/sitemap-lastmod";
@@ -132,6 +133,16 @@ const deckHref = matchingDeck
   ? `${deckBasePath}/teaching/${fileSlug}/deck`
   : null;
 
+// Content is not always translated into every locale: hreflang must advertise
+// only the locales this entry was actually built for, or it points search
+// engines at 404s.
+const alternateLocales = getAlternateLocales(
+  ((await getCollection(subpage.collection as any)) as SubpageEntry[]).map(
+    (e) => e.id,
+  ),
+  fileSlug,
+);
+
 // Next / Previous siblings: same collection and locale, ordered newest-first
 // (mirrors the listing order in [...page].astro). "Next" is the newer
 // neighbour, "Previous" the older one.
@@ -207,6 +218,7 @@ const foregroundClass = isLetterbox
     slug: slug,
     articleDate: subpage.data.DateStart,
     modifiedDate: lastModified,
+    alternateLocales,
   }}
 >
   <Fragment slot="after-head"></Fragment>

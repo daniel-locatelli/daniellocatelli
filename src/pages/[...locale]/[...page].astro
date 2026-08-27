@@ -8,7 +8,12 @@ import {
 } from "src/lib/blog-helpers";
 import Base from "@/layouts/Base.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
-import { getFileSlug, getEntrySlug, getEntryLocale } from "src/lib/routes-helpers";
+import {
+  getFileSlug,
+  getEntrySlug,
+  getEntryLocale,
+  getAlternateLocales,
+} from "src/lib/routes-helpers";
 
 type SubpageEntry =
   | CollectionEntry<"projects">
@@ -48,6 +53,14 @@ interface Props {
 
 const { page, locale } = Astro.props as Props;
 const { Content } = await render(page);
+
+// Listing pages are not always translated into every locale: hreflang must
+// advertise only the locales this page was actually built for, or it points
+// search engines at 404s.
+const alternateLocales = getAlternateLocales(
+  (await getCollection("pages")).map((p) => p.id),
+  getFileSlug(page.id),
+);
 
 // Map page slugs to their respective subpage collections
 const DATABASE_MAPPING: Record<string, string[]> = {
@@ -116,6 +129,7 @@ if (pageImage) {
     coverImage: coverUrl,
     coverAlt: page.data.CoverAlt || "Cover image",
     slug: pageSlug,
+    alternateLocales,
   }}
 >
   <div class="pt-12 pb-12">

@@ -3,7 +3,12 @@ import { getCollection, render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Slides from "@/layouts/Slides.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
-import { getEntryLocale, getDeckParentSlug, getFileSlug } from "src/lib/routes-helpers";
+import {
+  getEntryLocale,
+  getDeckParentSlug,
+  getFileSlug,
+  getAlternateLocales,
+} from "src/lib/routes-helpers";
 
 export async function getStaticPaths() {
   const decks = (await getCollection("decks")) as CollectionEntry<"decks">[];
@@ -43,9 +48,17 @@ const { Content } = await render(deck);
 const parentSlug = getDeckParentSlug(deck.id);
 
 const cover = deck.data.Cover;
-const coverUrl = typeof cover === "string" ? cover : cover?.Url ?? "";
+const coverUrl = typeof cover === "string" ? cover : (cover?.Url ?? "");
 
 const basePath = locale === siteConfig.defaultLocale ? "" : `/${locale}`;
+
+// Decks are not always translated: hreflang must advertise only the locales
+// this deck was actually built for, or it points search engines at 404s.
+const alternateLocales = getAlternateLocales(
+  (await getCollection("decks")).map((d) => d.id),
+  parentSlug,
+  getDeckParentSlug,
+);
 
 // Only link back to the teaching page if one is actually published for this
 // deck in this locale; otherwise "Exit" goes to the locale home instead of a 404.
@@ -55,7 +68,9 @@ const hasTeachingPage = (await getCollection("teaching")).some(
     getFileSlug(entry.id) === parentSlug &&
     !getFileSlug(entry.id).startsWith("_"),
 );
-const exitHref = hasTeachingPage ? `${basePath}/teaching/${parentSlug}` : basePath || "/";
+const exitHref = hasTeachingPage
+  ? `${basePath}/teaching/${parentSlug}`
+  : basePath || "/";
 ---
 
 <Slides
@@ -65,6 +80,7 @@ const exitHref = hasTeachingPage ? `${basePath}/teaching/${parentSlug}` : basePa
     coverImage: coverUrl,
     coverAlt: deck.data.CoverAlt ?? "",
     slug: `teaching/${parentSlug}/deck`,
+    alternateLocales,
   }}
   exitHref={exitHref}
 >
