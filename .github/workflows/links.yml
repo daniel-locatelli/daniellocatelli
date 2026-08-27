@@ -1,0 +1,139 @@
+name: Links
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Mondays at 06:00 UTC.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: links-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  internal:
+    name: Internal links
+    # Internal breakage is deterministic and always real, so this gates pushes.
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm build
+
+      - name: Check internal links
+        run: pnpm check:links:internal --json internal-links.json
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: internal-links-report
+          path: internal-links.json
+          if-no-files-found: ignore
+
+  external:
+    name: External links
+    # Never fails the run. External rot is reported, not enforced.
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm build
+
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.run_id }}
+          restore-keys: lychee-
+
+      - name: Nominate broken external links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --config lychee.toml --no-progress 'dist/client/**/*.html'
+          format: json
+          output: lychee-out.json
+          fail: false
+
+      - name: Verify nominations
+        id: verify
+        run: pnpm exec tsx src/scripts/verify-dead-links.ts lychee-out.json link-report.md
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: external-links-report
+          path: link-report.md
+          if-no-files-found: ignore
+
+      - name: File, update or close the report issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BROKEN: ${{ steps.verify.outputs.LINKS_CONFIRMED_BROKEN }}
+          READ_ERROR: ${{ steps.verify.outputs.LINKS_READ_ERROR }}
+        run: |
+          set -euo pipefail
+          TITLE="Broken external links"
+          EXISTING=$(gh issue list --label broken-links --state open \
+            --json number --jq '.[0].number // empty')
+
+          if [ "${READ_ERROR:-true}" = "true" ]; then
+            echo "::warning::Lychee output could not be read this run, so the broken-links issue state is being left untouched (not closed, not updated, not created). This is not evidence of a clean scan."
+            echo "Lychee output could not be read. Leaving issue state as is."
+            exit 0
+          fi
+
+          if [ "${BROKEN:-0}" -eq 0 ]; then
+            if [ -n "$EXISTING" ]; then
+              gh issue comment "$EXISTING" \
+                --body "All previously reported links now resolve. Closing."
+              gh issue close "$EXISTING"
+              echo "Closed issue #$EXISTING."
+            else
+              echo "No confirmed broken links, and no open issue. Nothing to do."
+            fi
+            exit 0
+          fi
+
+          {
+            echo "Automated report from the weekly link check."
+            echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo
+            cat link-report.md
+          } > issue-body.md
+
+          if [ -n "$EXISTING" ]; then
+            gh issue edit "$EXISTING" --body-file issue-body.md
+            echo "Updated issue #$EXISTING."
+          else
+            gh issue create --title "$TITLE" --label broken-links \
+              --body-file issue-body.md
+          fi

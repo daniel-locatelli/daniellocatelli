@@ -1,0 +1,36 @@
+# Configuration for lychee, the external link checker.
+#
+# lychee only NOMINATES suspects here. Everything it reports as failing is
+# re-tested by src/scripts/verify-dead-links.ts before anything is filed,
+# because bot-protected hosts refuse CI runners even when healthy.
+
+# Be patient and polite: these hosts are mostly small university and studio
+# sites, and hammering them is both rude and counterproductive.
+max_concurrency = 8
+timeout = 25
+max_retries = 3
+retry_wait_time = 4
+
+# Present as a browser. A default UA gets 403 from Cloudflare-fronted hosts.
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+
+# 2xx plus the redirect codes. Redirect chains are followed by lychee itself.
+accept = ["200", "206", "301", "302", "303", "307", "308"]
+
+# Cache responses so a weekly run does not re-hit every host from scratch.
+cache = true
+max_cache_age = "8d"
+
+# Only check http and https URLs. Internal and asset references (relative
+# links, images, scripts, stylesheets) are the internal checker's job, not
+# lychee's; without this, lychee nominates hundreds of local paths that the
+# verifier then rejects as malformed, drowning the report.
+scheme = ["http", "https"]
+
+# Internal links are the internal checker's job; it understands _redirects.
+exclude = ["^https?://(www\\.)?daniellocatelli\\.com"]
+exclude_mail = true
+
+# Private and loopback addresses can never resolve from CI.
+exclude_private = true
+exclude_loopback = true

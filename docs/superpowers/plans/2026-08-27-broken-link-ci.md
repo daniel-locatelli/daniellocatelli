@@ -360,7 +360,7 @@ export function followRedirects(
 - [ ] **Step 4: Run test to verify it passes**
 
 Run: `pnpm exec tsx --test tests/unit/link-check-paths.test.ts`
-Expected: PASS, 16 tests, 0 failures.
+Expected: PASS, 17 tests, 0 failures.
 
 - [ ] **Step 5: Format and commit**
 
@@ -1630,4 +1630,4 @@ pnpm build
 pnpm check:links:internal
 ```
 
-Expected: all unit tests pass (35 new tests across the three new files: 16 for `paths`, 10 for `extract`, 9 for `verify`), the build succeeds, and the internal checker reports its page count with 0 errors.
+Expected: all unit tests pass (36 new tests across the three new files: 17 for `paths`, 10 for `extract`, 9 for `verify`), the build succeeds, and the internal checker reports its page count with 0 errors.
