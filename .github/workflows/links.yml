@@ -98,11 +98,18 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           BROKEN: ${{ steps.verify.outputs.LINKS_CONFIRMED_BROKEN }}
+          READ_ERROR: ${{ steps.verify.outputs.LINKS_READ_ERROR }}
         run: |
           set -euo pipefail
           TITLE="Broken external links"
           EXISTING=$(gh issue list --label broken-links --state open \
             --json number --jq '.[0].number // empty')
+
+          if [ "${READ_ERROR:-true}" = "true" ]; then
+            echo "::warning::Lychee output could not be read this run, so the broken-links issue state is being left untouched (not closed, not updated, not created). This is not evidence of a clean scan."
+            echo "Lychee output could not be read. Leaving issue state as is."
+            exit 0
+          fi
 
           if [ "${BROKEN:-0}" -eq 0 ]; then
             if [ -n "$EXISTING" ]; then

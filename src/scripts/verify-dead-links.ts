@@ -99,7 +99,12 @@ function renderSection(
   return lines.join("\n");
 }
 
-async function readLycheeOutput(inputPath: string): Promise<unknown> {
+interface LycheeReadResult {
+  data: unknown;
+  readError: boolean;
+}
+
+async function readLycheeOutput(inputPath: string): Promise<LycheeReadResult> {
   let raw: string;
   try {
     raw = await readFile(inputPath, "utf8");
@@ -107,23 +112,23 @@ async function readLycheeOutput(inputPath: string): Promise<unknown> {
     console.warn(
       `Could not read lychee output at ${inputPath} (${(error as Error).message}); treating as zero nominations.`,
     );
-    return { fail_map: {} };
+    return { data: { fail_map: {} }, readError: true };
   }
 
   if (raw.trim() === "") {
     console.warn(
       `Lychee output at ${inputPath} was empty; treating as zero nominations.`,
     );
-    return { fail_map: {} };
+    return { data: { fail_map: {} }, readError: true };
   }
 
   try {
-    return JSON.parse(raw);
+    return { data: JSON.parse(raw), readError: false };
   } catch (error) {
     console.warn(
       `Lychee output at ${inputPath} was not valid JSON (${(error as Error).message}); treating as zero nominations.`,
     );
-    return { fail_map: {} };
+    return { data: { fail_map: {} }, readError: true };
   }
 }
 
@@ -136,7 +141,8 @@ async function main() {
     process.exit(2);
   }
 
-  const sources = collectFailures(await readLycheeOutput(inputPath));
+  const { data: lycheeData, readError } = await readLycheeOutput(inputPath);
+  const sources = collectFailures(lycheeData);
   const urls = [...sources.keys()];
 
   console.log(`lychee nominated ${urls.length} URLs; verifying each one.`);
@@ -147,6 +153,13 @@ async function main() {
   const alive = outcomes.filter((o) => o.verdict === "alive");
 
   const body = [
+    ...(readError
+      ? [
+          "WARNING: lychee's output could not be read (missing, empty, or unparseable).",
+          "The counts below reflect zero nominations by fallback, not a genuine clean scan.",
+          "",
+        ]
+      : []),
     `Verified ${urls.length} URLs nominated by lychee.`,
     "",
     `- ${broken.length} confirmed broken`,
@@ -163,7 +176,7 @@ async function main() {
   if (process.env.GITHUB_OUTPUT) {
     await appendFile(
       process.env.GITHUB_OUTPUT,
-      `LINKS_CONFIRMED_BROKEN=${broken.length}\n`,
+      `LINKS_CONFIRMED_BROKEN=${broken.length}\nLINKS_READ_ERROR=${readError}\n`,
       "utf8",
     );
   }
