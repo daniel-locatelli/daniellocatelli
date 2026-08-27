@@ -19,7 +19,13 @@ accept = ["200", "206", "301", "302", "303", "307", "308"]
 
 # Cache responses so a weekly run does not re-hit every host from scratch.
 cache = true
-max_cache_age = "2d"
+max_cache_age = "8d"
+
+# Only check http and https URLs. Internal and asset references (relative
+# links, images, scripts, stylesheets) are the internal checker's job, not
+# lychee's; without this, lychee nominates hundreds of local paths that the
+# verifier then rejects as malformed, drowning the report.
+scheme = ["http", "https"]
 
 # Internal links are the internal checker's job; it understands _redirects.
 exclude = ["^https?://(www\\.)?daniellocatelli\\.com"]

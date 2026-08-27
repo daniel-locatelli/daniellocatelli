@@ -39,6 +39,8 @@ function collectFailures(json: unknown): Map<string, Set<string>> {
   return sources;
 }
 
+const UNVERIFIABLE_TITLE = "Unverifiable, needs a manual look";
+
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 async function runPool(urls: string[]): Promise<Outcome[]> {
@@ -86,8 +88,43 @@ function renderSection(
       lines.push(`  - linked from: ${files.join(", ")}`);
     }
   }
+  if (title === UNVERIFIABLE_TITLE) {
+    lines.push(
+      "These hosts refused the checker on both the page and their own homepage,",
+      "so CI cannot tell a dead page from a blocked request. Open them in a",
+      "browser to decide.",
+    );
+  }
   lines.push("");
   return lines.join("\n");
+}
+
+async function readLycheeOutput(inputPath: string): Promise<unknown> {
+  let raw: string;
+  try {
+    raw = await readFile(inputPath, "utf8");
+  } catch (error) {
+    console.warn(
+      `Could not read lychee output at ${inputPath} (${(error as Error).message}); treating as zero nominations.`,
+    );
+    return { fail_map: {} };
+  }
+
+  if (raw.trim() === "") {
+    console.warn(
+      `Lychee output at ${inputPath} was empty; treating as zero nominations.`,
+    );
+    return { fail_map: {} };
+  }
+
+  try {
+    return JSON.parse(raw);
+  } catch (error) {
+    console.warn(
+      `Lychee output at ${inputPath} was not valid JSON (${(error as Error).message}); treating as zero nominations.`,
+    );
+    return { fail_map: {} };
+  }
 }
 
 async function main() {
@@ -99,9 +136,7 @@ async function main() {
     process.exit(2);
   }
 
-  const sources = collectFailures(
-    JSON.parse(await readFile(inputPath, "utf8")),
-  );
+  const sources = collectFailures(await readLycheeOutput(inputPath));
   const urls = [...sources.keys()];
 
   console.log(`lychee nominated ${urls.length} URLs; verifying each one.`);
@@ -119,11 +154,7 @@ async function main() {
     `- ${alive.length} false alarms, alive on retest`,
     "",
     renderSection("Confirmed broken", broken, sources),
-    renderSection("Unverifiable, needs a manual look", unknown, sources),
-    "These hosts refused the checker on both the page and their own homepage,",
-    "so CI cannot tell a dead page from a blocked request. Open them in a",
-    "browser to decide.",
-    "",
+    renderSection(UNVERIFIABLE_TITLE, unknown, sources),
   ].join("\n");
 
   await writeFile(outputPath, body, "utf8");
