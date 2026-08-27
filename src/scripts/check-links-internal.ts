@@ -80,9 +80,23 @@ async function main() {
   const problems: Problem[] = [];
 
   for (const file of htmlFiles) {
-    const html = await readFile(join(DIST, file), "utf8");
+    let refs: ReturnType<typeof extractRefs>;
+    try {
+      const html = await readFile(join(DIST, file), "utf8");
+      refs = extractRefs(html);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      problems.push({
+        file,
+        href: "",
+        kind: "file",
+        reason: `failed to read or parse: ${message}`,
+        severity: "error",
+      });
+      continue;
+    }
 
-    for (const ref of extractRefs(html)) {
+    for (const ref of refs) {
       const result = classifyRef(ref, ORIGIN);
       if (result.type !== "internal") continue;
 
