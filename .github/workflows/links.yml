@@ -3,6 +3,8 @@ name: Links
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   schedule:
     # Mondays at 06:00 UTC.
     - cron: "0 6 * * 1"
@@ -50,7 +52,10 @@ jobs:
   external:
     name: External links
     # Never fails the run. External rot is reported, not enforced.
-    if: github.event_name != 'push'
+    # Named events rather than "not push": a pull_request run would
+    # otherwise sweep every external link on every PR and file issues from
+    # a branch, which is the weekly job's work, not a review gate's.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: read
