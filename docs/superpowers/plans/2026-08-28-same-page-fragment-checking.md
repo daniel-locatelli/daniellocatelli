@@ -18,6 +18,13 @@
 - No em dashes in any prose, including code comments and commit messages. Use commas, colons, semicolons, or parentheses.
 - Comments explain _why_, matching the density and voice already in `src/lib/link-check/extract.ts`. Do not add narrating comments.
 - The full checker is `pnpm check:links` (builds first) or `pnpm check:links:internal` against an existing `dist/client`. A `dist/client` already exists in the working tree, so `check:links:internal` can be run directly.
+- **Baseline for the real build, measured 2026-08-28:** `pnpm check:links:internal`
+  reports `Checked 15446 references across 178 pages: 0 errors, 9 warnings.`
+  Those 9 warnings are pre-existing `[anchor] https://daniellocatelli.com`
+  absolute-self-origin links, unrelated to this work. Do not chase them, and
+  do not treat them as a regression. Fixture runs in
+  `tests/unit/link-check-runner.test.ts` have no such links and correctly
+  expect 0 warnings.
 - Every task ends green. `pnpm test:unit` must pass before each commit.
 
 ---
@@ -299,7 +306,7 @@ Expected: PASS, all tests in `link-check-extract.test.ts` green.
 - [ ] **Step 8: Verify the checker still behaves identically**
 
 Run: `pnpm check:links:internal`
-Expected: `0 errors, 0 warnings` and the same reference total as before the change (15446).
+Expected: `0 errors, 9 warnings` and the same reference total as before the change (15446).
 
 - [ ] **Step 9: Format and commit**
 
@@ -439,7 +446,7 @@ Expected: PASS.
 - [ ] **Step 6: Verify against the real build**
 
 Run: `pnpm check:links:internal`
-Expected: still `0 errors, 0 warnings`. The reference total rises from 15446 to roughly 16313, because 867 distinct `<use>` references are now extracted. They are still classified as `skip` at this point, so nothing new is validated yet.
+Expected: still `0 errors, 9 warnings`. The reference total rises from 15446 to roughly 16313, because 867 distinct `<use>` references are now extracted. They are still classified as `skip` at this point, so nothing new is validated yet.
 
 - [ ] **Step 7: Format and commit**
 
@@ -613,7 +620,7 @@ Expected: PASS, both tests green.
 - [ ] **Step 6: Confirm the default path is unchanged**
 
 Run: `pnpm check:links:internal`
-Expected: unchanged output, still `0 errors, 0 warnings` against the real build.
+Expected: unchanged output, still `0 errors, 9 warnings` against the real build.
 
 - [ ] **Step 7: Format and commit**
 
@@ -824,7 +831,7 @@ Expected: PASS, all tests in both files green.
 - [ ] **Step 7: Verify against the real build**
 
 Run: `pnpm check:links:internal`
-Expected: `0 errors, 0 warnings`. Every `<use>` and every same-page anchor in the current build resolves, so this must stay green. If it does not, the failures are real and must be reported rather than worked around.
+Expected: `0 errors, 9 warnings`. Every `<use>` and every same-page anchor in the current build resolves, so this must stay green. If it does not, the failures are real and must be reported rather than worked around.
 
 - [ ] **Step 8: Format and commit**
 
@@ -985,7 +992,7 @@ Expected: PASS, every test in both link-check test files green.
 - [ ] **Step 7: Verify the table against the real build**
 
 Run: `pnpm check:links:internal`
-Expected: `0 errors, 0 warnings`, roughly 16313 distinct references, and a table in which `link[rel=preload][imagesrcset]`, `video[poster]`, `link[rel=modulepreload]`, `object[data]`, `embed[src]` and `image[href]` sit at zero while every other row is non-zero. `use[href]` should read 1346.
+Expected: `0 errors, 9 warnings`, roughly 16313 distinct references, and a table in which `link[rel=preload][imagesrcset]`, `video[poster]`, `link[rel=modulepreload]`, `object[data]`, `embed[src]` and `image[href]` sit at zero while every other row is non-zero. `use[href]` should read 1346.
 
 - [ ] **Step 8: Format and commit**
 
@@ -1060,7 +1067,7 @@ git commit -m "docs(content): note fragment checking in the site self-descriptio
 pnpm build && pnpm check:links:internal && pnpm test:unit
 ```
 
-Expected: build succeeds, checker reports `0 errors, 0 warnings`, all unit
+Expected: build succeeds, checker reports `0 errors, 9 warnings`, all unit
 tests pass.
 
 - [ ] **Step 7: Report back, do not act unilaterally**
