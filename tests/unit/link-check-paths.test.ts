@@ -4,6 +4,7 @@ import {
   normalizePath,
   fileToUrlPath,
   buildTargetSet,
+  buildTargetMap,
   parseRedirects,
   buildRedirectMap,
   followRedirects,
@@ -54,6 +55,24 @@ test("buildTargetSet: contains every emitted path", () => {
   assert.ok(set.has("/projects"));
   assert.ok(set.has("/documents/cv.pdf"));
   assert.equal(set.has("/missing"), false);
+});
+
+test("buildTargetMap: maps each served path to the file that serves it", () => {
+  const map = buildTargetMap([
+    "index.html",
+    "projects/index.html",
+    "documents/cv.pdf",
+  ]);
+  assert.equal(map.get("/"), "index.html");
+  assert.equal(map.get("/projects"), "projects/index.html");
+  assert.equal(map.get("/documents/cv.pdf"), "documents/cv.pdf");
+  assert.equal(map.get("/missing"), undefined);
+});
+
+test("buildTargetMap: exposes non-HTML targets as non-HTML", () => {
+  const map = buildTargetMap(["documents/cv.pdf", "research/index.html"]);
+  assert.equal(map.get("/documents/cv.pdf")?.endsWith(".html"), false);
+  assert.equal(map.get("/research")?.endsWith(".html"), true);
 });
 
 test("parseRedirects: parses the three-column astro format", () => {

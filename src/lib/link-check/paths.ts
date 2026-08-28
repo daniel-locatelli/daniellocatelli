@@ -48,9 +48,24 @@ export function fileToUrlPath(relFile: string): string {
   return normalizePath("/" + withoutIndex);
 }
 
+/**
+ * Map every URL path the built site can serve to the dist-relative file that
+ * serves it. The file matters as well as the path: a fragment can only be
+ * resolved against a target that is HTML, so the checker keys that decision
+ * off the served file's type rather than guessing from the URL string.
+ */
+export function buildTargetMap(relFiles: string[]): Map<string, string> {
+  const map = new Map<string, string>();
+  for (const relFile of relFiles) {
+    const urlPath = fileToUrlPath(relFile);
+    if (!map.has(urlPath)) map.set(urlPath, relFile.split("\\").join("/"));
+  }
+  return map;
+}
+
 /** Build the set of every URL path the built site can serve. */
 export function buildTargetSet(relFiles: string[]): Set<string> {
-  return new Set(relFiles.map(fileToUrlPath));
+  return new Set(buildTargetMap(relFiles).keys());
 }
 
 /**

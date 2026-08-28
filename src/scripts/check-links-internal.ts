@@ -13,7 +13,7 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join, relative, sep } from "node:path";
 import {
   buildRedirectMap,
-  buildTargetSet,
+  buildTargetMap,
   followRedirects,
   parseRedirects,
 } from "../lib/link-check/paths";
@@ -51,7 +51,7 @@ async function main() {
 
   const allFiles = await walk(DIST);
   const relFiles = allFiles.map((f) => relative(DIST, f).split(sep).join("/"));
-  const targets = buildTargetSet(relFiles);
+  const targets = buildTargetMap(relFiles);
 
   const redirectsFile = relFiles.includes("_redirects")
     ? await readFile(join(DIST, "_redirects"), "utf8")
@@ -61,19 +61,20 @@ async function main() {
   const htmlFiles = relFiles.filter((f) => f.endsWith(".html"));
   const idCache = new Map<string, Set<string>>();
 
-  async function idsFor(urlPath: string): Promise<Set<string>> {
-    const cached = idCache.get(urlPath);
+  async function idsFor(relFile: string): Promise<Set<string>> {
+    const cached = idCache.get(relFile);
     if (cached) return cached;
 
-    const rel =
-      urlPath === "/" ? "index.html" : `${urlPath.slice(1)}/index.html`;
     let ids = new Set<string>();
     try {
-      ids = collectIds(await readFile(join(DIST, rel), "utf8"));
-    } catch {
-      // Target is not an HTML page (an asset, say). No ids to offer.
+      ids = collectIds(await readFile(join(DIST, relFile), "utf8"));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      throw new Error(
+        `failed to read ${relFile} for id collection: ${message}`,
+      );
     }
-    idCache.set(urlPath, ids);
+    idCache.set(relFile, ids);
     return ids;
   }
 
@@ -142,8 +143,12 @@ async function main() {
         resolved = hop.path;
       }
 
-      if (result.fragment) {
-        const ids = await idsFor(resolved);
+      // A fragment can only be resolved against HTML. Anything else (a PDF
+      // with #page=2, an image, a download) has no ids to match, so the
+      // fragment is the target format's business, not ours.
+      const targetFile = targets.get(resolved);
+      if (result.fragment && targetFile?.endsWith(".html")) {
+        const ids = await idsFor(targetFile);
         if (!ids.has(result.fragment)) {
           problems.push({
             file,
