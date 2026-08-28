@@ -26,6 +26,9 @@ import {
 const DIST = join(import.meta.dirname, "..", "..", "dist", "client");
 const ORIGIN = "https://daniellocatelli.com";
 
+/** Served by the Worker, not by a file in dist/client. */
+const DYNAMIC_PREFIXES = ["/api/", "/404"];
+
 interface Problem {
   file: string;
   href: string;
@@ -115,6 +118,10 @@ async function main() {
       }
 
       let resolved = result.path;
+
+      if (DYNAMIC_PREFIXES.some((prefix) => resolved.startsWith(prefix))) {
+        continue;
+      }
 
       if (!targets.has(resolved)) {
         const hop = followRedirects(resolved, redirects);
