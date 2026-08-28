@@ -44,6 +44,13 @@ export type Classified =
 const SKIP_SCHEMES = ["mailto:", "tel:", "javascript:", "data:"];
 
 /**
+ * Kinds for which an absolute self-origin URL is correct rather than a smell.
+ * Search engines want a fully-qualified canonical and hreflang; everything
+ * else should be root-relative so preview deploys resolve.
+ */
+const ABSOLUTE_OK: RefKind[] = ["canonical", "alternate"];
+
+/**
  * Split a srcset candidate list into its URLs, discarding `2x` / `640w`
  * descriptors.
  *
@@ -189,9 +196,7 @@ export function classifyRef(ref: Ref, siteOrigin: string): Classified {
 
     if (url.origin !== new URL(siteOrigin).origin) return { type: "external" };
 
-    // Absolute self-origin URLs are correct for canonical and alternate tags,
-    // so only an <a> earns the "should be relative" flag.
-    absoluteSelfLink = ref.kind === "anchor";
+    absoluteSelfLink = !ABSOLUTE_OK.includes(ref.kind);
     pathAndFragment = url.pathname + url.hash;
   }
 

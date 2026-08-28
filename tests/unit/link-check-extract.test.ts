@@ -208,3 +208,45 @@ test("parseSrcset: empty and whitespace-only values yield nothing", () => {
   assert.deepEqual(parseSrcset(""), []);
   assert.deepEqual(parseSrcset("   ,  , "), []);
 });
+
+test("classifyRef: an asset on our own origin is internal and flagged", () => {
+  const result = classifyRef(
+    { kind: "img", href: "https://daniellocatelli.com/_astro/a.webp" },
+    ORIGIN,
+  );
+  assert.deepEqual(result, {
+    type: "internal",
+    path: "/_astro/a.webp",
+    fragment: null,
+    absoluteSelfLink: true,
+  });
+});
+
+test("classifyRef: an off-origin asset is external", () => {
+  const result = classifyRef(
+    { kind: "script", href: "https://cdn.example.com/x.js" },
+    ORIGIN,
+  );
+  assert.deepEqual(result, { type: "external" });
+});
+
+test("classifyRef: a data uri asset is skipped", () => {
+  const result = classifyRef(
+    { kind: "img", href: "data:image/svg+xml;base64,PHN2Zz48L3N2Zz4=" },
+    ORIGIN,
+  );
+  assert.deepEqual(result, { type: "skip" });
+});
+
+test("classifyRef: an svg sprite fragment keeps path and fragment apart", () => {
+  const result = classifyRef(
+    { kind: "img", href: "/icons/sprite.svg#arrow" },
+    ORIGIN,
+  );
+  assert.deepEqual(result, {
+    type: "internal",
+    path: "/icons/sprite.svg",
+    fragment: "arrow",
+    absoluteSelfLink: false,
+  });
+});
