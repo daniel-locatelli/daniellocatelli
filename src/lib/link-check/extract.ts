@@ -28,6 +28,42 @@ export type Classified =
 
 const SKIP_SCHEMES = ["mailto:", "tel:", "javascript:", "data:"];
 
+/**
+ * Split a srcset candidate list into its URLs, discarding `2x` / `640w`
+ * descriptors.
+ *
+ * Follows the WHATWG candidate-parsing shape rather than splitting on commas:
+ * a URL is a run of non-whitespace characters, so a `data:` URI containing
+ * commas survives as one candidate instead of being torn into phantom paths.
+ */
+export function parseSrcset(value: string): string[] {
+  const urls: string[] = [];
+  let i = 0;
+
+  while (i < value.length) {
+    while (i < value.length && /[\s,]/.test(value[i])) i++;
+    if (i >= value.length) break;
+
+    const start = i;
+    while (i < value.length && !/\s/.test(value[i])) i++;
+    const token = value.slice(start, i);
+
+    if (token.endsWith(",")) {
+      // No descriptor: the comma terminated the candidate directly.
+      const url = token.replace(/,+$/, "");
+      if (url !== "") urls.push(url);
+      continue;
+    }
+
+    if (token !== "") urls.push(token);
+
+    // Skip the descriptor, which never contains a comma.
+    while (i < value.length && value[i] !== ",") i++;
+  }
+
+  return urls;
+}
+
 export function extractRefs(html: string): Ref[] {
   const { document } = parseHTML(html);
   const refs: Ref[] = [];

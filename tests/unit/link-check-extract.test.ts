@@ -4,6 +4,7 @@ import {
   extractRefs,
   classifyRef,
   collectIds,
+  parseSrcset,
 } from "../../src/lib/link-check/extract";
 
 const ORIGIN = "https://daniellocatelli.com";
@@ -122,4 +123,45 @@ test("collectIds: returns every element id on the page", () => {
   const ids = collectIds(PAGE);
   assert.ok(ids.has("method"));
   assert.equal(ids.has("nope"), false);
+});
+
+test("parseSrcset: single url with no descriptor", () => {
+  assert.deepEqual(parseSrcset("/_astro/a.webp"), ["/_astro/a.webp"]);
+});
+
+test("parseSrcset: multiple candidates with width descriptors", () => {
+  assert.deepEqual(
+    parseSrcset("/_astro/a.webp 640w, /_astro/b.webp 1280w"),
+    ["/_astro/a.webp", "/_astro/b.webp"],
+  );
+});
+
+test("parseSrcset: density descriptors and irregular whitespace", () => {
+  assert.deepEqual(
+    parseSrcset("  /a.png 1x ,\n  /b.png   2x  "),
+    ["/a.png", "/b.png"],
+  );
+});
+
+test("parseSrcset: a url containing commas is one candidate", () => {
+  // Commas are legal in URLs. A naive split(",") invents phantom paths here.
+  assert.deepEqual(
+    parseSrcset("data:image/png;base64,iVBORw0,AAA 1x, /b.png 2x"),
+    ["data:image/png;base64,iVBORw0,AAA", "/b.png"],
+  );
+});
+
+test("parseSrcset: candidate with a trailing comma and no descriptor", () => {
+  assert.deepEqual(parseSrcset("/a.png, /b.png 2x"), ["/a.png", "/b.png"]);
+});
+
+test("parseSrcset: a comma inside a url does not split the candidate", () => {
+  // WHATWG: the URL is the leading run of non-whitespace characters, so the
+  // embedded comma belongs to the URL. A naive split(",") would invent /b.png.
+  assert.deepEqual(parseSrcset("/a.png,/b.png 2x"), ["/a.png,/b.png"]);
+});
+
+test("parseSrcset: empty and whitespace-only values yield nothing", () => {
+  assert.deepEqual(parseSrcset(""), []);
+  assert.deepEqual(parseSrcset("   ,  , "), []);
 });
