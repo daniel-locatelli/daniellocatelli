@@ -37,6 +37,19 @@ Out of scope:
 - CSS-referenced assets (`url()` inside stylesheets). The checker parses
   HTML, not CSS. If a background image rots, this will not catch it.
 - `<a href>` behaviour, which is unchanged.
+- `link[rel=modulepreload]`, `object[data]`, `embed[src]`, and SVG `<image
+  href>`. All are zero occurrences in the current build, so there is nothing
+  to validate today. `modulepreload` is the one worth watching: Astro does
+  not emit it now, but a bundler change could start it, and it would then
+  ship unchecked until someone widens the selector table.
+- Paths served by the Worker rather than by a file in `dist/client`. Routes
+  with `prerender = false` (`src/pages/404.astro`, `src/pages/api/*.ts`)
+  never land in `dist/client`; they are matched at request time by the
+  Worker, so the checker cannot resolve them against the target map without
+  producing a false error. `check-links-internal.ts` exempts paths that match
+  a listed `DYNAMIC_ROUTES` entry exactly or sit underneath it as a path
+  segment (currently `/api` and `/404`) before they are reported, rather than
+  treating a Worker-only route as a broken link.
 
 ## Key decisions
 
@@ -104,7 +117,7 @@ Extraction becomes table-driven:
 | `img[srcset]`, `source[srcset]` | `srcset` | `img` |
 | `script[src]` | `src` | `script` |
 | `link[rel~=stylesheet]` | `href` | `stylesheet` |
-| `link[rel~=icon]` | `href` | `icon` |
+| `link[rel~=icon]`, `link[rel~=apple-touch-icon]` | `href` | `icon` |
 | `link[rel=manifest]` | `href` | `manifest` |
 | `link[rel=preload]` | `href`, `imagesrcset` | `preload` |
 | `video[src]`, `audio[src]`, `source[src]` | `src` | `media` |
@@ -115,9 +128,16 @@ Extraction becomes table-driven:
 carries `srcset` and is an image, while inside `<video>` or `<audio>` it
 carries `src` and is media. The attribute, not the parent, decides the kind.
 
-`rel~=` is load-bearing. Favicons ship as `rel="apple-touch-icon"` and
-`rel="shortcut icon"`, so the icon rule needs token matching; and a
-`rel=canonical` element must not also match the icon rule.
+`rel~=` is load-bearing for `rel="shortcut icon"`, where the icon token sits
+alongside another word in the same attribute and only token matching finds
+it. It does not, however, make one selector cover `apple-touch-icon` too:
+`rel~=icon` matches a token that is exactly `icon`, and `apple-touch-icon` is
+a single token that is never equal to `icon`, hyphens and all, so `rel~=icon`
+alone never matches it. That is why the icon rule is two selector arms,
+`link[rel~=icon], link[rel~=apple-touch-icon]`, not one; do not simplify it
+down to the first arm on the assumption that token matching already covers
+the second. A `rel=canonical` element still cannot also match either arm,
+since `canonical` is neither token.
 
 Two new pieces:
 

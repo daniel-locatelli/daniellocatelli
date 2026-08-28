@@ -26,6 +26,12 @@ import {
 const DIST = join(import.meta.dirname, "..", "..", "dist", "client");
 const ORIGIN = "https://daniellocatelli.com";
 
+/** Served by the Worker, not by a file in dist/client. */
+const DYNAMIC_ROUTES = ["/api", "/404"];
+
+const isDynamicRoute = (path: string): boolean =>
+  DYNAMIC_ROUTES.some((route) => path === route || path.startsWith(`${route}/`));
+
 interface Problem {
   file: string;
   href: string;
@@ -79,6 +85,7 @@ async function main() {
   }
 
   const problems: Problem[] = [];
+  let refCount = 0;
 
   for (const file of htmlFiles) {
     let refs: ReturnType<typeof extractRefs>;
@@ -97,6 +104,8 @@ async function main() {
       continue;
     }
 
+    refCount += refs.length;
+
     for (const ref of refs) {
       const result = classifyRef(ref, ORIGIN);
       if (result.type !== "internal") continue;
@@ -112,6 +121,10 @@ async function main() {
       }
 
       let resolved = result.path;
+
+      if (isDynamicRoute(resolved)) {
+        continue;
+      }
 
       if (!targets.has(resolved)) {
         const hop = followRedirects(resolved, redirects);
@@ -181,7 +194,8 @@ async function main() {
   }
 
   console.log(
-    `\nChecked ${htmlFiles.length} pages: ${errors.length} errors, ${warnings.length} warnings.`,
+    `\nChecked ${refCount} references across ${htmlFiles.length} pages: ` +
+      `${errors.length} errors, ${warnings.length} warnings.`,
   );
 
   if (jsonPath) {

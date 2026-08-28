@@ -32,6 +32,8 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - run: pnpm test:unit
+
       - run: pnpm build
 
       - name: Check internal links
