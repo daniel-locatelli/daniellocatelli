@@ -32,16 +32,19 @@ Out of scope:
 
 - Off-origin assets (fonts, CDN scripts). These classify as `external` and
   are already lychee's job; lychee crawls `src` attributes today.
-- Asset *content*. The check is existence only. Whether a file is a valid
+- Asset _content_. The check is existence only. Whether a file is a valid
   image, non-empty, or the right MIME type is not asked.
 - CSS-referenced assets (`url()` inside stylesheets). The checker parses
   HTML, not CSS. If a background image rots, this will not catch it.
 - `<a href>` behaviour, which is unchanged.
 - `link[rel=modulepreload]`, `object[data]`, `embed[src]`, and SVG `<image
-  href>`. All are zero occurrences in the current build, so there is nothing
+href>`. All are zero occurrences in the current build, so there is nothing
   to validate today. `modulepreload` is the one worth watching: Astro does
   not emit it now, but a bundler change could start it, and it would then
   ship unchecked until someone widens the selector table.
+  **Superseded by `2026-08-28-svg-sprite-fragment-checking-design.md`**,
+  which adds all four rows once per-row match counts make a permanently
+  zero row visible rather than silently dead.
 - Paths served by the Worker rather than by a file in `dist/client`. Routes
   with `prerender = false` (`src/pages/404.astro`, `src/pages/api/*.ts`)
   never land in `dist/client`; they are matched at request time by the
@@ -108,21 +111,21 @@ The only file with substantial new logic.
 
 Extraction becomes table-driven:
 
-| selector | attribute | kind |
-| --- | --- | --- |
-| `a[href]` | `href` | `anchor` |
-| `link[rel=canonical]` | `href` | `canonical` |
-| `link[rel=alternate][hreflang]` | `href` | `alternate` |
-| `img[src]` | `src` | `img` |
-| `img[srcset]`, `source[srcset]` | `srcset` | `img` |
-| `script[src]` | `src` | `script` |
-| `link[rel~=stylesheet]` | `href` | `stylesheet` |
-| `link[rel~=icon]`, `link[rel~=apple-touch-icon]` | `href` | `icon` |
-| `link[rel=manifest]` | `href` | `manifest` |
-| `link[rel=preload]` | `href`, `imagesrcset` | `preload` |
-| `video[src]`, `audio[src]`, `source[src]` | `src` | `media` |
-| `video[poster]` | `poster` | `poster` |
-| `iframe[src]` | `src` | `iframe` |
+| selector                                         | attribute             | kind         |
+| ------------------------------------------------ | --------------------- | ------------ |
+| `a[href]`                                        | `href`                | `anchor`     |
+| `link[rel=canonical]`                            | `href`                | `canonical`  |
+| `link[rel=alternate][hreflang]`                  | `href`                | `alternate`  |
+| `img[src]`                                       | `src`                 | `img`        |
+| `img[srcset]`, `source[srcset]`                  | `srcset`              | `img`        |
+| `script[src]`                                    | `src`                 | `script`     |
+| `link[rel~=stylesheet]`                          | `href`                | `stylesheet` |
+| `link[rel~=icon]`, `link[rel~=apple-touch-icon]` | `href`                | `icon`       |
+| `link[rel=manifest]`                             | `href`                | `manifest`   |
+| `link[rel=preload]`                              | `href`, `imagesrcset` | `preload`    |
+| `video[src]`, `audio[src]`, `source[src]`        | `src`                 | `media`      |
+| `video[poster]`                                  | `poster`              | `poster`     |
+| `iframe[src]`                                    | `src`                 | `iframe`     |
 
 `<source>` appears in the table twice on purpose: inside `<picture>` it
 carries `srcset` and is an image, while inside `<video>` or `<audio>` it
