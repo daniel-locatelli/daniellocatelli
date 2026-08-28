@@ -281,3 +281,30 @@ test("classifyRef: an svg sprite fragment keeps path and fragment apart", () => 
     absoluteSelfLink: false,
   });
 });
+
+test("extractRefs: svg sprite use references are collected", () => {
+  const html = `<svg><use href="#ai:mdi:github"></use></svg>`;
+  assert.deepEqual(extractRefs(html).refs, [
+    { kind: "use", href: "#ai:mdi:github" },
+  ]);
+});
+
+test("extractRefs: xlink:href on use is not collected", () => {
+  // Pins a documented exclusion. astro-icon emits plain href; nothing in
+  // the pipeline produces the legacy form, so the checker does not chase it.
+  const html = `<svg><use xlink:href="#legacy"></use></svg>`;
+  assert.deepEqual(extractRefs(html).refs, []);
+});
+
+test("extractRefs: the four speculative rows are collected", () => {
+  const html = `<link rel="modulepreload" href="/_astro/chunk.js" />
+<object data="/doc.pdf"></object>
+<embed src="/movie.swf" />
+<svg><image href="/raster.png" /></svg>`;
+  assert.deepEqual(extractRefs(html).refs, [
+    { kind: "img", href: "/raster.png" },
+    { kind: "modulepreload", href: "/_astro/chunk.js" },
+    { kind: "embed", href: "/doc.pdf" },
+    { kind: "embed", href: "/movie.swf" },
+  ]);
+});

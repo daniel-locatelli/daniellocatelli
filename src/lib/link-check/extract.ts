@@ -22,9 +22,12 @@ export type RefKind =
   | "icon"
   | "manifest"
   | "preload"
+  | "modulepreload"
   | "media"
   | "poster"
-  | "iframe";
+  | "iframe"
+  | "embed"
+  | "use";
 
 export interface Ref {
   kind: RefKind;
@@ -111,6 +114,13 @@ interface Source {
  * `<source>` appears twice on purpose: inside `<picture>` it carries srcset
  * and is an image, inside `<video>`/`<audio>` it carries src and is media.
  * The attribute decides the kind, not the parent element.
+ *
+ * The last four rows match nothing in the current build. They are here
+ * because `modulepreload` is the one Astro could begin emitting on its own
+ * after a bundler change, and its chunk hrefs are not covered by
+ * `script[src]`; the other three cost a row each. Per-row counts report a
+ * row sitting at zero, so a speculative row cannot rot into dead code
+ * nobody can identify.
  */
 const SOURCES: Source[] = [
   {
@@ -133,6 +143,12 @@ const SOURCES: Source[] = [
     attribute: "srcset",
     kind: "img",
     list: true,
+  },
+  {
+    label: "image[href]",
+    selector: "image[href]",
+    attribute: "href",
+    kind: "img",
   },
   {
     label: "script[src]",
@@ -189,6 +205,25 @@ const SOURCES: Source[] = [
     attribute: "src",
     kind: "iframe",
   },
+  {
+    label: "link[rel=modulepreload]",
+    selector: "link[rel=modulepreload]",
+    attribute: "href",
+    kind: "modulepreload",
+  },
+  {
+    label: "object[data]",
+    selector: "object[data]",
+    attribute: "data",
+    kind: "embed",
+  },
+  {
+    label: "embed[src]",
+    selector: "embed[src]",
+    attribute: "src",
+    kind: "embed",
+  },
+  { label: "use[href]", selector: "use[href]", attribute: "href", kind: "use" },
 ];
 
 export interface ExtractResult {
