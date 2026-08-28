@@ -87,6 +87,12 @@ export function parseSrcset(value: string): string[] {
 }
 
 interface Source {
+  /**
+   * Stable name for this row in the summary. Kept separate from `selector`
+   * so editing a selector for an unrelated reason does not silently rename
+   * a line of output a human reads.
+   */
+  label: string;
   selector: string;
   attribute: string;
   kind: RefKind;
@@ -107,48 +113,102 @@ interface Source {
  * The attribute decides the kind, not the parent element.
  */
 const SOURCES: Source[] = [
-  { selector: "link[rel=canonical]", attribute: "href", kind: "canonical" },
   {
+    label: "link[rel=canonical]",
+    selector: "link[rel=canonical]",
+    attribute: "href",
+    kind: "canonical",
+  },
+  {
+    label: "link[rel=alternate][hreflang]",
     selector: "link[rel=alternate][hreflang]",
     attribute: "href",
     kind: "alternate",
   },
-  { selector: "a[href]", attribute: "href", kind: "anchor" },
-  { selector: "img[src]", attribute: "src", kind: "img" },
+  { label: "a[href]", selector: "a[href]", attribute: "href", kind: "anchor" },
+  { label: "img[src]", selector: "img[src]", attribute: "src", kind: "img" },
   {
+    label: "img/source[srcset]",
     selector: "img[srcset], source[srcset]",
     attribute: "srcset",
     kind: "img",
     list: true,
   },
-  { selector: "script[src]", attribute: "src", kind: "script" },
-  { selector: "link[rel~=stylesheet]", attribute: "href", kind: "stylesheet" },
   {
+    label: "script[src]",
+    selector: "script[src]",
+    attribute: "src",
+    kind: "script",
+  },
+  {
+    label: "link[rel=stylesheet]",
+    selector: "link[rel~=stylesheet]",
+    attribute: "href",
+    kind: "stylesheet",
+  },
+  {
+    label: "link[rel=icon]",
     selector: "link[rel~=icon], link[rel~=apple-touch-icon]",
     attribute: "href",
     kind: "icon",
   },
-  { selector: "link[rel=manifest]", attribute: "href", kind: "manifest" },
-  { selector: "link[rel=preload]", attribute: "href", kind: "preload" },
   {
+    label: "link[rel=manifest]",
+    selector: "link[rel=manifest]",
+    attribute: "href",
+    kind: "manifest",
+  },
+  {
+    label: "link[rel=preload]",
+    selector: "link[rel=preload]",
+    attribute: "href",
+    kind: "preload",
+  },
+  {
+    label: "link[rel=preload][imagesrcset]",
     selector: "link[rel=preload][imagesrcset]",
     attribute: "imagesrcset",
     kind: "preload",
     list: true,
   },
   {
+    label: "video/audio/source[src]",
     selector: "video[src], audio[src], source[src]",
     attribute: "src",
     kind: "media",
   },
-  { selector: "video[poster]", attribute: "poster", kind: "poster" },
-  { selector: "iframe[src]", attribute: "src", kind: "iframe" },
+  {
+    label: "video[poster]",
+    selector: "video[poster]",
+    attribute: "poster",
+    kind: "poster",
+  },
+  {
+    label: "iframe[src]",
+    selector: "iframe[src]",
+    attribute: "src",
+    kind: "iframe",
+  },
 ];
 
-export function extractRefs(html: string): Ref[] {
+export interface ExtractResult {
+  refs: Ref[];
+  /**
+   * Raw matches per source row, counted before dedupe. Post-dedupe counts
+   * would let a row whose references are all absorbed by an earlier row
+   * read as zero while being perfectly alive, which is exactly the false
+   * negative this tally exists to prevent.
+   */
+  counts: Map<string, number>;
+}
+
+export function extractRefs(html: string): ExtractResult {
   const { document } = parseHTML(html);
   const refs: Ref[] = [];
   const seen = new Set<string>();
+  // Seeded so a row that matches nothing is reported at zero rather than
+  // going missing from the map.
+  const counts = new Map<string, number>(SOURCES.map((s) => [s.label, 0]));
 
   const add = (kind: RefKind, href: string) => {
     if (href.trim() === "") return;
@@ -159,20 +219,29 @@ export function extractRefs(html: string): Ref[] {
     refs.push({ kind, href });
   };
 
+  const tally = (label: string, n: number) => {
+    counts.set(label, (counts.get(label) ?? 0) + n);
+  };
+
   for (const source of SOURCES) {
     for (const el of document.querySelectorAll(source.selector)) {
       const value = el.getAttribute(source.attribute);
       if (value === null) continue;
 
       if (source.list) {
-        for (const url of parseSrcset(value)) add(source.kind, url);
+        const urls = parseSrcset(value);
+        tally(source.label, urls.length);
+        for (const url of urls) add(source.kind, url);
       } else {
+        // An empty attribute is a matched element but not a reference, so
+        // it must not prop up the count of a row that is otherwise dead.
+        if (value.trim() !== "") tally(source.label, 1);
         add(source.kind, value);
       }
     }
   }
 
-  return refs;
+  return { refs, counts };
 }
 
 export function classifyRef(ref: Ref, siteOrigin: string): Classified {

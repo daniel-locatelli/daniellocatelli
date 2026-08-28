@@ -21,6 +21,7 @@ import {
   classifyRef,
   collectIds,
   extractRefs,
+  type Ref,
 } from "../lib/link-check/extract";
 
 const DIST = join(import.meta.dirname, "..", "..", "dist", "client");
@@ -30,7 +31,9 @@ const ORIGIN = "https://daniellocatelli.com";
 const DYNAMIC_ROUTES = ["/api", "/404"];
 
 const isDynamicRoute = (path: string): boolean =>
-  DYNAMIC_ROUTES.some((route) => path === route || path.startsWith(`${route}/`));
+  DYNAMIC_ROUTES.some(
+    (route) => path === route || path.startsWith(`${route}/`),
+  );
 
 interface Problem {
   file: string;
@@ -88,10 +91,10 @@ async function main() {
   let refCount = 0;
 
   for (const file of htmlFiles) {
-    let refs: ReturnType<typeof extractRefs>;
+    let refs: Ref[];
     try {
       const html = await readFile(join(DIST, file), "utf8");
-      refs = extractRefs(html);
+      refs = extractRefs(html).refs;
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       problems.push({
