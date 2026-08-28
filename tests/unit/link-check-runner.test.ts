@@ -19,15 +19,25 @@ const SCRIPT = join(
 function runChecker(
   distDir: string,
 ): Promise<{ code: number; stdout: string }> {
-  return new Promise((resolve, reject) => {
-    const child = spawn("pnpm", ["exec", "tsx", SCRIPT, "--dist", distDir], {
-      shell: process.platform === "win32",
-    });
+  return new Promise((settle, reject) => {
+    // No shell. `shell: true` concatenates argv without escaping, so a
+    // fixture path containing a space is split apart, and the OS temp dir
+    // carries the account name. Reaching the script through the Node binary
+    // and tsx's loader also skips the pnpm shim that made a shell look
+    // necessary on Windows.
+    const child = spawn(
+      process.execPath,
+      ["--import", "tsx", SCRIPT, "--dist", distDir],
+      { signal: AbortSignal.timeout(60_000) },
+    );
     let stdout = "";
     child.stdout.on("data", (chunk) => (stdout += chunk));
     child.stderr.on("data", (chunk) => (stdout += chunk));
+    // Without the abort above, a hung child would leave this promise
+    // unsettled: the fixture would never be cleaned up and the suite would
+    // hang rather than fail.
     child.on("error", reject);
-    child.on("close", (code) => resolve({ code: code ?? 0, stdout }));
+    child.on("close", (code) => settle({ code: code ?? 0, stdout }));
   });
 }
 
