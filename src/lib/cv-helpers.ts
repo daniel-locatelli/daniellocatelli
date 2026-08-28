@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
 
 /** Gets name from `string | { name: string }` */
 export const extractName = (item: any): string => {
@@ -27,9 +27,19 @@ export const buildLocation = (data: any): string => {
   return city || data.Country || "";
 };
 
-/** Prepends locale prefix to internal links (starting with `/`), leaves external URLs unchanged */
+const LOCALE_PREFIXED = new RegExp(`^/(${SUPPORTED_LOCALES.join("|")})(/|$)`);
+
+/**
+ * Prepends the locale prefix to a bare internal path (`/projects/x`), leaves
+ * external URLs unchanged, and leaves alone the two kinds of internal link
+ * that must not be prefixed: paths that already carry a locale (`/pt/...`,
+ * written that way in content) and locale-neutral static files
+ * (`/documents/thesis.pdf`).
+ */
 export const localizeLink = (link: string, locale: string): string => {
   if (!link || !link.startsWith("/")) return link;
+  if (LOCALE_PREFIXED.test(link)) return link;
+  if (/\.[a-z0-9]+$/i.test(link.split(/[?#]/)[0])) return link;
   const prefix = locale === siteConfig.defaultLocale ? "" : `/${locale}`;
   return `${prefix}${link}`;
 };

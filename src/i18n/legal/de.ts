@@ -9,7 +9,7 @@ export const t: I18nLegal = {
         heading: "Verantwortlicher",
         content: `<p>Daniel Nunes Locatelli<br>
 E-Mail: <a href="mailto:contact@daniellocatelli.com">contact@daniellocatelli.com</a><br>
-Website: <a href="https://daniellocatelli.com">daniellocatelli.com</a></p>`,
+Website: <a href="/de">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Übersicht der Datenverarbeitung",

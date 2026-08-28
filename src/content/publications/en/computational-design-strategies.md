@@ -18,7 +18,7 @@ DateStart: "2020-03-26"
 Language: Portuguese
 Link:
   Text: PDF in Portuguese
-  Href: "https://daniellocatelli.com/documents/daniel-locatelli_design-computacional-estrategias_1ed.pdf"
+  Href: "/documents/daniel-locatelli_design-computacional-estrategias_1ed.pdf"
 Place: Online
 ---
 

@@ -40,9 +40,9 @@ Link:
   Href: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 OtherLinks:
   - Text: Standards behind digital timber buildups
-    Href: https://daniellocatelli.com/research/timber-construction-standards
+    Href: /research/timber-construction-standards
   - Text: A data model for timber buildups
-    Href: https://daniellocatelli.com/research/timber-buildup-data-model
+    Href: /research/timber-buildup-data-model
 ---
 
 DOKwood is a research project and a software platform for the documentation of multilayer buildups in prefabricated timber construction. In a timber building, the buildup of a wall, floor or roof (the ordered stack of boards, studs, insulation and cladding) is where structural, fire, acoustic, thermal and cost decisions meet. Today that information lives in PDFs and spreadsheets that are re-typed at every step from tender to workshop. DOKwood gives buildups a home: a web platform where a company defines its buildups once, verifies them against requirements, versions them like code, and hands them to the tools downstream without re-entering data.

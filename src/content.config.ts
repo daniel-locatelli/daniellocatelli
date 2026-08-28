@@ -2,6 +2,22 @@ import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
+/**
+ * A link target: either a fully-qualified external URL, or a root-relative
+ * path to a page or asset on this site. Self-links are written root-relative
+ * so they survive a domain change and stay on the dev server locally.
+ */
+const hrefSchema = z
+  .string()
+  .refine(
+    (value) =>
+      value.startsWith("/") || z.string().url().safeParse(value).success,
+    {
+      message:
+        "must be an absolute URL or a root-relative path starting with /",
+    },
+  );
+
 const pageSchema = z.object({
   PageId: z.string().optional(),
   Name: z.string(),
@@ -52,10 +68,7 @@ const pageSchema = z.object({
       z.string(),
       z.object({ name: z.string(), href: z.string() }),
       z.array(
-        z.union([
-          z.string(),
-          z.object({ name: z.string(), href: z.string() }),
-        ]),
+        z.union([z.string(), z.object({ name: z.string(), href: z.string() })]),
       ),
     ])
     .optional()
@@ -207,7 +220,7 @@ const pageSchema = z.object({
   OtherLinks: z
     .array(
       z.object({
-        Href: z.string().url(),
+        Href: hrefSchema,
         Text: z.string().optional(),
         Description: z.string().optional(),
         Image: z.string().optional(),

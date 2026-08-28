@@ -16,7 +16,7 @@ Tags:
   - Cloudflare
 Link:
   Text: daniellocatelli.com
-  Href: "https://daniellocatelli.com"
+  Href: "/de"
 OtherLinks:
   - Text: Quellcode auf GitHub
     Href: "https://github.com/daniel-locatelli/daniellocatelli"

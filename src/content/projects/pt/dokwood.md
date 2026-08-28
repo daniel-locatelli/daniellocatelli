@@ -40,9 +40,9 @@ Link:
   Href: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 OtherLinks:
   - Text: Normas por trás das composições digitais em madeira
-    Href: https://daniellocatelli.com/pt/research/timber-construction-standards
+    Href: /pt/research/timber-construction-standards
   - Text: Um modelo de dados para composições construtivas em madeira
-    Href: https://daniellocatelli.com/pt/research/timber-buildup-data-model
+    Href: /pt/research/timber-buildup-data-model
 ---
 
 O DOKwood é um projeto de pesquisa e uma plataforma de software para a documentação de composições construtivas multicamadas na construção pré-fabricada em madeira. Em um edifício de madeira, a composição de uma parede, de um piso ou de uma cobertura (a sequência ordenada de placas, montantes, isolamento e revestimento) é onde se encontram as decisões estruturais, de incêndio, acústicas, térmicas e de custo. Hoje essa informação vive em PDFs e planilhas que são redigitados a cada etapa, da licitação à oficina. O DOKwood dá uma casa às composições: uma plataforma web na qual uma empresa define as suas composições uma única vez, verifica-as contra requisitos, versiona-as como código e entrega-as às ferramentas a jusante sem reinserir dados.

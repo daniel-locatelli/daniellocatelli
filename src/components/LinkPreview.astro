@@ -12,6 +12,7 @@ import type {
   CachedLinkMetadata,
   OtherLinkEntry,
 } from "../types/link-preview";
+import { siteConfig } from "@/config/site";
 
 interface Props {
   link: OtherLinkEntry;
@@ -19,10 +20,19 @@ interface Props {
 
 const { link } = Astro.props;
 
+// A card may point at our own site, written root-relative so it survives a
+// domain change. Resolve it against the configured origin for the hostname
+// label and the cache key (both were generated from absolute URLs), but keep
+// the relative form in the anchor and navigate in the same tab.
+const isInternal = link.Href.startsWith("/");
+const absoluteHref = isInternal
+  ? new URL(link.Href, siteConfig.website).href
+  : link.Href;
+
 let cached: CachedLinkMetadata | null = null;
 let resolvedImage: ImageMetadata | null = null;
 
-const key = generateLinkKey(link.Href);
+const key = generateLinkKey(absoluteHref);
 const metaPath = `/src/assets/links-cache/metadata/${key}.json`;
 const metaLoader = metadataCache[metaPath];
 if (metaLoader) {
@@ -61,7 +71,7 @@ if (link.Image) {
   }
 }
 
-const hostname = new URL(link.Href).hostname;
+const hostname = new URL(absoluteHref).hostname;
 const title = link.Text ?? cached?.title ?? hostname;
 const description = link.Description ?? cached?.description ?? null;
 const showImage = !link.HideMedia && resolvedImage !== null;
@@ -83,8 +93,8 @@ if (indexLoader) {
 
 <a
   href={link.Href}
-  target="_blank"
-  rel="noopener noreferrer"
+  target={isInternal ? undefined : "_blank"}
+  rel={isInternal ? undefined : "noopener noreferrer"}
   class="group flex overflow-hidden rounded-lg border border-zinc-700 bg-transparent transition hover:border-green-600 hover:bg-zinc-900"
 >
   <div class="flex min-w-0 flex-1 flex-col gap-1 px-4 py-3">

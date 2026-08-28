@@ -40,9 +40,9 @@ Link:
   Href: https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 OtherLinks:
   - Text: Normen hinter digitalen Holzbau-Aufbauten
-    Href: https://daniellocatelli.com/de/research/timber-construction-standards
+    Href: /de/research/timber-construction-standards
   - Text: Ein Datenmodell für Holzbau-Aufbauten
-    Href: https://daniellocatelli.com/de/research/timber-buildup-data-model
+    Href: /de/research/timber-buildup-data-model
 ---
 
 DOKwood ist ein Forschungsprojekt und eine Softwareplattform für die Dokumentation mehrschichtiger Aufbauten im vorgefertigten Holzbau. In einem Holzgebäude ist der Aufbau einer Wand, einer Decke oder eines Dachs (die geordnete Abfolge von Platten, Ständern, Dämmung und Bekleidung) der Ort, an dem Entscheidungen zu Tragwerk, Brandschutz, Schallschutz, Wärmeschutz und Kosten zusammenlaufen. Heute lebt diese Information in PDFs und Tabellen, die bei jedem Schritt von der Ausschreibung bis zur Werkstatt neu abgetippt werden. DOKwood gibt Aufbauten ein Zuhause: eine Webplattform, in der ein Unternehmen seine Aufbauten einmal definiert, gegen Anforderungen prüft, wie Code versioniert und ohne erneute Dateneingabe an die nachgelagerten Werkzeuge übergibt.

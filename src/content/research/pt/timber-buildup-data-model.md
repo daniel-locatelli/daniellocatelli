@@ -25,7 +25,7 @@ Link:
   Href: https://identifier.buildingsmart.org/uri/hm/dokwood/0.13
 OtherLinks:
   - Text: Página do projeto DOKwood
-    Href: https://daniellocatelli.com/pt/projects/dokwood
+    Href: /pt/projects/dokwood
   - Text: ISO 23387:2025 modelos de dados
     Href: https://www.iso.org/standard/85391.html
   - Text: ISO 23386:2020 propriedades em dicionários de dados
