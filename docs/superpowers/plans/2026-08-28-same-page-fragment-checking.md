@@ -873,18 +873,31 @@ Append to `tests/unit/link-check-runner.test.ts`:
 
 ```ts
 test("runner: the summary reports matches per selector row", async () => {
+  // Two pages contribute unequal, non-zero counts to the same row, and
+  // neither contributes the total. An accumulator that replaced instead of
+  // adding would report 3 or 2 depending on walk order, never 5. The row
+  // count and the distinct total also differ here, which pins the tally as
+  // pre-dedupe: index.html names "#one" twice.
   const { dir, cleanup } = await fixture({
     "index.html": `<!doctype html><html><body>
-<a href="/about/">About</a>
-<a href="/about/">About again</a>
+<a href="#one">One</a>
+<a href="#one">One again</a>
+<a href="#two">Two</a>
+<h2 id="one">One</h2>
+<h2 id="two">Two</h2>
 </body></html>`,
-    "about/index.html": `<!doctype html><html><body><p>About</p></body></html>`,
+    "about/index.html": `<!doctype html><html><body>
+<a href="#alpha">Alpha</a>
+<a href="#beta">Beta</a>
+<h2 id="alpha">Alpha</h2>
+<h2 id="beta">Beta</h2>
+</body></html>`,
   });
   try {
     const { code, stdout } = await runChecker(dir);
     assert.equal(code, 0, stdout);
-    // Two matches, one deduped reference: the row count is pre-dedupe.
-    assert.match(stdout, /a\[href\]\s+2/);
+    assert.match(stdout, /Checked 4 distinct references/);
+    assert.match(stdout, /a\[href\]\s+5/);
     assert.match(stdout, /video\[poster\]\s+0/);
     assert.match(stdout, /selector rows matched nothing/);
   } finally {
