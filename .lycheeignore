@@ -6,3 +6,11 @@
 ^https?://example\.(com|org|net)
 ^https?://localhost
 ^https?://your-domain
+
+# Wayback Machine snapshots. This is not an exception to the rule above.
+# A snapshot at a fixed timestamp is immutable, so there is no rot to detect:
+# the only thing a check here can measure is whether archive.org felt like
+# answering, and it rate-limits CI aggressively. Leaving these in produced
+# 4 spurious "unverifiable" entries with no signal in them. Verify a snapshot
+# by hand when you add it, then trust it.
+^https?://web\.archive\.org/
