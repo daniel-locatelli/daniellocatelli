@@ -46,9 +46,10 @@ Out of scope:
   with `prerender = false` (`src/pages/404.astro`, `src/pages/api/*.ts`)
   never land in `dist/client`; they are matched at request time by the
   Worker, so the checker cannot resolve them against the target map without
-  producing a false error. `check-links-internal.ts` exempts anything under
-  a listed `DYNAMIC_PREFIXES` entry (currently `/api/` and `/404`) before it
-  is reported, rather than treating a Worker-only route as a broken link.
+  producing a false error. `check-links-internal.ts` exempts paths that match
+  a listed `DYNAMIC_ROUTES` entry exactly or sit underneath it as a path
+  segment (currently `/api` and `/404`) before they are reported, rather than
+  treating a Worker-only route as a broken link.
 
 ## Key decisions
 
