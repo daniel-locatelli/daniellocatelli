@@ -79,6 +79,7 @@ async function main() {
   }
 
   const problems: Problem[] = [];
+  let refCount = 0;
 
   for (const file of htmlFiles) {
     let refs: ReturnType<typeof extractRefs>;
@@ -96,6 +97,8 @@ async function main() {
       });
       continue;
     }
+
+    refCount += refs.length;
 
     for (const ref of refs) {
       const result = classifyRef(ref, ORIGIN);
@@ -181,7 +184,8 @@ async function main() {
   }
 
   console.log(
-    `\nChecked ${htmlFiles.length} pages: ${errors.length} errors, ${warnings.length} warnings.`,
+    `\nChecked ${refCount} references across ${htmlFiles.length} pages: ` +
+      `${errors.length} errors, ${warnings.length} warnings.`,
   );
 
   if (jsonPath) {
