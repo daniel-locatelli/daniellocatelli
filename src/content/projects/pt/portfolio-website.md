@@ -4,7 +4,7 @@ CoverAlt: "A página inicial de daniellocatelli.com exibida em um laptop."
 Name: Site Portfólio
 Description: "Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, uma esfera geodésica movida pelo scroll, apresentações de slides no navegador e uma superfície pronta para agentes na Cloudflare."
 DateStart: "2024-04-27"
-Updated: "2026-08-21"
+Updated: "2026-08-28"
 Organization: "Daniel Locatelli"
 Category: Software
 Tags:
@@ -110,4 +110,5 @@ O site também hospeda páginas que não são linkadas de lugar nenhum e existem
 ## Detalhes menores
 
 - **Prévias de links no build.** Links externos listados em uma página são exibidos como cartões de prévia. Títulos, descrições, imagens e favicons são buscados uma única vez e guardados em cache no repositório, de modo que o build é reprodutível e nenhuma requisição a terceiros acontece ao carregar a página.
+- **Sem links quebrados.** Todos os links do site, para suas próprias páginas, para os arquivos que cada página carrega e para os ícones e notas de rodapé que cada página aponta dentro de si mesma, são verificados contra o build final, de modo que nada quebrado vai para o ar. Links para outros sites são varridos uma vez por semana e reportados, já que esses quebram no seu próprio ritmo.
 - **Tooltips em toda parte.** Um único sistema de tooltip (um painel popover com seta, posicionado e invertido por poucas linhas de JavaScript) atende todos os tooltips do site: notas de rodapé em markdown mostram a nota no próprio lugar ao passar o mouse, para que o leitor não precise pular até o fim da página; cada ferramenta do Mapa de Conhecimento na página inicial explica onde e como eu a uso; os ícones sociais do rodapé, da seção de contato e do cabeçalho do CV indicam seu destino; e os controles das apresentações de slides mostram seu atalho de teclado. Não resta nenhum tooltip nativo do navegador.

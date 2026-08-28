@@ -4,7 +4,7 @@ CoverAlt: "The homepage of daniellocatelli.com displayed on a laptop."
 Name: Portfolio Website
 Description: "This website: an Astro site whose content lives as plain markdown so that Claude Code can act as the CMS, with a Claude-powered chat, a scroll-driven geodesic sphere, in-browser slide decks, and an agent-ready surface on Cloudflare."
 DateStart: "2024-04-27"
-Updated: "2026-08-21"
+Updated: "2026-08-28"
 Organization: "Daniel Locatelli"
 Category: Software
 Tags:
@@ -110,4 +110,5 @@ The site also hosts pages that are not linked from anywhere and exist mainly for
 ## Smaller details
 
 - **Link previews at build time.** External links listed on a page are rendered as preview cards. Their titles, descriptions, images, and favicons are fetched once and cached in the repository, so the build is reproducible and no third-party request happens at page load.
+- **No broken links.** Every link on the site, to its own pages, to the files each page loads, and to the icons and footnotes each page points at inside itself, is checked against the finished build, so nothing broken gets deployed. Links to other sites are swept once a week and reported, since those break on their own schedule.
 - **Tooltips everywhere.** One small tooltip system (a popover panel with an arrow, positioned and flipped by a few lines of JavaScript) serves every tooltip on the site: markdown footnotes show the note inline on hover so readers do not have to jump to the bottom of the page; each tool in the homepage Map of Knowledge explains where and how I use it; the social icons in the footer, the contact section and the CV header name their destination; and the slide-deck controls show their keyboard shortcut. No native browser tooltips remain.
