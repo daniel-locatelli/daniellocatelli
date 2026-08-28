@@ -79,6 +79,17 @@ test("extractRefs: empty attribute values are dropped", () => {
   assert.deepEqual(extractRefs(`<img src="" srcset="" />`), []);
 });
 
+test("extractRefs: whitespace-only attribute values are dropped", () => {
+  assert.deepEqual(extractRefs(`<img src="   " />`), []);
+});
+
+test("extractRefs: rel list separated by a tab, uppercase, still matches icon", () => {
+  const html = `<link rel="SHORTCUT\tICON" href="/favicon.ico" />`;
+  assert.deepEqual(extractRefs(html), [
+    { kind: "icon", href: "/favicon.ico" },
+  ]);
+});
+
 test("classifyRef: root-relative anchor is internal", () => {
   const result = classifyRef({ kind: "anchor", href: "/projects/" }, ORIGIN);
   assert.deepEqual(result, {

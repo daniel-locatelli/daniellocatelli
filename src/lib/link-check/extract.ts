@@ -48,7 +48,7 @@ const SKIP_SCHEMES = ["mailto:", "tel:", "javascript:", "data:"];
  * Search engines want a fully-qualified canonical and hreflang; everything
  * else should be root-relative so preview deploys resolve.
  */
-const ABSOLUTE_OK: RefKind[] = ["canonical", "alternate"];
+const ABSOLUTE_OK: ReadonlySet<RefKind> = new Set(["canonical", "alternate"]);
 
 /**
  * Split a srcset candidate list into its URLs, discarding `2x` / `640w`
@@ -151,7 +151,7 @@ export function extractRefs(html: string): Ref[] {
   const seen = new Set<string>();
 
   const add = (kind: RefKind, href: string) => {
-    if (href === "") return;
+    if (href.trim() === "") return;
     // One missing asset should be one report line, not one per srcset slot.
     const key = `${kind} ${href}`;
     if (seen.has(key)) return;
@@ -196,7 +196,7 @@ export function classifyRef(ref: Ref, siteOrigin: string): Classified {
 
     if (url.origin !== new URL(siteOrigin).origin) return { type: "external" };
 
-    absoluteSelfLink = !ABSOLUTE_OK.includes(ref.kind);
+    absoluteSelfLink = !ABSOLUTE_OK.has(ref.kind);
     pathAndFragment = url.pathname + url.hash;
   }
 
