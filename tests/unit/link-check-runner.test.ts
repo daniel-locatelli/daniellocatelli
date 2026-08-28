@@ -130,3 +130,23 @@ test("runner: a footnote anchor with no target is an error", async () => {
     await cleanup();
   }
 });
+
+test("runner: the summary reports matches per selector row", async () => {
+  const { dir, cleanup } = await fixture({
+    "index.html": `<!doctype html><html><body>
+<a href="/about/">About</a>
+<a href="/about/">About again</a>
+</body></html>`,
+    "about/index.html": `<!doctype html><html><body><p>About</p></body></html>`,
+  });
+  try {
+    const { code, stdout } = await runChecker(dir);
+    assert.equal(code, 0, stdout);
+    // Two matches, one deduped reference: the row count is pre-dedupe.
+    assert.match(stdout, /a\[href\]\s+2/);
+    assert.match(stdout, /video\[poster\]\s+0/);
+    assert.match(stdout, /selector rows matched nothing/);
+  } finally {
+    await cleanup();
+  }
+});

@@ -101,13 +101,18 @@ async function main() {
   }
 
   const problems: Problem[] = [];
+  const rowCounts = new Map<string, number>();
   let refCount = 0;
 
   for (const file of htmlFiles) {
     let refs: Ref[];
     try {
       const html = await readFile(join(DIST, file), "utf8");
-      refs = extractRefs(html).refs;
+      const extracted = extractRefs(html);
+      refs = extracted.refs;
+      for (const [label, n] of extracted.counts) {
+        rowCounts.set(label, (rowCounts.get(label) ?? 0) + n);
+      }
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       problems.push({
@@ -227,12 +232,40 @@ async function main() {
   }
 
   console.log(
-    `\nChecked ${refCount} references across ${htmlFiles.length} pages: ` +
-      `${errors.length} errors, ${warnings.length} warnings.`,
+    `\nChecked ${refCount} distinct references across ${htmlFiles.length} ` +
+      `pages: ${errors.length} errors, ${warnings.length} warnings.`,
   );
 
+  const rows = [...rowCounts].sort(
+    (a, b) => b[1] - a[1] || a[0].localeCompare(b[0]),
+  );
+  const width = Math.max(...rows.map(([label]) => label.length));
+
+  console.log("\nSelector row matches (before dedupe):");
+  for (const [label, n] of rows) {
+    console.log(`  ${label.padEnd(width)}  ${String(n).padStart(6)}`);
+  }
+
+  // A row at zero is expected for the speculative rows and never fails the
+  // run. It is called out so a row that dies after a dependency bump is
+  // noticed rather than absorbed into the total.
+  const dead = rows.filter(([, n]) => n === 0).map(([label]) => label);
+  if (dead.length > 0) {
+    console.log(
+      `\n${dead.length} selector rows matched nothing: ${dead.join(", ")}`,
+    );
+  }
+
   if (jsonPath) {
-    await writeFile(jsonPath, JSON.stringify({ problems }, null, 2), "utf8");
+    await writeFile(
+      jsonPath,
+      JSON.stringify(
+        { problems, rowCounts: Object.fromEntries(rowCounts) },
+        null,
+        2,
+      ),
+      "utf8",
+    );
   }
 
   if (errors.length > 0) process.exit(1);
