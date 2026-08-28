@@ -30,7 +30,7 @@ const PAGE = `<!doctype html><html><head>
 </body></html>`;
 
 test("extractRefs: picks up every reference the browser loads", () => {
-  const refs = extractRefs(PAGE);
+  const refs = extractRefs(PAGE).refs;
   assert.deepEqual(refs, [
     { kind: "canonical", href: "https://daniellocatelli.com/" },
     { kind: "alternate", href: "https://daniellocatelli.com/pt/" },
@@ -54,13 +54,15 @@ test("extractRefs: picks up every reference the browser loads", () => {
 
 test("extractRefs: an asset url repeated in a document yields one ref", () => {
   // /_astro/hero.webp appears in both src and srcset above.
-  const hero = extractRefs(PAGE).filter((r) => r.href === "/_astro/hero.webp");
+  const hero = extractRefs(PAGE).refs.filter(
+    (r) => r.href === "/_astro/hero.webp",
+  );
   assert.equal(hero.length, 1);
 });
 
 test("extractRefs: rel token matching does not confuse canonical with icon", () => {
   const html = `<link rel="canonical" href="/here" /><link rel="icon" href="/i.ico" />`;
-  const refs = extractRefs(html);
+  const refs = extractRefs(html).refs;
   assert.deepEqual(refs, [
     { kind: "canonical", href: "/here" },
     { kind: "icon", href: "/i.ico" },
@@ -69,25 +71,43 @@ test("extractRefs: rel token matching does not confuse canonical with icon", () 
 
 test("extractRefs: preload imagesrcset candidates are collected", () => {
   const html = `<link rel="preload" as="image" imagesrcset="/a.webp 640w, /b.webp 1280w" />`;
-  assert.deepEqual(extractRefs(html), [
+  assert.deepEqual(extractRefs(html).refs, [
     { kind: "preload", href: "/a.webp" },
     { kind: "preload", href: "/b.webp" },
   ]);
 });
 
 test("extractRefs: empty attribute values are dropped", () => {
-  assert.deepEqual(extractRefs(`<img src="" srcset="" />`), []);
+  assert.deepEqual(extractRefs(`<img src="" srcset="" />`).refs, []);
 });
 
 test("extractRefs: whitespace-only attribute values are dropped", () => {
-  assert.deepEqual(extractRefs(`<img src="   " />`), []);
+  assert.deepEqual(extractRefs(`<img src="   " />`).refs, []);
 });
 
 test("extractRefs: rel list separated by a tab, uppercase, still matches icon", () => {
   const html = `<link rel="SHORTCUT\tICON" href="/favicon.ico" />`;
-  assert.deepEqual(extractRefs(html), [
+  assert.deepEqual(extractRefs(html).refs, [
     { kind: "icon", href: "/favicon.ico" },
   ]);
+});
+
+test("extractRefs: counts are per row and pre-dedupe", () => {
+  // Both <img src> values dedupe to one ref, but the row matched twice.
+  // Counting post-dedupe would let a live row read as dead.
+  const html = `<img src="/a.webp" /><img src="/a.webp" />`;
+  const { refs, counts } = extractRefs(html);
+  assert.equal(refs.length, 1);
+  assert.equal(counts.get("img[src]"), 2);
+});
+
+test("extractRefs: every source row appears in counts, including empty ones", () => {
+  const { counts } = extractRefs(`<p>nothing here</p>`);
+  // A row missing from the map is indistinguishable from a row at zero,
+  // which is the collapse this counter exists to surface.
+  assert.ok(counts.size > 0);
+  for (const n of counts.values()) assert.equal(n, 0);
+  assert.equal(counts.get("video[poster]"), 0);
 });
 
 test("classifyRef: root-relative anchor is internal", () => {
@@ -184,17 +204,17 @@ test("parseSrcset: single url with no descriptor", () => {
 });
 
 test("parseSrcset: multiple candidates with width descriptors", () => {
-  assert.deepEqual(
-    parseSrcset("/_astro/a.webp 640w, /_astro/b.webp 1280w"),
-    ["/_astro/a.webp", "/_astro/b.webp"],
-  );
+  assert.deepEqual(parseSrcset("/_astro/a.webp 640w, /_astro/b.webp 1280w"), [
+    "/_astro/a.webp",
+    "/_astro/b.webp",
+  ]);
 });
 
 test("parseSrcset: density descriptors and irregular whitespace", () => {
-  assert.deepEqual(
-    parseSrcset("  /a.png 1x ,\n  /b.png   2x  "),
-    ["/a.png", "/b.png"],
-  );
+  assert.deepEqual(parseSrcset("  /a.png 1x ,\n  /b.png   2x  "), [
+    "/a.png",
+    "/b.png",
+  ]);
 });
 
 test("parseSrcset: a url containing commas is one candidate", () => {
@@ -260,4 +280,66 @@ test("classifyRef: an svg sprite fragment keeps path and fragment apart", () => 
     fragment: "arrow",
     absoluteSelfLink: false,
   });
+});
+
+test("extractRefs: svg sprite use references are collected", () => {
+  const html = `<svg><use href="#ai:mdi:github"></use></svg>`;
+  assert.deepEqual(extractRefs(html).refs, [
+    { kind: "use", href: "#ai:mdi:github" },
+  ]);
+});
+
+test("extractRefs: xlink:href on use is not collected", () => {
+  // Pins a documented exclusion. astro-icon emits plain href; nothing in
+  // the pipeline produces the legacy form, so the checker does not chase it.
+  const html = `<svg><use xlink:href="#legacy"></use></svg>`;
+  assert.deepEqual(extractRefs(html).refs, []);
+});
+
+test("extractRefs: the four speculative rows are collected", () => {
+  const html = `<link rel="modulepreload" href="/_astro/chunk.js" />
+<object data="/doc.pdf"></object>
+<embed src="/movie.swf" />
+<svg><image href="/raster.png" /></svg>`;
+  assert.deepEqual(extractRefs(html).refs, [
+    { kind: "img", href: "/raster.png" },
+    { kind: "modulepreload", href: "/_astro/chunk.js" },
+    { kind: "embed", href: "/doc.pdf" },
+    { kind: "embed", href: "/movie.swf" },
+  ]);
+});
+
+test("classifyRef: a bare fragment resolves against the emitting page", () => {
+  assert.deepEqual(classifyRef({ kind: "use", href: "#icon" }, ORIGIN), {
+    type: "same-page",
+    fragment: "icon",
+  });
+  assert.deepEqual(classifyRef({ kind: "anchor", href: "#fn-1" }, ORIGIN), {
+    type: "same-page",
+    fragment: "fn-1",
+  });
+});
+
+test("classifyRef: # and #top need no matching id", () => {
+  // HTML defines both as "top of document", so demanding an id here would
+  // flag correct markup.
+  for (const href of ["#", "#top", "#Top", "#TOP"]) {
+    assert.deepEqual(classifyRef({ kind: "anchor", href }, ORIGIN), {
+      type: "skip",
+    });
+  }
+});
+
+test("classifyRef: an external sprite use keeps its path", () => {
+  // A fragment inside a non-HTML target belongs to that format, so only the
+  // file itself is resolved. Same treatment as document.pdf#page=2.
+  assert.deepEqual(
+    classifyRef({ kind: "use", href: "/icons/sprite.svg#arrow" }, ORIGIN),
+    {
+      type: "internal",
+      path: "/icons/sprite.svg",
+      fragment: "arrow",
+      absoluteSelfLink: false,
+    },
+  );
 });

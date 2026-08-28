@@ -4,7 +4,7 @@ CoverAlt: "Die Startseite von daniellocatelli.com auf einem Laptop."
 Name: Portfolio-Website
 Description: "Diese Website: eine Astro-Seite, deren Inhalte als reines Markdown vorliegen, damit Claude Code als CMS fungieren kann, mit einem Claude-gestützten Chat, einer scrollgesteuerten geodätischen Kugel, Folienpräsentationen im Browser und einer agentenfähigen Oberfläche auf Cloudflare."
 DateStart: "2024-04-27"
-Updated: "2026-08-21"
+Updated: "2026-08-28"
 Organization: "Daniel Locatelli"
 Category: Software
 Tags:
@@ -110,4 +110,5 @@ Die Website enthält auch Seiten, die nirgends verlinkt sind und vor allem meine
 ## Kleinere Details
 
 - **Link-Vorschauen zur Build-Zeit.** Externe Links, die auf einer Seite aufgeführt sind, werden als Vorschaukarten dargestellt. Titel, Beschreibungen, Bilder und Favicons werden einmal abgerufen und im Repository zwischengespeichert, sodass der Build reproduzierbar ist und beim Laden der Seite keine Anfrage an Dritte erfolgt.
+- **Keine toten Links.** Jeder Link der Website, auf ihre eigenen Seiten, auf die Dateien, die jede Seite lädt, und auf die Symbole und Fußnoten, auf die jede Seite in sich selbst verweist, wird gegen den fertigen Build geprüft, sodass nichts Kaputtes online geht. Links auf andere Websites werden einmal pro Woche überprüft und gemeldet, denn die brechen nach ihrem eigenen Rhythmus.
 - **Tooltips überall.** Ein einziges kleines Tooltip-System (ein Popover-Panel mit Pfeil, das wenige Zeilen JavaScript positionieren und bei Bedarf umklappen) bedient jeden Tooltip der Website: Markdown-Fußnoten zeigen die Anmerkung beim Überfahren mit der Maus direkt an Ort und Stelle, sodass Leser nicht ans Seitenende springen müssen; jedes Werkzeug in der Wissenskarte auf der Startseite erklärt, wo und wie ich es einsetze; die Social-Icons im Footer, im Kontaktbereich und im Kopf des Lebenslaufs nennen ihr Ziel; und die Bedienelemente der Foliensätze zeigen ihr Tastenkürzel. Native Browser-Tooltips gibt es nicht mehr.

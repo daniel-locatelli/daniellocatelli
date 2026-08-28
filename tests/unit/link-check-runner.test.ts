@@ -1,0 +1,165 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
+import { mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const SCRIPT = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "..",
+  "src",
+  "scripts",
+  "check-links-internal.ts",
+);
+
+/** Run the real checker against a fixture directory. */
+function runChecker(
+  distDir: string,
+): Promise<{ code: number; stdout: string }> {
+  return new Promise((settle, reject) => {
+    // No shell. `shell: true` concatenates argv without escaping, so a
+    // fixture path containing a space is split apart, and the OS temp dir
+    // carries the account name. Reaching the script through the Node binary
+    // and tsx's loader also skips the pnpm shim that made a shell look
+    // necessary on Windows.
+    const child = spawn(
+      process.execPath,
+      ["--import", "tsx", SCRIPT, "--dist", distDir],
+      { signal: AbortSignal.timeout(60_000) },
+    );
+    let stdout = "";
+    child.stdout.on("data", (chunk) => (stdout += chunk));
+    child.stderr.on("data", (chunk) => (stdout += chunk));
+    // Without the abort above, a hung child would leave this promise
+    // unsettled: the fixture would never be cleaned up and the suite would
+    // hang rather than fail.
+    child.on("error", reject);
+    child.on("close", (code) => settle({ code: code ?? 0, stdout }));
+  });
+}
+
+/** Build a throwaway dist/client containing the given files. */
+async function fixture(
+  files: Record<string, string>,
+): Promise<{ dir: string; cleanup: () => Promise<void> }> {
+  const dir = await mkdtemp(join(tmpdir(), "link-check-"));
+  for (const [name, content] of Object.entries(files)) {
+    const full = join(dir, name);
+    await mkdir(dirname(full), { recursive: true });
+    await writeFile(full, content, "utf8");
+  }
+  return { dir, cleanup: () => rm(dir, { recursive: true, force: true }) };
+}
+
+test("runner: a clean fixture exits zero", async () => {
+  const { dir, cleanup } = await fixture({
+    "index.html": `<!doctype html><html><body>
+<a href="/about/">About</a>
+</body></html>`,
+    "about/index.html": `<!doctype html><html><body><p>About</p></body></html>`,
+  });
+  try {
+    const { code, stdout } = await runChecker(dir);
+    assert.equal(code, 0, stdout);
+    assert.match(stdout, /0 errors, 0 warnings/);
+  } finally {
+    await cleanup();
+  }
+});
+
+test("runner: a link to a missing page exits non-zero", async () => {
+  const { dir, cleanup } = await fixture({
+    "index.html": `<!doctype html><html><body>
+<a href="/nowhere/">Nowhere</a>
+</body></html>`,
+  });
+  try {
+    const { code, stdout } = await runChecker(dir);
+    assert.equal(code, 1, stdout);
+    assert.match(stdout, /no page or asset at \/nowhere/);
+  } finally {
+    await cleanup();
+  }
+});
+
+const SPRITE_PAGE = (symbolId: string) => `<!doctype html><html><body>
+<svg><symbol id="${symbolId}"><path d="M0 0" /></symbol></svg>
+<svg><use href="#ai:mdi:github"></use></svg>
+</body></html>`;
+
+test("runner: a use pointing at a present symbol is accepted", async () => {
+  const { dir, cleanup } = await fixture({
+    "index.html": SPRITE_PAGE("ai:mdi:github"),
+  });
+  try {
+    const { code, stdout } = await runChecker(dir);
+    assert.equal(code, 0, stdout);
+  } finally {
+    await cleanup();
+  }
+});
+
+test("runner: a use pointing at an absent symbol is an error", async () => {
+  const { dir, cleanup } = await fixture({
+    "index.html": SPRITE_PAGE("ai:mdi:gitlab"),
+  });
+  try {
+    const { code, stdout } = await runChecker(dir);
+    assert.equal(code, 1, stdout);
+    assert.match(stdout, /no element with id "ai:mdi:github" on this page/);
+  } finally {
+    await cleanup();
+  }
+});
+
+test("runner: a footnote anchor with no target is an error", async () => {
+  const { dir, cleanup } = await fixture({
+    "index.html": `<!doctype html><html><body>
+<a href="#fn-missing">1</a>
+<p id="fn-present">A footnote.</p>
+</body></html>`,
+  });
+  try {
+    const { code, stdout } = await runChecker(dir);
+    assert.equal(code, 1, stdout);
+    assert.match(stdout, /no element with id "fn-missing" on this page/);
+  } finally {
+    await cleanup();
+  }
+});
+
+test("runner: the summary reports matches per selector row", async () => {
+  // Two pages contribute unequal, non-zero counts to the same row, and
+  // neither contributes the total. An accumulator that replaced instead of
+  // adding would report 3 or 2 depending on walk order, never 5. The row
+  // count and the distinct total also differ here, which pins the tally as
+  // pre-dedupe: index.html names "#one" twice.
+  const { dir, cleanup } = await fixture({
+    "index.html": `<!doctype html><html><body>
+<a href="#one">One</a>
+<a href="#one">One again</a>
+<a href="#two">Two</a>
+<h2 id="one">One</h2>
+<h2 id="two">Two</h2>
+</body></html>`,
+    "about/index.html": `<!doctype html><html><body>
+<a href="#alpha">Alpha</a>
+<a href="#beta">Beta</a>
+<h2 id="alpha">Alpha</h2>
+<h2 id="beta">Beta</h2>
+</body></html>`,
+  });
+  try {
+    const { code, stdout } = await runChecker(dir);
+    assert.equal(code, 0, stdout);
+    assert.match(stdout, /Checked 4 distinct references/);
+    assert.match(stdout, /a\[href\]\s+5/);
+    assert.match(stdout, /video\[poster\]\s+0/);
+    assert.match(stdout, /selector rows matched nothing/);
+  } finally {
+    await cleanup();
+  }
+});

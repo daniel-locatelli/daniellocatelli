@@ -6,11 +6,11 @@
  * slugs, and verifies #fragments against the target document's ids.
  *
  * Usage:
- *   pnpm exec tsx src/scripts/check-links-internal.ts [--json report.json]
+ *   pnpm exec tsx src/scripts/check-links-internal.ts [--dist dir] [--json report.json]
  */
 
 import { readdir, readFile, writeFile } from "node:fs/promises";
-import { join, relative, sep } from "node:path";
+import { join, relative, resolve, sep } from "node:path";
 import {
   buildRedirectMap,
   buildTargetMap,
@@ -21,16 +21,31 @@ import {
   classifyRef,
   collectIds,
   extractRefs,
+  type Ref,
 } from "../lib/link-check/extract";
 
-const DIST = join(import.meta.dirname, "..", "..", "dist", "client");
+const DEFAULT_DIST = join(import.meta.dirname, "..", "..", "dist", "client");
 const ORIGIN = "https://daniellocatelli.com";
+
+/**
+ * `--dist` lets the checker run against a fixture tree rather than only the
+ * real build, which is what makes its failure modes testable.
+ */
+function resolveDist(argv: string[]): string {
+  const index = argv.indexOf("--dist");
+  if (index === -1) return DEFAULT_DIST;
+  const value = argv[index + 1];
+  if (value === undefined) throw new Error("--dist requires a path");
+  return resolve(value);
+}
 
 /** Served by the Worker, not by a file in dist/client. */
 const DYNAMIC_ROUTES = ["/api", "/404"];
 
 const isDynamicRoute = (path: string): boolean =>
-  DYNAMIC_ROUTES.some((route) => path === route || path.startsWith(`${route}/`));
+  DYNAMIC_ROUTES.some(
+    (route) => path === route || path.startsWith(`${route}/`),
+  );
 
 interface Problem {
   file: string;
@@ -54,6 +69,7 @@ async function main() {
   const jsonFlagIndex = process.argv.indexOf("--json");
   const jsonPath =
     jsonFlagIndex === -1 ? null : process.argv[jsonFlagIndex + 1];
+  const DIST = resolveDist(process.argv);
 
   const allFiles = await walk(DIST);
   const relFiles = allFiles.map((f) => relative(DIST, f).split(sep).join("/"));
@@ -85,13 +101,18 @@ async function main() {
   }
 
   const problems: Problem[] = [];
+  const rowCounts = new Map<string, number>();
   let refCount = 0;
 
   for (const file of htmlFiles) {
-    let refs: ReturnType<typeof extractRefs>;
+    let refs: Ref[];
     try {
       const html = await readFile(join(DIST, file), "utf8");
-      refs = extractRefs(html);
+      const extracted = extractRefs(html);
+      refs = extracted.refs;
+      for (const [label, n] of extracted.counts) {
+        rowCounts.set(label, (rowCounts.get(label) ?? 0) + n);
+      }
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       problems.push({
@@ -108,6 +129,23 @@ async function main() {
 
     for (const ref of refs) {
       const result = classifyRef(ref, ORIGIN);
+
+      if (result.type === "same-page") {
+        // A <use> naming an absent symbol renders nothing at all, with no
+        // console error and no fallback, so it has to be caught here.
+        const ids = await idsFor(file);
+        if (!ids.has(result.fragment)) {
+          problems.push({
+            file,
+            href: ref.href,
+            kind: ref.kind,
+            reason: `no element with id "${result.fragment}" on this page`,
+            severity: "error",
+          });
+        }
+        continue;
+      }
+
       if (result.type !== "internal") continue;
 
       if (result.absoluteSelfLink) {
@@ -194,12 +232,40 @@ async function main() {
   }
 
   console.log(
-    `\nChecked ${refCount} references across ${htmlFiles.length} pages: ` +
-      `${errors.length} errors, ${warnings.length} warnings.`,
+    `\nChecked ${refCount} distinct references across ${htmlFiles.length} ` +
+      `pages: ${errors.length} errors, ${warnings.length} warnings.`,
   );
 
+  const rows = [...rowCounts].sort(
+    (a, b) => b[1] - a[1] || a[0].localeCompare(b[0]),
+  );
+  const width = Math.max(...rows.map(([label]) => label.length));
+
+  console.log("\nSelector row matches (before dedupe):");
+  for (const [label, n] of rows) {
+    console.log(`  ${label.padEnd(width)}  ${String(n).padStart(6)}`);
+  }
+
+  // A row at zero is expected for the speculative rows and never fails the
+  // run. It is called out so a row that dies after a dependency bump is
+  // noticed rather than absorbed into the total.
+  const dead = rows.filter(([, n]) => n === 0).map(([label]) => label);
+  if (dead.length > 0) {
+    console.log(
+      `\n${dead.length} selector rows matched nothing: ${dead.join(", ")}`,
+    );
+  }
+
   if (jsonPath) {
-    await writeFile(jsonPath, JSON.stringify({ problems }, null, 2), "utf8");
+    await writeFile(
+      jsonPath,
+      JSON.stringify(
+        { problems, rowCounts: Object.fromEntries(rowCounts) },
+        null,
+        2,
+      ),
+      "utf8",
+    );
   }
 
   if (errors.length > 0) process.exit(1);
