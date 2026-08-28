@@ -6,11 +6,11 @@
  * slugs, and verifies #fragments against the target document's ids.
  *
  * Usage:
- *   pnpm exec tsx src/scripts/check-links-internal.ts [--json report.json]
+ *   pnpm exec tsx src/scripts/check-links-internal.ts [--dist dir] [--json report.json]
  */
 
 import { readdir, readFile, writeFile } from "node:fs/promises";
-import { join, relative, sep } from "node:path";
+import { join, relative, resolve, sep } from "node:path";
 import {
   buildRedirectMap,
   buildTargetMap,
@@ -24,8 +24,20 @@ import {
   type Ref,
 } from "../lib/link-check/extract";
 
-const DIST = join(import.meta.dirname, "..", "..", "dist", "client");
+const DEFAULT_DIST = join(import.meta.dirname, "..", "..", "dist", "client");
 const ORIGIN = "https://daniellocatelli.com";
+
+/**
+ * `--dist` lets the checker run against a fixture tree rather than only the
+ * real build, which is what makes its failure modes testable.
+ */
+function resolveDist(argv: string[]): string {
+  const index = argv.indexOf("--dist");
+  if (index === -1) return DEFAULT_DIST;
+  const value = argv[index + 1];
+  if (value === undefined) throw new Error("--dist requires a path");
+  return resolve(value);
+}
 
 /** Served by the Worker, not by a file in dist/client. */
 const DYNAMIC_ROUTES = ["/api", "/404"];
@@ -57,6 +69,7 @@ async function main() {
   const jsonFlagIndex = process.argv.indexOf("--json");
   const jsonPath =
     jsonFlagIndex === -1 ? null : process.argv[jsonFlagIndex + 1];
+  const DIST = resolveDist(process.argv);
 
   const allFiles = await walk(DIST);
   const relFiles = allFiles.map((f) => relative(DIST, f).split(sep).join("/"));
