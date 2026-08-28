@@ -37,6 +37,7 @@ export interface Ref {
 export type Classified =
   | { type: "skip" }
   | { type: "external" }
+  | { type: "same-page"; fragment: string }
   | {
       type: "internal";
       path: string;
@@ -282,7 +283,17 @@ export function extractRefs(html: string): ExtractResult {
 export function classifyRef(ref: Ref, siteOrigin: string): Classified {
   const href = ref.href.trim();
 
-  if (href === "" || href.startsWith("#")) return { type: "skip" };
+  if (href === "") return { type: "skip" };
+
+  if (href.startsWith("#")) {
+    const fragment = href.slice(1);
+    // HTML defines "#" and "#top" as the top of the document, with no
+    // matching id required, so demanding one would flag correct markup.
+    if (fragment === "" || fragment.toLowerCase() === "top") {
+      return { type: "skip" };
+    }
+    return { type: "same-page", fragment };
+  }
   if (SKIP_SCHEMES.some((scheme) => href.toLowerCase().startsWith(scheme))) {
     return { type: "skip" };
   }

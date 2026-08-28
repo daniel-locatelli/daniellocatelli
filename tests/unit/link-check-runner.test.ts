@@ -84,3 +84,49 @@ test("runner: a link to a missing page exits non-zero", async () => {
     await cleanup();
   }
 });
+
+const SPRITE_PAGE = (symbolId: string) => `<!doctype html><html><body>
+<svg><symbol id="${symbolId}"><path d="M0 0" /></symbol></svg>
+<svg><use href="#ai:mdi:github"></use></svg>
+</body></html>`;
+
+test("runner: a use pointing at a present symbol is accepted", async () => {
+  const { dir, cleanup } = await fixture({
+    "index.html": SPRITE_PAGE("ai:mdi:github"),
+  });
+  try {
+    const { code, stdout } = await runChecker(dir);
+    assert.equal(code, 0, stdout);
+  } finally {
+    await cleanup();
+  }
+});
+
+test("runner: a use pointing at an absent symbol is an error", async () => {
+  const { dir, cleanup } = await fixture({
+    "index.html": SPRITE_PAGE("ai:mdi:gitlab"),
+  });
+  try {
+    const { code, stdout } = await runChecker(dir);
+    assert.equal(code, 1, stdout);
+    assert.match(stdout, /no element with id "ai:mdi:github" on this page/);
+  } finally {
+    await cleanup();
+  }
+});
+
+test("runner: a footnote anchor with no target is an error", async () => {
+  const { dir, cleanup } = await fixture({
+    "index.html": `<!doctype html><html><body>
+<a href="#fn-missing">1</a>
+<p id="fn-present">A footnote.</p>
+</body></html>`,
+  });
+  try {
+    const { code, stdout } = await runChecker(dir);
+    assert.equal(code, 1, stdout);
+    assert.match(stdout, /no element with id "fn-missing" on this page/);
+  } finally {
+    await cleanup();
+  }
+});

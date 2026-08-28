@@ -308,3 +308,38 @@ test("extractRefs: the four speculative rows are collected", () => {
     { kind: "embed", href: "/movie.swf" },
   ]);
 });
+
+test("classifyRef: a bare fragment resolves against the emitting page", () => {
+  assert.deepEqual(classifyRef({ kind: "use", href: "#icon" }, ORIGIN), {
+    type: "same-page",
+    fragment: "icon",
+  });
+  assert.deepEqual(classifyRef({ kind: "anchor", href: "#fn-1" }, ORIGIN), {
+    type: "same-page",
+    fragment: "fn-1",
+  });
+});
+
+test("classifyRef: # and #top need no matching id", () => {
+  // HTML defines both as "top of document", so demanding an id here would
+  // flag correct markup.
+  for (const href of ["#", "#top", "#Top", "#TOP"]) {
+    assert.deepEqual(classifyRef({ kind: "anchor", href }, ORIGIN), {
+      type: "skip",
+    });
+  }
+});
+
+test("classifyRef: an external sprite use keeps its path", () => {
+  // A fragment inside a non-HTML target belongs to that format, so only the
+  // file itself is resolved. Same treatment as document.pdf#page=2.
+  assert.deepEqual(
+    classifyRef({ kind: "use", href: "/icons/sprite.svg#arrow" }, ORIGIN),
+    {
+      type: "internal",
+      path: "/icons/sprite.svg",
+      fragment: "arrow",
+      absoluteSelfLink: false,
+    },
+  );
+});

@@ -124,6 +124,23 @@ async function main() {
 
     for (const ref of refs) {
       const result = classifyRef(ref, ORIGIN);
+
+      if (result.type === "same-page") {
+        // A <use> naming an absent symbol renders nothing at all, with no
+        // console error and no fallback, so it has to be caught here.
+        const ids = await idsFor(file);
+        if (!ids.has(result.fragment)) {
+          problems.push({
+            file,
+            href: ref.href,
+            kind: ref.kind,
+            reason: `no element with id "${result.fragment}" on this page`,
+            severity: "error",
+          });
+        }
+        continue;
+      }
+
       if (result.type !== "internal") continue;
 
       if (result.absoluteSelfLink) {
