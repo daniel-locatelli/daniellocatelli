@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import { CUSTOM_DOMAIN, BASE_PATH } from "./src/config/server";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
@@ -83,11 +84,16 @@ export default defineConfig({
   ],
   prefetch: true,
   markdown: {
-    remarkPlugins: [remarkImageToAstroImage],
-    rehypePlugins: [rehypeFigure, rehypeLazyImages, rehypeFootnoteTooltips],
-    remarkRehype: {
-      clobberPrefix: "",
-    },
+    // Astro 7 deprecated `markdown.remarkPlugins` / `rehypePlugins` /
+    // `remarkRehype`; the pipeline is now configured through the `unified()`
+    // processor. `mdx()` inherits these plugins from here (extendMarkdownConfig).
+    processor: unified({
+      remarkPlugins: [remarkImageToAstroImage],
+      rehypePlugins: [rehypeFigure, rehypeLazyImages, rehypeFootnoteTooltips],
+      remarkRehype: {
+        clobberPrefix: "",
+      },
+    }),
   },
   vite: {
     plugins: [
