@@ -1,0 +1,101 @@
+---
+Name: "Uncertainty Has Been My Material"
+Description: "Daniel's five-minute self-introduction for the Capitalising on Uncertainty summer school at EPFL, tracing a path from a pavilion in São Paulo to timber plate research at ETH, and ending on the AI harness his doctorate is building."
+DateStart: "2026-08-31"
+Event: "Capitalising on Uncertainty, ETH-EPFL Summer School 2026"
+Language: English
+---
+
+import Slide from "@/components/slides/Slide.astro";
+import SlideMarkdown from "@/components/slides/SlideMarkdown.astro";
+import SlideNotes from "@/components/slides/SlideNotes.astro";
+import SlideImage from "@/components/slides/SlideImage.astro";
+import SlideVideo from "@/components/slides/SlideVideo.astro";
+
+import demonstratorNight from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/title-demonstrator.jpeg";
+import o3Pavilion from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/o3-pavilion.jpg";
+import commonSky from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/common-sky.jpg";
+import buildsystems from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/buildsystems.png";
+import dokwood from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/dokwood.png";
+import plateShell from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/plate-shell-PLACEHOLDER.jpg";
+import aiHarness from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/ai-harness-aec.png";
+import compasTimber from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/compas-timber-logo.png";
+
+---
+text: |
+  # Daniel Nunes Locatelli
+
+  PhD Student\
+  Gramazio Kohler Research\
+  ETH Zurich
+notes: "Hello, I am Daniel, a first year doctoral student with Gramazio Kohler Research at ETH. The path here ran São Paulo, Stuttgart, Munich, Zurich. Five projects, one per step, and then where I am going."
+---
+
+---
+title: O3 Pavilion
+subtitle: "Atelier Marko Brajovic, São Paulo, 2017"
+image: o3Pavilion
+imageAlt: "Three translucent faceted domes lit from within in violet and white, standing in a dark exhibition hall."
+notes: "São Paulo. My first computational project, straight out of my FAU thesis. Three domes, planar cells, form found in Kangaroo. I learned here that the geometry you can draw and the geometry a blacksmith can weld are not the same set, and that the second one is the only one that matters."
+---
+
+---
+title: Building Across Scales
+subtitle: "Master thesis, ITECH University of Stuttgart, 2021"
+image: demonstratorNight
+imageAlt: "A point-supported timber slab lit from below at night in a robotics hall, a red mobile crane on one side and an industrial robot arm on the other."
+notes: "Stuttgart. Engineered timber is glued in a factory because gluing needs pressure, and pressure needs a press. That is why elements are limited by what a truck carries, and why timber buildings end up on a grid. With Nils Opgenorth I asked what happens if the press goes to the site. A crane, an industrial arm and a custom clamping robot as one team. Every certainty a factory gives you is gone. You will spend six afternoons with an ABB arm doing exactly this."
+---
+
+---
+title: Common Sky
+subtitle: "ArtEngineering for Studio Other Spaces, 2022"
+image: commonSky
+imageAlt: "Interior of a courtyard roofed by a white branching steel and glass canopy, with mirrored triangular panels casting a web of shadows on the floor."
+notes: "Practice. A branching steel and glass canopy for Studio Other Spaces. Around fifteen hundred fabrication drawings out of Rhino and Grasshopper for the plasma cutter. This is where design-to-fabrication stopped being a concept for me and became a file that either cuts or does not."
+---
+
+---
+title: BuildSystems
+subtitle: "Munich, 2023 to 2024"
+image: buildsystems
+imageAlt: "A hand holding a phone showing the BuildSystems funding calculator, with investment costs and green bar charts of financing costs over time."
+notes: "Munich, and the turn. I stopped being an architect who codes and became an engineer who builds software. A Grasshopper plugin in C# for urban timber analysis and life cycle assessment, then a funding calculator as a real web product, Angular and PostgreSQL, shipped to real users. Learning to build software properly is the single thing that most changed what I can research."
+---
+
+---
+title: DOKwood
+subtitle: "Hochschule München, 2025 to 2026"
+image: dokwood
+imageAlt: "A laptop showing the DOKwood platform with a sectional drawing of a seven-layer timber wall and a table listing each layer and its thickness."
+notes: "Munich. A platform for documenting multilayer timber buildups. I did the standards review, then built the bSDD data dictionary that gives every property a stable meaning, and the Revit and Cadwork interfaces. Unglamorous work, and the reason I now believe most uncertainty in construction is not physical. It is that nobody agrees what the words mean."
+---
+
+---
+image: plateShell
+imageAlt: "Close view from below of a thick spruce slab, with plates glued to each other along their side edges and the glue lines running across the surface."
+overlay: black/40
+text: |
+  ### What I work on now
+slideImage:
+  src: compasTimber
+  alt: "The compas_timber logo: three interlocking timber beams forming a triangle inside a ring."
+  height: "10vh"
+  x: "50%"
+  y: "40%"
+notes: "Zurich. Timber plate building systems, in the SNSF project CEDD. Plates joined along their narrow side edges. Eurocode 5 does not cover side-by-side gluing of plates, so every configuration needs physical tests and a special approval before anyone may build it. Note what is certain and what is not. The material is new, so I know the stock, the sizes, the grade. What I do not know is how the joint behaves. My uncertainty is not in the wood. It is in the connection, and in the rules that stop before it."
+---
+
+---
+title: An AI harness for AEC
+image: aiHarness
+imageAlt: "One shared model sits at the centre of a panel labelled the AI harness. Design intent enters from above and lands on the model, the harness reaches out to five checks ringed around it, structure, fabricability, material, cost and carbon, and each returns a dashed line that passes back through the harness into the model."
+fit: contain
+notes: "So here is the thesis. Checking a building design takes weeks, so it happens once or twice per project, and design stops at the first version that passes. Put the agent inside a harness instead: it proposes, and structure, fabricability, material, cost and carbon check continuously, each against the code that governs it, every verdict written back to one model. Make checking nearly free and you can explore. Your uncertainty this week is in the stock, an offcut's shape unknown until you hold it. Mine is in the joint. Different unknown, same closed loop, and that is what Wednesday is about. Come argue with me."
+---
+
+---
+text: |
+  nuneslocatelli@arch.ethz.ch
+notes: "I bring the geometry and data side: Grasshopper, C#, Python, finite element analysis in the loop, and the pipelines that carry a design to a machine. If that is useful to your group, come find me. Thank you."
+---
