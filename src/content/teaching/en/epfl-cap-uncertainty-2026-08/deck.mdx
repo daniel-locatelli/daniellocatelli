@@ -17,11 +17,20 @@ import o3Pavilion from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/o
 import commonSky from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/common-sky.jpg";
 import buildsystems from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/buildsystems.png";
 import dokwood from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/dokwood.png";
-import plateShell from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/plate-shell-PLACEHOLDER.jpg";
+import bugaWood from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/buga-wood-pavilion-reuse-2023.jpg";
 import aiHarness from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/ai-harness-aec.png";
 import compasTimber from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/compas-timber-logo.png";
+import spumellariaHaeckel from "@/assets/content/research/architecture-biomimicry-algorithm/ernst-haeckel_spumellaria.png";
+import anthropicWordmark from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/anthropic-wordmark.svg";
 
 ---
+image: spumellariaHaeckel
+imageAlt: "Ernst Haeckel's Spumellaria plate from Kunstformen der Natur, a grid of radiolarian skeletons drawn in white on black, each a perforated lattice shell bristling with spines."
+overlay: black/70
+fit: contain
+copyright:
+  name: Ernst Haeckel, Kunstformen der Natur
+  href: "https://archive.org/details/KunstformenderN00Haec/page/91/mode/1up"
 text: |
   # Daniel Nunes Locatelli
 
@@ -72,9 +81,12 @@ notes: "Munich. A platform for documenting multilayer timber buildups. I did the
 ---
 
 ---
-image: plateShell
-imageAlt: "Close view from below of a thick spruce slab, with plates glued to each other along their side edges and the glue lines running across the surface."
-overlay: black/40
+image: bugaWood
+imageAlt: "The BUGA Wood Pavilion reassembled in Mannheim, an arch of hollow hexagonal timber cassettes seen from below in an urban landscape."
+overlay: black/50
+copyright:
+  name: "Conne van d'Grachten, ICD/ITKE/IntCDC, University of Stuttgart"
+  href: "https://www.icd.uni-stuttgart.de/projects/buga-wood-pavilion-reuse-2023/"
 text: |
   ### What I work on now
 slideImage:
@@ -92,6 +104,22 @@ image: aiHarness
 imageAlt: "One shared model sits at the centre of a panel labelled the AI harness. Design intent enters from above and lands on the model, the harness reaches out to five checks ringed around it, structure, fabricability, material, cost and carbon, and each returns a dashed line that passes back through the harness into the model."
 fit: contain
 notes: "So here is the thesis. Checking a building design takes weeks, so it happens once or twice per project, and design stops at the first version that passes. Put the agent inside a harness instead: it proposes, and structure, fabricability, material, cost and carbon check continuously, each against the code that governs it, every verdict written back to one model. Make checking nearly free and you can explore. Your uncertainty this week is in the stock, an offcut's shape unknown until you hold it. Mine is in the joint. Different unknown, same closed loop, and that is what Wednesday is about. Come argue with me."
+---
+
+---
+text: |
+  ## Model Hardware Standard
+
+  Research preview, 27 August 2026
+
+  One vocabulary for microscopes, liquid handlers, robot arms.
+slideImage:
+  src: anthropicWordmark
+  alt: "The Anthropic wordmark."
+  height: "5vh"
+  x: "50%"
+  y: "30%"
+notes: "One more thing, from four days ago. Anthropic published the Model Hardware Standard, a research preview: one common way for an agent to drive a laboratory or factory machine, with the safety limits enforced at the device itself. Genentech, the Baker lab in Washington, Janelia, QuEra. Six instruments integrated in under a week, work that normally takes months. Read it against my previous slide. My checks are software today: finite element analysis, cost, carbon. The moment that same loop can call a press or a robot arm, checking a glued joint stops being a simulation and becomes a physical test. That is the week you are having with the ABB arm, except continuous."
 ---
 
 ---
