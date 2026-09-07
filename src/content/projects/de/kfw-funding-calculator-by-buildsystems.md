@@ -56,8 +56,7 @@ Da das Team bereits [Figma](https://www.figma.com/) nutzte, entschied ich mich, 
 Konzeptionell war mein Ansatz für das Design, ein vollständiges Dashboard mit allen für den Nutzer zugänglichen Variablen zu erstellen, ohne zu viel Abstraktion. In einer späteren Phase planen wir einen weiteren Benutzerfluss, bei dem die Nutzer eine Schritt-für-Schritt-Anleitung zur Simulation der Darlehen erhalten.
 Für die Erstellung von Prototypen verwendete ich Figma, was eine sehr angenehme Design-Erfahrung war. Die Simulation von Mouse-Over-, Mouse-In- und Mouse-Out-Verhalten ist möglich. Außerdem erleichtert der kostenpflichtige Plan das Kopieren von CSS-Stilen und SVGs mit dem Dev Mode. Aber auch mit dem kostenlosen Plan ist der Export von SVGs ein Kinderspiel.
 
-![Screenshot der Desktop-Version des Förderrechners.
-Desktop-Version bei Sanierung/Projekt.](../../../assets/content/projects/kfw-funding-calculator-by-buildsystems/screenshot-of-the-desktop-version-of-the-funding-calculator-desktop-version-at.png)
+![Screenshot der Desktop-Version des Förderrechners.](../../../assets/content/projects/kfw-funding-calculator-by-buildsystems/screenshot-of-the-desktop-version-of-the-funding-calculator-desktop-version-at.png "Desktop-Version bei Sanierung/Projekt.")
 
 ### Aufbau der Benutzeroberfläche
 Dieses Projekt markierte meine Metamorphose zum vollwertigen Softwareentwickler. Dafür musste ich [Angular](https://angular.dev/) erlernen, ein JavaScript-Framework mit einer stark vorgegebenen Struktur, die für meinen Fall perfekt geeignet war.

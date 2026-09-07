@@ -57,8 +57,7 @@ Como a equipe já usa o [Figma](https://www.figma.com/), decidi permanecer dentr
 Conceitualmente, minha abordagem para o design foi criar um dashboard completo com todas as variáveis acessíveis pelo usuário, sem muita abstração. Em uma fase posterior, pretendemos ter outro fluxo de usuário onde os usuários tenham um passo a passo para simular os empréstimos.
 Para criar protótipos, usei o Figma, que foi uma experiência de design bem agradável. Simular comportamentos de mouse over, mouse in, mouse out é possível. Além disso, o plano pago facilita a cópia de estilos CSS e SVGs com o Modo Dev. Mas mesmo com o plano gratuito, é muito fácil exportar SVGs.
 
-![Captura de tela da versão desktop da calculadora de financiamento.
-Versão desktop em Sanierung/Projekt.](../../../assets/content/projects/kfw-funding-calculator-by-buildsystems/screenshot-of-the-desktop-version-of-the-funding-calculator-desktop-version-at.png)
+![Captura de tela da versão desktop da calculadora de financiamento.](../../../assets/content/projects/kfw-funding-calculator-by-buildsystems/screenshot-of-the-desktop-version-of-the-funding-calculator-desktop-version-at.png "Versão desktop em Sanierung/Projekt.")
 
 ### Construindo a Interface do Usuário
 Este projeto marcou minha metamorfose em um desenvolvedor de software completo. Isso exigiu que eu aprendesse [Angular](https://angular.dev/), um framework JavaScript, e sua estrutura altamente opinativa, que era perfeita para o meu caso.
