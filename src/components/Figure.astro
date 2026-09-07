@@ -1,7 +1,8 @@
 ---
 /**
  * Renders a single image with a visible caption below it (from the image's
- * markdown alt text) and a credit/source pill overlaid on the image. The
+ * markdown title, falling back to its alt text; see captionFromImgHtml) and
+ * a credit/source pill overlaid on the image. The
  * Credit pill stays in lockstep with Slide.astro via the shared Credit
  * component.
  *
@@ -22,6 +23,7 @@
  *   intact for accessibility.
  */
 import Credit, { type CreditLine } from "@/components/Credit.astro";
+import { captionFromImgHtml } from "@/lib/figure-caption";
 
 interface Props {
   credit?: CreditLine | CreditLine[];
@@ -39,8 +41,7 @@ const floatClass =
       : "";
 
 const slotHtml = await Astro.slots.render("default");
-const altMatch = slotHtml.match(/<img[^>]*\salt=(?:"([^"]*)"|'([^']*)')/i);
-const caption = altMatch ? (altMatch[1] ?? altMatch[2] ?? "") : "";
+const caption = captionFromImgHtml(slotHtml) ?? "";
 ---
 
 <figure class:list={["figure-credit not-prose my-6", floatClass]}>
@@ -52,7 +53,12 @@ const caption = altMatch ? (altMatch[1] ?? altMatch[2] ?? "") : "";
     caption &&
       (captionHref ? (
         <figcaption>
-          <a href={captionHref} target="_blank" rel="noopener noreferrer" set:html={caption} />
+          <a
+            href={captionHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            set:html={caption}
+          />
         </figcaption>
       ) : (
         <figcaption set:html={caption} />

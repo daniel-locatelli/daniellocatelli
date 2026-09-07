@@ -65,7 +65,7 @@ function jsxStr(name: string, value: string) {
   return { type: "mdxJsxAttribute", name, value };
 }
 
-function buildImage(importName: string, alt: string): any {
+function buildImage(importName: string, alt: string, caption?: string): any {
   return {
     type: "mdxJsxTextElement",
     name: "Image",
@@ -78,6 +78,9 @@ function buildImage(importName: string, alt: string): any {
       jsxStr("decoding", "async"),
       // Original-resolution URL for the lightbox to upgrade to on zoom.
       jsxExpr("data-zoom-src", `${importName}.src`),
+      // Inside JSX the plugin does not build the <figure>; the wrapping
+      // component (Figure, ImageRow) reads the caption directive from here.
+      ...(caption === undefined ? [] : [jsxStr("data-caption", caption)]),
     ],
     children: [],
   };
@@ -143,8 +146,10 @@ export function remarkImageToAstroImage() {
         data: { estree: parseModule(importSource) },
       });
 
-      const imageJsx = buildImage(importName, node.alt || "");
       const caption = figureCaption(node.alt, node.title);
+      const nestedCaption =
+        insideJsx && node.title != null ? (caption ?? "") : undefined;
+      const imageJsx = buildImage(importName, node.alt || "", nestedCaption);
 
       const grandparent =
         ancestors.length >= 2 ? ancestors[ancestors.length - 2] : null;

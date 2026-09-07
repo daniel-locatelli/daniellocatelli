@@ -1,7 +1,8 @@
 ---
 /**
  * Renders child images side-by-side on desktop, stacked on mobile.
- * Extracts alt text from each image and displays it as a visible caption.
+ * Displays each image's caption below it: the markdown title when given
+ * (passed through as data-caption by the remark image plugin), else the alt.
  * Usage in MDX:
  *   import ImageRow from '@/components/ImageRow.astro'
  *   <ImageRow>
@@ -11,7 +12,9 @@
  */
 ---
 
-<div class="image-row not-prose my-6 flex flex-col gap-4 sm:flex-row [&>*]:min-w-0 sm:[&>*]:flex-1">
+<div
+  class="image-row not-prose my-6 flex flex-col gap-4 sm:flex-row [&>*]:min-w-0 sm:[&>*]:flex-1"
+>
   <slot />
 </div>
 
@@ -20,7 +23,9 @@
     document.querySelectorAll(".image-row").forEach((row) => {
       row.querySelectorAll("img").forEach((img) => {
         if (img.closest("figure")) return;
-        const alt = img.getAttribute("alt");
+        const alt = img.hasAttribute("data-caption")
+          ? img.getAttribute("data-caption")
+          : img.getAttribute("alt");
         if (!alt) return;
 
         const figure = document.createElement("figure");
