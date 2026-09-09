@@ -261,3 +261,32 @@ export async function generateBlurDataUrl(imagePath: string): Promise<string> {
     return "";
   }
 }
+
+/**
+ * Social platforms (WhatsApp, Facebook, LinkedIn, X) do not render SVG
+ * og:images, so a page whose cover is a vector needs a raster twin: the same
+ * file name with a `-social.png` suffix, stored next to the SVG.
+ *
+ * Returns the cover URL untouched when it is already a raster, the twin's URL
+ * when the cover is an SVG and a twin exists, and "" when a vector cover has
+ * no twin (BaseHead then falls back to the site's default social image).
+ */
+export const importSocialImage = async (
+  page: any,
+  images: any,
+  coverUrl: string,
+) => {
+  if (!coverUrl) return "";
+  if (!/\.svg$/i.test(coverUrl)) return coverUrl;
+
+  const data = page.data || page;
+  const cover = data.Cover;
+  const coverPath = typeof cover === "string" ? cover : cover?.Url;
+  if (typeof coverPath !== "string" || !coverPath.startsWith("/")) return "";
+
+  const twinPath = "/src" + coverPath.replace(/\.svg$/i, "-social.png");
+  if (!images[twinPath]) return "";
+
+  const twin = (await images[twinPath]()).default;
+  return twin.src as string;
+};

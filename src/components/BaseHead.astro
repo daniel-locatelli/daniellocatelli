@@ -10,7 +10,7 @@ const locale = getLocale(Astro.params, Astro.url)
 
 type Props = SiteMeta;
 
-const { articleDate, modifiedDate, description, coverImage, coverAlt, title, viewTransition, alternateLocales } =
+const { articleDate, modifiedDate, description, coverImage, socialImage, coverAlt, title, viewTransition, alternateLocales } =
   Astro.props;
 
 // hreflang alternates. Strip the current locale prefix to get the bare path,
@@ -34,10 +34,20 @@ const siteTitle =
     ? siteConfig.title
     : title;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(
-  coverImage || siteConfig.defaultSocialImage,
-  Astro.site,
-).href;
+// Social previews need a raster image: WhatsApp, Facebook, LinkedIn and X all
+// ignore an SVG og:image and show no card at all. Pages with a vector cover
+// pass a raster twin as socialImage; anything still vectorial falls back to
+// the site banner rather than shipping an SVG no platform will render.
+const rasterCandidate = [socialImage, coverImage].find(
+  (src) => src && !/\.svg(\?|$)/i.test(src),
+);
+const socialImageSrc = rasterCandidate || siteConfig.defaultSocialImage;
+const socialImageURL = new URL(socialImageSrc, Astro.site).href;
+const socialImageType = /\.png(\?|$)/i.test(socialImageSrc)
+  ? "image/png"
+  : /\.webp(\?|$)/i.test(socialImageSrc)
+    ? "image/webp"
+    : "image/jpeg";
 
 // WebPage structured data with publish / modified dates, only for pages that
 // carry at least one of them (content entries).
@@ -112,6 +122,7 @@ const webPageJsonLd =
 <meta property="og:site_name" content={siteConfig.title} />
 <meta property="og:locale" content={locale ? locale : siteConfig.defaultLocale} />
 <meta property="og:image" content={socialImageURL} />
+<meta property="og:image:type" content={socialImageType} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="675" />
 <meta property="og:image:alt" content={coverAlt} />

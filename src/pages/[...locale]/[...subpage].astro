@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import {
   importCoverImage,
   importImage,
+  importSocialImage,
   generateBlurDataUrl,
 } from "../../lib/blog-helpers.ts";
 import { Image } from "astro:assets";
@@ -199,6 +200,7 @@ if (image) {
   const cover = subpage.data.Cover;
   coverUrl = typeof cover === "string" ? cover : cover.Url;
 }
+const socialUrl = await importSocialImage(subpage, images, coverUrl);
 
 const isLetterbox = subpage.data.CoverFit === "contain";
 const focalStyle = subpage.data.CoverFocal
@@ -224,6 +226,7 @@ const linkRel = (href: string) =>
     title: subpage.data.Name,
     description: subpage.data.Description,
     coverImage: coverUrl,
+    socialImage: socialUrl,
     coverAlt: subpage.data.CoverAlt || "Cover image",
     slug: slug,
     articleDate: subpage.data.DateStart,

@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import {
   importCoverImage,
   importImage,
+  importSocialImage,
 } from "src/lib/blog-helpers";
 import Base from "@/layouts/Base.astro";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
@@ -120,6 +121,7 @@ if (pageImage) {
   const cover = page.data.Cover;
   coverUrl = typeof cover === "string" ? cover : cover.Url;
 }
+const socialUrl = await importSocialImage(page, images, coverUrl);
 ---
 
 <Base
@@ -127,6 +129,7 @@ if (pageImage) {
     title: page.data.Name,
     description: page.data.Description,
     coverImage: coverUrl,
+    socialImage: socialUrl,
     coverAlt: page.data.CoverAlt || "Cover image",
     slug: pageSlug,
     alternateLocales,

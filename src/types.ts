@@ -8,6 +8,12 @@ export type SiteMeta = {
   title: string;
   description?: string;
   coverImage?: string | undefined;
+  /**
+   * Raster image for og:image/twitter:image. Defaults to the cover, but pages
+   * with an SVG cover must pass a raster twin here: social platforms
+   * (WhatsApp, Facebook, LinkedIn, X) do not render SVG previews.
+   */
+  socialImage?: string | undefined;
   coverAlt?: string | undefined;
   articleDate?: string | undefined;
   /** ISO 8601 date of the last content edit (emitted as article:modified_time / dateModified). */
