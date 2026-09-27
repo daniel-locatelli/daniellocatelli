@@ -1,0 +1,127 @@
+---
+// Small Gantt pinned to the top of every slide. The rows belonging to the
+// current act light up. Acts are declared with <Act id="..."/> markers placed
+// between slides in deck.mdx; the active slide inherits the nearest marker
+// before it, so slides can be added or reordered freely.
+import { ROWS, NOW, ACT_LABELS, pct } from "./gantt-data";
+---
+
+<div id="pg-strip" aria-hidden="true" data-acts={JSON.stringify(ACT_LABELS)}>
+  <div class="pgs-rows">
+    {
+      ROWS.map((r) => (
+        <div class={`pgs-row pgs-${r.kind}`} data-row-acts={r.acts.join(" ")}>
+          <span class="pgs-bar" style={`left:${pct(r.start)}%;width:${pct(r.end) - pct(r.start)}%`} />
+        </div>
+      ))
+    }
+    <i class="pgs-now" style={`left:${pct(NOW)}%`}></i>
+  </div>
+  <span class="pgs-label"></span>
+</div>
+
+<style is:global>
+  #pg-strip {
+    position: fixed;
+    top: clamp(1rem, 2.6vh, 1.6rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(14rem, 26vw, 24rem);
+    z-index: 25;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  #pg-strip[data-active=""],
+  body.deck-overview #pg-strip {
+    opacity: 0;
+  }
+  #pg-strip .pgs-rows {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  #pg-strip .pgs-row {
+    position: relative;
+    height: 3px;
+  }
+  #pg-strip .pgs-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 2px;
+    background: rgba(242, 239, 233, 0.16);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  #pg-strip .pgs-planned .pgs-bar {
+    background: transparent;
+    border-top: 1px dashed rgba(242, 239, 233, 0.22);
+  }
+  #pg-strip .pgs-row.is-on .pgs-bar {
+    background: #e0a458;
+    box-shadow: 0 0 8px rgba(224, 164, 88, 0.7);
+  }
+  #pg-strip .pgs-partner.is-on .pgs-bar {
+    background: #85b7cb;
+    box-shadow: 0 0 8px rgba(133, 183, 203, 0.7);
+  }
+  #pg-strip .pgs-planned.is-on .pgs-bar {
+    background: transparent;
+    border-top-color: #e0a458;
+    box-shadow: none;
+  }
+  #pg-strip .pgs-now {
+    position: absolute;
+    top: -3px;
+    bottom: -3px;
+    width: 1px;
+    background: rgba(224, 164, 88, 0.6);
+  }
+  #pg-strip .pgs-label {
+    display: block;
+    margin-top: 0.55rem;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: #a49e92;
+  }
+</style>
+
+<script>
+  const strip = document.getElementById("pg-strip");
+  if (strip) {
+    const labels = JSON.parse(strip.dataset.acts ?? "{}") as Record<string, string>;
+    const rows = Array.from(strip.querySelectorAll<HTMLElement>("[data-row-acts]"));
+    const label = strip.querySelector<HTMLElement>(".pgs-label");
+
+    const update = () => {
+      let el = document.querySelector("#deck [data-slide].is-active")?.previousElementSibling;
+      let act = "";
+      while (el) {
+        if (el instanceof HTMLElement && el.dataset.act !== undefined) {
+          act = el.dataset.act;
+          break;
+        }
+        el = el.previousElementSibling;
+      }
+      if (strip.dataset.active === act) return;
+      strip.dataset.active = act;
+      rows.forEach((r) =>
+        r.classList.toggle("is-on", (r.dataset.rowActs ?? "").split(" ").includes(act)),
+      );
+      if (label) label.textContent = labels[act] ?? "";
+    };
+
+    const deck = document.getElementById("deck");
+    if (deck) {
+      new MutationObserver(update).observe(deck, {
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    }
+    update();
+  }
+</script>

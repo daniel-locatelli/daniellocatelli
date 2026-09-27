@@ -1,0 +1,155 @@
+---
+// Three polyhedral-mesh families drawn around one vertex: triangles
+// (valence 6), quads (valence 4), hexagons (valence 3). The highlighted
+// vertex and its edges are the node a fabricator has to build.
+const s = 46; // edge length
+const deg = (a: number) => (a * Math.PI) / 180;
+const pt = (x: number, y: number) => `${x.toFixed(1)},${y.toFixed(1)}`;
+
+// Triangles: six neighbours on a ring, fan of six faces.
+const triRing = Array.from({ length: 6 }, (_, k) => [s * Math.cos(deg(60 * k)), s * Math.sin(deg(60 * k))]);
+const triOuter = Array.from({ length: 6 }, (_, k) => [
+  2 * s * Math.cos(deg(60 * k + 30)) * 0.866,
+  2 * s * Math.sin(deg(60 * k + 30)) * 0.866,
+]);
+const triFaces = [
+  ...triRing.map((p, k) => [[0, 0], p, triRing[(k + 1) % 6]]),
+  ...triRing.map((p, k) => [p, triOuter[k], triRing[(k + 1) % 6]]),
+];
+const triSpokes = triRing;
+
+// Quads: 3 x 3 grid around the centre vertex.
+const quadFaces: number[][][] = [];
+for (let i = -1; i <= 0; i++)
+  for (let j = -1; j <= 0; j++) {
+    const x = i * s * 1.15;
+    const y = j * s * 1.15;
+    const q = s * 1.15;
+    quadFaces.push([[x, y], [x + q, y], [x + q, y + q], [x, y + q]]);
+  }
+const quadSpokes = [[s * 1.15, 0], [-s * 1.15, 0], [0, s * 1.15], [0, -s * 1.15]];
+
+// Hexagons: three hexagons sharing the centre vertex.
+const hexFaces = [30, 150, 270].map((theta) => {
+  const cx = s * Math.cos(deg(theta));
+  const cy = s * Math.sin(deg(theta));
+  return Array.from({ length: 6 }, (_, k) => {
+    const phi = deg(theta + 180 + 60 * k);
+    return [cx + s * Math.cos(phi), cy + s * Math.sin(phi)];
+  });
+});
+const hexSpokes = [90, 210, 330].map((a) => [s * Math.cos(deg(a)), s * Math.sin(deg(a))]);
+
+const families = [
+  {
+    name: "Triangles",
+    valence: 6,
+    faces: triFaces,
+    spokes: triSpokes,
+    pro: "Planar by definition, fits any surface",
+    con: "Six members per node, no torsion-free offset",
+  },
+  {
+    name: "Quads",
+    valence: 4,
+    faces: quadFaces,
+    spokes: quadSpokes,
+    pro: "Four members per node, follows curvature lines",
+    con: "Planarity dictates the layout",
+  },
+  {
+    name: "Hexagons",
+    valence: 3,
+    faces: hexFaces,
+    spokes: hexSpokes,
+    pro: "Three plates per node, face offsets for free",
+    con: "Faces turn non-convex in negative curvature",
+    chosen: true,
+  },
+];
+---
+
+<div class="pv-row">
+  {
+    families.map((f) => (
+      <figure class:list={["pv-fig", { "pv-chosen": f.chosen }]}>
+        <svg viewBox="-120 -120 240 240" role="img" aria-label={`${f.name}, valence ${f.valence}`}>
+          {f.faces.map((face) => <polygon points={face.map(([x, y]) => pt(x, y)).join(" ")} />)}
+          {f.spokes.map(([x, y]) => <line class="pv-spoke" x1="0" y1="0" x2={x} y2={y} />)}
+          <circle class="pv-node" r="6" />
+        </svg>
+        <figcaption>
+          <strong>{f.name}</strong>
+          <span class="pv-val">valence {f.valence}</span>
+          <span class="pv-pro">+ {f.pro}</span>
+          <span class="pv-con">− {f.con}</span>
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>
+
+<style is:global>
+  .pv-row {
+    position: absolute;
+    inset: clamp(8rem, 20vh, 11rem) clamp(3rem, 8vw, 9rem) clamp(3rem, 8vh, 5rem);
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+  }
+  .pv-fig {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .pv-fig svg {
+    width: min(100%, 30vh);
+    height: auto;
+    overflow: visible;
+  }
+  .pv-fig polygon {
+    fill: rgba(242, 239, 233, 0.04);
+    stroke: rgba(242, 239, 233, 0.35);
+    stroke-width: 1.4;
+    stroke-linejoin: round;
+  }
+  .pv-fig .pv-spoke {
+    stroke: #a49e92;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .pv-fig .pv-node { fill: #a49e92; }
+  .pv-chosen polygon { fill: rgba(224, 164, 88, 0.1); stroke: rgba(224, 164, 88, 0.6); }
+  .pv-chosen .pv-spoke { stroke: #e0a458; }
+  .pv-chosen .pv-node { fill: #e0a458; }
+  .pv-fig figcaption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+    color: #a49e92;
+  }
+  .pv-fig strong {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.3rem, 2.3vw, 2rem);
+    color: #f2efe9;
+  }
+  .pv-chosen strong,
+  .pv-chosen .pv-val { color: #e0a458; }
+  .pv-fig .pv-val {
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    margin-bottom: 0.4rem;
+  }
+  .pv-fig .pv-pro { color: #f2efe9; }
+</style>

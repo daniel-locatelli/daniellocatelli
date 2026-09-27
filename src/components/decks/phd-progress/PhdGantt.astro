@@ -1,0 +1,116 @@
+---
+// Full-size Gantt for the phd-progress deck: every work package with its
+// label, month grid, "now" line and milestones.
+import { ROWS, MONTHS, MILESTONES, NOW, pct } from "./gantt-data";
+
+const monthStarts = ["2026-07-01", "2026-08-01", "2026-09-01", "2026-10-01", "2026-11-01", "2026-12-01"];
+---
+
+<div class="pg-full">
+  <div class="pg-head">
+    <span></span>
+    <div class="pg-track">
+      {MONTHS.map((m, i) => <span class="pg-month" style={`left:${pct(monthStarts[i])}%`}>{m}</span>)}
+    </div>
+  </div>
+  {
+    ROWS.map((r) => (
+      <div class={`pg-row pg-${r.kind}`}>
+        <span class="pg-label">{r.label}</span>
+        <div class="pg-track">
+          {monthStarts.map((d) => <i class="pg-grid" style={`left:${pct(d)}%`} />)}
+          {MILESTONES.map((m) => <i class="pg-grid pg-grid-mile" style={`left:${pct(m.date)}%`} />)}
+          <i class="pg-grid pg-grid-now" style={`left:${pct(NOW)}%`} />
+          <span class="pg-bar" style={`left:${pct(r.start)}%;width:${pct(r.end) - pct(r.start)}%`} />
+        </div>
+      </div>
+    ))
+  }
+  <div class="pg-row pg-foot">
+    <span></span>
+    <div class="pg-track">
+      <i class="pg-now" style={`left:${pct(NOW)}%`}><b>now</b></i>
+      {MILESTONES.map((m) => <i class="pg-mile" style={`left:${pct(m.date)}%`}><b>{m.label}</b></i>)}
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .pg-full {
+    position: absolute;
+    inset: clamp(11rem, 27vh, 14rem) clamp(3rem, 8vw, 9rem) clamp(3rem, 9vh, 5rem);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(0.25rem, 0.9vh, 0.6rem);
+    font-family: "Poppins", sans-serif;
+  }
+  .pg-full .pg-head,
+  .pg-full .pg-row {
+    display: grid;
+    grid-template-columns: minmax(12rem, 30%) 1fr;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .pg-full .pg-track {
+    position: relative;
+    height: clamp(0.8rem, 2.2vh, 1.3rem);
+  }
+  .pg-full .pg-label {
+    text-align: right;
+    font-weight: 300;
+    font-size: clamp(0.78rem, 1.15vw, 1.05rem);
+    color: var(--pp-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pg-full .pg-month {
+    position: absolute;
+    top: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(0.6rem, 0.85vw, 0.75rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pp-dim);
+  }
+  .pg-full .pg-grid {
+    position: absolute;
+    top: -0.3rem;
+    bottom: -0.3rem;
+    width: 1px;
+    background: rgba(242, 239, 233, 0.07);
+  }
+  .pg-full .pg-bar {
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    border-radius: 999px;
+    background: rgba(242, 239, 233, 0.35);
+  }
+  .pg-full .pg-ongoing .pg-bar { background: rgba(224, 164, 88, 0.6); }
+  .pg-full .pg-now .pg-bar { background: var(--pp-amber); box-shadow: 0 0 18px rgba(224, 164, 88, 0.55); }
+  .pg-full .pg-now .pg-label { color: var(--pp-ink); font-weight: 500; }
+  .pg-full .pg-planned .pg-bar { background: rgba(242, 239, 233, 0.06); border: 1px dashed rgba(242, 239, 233, 0.5); }
+  .pg-full .pg-partner .pg-bar { background: rgba(133, 183, 203, 0.55); }
+  .pg-full .pg-partner .pg-label { color: var(--pp-silicon); }
+  .pg-full .pg-foot .pg-track { height: 1.6rem; }
+  .pg-full .pg-grid-mile { background: rgba(242, 239, 233, 0.22); }
+  .pg-full .pg-grid-now { background: var(--pp-amber); width: 2px; }
+  .pg-full .pg-foot i { position: absolute; top: 0; font-style: normal; }
+  .pg-full .pg-foot .pg-mile b { transform: translateX(8px); }
+  .pg-full .pg-foot .pg-now b { transform: translateX(calc(-100% - 8px)); }
+  .pg-full .pg-foot b {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: clamp(0.6rem, 0.85vw, 0.75rem);
+    letter-spacing: 0.08em;
+    color: var(--pp-dim);
+  }
+  .pg-full .pg-foot .pg-now b { color: var(--pp-amber); text-transform: uppercase; letter-spacing: 0.22em; }
+</style>

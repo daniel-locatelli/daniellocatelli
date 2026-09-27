@@ -1,0 +1,10 @@
+---
+// Act marker for the phd-progress deck. Sits between slides; every slide
+// after it (until the next marker) belongs to this act. "none" hides the strip.
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+---
+
+<span data-act={id === "none" ? "" : id} hidden></span>

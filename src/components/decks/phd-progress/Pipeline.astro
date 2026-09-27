@@ -1,0 +1,128 @@
+---
+// Demonstrator storyline in four steps: constructive module (base surface),
+// plate derivations, the chosen one, the application on the HIL roof.
+const lerp = (a: number[], b: number[], t: number) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+const f = (p: number[]) => `${p[0].toFixed(1)},${p[1].toFixed(1)}`;
+
+// 1. Hypar z = uv, drawn in isometric projection. Both ruling families are
+// straight lines in 3D, so they stay straight on screen.
+const iso = (u: number, v: number) => {
+  const z = u * v * 0.9;
+  return [(u - v) * 0.866 * 52, (u + v) * 0.5 * 52 - z * 40];
+};
+const A = iso(-1, -1), B = iso(1, -1), C = iso(1, 1), D = iso(-1, 1);
+const rulings: string[] = [];
+for (let i = 0; i <= 8; i++) {
+  const t = -1 + i / 4;
+  rulings.push(`M${f(iso(t, -1))}L${f(iso(t, 1))}`);
+  rulings.push(`M${f(iso(-1, t))}L${f(iso(1, t))}`);
+}
+
+// 2 and 3. A patch of hexagons (pointy-top).
+const r = 13;
+const hexes: { pts: string; key: string }[] = [];
+for (let q = -2; q <= 2; q++)
+  for (let s = -2; s <= 2; s++) {
+    if (Math.abs(q + s) > 2) continue;
+    const cx = r * Math.sqrt(3) * (q + s / 2);
+    const cy = r * 1.5 * s;
+    const pts = Array.from({ length: 6 }, (_, k) => {
+      const a = ((60 * k - 30) * Math.PI) / 180;
+      return f([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+    }).join(" ");
+    hexes.push({ pts, key: `${q},${s}` });
+  }
+
+// 2. Derivations: a triangle fan and a quad grid beside the hexagons.
+const tri: string[] = [];
+for (let i = 0; i < 4; i++)
+  for (let j = 0; j < 4; j++) {
+    const x = -52 + i * 26 + (j % 2) * 13, y = -40 + j * 22;
+    tri.push(`${f([x, y + 22])} ${f([x + 13, y])} ${f([x + 26, y + 22])}`);
+  }
+
+const steps = [
+  { n: "01", title: "Constructive module", sub: "A base surface, e.g. a hypar", state: "in progress" },
+  { n: "02", title: "Plate derivations", sub: "Triangles, quads, hexagons, folds", state: "in progress" },
+  { n: "03", title: "The chosen one", sub: "Checked by the three tiers", state: "next" },
+  { n: "04", title: "The application", sub: "The roof over zone G", state: "next" },
+];
+---
+
+<ol class="pp-steps">
+  {
+    steps.map((st, i) => (
+      <li class:list={[{ "is-now": st.state === "in progress" }]}>
+        <svg viewBox="-80 -70 160 140" role="img" aria-label={st.title}>
+          {i === 0 && (
+            <>
+              <path class="ps-edge" d={`M${f(A)}L${f(B)}L${f(C)}L${f(D)}Z`} />
+              {rulings.map((d) => <path class="ps-line" d={d} />)}
+            </>
+          )}
+          {i === 1 && (
+            <>
+              <g transform="translate(-34 0) scale(0.55)">{tri.map((p) => <polygon class="ps-face" points={p} />)}</g>
+              <g transform="translate(34 0) scale(0.75)">{hexes.map((h) => <polygon class="ps-face" points={h.pts} />)}</g>
+            </>
+          )}
+          {i === 2 && hexes.map((h) => <polygon class:list={["ps-face", { "ps-hot": h.key === "0,0" }]} points={h.pts} />)}
+          {i === 3 && (
+            <>
+              <path class="ps-line" d="M-70 50H70M-60 50V0M60 50V-6M-60 0H-10" />
+              <path class="ps-roof" d="M-64 0L-30 -30L0 -18L30 -44L64 -6" />
+              <path class="ps-line" d="M-30 -30L-30 0M0 -18V0M30 -44V-6" />
+            </>
+          )}
+        </svg>
+        <span class="ps-n">{st.n}</span>
+        <strong>{st.title}</strong>
+        <span class="ps-sub">{st.sub}</span>
+        <span class="ps-state">{st.state}</span>
+      </li>
+    ))
+  }
+</ol>
+
+<style is:global>
+  .pp-steps {
+    position: absolute;
+    inset: clamp(11rem, 30vh, 15rem) clamp(3rem, 8vw, 9rem) clamp(3rem, 10vh, 6rem);
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 2.5vw, 2.5rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: none;
+  }
+  .pp-steps li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(242, 239, 233, 0.18);
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    color: #a49e92;
+    font-size: clamp(0.95rem, 1.35vw, 1.2rem);
+  }
+  .pp-steps li.is-now { border-top-color: #e0a458; }
+  .pp-steps svg { width: 100%; max-height: 24vh; margin-bottom: 1rem; }
+  .pp-steps .ps-edge { fill: rgba(224, 164, 88, 0.06); stroke: rgba(242, 239, 233, 0.5); stroke-width: 1.2; }
+  .pp-steps .ps-line { fill: none; stroke: rgba(242, 239, 233, 0.4); stroke-width: 1; }
+  .pp-steps .ps-face { fill: rgba(242, 239, 233, 0.04); stroke: rgba(242, 239, 233, 0.45); stroke-width: 1.1; }
+  .pp-steps .ps-hot { fill: rgba(224, 164, 88, 0.35); stroke: #e0a458; }
+  .pp-steps .ps-roof { fill: none; stroke: #e0a458; stroke-width: 3; stroke-linejoin: round; }
+  .pp-steps .ps-n { font-family: "Montserrat", sans-serif; letter-spacing: 0.22em; font-size: 0.72rem; color: #e0a458; }
+  .pp-steps strong { font-weight: 600; font-size: clamp(1.15rem, 1.9vw, 1.6rem); color: #f2efe9; }
+  .pp-steps .ps-state {
+    margin-top: 0.4rem;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.65rem;
+  }
+  .pp-steps li.is-now .ps-state { color: #e0a458; }
+</style>
