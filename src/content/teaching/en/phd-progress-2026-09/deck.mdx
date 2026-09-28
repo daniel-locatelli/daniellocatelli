@@ -66,18 +66,17 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
 <Slide>
   <div class="pp-head">
     <h3>COMPAS study · PRs</h3>
-    <h2>46 issues found. <em>18 PRs merged.</em></h2>
+    <h2>18 PRs merged. <em>18 issues filed.</em></h2>
   </div>
   <div class="pp-issues">
-    <div class="pi-legend"><span class="pi-solved">Solved · 13</span><span class="pi-progress">Filed or in a PR · 12</span><span class="pi-open">Found, not yet acted on · 21</span></div>
-    <div class="pi-row pi-head"><b></b><div></div><span>Issues</span><span>PRs merged</span></div>
-    <div class="pi-row"><b>compas_timber</b><div class="pi-bar"><i class="pi-solved" style="--n:12">12</i><i class="pi-progress" style="--n:10">10</i><i class="pi-open" style="--n:17">17</i></div><span>39</span><span>15 of 16</span></div>
-    <div class="pi-row"><b>timber_design</b><div class="pi-bar"><i class="pi-solved" style="--n:1">1</i><i class="pi-progress" style="--n:2">2</i></div><span>3</span><span>2 of 2</span></div>
-    <div class="pi-row"><b>compas_model</b><div class="pi-bar"><i class="pi-open" style="--n:3">3</i></div><span>3</span><span>0</span></div>
-    <div class="pi-row"><b>compas</b><div class="pi-bar"><i class="pi-open" style="--n:1">1</i></div><span>1</span><span>1 of 1</span></div>
+    <div class="pi-legend"><span class="pi-solved">PR merged · 18</span><span class="pi-progress">PR open · 1</span><span class="pi-closed">Issue closed · 10</span><span class="pi-open">Issue open · 8</span></div>
+    <div class="pi-row pi-head"><b></b><div></div><span>PRs merged</span><span>Issues filed</span></div>
+    <div class="pi-row"><b>compas_timber</b><div class="pi-bar"><i class="pi-solved" style="--n:15">15</i><i class="pi-progress" style="--n:1">1</i><i class="pi-closed" style="--n:9">9</i><i class="pi-open" style="--n:6">6</i></div><span>15 of 16</span><span>15</span></div>
+    <div class="pi-row"><b>timber_design</b><div class="pi-bar"><i class="pi-solved" style="--n:2">2</i><i class="pi-closed" style="--n:1">1</i><i class="pi-open" style="--n:2">2</i></div><span>2 of 2</span><span>3</span></div>
+    <div class="pi-row"><b>compas</b><div class="pi-bar"><i class="pi-solved" style="--n:1">1</i></div><span>1 of 1</span><span>0</span></div>
   </div>
-  <p class="pp-foot">Issues drafted in compas-field-guide from a study of nine COMPAS repos, grouped by the repo they belong to. Solved: merged, closed, or verified as a non-issue.</p>
-  <SlideNotes>Study, 15 to 28 July (compas-ecosystem-audit): nine repos, five reviewer personas each (COMPAS expert, architect, product manager, devil's advocate, standards expert), then one synthesis. Finding: compas.data.Data is the best foundation available, but its guarantees are decorative: validation never runs, guids do not survive a round trip, errors come back as prose. Contributions: compas PR #1526 (Data.__dtype__ delegates to Data.__clstype__), merged. compas_timber: 16 PRs, 15 merged (BTLx file history, feature API, deprecations, docs); solved includes #839, #840, #836, #841, #845, #812. timber_design: PRs #21 and #22 merged 7 September, migrating the Grasshopper docs out of compas_timber; issues #23 (Food4Rhino link) and #25 (missing screenshots and pages) open, #24 closed as unnecessary. In progress on compas_timber: #817, #818, #820, #829 open; the #832 README PR paused; #814, #819, #821 closed with a follow-up still owed. Statuses checked on GitHub on 28 September.</SlideNotes>
+  <p class="pp-foot">My pull requests and issues on GitHub, per repository, checked with gh on 28 September. Found through a study of nine COMPAS repos and day-to-day use.</p>
+  <SlideNotes>Study, 15 to 28 July (compas-ecosystem-audit): nine repos, five reviewer personas each (COMPAS expert, architect, product manager, devil's advocate, standards expert), then one synthesis. Finding: compas.data.Data is the best foundation available, but its guarantees are decorative: validation never runs, guids do not survive a round trip, errors come back as prose. compas: PR #1526 (Data.__dtype__ delegates to Data.__clstype__), merged. compas_timber: 16 PRs, 15 merged (dev setup, classifiers, class diagrams, BTLx file history, the add_feature API, deprecations, docs); #832 (README) still open. Issues #814 to #825, #829, #833, #835: 9 closed, 6 open (#817 process_joinery contract, #818 JSON round-trip deletes user BTLx features, #820 BTLx Shape block depends on geometry cache, #829 preferred ref side, #833 visual identity, #835 GH examples fail in Rhino 8). timber_design: PRs #21 and #22 merged, migrating the Grasshopper docs out of compas_timber; issues #23 (Food4Rhino link) and #25 (missing screenshots and pages) open, #24 closed as unnecessary. Beyond these, compas-field-guide holds drafts not yet filed.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── Cover ───────────────────────────── */}
@@ -999,14 +998,15 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   }
   #deck .pi-legend { display: flex; flex-wrap: wrap; gap: 0.75rem 2.25rem; margin-bottom: 0.75rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.85rem, 1.2vw, 1.02rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
   #deck .pi-legend span::before { content: ""; display: inline-block; width: 0.8em; height: 0.8em; margin-right: 0.5em; border-radius: 0.2em; vertical-align: -0.05em; background: var(--c); border: 1px dashed var(--b, transparent); }
-  #deck .pi-row { display: grid; grid-template-columns: 14rem 1fr 4.4rem 8.1rem; align-items: center; gap: 1.5rem; }
+  #deck .pi-row { display: grid; grid-template-columns: 14rem 1fr 8.1rem 8.6rem; align-items: center; gap: 1.5rem; }
   #deck .pi-row.pi-head > span { font-family: "Montserrat", sans-serif; font-size: clamp(0.78rem, 1.06vw, 0.94rem); letter-spacing: 0.16em; text-transform: uppercase; }
   #deck .pi-row b { font-weight: 500; color: var(--pp-ink); font-size: clamp(1.19rem, 1.75vw, 1.56rem); text-align: right; }
-  #deck .pi-row > span { font-weight: 300; color: var(--pp-dim); font-size: clamp(1.19rem, 1.75vw, 1.56rem); }
+  #deck .pi-row > span { white-space: nowrap; font-weight: 300; color: var(--pp-dim); font-size: clamp(1.19rem, 1.75vw, 1.56rem); }
   #deck .pi-bar { display: flex; gap: 4px; height: clamp(2.25rem, 5.6vh, 3.25rem); }
-  #deck .pi-bar i { flex: 0 0 calc(var(--n) / 39 * 100%); display: flex; align-items: center; justify-content: center; border-radius: 0.45rem; font-style: normal; font-weight: 600; font-size: clamp(1rem, 1.4vw, 1.25rem); color: #1a1714; background: var(--c); border: 1px dashed var(--b, transparent); }
+  #deck .pi-bar i { flex: 0 1 calc(var(--n) / 31 * 100%); display: flex; align-items: center; justify-content: center; border-radius: 0.45rem; font-style: normal; font-weight: 600; font-size: clamp(1rem, 1.4vw, 1.25rem); color: #1a1714; background: var(--c); border: 1px dashed var(--b, transparent); }
   #deck .pi-solved { --c: var(--pp-amber); }
   #deck .pi-progress { --c: rgba(224, 164, 88, 0.45); }
+  #deck .pi-closed { --c: rgba(242, 239, 233, 0.3); }
   #deck .pi-open { --c: rgba(242, 239, 233, 0.05); --b: rgba(242, 239, 233, 0.45); }
   #deck .pi-bar i.pi-open { color: var(--pp-dim); }
   /* compas_ai at the centre of the COMPAS ecosystem */
