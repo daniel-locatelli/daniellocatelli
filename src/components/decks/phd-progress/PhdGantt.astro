@@ -6,13 +6,15 @@ import { ROWS, MONTHS, MILESTONES as ALL_MILESTONES, NOW, pct, type GanttRow } f
 interface Props {
   rows?: GanttRow[];
   milestones?: { date: string; label: string }[];
+  /** Width of the label column; short labels read better with a narrower one. */
+  labelWidth?: string;
 }
-const { rows = ROWS, milestones: MILESTONES = ALL_MILESTONES } = Astro.props;
+const { rows = ROWS, milestones: MILESTONES = ALL_MILESTONES, labelWidth = "minmax(12rem, 30%)" } = Astro.props;
 
 const monthStarts = ["2026-07-01", "2026-08-01", "2026-09-01", "2026-10-01", "2026-11-01", "2026-12-01"];
 ---
 
-<div class="pg-full">
+<div class="pg-full" style={`--pg-label-w:${labelWidth}`}>
   <div class="pg-head">
     <span></span>
     <div class="pg-track">
@@ -44,7 +46,11 @@ const monthStarts = ["2026-07-01", "2026-08-01", "2026-09-01", "2026-10-01", "20
 <style is:global>
   .pg-full {
     position: absolute;
-    inset: clamp(11rem, 27vh, 14rem) clamp(3rem, 8vw, 9rem) clamp(3rem, 9vh, 5rem);
+    top: clamp(11rem, 27vh, 14rem);
+    bottom: clamp(3rem, 9vh, 5rem);
+    left: 50%;
+    width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 72rem);
+    transform: translateX(-50%);
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -55,7 +61,7 @@ const monthStarts = ["2026-07-01", "2026-08-01", "2026-09-01", "2026-10-01", "20
   .pg-full .pg-head,
   .pg-full .pg-row {
     display: grid;
-    grid-template-columns: minmax(12rem, 30%) 1fr;
+    grid-template-columns: var(--pg-label-w, 14rem) 1fr;
     gap: 1.25rem;
     align-items: center;
   }

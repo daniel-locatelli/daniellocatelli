@@ -44,7 +44,7 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
     <h3>Three months in</h3>
     <h2>What has been done</h2>
   </div>
-  <PhdGantt rows={SECTION_ROWS} milestones={SECTION_MILESTONES} />
+  <PhdGantt rows={SECTION_ROWS} milestones={SECTION_MILESTONES} labelWidth="13rem" />
   <SlideNotes>One row per section of this talk, in the order they come. July: onboarding and the COMPAS repos study, then issues and PRs. August: the planar meshing study. September: the data dictionary, the structural analysis, and now the HIL case study. Acoustics and assembly start after the technical meeting.</SlideNotes>
 </Slide>
 
@@ -62,7 +62,7 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
       <p>Written 1 to 9 July. 54 commits, a verified 10-minute quickstart, merged with Gonzalo.</p>
     </div>
     <div class="ps-shot">
-      <Image src={onboardingRepo} alt="The gramazio-kohler-onboarding README on GitHub: prerequisites table with ETH accounts and passwords, contributors Claude, Daniel Locatelli and Gonzalo Casas" widths={[900, 1600]} sizes="50vw" />
+      <Image src={onboardingRepo} loading="eager" alt="The gramazio-kohler-onboarding README on GitHub: prerequisites table with ETH accounts and passwords, contributors Claude, Daniel Locatelli and Gonzalo Casas" widths={[900, 1600]} sizes="50vw" />
     </div>
   </div>
   <SlideNotes>Onboarding as a deliverable: the next newcomer gets a working setup in an afternoon. The coding chapter grew into compas-field-guide, a newcomer's guide to COMPAS.</SlideNotes>
@@ -357,8 +357,8 @@ notes: "Félix Candela's hypar shells, but built from flat timber plates instead
     <h2>Long modules</h2>
   </div>
   <div class="pp-module pp-module-2">
-    <Image src={hilSolution01ModuleA} alt="Isometric of a long vault module of flat timber plates in a zigzag pattern, 28.86 by 9.62 by 5.72 m" widths={[900, 1600]} sizes="45vw" />
-    <Image src={hilSolution01ModuleB} alt="Isometric of a narrower long vault module of flat timber plates, 19.24 by 4.81 by 2.00 m" widths={[900, 1600]} sizes="45vw" />
+    <Image src={hilSolution01ModuleA} loading="eager" alt="Isometric of a long vault module of flat timber plates in a zigzag pattern, 28.86 by 9.62 by 5.72 m" widths={[900, 1600]} sizes="45vw" />
+    <Image src={hilSolution01ModuleB} loading="eager" alt="Isometric of a narrower long vault module of flat timber plates, 19.24 by 4.81 by 2.00 m" widths={[900, 1600]} sizes="45vw" />
   </div>
 </Slide>
 
@@ -375,7 +375,7 @@ imageAlt: "Rendering of the HIL building extension with a roof of long, wave-lik
     <h2>Single module</h2>
   </div>
   <div class="pp-module">
-    <Image src={hilSolution02Module} alt="Isometric of a single saddle-shaped module of flat timber plates, 9.62 by 9.62 by 5.00 m" widths={[1200, 2000]} sizes="80vw" />
+    <Image src={hilSolution02Module} loading="eager" alt="Isometric of a single saddle-shaped module of flat timber plates, 9.62 by 9.62 by 5.00 m" widths={[1200, 2000]} sizes="80vw" />
   </div>
 </Slide>
 
@@ -408,7 +408,7 @@ notes: "Utilisation on one hypar module, pinned along the lower edges. Red appea
     <h2>Simplified hypar</h2>
   </div>
   <div class="pp-module">
-    <Image src={hilSolution03Module} alt="Isometric of a simplified hypar made of a few large flat timber plates, 10.97 by 10.97 by 10.22 m" widths={[1200, 2000]} sizes="80vw" />
+    <Image src={hilSolution03Module} loading="eager" alt="Isometric of a simplified hypar made of a few large flat timber plates, 10.97 by 10.97 by 10.22 m" widths={[1200, 2000]} sizes="80vw" />
   </div>
 </Slide>
 

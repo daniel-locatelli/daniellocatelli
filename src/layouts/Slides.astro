@@ -324,6 +324,11 @@ const {
     const images = Array.from(
       document.querySelectorAll<HTMLImageElement>("#deck img"),
     );
+    // A lazy image inside a hidden slide never loads, so its decode() never
+    // settles and navigation to that slide would hang. Load everything now.
+    images.forEach((img) => {
+      if (img.loading === "lazy") img.loading = "eager";
+    });
     const videos = Array.from(
       document.querySelectorAll<HTMLVideoElement>("#deck video"),
     );
@@ -558,13 +563,18 @@ const {
       const imgs = Array.from(
         slide.querySelectorAll<HTMLImageElement>("img"),
       );
-      await Promise.all(
-        imgs.map((img) =>
-          typeof img.decode === "function"
-            ? img.decode().catch(() => {})
-            : Promise.resolve(),
+      // decode() can stay pending (an image still loading, or a background
+      // tab), so never let it hold navigation for more than a moment.
+      await Promise.race([
+        Promise.all(
+          imgs.map((img) =>
+            typeof img.decode === "function"
+              ? img.decode().catch(() => {})
+              : Promise.resolve(),
+          ),
         ),
-      );
+        new Promise((resolve) => setTimeout(resolve, 400)),
+      ]);
     };
 
     let renderToken = 0;
