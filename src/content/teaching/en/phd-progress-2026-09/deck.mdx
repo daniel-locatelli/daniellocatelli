@@ -32,6 +32,8 @@ import asmAcrossScales from "@/assets/content/teaching/phd-progress-2026-09/asse
 import asmRoboticAssembly from "@/assets/content/teaching/phd-progress-2026-09/assembly-design-for-robotic-assembly.jpg";
 import asmFit2023 from "@/assets/content/teaching/phd-progress-2026-09/assembly-icd-itke-fit2023.jpg";
 import candelaManantiales from "@/assets/content/teaching/phd-progress-2026-09/candela-los-manantiales.jpg";
+import courseShapeModeling from "@/assets/content/teaching/phd-progress-2026-09/course-shape-modeling-smocking.jpg";
+import coursePbs from "@/assets/content/teaching/phd-progress-2026-09/course-pbs-chain-mail.jpg";
 import hilSolution01ModuleA from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-a.png";
 import hilSolution01ModuleB from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-b.png";
 import hilSolution02Module from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-module.png";
@@ -549,16 +551,23 @@ imageAlt: "CLT plate specimens of several sizes laid out on the floor of the str
 
 <Act id="coursework" />
 
----
-text: |
-  ### Coursework
-
-  ## Two courses possible
-
-  - **Shape Modeling and Geometry Processing** (252-0538, 8 ECTS, spring, Sorkine-Hornung)
-  - **Physically-Based Simulation in Computer Graphics** (252-0546, 5 ECTS, autumn, Coros/Thomaszewski)
-notes: "12 ECTS for the whole doctorate, at least a third outside the research area, Master's level only, nothing the supervisor teaches. Shape Modeling is the mathematics already under the plate work. Physically-Based Simulation is the CS candidate: mass-spring systems, FEM for deformables, rigid bodies and collision detection, with a C++ project, so it also prepares the C++/libigl assignments of Shape Modeling. Master's level, but not on the Doctorate Architecture list, so it needs sign-off; registration closes 11 October. Other CS options: Large Language Models (263-5354, 8 ECTS, spring), only if the LLM layer becomes central; Mathematical Foundations of Computer Graphics and Vision (252-5706, 5, spring), which competes with Shape Modeling in the same term."
----
+<Slide>
+  <div class="pp-head">
+    <h3>Coursework</h3>
+    <h2>Two courses possible</h2>
+  </div>
+  <div class="pp-courses">
+    <figure>
+      <Image src={courseShapeModeling} loading="eager" alt="A ring of blue denim fabric gathered into a regular pattern of three-dimensional smocked pleats" widths={[800, 1200]} sizes="40vw" />
+      <figcaption><b>Shape Modeling and Geometry Processing</b><span>252-0538 · 8 ECTS · spring · Sorkine-Hornung</span></figcaption>
+    </figure>
+    <figure>
+      <Image src={coursePbs} loading="eager" alt="Three interlocking chain mail materials, including one of hexagonal plates on rings, each shown as a 3D-printed prototype, a simulation of every ring, and a simplified shell simulation under the same load" widths={[800, 1200]} sizes="40vw" />
+      <figcaption><b>Physically-Based Simulation in Computer Graphics</b><span>252-0546 · 5 ECTS · autumn · Coros/Thomaszewski</span></figcaption>
+    </figure>
+  </div>
+  <SlideNotes>12 ECTS for the whole doctorate, at least a third outside the research area, Master's level only, nothing the supervisor teaches. Shape Modeling is the mathematics already under the plate work. Physically-Based Simulation is the CS candidate: mass-spring systems, FEM for deformables, rigid bodies and collision detection, with a C++ project, so it also prepares the C++/libigl assignments of Shape Modeling. Master's level, but not on the Doctorate Architecture list, so it needs sign-off; registration closes 11 October. Other CS options: Large Language Models (263-5354, 8 ECTS, spring), only if the LLM layer becomes central; Mathematical Foundations of Computer Graphics and Vision (252-5706, 5, spring), which competes with Shape Modeling in the same term. Images: 3D smocking from the Shape Modeling course page (IGL); interlocking chain mail materials, prototype against simulation, from the Computational Robotics Lab, which teaches Physically-Based Simulation.</SlideNotes>
+</Slide>
 
 <PhdGanttStrip rows={SECTION_ROWS} actLabels={SECTION_ACT_LABELS} />
 
@@ -1295,4 +1304,11 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   #deck .pp-candela figure { margin: 0; min-height: 0; max-height: 100%; display: flex; flex-direction: column; }
   #deck .pp-candela img { display: block; width: 100%; height: auto; max-height: 100%; object-fit: contain; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); }
   #deck .pp-candela figcaption { margin-top: 0.5rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.6rem, 0.8vw, 0.72rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
+  /* Coursework: one image per course */
+  #deck .pp-courses { position: absolute; inset: clamp(10rem, 24vh, 13rem) clamp(3rem, 8vw, 9rem) clamp(3rem, 8vh, 5rem); z-index: 10; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 3rem); align-items: center; font-family: "Poppins", sans-serif; }
+  #deck .pp-courses figure { margin: 0; min-height: 0; max-height: 100%; display: flex; flex-direction: column; }
+  #deck .pp-courses img { display: block; width: 100%; height: auto; min-height: 0; object-fit: contain; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); }
+  #deck .pp-courses figcaption { margin-top: 0.8rem; }
+  #deck .pp-courses figcaption b { display: block; font-weight: 500; font-size: clamp(0.95rem, 1.45vw, 1.3rem); color: var(--pp-ink); }
+  #deck .pp-courses figcaption span { display: block; margin-top: 0.2rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.6rem, 0.8vw, 0.72rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
 `}</style>
