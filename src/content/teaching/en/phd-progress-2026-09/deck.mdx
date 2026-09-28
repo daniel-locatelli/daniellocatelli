@@ -131,23 +131,29 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
     <h3>The big picture · 2 of 4</h3>
     <h2>From data model to <em>data dictionary</em></h2>
   </div>
-  <div class="pp-split">
-    <div class="ps-text">
-      <p>Agentic workflows are replacing many tools. Plain English is becoming the way to create things.</p>
-      <p>What we need is not a rigid data model but a <strong>well-defined data dictionary</strong>. The implementation is with the LLM.</p>
+  <div class="pp-dd">
+    <div class="dd-panel dd-model">
+      <span class="dd-tag">Data model · structured</span>
+      <pre><b>CLTPlate</b>(Element)
+├─ outline: Polyline
+├─ thickness: float
+└─ layers: list[<b>Layer</b>]
+{"    "}├─ thickness: float
+{"    "}├─ grain_angle: float
+{"    "}└─ material: <b>Timber</b>
+{"        "}└─ grade: str</pre>
     </div>
-    <div class="ps-card">
-      <span class="pe-tag">bSDD-style entry · illustrative</span>
+    <div class="dd-arrow" aria-hidden="true"></div>
+    <div class="dd-panel dd-dict">
+      <span class="dd-tag">Data dictionary · LLM-friendly</span>
       <dl>
-        <dt>Class</dt><dd>CLT plate</dd>
-        <dt>Property</dt><dd>Grain direction, outer layer</dd>
-        <dt>Definition</dt><dd>Fibre direction of the top lamella, in plate coordinates</dd>
-        <dt>Unit</dt><dd>degree</dd>
-        <dt>Identity</dt><dd>a URI any tool can resolve</dd>
+        <dt>CLT plate</dt><dd>A cross-laminated timber panel, glued from layers of boards laid crosswise.</dd>
+        <dt>Grain direction</dt><dd>Fibre direction of the top lamella, in plate coordinates, in degrees.</dd>
+        <dt>Thickness</dt><dd>Total depth of the plate across all layers, in millimetres.</dd>
       </dl>
     </div>
   </div>
-  <SlideNotes>Nineteen data models reviewed. A shared model across tools does not hold: Speckle deleted its typed element kit (2024), BHoM keeps one object graph per domain, IFC 4.3 keeps a separate structural analysis model. What survives is a minimal vocabulary plus observations about translations. The buildingSMART Data Dictionary is the model for that vocabulary: definitions with stable URIs, not a schema. IFC already links to it through IfcClassificationReference. The entry on the right is an illustration, not an existing bSDD class.</SlideNotes>
+  <SlideNotes>Agentic workflows are replacing many tools; plain English is becoming the way to create things. What we need is not a rigid data model but a well-defined data dictionary; the implementation is with the LLM. Nineteen data models reviewed. A shared model across tools does not hold: Speckle deleted its typed element kit (2024), BHoM keeps one object graph per domain, IFC 4.3 keeps a separate structural analysis model. What survives is a minimal vocabulary plus observations about translations. The buildingSMART Data Dictionary is the model for that vocabulary: definitions with stable URIs, not a schema. IFC already links to it through IfcClassificationReference. The entries on the right are illustrations, not existing bSDD classes.</SlideNotes>
 </Slide>
 
 ---
@@ -852,24 +858,6 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
     margin-bottom: 0.7rem;
   }
 
-  /* Text beside a card */
-  #deck .pp-split {
-    position: absolute;
-    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 10vh, 6rem);
-    z-index: 10;
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    align-items: center;
-    gap: clamp(1.5rem, 4vw, 4rem);
-    font-family: "Poppins", sans-serif;
-  }
-  #deck .ps-text p { margin: 0 0 1.2rem 0; font-weight: 300; font-size: clamp(1rem, 1.6vw, 1.4rem); line-height: 1.55; color: var(--pp-dim); }
-  #deck .ps-text strong { font-weight: 500; color: var(--pp-amber); }
-  #deck .ps-card { padding: 1.4rem 1.6rem; border: 1px solid rgba(133, 183, 203, 0.5); border-radius: 0.8rem; background: rgba(133, 183, 203, 0.06); }
-  #deck .ps-card dl { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 1.2rem; margin: 0; }
-  #deck .ps-card dt { font-family: "Montserrat", sans-serif; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pp-silicon); padding-top: 0.2rem; }
-  #deck .ps-card dd { margin: 0; font-weight: 300; color: var(--pp-ink); font-size: clamp(0.9rem, 1.3vw, 1.15rem); }
-
   /* Agentic loop */
   #deck .pp-loop {
     position: absolute;
@@ -1049,4 +1037,29 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   #deck .pg-full .pg-month,
   #deck .pg-full .pg-foot b { font-size: clamp(0.75rem, 1.06vw, 0.94rem); }
   #deck .pg-full .pg-foot .pg-track { height: 2rem; }
+  /* Data model -> data dictionary */
+  #deck .pp-dd {
+    position: absolute;
+    top: clamp(12rem, 29vh, 15.5rem);
+    bottom: clamp(4rem, 11vh, 6.5rem);
+    left: 50%;
+    width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 96rem);
+    transform: translateX(-50%);
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr clamp(5rem, 8vw, 9rem) 1fr;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .dd-panel { padding: clamp(1.5rem, 2.8vw, 3rem); border-radius: 0.9rem; border: 1px solid rgba(242, 239, 233, 0.3); background: rgba(26, 23, 20, 0.85); }
+  #deck .dd-dict { border-color: var(--pp-amber); background: rgba(42, 33, 24, 0.85); box-shadow: 0 0 40px rgba(224, 164, 88, 0.18); }
+  #deck .dd-tag { display: block; margin-bottom: 1.5rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.8rem, 1.1vw, 1.05rem); letter-spacing: 0.18em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .dd-dict .dd-tag { color: var(--pp-amber); }
+  #deck .dd-model pre { margin: 0; font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: clamp(1.05rem, 1.75vw, 1.65rem); line-height: 1.65; color: var(--pp-dim); white-space: pre; }
+  #deck .dd-model pre b { font-weight: 600; color: var(--pp-ink); }
+  #deck .dd-dict dl { margin: 0; display: grid; gap: 1.3rem; }
+  #deck .dd-dict dt { font-weight: 500; color: var(--pp-ink); font-size: clamp(1.15rem, 1.8vw, 1.7rem); }
+  #deck .dd-dict dd { margin: 0.15rem 0 0; font-weight: 300; color: var(--pp-dim); font-size: clamp(1rem, 1.5vw, 1.4rem); line-height: 1.45; }
+  #deck .dd-arrow { position: relative; height: 3px; margin: 0 1.2rem; background: var(--pp-amber); }
+  #deck .dd-arrow::after { content: ""; position: absolute; right: -2px; top: 50%; width: 1.2rem; height: 1.2rem; border-top: 3px solid var(--pp-amber); border-right: 3px solid var(--pp-amber); transform: translateY(-50%) rotate(45deg); }
 `}</style>
