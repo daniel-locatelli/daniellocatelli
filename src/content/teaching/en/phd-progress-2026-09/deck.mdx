@@ -1141,6 +1141,9 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   /* Planar meshes: the three figures centred in the space below the title */
   #deck .pv-row { top: clamp(12rem, 29vh, 15.5rem); align-content: center; }
   /* Planar mesh lineage: the three highlighted methods as figures */
+  #deck .pln-lane { grid-template-columns: 13rem 1fr; }
+  #deck .pln-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4rem; }
+  #deck .pln-items > div + div::before { left: -1.2rem; }
   #deck .pp-lineage { bottom: clamp(15rem, 36vh, 24rem); gap: 0.5rem; }
   #deck .pln-shots {
     position: absolute;
