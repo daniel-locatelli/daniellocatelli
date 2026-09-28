@@ -55,60 +55,29 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
     <h3>Onboarding</h3>
     <h2>An onboarding repo for <em>Gramazio Kohler Research</em></h2>
   </div>
-  <div class="pp-split pp-split-shot">
-    <div class="ps-text">
-      <p><strong>gramazio-kohler-onboarding:</strong> one practical guide, the gotchas the official docs miss.</p>
-      <p>Hardware, network drives and VPN, software, the GKR database, a coding chapter from install to seeing a package in Rhino, building access, who is who.</p>
-      <p>Written 1 to 9 July. 54 commits, a verified 10-minute quickstart, merged with Gonzalo.</p>
-    </div>
-    <div class="ps-shot">
-      <Image src={onboardingRepo} loading="eager" alt="The gramazio-kohler-onboarding README on GitHub: prerequisites table with ETH accounts and passwords, contributors Claude, Daniel Locatelli and Gonzalo Casas" widths={[900, 1600]} sizes="50vw" />
-    </div>
+  <div class="pp-shot-center">
+    <Image src={onboardingRepo} loading="eager" alt="The gramazio-kohler-onboarding README on GitHub: prerequisites table with ETH accounts and passwords, contributors Claude, Daniel Locatelli and Gonzalo Casas" widths={[1200, 1920]} sizes="80vw" />
   </div>
-  <SlideNotes>Onboarding as a deliverable: the next newcomer gets a working setup in an afternoon. The coding chapter grew into compas-field-guide, a newcomer's guide to COMPAS.</SlideNotes>
+  <SlideNotes>gramazio-kohler-onboarding: one practical guide to Gramazio Kohler Research, the gotchas the official docs miss. Hardware, network drives and VPN, software, the GKR database, a coding chapter from install to seeing a package in Rhino, building access, who is who. Written 1 to 9 July: 54 commits, a verified 10-minute quickstart, merged with Gonzalo. Onboarding as a deliverable: the next newcomer gets a working setup in an afternoon. The coding chapter grew into compas-field-guide, a newcomer's guide to COMPAS.</SlideNotes>
 </Slide>
 
 <Act id="compas" />
 
 <Slide>
   <div class="pp-head">
-    <h3>COMPAS · 1 of 3</h3>
-    <h2>The primitives are right. <em>The seams are shallow.</em></h2>
-  </div>
-  <div class="pp-cards pp-cards-3">
-    <div><b>Nine repos</b><p>compas, compas_model, compas_timber, compas_fab, compas_robots, compas_occ, compas_ifc, compas_viewer, compas_threejs. Ten more surveyed.</p></div>
-    <div><b>Five reviewers per repo</b><p>COMPAS expert, architect, product manager, devil's advocate, standards expert. Then one synthesis.</p></div>
-    <div><b>Finding</b><p>compas.data.Data is the best foundation available, but its guarantees are decorative: validation never runs, guids do not survive a round trip, errors come back as prose.</p></div>
-  </div>
-  <SlideNotes>Study ran 15 to 28 July (compas-ecosystem-audit). Outputs: deepening report, architecture review, data-model critique, target data model, a red-team review (verdict: adapt) and a cross-check against 28 drafted issues.</SlideNotes>
-</Slide>
-
-<Slide>
-  <div class="pp-head">
-    <h3>COMPAS · 2 of 3</h3>
-    <h2>43 issues found. <em>22 acted on.</em></h2>
+    <h3>COMPAS study · PRs</h3>
+    <h2>46 issues found. <em>18 PRs merged.</em></h2>
   </div>
   <div class="pp-issues">
-    <div class="pi-legend"><span class="pi-solved">Solved · 12</span><span class="pi-progress">Filed or in a PR · 10</span><span class="pi-open">Found, not yet acted on · 21</span></div>
-    <div class="pi-row"><b>compas_timber</b><div class="pi-bar"><i class="pi-solved" style="--n:12">12</i><i class="pi-progress" style="--n:10">10</i><i class="pi-open" style="--n:17">17</i></div><span>39</span></div>
-    <div class="pi-row"><b>compas_model</b><div class="pi-bar"><i class="pi-open" style="--n:3">3</i></div><span>3</span></div>
-    <div class="pi-row"><b>compas</b><div class="pi-bar"><i class="pi-open" style="--n:1">1</i></div><span>1</span></div>
+    <div class="pi-legend"><span class="pi-solved">Solved · 13</span><span class="pi-progress">Filed or in a PR · 12</span><span class="pi-open">Found, not yet acted on · 21</span></div>
+    <div class="pi-row pi-head"><b></b><div></div><span>Issues</span><span>PRs merged</span></div>
+    <div class="pi-row"><b>compas_timber</b><div class="pi-bar"><i class="pi-solved" style="--n:12">12</i><i class="pi-progress" style="--n:10">10</i><i class="pi-open" style="--n:17">17</i></div><span>39</span><span>15 of 16</span></div>
+    <div class="pi-row"><b>timber_design</b><div class="pi-bar"><i class="pi-solved" style="--n:1">1</i><i class="pi-progress" style="--n:2">2</i></div><span>3</span><span>2 of 2</span></div>
+    <div class="pi-row"><b>compas_model</b><div class="pi-bar"><i class="pi-open" style="--n:3">3</i></div><span>3</span><span>0</span></div>
+    <div class="pi-row"><b>compas</b><div class="pi-bar"><i class="pi-open" style="--n:1">1</i></div><span>1</span><span>1 of 1</span></div>
   </div>
-  <p class="pp-foot">Every issue drafted in compas-field-guide, grouped by the repo it would be filed on. Solved: merged, closed, or verified as a non-issue.</p>
-  <SlideNotes>Source: the compas-field-guide issues index, statuses checked on GitHub on 28 September. Solved includes PRs #839, #840, #836, #841, #845, #812 and the timber_design docs migration. In progress: #817, #818, #820, #829 open; the #832 README PR paused; #814, #819, #821 closed with a follow-up still owed; two drafts partly shipped in #841. Not yet acted on: mostly question-gated or audit-sourced drafts waiting for a verification pass.</SlideNotes>
-</Slide>
-
-<Slide>
-  <div class="pp-head">
-    <h3>COMPAS · 3 of 3</h3>
-    <h2>From study to <em>contributions</em></h2>
-  </div>
-  <div class="pp-cards pp-cards-3">
-    <div><b>compas</b><p>PR #1526: <code>{"Data.__dtype__"}</code> delegates to <code>{"Data.__clstype__"}</code>. Merged.</p></div>
-    <div><b>compas_timber</b><p>16 PRs, 15 merged: BTLx file history, feature API, deprecations, docs. 15 issues filed, among them JSON round-trip deleting BTLx features.</p></div>
-    <div><b>timber_design</b><p>2 PRs merged: the Grasshopper docs migrated out of compas_timber. 3 issues filed.</p></div>
-  </div>
-  <SlideNotes>A standing obligation, scoped to timber plates. Open compas_timber issues: #817 process_joinery contract, #818 JSON round-trip deletes user BTLx features, #820 BTLx Shape block depends on geometry cache, #829 preferred ref side, #833 visual identity, #835 GH examples fail in Rhino 8.</SlideNotes>
+  <p class="pp-foot">Issues drafted in compas-field-guide from a study of nine COMPAS repos, grouped by the repo they belong to. Solved: merged, closed, or verified as a non-issue.</p>
+  <SlideNotes>Study, 15 to 28 July (compas-ecosystem-audit): nine repos, five reviewer personas each (COMPAS expert, architect, product manager, devil's advocate, standards expert), then one synthesis. Finding: compas.data.Data is the best foundation available, but its guarantees are decorative: validation never runs, guids do not survive a round trip, errors come back as prose. Contributions: compas PR #1526 (Data.__dtype__ delegates to Data.__clstype__), merged. compas_timber: 16 PRs, 15 merged (BTLx file history, feature API, deprecations, docs); solved includes #839, #840, #836, #841, #845, #812. timber_design: PRs #21 and #22 merged 7 September, migrating the Grasshopper docs out of compas_timber; issues #23 (Food4Rhino link) and #25 (missing screenshots and pages) open, #24 closed as unnecessary. In progress on compas_timber: #817, #818, #820, #829 open; the #832 README PR paused; #814, #819, #821 closed with a follow-up still owed. Statuses checked on GitHub on 28 September.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── Cover ───────────────────────────── */}
@@ -1007,24 +976,29 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
     min-height: 0;
   }
   #deck .pp-module-2 img { height: auto; }
-  /* Onboarding: text beside a screenshot */
-  #deck .pp-split-shot { grid-template-columns: 1fr 1.3fr; }
-  #deck .ps-shot img { width: 100%; height: auto; border-radius: 0.6rem; border: 1px solid rgba(242, 239, 233, 0.18); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
+  /* Onboarding: title, then the screenshot centred below it */
+  #deck .pp-shot-center { position: absolute; inset: clamp(12rem, 29vh, 15.5rem) clamp(3rem, 8vw, 9rem) clamp(3rem, 8vh, 5rem); z-index: 10; display: flex; align-items: center; justify-content: center; }
+  #deck .pp-shot-center img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 0.6rem; border: 1px solid rgba(242, 239, 233, 0.18); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
 
   /* Issues found vs acted on */
   #deck .pp-issues {
     position: absolute;
-    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(6rem, 16vh, 9rem);
+    top: clamp(11rem, 28vh, 15rem);
+    bottom: clamp(6rem, 16vh, 9rem);
+    left: 50%;
+    width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 60rem);
+    transform: translateX(-50%);
     z-index: 10;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1.1rem;
+    gap: 0.8rem;
     font-family: "Poppins", sans-serif;
   }
   #deck .pi-legend { display: flex; flex-wrap: wrap; gap: 0.6rem 1.8rem; margin-bottom: 0.6rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.68rem, 0.95vw, 0.82rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
   #deck .pi-legend span::before { content: ""; display: inline-block; width: 0.8em; height: 0.8em; margin-right: 0.5em; border-radius: 0.2em; vertical-align: -0.05em; background: var(--c); border: 1px dashed var(--b, transparent); }
-  #deck .pi-row { display: grid; grid-template-columns: 10rem 1fr 3rem; align-items: center; gap: 1.2rem; }
+  #deck .pi-row { display: grid; grid-template-columns: 10rem 1fr 3.5rem 6.5rem; align-items: center; gap: 1.2rem; }
+  #deck .pi-row.pi-head > span { font-family: "Montserrat", sans-serif; font-size: clamp(0.62rem, 0.85vw, 0.75rem); letter-spacing: 0.16em; text-transform: uppercase; }
   #deck .pi-row b { font-weight: 500; color: var(--pp-ink); font-size: clamp(0.95rem, 1.4vw, 1.25rem); text-align: right; }
   #deck .pi-row > span { font-weight: 300; color: var(--pp-dim); font-size: clamp(0.95rem, 1.4vw, 1.25rem); }
   #deck .pi-bar { display: flex; gap: 3px; height: clamp(1.8rem, 4.5vh, 2.6rem); }
