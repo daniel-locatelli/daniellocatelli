@@ -21,6 +21,9 @@ import { SECTION_ROWS, SECTION_ACT_LABELS, SECTION_MILESTONES } from "@/componen
 
 import coverDesignCloud from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-1.png";
 import onboardingRepo from "@/assets/content/teaching/phd-progress-2026-09/onboarding-repo.png";
+import lineagePhCpf from "@/assets/content/teaching/phd-progress-2026-09/lineage-ph-cpf.png";
+import lineagePolyhedral from "@/assets/content/teaching/phd-progress-2026-09/lineage-polyhedral-patterns.png";
+import lineageAgentShells from "@/assets/content/teaching/phd-progress-2026-09/lineage-agent-based-shells.png";
 import hilSolution01ModuleA from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-a.png";
 import hilSolution01ModuleB from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-b.png";
 import hilSolution02Module from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-module.png";
@@ -237,11 +240,16 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
     <div class="pln-lane"><span class="pln-name">Direction fields</span><div class="pln-items"><div>Curvature fields<i>Alliez 2003</i></div><div>6-RoSy parametrisation<i>Nieser 2012 · hex</i></div><div class="is-hot">PH-CPF<i>Pluta 2021 · hex</i></div></div></div>
     <div class="pln-lane"><span class="pln-name">Curvature nets</span><div class="pln-items"><div>Conical meshes<i>Liu, Pottmann 2006</i></div><div>Conjugate nets<i>Zadravec, Liu 2010</i></div></div></div>
     <div class="pln-lane"><span class="pln-name">Tangent planes</span><div class="pln-items"><div>Tangent-plane intersection<i>Troche 2008</i></div><div>Dupin hexagons<i>Wang 2008</i></div><div>Dupin duality<i>Li, Liu, Wang 2014</i></div></div></div>
-    <div class="pln-lane"><span class="pln-name">Optimisation</span><div class="pln-items"><div>Projection<i>Shape-Up 2012, Tang 2014</i></div><div>Polyhedral patterns<i>Jiang 2015 · mixed</i></div></div></div>
+    <div class="pln-lane"><span class="pln-name">Optimisation</span><div class="pln-items"><div>Projection<i>Shape-Up 2012, Tang 2014</i></div><div class="is-hot">Polyhedral patterns<i>Jiang 2015 · mixed</i></div></div></div>
     <div class="pln-lane"><span class="pln-name">Agents · timber</span><div class="pln-items"><div>Landesgartenschau<i>Krieg 2014</i></div><div class="is-hot">Agent-based shells<i>ICD 2018 to 2023</i></div></div></div>
   </div>
+  <div class="pln-shots">
+    <figure><Image src={lineagePhCpf} loading="eager" alt="PH-CPF: a planar hexagonal shell pavilion and a bunny covered in planar hexagons" widths={[640, 1260]} sizes="30vw" /><figcaption>PH-CPF · Pluta 2021</figcaption></figure>
+    <figure><Image src={lineagePolyhedral} loading="eager" alt="Polyhedral patterns: three trefoil knots tiled with different planar polygon patterns, with the 2D patterns below" widths={[640, 1240]} sizes="30vw" /><figcaption>Polyhedral patterns · Jiang 2015</figcaption></figure>
+    <figure><Image src={lineageAgentShells} loading="eager" alt="Agent-based shells: a design study of three timber plate shells with planar polygonal plates" widths={[640, 1215]} sizes="30vw" /><figcaption>Agent-based shells · ICD</figcaption></figure>
+  </div>
   <p class="pp-foot">Projection is the shared last step, not a rival family. No method yet combines field quality with fabrication rules.</p>
-  <SlideNotes>Highlighted: PH-CPF, being rebuilt in hexaplate for Grasshopper, and agent-based shells, ongoing as a skill. The hex lineage passes through every lane. Frontier: Tao et al. 2025 learned conjugate fields; no learned planar-hex method yet.</SlideNotes>
+  <SlideNotes>Highlighted: PH-CPF, being rebuilt in hexaplate for Grasshopper; polyhedral patterns, planar faces of mixed polygon types by optimisation; and agent-based shells, ongoing as a skill. The hex lineage passes through every lane. Frontier: Tao et al. 2025 learned conjugate fields; no learned planar-hex method yet.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── Structural analysis ───────────────────────────── */}
@@ -255,7 +263,7 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
   </div>
   <div class="pp-tiers">
     <div class="pt-tier" style="--w:100%"><b>1 · Equilibrium prefilter</b><span>3D graphic statics, CRA with tension-capable interfaces</span><i>seconds · rejects are certain</i></div>
-    <div class="pt-tier is-hot" style="--w:78%"><b>2 · Reduced model</b><span>CRA with tension bound and cohesion at the edges, screwed first</span><i>seconds to minutes · to build</i></div>
+    <div class="pt-tier" style="--w:78%"><b>2 · Reduced model</b><span>CRA with tension bound and cohesion at the edges, screwed first</span><i>seconds to minutes · to build</i></div>
     <div class="pt-tier" style="--w:56%"><b>3 · FEA</b><span>Abaqus or OpenSees, orthotropic shells, spring edges</span><i>slow · verification only</i></div>
   </div>
   <SlideNotes>Many candidates in, few out. On our 12 m roof the plates are 1 to 4 percent utilised: deflection governs and the joint is the structure. So tier 1 survives as a joint check, not a plate check. Tier 2 is BRG's method, in house. Tier 3 verifies what survives.</SlideNotes>
@@ -1132,4 +1140,21 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   #deck .sk-page td { border-bottom: 1px solid #ddd5c6; padding: 0.3rem 0.6rem; }
   /* Planar meshes: the three figures centred in the space below the title */
   #deck .pv-row { top: clamp(12rem, 29vh, 15.5rem); align-content: center; }
+  /* Planar mesh lineage: the three highlighted methods as figures */
+  #deck .pp-lineage { bottom: clamp(15rem, 36vh, 24rem); gap: 0.5rem; }
+  #deck .pln-shots {
+    position: absolute;
+    left: clamp(3rem, 8vw, 9rem);
+    right: clamp(3rem, 8vw, 9rem);
+    bottom: clamp(5rem, 12vh, 7.5rem);
+    z-index: 10;
+    display: grid;
+    /* columns in proportion to each figure's aspect ratio, so all three share one height uncropped */
+    grid-template-columns: 2.8fr 3.11fr 4.66fr;
+    align-items: end;
+    gap: 1.4rem;
+  }
+  #deck .pln-shots figure { margin: 0; min-height: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  #deck .pln-shots img { display: block; width: 100%; height: auto; border-radius: 0.5rem; border: 1px solid var(--pp-amber); }
+  #deck .pln-shots figcaption { font-family: "Montserrat", sans-serif; font-size: clamp(0.62rem, 0.85vw, 0.75rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-amber); }
 `}</style>
