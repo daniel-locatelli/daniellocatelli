@@ -32,8 +32,8 @@ import asmAcrossScales from "@/assets/content/teaching/phd-progress-2026-09/asse
 import asmRoboticAssembly from "@/assets/content/teaching/phd-progress-2026-09/assembly-design-for-robotic-assembly.jpg";
 import asmFit2023 from "@/assets/content/teaching/phd-progress-2026-09/assembly-icd-itke-fit2023.jpg";
 import candelaManantiales from "@/assets/content/teaching/phd-progress-2026-09/candela-los-manantiales.jpg";
-import courseShapeModeling from "@/assets/content/teaching/phd-progress-2026-09/course-shape-modeling-smocking.jpg";
-import coursePbs from "@/assets/content/teaching/phd-progress-2026-09/course-pbs-chain-mail.jpg";
+import courseShapeModeling from "@/assets/content/teaching/phd-progress-2026-09/course-shape-modeling-bunny.jpg";
+import courseCompiler from "@/assets/content/teaching/phd-progress-2026-09/course-compiler-design-ast.jpg";
 import hilSolution01ModuleA from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-a.png";
 import hilSolution01ModuleB from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-b.png";
 import hilSolution02Module from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-module.png";
@@ -558,15 +558,15 @@ imageAlt: "CLT plate specimens of several sizes laid out on the floor of the str
   </div>
   <div class="pp-courses">
     <figure>
-      <Image src={courseShapeModeling} loading="eager" alt="A ring of blue denim fabric gathered into a regular pattern of three-dimensional smocked pleats" widths={[800, 1200]} sizes="40vw" />
+      <Image src={courseShapeModeling} loading="eager" alt="The Stanford bunny as a triangle mesh at three levels of detail, from the dense scan on the left to a coarse mesh of large flat triangles on the right" widths={[800, 1200]} sizes="40vw" />
       <figcaption><b>Shape Modeling and Geometry Processing</b><span>252-0538 · 8 ECTS · spring · Sorkine-Hornung</span></figcaption>
     </figure>
     <figure>
-      <Image src={coursePbs} loading="eager" alt="Three interlocking chain mail materials, including one of hexagonal plates on rings, each shown as a 3D-printed prototype, a simulation of every ring, and a simplified shell simulation under the same load" widths={[800, 1200]} sizes="40vw" />
-      <figcaption><b>Physically-Based Simulation in Computer Graphics</b><span>252-0546 · 5 ECTS · autumn · Coros/Thomaszewski</span></figcaption>
+      <Image src={courseCompiler} loading="eager" alt="Abstract syntax tree of the Euclidean algorithm: a statement sequence holding a while loop and a return, the loop body branching into two assignments of a subtraction" widths={[800, 1200]} sizes="40vw" />
+      <figcaption><b>Compiler Design</b><span>252-0210 · 8 ECTS · autumn · Su/Kokologiannakis</span></figcaption>
     </figure>
   </div>
-  <SlideNotes>12 ECTS for the whole doctorate, at least a third outside the research area, Master's level only, nothing the supervisor teaches. Shape Modeling is the mathematics already under the plate work. Physically-Based Simulation is the CS candidate: mass-spring systems, FEM for deformables, rigid bodies and collision detection, with a C++ project, so it also prepares the C++/libigl assignments of Shape Modeling. Master's level, but not on the Doctorate Architecture list, so it needs sign-off; registration closes 11 October. Other CS options: Large Language Models (263-5354, 8 ECTS, spring), only if the LLM layer becomes central; Mathematical Foundations of Computer Graphics and Vision (252-5706, 5, spring), which competes with Shape Modeling in the same term. Images: 3D smocking from the Shape Modeling course page (IGL); interlocking chain mail materials, prototype against simulation, from the Computational Robotics Lab, which teaches Physically-Based Simulation.</SlideNotes>
+  <SlideNotes>12 ECTS for the whole doctorate, at least a third outside the research area, Master's level only, nothing the supervisor teaches. Shape Modeling is the mathematics already under the plate work. Compiler Design is the CS candidate: lexing, parsing, semantic analysis, intermediate representation and code generation, the pipeline a design language needs to go from a declarative spec to BTLx. It is a third-year Bachelor course, so it counts under the general ETH rule but maybe not under D-ARCH's Master's-only rule; that question goes to the Doctoral Administration. It runs every autumn, so there is no rush, and it is only worth the 8 ECTS if the thesis needs a compiler. Other CS options: Large Language Models (263-5354, 8 ECTS, spring), only if the LLM layer becomes central; Physically-Based Simulation (252-0546, 5, autumn), FEM for deformables with a C++ project. Images: the Stanford bunny simplified by quadric error metrics, Wikimedia Commons, public domain; abstract syntax tree of the Euclidean algorithm, Wikimedia Commons, CC0.</SlideNotes>
 </Slide>
 
 <PhdGanttStrip rows={SECTION_ROWS} actLabels={SECTION_ACT_LABELS} />
