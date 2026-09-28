@@ -1,4 +1,4 @@
-// Work packages for the phd-progress-2026-09 deck. Dates are approximate,
+// Work packages for the phd-progress-2026-09 decks. Dates are approximate,
 // reconstructed from the thoughts store and the phd repo history; they place
 // the bars, they are not a record.
 
@@ -55,6 +55,37 @@ export const ACT_LABELS: Record<string, string> = {
   demonstrator: "The demonstrator",
   coursework: "Coursework",
   next: "Next",
+};
+
+/**
+ * The current deck's simplified Gantt: one row per section of the talk, in
+ * talk order. ROWS and ACT_LABELS above stay as they are for the v1 deck.
+ */
+export const SECTION_ROWS: GanttRow[] = [
+  { id: "onboarding", label: "Onboarding", start: "2026-07-01", end: "2026-07-09", kind: "done", acts: ["onboarding"] },
+  { id: "compas", label: "COMPAS study · PRs", start: "2026-07-09", end: "2026-09-07", kind: "ongoing", acts: ["compas"] },
+  { id: "picture", label: "Big picture", start: "2026-08-14", end: "2026-09-27", kind: "ongoing", acts: ["picture"] },
+  { id: "plates", label: "Planar meshing algorithms", start: "2026-08-12", end: "2026-09-26", kind: "ongoing", acts: ["plates"] },
+  { id: "structure", label: "Structural analysis", start: "2026-09-10", end: "2026-09-27", kind: "ongoing", acts: ["structure"] },
+  { id: "acoustics", label: "Acoustics", start: "2026-10-14", end: "2026-12-15", kind: "planned", acts: ["acoustics"] },
+  { id: "assembly", label: "Assembly", start: "2026-10-14", end: "2026-12-15", kind: "planned", acts: ["assembly"] },
+  { id: "hil", label: "HIL case study", start: "2026-09-14", end: "2026-10-14", kind: "now", acts: ["hil"] },
+  { id: "coursework", label: "Coursework", start: "2026-09-27", end: "2026-12-20", kind: "planned", acts: ["coursework"] },
+];
+
+export const SECTION_MILESTONES = [{ date: "2026-10-14", label: "Technical meeting" }];
+
+export const SECTION_ACT_LABELS: Record<string, string> = {
+  onboarding: "Onboarding",
+  compas: "COMPAS study · PRs",
+  picture: "The big picture",
+  plates: "Planar meshing algorithms",
+  structure: "Structural analysis",
+  acoustics: "Acoustics",
+  assembly: "Assembly",
+  hil: "HIL case study",
+  tandem: "Tandem",
+  coursework: "Coursework",
 };
 
 const DAY = 86_400_000;

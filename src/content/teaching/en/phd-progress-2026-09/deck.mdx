@@ -1,11 +1,12 @@
 ---
 Name: "Machines, Over the Shoulder of Architects: PhD Progress, Three Months In"
-Description: "Unlisted deck for the PhD progress meeting with the professors on 2026-09-28: what has been done, the big picture, and how plates, structure, fabrication and the HIL demonstrator fit together."
+Description: "Unlisted deck for the PhD progress meeting with the professors on 2026-09-28: what has been done, the big picture, plates, structure, acoustics, assembly, the HIL case study and the tandem with Antonia."
 DateStart: "2026-09-28"
 Event: PhD progress meeting
 Language: English
 ---
 
+import { Image } from "astro:assets";
 import Slide from "@/components/slides/Slide.astro";
 import SlideMarkdown from "@/components/slides/SlideMarkdown.astro";
 import SlideNotes from "@/components/slides/SlideNotes.astro";
@@ -16,407 +17,451 @@ import Act from "@/components/decks/phd-progress/Act.astro";
 import PhdGantt from "@/components/decks/phd-progress/PhdGantt.astro";
 import PhdGanttStrip from "@/components/decks/phd-progress/PhdGanttStrip.astro";
 import Valence from "@/components/decks/phd-progress/Valence.astro";
-import Pipeline from "@/components/decks/phd-progress/Pipeline.astro";
+import { SECTION_ROWS, SECTION_ACT_LABELS, SECTION_MILESTONES } from "@/components/decks/phd-progress/gantt-data";
 
 import coverDesignCloud from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-1.png";
-import chipMacro from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-5.png";
-import testRig from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-3.png";
-import aiHarness from "@/assets/content/teaching/epfl-cap-uncertainty-2026-08/ai-harness-aec.png";
-import bugaWood from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/buga-wood-pavilion-reuse-2023.jpg";
-import livMatSShell from "@/assets/content/teaching/computational-architecture-in-germany-uft/deck/livmats-biomimetic-shell.jpg";
+import onboardingRepo from "@/assets/content/teaching/phd-progress-2026-09/onboarding-repo.png";
+import hilSolution01ModuleA from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-a.png";
+import hilSolution01ModuleB from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-b.png";
+import hilSolution02Module from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-module.png";
+import hilSolution03Module from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-03-module.png";
+import hilSolution01Outside from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-outside.jpg";
+import hilSolution02Outside from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-outside.jpg";
+import hilSolution02Inside from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-inside.jpg";
+import hilSolution02Fea from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-fea.png";
+import hilSolution03Outside from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-03-outside.jpg";
+import epflWorkshop from "@/assets/content/teaching/phd-progress-2026-09/epfl-workshop.jpg";
+import antoniaMeasuring from "@/assets/content/teaching/phd-progress-2026-09/antonia-measuring-clt-plate.jpg";
+import cltSpecimens from "@/assets/content/teaching/phd-progress-2026-09/clt-plate-specimens.jpg";
+import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/antonia-timeline.jpg";
 
-{/* ───────────────────────────── Opening ───────────────────────────── */}
+{/* ───────────────────────────── What has been done ───────────────────────────── */}
 
 <Act id="none" />
-
----
-image: coverDesignCloud
-imageAlt: "A dark field of faint wireframe folded-plate design variants; an amber contour encloses a few brighter ones (AI-generated image)"
-overlay: black/35
-text: |
-  ### PhD progress · 28 September 2026
-
-  # Machines, over the shoulder of architects
-
-  ## Structure-aware design of timber plates
-notes: "Title is a working title. Over the shoulder: the machine checks while the architect designs, and it echoes standing on the shoulders of giants. Alternatives from the brainstorm: 'Machines, Over Humans' (reads as machines chosen over humans, but humans are on top) and 'Machines, Upon Humans' (once upon a time). Plan: 10 minutes on the field and what I will be doing, 10 minutes on the research and how the parts fit. The small timeline at the top of each slide shows where we are."
----
 
 <Slide>
   <div class="pp-head">
     <h3>Three months in</h3>
     <h2>What has been done</h2>
   </div>
-  <PhdGantt />
-  <SlideNotes>July: onboarding, a study of the COMPAS repos, then issues and PRs on compas and compas_timber (a standing obligation, scoped to timber plates). August: the plates study, plates as a software-agnostic skill, two STEP models of planar hexagonal plates shipped to the Abaqus study on 28 August. EPFL summer school, the Zotero plugin. September: research on architectural geometry for flat plates and shells, the data-model review, the structural evaluation. Now: the design study for a plate roof on the HIL building extension. Blue is Antonia's line; her timeline and mine come back later.</SlideNotes>
+  <PhdGantt rows={SECTION_ROWS} milestones={SECTION_MILESTONES} />
+  <SlideNotes>One row per section of this talk, in the order they come. July: onboarding and the COMPAS repos study, then issues and PRs. August: the planar meshing study. September: the data dictionary, the structural analysis, and now the HIL case study. Acoustics and assembly start after the technical meeting.</SlideNotes>
 </Slide>
 
-{/* ───────────────────────────── Part 1 · The field ───────────────────────────── */}
-
-<Act id="field" />
-
----
-text: |
-  ### The field
-
-  ## Code is cheap now.
-
-  # Design is *not*.
-notes: "An LLM writes a panelisation script in a minute. Ask it for a hex plate roof and it has to understand what you want, research how to approach hex plates, write a program in your software ecosystem, and then make it usable. Today that loop, LLM to mesh algorithm to shape, is slow and ends in a poor design. The question of the thesis is what is missing for that loop to work."
----
-
----
-image: chipMacro
-imageAlt: "Extreme macro of a silicon wafer with iridescent circuit patterns under cool blue and warm amber light (AI-generated image)"
-overlay: black/55
-text: |
-  ### Precedent one
-
-  ## Chip design is a parametric system with a *better-defined domain*
-notes: "Billions of components, design rules written down as data, checking continuous and nearly free. Designers explore inside a space the tools guarantee is manufacturable. Chips are nothing like buildings: scale, materials, the aim of controlling electricity. One thing is shared: both must take a final physical shape. The domain language of chip design stays a useful reference."
----
-
----
-text: |
-  ### Precedent two
-
-  ## AlphaFold worked because a *curated database* existed first
-
-  Decades of solved protein structures, before any model learned from them.
-
-  **Our version: generate our own synthetic models.**
-notes: "The Protein Data Bank came first; the intelligence came second. AEC has no such corpus of checked designs. This is the argument for generating our own: synthetic plate structures, each with its checks attached. The Abaqus runs from Antonia's programme are candidates for exactly that, later."
----
-
----
-text: |
-  ### The lesson
-
-  ## Both had *reliable definitions* and *data* before they had intelligence
-notes: "Bridge to the next part. If that is what made those fields work, what does AEC have? I went to look at the data models."
----
-
-<Act id="data" />
-
----
-text: |
-  ### From data model to data dictionary
-
-  ## LLMs don't need the perfect data model.
-
-  # They need *reliable definitions*.
-notes: "The review of nineteen data models was commissioned to choose compas_ai's core model. It does support the 1D/2D hypothesis, with four amendments. But its more useful output is evidence for the opposite claim."
----
+<Act id="onboarding" />
 
 <Slide>
   <div class="pp-head">
-    <h3>Nineteen data models reviewed</h3>
-    <h2>A data model shared across tools <em>does not hold</em></h2>
+    <h3>Onboarding</h3>
+    <h2>An onboarding repo for <em>Gramazio Kohler Research</em></h2>
   </div>
-  <div class="pp-cards pp-cards-4">
-    <div><b>Speckle</b><p>Deleted its shared typed element kit in 2024. Now: display mesh, properties, typed relations, one results table per domain.</p></div>
-    <div><b>BHoM</b><p>A separate object graph per domain. One-way converters silently drop wall offsets and CLT layer orientation.</p></div>
-    <div><b>IFC 4.3</b><p>Keeps a separate structural analysis model, joined to physical elements through an assignment relation.</p></div>
-    <div><b>Every solver</b><p>Returns results on its own entity IDs. The way back always needs a map that we own.</p></div>
+  <div class="pp-split pp-split-shot">
+    <div class="ps-text">
+      <p><strong>gramazio-kohler-onboarding:</strong> one practical guide, the gotchas the official docs miss.</p>
+      <p>Hardware, network drives and VPN, software, the GKR database, a coding chapter from install to seeing a package in Rhino, building access, who is who.</p>
+      <p>Written 1 to 9 July. 54 commits, a verified 10-minute quickstart, merged with Gonzalo.</p>
+    </div>
+    <div class="ps-shot">
+      <Image src={onboardingRepo} alt="The gramazio-kohler-onboarding README on GitHub: prerequisites table with ETH accounts and passwords, contributors Claude, Daniel Locatelli and Gonzalo Casas" widths={[900, 1600]} sizes="50vw" />
+    </div>
   </div>
-  <SlideNotes>Nineteen systems: the shared model is abandoned (Speckle, commit 8a148b8, 2024-11-04), leaks silently (BHoM), or needs a translation-plus-loss layer anyway (IFC 4.3, IfcStructuralAnalysisModel via IfcRelAssignsToProduct). Matrix question Q7: every analysis target returns results on its own IDs.</SlideNotes>
+  <SlideNotes>Onboarding as a deliverable: the next newcomer gets a working setup in an afternoon. The coding chapter grew into compas-field-guide, a newcomer's guide to COMPAS.</SlideNotes>
 </Slide>
 
----
-text: |
-  ### What survives
+<Act id="compas" />
 
-  ## Not schema. *Observations about a translation.*
+<Slide>
+  <div class="pp-head">
+    <h3>COMPAS · 1 of 3</h3>
+    <h2>The primitives are right. <em>The seams are shallow.</em></h2>
+  </div>
+  <div class="pp-cards pp-cards-3">
+    <div><b>Nine repos</b><p>compas, compas_model, compas_timber, compas_fab, compas_robots, compas_occ, compas_ifc, compas_viewer, compas_threejs. Ten more surveyed.</p></div>
+    <div><b>Five reviewers per repo</b><p>COMPAS expert, architect, product manager, devil's advocate, standards expert. Then one synthesis.</p></div>
+    <div><b>Finding</b><p>compas.data.Data is the best foundation available, but its guarantees are decorative: validation never runs, guids do not survive a round trip, errors come back as prose.</p></div>
+  </div>
+  <SlideNotes>Study ran 15 to 28 July (compas-ecosystem-audit). Outputs: deepening report, architecture review, data-model critique, target data model, a red-team review (verdict: adapt) and a cross-check against 28 drafted issues.</SlideNotes>
+</Slide>
 
-  - **Trace map:** which element became which
-  - **Loss report:** what the translation dropped
-  - **Validity envelope:** where a result can be trusted
-  - **Result sets** stored outside the model
+<Slide>
+  <div class="pp-head">
+    <h3>COMPAS · 2 of 3</h3>
+    <h2>43 issues found. <em>22 acted on.</em></h2>
+  </div>
+  <div class="pp-issues">
+    <div class="pi-legend"><span class="pi-solved">Solved · 12</span><span class="pi-progress">Filed or in a PR · 10</span><span class="pi-open">Found, not yet acted on · 21</span></div>
+    <div class="pi-row"><b>compas_timber</b><div class="pi-bar"><i class="pi-solved" style="--n:12">12</i><i class="pi-progress" style="--n:10">10</i><i class="pi-open" style="--n:17">17</i></div><span>39</span></div>
+    <div class="pi-row"><b>compas_model</b><div class="pi-bar"><i class="pi-open" style="--n:3">3</i></div><span>3</span></div>
+    <div class="pi-row"><b>compas</b><div class="pi-bar"><i class="pi-open" style="--n:1">1</i></div><span>1</span></div>
+  </div>
+  <p class="pp-foot">Every issue drafted in compas-field-guide, grouped by the repo it would be filed on. Solved: merged, closed, or verified as a non-issue.</p>
+  <SlideNotes>Source: the compas-field-guide issues index, statuses checked on GitHub on 28 September. Solved includes PRs #839, #840, #836, #841, #845, #812 and the timber_design docs migration. In progress: #817, #818, #820, #829 open; the #832 README PR paused; #814, #819, #821 closed with a follow-up still owed; two drafts partly shipped in #841. Not yet acted on: mostly question-gated or audit-sourced drafts waiting for a verification pass.</SlideNotes>
+</Slide>
 
-  What is left is a minimal vocabulary, and evidence. Exactly what an LLM needs in order to act.
-notes: "None of these four is a model of a building. Each is an observation about a translation. So the review leaves two things behind: a minimal vocabulary (CONTEXT.md in the review) and evidence."
----
+<Slide>
+  <div class="pp-head">
+    <h3>COMPAS · 3 of 3</h3>
+    <h2>From study to <em>contributions</em></h2>
+  </div>
+  <div class="pp-cards pp-cards-3">
+    <div><b>compas</b><p>PR #1526: <code>{"Data.__dtype__"}</code> delegates to <code>{"Data.__clstype__"}</code>. Merged.</p></div>
+    <div><b>compas_timber</b><p>16 PRs, 15 merged: BTLx file history, feature API, deprecations, docs. 15 issues filed, among them JSON round-trip deleting BTLx features.</p></div>
+    <div><b>timber_design</b><p>2 PRs merged: the Grasshopper docs migrated out of compas_timber. 3 issues filed.</p></div>
+  </div>
+  <SlideNotes>A standing obligation, scoped to timber plates. Open compas_timber issues: #817 process_joinery contract, #818 JSON round-trip deletes user BTLx features, #820 BTLx Shape block depends on geometry cache, #829 preferred ref side, #833 visual identity, #835 GH examples fail in Rhino 8.</SlideNotes>
+</Slide>
+
+{/* ───────────────────────────── Cover ───────────────────────────── */}
+
+<Act id="none" />
+
+<Slide image={coverDesignCloud} imageAlt="A dark field of faint wireframe folded-plate design variants; an amber contour encloses a few brighter ones (AI-generated image)" overlay="black/35">
+  <div class="pp-cover">
+    <h3>PhD progress · 28 September 2026</h3>
+    <h1>Machines, over the shoulder of architects</h1>
+    <h2>Structure- and fabrication-aware design of timber plates</h2>
+  </div>
+  <SlideNotes>Working title. Over the shoulder: the machine checks while the architect designs.</SlideNotes>
+</Slide>
+
+{/* ───────────────────────────── Big picture ───────────────────────────── */}
 
 <Act id="picture" />
 
----
-image: aiHarness
-imageAlt: "Diagram: an AI harness around the model, with design intent, structure, fabricability, material, cost and carbon checks around it"
-fit: contain
-notes: "The big picture: an operational system for AEC, an LLM harness, for the COMPAS ecosystem. Call it compas_ai. The agent holds the model and every verdict; each check around it is a module with declared inputs. Craftbot is the reference for how such a system operates."
----
-
----
-text: |
-  ### The big picture
-
-  ## An operational system for AEC, built on *COMPAS*
-
-  - **Skills** as containers of knowledge
-  - **Properties** as the contract every implementation has to pass
-  - **compas_timber** keeps the fabrication half: BTLx out
-notes: "Skills as deliverables instead of a Grasshopper plugin. I first thought the design tool would live in Grasshopper or on the web. Now it should be an LLM skill with a property-first specification: code is cheap, so we do not have to commit to one language. The same skill can be built in Grasshopper, Revit, Cadwork or SEMA; the properties are what every implementation must pass. Validated first with a Grasshopper implementation. compas_timber matters because it holds the fabrication part nobody else has."
----
-
----
-text: |
-  ### Skills as deliverables
-
-  ## What has to be true
-
-  - **Defensible:** an evaluation story, evidence that a skill works
-  - **Demonstrable:** one chain a reader can run, strategy to geometry to fabrication
-  - **Durable:** plugins rot with Rhino versions, skills rot against models. Which is faster is a thesis question
-notes: "A committee can review a plugin; can it review a skills repo? This decision changes what gets built for the next two years, which is why I want your view on it today."
----
-
-<Act id="fit" />
+<Slide>
+  <div class="pp-head">
+    <h3>The big picture · 1 of 4</h3>
+    <h2>An operational system for AEC, <em>built on COMPAS</em></h2>
+  </div>
+  <div class="pp-hub">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <line x1="50" y1="50" x2="50.0" y2="10.0" class="is-used" />
+      <line x1="50" y1="50" x2="76.2" y2="21.7" class="is-planned" />
+      <line x1="50" y1="50" x2="87.0" y2="50.0" class="is-planned" />
+      <line x1="50" y1="50" x2="76.2" y2="78.3" class="is-used" />
+      <line x1="50" y1="50" x2="50.0" y2="90.0" class="is-used" />
+      <line x1="50" y1="50" x2="23.8" y2="78.3" class="is-planned" />
+      <line x1="50" y1="50" x2="13.0" y2="50.0" class="is-planned" />
+      <line x1="50" y1="50" x2="23.8" y2="21.7" class="is-used" />
+    </svg>
+    <div class="ph-node" style="left:50.0%;top:10.0%"><b>compas</b><span>data, geometry</span></div>
+    <div class="ph-node is-planned" style="left:76.2%;top:21.7%"><b>compas_fea2</b><span>structure: FEA</span></div>
+    <div class="ph-node is-planned" style="left:87.0%;top:50.0%"><b>compas_acoustics</b><span>acoustics</span></div>
+    <div class="ph-node" style="left:76.2%;top:78.3%"><b>compas_timber</b><span>fabrication: BTLx</span></div>
+    <div class="ph-node" style="left:50.0%;top:90.0%"><b>compas_brep</b><span>Brep kernel</span></div>
+    <div class="ph-node is-planned" style="left:23.8%;top:78.3%"><b>compas_lca</b><span>carbon: LCA</span></div>
+    <div class="ph-node is-planned" style="left:13.0%;top:50.0%"><b>compas_ladybug</b><span>solar, daylight, energy</span></div>
+    <div class="ph-node" style="left:23.8%;top:21.7%"><b>compas_model</b><span>element model</span></div>
+    <div class="ph-core"><b>compas_ai</b><span>agent tools · skills · viewer</span></div>
+    <div class="ph-legend"><span class="is-used">in use today</span><span class="is-planned">planned</span></div>
+  </div>
+  <SlideNotes>compas_ai sits in the middle and operates the ecosystem; it does not replace it. In use today: compas, compas_model, compas_timber and compas_brep. Planned: compas_fea2 as the first structural adapter, compas_acoustics (private, so an optional plugin only), BRG's compas_lca for carbon, compas_ladybug for solar, daylight and energy. The loop: a versioned design script, compas_ai run produces a report, plates.btlx and a viewer file, and comments in the viewer drive the next version. Defects found on the way go back upstream as issues and PRs.</SlideNotes>
+</Slide>
 
 <Slide>
   <div class="pp-head">
-    <h3>Structure-aware design</h3>
-    <h2>How the pieces fit</h2>
+    <h3>The big picture · 2 of 4</h3>
+    <h2>From data model to <em>data dictionary</em></h2>
   </div>
-  <div class="pp-fit">
-    <div class="pf-top">LLM harness · compas_ai<span>reads the skill, writes the code, runs the checks</span></div>
-    <div class="pf-row">
-      <div class="pf-box"><b>Geometry</b><span>planar plates: hex, quad, tri, folds</span></div>
-      <i>→</i>
-      <div class="pf-box pf-hot"><b>Structure</b><span>three tiers, cheap checks first</span></div>
-      <i>→</i>
-      <div class="pf-box"><b>Acoustics</b><span>embedded, not added</span></div>
-      <i>→</i>
-      <div class="pf-box"><b>Fabrication</b><span>compas_timber, BTLx</span></div>
+  <div class="pp-split">
+    <div class="ps-text">
+      <p>Agentic workflows are replacing many tools. Plain English is becoming the way to create things.</p>
+      <p>What we need is not a rigid data model but a <strong>well-defined data dictionary</strong>. The implementation is with the LLM.</p>
     </div>
-    <div class="pf-side">
-      <div><b>Tekton</b><span>grain direction travels with every plate: timber is not isotropic</span></div>
-      <div><b>HIL demonstrator</b><span>one real roof that exercises the whole chain</span></div>
+    <div class="ps-card">
+      <span class="pe-tag">bSDD-style entry · illustrative</span>
+      <dl>
+        <dt>Class</dt><dd>CLT plate</dd>
+        <dt>Property</dt><dd>Grain direction, outer layer</dd>
+        <dt>Definition</dt><dd>Fibre direction of the top lamella, in plate coordinates</dd>
+        <dt>Unit</dt><dd>degree</dd>
+        <dt>Identity</dt><dd>a URI any tool can resolve</dd>
+      </dl>
     </div>
-    <div class="pf-ground">Evidence · Antonia's tests and the Abaqus study<span>the ground truth every check is calibrated against</span></div>
   </div>
-  <SlideNotes>Read it bottom-up: the tests are the ground truth. The skill chain runs left to right, and structure sits in the middle because it is the filter everything passes through. Tekton: timber is anisotropic, so grain direction has to be part of the plate definition from the start, not added at fabrication. The demonstrator is how this chain gets exercised on one real roof.</SlideNotes>
+  <SlideNotes>Nineteen data models reviewed. A shared model across tools does not hold: Speckle deleted its typed element kit (2024), BHoM keeps one object graph per domain, IFC 4.3 keeps a separate structural analysis model. What survives is a minimal vocabulary plus observations about translations. The buildingSMART Data Dictionary is the model for that vocabulary: definitions with stable URIs, not a schema. IFC already links to it through IfcClassificationReference. The entry on the right is an illustration, not an existing bSDD class.</SlideNotes>
 </Slide>
 
-{/* ───────────────────────────── Part 2 · The research ───────────────────────────── */}
+---
+text: |
+  ### The big picture · 3 of 4
+
+  ## Skills as deliverables, for *property-based development*
+
+  - A skill is the container of knowledge: what to build, how, and how to check it
+  - **Properties** are the contract every implementation has to pass, in any language
+  - Implemented in Grasshopper first, validated, then made language-agnostic
+notes: "Instead of a Grasshopper plugin, ship composable agent skills with a property-first specification. Code is cheap, so we do not have to commit to one language: the same skill can be built in Grasshopper, Revit, Cadwork or SEMA, and the properties are what every implementation must pass. Open conditions: defensible (evidence a skill works), demonstrable (one chain a reader can run), durable (plugins rot with Rhino versions, skills rot against models)."
+---
+
+<Slide>
+  <div class="pp-head">
+    <h3>The big picture · 4 of 4</h3>
+    <h2>Cheap, quick checks inside an <em>agentic form-finding loop</em></h2>
+  </div>
+  <div class="pp-loop">
+    <div class="pl-agent">Agent proposes a form</div>
+    <div class="pl-checks">
+      <div><b>Structural analysis</b><span>equilibrium first, FEA last</span></div>
+      <div><b>Acoustics</b><span>reflection, diffusion, absorption</span></div>
+      <div><b>Fabrication</b><span>plate size, bevel, stock, BTLx</span></div>
+    </div>
+    <div class="pl-back">↺ verdicts back to the agent, in seconds</div>
+  </div>
+  <SlideNotes>The loop only works if every check is cheap enough to run on every candidate. Expensive checks verify the few candidates that survive. The rest of the talk goes through each check: plates, structure, acoustics, assembly.</SlideNotes>
+</Slide>
+
+{/* ───────────────────────────── Plates ───────────────────────────── */}
 
 <Act id="plates" />
 
----
-image: bugaWood
-imageAlt: "BUGA Wood Pavilion reassembled in Mannheim (2023), arch of hexagonal timber panels in an urban landscape"
-overlay: black/40
-copyright:
-  name: Conné van d'Grachten, ICD/ITKE/IntCDC, University of Stuttgart
-  href: "https://www.icd.uni-stuttgart.de/projects/buga-wood-pavilion-reuse-2023/"
-text: |
-  ### Plates
-
-  ## Flat timber, *curved form*
-notes: "The reference everyone in the room knows: planar hexagonal plates on a doubly curved surface. The question is which families of polyhedral meshes, and what each costs at the node."
----
+<Slide>
+  <div class="pp-head">
+    <h3>Plates · 1 of 2</h3>
+    <h2>Planar meshes: <em>tri, quad, hex</em></h2>
+  </div>
+  <Valence />
+  <SlideNotes>Triangles: planar for free, but six plates per node and offsets fail. Quads: planar quads follow conjugate curve networks, so planarity dictates the layout. Hexagons: three plates per node, face offsets for free: three planes always meet in one point.</SlideNotes>
+</Slide>
 
 <Slide>
   <div class="pp-head">
-    <h3>Polyhedral meshes</h3>
-    <h2>The node decides</h2>
+    <h3>Plates · 2 of 2</h3>
+    <h2>Planar mesh lineage, <em>2003 to 2025</em></h2>
   </div>
-  <Valence />
-  <SlideNotes>Triangles: valence 6, planar for free, but six beams per node, torsion at the nodes, and offsets fail. Quads: valence 4, planar quads follow conjugate curve networks, so planarity dictates the layout. Hexagons: valence 3, face offsets exist for free, three plates at a node: the case compas_timber already handles. Also on the list: quad-hex (PH-PQ), mixed and agent-based strategies that take FEM and fabricability as inputs, and origami.</SlideNotes>
+  <div class="pp-lineage">
+    <div class="pln-lane"><span class="pln-name">Direction fields</span><div class="pln-items"><div>Curvature fields<i>Alliez 2003</i></div><div>6-RoSy parametrisation<i>Nieser 2012 · hex</i></div><div class="is-hot">PH-CPF<i>Pluta 2021 · hex</i></div></div></div>
+    <div class="pln-lane"><span class="pln-name">Curvature nets</span><div class="pln-items"><div>Conical meshes<i>Liu, Pottmann 2006</i></div><div>Conjugate nets<i>Zadravec, Liu 2010</i></div></div></div>
+    <div class="pln-lane"><span class="pln-name">Tangent planes</span><div class="pln-items"><div>Tangent-plane intersection<i>Troche 2008</i></div><div>Dupin hexagons<i>Wang 2008</i></div><div>Dupin duality<i>Li, Liu, Wang 2014</i></div></div></div>
+    <div class="pln-lane"><span class="pln-name">Optimisation</span><div class="pln-items"><div>Projection<i>Shape-Up 2012, Tang 2014</i></div><div>Polyhedral patterns<i>Jiang 2015 · mixed</i></div></div></div>
+    <div class="pln-lane"><span class="pln-name">Agents · timber</span><div class="pln-items"><div>Landesgartenschau<i>Krieg 2014</i></div><div class="is-hot">Agent-based shells<i>ICD 2018 to 2023</i></div></div></div>
+  </div>
+  <p class="pp-foot">Projection is the shared last step, not a rival family. No method yet combines field quality with fabrication rules.</p>
+  <SlideNotes>Highlighted: PH-CPF, being rebuilt in hexaplate for Grasshopper, and agent-based shells, ongoing as a skill. The hex lineage passes through every lane. Frontier: Tao et al. 2025 learned conjugate fields; no learned planar-hex method yet.</SlideNotes>
 </Slide>
 
----
-text: |
-  ### Why hexagons
-
-  ## Three planes always meet in one point.
-
-  # Six *almost never* do.
-notes: "Offset here means a parallel mesh with the same combinatorics at constant distance: an inner and an outer layer. Move each face plane along its normal and re-intersect. At a valence-3 vertex, three offset planes still meet in exactly one point, always. At a valence-6 vertex, six planes would have to pass through one point: three fix it, the other three have no reason to hit it. A triangle mesh gets a vertex offset instead; face distance varies, edges twist, nodes stop being repeatable."
----
-
-<Slide image={livMatSShell} imageAlt="livMatS Biomimetic Shell at the FIT campus in Freiburg, shell of hexagonal timber panels at dusk" overlay="black/80" copyright={{ name: "Roland Halbe", href: "https://www.icd.uni-stuttgart.de/projects/livmats-biomimetic-shell/" }}>
-  <div class="pp-head">
-    <h3>Strategies</h3>
-    <h2>Many algorithms, surveyed</h2>
-  </div>
-  <div class="pp-cards pp-cards-5">
-    <div><b>Agent-based</b><p>Plates as agents on a surface, analysis in the behaviours. The ICD approach.</p><span class="pp-pill is-on">skill ongoing</span></div>
-    <div><b>PH-CPF</b><p>Power fields, seamless parameterisation, extract hexagons, planarise.</p><span class="pp-pill is-on">GH plugin ongoing</span></div>
-    <div><b>Polyhedral patterns</b><p>Regularise face planarity while keeping tile symmetry.</p><span class="pp-pill">researching</span></div>
-    <div><b>Origami</b><p>Folded plates: the other route to flat panels.</p><span class="pp-pill">not started</span></div>
-    <div><b>Combinations</b><p>Folded plates with hexagonal form finding. Program-based panelling for flat slabs.</p><span class="pp-pill">open</span></div>
-  </div>
-  <SlideNotes>Source: Planar Hexagonal Meshing for Architecture (Li, Liu). Existing tool: NGon, Petras Vestartas's Grasshopper plugin. The livMatS shell in the background is the agent-based line.</SlideNotes>
-</Slide>
-
----
-text: |
-  ### Our first samples
-
-  ## 85 plates in. *51 buildable.*
-
-  A 33-plate patch over a 12 m span, 140 mm thick, shipped as STEP to the Abaqus study.
-notes: "Shipped 28 August: two models, screwed (no gap, mitred contact) and bonded (8 mm gap), identical otherwise. Dihedral angles between 151 and 174 degrees, bevels up to 14 degrees. 34 of 85 plates were rejected as unbuildable. The algorithm worked; the control over what it produced did not. That is the next slide."
----
-
----
-text: |
-  ### The gap
-
-  ## Many algorithms. *Little control.*
-
-  - No reliable way to control how panel sizes are distributed
-  - LLM to mesh algorithm to shape: still slow, and the design is poor
-  - Missing: an encapsulated algorithm that transfers across software and languages, **with tests and checks**
-notes: "There are already many panelling algorithms; usability and control are the barrier. An LLM cannot do this kind of algorithmic modelling right away. What seems missing is a framework in which LLMs handle algorithms reliably across software and languages. Tests and checks are the critical missing piece, which is the property-first skill again."
----
+{/* ───────────────────────────── Structural analysis ───────────────────────────── */}
 
 <Act id="structure" />
 
----
-text: |
-  ### Structure · 1 of 4 · The promise
-
-  ## If the diagram closes, *it stands*
-
-  3D graphic statics: equilibrium only, no stiffness, no simulation. A free structural filter?
-notes: "Yost et al. 2022, Akbarzadeh's polyhedral line, Schneider supplying the glass. Equilibrium only. If it worked, it would be a structural filter at almost no cost."
----
-
----
-text: |
-  ### Structure · 2 of 4 · Killed as proposed
-
-  ## On our 12 m roof, plates are *1 to 4 %* utilised
-
-  Deflection governs, so an equilibrium check on plate capacity rejects nothing. And wind lifts a light roof: compression-only reports "no solution" for a roof that is fine.
-notes: "Our own geometry, 12 m span, 140 mm plates. The idea as proposed dies on both ends: it rejects nothing, and it rejects the wrong thing under uplift."
----
-
----
-text: |
-  ### Structure · 3 of 4 · The joint
-
-  ## The plate is not the structure. *The joint is.*
-
-  Edge capacity of 18 to 45 kN/m against a demand of 11 to 46 kN/m. The fold turns part of the force across the grain, the most brittle direction wood has.
-notes: "Force arrives at the edges. A glued or screwed edge is the same order as the demand (design tension from DIBt Z-9.1-917 with k_mod 0.10). The fold decides what the joint carries. And one 3D resultant per edge is exactly what an equilibrium method returns for free. So graphic statics survives, but as a joint check, not a plate check."
----
-
 <Slide>
   <div class="pp-head">
-    <h3>Structure · 4 of 4 · Three tiers</h3>
-    <h2>Cheap checks gate expensive ones</h2>
+    <h3>Structural analysis · 1 of 2</h3>
+    <h2>Three tiers: <em>cheap checks gate expensive ones</em></h2>
   </div>
-  <div class="pp-table-wrap">
-    <table class="pp-table">
-      <thead><tr><th></th><th>Method</th><th>Cost</th><th>Sees</th><th>State</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td><b>Equilibrium prefilter</b>3D graphic statics, CRA with tension-capable interfaces</td><td>seconds</td><td>joint resultants, the whole load envelope, remove-one-plate robustness</td><td>binds; rejects are certain, accepts are not</td></tr>
-        <tr class="is-hot"><td>2</td><td><b>Reduced model</b>CRA with tension bound and cohesion at the edges, screwed joints first</td><td>seconds to minutes</td><td>load paths on a discrete assembly</td><td>to build (decided 16 Sep)</td></tr>
-        <tr><td>3</td><td><b>FEA</b>Abaqus or OpenSees, orthotropic shells, spring edges</td><td>slow</td><td>deflection, the governing limit state</td><td>verification only</td></tr>
-      </tbody>
-    </table>
+  <div class="pp-tiers">
+    <div class="pt-tier" style="--w:100%"><b>1 · Equilibrium prefilter</b><span>3D graphic statics, CRA with tension-capable interfaces</span><i>seconds · rejects are certain</i></div>
+    <div class="pt-tier is-hot" style="--w:78%"><b>2 · Reduced model</b><span>CRA with tension bound and cohesion at the edges, screwed first</span><i>seconds to minutes · to build</i></div>
+    <div class="pt-tier" style="--w:56%"><b>3 · FEA</b><span>Abaqus or OpenSees, orthotropic shells, spring edges</span><i>slow · verification only</i></div>
   </div>
-  <SlideNotes>Tier 2 is BRG's method, in house; Rezaei Rad's macro model is the IBOIS neighbour. A surrogate trained on the Abaqus corpus is the outlook, not the plan: its real cost is the FEA corpus, and it only becomes honest once that FEA is validated against Antonia's tests. Load cases: full snow, drifted snow, wind uplift and combinations.</SlideNotes>
+  <SlideNotes>Many candidates in, few out. On our 12 m roof the plates are 1 to 4 percent utilised: deflection governs and the joint is the structure. So tier 1 survives as a joint check, not a plate check. Tier 2 is BRG's method, in house. Tier 3 verifies what survives.</SlideNotes>
 </Slide>
 
----
-text: |
-  ### Why cheap changes the question
+<Slide>
+  <div class="pp-head">
+    <h3>Structural analysis · 2 of 2</h3>
+    <h2>FEA in the loop: <em>Tekton</em></h2>
+  </div>
+  <div class="pp-todo">Image to be added: Lorin's first study with Tekton</div>
+  <SlideNotes>Tekton, by Lorin: FEA inside the design environment, with grain direction travelling with every plate. His first study: to be filled in.</SlideNotes>
+</Slide>
 
-  ## At FEA prices you check three load cases.
+{/* ───────────────────────────── Acoustics ───────────────────────────── */}
 
-  # Nearly free, you check *the whole envelope*.
-
-  Asymmetric snow, wind uplift, and: remove one plate, does an admissible state still exist?
-notes: "Characterising the admissible region instead of sampling it, in a form an engineer recognises. What could still kill it: the origin of k_mod 0.10 (DIBt's ruling or TS3's own tests) decides whether tier 1 binds. Glued edges are brittle, so a valid glued check needs the force distribution along the edge, which rigid-block methods do not return. Screwed is defensible today. Nobody else does equilibrium methods on plate assemblies with distributed edge joints: IBOIS uses semi-rigid springs and FEA, Leeds uses CRA on a small dry-jointed model, Stuttgart uses a minimum edge length as the design rule."
----
-
-<Act id="beyond" />
+<Act id="acoustics" />
 
 <Slide>
   <div class="pp-head">
-    <h3>Beyond structure</h3>
-    <h2>Acoustics and fabrication belong <em>in the plate</em></h2>
+    <h3>Acoustics · 1 of 2</h3>
+    <h2>The dome problem: <em>a shell focuses sound</em></h2>
   </div>
   <div class="pp-cards pp-cards-2">
-    <div>
-      <b>Acoustics</b>
-      <p>Schneider's flat glass reflected everything and needed acoustic panels afterwards.</p>
-      <ul>
-        <li>Mill irregularities into the inside face of the plates</li>
-        <li>Custom saw angles for a mosaic: saws are faster than milling</li>
-        <li>Keep full thickness at the borders, where the bond is</li>
-        <li>Compare cost and carbon: embedded versus added</li>
-      </ul>
-    </div>
-    <div>
-      <b>Fabrication</b>
-      <p>CNC is exact. On-site assembly is not.</p>
-      <ul>
-        <li>Scan, detect, regenerate the next batch, so errors do not accumulate</li>
-        <li>Assembly templates that leave a slack</li>
-        <li>Scaffolding, cranes, self-locking designs with 3D graphic statics</li>
-      </ul>
-    </div>
+    <div><b>ICD, and a master thesis "solution"</b><p>ITECH thesis 2021, Adaptive Intelligent Space: a behavioural acoustic panel, tested inside the Landesgartenschau 2014 timber shell.</p></div>
+    <div><b>Schneider's glass dome</b><p>Flat glass panels were cheaper, but reflected all sound. Acoustic panels had to be added afterwards.</p></div>
   </div>
-  <SlideNotes>Both link back to structure: an acoustic pattern has to keep the bond region intact, and cumulative assembly error changes the joint geometry the structural checks assumed. That is why they belong in the same skill chain rather than after it.</SlideNotes>
+  <SlideNotes>The thesis (Grant Galloway, Lorin Samija, Max Zorn, supervised by Achim Menges): IoT sensors, a multi-agent system and an autonomous acoustic panel, demonstrated in the ICD Landesgartenschau shell in Schwäbisch Gmünd. Source: itech.uni-stuttgart.de/itech-thesis-projects/2021-adaptive-intelligent-space. Schneider: talk at the Symposium on Geometry and Computational Design 2025. In both cases acoustics came after the form, as an added layer.</SlideNotes>
 </Slide>
 
-<Act id="antonia" />
-
-<Slide image={testRig} imageAlt="A timber specimen clamped in a loading frame in a dark testing lab, instrumented with sensors and cables (AI-generated image)" overlay="black/80">
+<Slide>
   <div class="pp-head">
-    <h3>With Antonia</h3>
-    <h2>Two timelines, <em>one test programme</em></h2>
+    <h3>Acoustics · 2 of 2</h3>
+    <h2>Embed acoustics, <em>do not add it</em></h2>
   </div>
-  <div class="pp-lanes">
-    <div class="pl-lane pl-antonia">
-      <span class="pl-name">Antonia</span>
-      <div class="pl-items">
-        <div><b>Reduced physical test set</b>α₁, α₂ between grain directions, β fold angle, 3, 5 and 7-layer CLT</div>
-        <div><b>Abaqus extrapolation</b>from the tests to the geometry space</div>
-        <div><b>RQE</b>around December</div>
-      </div>
-    </div>
-    <div class="pl-links">
-      <span>STEP plate models ↑</span>
-      <span>↓ limit values, calibration</span>
-      <span>↓ Abaqus runs as training data, later</span>
-    </div>
-    <div class="pl-lane pl-me">
-      <span class="pl-name">Me</span>
-      <div class="pl-items">
-        <div><b>Plate definition, FEA export</b>two STEP models, shipped 28 Aug</div>
-        <div><b>Tier-2 checks</b>CRA at the edges, screwed first</div>
-        <div><b>Research plan</b>aligned with her RQE</div>
-      </div>
-    </div>
+  <div class="pp-cards pp-cards-3">
+    <div><b>Plate shape</b><p>A texture of prisms on the inner face, like an acoustic chamber. Saw-angle mosaics are faster than milling. Full thickness kept at the borders, where the bond is.</p></div>
+    <div><b>Shell shape</b><p>Curvature chosen so the shell does not focus sound back onto the room.</p></div>
+    <div><b>Both</b><p>Shell form and plate texture in the same loop, with cost and carbon compared against added panels.</p></div>
   </div>
-  <SlideNotes>Her tests are the ground truth of my pipeline: AI can draft a constraint, only the tests make it true. My first contribution to her work was the plate definition and FEA export. The research plan is drafted in parallel so the milestones align. Glued versus screwed benchmark comes out of her programme.</SlideNotes>
+  <SlideNotes>This is where acoustics becomes one of the cheap checks: it has to run inside the form-finding loop, not after it.</SlideNotes>
 </Slide>
 
-<Act id="demonstrator" />
+{/* ───────────────────────────── Assembly and tolerances ───────────────────────────── */}
+
+<Act id="assembly" />
 
 ---
 text: |
-  ### The demonstrator
+  ### Assembly and tolerances · 1 of 3
 
-  ## Generalise first, or *build one roof*?
+  ## Robotic milling is precise.
 
-  We chose the roof: the plate structure over zone G of the HIL building extension.
-notes: "Two routes: generalise plate-to-plate connections, or design one proposal and expand later. After talking with Oliver, Matthias, Petras and Antonia we chose the demonstrator. A project helps at the start: it shows us our real requirements. And if it is good, it might be built. Started the week of 14 September. One brief: a structure that works at small height and grows where there is more height."
+  # Assembly is *not*.
+notes: "Errors accumulate plate by plate. A plate milled to a tenth of a millimetre still lands wherever the previous plates put it."
 ---
 
 <Slide>
   <div class="pp-head">
-    <h3>The demonstrator</h3>
-    <h2>From a base surface to <em>the roof over zone G</em></h2>
+    <h3>Assembly and tolerances · 2 of 3</h3>
+    <h2>Two ways to <em>absorb the error</em></h2>
   </div>
-  <Pipeline />
-  <SlideNotes>The structure of the study: a constructive module (a base surface, like the hypar), then the plate derivations it allows, the chosen one, the application. The design tool is the LLM skill with a property-first specification, validated with a Grasshopper implementation; compas_timber keeps the fabrication half (BTLx). A second candidate demonstrator: the hex tool on the Stuttgart station columns.</SlideNotes>
+  <div class="pp-cards pp-cards-2">
+    <div><b>Regenerate during assembly</b><p>Assemble, scan, adapt the next batch of plates. The design is updated with the as-built state, so errors do not accumulate.</p></div>
+    <div><b>Slack in the glue gap</b><p>The assembly process leaves a slack, compensated by the gap where the glue is applied.</p></div>
+  </div>
+  <SlideNotes>Both link back to structure: the gap geometry changes what the joint carries, so the structural checks must run on the as-built state.</SlideNotes>
 </Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Assembly and tolerances · 3 of 3</h3>
+    <h2>Assembly systems</h2>
+  </div>
+  <div class="pp-cards pp-cards-4">
+    <div><b>ICD</b><p>Robotic assembly of segmented timber shells.</p></div>
+    <div><b>Nils</b><p>Reference to add.</p></div>
+    <div><b>Anand</b><p>Reference to add.</p></div>
+    <div><b>Sequential assembly</b><p>Self-supporting at every step, no scaffolding needed. Here graphic statics alone would help.</p></div>
+  </div>
+  <SlideNotes>Design for sequential assembly: every intermediate state must stand on its own. That is an equilibrium question, which is exactly what tier 1 answers in seconds.</SlideNotes>
+</Slide>
+
+{/* ───────────────────────────── HIL case study ───────────────────────────── */}
+
+<Act id="hil" />
+
+---
+text: |
+  ### HIL case study · Concept
+
+  ## Candela, *in timber plates*
+
+  - Hyperbolic paraboloids: structurally efficient, and a way to potentially reduce uplift forces
+  - Doubly curved, so the panelling has to be done computationally
+  - The roof over zone G of the HIL building extension
+notes: "Félix Candela's hypar shells, but built from flat timber plates instead of concrete. The hypar is ruled, which helps both the form and the panelling."
+---
+
+<Slide>
+  <div class="pp-head">
+    <h3>HIL case study · Solution 01</h3>
+    <h2>Long modules</h2>
+  </div>
+  <div class="pp-module pp-module-2">
+    <Image src={hilSolution01ModuleA} alt="Isometric of a long vault module of flat timber plates in a zigzag pattern, 28.86 by 9.62 by 5.72 m" widths={[900, 1600]} sizes="45vw" />
+    <Image src={hilSolution01ModuleB} alt="Isometric of a narrower long vault module of flat timber plates, 19.24 by 4.81 by 2.00 m" widths={[900, 1600]} sizes="45vw" />
+  </div>
+</Slide>
+
+---
+title: HIL case study
+subtitle: Solution 01 · Long modules
+image: hilSolution01Outside
+imageAlt: "Rendering of the HIL building extension with a roof of long, wave-like timber vaults running across the top floor (AI-assisted rendering)"
+---
+
+<Slide>
+  <div class="pp-head">
+    <h3>HIL case study · Solution 02</h3>
+    <h2>Single module</h2>
+  </div>
+  <div class="pp-module">
+    <Image src={hilSolution02Module} alt="Isometric of a single saddle-shaped module of flat timber plates, 9.62 by 9.62 by 5.00 m" widths={[1200, 2000]} sizes="80vw" />
+  </div>
+</Slide>
+
+---
+title: HIL case study
+subtitle: Solution 02 · Single module
+image: hilSolution02Outside
+imageAlt: "Rendering of the HIL building extension with a roof made of a grid of repeated hypar timber modules on columns (AI-assisted rendering)"
+---
+
+---
+title: HIL case study
+subtitle: Solution 02 · Single module, inside
+image: hilSolution02Inside
+imageAlt: "Interior rendering under the hypar roof: faceted timber plates, skylights at the module tops, timber columns and an exhibition wall (AI-assisted rendering)"
+---
+
+---
+title: HIL case study
+subtitle: Solution 02 · FEA
+image: hilSolution02Fea
+imageAlt: "FEA result on a hypar made of planar timber plates, coloured green to red by utilisation, with pinned supports along the edges"
+fit: contain
+notes: "Utilisation on one hypar module, pinned along the lower edges. Red appears at the free corners."
+---
+
+<Slide>
+  <div class="pp-head">
+    <h3>HIL case study · Solution 03</h3>
+    <h2>Simplified hypar</h2>
+  </div>
+  <div class="pp-module">
+    <Image src={hilSolution03Module} alt="Isometric of a simplified hypar made of a few large flat timber plates, 10.97 by 10.97 by 10.22 m" widths={[1200, 2000]} sizes="80vw" />
+  </div>
+</Slide>
+
+---
+title: HIL case study
+subtitle: Solution 03 · Simplified hypar
+image: hilSolution03Outside
+imageAlt: "Rendering of the HIL building extension with a roof of repeated gabled timber modules with glazed fronts (AI-assisted rendering)"
+---
+
+{/* ───────────────────────────── Tandem ───────────────────────────── */}
+
+<Act id="tandem" />
+
+---
+title: Tandem
+subtitle: EPFL workshop
+image: epflWorkshop
+imageAlt: "Participants standing around a projected assembly layout on a robotic fabrication floor, with timber members and an industrial robot"
+---
+
+---
+title: Tandem
+subtitle: Specimens
+image: antoniaMeasuring
+imageAlt: "Antonia measuring a CLT plate specimen on trestles in front of the lab building"
+---
+
+---
+title: Tandem
+subtitle: Specimens
+image: cltSpecimens
+imageAlt: "CLT plate specimens of several sizes laid out on the floor of the structural testing hall"
+---
+
+---
+title: Tandem
+subtitle: Antonia's timeline
+image: antoniaTimeline
+imageAlt: "Photo of a spreadsheet Gantt chart, 2026 to 2029: connection systems, test matrix reduction, glued connections for alpha and beta, screw connections, holistic evaluation with GKR, dissertation"
+fit: contain
+notes: "Antonia Schoch. 1: evaluation of connection systems. 2: reduction of the test matrix. 3 and 4: glued connections, alpha and beta individually, then combined. 5: screw connections. 6: holistic evaluation, combined with GKR. 7: dissertation, 2029."
+---
+
+<Slide>
+  <div class="pp-head">
+    <h3>Tandem</h3>
+    <h2>My timeline</h2>
+  </div>
+  <div class="pp-todo">My timeline to be added, aligned with Antonia's</div>
+</Slide>
+
+{/* ───────────────────────────── Coursework ───────────────────────────── */}
 
 <Act id="coursework" />
 
@@ -424,30 +469,17 @@ notes: "Two routes: generalise plate-to-plate connections, or design one proposa
 text: |
   ### Coursework
 
-  ## One course that matters: *Shape Modeling and Geometry Processing*
+  ## Two courses possible
 
-  12 ECTS for the whole doctorate. Autumn stays light: Ethics (mandatory), the IGL PhD seminar.
-notes: "The rules (D-ARCH RSETHZ 344.0100.10 Art. 8): 12 ECTS for the doctorate, at least a third outside the research area, Master's level only, nothing my supervisor teaches. Enrolment 27 September, deregistration 11 October. 252-0538 Shape Modeling and Geometry Processing (8 ECTS, spring 2027, Sorkine-Hornung) is the mathematics already under the plate work and closes the requirement alone. Maybe 064-0025 (Block). 063-0605 Computational Graphic Statics only as a negotiated 3D deliverable. The question is never 'am I on track' but 'is this course worth the weeks'."
+  - **Shape Modeling and Geometry Processing** (252-0538, 8 ECTS, spring, Sorkine-Hornung)
+  - Or one more closely related to **computer science**?
+notes: "12 ECTS for the whole doctorate, at least a third outside the research area, Master's level only, nothing the supervisor teaches. Shape Modeling is the mathematics already under the plate work. CS candidates: Large Language Models (263-5354, 8 ECTS, spring), Physically-Based Simulation (252-0546, 5, autumn), Mathematical Foundations of Computer Graphics and Vision (252-5706, 5, spring)."
 ---
 
-<Act id="next" />
-
----
-text: |
-  ### For discussion
-
-  ## Three questions for you
-
-  - Is one roof the right first vehicle, before generalising the joints?
-  - Can a repository of property-first skills be the thesis deliverable?
-  - Screwed joints first, glued joints once the tests allow it: agreed?
-notes: "Next: the demonstrator derivations before the 14 October technical meeting, where I lead with a one to two page brief circulated on the 13th. Tier-2 CRA with screwed edges. The questions stay on screen for the discussion."
----
-
-<PhdGanttStrip />
+<PhdGanttStrip rows={SECTION_ROWS} actLabels={SECTION_ACT_LABELS} />
 
 {/*
-  Deck-local theme, adapted from glued-timber-plates-2026-08: warm near-black
+  Deck-local theme, carried over from phd-progress-2026-09-v1: warm near-black
   canvas, timber amber accent, silicon blue for Antonia's line. Scoped to
   #deck, and this <style> only exists on this deck's page.
 
@@ -545,21 +577,42 @@ notes: "Next: the demonstrator derivations before the 14 October technical meeti
   #deck .slide-md li { margin-bottom: 0.6rem; }
   #deck .slide-md li::marker { color: var(--pp-amber); }
 
-  /* Title slide: the h2 is a spaced subtitle, not a statement */
-  #deck section.slide:first-of-type .slide-md {
-    align-items: flex-start;
-    text-align: left;
-    padding-left: clamp(4rem, 12vw, 14rem);
+  /* Cover slide */
+  #deck .pp-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 clamp(2.5rem, 8vw, 9rem) 0 clamp(4rem, 12vw, 14rem);
   }
-  #deck section.slide:first-of-type .slide-md h1 {
+  #deck .pp-cover h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    color: var(--pp-amber);
+    margin: 0 0 2rem 0;
+  }
+  #deck .pp-cover h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
     font-size: clamp(2.6rem, 5.6vw, 5rem);
+    line-height: 1.18;
+    color: var(--pp-ink);
+    margin: 0 0 1.5rem 0;
+    text-wrap: balance;
   }
-  #deck section.slide:first-of-type .slide-md h2 {
+  #deck .pp-cover h2 {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.22em;
     font-size: clamp(0.8rem, 1.3vw, 1.05rem);
+    color: var(--pp-ink);
+    margin: 0;
   }
 
   /* JSX slides: header block at the top-left */
@@ -797,4 +850,218 @@ notes: "Next: the demonstrator derivations before the 14 October technical meeti
     color: var(--pp-ink);
     text-align: center;
   }
+  /* Three cards */
+  #deck .pp-cards-3 { grid-template-columns: repeat(3, 1fr); }
+
+  /* Placeholder for images still to come */
+  #deck .pp-todo {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 10vh, 6rem);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(224, 164, 88, 0.5);
+    border-radius: 0.8rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pp-amber);
+    text-align: center;
+    padding: 1rem;
+  }
+
+  #deck .pe-tag {
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pp-dim);
+    margin-bottom: 0.7rem;
+  }
+
+  /* Text beside a card */
+  #deck .pp-split {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 10vh, 6rem);
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .ps-text p { margin: 0 0 1.2rem 0; font-weight: 300; font-size: clamp(1rem, 1.6vw, 1.4rem); line-height: 1.55; color: var(--pp-dim); }
+  #deck .ps-text strong { font-weight: 500; color: var(--pp-amber); }
+  #deck .ps-card { padding: 1.4rem 1.6rem; border: 1px solid rgba(133, 183, 203, 0.5); border-radius: 0.8rem; background: rgba(133, 183, 203, 0.06); }
+  #deck .ps-card dl { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 1.2rem; margin: 0; }
+  #deck .ps-card dt { font-family: "Montserrat", sans-serif; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pp-silicon); padding-top: 0.2rem; }
+  #deck .ps-card dd { margin: 0; font-weight: 300; color: var(--pp-ink); font-size: clamp(0.9rem, 1.3vw, 1.15rem); }
+
+  /* Agentic loop */
+  #deck .pp-loop {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 10vh, 6rem);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+  }
+  #deck .pl-agent { padding: 1rem; border: 1px solid var(--pp-amber); border-radius: 0.6rem; background: rgba(224, 164, 88, 0.08); color: var(--pp-amber); font-weight: 500; font-size: clamp(1rem, 1.6vw, 1.4rem); }
+  #deck .pl-checks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  #deck .pl-checks > div { padding: 1.1rem; border: 1px solid rgba(242, 239, 233, 0.18); border-radius: 0.6rem; background: rgba(242, 239, 233, 0.04); }
+  #deck .pl-checks b { display: block; font-weight: 600; color: var(--pp-ink); font-size: clamp(1.1rem, 1.8vw, 1.6rem); }
+  #deck .pl-checks span { display: block; margin-top: 0.4rem; font-weight: 300; color: var(--pp-dim); font-size: clamp(0.85rem, 1.2vw, 1.05rem); }
+  #deck .pl-back { font-family: "Montserrat", sans-serif; letter-spacing: 0.16em; text-transform: uppercase; font-size: clamp(0.72rem, 1vw, 0.9rem); color: var(--pp-amber); }
+
+  /* Planar mesh lineage */
+  #deck .pp-lineage {
+    position: absolute;
+    inset: clamp(10.5rem, 26vh, 14rem) clamp(3rem, 8vw, 9rem) clamp(5rem, 14vh, 8rem);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7rem;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pln-lane { display: grid; grid-template-columns: 12rem 1fr; align-items: center; gap: 1rem; }
+  #deck .pln-name { font-family: "Montserrat", sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .pln-items { display: flex; align-items: center; gap: 1.4rem; }
+  #deck .pln-items > div {
+    position: relative;
+    flex: 0 1 15rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid rgba(242, 239, 233, 0.18);
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: var(--pp-ink);
+    font-size: clamp(0.9rem, 1.35vw, 1.2rem);
+  }
+  #deck .pln-items > div + div::before { content: "→"; position: absolute; left: -0.7rem; top: 50%; transform: translate(-50%, -50%); color: var(--pp-amber); }
+  #deck .pln-items i { display: block; font-style: normal; font-weight: 300; color: var(--pp-dim); font-size: 0.8em; }
+  #deck .pln-items .is-hot { border-color: var(--pp-amber); background: rgba(224, 164, 88, 0.08); color: var(--pp-amber); }
+  #deck .pp-foot {
+    position: absolute;
+    left: clamp(3rem, 8vw, 9rem);
+    right: clamp(3rem, 8vw, 9rem);
+    bottom: clamp(2rem, 6vh, 4rem);
+    z-index: 10;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+    color: var(--pp-dim);
+  }
+
+  /* Three tiers as a funnel */
+  #deck .pp-tiers {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 10vh, 6rem);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pt-tier {
+    width: var(--w);
+    padding: 1rem 1.4rem;
+    border: 1px solid rgba(242, 239, 233, 0.2);
+    border-radius: 0.6rem;
+    background: rgba(242, 239, 233, 0.04);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.2rem 1.5rem;
+    align-items: baseline;
+  }
+  #deck .pt-tier b { font-weight: 600; color: var(--pp-ink); font-size: clamp(1.05rem, 1.7vw, 1.5rem); }
+  #deck .pt-tier span { grid-column: 1; font-weight: 300; color: var(--pp-dim); font-size: clamp(0.85rem, 1.2vw, 1.05rem); }
+  #deck .pt-tier i { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-style: normal; font-family: "Montserrat", sans-serif; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); text-align: right; }
+  #deck .pt-tier.is-hot { border-color: var(--pp-amber); background: rgba(224, 164, 88, 0.08); }
+  #deck .pt-tier.is-hot b { color: var(--pp-amber); }
+  /* HIL module drawings: white renders framed on the dark deck */
+  #deck .pp-module {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 8vh, 5rem);
+    z-index: 10;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    gap: clamp(1rem, 2vw, 2rem);
+  }
+  #deck .pp-module-2 { grid-template-columns: 1fr 1fr; align-items: center; }
+  #deck .pp-module img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 0.8rem;
+    min-height: 0;
+  }
+  #deck .pp-module-2 img { height: auto; }
+  /* Onboarding: text beside a screenshot */
+  #deck .pp-split-shot { grid-template-columns: 1fr 1.3fr; }
+  #deck .ps-shot img { width: 100%; height: auto; border-radius: 0.6rem; border: 1px solid rgba(242, 239, 233, 0.18); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
+
+  /* Issues found vs acted on */
+  #deck .pp-issues {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(6rem, 16vh, 9rem);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.1rem;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pi-legend { display: flex; flex-wrap: wrap; gap: 0.6rem 1.8rem; margin-bottom: 0.6rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.68rem, 0.95vw, 0.82rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .pi-legend span::before { content: ""; display: inline-block; width: 0.8em; height: 0.8em; margin-right: 0.5em; border-radius: 0.2em; vertical-align: -0.05em; background: var(--c); border: 1px dashed var(--b, transparent); }
+  #deck .pi-row { display: grid; grid-template-columns: 10rem 1fr 3rem; align-items: center; gap: 1.2rem; }
+  #deck .pi-row b { font-weight: 500; color: var(--pp-ink); font-size: clamp(0.95rem, 1.4vw, 1.25rem); text-align: right; }
+  #deck .pi-row > span { font-weight: 300; color: var(--pp-dim); font-size: clamp(0.95rem, 1.4vw, 1.25rem); }
+  #deck .pi-bar { display: flex; gap: 3px; height: clamp(1.8rem, 4.5vh, 2.6rem); }
+  #deck .pi-bar i { flex: 0 0 calc(var(--n) / 39 * 100%); display: flex; align-items: center; justify-content: center; border-radius: 0.35rem; font-style: normal; font-weight: 600; font-size: clamp(0.8rem, 1.1vw, 1rem); color: #1a1714; background: var(--c); border: 1px dashed var(--b, transparent); }
+  #deck .pi-solved { --c: var(--pp-amber); }
+  #deck .pi-progress { --c: rgba(224, 164, 88, 0.45); }
+  #deck .pi-open { --c: rgba(242, 239, 233, 0.05); --b: rgba(242, 239, 233, 0.45); }
+  #deck .pi-bar i.pi-open { color: var(--pp-dim); }
+  /* compas_ai at the centre of the COMPAS ecosystem */
+  #deck .pp-hub {
+    position: absolute;
+    inset: clamp(10rem, 25vh, 13rem) clamp(4rem, 10vw, 12rem) clamp(2.5rem, 7vh, 4.5rem);
+    z-index: 10;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pp-hub svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  #deck .pp-hub line { vector-effect: non-scaling-stroke; stroke-width: 1.5; }
+  #deck .pp-hub line.is-used { stroke: var(--pp-amber); }
+  #deck .pp-hub line.is-planned { stroke: rgba(242, 239, 233, 0.4); stroke-dasharray: 5 5; }
+  #deck .ph-node,
+  #deck .ph-core {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 0.6rem;
+    background: #1a1714;
+    white-space: nowrap;
+  }
+  #deck .ph-node { padding: 0.55rem 1rem; border: 1px solid rgba(242, 239, 233, 0.35); }
+  #deck .ph-node.is-planned { border-style: dashed; }
+  #deck .ph-node b { display: block; font-weight: 500; color: var(--pp-ink); font-size: clamp(0.85rem, 1.25vw, 1.1rem); }
+  #deck .ph-node.is-planned b { color: var(--pp-dim); }
+  #deck .ph-node span { display: block; font-weight: 300; color: var(--pp-dim); font-size: clamp(0.7rem, 0.95vw, 0.85rem); }
+  #deck .ph-core { left: 50%; top: 50%; padding: 1.1rem 1.8rem; border: 1px solid var(--pp-amber); background: #2a2118; box-shadow: 0 0 40px rgba(224, 164, 88, 0.25); }
+  #deck .ph-core b { display: block; font-weight: 600; color: var(--pp-amber); font-size: clamp(1.4rem, 2.4vw, 2.2rem); }
+  #deck .ph-core span { display: block; font-weight: 300; color: var(--pp-ink); font-size: clamp(0.8rem, 1.1vw, 1rem); }
+  #deck .ph-legend { position: absolute; right: 0; bottom: -0.5rem; display: flex; gap: 1.4rem; font-family: "Montserrat", sans-serif; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .ph-legend span::before { content: ""; display: inline-block; width: 1.6rem; margin-right: 0.5rem; vertical-align: middle; border-top: 1.5px solid var(--pp-amber); }
+  #deck .ph-legend .is-planned::before { border-top: 1.5px dashed rgba(242, 239, 233, 0.5); }
 `}</style>

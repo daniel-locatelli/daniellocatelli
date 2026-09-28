@@ -1,7 +1,13 @@
 ---
 // Full-size Gantt for the phd-progress deck: every work package with its
 // label, month grid, "now" line and milestones.
-import { ROWS, MONTHS, MILESTONES, NOW, pct } from "./gantt-data";
+import { ROWS, MONTHS, MILESTONES as ALL_MILESTONES, NOW, pct, type GanttRow } from "./gantt-data";
+
+interface Props {
+  rows?: GanttRow[];
+  milestones?: { date: string; label: string }[];
+}
+const { rows = ROWS, milestones: MILESTONES = ALL_MILESTONES } = Astro.props;
 
 const monthStarts = ["2026-07-01", "2026-08-01", "2026-09-01", "2026-10-01", "2026-11-01", "2026-12-01"];
 ---
@@ -14,7 +20,7 @@ const monthStarts = ["2026-07-01", "2026-08-01", "2026-09-01", "2026-10-01", "20
     </div>
   </div>
   {
-    ROWS.map((r) => (
+    rows.map((r) => (
       <div class={`pg-row pg-${r.kind}`}>
         <span class="pg-label">{r.label}</span>
         <div class="pg-track">

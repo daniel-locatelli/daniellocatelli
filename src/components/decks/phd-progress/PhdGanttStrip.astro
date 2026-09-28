@@ -3,13 +3,19 @@
 // current act light up. Acts are declared with <Act id="..."/> markers placed
 // between slides in deck.mdx; the active slide inherits the nearest marker
 // before it, so slides can be added or reordered freely.
-import { ROWS, NOW, ACT_LABELS, pct } from "./gantt-data";
+import { ROWS, NOW, ACT_LABELS, pct, type GanttRow } from "./gantt-data";
+
+interface Props {
+  rows?: GanttRow[];
+  actLabels?: Record<string, string>;
+}
+const { rows = ROWS, actLabels = ACT_LABELS } = Astro.props;
 ---
 
-<div id="pg-strip" aria-hidden="true" data-acts={JSON.stringify(ACT_LABELS)}>
+<div id="pg-strip" aria-hidden="true" data-acts={JSON.stringify(actLabels)}>
   <div class="pgs-rows">
     {
-      ROWS.map((r) => (
+      rows.map((r) => (
         <div class={`pgs-row pgs-${r.kind}`} data-row-acts={r.acts.join(" ")}>
           <span class="pgs-bar" style={`left:${pct(r.start)}%;width:${pct(r.end) - pct(r.start)}%`} />
         </div>
