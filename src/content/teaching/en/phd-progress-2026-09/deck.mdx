@@ -31,6 +31,7 @@ import acousticPanels from "@/assets/content/teaching/phd-progress-2026-09/acous
 import asmAcrossScales from "@/assets/content/teaching/phd-progress-2026-09/assembly-building-across-scales.jpg";
 import asmRoboticAssembly from "@/assets/content/teaching/phd-progress-2026-09/assembly-design-for-robotic-assembly.jpg";
 import asmFit2023 from "@/assets/content/teaching/phd-progress-2026-09/assembly-icd-itke-fit2023.jpg";
+import candelaManantiales from "@/assets/content/teaching/phd-progress-2026-09/candela-los-manantiales.jpg";
 import hilSolution01ModuleA from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-a.png";
 import hilSolution01ModuleB from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-b.png";
 import hilSolution02Module from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-module.png";
@@ -417,31 +418,32 @@ notes: "Errors accumulate plate by plate. A plate milled to a tenth of a millime
     <figure><Image src={asmRoboticAssembly} loading="eager" alt="Rendering: a long-span shell of hexagonal timber plates over a public square, placed by three mobile cranes" widths={[800, 1200]} sizes="28vw" /></figure>
     <figure><Image src={asmFit2023} loading="eager" alt="An orange mobile crane with a robotic end effector in front of a timber plate pavilion with oval openings" widths={[800, 1200]} sizes="24vw" /></figure>
   </div>
-  <div class="pp-cards pp-cards-4">
-    <div><b>ICD</b><p>Robotic assembly of segmented timber shells.</p></div>
-    <div><b>Nils</b><p>Reference to add.</p></div>
-    <div><b>Anand</b><p>Reference to add.</p></div>
-    <div><b>Sequential assembly</b><p>Self-supporting at every step, no scaffolding needed. Here graphic statics alone would help.</p></div>
   </div>
-  </div>
-  <SlideNotes>Design for sequential assembly: every intermediate state must stand on its own. That is an equilibrium question, which is exactly what tier 1 answers in seconds.</SlideNotes>
+  <SlideNotes>ICD: robotic assembly of segmented timber shells. Nils and Anand: references to add. Design for sequential assembly, self-supporting at every step with no scaffolding: every intermediate state must stand on its own. That is an equilibrium question, which is exactly what tier 1 answers in seconds.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── HIL case study ───────────────────────────── */}
 
 <Act id="hil" />
 
----
-text: |
-  ### HIL case study · Concept
-
-  ## Candela, *in timber plates*
-
-  - Hyperbolic paraboloids: structurally efficient, and a way to potentially reduce uplift forces
-  - Doubly curved, so the panelling has to be done computationally
-  - The roof over zone G of the HIL building extension
-notes: "Félix Candela's hypar shells, but built from flat timber plates instead of concrete. The hypar is ruled, which helps both the form and the panelling."
----
+<Slide>
+  <div class="pp-head">
+    <h3>HIL case study · Concept</h3>
+    <h2>Candela, <em>in timber plates</em></h2>
+  </div>
+  <div class="pp-candela">
+    <ul>
+      <li>Hyperbolic paraboloids: structurally efficient, and a way to potentially reduce uplift forces</li>
+      <li>Doubly curved, so the panelling has to be done computationally</li>
+      <li>The roof over zone G of the HIL building extension</li>
+    </ul>
+    <figure>
+      <Image src={candelaManantiales} loading="eager" alt="Black and white photo of Félix Candela's Los Manantiales restaurant in Xochimilco, Mexico City, 1958: a thin concrete shell of intersecting hyperbolic paraboloids beside a canal with boats" widths={[800, 1200]} sizes="50vw" />
+      <figcaption>Los Manantiales · Félix Candela, 1958</figcaption>
+    </figure>
+  </div>
+  <SlideNotes>Félix Candela's hypar shells, but built from flat timber plates instead of concrete. The hypar is ruled, which helps both the form and the panelling. The photo: Los Manantiales restaurant in Xochimilco, 1958, eight hypar segments around a centre.</SlideNotes>
+</Slide>
 
 <Slide>
   <div class="pp-head">
@@ -1295,4 +1297,12 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   #deck .pp-asm img { display: block; width: 100%; height: auto; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); }
   #deck .pp-asm figcaption { margin-top: 0.5rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.6rem, 0.8vw, 0.72rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
   #deck .pp-asm .pp-cards { position: static; inset: auto; }
+  /* HIL concept: bullets beside Candela's Los Manantiales */
+  #deck .pp-candela { position: absolute; inset: clamp(11rem, 26vh, 14rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 8vh, 5rem); z-index: 10; display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; font-family: "Poppins", sans-serif; }
+  #deck .pp-candela ul { margin: 0; padding-left: 1.1em; list-style: disc; }
+  #deck .pp-candela li { margin-bottom: 1rem; font-weight: 300; font-size: clamp(1rem, 1.6vw, 1.45rem); line-height: 1.5; color: var(--pp-ink); }
+  #deck .pp-candela li::marker { color: var(--pp-amber); }
+  #deck .pp-candela figure { margin: 0; min-height: 0; max-height: 100%; display: flex; flex-direction: column; }
+  #deck .pp-candela img { display: block; width: 100%; height: auto; max-height: 100%; object-fit: contain; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); }
+  #deck .pp-candela figcaption { margin-top: 0.5rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.6rem, 0.8vw, 0.72rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
 `}</style>
