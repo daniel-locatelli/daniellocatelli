@@ -203,14 +203,16 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
   </div>
   <div class="pp-loop">
     <div class="pl-agent">Agent proposes a form</div>
+    <div class="pl-tool"><em>generate</em><b>Paneling algorithm</b><span>agents relax on the surface into a plate layout</span></div>
     <div class="pl-checks">
+      <em>check</em>
       <div><b>Structural analysis</b><span>equilibrium first, FEA last</span></div>
       <div><b>Acoustics</b><span>reflection, diffusion, absorption</span></div>
       <div><b>Fabrication</b><span>plate size, bevel, stock, BTLx</span></div>
     </div>
     <div class="pl-back">↺ verdicts back to the agent, in seconds</div>
   </div>
-  <SlideNotes>The loop only works if every check is cheap enough to run on every candidate. Expensive checks verify the few candidates that survive. The rest of the talk goes through each check: plates, structure, acoustics, assembly.</SlideNotes>
+  <SlideNotes>The agent does not draw plates itself: it calls the paneling algorithm (the agent-based modeling skill) to turn a surface into a plate layout, then runs the checks on that layout. The loop only works if every check is cheap enough to run on every candidate. Expensive checks verify the few candidates that survive. The rest of the talk goes through each check: plates, structure, acoustics, assembly.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── Plates ───────────────────────────── */}
@@ -899,7 +901,13 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
     text-align: center;
   }
   #deck .pl-agent { padding: 1rem; border: 1px solid var(--pp-amber); border-radius: 0.6rem; background: rgba(224, 164, 88, 0.08); color: var(--pp-amber); font-weight: 500; font-size: clamp(1rem, 1.6vw, 1.4rem); }
-  #deck .pl-checks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  #deck .pl-tool { position: relative; margin-top: 1.4rem; padding: 1.1rem; border: 1px solid rgba(133, 183, 203, 0.6); border-radius: 0.6rem; background: rgba(133, 183, 203, 0.1); }
+  #deck .pl-tool b { display: block; font-weight: 600; color: var(--pp-silicon); font-size: clamp(1.1rem, 1.8vw, 1.6rem); }
+  #deck .pl-tool span { display: block; margin-top: 0.4rem; font-weight: 300; color: var(--pp-dim); font-size: clamp(0.85rem, 1.2vw, 1.05rem); }
+  #deck .pl-tool em,
+  #deck .pl-checks em { position: absolute; left: 0; top: -1.4rem; font-style: normal; font-family: "Montserrat", sans-serif; letter-spacing: 0.18em; text-transform: uppercase; font-size: clamp(0.62rem, 0.85vw, 0.75rem); color: var(--pp-dim); }
+  #deck .pl-tool em { color: var(--pp-silicon); }
+  #deck .pl-checks { position: relative; margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   #deck .pl-checks > div { padding: 1.1rem; border: 1px solid rgba(242, 239, 233, 0.18); border-radius: 0.6rem; background: rgba(242, 239, 233, 0.04); }
   #deck .pl-checks b { display: block; font-weight: 600; color: var(--pp-ink); font-size: clamp(1.1rem, 1.8vw, 1.6rem); }
   #deck .pl-checks span { display: block; margin-top: 0.4rem; font-weight: 300; color: var(--pp-dim); font-size: clamp(0.85rem, 1.2vw, 1.05rem); }
