@@ -24,6 +24,9 @@ import onboardingRepo from "@/assets/content/teaching/phd-progress-2026-09/onboa
 import lineagePhCpf from "@/assets/content/teaching/phd-progress-2026-09/lineage-ph-cpf.png";
 import lineagePolyhedral from "@/assets/content/teaching/phd-progress-2026-09/lineage-polyhedral-patterns.png";
 import lineageAgentShells from "@/assets/content/teaching/phd-progress-2026-09/lineage-agent-based-shells.png";
+import tektonPlate from "@/assets/content/teaching/phd-progress-2026-09/tekton-plate.jpg";
+import tektonPlateLayout from "@/assets/content/teaching/phd-progress-2026-09/tekton-plate-layout.jpg";
+import tektonShell from "@/assets/content/teaching/phd-progress-2026-09/tekton-shell.jpg";
 import hilSolution01ModuleA from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-a.png";
 import hilSolution01ModuleB from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-b.png";
 import hilSolution02Module from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-module.png";
@@ -274,8 +277,12 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
     <h3>Structural analysis · 2 of 2</h3>
     <h2>FEA in the loop: <em>Tekton</em></h2>
   </div>
-  <div class="pp-todo">Image to be added: Lorin's first study with Tekton</div>
-  <SlideNotes>Tekton, by Lorin: FEA inside the design environment, with grain direction travelling with every plate. His first study: to be filled in.</SlideNotes>
+  <div class="pp-tekton">
+    <Image src={tektonPlate} loading="eager" alt="Tekton FEA result on a flat triangulated plate with pinned supports, coloured green to red" widths={[640, 1190]} sizes="30vw" />
+    <Image src={tektonPlateLayout} loading="eager" alt="Tekton FEA result on a flat surface divided into plates with thickness, pinned along the plate edges" widths={[640, 1460]} sizes="30vw" />
+    <Image src={tektonShell} loading="eager" alt="Tekton FEA result on a double-curved shell of planar plates, pinned along its edges" widths={[800, 2000]} sizes="35vw" />
+  </div>
+  <SlideNotes>Tekton, by Lorin: FEA inside the design environment, with grain direction travelling with every plate. His first study, left to right: a single flat plate, the same surface divided into plates with thickness, and a double-curved shell of plates. Green to red is the result colour scale; the labels mark pinned supports.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── Acoustics ───────────────────────────── */}
@@ -1160,4 +1167,19 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   #deck .pln-shots figure { margin: 0; min-height: 0; display: flex; flex-direction: column; gap: 0.4rem; }
   #deck .pln-shots img { display: block; width: 100%; height: auto; border-radius: 0.5rem; border: 1px solid var(--pp-amber); }
   #deck .pln-shots figcaption { font-family: "Montserrat", sans-serif; font-size: clamp(0.62rem, 0.85vw, 0.75rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-amber); }
+  /* Tekton: three FEA screenshots in a row, columns in proportion to each image's aspect ratio */
+  #deck .pp-tekton {
+    position: absolute;
+    top: clamp(12rem, 29vh, 15.5rem);
+    bottom: clamp(3rem, 8vh, 5rem);
+    left: clamp(3rem, 8vw, 9rem);
+    right: clamp(3rem, 8vw, 9rem);
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 2.245fr 1.604fr 1.825fr;
+    align-content: center;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  #deck .pp-tekton img { display: block; width: 100%; height: auto; border-radius: 0.5rem; }
 `}</style>
