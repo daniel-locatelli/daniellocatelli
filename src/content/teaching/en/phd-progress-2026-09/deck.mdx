@@ -28,6 +28,9 @@ import tektonPlate from "@/assets/content/teaching/phd-progress-2026-09/tekton-p
 import tektonPlateLayout from "@/assets/content/teaching/phd-progress-2026-09/tekton-plate-layout.jpg";
 import tektonShell from "@/assets/content/teaching/phd-progress-2026-09/tekton-shell.jpg";
 import acousticPanels from "@/assets/content/teaching/phd-progress-2026-09/acoustic-panels-interior.jpg";
+import asmAcrossScales from "@/assets/content/teaching/phd-progress-2026-09/assembly-building-across-scales.jpg";
+import asmRoboticAssembly from "@/assets/content/teaching/phd-progress-2026-09/assembly-design-for-robotic-assembly.jpg";
+import asmFit2023 from "@/assets/content/teaching/phd-progress-2026-09/assembly-icd-itke-fit2023.jpg";
 import hilSolution01ModuleA from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-a.png";
 import hilSolution01ModuleB from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-b.png";
 import hilSolution02Module from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-module.png";
@@ -409,11 +412,18 @@ notes: "Errors accumulate plate by plate. A plate milled to a tenth of a millime
     <h3>Assembly and tolerances · 3 of 3</h3>
     <h2>Assembly systems</h2>
   </div>
+  <div class="pp-asm">
+  <div class="asm-shots">
+    <figure><Image src={asmAcrossScales} loading="eager" alt="Rendering: a crane lifts a timber floor element onto a multi-storey timber frame while a sensor scans the placement and robots work on the ground" widths={[800, 1200]} sizes="28vw" /><figcaption>Building across scales · ICD 2021</figcaption></figure>
+    <figure><Image src={asmRoboticAssembly} loading="eager" alt="Rendering: a long-span shell of hexagonal timber plates over a public square, placed by three mobile cranes" widths={[800, 1200]} sizes="28vw" /><figcaption>Design for robotic assembly · ICD 2021</figcaption></figure>
+    <figure><Image src={asmFit2023} loading="eager" alt="An orange mobile crane with a robotic end effector in front of a timber plate pavilion with oval openings" widths={[800, 1200]} sizes="24vw" /><figcaption>On-site robotic assembly · ICD/ITKE 2023</figcaption></figure>
+  </div>
   <div class="pp-cards pp-cards-4">
     <div><b>ICD</b><p>Robotic assembly of segmented timber shells.</p></div>
     <div><b>Nils</b><p>Reference to add.</p></div>
     <div><b>Anand</b><p>Reference to add.</p></div>
     <div><b>Sequential assembly</b><p>Self-supporting at every step, no scaffolding needed. Here graphic statics alone would help.</p></div>
+  </div>
   </div>
   <SlideNotes>Design for sequential assembly: every intermediate state must stand on its own. That is an equilibrium question, which is exactly what tier 1 answers in seconds.</SlideNotes>
 </Slide>
@@ -1279,4 +1289,11 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   #deck .at-fig .at-l-ghost { fill: var(--pp-dim); }
   #deck .at-fig .at-l-built { fill: var(--pp-ink); }
   #deck .at-fig .at-l-next { fill: var(--pp-amber); }
+  /* Assembly 3 of 3: reference projects above the cards */
+  #deck .pp-asm { position: absolute; inset: clamp(10rem, 24vh, 13rem) clamp(4rem, 12vw, 14rem) clamp(2.5rem, 7vh, 4.5rem); z-index: 10; display: flex; flex-direction: column; justify-content: center; gap: clamp(1.5rem, 4vh, 3rem); }
+  #deck .pp-asm .asm-shots { display: grid; grid-template-columns: 1.842fr 1.842fr 1.5fr; gap: clamp(1rem, 2vw, 2rem); align-items: end; }
+  #deck .pp-asm figure { margin: 0; }
+  #deck .pp-asm img { display: block; width: 100%; height: auto; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); }
+  #deck .pp-asm figcaption { margin-top: 0.5rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.6rem, 0.8vw, 0.72rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .pp-asm .pp-cards { position: static; inset: auto; }
 `}</style>
