@@ -156,17 +156,45 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
   <SlideNotes>Agentic workflows are replacing many tools; plain English is becoming the way to create things. What we need is not a rigid data model but a well-defined data dictionary; the implementation is with the LLM. Nineteen data models reviewed. A shared model across tools does not hold: Speckle deleted its typed element kit (2024), BHoM keeps one object graph per domain, IFC 4.3 keeps a separate structural analysis model. What survives is a minimal vocabulary plus observations about translations. The buildingSMART Data Dictionary is the model for that vocabulary: definitions with stable URIs, not a schema. IFC already links to it through IfcClassificationReference. The entries on the right are illustrations, not existing bSDD classes.</SlideNotes>
 </Slide>
 
----
-text: |
-  ### The big picture · 3 of 4
-
-  ## Skills as deliverables, for *property-based development*
-
-  - A skill is the container of knowledge: what to build, how, and how to check it
-  - **Properties** are the contract every implementation has to pass, in any language
-  - Implemented in Grasshopper first, validated, then made language-agnostic
-notes: "Instead of a Grasshopper plugin, ship composable agent skills with a property-first specification. Code is cheap, so we do not have to commit to one language: the same skill can be built in Grasshopper, Revit, Cadwork or SEMA, and the properties are what every implementation must pass. Open conditions: defensible (evidence a skill works), demonstrable (one chain a reader can run), durable (plugins rot with Rhino versions, skills rot against models)."
----
+<Slide>
+  <div class="pp-head">
+    <h3>The big picture · 3 of 4</h3>
+    <h2>Skills as deliverables, for <em>property-based development</em></h2>
+  </div>
+  <div class="pp-skill">
+    <div class="sk-doc">
+      <div class="sk-tab"><b>SKILL.md</b><span>urform / strategies / agent-based-modeling</span></div>
+      <div class="sk-page">
+        <div class="sk-front"><i>---</i><br /><b>name:</b> agent-based-modeling<br /><b>description:</b> Use when a design task needs agents relaxing on a surface to produce a tessellation or plate layout, in any host (Grasshopper, web, Revit, Blender).<br /><i>---</i></div>
+        <p class="sk-h1"><i>#</i> Agent-based modeling for surface tessellation</p>
+        <p class="sk-h2"><i>##</i> Overview</p>
+        <p>Agents are points constrained to a surface; simple summed behaviours relax them into a near-hexagonal packing. <strong>Implement the strategy natively in each host, do not transliterate the reference.</strong></p>
+        <p class="sk-h2"><i>##</i> Workflow</p>
+        <ol>
+          <li><strong>Host adapter:</strong> implement <code>ISurfaceHost</code>, nothing else touches host types</li>
+          <li><strong>Tune in the console harness first</strong>, seconds per run</li>
+          <li><strong>Check the report before looking at pictures</strong></li>
+        </ol>
+        <p class="sk-h2"><i>##</i> Acceptance, in four classes</p>
+        <table>
+          <tr><th>class</th><th>example</th></tr>
+          <tr><td><strong>Invariant</strong>, assert exactly</td><td>closed surface: plates = agents</td></tr>
+          <tr><td><strong>Banded</strong>, assert with a band</td><td>side ratio median 0.38 to 0.46</td></tr>
+          <tr><td><strong>Identity</strong>, never evidence</td><td>Euler's formula</td></tr>
+          <tr><td><strong>Not portable</strong></td><td>seed-for-seed agent positions</td></tr>
+        </table>
+        <p class="sk-h2"><i>##</i> Common mistakes</p>
+        <p>Each one cost a debugging round.</p>
+        <ul>
+          <li><strong>Plates from Voronoi</strong> instead of the tangent-plane intersection</li>
+          <li><strong>Spacing from the plan area</strong>, which under-estimates on curved patches</li>
+          <li><strong>A lattice edge along an asymptotic direction</strong>: zero-length plate sides</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <SlideNotes>Instead of a Grasshopper plugin, ship composable agent skills with a property-first specification. A skill is the container of knowledge: what to build, how, and how to check it. Properties are the contract every implementation has to pass, in any language; implemented in Grasshopper first, validated, then made language-agnostic. The example is an excerpt of the agent-based modeling skill in urform: four hosts (Grasshopper script, Grasshopper plugin, .NET console, compas_timber in Python sharing no code with the C# core), which is how seven defects in the normative document were found. Code is cheap, so we do not have to commit to one language: the same skill can be built in Grasshopper, Revit, Cadwork or SEMA. Open conditions: defensible (evidence a skill works), demonstrable (one chain a reader can run), durable (plugins rot with Rhino versions, skills rot against models).</SlideNotes>
+</Slide>
 
 <Slide>
   <div class="pp-head">
@@ -1062,4 +1090,36 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   #deck .dd-dict dd { margin: 0.15rem 0 0; font-weight: 300; color: var(--pp-dim); font-size: clamp(1rem, 1.5vw, 1.4rem); line-height: 1.45; }
   #deck .dd-arrow { position: relative; height: 3px; margin: 0 1.2rem; background: var(--pp-amber); }
   #deck .dd-arrow::after { content: ""; position: absolute; right: -2px; top: 50%; width: 1.2rem; height: 1.2rem; border-top: 3px solid var(--pp-amber); border-right: 3px solid var(--pp-amber); transform: translateY(-50%) rotate(45deg); }
+  /* Skill as a document */
+  #deck .pp-skill {
+    position: absolute;
+    top: clamp(12rem, 29vh, 15.5rem);
+    bottom: 0;
+    left: 50%;
+    width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 62rem);
+    transform: translateX(-50%);
+    z-index: 10;
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 97%);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent 97%);
+  }
+  #deck .sk-doc { border-radius: 0.6rem 0.6rem 0 0; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55); overflow: hidden; }
+  #deck .sk-tab { display: flex; align-items: baseline; gap: 1rem; padding: 0.7rem 1.4rem; background: #2a2622; border-bottom: 1px solid rgba(0, 0, 0, 0.4); font-family: "Montserrat", sans-serif; }
+  #deck .sk-tab b { font-weight: 600; font-size: clamp(0.85rem, 1.1vw, 1rem); color: var(--pp-amber); }
+  #deck .sk-tab span { font-size: clamp(0.7rem, 0.9vw, 0.82rem); letter-spacing: 0.08em; color: var(--pp-dim); }
+  #deck .sk-page { padding: clamp(1.4rem, 2.6vw, 2.6rem) clamp(1.6rem, 3.4vw, 3.4rem); background: #f4f0e8; color: #3a352e; font-family: "Poppins", sans-serif; font-weight: 300; font-size: clamp(0.9rem, 1.25vw, 1.15rem); line-height: 1.55; }
+  #deck .sk-page p { margin: 0 0 0.8rem; }
+  #deck .sk-page strong { font-weight: 500; color: #1d1a16; }
+  #deck .sk-page i { font-style: normal; color: #c08033; }
+  #deck .sk-front { margin-bottom: 1.2rem; padding: 0.7rem 1rem; border-radius: 0.4rem; background: #e9e3d7; font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.85em; line-height: 1.5; }
+  #deck .sk-front b { font-weight: 600; color: #7a5a2e; }
+  #deck .sk-page .sk-h1 { margin: 0 0 1rem; font-weight: 600; font-size: 1.6em; line-height: 1.2; color: #1d1a16; }
+  #deck .sk-page .sk-h2 { margin: 1.3rem 0 0.5rem; font-weight: 600; font-size: 1.2em; color: #1d1a16; }
+  #deck .sk-page ol,
+  #deck .sk-page ul { margin: 0 0 0.8rem; padding-left: 1.4em; list-style: decimal; }
+  #deck .sk-page ul { list-style: disc; }
+  #deck .sk-page li::marker { color: #c08033; }
+  #deck .sk-page code { padding: 0.05em 0.35em; border-radius: 0.25rem; background: #e9e3d7; font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.88em; }
+  #deck .sk-page table { width: 100%; border-collapse: collapse; font-size: 0.92em; }
+  #deck .sk-page th { text-align: left; font-weight: 600; color: #1d1a16; border-bottom: 1.5px solid #c9c0b0; padding: 0.3rem 0.6rem; }
+  #deck .sk-page td { border-bottom: 1px solid #ddd5c6; padding: 0.3rem 0.6rem; }
 `}</style>
