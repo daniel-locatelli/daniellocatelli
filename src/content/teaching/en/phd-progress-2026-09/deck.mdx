@@ -986,23 +986,23 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
     top: clamp(11rem, 28vh, 15rem);
     bottom: clamp(6rem, 16vh, 9rem);
     left: 50%;
-    width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 60rem);
+    width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 75rem);
     transform: translateX(-50%);
     z-index: 10;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.8rem;
+    gap: 1rem;
     font-family: "Poppins", sans-serif;
   }
-  #deck .pi-legend { display: flex; flex-wrap: wrap; gap: 0.6rem 1.8rem; margin-bottom: 0.6rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.68rem, 0.95vw, 0.82rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .pi-legend { display: flex; flex-wrap: wrap; gap: 0.75rem 2.25rem; margin-bottom: 0.75rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.85rem, 1.2vw, 1.02rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
   #deck .pi-legend span::before { content: ""; display: inline-block; width: 0.8em; height: 0.8em; margin-right: 0.5em; border-radius: 0.2em; vertical-align: -0.05em; background: var(--c); border: 1px dashed var(--b, transparent); }
-  #deck .pi-row { display: grid; grid-template-columns: 10rem 1fr 3.5rem 6.5rem; align-items: center; gap: 1.2rem; }
-  #deck .pi-row.pi-head > span { font-family: "Montserrat", sans-serif; font-size: clamp(0.62rem, 0.85vw, 0.75rem); letter-spacing: 0.16em; text-transform: uppercase; }
-  #deck .pi-row b { font-weight: 500; color: var(--pp-ink); font-size: clamp(0.95rem, 1.4vw, 1.25rem); text-align: right; }
-  #deck .pi-row > span { font-weight: 300; color: var(--pp-dim); font-size: clamp(0.95rem, 1.4vw, 1.25rem); }
-  #deck .pi-bar { display: flex; gap: 3px; height: clamp(1.8rem, 4.5vh, 2.6rem); }
-  #deck .pi-bar i { flex: 0 0 calc(var(--n) / 39 * 100%); display: flex; align-items: center; justify-content: center; border-radius: 0.35rem; font-style: normal; font-weight: 600; font-size: clamp(0.8rem, 1.1vw, 1rem); color: #1a1714; background: var(--c); border: 1px dashed var(--b, transparent); }
+  #deck .pi-row { display: grid; grid-template-columns: 14rem 1fr 4.4rem 8.1rem; align-items: center; gap: 1.5rem; }
+  #deck .pi-row.pi-head > span { font-family: "Montserrat", sans-serif; font-size: clamp(0.78rem, 1.06vw, 0.94rem); letter-spacing: 0.16em; text-transform: uppercase; }
+  #deck .pi-row b { font-weight: 500; color: var(--pp-ink); font-size: clamp(1.19rem, 1.75vw, 1.56rem); text-align: right; }
+  #deck .pi-row > span { font-weight: 300; color: var(--pp-dim); font-size: clamp(1.19rem, 1.75vw, 1.56rem); }
+  #deck .pi-bar { display: flex; gap: 4px; height: clamp(2.25rem, 5.6vh, 3.25rem); }
+  #deck .pi-bar i { flex: 0 0 calc(var(--n) / 39 * 100%); display: flex; align-items: center; justify-content: center; border-radius: 0.45rem; font-style: normal; font-weight: 600; font-size: clamp(1rem, 1.4vw, 1.25rem); color: #1a1714; background: var(--c); border: 1px dashed var(--b, transparent); }
   #deck .pi-solved { --c: var(--pp-amber); }
   #deck .pi-progress { --c: rgba(224, 164, 88, 0.45); }
   #deck .pi-open { --c: rgba(242, 239, 233, 0.05); --b: rgba(242, 239, 233, 0.45); }
