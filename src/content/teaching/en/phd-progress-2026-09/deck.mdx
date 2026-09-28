@@ -618,7 +618,8 @@ imageAlt: "CLT plate specimens of several sizes laid out on the floor of the str
   #deck .pp-head h2 {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-    font-size: clamp(1.8rem, 3.6vw, 3.3rem);
+    /* Tracks the shorter side too, so titles shrink on small or wide-but-short screens */
+    font-size: clamp(1.3rem, min(2.6vw, 4.4vh), 2.8rem);
     line-height: 1.14;
     letter-spacing: -0.01em;
     color: var(--pp-ink);
