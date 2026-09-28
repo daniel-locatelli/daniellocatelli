@@ -27,6 +27,7 @@ import lineageAgentShells from "@/assets/content/teaching/phd-progress-2026-09/l
 import tektonPlate from "@/assets/content/teaching/phd-progress-2026-09/tekton-plate.jpg";
 import tektonPlateLayout from "@/assets/content/teaching/phd-progress-2026-09/tekton-plate-layout.jpg";
 import tektonShell from "@/assets/content/teaching/phd-progress-2026-09/tekton-shell.jpg";
+import acousticPanels from "@/assets/content/teaching/phd-progress-2026-09/acoustic-panels-interior.jpg";
 import hilSolution01ModuleA from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-a.png";
 import hilSolution01ModuleB from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-01-module-b.png";
 import hilSolution02Module from "@/assets/content/teaching/phd-progress-2026-09/hil-solution-02-module.png";
@@ -323,10 +324,15 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
     <h3>Acoustics · 2 of 2</h3>
     <h2>Embed acoustics, <em>do not add it</em></h2>
   </div>
+  <div class="pp-ac2">
+  <figure class="ac2-shot">
+    <Image src={acousticPanels} loading="eager" alt="A hexagonal wooden acoustic panel: three rhombic faces fold into a star, perforated along the folds, an example of acoustics carried by the shape of the plate" widths={[624]} sizes="35vw" />
+  </figure>
   <div class="pp-cards pp-cards-3">
     <div><b>Plate shape</b><p>A texture of prisms on the inner face, like an acoustic chamber. Saw-angle mosaics are faster than milling. Full thickness kept at the borders, where the bond is.</p></div>
     <div><b>Shell shape</b><p>Curvature chosen so the shell does not focus sound back onto the room.</p></div>
     <div><b>Both</b><p>Shell form and plate texture in the same loop, with cost and carbon compared against added panels.</p></div>
+  </div>
   </div>
   <SlideNotes>This is where acoustics becomes one of the cheap checks: it has to run inside the form-finding loop, not after it.</SlideNotes>
 </Slide>
@@ -1214,4 +1220,9 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   #deck .pp-dome .dm-shell { fill: none; stroke: var(--pp-ink); stroke-width: 4.5; stroke-linejoin: round; }
   #deck .pp-dome .dm-person { fill: #e5484d; filter: drop-shadow(0 0 8px rgba(229, 72, 77, 0.7)); }
   #deck .pp-dome text { fill: #e5484d; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+  /* Acoustics 2 of 2: added panels (image) beside the embedded alternative (cards) */
+  #deck .pp-ac2 { position: absolute; inset: clamp(11rem, 26vh, 14rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 8vh, 5rem); z-index: 10; display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  #deck .pp-ac2 .ac2-shot { margin: 0; height: 100%; display: flex; align-items: center; justify-content: center; }
+  #deck .pp-ac2 .ac2-shot img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
+  #deck .pp-ac2 .pp-cards { position: static; inset: auto; grid-template-columns: 1fr; gap: clamp(0.8rem, 2vh, 1.4rem); }
 `}</style>
