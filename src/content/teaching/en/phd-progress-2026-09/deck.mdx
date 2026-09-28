@@ -44,7 +44,7 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
     <h3>Three months in</h3>
     <h2>What has been done</h2>
   </div>
-  <PhdGantt rows={SECTION_ROWS} milestones={SECTION_MILESTONES} labelWidth="17rem" />
+  <PhdGantt rows={SECTION_ROWS} milestones={SECTION_MILESTONES} labelWidth="21rem" />
   <SlideNotes>One row per section of this talk, in the order they come. July: onboarding and the COMPAS repos study, then issues and PRs. August: the planar meshing study. September: the data dictionary, the structural analysis, and now the HIL case study. Acoustics and assembly start after the technical meeting.</SlideNotes>
 </Slide>
 
@@ -86,9 +86,11 @@ import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/anto
 
 <Slide image={coverDesignCloud} imageAlt="A dark field of faint wireframe folded-plate design variants; an amber contour encloses a few brighter ones (AI-generated image)" overlay="black/35">
   <div class="pp-cover">
-    <h3>PhD progress · 28 September 2026</h3>
-    <h1>Machines, over the shoulder of architects</h1>
-    <h2>Structure- and fabrication-aware design of timber plates</h2>
+    <div class="pp-cover-card">
+      <h3>PhD progress · 28 September 2026</h3>
+      <h1>Machines, over the shoulder<br />of architects</h1>
+      <h2>Structure- and fabrication-aware design of timber plates</h2>
+    </div>
   </div>
   <SlideNotes>Working title. Over the shoulder: the machine checks while the architect designs.</SlideNotes>
 </Slide>
@@ -556,6 +558,17 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
     justify-content: center;
     padding: 0 clamp(2.5rem, 8vw, 9rem) 0 clamp(4rem, 12vw, 14rem);
   }
+  #deck .pp-cover-card {
+    align-self: flex-start;
+    max-width: 100%;
+    padding: clamp(1.8rem, 3.5vw, 3rem) clamp(2rem, 4vw, 3.5rem);
+    margin-left: calc(-1 * clamp(2rem, 4vw, 3.5rem));
+    border-radius: 0.9rem;
+    background: rgba(20, 17, 14, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  #deck .pp-cover-card > :last-child { margin-bottom: 0; }
   #deck .pp-cover h3 {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
@@ -1038,4 +1051,13 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   #deck .ph-legend { position: absolute; right: 0; bottom: -0.5rem; display: flex; gap: 1.4rem; font-family: "Montserrat", sans-serif; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pp-dim); }
   #deck .ph-legend span::before { content: ""; display: inline-block; width: 1.6rem; margin-right: 0.5rem; vertical-align: middle; border-top: 1.5px solid var(--pp-amber); }
   #deck .ph-legend .is-planned::before { border-top: 1.5px dashed rgba(242, 239, 233, 0.5); }
+  /* Gantt, a quarter larger than the shared component's default */
+  #deck .pg-full { width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 90rem); gap: clamp(0.3rem, 1.1vh, 0.75rem); }
+  #deck .pg-full .pg-head,
+  #deck .pg-full .pg-row { gap: 1.55rem; }
+  #deck .pg-full .pg-track { height: clamp(1rem, 2.75vh, 1.63rem); }
+  #deck .pg-full .pg-label { font-size: clamp(0.98rem, 1.44vw, 1.31rem); }
+  #deck .pg-full .pg-month,
+  #deck .pg-full .pg-foot b { font-size: clamp(0.75rem, 1.06vw, 0.94rem); }
+  #deck .pg-full .pg-foot .pg-track { height: 2rem; }
 `}</style>
