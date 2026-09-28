@@ -357,8 +357,49 @@ notes: "Errors accumulate plate by plate. A plate milled to a tenth of a millime
     <h2>Two ways to <em>absorb the error</em></h2>
   </div>
   <div class="pp-cards pp-cards-2">
-    <div><b>Regenerate during assembly</b><p>Assemble, scan, adapt the next batch of plates. The design is updated with the as-built state, so errors do not accumulate.</p></div>
-    <div><b>Slack in the glue gap</b><p>The assembly process leaves a slack, compensated by the gap where the glue is applied.</p></div>
+    <div>
+    <svg class="at-fig" viewBox="0 0 400 190" aria-hidden="true">
+      <polygon class="at-ghost" points="16.0,70.0 72.0,70.0 72.0,82.0 16.0,82.0" />
+      <polygon class="at-ghost" points="77.0,70.0 133.0,70.0 133.0,82.0 77.0,82.0" />
+      <polygon class="at-ghost" points="138.0,70.0 194.0,70.0 194.0,82.0 138.0,82.0" />
+      <polygon class="at-ghost" points="199.0,70.0 255.0,70.0 255.0,82.0 199.0,82.0" />
+      <polygon class="at-ghost" points="260.0,70.0 316.0,70.0 316.0,82.0 260.0,82.0" />
+      <polygon class="at-ghost" points="321.0,70.0 377.0,70.0 377.0,82.0 321.0,82.0" />
+      <polygon class="at-built" points="16.0,70.0 71.9,73.4 71.2,85.4 15.3,82.0" />
+      <polygon class="at-built" points="76.9,73.7 132.5,80.5 131.0,92.5 75.4,85.6" />
+      <polygon class="at-built" points="137.4,81.2 192.5,91.4 190.3,103.2 135.2,93.0" />
+      <circle class="at-scan" cx="27.2" cy="63.7" r="2" />
+      <circle class="at-scan" cx="43.9" cy="64.7" r="2" />
+      <circle class="at-scan" cx="60.7" cy="65.7" r="2" />
+      <circle class="at-scan" cx="88.0" cy="68.1" r="2" />
+      <circle class="at-scan" cx="104.7" cy="70.1" r="2" />
+      <circle class="at-scan" cx="121.4" cy="72.2" r="2" />
+      <circle class="at-scan" cx="148.4" cy="76.2" r="2" />
+      <circle class="at-scan" cx="165.0" cy="79.3" r="2" />
+      <circle class="at-scan" cx="181.5" cy="82.3" r="2" />
+      <polygon class="at-next" points="197.4,92.3 252.5,102.5 250.3,114.3 195.2,104.1" />
+      <polygon class="at-next" points="257.4,103.4 312.5,113.6 310.3,125.4 255.2,115.2" />
+      <polygon class="at-next" points="317.4,114.5 372.4,124.7 370.2,136.5 315.2,126.3" />
+      <text class="at-l-ghost" x="16" y="56">design</text>
+      <text class="at-l-built" x="16" y="150">as built · scanned</text>
+      <text class="at-l-next" x="385" y="159.6" text-anchor="end">next batch · regenerated</text>
+    </svg>
+    <div class="at-text"><b>Regenerate during assembly</b><p>Assemble, scan, adapt the next batch of plates. The design is updated with the as-built state, so errors do not accumulate.</p></div>
+    </div>
+    <div>
+    <svg class="at-fig" viewBox="0 0 400 190" aria-hidden="true">
+      <rect class="at-ghost" x="198" y="62" width="150" height="34" />
+      <polygon class="at-glue" points="186,62 208.4,62.1 206.0,96.0 186,96" />
+      <rect class="at-built" x="36" y="62" width="150" height="34" />
+      <polygon class="at-built" points="208.4,62.1 358.0,51.6 355.6,85.5 206.0,96.0" />
+      <line class="at-dim" x1="186" y1="102" x2="186" y2="128" />
+      <line class="at-dim" x1="198" y1="102" x2="198" y2="128" />
+      <line class="at-dim" x1="206.0" y1="102" x2="206.0" y2="128" />
+      <text class="at-l-ghost" x="348" y="50" text-anchor="end">design position</text>
+      <text class="at-l-next" x="192" y="146" text-anchor="middle">glue gap absorbs the slack</text>
+    </svg>
+    <div class="at-text"><b>Slack in the glue gap</b><p>The assembly process leaves a slack, compensated by the gap where the glue is applied.</p></div>
+    </div>
   </div>
   <SlideNotes>Both link back to structure: the gap geometry changes what the joint carries, so the structural checks must run on the as-built state.</SlideNotes>
 </Slide>
@@ -1225,4 +1266,17 @@ notes: "12 ECTS for the whole doctorate, at least a third outside the research a
   #deck .pp-ac2 .ac2-shot { margin: 0; height: 100%; display: flex; align-items: center; justify-content: center; }
   #deck .pp-ac2 .ac2-shot img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
   #deck .pp-ac2 .pp-cards { position: static; inset: auto; grid-template-columns: 1fr; gap: clamp(0.8rem, 2vh, 1.4rem); }
+  /* Assembly 2 of 3: one diagram above each card */
+  #deck .at-fig { width: 100%; height: auto; max-height: 32vh; margin-bottom: 0.8rem; overflow: visible; font-family: "Montserrat", sans-serif; }
+  #deck .at-fig .at-ghost { fill: none; stroke: rgba(242, 239, 233, 0.35); stroke-width: 1.2; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+  #deck .at-fig .at-built { fill: rgba(242, 239, 233, 0.16); stroke: var(--pp-ink); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+  #deck .at-fig .at-next { fill: rgba(224, 164, 88, 0.25); stroke: var(--pp-amber); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+  #deck .at-fig .at-glue { fill: rgba(224, 164, 88, 0.75); }
+  #deck .at-fig .at-scan { fill: var(--pp-silicon); }
+  #deck .at-fig .at-dim { stroke: rgba(242, 239, 233, 0.35); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  #deck .at-text { display: flex; flex-direction: column; gap: 0.6rem; }
+  #deck .at-fig text { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+  #deck .at-fig .at-l-ghost { fill: var(--pp-dim); }
+  #deck .at-fig .at-l-built { fill: var(--pp-ink); }
+  #deck .at-fig .at-l-next { fill: var(--pp-amber); }
 `}</style>
