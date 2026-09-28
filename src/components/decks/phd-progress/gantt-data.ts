@@ -88,6 +88,25 @@ export const SECTION_ACT_LABELS: Record<string, string> = {
   coursework: "Coursework",
 };
 
+/**
+ * Antonia Schoch's doctoral plan, 2026 to 2029, one row per work package.
+ * Read off a photo of her spreadsheet at quarter resolution, so the bars are
+ * approximate.
+ */
+export const ANTONIA_RANGE = { start: "2026-01-01", end: "2030-01-01" };
+export const ANTONIA_TICKS = ["2026", "2027", "2028", "2029"].map((y) => ({ date: `${y}-01-01`, label: y }));
+export const ANTONIA_GRID = ["2026", "2027", "2028", "2029"].flatMap((y) => ["01", "04", "07", "10"].map((m) => `${y}-${m}-01`));
+export const ANTONIA_ROWS: GanttRow[] = [
+  { id: "a1", label: "1 · Connection systems review", start: "2026-01-01", end: "2026-07-01", kind: "done", acts: [] },
+  { id: "a2", label: "2 · Reduction of the test matrix", start: "2026-04-01", end: "2027-01-01", kind: "partner", acts: [] },
+  { id: "a3", label: "3 · Glued: α and β individually", start: "2026-07-01", end: "2027-10-01", kind: "partner", acts: [] },
+  { id: "a4", label: "4 · Glued: α and β combined", start: "2027-10-01", end: "2028-10-01", kind: "planned", acts: [] },
+  { id: "a5", label: "5 · Screw connections", start: "2028-01-01", end: "2028-10-01", kind: "planned", acts: [] },
+  { id: "a6", label: "6 · Holistic evaluation with GKR", start: "2028-04-01", end: "2029-01-01", kind: "planned", acts: [] },
+  { id: "a7", label: "7 · Dissertation", start: "2028-10-01", end: "2029-10-01", kind: "planned", acts: [] },
+];
+export const ANTONIA_MILESTONES = [{ date: "2026-12-10", label: "RQE (approx.)" }];
+
 const DAY = 86_400_000;
 const t0 = Date.parse(RANGE_START);
 const span = (Date.parse(RANGE_END) - t0) / DAY;

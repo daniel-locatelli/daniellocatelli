@@ -17,7 +17,7 @@ import Act from "@/components/decks/phd-progress/Act.astro";
 import PhdGantt from "@/components/decks/phd-progress/PhdGantt.astro";
 import PhdGanttStrip from "@/components/decks/phd-progress/PhdGanttStrip.astro";
 import Valence from "@/components/decks/phd-progress/Valence.astro";
-import { SECTION_ROWS, SECTION_ACT_LABELS, SECTION_MILESTONES } from "@/components/decks/phd-progress/gantt-data";
+import { SECTION_ROWS, SECTION_ACT_LABELS, SECTION_MILESTONES, ANTONIA_ROWS, ANTONIA_MILESTONES, ANTONIA_RANGE, ANTONIA_TICKS, ANTONIA_GRID } from "@/components/decks/phd-progress/gantt-data";
 
 import coverDesignCloud from "@/assets/content/teaching/glued-timber-plates-2026-08/slide-1.png";
 import onboardingRepo from "@/assets/content/teaching/phd-progress-2026-09/onboarding-repo.png";
@@ -44,7 +44,6 @@ import hilSolution03Outside from "@/assets/content/teaching/phd-progress-2026-09
 import epflWorkshop from "@/assets/content/teaching/phd-progress-2026-09/epfl-workshop.jpg";
 import antoniaMeasuring from "@/assets/content/teaching/phd-progress-2026-09/antonia-measuring-clt-plate.jpg";
 import cltSpecimens from "@/assets/content/teaching/phd-progress-2026-09/clt-plate-specimens.jpg";
-import antoniaTimeline from "@/assets/content/teaching/phd-progress-2026-09/antonia-timeline.jpg";
 
 {/* ───────────────────────────── What has been done ───────────────────────────── */}
 
@@ -537,21 +536,13 @@ image: cltSpecimens
 imageAlt: "CLT plate specimens of several sizes laid out on the floor of the structural testing hall"
 ---
 
----
-title: Tandem
-subtitle: Antonia's timeline
-image: antoniaTimeline
-imageAlt: "Photo of a spreadsheet Gantt chart, 2026 to 2029: connection systems, test matrix reduction, glued connections for alpha and beta, screw connections, holistic evaluation with GKR, dissertation"
-fit: contain
-notes: "Antonia Schoch. 1: evaluation of connection systems. 2: reduction of the test matrix. 3 and 4: glued connections, alpha and beta individually, then combined. 5: screw connections. 6: holistic evaluation, combined with GKR. 7: dissertation, 2029."
----
-
 <Slide>
   <div class="pp-head">
     <h3>Tandem</h3>
-    <h2>My timeline</h2>
+    <h2>Antonia's timeline</h2>
   </div>
-  <div class="pp-todo">My timeline to be added, aligned with Antonia's</div>
+  <PhdGantt rows={ANTONIA_ROWS} milestones={ANTONIA_MILESTONES} range={ANTONIA_RANGE} ticks={ANTONIA_TICKS} grid={ANTONIA_GRID} labelWidth="21rem" />
+  <SlideNotes>Antonia Schoch. 1: evaluation of connection systems. 2: reduction of the test matrix. 3 and 4: glued connections, alpha and beta individually, then combined. 5: screw connections. 6: holistic evaluation, combined with GKR. 7: dissertation, 2029. Redrawn from a photo of her spreadsheet, at quarter resolution.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── Coursework ───────────────────────────── */}

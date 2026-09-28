@@ -1,24 +1,41 @@
 ---
 // Full-size Gantt for the phd-progress deck: every work package with its
 // label, month grid, "now" line and milestones.
-import { ROWS, MONTHS, MILESTONES as ALL_MILESTONES, NOW, pct, type GanttRow } from "./gantt-data";
+import { ROWS, MONTHS, MILESTONES as ALL_MILESTONES, NOW, RANGE_START, RANGE_END, type GanttRow } from "./gantt-data";
 
 interface Props {
   rows?: GanttRow[];
   milestones?: { date: string; label: string }[];
   /** Width of the label column; short labels read better with a narrower one. */
   labelWidth?: string;
+  /** Date range of the chart; defaults to the deck's Jul to Dec 2026. */
+  range?: { start: string; end: string };
+  /** Labels along the top, placed at their date; defaults to the month names. */
+  ticks?: { date: string; label: string }[];
+  /** Dates of the vertical grid lines; defaults to the tick dates. */
+  grid?: string[];
 }
-const { rows = ROWS, milestones: MILESTONES = ALL_MILESTONES, labelWidth = "minmax(12rem, 30%)" } = Astro.props;
 
 const monthStarts = ["2026-07-01", "2026-08-01", "2026-09-01", "2026-10-01", "2026-11-01", "2026-12-01"];
+const {
+  rows = ROWS,
+  milestones: MILESTONES = ALL_MILESTONES,
+  labelWidth = "minmax(12rem, 30%)",
+  range = { start: RANGE_START, end: RANGE_END },
+  ticks = MONTHS.map((m, i) => ({ date: monthStarts[i], label: m })),
+  grid = ticks.map((t) => t.date),
+} = Astro.props;
+
+const t0 = Date.parse(range.start);
+const span = Date.parse(range.end) - t0;
+const pct = (date: string) => ((Date.parse(date) - t0) / span) * 100;
 ---
 
 <div class="pg-full" style={`--pg-label-w:${labelWidth}`}>
   <div class="pg-head">
     <span></span>
     <div class="pg-track">
-      {MONTHS.map((m, i) => <span class="pg-month" style={`left:${pct(monthStarts[i])}%`}>{m}</span>)}
+      {ticks.map((t) => <span class="pg-month" style={`left:${pct(t.date)}%`}>{t.label}</span>)}
     </div>
   </div>
   {
@@ -26,7 +43,7 @@ const monthStarts = ["2026-07-01", "2026-08-01", "2026-09-01", "2026-10-01", "20
       <div class={`pg-row pg-${r.kind}`}>
         <span class="pg-label">{r.label}</span>
         <div class="pg-track">
-          {monthStarts.map((d) => <i class="pg-grid" style={`left:${pct(d)}%`} />)}
+          {grid.map((d) => <i class="pg-grid" style={`left:${pct(d)}%`} />)}
           {MILESTONES.map((m) => <i class="pg-grid pg-grid-mile" style={`left:${pct(m.date)}%`} />)}
           <i class="pg-grid pg-grid-now" style={`left:${pct(NOW)}%`} />
           <span class="pg-bar" style={`left:${pct(r.start)}%;width:${pct(r.end) - pct(r.start)}%`} />
