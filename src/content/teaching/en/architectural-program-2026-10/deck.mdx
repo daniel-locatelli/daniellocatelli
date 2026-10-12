@@ -33,7 +33,7 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
     <h1>Architectural<br />Program</h1>
     <h2>An agentic workflow for architectural design</h2>
   </div>
-  <SlideNotes>Program in both senses: the architect's brief, and what a machine runs. The talk is about the two becoming the same text. Render: H-compas-C3-W0-cc r03, a passing run.</SlideNotes>
+  <SlideNotes>Program in both senses: the architect's brief, and what a machine runs. The talk is about the two becoming the same text. Render: H-compas-C3-W0-cc r03.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -259,21 +259,19 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
 <Slide>
   <div class="pp-head">
     <h3>Results · 223 runs</h3>
-    <h2>Four designs pass. <em>All four had the rules.</em></h2>
+    <h2>Three tool stacks, <em>one question: what did the agent use?</em></h2>
   </div>
   <div class="ap-body">
     <div class="ap-bars" style="--of:223">
-      <span class="ap-doc-name">Designs passing each check, of 223</span>
-      <div><b>Planarity ≤ 1 mm</b><i style="--n:223"></i><span>223</span></div>
-      <div><b>Coverage ≥ 95 %</b><i style="--n:207"></i><span>207</span></div>
-      <div><b>Envelope</b><i style="--n:202"></i><span>202</span></div>
-      <div><b>Connectivity</b><i style="--n:193"></i><span>193</span></div>
-      <div><b>Plate size ≤ 3.0 × 13.0 m</b><i style="--n:154"></i><span>154</span></div>
-      <div><b>Bearing within 5 mm</b><i class="is-low" style="--n:5"></i><span>5</span></div>
+      <span class="ap-doc-name">Runs per tool stack, of 223</span>
+      <div><b>COMPAS</b><i style="--n:94"></i><span>94</span></div>
+      <div><b>Python</b><i style="--n:65"></i><span>65</span></div>
+      <div><b>Blender</b><i style="--n:64"></i><span>64</span></div>
+      <div><b>Delivered design.ifc</b><i style="--n:221"></i><span>221</span></div>
     </div>
   </div>
-  <p class="pp-foot">The four passes (two at C1, two at C3) all received rules.md. In tier 1, the rules (C1) are the largest lever; the review workflow (W1) about triples the cost.</p>
-  <SlideNotes>Bearing is the bottleneck: 5 of 223 land within 5 mm of the support points. All four passes had rules.md. W1 costs about three times as much with no gain in checks.</SlideNotes>
+  <p class="pp-foot">221 of 223 runs delivered an IFC within the hour. The next three slides follow what each stack was actually used for; the review workflow (W1) about triples the cost.</p>
+  <SlideNotes>All but two runs delivered an IFC. The interesting part is the route each run took to it, stack by stack.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -331,7 +329,7 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
       </div>
     </div>
   </div>
-  <SlideNotes>The rules are files the architect writes: text, and IFC where geometry is the rule. Handing them to the agent was the largest single improvement. Material is not checked yet; the next slide shows what that costs.</SlideNotes>
+  <SlideNotes>The rules are files the architect writes: text, and IFC where geometry is the rule. Material is not checked yet; the next slide shows what that costs.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -1201,12 +1199,11 @@ ok       planarity, envelope, coverage`}</code></pre>
   #deck .pp-foot code { font-size: 0.9em; color: var(--pp-ink); }
   #deck .ap-shots {
     position: absolute;
-    left: clamp(3rem, 8vw, 9rem);
-    right: clamp(3rem, 8vw, 9rem);
-    bottom: clamp(6rem, 15vh, 9rem);
+    inset: clamp(11rem, 27vh, 15rem) clamp(3rem, 8vw, 9rem) clamp(5.5rem, 13vh, 8rem);
     z-index: 10;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    align-content: center;
     gap: 1.4rem;
   }
   #deck .ap-shots figure { margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
