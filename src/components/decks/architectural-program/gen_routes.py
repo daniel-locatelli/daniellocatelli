@@ -80,7 +80,7 @@ def edge(e):
     return "\n".join(out)
 
 
-def legend(y, prefix, used):
+def legend(y, prefix, used, W=W):
     items = [("solid", DIM, "route taken · runs"), ("accent", AMBER, "the route most runs took"), ("unused", SILICON, "available, not used"), ("failed", SOFT, "tried, failed")]
     out = [f'<line x1="40" y1="{y-16}" x2="{W-40}" y2="{y-16}" stroke="{RULE}" stroke-width="0.8"/>',
            f'<text x="40" y="{y+8}" fill="{DIM}" font-size="10" font-family="{MONO}" letter-spacing="0.14em">LEGEND</text>']
@@ -94,14 +94,16 @@ def legend(y, prefix, used):
     return "\n".join(out)
 
 
-def svg(d, prefix):
+def svg(d, prefix, W=W, H=H, show_legend=True):
     defs = "".join(
         f'<marker id="{prefix}{mid}" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="{c}"/></marker>'
         for mid, c in [("arrow", DIM), ("arrow-accent", AMBER), ("arrow-unused", SILICON), ("arrow-failed", SOFT)])
     body = "\n".join(edge(e) for e in d["edges"]).replace("{P}", prefix)
     body += "\n" + "\n".join(node(n) for n in d["nodes"])
     used = {"solid"} | {e.get("kind", "default") for e in d["edges"]} | {n["kind"] for n in d["nodes"]}
-    body += "\n" + legend(H - 32, prefix, used)
+    body = d.get("under", "") + "\n" + body + "\n" + d.get("over", "")
+    if show_legend:
+        body += "\n" + legend(H - 32, prefix, used, W)
     return (f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="{prefix}title {prefix}desc" class="ap-route">\n'
             f'<title id="{prefix}title">{html.escape(d["title"])}</title>\n<desc id="{prefix}desc">{html.escape(d["desc"])}</desc>\n'
             f'<defs>{defs}</defs>\n{body}\n</svg>')
@@ -137,57 +139,59 @@ BLENDER = dict(
 COMPAS = dict(
     slug="route-compas", name="RouteCompas",
     title="COMPAS runs: the route the agents took",
-    desc="Of 94 COMPAS runs, 35 imported nothing from COMPAS and 59 used only its geometry primitives; every IFC was written with raw ifcopenshell and compas_ifc was used in no run, while compas_timber appears only in the 10 task-F runs, to write BTLx.",
+    desc="Of 94 COMPAS runs, 35 imported nothing from COMPAS and 59 used only its geometry primitives; one geometry script per run computed the plates and wrote the IFC with raw ifcopenshell, and compas_ifc was used in no run. In the 10 task-F runs the same plates went to compas_timber, which wrote the BTLx: in 2 runs inside the same script, in 8 from a plate file the script left behind.",
     nodes=[
         dict(x=COL[0], y=A_Y, kind="input", tag="ASKED", name="COMPAS ecosystem", sub="94 runs"),
         dict(x=COL[1], y=ROW[1], kind="step", name="compas.geometry", sub="Vector, Point, Frame"),
         dict(x=COL[1], y=ROW[2], kind="step", name="No COMPAS import", sub="numpy only"),
-        dict(x=COL[2], y=ROW[1], kind="focal", tag="SCRIPT", name="raw ifcopenshell", sub="entity by entity"),
+        dict(x=COL[2], y=ROW[1], kind="focal", tag="SCRIPT", name="Plate geometry", sub="numpy, raw ifcopenshell"),
         dict(x=COL[2], y=ROW[2], kind="unused", tag="0 RUNS", name="compas_ifc", sub="installed, never used"),
-        dict(x=COL[2], y=ROW[0], kind="step", name="compas_timber", sub="BTLxWriter · task F"),
+        dict(x=COL[2], y=ROW[0], kind="step", name="compas_timber", sub="same plates, BTLxWriter"),
         dict(x=COL[3], y=ROW[1], kind="output", tag="OUT", name="design.ifc", sub="94 of 94"),
         dict(x=COL[3], y=ROW[0], kind="output", tag="OUT", name="design.btlx", sub="10 of 10 F runs"),
     ],
     edges=[
         dict(kind="accent", d=f"M240 {mid(ROW[1])} H360", label="59", at=(300, mid(ROW[1]))),
         dict(kind="default", d=elbow(240, 220, 360, mid(ROW[2]), 264), label="35", at=(312, mid(ROW[2]))),
-        dict(kind="default", d=vh(140, 160, 680, mid(ROW[0])), label="10 · TASK F", at=(424, mid(ROW[0]))),
         dict(kind="accent", d=f"M560 {mid(ROW[1])} H680"),
         dict(kind="default", d=elbow(560, mid(ROW[2]), 680, 216, 600)),
         dict(kind="accent", d=f"M880 {mid(ROW[1])} H1000", label="94", at=(940, mid(ROW[1]))),
-        dict(kind="default", d=f"M880 {mid(ROW[0])} H1000"),
+        dict(kind="default", d=f"M780 160 V120"),
+        dict(kind="default", d=f"M880 {mid(ROW[0])} H1000", label="10", at=(940, mid(ROW[0]))),
     ],
 )
 
 PY = dict(
     slug="route-py", name="RoutePy",
     title="Python runs: the route the agents took",
-    desc="All 65 plain-Python runs wrote their design with numpy and ifcopenshell; many reached for libraries the image does not have (scipy in 28 runs, trimesh in 27), and 8 runs pip-installed extras such as scipy, trimesh and rtree.",
+    desc="All 65 plain-Python runs wrote their design with numpy and ifcopenshell. 29 never reached past them; 36 tried to import scipy or trimesh, which the image does not have: 7 of those pip-installed them, 29 rewrote the step in numpy.",
     nodes=[
         dict(x=COL[0], y=A_Y, kind="input", tag="ASKED", name="Python", sub="numpy, ifcopenshell"),
-        dict(x=COL[1], y=ROW[0], kind="failed", name="scipy, trimesh", sub="missing: 28, 27 runs"),
-        dict(x=COL[1], y=ROW[2], kind="step", name="pip install", sub="scipy, trimesh, rtree"),
+        dict(x=COL[1], y=ROW[0], kind="failed", name="import scipy, trimesh", sub="not installed"),
+        dict(x=COL[2], y=ROW[0], kind="step", name="pip install", sub="scipy, trimesh, rtree"),
         dict(x=COL[2], y=ROW[1], kind="focal", tag="SCRIPT", name="numpy + ifcopenshell", sub="entity by entity"),
         dict(x=COL[3], y=ROW[1], kind="output", tag="OUT", name="design.ifc", sub="65 of 65"),
     ],
     edges=[
-        dict(kind="failed", d=elbow(240, 180, 360, mid(ROW[0]), 264), label="REACHED", at=(312, mid(ROW[0]))),
-        dict(kind="accent", d=f"M240 200 H680", label="65", at=(300, 200)),
-        dict(kind="default", d=elbow(240, 220, 360, mid(ROW[2]), 264), label="8", at=(312, mid(ROW[2]))),
-        dict(kind="default", d=elbow(560, mid(ROW[2]), 680, 216, 600)),
+        dict(kind="failed", d=elbow(240, 184, 360, mid(ROW[0]), 264), label="36", at=(312, mid(ROW[0]))),
+        dict(kind="accent", d=f"M240 216 H680", label="29 · NOT NEEDED", at=(460, 216)),
+        dict(kind="default", d=f"M560 {mid(ROW[0])} H680", label="7", at=(620, mid(ROW[0]))),
+        dict(kind="default", d=f"M780 120 V160"),
+        dict(kind="default", d=vh(460, 120, 680, 184), label="29 · NUMPY INSTEAD", at=(572, 184)),
         dict(kind="accent", d=f"M880 {mid(ROW[1])} H1000", label="65", at=(940, mid(ROW[1]))),
     ],
 )
 
-out_html, out_astro = sys.argv[1], sys.argv[2]
-os.makedirs(out_html, exist_ok=True); os.makedirs(out_astro, exist_ok=True)
-for d in (BLENDER, COMPAS, PY):
-    s = svg(d, d["slug"] + "-")
-    page = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            f'<title>{html.escape(d["title"])}</title><style>body{{margin:0;background:{PAPER};padding:40px}} svg{{width:100%;height:auto;display:block}}</style></head>'
-            f'<body>\n{s}\n</body></html>')
-    open(os.path.join(out_html, d["slug"] + ".html"), "w", encoding="utf-8").write(page)
-    astro = ("---\n// " + d["title"] + ". Generated by the diagram-design route generator;\n"
-             "// counts from the transcript scan of 2026-10-12 (all matrix runs).\n---\n\n" + s + "\n")
-    open(os.path.join(out_astro, d["name"] + ".astro"), "w", encoding="utf-8").write(astro)
-    print("wrote", d["slug"])
+if __name__ == "__main__":
+    out_html, out_astro = sys.argv[1], sys.argv[2]
+    os.makedirs(out_html, exist_ok=True); os.makedirs(out_astro, exist_ok=True)
+    for d in (BLENDER, COMPAS, PY):
+        s = svg(d, d["slug"] + "-")
+        page = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+                f'<title>{html.escape(d["title"])}</title><style>body{{margin:0;background:{PAPER};padding:40px}} svg{{width:100%;height:auto;display:block}}</style></head>'
+                f'<body>\n{s}\n</body></html>')
+        open(os.path.join(out_html, d["slug"] + ".html"), "w", encoding="utf-8").write(page)
+        astro = ("---\n// " + d["title"] + ". Generated by the diagram-design route generator;\n"
+                 "// counts from the transcript scan of 2026-10-12 (all matrix runs).\n---\n\n" + s + "\n")
+        open(os.path.join(out_astro, d["name"] + ".astro"), "w", encoding="utf-8").write(astro)
+        print("wrote", d["slug"])

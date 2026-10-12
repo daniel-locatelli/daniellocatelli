@@ -15,6 +15,8 @@ import { BENCHMARK_ROWS, BENCHMARK_MILESTONES } from "@/components/decks/phd-pro
 import RouteBlender from "@/components/decks/architectural-program/RouteBlender.astro";
 import RouteCompas from "@/components/decks/architectural-program/RouteCompas.astro";
 import RoutePy from "@/components/decks/architectural-program/RoutePy.astro";
+import FlowPipeline from "@/components/decks/architectural-program/FlowPipeline.astro";
+import FlowWorkflow from "@/components/decks/architectural-program/FlowWorkflow.astro";
 
 import packageExisting from "@/assets/content/teaching/architectural-program-2026-10/package-existing.jpg";
 import packageLimits from "@/assets/content/teaching/architectural-program-2026-10/package-limits.jpg";
@@ -31,7 +33,7 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
     <h1>Architectural<br />Program</h1>
     <h2>An agentic workflow for architectural design</h2>
   </div>
-  <SlideNotes>Program, in both senses. In architecture, the program is the brief: what the building must hold, where, under which constraints. In computing, a program is what a machine runs. This talk is about the two becoming the same text. The render is run H-compas-C3-W0-cc r03, one of the four runs that passed every check.</SlideNotes>
+  <SlideNotes>Program in both senses: the architect's brief, and what a machine runs. The talk is about the two becoming the same text. Render: H-compas-C3-W0-cc r03, a passing run.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -42,7 +44,7 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
   <div class="ap-body">
     <PhdGantt rows={BENCHMARK_ROWS} milestones={BENCHMARK_MILESTONES} now="2026-10-12" labelWidth="19rem" />
   </div>
-  <SlideNotes>The benchmark started on 2 October with one fixed condition and became a matrix of conditions on 8 October. It grows out of the HIL case study: the same building, the same roof task, now given to coding agents instead of designed by hand.</SlideNotes>
+  <SlideNotes>One fixed condition from 2 October, a matrix of conditions since 8 October. Same building and roof task as the HIL case study, now given to coding agents.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── The study ───────────────────────────── */}
@@ -52,8 +54,9 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
     <h3>The question</h3>
     <h2>What does an agentic workflow look like for a <em>real architectural design study?</em></h2>
   </div>
-  <p class="pp-foot">A real building, a real program, a design an architect could hand on. And what makes the agents better at it.</p>
-  <SlideNotes>Not a component in isolation: the agent receives what an architect receives at the start of a study (a program, a survey of the existing building, the limits) and must deliver a design as IFC. A checker scores every design against the same rules.</SlideNotes>
+  <div class="ap-body"><FlowPipeline /></div>
+  <p class="pp-foot">Every run is isolated: a fresh container on its own network, no memory, skills or CLAUDE.md, no name in any input, and the API token held by a proxy outside the agent.</p>
+  <SlideNotes>The agent gets what an architect gets at the start of a study and has 60 minutes to deliver an IFC. Every design is then scored, rendered and logged the same way.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -67,11 +70,11 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
       <figcaption><b>existing.ifc</b><span>The survey · geometry only, no BIM data</span></figcaption>
     </figure>
     <figure>
-      <Image src={packageLimits} loading="eager" alt="Render of limits.ifc on the existing building: the height envelope as a translucent blue solid over the roof, the wall zone along the roof edge, and red support points at the cores" widths={[800, 1200]} sizes="42vw" />
-      <figcaption><b>limits.ifc</b><span>Envelope · wall zone · support points at the cores</span></figcaption>
+      <Image src={packageLimits} loading="eager" alt="Render of limits.ifc on the existing building: the height envelope as a translucent blue solid over the roof, the wall zone as an orange band along the roof edge, and red support points at the cores" widths={[800, 1200]} sizes="42vw" />
+      <figcaption><b>limits.ifc</b><span>Envelope (blue) · wall zone (orange) · supports (red)</span></figcaption>
     </figure>
   </div>
-  <SlideNotes>existing.ifc is a pure survey, IFC 4.3 in local metres, with a .3dm of the same content for Rhino. limits.ifc holds every limit in one file: the envelope (blue) and the wall zone as IfcSpatialZone, the support points (red) as IfcStructuralPointConnection in an IfcStructuralAnalysisModel, the same entity the agent uses for its own bearings, so checking is a matching. The roof's load goes to the existing building only at the support points, each within 5 mm; the walls may also bear in the wall zone along the roof edge. Where the program text and limits.ifc differ, limits.ifc governs.</SlideNotes>
+  <SlideNotes>existing.ifc is the survey, geometry only. limits.ifc holds every limit: envelope, wall zone, support points. Where the program text differs, limits.ifc governs.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -96,13 +99,13 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
     </div>
   </div>
   <p class="pp-foot">Plain text: what the building should have, its constraints, its site. The design process converges on writing the program.</p>
-  <SlideNotes>An architectural program is plain text where the architect states what the building should have, the constraints and the location. That is the shape of a prompt. The task text the agent receives is short; almost everything that matters is in the program and the two IFC files. So the architect's craft moves toward writing the program well.</SlideNotes>
+  <SlideNotes>A program states what, where and under which constraints, in plain text: the shape of a prompt. The task text is short; the program and the two IFC files carry the rest.</SlideNotes>
 </Slide>
 
 <Slide>
   <div class="pp-head">
     <h3>The experiment</h3>
-    <h2>One factor changed at a time, <em>ten repeats each</em></h2>
+    <h2>Five variables, one changed at a time, <em>ten repeats each</em></h2>
   </div>
   <div class="ap-body">
     <div class="ap-factors">
@@ -114,7 +117,127 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
     </div>
   </div>
   <p class="pp-foot">A run id reads task, tools, context, workflow, harness, repeat: <code>H-compas-C0-W0-cc-r01</code>. Baseline: H-compas-C0-W0-cc.</p>
-  <SlideNotes>3 tasks, 3 tool stacks, 4 context levels, 2 workflows, 2 harnesses: 144 cells, 10 repeats each. Tier 1 is the baseline plus one factor changed at a time: 100 of 110 runs done, the codex cell is blocked on its identity check. Tier 2 crosses all tools, context levels and workflows on H: 121 of 160. Tier 3 has its first 2 runs. Each factor level changes exactly one passage of the task text. The model is the same throughout. W1: the designer works 60 minutes, then three reviewers in parallel (compliance, structure and fabrication, architectural quality, 10 minutes each), then the designer revises for 20 minutes.</SlideNotes>
+  <SlideNotes>Five variables, 144 cells, 10 repeats each. Tier 1 changes one variable at a time against the baseline; the model is the same throughout. The next five slides show each variable.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Variable 1 · Task</h3>
+    <h2>Each task level adds <em>one sentence</em> to the same prompt</h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-cols">
+      <div class="ap-doc ap-prompt">
+        <span class="ap-doc-name">task.md · the passage that changes</span>
+        <p>Design the enclosure of the extension: its roof, made of planar cross-laminated timber (CLT) plates, 140 mm thick, and its walls, a glass curtain-wall facade.<mark>form</mark> You may combine the plates with beams. The interior must stay free of supports. […] The envelope, support points and wall zone are in limits.ifc.<mark>fabrication</mark></p>
+      </div>
+      <dl class="ap-levels">
+        <div><dt>P</dt><dd><i>nothing added</i> A plate roof and a glass facade.</dd></div>
+        <div><dt>H</dt><dd><b>form:</b> "The roof is formed of one or more hyperbolic paraboloids (hypars), each built from planar plates."</dd></div>
+        <div><dt>F</dt><dd><b>form</b> as H, and <b>fabrication:</b> "The roof must be fabricable: deliver also design.btlx, a valid BTLx file with one part per roof plate, as a timber CNC would receive it."</dd></div>
+      </dl>
+    </div>
+  </div>
+  <SlideNotes>Every variable works the same way: one passage of a fixed task text. The task levels add the hypar form (H) and the BTLx delivery (F).</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Variable 2 · Tools</h3>
+    <h2>One sentence, and a <em>different container</em> behind it</h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-cols">
+      <div class="ap-doc ap-prompt">
+        <span class="ap-doc-name">task.md · the passage that changes</span>
+        <p><mark>tools</mark> You have full access to the tools in this environment and to the web. Work on your own; nobody will answer questions during the run. You have 60 minutes.</p>
+      </div>
+      <dl class="ap-levels">
+        <div><dt>py</dt><dd>"Use Python with numpy and ifcopenshell."<span>image: numpy, ifcopenshell</span></dd></div>
+        <div><dt>compas</dt><dd>"Use the COMPAS packages installed in this environment."<span>image: compas, compas_timber, compas_ifc, ifcopenshell</span></dd></div>
+        <div><dt>blender</dt><dd>"Use Blender, installed in this environment, with its ifcopenshell."<span>image: Blender 4.5 LTS, ifcopenshell only inside its Python</span></dd></div>
+      </dl>
+    </div>
+  </div>
+  <SlideNotes>The tools level changes one sentence and the container image. Nothing else in the prompt names a package.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Variable 3 · Context</h3>
+    <h2>Context is <em>what is in the folder</em>, and one sentence pointing to it</h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-ctx">
+      <div>
+        <b>C0</b>
+        <ul>
+          <li><span class="ap-ico" data-ext="md"></span>program.md</li>
+          <li><span class="ap-ico is-ifc" data-ext="ifc"></span>existing.ifc</li>
+          <li><span class="ap-ico is-ifc" data-ext="3dm"></span>existing.3dm</li>
+          <li><span class="ap-ico is-ifc" data-ext="ifc"></span>limits.ifc</li>
+        </ul>
+        <p>The task text alone.</p>
+      </div>
+      <div>
+        <b>C1</b>
+        <ul>
+          <li class="is-old">C0, and</li>
+          <li class="is-new"><span class="ap-ico" data-ext="md"></span>rules.md</li>
+        </ul>
+        <p>"The rules the design is checked against, each with its threshold, are in rules.md."</p>
+      </div>
+      <div>
+        <b>C2</b>
+        <ul>
+          <li class="is-old">C1, and</li>
+          <li class="is-new"><span class="ap-ico is-pdf" data-ext="pdf"></span>papers/ · 19 PDFs</li>
+        </ul>
+        <p>"Papers on the subject are in papers/." Planar meshes, no reading guidance.</p>
+      </div>
+      <div>
+        <b>C3</b>
+        <ul>
+          <li class="is-old">C2, and</li>
+          <li class="is-new"><span class="ap-ico" data-ext="md"></span>skills/ · agent-based-modeling</li>
+        </ul>
+        <p>"A library of skills is installed for you […] Use it or not, as you judge." Opened in 40 of 50 runs.</p>
+      </div>
+    </div>
+  </div>
+  <p class="pp-foot">Cumulative: each level keeps the files of the one before. The program and the two IFC files are the same in every run.</p>
+  <SlideNotes>Context means the files the agent can read in /work/brief, plus one sentence that points to them. rules.md lists every check with its threshold; the skill is a method for plate layouts.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Variable 4 · Workflow</h3>
+    <h2>One designer, or a designer with <em>three reviewers</em></h2>
+  </div>
+  <div class="ap-body"><FlowWorkflow /></div>
+  <p class="pp-foot">Reviewers get the same brief and context level, read the design, and may not change it. In W1 the draft is scored too, so the effect of the review shows within a run.</p>
+  <SlideNotes>W1 adds three parallel reviews (compliance, structure and fabrication, architecture) and a 20-minute revision in the designer's own session.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Variable 5 · Harness</h3>
+    <h2>The same model, <em>a different agent program</em></h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-cols ap-cols-even">
+      <div class="ap-doc">
+        <span class="ap-doc-name">cc · Claude Code</span>
+        <p><b>All 223 runs so far.</b> CLI pinned at 2.1.291, model claude-opus-5-5, no MCP server, no settings beyond a usage hook.</p>
+      </div>
+      <div class="ap-doc">
+        <span class="ap-doc-name">codex · Codex</span>
+        <p><b>Blocked.</b> Every harness must first pass an identity check: no name, account or institution may reach the model. Codex has not passed yet.</p>
+      </div>
+    </div>
+  </div>
+  <p class="pp-foot">The harness is the program around the model: its tools, its system prompt, how it plans and edits.</p>
+  <SlideNotes>Only Claude Code has run. The harness variable waits for Codex to pass the identity check.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -128,7 +251,7 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
     <figure><Image src={runRoof} loading="eager" alt="Close-up render of the roof plates where they meet" widths={[640, 1200]} sizes="30vw" /><figcaption>Roof close-up</figcaption></figure>
   </div>
   <p class="pp-foot">The agent writes design.ifc, statement.md and references.md. The checker scores the IFC, the viewer renders it from three fixed cameras, the register keeps time, turns and cost.</p>
-  <SlideNotes>Every run is one Docker container with the package mounted, a proxy that keeps the API token away from the agent, and a 60-minute cap. Afterwards the checker scores design.ifc, the hypar scorer adds its criteria for H and F, and the viewer renders the same three shots for every design so they can be compared. In W1 the designer's first draft is scored too. Agents may not render; the evaluation renders everything the same way. Shown: H-compas-C3-W0-cc r03.</SlideNotes>
+  <SlideNotes>Agents may not render; the viewer renders every design from the same three cameras so they compare. Shown: H-compas-C3-W0-cc r03.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── Results ───────────────────────────── */}
@@ -150,7 +273,7 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
     </div>
   </div>
   <p class="pp-foot">The four passes (two at C1, two at C3) all received rules.md. In tier 1, the rules (C1) are the largest lever; the review workflow (W1) about triples the cost.</p>
-  <SlideNotes>Pass means every check passes and, for H and F, the hypar criteria too. Planarity is free: every design extrudes planar profiles. Bearing is the bottleneck: the roof must land within 5 mm of the given support points, which tests snapping to the points, not landing on the column (the columns are 40 by 40 cm). Tier-1 contrasts against the baseline, as Cliff's delta: C1 raises checks passed by +0.46 and cuts wall time by 0.58; W1 raises cost by +1.00 (every W1 run costs more than every baseline run) with no gain in checks. Passing runs: H-compas-C3-W0-cc r03, H-blender-C1-W0-cc r01, H-blender-C3-W1-cc r03, H-py-C1-W0-cc r06. Context is cumulative, so C3 includes rules.md.</SlideNotes>
+  <SlideNotes>Bearing is the bottleneck: 5 of 223 land within 5 mm of the support points. All four passes had rules.md. W1 costs about three times as much with no gain in checks.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -160,7 +283,7 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
   </div>
   <div class="ap-body"><RouteBlender /></div>
   <p class="pp-foot">Not one call to the Blender API, and no MCP server in any harness. Counts overlap: 33 runs used both routes.</p>
-  <SlideNotes>From a scan of every tool call in every transcript. In the Blender image, ifcopenshell exists only inside Blender's bundled Python; the system Python has neither numpy nor ifcopenshell. 61 of 64 runs first ran the system python3, got "No module named ifcopenshell", and went looking. 19 then called Blender's python3.11 directly, so Blender never started; 12 ran scripts with blender -b -P; 33 did both. The scripts import numpy and ifcopenshell; zero bpy calls, so no scene, no modifiers, no Bonsai. Even a passing run, H-blender-C1-W0-cc r01, ran python3.11 -I gen.py straight from Blender's folder.</SlideNotes>
+  <SlideNotes>No bpy call in 64 runs. Blender's bundled Python runs the same numpy and ifcopenshell script as everywhere else.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -169,8 +292,8 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
     <h2>COMPAS is used as a <em>vector library</em>, or not at all</h2>
   </div>
   <div class="ap-body"><RouteCompas /></div>
-  <p class="pp-foot">compas_ifc is installed and never used: every IFC is written with raw ifcopenshell. compas_timber appears only where BTLx is required.</p>
-  <SlideNotes>35 of 94 runs import nothing from COMPAS. The other 59 import geometry primitives: Vector in 43 runs, Point 41, Frame 41, Plane 29, Polygon 28, plus is_coplanar, bestfit_plane and distance_point_plane. COMPAS meshes appear in 2 runs. compas_timber appears in the 10 task-F runs only: TimberModel, Plate, BTLxWriter. 46 compas runs also reached for trimesh, which the image does not have.</SlideNotes>
+  <p class="pp-foot">compas_ifc is installed and never used. In task F the plate script hands the same plates to compas_timber: in 2 runs within the script, in 8 through a plate file it writes for a second script.</p>
+  <SlideNotes>COMPAS supplies vectors at most. One script computes the plates and writes the IFC; the BTLx comes from the same plates, never from reading the IFC back.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -180,7 +303,7 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
   </div>
   <div class="ap-body"><RoutePy /></div>
   <p class="pp-foot">The design medium is the same in all three stacks: numpy computes the geometry, ifcopenshell writes the IFC entity by entity. The host and the framework are bypassed.</p>
-  <SlideNotes>The plain-Python image has only numpy and ifcopenshell. Many runs reached for more: scipy was missing in 28 runs, trimesh in 27; 8 runs pip-installed extras (scipy, trimesh, rtree), the others worked around them. So the tools factor changes less than its name says: the differences between the tool cells are differences in which libraries happen to be importable, not in the design environment. The agent does not need the modeller; it needs the delivery format and the checks.</SlideNotes>
+  <SlideNotes>36 runs reached for scipy or trimesh and hit an import error: 7 installed them, 29 wrote the step in numpy. The tools variable changes which libraries import, not how the agent designs.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── Finding 2 ───────────────────────────── */}
@@ -191,14 +314,16 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
     <h2>The designer now defines <em>what "done" means</em></h2>
   </div>
   <div class="ap-body">
-    <div class="ap-cols">
-      <ol class="ap-ladder">
-        <li><b>Envelope</b><span>containment in a solid</span></li>
-        <li><b>Bearing</b><span>snap to given points, 5 mm</span></li>
-        <li><b>Coverage, plate size</b><span>areas and extents</span></li>
-        <li><b>Connectivity, planarity</b><span>a graph, a plane fit per plate</span></li>
-        <li><b>Hypar criteria</b><span>90 % of plates on a hypar within 10 mm, at most 4 plates per corner</span></li>
-      </ol>
+    <div class="ap-cols ap-cols-wide">
+      <div class="ap-rules">
+        <div><span class="ap-ico is-ifc" data-ext="ifc"></span><b>limits.ifc</b><span>Envelope, support points, wall zone: containment in a solid</span></div>
+        <div><span class="ap-ico" data-ext="md"></span><b>bearing.md</b><span>Snap to the given support points, within 5 mm</span></div>
+        <div><span class="ap-ico" data-ext="md"></span><b>coverage.md</b><span>95 % of the roof in plan; plates within 3.0 × 13.0 m</span></div>
+        <div><span class="ap-ico" data-ext="md"></span><b>connectivity.md</b><span>A graph to a bearing; a plane fit per plate, 1 mm</span></div>
+        <div><span class="ap-ico is-btlx" data-ext="md"></span><b>material.md</b><span>CLT 140 mm and its properties; BTLx for the timber CNC <i>not checked yet</i></span></div>
+        <div><span class="ap-ico" data-ext="md"></span><b>hypar.md</b><span>90 % of plates on a hypar within 10 mm, at most 4 per corner</span></div>
+        <p class="ap-rules-axis">simple checks<i></i>complex algorithms</p>
+      </div>
       <div class="ap-doc">
         <span class="ap-doc-name">Who does what</span>
         <p><b>The architect</b> writes the program and the rules, from simple checks to complex algorithms.</p>
@@ -206,32 +331,33 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
       </div>
     </div>
   </div>
-  <SlideNotes>The checks run from simple to complex, top to bottom. Writing them is the design work that stays with the architect: deciding what counts as done. The modelling itself is done by the LLM in every run, in a script, whatever tool it was handed. The results support it: handing the agent the rules is the single largest improvement, larger than the tools, the papers or the reviewers.</SlideNotes>
+  <SlideNotes>The rules are files the architect writes: text, and IFC where geometry is the rule. Handing them to the agent was the largest single improvement. Material is not checked yet; the next slide shows what that costs.</SlideNotes>
 </Slide>
 
 <Slide>
   <div class="pp-head">
-    <h3>Finding 2 · where "done" was not defined</h3>
-    <h2>Unchecked means <em>undelivered</em></h2>
+    <h3>Finding 2 · the other side</h3>
+    <h2>What no rule checks <em>comes out thin</em></h2>
   </div>
   <div class="ap-body">
     <div class="ap-cols">
       <div class="ap-bars" style="--of:221">
-        <span class="ap-doc-name">IFC as a geometry container · designs carrying each, of 221</span>
-        <div><b>Building storey</b><i style="--n:202"></i><span>202</span></div>
-        <div><b>Material</b><i style="--n:150"></i><span>150</span></div>
-        <div><b>Property sets</b><i style="--n:91"></i><span>91</span></div>
+        <span class="ap-doc-name">The checker tests geometry only · beyond it, designs carrying each, of 221</span>
+        <div><b>A material</b><i class="is-low" style="--n:150"></i><span>150</span></div>
+        <div><b>Property sets</b><i class="is-low" style="--n:91"></i><span>91</span></div>
         <div><b>Surface styles</b><i class="is-low" style="--n:3"></i><span>3</span></div>
         <div><b>Quantity sets</b><i class="is-low" style="--n:0"></i><span>0</span></div>
+        <p class="ap-bars-note">The brief fixes 140 mm CLT; 71 designs name no material at all.</p>
       </div>
       <div class="ap-doc">
-        <span class="ap-doc-name">BTLx · task F, compas, 10 runs</span>
-        <p><b>The version is relabelled, not checked.</b> compas_timber writes 2.0.0; all 10 runs replaced it with 2.3.1 as a string; 4 validated against the schema.</p>
-        <p><b>Schema-valid is not cuttable.</b> Every part is one square-cut FreeContour: no bevel at the folds, no joints, and slivers down to 0.083 mm.</p>
+        <span class="ap-doc-name">BTLx · task F, 10 runs, no rules.md</span>
+        <p><b>Relabelled, not validated.</b> compas_timber writes version 2.0.0; all 10 runs replaced the string with 2.3.1, and only 4 checked it against the schema.</p>
+        <p><b>Valid is not cuttable.</b> Every part is one square-cut contour: no bevel at the folds, no joints, slivers down to 0.083 mm.</p>
       </div>
     </div>
   </div>
-  <SlideNotes>IFC: every delivered design opened in IfcOpenShell; the counts say whether the entity exists, not whether it is right. 71 designs name no material although the brief fixes 140 mm CLT. The agents meet the delivery format in its letter (valid IFC, the right element classes) and miss what it is for: quantities, costs, checks. BTLx: the content compas_timber writes happens to be valid under both versions, so the relabel was enough here; six of ten agents shipped without knowing, and all six said so in their final message. The parts: in all 10 runs one FreeContour with inclination 0, so the folded edges would neither close nor carry; r09 ships 62 parts under 0.01 square metres. A hint at n = 1 each: without compas_timber (F-blender, F-py), both agents fetched the XSD first, wrote 2.3.1 by hand and validated to zero errors. With compas_timber they trusted the writer.</SlideNotes>
+  <p class="pp-foot">The IFC arrives as a geometry container, the BTLx as a relabelled file. Defining done has to cover material and fabrication too.</p>
+  <SlideNotes>The checker only tests geometry. Whatever it does not test (material, properties, quantities, a valid and cuttable BTLx) came out thin. Task F ran only at C0, so its agents never saw the BTLx rule.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── Outlook ───────────────────────────── */}
@@ -258,7 +384,7 @@ ok       planarity, envelope, coverage`}</code></pre>
     </div>
   </div>
   <p class="pp-foot">Illustrative syntax. Whether this beats checking the IFC after the fact is the open question.</p>
-  <SlideNotes>This is the hypothesis the benchmark points at, not a result. If the architect's work is defining done, then done should be cheap to test while the agent works, not only after the run. And the route slides showed the agent already works in code, not in a modeller. The idea: a DSL for timber plate construction where checks are part of the language, the way Lean checks proofs as part of compiling them. Where a check is expensive (structure), a fast surrogate trained on synthetic data can stand in, with a warning that asks for a full FEA in the grey zone; an engineer can override a warning, and the override is logged. Still to validate, against the plain IFC-plus-checker loop this benchmark already runs.</SlideNotes>
+  <SlideNotes>A hypothesis, not a result: if the rules are the design, checking them should be instant and inside the modelling language, as Lean checks proofs. To validate against today's IFC-plus-checker loop.</SlideNotes>
 </Slide>
 
 <Slide>
@@ -274,7 +400,7 @@ ok       planarity, envelope, coverage`}</code></pre>
       <p><b>Runs.</b> Tier 2 to completion and tier 3 from Wednesday 14 October; Codex once its identity check passes.</p>
     </div>
   </div>
-  <SlideNotes>The scheduler is stopped until Wednesday evening, when the weekly allowance resets. The new measures are read-only additions to the results register, so every run done so far gets rescored. The steep-facet classification in the checker (roof plates tilted 45 to 52 degrees counted as wall) is a scoring question to settle before the rescore. The DSL question needs a first probe of fast in-language checks against the IFC checker.</SlideNotes>
+  <SlideNotes>Rescore every run with the new measures, add the skills, settle the tools variable, and resume runs on Wednesday evening.</SlideNotes>
 </Slide>
 
 {/* ── style ── */}
@@ -1141,4 +1267,45 @@ ok       planarity, envelope, coverage`}</code></pre>
     overflow: hidden;
   }
   #deck .ap-next { max-width: 64rem; margin: 0 auto; font-size: clamp(0.95rem, 1.3vw, 1.35rem); }
+
+  /* Prompt passages: the slot a level fills */
+  #deck .ap-prompt p { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.86em; line-height: 1.65; }
+  #deck .ap-prompt mark { margin: 0 0.25em; padding: 0.05em 0.45em; border: 1px dashed var(--pp-amber); border-radius: 0.25rem; background: rgba(224, 164, 88, 0.12); color: var(--pp-amber); font-weight: 600; }
+  #deck .ap-levels { margin: 0; display: flex; flex-direction: column; gap: clamp(0.7rem, 2vh, 1.2rem); text-align: left; font-size: clamp(0.85rem, 1.15vw, 1.2rem); }
+  #deck .ap-levels > div { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1rem; padding-top: 0.7rem; border-top: 1px solid rgba(224, 164, 88, 0.45); }
+  #deck .ap-levels dt { font-weight: 600; color: var(--pp-amber); }
+  #deck .ap-levels dd { margin: 0; font-weight: 300; line-height: 1.45; color: var(--pp-ink); }
+  #deck .ap-levels dd b { font-weight: 500; color: var(--pp-amber); }
+  #deck .ap-levels dd i { font-style: normal; color: var(--pp-dim); margin-right: 0.4em; }
+  #deck .ap-levels dd span { display: block; margin-top: 0.3em; font-family: "Montserrat", sans-serif; font-size: 0.72em; letter-spacing: 0.08em; color: var(--pp-dim); }
+  #deck .ap-cols-even { grid-template-columns: 1fr 1fr; align-items: stretch; }
+  /* File icons: a sheet with a folded corner, its extension at the foot */
+  #deck .ap-ico { --c: var(--pp-ink); position: relative; flex: none; display: inline-flex; align-items: flex-end; justify-content: center; width: 1.7em; height: 2.15em; padding-bottom: 0.32em; box-sizing: border-box; background: color-mix(in srgb, var(--c) 16%, transparent); border-radius: 0.16em; clip-path: polygon(0 0, 66% 0, 100% 27%, 100% 100%, 0 100%); }
+  #deck .ap-ico::before { content: ""; position: absolute; left: 66%; top: 0; width: 34%; height: 27%; background: color-mix(in srgb, var(--c) 45%, transparent); clip-path: polygon(0 0, 100% 100%, 0 100%); }
+  #deck .ap-ico::after { content: attr(data-ext); font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 0.42em; letter-spacing: 0.06em; text-transform: uppercase; color: var(--c); }
+  #deck .ap-ico.is-ifc { --c: var(--pp-silicon); }
+  #deck .ap-ico.is-btlx { --c: var(--pp-amber); }
+  #deck .ap-ico.is-pdf { --c: var(--pp-dim); }
+  /* Context levels: four cumulative folders */
+  #deck .ap-ctx { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(0.8rem, 2vw, 2rem); text-align: left; font-size: clamp(0.85rem, 1.1vw, 1.15rem); }
+  #deck .ap-ctx > div { display: flex; flex-direction: column; gap: 0.8rem; padding-top: 0.9rem; border-top: 1px solid rgba(224, 164, 88, 0.55); }
+  #deck .ap-ctx b { font-weight: 600; font-size: 1.3em; color: var(--pp-amber); }
+  #deck .ap-ctx ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  #deck .ap-ctx li { display: flex; align-items: center; gap: 0.7em; color: var(--pp-ink); font-weight: 400; }
+  #deck .ap-ctx li .ap-ico { font-size: 1.15em; }
+  #deck .ap-ctx li.is-old { color: var(--pp-dim); font-weight: 300; font-style: italic; }
+  #deck .ap-ctx li.is-new { color: var(--pp-amber); font-weight: 500; }
+  #deck .ap-ctx p { margin: 0.2rem 0 0; font-weight: 300; font-size: 0.88em; line-height: 1.45; color: var(--pp-dim); }
+  /* Finding 2: the rules as files the architect writes */
+  #deck .ap-rules { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.6rem, 1.8vh, 1.1rem) clamp(1rem, 2vw, 2rem); text-align: left; font-size: clamp(0.8rem, 1.05vw, 1.1rem); }
+  #deck .ap-rules > div { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 0.8em; align-items: start; }
+  #deck .ap-rules .ap-ico { grid-row: 1 / span 2; font-size: 1.5em; }
+  #deck .ap-rules b { font-weight: 500; color: var(--pp-ink); }
+  #deck .ap-rules span:not(.ap-ico) { font-weight: 300; line-height: 1.35; color: var(--pp-dim); font-size: 0.92em; }
+  #deck .ap-rules span i { font-style: normal; margin-left: 0.4em; padding: 0 0.4em; border: 1px dashed var(--pp-amber); border-radius: 0.2rem; font-family: "Montserrat", sans-serif; font-size: 0.75em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pp-amber); white-space: nowrap; }
+  #deck .ap-rules-axis { grid-column: 1 / -1; display: flex; align-items: center; gap: 0.8em; margin: 0.4rem 0 0; font-family: "Montserrat", sans-serif; font-size: 0.7em; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .ap-rules-axis i { flex: 1; height: 1px; background: linear-gradient(to right, rgba(224, 164, 88, 0.2), var(--pp-amber)); }
+  #deck .ap-cols .ap-bars { width: 100%; margin: 0; }
+  #deck .ap-bars-note { margin: 0.6em 0 0; font-weight: 300; font-size: 0.85em; color: var(--pp-dim); }
+  #deck .ap-cols-wide { grid-template-columns: 1.8fr 1fr; }
 `}</style>
