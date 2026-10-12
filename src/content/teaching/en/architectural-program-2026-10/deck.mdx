@@ -1,0 +1,1143 @@
+---
+Name: "Architectural Program: An Agentic Workflow for Architectural Design"
+Description: "Unlisted deck for the Jour-Fixe on 2026-10-12: the agent-design benchmark, its inputs and factors, what a run delivers, which tools the agents really used, and the findings that the program becomes the prompt and the designer defines done."
+DateStart: "2026-10-12"
+Event: Jour-Fixe
+Language: English
+---
+
+import { Image } from "astro:assets";
+import Slide from "@/components/slides/Slide.astro";
+import SlideNotes from "@/components/slides/SlideNotes.astro";
+
+import PhdGantt from "@/components/decks/phd-progress/PhdGantt.astro";
+import { BENCHMARK_ROWS, BENCHMARK_MILESTONES } from "@/components/decks/phd-progress/gantt-data";
+import RouteBlender from "@/components/decks/architectural-program/RouteBlender.astro";
+import RouteCompas from "@/components/decks/architectural-program/RouteCompas.astro";
+import RoutePy from "@/components/decks/architectural-program/RoutePy.astro";
+
+import packageExisting from "@/assets/content/teaching/architectural-program-2026-10/package-existing.jpg";
+import packageLimits from "@/assets/content/teaching/architectural-program-2026-10/package-limits.jpg";
+import runBirdseye from "@/assets/content/teaching/architectural-program-2026-10/run-birdseye.jpg";
+import runInterior from "@/assets/content/teaching/architectural-program-2026-10/run-interior.jpg";
+import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run-roof-closeup.jpg";
+
+{/* ───────────────────────────── Cover ───────────────────────────── */}
+
+<Slide image={runBirdseye} imageAlt="Bird's-eye render of an agent's design: a timber plate roof with a glass facade on top of the existing teaching building" overlay="black/50">
+  <div class="pp-cover">
+    <h3>Jour-Fixe · 12 October 2026</h3>
+    <h1>Architectural<br />Program</h1>
+    <h2>An agentic workflow for architectural design</h2>
+  </div>
+  <SlideNotes>Program, in both senses. In architecture, the program is the brief: what the building must hold, where, under which constraints. In computing, a program is what a machine runs. This talk is about the two becoming the same text. The render is run H-compas-C3-W0-cc r03, one of the four runs that passed every check.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Where this sits</h3>
+    <h2>Ten days of <em>benchmark</em></h2>
+  </div>
+  <div class="ap-body">
+    <PhdGantt rows={BENCHMARK_ROWS} milestones={BENCHMARK_MILESTONES} now="2026-10-12" labelWidth="19rem" />
+  </div>
+  <SlideNotes>The benchmark started on 2 October with one fixed condition and became a matrix of conditions on 8 October. It grows out of the HIL case study: the same building, the same roof task, now given to coding agents instead of designed by hand.</SlideNotes>
+</Slide>
+
+{/* ───────────────────────────── The study ───────────────────────────── */}
+
+<Slide>
+  <div class="pp-head">
+    <h3>The question</h3>
+    <h2>What does an agentic workflow look like for a <em>real architectural design study?</em></h2>
+  </div>
+  <p class="pp-foot">A real building, a real program, a design an architect could hand on. And what makes the agents better at it.</p>
+  <SlideNotes>Not a component in isolation: the agent receives what an architect receives at the start of a study (a program, a survey of the existing building, the limits) and must deliver a design as IFC. A checker scores every design against the same rules.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>The inputs</h3>
+    <h2>Two IFC files: <em>what exists</em>, and <em>what is allowed</em></h2>
+  </div>
+  <div class="pp-courses">
+    <figure>
+      <Image src={packageExisting} loading="eager" alt="Render of existing.ifc: the existing teaching building as plain grey geometry, seen from above" widths={[800, 1200]} sizes="42vw" />
+      <figcaption><b>existing.ifc</b><span>The survey · geometry only, no BIM data</span></figcaption>
+    </figure>
+    <figure>
+      <Image src={packageLimits} loading="eager" alt="Render of limits.ifc on the existing building: the height envelope as a translucent blue solid over the roof, the wall zone along the roof edge, and red support points at the cores" widths={[800, 1200]} sizes="42vw" />
+      <figcaption><b>limits.ifc</b><span>Envelope · wall zone · support points at the cores</span></figcaption>
+    </figure>
+  </div>
+  <SlideNotes>existing.ifc is a pure survey, IFC 4.3 in local metres, with a .3dm of the same content for Rhino. limits.ifc holds every limit in one file: the envelope (blue) and the wall zone as IfcSpatialZone, the support points (red) as IfcStructuralPointConnection in an IfcStructuralAnalysisModel, the same entity the agent uses for its own bearings, so checking is a matching. The roof's load goes to the existing building only at the support points, each within 5 mm; the walls may also bear in the wall zone along the roof edge. Where the program text and limits.ifc differ, limits.ifc governs.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Finding 1</h3>
+    <h2>The program is <em>already a prompt</em></h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-cols">
+      <div class="ap-doc">
+        <span class="ap-doc-name">program.md · the architect's brief</span>
+        <p><b>Task.</b> Design the enclosure of the extension: roof and walls. The interior stays free of supports.</p>
+        <p><b>Use.</b> Classrooms and presentation halls for university teaching.</p>
+        <p><b>Constraints.</b> Inside the envelope. The roof bears only at the support points at the cores, within 0.005 m. Clear height at least 3.0 m. Planar CLT plates, 140 mm.</p>
+        <p><b>Documents.</b> existing.ifc, limits.ifc, site plan, photos.</p>
+      </div>
+      <div class="ap-doc">
+        <span class="ap-doc-name">task.md · what the agent receives</span>
+        <p>You are the designer of a roof structure for an existing building. The program, the 3D model of the existing building, the site, photos and drawings are in /work/brief/. Read all of it before you start.</p>
+        <p>Deliver, in /work/out/: design.ifc, references.md, statement.md.</p>
+      </div>
+    </div>
+  </div>
+  <p class="pp-foot">Plain text: what the building should have, its constraints, its site. The design process converges on writing the program.</p>
+  <SlideNotes>An architectural program is plain text where the architect states what the building should have, the constraints and the location. That is the shape of a prompt. The task text the agent receives is short; almost everything that matters is in the program and the two IFC files. So the architect's craft moves toward writing the program well.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>The experiment</h3>
+    <h2>One factor changed at a time, <em>ten repeats each</em></h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-factors">
+      <div><b>Task</b><span><i>P</i> plate roof, glass facade</span><span><i>H</i> P, roof of hyperbolic paraboloids</span><span><i>F</i> H, plus BTLx for the CNC</span></div>
+      <div><b>Tools</b><span><i>py</i> Python, numpy, ifcopenshell</span><span><i>compas</i> the COMPAS ecosystem</span><span><i>blender</i> Blender with ifcopenshell</span></div>
+      <div><b>Context</b><span><i>C0</i> the task text</span><span><i>C1</i> + rules.md: every check, every threshold</span><span><i>C2</i> + 19 papers on meshes</span><span><i>C3</i> + a skills library</span></div>
+      <div><b>Workflow</b><span><i>W0</i> one designer, 60 min</span><span><i>W1</i> designer, three reviewers, revision</span></div>
+      <div><b>Harness</b><span><i>cc</i> Claude Code</span><span><i>codex</i> Codex (blocked)</span></div>
+    </div>
+  </div>
+  <p class="pp-foot">A run id reads task, tools, context, workflow, harness, repeat: <code>H-compas-C0-W0-cc-r01</code>. Baseline: H-compas-C0-W0-cc.</p>
+  <SlideNotes>3 tasks, 3 tool stacks, 4 context levels, 2 workflows, 2 harnesses: 144 cells, 10 repeats each. Tier 1 is the baseline plus one factor changed at a time: 100 of 110 runs done, the codex cell is blocked on its identity check. Tier 2 crosses all tools, context levels and workflows on H: 121 of 160. Tier 3 has its first 2 runs. Each factor level changes exactly one passage of the task text. The model is the same throughout. W1: the designer works 60 minutes, then three reviewers in parallel (compliance, structure and fabrication, architectural quality, 10 minutes each), then the designer revises for 20 minutes.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>What a run delivers</h3>
+    <h2>A design as IFC, <em>scored the same way every time</em></h2>
+  </div>
+  <div class="ap-shots">
+    <figure><Image src={runBirdseye} loading="eager" alt="Bird's-eye render of the design on the existing building" widths={[640, 1200]} sizes="30vw" /><figcaption>Bird's-eye</figcaption></figure>
+    <figure><Image src={runInterior} loading="eager" alt="Interior render under the timber plate roof, looking toward the glass facade" widths={[640, 1200]} sizes="30vw" /><figcaption>Interior</figcaption></figure>
+    <figure><Image src={runRoof} loading="eager" alt="Close-up render of the roof plates where they meet" widths={[640, 1200]} sizes="30vw" /><figcaption>Roof close-up</figcaption></figure>
+  </div>
+  <p class="pp-foot">The agent writes design.ifc, statement.md and references.md. The checker scores the IFC, the viewer renders it from three fixed cameras, the register keeps time, turns and cost.</p>
+  <SlideNotes>Every run is one Docker container with the package mounted, a proxy that keeps the API token away from the agent, and a 60-minute cap. Afterwards the checker scores design.ifc, the hypar scorer adds its criteria for H and F, and the viewer renders the same three shots for every design so they can be compared. In W1 the designer's first draft is scored too. Agents may not render; the evaluation renders everything the same way. Shown: H-compas-C3-W0-cc r03.</SlideNotes>
+</Slide>
+
+{/* ───────────────────────────── Results ───────────────────────────── */}
+
+<Slide>
+  <div class="pp-head">
+    <h3>Results · 223 runs</h3>
+    <h2>Four designs pass. <em>All four had the rules.</em></h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-bars" style="--of:223">
+      <span class="ap-doc-name">Designs passing each check, of 223</span>
+      <div><b>Planarity ≤ 1 mm</b><i style="--n:223"></i><span>223</span></div>
+      <div><b>Coverage ≥ 95 %</b><i style="--n:207"></i><span>207</span></div>
+      <div><b>Envelope</b><i style="--n:202"></i><span>202</span></div>
+      <div><b>Connectivity</b><i style="--n:193"></i><span>193</span></div>
+      <div><b>Plate size ≤ 3.0 × 13.0 m</b><i style="--n:154"></i><span>154</span></div>
+      <div><b>Bearing within 5 mm</b><i class="is-low" style="--n:5"></i><span>5</span></div>
+    </div>
+  </div>
+  <p class="pp-foot">The four passes (two at C1, two at C3) all received rules.md. In tier 1, the rules (C1) are the largest lever; the review workflow (W1) about triples the cost.</p>
+  <SlideNotes>Pass means every check passes and, for H and F, the hypar criteria too. Planarity is free: every design extrudes planar profiles. Bearing is the bottleneck: the roof must land within 5 mm of the given support points, which tests snapping to the points, not landing on the column (the columns are 40 by 40 cm). Tier-1 contrasts against the baseline, as Cliff's delta: C1 raises checks passed by +0.46 and cuts wall time by 0.58; W1 raises cost by +1.00 (every W1 run costs more than every baseline run) with no gain in checks. Passing runs: H-compas-C3-W0-cc r03, H-blender-C1-W0-cc r01, H-blender-C3-W1-cc r03, H-py-C1-W0-cc r06. Context is cumulative, so C3 includes rules.md.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Tools · Blender, 64 runs</h3>
+    <h2>Blender is used as a <em>Python interpreter</em></h2>
+  </div>
+  <div class="ap-body"><RouteBlender /></div>
+  <p class="pp-foot">Not one call to the Blender API, and no MCP server in any harness. Counts overlap: 33 runs used both routes.</p>
+  <SlideNotes>From a scan of every tool call in every transcript. In the Blender image, ifcopenshell exists only inside Blender's bundled Python; the system Python has neither numpy nor ifcopenshell. 61 of 64 runs first ran the system python3, got "No module named ifcopenshell", and went looking. 19 then called Blender's python3.11 directly, so Blender never started; 12 ran scripts with blender -b -P; 33 did both. The scripts import numpy and ifcopenshell; zero bpy calls, so no scene, no modifiers, no Bonsai. Even a passing run, H-blender-C1-W0-cc r01, ran python3.11 -I gen.py straight from Blender's folder.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Tools · COMPAS, 94 runs</h3>
+    <h2>COMPAS is used as a <em>vector library</em>, or not at all</h2>
+  </div>
+  <div class="ap-body"><RouteCompas /></div>
+  <p class="pp-foot">compas_ifc is installed and never used: every IFC is written with raw ifcopenshell. compas_timber appears only where BTLx is required.</p>
+  <SlideNotes>35 of 94 runs import nothing from COMPAS. The other 59 import geometry primitives: Vector in 43 runs, Point 41, Frame 41, Plane 29, Polygon 28, plus is_coplanar, bestfit_plane and distance_point_plane. COMPAS meshes appear in 2 runs. compas_timber appears in the 10 task-F runs only: TimberModel, Plate, BTLxWriter. 46 compas runs also reached for trimesh, which the image does not have.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Tools · Python, 65 runs</h3>
+    <h2>Every stack ends in the <em>same script</em></h2>
+  </div>
+  <div class="ap-body"><RoutePy /></div>
+  <p class="pp-foot">The design medium is the same in all three stacks: numpy computes the geometry, ifcopenshell writes the IFC entity by entity. The host and the framework are bypassed.</p>
+  <SlideNotes>The plain-Python image has only numpy and ifcopenshell. Many runs reached for more: scipy was missing in 28 runs, trimesh in 27; 8 runs pip-installed extras (scipy, trimesh, rtree), the others worked around them. So the tools factor changes less than its name says: the differences between the tool cells are differences in which libraries happen to be importable, not in the design environment. The agent does not need the modeller; it needs the delivery format and the checks.</SlideNotes>
+</Slide>
+
+{/* ───────────────────────────── Finding 2 ───────────────────────────── */}
+
+<Slide>
+  <div class="pp-head">
+    <h3>Finding 2</h3>
+    <h2>The designer now defines <em>what "done" means</em></h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-cols">
+      <ol class="ap-ladder">
+        <li><b>Envelope</b><span>containment in a solid</span></li>
+        <li><b>Bearing</b><span>snap to given points, 5 mm</span></li>
+        <li><b>Coverage, plate size</b><span>areas and extents</span></li>
+        <li><b>Connectivity, planarity</b><span>a graph, a plane fit per plate</span></li>
+        <li><b>Hypar criteria</b><span>90 % of plates on a hypar within 10 mm, at most 4 plates per corner</span></li>
+      </ol>
+      <div class="ap-doc">
+        <span class="ap-doc-name">Who does what</span>
+        <p><b>The architect</b> writes the program and the rules, from simple checks to complex algorithms.</p>
+        <p><b>The agent</b> does the modelling: every plate, every IFC entity, every line of geometry code.</p>
+      </div>
+    </div>
+  </div>
+  <SlideNotes>The checks run from simple to complex, top to bottom. Writing them is the design work that stays with the architect: deciding what counts as done. The modelling itself is done by the LLM in every run, in a script, whatever tool it was handed. The results support it: handing the agent the rules is the single largest improvement, larger than the tools, the papers or the reviewers.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Finding 2 · where "done" was not defined</h3>
+    <h2>Unchecked means <em>undelivered</em></h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-cols">
+      <div class="ap-bars" style="--of:221">
+        <span class="ap-doc-name">IFC as a geometry container · designs carrying each, of 221</span>
+        <div><b>Building storey</b><i style="--n:202"></i><span>202</span></div>
+        <div><b>Material</b><i style="--n:150"></i><span>150</span></div>
+        <div><b>Property sets</b><i style="--n:91"></i><span>91</span></div>
+        <div><b>Surface styles</b><i class="is-low" style="--n:3"></i><span>3</span></div>
+        <div><b>Quantity sets</b><i class="is-low" style="--n:0"></i><span>0</span></div>
+      </div>
+      <div class="ap-doc">
+        <span class="ap-doc-name">BTLx · task F, compas, 10 runs</span>
+        <p><b>The version is relabelled, not checked.</b> compas_timber writes 2.0.0; all 10 runs replaced it with 2.3.1 as a string; 4 validated against the schema.</p>
+        <p><b>Schema-valid is not cuttable.</b> Every part is one square-cut FreeContour: no bevel at the folds, no joints, and slivers down to 0.083 mm.</p>
+      </div>
+    </div>
+  </div>
+  <SlideNotes>IFC: every delivered design opened in IfcOpenShell; the counts say whether the entity exists, not whether it is right. 71 designs name no material although the brief fixes 140 mm CLT. The agents meet the delivery format in its letter (valid IFC, the right element classes) and miss what it is for: quantities, costs, checks. BTLx: the content compas_timber writes happens to be valid under both versions, so the relabel was enough here; six of ten agents shipped without knowing, and all six said so in their final message. The parts: in all 10 runs one FreeContour with inclination 0, so the folded edges would neither close nor carry; r09 ships 62 parts under 0.01 square metres. A hint at n = 1 each: without compas_timber (F-blender, F-py), both agents fetched the XSD first, wrote 2.3.1 by hand and validated to zero errors. With compas_timber they trusted the writer.</SlideNotes>
+</Slide>
+
+{/* ───────────────────────────── Outlook ───────────────────────────── */}
+
+<Slide>
+  <div class="pp-head">
+    <h3>Hypothesis · to validate</h3>
+    <h2>If the rules are the design, <em>make checking them instant</em></h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-cols">
+      <pre class="ap-code"><code>{`panel = TimberPanel(length=4.8)
+roof  = Hypar(panels, supports=limits.points)
+
+$ check roof
+error    bearing: plate 12 is 31 mm off S2
+warning  plate 7: span near the CLT limit
+ok       planarity, envelope, coverage`}</code></pre>
+      <div class="ap-doc">
+        <span class="ap-doc-name">A domain-specific language</span>
+        <p>The model is written in the language and the checks live <b>inside</b> it, like Lean's type checker, so the agent gets feedback from a plain command line.</p>
+        <p>Severities like TypeScript's: <b>errors, warnings, suggestions</b>. Measured rules with variance map onto that gradient.</p>
+      </div>
+    </div>
+  </div>
+  <p class="pp-foot">Illustrative syntax. Whether this beats checking the IFC after the fact is the open question.</p>
+  <SlideNotes>This is the hypothesis the benchmark points at, not a result. If the architect's work is defining done, then done should be cheap to test while the agent works, not only after the run. And the route slides showed the agent already works in code, not in a modeller. The idea: a DSL for timber plate construction where checks are part of the language, the way Lean checks proofs as part of compiling them. Where a check is expensive (structure), a fast surrogate trained on synthetic data can stand in, with a warning that asks for a full FEA in the grey zone; an engineer can override a warning, and the override is logged. Still to validate, against the plain IFC-plus-checker loop this benchmark already runs.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
+    <h3>Next</h3>
+    <h2>Measure what was <em>not checked</em></h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-doc ap-next">
+      <p><b>New measures.</b> IFC literacy per run, BTLx validity against the 2.3.1 schema, fabrication plausibility (minimum part size, bevels at folds, material set), and the route each run took.</p>
+      <p><b>Skills.</b> An IFC-authoring skill; a note that compas_timber writes BTLx 2.0.0 and how to validate offline.</p>
+      <p><b>The tools factor.</b> Decide whether a Blender cell must use the host API, or whether bypassing the host is the result.</p>
+      <p><b>Runs.</b> Tier 2 to completion and tier 3 from Wednesday 14 October; Codex once its identity check passes.</p>
+    </div>
+  </div>
+  <SlideNotes>The scheduler is stopped until Wednesday evening, when the weekly allowance resets. The new measures are read-only additions to the results register, so every run done so far gets rescored. The steep-facet classification in the checker (roof plates tilted 45 to 52 degrees counted as wall) is a scoring question to settle before the rescore. The DSL question needs a first probe of fast in-language checks against the IFC checker.</SlideNotes>
+</Slide>
+
+{/* ── style ── */}
+
+{/*
+  Deck-local theme: warm near-black
+  canvas, timber amber accent, silicon blue for low counts and unused routes. Scoped to
+  #deck, and this <style> only exists on this deck's page.
+
+  Markdown mapping: h3 = kicker (the act), h2 = the slide's statement,
+  h1 = hero line, *em* = amber accent, **strong** = ink white.
+  JSX slides use .pp-head for the same kicker + statement pair.
+*/}
+
+<style>{`
+  #deck {
+    --pp-bg: #0e0c09;
+    --pp-ink: #f2efe9;
+    --pp-dim: #a49e92;
+    --pp-amber: #e0a458;
+    --pp-silicon: #85b7cb;
+  }
+
+  #deck section.slide {
+    background: radial-gradient(120% 130% at 18% 22%, #171310 0%, var(--pp-bg) 58%);
+  }
+
+  #deck section.slide:not(:has(> img)) .slide-md {
+    align-items: flex-start;
+    text-align: left;
+    padding-left: clamp(4rem, 12vw, 14rem);
+    padding-right: clamp(2.5rem, 8vw, 9rem);
+  }
+  #deck section.slide:not(:has(> img)) .slide-md > div {
+    max-width: 70rem;
+  }
+
+  #deck .slide-md h3,
+  #deck .pp-head h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    color: var(--pp-amber);
+    margin: 0 0 2rem 0;
+  }
+
+  #deck .slide-md h2,
+  #deck .pp-head h2 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    /* Tracks the shorter side too, so titles shrink on small or wide-but-short screens */
+    font-size: clamp(1.3rem, min(2.6vw, 4.4vh), 2.8rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    color: var(--pp-ink);
+    margin: 0 0 1.8rem 0;
+    text-wrap: balance;
+  }
+
+  #deck .slide-md h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    text-transform: none;
+    font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+    line-height: 1.18;
+    color: var(--pp-ink);
+    margin: 0.6rem 0 1.5rem 0;
+    text-wrap: balance;
+  }
+
+  #deck .slide-md p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 1.55vw, 1.35rem);
+    line-height: 1.55;
+    color: var(--pp-dim);
+    margin: 0 0 1.1rem 0;
+    max-width: 50em;
+  }
+  #deck section.slide:has(> img) .slide-md p {
+    color: var(--pp-ink);
+  }
+
+  #deck .slide-md strong { font-weight: 400; color: var(--pp-ink); }
+  #deck .slide-md em,
+  #deck .pp-head em { font-style: normal; color: var(--pp-amber); }
+
+  #deck .slide-md ul {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 1.55vw, 1.35rem);
+    line-height: 1.5;
+    color: var(--pp-dim);
+    text-align: left;
+    list-style: disc;
+    margin: 0.4rem 0 1.4rem 0;
+    max-width: 50em;
+    padding-left: 1.4em;
+  }
+  #deck .slide-md li { margin-bottom: 0.6rem; }
+  #deck .slide-md li::marker { color: var(--pp-amber); }
+
+  /* Cover slide */
+  #deck .pp-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 clamp(2.5rem, 8vw, 9rem) 0 clamp(4rem, 12vw, 14rem);
+    /* A hard 1px shadow keeps the text from merging into the image */
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.9);
+  }
+  #deck .pp-cover h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    color: var(--pp-amber);
+    margin: 0 0 2rem 0;
+  }
+  #deck .pp-cover h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-size: clamp(2.6rem, 5.6vw, 5rem);
+    line-height: 1.18;
+    color: var(--pp-ink);
+    margin: 0 0 1.5rem 0;
+    text-wrap: balance;
+  }
+  #deck .pp-cover h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: clamp(0.8rem, 1.3vw, 1.05rem);
+    color: var(--pp-ink);
+    margin: 0;
+  }
+
+  /* JSX slides: header block at the top-left */
+  #deck .pp-head {
+    position: absolute;
+    top: clamp(4.5rem, 11vh, 6.5rem);
+    left: clamp(4rem, 12vw, 14rem);
+    right: clamp(2.5rem, 8vw, 9rem);
+    z-index: 10;
+  }
+  #deck .pp-head h3 { margin-bottom: 1rem; }
+
+  /* Cards */
+  #deck .pp-cards {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 10vh, 6rem);
+    z-index: 10;
+    display: grid;
+    gap: clamp(1rem, 2.4vw, 2.2rem);
+    align-content: center;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pp-cards-2 { grid-template-columns: repeat(2, 1fr); }
+  #deck .pp-cards-4 { grid-template-columns: repeat(4, 1fr); }
+  #deck .pp-cards-5 { grid-template-columns: repeat(5, 1fr); left: clamp(3rem, 8vw, 9rem); right: clamp(3rem, 8vw, 9rem); }
+  #deck .pp-cards > div {
+    border-top: 1px solid rgba(224, 164, 88, 0.55);
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  #deck .pp-cards b {
+    font-weight: 600;
+    font-size: clamp(1.15rem, 2vw, 1.8rem);
+    color: var(--pp-ink);
+  }
+  #deck .pp-cards p,
+  #deck .pp-cards li {
+    margin: 0;
+    font-weight: 300;
+    font-size: clamp(0.95rem, 1.45vw, 1.3rem);
+    line-height: 1.5;
+    color: var(--pp-dim);
+  }
+  #deck .pp-cards-5 p { font-size: clamp(0.85rem, 1.2vw, 1.08rem); }
+  #deck .pp-cards ul { margin: 0.4rem 0 0 0; padding-left: 1.1em; list-style: disc; }
+  #deck .pp-cards li { margin-bottom: 0.45rem; }
+  #deck .pp-cards li::marker { color: var(--pp-amber); }
+  #deck .pp-pill {
+    align-self: flex-start;
+    margin-top: 0.4rem;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid rgba(242, 239, 233, 0.25);
+    border-radius: 999px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pp-dim);
+  }
+  #deck .pp-pill.is-on { border-color: var(--pp-amber); color: var(--pp-amber); }
+
+  /* Tiers table */
+  #deck .pp-table-wrap {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 8vh, 5rem);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+  }
+  #deck .pp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.9rem, 1.35vw, 1.2rem);
+    color: var(--pp-dim);
+    text-align: left;
+  }
+  #deck .pp-table th {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pp-dim);
+    padding: 0 1rem 0.8rem 0;
+    border-bottom: 1px solid rgba(242, 239, 233, 0.2);
+  }
+  #deck .pp-table td {
+    padding: 1.1rem 1rem 1.1rem 0;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(242, 239, 233, 0.1);
+    line-height: 1.45;
+  }
+  #deck .pp-table td:first-child {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+    color: var(--pp-ink);
+    width: 3.5rem;
+    line-height: 1;
+  }
+  #deck .pp-table td b {
+    display: block;
+    font-weight: 600;
+    color: var(--pp-ink);
+    margin-bottom: 0.25rem;
+  }
+  #deck .pp-table tr.is-hot td:first-child,
+  #deck .pp-table tr.is-hot td b { color: var(--pp-amber); }
+
+  /* How it fits */
+  #deck .pp-fit {
+    position: absolute;
+    inset: clamp(11rem, 27vh, 14rem) clamp(4rem, 10vw, 11rem) clamp(3rem, 8vh, 5rem);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(0.9rem, 2.8vh, 1.8rem);
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pp-fit span {
+    display: block;
+    font-weight: 300;
+    font-size: clamp(0.85rem, 1.2vw, 1.08rem);
+    color: var(--pp-dim);
+    margin-top: 0.3rem;
+  }
+  #deck .pf-top,
+  #deck .pf-ground {
+    padding: 0.9rem 1.2rem;
+    border: 1px solid rgba(242, 239, 233, 0.2);
+    border-radius: 0.6rem;
+    text-align: center;
+    font-weight: 500;
+    color: var(--pp-ink);
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+  }
+  #deck .pf-top { border-color: rgba(224, 164, 88, 0.6); }
+  #deck .pf-ground { border-color: rgba(133, 183, 203, 0.6); color: var(--pp-silicon); }
+  #deck .pf-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+  #deck .pf-row i {
+    align-self: center;
+    font-style: normal;
+    color: var(--pp-amber);
+    font-size: 1.4rem;
+  }
+  #deck .pf-box {
+    padding: 1rem;
+    border-radius: 0.6rem;
+    background: rgba(242, 239, 233, 0.04);
+    border: 1px solid rgba(242, 239, 233, 0.14);
+  }
+  #deck .pf-box b {
+    font-weight: 600;
+    color: var(--pp-ink);
+    font-size: clamp(1.15rem, 1.9vw, 1.65rem);
+  }
+  #deck .pf-hot { border-color: var(--pp-amber); background: rgba(224, 164, 88, 0.08); }
+  #deck .pf-hot b { color: var(--pp-amber); }
+  #deck .pf-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  #deck .pf-side > div {
+    padding: 0.2rem 0 0 1rem;
+    border-left: 2px solid rgba(224, 164, 88, 0.5);
+  }
+  #deck .pf-side b { font-weight: 600; color: var(--pp-ink); }
+
+  /* Two timelines */
+  #deck .pp-lanes {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 10vw, 11rem) clamp(3rem, 8vh, 5rem);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pl-lane {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  #deck .pl-name {
+    align-self: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  #deck .pl-antonia .pl-name { color: var(--pp-silicon); }
+  #deck .pl-me .pl-name { color: var(--pp-amber); }
+  #deck .pl-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+  #deck .pl-items > div {
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 300;
+    font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+    line-height: 1.45;
+    color: var(--pp-dim);
+  }
+  #deck .pl-antonia .pl-items > div { background: rgba(133, 183, 203, 0.1); border: 1px solid rgba(133, 183, 203, 0.35); }
+  #deck .pl-me .pl-items > div { background: rgba(224, 164, 88, 0.08); border: 1px solid rgba(224, 164, 88, 0.35); }
+  #deck .pl-items b {
+    display: block;
+    font-weight: 600;
+    color: var(--pp-ink);
+    margin-bottom: 0.2rem;
+  }
+  #deck .pl-links {
+    margin-left: 8rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(0.72rem, 0.95vw, 0.9rem);
+    letter-spacing: 0.12em;
+    color: var(--pp-ink);
+    text-align: center;
+  }
+  /* Three cards */
+  #deck .pp-cards-3 { grid-template-columns: repeat(3, 1fr); }
+
+  /* Placeholder for images still to come */
+  #deck .pp-todo {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 10vh, 6rem);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(224, 164, 88, 0.5);
+    border-radius: 0.8rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pp-amber);
+    text-align: center;
+    padding: 1rem;
+  }
+
+  #deck .pe-tag {
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pp-dim);
+    margin-bottom: 0.7rem;
+  }
+
+  /* Agentic loop */
+  #deck .pp-loop {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 10vh, 6rem);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+  }
+  #deck .pl-agent { padding: 1rem; border: 1px solid var(--pp-amber); border-radius: 0.6rem; background: rgba(224, 164, 88, 0.08); color: var(--pp-amber); font-weight: 500; font-size: clamp(1rem, 1.6vw, 1.4rem); }
+  #deck .pl-tool { position: relative; margin-top: 1.4rem; padding: 1.1rem; border: 1px solid rgba(133, 183, 203, 0.6); border-radius: 0.6rem; background: rgba(133, 183, 203, 0.1); }
+  #deck .pl-tool b { display: block; font-weight: 600; color: var(--pp-silicon); font-size: clamp(1.1rem, 1.8vw, 1.6rem); }
+  #deck .pl-tool span { display: block; margin-top: 0.4rem; font-weight: 300; color: var(--pp-dim); font-size: clamp(0.85rem, 1.2vw, 1.05rem); }
+  #deck .pl-tool em,
+  #deck .pl-checks em { position: absolute; left: 0; top: -1.4rem; font-style: normal; font-family: "Montserrat", sans-serif; letter-spacing: 0.18em; text-transform: uppercase; font-size: clamp(0.62rem, 0.85vw, 0.75rem); color: var(--pp-dim); }
+  #deck .pl-tool em { color: var(--pp-silicon); }
+  #deck .pl-checks { position: relative; margin-top: 1.4rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  #deck .pl-checks > div { padding: 1.1rem; border: 1px solid rgba(242, 239, 233, 0.18); border-radius: 0.6rem; background: rgba(242, 239, 233, 0.04); }
+  #deck .pl-checks b { display: block; font-weight: 600; color: var(--pp-ink); font-size: clamp(1.1rem, 1.8vw, 1.6rem); }
+  #deck .pl-checks span { display: block; margin-top: 0.4rem; font-weight: 300; color: var(--pp-dim); font-size: clamp(0.85rem, 1.2vw, 1.05rem); }
+  #deck .pl-back { font-family: "Montserrat", sans-serif; letter-spacing: 0.16em; text-transform: uppercase; font-size: clamp(0.72rem, 1vw, 0.9rem); color: var(--pp-amber); }
+
+  /* Planar mesh lineage */
+  #deck .pp-lineage {
+    position: absolute;
+    inset: clamp(10.5rem, 26vh, 14rem) clamp(3rem, 8vw, 9rem) clamp(5rem, 14vh, 8rem);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7rem;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pln-lane { display: grid; grid-template-columns: 12rem 1fr; align-items: center; gap: 1rem; }
+  #deck .pln-name { font-family: "Montserrat", sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .pln-items { display: flex; align-items: center; gap: 1.4rem; }
+  #deck .pln-items > div {
+    position: relative;
+    flex: 0 1 15rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid rgba(242, 239, 233, 0.18);
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: var(--pp-ink);
+    font-size: clamp(0.9rem, 1.35vw, 1.2rem);
+  }
+  #deck .pln-items > div + div::before { content: "→"; position: absolute; left: -0.7rem; top: 50%; transform: translate(-50%, -50%); color: var(--pp-amber); }
+  #deck .pln-items i { display: block; font-style: normal; font-weight: 300; color: var(--pp-dim); font-size: 0.8em; }
+  #deck .pln-items .is-hot { border-color: var(--pp-amber); background: rgba(224, 164, 88, 0.08); color: var(--pp-amber); }
+  #deck .pp-foot {
+    position: absolute;
+    left: clamp(3rem, 8vw, 9rem);
+    right: clamp(3rem, 8vw, 9rem);
+    bottom: clamp(2rem, 6vh, 4rem);
+    z-index: 10;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+    color: var(--pp-dim);
+  }
+
+  /* Three tiers as a funnel */
+  #deck .pp-tiers {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 10vh, 6rem);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pt-tier {
+    width: var(--w);
+    padding: 1rem 1.4rem;
+    border: 1px solid rgba(242, 239, 233, 0.2);
+    border-radius: 0.6rem;
+    background: rgba(242, 239, 233, 0.04);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.2rem 1.5rem;
+    align-items: baseline;
+  }
+  #deck .pt-tier b { font-weight: 600; color: var(--pp-ink); font-size: clamp(1.05rem, 1.7vw, 1.5rem); }
+  #deck .pt-tier span { grid-column: 1; font-weight: 300; color: var(--pp-dim); font-size: clamp(0.85rem, 1.2vw, 1.05rem); }
+  #deck .pt-tier i { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-style: normal; font-family: "Montserrat", sans-serif; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); text-align: right; }
+  #deck .pt-tier.is-hot { border-color: var(--pp-amber); background: rgba(224, 164, 88, 0.08); }
+  #deck .pt-tier.is-hot b { color: var(--pp-amber); }
+  /* HIL module drawings: white renders framed on the dark deck */
+  #deck .pp-module {
+    position: absolute;
+    inset: clamp(11rem, 28vh, 15rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 8vh, 5rem);
+    z-index: 10;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    gap: clamp(1rem, 2vw, 2rem);
+  }
+  #deck .pp-module-2 { grid-template-columns: 1fr 1fr; align-items: center; }
+  #deck .pp-module img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 0.8rem;
+    min-height: 0;
+  }
+  #deck .pp-module-2 img { height: auto; }
+  /* Onboarding: title, then the screenshot centred below it */
+  #deck .pp-shot-center { position: absolute; inset: clamp(12rem, 29vh, 15.5rem) clamp(3rem, 8vw, 9rem) clamp(3rem, 8vh, 5rem); z-index: 10; display: flex; align-items: center; justify-content: center; }
+  #deck .pp-shot-center img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 0.6rem; border: 1px solid rgba(242, 239, 233, 0.18); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
+
+  /* Issues found vs acted on */
+  #deck .pp-issues {
+    position: absolute;
+    top: clamp(11rem, 28vh, 15rem);
+    bottom: clamp(6rem, 16vh, 9rem);
+    left: 50%;
+    width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 75rem);
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pi-legend { display: flex; flex-wrap: wrap; gap: 0.75rem 2.25rem; margin-bottom: 0.75rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.85rem, 1.2vw, 1.02rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .pi-legend span::before { content: ""; display: inline-block; width: 0.8em; height: 0.8em; margin-right: 0.5em; border-radius: 0.2em; vertical-align: -0.05em; background: var(--c); border: 1px dashed var(--b, transparent); }
+  #deck .pi-row { display: grid; grid-template-columns: 14rem 1fr 8.1rem 8.6rem; align-items: center; gap: 1.5rem; }
+  #deck .pi-row.pi-head > span { font-family: "Montserrat", sans-serif; font-size: clamp(0.78rem, 1.06vw, 0.94rem); letter-spacing: 0.16em; text-transform: uppercase; }
+  #deck .pi-row b { font-weight: 500; color: var(--pp-ink); font-size: clamp(1.19rem, 1.75vw, 1.56rem); text-align: right; }
+  #deck .pi-row > span { white-space: nowrap; font-weight: 300; color: var(--pp-dim); font-size: clamp(1.19rem, 1.75vw, 1.56rem); }
+  #deck .pi-bar { display: flex; gap: 4px; height: clamp(2.25rem, 5.6vh, 3.25rem); }
+  #deck .pi-bar i { flex: 0 1 calc(var(--n) / 31 * 100%); display: flex; align-items: center; justify-content: center; border-radius: 0.45rem; font-style: normal; font-weight: 600; font-size: clamp(1rem, 1.4vw, 1.25rem); color: #1a1714; background: var(--c); border: 1px dashed var(--b, transparent); }
+  #deck .pi-solved { --c: var(--pp-amber); }
+  #deck .pi-progress { --c: rgba(224, 164, 88, 0.45); }
+  #deck .pi-closed { --c: rgba(242, 239, 233, 0.3); }
+  #deck .pi-open { --c: rgba(242, 239, 233, 0.05); --b: rgba(242, 239, 233, 0.45); }
+  #deck .pi-bar i.pi-open { color: var(--pp-dim); }
+  /* compas_ai at the centre of the COMPAS ecosystem */
+  #deck .pp-hub {
+    position: absolute;
+    inset: clamp(10rem, 25vh, 13rem) clamp(4rem, 10vw, 12rem) clamp(2.5rem, 7vh, 4.5rem);
+    z-index: 10;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .pp-hub svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  #deck .pp-hub line { vector-effect: non-scaling-stroke; stroke-width: 1.5; }
+  #deck .pp-hub line.is-used { stroke: var(--pp-amber); }
+  #deck .pp-hub line.is-planned { stroke: rgba(242, 239, 233, 0.4); stroke-dasharray: 5 5; }
+  #deck .ph-node,
+  #deck .ph-core {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 0.6rem;
+    background: #1a1714;
+    white-space: nowrap;
+  }
+  #deck .ph-node { padding: 0.55rem 1rem; border: 1px solid rgba(242, 239, 233, 0.35); }
+  #deck .ph-node.is-planned { border-style: dashed; }
+  #deck .ph-node b { display: block; font-weight: 500; color: var(--pp-ink); font-size: clamp(0.85rem, 1.25vw, 1.1rem); }
+  #deck .ph-node.is-planned b { color: var(--pp-dim); }
+  #deck .ph-node span { display: block; font-weight: 300; color: var(--pp-dim); font-size: clamp(0.7rem, 0.95vw, 0.85rem); }
+  #deck .ph-core { left: 50%; top: 50%; padding: 1.1rem 1.8rem; border: 1px solid var(--pp-amber); background: #2a2118; box-shadow: 0 0 40px rgba(224, 164, 88, 0.25); }
+  #deck .ph-core b { display: block; font-weight: 600; color: var(--pp-amber); font-size: clamp(1.4rem, 2.4vw, 2.2rem); }
+  #deck .ph-core span { display: block; font-weight: 300; color: var(--pp-ink); font-size: clamp(0.8rem, 1.1vw, 1rem); }
+  #deck .ph-legend { position: absolute; right: 0; bottom: -0.5rem; display: flex; gap: 1.4rem; font-family: "Montserrat", sans-serif; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .ph-legend span::before { content: ""; display: inline-block; width: 1.6rem; margin-right: 0.5rem; vertical-align: middle; border-top: 1.5px solid var(--pp-amber); }
+  #deck .ph-legend .is-planned::before { border-top: 1.5px dashed rgba(242, 239, 233, 0.5); }
+  /* Gantt, a quarter larger than the shared component's default */
+  #deck .pg-full { width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 90rem); gap: clamp(0.3rem, 1.1vh, 0.75rem); }
+  #deck .pg-full .pg-head,
+  #deck .pg-full .pg-row { gap: 1.55rem; }
+  #deck .pg-full .pg-track { height: clamp(1rem, 2.75vh, 1.63rem); }
+  #deck .pg-full .pg-label { font-size: clamp(0.98rem, 1.44vw, 1.31rem); }
+  #deck .pg-full .pg-month,
+  #deck .pg-full .pg-foot b { font-size: clamp(0.75rem, 1.06vw, 0.94rem); }
+  #deck .pg-full .pg-foot .pg-track { height: 2rem; }
+  /* Data model -> data dictionary */
+  #deck .pp-dd {
+    position: absolute;
+    top: clamp(12rem, 29vh, 15.5rem);
+    bottom: clamp(4rem, 11vh, 6.5rem);
+    left: 50%;
+    width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 96rem);
+    transform: translateX(-50%);
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr clamp(5rem, 8vw, 9rem) 1fr;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .dd-panel { padding: clamp(1.5rem, 2.8vw, 3rem); border-radius: 0.9rem; border: 1px solid rgba(242, 239, 233, 0.3); background: rgba(26, 23, 20, 0.85); }
+  #deck .dd-dict { border-color: var(--pp-amber); background: rgba(42, 33, 24, 0.85); box-shadow: 0 0 40px rgba(224, 164, 88, 0.18); }
+  #deck .dd-tag { display: block; margin-bottom: 1.5rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.8rem, 1.1vw, 1.05rem); letter-spacing: 0.18em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .dd-dict .dd-tag { color: var(--pp-amber); }
+  #deck .dd-model pre { margin: 0; font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: clamp(1.05rem, 1.75vw, 1.65rem); line-height: 1.65; color: var(--pp-dim); white-space: pre; }
+  #deck .dd-model pre b { font-weight: 600; color: var(--pp-ink); }
+  #deck .dd-dict dl { margin: 0; display: grid; gap: 1.3rem; }
+  #deck .dd-dict dt { font-weight: 500; color: var(--pp-ink); font-size: clamp(1.15rem, 1.8vw, 1.7rem); }
+  #deck .dd-dict dd { margin: 0.15rem 0 0; font-weight: 300; color: var(--pp-dim); font-size: clamp(1rem, 1.5vw, 1.4rem); line-height: 1.45; }
+  #deck .dd-arrow { position: relative; height: 3px; margin: 0 1.2rem; background: var(--pp-amber); }
+  #deck .dd-arrow::after { content: ""; position: absolute; right: -2px; top: 50%; width: 1.2rem; height: 1.2rem; border-top: 3px solid var(--pp-amber); border-right: 3px solid var(--pp-amber); transform: translateY(-50%) rotate(45deg); }
+  /* Skill as a document */
+  #deck .pp-skill {
+    position: absolute;
+    top: clamp(12rem, 29vh, 15.5rem);
+    bottom: 0;
+    left: 50%;
+    width: min(100% - 2 * clamp(3rem, 8vw, 9rem), 62rem);
+    transform: translateX(-50%);
+    z-index: 10;
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 97%);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent 97%);
+  }
+  #deck .sk-doc { border-radius: 0.6rem 0.6rem 0 0; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55); overflow: hidden; }
+  #deck .sk-tab { display: flex; align-items: baseline; gap: 1rem; padding: 0.7rem 1.4rem; background: #2a2622; border-bottom: 1px solid rgba(0, 0, 0, 0.4); font-family: "Montserrat", sans-serif; }
+  #deck .sk-tab b { font-weight: 600; font-size: clamp(0.85rem, 1.1vw, 1rem); color: var(--pp-amber); }
+  #deck .sk-tab span { font-size: clamp(0.7rem, 0.9vw, 0.82rem); letter-spacing: 0.08em; color: var(--pp-dim); }
+  #deck .sk-page { padding: clamp(1.4rem, 2.6vw, 2.6rem) clamp(1.6rem, 3.4vw, 3.4rem); background: #f4f0e8; color: #3a352e; font-family: "Poppins", sans-serif; font-weight: 300; font-size: clamp(0.9rem, 1.25vw, 1.15rem); line-height: 1.55; }
+  #deck .sk-page p { margin: 0 0 0.8rem; }
+  #deck .sk-page strong { font-weight: 500; color: #1d1a16; }
+  #deck .sk-page i { font-style: normal; color: #c08033; }
+  #deck .sk-front { margin-bottom: 1.2rem; padding: 0.7rem 1rem; border-radius: 0.4rem; background: #e9e3d7; font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.85em; line-height: 1.5; }
+  #deck .sk-front b { font-weight: 600; color: #7a5a2e; }
+  #deck .sk-page .sk-h1 { margin: 0 0 1rem; font-weight: 600; font-size: 1.6em; line-height: 1.2; color: #1d1a16; }
+  #deck .sk-page .sk-h2 { margin: 1.3rem 0 0.5rem; font-weight: 600; font-size: 1.2em; color: #1d1a16; }
+  #deck .sk-page ol,
+  #deck .sk-page ul { margin: 0 0 0.8rem; padding-left: 1.4em; list-style: decimal; }
+  #deck .sk-page ul { list-style: disc; }
+  #deck .sk-page li::marker { color: #c08033; }
+  #deck .sk-page code { padding: 0.05em 0.35em; border-radius: 0.25rem; background: #e9e3d7; font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.88em; }
+  #deck .sk-page table { width: 100%; border-collapse: collapse; font-size: 0.92em; }
+  #deck .sk-page th { text-align: left; font-weight: 600; color: #1d1a16; border-bottom: 1.5px solid #c9c0b0; padding: 0.3rem 0.6rem; }
+  #deck .sk-page td { border-bottom: 1px solid #ddd5c6; padding: 0.3rem 0.6rem; }
+  /* Planar meshes: the three figures centred in the space below the title */
+  #deck .pv-row { top: clamp(12rem, 29vh, 15.5rem); align-content: center; }
+  /* Planar mesh lineage: the three highlighted methods as figures */
+  #deck .pln-lane { grid-template-columns: 13rem 1fr; }
+  #deck .pln-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4rem; }
+  #deck .pln-items > div + div::before { left: -1.2rem; }
+  #deck .pp-lineage { bottom: clamp(15rem, 36vh, 24rem); gap: 0.5rem; }
+  #deck .pln-shots {
+    position: absolute;
+    left: clamp(3rem, 8vw, 9rem);
+    right: clamp(3rem, 8vw, 9rem);
+    bottom: clamp(5rem, 12vh, 7.5rem);
+    z-index: 10;
+    display: grid;
+    /* columns in proportion to each figure's aspect ratio, so all three share one height uncropped */
+    grid-template-columns: 2.8fr 3.11fr 4.66fr;
+    align-items: end;
+    gap: 1.4rem;
+  }
+  #deck .pln-shots figure { margin: 0; min-height: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  #deck .pln-shots img { display: block; width: 100%; height: auto; border-radius: 0.5rem; border: 1px solid var(--pp-amber); }
+  #deck .pln-shots figcaption { font-family: "Montserrat", sans-serif; font-size: clamp(0.62rem, 0.85vw, 0.75rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-amber); }
+  /* Tekton: three FEA screenshots in a row, columns in proportion to each image's aspect ratio */
+  #deck .pp-tekton {
+    position: absolute;
+    top: clamp(12rem, 29vh, 15.5rem);
+    bottom: clamp(3rem, 8vh, 5rem);
+    left: clamp(3rem, 8vw, 9rem);
+    right: clamp(3rem, 8vw, 9rem);
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 2.245fr 1.604fr 1.825fr;
+    align-content: center;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  #deck .pp-tekton img { display: block; width: 100%; height: auto; border-radius: 0.5rem; }
+  /* Acoustics: a round dome in section, focusing sound between two people */
+  #deck .pp-dome {
+    position: absolute;
+    top: clamp(11rem, 26vh, 14rem);
+    bottom: clamp(3rem, 8vh, 5rem);
+    left: clamp(4rem, 12vw, 14rem);
+    right: clamp(4rem, 12vw, 14rem);
+    z-index: 10;
+  }
+  #deck .pp-dome svg { width: 100%; height: 100%; overflow: visible; font-family: "Montserrat", sans-serif; }
+  #deck .pp-dome line { stroke: rgba(224, 164, 88, 0.7); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+  #deck .pp-dome .dm-floor { stroke: rgba(242, 239, 233, 0.3); }
+  #deck .pp-dome .dm-shell { fill: none; stroke: var(--pp-ink); stroke-width: 4.5; stroke-linejoin: round; }
+  #deck .pp-dome .dm-person { fill: #e5484d; filter: drop-shadow(0 0 8px rgba(229, 72, 77, 0.7)); }
+  #deck .pp-dome text { fill: #e5484d; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+  /* Acoustics 2 of 2: added panels (image) beside the embedded alternative (cards) */
+  #deck .pp-ac2 { position: absolute; inset: clamp(11rem, 26vh, 14rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 8vh, 5rem); z-index: 10; display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  #deck .pp-ac2 .ac2-shot { margin: 0; height: 100%; display: flex; align-items: center; justify-content: center; }
+  #deck .pp-ac2 .ac2-shot img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
+  #deck .pp-ac2 .pp-cards { position: static; inset: auto; grid-template-columns: 1fr; gap: clamp(0.8rem, 2vh, 1.4rem); }
+  /* Assembly 2 of 3: one diagram above each card */
+  #deck .at-fig { width: 100%; height: auto; max-height: 32vh; margin-bottom: 0.8rem; overflow: visible; font-family: "Montserrat", sans-serif; }
+  #deck .at-fig .at-ghost { fill: none; stroke: rgba(242, 239, 233, 0.35); stroke-width: 1.2; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+  #deck .at-fig .at-built { fill: rgba(242, 239, 233, 0.16); stroke: var(--pp-ink); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+  #deck .at-fig .at-next { fill: rgba(224, 164, 88, 0.25); stroke: var(--pp-amber); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+  #deck .at-fig .at-glue { fill: rgba(224, 164, 88, 0.75); }
+  #deck .at-fig .at-scan { fill: var(--pp-silicon); }
+  #deck .at-fig .at-dim { stroke: rgba(242, 239, 233, 0.35); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  #deck .at-text { display: flex; flex-direction: column; gap: 0.6rem; }
+  #deck .at-fig text { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+  #deck .at-fig .at-l-ghost { fill: var(--pp-dim); }
+  #deck .at-fig .at-l-built { fill: var(--pp-ink); }
+  #deck .at-fig .at-l-next { fill: var(--pp-amber); }
+  /* Assembly 3 of 3: reference projects above the cards */
+  #deck .pp-asm { position: absolute; inset: clamp(10rem, 24vh, 13rem) clamp(4rem, 12vw, 14rem) clamp(2.5rem, 7vh, 4.5rem); z-index: 10; display: flex; flex-direction: column; justify-content: center; gap: clamp(1.5rem, 4vh, 3rem); }
+  #deck .pp-asm .asm-shots { display: grid; grid-template-columns: 1.842fr 1.842fr 1.5fr; gap: clamp(1rem, 2vw, 2rem); align-items: end; }
+  #deck .pp-asm figure { margin: 0; }
+  #deck .pp-asm img { display: block; width: 100%; height: auto; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); }
+  #deck .pp-asm figcaption { margin-top: 0.5rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.6rem, 0.8vw, 0.72rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .pp-asm .pp-cards { position: static; inset: auto; }
+  /* HIL concept: bullets beside Candela's Los Manantiales */
+  #deck .pp-candela { position: absolute; inset: clamp(11rem, 26vh, 14rem) clamp(4rem, 12vw, 14rem) clamp(3rem, 8vh, 5rem); z-index: 10; display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; font-family: "Poppins", sans-serif; }
+  #deck .pp-candela ul { margin: 0; padding-left: 1.1em; list-style: disc; }
+  #deck .pp-candela li { margin-bottom: 1rem; font-weight: 300; font-size: clamp(1rem, 1.6vw, 1.45rem); line-height: 1.5; color: var(--pp-ink); }
+  #deck .pp-candela li::marker { color: var(--pp-amber); }
+  #deck .pp-candela figure { margin: 0; min-height: 0; max-height: 100%; display: flex; flex-direction: column; }
+  #deck .pp-candela img { display: block; width: 100%; height: auto; max-height: 100%; object-fit: contain; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); }
+  #deck .pp-candela figcaption { margin-top: 0.5rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.6rem, 0.8vw, 0.72rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
+  /* Coursework: one image per course */
+  #deck .pp-courses { position: absolute; inset: clamp(10rem, 24vh, 13rem) clamp(3rem, 8vw, 9rem) clamp(3rem, 8vh, 5rem); z-index: 10; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 3rem); align-items: center; font-family: "Poppins", sans-serif; }
+  #deck .pp-courses figure { margin: 0; min-height: 0; max-height: 100%; display: flex; flex-direction: column; }
+  #deck .pp-courses img { display: block; width: 100%; height: auto; min-height: 0; object-fit: contain; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); }
+  #deck .pp-courses figcaption { margin-top: 0.8rem; }
+  #deck .pp-courses figcaption b { display: block; font-weight: 500; font-size: clamp(0.95rem, 1.45vw, 1.3rem); color: var(--pp-ink); }
+  #deck .pp-courses figcaption span { display: block; margin-top: 0.2rem; font-family: "Montserrat", sans-serif; font-size: clamp(0.6rem, 0.8vw, 0.72rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
+
+  /* ── architectural-program additions ── */
+  #deck .ap-body {
+    position: absolute;
+    inset: clamp(11rem, 27vh, 15rem) clamp(3rem, 8vw, 9rem) clamp(5.5rem, 13vh, 8rem);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+  }
+  #deck .ap-body > * { width: 100%; max-height: 100%; }
+  #deck .ap-route { display: block; width: 100%; height: auto; max-height: 100%; }
+  #deck .ap-cols {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: clamp(1.2rem, 3vw, 3rem);
+    align-items: center;
+  }
+  #deck .ap-doc {
+    border: 1px solid rgba(164, 158, 146, 0.35);
+    border-radius: 0.4rem;
+    padding: clamp(0.9rem, 2.2vh, 1.5rem) clamp(1rem, 1.8vw, 1.8rem);
+    font-weight: 300;
+    font-size: clamp(0.85rem, 1.15vw, 1.2rem);
+    line-height: 1.5;
+    color: var(--pp-dim);
+    text-align: left;
+  }
+  #deck .ap-doc b { color: var(--pp-ink); font-weight: 500; }
+  #deck .ap-doc p { margin: 0 0 0.7em; }
+  #deck .ap-doc p:last-child { margin-bottom: 0; }
+  #deck .ap-doc-name {
+    display: block;
+    margin-bottom: 0.9em;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(0.6rem, 0.8vw, 0.75rem);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--pp-amber);
+  }
+  #deck .ap-factors {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(0.8rem, 1.8vw, 2rem);
+    text-align: left;
+    font-size: clamp(0.8rem, 1.05vw, 1.15rem);
+  }
+  #deck .ap-factors > div { display: flex; flex-direction: column; gap: 0.7em; border-top: 1px solid rgba(224, 164, 88, 0.55); padding-top: 0.9rem; }
+  #deck .ap-factors b { color: var(--pp-ink); font-weight: 600; font-size: 1.2em; }
+  #deck .ap-factors span { color: var(--pp-dim); font-weight: 300; line-height: 1.35; }
+  #deck .ap-factors i { font-style: normal; color: var(--pp-amber); font-weight: 600; margin-right: 0.4em; }
+  #deck .pp-foot code { font-size: 0.9em; color: var(--pp-ink); }
+  #deck .ap-shots {
+    position: absolute;
+    left: clamp(3rem, 8vw, 9rem);
+    right: clamp(3rem, 8vw, 9rem);
+    bottom: clamp(6rem, 15vh, 9rem);
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+  #deck .ap-shots figure { margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  #deck .ap-shots img { display: block; width: 100%; height: auto; border-radius: 0.5rem; border: 1px solid rgba(242, 239, 233, 0.18); }
+  #deck .ap-shots figcaption { font-family: "Montserrat", sans-serif; font-size: clamp(0.62rem, 0.85vw, 0.75rem); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pp-dim); }
+  #deck .ap-bars {
+    display: grid;
+    gap: clamp(0.45rem, 1.3vh, 0.9rem);
+    max-width: 72rem;
+    margin: 0 auto;
+    font-size: clamp(0.85rem, 1.15vw, 1.2rem);
+  }
+  #deck .ap-bars > div {
+    display: grid;
+    grid-template-columns: minmax(10rem, 32%) 1fr 3.2rem;
+    align-items: center;
+    gap: 1rem;
+  }
+  #deck .ap-bars b { color: var(--pp-ink); font-weight: 400; text-align: left; }
+  #deck .ap-bars i {
+    display: block;
+    height: 0.85em;
+    width: calc(var(--n) / var(--of) * 100%);
+    min-width: 3px;
+    background: var(--pp-amber);
+    border-radius: 2px;
+  }
+  #deck .ap-bars i.is-low { background: var(--pp-silicon); }
+  #deck .ap-bars > div > span { color: var(--pp-dim); font-variant-numeric: tabular-nums; text-align: right; }
+  #deck .ap-ladder {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1.4vh, 0.9rem);
+    text-align: left;
+    font-size: clamp(0.85rem, 1.15vw, 1.2rem);
+  }
+  #deck .ap-ladder li { border-left: 2px solid var(--pp-amber); padding: 0.15em 0 0.15em 0.9em; }
+  #deck .ap-ladder li:nth-child(2) { margin-left: 1.4rem; }
+  #deck .ap-ladder li:nth-child(3) { margin-left: 2.8rem; }
+  #deck .ap-ladder li:nth-child(4) { margin-left: 4.2rem; }
+  #deck .ap-ladder li:nth-child(5) { margin-left: 5.6rem; }
+  #deck .ap-ladder b { display: block; color: var(--pp-ink); font-weight: 500; }
+  #deck .ap-ladder span { color: var(--pp-dim); font-weight: 300; font-size: 0.9em; }
+  #deck .ap-code {
+    margin: 0;
+    padding: clamp(0.9rem, 2.2vh, 1.5rem) clamp(1rem, 1.8vw, 1.8rem);
+    background: #090806;
+    border: 1px solid rgba(164, 158, 146, 0.25);
+    border-radius: 0.4rem;
+    font-size: clamp(0.65rem, 0.95vw, 1.05rem);
+    line-height: 1.6;
+    color: var(--pp-ink);
+    text-align: left;
+    white-space: pre;
+    overflow: hidden;
+  }
+  #deck .ap-next { max-width: 64rem; margin: 0 auto; font-size: clamp(0.95rem, 1.3vw, 1.35rem); }
+`}</style>

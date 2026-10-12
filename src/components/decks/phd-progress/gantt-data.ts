@@ -130,7 +130,4 @@ export const BENCHMARK_ROWS: GanttRow[] = [
   { id: "coursework", label: "Coursework", start: "2026-09-27", end: "2026-12-20", kind: "planned", acts: [] },
 ];
 
-export const BENCHMARK_MILESTONES = [
-  { date: "2026-10-12", label: "Jour-Fixe" },
-  { date: "2026-10-14", label: "Technical meeting" },
-];
+export const BENCHMARK_MILESTONES = [{ date: "2026-10-14", label: "Technical meeting" }];
