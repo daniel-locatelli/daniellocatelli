@@ -14,6 +14,8 @@ interface Props {
   ticks?: { date: string; label: string }[];
   /** Dates of the vertical grid lines; defaults to the tick dates. */
   grid?: string[];
+  /** Date of the "now" line; defaults to the September deck's NOW. */
+  now?: string;
 }
 
 const monthStarts = ["2026-07-01", "2026-08-01", "2026-09-01", "2026-10-01", "2026-11-01", "2026-12-01"];
@@ -24,6 +26,7 @@ const {
   range = { start: RANGE_START, end: RANGE_END },
   ticks = MONTHS.map((m, i) => ({ date: monthStarts[i], label: m })),
   grid = ticks.map((t) => t.date),
+  now = NOW,
 } = Astro.props;
 
 const t0 = Date.parse(range.start);
@@ -45,7 +48,7 @@ const pct = (date: string) => ((Date.parse(date) - t0) / span) * 100;
         <div class="pg-track">
           {grid.map((d) => <i class="pg-grid" style={`left:${pct(d)}%`} />)}
           {MILESTONES.map((m) => <i class="pg-grid pg-grid-mile" style={`left:${pct(m.date)}%`} />)}
-          <i class="pg-grid pg-grid-now" style={`left:${pct(NOW)}%`} />
+          <i class="pg-grid pg-grid-now" style={`left:${pct(now)}%`} />
           <span class="pg-bar" style={`left:${pct(r.start)}%;width:${pct(r.end) - pct(r.start)}%`} />
         </div>
       </div>
@@ -54,7 +57,7 @@ const pct = (date: string) => ((Date.parse(date) - t0) / span) * 100;
   <div class="pg-row pg-foot">
     <span></span>
     <div class="pg-track">
-      <i class="pg-now" style={`left:${pct(NOW)}%`}><b>now</b></i>
+      <i class="pg-now" style={`left:${pct(now)}%`}><b>now</b></i>
       {MILESTONES.map((m) => <i class="pg-mile" style={`left:${pct(m.date)}%`}><b>{m.label}</b></i>)}
     </div>
   </div>

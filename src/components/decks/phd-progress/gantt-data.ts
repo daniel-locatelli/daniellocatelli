@@ -115,3 +115,22 @@ const span = (Date.parse(RANGE_END) - t0) / DAY;
 export function pct(date: string): number {
   return (((Date.parse(date) - t0) / DAY) / span) * 100;
 }
+
+/**
+ * The architectural-program deck: the September sections, condensed, with
+ * the agent-design benchmark as the current row.
+ */
+export const BENCHMARK_ROWS: GanttRow[] = [
+  { id: "compas", label: "COMPAS study · PRs", start: "2026-07-09", end: "2026-09-07", kind: "done", acts: [] },
+  { id: "plates", label: "Planar meshing algorithms", start: "2026-08-12", end: "2026-09-26", kind: "done", acts: [] },
+  { id: "structure", label: "Structural analysis", start: "2026-09-10", end: "2026-09-27", kind: "done", acts: [] },
+  { id: "hil", label: "HIL case study", start: "2026-09-14", end: "2026-10-14", kind: "ongoing", acts: [] },
+  { id: "benchmark", label: "Agent-design benchmark", start: "2026-10-02", end: "2026-10-31", kind: "now", acts: [] },
+  { id: "acoustics", label: "Acoustics · assembly", start: "2026-10-14", end: "2026-12-15", kind: "planned", acts: [] },
+  { id: "coursework", label: "Coursework", start: "2026-09-27", end: "2026-12-20", kind: "planned", acts: [] },
+];
+
+export const BENCHMARK_MILESTONES = [
+  { date: "2026-10-12", label: "Jour-Fixe" },
+  { date: "2026-10-14", label: "Technical meeting" },
+];
