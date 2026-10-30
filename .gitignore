@@ -48,3 +48,4 @@ scripts/benchmark-results.json
 
 # Brainstorming companion mockups
 .superpowers/
+.claude/worktrees/
