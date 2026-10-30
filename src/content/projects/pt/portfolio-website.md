@@ -2,9 +2,9 @@
 Cover: /assets/content/projects/portfolio-website/homepage-screenshot-laptop.png
 CoverAlt: "A página inicial de daniellocatelli.com exibida em um laptop."
 Name: Site Portfólio
-Description: "Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, uma esfera geodésica movida pelo scroll, apresentações de slides no navegador e uma superfície pronta para agentes na Cloudflare."
+Description: "Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, ensaios, apresentações de slides no navegador e uma superfície pronta para agentes na Cloudflare."
 DateStart: "2024-04-27"
-Updated: "2026-08-28"
+Updated: "2026-10-30"
 Organization: "Daniel Locatelli"
 Category: Software
 Tags:
@@ -12,7 +12,6 @@ Tags:
   - Astro
   - TypeScript
   - Claude
-  - Three.js
   - Cloudflare
 Link:
   Text: daniellocatelli.com
@@ -34,7 +33,6 @@ Este é o site que você está lendo agora. Ele começou em abril de 2024 como u
 - [**Astro**](https://astro.build/) com TypeScript para o site em si, [**React**](https://react.dev/) para as poucas ilhas que precisam de interatividade e [**Tailwind CSS**](https://tailwindcss.com/) para os estilos.
 - [**Astro Content Collections**](https://docs.astro.build/en/guides/content-collections/) para todo o conteúdo, escrito em markdown e MDX com frontmatter tipado e validado no momento do build.
 - [**Claude**](https://www.anthropic.com/claude) (Anthropic) para o chat da página inicial, com o [**Supabase**](https://supabase.com/) como banco vetorial para a recuperação de contexto.
-- [**Three.js**](https://threejs.org/) para a esfera geodésica.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) com Static Assets para hospedagem, cache na borda e os endpoints voltados a agentes; as páginas pré-renderizadas são servidas direto da borda, e o Worker só roda para os endpoints de chat e MCP.
 
 ## Claude Code como sistema de gestão de conteúdo
@@ -55,7 +53,7 @@ O site está disponível em inglês, português e alemão. Não há nenhum servi
 
 ## Chat com IA na página inicial
 
-A página inicial abre com um chat baseado no Claude. Os visitantes podem perguntar no que estou trabalhando, onde estudei, quais ferramentas uso ou qualquer outra coisa coberta pelo site, e recebem uma resposta baseada no conteúdo real, e não uma resposta genérica.
+A página inicial é deliberadamente curta: meu nome, uma linha sobre o que pesquiso, um chat baseado no Claude e uma lista de ensaios. O chat é a principal porta de entrada. Três perguntas sugeridas ficam acima do campo de texto, para que o visitante possa perguntar do que trata o meu doutorado ou o que construí antes com um único clique, e toda resposta se baseia no conteúdo real deste site, e não em uma resposta genérica.
 
 ![O campo de chat na página inicial: um campo de texto arredondado com "Ask me something..." e uma seta de envio, e a legenda "Powered by Claude Haiku 4.5" logo abaixo.](../../../assets/content/projects/portfolio-website/chat-bot.png)
 
@@ -63,11 +61,9 @@ Por baixo dos panos, um pipeline de conhecimento transforma as coleções de con
 
 ![Diagrama de arquitetura: no build, o conteúdo markdown do site é dividido em trechos de conhecimento, transformado em embeddings pela Voyage AI e armazenado no Supabase; em tempo de execução, a pergunta do visitante é embutida, os trechos mais próximos são recuperados e passados ao Claude, que transmite uma resposta fundamentada de volta à página.](/assets/content/projects/portfolio-website/chat-pipeline-pt.svg)
 
-## A esfera geodésica
+## Ensaios
 
-Mais abaixo na página inicial, entre as ofertas de serviços e a seção "Arquiteto + Programador", fica uma esfera geodésica renderizada com Three.js. Ela segue a construção que Buckminster Fuller tornou famosa: partir de um icosaedro, subdividir cada face, projetar os vértices sobre uma esfera e tomar o dual, de modo que os doze vértices originais viram pentágonos e todo o resto vira hexágonos. A esfera gira conforme você rola a página, ligando o movimento da página à geometria. As arestas verdes dos polígonos são desenhadas como faixas finas no espaço da tela, e não como linhas GL brutas de um pixel, para que permaneçam suaves e com espessura uniforme em qualquer tela, e as faces são levemente recuadas em profundidade para que as arestas nunca tremulem contra a superfície. Uma leve névoa em direção ao fundo preto da página esmaece as faces do lado de trás da esfera, dando profundidade à cena.
-
-É também uma referência à minha própria trajetória: estruturas geodésicas e leves são um tema recorrente nos projetos e pesquisas deste site, do [Pavilhão O3](/pt/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol), onde tudo começou de verdade, passando pelo [Common Sky](/pt/projects/common-sky-by-artengineering-for-studio-other-spaces) e pela minha dissertação de mestrado [Building Across Scales](/pt/research/building-across-scales), até o meu doutorado sobre estruturas de madeira. O Three.js é carregado logo depois que a primeira tela é desenhada, em um momento ocioso, para nunca ficar no caminho crítico do carregamento inicial da página, mas já estar pronto quando você rolar até a esfera.
+Boa parte do que eu vendia como serviço, plugins, aplicativos web, painéis, hoje um modelo de linguagem escreve em uma tarde. Por isso a página inicial não lista mais serviços. Ela lista ensaios: algumas peças longas sobre o que continua valioso em arquitetura e engenharia quando o código fica barato, publicadas cerca de uma vez por mês. Cada ensaio é um arquivo markdown simples em sua própria coleção de conteúdo, então publicar um é um único commit, e o chat pode responder perguntas sobre ele assim que o pipeline de conhecimento for executado.
 
 ## Modo apresentação
 
@@ -95,9 +91,7 @@ Fazer a negociação de conteúdo funcionar em páginas pré-renderizadas exigiu
 O Astro renderiza o site em HTML majoritariamente estático, o que já lhe dá uma vantagem inicial. As pontuações de 100 no Lighthouse em desempenho, acessibilidade, boas práticas e SEO vêm então de não carregar o que o visitante ainda não precisa:
 
 - As imagens chegam em tamanhos responsivos com dimensões explícitas, carregadas sob demanda pouco antes de entrarem na área visível; as fontes são reduzidas ao subconjunto necessário e pré-carregadas.
-- O Three.js carrega num momento ocioso e só redesenha a esfera enquanto ela está em movimento.
 - A janela do chat só é baixada quando o visitante começa a digitar, de modo que o campo de entrada da abertura carrega apenas alguns kilobytes de JavaScript.
-- Os logotipos do mapa de competências são imagens separadas carregadas sob demanda, em vez de SVG embutido, o que reduziu o HTML da página inicial de cerca de 350 KB para menos de 70 KB.
 
 ![Resultado do Lighthouse: 100 em desempenho, acessibilidade, boas práticas e SEO](../../../assets/content/projects/portfolio-website/result-lighthouse.png)
 
@@ -111,4 +105,4 @@ O site também hospeda páginas que não são linkadas de lugar nenhum e existem
 
 - **Prévias de links no build.** Links externos listados em uma página são exibidos como cartões de prévia. Títulos, descrições, imagens e favicons são buscados uma única vez e guardados em cache no repositório, de modo que o build é reprodutível e nenhuma requisição a terceiros acontece ao carregar a página.
 - **Sem links quebrados.** Todos os links do site, para suas próprias páginas, para os arquivos que cada página carrega e para os ícones e notas de rodapé que cada página aponta dentro de si mesma, são verificados contra o build final, de modo que nada quebrado vai para o ar. Links para outros sites são varridos uma vez por semana e reportados, já que esses quebram no seu próprio ritmo.
-- **Tooltips em toda parte.** Um único sistema de tooltip (um painel popover com seta, posicionado e invertido por poucas linhas de JavaScript) atende todos os tooltips do site: notas de rodapé em markdown mostram a nota no próprio lugar ao passar o mouse, para que o leitor não precise pular até o fim da página; cada ferramenta do Mapa de Conhecimento na página inicial explica onde e como eu a uso; os ícones sociais do rodapé, da seção de contato e do cabeçalho do CV indicam seu destino; e os controles das apresentações de slides mostram seu atalho de teclado. Não resta nenhum tooltip nativo do navegador.
+- **Tooltips em toda parte.** Um único sistema de tooltip (um painel popover com seta, posicionado e invertido por poucas linhas de JavaScript) atende todos os tooltips do site: notas de rodapé em markdown mostram a nota no próprio lugar ao passar o mouse, para que o leitor não precise pular até o fim da página; os ícones sociais do rodapé e do cabeçalho do CV indicam seu destino; e os controles das apresentações de slides mostram seu atalho de teclado. Não resta nenhum tooltip nativo do navegador.
