@@ -45,3 +45,6 @@ tmp_*.json
 
 # Benchmark results (generated)
 scripts/benchmark-results.json
+
+# Brainstorming companion mockups
+.superpowers/
