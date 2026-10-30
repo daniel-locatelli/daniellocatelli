@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { importCoverImage } from "src/lib/blog-helpers";
-import { getEntrySlug } from "src/lib/routes-helpers";
+import { getEntrySlug, isPublishedId } from "src/lib/routes-helpers";
 
 export const prerender = false;
 
@@ -27,7 +27,9 @@ export const GET: APIRoute = async ({ url }) => {
 
   for (const collectionName of COLLECTIONS) {
     const collection = await getCollection(collectionName);
-    const entry = collection.find((e) => getEntrySlug(e) === slug);
+    const entry = collection.find(
+      (e) => isPublishedId(e.id) && getEntrySlug(e) === slug,
+    );
     if (!entry) continue;
 
     const image = await importCoverImage(entry, images);

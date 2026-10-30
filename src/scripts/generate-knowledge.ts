@@ -5,10 +5,11 @@
  * clean markdown knowledge files for embedding into Supabase.
  *
  * Sources:
- * 1. Content collections (projects, research, teaching, publications) — all locales
+ * 1. Content collections (projects, research, teaching, publications, and
+ *    published essays; `_` drafts are skipped) — all locales
  * 2. CV data from content collections (experiences, education, certifications,
  *    scholarships, courses-attended, skills)
- * 3. Homepage content from i18n/home files (en, pt)
+ * 3. Homepage description and body from content/pages/<locale>/index.md
  *
  * Run: npx tsx src/scripts/generate-knowledge.ts
  */

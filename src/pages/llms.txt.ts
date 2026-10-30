@@ -42,7 +42,7 @@ export const GET: APIRoute = async () => {
     {
       title: "About",
       entries: [
-        { title: "Homepage", url: `${SITE}/`, summary: "Bio, current role, contact." },
+        { title: "Homepage", url: `${SITE}/`, summary: "Bio, current role, AI chat, essays." },
         { title: "CV", url: `${SITE}/cv`, summary: "Experience, education, skills." },
       ],
     },
