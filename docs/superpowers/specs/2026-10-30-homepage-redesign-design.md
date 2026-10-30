@@ -71,8 +71,9 @@ locales.
 
 - New collection `essays` in `src/content.config.ts`, files in
   `src/content/essays/{en,pt,de}/<slug>.md(x)`.
-- Frontmatter: `Name`, `Description` (the one-line dek on the homepage),
-  `Date` (publication date), `Cover`, `CoverAlt`, optional `Updated`.
+- Frontmatter: the shared `pageSchema` used by every content collection:
+  `Name`, `Description` (the one-line dek on the homepage), `DateStart`
+  (publication date, `YYYY-MM-DD`), `Cover`, `CoverAlt`, optional `Updated`.
   Same house rules as other content: headings start at `##`, no em dashes,
   SVG covers need a `-social.png` twin.
 - Route: add `"essays"` to the collection list in
