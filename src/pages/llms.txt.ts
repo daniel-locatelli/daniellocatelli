@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { formatLlmsTxt, type LlmsTxtSection } from "@/lib/llms-txt-format";
+import { isPublishedId } from "@/lib/routes-helpers";
 
 export const prerender = true;
 
@@ -26,7 +27,10 @@ async function sectionFor<T extends "projects" | "research" | "teaching" | "publ
   collection: T,
   title: string,
 ): Promise<LlmsTxtSection> {
-  const entries = await getCollection(collection, (e) => e.id.startsWith(`${LOCALE}/`));
+  const entries = await getCollection(
+    collection,
+    (e) => e.id.startsWith(`${LOCALE}/`) && isPublishedId(e.id),
+  );
   return {
     title,
     entries: entries.map((e) => entryToLink(collection, e)),

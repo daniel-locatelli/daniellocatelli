@@ -1,6 +1,7 @@
 import type { APIRoute, GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { mdxToPlainMarkdown } from "@/lib/mdx-to-plain-markdown";
+import { isPublishedId } from "@/lib/routes-helpers";
 
 export const prerender = true;
 
@@ -33,6 +34,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   for (const collection of COLLECTIONS) {
     const entries = await getCollection(collection);
     for (const entry of entries) {
+      if (!isPublishedId(entry.id)) continue;
       // entry.id is e.g. "en/buildsystems-website" or "pt/some-slug"
       const [locale, ...slugParts] = entry.id.split("/");
       if (!LOCALES.includes(locale as Locale) || slugParts.length === 0) continue;
