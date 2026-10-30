@@ -1,5 +1,5 @@
 import React, { useState, useRef, lazy, Suspense } from "react";
-import { Send, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { Message, LinkPreview, HeroChatLabels } from "./hero-chat-types";
 
 // The modal (react-markdown + framer-motion) is only loaded once the visitor
@@ -122,21 +122,12 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
     }
   };
 
-  const handleInputSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
+  const sendQuestion = async (question: string) => {
+    const userMessage = question.trim();
+    if (!userMessage || isLoading) return;
 
     preloadModal();
     setIsOpen(true);
-    // Don't clear input immediately, pass it to chat handler
-    handleChatSubmit(e);
-  };
-
-  const handleChatSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
-
-    const userMessage = input.trim();
     setInput("");
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setIsLoading(true);
@@ -177,10 +168,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
         } else {
           setMessages((prev) => [
             ...prev,
-            {
-              role: "assistant",
-              content: labels.errorMessage,
-            },
+            { role: "assistant", content: labels.errorMessage },
           ]);
         }
       }
@@ -189,36 +177,58 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
     setIsLoading(false);
   };
 
+  const handleChatSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    void sendQuestion(input);
+  };
+
   return (
     <>
-      <form onSubmit={handleInputSubmit} className="relative w-full max-w-3xl">
-        <div className="relative flex items-center">
-          <input
-            type="text"
-            id="hero-chat-input"
-            name="hero-chat-input"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onFocus={preloadModal}
-            placeholder={labels.inputPlaceholder}
-            aria-label={labels.inputPlaceholder}
-            autoComplete="off"
-            className="w-full rounded-full border border-zinc-200 bg-black/50 px-6 py-3 pr-12 text-zinc-200 shadow-sm backdrop-blur-sm transition-all focus:border-green-400 focus:ring-2 focus:ring-green-400/20 focus:outline-none"
-          />
-          <button
-            type="submit"
-            disabled={!input.trim() || isLoading}
-            className="absolute right-2 rounded-full p-2 text-zinc-100 transition-colors hover:bg-zinc-800 hover:text-green-400 disabled:cursor-not-allowed disabled:opacity-50"
-            aria-label="Start chat"
-          >
-            <Send size={20} />
-          </button>
+      <div className="w-full">
+        <p className="text-base text-pretty text-zinc-400">{labels.prompt}</p>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {labels.suggestions.map((question) => (
+            <button
+              key={question}
+              type="button"
+              onClick={() => void sendQuestion(question)}
+              onMouseEnter={preloadModal}
+              disabled={isLoading}
+              className="rounded-full border border-zinc-700 px-4 py-2.5 text-sm leading-none text-zinc-100 transition-colors hover:border-green-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {question}
+            </button>
+          ))}
         </div>
-        <div className="mt-4 flex items-center justify-center gap-2 text-xs font-medium text-zinc-400">
-          <Sparkles size={14} className="text-zinc-400" />
-          <span>Powered by {modelName}</span>
-        </div>
-      </form>
+
+        <form onSubmit={handleChatSubmit} className="mt-6">
+          <div className="flex items-center gap-3 rounded-xl border border-zinc-700 py-1.5 pr-1.5 pl-4 transition-colors focus-within:border-green-400">
+            <input
+              type="text"
+              id="hero-chat-input"
+              name="hero-chat-input"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onFocus={preloadModal}
+              placeholder={labels.inputPlaceholder}
+              aria-label={labels.inputPlaceholder}
+              autoComplete="off"
+              className="min-w-0 flex-1 bg-transparent py-2.5 text-[15px] text-zinc-100 placeholder:text-zinc-400 focus:outline-none"
+            />
+            <button
+              type="submit"
+              disabled={!input.trim() || isLoading}
+              className="grid size-10 flex-none place-items-center rounded-[9px] bg-green-500 text-green-950 transition-colors hover:bg-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label="Start chat"
+            >
+              <ArrowRight size={18} aria-hidden="true" />
+            </button>
+          </div>
+        </form>
+
+        <p className="mt-3 text-[13px] text-zinc-400">{labels.note}</p>
+      </div>
 
       {modalRequested && (
         <Suspense fallback={null}>
