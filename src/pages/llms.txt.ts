@@ -12,7 +12,7 @@ function urlFor(collection: string, slug: string): string {
   return `${SITE}/${collection}/${slug}`;
 }
 
-function entryToLink<T extends "projects" | "research" | "teaching" | "publications">(
+function entryToLink<T extends "projects" | "research" | "teaching" | "publications" | "essays">(
   collection: T,
   e: CollectionEntry<T>,
 ) {
@@ -23,7 +23,7 @@ function entryToLink<T extends "projects" | "research" | "teaching" | "publicati
   return { title, url: urlFor(collection, slug), summary };
 }
 
-async function sectionFor<T extends "projects" | "research" | "teaching" | "publications">(
+async function sectionFor<T extends "projects" | "research" | "teaching" | "publications" | "essays">(
   collection: T,
   title: string,
 ): Promise<LlmsTxtSection> {
@@ -46,6 +46,7 @@ export const GET: APIRoute = async () => {
         { title: "CV", url: `${SITE}/cv`, summary: "Experience, education, skills." },
       ],
     },
+    await sectionFor("essays", "Essays"),
     await sectionFor("projects", "Projects"),
     await sectionFor("research", "Research"),
     await sectionFor("teaching", "Teaching"),

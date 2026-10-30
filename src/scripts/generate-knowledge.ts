@@ -138,7 +138,7 @@ function readContentFiles(
 // ─── Content Collections ──────────────────────────────────────────────
 
 function processContentCollections() {
-  const collections = ["projects", "research", "teaching", "publications"];
+  const collections = ["projects", "research", "teaching", "publications", "essays"];
   let count = 0;
 
   for (const collection of collections) {
@@ -148,6 +148,8 @@ function processContentCollections() {
       for (const { data, body, filename } of entries) {
         const baseFilename = filename.replace(/\.(md|mdx)$/, "");
         const isUnpublished = baseFilename.startsWith("_");
+        // Draft essays are not on the CV either, so there is nothing to embed.
+        if (isUnpublished && collection === "essays") continue;
 
         // Build URL
         const urlPrefix = locale === "en" ? "" : `/${locale}`;

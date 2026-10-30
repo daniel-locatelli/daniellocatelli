@@ -8,6 +8,7 @@ export const prerender = false;
 const COLLECTIONS = [
   "projects",
   "research",
+  "essays",
   "teaching",
   "publications",
 ] as const;

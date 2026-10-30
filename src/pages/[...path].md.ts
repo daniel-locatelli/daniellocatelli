@@ -5,8 +5,8 @@ import { isPublishedId } from "@/lib/routes-helpers";
 
 export const prerender = true;
 
-type Coll = "projects" | "research" | "teaching" | "publications";
-const COLLECTIONS: Coll[] = ["projects", "research", "teaching", "publications"];
+type Coll = "projects" | "research" | "teaching" | "publications" | "essays";
+const COLLECTIONS: Coll[] = ["projects", "research", "teaching", "publications", "essays"];
 const LOCALES = ["en", "pt", "de"] as const;
 type Locale = (typeof LOCALES)[number];
 

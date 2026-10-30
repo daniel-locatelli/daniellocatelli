@@ -15,6 +15,7 @@ interface HeroChatProps {
 const COLLECTION_PREFIXES = [
   "projects",
   "research",
+  "essays",
   "teaching",
   "publications",
 ];

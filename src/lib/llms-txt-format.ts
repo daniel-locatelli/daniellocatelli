@@ -20,6 +20,7 @@ export function formatLlmsTxt(input: LlmsTxtInput): string {
   lines.push(`# ${input.title}`);
   lines.push(`> ${input.tagline}`);
   for (const section of input.sections) {
+    if (section.entries.length === 0) continue;
     lines.push("");
     lines.push(`## ${section.title}`);
     for (const entry of section.entries) {
