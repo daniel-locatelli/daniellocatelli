@@ -29,6 +29,15 @@ export function getFileSlug(id: string): string {
 }
 
 /**
+ * Whether a content entry is published. Files whose slug starts with "_" are
+ * drafts: they get no route, no .md variant, no llms.txt line, and no
+ * knowledge embeddings.
+ */
+export function isPublishedId(id: string): boolean {
+  return !getFileSlug(id).startsWith("_");
+}
+
+/**
  * Get the full URL-ready slug for a content entry.
  * Combines collection name with the file slug.
  * e.g. collection="projects", id="en/air-guitar" → "projects/air-guitar"

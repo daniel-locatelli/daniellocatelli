@@ -1,6 +1,7 @@
 import type { APIRoute, GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { formatLlmsTxt, type LlmsTxtSection } from "@/lib/llms-txt-format";
+import { isPublishedId } from "@/lib/routes-helpers";
 
 export const prerender = true;
 
@@ -25,7 +26,7 @@ function urlFor(locale: Locale, collection: string, slug: string): string {
   return `${SITE}/${locale}/${collection}/${slug}`;
 }
 
-function entryToLink<T extends "projects" | "research" | "teaching" | "publications">(
+function entryToLink<T extends "projects" | "research" | "teaching" | "publications" | "essays">(
   locale: Locale,
   collection: T,
   e: CollectionEntry<T>,
@@ -43,13 +44,14 @@ function entryToLink<T extends "projects" | "research" | "teaching" | "publicati
   return { title, url: urlFor(locale, collection, slug), summary };
 }
 
-async function sectionFor<T extends "projects" | "research" | "teaching" | "publications">(
+async function sectionFor<T extends "projects" | "research" | "teaching" | "publications" | "essays">(
   locale: Locale,
   collection: T,
   title: string,
 ): Promise<LlmsTxtSection> {
-  const entries = await getCollection(collection, (e) =>
-    e.id.startsWith(`${locale}/`),
+  const entries = await getCollection(
+    collection,
+    (e) => e.id.startsWith(`${locale}/`) && isPublishedId(e.id),
   );
   return {
     title,
@@ -71,6 +73,7 @@ export const GET: APIRoute = async ({ params }) => {
         { title: labels.cv, url: `${SITE}/${locale}/cv`, summary: "" },
       ],
     },
+    await sectionFor(locale, "essays", "Essays"),
     await sectionFor(locale, "projects", "Projects"),
     await sectionFor(locale, "research", "Research"),
     await sectionFor(locale, "teaching", "Teaching"),

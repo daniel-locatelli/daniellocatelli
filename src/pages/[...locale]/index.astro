@@ -1,31 +1,19 @@
 ---
-import { siteConfig } from "@/config/site";
+import { getCollection } from "astro:content";
 import { DevModelName, ProdModelName } from "@/config/ai";
-import { Image } from "astro:assets";
-import profilePhoto from "@/assets/avatars/daniel-locatelli-v1.png";
 import homepageCover from "@/assets/content/homepage/homepage-cover.jpeg";
-// WhatsApp link temporarily disabled (number cancelled). To restore: uncomment
-// this import and the WhatsApp <a> blocks below, then update siteConfig.whatsapp.
-// import WhatsApp from "@/assets/ui/digital-glyph-white.svg";
 import Base from "@/layouts/Base.astro";
-import Container from "@/components/Container.astro";
-import { Icon } from "astro-icon/components";
-import SkillsMap from "@/components/SkillsMap.astro";
-import Tooltip from "@/components/Tooltip.astro";
-import GeodesicDome from "@/components/GeodesicDome.astro";
+import HeroChat from "@/components/HeroChat";
 import type { I18nHome } from "src/i18n/home/types";
-import type { I18nMeta } from "src/i18n/meta/types";
 import { getI18n } from "src/i18n/utils";
 import { getLocale } from "src/lib/routes-helpers";
+import { publishedEssays, essayHref, formatEssayMonth } from "src/lib/essays";
 
 export { getStaticPaths } from "src/lib/routes-helpers";
-import HeroChat from "@/components/HeroChat";
 
 const locale = getLocale(Astro.params);
-
 const home = await getI18n<I18nHome>("home", locale);
-const meta = await getI18n<I18nMeta>("meta", locale);
-const newTabHint = `(${meta.openNewTab})`;
+const essays = publishedEssays(await getCollection("essays"), locale);
 ---
 
 <Base
@@ -37,312 +25,63 @@ const newTabHint = `(${meta.openNewTab})`;
     slug: "",
   }}
 >
-  <Container
-    class="font-body [&_h1]:font-title [&_h2]:font-title relative mt-16 flex flex-col gap-4 text-base md:gap-10 [&_h2]:mb-4 [&_h2]:text-3xl md:[&_h2]:text-4xl [&_h3]:text-xl [&_h4]:text-lg [&_h4]:text-zinc-400 [&_section]:mt-16"
-  >
-    <section id={home.hero.id} class="mt-8! flex justify-center px-8 pt-8 sm:mt-16">
-      <div class="flex shrink flex-col gap-10">
-        <div
-          class="flex max-w-xl shrink flex-col items-center gap-5 select-none sm:flex-row md:justify-between md:gap-0"
-        >
-          <Image
-            src={profilePhoto}
-            widths={[160, 256, 384]}
-            sizes="(min-width: 768px) 128px, (min-width: 640px) 80px, 128px"
-            alt={home.meta.coverAlt}
-            loading="eager"
-            fetchpriority="high"
-            class="order-1 size-32 rounded-full border-2 border-zinc-200 sm:size-20 md:order-2 md:h-32 md:w-32 md:border-3"
-          />
-          <h1
-            class="order-2 text-2xl tracking-wide sm:text-3xl md:order-1 md:space-y-2"
+  <div class="mx-auto w-full max-w-[688px] px-6 pt-18 pb-8 sm:pt-30">
+    <section aria-labelledby="home-name">
+      <h1
+        id="home-name"
+        class="font-title text-4xl leading-tight font-semibold tracking-[0.01em] text-zinc-100 sm:text-[44px]"
+      >
+        Daniel Locatelli
+      </h1>
+      <p class="mt-3.5 text-[15px] leading-normal text-zinc-400">
+        {home.intro.role}
+      </p>
+      <p class="mt-7 max-w-[36em] text-[17px] leading-relaxed text-pretty text-zinc-100">
+        {home.intro.bio}
+      </p>
+    </section>
+
+    <section class="mt-11 sm:mt-14" aria-label={home.chat.headerTitle}>
+      <HeroChat
+        client:load
+        modelName={import.meta.env.DEV ? DevModelName : ProdModelName}
+        labels={home.chat}
+      />
+    </section>
+
+    {
+      essays.length > 0 && (
+        <section class="mt-18 sm:mt-24" aria-labelledby="home-essays">
+          <h2
+            id="home-essays"
+            class="border-b border-zinc-800 pb-3.5 text-xs font-medium tracking-[0.12em] text-green-400 uppercase"
           >
-            <span class="block">{home.hero.hi}</span>
-            <span class="block">{home.hero.greeting}</span>
-            <span class="block">{home.hero.title}</span>
-          </h1>
-        </div>
-
-        <p class="font-body max-w-xl" set:html={home.hero.description} />
-
-        <div class="w-full max-w-xl py-4">
-          <HeroChat
-            client:load
-            modelName={import.meta.env.DEV ? DevModelName : ProdModelName}
-            labels={{
-              ...home.hero.chat,
-              requestQuote: home.hero.requestQuote,
-              sendEmail: home.hero.sendEmail,
-            }}
-          />
-        </div>
-      </div>
-    </section>
-
-    <section id={home.service.id}>
-      <div class="container mx-auto">
-        <h2 class="md:text-center">{home.service.title}</h2>
-        <div class="flex flex-col gap-2">
-          {
-            home.service.list.map((service) => (
-              <div class="flex flex-col gap-2 rounded-xl bg-zinc-900 p-8 shadow-lg transition-shadow duration-300 hover:shadow-xl">
-                <div class="flex items-center gap-3">
-                  <Icon
-                    name={service.icon}
-                    class="size-7 shrink-0 print:hidden"
-                  />
-                  <h3 class="flex items-center text-zinc-100">
-                    {service.title}
-                  </h3>
-                </div>
-                <p class="font-body leading-relaxed text-pretty text-zinc-200">
-                  {service.description}
-                </p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <GeodesicDome />
-    </section>
-
-    <section id={home.about.id}>
-      <div class="container mx-auto">
-        <h2 class="md:text-center">{home.about.title}</h2>
-        <div
-          class="font-body mx-auto max-w-4xl space-y-6 text-lg leading-relaxed"
-        >
-          <p class="text-pretty">
-            {home.about.background}
-          </p>
-          <p class="text-pretty">
-            {home.about.approach}
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id={home.projects.id}>
-      <div class="container mx-auto">
-        <h2 class="mb-16 text-3xl md:text-center md:text-4xl">
-          {home.projects.title}
-        </h2>
-        <div class="grid gap-8">
-          {
-            home.projects.list.map((project) => (
-              <div class="flex flex-col overflow-hidden rounded-xl bg-zinc-900 shadow-lg transition-shadow duration-300 hover:shadow-xl">
-                <div class="aspect-video w-full overflow-hidden">
-                  <Image
-                    src={project.imageUrl}
-                    widths={[480, 640, 672, 768, 1024, 1536]}
-                    quality={72}
-                    sizes="(min-width: 768px) 704px, 100vw"
-                    alt={project.imageAlt ?? `Screenshot of ${project.title}`}
-                    class="h-full w-full object-cover"
-                  />
-                </div>
-                <div class="font-body flex grow flex-col p-6">
-                  <h3 class="mb-1 text-xl font-semibold text-pretty text-zinc-100">
-                    {project.title}
-                  </h3>
-                  <a
-                    href={project.contextLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="mb-2 text-xs font-medium tracking-wider text-green-500 uppercase"
-                  >
-                    {project.context}
-                  </a>
-                  <p class="mb-2 text-sm text-pretty text-zinc-300">
-                    {project.description}
-                  </p>
-                  <p class="mb-3 text-sm text-zinc-200">
-                    <strong>{home.projects.tech}</strong> {project.technologies}
-                  </p>
-                  <div class="mt-auto border-t border-zinc-800 pt-3">
-                    {project.internalLink && (
-                      <a
-                        href={project.internalLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="group inline-flex items-center text-sm font-medium text-green-500 transition duration-300 hover:text-green-600"
-                      >
-                        <span class="pr-1">
-                          {home.projects.viewFullArticle}
-                        </span>
-                        <Icon
-                          name="mdi:arrow-right"
-                          class="size-4 shrink-0 print:hidden"
-                        />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section id={home.testimonials.id} class="py-16 text-zinc-200">
-      <h2 class="mb-12 text-3xl md:text-center md:text-4xl">
-        {home.testimonials.title}
-      </h2>
-      <div class="container mx-auto flex flex-col gap-12">
-        {
-          home.testimonials.list.map((rec) => (
-            <div>
-              <Icon name="mdi:format-quote-open" class="ml-4 size-12" />
-              <blockquote class="relative rounded-r-xl border-l-2 border-green-600 pr-4 pl-4 md:mx-6">
-                <p class="text-lg text-pretty italic">{rec.text}</p>
-              </blockquote>
-              <a
-                href={rec.contextLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="mt-3 flex w-fit gap-2 pl-4 hover:text-green-600 md:mx-6 md:pl-4"
-              >
-                <div>
-                  <p class="font-bold">{rec.author}</p>
-                  <p class="flex gap-2">
-                    <span>{rec.context}</span>
-                    <Icon name="mdi:external-link" class="size-3" />
-                  </p>
-                </div>
-              </a>
-            </div>
-          ))
-        }
-      </div>
-    </section>
-
-    <section id={home.expertise.id}>
-      <div class="">
-        <h2
-          class="mb-16 text-3xl text-pretty text-zinc-100 md:text-center md:text-4xl"
-        >
-          {home.expertise.title}
-        </h2>
-        <p
-          class="mb-6 text-lg leading-relaxed text-pretty text-zinc-100 md:text-center md:text-balance"
-        >
-          {home.expertise.description}
-        </p>
-        <div
-          class="font-body mx-auto flex max-w-5xl flex-col items-center rounded-xl bg-zinc-900 px-4 shadow-xl md:px-10"
-        >
-          <SkillsMap />
-        </div>
-      </div>
-    </section>
-
-    <section id={home.contact.id} class="py-20">
-      <div class="space-y-16 md:text-center">
-        <h2 class="text-3xl tracking-wide md:text-4xl lg:text-5xl">
-          {home.contact.title}
-        </h2>
-        <p
-          class="font-body mx-auto max-w-2xl text-lg text-pretty text-zinc-300 md:text-xl"
-        >
-          {home.contact.description}
-        </p>
-        <div
-          class="flex flex-col items-center justify-center space-y-6 sm:flex-row sm:space-y-0 sm:space-x-6"
-        >
-          {
-            /* WhatsApp link temporarily disabled (number cancelled). Restore by
-              updating siteConfig.whatsapp and uncommenting this block + the
-              WhatsApp import at the top of this file.
-          <a
-            href={siteConfig.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Contact Daniel Locatelli on WhatsApp"
-            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 bg-linear-to-r from-green-700 to-green-800 px-8 py-3 text-white transition hover:from-green-800 hover:to-green-900 hover:shadow-[0px_5px_15px_rgba(0,128,0,0.4)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500 md:w-fit"
-          >
-            <WhatsApp aria-hidden="true" class="size-5 md:size-4" />
-            {home.contact.letsTalk}
-          </a>
-          */
-          }
-          <a
-            href={`mailto:${siteConfig.email}`}
-            class="inline-flex w-full items-center justify-center gap-3 rounded-lg border border-green-400 px-8 py-3 text-green-400 transition hover:bg-green-400 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-300 md:w-fit"
-          >
-            <Icon name="mdi:email-outline" class="size-5 md:size-4" />
-            {home.contact.sendEmail}
-          </a>
-        </div>
-        <div class="mt-12 space-y-3">
-          <div class="flex justify-center gap-6">
-            <a
-              href={siteConfig.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`LinkedIn ${newTabHint}`}
-              data-tooltip="contact-tip-linkedin"
-              class="text-zinc-300 transition duration-300 hover:text-green-400"
-            >
-              <Icon
-                name="mdi:linkedin"
-                class="size-6 shrink-0 print:hidden"
-                aria-hidden="true"
-              />
-            </a>
-            <Tooltip id="contact-tip-linkedin" describes={false}>LinkedIn</Tooltip>
-            <a
-              href={siteConfig.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Instagram ${newTabHint}`}
-              data-tooltip="contact-tip-instagram"
-              class="text-zinc-300 transition duration-300 hover:text-green-400"
-            >
-              <Icon
-                name="mdi:instagram"
-                class="size-6 shrink-0 print:hidden"
-                aria-hidden="true"
-              />
-            </a>
-            <Tooltip id="contact-tip-instagram" describes={false}>Instagram</Tooltip>
-            <a
-              href={siteConfig.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`GitHub ${newTabHint}`}
-              data-tooltip="contact-tip-github"
-              class="text-zinc-300 transition duration-300 hover:text-green-400"
-            >
-              <Icon
-                name="mdi:github"
-                class="size-6 shrink-0 print:hidden"
-                aria-hidden="true"
-              />
-            </a>
-            <Tooltip id="contact-tip-github" describes={false}>GitHub</Tooltip>
-            <a
-              href={siteConfig.gitlab}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`GitLab ${newTabHint}`}
-              data-tooltip="contact-tip-gitlab"
-              class="text-zinc-300 transition duration-300 hover:text-green-400"
-            >
-              <Icon
-                name="mdi:gitlab"
-                class="size-6 shrink-0 print:hidden"
-                aria-hidden="true"
-              />
-            </a>
-            <Tooltip id="contact-tip-gitlab" describes={false}>GitLab</Tooltip>
-          </div>
-          <p class="text-center text-sm text-zinc-300">{siteConfig.email}</p>
-        </div>
-      </div>
-    </section>
-  </Container>
+            {home.essays.title}
+          </h2>
+          <ol>
+            {essays.map((essay) => (
+              <li>
+                <a
+                  href={essayHref(essay, locale)}
+                  class="group block border-b border-zinc-800 py-7 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-400"
+                >
+                  <span class="font-title block text-[23px] leading-snug font-semibold text-balance text-zinc-100 group-hover:text-green-400 sm:text-[26px]">
+                    {essay.data.Name}
+                  </span>
+                  {essay.data.Description && (
+                    <span class="mt-2.5 block max-w-[34em] text-[17px] leading-relaxed text-pretty text-zinc-400">
+                      {essay.data.Description}
+                    </span>
+                  )}
+                  <span class="mt-3.5 block text-[13px] text-zinc-400">
+                    {formatEssayMonth(essay.data.DateStart!, locale)}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+  </div>
 </Base>

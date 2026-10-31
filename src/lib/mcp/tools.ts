@@ -57,8 +57,10 @@ export async function listCollection(
   // Dynamic import keeps astro:content out of the top-level module graph so
   // that node:test can load this file without hitting the virtual module.
   const { getCollection } = await import("astro:content");
-  const entries = await getCollection(collection, (e: any) =>
-    e.id.startsWith(`${locale}/`),
+  const { isPublishedId } = await import("../routes-helpers");
+  const entries = await getCollection(
+    collection,
+    (e: any) => e.id.startsWith(`${locale}/`) && isPublishedId(e.id),
   );
   return entries.map((e: any) => entryToItem(e, locale, collection));
 }

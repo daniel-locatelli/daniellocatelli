@@ -7,6 +7,7 @@ import {
   getLocale,
   getAlternateLocales,
   getDeckParentSlug,
+  isPublishedId,
 } from "../../src/lib/routes-helpers";
 
 // IMPORTANT: Astro 5's glob() loader collapses `pt/index.md` to id `pt`
@@ -142,4 +143,11 @@ test("getAlternateLocales: honours a custom slug extractor (decks)", () => {
     getAlternateLocales(deckIds, "digital-futures-2026", getDeckParentSlug),
     ["en", "pt", "de"],
   );
+});
+
+test("isPublishedId: drafts start with an underscore", () => {
+  assert.equal(isPublishedId("en/portfolio-website"), true);
+  assert.equal(isPublishedId("pt/code-is-cheap-judgement-isnt"), true);
+  assert.equal(isPublishedId("en/_code-is-cheap-judgement-isnt"), false);
+  assert.equal(isPublishedId("de/_aids-by-artengineering"), false);
 });

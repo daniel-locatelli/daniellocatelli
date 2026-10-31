@@ -17,4 +17,10 @@ export interface HeroChatLabels {
   errorMessage: string;
   requestQuote: string;
   sendEmail: string;
+  /** Muted line above the starter questions. */
+  prompt: string;
+  /** Small print under the input. */
+  note: string;
+  /** Starter questions shown as chips; clicking one asks it. */
+  suggestions: string[];
 }

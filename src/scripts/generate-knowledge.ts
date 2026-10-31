@@ -5,10 +5,11 @@
  * clean markdown knowledge files for embedding into Supabase.
  *
  * Sources:
- * 1. Content collections (projects, research, teaching, publications) — all locales
+ * 1. Content collections (projects, research, teaching, publications, and
+ *    published essays; `_` drafts are skipped) — all locales
  * 2. CV data from content collections (experiences, education, certifications,
  *    scholarships, courses-attended, skills)
- * 3. Homepage content from i18n/home files (en, pt)
+ * 3. Homepage description and body from content/pages/<locale>/index.md
  *
  * Run: npx tsx src/scripts/generate-knowledge.ts
  */
@@ -138,7 +139,7 @@ function readContentFiles(
 // ─── Content Collections ──────────────────────────────────────────────
 
 function processContentCollections() {
-  const collections = ["projects", "research", "teaching", "publications"];
+  const collections = ["projects", "research", "teaching", "publications", "essays"];
   let count = 0;
 
   for (const collection of collections) {
@@ -148,6 +149,8 @@ function processContentCollections() {
       for (const { data, body, filename } of entries) {
         const baseFilename = filename.replace(/\.(md|mdx)$/, "");
         const isUnpublished = baseFilename.startsWith("_");
+        // Draft essays are not on the CV either, so there is nothing to embed.
+        if (isUnpublished && collection === "essays") continue;
 
         // Build URL
         const urlPrefix = locale === "en" ? "" : `/${locale}`;

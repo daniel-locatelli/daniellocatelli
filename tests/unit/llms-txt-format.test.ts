@@ -2,6 +2,19 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { formatLlmsTxt, type LlmsTxtEntry } from "../../src/lib/llms-txt-format";
 
+test("formatLlmsTxt: skips sections with no entries", () => {
+  const out = formatLlmsTxt({
+    title: "T",
+    tagline: "tag",
+    sections: [
+      { title: "Essays", entries: [] },
+      { title: "Projects", entries: [{ title: "P", url: "https://x/p" }] },
+    ],
+  });
+  assert.equal(out.includes("## Essays"), false);
+  assert.equal(out.includes("## Projects"), true);
+});
+
 const sample: { sections: { title: string; entries: LlmsTxtEntry[] }[] } = {
   sections: [
     {

@@ -17,6 +17,7 @@ const COLLECTIONS = [
   "certifications",
   "courses-attended",
   "education",
+  "essays",
   "experiences",
   "projects",
   "publications",

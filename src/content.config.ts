@@ -278,6 +278,7 @@ const deckSchema = z.object({
 export const collections = {
   projects: contentCollection("./src/content/projects"),
   research: contentCollection("./src/content/research"),
+  essays: contentCollection("./src/content/essays"),
   // Decks live alongside their teaching writeups (e.g. teaching/en/<slug>/{index.md, deck.mdx}),
   // so the teaching glob excludes deck.mdx and the decks collection picks it up separately.
   // Two collections, one base directory: unusual but deliberate, to keep all material for one
