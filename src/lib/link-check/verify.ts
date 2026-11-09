@@ -58,10 +58,55 @@ function isGone(status: number | null): boolean {
   return status === 404 || status === 410;
 }
 
+const DOI_HOSTS = new Set(["doi.org", "dx.doi.org", "www.doi.org"]);
+
+/**
+ * Rung 0 for DOI links: ask the DOI registry itself instead of following the
+ * redirect to the publisher. Publishers (Wiley, Science, MDPI, ResearchGate)
+ * bot-wall CI runners, so a followed doi.org link nearly always "fails" even
+ * when the DOI is fine. The handle API answers 200 for a registered DOI and
+ * 404 for an unknown one, without the bot wall. A registered DOI counts as
+ * alive: keeping its target current is the publisher's job, and the DOI is
+ * the stable link we cite. Returns null when the registry gives no clear
+ * answer, so the normal ladder runs.
+ */
+async function verifyDoi(
+  url: string,
+  parsed: URL,
+  probe: Probe,
+): Promise<Outcome | null> {
+  if (!DOI_HOSTS.has(parsed.hostname)) return null;
+  const doi = parsed.pathname.replace(/^\/+/, "");
+  if (!doi.startsWith("10.")) return null;
+
+  const api = await probe(`https://doi.org/api/handles/${doi}?type=URL`, "GET");
+  if (api.status === 200) {
+    return {
+      url,
+      verdict: "alive",
+      status: 200,
+      finalUrl: url,
+      reason: "DOI is registered (doi.org handle API)",
+    };
+  }
+  if (api.status === 404) {
+    return {
+      url,
+      verdict: "confirmed-broken",
+      status: 404,
+      finalUrl: url,
+      reason: "DOI is not registered (doi.org handle API returned 404)",
+    };
+  }
+  return null;
+}
+
 export async function verifyUrl(url: string, probe: Probe): Promise<Outcome> {
   let origin: string;
+  let parsed: URL;
   try {
-    origin = new URL(url).origin + "/";
+    parsed = new URL(url);
+    origin = parsed.origin + "/";
   } catch {
     return {
       url,
@@ -71,6 +116,9 @@ export async function verifyUrl(url: string, probe: Probe): Promise<Outcome> {
       reason: "malformed URL",
     };
   }
+
+  const doiOutcome = await verifyDoi(url, parsed, probe);
+  if (doiOutcome) return doiOutcome;
 
   // Rung 1: HEAD with a browser user agent.
   const head = await probe(url, "HEAD");

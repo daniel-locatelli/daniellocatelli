@@ -30,6 +30,9 @@ test("doi.org shape: a 3xx from HEAD is already success, no GET needed", async (
   const url = "https://doi.org/10.1016/j.autcon.2021.103571";
   let getCalled = false;
   const probe: Probe = async (target, method) => {
+    // Handle API gives no clear answer, so the normal ladder must run.
+    if (target.includes("/api/handles/"))
+      return { status: 503, finalUrl: target };
     if (method === "GET") getCalled = true;
     return { status: 302, finalUrl: target };
   };
@@ -140,4 +143,42 @@ test("a malformed url is unverifiable rather than a crash", async () => {
   const probe = fakeProbe({});
   const out = await verifyUrl("not a url", probe);
   assert.equal(out.verdict, "unverifiable");
+});
+
+test("doi.org: registered DOI is alive via the handle API, publisher never hit", async () => {
+  const url = "https://doi.org/10.1002/ad.1950";
+  const hits: string[] = [];
+  const probe: Probe = async (target, method) => {
+    hits.push(`${method} ${target}`);
+    return target === "https://doi.org/api/handles/10.1002/ad.1950?type=URL"
+      ? { status: 200, finalUrl: target }
+      : { status: 403, finalUrl: target };
+  };
+  const out = await verifyUrl(url, probe);
+  assert.equal(out.verdict, "alive");
+  assert.deepEqual(hits, [
+    "GET https://doi.org/api/handles/10.1002/ad.1950?type=URL",
+  ]);
+});
+
+test("doi.org: unregistered DOI is confirmed broken", async () => {
+  const probe = fakeProbe({
+    "GET https://doi.org/api/handles/10.9999/nope?type=URL": {
+      status: 404,
+      finalUrl: null,
+    },
+  });
+  const out = await verifyUrl("https://dx.doi.org/10.9999/nope", probe);
+  assert.equal(out.verdict, "confirmed-broken");
+  assert.equal(out.status, 404);
+});
+
+test("non-DOI host never calls the handle API", async () => {
+  const hits: string[] = [];
+  const probe: Probe = async (target, method) => {
+    hits.push(`${method} ${target}`);
+    return { status: 200, finalUrl: target };
+  };
+  await verifyUrl("https://example.com/10.1002/x", probe);
+  assert.deepEqual(hits, ["HEAD https://example.com/10.1002/x"]);
 });
