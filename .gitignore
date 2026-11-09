@@ -49,3 +49,4 @@ scripts/benchmark-results.json
 # Brainstorming companion mockups
 .superpowers/
 .claude/worktrees/
+.claude/settings.local.json
