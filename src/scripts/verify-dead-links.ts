@@ -11,6 +11,8 @@
 
 import { appendFile, readFile, writeFile } from "node:fs/promises";
 import { createProbe, verifyUrl, type Outcome } from "../lib/link-check/verify";
+import { findLinkAnchors, sourceToPageUrl } from "../lib/link-check/sources";
+import { siteConfig } from "../config/site";
 
 const CONCURRENCY = 4;
 const REQUEST_DELAY_MS = 500;
@@ -37,6 +39,40 @@ function collectFailures(json: unknown): Map<string, Set<string>> {
   }
 
   return sources;
+}
+
+/**
+ * Rewrite each URL's source files as the live pages that link to it, with the
+ * anchor nearest the link (e.g. its footnote), so the report reads as
+ * clickable `https://daniellocatelli.com/research/foo#fn-bar` links. A source
+ * file that cannot be read falls back to the bare page URL.
+ */
+async function toPageLinks(
+  sources: Map<string, Set<string>>,
+): Promise<Map<string, Set<string>>> {
+  const htmlCache = new Map<string, Promise<string>>();
+  const readHtml = (file: string) => {
+    if (!htmlCache.has(file)) {
+      htmlCache.set(
+        file,
+        readFile(file, "utf8").catch(() => ""),
+      );
+    }
+    return htmlCache.get(file)!;
+  };
+
+  const pages = new Map<string, Set<string>>();
+  for (const [url, files] of sources) {
+    const links = new Set<string>();
+    for (const file of files) {
+      const page = sourceToPageUrl(file, siteConfig.website);
+      const anchors = findLinkAnchors(await readHtml(file), url);
+      if (anchors.length === 0) links.add(page);
+      for (const anchor of anchors) links.add(`${page}#${anchor}`);
+    }
+    pages.set(url, links);
+  }
+  return pages;
 }
 
 const UNVERIFIABLE_TITLE = "Unverifiable, needs a manual look";
@@ -156,6 +192,7 @@ async function main() {
 
   console.log(`lychee nominated ${urls.length} URLs; verifying each one.`);
   const outcomes = await runPool(urls);
+  const pages = await toPageLinks(sources);
 
   const broken = outcomes.filter((o) => o.verdict === "confirmed-broken");
   const unknown = outcomes.filter((o) => o.verdict === "unverifiable");
@@ -175,8 +212,8 @@ async function main() {
     `- ${unknown.length} unverifiable (bot-walled or host down)`,
     `- ${alive.length} false alarms, alive on retest`,
     "",
-    renderSection("Confirmed broken", broken, sources),
-    renderSection(UNVERIFIABLE_TITLE, unknown, sources),
+    renderSection("Confirmed broken", broken, pages),
+    renderSection(UNVERIFIABLE_TITLE, unknown, pages),
   ].join("\n");
 
   await writeFile(outputPath, body, "utf8");
