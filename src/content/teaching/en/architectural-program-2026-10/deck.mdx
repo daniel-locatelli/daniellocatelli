@@ -1,6 +1,6 @@
 ---
 Name: "Architectural Program: An Agentic Workflow for Architectural Design"
-Description: "Unlisted deck for the Jour-Fixe on 2026-10-12: the agent-design benchmark, its inputs and factors, what a run delivers, which tools the agents really used, and the findings that the program becomes the prompt and the designer defines done."
+Description: "Unlisted deck for the Jour-Fixe on 2026-10-12: the agent-design benchmark, its inputs and factors, what a run delivers, and four findings: the program is already a prompt, every tool stack ends in the same script, Blender is used as a Python interpreter, and the designer defines done."
 DateStart: "2026-10-12"
 Event: Jour-Fixe
 Language: English
@@ -15,6 +15,7 @@ import { BENCHMARK_ROWS, BENCHMARK_MILESTONES } from "@/components/decks/phd-pro
 import RouteBlender from "@/components/decks/architectural-program/RouteBlender.astro";
 import RouteCompas from "@/components/decks/architectural-program/RouteCompas.astro";
 import RoutePy from "@/components/decks/architectural-program/RoutePy.astro";
+import StackConverge from "@/components/decks/architectural-program/StackConverge.astro";
 import FlowPipeline from "@/components/decks/architectural-program/FlowPipeline.astro";
 import FlowWorkflow from "@/components/decks/architectural-program/FlowWorkflow.astro";
 
@@ -129,40 +130,34 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
   <SlideNotes>Agents may not render; the viewer renders every design from the same three cameras so they compare. Shown: H-compas-C3-W0-cc r03.</SlideNotes>
 </Slide>
 
-{/* ───────────────────────────── Results ───────────────────────────── */}
-
-<Slide>
-  <div class="pp-head">
-    <h3>Results · 223 runs</h3>
-    <h2>Every stack ends in the <em>same script</em></h2>
-  </div>
-  <div class="ap-body">
-    <dl class="ap-levels ap-stacks">
-      <div><dt>blender</dt><dd><b>64 runs.</b> Blender is used as a Python interpreter: not one bpy call, no MCP server.</dd></div>
-      <div><dt>compas</dt><dd><b>94 runs.</b> COMPAS supplies vectors, or nothing; compas_ifc is installed and never used.</dd></div>
-      <div><dt>py</dt><dd><b>65 runs.</b> 36 reached for scipy or trimesh and hit an import error; 29 wrote the step in numpy.</dd></div>
-      <div class="is-all"><dt>all</dt><dd>numpy computes the geometry, ifcopenshell writes the IFC entity by entity. The host and the framework are bypassed.</dd></div>
-    </dl>
-  </div>
-  <p class="pp-foot">221 of 223 runs delivered an IFC within the hour. The tools variable changes which libraries import, not how the agent designs.</p>
-  <SlideNotes>All but two runs delivered an IFC, and the route to it is the same in every stack. Blender as the example on the next slide; the COMPAS and Python routes are in the backup.</SlideNotes>
-</Slide>
-
-<Slide>
-  <div class="pp-head">
-    <h3>Results · Blender, 64 runs</h3>
-    <h2>Blender is used as a <em>Python interpreter</em></h2>
-  </div>
-  <div class="ap-body"><RouteBlender /></div>
-  <p class="pp-foot">Not one call to the Blender API. Counts overlap: 33 runs used both routes.</p>
-  <SlideNotes>No bpy call in 64 runs. Blender's bundled Python runs the same numpy and ifcopenshell script as everywhere else.</SlideNotes>
-</Slide>
-
 {/* ───────────────────────────── Finding 2 ───────────────────────────── */}
 
 <Slide>
   <div class="pp-head">
     <h3>Finding 2</h3>
+    <h2>Every stack ends in the <em>same script</em></h2>
+  </div>
+  <div class="ap-body"><StackConverge /></div>
+  <SlideNotes>221 of 223 runs delivered an IFC within the hour, and the route to it is the same in every stack: the tools variable changes which libraries import, not how the agent designs. Blender (64 runs) is used as a Python interpreter, with no MCP server. COMPAS (94 runs) supplies vectors or nothing. Python (65 runs): 36 reached for scipy or trimesh and hit an import error, 29 wrote the step in numpy. Finding 3 follows the Blender route; the COMPAS and Python routes are in the backup.</SlideNotes>
+</Slide>
+
+{/* ───────────────────────────── Finding 3 ───────────────────────────── */}
+
+<Slide>
+  <div class="pp-head">
+    <h3>Finding 3 · Blender, 64 runs</h3>
+    <h2>Blender is used as a <em>Python interpreter</em></h2>
+  </div>
+  <div class="ap-body"><RouteBlender /></div>
+  <p class="pp-foot">Not one call to the Blender API. Counts overlap: 33 runs used both routes.</p>
+  <SlideNotes>No bpy call in 64 runs. Blender's bundled Python runs the same numpy and ifcopenshell script as everywhere else. python3.11 is that bundled interpreter run on its own, so Blender never starts; blender -b -P starts Blender without a window and runs the script inside it, where bpy would be available. The task said "Blender with its ifcopenshell", so after the import error in the system Python the agents looked for Blender's copy rather than installing one, although they had web access. No Bonsai add-on and no MCP server were installed; 7 runs looked for Bonsai and found nothing.</SlideNotes>
+</Slide>
+
+{/* ───────────────────────────── Finding 4 ───────────────────────────── */}
+
+<Slide>
+  <div class="pp-head">
+    <h3>Finding 4</h3>
     <h2>The designer now defines <em>what "done" means</em></h2>
   </div>
   <div class="ap-body">
@@ -188,7 +183,7 @@ import runRoof from "@/assets/content/teaching/architectural-program-2026-10/run
 
 <Slide>
   <div class="pp-head">
-    <h3>Finding 2 · the other side</h3>
+    <h3>Finding 4 · the other side</h3>
     <h2>What no rule checks <em>comes out thin</em></h2>
   </div>
   <div class="ap-body">
@@ -241,6 +236,22 @@ ok       planarity, envelope, coverage`}</code></pre>
 
 <Slide>
   <div class="pp-head">
+    <h3>Before the next runs</h3>
+    <h2>Fix the benchmark, <em>then run more</em></h2>
+  </div>
+  <div class="ap-body">
+    <div class="ap-doc ap-next">
+      <p><b>Prompts.</b> Go through every task and context file by hand. Drop ifcopenshell as a prerequisite, so the agents find their own route.</p>
+      <p><b>IFCX.</b> Test with IFCX as the delivery format too.</p>
+      <p><b>COMPAS skills.</b> Write them, then test whether they change what the agent does or only add context.</p>
+      <p><b>Modularity.</b> Test how modular the code is: a construction DSL with IFCX as its output.</p>
+    </div>
+  </div>
+  <SlideNotes>The tools sentence named ifcopenshell, and the image shipped it, so findings 2 and 3 partly measure that steering: the agents took the library they were handed. The remaining runs wait for these fixes.</SlideNotes>
+</Slide>
+
+<Slide>
+  <div class="pp-head">
     <h3>Next</h3>
     <h2>Measure what was <em>not checked</em></h2>
   </div>
@@ -248,10 +259,10 @@ ok       planarity, envelope, coverage`}</code></pre>
     <div class="ap-doc ap-next">
       <p><b>Rescore.</b> Every run, on what the checker missed: IFC literacy, fabrication, the route each run took.</p>
       <p><b>Skills.</b> An IFC-authoring skill and offline BTLx validation; decide whether a Blender cell must use the host API.</p>
-      <p><b>Runs.</b> Tier 2 to completion and tier 3 from Wednesday 14 October; Codex once its identity check passes.</p>
+      <p><b>Runs.</b> Tier 2 to completion and tier 3 once the fixes are in; Codex once its identity check passes.</p>
     </div>
   </div>
-  <SlideNotes>Rescore every run with the new measures, add the skills, settle the tools variable, and resume runs on Wednesday evening.</SlideNotes>
+  <SlideNotes>Rescore every run with the new measures, add the skills, settle the tools variable, and resume runs once the benchmark is fixed.</SlideNotes>
 </Slide>
 
 {/* ───────────────────────────── Backup ───────────────────────────── */}
@@ -1304,9 +1315,6 @@ ok       planarity, envelope, coverage`}</code></pre>
   #deck .ap-levels dd b { font-weight: 500; color: var(--pp-amber); }
   #deck .ap-levels dd i { font-style: normal; color: var(--pp-dim); margin-right: 0.4em; }
   #deck .ap-levels dd span { display: block; margin-top: 0.3em; font-family: "Montserrat", sans-serif; font-size: 0.72em; letter-spacing: 0.08em; color: var(--pp-dim); }
-  #deck .ap-stacks { max-width: 62rem; margin: 0 auto; font-size: clamp(0.95rem, 1.4vw, 1.4rem); }
-  #deck .ap-stacks > div { grid-template-columns: 7.5rem 1fr; }
-  #deck .ap-stacks .is-all dt, #deck .ap-stacks .is-all dd { color: var(--pp-amber); }
   #deck .ap-factors .ap-factors-note { font-size: 0.8em; font-style: italic; }
   /* Markdown files: a page with a folded corner, the source shown as plain text */
   #deck .ap-mds { align-items: stretch; }
@@ -1380,7 +1388,7 @@ ok       planarity, envelope, coverage`}</code></pre>
   #deck .ap-ctx li.is-old { color: var(--pp-dim); font-weight: 300; font-style: italic; }
   #deck .ap-ctx li.is-new { color: var(--pp-amber); font-weight: 500; }
   #deck .ap-ctx p { margin: 0.2rem 0 0; font-weight: 300; font-size: 0.88em; line-height: 1.45; color: var(--pp-dim); }
-  /* Finding 2: the rules as files the architect writes */
+  /* Finding 4: the rules as files the architect writes */
   #deck .ap-rules { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.6rem, 1.8vh, 1.1rem) clamp(1rem, 2vw, 2rem); text-align: left; font-size: clamp(0.8rem, 1.05vw, 1.1rem); }
   #deck .ap-rules > div { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 0.8em; align-items: start; }
   #deck .ap-rules .ap-ico { grid-row: 1 / span 2; font-size: 1.5em; }

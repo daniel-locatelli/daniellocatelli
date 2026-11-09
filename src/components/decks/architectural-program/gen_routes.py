@@ -116,14 +116,14 @@ mid = lambda r: r + NH // 2
 BLENDER = dict(
     slug="route-blender", name="RouteBlender",
     title="Blender runs: the route the agents took",
-    desc="Of 64 Blender runs, 61 first tried the system Python and failed without ifcopenshell; 52 then ran Blender's bundled Python directly and 45 ran scripts through blender -b -P (33 did both); every design was written by a numpy and ifcopenshell script, and no run called the Blender API or an MCP server.",
+    desc="Of 64 Blender runs, 61 first tried the system Python and failed without ifcopenshell; 52 then ran Blender's bundled Python directly and 45 ran scripts through blender -b -P (33 did both); every design was written by a numpy and ifcopenshell script, and no run called the Blender API; no Bonsai add-on and no MCP server were installed.",
     nodes=[
         dict(x=COL[0], y=A_Y, kind="input", tag="ASKED", name="Blender 4.5", sub="64 runs"),
-        dict(x=COL[1], y=ROW[0], kind="failed", name="System python3", sub="no ifcopenshell"),
+        dict(x=COL[1], y=ROW[0], kind="failed", name="System python3", sub="ifcopenshell not here"),
         dict(x=COL[1], y=ROW[1], kind="step", name="Blender's python3.11", sub="Blender never starts"),
         dict(x=COL[1], y=ROW[2], kind="step", name="blender -b -P", sub="headless, script only"),
         dict(x=COL[2], y=ROW[1], kind="focal", tag="SCRIPT", name="numpy + ifcopenshell", sub="entity by entity"),
-        dict(x=COL[2], y=ROW[2], kind="unused", tag="0 RUNS", name="bpy API · MCP", sub="scene, modifiers, Bonsai"),
+        dict(x=COL[2], y=ROW[2], kind="unused", tag="0 RUNS", name="bpy API", sub="scene, modifiers"),
         dict(x=COL[3], y=ROW[1], kind="output", tag="OUT", name="design.ifc", sub="64 of 64"),
     ],
     edges=[
@@ -161,6 +161,27 @@ COMPAS = dict(
     ],
 )
 
+# Finding 2: the three stacks converge on one script. Inputs on the left, no legend.
+SY = [40, 160, 280]
+STACKS = dict(
+    slug="stack-converge", name="StackConverge", H=400, legend=False,
+    title="Every stack ends in the same script",
+    desc="223 runs across three tool stacks: Blender (64 runs) is used only for its bundled Python, COMPAS (94) for vectors or nothing, plain Python (65) rewrites missing libraries in numpy. All three converge on one script per run that computes the geometry with numpy and writes design.ifc entity by entity with ifcopenshell.",
+    nodes=[
+        dict(x=40, y=SY[0], w=280, kind="input", tag="ASKED", name="Blender", sub="its bundled Python only"),
+        dict(x=40, y=SY[1], w=280, kind="input", tag="ASKED", name="COMPAS", sub="vectors, or nothing"),
+        dict(x=40, y=SY[2], w=280, kind="input", tag="ASKED", name="Python", sub="missing libraries in numpy"),
+        dict(x=560, y=144, w=280, h=112, kind="focal", tag="SCRIPT", name="numpy + ifcopenshell", sub="one script per run"),
+        dict(x=1000, y=160, kind="output", tag="OUT", name="design.ifc", sub="entity by entity"),
+    ],
+    edges=[
+        dict(kind="default", d=elbow(320, mid(SY[0]), 560, 176, 440), label="64", at=(380, mid(SY[0]))),
+        dict(kind="default", d=f"M320 200 H560", label="94", at=(380, 200)),
+        dict(kind="default", d=elbow(320, mid(SY[2]), 560, 224, 440), label="65", at=(380, mid(SY[2]))),
+        dict(kind="accent", d=f"M840 200 H1000"),
+    ],
+)
+
 PY = dict(
     slug="route-py", name="RoutePy",
     title="Python runs: the route the agents took",
@@ -185,8 +206,8 @@ PY = dict(
 if __name__ == "__main__":
     out_html, out_astro = sys.argv[1], sys.argv[2]
     os.makedirs(out_html, exist_ok=True); os.makedirs(out_astro, exist_ok=True)
-    for d in (BLENDER, COMPAS, PY):
-        s = svg(d, d["slug"] + "-")
+    for d in (BLENDER, COMPAS, PY, STACKS):
+        s = svg(d, d["slug"] + "-", H=d.get("H", H), show_legend=d.get("legend", True))
         page = (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
                 f'<title>{html.escape(d["title"])}</title><style>body{{margin:0;background:{PAPER};padding:40px}} svg{{width:100%;height:auto;display:block}}</style></head>'
                 f'<body>\n{s}\n</body></html>')
