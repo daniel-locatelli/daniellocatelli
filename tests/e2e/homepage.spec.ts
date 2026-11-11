@@ -3,7 +3,7 @@ import { LOCALES, localeUrl } from "./fixtures/test-helpers";
 
 const SUGGESTIONS: Record<string, string[]> = {
   en: ["What is your PhD about?", "AI agent skills for architecture?", "What did you build before?"],
-  pt: ["Sobre o que é seu doutorado?", "Que skills de agentes de IA você criou para arquitetura?", "Em quais projetos você já trabalhou?"],
+  pt: ["Sobre o que é seu doutorado?", "Quais skills de agentes de IA você já criou para arquitetura e engenharia?", "Em quais projetos você já trabalhou?"],
   de: ["Worum geht es in deiner Promotion?", "KI-Agent-Skills für Architektur?", "Was hast du vorher gebaut?"],
 };
 
