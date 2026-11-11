@@ -7,7 +7,7 @@ import metascraper from "metascraper";
 import title from "metascraper-title";
 import description from "metascraper-description";
 import image from "metascraper-image";
-import { generateLinkKey } from "../lib/link-metadata-helpers";
+import { generateLinkKey, pageLinks } from "../lib/link-metadata-helpers";
 import type { CachedLinkMetadata, OtherLinkEntry } from "../types/link-preview";
 
 const CACHE_DIR = "src/assets/links-cache";
@@ -240,10 +240,10 @@ async function collectHrefs(logger: AstroIntegrationLogger): Promise<string[]> {
       try {
         const raw = await fs.readFile(file, "utf-8");
         const { data } = matter(raw);
-        const links = (data as { OtherLinks?: OtherLinkEntry[] }).OtherLinks;
-        if (!Array.isArray(links)) return;
-        for (const link of links) {
-          if (link && typeof link.Href === "string") set.add(link.Href);
+        const { Link, OtherLinks } = data as { Link?: unknown; OtherLinks?: OtherLinkEntry[] };
+        // Root-relative links point at this site and have nothing to scrape.
+        for (const link of pageLinks(Link, Array.isArray(OtherLinks) ? OtherLinks : [])) {
+          if (/^https?:\/\//.test(link.Href)) set.add(link.Href);
         }
       } catch (err) {
         logger.error(`failed to read ${file}: ${(err as Error).message}`);
@@ -263,7 +263,7 @@ export default function linkMetadataCache(): AstroIntegration {
         await ensureDir(path.join(CACHE_DIR, "favicons"));
 
         const hrefs = await collectHrefs(logger);
-        logger.info(`found ${hrefs.length} unique OtherLinks URLs`);
+        logger.info(`found ${hrefs.length} unique link URLs`);
 
         // Fire-and-forget per URL so dev-server startup is not blocked
         // by network round-trips. Each task catches its own errors.

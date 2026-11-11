@@ -103,5 +103,215 @@
     "file": "cirpass2.eu.png",
     "source": "https://cirpass2.eu/wp-content/uploads/2024/07/cropped-Favicon-32x32.png",
     "timestamp": 1787258473917
+  },
+  "cs50.harvard.edu": {
+    "file": "cs50.harvard.edu.ico",
+    "source": "https://www.edx.org/favicon.ico",
+    "timestamp": 1794421157251
+  },
+  "courses.edx.org": {
+    "file": "courses.edx.org.ico",
+    "source": "https://www.edx.org/favicon.ico",
+    "timestamp": 1794421158581
+  },
+  "www.credly.com": {
+    "file": "www.credly.com.png",
+    "source": "https://info.credly.com/hubfs/Credly_orange-favicon-2.png",
+    "timestamp": 1794421159363
+  },
+  "buildsystems.de": {
+    "file": "buildsystems.de.svg",
+    "source": "https://buildsystems.de/favicon.svg",
+    "timestamp": 1794421159734
+  },
+  "urbanscaletimber.com": {
+    "file": "urbanscaletimber.com.png",
+    "source": "https://www.google.com/s2/favicons?domain=urbanscaletimber.com&sz=32",
+    "timestamp": 1794421161519
+  },
+  "ww3.icb.usp.br": {
+    "file": "ww3.icb.usp.br.png",
+    "source": "https://www.google.com/s2/favicons?domain=ww3.icb.usp.br&sz=32",
+    "timestamp": 1794421163490
+  },
+  "www.csulb.edu": {
+    "file": "www.csulb.edu.ico",
+    "source": "https://www.csulb.edu/themes/custom/csulb/favicon.ico",
+    "timestamp": 1794421164738
+  },
+  "www.icd.uni-stuttgart.de": {
+    "file": "www.icd.uni-stuttgart.de.png",
+    "source": "https://www.icd.uni-stuttgart.de/system/modules/de.stuttgart.uni.v3.basics/resources/favicons/favicon-32x32.png",
+    "timestamp": 1794421165125
+  },
+  "markobrajovic.com": {
+    "file": "markobrajovic.com.png",
+    "source": "https://markobrajovic.com/wp-content/uploads/2024/04/android-chrome-512x512-1-150x150.png",
+    "timestamp": 1794421167258
+  },
+  "gramaziokohler.arch.ethz.ch": {
+    "file": "gramaziokohler.arch.ethz.ch.png",
+    "source": "https://gramaziokohler.arch.ethz.ch/web/images/favicons/favicon-32x32.png",
+    "timestamp": 1794421167467
+  },
+  "www.ar-ingenieure.com": {
+    "file": "www.ar-ingenieure.com.png",
+    "source": "https://cdn.prod.website-files.com/6322d31d6497ad630a0ae0ca/6322d31d6497adb2a30ae127_Favicon_AR-Ingenieure_32x32px_V3.png",
+    "timestamp": 1794421167718
+  },
+  "hm.edu": {
+    "file": "hm.edu.jpg",
+    "source": "https://mediapool.hm.edu/media/_technik/img/_technik_1/favicon.jpg",
+    "timestamp": 1794421168039
+  },
+  "cadc.auburn.edu": {
+    "file": "cadc.auburn.edu.ico",
+    "source": "https://cadc.auburn.edu/favicon.ico",
+    "timestamp": 1794421171990
+  },
+  "www.fau.usp.br": {
+    "file": "www.fau.usp.br.png",
+    "source": "https://www.fau.usp.br/fav/android-icon-192x192.png",
+    "timestamp": 1794421174634
+  },
+  "global.auburn.edu": {
+    "file": "global.auburn.edu.png",
+    "source": "https://global.auburn.edu/wp-content/uploads/au-favicon-150x150.png",
+    "timestamp": 1794421176665
+  },
+  "www.itech.uni-stuttgart.de": {
+    "file": "www.itech.uni-stuttgart.de.png",
+    "source": "https://www.itech.uni-stuttgart.de/system/modules/de.stuttgart.uni.v3.basics/resources/favicons/favicon-32x32.png",
+    "timestamp": 1794421176995
+  },
+  "www.youtube.com": {
+    "file": "www.youtube.com.png",
+    "source": "https://www.youtube.com/s/desktop/a2c91c03/img/favicon_32x32.png",
+    "timestamp": 1794421177620
+  },
+  "sigradi2018.iau.usp.br": {
+    "file": "sigradi2018.iau.usp.br.png",
+    "source": "https://www.google.com/s2/favicons?domain=sigradi2018.iau.usp.br&sz=32",
+    "timestamp": 1794421179542
+  },
+  "file.org.br": {
+    "file": "file.org.br.ico",
+    "source": "https://file.org.br/wp-content/themes/file-festival/icons/favicon.ico",
+    "timestamp": 1794421181140
+  },
+  "www.katharinagrosse.com": {
+    "file": "www.katharinagrosse.com.svg",
+    "source": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMwMDAiLz4KPC9zdmc+Cg==",
+    "timestamp": 1794421182520
+  },
+  "studiootherspaces.net": {
+    "file": "studiootherspaces.net.png",
+    "source": "https://studiootherspaces.net/static/ico/favicon-32x32.png",
+    "timestamp": 1794421182843
+  },
+  "gutorequena.com": {
+    "file": "gutorequena.com.jpg",
+    "source": "https://gutorequena.com/wp-content/uploads/2026/07/favicon-150x150.jpg",
+    "timestamp": 1794421184015
+  },
+  "discourse.mcneel.com": {
+    "file": "discourse.mcneel.com.ico",
+    "source": "https://global.discourse-cdn.com/mcneel/uploads/default/optimized/3X/e/8/e8ac746b7d3ee947a397b6e4f08d03f650423c3c_2_32x32.ico",
+    "timestamp": 1794421184972
+  },
+  "app.buildsystems.de": {
+    "file": "app.buildsystems.de.ico",
+    "source": "https://app.buildsystems.de/favicon.ico",
+    "timestamp": 1794421185280
+  },
+  "www.ingentaconnect.com": {
+    "file": "www.ingentaconnect.com.ico",
+    "source": "https://www.ingentaconnect.com/favicon.ico",
+    "timestamp": 1794421185509
+  },
+  "papers.cumincad.org": {
+    "file": "papers.cumincad.org.ico",
+    "source": "https://papers.cumincad.org/favicon.ico",
+    "timestamp": 1794421185897
+  },
+  "link.springer.com": {
+    "file": "link.springer.com.png",
+    "source": "https://www.google.com/s2/favicons?domain=link.springer.com&sz=32",
+    "timestamp": 1794421186624
+  },
+  "dx.doi.org": {
+    "file": "dx.doi.org.png",
+    "source": "https://dx.doi.org/static/images/favicons/favicon-32x32.png",
+    "timestamp": 1794421186829
+  },
+  "doi.org": {
+    "file": "doi.org.png",
+    "source": "https://www.doi.org/images/favicons/favicon-32x32.png",
+    "timestamp": 1794421187207
+  },
+  "www.mongodb.com": {
+    "file": "www.mongodb.com.ico",
+    "source": "https://www.mongodb.com/favicon.ico",
+    "timestamp": 1794421188381
+  },
+  "www.postgresql.org": {
+    "file": "www.postgresql.org.ico",
+    "source": "https://www.postgresql.org/favicon.ico",
+    "timestamp": 1794421188673
+  },
+  "www.gov.br": {
+    "file": "www.gov.br.png",
+    "source": "https://www.gov.br/++theme++padrao_govbr/favicons/favicon-32x32.png",
+    "timestamp": 1794421190303
+  },
+  "portal.ifro.edu.br": {
+    "file": "portal.ifro.edu.br.ico",
+    "source": "https://portal.ifro.edu.br/templates/padraogoverno01/favicon.ico",
+    "timestamp": 1794421192320
+  },
+  "www.intcdc.uni-stuttgart.de": {
+    "file": "www.intcdc.uni-stuttgart.de.png",
+    "source": "https://www.intcdc.uni-stuttgart.de/system/modules/de.stuttgart.uni.v3.basics/resources/favicons/favicon-32x32.png",
+    "timestamp": 1794421192863
+  },
+  "site.tatil.com.br": {
+    "file": "site.tatil.com.br.png",
+    "source": "https://cdn.prod.website-files.com/65cab56b471cb2ddcd27d8bd/68c03f148a15b0babac712e0_favicon-32x32.png",
+    "timestamp": 1794421193370
+  },
+  "revistacasaejardim.globo.com": {
+    "file": "revistacasaejardim.globo.com.png",
+    "source": "https://s2.glbimg.com/nIQl7c9TvzT4-c2zZusIgOpCmjU=/32x32/i.s3.glbimg.com/v1/AUTH_a0b7e59562ef42049f4e191fe476fe7d/internal_photos/bs/2023/g/Q/ctHt0ERn2o7ogh08J8jg/logo-cj-favicon-sem-fundo-1-.png",
+    "timestamp": 1794421196045
+  },
+  "sites.google.com": {
+    "file": "sites.google.com.png",
+    "source": "https://www.google.com/s2/favicons?domain=sites.google.com&sz=32",
+    "timestamp": 1794421197970
+  },
+  "ecosystem.siemens.com": {
+    "file": "ecosystem.siemens.com.png",
+    "source": "https://ecosystem.siemens.com/assets/img/favicon.ico",
+    "timestamp": 1794421198601
+  },
+  "ar.hm.edu": {
+    "file": "ar.hm.edu.jpg",
+    "source": "https://mediapool.hm.edu/media/_technik/img/_technik_1/favicon.jpg",
+    "timestamp": 1794421198916
+  },
+  "www.flickr.com": {
+    "file": "www.flickr.com.png",
+    "source": "https://combo.staticflickr.com/66a031f9fc343c5e42d965ca/67167dc1d73d7b88afde5a85_Flickr%20Fave.png",
+    "timestamp": 1794421199324
+  },
+  "identifier.buildingsmart.org": {
+    "file": "identifier.buildingsmart.org.ico",
+    "source": "https://identifier.buildingsmart.org/favicon.ico",
+    "timestamp": 1794421199833
+  },
+  "www.itke.uni-stuttgart.de": {
+    "file": "www.itke.uni-stuttgart.de.png",
+    "source": "https://www.itke.uni-stuttgart.de/system/modules/de.stuttgart.uni.v3.basics/resources/favicons/favicon-32x32.png",
+    "timestamp": 1794421200648
   }
 }

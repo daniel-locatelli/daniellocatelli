@@ -11,6 +11,7 @@ import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
 import Credit from "@/components/Credit.astro";
 import LinkPreview from "@/components/LinkPreview.astro";
+import { pageLinks } from "@/lib/link-metadata-helpers";
 import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
 import {
   getLocale,
@@ -169,6 +170,9 @@ const previousEntry =
     : null;
 const siblingHref = (entry: SubpageEntry) =>
   `${deckBasePath}/${getEntrySlug(entry)}`;
+
+// The page's links, all as cards at the bottom: `Link` first, then `OtherLinks`.
+const links = pageLinks(subpage.data.Link, subpage.data.OtherLinks);
 
 // Getting images dynamically with import.meta.glob()
 // It only accepts string literals
@@ -702,76 +706,6 @@ const linkRel = (href: string) =>
             )
           }
           {
-            subpage.data.Link !== undefined &&
-              ((Array.isArray(subpage.data.Link) &&
-                subpage.data.Link.length > 0) ||
-                typeof subpage.data.Link === "string" ||
-                (typeof subpage.data.Link === "object" &&
-                  "Href" in subpage.data.Link)) && (
-                <tr>
-                  <th scope="row">{t.link}</th>
-                  <td>
-                    {(() => {
-                      const link = subpage.data.Link;
-                      if (!link) return null;
-
-                      if (Array.isArray(link)) {
-                        return link.map((item: any) => {
-                          const href =
-                            typeof item === "string"
-                              ? item
-                              : item.Href || item.Text || "#";
-                          const text =
-                            typeof item === "string"
-                              ? item
-                              : item.Text || item.Href || "";
-                          return (
-                            <a
-                              href={href}
-                              target={linkTarget(href)}
-                              rel={linkRel(href)}
-                              class="mr-2 text-green-500 transition hover:text-green-400"
-                            >
-                              {text}
-                            </a>
-                          );
-                        });
-                      }
-
-                      if (typeof link === "object" && "Href" in link) {
-                        const l = link as { Text: string; Href: string };
-                        return (
-                          <a
-                            href={l.Href}
-                            target={linkTarget(l.Href)}
-                            rel={linkRel(l.Href)}
-                            class="text-green-500 transition hover:text-green-400"
-                          >
-                            {l.Text}
-                          </a>
-                        );
-                      }
-
-                      if (typeof link === "string") {
-                        return (
-                          <a
-                            href={link}
-                            target={linkTarget(link)}
-                            rel={linkRel(link)}
-                            class="text-green-500 transition hover:text-green-400"
-                          >
-                            {link}
-                          </a>
-                        );
-                      }
-
-                      return null;
-                    })()}
-                  </td>
-                </tr>
-              )
-          }
-          {
             subpage.data.Apps &&
               Array.isArray(subpage.data.Apps) &&
               subpage.data.Apps.length > 0 && (
@@ -821,13 +755,13 @@ const linkRel = (href: string) =>
         <Content />
       </div>
       {
-        subpage.data.OtherLinks && subpage.data.OtherLinks.length > 0 && (
+        links.length > 0 && (
           <div class="mt-8 px-4 sm:px-0">
             <h2 class="font-title mb-4 text-xl text-zinc-100">
-              {t.otherLinks}
+              {t.links}
             </h2>
             <div class="flex flex-col gap-3">
-              {subpage.data.OtherLinks.map((link) => (
+              {links.map((link) => (
                 <LinkPreview link={link} />
               ))}
             </div>
