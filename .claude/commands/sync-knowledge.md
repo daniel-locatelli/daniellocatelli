@@ -1,6 +1,6 @@
-# Regenerate the chat profile
+# Check the chat models and benchmark the chat
 
-Rebuild the per-locale profile that the homepage chat and the MCP server answer from, after content in `src/content/` changed.
+`pnpm build` regenerates the chat profile on every build (`pnpm build:profile`), so content changes reach the chat with the next deploy. This command covers what the build does not: whether the models are still current, and whether the chat still answers correctly.
 
 ## Pipeline
 
@@ -15,15 +15,10 @@ If a model is from an older generation than the current one in its family, tell 
 ### Step 2: Regenerate the profile
 
 ```bash
-pnpm exec tsx src/scripts/generate-knowledge.ts
+pnpm build:profile
 ```
 
-This reads every `src/content/` collection and writes:
-
-- `src/generated/chat-profile/{en,pt,de}.md`: the profile itself (about 13k tokens per locale), bundled into the Worker and sent whole with every chat question;
-- `knowledge/*.md`: intermediate files, wiped and rewritten each run. The profile pulls the background FAQs (`faq-*`) and the CV timeline (`cv-timeline-*`) from here.
-
-Report warnings, and `git diff --stat src/generated/chat-profile` so the user sees what changed. The new profile goes live with the next deploy.
+Writes `src/generated/chat-profile/{en,pt,de}.md` (about 13k tokens per locale, bundled into the Worker and sent whole with every chat question) and the git-ignored intermediates in `knowledge/`. Report warnings, and `git diff --stat src/generated/chat-profile` so the user sees what changed.
 
 ### Step 3: Run the Q&A benchmark (optional)
 

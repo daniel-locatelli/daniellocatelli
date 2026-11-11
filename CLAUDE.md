@@ -63,7 +63,7 @@ Public agent skills live in `public/.well-known/agent-skills/<name>/SKILL.md` an
 
 ## Website Self-Description
 
-The site describes its own technology in `src/content/projects/{en,pt,de}/portfolio-website.md`. **After any meaningful change to the website itself (adding or removing a feature, changing the stack, hosting, AI pipeline, performance work, etc.), update that content in all three locales** so the page stays an accurate account of how the site is built. Then ask whether to run `/sync-knowledge`, as with any content change.
+The site describes its own technology in `src/content/projects/{en,pt,de}/portfolio-website.md`. **After any meaningful change to the website itself (adding or removing a feature, changing the stack, hosting, AI pipeline, performance work, etc.), update that content in all three locales** so the page stays an accurate account of how the site is built.
 
 ## Environment Variables
 
@@ -72,11 +72,11 @@ Required in `.env`:
 
 ## AI Chat Knowledge Pipeline
 
-The HeroChat assistant and the MCP server (`/api/mcp`) answer from one generated profile per locale, `src/generated/chat-profile/{en,pt,de}.md`, written by `src/scripts/generate-knowledge.ts` from the content collections and committed. The chat sends the whole profile with every question; the MCP serves it whole (`get_profile`) or through an in-Worker keyword search (`search_content`). **After any content change in `src/content/`, ask the user whether to run `/sync-knowledge`**, which regenerates the profile in seconds and checks whether the model IDs in `src/config/ai.ts` are still current; skip it for changes that do not alter prose, such as images or alt text.
+The HeroChat assistant and the MCP server (`/api/mcp`) answer from one generated profile per locale, `src/generated/chat-profile/{en,pt,de}.md`, written by `src/scripts/generate-knowledge.ts` from the content collections and committed. The chat sends the whole profile with every question; the MCP serves it whole (`get_profile`) or through an in-Worker keyword search (`search_content`). **`pnpm build` regenerates the profile first (`pnpm build:profile`)**, so every deploy answers from the current content; commit the regenerated files with the content change that caused them. `/sync-knowledge` is only for checking that the model IDs in `src/config/ai.ts` are still current and running the benchmark.
 
 Daniel's service offerings live in `src/content/services/{en,pt,de}/services.md` (one `##` per service); it is not an Astro collection and has no page, only the profile reads it.
 
-`knowledge/` holds the generator's intermediate files; the profile takes the background FAQs (`processFAQ()`) and the CV timeline from there.
+`knowledge/` (git-ignored) holds the generator's intermediate files, rewritten each run; the profile takes the background FAQs (`processFAQ()`) and the CV timeline from there.
 
 **Benchmark:** Run `pnpm exec tsx scripts/benchmark-chat.ts` (with a local server running via `pnpm dev`; note Astro 7's dev server runs detached, manage it with `astro dev stop`/`status`/`logs`) to test ~26 common questions against the chat API. Use `--retry-failures` to skip previously passed tests. Target: 100% pass rate.
 

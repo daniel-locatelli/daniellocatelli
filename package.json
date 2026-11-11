@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "wrangler types && astro check && astro build",
+    "build": "pnpm build:profile && wrangler types && astro check && astro build",
+    "build:profile": "tsx src/scripts/generate-knowledge.ts",
     "preview": "astro preview",
     "astro": "astro",
     "test:unit": "tsx --test tests/unit/**/*.test.ts",

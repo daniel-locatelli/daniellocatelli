@@ -43,6 +43,9 @@ content-base/
 tmp_*.json
 
 
+# Chat profile intermediates, rewritten by `pnpm build:profile` on every build
+knowledge/
+
 # Benchmark results (generated)
 scripts/benchmark-results.json
 
