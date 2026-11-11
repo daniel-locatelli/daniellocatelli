@@ -12,7 +12,6 @@ export const t: I18nHome = {
     bio: "Ich erforsche, wie Holzplattentragwerke entworfen und gebaut werden und wie KI die Arbeit von Architekten und Ingenieuren verändert.",
   },
   chat: {
-    note: "Die Antworten werden von Claude auf Basis meiner Wissensdatenbank generiert.",
     suggestions: [
       "Welche Dienstleistungen bietest du an?",
       "Worum geht es in deiner Promotion?",
@@ -21,7 +20,6 @@ export const t: I18nHome = {
     ],
     initialMessage:
       "Hallo! Frag mich alles über meine Arbeit, Erfahrung oder Projekte.\n\n*Die Antworten werden von KI (Anthropic Claude) generiert und können Fehler enthalten. Bitte überprüfe Wichtiges selbst.*",
-    inputPlaceholder: "Frag mich etwas...",
     headerTitle: "KI-Assistent",
     chatPlaceholder: "Frag {model} zu meiner Arbeit...",
     errorMessage:

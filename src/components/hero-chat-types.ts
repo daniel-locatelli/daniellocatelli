@@ -19,15 +19,12 @@ export type PreviewMap = Record<number, LinkPreview[]>;
 
 export interface HeroChatLabels {
   initialMessage: string;
-  inputPlaceholder: string;
   headerTitle: string;
-  /** Input placeholder in the conversation view; {model} is the model's name. */
+  /** Input placeholder; {model} is the model's name. */
   chatPlaceholder: string;
   errorMessage: string;
   requestQuote: string;
   sendEmail: string;
-  /** Small print under the input. */
-  note: string;
   /** Starter questions shown as chips; clicking one asks it. */
   suggestions: string[];
   /** Leaves the conversation view, keeping the conversation. */

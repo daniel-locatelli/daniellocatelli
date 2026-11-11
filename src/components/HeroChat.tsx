@@ -439,10 +439,8 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
   };
 
   const isChat = mode === "chat";
-  // The conversation view names the model in the input, not in a separate line.
-  const placeholder = isChat
-    ? labels.chatPlaceholder.replace("{model}", modelName)
-    : labels.inputPlaceholder;
+  // The input names the model, so no separate line is needed to say answers come from Claude.
+  const placeholder = labels.chatPlaceholder.replace("{model}", modelName);
   const iconButton =
     "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:bg-zinc-900 hover:text-zinc-100 focus-visible:outline-2 focus-visible:outline-green-400 disabled:opacity-50";
 
@@ -559,22 +557,19 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                 <span className="hidden sm:inline">{labels.sendEmail}</span>
               </a>
             </div>
-          ) : (
-            <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
-              <p className="text-[13px] text-zinc-400">{labels.note}</p>
-              {hasConversation && (
-                <button
-                  type="button"
-                  onClick={() => switchMode("chat")}
-                  onMouseEnter={preload}
-                  className="inline-flex items-center gap-1 text-[13px] font-medium text-green-400 hover:text-green-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
-                >
-                  {labels.resume}
-                  <ArrowRight size={14} aria-hidden="true" />
-                </button>
-              )}
+          ) : hasConversation ? (
+            <div className="mt-3 flex justify-end">
+              <button
+                type="button"
+                onClick={() => switchMode("chat")}
+                onMouseEnter={preload}
+                className="inline-flex items-center gap-1 text-[13px] font-medium text-green-400 hover:text-green-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
+              >
+                {labels.resume}
+                <ArrowRight size={14} aria-hidden="true" />
+              </button>
             </div>
-          )}
+          ) : null}
         </div>
       </div>
     </div>
