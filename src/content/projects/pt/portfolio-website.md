@@ -4,7 +4,7 @@ CoverAlt: "A página inicial de daniellocatelli.com exibida em um laptop."
 Name: Site Portfólio
 Description: "Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, ensaios, apresentações de slides no navegador e uma superfície pronta para agentes na Cloudflare."
 DateStart: "2024-04-27"
-Updated: "2026-10-30"
+Updated: "2026-11-11"
 Organization: "Daniel Locatelli"
 Category: Software
 Tags:
@@ -32,7 +32,7 @@ Este é o site que você está lendo agora. Ele começou em abril de 2024 como u
 
 - [**Astro**](https://astro.build/) com TypeScript para o site em si, [**React**](https://react.dev/) para as poucas ilhas que precisam de interatividade e [**Tailwind CSS**](https://tailwindcss.com/) para os estilos.
 - [**Astro Content Collections**](https://docs.astro.build/en/guides/content-collections/) para todo o conteúdo, escrito em markdown e MDX com frontmatter tipado e validado no momento do build.
-- [**Claude**](https://www.anthropic.com/claude) (Anthropic) para o chat da página inicial, com o [**Supabase**](https://supabase.com/) como banco vetorial para a recuperação de contexto.
+- [**Claude**](https://www.anthropic.com/claude) (Anthropic) para o chat da página inicial, que lê um perfil condensado do site inteiro a cada pergunta.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) com Static Assets para hospedagem, cache na borda e os endpoints voltados a agentes; as páginas pré-renderizadas são servidas direto da borda, e o Worker só roda para os endpoints de chat e MCP.
 
 ## Claude Code como sistema de gestão de conteúdo
@@ -43,7 +43,7 @@ Todo o conteúdo vive como arquivos de texto simples (escritos em [markdown](htt
 
 O objetivo dessa configuração é tornar o conteúdo diretamente acessível a harnesses de IA como o [Claude Code](https://claude.com/claude-code). Como o conteúdo é apenas um conjunto de arquivos ao lado do código, o Claude Code consegue ler, editar, criar e cruzar entradas do mesmo jeito que trabalha com código-fonte. Na prática, isso significa que uso o Claude Code como sistema de gestão de conteúdo (CMS), a ferramenta em que normalmente se faria login para adicionar uma página ou corrigir um erro de digitação: descrevo um novo projeto ou uma correção em uma frase, e ele escreve ou atualiza os arquivos, mantém os cabeçalhos consistentes e confere as entradas relacionadas nos outros idiomas. Esta própria página foi escrita assim. Tudo neste site é cocriado, do código ao conteúdo.
 
-Manter o conteúdo no repositório em texto puro tem um segundo ganho: é simples dividi-lo em trechos, gerar embeddings e alimentar um modelo de linguagem. É isso que torna possível o chat com IA na página inicial (mais sobre ele abaixo).
+Manter o conteúdo no repositório em texto puro tem um segundo ganho: é simples condensá-lo e entregá-lo a um modelo de linguagem. É isso que torna possível o chat com IA na página inicial (mais sobre ele abaixo).
 
 ## Tradução feita pelo Claude Code
 
@@ -57,13 +57,13 @@ A página inicial é deliberadamente curta: meu nome, uma linha sobre o que pesq
 
 ![O campo de chat na página inicial: um campo de texto arredondado com "Ask me something..." e uma seta de envio, e a legenda "Powered by Claude Haiku 4.5" logo abaixo.](../../../assets/content/projects/portfolio-website/chat-bot.png)
 
-Por baixo dos panos, um pipeline de conhecimento transforma as coleções de conteúdo em pequenos trechos de texto por idioma (páginas individuais, entradas do currículo, uma linha do tempo cronológica e um conjunto de respostas de FAQ pré-escritas para as perguntas mais comuns dos visitantes), gera embeddings com a Voyage AI e armazena os vetores no Supabase. Quando chega uma pergunta, o endpoint da API recupera os trechos mais parecidos e os passa ao Claude como contexto. Sempre que o conteúdo muda, um único comando regenera os arquivos de conhecimento e envia embeddings novos, e um script de benchmark roda um conjunto fixo de perguntas comuns contra o chat para garantir que ele continua respondendo todas corretamente.
+Por baixo dos panos, um script condensa as coleções de conteúdo em um perfil por idioma: cada cargo com o que eu fiz nele, um resumo curto e um link para cada pesquisa, projeto, publicação e palestra, as competências e uma linha do tempo cronológica. Dá cerca de 13.000 tokens por idioma, e o perfil vai empacotado no Worker. Cada pergunta chega ao Claude junto com o perfil completo do idioma da página, então uma pergunta ampla como "o que você construiu antes?" enxerga a minha carreira inteira de uma vez, e não meia dúzia de trechos recuperados. Como o perfil é o mesmo para todos os visitantes, ele fica no cache de prompt: depois da primeira pergunta, custa uma fração do tamanho e não atrasa a resposta. Uma versão anterior usava recuperação (embeddings com a Voyage AI e um banco vetorial no Supabase); ela respondia bem perguntas específicas, mas às vezes montava a resposta de uma pergunta ampla em torno de um item secundário, por isso a substituí. Sempre que o conteúdo muda, um único comando regenera o perfil, e um script de benchmark roda um conjunto fixo de perguntas comuns contra o chat para garantir que ele continua respondendo todas corretamente.
 
-![Diagrama de arquitetura: no build, o conteúdo markdown do site é dividido em trechos de conhecimento, transformado em embeddings pela Voyage AI e armazenado no Supabase; em tempo de execução, a pergunta do visitante é embutida, os trechos mais próximos são recuperados e passados ao Claude, que transmite uma resposta fundamentada de volta à página.](/assets/content/projects/portfolio-website/chat-pipeline-pt.svg)
+![Diagrama de arquitetura: no build, o conteúdo markdown do site é condensado em um perfil por idioma e empacotado no Worker; em tempo de execução, o perfil do idioma do visitante vai ao Claude junto com a pergunta, com cache de prompt, e o Claude transmite a resposta de volta à página.](/assets/content/projects/portfolio-website/chat-pipeline-pt.svg)
 
 ## Ensaios
 
-Boa parte do que eu vendia como serviço, plugins, aplicativos web, painéis, hoje um modelo de linguagem escreve em uma tarde. Por isso a página inicial não lista mais serviços. Ela lista ensaios: algumas peças longas sobre o que continua valioso em arquitetura e engenharia quando o código fica barato, publicadas cerca de uma vez por mês. Cada ensaio é um arquivo markdown simples em sua própria coleção de conteúdo, então publicar um é um único commit, e o chat pode responder perguntas sobre ele assim que o pipeline de conhecimento for executado.
+Boa parte do que eu vendia como serviço, plugins, aplicativos web, painéis, hoje um modelo de linguagem escreve em uma tarde. Por isso a página inicial não lista mais serviços. Ela lista ensaios: algumas peças longas sobre o que continua valioso em arquitetura e engenharia quando o código fica barato, publicadas cerca de uma vez por mês. Cada ensaio é um arquivo markdown simples em sua própria coleção de conteúdo, então publicar um é um único commit, e o chat pode responder perguntas sobre ele assim que o perfil for regenerado.
 
 ## Modo apresentação
 

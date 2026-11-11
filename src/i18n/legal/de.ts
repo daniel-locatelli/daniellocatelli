@@ -41,15 +41,14 @@ Website: <a href="/de">daniellocatelli.com</a></p>`,
 <p>Weitere Informationen: <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a> · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Datenschutzrichtlinie</a></p>`,
       },
       {
-        heading: "KI-Chat-Funktion (Anthropic, Supabase & Voyage AI)",
+        heading: "KI-Chat-Funktion (Anthropic)",
         content: `<p>Diese Website enthält eine optionale KI-Chat-Funktion. Bei Nutzung des Chats:</p>
 <ul>
-<li>Ihre Frage wird an <strong>Supabase</strong> gesendet, das sie an <strong>Voyage AI</strong> weiterleitet, um eine numerische Repräsentation (Embedding) für die Vektorsimilaritätssuche zu berechnen (nur Abfrage — Ihre Eingabe wird von keinem der Dienste dauerhaft gespeichert)</li>
-<li>Ihre Frage und der abgerufene Kontext werden an die <strong>Anthropic Claude API</strong> zur Generierung einer Antwort gesendet (verarbeitet, aber nicht langfristig von Anthropic gespeichert)</li>
+<li>Ihre Frage wird zusammen mit einer Zusammenfassung der öffentlichen Inhalte dieser Website an die <strong>Anthropic Claude API</strong> gesendet, um eine Antwort zu generieren (verarbeitet, aber nicht langfristig von Anthropic gespeichert)</li>
 </ul>
-<p>Chat-Nachrichten existieren nur im Sitzungsstatus Ihres Browsers und gehen verloren, wenn Sie die Seite schließen oder aktualisieren. Es wird kein Gesprächsverlauf auf einem Server gespeichert.</p>
-<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO — Einwilligung (Sie entscheiden sich aktiv für die Nutzung des Chats). Anthropic, Supabase und Voyage AI haben ihren Sitz in den USA. Datenübermittlungen werden durch die jeweiligen Standardvertragsklauseln abgesichert.</p>
-<p>Weitere Informationen: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic Datenschutzrichtlinie</a> · <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase Datenschutzrichtlinie</a> · <a href="https://www.voyageai.com/privacy" target="_blank" rel="noopener noreferrer">Voyage AI Datenschutzrichtlinie</a></p>`,
+<p>Das Gespräch wird im Sitzungsspeicher Ihres Browsers für diesen Tab abgelegt: Es bleibt beim Neuladen der Seite erhalten und wird gelöscht, wenn Sie den Tab schließen oder einen neuen Chat beginnen. Es wird kein Gesprächsverlauf auf einem Server gespeichert.</p>
+<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO, Einwilligung (Sie entscheiden sich aktiv für die Nutzung des Chats). Anthropic hat seinen Sitz in den USA. Datenübermittlungen werden durch die Standardvertragsklauseln von Anthropic abgesichert.</p>
+<p>Weitere Informationen: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic Datenschutzrichtlinie</a></p>`,
       },
       {
         heading: "Eingebettete Videos (YouTube)",

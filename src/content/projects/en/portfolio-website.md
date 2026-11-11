@@ -4,7 +4,7 @@ CoverAlt: "The homepage of daniellocatelli.com displayed on a laptop."
 Name: Portfolio Website
 Description: "This website: an Astro site whose content lives as plain markdown so that Claude Code can act as the CMS, with a Claude-powered chat, essays, in-browser slide decks, and an agent-ready surface on Cloudflare."
 DateStart: "2024-04-27"
-Updated: "2026-10-30"
+Updated: "2026-11-11"
 Organization: "Daniel Locatelli"
 Category: Software
 Tags:
@@ -32,7 +32,7 @@ This is the website you are reading right now. It started in April 2024 as a sma
 
 - [**Astro**](https://astro.build/) with TypeScript for the site itself, [**React**](https://react.dev/) for the few islands that need interactivity, and [**Tailwind CSS**](https://tailwindcss.com/) for styling.
 - [**Astro Content Collections**](https://docs.astro.build/en/guides/content-collections/) for all content, written as markdown and MDX with typed frontmatter and validated at build time.
-- [**Claude**](https://www.anthropic.com/claude) (Anthropic) for the homepage chat, with [**Supabase**](https://supabase.com/) as a vector store for retrieval.
+- [**Claude**](https://www.anthropic.com/claude) (Anthropic) for the homepage chat, which reads a condensed profile of the whole site with every question.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) with Static Assets for hosting, edge caching, and the agent-facing endpoints; prerendered pages are served straight from the edge, and the Worker only runs for the chat and MCP endpoints.
 
 ## Claude Code as content management system
@@ -43,7 +43,7 @@ All the content lives as plain text files (written in [markdown](https://commonm
 
 The point of this setup is to make the content directly accessible to AI harnesses such as [Claude Code](https://claude.com/claude-code). Because the content is just files next to the code, Claude Code can read, edit, create, and cross-check entries the same way it works on source code. In practice this means I use Claude Code as the content management system (CMS), the tool you would normally log into to add a page or fix a typo: I describe a new project or a correction in a sentence, and it writes or updates the files, keeps the headers consistent, and checks the related entries in the other languages. This very page was written that way. Everything on this site is co-created, from the code to the content.
 
-Keeping the content in the repository as plain text has a second payoff: it is straightforward to chunk it, embed it, and feed it to a language model. That is what makes the AI chat on the homepage possible (more on it below).
+Keeping the content in the repository as plain text has a second payoff: it is straightforward to condense it and hand it to a language model. That is what makes the AI chat on the homepage possible (more on it below).
 
 ## Translation by Claude Code
 
@@ -57,13 +57,13 @@ The homepage is deliberately short: my name, one line on what I research, a chat
 
 ![The chat input on the homepage: a rounded text field reading "Ask me something..." with a send arrow, and the caption "Powered by Claude Haiku 4.5" underneath.](../../../assets/content/projects/portfolio-website/chat-bot.png)
 
-Under the hood, a knowledge pipeline turns the content collections into small text chunks per locale (individual pages, CV entries, a chronological timeline, and a set of pre-written FAQ answers for the most common visitor questions), embeds them with Voyage AI, and stores the vectors in Supabase. When a question comes in, the API endpoint retrieves the most similar chunks and passes them to Claude as context. Whenever content changes, a single command regenerates the knowledge files and uploads fresh embeddings, and a benchmark script runs a fixed set of common questions against the chat to make sure it still answers all of them correctly.
+Under the hood, a script condenses the content collections into one profile per language: every role with what I did there, a short summary and link for every research page, project, publication and talk, the skills, and a chronological timeline. It comes to about 13,000 tokens per language and is bundled into the Worker. Each question goes to Claude together with the whole profile for the page's language, so a broad question such as "what did you build before?" sees my entire career at once instead of a handful of retrieved fragments. Because the profile is identical for every visitor, it is prompt-cached, so after the first question it costs a fraction of its size and does not slow the answer down. An earlier version used retrieval (embeddings with Voyage AI and a vector store in Supabase); it answered narrow questions well but sometimes built answers to broad ones around a minor entry, so I replaced it. Whenever content changes, a single command regenerates the profile, and a benchmark script runs a fixed set of common questions against the chat to make sure it still answers all of them correctly.
 
-![Architecture diagram: at build time the site's markdown content is split into knowledge chunks, embedded with Voyage AI and stored in Supabase; at runtime a visitor's question is embedded, the nearest chunks are retrieved and passed to Claude, which streams a grounded answer back to the page.](/assets/content/projects/portfolio-website/chat-pipeline-en.svg)
+![Architecture diagram: at build time the site's markdown content is condensed into one profile per language and bundled into the Worker; at runtime the profile for the visitor's language is sent, prompt-cached, to Claude together with the question, and Claude streams an answer back to the page.](/assets/content/projects/portfolio-website/chat-pipeline-en.svg)
 
 ## Essays
 
-Most of what I used to sell as a service, plugins, web apps, dashboards, can now be written by a language model in an afternoon. So the homepage no longer lists services. It lists essays instead: a few long pieces on what stays valuable in architecture and engineering once code is cheap, published about once a month. Each essay is a plain markdown file in its own content collection, so publishing one is a single commit, and the chat can answer questions about it as soon as the knowledge pipeline has run.
+Most of what I used to sell as a service, plugins, web apps, dashboards, can now be written by a language model in an afternoon. So the homepage no longer lists services. It lists essays instead: a few long pieces on what stays valuable in architecture and engineering once code is cheap, published about once a month. Each essay is a plain markdown file in its own content collection, so publishing one is a single commit, and the chat can answer questions about it as soon as the profile has been regenerated.
 
 ## Presentation mode
 
