@@ -53,7 +53,7 @@ O site está disponível em inglês, português e alemão. Não há nenhum servi
 
 ## Chat com IA na página inicial
 
-A página inicial é deliberadamente curta: meu nome, uma linha sobre o que pesquiso, um chat baseado no Claude e uma lista de ensaios. O chat é a principal porta de entrada. Três perguntas sugeridas ficam acima do campo de texto, para que o visitante possa perguntar do que trata o meu doutorado ou o que construí antes com um único clique, e toda resposta se baseia no conteúdo real deste site, e não em uma resposta genérica.
+A página inicial é deliberadamente curta: meu nome, uma linha sobre o que pesquiso, um chat baseado no Claude e uma lista de ensaios. O chat é a principal porta de entrada. Três perguntas sugeridas ficam acima do campo de texto, para que o visitante possa perguntar do que trata o meu doutorado ou que skills de agentes de IA criei para arquitetura com um único clique, e toda resposta se baseia no conteúdo real deste site, e não em uma resposta genérica. Quando a pergunta é enviada, a página se reduz à conversa, como no claude.ai: a apresentação e os ensaios saem de cena, o campo de texto desce para o pé da tela e a resposta aparece aos poucos, à medida que o Claude a escreve. A conversa fica guardada durante a sessão do navegador, então quem segue um link de uma resposta e volta encontra tudo onde deixou.
 
 ![O campo de chat na página inicial: um campo de texto arredondado com "Ask me something..." e uma seta de envio, e a legenda "Powered by Claude Haiku 4.5" logo abaixo.](../../../assets/content/projects/portfolio-website/chat-bot.png)
 
@@ -91,7 +91,7 @@ Fazer a negociação de conteúdo funcionar em páginas pré-renderizadas exigiu
 O Astro renderiza o site em HTML majoritariamente estático, o que já lhe dá uma vantagem inicial. As pontuações de 100 no Lighthouse em desempenho, acessibilidade, boas práticas e SEO vêm então de não carregar o que o visitante ainda não precisa:
 
 - As imagens chegam em tamanhos responsivos com dimensões explícitas, carregadas sob demanda pouco antes de entrarem na área visível; as fontes são reduzidas ao subconjunto necessário e pré-carregadas.
-- A janela do chat só é baixada quando o visitante começa a digitar, de modo que o campo de entrada da abertura carrega apenas alguns kilobytes de JavaScript.
+- A conversa só é baixada quando o visitante demonstra interesse em conversar (ao passar o mouse por uma pergunta sugerida ou clicar no campo de texto), de modo que o campo de entrada da abertura carrega apenas alguns kilobytes de JavaScript.
 
 ![Resultado do Lighthouse: 100 em desempenho, acessibilidade, boas práticas e SEO](../../../assets/content/projects/portfolio-website/result-lighthouse.png)
 
