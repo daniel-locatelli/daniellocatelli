@@ -2,7 +2,7 @@
 
 ## Sobre mim
 
-Sou doutorando no Gramazio Kohler Research, ETH Zurique. Pesquiso como estruturas de placas de madeira são projetadas e construídas, e como a IA muda a forma como arquitetos e engenheiros trabalham. A página inicial tem um chat com IA onde você pode perguntar sobre minha pesquisa, projetos e ensino, e uma lista de ensaios sobre o que continua valioso na arquitetura e na engenharia quando o código fica barato.
+Sou doutorando no Gramazio Kohler Research, ETH Zurique. Pesquiso como projetar e construir estruturas em placas de madeira e como a IA está mudando o trabalho de arquitetos e engenheiros. A página inicial tem um chat com IA onde você pode perguntar sobre minha pesquisa, projetos e ensino, e uma lista de ensaios sobre o que continua valioso na arquitetura e na engenharia quando o código fica barato.
 
 Daniel Locatelli is Brazilian, originally from Vilhena, Rondonia, Brazil. He moved to Germany in 2019 to pursue his Master's degree at the University of Stuttgart. He later moved to Switzerland for his doctorate at ETH Zurich and is currently based in Zurich, Switzerland.
 

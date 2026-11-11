@@ -9,7 +9,7 @@ export const t: I18nHome = {
   },
   intro: {
     role: "Doutorando, Gramazio Kohler Research, ETH Zurique",
-    bio: "Pesquiso o projeto e a construção de estruturas de placas de madeira, e como a IA está mudando a forma como arquitetos e engenheiros trabalham.",
+    bio: "Pesquiso como projetar e construir estruturas em placas de madeira e como a IA está mudando o trabalho de arquitetos e engenheiros.",
   },
   chat: {
     suggestions: [
