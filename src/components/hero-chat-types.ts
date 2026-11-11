@@ -9,6 +9,9 @@ export interface LinkPreview {
   slug: string;
 }
 
+/** Preview cards keyed by the index of the assistant message that linked them. */
+export type PreviewMap = Record<number, LinkPreview[]>;
+
 export interface HeroChatLabels {
   initialMessage: string;
   inputPlaceholder: string;
@@ -23,4 +26,12 @@ export interface HeroChatLabels {
   note: string;
   /** Starter questions shown as chips; clicking one asks it. */
   suggestions: string[];
+  /** Leaves the conversation view, keeping the conversation. */
+  back: string;
+  /** Clears the conversation and returns to the homepage view. */
+  newChat: string;
+  /** Homepage link back into an ongoing conversation. */
+  resume: string;
+  /** Button that scrolls down when the end of the conversation is out of view. */
+  jumpToLatest: string;
 }

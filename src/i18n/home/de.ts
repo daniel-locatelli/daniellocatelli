@@ -13,14 +13,14 @@ export const t: I18nHome = {
   },
   chat: {
     prompt: "Frag mich alles über meine Forschung, Projekte oder Lehre.",
-    note: "Die Antworten werden von Claude generiert.",
+    note: "Die Antworten werden von Claude auf Basis meiner Wissensdatenbank generiert.",
     suggestions: [
       "Worum geht es in deiner Promotion?",
-      "Skills oder Plugins?",
+      "KI-Agent-Skills für Architektur?",
       "Was hast du vorher gebaut?",
     ],
     initialMessage:
-      "Hallo! Frag mich alles über meine Arbeit, Erfahrung oder Projekte.\n\n*Bitte beachte: Die Antworten werden von KI (Anthropic Claude) generiert und können Ungenauigkeiten enthalten. Dieser Chat stellt keine professionelle, rechtliche oder technische Beratung dar. Bitte überprüfe alle Informationen eigenständig.*",
+      "Hallo! Frag mich alles über meine Arbeit, Erfahrung oder Projekte.\n\n*Die Antworten werden von KI (Anthropic Claude) generiert und können Fehler enthalten. Bitte überprüfe Wichtiges selbst.*",
     inputPlaceholder: "Frag mich etwas...",
     headerTitle: "KI-Assistent",
     poweredBy: "Unterstützt von",
@@ -28,6 +28,10 @@ export const t: I18nHome = {
       "Entschuldigung, es ist ein Fehler aufgetreten. Bitte versuch es später noch einmal.",
     requestQuote: "Angebot anfordern",
     sendEmail: "E-Mail senden",
+    back: "Zurück",
+    newChat: "Neuer Chat",
+    resume: "Unterhaltung fortsetzen",
+    jumpToLatest: "Zur neuesten Nachricht",
   },
   essays: {
     title: "Essays",

@@ -20,6 +20,10 @@ export type I18nHome = {
     errorMessage: string;
     requestQuote: string;
     sendEmail: string;
+    back: string;
+    newChat: string;
+    resume: string;
+    jumpToLatest: string;
   };
   essays: {
     title: string;

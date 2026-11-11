@@ -28,4 +28,4 @@ Die Formfindung war besonders knifflig an den Schnittpunkten zwischen den Kuppel
 ### Fertigung
 Der Fertigungsprozess lag allerdings nicht in unseren Händen. Er wurde von einem Subunternehmer im Süden Brasiliens durchgeführt: [Paleta Stands](https://paleta.com.br/). Es gab ein großes logistisches Puzzle bei der Vorfertigung und dem Transport, an dem ich leider nicht beteiligt war. Genau darüber spreche ich in dem Paper, das auf der SIGraDi 2018 Konferenz in São Carlos, Brasilien, präsentiert wurde.
 Das Paper ist hier zu finden:
-[High-Low as Expression of The Brazilian Digital Fabrication](https://daniellocatelli.com/publications/high-low-as-expression-of-the-brazilian-digital-fabrication/)
+[High-Low as Expression of The Brazilian Digital Fabrication](/de/publications/high-low-as-expression-of-the-brazilian-digital-fabrication)

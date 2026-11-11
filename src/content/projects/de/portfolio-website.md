@@ -53,7 +53,7 @@ Die Website ist auf Englisch, Portugiesisch und Deutsch verfügbar. Es gibt kein
 
 ## KI-Chat auf der Startseite
 
-Die Startseite ist bewusst kurz: mein Name, eine Zeile dazu, woran ich forsche, ein Chat mit Claude und eine Liste von Essays. Der Chat ist der Hauptzugang. Drei Startfragen stehen über dem Eingabefeld, sodass Besucher mit einem Klick fragen können, worum es in meiner Promotion geht oder was ich früher gebaut habe, und jede Antwort beruht auf den tatsächlichen Inhalten dieser Website statt auf einer generischen Antwort.
+Die Startseite ist bewusst kurz: mein Name, eine Zeile dazu, woran ich forsche, ein Chat mit Claude und eine Liste von Essays. Der Chat ist der Hauptzugang. Drei Startfragen stehen über dem Eingabefeld, sodass Besucher mit einem Klick fragen können, worum es in meiner Promotion geht oder welche KI-Agent-Skills ich für die Architektur geschrieben habe, und jede Antwort beruht auf den tatsächlichen Inhalten dieser Website statt auf einer generischen Antwort. Sobald eine Frage abgeschickt ist, reduziert sich die Seite auf das Gespräch, ähnlich wie bei claude.ai: Einleitung und Essays treten zurück, das Eingabefeld wandert an den unteren Bildschirmrand, und die Antwort erscheint Stück für Stück, während Claude sie schreibt. Das Gespräch bleibt für die Browsersitzung erhalten, sodass man nach einem Link aus einer Antwort wieder dorthin zurückkehrt.
 
 ![Das Chat-Eingabefeld auf der Startseite: ein abgerundetes Textfeld mit "Ask me something..." und einem Sendepfeil, darunter der Hinweis "Powered by Claude Haiku 4.5".](../../../assets/content/projects/portfolio-website/chat-bot.png)
 
@@ -91,7 +91,7 @@ Die Content Negotiation auf vorgerenderten Seiten zum Laufen zu bringen, erforde
 Astro rendert die Website zu überwiegend statischem HTML, was ihr bereits einen Vorsprung verschafft. Die Lighthouse-Werte von 100 für Performance, Barrierefreiheit, Best Practices und SEO ergeben sich dann daraus, nichts zu laden, was der Besucher noch nicht braucht:
 
 - Bilder kommen in responsiven Größen mit expliziten Abmessungen und werden kurz vor dem sichtbaren Bereich nachgeladen; Schriften werden auf die benötigten Zeichen reduziert und vorgeladen.
-- Das Chat-Fenster wird erst geladen, wenn ein Besucher zu tippen beginnt, sodass das Eingabefeld selbst nur wenige Kilobyte JavaScript mitbringt.
+- Die Gesprächsansicht wird erst geladen, wenn ein Besucher Interesse am Chat zeigt (beim Überfahren einer Startfrage oder beim Klick ins Eingabefeld), sodass das Eingabefeld selbst nur wenige Kilobyte JavaScript mitbringt.
 
 ![Lighthouse-Ergebnis: 100 für Performance, Barrierefreiheit, Best Practices und SEO](../../../assets/content/projects/portfolio-website/result-lighthouse.png)
 

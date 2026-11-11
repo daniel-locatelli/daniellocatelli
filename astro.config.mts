@@ -120,6 +120,10 @@ export default defineConfig({
                 "react-dom",
                 "react-dom/server",
                 "react/jsx-runtime",
+                // Discovered late on the first request otherwise; the
+                // resulting re-optimisation reload left SSR with two React
+                // copies ("Invalid hook call" in HeroChat).
+                "astro/logger/json",
               ],
             },
           };

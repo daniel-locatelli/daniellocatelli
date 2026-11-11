@@ -2,6 +2,9 @@
 
 @config '../../tailwind.config.ts';
 
+/* Streamdown (homepage chat) ships its renderers with Tailwind classes. */
+@source "../../node_modules/streamdown/dist/*.js";
+
 /*
   Tailwind CSS v4 changed the default border color to `currentcolor`.
   We set a consistent border color for better visual hierarchy.

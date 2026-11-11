@@ -2,13 +2,13 @@ URL: https://daniellocatelli.com/projects/portfolio-website
 
 # Portfolio Website
 
-Description: This website: an Astro site whose content lives as plain markdown so that Claude Code can act as the CMS, with a Claude-powered chat, a scroll-driven geodesic sphere, in-browser slide decks, and an agent-ready surface on Cloudflare.
-Tags: Web Development, Astro, TypeScript, Claude, Three.js, Cloudflare
+Description: This website: an Astro site whose content lives as plain markdown so that Claude Code can act as the CMS, with a Claude-powered chat, essays, in-browser slide decks, and an agent-ready surface on Cloudflare.
+Tags: Web Development, Astro, TypeScript, Claude, Cloudflare
 Category: Software
 Organization: Daniel Locatelli
 Place: Online
 Date: April 2024
-Link: https://daniellocatelli.com
+Link: /
 
 This is the website you are reading right now. It started in April 2024 as a small Astro site and has since grown into a playground for the way I like to build things: fast static pages, content that is easy for both humans and AI tools to read, and a few interactive pieces to spice things&nbsp;up.
 
@@ -17,7 +17,6 @@ This is the website you are reading right now. It started in April 2024 as a sma
 - [**Astro**](https://astro.build/) with TypeScript for the site itself, [**React**](https://react.dev/) for the few islands that need interactivity, and [**Tailwind CSS**](https://tailwindcss.com/) for styling.
 - [**Astro Content Collections**](https://docs.astro.build/en/guides/content-collections/) for all content, written as markdown and MDX with typed frontmatter and validated at build time.
 - [**Claude**](https://www.anthropic.com/claude) (Anthropic) for the homepage chat, with [**Supabase**](https://supabase.com/) as a vector store for retrieval.
-- [**Three.js**](https://threejs.org/) for the geodesic sphere.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) with Static Assets for hosting, edge caching, and the agent-facing endpoints; prerendered pages are served straight from the edge, and the Worker only runs for the chat and MCP endpoints.
 
 ## Claude Code as content management system
@@ -34,15 +33,13 @@ The site is available in English, Portuguese, and German. There is no translatio
 
 ## AI chat on the homepage
 
-The homepage opens with a chat powered by Claude. Visitors can ask what I am working on, where I studied, which tools I use, or anything else covered by the site, and get an answer grounded in the actual content rather than a generic reply.
+The homepage is deliberately short: my name, one line on what I research, a chat powered by Claude, and a list of essays. The chat is the main way in. Three starter questions sit above the input, so a visitor can ask what my PhD is about, or which AI agent skills I made for architecture, with a single click, and every answer is grounded in the actual content of this site rather than a generic reply. Once a question is sent, the page clears down to the conversation, much like claude.ai: the intro and essays step aside, the input slides to the bottom of the screen, and the answer streams in as Claude writes it. The conversation is kept for the browser session, so following a link from an answer and coming back returns to it.
 
 Under the hood, a knowledge pipeline turns the content collections into small text chunks per locale (individual pages, CV entries, a chronological timeline, and a set of pre-written FAQ answers for the most common visitor questions), embeds them with Voyage AI, and stores the vectors in Supabase. When a question comes in, the API endpoint retrieves the most similar chunks and passes them to Claude as context. Whenever content changes, a single command regenerates the knowledge files and uploads fresh embeddings, and a benchmark script runs a fixed set of common questions against the chat to make sure it still answers all of them correctly.
 
-## The geodesic sphere
+## Essays
 
-Further down the home page, between the service offerings and the "Architect + Programmer" section, sits a geodesic sphere rendered with Three.js. It follows the construction Buckminster Fuller made famous: start from an icosahedron, subdivide each face, project the vertices onto a sphere, and take the dual, so that the twelve original vertices become pentagons and everything else becomes hexagons. The sphere rotates as you scroll, tying the motion of the page to the geometry. The green polygon edges are drawn as thin screen-space strips rather than raw one-pixel GL lines, so they stay smooth and evenly thick on any screen, and the faces are nudged back slightly in depth so the edges never flicker against the surface. A light fog toward the black page background fades the faces at the back of the sphere, giving the view a sense of depth.
-
-It is also a nod to my own path: geodesic and lightweight structures are a recurring theme in the projects and research on this site, from the [O3 Pavilion](/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol), where it started for real, through [Common Sky](/projects/common-sky-by-artengineering-for-studio-other-spaces) and my master thesis [Building Across Scales](/research/building-across-scales) to my doctoral work on timber structures. Three.js is fetched right after the first screen has painted, in an idle moment, so it never sits on the critical path of the initial page load but is ready by the time you scroll down to the sphere.
+Most of what I used to sell as a service, plugins, web apps, dashboards, can now be written by a language model in an afternoon. So the homepage no longer lists services. It lists essays instead: a few long pieces on what stays valuable in architecture and engineering once code is cheap, published about once a month. Each essay is a plain markdown file in its own content collection, so publishing one is a single commit, and the chat can answer questions about it as soon as the knowledge pipeline has run.
 
 ## Presentation mode
 
@@ -66,9 +63,7 @@ Getting content negotiation to work on prerendered pages took some digging into 
 Astro renders the site to mostly static HTML, which already gives it a head start. Lighthouse scores of 100 for performance, accessibility, best practices, and SEO then come from not loading what the visitor does not need yet:
 
 - Images ship in responsive sizes with explicit dimensions, lazy-loaded just ahead of the viewport; fonts are subset and preloaded.
-- Three.js loads during an idle moment and only redraws the sphere while it is moving.
-- The chat window is fetched only once a visitor starts typing, so the hero input itself ships a few kilobytes of JavaScript.
-- The skills-map logos are separate lazy-loaded images instead of inline SVG, which cut the homepage HTML from about 350 KB to under 70 KB.
+- The conversation view is fetched only once a visitor shows intent to chat (hovering a starter question or focusing the input), so the hero input itself ships a few kilobytes of JavaScript.
 
 ## A personal toolbox behind the public pages
 
@@ -77,4 +72,5 @@ The site also hosts pages that are not linked from anywhere and exist mainly for
 ## Smaller details
 
 - **Link previews at build time.** External links listed on a page are rendered as preview cards. Their titles, descriptions, images, and favicons are fetched once and cached in the repository, so the build is reproducible and no third-party request happens at page load.
-- **Tooltips everywhere.** One small tooltip system (a popover panel with an arrow, positioned and flipped by a few lines of JavaScript) serves every tooltip on the site: markdown footnotes show the note inline on hover so readers do not have to jump to the bottom of the page; each tool in the homepage Map of Knowledge explains where and how I use it; the social icons in the footer, the contact section and the CV header name their destination; and the slide-deck controls show their keyboard shortcut. No native browser tooltips remain.
+- **No broken links.** Every link on the site, to its own pages, to the files each page loads, and to the icons and footnotes each page points at inside itself, is checked against the finished build, so nothing broken gets deployed. Links to other sites are swept once a week and reported, since those break on their own schedule.
+- **Tooltips everywhere.** One small tooltip system (a popover panel with an arrow, positioned and flipped by a few lines of JavaScript) serves every tooltip on the site: markdown footnotes show the note inline on hover so readers do not have to jump to the bottom of the page; the social icons in the footer and the CV header name their destination; and the slide-deck controls show their keyboard shortcut. No native browser tooltips remain.

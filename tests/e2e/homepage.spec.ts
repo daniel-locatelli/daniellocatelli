@@ -2,9 +2,9 @@ import { test, expect } from "@playwright/test";
 import { LOCALES, localeUrl } from "./fixtures/test-helpers";
 
 const SUGGESTIONS: Record<string, string[]> = {
-  en: ["What is your PhD about?", "Skills or plugins?", "What did you build before?"],
-  pt: ["Sobre o que é seu doutorado?", "Skills ou plugins?", "O que você construiu antes?"],
-  de: ["Worum geht es in deiner Promotion?", "Skills oder Plugins?", "Was hast du vorher gebaut?"],
+  en: ["What is your PhD about?", "AI agent skills for architecture?", "What did you build before?"],
+  pt: ["Sobre o que é seu doutorado?", "Que skills de agentes de IA você criou para arquitetura?", "Em quais projetos você já trabalhou?"],
+  de: ["Worum geht es in deiner Promotion?", "KI-Agent-Skills für Architektur?", "Was hast du vorher gebaut?"],
 };
 
 // Each locale's homepage must be rendered by [...locale]/index.astro, not by

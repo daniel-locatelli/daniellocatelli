@@ -87,7 +87,7 @@ Website: <a href="/pt">daniellocatelli.com</a></p>`,
     ],
   },
   terms: {
-    title: "Termos e Condições",
+    title: "Termos de uso",
     lastUpdated: "4 de agosto de 2026",
     sections: [
       {
@@ -143,7 +143,7 @@ Website: <a href="/pt">daniellocatelli.com</a></p>`,
     ],
   },
   impressum: {
-    title: "Impressum",
+    title: "Informações legais",
     lastUpdated: "4 de agosto de 2026",
     sections: [
       {

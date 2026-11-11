@@ -53,7 +53,7 @@ The site is available in English, Portuguese, and German. There is no translatio
 
 ## AI chat on the homepage
 
-The homepage is deliberately short: my name, one line on what I research, a chat powered by Claude, and a list of essays. The chat is the main way in. Three starter questions sit above the input, so a visitor can ask what my PhD is about or what I built before with a single click, and every answer is grounded in the actual content of this site rather than a generic reply.
+The homepage is deliberately short: my name, one line on what I research, a chat powered by Claude, and a list of essays. The chat is the main way in. Three starter questions sit above the input, so a visitor can ask what my PhD is about, or which AI agent skills I made for architecture, with a single click, and every answer is grounded in the actual content of this site rather than a generic reply. Once a question is sent, the page clears down to the conversation, much like claude.ai: the intro and essays step aside, the input slides to the bottom of the screen, and the answer streams in as Claude writes it. The conversation is kept for the browser session, so following a link from an answer and coming back returns to it.
 
 ![The chat input on the homepage: a rounded text field reading "Ask me something..." with a send arrow, and the caption "Powered by Claude Haiku 4.5" underneath.](../../../assets/content/projects/portfolio-website/chat-bot.png)
 
@@ -91,7 +91,7 @@ Getting content negotiation to work on prerendered pages took some digging into 
 Astro renders the site to mostly static HTML, which already gives it a head start. Lighthouse scores of 100 for performance, accessibility, best practices, and SEO then come from not loading what the visitor does not need yet:
 
 - Images ship in responsive sizes with explicit dimensions, lazy-loaded just ahead of the viewport; fonts are subset and preloaded.
-- The chat window is fetched only once a visitor starts typing, so the hero input itself ships a few kilobytes of JavaScript.
+- The conversation view is fetched only once a visitor shows intent to chat (hovering a starter question or focusing the input), so the hero input itself ships a few kilobytes of JavaScript.
 
 ![Lighthouse result: 100 for performance, accessibility, best practices, and SEO](../../../assets/content/projects/portfolio-website/result-lighthouse.png)
 

@@ -6,6 +6,7 @@ import {
   ProdModelAPIAlias,
   getSystemPrompt,
 } from "@/config/ai";
+import { formatUrlsAsMarkdown } from "@/lib/chat-markdown";
 
 interface ModelOverride {
   models: string[];
@@ -41,22 +42,15 @@ async function getModelOverride(env: any): Promise<string[] | null> {
   }
 }
 
-/**
- * Convert bare URLs to markdown format [url](url)
- * Avoids converting URLs that are already in markdown [text](url) format
- */
-function formatUrlsAsMarkdown(text: string): string {
-  // Match URLs that are NOT already in markdown format
-  // This regex avoids matching URLs inside [text](url) patterns
-  const urlRegex = /(?<!\]\()(?<!\[)https?:\/\/[^\s\[\]]+/g;
-  return text.replace(urlRegex, (url) => `[${url}](${url})`);
-}
-
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const { question } = (await request.json()) as { question?: string };
+    const { question, stream: wantsStream } = (await request.json()) as {
+      question?: string;
+      /** Stream the answer as plain text instead of one JSON reply. */
+      stream?: boolean;
+    };
     if (!question) {
       return new Response(JSON.stringify({ error: "Question is required" }), {
         status: 400,
@@ -123,7 +117,10 @@ export const POST: APIRoute = async ({ request }) => {
     };
 
     if (import.meta.env.DEV) {
-      console.log(`Vector search returned ${documents.length} docs:`, documents.map((d: any) => d.title).join(", "));
+      console.log(
+        `Vector search returned ${documents.length} docs:`,
+        documents.map((d: any) => d.title).join(", "),
+      );
     }
 
     // Always include core CV context (Timeline + Summary & Skills)
@@ -151,7 +148,9 @@ export const POST: APIRoute = async ({ request }) => {
       if (coreResponse.ok) {
         const coreDocs = (await coreResponse.json()) as any[];
         if (import.meta.env.DEV) {
-          console.log(`Core CV context: fetched ${coreDocs.length} docs — ${coreDocs.map((d: any) => d.title).join(", ")}`);
+          console.log(
+            `Core CV context: fetched ${coreDocs.length} docs — ${coreDocs.map((d: any) => d.title).join(", ")}`,
+          );
         }
         for (const doc of coreDocs) {
           if (!existingIds.has(doc.id)) {
@@ -160,7 +159,9 @@ export const POST: APIRoute = async ({ request }) => {
           }
         }
       } else if (import.meta.env.DEV) {
-        console.error(`Core CV context fetch failed: ${coreResponse.status} ${await coreResponse.text()}`);
+        console.error(
+          `Core CV context fetch failed: ${coreResponse.status} ${await coreResponse.text()}`,
+        );
       }
     } catch (e) {
       if (import.meta.env.DEV) {
@@ -184,29 +185,78 @@ export const POST: APIRoute = async ({ request }) => {
       apiKey: ANTHROPIC_API_KEY,
     });
 
-    const kvOverride = import.meta.env.DEV
-      ? null
-      : await getModelOverride(env);
+    const kvOverride = import.meta.env.DEV ? null : await getModelOverride(env);
     const modelsToTry = import.meta.env.DEV
       ? [DevModelAPIAlias]
-      : kvOverride ?? [...ProdModelAPIAlias];
+      : (kvOverride ?? [...ProdModelAPIAlias]);
+
+    const params = {
+      max_tokens: 1024,
+      system: getSystemPrompt(context),
+      messages: [{ role: "user" as const, content: question }],
+    };
+
+    if (wantsStream) {
+      // Commit to a model only once its stream has produced its first event,
+      // so a failing model still falls through to the next one.
+      for (const model of modelsToTry) {
+        const stream = anthropic.messages.stream({ ...params, model });
+        const events = stream[Symbol.asyncIterator]();
+        try {
+          await events.next();
+        } catch (err) {
+          console.error(`Error with model ${model}:`, err);
+          continue;
+        }
+        const encoder = new TextEncoder();
+        const body = new ReadableStream<Uint8Array>({
+          async pull(controller) {
+            try {
+              for (;;) {
+                const { value, done } = await events.next();
+                if (done) {
+                  controller.close();
+                  return;
+                }
+                if (
+                  value.type === "content_block_delta" &&
+                  value.delta.type === "text_delta"
+                ) {
+                  controller.enqueue(encoder.encode(value.delta.text));
+                  return;
+                }
+              }
+            } catch (err) {
+              console.error(`Stream error with model ${model}:`, err);
+              controller.error(err);
+            }
+          },
+          cancel() {
+            stream.abort();
+          },
+        });
+        return new Response(body, {
+          headers: {
+            "content-type": "text/plain; charset=utf-8",
+            "cache-control": "no-store",
+            "x-content-type-options": "nosniff",
+          },
+        });
+      }
+      console.error("All Claude models failed.");
+      return new Response(JSON.stringify({ error: "All models failed" }), {
+        status: 502,
+      });
+    }
 
     let msg;
 
     for (const model of modelsToTry) {
       try {
-        msg = await anthropic.messages.create({
-          model: model,
-          max_tokens: 1024,
-          system: getSystemPrompt(context),
-          messages: [{ role: "user", content: question }],
-        });
-
-        // If we reach here, the call was successful
+        msg = await anthropic.messages.create({ ...params, model });
         break;
       } catch (err) {
         console.error(`Error with model ${model}:`, err);
-        // Continue to the next fallback model
       }
     }
 
