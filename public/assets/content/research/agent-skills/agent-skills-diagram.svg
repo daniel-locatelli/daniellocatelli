@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1190" role="img" aria-labelledby="skills-cover-title"><title id="skills-cover-title">Agent skills I use: my own (AEC, quality, research, personal), Matt Pocock's, and community skills feeding one coding agent</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1130" role="img" aria-labelledby="skills-cover-title"><title id="skills-cover-title">Agent skills I use: my own (AEC, web, git, research, personal), Matt Pocock's, and community skills feeding one coding agent</title>
 <defs><marker id="skills-cover-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
 <rect width="100%" height="100%" fill="#000000"/>
-<rect x="72" y="120" width="1400" height="510" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="72" y="120" width="1400" height="450" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
 <rect x="88" y="128" width="76" height="28" rx="4" fill="#000000"/>
 <text x="100" y="148" fill="#71717a" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">MINE</text>
 <text x="100" y="186" fill="#52525b" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.18em">AEC</text>
@@ -18,8 +18,8 @@
 <text x="116" y="469" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">converting-rhino-to-ifc4</text>
 <rect x="96" y="498" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
 <text x="116" y="529" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">agent-based-modeling</text>
-<text x="444" y="186" fill="#52525b" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.18em">QUALITY</text>
-<line x1="533" y1="181" x2="760" y2="181" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="444" y="186" fill="#52525b" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.18em">WEB</text>
+<line x1="489" y1="181" x2="760" y2="181" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
 <rect x="440" y="198" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
 <text x="460" y="229" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">optimizing-web-performance</text>
 <rect x="440" y="258" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
@@ -32,14 +32,16 @@
 <text x="460" y="469" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">auditing-security-headers</text>
 <rect x="440" y="498" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
 <text x="460" y="529" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">auditing-content-integrity</text>
-<rect x="440" y="558" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="460" y="589" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">preparing-pull-request</text>
-<text x="788" y="186" fill="#52525b" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.18em">RESEARCH</text>
-<line x1="888" y1="181" x2="1104" y2="181" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<text x="788" y="186" fill="#52525b" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.18em">GIT</text>
+<line x1="833" y1="181" x2="1104" y2="181" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
 <rect x="784" y="198" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="804" y="229" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">citing-sources</text>
-<rect x="784" y="258" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="804" y="289" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">using-zotero</text>
+<text x="804" y="229" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">preparing-pull-request</text>
+<text x="788" y="288" fill="#52525b" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.18em">RESEARCH</text>
+<line x1="888" y1="283" x2="1104" y2="283" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
+<rect x="784" y="300" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="804" y="331" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">citing-sources</text>
+<rect x="784" y="360" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="804" y="391" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">using-zotero</text>
 <text x="1132" y="186" fill="#52525b" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.18em">PERSONAL</text>
 <line x1="1232" y1="181" x2="1448" y2="181" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>
 <rect x="1128" y="198" width="320" height="48" rx="10" fill="#18181b" stroke="#71717a" stroke-dasharray="6 5" stroke-width="1.5"/>
@@ -57,36 +59,36 @@
 <rect x="1128" y="438" width="320" height="48" rx="10" fill="#18181b" stroke="#71717a" stroke-dasharray="6 5" stroke-width="1.5"/>
 <text x="1148" y="469" fill="#d4d4d8" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">thoughts</text>
 <text x="1432" y="468" fill="#71717a" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">private</text>
-<rect x="72" y="662" width="712" height="240" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
-<rect x="88" y="670" width="167" height="28" rx="4" fill="#000000"/>
-<text x="100" y="690" fill="#71717a" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">MATT POCOCK</text>
+<rect x="72" y="602" width="712" height="240" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="88" y="610" width="167" height="28" rx="4" fill="#000000"/>
+<text x="100" y="630" fill="#71717a" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">MATT POCOCK</text>
+<rect x="96" y="650" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="116" y="681" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">grill-me</text>
 <rect x="96" y="710" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="116" y="741" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">grill-me</text>
+<text x="116" y="741" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">grill-with-docs</text>
 <rect x="96" y="770" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="116" y="801" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">grill-with-docs</text>
-<rect x="96" y="830" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="116" y="861" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">handoff</text>
+<text x="116" y="801" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">handoff</text>
+<rect x="440" y="650" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="460" y="681" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">teach</text>
 <rect x="440" y="710" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="460" y="741" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">teach</text>
+<text x="460" y="741" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">codebase-design</text>
 <rect x="440" y="770" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="460" y="801" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">codebase-design</text>
-<rect x="440" y="830" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="460" y="861" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">domain-modeling</text>
-<rect x="816" y="662" width="368" height="240" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
-<rect x="832" y="670" width="141" height="28" rx="4" fill="#000000"/>
-<text x="844" y="690" fill="#71717a" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">COMMUNITY</text>
+<text x="460" y="801" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">domain-modeling</text>
+<rect x="816" y="602" width="368" height="240" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="832" y="610" width="141" height="28" rx="4" fill="#000000"/>
+<text x="844" y="630" fill="#71717a" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.16em">COMMUNITY</text>
+<rect x="840" y="650" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="860" y="681" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">diagram-design</text>
 <rect x="840" y="710" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="860" y="741" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">diagram-design</text>
+<text x="860" y="741" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">superpowers</text>
 <rect x="840" y="770" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="860" y="801" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">superpowers</text>
-<rect x="840" y="830" width="320" height="48" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
-<text x="860" y="861" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">frontend-design</text>
-<rect x="72" y="982" width="1400" height="88" rx="12" fill="rgba(34,197,94,0.10)" stroke="#22c55e" stroke-width="2"/>
-<text x="772" y="1022" fill="#f4f4f5" font-size="30" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Coding agent</text>
-<text x="772" y="1050" fill="#a1a1aa" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">skills loaded on demand, by task</text>
-<line x1="428" y1="902" x2="428" y2="982" stroke="#a1a1aa" stroke-width="2" marker-end="url(#skills-cover-arrow)"/>
-<line x1="1000" y1="902" x2="1000" y2="982" stroke="#a1a1aa" stroke-width="2" marker-end="url(#skills-cover-arrow)"/>
-<line x1="1528" y1="375" x2="1528" y2="1026" stroke="#a1a1aa" stroke-width="2"/>
-<line x1="1472" y1="375" x2="1528" y2="375" stroke="#a1a1aa" stroke-width="2"/>
-<line x1="1528" y1="1026" x2="1480" y2="1026" stroke="#a1a1aa" stroke-width="2" marker-end="url(#skills-cover-arrow)"/>
+<text x="860" y="801" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">frontend-design</text>
+<rect x="72" y="922" width="1400" height="88" rx="12" fill="rgba(34,197,94,0.10)" stroke="#22c55e" stroke-width="2"/>
+<text x="772" y="962" fill="#f4f4f5" font-size="30" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" text-anchor="middle">Coding agent</text>
+<text x="772" y="990" fill="#a1a1aa" font-size="17" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">skills loaded on demand, by task</text>
+<line x1="428" y1="842" x2="428" y2="922" stroke="#a1a1aa" stroke-width="2" marker-end="url(#skills-cover-arrow)"/>
+<line x1="1000" y1="842" x2="1000" y2="922" stroke="#a1a1aa" stroke-width="2" marker-end="url(#skills-cover-arrow)"/>
+<line x1="1528" y1="345" x2="1528" y2="966" stroke="#a1a1aa" stroke-width="2"/>
+<line x1="1472" y1="345" x2="1528" y2="345" stroke="#a1a1aa" stroke-width="2"/>
+<line x1="1528" y1="966" x2="1480" y2="966" stroke="#a1a1aa" stroke-width="2" marker-end="url(#skills-cover-arrow)"/>
 </svg>

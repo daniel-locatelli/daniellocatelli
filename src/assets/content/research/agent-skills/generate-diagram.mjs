@@ -17,6 +17,7 @@ const TILE_H = 48;
 const TILE_GAP = 12;
 const HEAD_H = 48; // space for box label
 const GROUP_LABEL_H = 30;
+const SECTION_GAP = 12; // between a column's stacked sections
 const BUS_GAP = 56; // distance from boxes' right edge to the bus line
 
 // Tiles: "name" or ["name", private]
@@ -26,8 +27,9 @@ const rows = [
       label: "MINE",
       groups: [
         { label: "AEC", tiles: ["creating-revit-plugin", "creating-grasshopper-plugin", "using-cordyceps", "working-with-btlx", "converting-rhino-to-ifc4", "agent-based-modeling"] },
-        { label: "QUALITY", tiles: ["optimizing-web-performance", "auditing-website-quality", "auditing-agent-readiness", "auditing-seo-and-social", "auditing-security-headers", "auditing-content-integrity", "preparing-pull-request"] },
-        { label: "RESEARCH", tiles: ["citing-sources", "using-zotero"] },
+        { label: "WEB", tiles: ["optimizing-web-performance", "auditing-website-quality", "auditing-agent-readiness", "auditing-seo-and-social", "auditing-security-headers", "auditing-content-integrity"] },
+        // A column can stack a second, labelled section under the first.
+        { label: "GIT", tiles: ["preparing-pull-request"], then: { label: "RESEARCH", tiles: ["citing-sources", "using-zotero"] } },
         { label: "PERSONAL", tiles: [["system", true], ["backup-system", true], ["phd", true], ["searching-librarian", true], ["thoughts", true]] },
       ],
     },
@@ -48,10 +50,12 @@ const rows = [
 ];
 
 const boxWidth = (box) => BOX_PAD * 2 + box.groups.length * SUB_W + (box.groups.length - 1) * SUB_GAP;
+// Height of a column's tiles, plus the label and tiles of a stacked `then` section.
+const columnH = (g) =>
+  g.tiles.length * (TILE_H + TILE_GAP) + (g.then ? SECTION_GAP + GROUP_LABEL_H + g.then.tiles.length * (TILE_H + TILE_GAP) : 0) - TILE_GAP;
 const boxHeight = (box) => {
-  const n = Math.max(...box.groups.map((g) => g.tiles.length));
   const hasLabels = box.groups.some((g) => g.label);
-  return HEAD_H + (hasLabels ? GROUP_LABEL_H : 0) + n * (TILE_H + TILE_GAP) - TILE_GAP + BOX_PAD;
+  return HEAD_H + (hasLabels ? GROUP_LABEL_H : 0) + Math.max(...box.groups.map(columnH)) + BOX_PAD;
 };
 
 const contentW = Math.max(...rows.map((r) => r.reduce((s, b) => s + boxWidth(b), 0) + (r.length - 1) * BOX_GAP));
@@ -78,14 +82,22 @@ for (const row of rows) {
     box.groups.forEach((g, gi) => {
       const gx = x + BOX_PAD + gi * (SUB_W + SUB_GAP);
       let ty = y + HEAD_H;
+      const label = (text) => {
+        push(`<text x="${gx + 4}" y="${ty + 18}" fill="#52525b" font-size="13" font-family="${MONO}" letter-spacing="0.18em">${text}</text>`);
+        push(`<line x1="${gx + 4 + text.length * 11 + 12}" y1="${ty + 13}" x2="${gx + SUB_W}" y2="${ty + 13}" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>`);
+      };
       if (hasLabels) {
-        if (g.label) {
-          push(`<text x="${gx + 4}" y="${ty + 18}" fill="#52525b" font-size="13" font-family="${MONO}" letter-spacing="0.18em">${g.label}</text>`);
-          push(`<line x1="${gx + 4 + g.label.length * 11 + 12}" y1="${ty + 13}" x2="${gx + SUB_W}" y2="${ty + 13}" stroke="rgba(244,244,245,0.10)" stroke-width="1"/>`);
-        }
+        if (g.label) label(g.label);
         ty += GROUP_LABEL_H;
       }
-      for (const t of g.tiles) {
+      const tiles = g.then ? [...g.tiles, null, ...g.then.tiles] : g.tiles;
+      for (const t of tiles) {
+        if (t === null) {
+          ty += SECTION_GAP;
+          label(g.then.label);
+          ty += GROUP_LABEL_H;
+          continue;
+        }
         const [name, priv] = Array.isArray(t) ? t : [t, false];
         const stroke = priv ? `stroke="#71717a" stroke-dasharray="6 5"` : `stroke="#f4f4f5"`;
         push(`<rect x="${gx}" y="${ty}" width="${SUB_W}" height="${TILE_H}" rx="10" fill="#18181b" ${stroke} stroke-width="1.5"/>`);
@@ -130,7 +142,7 @@ if (upper.length) {
 
 const H = agentY + agentH + TOP;
 const svg = [
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="skills-cover-title"><title id="skills-cover-title">Agent skills I use: my own (AEC, quality, research, personal), Matt Pocock's, and community skills feeding one coding agent</title>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="skills-cover-title"><title id="skills-cover-title">Agent skills I use: my own (AEC, web, git, research, personal), Matt Pocock's, and community skills feeding one coding agent</title>`,
   `<defs><marker id="skills-cover-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>`,
   `<rect width="100%" height="100%" fill="#000000"/>`,
   ...out,

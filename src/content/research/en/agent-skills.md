@@ -25,11 +25,11 @@ OtherLinks:
 
 An agent skill is a folder with a `SKILL.md`: a short, well-scoped set of instructions, references, and scripts that a coding agent loads when a task matches its description. It is the unit in which expertise travels between people and agents. This page is a living list of the skills that have earned a permanent place in my Claude Code setup.
 
-![Three boxes of skill tiles feed one coding agent: my own skills, grouped into AEC, quality, research and personal, sit on top; Matt Pocock's skills and community skills sit below.](/assets/content/research/agent-skills/agent-skills-diagram.svg "My skills, Matt Pocock's and community skills feed one agent")
+![Three boxes of skill tiles feed one coding agent: my own skills, grouped into AEC, web, git, research and personal, sit on top; Matt Pocock's skills and community skills sit below.](/assets/content/research/agent-skills/agent-skills-diagram.svg "My skills, Matt Pocock's and community skills feed one agent")
 
 ## My own skills
 
-The published ones live in the public repository [daniel-locatelli/skills](https://github.com/daniel-locatelli/skills), in folders by the tool or domain they serve (Revit, Grasshopper, BIM, timber, computational design, web, git, research, Zotero), and they install together as one plugin; below they are grouped by what they are for. They are the skills I would hand to a colleague: each one is about how a tool or a format behaves, not about me. A further set of personal skills stays private because it encodes my own setup: where things live, how they are backed up, how the doctorate is run. Both kinds follow the same shape. A `SKILL.md` says when to trigger, pins the facts the model tends to get wrong, and names the loop the agent has to close before it may call the work done.
+The published ones live in the public repository [daniel-locatelli/skills](https://github.com/daniel-locatelli/skills), in folders by the tool or domain they serve (Revit, Grasshopper, BIM, timber, computational design, web, git, research, Zotero), and they install together as one plugin; below, the tool folders (Revit, Grasshopper, BIM, timber, computational design) are gathered under AEC, and Zotero sits with research. They are the skills I would hand to a colleague: each one is about how a tool or a format behaves, not about me. A further set of personal skills stays private because it encodes my own setup: where things live, how they are backed up, how the doctorate is run. Both kinds follow the same shape. A `SKILL.md` says when to trigger, pins the facts the model tends to get wrong, and names the loop the agent has to close before it may call the work done.
 
 ### AEC
 
@@ -44,9 +44,9 @@ Six skills for the tools and methods I work with daily in architecture, engineer
 | **agent-based-modeling** | Lay out plates, tiles, or packings with agents relaxing on a surface, in any host |
 | **converting-rhino-to-ifc4** | Turn Rhino geometry into IFC4, with the right IFC class for each layer or block |
 
-### Quality
+### Web
 
-Six of these audit a deployed website, and they nest. **optimizing-web-performance** fixes the Core Web Vitals and accessibility findings that move a Lighthouse score. **auditing-agent-readiness** checks the newer question of whether an AI agent can discover and use the site: `llms.txt`, markdown variants, `.well-known` manifests, an MCP handshake. Three more each take one dimension: **auditing-seo-and-social** covers what Lighthouse's SEO category leaves out (structured data, hreflang, canonicals, sitemaps, social cards, broken links), **auditing-security-headers** checks CSP, HSTS, cookies, and TLS, and **auditing-content-integrity** checks that a multilingual content repository stays in step across its languages and keeps its house style. **auditing-website-quality** runs all five and turns the result into one ranked scorecard fit to hand to a client. The last one, **preparing-pull-request**, is about the quality of what I send to other people's repositories: before a PR or issue goes out, it traces the defect through blame and history, sweeps the upstream tracker for duplicates and in-flight work, and verifies every claim the PR body makes. What they share is that none of them lets the agent say "done" without evidence.
+Six skills audit a deployed website, and they nest. **optimizing-web-performance** fixes the Core Web Vitals and accessibility findings that move a Lighthouse score. **auditing-agent-readiness** checks the newer question of whether an AI agent can discover and use the site: `llms.txt`, markdown variants, `.well-known` manifests, an MCP handshake. Three more each take one dimension: **auditing-seo-and-social** covers what Lighthouse's SEO category leaves out (structured data, hreflang, canonicals, sitemaps, social cards, broken links), **auditing-security-headers** checks CSP, HSTS, cookies, and TLS, and **auditing-content-integrity** checks that a multilingual content repository stays in step across its languages and keeps its house style. **auditing-website-quality** runs all five and turns the result into one ranked scorecard fit to hand to a client. What they share is that none of them lets the agent say "done" without evidence.
 
 | Skill | What it does |
 | --- | --- |
@@ -56,6 +56,13 @@ Six of these audit a deployed website, and they nest. **optimizing-web-performan
 | **auditing-seo-and-social** | Audit SEO depth, social cards, structured data, hreflang, and broken links |
 | **auditing-security-headers** | Audit security headers, cookies, and TLS, and harden the site |
 | **auditing-content-integrity** | Check a content repository for language parity, consistent frontmatter, and house style |
+
+### Git
+
+One skill, about the quality of what I send to other people's repositories: **preparing-pull-request**. Before a PR or issue goes out, it traces the defect through blame and history, sweeps the upstream tracker for duplicates and in-flight work, and verifies every claim the PR body makes. Like the web audits, it does not let the agent say "done" without evidence.
+
+| Skill | What it does |
+| --- | --- |
 | **preparing-pull-request** | Trace a defect's origin and sweep the upstream tracker before opening a PR on someone else's repository |
 
 ### Research

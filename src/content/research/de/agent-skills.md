@@ -25,11 +25,11 @@ OtherLinks:
 
 Ein Agent Skill ist ein Ordner mit einer `SKILL.md`: ein kurzer, klar abgegrenzter Satz aus Anweisungen, Referenzen und Skripten, den ein Coding-Agent lädt, wenn eine Aufgabe zu seiner Beschreibung passt. Es ist die Einheit, in der Expertise zwischen Menschen und Agenten wandert. Diese Seite ist eine lebende Liste der Skills, die sich einen festen Platz in meinem Claude-Code-Setup verdient haben.
 
-![Drei Kästen mit Skill-Kacheln speisen einen einzigen Coding-Agenten: meine eigenen, gruppiert in AEC, Qualität, Forschung und Persönlich, stehen oben; Matt Pococks Skills und Community-Skills stehen darunter.](/assets/content/research/agent-skills/agent-skills-diagram.svg "Meine Skills, Matt Pococks und Community-Skills speisen einen Agenten")
+![Drei Kästen mit Skill-Kacheln speisen einen einzigen Coding-Agenten: meine eigenen, gruppiert in AEC, Web, Git, Forschung und Persönlich, stehen oben; Matt Pococks Skills und Community-Skills stehen darunter.](/assets/content/research/agent-skills/agent-skills-diagram.svg "Meine Skills, Matt Pococks und Community-Skills speisen einen Agenten")
 
 ## Meine eigenen Skills
 
-Die veröffentlichten liegen im öffentlichen Repository [daniel-locatelli/skills](https://github.com/daniel-locatelli/skills), in Ordnern nach dem Werkzeug oder der Domäne sortiert, der sie dienen (Revit, Grasshopper, BIM, Holz, Computational Design, Web, Git, Forschung, Zotero), und werden zusammen als ein Plugin installiert; hier sind sie danach gruppiert, wofür sie da sind. Es sind die Skills, die ich einem Kollegen in die Hand geben würde: Jeder handelt davon, wie sich ein Werkzeug oder ein Format verhält, nicht von mir. Eine weitere Gruppe persönlicher Skills bleibt privat, weil sie mein eigenes Setup kodiert: wo die Dinge liegen, wie sie gesichert werden, wie die Promotion geführt wird. Beide Arten folgen derselben Form. Eine `SKILL.md` sagt, wann sie anspringt, fixiert die Fakten, die das Modell gern falsch macht, und benennt die Schleife, die der Agent schließen muss, bevor er die Arbeit als erledigt bezeichnen darf.
+Die veröffentlichten liegen im öffentlichen Repository [daniel-locatelli/skills](https://github.com/daniel-locatelli/skills), in Ordnern nach dem Werkzeug oder der Domäne sortiert, der sie dienen (Revit, Grasshopper, BIM, Holz, Computational Design, Web, Git, Forschung, Zotero), und werden zusammen als ein Plugin installiert; hier sind die Werkzeug-Ordner (Revit, Grasshopper, BIM, Holz, Computational Design) unter AEC zusammengefasst, und Zotero steht bei Forschung. Es sind die Skills, die ich einem Kollegen in die Hand geben würde: Jeder handelt davon, wie sich ein Werkzeug oder ein Format verhält, nicht von mir. Eine weitere Gruppe persönlicher Skills bleibt privat, weil sie mein eigenes Setup kodiert: wo die Dinge liegen, wie sie gesichert werden, wie die Promotion geführt wird. Beide Arten folgen derselben Form. Eine `SKILL.md` sagt, wann sie anspringt, fixiert die Fakten, die das Modell gern falsch macht, und benennt die Schleife, die der Agent schließen muss, bevor er die Arbeit als erledigt bezeichnen darf.
 
 ### AEC
 
@@ -44,9 +44,9 @@ Sechs Skills für die Werkzeuge und Methoden, mit denen ich täglich in Architek
 | **agent-based-modeling** | Ordnet Platten, Kacheln oder Packungen mit Agenten an, die auf einer Fläche relaxieren, in jeder Software |
 | **converting-rhino-to-ifc4** | Macht aus Rhino-Geometrie IFC4, mit der richtigen IFC-Klasse für jeden Layer oder Block |
 
-### Qualität
+### Web
 
-Sechs davon auditieren eine veröffentlichte Website, und sie bauen aufeinander auf. **optimizing-web-performance** behebt die Core-Web-Vitals- und Barrierefreiheits-Befunde, die einen Lighthouse-Score bewegen. **auditing-agent-readiness** prüft die neuere Frage, ob ein KI-Agent die Site finden und nutzen kann: `llms.txt`, Markdown-Varianten, `.well-known`-Manifeste, ein MCP-Handshake. Drei weitere nehmen sich je eine Dimension vor: **auditing-seo-and-social** deckt ab, was die SEO-Kategorie von Lighthouse auslässt (strukturierte Daten, hreflang, Canonicals, Sitemaps, Social Cards, defekte Links), **auditing-security-headers** prüft CSP, HSTS, Cookies und TLS, und **auditing-content-integrity** prüft, ob ein mehrsprachiges Content-Repository in allen Sprachen gleichauf bleibt und seinem Hausstil folgt. **auditing-website-quality** führt alle fünf aus und macht aus dem Ergebnis eine einzige sortierte Scorecard, die man einem Kunden übergeben kann. Der letzte, **preparing-pull-request**, betrifft die Qualität dessen, was ich in fremde Repositories schicke: Bevor ein PR oder ein Issue rausgeht, zeichnet er den Defekt durch Blame und Historie nach, durchsucht den Upstream-Tracker nach Duplikaten und laufender Arbeit und verifiziert jede Behauptung im PR-Text. Gemeinsam ist ihnen, dass keiner den Agenten ohne Belege "fertig" sagen lässt.
+Sechs Skills auditieren eine veröffentlichte Website, und sie bauen aufeinander auf. **optimizing-web-performance** behebt die Core-Web-Vitals- und Barrierefreiheits-Befunde, die einen Lighthouse-Score bewegen. **auditing-agent-readiness** prüft die neuere Frage, ob ein KI-Agent die Site finden und nutzen kann: `llms.txt`, Markdown-Varianten, `.well-known`-Manifeste, ein MCP-Handshake. Drei weitere nehmen sich je eine Dimension vor: **auditing-seo-and-social** deckt ab, was die SEO-Kategorie von Lighthouse auslässt (strukturierte Daten, hreflang, Canonicals, Sitemaps, Social Cards, defekte Links), **auditing-security-headers** prüft CSP, HSTS, Cookies und TLS, und **auditing-content-integrity** prüft, ob ein mehrsprachiges Content-Repository in allen Sprachen gleichauf bleibt und seinem Hausstil folgt. **auditing-website-quality** führt alle fünf aus und macht aus dem Ergebnis eine einzige sortierte Scorecard, die man einem Kunden übergeben kann. Gemeinsam ist ihnen, dass keiner den Agenten ohne Belege "fertig" sagen lässt.
 
 | Skill | Was er tut |
 | --- | --- |
@@ -56,6 +56,13 @@ Sechs davon auditieren eine veröffentlichte Website, und sie bauen aufeinander 
 | **auditing-seo-and-social** | Auditiert SEO in der Tiefe, Social Cards, strukturierte Daten, hreflang und defekte Links |
 | **auditing-security-headers** | Auditiert Sicherheits-Header, Cookies und TLS und härtet die Website |
 | **auditing-content-integrity** | Prüft ein Content-Repository auf Sprachparität, einheitliches Frontmatter und Hausstil |
+
+### Git
+
+Ein Skill, der die Qualität dessen betrifft, was ich in fremde Repositories schicke: **preparing-pull-request**. Bevor ein PR oder ein Issue rausgeht, zeichnet er den Defekt durch Blame und Historie nach, durchsucht den Upstream-Tracker nach Duplikaten und laufender Arbeit und verifiziert jede Behauptung im PR-Text. Wie die Web-Audits lässt er den Agenten nicht ohne Belege "fertig" sagen.
+
+| Skill | Was er tut |
+| --- | --- |
 | **preparing-pull-request** | Zeichnet die Herkunft eines Defekts nach und durchsucht den Upstream-Tracker, bevor ein PR in einem fremden Repository eröffnet wird |
 
 ### Forschung
