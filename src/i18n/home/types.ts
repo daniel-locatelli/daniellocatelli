@@ -11,7 +11,8 @@ export type I18nHome = {
   };
   chat: {
     suggestions: string[];
-    initialMessage: string;
+    /** Shown once under the latest answer. */
+    disclaimer: string;
     headerTitle: string;
     /** Input placeholder; {model} is the model's name. */
     chatPlaceholder: string;

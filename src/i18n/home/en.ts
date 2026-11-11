@@ -18,8 +18,8 @@ export const t: I18nHome = {
       "AI agent skills for architecture?",
       "What did you build before?",
     ],
-    initialMessage:
-      "Hi! Ask me anything about my work, experience, or projects.\n\n*Answers are AI-generated (Anthropic Claude) and may contain mistakes. Please verify anything important.*",
+    disclaimer:
+      "Answers are AI-generated (Anthropic Claude) and may contain mistakes. Please verify anything important.",
     headerTitle: "AI Assistant",
     chatPlaceholder: "Ask {model} about my work...",
     errorMessage: "Sorry, I encountered an error. Please try again later.",

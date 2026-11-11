@@ -64,5 +64,8 @@ test.describe("Homepage", () => {
     await page.locator("astro-island:not([ssr])").first().waitFor({ state: "attached" });
     await page.getByRole("button", { name: "What is your PhD about?" }).click();
     await expect(page.getByText("Mocked answer about the PhD.")).toBeVisible();
+    // No greeting opens the conversation; the disclaimer follows the answer.
+    await expect(page.getByText("Ask me anything")).toHaveCount(0);
+    await expect(page.locator("p", { hasText: "may contain mistakes" })).toBeVisible();
   });
 });

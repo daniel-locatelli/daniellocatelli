@@ -43,7 +43,8 @@ type Mode = "home" | "chat";
  */
 const CHAT_ATTR = "data-hero-chat";
 /** Session copy of the conversation, so leaving via a link and coming back keeps it. Read pre-paint by index.astro. */
-const STORAGE_KEY = "hero-chat:v1";
+// v2: conversations no longer open with a greeting, so message indices shifted.
+const STORAGE_KEY = "hero-chat:v2";
 const MAX_STORED_MESSAGES = 100;
 
 const COLLECTION_PREFIXES = [
@@ -123,7 +124,7 @@ function loadStored(): Stored | null {
           isStr(m.content),
       )
       .slice(-MAX_STORED_MESSAGES);
-    if (messages.length < 2) return null;
+    if (messages.length === 0) return null;
     const previews: PreviewMap = {};
     if (data.previews && typeof data.previews === "object") {
       for (const [k, list] of Object.entries(data.previews)) {
@@ -164,9 +165,8 @@ const scrollPageToBottom = (behavior: ScrollBehavior) =>
   window.scrollTo({ top: document.documentElement.scrollHeight, behavior });
 
 export default function HeroChat({ modelName, labels }: HeroChatProps) {
-  const initialMessages: Message[] = [
-    { role: "assistant", content: labels.initialMessage },
-  ];
+  // The conversation starts with the visitor's first question.
+  const initialMessages: Message[] = [];
   const [mode, setMode] = useState<Mode>("home");
   const [conversationRequested, setConversationRequested] = useState(false);
   const [messages, setMessages] = useState<Message[]>(initialMessages);
@@ -188,7 +188,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
   /** Input position before a mode switch, for the slide animation. */
   const flipFromRef = useRef<DOMRect | null>(null);
 
-  const hasConversation = messages.length > 1;
+  const hasConversation = messages.length > 0;
 
   const replaceMessages = (next: Message[]) => {
     messagesRef.current = next;
@@ -224,7 +224,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
 
   useEffect(() => {
     if (!restored) return;
-    if (messages.length > 1) saveStored({ messages, previews, mode });
+    if (messages.length > 0) saveStored({ messages, previews, mode });
     else clearStored();
   }, [restored, messages, previews, mode]);
 
@@ -476,6 +476,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
               previews={previews}
               isLoading={isLoading}
               streamingIndex={streamingIndex}
+              disclaimer={labels.disclaimer}
               onReady={() => scrollPageToBottom("auto")}
             />
           </Suspense>

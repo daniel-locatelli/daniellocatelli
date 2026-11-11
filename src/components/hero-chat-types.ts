@@ -18,7 +18,8 @@ export interface LinkPreview {
 export type PreviewMap = Record<number, LinkPreview[]>;
 
 export interface HeroChatLabels {
-  initialMessage: string;
+  /** Shown once under the latest answer. */
+  disclaimer: string;
   headerTitle: string;
   /** Input placeholder; {model} is the model's name. */
   chatPlaceholder: string;

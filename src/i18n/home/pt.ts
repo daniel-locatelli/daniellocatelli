@@ -18,8 +18,8 @@ export const t: I18nHome = {
       "Quais skills de agentes de IA você já criou?",
       "Em quais projetos você já trabalhou?",
     ],
-    initialMessage:
-      "Olá! Me pergunte qualquer coisa sobre meu trabalho, minha experiência ou meus projetos.\n\n*As respostas são geradas por IA (Anthropic Claude) e podem conter erros. Verifique o que for importante.*",
+    disclaimer:
+      "As respostas são geradas por IA (Anthropic Claude) e podem conter erros. Verifique o que for importante.",
     headerTitle: "Assistente de IA",
     chatPlaceholder: "Pergunte algo ao {model}...",
     errorMessage: "Desculpe, algo deu errado. Tente novamente mais tarde.",

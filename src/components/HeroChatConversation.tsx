@@ -222,6 +222,8 @@ export interface HeroChatConversationProps {
   isLoading: boolean;
   /** Index of the answer still streaming in, or -1. */
   streamingIndex: number;
+  /** Shown once, under the latest answer when it has finished. */
+  disclaimer: string;
   /** Called once the view has rendered, so the page can land on the latest message. */
   onReady: () => void;
 }
@@ -231,6 +233,7 @@ export default function HeroChatConversation({
   previews,
   isLoading,
   streamingIndex,
+  disclaimer,
   onReady,
 }: HeroChatConversationProps) {
   useLayoutEffect(() => {
@@ -241,6 +244,9 @@ export default function HeroChatConversation({
   // The thinking dots cover the wait before the first streamed chunk only.
   const awaitingFirstChunk =
     isLoading && messages[messages.length - 1]?.role === "user";
+
+  const lastIdx = messages.length - 1;
+  const showDisclaimer = !isLoading && messages[lastIdx]?.role === "assistant";
 
   const renderMessage = (msg: Message, idx: number) =>
     msg.role === "user" ? (
@@ -256,6 +262,11 @@ export default function HeroChatConversation({
           streaming={idx === streamingIndex}
         />
         {previews[idx]?.length ? <Previews list={previews[idx]} /> : null}
+        {showDisclaimer && idx === lastIdx && (
+          <p className="mt-6 text-xs leading-relaxed text-zinc-500">
+            {disclaimer}
+          </p>
+        )}
       </div>
     );
 
@@ -266,7 +277,8 @@ export default function HeroChatConversation({
   messages.forEach((m, i) => {
     if (m.role === "user") lastUser = i;
   });
-  const pinLastTurn = lastUser > 1;
+  // From the second question on (the first sits at the top already).
+  const pinLastTurn = lastUser > 0;
   const earlier = pinLastTurn ? messages.slice(0, lastUser) : messages;
   const lastTurn = pinLastTurn ? messages.slice(lastUser) : [];
 

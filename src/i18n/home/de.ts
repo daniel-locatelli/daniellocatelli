@@ -18,8 +18,8 @@ export const t: I18nHome = {
       "KI-Agent-Skills für Architektur?",
       "Was hast du vorher gebaut?",
     ],
-    initialMessage:
-      "Hallo! Frag mich alles über meine Arbeit, Erfahrung oder Projekte.\n\n*Die Antworten werden von KI (Anthropic Claude) generiert und können Fehler enthalten. Bitte überprüfe Wichtiges selbst.*",
+    disclaimer:
+      "Die Antworten werden von KI (Anthropic Claude) generiert und können Fehler enthalten. Bitte überprüfe Wichtiges selbst.",
     headerTitle: "KI-Assistent",
     chatPlaceholder: "Frag {model} zu meiner Arbeit...",
     errorMessage:
