@@ -9,7 +9,7 @@ const SANS = "ui-sans-serif, system-ui, sans-serif";
 const W = 1600;
 const MARGIN_X = 120;
 const TOP = 120;
-const SUB_W = 352; // one tile column
+const SUB_W = 320; // one tile column
 const SUB_GAP = 24;
 const BOX_PAD = 24;
 const BOX_GAP = 32;
@@ -25,9 +25,10 @@ const rows = [
     {
       label: "MINE",
       groups: [
-        { label: "AEC", tiles: ["creating-revit-plugin", "creating-grasshopper-plugin", "using-cordyceps", "working-with-btlx"] },
-        { label: "QUALITY", tiles: ["optimizing-web-performance", "auditing-website-quality", "auditing-agent-readiness", "preparing-pull-request"] },
-        { label: "PERSONAL", tiles: [["system", true], ["backup-system", true], ["phd", true], ["searching-librarian", true]] },
+        { label: "AEC", tiles: ["creating-revit-plugin", "creating-grasshopper-plugin", "using-cordyceps", "working-with-btlx", "converting-rhino-to-ifc4", "agent-based-modeling"] },
+        { label: "QUALITY", tiles: ["optimizing-web-performance", "auditing-website-quality", "auditing-agent-readiness", "auditing-seo-and-social", "auditing-security-headers", "auditing-content-integrity", "preparing-pull-request"] },
+        { label: "RESEARCH", tiles: ["citing-sources", "using-zotero"] },
+        { label: "PERSONAL", tiles: [["system", true], ["backup-system", true], ["phd", true], ["searching-librarian", true], ["thoughts", true]] },
       ],
     },
   ],
@@ -129,7 +130,7 @@ if (upper.length) {
 
 const H = agentY + agentH + TOP;
 const svg = [
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="skills-cover-title"><title id="skills-cover-title">Agent skills I use: my own (AEC, quality, personal), Matt Pocock's, and community skills feeding one coding agent</title>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="skills-cover-title"><title id="skills-cover-title">Agent skills I use: my own (AEC, quality, research, personal), Matt Pocock's, and community skills feeding one coding agent</title>`,
   `<defs><marker id="skills-cover-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>`,
   `<rect width="100%" height="100%" fill="#000000"/>`,
   ...out,

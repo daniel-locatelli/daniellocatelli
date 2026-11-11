@@ -10,6 +10,7 @@ Tags:
 Authors:
   - Daniel Nunes Locatelli
 DateStart: "2026-08-19"
+Updated: "2026-11-11"
 Link:
   Text: daniel-locatelli/skills on GitHub
   Href: https://github.com/daniel-locatelli/skills
@@ -24,15 +25,15 @@ OtherLinks:
 
 An agent skill is a folder with a `SKILL.md`: a short, well-scoped set of instructions, references, and scripts that a coding agent loads when a task matches its description. It is the unit in which expertise travels between people and agents. This page is a living list of the skills that have earned a permanent place in my Claude Code setup.
 
-![Three boxes of skill tiles feed one coding agent: my own skills, grouped into AEC, quality and personal, sit on top; Matt Pocock's skills and community skills sit below.](/assets/content/research/agent-skills/agent-skills-diagram.svg "My skills, Matt Pocock's and community skills feed one agent")
+![Three boxes of skill tiles feed one coding agent: my own skills, grouped into AEC, quality, research and personal, sit on top; Matt Pocock's skills and community skills sit below.](/assets/content/research/agent-skills/agent-skills-diagram.svg "My skills, Matt Pocock's and community skills feed one agent")
 
 ## My own skills
 
-The published ones live in the public repository [daniel-locatelli/skills](https://github.com/daniel-locatelli/skills), grouped by the tool or domain they serve (Revit, Grasshopper, timber, web, git). They are the skills I would hand to a colleague: each one is about how a tool or a format behaves, not about me. A further set of personal skills stays private because it encodes my own setup: where things live, how they are backed up, how the doctorate is run. Both kinds follow the same shape. A `SKILL.md` says when to trigger, pins the facts the model tends to get wrong, and names the loop the agent has to close before it may call the work done.
+The published ones live in the public repository [daniel-locatelli/skills](https://github.com/daniel-locatelli/skills), in folders by the tool or domain they serve (Revit, Grasshopper, BIM, timber, computational design, web, git, research, Zotero), and they install together as one plugin; below they are grouped by what they are for. They are the skills I would hand to a colleague: each one is about how a tool or a format behaves, not about me. A further set of personal skills stays private because it encodes my own setup: where things live, how they are backed up, how the doctorate is run. Both kinds follow the same shape. A `SKILL.md` says when to trigger, pins the facts the model tends to get wrong, and names the loop the agent has to close before it may call the work done.
 
 ### AEC
 
-Four skills for the tools I work with daily in architecture, engineering, and construction. The two plugin skills answer the same problem: LLM training data goes stale exactly where the Revit and Rhino APIs move fastest, so rather than dumping knowledge, each pins the version-critical facts (target frameworks, API changes, manifest and deployment paths) and holds the agent to a verified build, deploy, and test loop. The other two reach into the tools themselves. **using-cordyceps** drives a live Rhino and Grasshopper session through an MCP server: placing and wiring components, configuring script components, reading solver output, rendering the scene. **working-with-btlx** is the reference the agent must read before answering anything about the BTLx timber CNC format, because parameter ranges, reference sides, and schema versions are exactly the details it would otherwise guess.
+Six skills for the tools and methods I work with daily in architecture, engineering, and construction. The two plugin skills answer the same problem: LLM training data goes stale exactly where the Revit and Rhino APIs move fastest, so rather than dumping knowledge, each pins the version-critical facts (target frameworks, API changes, manifest and deployment paths) and holds the agent to a verified build, deploy, and test loop. Two more reach into the tools themselves. **using-cordyceps** drives a live Rhino and Grasshopper session through an MCP server: placing and wiring components, configuring script components, reading solver output, rendering the scene. **working-with-btlx** is the reference the agent must read before answering anything about the BTLx timber CNC format, because parameter ranges, reference sides, and schema versions are exactly the details it would otherwise guess. The last two carry design and BIM know-how rather than an API. **agent-based-modeling** lets agents relax on a surface or in a region into a tessellation, packing, or plate layout, such as the hexagonal plate shells built at ICD Stuttgart, in whichever host the project uses. **converting-rhino-to-ifc4** turns plain Rhino geometry into an IFC4 file for Revit, ArchiCAD, or Solibri, and decides which IFC class each layer or block becomes.
 
 | Skill | What it does |
 | --- | --- |
@@ -40,17 +41,31 @@ Four skills for the tools I work with daily in architecture, engineering, and co
 | **creating-grasshopper-plugin** | Build compiled Grasshopper plugins for Rhino 8 |
 | **using-cordyceps** | Drive a live Rhino and Grasshopper session from the agent |
 | **working-with-btlx** | Work with BTLx, the timber CNC exchange format: processings, reference sides, schema versions |
+| **agent-based-modeling** | Lay out plates, tiles, or packings with agents relaxing on a surface, in any host |
+| **converting-rhino-to-ifc4** | Turn Rhino geometry into IFC4, with the right IFC class for each layer or block |
 
 ### Quality
 
-Three of these audit a deployed website, and they nest. **optimizing-web-performance** fixes the Core Web Vitals and accessibility findings that move a Lighthouse score. **auditing-agent-readiness** checks the newer question of whether an AI agent can discover and use the site: `llms.txt`, markdown variants, `.well-known` manifests, an MCP handshake. **auditing-website-quality** runs both, adds SEO, security headers, and content and i18n integrity, and turns the result into one ranked scorecard fit to hand to a client. The fourth, **preparing-pull-request**, is about the quality of what I send to other people's repositories: before a PR or issue goes out, it traces the defect through blame and history, sweeps the upstream tracker for duplicates and in-flight work, and verifies every claim the PR body makes. What they share is that none of them lets the agent say "done" without evidence.
+Six of these audit a deployed website, and they nest. **optimizing-web-performance** fixes the Core Web Vitals and accessibility findings that move a Lighthouse score. **auditing-agent-readiness** checks the newer question of whether an AI agent can discover and use the site: `llms.txt`, markdown variants, `.well-known` manifests, an MCP handshake. Three more each take one dimension: **auditing-seo-and-social** covers what Lighthouse's SEO category leaves out (structured data, hreflang, canonicals, sitemaps, social cards, broken links), **auditing-security-headers** checks CSP, HSTS, cookies, and TLS, and **auditing-content-integrity** checks that a multilingual content repository stays in step across its languages and keeps its house style. **auditing-website-quality** runs all five and turns the result into one ranked scorecard fit to hand to a client. The last one, **preparing-pull-request**, is about the quality of what I send to other people's repositories: before a PR or issue goes out, it traces the defect through blame and history, sweeps the upstream tracker for duplicates and in-flight work, and verifies every claim the PR body makes. What they share is that none of them lets the agent say "done" without evidence.
 
 | Skill | What it does |
 | --- | --- |
 | **optimizing-web-performance** | Run Lighthouse on a live site and fix what moves the score |
 | **auditing-website-quality** | Audit a site end to end into a ranked scorecard |
 | **auditing-agent-readiness** | Check whether a site is discoverable and usable by AI agents |
+| **auditing-seo-and-social** | Audit SEO depth, social cards, structured data, hreflang, and broken links |
+| **auditing-security-headers** | Audit security headers, cookies, and TLS, and harden the site |
+| **auditing-content-integrity** | Check a content repository for language parity, consistent frontmatter, and house style |
 | **preparing-pull-request** | Trace a defect's origin and sweep the upstream tracker before opening a PR on someone else's repository |
+
+### Research
+
+Two skills for working with sources, both public. **citing-sources** runs before any citation reaches an answer, a code comment, or a document: the agent looks the work up (in Zotero, my own library, Crossref, arXiv, OpenAlex) and copies authors, title, venue, year, and link from the record instead of writing them from memory, which is where invented references come from. **using-zotero** reads and writes a Zotero library through its local API: searching items, checking whether a DOI is already there, reading annotations, adding papers, and filing them into collections.
+
+| Skill | What it does |
+| --- | --- |
+| **citing-sources** | Look up every citation before writing it, and copy it from the record |
+| **using-zotero** | Read and write a Zotero library through its local API |
 
 ### Personal
 
@@ -62,6 +77,7 @@ These stay private because they encode how I work rather than how a tool works. 
 | **backup-system** | My files are spread across several HDDs and SSDs, and that layout grows more complex over time; this skill keeps everything systematically organized |
 | **phd** | This is my PhD assistant: it opens and closes each working day with an adversarial review of the thesis, its claim, and its deadlines |
 | **searching-librarian** | I keep a large personal library of research papers on a home server; this skill teaches the agent how to query it, by topic, author, DOI, or id, from any of my machines |
+| **thoughts** | Capture an idea the moment it comes up and keep my backlog in one store, reachable from every machine |
 
 ### Served by this website
 

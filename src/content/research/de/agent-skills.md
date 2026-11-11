@@ -10,6 +10,7 @@ Tags:
 Authors:
   - Daniel Nunes Locatelli
 DateStart: "2026-08-19"
+Updated: "2026-11-11"
 Link:
   Text: daniel-locatelli/skills auf GitHub
   Href: https://github.com/daniel-locatelli/skills
@@ -24,15 +25,15 @@ OtherLinks:
 
 Ein Agent Skill ist ein Ordner mit einer `SKILL.md`: ein kurzer, klar abgegrenzter Satz aus Anweisungen, Referenzen und Skripten, den ein Coding-Agent lädt, wenn eine Aufgabe zu seiner Beschreibung passt. Es ist die Einheit, in der Expertise zwischen Menschen und Agenten wandert. Diese Seite ist eine lebende Liste der Skills, die sich einen festen Platz in meinem Claude-Code-Setup verdient haben.
 
-![Drei Kästen mit Skill-Kacheln speisen einen einzigen Coding-Agenten: meine eigenen, gruppiert in AEC, Qualität und Persönlich, stehen oben; Matt Pococks Skills und Community-Skills stehen darunter.](/assets/content/research/agent-skills/agent-skills-diagram.svg "Meine Skills, Matt Pococks und Community-Skills speisen einen Agenten")
+![Drei Kästen mit Skill-Kacheln speisen einen einzigen Coding-Agenten: meine eigenen, gruppiert in AEC, Qualität, Forschung und Persönlich, stehen oben; Matt Pococks Skills und Community-Skills stehen darunter.](/assets/content/research/agent-skills/agent-skills-diagram.svg "Meine Skills, Matt Pococks und Community-Skills speisen einen Agenten")
 
 ## Meine eigenen Skills
 
-Die veröffentlichten liegen im öffentlichen Repository [daniel-locatelli/skills](https://github.com/daniel-locatelli/skills), gruppiert nach dem Werkzeug oder der Domäne, der sie dienen (Revit, Grasshopper, Holz, Web, Git). Es sind die Skills, die ich einem Kollegen in die Hand geben würde: Jeder handelt davon, wie sich ein Werkzeug oder ein Format verhält, nicht von mir. Eine weitere Gruppe persönlicher Skills bleibt privat, weil sie mein eigenes Setup kodiert: wo die Dinge liegen, wie sie gesichert werden, wie die Promotion geführt wird. Beide Arten folgen derselben Form. Eine `SKILL.md` sagt, wann sie anspringt, fixiert die Fakten, die das Modell gern falsch macht, und benennt die Schleife, die der Agent schließen muss, bevor er die Arbeit als erledigt bezeichnen darf.
+Die veröffentlichten liegen im öffentlichen Repository [daniel-locatelli/skills](https://github.com/daniel-locatelli/skills), in Ordnern nach dem Werkzeug oder der Domäne sortiert, der sie dienen (Revit, Grasshopper, BIM, Holz, Computational Design, Web, Git, Forschung, Zotero), und werden zusammen als ein Plugin installiert; hier sind sie danach gruppiert, wofür sie da sind. Es sind die Skills, die ich einem Kollegen in die Hand geben würde: Jeder handelt davon, wie sich ein Werkzeug oder ein Format verhält, nicht von mir. Eine weitere Gruppe persönlicher Skills bleibt privat, weil sie mein eigenes Setup kodiert: wo die Dinge liegen, wie sie gesichert werden, wie die Promotion geführt wird. Beide Arten folgen derselben Form. Eine `SKILL.md` sagt, wann sie anspringt, fixiert die Fakten, die das Modell gern falsch macht, und benennt die Schleife, die der Agent schließen muss, bevor er die Arbeit als erledigt bezeichnen darf.
 
 ### AEC
 
-Vier Skills für die Werkzeuge, mit denen ich täglich in Architektur, Ingenieurwesen und Bau arbeite. Die beiden Plugin-Skills antworten auf dasselbe Problem: LLM-Trainingsdaten veralten genau dort, wo sich die Revit- und Rhino-APIs am schnellsten bewegen. Statt Wissen abzuladen, fixiert jeder deshalb die versionskritischen Fakten (Ziel-Frameworks, API-Änderungen, Manifest- und Deploy-Pfade) und hält den Agenten in einer verifizierten Build-, Deploy- und Test-Schleife. Die anderen beiden greifen in die Werkzeuge selbst hinein. **using-cordyceps** steuert eine laufende Rhino- und Grasshopper-Sitzung über einen MCP-Server: Komponenten platzieren und verdrahten, Skript-Komponenten konfigurieren, Solver-Ausgaben lesen, die Szene rendern. **working-with-btlx** ist die Referenz, die der Agent lesen muss, bevor er irgendetwas zum BTLx-Format für Holz-CNC beantwortet, denn Parameterbereiche, Referenzseiten und Schema-Versionen sind genau die Details, die er sonst raten würde.
+Sechs Skills für die Werkzeuge und Methoden, mit denen ich täglich in Architektur, Ingenieurwesen und Bau arbeite. Die beiden Plugin-Skills antworten auf dasselbe Problem: LLM-Trainingsdaten veralten genau dort, wo sich die Revit- und Rhino-APIs am schnellsten bewegen. Statt Wissen abzuladen, fixiert jeder deshalb die versionskritischen Fakten (Ziel-Frameworks, API-Änderungen, Manifest- und Deploy-Pfade) und hält den Agenten in einer verifizierten Build-, Deploy- und Test-Schleife. Zwei weitere greifen in die Werkzeuge selbst hinein. **using-cordyceps** steuert eine laufende Rhino- und Grasshopper-Sitzung über einen MCP-Server: Komponenten platzieren und verdrahten, Skript-Komponenten konfigurieren, Solver-Ausgaben lesen, die Szene rendern. **working-with-btlx** ist die Referenz, die der Agent lesen muss, bevor er irgendetwas zum BTLx-Format für Holz-CNC beantwortet, denn Parameterbereiche, Referenzseiten und Schema-Versionen sind genau die Details, die er sonst raten würde. Die letzten beiden bringen Entwurfs- und BIM-Wissen mit statt einer API. **agent-based-modeling** lässt Agenten auf einer Fläche oder in einem Bereich zu einer Parkettierung, einer Packung oder einem Plattenlayout relaxieren, etwa zu den hexagonalen Plattenschalen, die am ICD Stuttgart gebaut wurden, in welcher Software das Projekt auch läuft. **converting-rhino-to-ifc4** macht aus einfacher Rhino-Geometrie eine IFC4-Datei für Revit, ArchiCAD oder Solibri und entscheidet, welche IFC-Klasse jeder Layer oder Block wird.
 
 | Skill | Was er tut |
 | --- | --- |
@@ -40,17 +41,31 @@ Vier Skills für die Werkzeuge, mit denen ich täglich in Architektur, Ingenieur
 | **creating-grasshopper-plugin** | Baut kompilierte Grasshopper-Plugins für Rhino 8 |
 | **using-cordyceps** | Steuert eine laufende Rhino- und Grasshopper-Sitzung aus dem Agenten heraus |
 | **working-with-btlx** | Arbeitet mit BTLx, dem Austauschformat für Holz-CNC: Bearbeitungen, Referenzseiten, Schema-Versionen |
+| **agent-based-modeling** | Ordnet Platten, Kacheln oder Packungen mit Agenten an, die auf einer Fläche relaxieren, in jeder Software |
+| **converting-rhino-to-ifc4** | Macht aus Rhino-Geometrie IFC4, mit der richtigen IFC-Klasse für jeden Layer oder Block |
 
 ### Qualität
 
-Drei davon auditieren eine veröffentlichte Website, und sie bauen aufeinander auf. **optimizing-web-performance** behebt die Core-Web-Vitals- und Barrierefreiheits-Befunde, die einen Lighthouse-Score bewegen. **auditing-agent-readiness** prüft die neuere Frage, ob ein KI-Agent die Site finden und nutzen kann: `llms.txt`, Markdown-Varianten, `.well-known`-Manifeste, ein MCP-Handshake. **auditing-website-quality** führt beide aus, ergänzt SEO, Sicherheits-Header sowie Inhalts- und i18n-Integrität und macht aus dem Ergebnis eine einzige sortierte Scorecard, die man einem Kunden übergeben kann. Der vierte, **preparing-pull-request**, betrifft die Qualität dessen, was ich in fremde Repositories schicke: Bevor ein PR oder ein Issue rausgeht, zeichnet er den Defekt durch Blame und Historie nach, durchsucht den Upstream-Tracker nach Duplikaten und laufender Arbeit und verifiziert jede Behauptung im PR-Text. Gemeinsam ist ihnen, dass keiner den Agenten ohne Belege "fertig" sagen lässt.
+Sechs davon auditieren eine veröffentlichte Website, und sie bauen aufeinander auf. **optimizing-web-performance** behebt die Core-Web-Vitals- und Barrierefreiheits-Befunde, die einen Lighthouse-Score bewegen. **auditing-agent-readiness** prüft die neuere Frage, ob ein KI-Agent die Site finden und nutzen kann: `llms.txt`, Markdown-Varianten, `.well-known`-Manifeste, ein MCP-Handshake. Drei weitere nehmen sich je eine Dimension vor: **auditing-seo-and-social** deckt ab, was die SEO-Kategorie von Lighthouse auslässt (strukturierte Daten, hreflang, Canonicals, Sitemaps, Social Cards, defekte Links), **auditing-security-headers** prüft CSP, HSTS, Cookies und TLS, und **auditing-content-integrity** prüft, ob ein mehrsprachiges Content-Repository in allen Sprachen gleichauf bleibt und seinem Hausstil folgt. **auditing-website-quality** führt alle fünf aus und macht aus dem Ergebnis eine einzige sortierte Scorecard, die man einem Kunden übergeben kann. Der letzte, **preparing-pull-request**, betrifft die Qualität dessen, was ich in fremde Repositories schicke: Bevor ein PR oder ein Issue rausgeht, zeichnet er den Defekt durch Blame und Historie nach, durchsucht den Upstream-Tracker nach Duplikaten und laufender Arbeit und verifiziert jede Behauptung im PR-Text. Gemeinsam ist ihnen, dass keiner den Agenten ohne Belege "fertig" sagen lässt.
 
 | Skill | Was er tut |
 | --- | --- |
 | **optimizing-web-performance** | Führt Lighthouse auf einer Live-Site aus und behebt, was den Score bewegt |
 | **auditing-website-quality** | Auditiert eine Site von Ende zu Ende in eine sortierte Scorecard |
 | **auditing-agent-readiness** | Prüft, ob eine Website für KI-Agenten auffindbar und nutzbar ist |
+| **auditing-seo-and-social** | Auditiert SEO in der Tiefe, Social Cards, strukturierte Daten, hreflang und defekte Links |
+| **auditing-security-headers** | Auditiert Sicherheits-Header, Cookies und TLS und härtet die Website |
+| **auditing-content-integrity** | Prüft ein Content-Repository auf Sprachparität, einheitliches Frontmatter und Hausstil |
 | **preparing-pull-request** | Zeichnet die Herkunft eines Defekts nach und durchsucht den Upstream-Tracker, bevor ein PR in einem fremden Repository eröffnet wird |
+
+### Forschung
+
+Zwei Skills für die Arbeit mit Quellen, beide öffentlich. **citing-sources** greift, bevor irgendein Zitat in eine Antwort, einen Code-Kommentar oder ein Dokument gelangt: Der Agent schlägt das Werk nach (in Zotero, meiner eigenen Bibliothek, Crossref, arXiv, OpenAlex) und übernimmt Autoren, Titel, Publikationsort, Jahr und Link aus dem Datensatz, statt sie aus dem Gedächtnis zu schreiben, denn genau daher kommen erfundene Referenzen. **using-zotero** liest und schreibt eine Zotero-Bibliothek über ihre lokale API: Einträge suchen, prüfen, ob eine DOI schon vorhanden ist, Annotationen lesen, Paper hinzufügen und in Sammlungen ablegen.
+
+| Skill | Was er tut |
+| --- | --- |
+| **citing-sources** | Schlägt jedes Zitat nach, bevor es geschrieben wird, und übernimmt es aus dem Datensatz |
+| **using-zotero** | Liest und schreibt eine Zotero-Bibliothek über ihre lokale API |
 
 ### Persönlich
 
@@ -62,6 +77,7 @@ Diese bleiben privat, weil sie kodieren, wie ich arbeite, und nicht, wie ein Wer
 | **backup-system** | Meine Dateien liegen auf mehreren HDDs und SSDs verteilt, und diese Aufteilung wird mit der Zeit komplexer; dieser Skill hält alles systematisch geordnet |
 | **phd** | Das ist mein PhD-Assistent: Er eröffnet und beschließt jeden Arbeitstag mit einer adversarialen Prüfung der Dissertation, ihrer These und ihrer Fristen |
 | **searching-librarian** | Ich führe eine große persönliche Bibliothek von Forschungsarbeiten auf einem Heimserver; dieser Skill bringt dem Agenten bei, sie von jedem meiner Rechner aus abzufragen, nach Thema, Autor, DOI oder Id |
+| **thoughts** | Hält eine Idee fest, sobald sie auftaucht, und führt meine offenen Aufgaben an einem Ort, erreichbar von jedem Rechner |
 
 ### Von dieser Website bereitgestellt
 
