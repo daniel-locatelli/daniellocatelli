@@ -4,7 +4,7 @@
 
 I am a doctoral researcher at Gramazio Kohler Research, ETH Zurich. I research how timber plate structures are designed and built, and how AI changes the way architects and engineers work. The homepage has an AI chat where you can ask about my research, projects, and teaching, and a list of essays on what stays valuable in architecture and engineering once code is cheap.
 
-Daniel Locatelli is Brazilian, originally from Vilhena, Rondonia, Brazil. He moved to Germany in 2019 to pursue his Master's degree at the University of Stuttgart. He is currently based in Munich, Germany.
+Daniel Locatelli is Brazilian, originally from Vilhena, Rondonia, Brazil. He moved to Germany in 2019 to pursue his Master's degree at the University of Stuttgart. He later moved to Switzerland for his doctorate at ETH Zurich and is currently based in Zurich, Switzerland.
 
 Daniel Locatelli speaks the following languages:
 
@@ -23,27 +23,27 @@ Contact information:
 ## Work experience
 
 ### PhD Candidate
-Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland | July 2026 – current
+Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland | July 2026 – current | https://gramaziokohler.arch.ethz.ch/
 - Computational design-to-fabrication for timber plate building systems.
 - Part of the CEDD project, funded by the Swiss National Science Foundation (SNSF).
 - Exploring how AI (large language models and agents) can support the design process, from early design exploration to fabrication-ready data.
 
 ### Research Associate
-Munich University of Applied Sciences | Munich, Germany | February 2025 – June 2026
+Munich University of Applied Sciences | Munich, Germany | February 2025 – June 2026 | https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 - Research associate on the [DOKwood](/projects/dokwood) project: a web platform for documenting multilayer timber buildups, funded by ZIM and Innosuisse.
 - Revit plugin (C#/.NET) importing DOKwood buildups into Revit as System Families.
 - Development of a bSDD (building Smart Data Dictionary) to consolidate a semantic data model for DOKwood.
 - Research on standards, databases, CAD and BIM tools with focus on timber technology. Foundations to develop the app DOKwood.
 
 ### AEC Software Engineer
-BuildSystems GmbH | Munich, Germany | January 2024 – December 2024
+BuildSystems GmbH | Munich, Germany | January 2024 – December 2024 | https://buildsystems.de/
 *Previously the startup Urban Scale Timber*
 
 - Development of a Funding Calculator for new constructions and renovations in Germany. Built with the Angular framework and PostgreSQL (Supabase).
 - Development of BuildSystems' website using Astro framework, leveraging Notion API to use Notion as a content management system (CMS).
 
 ### AEC Software Engineer
-Urban Scale Timber, Flügge Funding | Munich, Germany | January 2023 – December 2023
+Urban Scale Timber, Flügge Funding | Munich, Germany | January 2023 – December 2023 | https://urbanscaletimber.com/
 *The startup is now BuildSystems GmbH*
 
 - Development of a Grasshopper plugin (C#/.NET) and a semantic data model for urban analysis and Life Cycle Assessment of timber buildings (LCA).
@@ -52,7 +52,7 @@ Urban Scale Timber, Flügge Funding | Munich, Germany | January 2023 – Decembe
 - Development of Grasshopper workflows: urban analysis tools and timber component configurator with EPD data.
 
 ### Computational Designer
-ArtEngineering GmbH | Schorndorf, Germany | December 2021 – December 2022
+ArtEngineering GmbH | Schorndorf, Germany | December 2021 – December 2022 | https://art-engineering.net/
 - Conducted algorithmic modeling and finite element analysis of complex spatial structures and artworks.
 - Developed design-to-production automated workflows.
 - Aiding on structural analysis of complex spatial structures.
@@ -60,21 +60,21 @@ ArtEngineering GmbH | Schorndorf, Germany | December 2021 – December 2022
 - Creating precise engineering drawings and production plans.
 
 ### Computational Designer
-Alfred Rein Ingenieure GmbH | Stuttgart, Germany | October 2020 – November 2021
+Alfred Rein Ingenieure GmbH | Stuttgart, Germany | October 2020 – November 2021 | https://www.ar-ingenieure.com/
 - Received honorable mention in the competition 'Witterungsschutz Römermauer' from the city of Wiesbaden.
 - Specialized in computational form finding of tensile structures.
 - Simulated the deployment of an inflatable membrane structure.
 - Development of an automatized cutting pattern workflow for membranes.
 
 ### Research Assistant
-ICD/ITKE University of Stuttgart | Stuttgart, Germany | December 2019 – October 2020
+ICD/ITKE University of Stuttgart | Stuttgart, Germany | December 2019 – October 2020 | https://www.icd.uni-stuttgart.de/
 - Conducted natural fiber structural tests with Marta Gil Pérez.
 - Carbon fiber winding research with Christoph Schlopschnat.
 - Computational design of a self-curving timber tower with Dylan Wood.
 - Assisted the ICD website migration with Tobias Schwinn.
 
 ### Computational Designer
-Atelier Marko Brajovic | São Paulo, Brazil | March 2015 – August 2019
+Atelier Marko Brajovic | São Paulo, Brazil | March 2015 – August 2019 | https://markobrajovic.com/en
 *Intern until December 2016*
 
 - Executed CAD, BIM, and computational modeling for architectural projects.
@@ -83,14 +83,14 @@ Atelier Marko Brajovic | São Paulo, Brazil | March 2015 – August 2019
 - Led prototyping and digital fabrication initiatives.
 
 ### On-the-job Training
-California State University Long Beach | Long Beach, USA | June 2014 – August 2014
+California State University Long Beach | Long Beach, USA | June 2014 – August 2014 | https://www.csulb.edu/college-of-engineering
 - Gained hands-on experience in project management.
 - Conducted construction site inspections.
 - Gained BIM modeling skills.
 - Completed Safety and Health Training.
 
 ### Graphic Designer
-Biomedical Science Institute - University of São Paulo | São Paulo, Brazil | June 2011 – August 2013
+Biomedical Science Institute - University of São Paulo | São Paulo, Brazil | June 2011 – August 2013 | https://ww3.icb.usp.br/
 - Created conceptual designs for scientific communications.
 - Managed design project workflows.
 - Organized and supported academic competitions.
@@ -98,22 +98,22 @@ Biomedical Science Institute - University of São Paulo | São Paulo, Brazil | J
 ## Education
 
 ### Doctor of Sciences
-Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland | July 2026
+Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland | July 2026 | https://gramaziokohler.arch.ethz.ch/
 Computational Design-to-Fabrication for Timber Plate Building Systems
 
 ### Master of Sciences
-ITECH, University of Stuttgart | Stuttgart, Germany | October 2019 – October 2021
+ITECH, University of Stuttgart | Stuttgart, Germany | October 2019 – October 2021 | https://www.itech.uni-stuttgart.de/
 Building Across Scales - A Robotic Timber Fabrication System for On-Site Press Gluing
 Supervisors: Prof. Achim Menges, Prof. Jan Knippers
 
 ### Architecture Exchange Student
-Auburn University – CADC | Auburn, USA | January 2014 – December 2014
+Auburn University – CADC | Auburn, USA | January 2014 – December 2014 | https://cadc.auburn.edu/
 
 ### Intensive English Program
-Auburn Global | Auburn, USA | August 2013 – December 2013
+Auburn Global | Auburn, USA | August 2013 – December 2013 | https://global.auburn.edu/english/
 
 ### Bachelor of Architecture and Urbanism
-FAU, University of São Paulo | São Paulo, Brazil | January 2010 – December 2016
+FAU, University of São Paulo | São Paulo, Brazil | January 2010 – December 2016 | https://www.fau.usp.br/
 Thesis: Architecture + Biomimetics + Algorithm
 Supervisors: Prof. Arthur Lara
 
@@ -129,11 +129,11 @@ CEI Anglo | Vilhena, Brazil | January 2004 – December 2006
 ## Scholarships and grants
 
 ### IntCDC Master’s Thesis Grant 2021
-Cluster of Excellence – IntCDC | Stuttgart, Germany | March 2021 – October 2021
+Cluster of Excellence – IntCDC | Stuttgart, Germany | March 2021 – October 2021 | https://www.intcdc.uni-stuttgart.de/supporting-structures/early-career-and-education/grants-awards-overview/master-thesis-award-2021-1/
 The Grant encourages excellent master’s students to realize a first step toward a prospective academic career.
 
 ### Science without Borders
-Federal Government of Brazil | Auburn, USA | August 2013 – December 2014
+Federal Government of Brazil | Auburn, USA | August 2013 – December 2014 | https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/ciencia-sem-fronteiras
 Fully funded scholarships for the top Brazilian students. One year at Auburn University, USA.
 
 ## Research

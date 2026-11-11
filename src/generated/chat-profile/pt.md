@@ -4,7 +4,7 @@
 
 Sou doutorando no Gramazio Kohler Research, ETH Zurique. Pesquiso como estruturas de placas de madeira são projetadas e construídas, e como a IA muda a forma como arquitetos e engenheiros trabalham. A página inicial tem um chat com IA onde você pode perguntar sobre minha pesquisa, projetos e ensino, e uma lista de ensaios sobre o que continua valioso na arquitetura e na engenharia quando o código fica barato.
 
-Daniel Locatelli is Brazilian, originally from Vilhena, Rondonia, Brazil. He moved to Germany in 2019 to pursue his Master's degree at the University of Stuttgart. He is currently based in Munich, Germany.
+Daniel Locatelli is Brazilian, originally from Vilhena, Rondonia, Brazil. He moved to Germany in 2019 to pursue his Master's degree at the University of Stuttgart. He later moved to Switzerland for his doctorate at ETH Zurich and is currently based in Zurich, Switzerland.
 
 Daniel Locatelli speaks the following languages:
 
@@ -23,27 +23,27 @@ Contact information:
 ## Experiência profissional
 
 ### Doutorando
-Gramazio Kohler Research, ETH Zurique | Zurique, Suíça | July 2026 – atual
+Gramazio Kohler Research, ETH Zurique | Zurique, Suíça | July 2026 – atual | https://gramaziokohler.arch.ethz.ch/
 - Design computacional para fabricação de sistemas construtivos em placas de madeira.
 - Parte do projeto CEDD, financiado pelo Fundo Nacional Suíço para a Pesquisa Científica (SNSF).
 - Explorando como a IA (grandes modelos de linguagem e agentes) pode apoiar o processo de projeto, da exploração inicial do design até dados prontos para fabricação.
 
 ### Pesquisador Associado
-Universidade de Ciências Aplicadas de Munique | Munique, Alemanha | February 2025 – June 2026
+Universidade de Ciências Aplicadas de Munique | Munique, Alemanha | February 2025 – June 2026 | https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 - Pesquisador associado no projeto [DOKwood](/pt/projects/dokwood): uma plataforma web para documentar composições construtivas multicamadas em madeira, financiada pelo ZIM e pela Innosuisse.
 - Plugin para Revit (C#/.NET) que importa elementos construtivos do DOKwood como famílias do sistema.
 - Desenvolvimento de um bSDD (building Smart Data Dictionary) para consolidar um modelo de dados semântico para o DOKwood.
 - Pesquisa sobre normas técnicas, bancos de dados e ferramentas CAD e BIM com foco em tecnologia madeireira. Fundamentos para o desenvolvimento do aplicativo DOKwood.
 
 ### Engenheiro de Software AEC
-BuildSystems GmbH | Munique, Alemanha | January 2024 – December 2024
+BuildSystems GmbH | Munique, Alemanha | January 2024 – December 2024 | https://buildsystems.de/
 *Antigo Urban Scale Timber*
 
 - Desenvolvimento de uma Calculadora de Financiamento para construções e reformas na Alemanha. Construída com o framework Angular e PostgreSQL (Supabase).
 - Desenvolvimento do website da BuildSystems utilizando o framework Astro, com integração da API do Notion para usar o Notion como sistema de gerenciamento de conteúdo (CMS).
 
 ### Engenheiro de Software AEC
-Urban Scale Timber, Flügge Funding | Munique, Alemanha | January 2023 – December 2023
+Urban Scale Timber, Flügge Funding | Munique, Alemanha | January 2023 – December 2023 | https://urbanscaletimber.com/
 *A startup agora é BuildSystems GmbH*
 
 - Desenvolvimento de um plugin para Grasshopper (C#/.NET) em conjunto com um modelo semântico para análise urbana e Avaliação do Ciclo de Vida de edifícios de madeira (LCA).
@@ -52,7 +52,7 @@ Urban Scale Timber, Flügge Funding | Munique, Alemanha | January 2023 – Decem
 - Fluxos de trabalho em Grasshopper: ferramentas de análise urbana e configurador de componentes de madeira com dados EPD.
 
 ### Designer Computacional
-ArtEngineering GmbH | Schorndorf, Alemanha | December 2021 – December 2022
+ArtEngineering GmbH | Schorndorf, Alemanha | December 2021 – December 2022 | https://art-engineering.net/
 - Modelagem algorítmica e análise de elementos finitos de estruturas espaciais complexas e obras de arte.
 - Desenvolvimento de workflow automatizados do design à produção.
 - Auxiliou na análise estrutural de estruturas espaciais complexas.
@@ -60,21 +60,21 @@ ArtEngineering GmbH | Schorndorf, Alemanha | December 2021 – December 2022
 - Criação de desenhos de engenharia precisos e planos de produção.
 
 ### Designer Computacional
-Alfred Rein Ingenieure GmbH | Stuttgart, Alemanha | October 2020 – November 2021
+Alfred Rein Ingenieure GmbH | Stuttgart, Alemanha | October 2020 – November 2021 | https://www.ar-ingenieure.com/
 - Menção honrosa no concurso para cobertura de muro da Roma Antiga na cidade de Wiesbaden, Alemanha.
 - Especializado em form finding computacional de estruturas tensionadas.
 - Simulação e implantação de uma estrutura de membrana inflável.
 - Automatização do padrões de corte para membranas.
 
 ### Assistente de Pesquisa
-ICD/ITKE University of Stuttgart | Stuttgart, Alemanha | December 2019 – October 2020
+ICD/ITKE University of Stuttgart | Stuttgart, Alemanha | December 2019 – October 2020 | https://www.icd.uni-stuttgart.de/
 - Realização de testes estruturais com fibras naturais com Marta Gil Pérez.
 - Pesquisa de bobinamento de fibra de carbono com Christoph Schlopschnat.
 - Design computacional de uma torre de madeira auto-curvante com Dylan Wood.
 - Auxílio na migração do site do ICD com Tobias Schwinn.
 
 ### Designer Computacional
-Atelier Marko Brajovic | São Paulo, Brasil | March 2015 – August 2019
+Atelier Marko Brajovic | São Paulo, Brasil | March 2015 – August 2019 | https://markobrajovic.com/en
 *Estagiário até dezembro de 2016*
 
 - Modelagem CAD, BIM e computacional para projetos arquitetônicos.
@@ -83,14 +83,14 @@ Atelier Marko Brajovic | São Paulo, Brasil | March 2015 – August 2019
 - Liderança em iniciativas de prototipagem e fabricação digital.
 
 ### Estágio
-California State University Long Beach | Long Beach, EUA | June 2014 – August 2014
+California State University Long Beach | Long Beach, EUA | June 2014 – August 2014 | https://www.csulb.edu/college-of-engineering
 - Experiência prática em gerenciamento de projetos.
 - Realização de inspeções em canteiros de obras.
 - Desenvolvimento de habilidades em modelagem BIM.
 - Treinamento em Segurança do trabalho e Saúde.
 
 ### Designer Gráfico
-Instituto de Ciências Biomédicas - Universidade de São Paulo | São Paulo, Brasil | June 2011 – August 2013
+Instituto de Ciências Biomédicas - Universidade de São Paulo | São Paulo, Brasil | June 2011 – August 2013 | https://ww3.icb.usp.br/
 - Criação de projetos conceituais para comunicações científicas.
 - Gestão de fluxos de trabalho para projetos de design.
 - Organização e apoio de competições acadêmicas.
@@ -98,22 +98,22 @@ Instituto de Ciências Biomédicas - Universidade de São Paulo | São Paulo, Br
 ## Formação
 
 ### Doutorado em Ciências
-Gramazio Kohler Research, ETH Zurique | Zurique, Suíça | July 2026
+Gramazio Kohler Research, ETH Zurique | Zurique, Suíça | July 2026 | https://gramaziokohler.arch.ethz.ch/
 Design Computacional para Fabricação de Sistemas Construtivos em Placas de Madeira
 
 ### Mestrado em Ciências
-ITECH, Universidade de Stuttgart | Stuttgart, Alemanha | October 2019 – October 2021
+ITECH, Universidade de Stuttgart | Stuttgart, Alemanha | October 2019 – October 2021 | https://www.itech.uni-stuttgart.de/
 Building Across Scales - Sistema Robótico Multiescalar para Madeira Engenheirada
 Supervisors: Prof. Achim Menges, Prof. Jan Knippers
 
 ### Intercâmbio em Arquitetura
-Auburn University – CADC | Auburn, EUA | January 2014 – December 2014
+Auburn University – CADC | Auburn, EUA | January 2014 – December 2014 | https://cadc.auburn.edu/
 
 ### Programa Intensivo de Inglês
-Auburn Global | Auburn, EUA | August 2013 – December 2013
+Auburn Global | Auburn, EUA | August 2013 – December 2013 | https://global.auburn.edu/english/
 
 ### Bacharel em Arquitetura e Urbanismo
-FAU, Universidade de São Paulo | São Paulo, Brasil | January 2010 – December 2016
+FAU, Universidade de São Paulo | São Paulo, Brasil | January 2010 – December 2016 | https://www.fau.usp.br/
 Tese: Arquitetura + Biomimética + Algoritmo
 Supervisors: Prof. Arthur Lara
 
@@ -129,11 +129,11 @@ CEI Anglo | Vilhena, Brasil | January 2004 – December 2006
 ## Bolsas e prêmios
 
 ### Bolsa de Mestrado IntCDC 2021
-Cluster de Excelência – IntCDC | Stuttgart, Alemanha | March 2021 – October 2021
+Cluster de Excelência – IntCDC | Stuttgart, Alemanha | March 2021 – October 2021 | https://www.intcdc.uni-stuttgart.de/supporting-structures/early-career-and-education/grants-awards-overview/master-thesis-award-2021-1/
 A Bolsa incentiva alunos de mestrado excelentes a dar um primeiro passo em direção a uma carreira acadêmica.
 
 ### Ciência sem Fronteiras
-Governo Federal Brasileiro | Auburn, EUA | August 2013 – December 2014
+Governo Federal Brasileiro | Auburn, EUA | August 2013 – December 2014 | https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/ciencia-sem-fronteiras
 Bolsa integral para os melhores alunos brasileiros. Um ano na Auburn University, EUA.
 
 ## Pesquisa

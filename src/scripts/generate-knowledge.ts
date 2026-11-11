@@ -1200,7 +1200,7 @@ function processFAQ() {
         "",
         `# Personal Background`,
         "",
-        `Daniel Locatelli is Brazilian, originally from Vilhena, Rondonia, Brazil. He moved to Germany in 2019 to pursue his Master's degree at the University of Stuttgart. He is currently based in Munich, Germany.`,
+        `Daniel Locatelli is Brazilian, originally from Vilhena, Rondonia, Brazil. He moved to Germany in 2019 to pursue his Master's degree at the University of Stuttgart. He later moved to Switzerland for his doctorate at ETH Zurich and is currently based in Zurich, Switzerland.`,
       ];
       writeKnowledge(
         `faq-background-${locale}.md`,
@@ -1355,10 +1355,13 @@ function processChatProfile() {
       if (!entries.length) continue;
       out.push(`## ${heading}`, "");
       for (const { data, body } of entries) {
+        const link =
+          typeof data.Link === "string" ? data.Link : data.Link?.Href || data.Link?.href;
         const meta = [
           data.Organization,
           placeOf(data),
           profileDates(data, openEnded ? h.current : undefined),
+          link,
         ].filter(Boolean);
         out.push(`### ${data.Name}`, meta.join(" | "));
         if (data.Description) out.push(String(data.Description).trim());

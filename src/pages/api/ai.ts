@@ -111,7 +111,7 @@ export const POST: APIRoute = async ({ request }) => {
       : (kvOverride ?? [...ProdModelAPIAlias]);
 
     const params = {
-      max_tokens: 1024,
+      max_tokens: 1536,
       system: getSystemPrompt(profile),
       messages: [{ role: "user" as const, content: question }],
     };
