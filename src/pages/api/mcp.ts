@@ -1,20 +1,17 @@
 import type { APIRoute } from "astro";
-import { env as cfEnv } from "cloudflare:workers";
 import {
   listProjects,
   listResearch,
   searchContent,
+  getProfile,
   getPage,
-  type SearchEnv,
+  isLocale,
 } from "@/lib/mcp/tools";
-import {
-  checkAndIncrementBudget,
-  type KVNamespaceLike,
-} from "@/lib/mcp/budget";
+import { PROFILES, profileFor } from "@/lib/chat-profiles";
 
 export const prerender = false;
 
-const SEARCH_DAILY_CAP = 5000;
+const MAX_QUERY_LENGTH = 500;
 
 interface JsonRpcRequest {
   jsonrpc: "2.0";
@@ -49,16 +46,21 @@ const TOOLS = {
   },
   search_content: {
     description:
-      "Vector search across all portfolio content. Returns up to 20 matches with title, URL, snippet, and similarity score.",
+      "Keyword search over Daniel Locatelli's profile (roles, education, research, projects, publications, talks). Best for names and topics such as 'DOKwood', 'Revit plugin' or 'timber'; for broad questions about his career, call get_profile instead. Returns up to 20 matches with title, section, URL, snippet, and a 0-1 relevance score.",
     inputSchema: {
       type: "object",
       required: ["query"],
       properties: {
-        query: { type: "string" },
+        query: { type: "string", minLength: 1, maxLength: MAX_QUERY_LENGTH },
         locale: LOCALE_SCHEMA,
         limit: { type: "integer", default: 5, minimum: 1, maximum: 20 },
       },
     },
+  },
+  get_profile: {
+    description:
+      "Daniel Locatelli's whole profile as one markdown document (about 13k tokens): every role with what he did there, education, and a summary and link for every research page, project, publication and talk. The text the homepage chat answers from; use it for broad questions.",
+    inputSchema: { type: "object", properties: { locale: LOCALE_SCHEMA } },
   },
   get_page: {
     description: "Fetch any daniellocatelli.com page as plain markdown.",
@@ -70,7 +72,7 @@ const TOOLS = {
   },
 } as const;
 
-const SERVER_INFO = { name: "daniel-locatelli-portfolio", version: "1.0.0" };
+const SERVER_INFO = { name: "daniel-locatelli-portfolio", version: "1.1.0" };
 const PROTOCOL_VERSION = "2025-06-18";
 
 // MCP streamable-HTTP spec (2025-06-18) permits either application/json
@@ -114,8 +116,6 @@ export const POST: APIRoute = async ({ request }) => {
   if (req.jsonrpc !== "2.0" || typeof req.method !== "string") {
     return err(req?.id ?? null, -32600, "Invalid Request");
   }
-
-  const env: any = cfEnv ?? process.env;
 
   // Lifecycle handshake (MCP 2025-06-18). Stateless: no session IDs.
   if (req.method === "initialize") {
@@ -165,29 +165,29 @@ export const POST: APIRoute = async ({ request }) => {
     if (name === "get_page") {
       return ok(req.id, asContent(await getPage({ url: args.url }, { fetch })));
     }
+    if (name === "get_profile") {
+      return ok(
+        req.id,
+        asContent(getProfile({ locale: args.locale }, { profiles: PROFILES })),
+      );
+    }
     if (name === "search_content") {
-      const kv: KVNamespaceLike | undefined = env?.AI_HEALTH_KV;
-      if (!kv) {
-        return err(req.id, -32004, "Budget storage unavailable");
-      }
-      const budget = await checkAndIncrementBudget({
-        kv,
-        cap: SEARCH_DAILY_CAP,
-      });
-      if (!budget.allowed) {
+      const query = args.query;
+      if (
+        typeof query !== "string" ||
+        !query.trim() ||
+        query.length > MAX_QUERY_LENGTH
+      ) {
         return err(
           req.id,
-          -32004,
-          "Daily search budget exhausted; try again tomorrow.",
+          -32602,
+          `query must be a non-empty string of at most ${MAX_QUERY_LENGTH} characters`,
         );
       }
-      const searchEnv: SearchEnv = {
-        SUPABASE_URL: env.SUPABASE_URL,
-        SUPABASE_ANON_KEY: env.SUPABASE_ANON_KEY,
-      };
-      const out = await searchContent(
-        { query: args.query, limit: args.limit, locale: args.locale },
-        { env: searchEnv, fetch },
+      const locale = isLocale(args.locale) ? args.locale : "en";
+      const out = searchContent(
+        { query, limit: args.limit, locale },
+        { profile: profileFor(locale) },
       );
       return ok(req.id, asContent(out));
     }

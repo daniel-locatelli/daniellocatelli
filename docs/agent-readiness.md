@@ -12,7 +12,7 @@ How this site exposes its content to AI agents and crawlers, and the architectur
 | `.md` companions | Every project / research / teaching / publication page also serves at `<url>.md` via `src/pages/[...path].md.ts` File Endpoint |
 | Accept-header negotiation | Cloudflare Snippet rewrites `Accept: text/markdown` requests to the `.md` companion (or `/llms.txt` for the homepage) |
 | API catalog | `/.well-known/api-catalog` (RFC 9727 linkset) + `Link: rel="api-catalog"` HTTP header |
-| MCP server | `/.well-known/mcp.json` manifest + `/api/mcp` JSON-RPC endpoint (4 read-only tools, no LLM cost) |
+| MCP server | `/.well-known/mcp.json` manifest + `/api/mcp` JSON-RPC endpoint (5 read-only tools, no LLM cost) |
 
 ## The hard parts
 
@@ -122,7 +122,7 @@ curl https://daniellocatelli.com/.well-known/mcp.json
 ## Known limitations
 
 - The snippet's homepage-to-llms.txt routing replaces the homepage with the structured index. An agent asking for the "homepage as markdown" gets a directory listing, not a prose summary. If a curated `/index.md` would serve agents better, add a static file at `public/index.md` and route the homepage to that instead.
-- The MCP server's `search_content` tool uses a per-day stochastic-write counter capped at 5000 (KV namespace `AI_HEALTH_KV`, key `mcp:budget:YYYY-MM-DD`, 36h TTL). Exceeded budget returns JSON-RPC error code `-32004`. Tune in `src/lib/mcp/budget.ts` if usage patterns change.
+- The MCP server's `search_content` is a keyword search (word-start matching, rarity-weighted, with a phrase bonus) over the generated chat profile, run inside the Worker with no external call. It finds names and topics, not paraphrases; broad questions belong to `get_profile`, which returns the whole profile.
 - Cloudflare Snippets are zone-level config not checked into this repo. If you migrate hosting, the snippet must be recreated. The canonical source is preserved in this document.
 
 ## Implementation references

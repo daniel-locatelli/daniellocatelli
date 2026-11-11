@@ -4,8 +4,6 @@
 
 interface Env {
   ANTHROPIC_API_KEY: string;
-  SUPABASE_URL: string;
-  SUPABASE_ANON_KEY: string;
   AI_HEALTH_KV: KVNamespace;
 }
 

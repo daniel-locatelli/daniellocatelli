@@ -78,7 +78,7 @@ Como boa parte do tráfego de um site como este virá cada vez mais de agentes d
 - um índice `llms.txt` por idioma, gerado a partir das coleções de conteúdo no momento do build;
 - uma versão em markdown de cada página de conteúdo (basta acrescentar `.md` à URL), além de negociação de conteúdo para que uma requisição com `Accept: text/markdown` receba markdown diretamente;
 - um `robots.txt` que dá boas-vindas explícitas aos crawlers de IA, um sitemap com entradas de imagens e datas `lastmod` por URL obtidas do histórico do git (a mesma data aparece como "Última atualização" em cada página de conteúdo e como `article:modified_time` e `dateModified` nos dados estruturados do cabeçalho), e um catálogo de API em `/.well-known/`;
-- um pequeno servidor [MCP](https://modelcontextprotocol.io/) somente leitura, para que agentes possam consultar o conteúdo do site como ferramentas;
+- um pequeno servidor [MCP](https://modelcontextprotocol.io/) somente leitura, para que agentes possam consultar o conteúdo do site como ferramentas, inclusive o mesmo perfil que o chat usa para responder, inteiro ou por busca de palavras-chave;
 - registros de descoberta [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/) (registros SVCB `_mcp._agents` e `_index._agents`, assinados com DNSSEC), para que agentes encontrem o endpoint MCP apenas a partir do nome de domínio;
 - um índice de skills em `/.well-known/agent-skills/`, seguindo o [RFC de descoberta de Agent Skills](https://github.com/cloudflare/agent-skills-discovery-rfc) da Cloudflare, com dois arquivos `SKILL.md` no formato [Agent Skills](https://agentskills.io/specification) que ensinam um agente a consultar o site via MCP ou a lê-lo como markdown.
 

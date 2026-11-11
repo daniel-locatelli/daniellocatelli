@@ -117,7 +117,7 @@ test.describe("Agent readiness — Accept: text/markdown negotiation", () => {
 });
 
 test.describe("Agent readiness — MCP", () => {
-  test("/.well-known/mcp.json declares streamable-http transport and four tools", async ({
+  test("/.well-known/mcp.json declares streamable-http transport and five tools", async ({
     request,
   }) => {
     const res = await request.get("/.well-known/mcp.json");
@@ -129,6 +129,7 @@ test.describe("Agent readiness — MCP", () => {
     const names = (json.tools as any[]).map((t) => t.name).sort();
     expect(names).toEqual([
       "get_page",
+      "get_profile",
       "list_projects",
       "list_research",
       "search_content",
@@ -162,7 +163,7 @@ test.describe("Agent readiness — MCP", () => {
     expect(notif.status()).toBe(202);
   });
 
-  test("MCP tools/list returns four tools with input schemas", async ({
+  test("MCP tools/list returns five tools with input schemas", async ({
     request,
   }) => {
     const res = await request.post("/api/mcp", {
@@ -174,6 +175,7 @@ test.describe("Agent readiness — MCP", () => {
     const names = (json.result.tools as any[]).map((t) => t.name).sort();
     expect(names).toEqual([
       "get_page",
+      "get_profile",
       "list_projects",
       "list_research",
       "search_content",
@@ -203,6 +205,40 @@ test.describe("Agent readiness — MCP", () => {
     expect(parsed.length).toBeGreaterThan(0);
     expect(parsed[0]).toHaveProperty("title");
     expect(parsed[0]).toHaveProperty("url");
+  });
+
+  test("MCP tools/call search_content ranks DOKwood first for its name", async ({
+    request,
+  }) => {
+    const res = await request.post("/api/mcp", {
+      data: {
+        jsonrpc: "2.0",
+        id: 4,
+        method: "tools/call",
+        params: { name: "search_content", arguments: { query: "DOKwood" } },
+      },
+    });
+    expect(res.status()).toBe(200);
+    const hits = JSON.parse((await res.json()).result.content[0].text);
+    expect(hits[0].title).toBe("DOKwood");
+    expect(hits[0].url).toBe("https://daniellocatelli.com/projects/dokwood");
+  });
+
+  test("MCP tools/call get_profile returns the locale's profile", async ({
+    request,
+  }) => {
+    const res = await request.post("/api/mcp", {
+      data: {
+        jsonrpc: "2.0",
+        id: 5,
+        method: "tools/call",
+        params: { name: "get_profile", arguments: { locale: "de" } },
+      },
+    });
+    expect(res.status()).toBe(200);
+    const out = JSON.parse((await res.json()).result.content[0].text);
+    expect(out.locale).toBe("de");
+    expect(out.markdown).toContain("## Berufserfahrung");
   });
 
   test("MCP returns JSON-RPC error for unknown method", async ({ request }) => {
