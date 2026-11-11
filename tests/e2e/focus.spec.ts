@@ -108,3 +108,16 @@ test.describe("Keyboard focus on listing cards", () => {
     await page.mouse.up();
   });
 });
+
+test.describe("Keyboard focus on subpage link cards", () => {
+  test("prev/next card mirrors its hover border while focused", async ({ page }) => {
+    await page.goto("/projects/portfolio-website");
+    const card = page.locator('nav[aria-label="Content navigation"] a').first();
+    await expect(card).toBeVisible();
+    const rest = await card.evaluate((el) => getComputedStyle(el).borderTopColor);
+    await card.focus();
+    // .focus() from script still matches :focus-visible on a link.
+    await expect(card).not.toHaveCSS("border-top-color", rest);
+    await expect(card).not.toHaveCSS("outline-style", "none");
+  });
+});
