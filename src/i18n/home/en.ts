@@ -31,6 +31,15 @@ export const t: I18nHome = {
     jumpToLatest: "Jump to the latest message",
     enlargeImage: "Enlarge image",
     closeImage: "Close",
+    previousLinks: "Previous links",
+    nextLinks: "Next links",
+    coverOf: {
+      projects: "Cover of the project {title}",
+      research: "Cover of the research project {title}",
+      essays: "Cover of the essay {title}",
+      teaching: "Cover of {title}",
+      publications: "Cover of the publication {title}",
+    },
   },
   essays: {
     title: "Essays",

@@ -90,6 +90,8 @@ test.describe("Homepage", () => {
     await expect(enlarge).toHaveCSS("border-top-width", "0px");
     // The title sits under the image as a link, not over it.
     await expect(figure.locator("figcaption a")).toHaveAttribute("href", "/research/agent-skills");
+    await expect(figure.locator("figcaption")).toHaveText("Cover of the research project Agent skills");
+    await expect(figure.locator("figcaption")).toHaveCSS("text-align", "center");
 
     await enlarge.click();
     const dialog = page.getByRole("dialog", { name: "Agent skills" });
@@ -98,7 +100,47 @@ test.describe("Homepage", () => {
     await expect(dialog).toBeHidden();
     await expect(page).toHaveURL("/");
 
-    // The other linked pages stay plain link cards.
-    await expect(page.locator('a[href="/projects/portfolio-website"]').last()).toBeVisible();
+    // The other linked pages stay plain link cards, their titles shown on hover.
+    const card = page.locator('a[href="/projects/portfolio-website"]').last();
+    await expect(card).toBeVisible();
+    const cardTitle = card.locator("span");
+    await expect(cardTitle).toHaveCSS("opacity", "0");
+    await card.hover();
+    await expect(cardTitle).toHaveCSS("opacity", "1");
+  });
+
+  test("many link cards page through a carousel instead of a scrollbar", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    const slugs = [
+      "research/agent-skills",
+      "projects/portfolio-website",
+      "projects/dokwood",
+      "research/acropora-pavilion",
+      "research/bending-active-bamboo",
+      "research/timber-buildup-data-model",
+      "projects/buildsystems-website",
+      "projects/kfw-funding-calculator-by-buildsystems",
+    ];
+    await page.route("**/api/ai", (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ answer: slugs.map((s) => `[${s}](/${s})`).join(", ") }),
+      }),
+    );
+    await page.goto("/");
+    await page.locator("astro-island:not([ssr])").first().waitFor({ state: "attached" });
+    await page.getByRole("button", { name: "What is your PhD about?" }).click();
+
+    const next = page.getByRole("button", { name: "Next links" });
+    const previous = page.getByRole("button", { name: "Previous links" });
+    await expect(next).toBeVisible();
+    await expect(previous).toHaveCount(0);
+
+    await next.click();
+    await expect(previous).toBeVisible();
+    // Pages to the end: the forward arrow goes away there.
+    for (let i = 0; i < 6 && (await next.count()); i++) await next.click();
+    await expect(next).toHaveCount(0);
   });
 });

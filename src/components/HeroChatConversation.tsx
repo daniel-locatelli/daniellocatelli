@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Streamdown, type Components } from "streamdown";
 import "streamdown/styles.css";
-import { Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import type { Message, PreviewMap, LinkPreview } from "./hero-chat-types";
 
 const SITE_DOMAIN = "daniellocatelli.com";
@@ -168,8 +168,10 @@ function PreviewCard({ preview }: { preview: LinkPreview }) {
           <Sparkles size={20} className="text-zinc-600" aria-hidden="true" />
         </div>
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-      <span className="absolute inset-x-0 bottom-0 p-2 text-xs leading-tight font-medium text-white">
+      {/* Title hidden until hover or keyboard focus; on touch screens, which
+          cannot hover, it stays visible. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-200 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-visible:opacity-100" />
+      <span className="absolute inset-x-0 bottom-0 p-2 text-xs leading-tight font-medium text-white transition-opacity duration-200 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-visible:opacity-100">
         {preview.title.trim()}
       </span>
     </a>
@@ -179,6 +181,94 @@ function PreviewCard({ preview }: { preview: LinkPreview }) {
 export interface ImageLabels {
   enlarge: string;
   close: string;
+  /** Carousel arrows over the link cards. */
+  previous: string;
+  next: string;
+  /** Caption template per section; {title} becomes the page link. */
+  coverOf: Record<string, string>;
+}
+
+/**
+ * The link cards in one row. When they overflow, the row snaps card by card,
+ * hides its scrollbar, and shows an arrow (plus an edge fade) on each side
+ * that has more cards. Swipe and trackpad scrolling still work.
+ */
+function CardCarousel({
+  list,
+  labels,
+}: {
+  list: LinkPreview[];
+  labels: ImageLabels;
+}) {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [edges, setEdges] = useState({ start: false, end: false });
+
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row) return;
+    const update = () =>
+      setEdges({
+        start: row.scrollLeft > 1,
+        end: row.scrollLeft + row.clientWidth < row.scrollWidth - 1,
+      });
+    update();
+    row.addEventListener("scroll", update, { passive: true });
+    const ro = new ResizeObserver(update);
+    ro.observe(row);
+    return () => {
+      row.removeEventListener("scroll", update);
+      ro.disconnect();
+    };
+  }, [list.length]);
+
+  const page = (dir: 1 | -1) => {
+    const row = rowRef.current;
+    if (row) row.scrollBy({ left: dir * row.clientWidth * 0.8, behavior: "smooth" });
+  };
+
+  const arrow =
+    "absolute top-1/2 z-10 flex size-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-zinc-700 bg-zinc-900/90 text-zinc-200 shadow-lg transition-colors hover:border-green-500 hover:text-green-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400";
+
+  return (
+    <div className="relative mt-4">
+      <div
+        ref={rowRef}
+        className="-mx-1 flex snap-x snap-mandatory scroll-px-1 gap-2 overflow-x-auto px-1 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {list.map((p) => (
+          <div key={p.slug} className="snap-start">
+            <PreviewCard preview={p} />
+          </div>
+        ))}
+      </div>
+      {edges.start && (
+        <>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-black to-transparent" />
+          <button
+            type="button"
+            aria-label={labels.previous}
+            onClick={() => page(-1)}
+            className={`${arrow} -left-3`}
+          >
+            <ChevronLeft size={18} aria-hidden="true" />
+          </button>
+        </>
+      )}
+      {edges.end && (
+        <>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black to-transparent" />
+          <button
+            type="button"
+            aria-label={labels.next}
+            onClick={() => page(1)}
+            className={`${arrow} -right-3`}
+          >
+            <ChevronRight size={18} aria-hidden="true" />
+          </button>
+        </>
+      )}
+    </div>
+  );
 }
 
 /**
@@ -195,6 +285,9 @@ function FeaturedPreview({
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const title = preview.title.trim();
+  // "Cover of the project {title}", by the section the page lives in.
+  const template = labels.coverOf[preview.slug.split("/")[0]] ?? "{title}";
+  const [before, after = ""] = template.split("{title}");
   return (
     <figure className="mt-6">
       <button
@@ -213,13 +306,15 @@ function FeaturedPreview({
           className="block h-auto max-h-[75svh] w-full object-cover"
         />
       </button>
-      <figcaption className="mt-2 text-sm text-zinc-400">
+      <figcaption className="mt-2 text-center text-sm text-zinc-400">
+        {before}
         <a
           href={preview.href ?? `/${preview.slug}`}
-          className="transition-colors hover:text-green-400 focus-visible:text-green-400"
+          className="text-zinc-200 underline decoration-zinc-600 underline-offset-2 transition-colors hover:text-green-400 hover:decoration-green-400 focus-visible:text-green-400"
         >
           {title}
         </a>
+        {after}
       </figcaption>
       {/* Native modal: Escape closes it and focus returns to the button. */}
       <dialog
@@ -257,13 +352,7 @@ function Previews({
   return (
     <>
       {featured && <FeaturedPreview preview={featured} labels={imageLabels} />}
-      {rest.length ? (
-        <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1">
-          {rest.map((p) => (
-            <PreviewCard key={p.slug} preview={p} />
-          ))}
-        </div>
-      ) : null}
+      {rest.length ? <CardCarousel list={rest} labels={imageLabels} /> : null}
     </>
   );
 }

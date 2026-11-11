@@ -27,6 +27,11 @@ export type I18nHome = {
     enlargeImage: string;
     /** Closes the full-screen image. */
     closeImage: string;
+    /** Carousel arrows under an answer that links many pages. */
+    previousLinks: string;
+    nextLinks: string;
+    /** Caption under the answer's large image, per section; {title} becomes the page link. */
+    coverOf: Record<"projects" | "research" | "essays" | "teaching" | "publications", string>;
   };
   essays: {
     title: string;
