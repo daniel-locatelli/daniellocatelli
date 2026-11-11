@@ -74,6 +74,8 @@ Required in `.env`:
 
 The HeroChat assistant and the MCP server (`/api/mcp`) answer from one generated profile per locale, `src/generated/chat-profile/{en,pt,de}.md`, written by `src/scripts/generate-knowledge.ts` from the content collections and committed. The chat sends the whole profile with every question; the MCP serves it whole (`get_profile`) or through an in-Worker keyword search (`search_content`). **After any content change in `src/content/`, ask the user whether to run `/sync-knowledge`**, which regenerates the profile in seconds and checks whether the model IDs in `src/config/ai.ts` are still current; skip it for changes that do not alter prose, such as images or alt text.
 
+Daniel's service offerings live in `src/content/services/{en,pt,de}/services.md` (one `##` per service); it is not an Astro collection and has no page, only the profile reads it.
+
 `knowledge/` holds the generator's intermediate files; the profile takes the background FAQs (`processFAQ()`) and the CV timeline from there.
 
 **Benchmark:** Run `pnpm exec tsx scripts/benchmark-chat.ts` (with a local server running via `pnpm dev`; note Astro 7's dev server runs detached, manage it with `astro dev stop`/`status`/`logs`) to test ~26 common questions against the chat API. Use `--retry-failures` to skip previously passed tests. Target: 100% pass rate.

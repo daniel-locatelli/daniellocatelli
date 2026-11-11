@@ -12,10 +12,9 @@ export const t: I18nHome = {
     bio: "Pesquiso o projeto e a construção de estruturas de placas de madeira, e como a IA está mudando a forma como arquitetos e engenheiros trabalham.",
   },
   chat: {
-    prompt:
-      "Pergunte o que quiser sobre minha pesquisa, meus projetos ou minhas aulas.",
     note: "As respostas são geradas pelo Claude a partir da minha base de conhecimento.",
     suggestions: [
+      "Quais serviços você oferece?",
       "Sobre o que é seu doutorado?",
       "Quais skills de agentes de IA você já criou para arquitetura e engenharia?",
       "Em quais projetos você já trabalhou?",
@@ -24,7 +23,7 @@ export const t: I18nHome = {
       "Olá! Me pergunte qualquer coisa sobre meu trabalho, minha experiência ou meus projetos.\n\n*As respostas são geradas por IA (Anthropic Claude) e podem conter erros. Verifique o que for importante.*",
     inputPlaceholder: "Me pergunte alguma coisa...",
     headerTitle: "Assistente de IA",
-    poweredBy: "Respostas geradas pelo",
+    chatPlaceholder: "Pergunte algo ao {model}...",
     errorMessage: "Desculpe, algo deu errado. Tente novamente mais tarde.",
     requestQuote: "Solicite um orçamento",
     sendEmail: "Envie um e-mail",

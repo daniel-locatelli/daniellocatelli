@@ -10,13 +10,13 @@ export type I18nHome = {
     bio: string;
   };
   chat: {
-    prompt: string;
     note: string;
     suggestions: string[];
     initialMessage: string;
     inputPlaceholder: string;
     headerTitle: string;
-    poweredBy: string;
+    /** Input placeholder in the conversation view; {model} is the model's name. */
+    chatPlaceholder: string;
     errorMessage: string;
     requestQuote: string;
     sendEmail: string;

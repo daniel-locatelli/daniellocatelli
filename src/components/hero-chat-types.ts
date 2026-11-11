@@ -16,12 +16,11 @@ export interface HeroChatLabels {
   initialMessage: string;
   inputPlaceholder: string;
   headerTitle: string;
-  poweredBy: string;
+  /** Input placeholder in the conversation view; {model} is the model's name. */
+  chatPlaceholder: string;
   errorMessage: string;
   requestQuote: string;
   sendEmail: string;
-  /** Muted line above the starter questions. */
-  prompt: string;
   /** Small print under the input. */
   note: string;
   /** Starter questions shown as chips; clicking one asks it. */

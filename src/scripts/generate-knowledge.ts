@@ -1232,6 +1232,7 @@ const PROFILE_HEADINGS: Record<string, Record<string, string>> = {
   en: {
     title: "Daniel Locatelli: profile",
     about: "About me",
+    services: "Services I offer",
     work: "Work experience",
     education: "Education",
     scholarships: "Scholarships and grants",
@@ -1250,6 +1251,7 @@ const PROFILE_HEADINGS: Record<string, Record<string, string>> = {
   pt: {
     title: "Daniel Locatelli: perfil",
     about: "Sobre mim",
+    services: "Serviços que ofereço",
     work: "Experiência profissional",
     education: "Formação",
     scholarships: "Bolsas e prêmios",
@@ -1268,6 +1270,7 @@ const PROFILE_HEADINGS: Record<string, Record<string, string>> = {
   de: {
     title: "Daniel Locatelli: Profil",
     about: "Über mich",
+    services: "Meine Dienstleistungen",
     work: "Berufserfahrung",
     education: "Ausbildung",
     scholarships: "Stipendien und Förderungen",
@@ -1343,6 +1346,14 @@ function processChatProfile() {
         .replace(/^# .*\n+/, "")
         .trim();
       out.push(text, "");
+    }
+
+    // Services: src/content/services/<locale>/services.md, one "##" per
+    // service, demoted to "###" so each is its own entry for MCP search.
+    const services = readContentFiles("services", locale)[0];
+    if (services) {
+      out.push(`## ${h.services}`, "");
+      out.push(cleanMarkdownBody(services.body).replace(/^## /gm, "### "), "");
     }
 
     // CV sections in full: these are short, and they carry what I did in

@@ -439,6 +439,10 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
   };
 
   const isChat = mode === "chat";
+  // The conversation view names the model in the input, not in a separate line.
+  const placeholder = isChat
+    ? labels.chatPlaceholder.replace("{model}", modelName)
+    : labels.inputPlaceholder;
   const iconButton =
     "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:bg-zinc-900 hover:text-zinc-100 focus-visible:outline-2 focus-visible:outline-green-400 disabled:opacity-50";
 
@@ -446,8 +450,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
     <div className="w-full">
       {!isChat && (
         <>
-          <p className="text-base text-pretty text-zinc-400">{labels.prompt}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             {labels.suggestions.map((question) => (
               <button
                 key={question}
@@ -509,8 +512,8 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onFocus={preload}
-                placeholder={labels.inputPlaceholder}
-                aria-label={labels.inputPlaceholder}
+                placeholder={placeholder}
+                aria-label={placeholder}
                 autoComplete="off"
                 maxLength={1000}
                 className="min-w-0 flex-1 bg-transparent py-2.5 text-[15px] text-zinc-100 placeholder:text-zinc-400 focus:outline-none"
@@ -536,9 +539,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                 <ArrowLeft size={14} aria-hidden="true" />
                 {labels.back}
               </button>
-              <p className="flex-1 truncate px-1 text-center text-[11px] text-zinc-500">
-                {labels.poweredBy} {modelName}
-              </p>
+              <span className="flex-1" />
               <button
                 type="button"
                 onClick={startNewChat}
