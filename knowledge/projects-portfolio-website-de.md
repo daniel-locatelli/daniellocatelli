@@ -52,7 +52,7 @@ Da ein wachsender Teil des Verkehrs auf einer solchen Website künftig von KI-Ag
 - einen `llms.txt`-Index pro Sprache, der beim Build aus den Content Collections erzeugt wird;
 - eine Markdown-Fassung jeder Inhaltsseite (einfach `.md` an die URL anhängen) sowie Content Negotiation, sodass eine Anfrage mit `Accept: text/markdown` direkt Markdown erhält;
 - eine `robots.txt`, die KI-Crawler ausdrücklich willkommen heißt, eine Sitemap mit Bildeinträgen und `lastmod`-Daten pro URL aus der Git-Historie (dasselbe Datum erscheint als "Zuletzt aktualisiert" auf jeder Inhaltsseite sowie als `article:modified_time` und `dateModified` in den strukturierten Daten des Head) und einen API-Katalog unter `/.well-known/`;
-- einen kleinen, schreibgeschützten [MCP](https://modelcontextprotocol.io/)-Server, damit Agenten die Inhalte der Website als Werkzeuge abfragen können;
+- einen kleinen, schreibgeschützten [MCP](https://modelcontextprotocol.io/)-Server, damit Agenten die Inhalte der Website als Werkzeuge abfragen können, auch dasselbe Profil, aus dem der Chat antwortet, vollständig oder über eine Stichwortsuche;
 - [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/)-Discovery-Einträge (SVCB-Einträge `_mcp._agents` und `_index._agents`, DNSSEC-signiert), damit Agenten den MCP-Endpunkt allein über den Domainnamen finden;
 - einen Skills-Index unter `/.well-known/agent-skills/`, nach Cloudflares [Agent-Skills-Discovery-RFC](https://github.com/cloudflare/agent-skills-discovery-rfc), mit zwei `SKILL.md`-Dateien im [Agent-Skills](https://agentskills.io/specification)-Format, die einem Agenten erklären, wie er die Website per MCP abfragt oder als Markdown liest.
 

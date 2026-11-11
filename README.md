@@ -21,7 +21,7 @@ Portfolio website for **Daniel Locatelli**, an AEC (Architecture, Engineering & 
 | **Framework** | [Astro 6](https://astro.build/) with TypeScript |
 | **UI** | [React 19](https://react.dev/) · [Tailwind CSS 4](https://tailwindcss.com/) · [Framer Motion](https://www.framer.com/motion/) |
 | **Content** | Astro Content Collections |
-| **AI Chat** | [Anthropic Claude SDK](https://docs.anthropic.com/) · [Supabase](https://supabase.com/) vector embeddings (RAG) |
+| **AI Chat** | [Anthropic Claude SDK](https://docs.anthropic.com/) · whole-site profile with prompt caching |
 | **3D** | [Three.js](https://threejs.org/) (geodesic dome visualization) |
 | **Deployment** | [Cloudflare Workers](https://workers.cloudflare.com/) (Static Assets) |
 | **Icons** | [Phosphor Icons](https://phosphoricons.com/) · [Lucide React](https://lucide.dev/) |
@@ -30,7 +30,7 @@ Portfolio website for **Daniel Locatelli**, an AEC (Architecture, Engineering & 
 ## Features
 
 - **Internationalization** — Full i18n support for English, Portuguese, and German using `[...locale]` dynamic route segments and typed translation files.
-- **AI Chat Assistant** — Interactive chat powered by Claude with retrieval-augmented generation (RAG) via Supabase vector embeddings. Responds as Daniel in the visitor's language.
+- **AI Chat Assistant** — Interactive chat powered by Claude, which reads a generated profile of the whole site with every question. Responds as Daniel in the visitor's language.
 - **Content Collections** — Type-safe content for projects, research, publications, teaching, skills, people, organizations, and more.
 - **3D Visualization** — Three.js geodesic dome on the homepage.
 - **Responsive Design** — Dark-themed UI with Montserrat/Poppins custom fonts, mobile-friendly layout, and print-optimized CV page.
@@ -69,8 +69,6 @@ Create a `.env` file with:
 
 ```env
 ANTHROPIC_API_KEY=       # Claude API key
-SUPABASE_URL=            # Supabase project URL
-SUPABASE_ANON_KEY=       # Supabase anonymous key
 ```
 
 ### Commands

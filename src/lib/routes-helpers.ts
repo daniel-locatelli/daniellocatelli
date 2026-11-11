@@ -31,7 +31,7 @@ export function getFileSlug(id: string): string {
 /**
  * Whether a content entry is published. Files whose slug starts with "_" are
  * drafts: they get no route, no .md variant, no llms.txt line, and no
- * knowledge embeddings.
+ * place in the chat profile.
  */
 export function isPublishedId(id: string): boolean {
   return !getFileSlug(id).startsWith("_");

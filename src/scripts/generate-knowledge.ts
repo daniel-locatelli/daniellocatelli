@@ -1,8 +1,10 @@
 /**
  * generate-knowledge.ts
  *
- * Reads all portfolio content from source files and generates
- * clean markdown knowledge files for embedding into Supabase.
+ * Reads all portfolio content from source files and writes the per-locale
+ * chat profile (src/generated/chat-profile/<locale>.md) that the homepage
+ * chat and the MCP server answer from, plus intermediate knowledge/*.md
+ * files the profile draws on.
  *
  * Sources:
  * 1. Content collections (projects, research, teaching, publications, and
@@ -11,7 +13,7 @@
  *    scholarships, courses-attended, skills)
  * 3. Homepage description and body from content/pages/<locale>/index.md
  *
- * Run: npx tsx src/scripts/generate-knowledge.ts
+ * Run: pnpm exec tsx src/scripts/generate-knowledge.ts
  */
 
 import fs from "node:fs";
@@ -1222,7 +1224,7 @@ function processFAQ() {
 // talk. The chat sends the whole profile with each question (prompt-cached)
 // instead of retrieving fragments, so a broad question sees the full
 // picture. Written to src/generated/chat-profile/<locale>.md and bundled
-// into the Worker by src/pages/api/ai.ts.
+// into the Worker by src/lib/chat-profiles.ts.
 
 const PROFILE_DIR = path.join(process.cwd(), "src/generated/chat-profile");
 

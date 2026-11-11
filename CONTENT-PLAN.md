@@ -64,7 +64,7 @@ Tracking document for all content collections.
 | `_new-parking-garage-swissprintersarea-by-ar-ingenieure` | Mechanical drawings and rendering of the facade | [ ] | [ ] | [ ] |
 | `_nike-air-guitar-by-atelier-marko-brajovic` | — | [ ] | [ ] | [ ] |
 | `_parapivot-by-artengineering` | 5m steel and stone sculpture, structural framing detailing | [ ] | [ ] | [ ] |
-| `_portfolio-website` | This portfolio website using Astro, Three.js, Supabase, Claude | [ ] | [ ] | [ ] |
+| `_portfolio-website` | This portfolio website using Astro, Three.js, Claude | [ ] | [ ] | [ ] |
 | `_seilnetz-muttenz-by-ar-ingenieure` | Form-finding of cable net structure and quantity takeoff | [ ] | [ ] | [ ] |
 | `_the-curious-desert-by-artengineering` | Art installations by Olafur Eliasson, steel structure detailing | [ ] | [ ] | [ ] |
 | `_the-first-blow-by-atelier-marko-brajovic` | — | [ ] | [ ] | [ ] |
