@@ -358,7 +358,11 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
         const response = await fetch("/api/ai", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question: userMessage, stream: true }),
+          body: JSON.stringify({
+            question: userMessage,
+            stream: true,
+            locale: document.documentElement.lang,
+          }),
         });
         if (!response.ok) {
           throw new Error(`Failed to fetch response: ${response.status}`);

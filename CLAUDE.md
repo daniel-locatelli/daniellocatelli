@@ -17,7 +17,7 @@ Personal portfolio website for Daniel Locatelli (doctoral researcher at ETH Zuri
 - **UI:** React 19 (interactive components), Tailwind CSS 4
 - **Deployment:** Cloudflare Workers with Static Assets (`@astrojs/cloudflare`)
 - **Content:** Astro Content Collections
-- **AI:** Anthropic Claude SDK with Supabase vector embeddings
+- **AI:** Anthropic Claude SDK; the chat sends a generated profile of the whole site with each question (prompt-cached)
 - **3D:** Three.js (geodesic dome component)
 
 ## Commands
@@ -68,17 +68,13 @@ The site describes its own technology in `src/content/projects/{en,pt,de}/portfo
 ## Environment Variables
 
 Required in `.env`:
-- `ANTHROPIC_API_KEY` — Claude API key
-- `SUPABASE_URL` / `SUPABASE_ANON_KEY` — Supabase vector store
+- `ANTHROPIC_API_KEY`: Claude API key
 
 ## AI Chat Knowledge Pipeline
 
-The HeroChat assistant is powered by vector embeddings in Supabase (Voyage AI, 1024-dim). **After any content change in `src/content/`, ask the user whether to run `/sync-knowledge`** (it regenerates knowledge files and re-embeds all entries, which takes several minutes; batch small edits and skip it for changes that do not alter prose, such as images or alt text). This also checks whether AI model IDs in `src/config/ai.ts` are still current.
+The HeroChat assistant and the MCP server (`/api/mcp`) answer from one generated profile per locale, `src/generated/chat-profile/{en,pt,de}.md`, written by `src/scripts/generate-knowledge.ts` from the content collections and committed. The chat sends the whole profile with every question; the MCP serves it whole (`get_profile`) or through an in-Worker keyword search (`search_content`). **After any content change in `src/content/`, ask the user whether to run `/sync-knowledge`**, which regenerates the profile in seconds and checks whether the model IDs in `src/config/ai.ts` are still current; skip it for changes that do not alter prose, such as images or alt text.
 
-The knowledge pipeline generates:
-- Individual content pages and CV entries (per locale)
-- A chronological CV timeline (always injected as core context)
-- **FAQ synthesis chunks** (`processFAQ()` in `src/scripts/generate-knowledge.ts`): 10 natural-language FAQ files per locale that pre-answer common visitor questions (current employment, skills, education, etc.). These bridge the semantic gap between user questions and structured data.
+`knowledge/` holds the generator's intermediate files; the profile takes the background FAQs (`processFAQ()`) and the CV timeline from there.
 
 **Benchmark:** Run `pnpm exec tsx scripts/benchmark-chat.ts` (with a local server running via `pnpm dev`; note Astro 7's dev server runs detached, manage it with `astro dev stop`/`status`/`logs`) to test ~26 common questions against the chat API. Use `--retry-failures` to skip previously passed tests. Target: 100% pass rate.
 

@@ -4,7 +4,7 @@ CoverAlt: "Die Startseite von daniellocatelli.com auf einem Laptop."
 Name: Portfolio-Website
 Description: "Diese Website: eine Astro-Seite, deren Inhalte als reines Markdown vorliegen, damit Claude Code als CMS fungieren kann, mit einem Claude-gestützten Chat, Essays, Folienpräsentationen im Browser und einer agentenfähigen Oberfläche auf Cloudflare."
 DateStart: "2024-04-27"
-Updated: "2026-10-30"
+Updated: "2026-11-11"
 Organization: "Daniel Locatelli"
 Category: Software
 Tags:
@@ -32,7 +32,7 @@ Das ist die Website, die Sie gerade lesen. Sie begann im April 2024 als kleine A
 
 - [**Astro**](https://astro.build/) mit TypeScript für die Website selbst, [**React**](https://react.dev/) für die wenigen Inseln, die Interaktivität brauchen, und [**Tailwind CSS**](https://tailwindcss.com/) für das Styling.
 - [**Astro Content Collections**](https://docs.astro.build/en/guides/content-collections/) für sämtliche Inhalte, geschrieben in Markdown und MDX mit typisiertem Frontmatter, das beim Build validiert wird.
-- [**Claude**](https://www.anthropic.com/claude) (Anthropic) für den Chat auf der Startseite, mit [**Supabase**](https://supabase.com/) als Vektorspeicher für das Retrieval.
+- [**Claude**](https://www.anthropic.com/claude) (Anthropic) für den Chat auf der Startseite, der bei jeder Frage ein verdichtetes Profil der gesamten Website liest.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) mit Static Assets für Hosting, Edge-Caching und die Endpunkte für Agenten; vorgerenderte Seiten werden direkt von der Edge ausgeliefert, der Worker läuft nur für die Chat- und MCP-Endpunkte.
 
 ## Claude Code als Content-Management-System
@@ -43,7 +43,7 @@ Sämtliche Inhalte liegen als einfache Textdateien (geschrieben in [Markdown](ht
 
 Sinn dieses Aufbaus ist, die Inhalte für KI-Harnesse wie [Claude Code](https://claude.com/claude-code) direkt zugänglich zu machen. Weil die Inhalte einfach Dateien neben dem Code sind, kann Claude Code Einträge genauso lesen, bearbeiten, anlegen und gegenprüfen, wie es mit Quellcode arbeitet. In der Praxis heißt das: Ich nutze Claude Code als Content-Management-System (CMS), also als das Werkzeug, in das man sich normalerweise einloggt, um eine Seite hinzuzufügen oder einen Tippfehler zu korrigieren. Ich beschreibe ein neues Projekt oder eine Korrektur in einem Satz, und es schreibt oder aktualisiert die Dateien, hält die Kopfdaten konsistent und prüft die zugehörigen Einträge in den anderen Sprachen. Genau diese Seite ist so entstanden. Alles auf dieser Website ist gemeinsam entstanden, vom Code bis zum Inhalt.
 
-Dass alle Inhalte als reiner Text im Repository liegen, hat einen zweiten Nutzen: Es ist einfach, sie in Abschnitte zu zerlegen, Embeddings zu erzeugen und sie einem Sprachmodell zuzuführen. Genau das macht den KI-Chat auf der Startseite möglich (mehr dazu weiter unten).
+Dass alle Inhalte als reiner Text im Repository liegen, hat einen zweiten Nutzen: Es ist einfach, sie zu verdichten und einem Sprachmodell zu übergeben. Genau das macht den KI-Chat auf der Startseite möglich (mehr dazu weiter unten).
 
 ## Übersetzung durch Claude Code
 
@@ -57,13 +57,13 @@ Die Startseite ist bewusst kurz: mein Name, eine Zeile dazu, woran ich forsche, 
 
 ![Das Chat-Eingabefeld auf der Startseite: ein abgerundetes Textfeld mit "Ask me something..." und einem Sendepfeil, darunter der Hinweis "Powered by Claude Haiku 4.5".](../../../assets/content/projects/portfolio-website/chat-bot.png)
 
-Im Hintergrund verwandelt eine Wissens-Pipeline die Content Collections in kleine Textabschnitte pro Sprache (einzelne Seiten, Lebenslaufeinträge, eine chronologische Zeitleiste und einen Satz vorformulierter FAQ-Antworten auf die häufigsten Besucherfragen), erzeugt mit Voyage AI Embeddings und speichert die Vektoren in Supabase. Trifft eine Frage ein, ruft der API-Endpunkt die ähnlichsten Abschnitte ab und übergibt sie Claude als Kontext. Sobald sich Inhalte ändern, erzeugt ein einziger Befehl die Wissensdateien neu und lädt frische Embeddings hoch, und ein Benchmark-Skript stellt dem Chat einen festen Satz häufiger Fragen, um sicherzustellen, dass er sie weiterhin alle korrekt beantwortet.
+Im Hintergrund verdichtet ein Skript die Content Collections zu einem Profil pro Sprache: jede Stelle mit dem, was ich dort gemacht habe, eine kurze Zusammenfassung mit Link zu jedem Forschungseintrag, Projekt, jeder Publikation und jedem Vortrag, die Kompetenzen und eine chronologische Zeitleiste. Das sind etwa 13.000 Tokens pro Sprache, gebündelt in den Worker. Jede Frage geht zusammen mit dem vollständigen Profil in der Sprache der Seite an Claude, sodass eine breite Frage wie "Was hast du vorher entwickelt?" meine ganze Laufbahn auf einmal sieht statt einer Handvoll abgerufener Fragmente. Da das Profil für alle Besucher gleich ist, wird es per Prompt-Caching zwischengespeichert: Nach der ersten Frage kostet es nur einen Bruchteil seiner Größe und verzögert die Antwort nicht. Eine frühere Version arbeitete mit Retrieval (Embeddings mit Voyage AI und einem Vektorspeicher in Supabase); sie beantwortete enge Fragen gut, baute die Antwort auf breite Fragen aber manchmal um einen Nebeneintrag herum, deshalb habe ich sie ersetzt. Sobald sich Inhalte ändern, erzeugt ein einziger Befehl das Profil neu, und ein Benchmark-Skript stellt dem Chat einen festen Satz häufiger Fragen, um sicherzustellen, dass er sie weiterhin alle korrekt beantwortet.
 
-![Architekturdiagramm: Beim Build werden die Markdown-Inhalte der Website in Wissensabschnitte zerlegt, mit Voyage AI eingebettet und in Supabase gespeichert; zur Laufzeit wird die Besucherfrage eingebettet, die nächstgelegenen Abschnitte werden abgerufen und an Claude übergeben, das eine fundierte Antwort zurück auf die Seite streamt.](/assets/content/projects/portfolio-website/chat-pipeline-de.svg)
+![Architekturdiagramm: Beim Build werden die Markdown-Inhalte der Website zu einem Profil pro Sprache verdichtet und in den Worker gebündelt; zur Laufzeit geht das Profil in der Sprache des Besuchers zusammen mit der Frage an Claude, per Prompt-Caching zwischengespeichert, und Claude streamt die Antwort zurück auf die Seite.](/assets/content/projects/portfolio-website/chat-pipeline-de.svg)
 
 ## Essays
 
-Vieles von dem, was ich früher als Dienstleistung verkauft habe, also Plugins, Web-Apps und Dashboards, schreibt heute ein Sprachmodell an einem Nachmittag. Deshalb listet die Startseite keine Dienstleistungen mehr auf, sondern Essays: einige längere Texte darüber, was in Architektur und Ingenieurwesen wertvoll bleibt, wenn Code billig ist, veröffentlicht etwa einmal im Monat. Jeder Essay ist eine einfache Markdown-Datei in einer eigenen Content Collection, sodass das Veröffentlichen ein einziger Commit ist, und der Chat kann Fragen dazu beantworten, sobald die Wissens-Pipeline gelaufen ist.
+Vieles von dem, was ich früher als Dienstleistung verkauft habe, also Plugins, Web-Apps und Dashboards, schreibt heute ein Sprachmodell an einem Nachmittag. Deshalb listet die Startseite keine Dienstleistungen mehr auf, sondern Essays: einige längere Texte darüber, was in Architektur und Ingenieurwesen wertvoll bleibt, wenn Code billig ist, veröffentlicht etwa einmal im Monat. Jeder Essay ist eine einfache Markdown-Datei in einer eigenen Content Collection, sodass das Veröffentlichen ein einziger Commit ist, und der Chat kann Fragen dazu beantworten, sobald das Profil neu erzeugt ist.
 
 ## Präsentationsmodus
 
@@ -78,7 +78,7 @@ Da ein wachsender Teil des Verkehrs auf einer solchen Website künftig von KI-Ag
 - einen `llms.txt`-Index pro Sprache, der beim Build aus den Content Collections erzeugt wird;
 - eine Markdown-Fassung jeder Inhaltsseite (einfach `.md` an die URL anhängen) sowie Content Negotiation, sodass eine Anfrage mit `Accept: text/markdown` direkt Markdown erhält;
 - eine `robots.txt`, die KI-Crawler ausdrücklich willkommen heißt, eine Sitemap mit Bildeinträgen und `lastmod`-Daten pro URL aus der Git-Historie (dasselbe Datum erscheint als "Zuletzt aktualisiert" auf jeder Inhaltsseite sowie als `article:modified_time` und `dateModified` in den strukturierten Daten des Head) und einen API-Katalog unter `/.well-known/`;
-- einen kleinen, schreibgeschützten [MCP](https://modelcontextprotocol.io/)-Server, damit Agenten die Inhalte der Website als Werkzeuge abfragen können;
+- einen kleinen, schreibgeschützten [MCP](https://modelcontextprotocol.io/)-Server, damit Agenten die Inhalte der Website als Werkzeuge abfragen können, auch dasselbe Profil, aus dem der Chat antwortet, vollständig oder über eine Stichwortsuche;
 - [DNS-AID](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/)-Discovery-Einträge (SVCB-Einträge `_mcp._agents` und `_index._agents`, DNSSEC-signiert), damit Agenten den MCP-Endpunkt allein über den Domainnamen finden;
 - einen Skills-Index unter `/.well-known/agent-skills/`, nach Cloudflares [Agent-Skills-Discovery-RFC](https://github.com/cloudflare/agent-skills-discovery-rfc), mit zwei `SKILL.md`-Dateien im [Agent-Skills](https://agentskills.io/specification)-Format, die einem Agenten erklären, wie er die Website per MCP abfragt oder als Markdown liest.
 

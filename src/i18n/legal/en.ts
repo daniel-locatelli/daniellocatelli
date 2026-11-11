@@ -41,15 +41,14 @@ Website: <a href="/">daniellocatelli.com</a></p>`,
 <p>More information: <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a> · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a></p>`,
       },
       {
-        heading: "AI Chat Feature (Anthropic, Supabase & Voyage AI)",
+        heading: "AI Chat Feature (Anthropic)",
         content: `<p>This website includes an optional AI chat feature. When you use the chat:</p>
 <ul>
-<li>Your question is sent to <strong>Supabase</strong>, which forwards it to <strong>Voyage AI</strong> to compute a numerical embedding used for vector similarity search (query only — your input is not stored persistently by either service)</li>
-<li>Your question and the retrieved context are sent to the <strong>Anthropic Claude API</strong> for generating a response (processed but not stored long-term by Anthropic)</li>
+<li>Your question is sent to the <strong>Anthropic Claude API</strong>, together with a summary of this website's public content, to generate a response (processed but not stored long-term by Anthropic)</li>
 </ul>
-<p>Chat messages exist only in your browser session state and are lost when you close or refresh the page. No conversation history is stored on any server.</p>
-<p>Legal basis: Art. 6(1)(a) GDPR — consent (you actively choose to use the chat). Anthropic, Supabase, and Voyage AI are US-based. Data transfers are covered by their respective Standard Contractual Clauses.</p>
-<p>More information: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a> · <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase Privacy Policy</a> · <a href="https://www.voyageai.com/privacy" target="_blank" rel="noopener noreferrer">Voyage AI Privacy Policy</a></p>`,
+<p>The conversation is kept in your browser's session storage for this tab, so it survives a page reload and is deleted when you close the tab or start a new chat. No conversation history is stored on any server.</p>
+<p>Legal basis: Art. 6(1)(a) GDPR, consent (you actively choose to use the chat). Anthropic is based in the US. Data transfers are covered by its Standard Contractual Clauses.</p>
+<p>More information: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a></p>`,
       },
       {
         heading: "Embedded Videos (YouTube)",

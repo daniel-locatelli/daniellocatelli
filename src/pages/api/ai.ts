@@ -7,6 +7,7 @@ import {
   getSystemPrompt,
 } from "@/config/ai";
 import { formatUrlsAsMarkdown } from "@/lib/chat-markdown";
+import { profileFor } from "@/lib/chat-profiles";
 
 interface ModelOverride {
   models: string[];
@@ -46,13 +47,24 @@ export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const { question, stream: wantsStream } = (await request.json()) as {
+    const {
+      question,
+      stream: wantsStream,
+      locale,
+    } = (await request.json()) as {
       question?: string;
+      /** The page's locale (en, pt, de); picks which profile to send. */
+      locale?: string;
       /** Stream the answer as plain text instead of one JSON reply. */
       stream?: boolean;
     };
-    if (!question) {
+    if (typeof question !== "string" || !question.trim()) {
       return new Response(JSON.stringify({ error: "Question is required" }), {
+        status: 400,
+      });
+    }
+    if (question.length > 2000) {
+      return new Response(JSON.stringify({ error: "Question is too long" }), {
         status: 400,
       });
     }
@@ -60,8 +72,6 @@ export const POST: APIRoute = async ({ request }) => {
     const env = cfEnv as unknown as {
       AI_HEALTH_KV?: { get(key: string): Promise<string | null> };
       ANTHROPIC_API_KEY?: string;
-      SUPABASE_URL?: string;
-      SUPABASE_ANON_KEY?: string;
     };
     const ANTHROPIC_API_KEY =
       env?.ANTHROPIC_API_KEY || process.env.ANTHROPIC_API_KEY;
@@ -74,111 +84,9 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // 1. Get relevant context from Supabase Vector Search
-    const supabaseUrl = env?.SUPABASE_URL || process.env.SUPABASE_URL;
-    const supabaseAnonKey =
-      env?.SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
-
-    if (!supabaseUrl || !supabaseAnonKey) {
-      console.error("Missing Supabase configuration");
-      return new Response(
-        JSON.stringify({ error: "Server configuration error" }),
-        {
-          status: 500,
-        },
-      );
-    }
-
-    const vectorSearchEndpoint = `${supabaseUrl}/functions/v1/vector-search`;
-    const vectorSearchResponse = await fetch(vectorSearchEndpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${supabaseAnonKey}`,
-      },
-      body: JSON.stringify({
-        query: question,
-        match_threshold: 0.4, // Slightly lowered for better recall
-        match_count: 15, // Increased for more context
-      }),
-    });
-
-    if (!vectorSearchResponse.ok) {
-      const errorText = await vectorSearchResponse.text();
-      console.error("Vector Search Error:", errorText);
-      return new Response(
-        JSON.stringify({ error: "Failed to retrieve context" }),
-        { status: 500 },
-      );
-    }
-
-    const { documents } = (await vectorSearchResponse.json()) as {
-      documents: any[];
-    };
-
-    if (import.meta.env.DEV) {
-      console.log(
-        `Vector search returned ${documents.length} docs:`,
-        documents.map((d: any) => d.title).join(", "),
-      );
-    }
-
-    // Always include core CV context (Timeline + Summary & Skills)
-    // so the AI has the full career chronology and identity context.
-    // The timeline is a flat chronological list of all CV entries (work,
-    // education, teaching, certifications, etc.) that prevents confabulation
-    // about career transitions and dates.
-    const existingIds = new Set(documents.map((d: any) => d.id));
-    try {
-      const coreUrl = new URL(`${supabaseUrl}/rest/v1/knowledge_entries`);
-      coreUrl.searchParams.set("select", "id,content,url,title,type,metadata");
-      coreUrl.searchParams.set(
-        "or",
-        "(title.ilike.*Timeline*,title.ilike.*Linha do Tempo*,title.ilike.*Zeitleiste*,title.ilike.*Summary*,title.ilike.*Resumo*,title.ilike.*Zusammenfassung*)",
-      );
-      coreUrl.searchParams.set("type", "eq.cv");
-      coreUrl.searchParams.set("limit", "6");
-
-      const coreResponse = await fetch(coreUrl.toString(), {
-        headers: {
-          Authorization: `Bearer ${supabaseAnonKey}`,
-          apikey: supabaseAnonKey!,
-        },
-      });
-      if (coreResponse.ok) {
-        const coreDocs = (await coreResponse.json()) as any[];
-        if (import.meta.env.DEV) {
-          console.log(
-            `Core CV context: fetched ${coreDocs.length} docs — ${coreDocs.map((d: any) => d.title).join(", ")}`,
-          );
-        }
-        for (const doc of coreDocs) {
-          if (!existingIds.has(doc.id)) {
-            documents.unshift(doc); // Prepend core docs so they appear first
-            existingIds.add(doc.id);
-          }
-        }
-      } else if (import.meta.env.DEV) {
-        console.error(
-          `Core CV context fetch failed: ${coreResponse.status} ${await coreResponse.text()}`,
-        );
-      }
-    } catch (e) {
-      if (import.meta.env.DEV) {
-        console.error("Core CV context error:", e);
-      }
-      // Non-critical: continue with vector search results only
-    }
-
-    const context = documents
-      .map((doc: any) => {
-        const metadata = doc.metadata || {};
-        const links = metadata.links
-          ? `\nLinks: ${metadata.links.join(", ")}`
-          : "";
-        return `[Title: ${doc.title || "Untitled"}, URL: ${doc.url || "N/A"}]${links}\n${doc.content}`;
-      })
-      .join("\n\n---\n\n");
+    // 1. The whole profile for the page's locale goes into the prompt;
+    // there is no retrieval step to miss the relevant entry.
+    const profile = profileFor(locale);
 
     // 2. Ask Claude
     const anthropic = new Anthropic({
@@ -191,8 +99,8 @@ export const POST: APIRoute = async ({ request }) => {
       : (kvOverride ?? [...ProdModelAPIAlias]);
 
     const params = {
-      max_tokens: 1024,
-      system: getSystemPrompt(context),
+      max_tokens: 1536,
+      system: getSystemPrompt(profile),
       messages: [{ role: "user" as const, content: question }],
     };
 
@@ -254,6 +162,12 @@ export const POST: APIRoute = async ({ request }) => {
     for (const model of modelsToTry) {
       try {
         msg = await anthropic.messages.create({ ...params, model });
+        if (import.meta.env.DEV) {
+          const u = msg.usage;
+          console.log(
+            `[ai] ${model} input=${u.input_tokens} cache_read=${u.cache_read_input_tokens ?? 0} cache_write=${u.cache_creation_input_tokens ?? 0} output=${u.output_tokens}`,
+          );
+        }
         break;
       } catch (err) {
         console.error(`Error with model ${model}:`, err);

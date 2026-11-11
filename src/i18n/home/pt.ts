@@ -17,7 +17,7 @@ export const t: I18nHome = {
     note: "As respostas são geradas pelo Claude a partir da minha base de conhecimento.",
     suggestions: [
       "Sobre o que é seu doutorado?",
-      "Que skills de agentes de IA você criou para arquitetura?",
+      "Quais skills de agentes de IA você já criou para arquitetura e engenharia?",
       "Em quais projetos você já trabalhou?",
     ],
     initialMessage:

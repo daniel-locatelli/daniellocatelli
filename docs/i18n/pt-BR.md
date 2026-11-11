@@ -61,6 +61,8 @@ Manual edits harvested through commit: `fa96de7f`
 
 | Date | Where | Before | After | Why |
 | --- | --- | --- | --- | --- |
+| 2026-11-11 | home chat starter question | Que skills de agentes de IA você criou para arquitetura? | Quais skills de agentes de IA você já criou para arquitetura e engenharia? | "Que ... você criou" reads abrupt; "Quais ... você já criou" is how the question is asked. Daniel also widened it to "arquitetura e engenharia". |
+| 2026-11-11 | chat benchmark question (`scripts/benchmark-chat.ts`) | O que você construiu antes? | Você já participou de quais projetos? / Quais programas você já desenvolveu? / Com o que você trabalha? | Nobody asks "construiu" about a career; it is "What did you build" word for word. Ask about projects, software ("programas") or work instead. |
 | 2026-11-11 | chat bottom bar, before the model name | Desenvolvido com | Respostas geradas pelo | "Desenvolvido" says the site was built with the model; the model only writes the answers. Translate what a label does, not the English idiom ("Powered by"). |
 | 2026-11-11 | subpage next-entry label | Próximo | Próximo (kept) | Reviewer proposed "Seguinte" for gender neutrality; "Próximo/Anterior" is the standard Brazilian navigation pair. |
 | 2026-11-11 | CV quote | materiais vernaculares | materiais vernaculares (kept) | "Vernacular" is a valid Portuguese adjective (Priberam: same as "vernáculo") and the usual term in architecture. |

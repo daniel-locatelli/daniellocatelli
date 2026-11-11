@@ -13,7 +13,7 @@
       "type": "skill-md",
       "description": "Query Daniel Locatelli's portfolio (projects, research, teaching, publications, CV) through the site's read-only MCP server. Use when you need structured, up-to-date answers about Daniel Locatelli's work instead of scraping HTML.",
       "url": "/.well-known/agent-skills/portfolio-mcp/SKILL.md",
-      "digest": "sha256:4d617a6bce20c80a539656ccbd1ecfca26f83d2d3a5ac07686d48057430fafcc"
+      "digest": "sha256:e4afb77a9bdddacbf21c9fa17ee5b03a4b7c00527c2a6db555d0a6b967097c15"
     }
   ]
 }
