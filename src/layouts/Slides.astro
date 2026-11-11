@@ -142,6 +142,17 @@ const {
       <span id="deck-progress-current">1</span><span class="mx-1">/</span><span id="deck-progress-total">1</span>
     </div>
 
+    <!-- Speaker notes of the active slide, copied here from its
+         <SlideNotes>. Notes can't render inside the slide: on portrait
+         screens the slide is scaled with a transform, which makes it the
+         containing block of any position:fixed child, so the notes shrank
+         with it instead of sitting at the bottom of the screen. -->
+    <aside
+      id="deck-notes-panel"
+      aria-label="Speaker notes"
+      class="fixed inset-x-0 bottom-0 z-40 hidden max-h-[40svh] overflow-y-auto border-t border-zinc-700 bg-zinc-900/95 px-6 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] text-left text-sm whitespace-pre-line text-zinc-200 backdrop-blur"
+    ></aside>
+
 
     <dialog
       id="deck-help-dialog"
@@ -251,7 +262,7 @@ const {
     box-shadow: inset 0 0 0 calc(2px / var(--ov-scale)) rgb(34 197 94);
   }
 
-  body.deck-notes [data-slide-notes] {
+  body.deck-notes #deck-notes-panel:not(:empty) {
     display: block;
   }
 
@@ -310,6 +321,11 @@ const {
 
   body.is-presenter #deck-presenter-btn {
     display: none;
+  }
+
+  /* Touch devices: the button toggles the notes in place (see openPresenter). */
+  #deck-presenter-btn[aria-pressed="true"] {
+    color: rgb(74 222 128);
   }
 </style>
 
@@ -415,6 +431,7 @@ const {
     const total = slides.length;
     const totalEl = document.getElementById("deck-progress-total");
     const currentEl = document.getElementById("deck-progress-current");
+    const notesPanel = document.getElementById("deck-notes-panel");
     if (totalEl) totalEl.textContent = String(total);
 
     const parseHash = (): number => {
@@ -450,7 +467,23 @@ const {
       channel?.postMessage({ type: "goto", slide: slideNumber });
     };
 
+    // Phones and tablets have no second screen: window.open just swaps the
+    // tab, leaving one window. There the button shows the notes at the
+    // bottom of this same page instead.
+    const notesInPlace = matchMedia("(hover: none) and (pointer: coarse)")
+      .matches;
+    const presenterBtnEl = document.getElementById("deck-presenter-btn");
+    if (notesInPlace && presenterBtnEl) {
+      presenterBtnEl.setAttribute("aria-label", "Speaker notes");
+      presenterBtnEl.setAttribute("aria-pressed", "false");
+    }
+
     const openPresenter = () => {
+      if (notesInPlace) {
+        const on = document.body.classList.toggle("deck-notes");
+        presenterBtnEl?.setAttribute("aria-pressed", String(on));
+        return;
+      }
       const url = new URL(location.href);
       url.searchParams.set("presenter", "1");
       window.open(
@@ -604,6 +637,11 @@ const {
         });
       });
       if (currentEl) currentEl.textContent = String(index + 1);
+      if (notesPanel) {
+        const notes = slides[index].querySelector("[data-slide-notes]");
+        notesPanel.innerHTML = notes?.innerHTML.trim() ?? "";
+        notesPanel.scrollTop = 0;
+      }
       if (pushHash) {
         const newHash = `#${index + 1}`;
         if (window.location.hash !== newHash) {

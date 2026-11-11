@@ -1,9 +1,8 @@
 ---
 ---
 
-<aside
-  data-slide-notes
-  class="slide-notes fixed right-0 bottom-0 left-0 z-40 hidden max-h-[40vh] overflow-y-auto border-t border-zinc-700 bg-zinc-900/95 px-6 py-4 text-left text-sm whitespace-pre-line text-zinc-200 backdrop-blur"
->
+<!-- Never shown in place: Slides.astro copies the active slide's notes
+     into #deck-notes-panel, outside the (possibly transformed) slide. -->
+<aside data-slide-notes hidden>
   <slot />
 </aside>
