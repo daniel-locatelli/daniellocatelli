@@ -448,7 +448,9 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
     <div className="w-full">
       {!isChat && (
         <>
-          <div className="flex flex-wrap gap-2">
+          {/* Two by two from sm up: a free wrap left one pill alone on the second row.
+              Columns size to their pills, and a pill too long for its column wraps inside it. */}
+          <div className="flex flex-wrap gap-2 sm:grid sm:grid-cols-[repeat(2,minmax(0,max-content))] sm:items-center">
             {labels.suggestions.map((question) => (
               <button
                 key={question}
@@ -457,7 +459,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
                 onMouseEnter={preload}
                 onFocus={preload}
                 disabled={isLoading}
-                className="rounded-full border border-zinc-700 px-4 py-2.5 text-sm leading-none text-zinc-100 transition-colors hover:border-green-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-full border border-zinc-700 px-4 py-2 text-sm leading-tight text-balance text-zinc-100 transition-colors hover:border-green-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {question}
               </button>

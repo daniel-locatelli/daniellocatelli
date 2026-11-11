@@ -15,7 +15,7 @@ export const t: I18nHome = {
     suggestions: [
       "Quais serviços você oferece?",
       "Sobre o que é seu doutorado?",
-      "Quais skills de agentes de IA você já criou para arquitetura e engenharia?",
+      "Quais skills de agentes de IA você já criou?",
       "Em quais projetos você já trabalhou?",
     ],
     initialMessage:
