@@ -19,6 +19,8 @@ interface TestCase {
   forbiddenPhrases?: string[];
   /** Category for grouping in the report */
   category: string;
+  /** Page locale the question is asked from (default en) */
+  locale?: "en" | "pt" | "de";
 }
 
 const TEST_CASES: TestCase[] = [
@@ -134,6 +136,24 @@ const TEST_CASES: TestCase[] = [
     category: "Work Experience",
   },
 
+  {
+    question: "What did you build before?",
+    expectedPhrases: ["DOKwood"],
+    forbiddenPhrases: ["I don't have information"],
+    category: "Work Experience",
+  },
+  {
+    question: "What did you do at Munich University of Applied Sciences?",
+    expectedPhrases: ["DOKwood"],
+    category: "Work Experience",
+  },
+  {
+    question: "Have you worked with timber construction?",
+    expectedPhrases: ["DOKwood", "timber plate", "Urban Scale Timber"],
+    forbiddenPhrases: ["I don't have information"],
+    category: "Work Experience",
+  },
+
   // ── Research & Publications ──
   {
     question: "Have you published any research?",
@@ -175,6 +195,13 @@ const TEST_CASES: TestCase[] = [
     question: "Voce esta trabalhando atualmente?",
     expectedPhrases: ["Doutorando", "Pesquisador", "ETH", "Gramazio Kohler"],
     category: "Portuguese",
+    locale: "pt",
+  },
+  {
+    question: "O que você construiu antes?",
+    expectedPhrases: ["DOKwood"],
+    category: "Portuguese",
+    locale: "pt",
   },
 
   // ── German ──
@@ -182,6 +209,13 @@ const TEST_CASES: TestCase[] = [
     question: "Arbeitest du gerade?",
     expectedPhrases: ["Doktorand", "ETH Zürich", "Gramazio Kohler"],
     category: "German",
+    locale: "de",
+  },
+  {
+    question: "Was hast du vorher entwickelt?",
+    expectedPhrases: ["DOKwood"],
+    category: "German",
+    locale: "de",
   },
 ];
 
@@ -196,11 +230,11 @@ const BASE_URL = process.argv.includes("--url")
 /** When --retry-failures is passed, only re-test previously failed questions */
 const retryFailuresOnly = process.argv.includes("--retry-failures");
 
-async function askQuestion(question: string): Promise<string> {
+async function askQuestion(question: string, locale = "en"): Promise<string> {
   const res = await fetch(`${BASE_URL}/api/ai`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ question }),
+    body: JSON.stringify({ question, locale }),
   });
 
   if (!res.ok) {
@@ -271,7 +305,7 @@ async function main() {
 
     process.stdout.write(`[${i + 1}/${TEST_CASES.length}] ${tc.category}: "${tc.question}" ... `);
 
-    const answer = await askQuestion(tc.question);
+    const answer = await askQuestion(tc.question, tc.locale);
     const result = checkAnswer(answer, tc.expectedPhrases, tc.forbiddenPhrases);
 
     if (result.pass) {

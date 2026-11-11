@@ -1215,6 +1215,250 @@ function processFAQ() {
 
 // ─── Main ─────────────────────────────────────────────────────────────
 
+// ─── Chat Profile ────────────────────────────────────────────────────
+// One compact document per locale holding everything the homepage chat
+// needs to see at once: who I am, every role with what I did there, and a
+// short summary and link for every project, research page, publication and
+// talk. The chat sends the whole profile with each question (prompt-cached)
+// instead of retrieving fragments, so a broad question sees the full
+// picture. Written to src/generated/chat-profile/<locale>.md and bundled
+// into the Worker by src/pages/api/ai.ts.
+
+const PROFILE_DIR = path.join(process.cwd(), "src/generated/chat-profile");
+
+const PROFILE_HEADINGS: Record<string, Record<string, string>> = {
+  en: {
+    title: "Daniel Locatelli: profile",
+    about: "About me",
+    work: "Work experience",
+    education: "Education",
+    scholarships: "Scholarships and grants",
+    research: "Research",
+    projects: "Projects",
+    publications: "Publications",
+    teaching: "Teaching, workshops and talks",
+    essays: "Essays",
+    skills: "Skills",
+    certifications: "Certifications",
+    courses: "Courses attended",
+    timeline: "Timeline (most recent first)",
+    current: "current",
+    cvOnly: "listed on the CV only",
+  },
+  pt: {
+    title: "Daniel Locatelli: perfil",
+    about: "Sobre mim",
+    work: "Experiência profissional",
+    education: "Formação",
+    scholarships: "Bolsas e prêmios",
+    research: "Pesquisa",
+    projects: "Projetos",
+    publications: "Publicações",
+    teaching: "Ensino, workshops e palestras",
+    essays: "Ensaios",
+    skills: "Competências",
+    certifications: "Certificações",
+    courses: "Cursos frequentados",
+    timeline: "Linha do tempo (mais recente primeiro)",
+    current: "atual",
+    cvOnly: "listado apenas no currículo",
+  },
+  de: {
+    title: "Daniel Locatelli: Profil",
+    about: "Über mich",
+    work: "Berufserfahrung",
+    education: "Ausbildung",
+    scholarships: "Stipendien und Förderungen",
+    research: "Forschung",
+    projects: "Projekte",
+    publications: "Publikationen",
+    teaching: "Lehre, Workshops und Vorträge",
+    essays: "Essays",
+    skills: "Kompetenzen",
+    certifications: "Zertifizierungen",
+    courses: "Besuchte Kurse",
+    timeline: "Zeitleiste (neueste zuerst)",
+    current: "aktuell",
+    cvOnly: "nur im Lebenslauf aufgeführt",
+  },
+};
+
+/** "Month Year – Month Year" (or "– current" for open-ended roles). */
+function profileDates(data: Record<string, any>, current?: string): string {
+  if (!data.DateStart) return "";
+  const start = formatDate(data.DateStart);
+  if (data.DateEnd) return `${start} – ${formatDate(data.DateEnd)}`;
+  return current ? `${start} – ${current}` : start;
+}
+
+/** A short summary: the Description, else the first paragraph of the body. */
+function profileSummary(data: Record<string, any>, body: string): string {
+  const raw =
+    data.Description ||
+    cleanMarkdownBody(body)
+      .split(/\n\s*\n/)
+      .find((p) => p.trim() && !p.trim().startsWith("#")) ||
+    "";
+  const text = String(raw).replace(/\s+/g, " ").trim();
+  return text.length > 600 ? `${text.slice(0, 600).trimEnd()}…` : text;
+}
+
+function placeOf(data: Record<string, any>): string {
+  const cities = (data.City || []).map((c: any) =>
+    typeof c === "string" ? c : c.name,
+  );
+  return [...cities, data.Country].filter(Boolean).join(", ");
+}
+
+function bySortDateDesc(
+  a: { data: Record<string, any> },
+  b: { data: Record<string, any> },
+): number {
+  const t = (d: Record<string, any>) => new Date(d.DateStart || 0).getTime() || 0;
+  return t(b.data) - t(a.data);
+}
+
+function processChatProfile() {
+  fs.mkdirSync(PROFILE_DIR, { recursive: true });
+
+  for (const locale of LOCALES) {
+    const h = PROFILE_HEADINGS[locale];
+    const prefix = locale === "en" ? "" : `/${locale}`;
+    const out: string[] = [`# ${h.title}`, ""];
+
+    // About: homepage text plus the hand-written background FAQs.
+    const home = readContentFiles("pages", locale).find((e) =>
+      /^index\.mdx?$/.test(e.filename),
+    );
+    out.push(`## ${h.about}`, "");
+    if (home) out.push(cleanMarkdownBody(home.body), "");
+    for (const topic of ["background", "languages", "contact-location"]) {
+      const file = path.join(KNOWLEDGE_DIR, `faq-${topic}-${locale}.md`);
+      if (!fs.existsSync(file)) continue;
+      const text = fs
+        .readFileSync(file, "utf-8")
+        .replace(/^URL:.*\n+/, "")
+        .replace(/^# .*\n+/, "")
+        .trim();
+      out.push(text, "");
+    }
+
+    // CV sections in full: these are short, and they carry what I did in
+    // each role, which a bare timeline line does not.
+    const cvSections: [string, string, boolean][] = [
+      ["experiences", h.work, true],
+      ["education", h.education, false],
+      ["scholarships", h.scholarships, false],
+    ];
+    for (const [collection, heading, openEnded] of cvSections) {
+      const entries = readContentFiles(collection, locale).sort(bySortDateDesc);
+      if (!entries.length) continue;
+      out.push(`## ${heading}`, "");
+      for (const { data, body } of entries) {
+        const meta = [
+          data.Organization,
+          placeOf(data),
+          profileDates(data, openEnded ? h.current : undefined),
+        ].filter(Boolean);
+        out.push(`### ${data.Name}`, meta.join(" | "));
+        if (data.Description) out.push(String(data.Description).trim());
+        if (data.Supervisors?.length)
+          out.push(`Supervisors: ${data.Supervisors.join(", ")}`);
+        const cleanBody = cleanMarkdownBody(body);
+        if (cleanBody) out.push(cleanBody);
+        out.push("");
+      }
+    }
+
+    // Portfolio collections: one summary and link per entry. The full
+    // pages are on the site; the summary is enough to know they exist.
+    const portfolio: [string, string][] = [
+      ["research", h.research],
+      ["projects", h.projects],
+      ["publications", h.publications],
+      ["teaching", h.teaching],
+      ["essays", h.essays],
+    ];
+    for (const [collection, heading] of portfolio) {
+      const entries = readContentFiles(collection, locale)
+        .filter((e) => !(collection === "essays" && e.filename.startsWith("_")))
+        .sort(bySortDateDesc);
+      if (!entries.length) continue;
+      out.push(`## ${heading}`, "");
+      for (const { data, body, filename } of entries) {
+        const stem = filename.replace(/\.(md|mdx)$/, "");
+        const unpublished = stem.startsWith("_");
+        const link = unpublished
+          ? `${prefix}/full-cv (${h.cvOnly})`
+          : `${prefix}/${collection}/${stem}`;
+        const org = Array.isArray(data.Organization)
+          ? data.Organization.join(", ")
+          : data.Organization || data.Place || data.Client;
+        const meta = [
+          data.Category,
+          org,
+          placeOf(data),
+          profileDates(data),
+          link,
+        ].filter(Boolean);
+        out.push(`### ${data.Name}`, meta.join(" | "));
+        if (data.Tags?.length) out.push(`Tags: ${data.Tags.join(", ")}`);
+        const summary = profileSummary(data, body);
+        if (summary) out.push(summary);
+        out.push("");
+      }
+    }
+
+    // Skills grouped by category; certifications and courses as one-liners.
+    const skills = readContentFiles("skills", locale);
+    if (skills.length) {
+      const groups = new Map<string, string[]>();
+      for (const { data } of skills.sort(
+        (a, b) => (a.data.Order ?? 99) - (b.data.Order ?? 99),
+      )) {
+        const cat = data.Category || "Other";
+        const label = data.Level ? `${data.Name} (${data.Level})` : data.Name;
+        groups.set(cat, [...(groups.get(cat) || []), label]);
+      }
+      out.push(`## ${h.skills}`, "");
+      for (const [cat, names] of groups) out.push(`- ${cat}: ${names.join(", ")}`);
+      out.push("");
+    }
+    for (const [collection, heading] of [
+      ["certifications", h.certifications],
+      ["courses-attended", h.courses],
+    ]) {
+      const entries = readContentFiles(collection, locale).sort(bySortDateDesc);
+      if (!entries.length) continue;
+      out.push(`## ${heading}`, "");
+      for (const { data } of entries) {
+        out.push(
+          `- ${[data.Name, data.Organization, profileDates(data)].filter(Boolean).join(" | ")}`,
+        );
+      }
+      out.push("");
+    }
+
+    // The flat timeline keeps the chronology across all sections in view.
+    const timeline = path.join(KNOWLEDGE_DIR, `cv-timeline-${locale}.md`);
+    if (fs.existsSync(timeline)) {
+      const lines = fs
+        .readFileSync(timeline, "utf-8")
+        .split("\n")
+        .filter((l) => /^\S.* \| /.test(l));
+      out.push(`## ${h.timeline}`, "", ...lines, "");
+    }
+
+    fs.writeFileSync(
+      path.join(PROFILE_DIR, `${locale}.md`),
+      out.join("\n").replace(/\n{3,}/g, "\n\n").trim() + "\n",
+      "utf-8",
+    );
+  }
+
+  console.log(`Generated ${LOCALES.length} chat profiles in ${PROFILE_DIR}.`);
+}
+
 function main() {
   // Clean knowledge directory
   if (fs.existsSync(KNOWLEDGE_DIR)) {
@@ -1236,6 +1480,7 @@ function main() {
   processCVFromContent();
   processHomepage();
   processFAQ();
+  processChatProfile();
 
   // Final count
   const total = fs
