@@ -1,5 +1,5 @@
 ---
-Name: Introdução ao Trabalho em Madeira
+Name: Introdução à Marcenaria
 DateStart: "2016-06"
 Organization: Fab Lab Livre SP
 City:

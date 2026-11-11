@@ -4,7 +4,7 @@ export const t: I18nHome = {
   meta: {
     title: "Daniel Locatelli",
     description:
-      "Daniel Locatelli, doutorando no Gramazio Kohler Research, ETH Zurique. Ensaios e pesquisas sobre estruturas de placas de madeira e sobre como a IA muda a forma como arquitetos e engenheiros trabalham.",
+      "Daniel Locatelli, doutorando no Gramazio Kohler Research, ETH Zurique. Ensaios e pesquisas sobre estruturas em placas de madeira e sobre como a IA está mudando o trabalho de arquitetos e engenheiros.",
     coverAlt: "Daniel Locatelli.",
   },
   intro: {
@@ -21,7 +21,7 @@ export const t: I18nHome = {
     disclaimer:
       "As respostas são geradas por IA (Anthropic Claude) e podem conter erros. Verifique o que for importante.",
     headerTitle: "Assistente de IA",
-    chatPlaceholder: "Pergunte algo ao {model}...",
+    chatPlaceholder: "Pergunte ao {model} sobre meu trabalho...",
     errorMessage: "Desculpe, algo deu errado. Tente novamente mais tarde.",
     requestQuote: "Solicite um orçamento",
     sendEmail: "Envie um e-mail",

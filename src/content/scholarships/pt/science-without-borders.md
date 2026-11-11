@@ -3,7 +3,7 @@ Name: Ciência sem Fronteiras
 Description: "Bolsa integral para os melhores alunos brasileiros. Um ano na Auburn University, EUA."
 DateStart: "2013-08"
 DateEnd: "2014-12"
-Organization: Governo Federal Brasileiro
+Organization: Governo Federal do Brasil
 City:
   - Auburn
 Country: "EUA"

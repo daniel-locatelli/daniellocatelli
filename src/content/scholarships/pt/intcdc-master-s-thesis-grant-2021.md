@@ -1,6 +1,6 @@
 ---
 Name: Bolsa de Mestrado IntCDC 2021
-Description: A Bolsa incentiva alunos de mestrado excelentes a dar um primeiro passo em direção a uma carreira acadêmica.
+Description: A bolsa incentiva excelentes alunos de mestrado a dar o primeiro passo rumo à carreira acadêmica.
 DateStart: "2021-03"
 DateEnd: "2021-10"
 Organization: Cluster de Excelência – IntCDC

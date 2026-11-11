@@ -76,11 +76,13 @@ function parseFrontmatter(content: string): {
   }
 }
 
-function formatDate(dateStr: string): string {
+const DATE_LOCALES: Record<string, string> = { en: "en-US", pt: "pt-BR", de: "de-DE" };
+
+function formatDate(dateStr: string, locale = "en"): string {
   if (!dateStr) return "";
   const d = new Date(dateStr);
   if (isNaN(d.getTime())) return dateStr;
-  return d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+  return d.toLocaleDateString(DATE_LOCALES[locale] ?? "en-US", { month: "long", year: "numeric" });
 }
 
 function writeKnowledge(filename: string, content: string): void {
@@ -185,7 +187,7 @@ function processContentCollections() {
         if (data.Place) metaParts.push(`Place: ${data.Place}`);
         if (data.DateStart) {
           metaParts.push(
-            `Date: ${formatDate(data.DateStart)}${data.DateEnd ? ` - ${formatDate(data.DateEnd)}` : ""}`,
+            `Date: ${formatDate(data.DateStart, locale)}${data.DateEnd ? ` - ${formatDate(data.DateEnd, locale)}` : ""}`,
           );
         }
         if (data.Link) {
@@ -273,7 +275,7 @@ function processCVIndividual() {
         if (data.Category) metaParts.push(`Category: ${data.Category}`);
         if (data.DateStart) {
           metaParts.push(
-            `Date: ${formatDate(data.DateStart)}${data.DateEnd ? ` - ${formatDate(data.DateEnd)}` : ""}`,
+            `Date: ${formatDate(data.DateStart, locale)}${data.DateEnd ? ` - ${formatDate(data.DateEnd, locale)}` : ""}`,
           );
         }
         if (data.Description) metaParts.push(`Description: ${data.Description}`);
@@ -329,7 +331,7 @@ function processCVIndividual() {
 function processCVTimeline() {
   const collections: { name: string; label: string; labelPt: string; labelDe: string }[] = [
     { name: "experiences", label: "Work", labelPt: "Trabalho", labelDe: "Beruf" },
-    { name: "education", label: "Education", labelPt: "Educação", labelDe: "Bildung" },
+    { name: "education", label: "Education", labelPt: "Formação", labelDe: "Bildung" },
     { name: "scholarships", label: "Scholarship", labelPt: "Bolsa", labelDe: "Stipendium" },
     { name: "certifications", label: "Certification", labelPt: "Certificação", labelDe: "Zertifizierung" },
     { name: "courses-attended", label: "Course", labelPt: "Curso", labelDe: "Kurs" },
@@ -357,9 +359,9 @@ function processCVTimeline() {
         const sortDate = new Date(start).getTime() || 0;
 
         // Build date range string
-        let dateRange = formatDate(start);
+        let dateRange = formatDate(start, locale);
         if (end) {
-          dateRange += ` \u2013 ${formatDate(end)}`;
+          dateRange += ` \u2013 ${formatDate(end, locale)}`;
         } else if (col.name === "experiences" && !end) {
           dateRange += locale === "pt" ? " \u2013 Atual" : locale === "de" ? " \u2013 Aktuell" : " \u2013 Current";
         }
@@ -393,7 +395,7 @@ function processCVTimeline() {
 
     const title =
       locale === "pt"
-        ? "Daniel Locatelli \u2013 Linha do Tempo"
+        ? "Daniel Locatelli \u2013 Linha do tempo"
         : locale === "de"
           ? "Daniel Locatelli \u2013 Zeitleiste"
           : "Daniel Locatelli \u2013 Timeline";
@@ -454,8 +456,8 @@ function processCVFromContent() {
       const expLines: string[] = [];
       for (const { data, body } of experiences) {
         const period = data.DateEnd
-          ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
-          : `${formatDate(data.DateStart)} \u2013 Current`;
+          ? `${formatDate(data.DateStart, locale)} \u2013 ${formatDate(data.DateEnd, locale)}`
+          : `${formatDate(data.DateStart, locale)} \u2013 Current`;
         const location = [
           ...(data.City || []),
           data.Country || "",
@@ -475,7 +477,7 @@ function processCVFromContent() {
       }
 
       const sectionName =
-        locale === "pt" ? "Experi\u00EAncia Profissional" : locale === "de" ? "Berufserfahrung" : "Professional Experience";
+        locale === "pt" ? "Experi\u00EAncia profissional" : locale === "de" ? "Berufserfahrung" : "Professional Experience";
       writeCVSection(sectionName, expLines.join("\n"));
     }
 
@@ -492,8 +494,8 @@ function processCVFromContent() {
       );
       for (const { data, body } of education) {
         const period = data.DateEnd
-          ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
-          : formatDate(data.DateStart);
+          ? `${formatDate(data.DateStart, locale)} \u2013 ${formatDate(data.DateEnd, locale)}`
+          : formatDate(data.DateStart, locale);
         const location = [
           ...(data.City || []),
           data.Country || "",
@@ -528,8 +530,8 @@ function processCVFromContent() {
         );
         for (const { data } of scholarships) {
           const period = data.DateEnd
-            ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
-            : formatDate(data.DateStart);
+            ? `${formatDate(data.DateStart, locale)} \u2013 ${formatDate(data.DateEnd, locale)}`
+            : formatDate(data.DateStart, locale);
           const location = [
             ...(data.City || []),
             data.Country || "",
@@ -548,7 +550,7 @@ function processCVFromContent() {
 
       const sectionName =
         locale === "pt"
-          ? "Educa\u00E7\u00E3o & Bolsas de estudo"
+          ? "Forma\u00E7\u00E3o e bolsas de estudo"
           : locale === "de"
             ? "Bildung & Stipendien"
             : "Education & Scholarships";
@@ -567,12 +569,12 @@ function processCVFromContent() {
       for (const { data } of certifications) {
         certLines.push(`### ${data.Name}`);
         certLines.push(data.Organization);
-        certLines.push(formatDate(data.DateStart));
+        certLines.push(formatDate(data.DateStart, locale));
         if (data.Link) certLines.push(`Link: ${data.Link}`);
         certLines.push("");
       }
       const sectionName =
-        locale === "pt" ? "Certificados" : locale === "de" ? "Zertifizierungen" : "Certifications";
+        locale === "pt" ? "Certifica\u00E7\u00F5es" : locale === "de" ? "Zertifizierungen" : "Certifications";
       writeCVSection(sectionName, certLines.join("\n"));
     }
 
@@ -587,8 +589,8 @@ function processCVFromContent() {
       const courseLines: string[] = [];
       for (const { data } of courses) {
         const period = data.DateEnd
-          ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
-          : formatDate(data.DateStart);
+          ? `${formatDate(data.DateStart, locale)} \u2013 ${formatDate(data.DateEnd, locale)}`
+          : formatDate(data.DateStart, locale);
         courseLines.push(`### ${data.Name}`);
         if (data.Authors?.length)
           courseLines.push(`Instructor: ${data.Authors.join(", ")}`);
@@ -607,7 +609,7 @@ function processCVFromContent() {
         courseLines.push("");
       }
       const sectionName =
-        locale === "pt" ? "Cursos frequentados" : locale === "de" ? "Besuchte Kurse" : "Courses Attended";
+        locale === "pt" ? "Cursos realizados" : locale === "de" ? "Besuchte Kurse" : "Courses Attended";
       writeCVSection(sectionName, courseLines.join("\n"));
     }
 
@@ -625,7 +627,7 @@ function processCVFromContent() {
         skillLines.push(`**${cat}:** ${names.join(", ")}`);
       }
       const sectionName =
-        locale === "pt" ? "Resumo & Habilidades" : locale === "de" ? "Zusammenfassung & F\u00E4higkeiten" : "Summary & Skills";
+        locale === "pt" ? "Resumo e compet\u00EAncias" : locale === "de" ? "Zusammenfassung & F\u00E4higkeiten" : "Summary & Skills";
       writeCVSection(sectionName, skillLines.join("\n"));
     }
 
@@ -640,8 +642,8 @@ function processCVFromContent() {
       const teachLines: string[] = [];
       for (const { data } of teaching) {
         const period = data.DateEnd
-          ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
-          : formatDate(data.DateStart);
+          ? `${formatDate(data.DateStart, locale)} \u2013 ${formatDate(data.DateEnd, locale)}`
+          : formatDate(data.DateStart, locale);
         teachLines.push(`### ${data.Name}`);
         const location = [
           ...(data.City || []),
@@ -658,7 +660,7 @@ function processCVFromContent() {
         teachLines.push("");
       }
       const sectionName =
-        locale === "pt" ? "Experi\u00EAncia Docente" : locale === "de" ? "Lehrerfahrung" : "Teaching Experience";
+        locale === "pt" ? "Experi\u00EAncia docente" : locale === "de" ? "Lehrerfahrung" : "Teaching Experience";
       writeCVSection(sectionName, teachLines.join("\n"));
     }
 
@@ -676,7 +678,7 @@ function processCVFromContent() {
         if (data.Authors?.length)
           pubLines.push(`Authors: ${data.Authors.join(", ")}`);
         if (data.Place) pubLines.push(data.Place);
-        pubLines.push(formatDate(data.DateStart));
+        pubLines.push(formatDate(data.DateStart, locale));
         pubLines.push("");
       }
       const sectionName =
@@ -695,8 +697,8 @@ function processCVFromContent() {
       const projLines: string[] = [];
       for (const { data } of projects) {
         const period = data.DateEnd
-          ? `${formatDate(data.DateStart)} \u2013 ${formatDate(data.DateEnd)}`
-          : formatDate(data.DateStart);
+          ? `${formatDate(data.DateStart, locale)} \u2013 ${formatDate(data.DateEnd, locale)}`
+          : formatDate(data.DateStart, locale);
         projLines.push(`### ${data.Name}`);
         if (data.Organization) projLines.push(data.Organization);
         projLines.push(`${period}${data.Category ? ` | ${data.Category}` : ""}`);
@@ -704,7 +706,7 @@ function processCVFromContent() {
         projLines.push("");
       }
       const sectionName =
-        locale === "pt" ? "Lista de Projetos" : locale === "de" ? "Projektliste" : "Projects List";
+        locale === "pt" ? "Lista de projetos" : locale === "de" ? "Projektliste" : "Projects List";
       writeCVSection(sectionName, projLines.join("\n"));
     }
   }
@@ -842,7 +844,7 @@ function processFAQ() {
           "",
           `# Current Employment Status`,
           "",
-          `Daniel Locatelli is currently employed as ${d.Name} at ${d.Organization} in ${city}, ${d.Country}, starting ${formatDate(d.DateStart)}. He is actively working in this role.`,
+          `Daniel Locatelli is currently employed as ${d.Name} at ${d.Organization} in ${city}, ${d.Country}, starting ${formatDate(d.DateStart, locale)}. He is actively working in this role.`,
           "",
           `Yes, Daniel is working right now. His current position is ${d.Name} at ${d.Organization}.`,
         ];
@@ -864,8 +866,8 @@ function processFAQ() {
       const recent5 = experiences.slice(0, 5);
       const positionLines = recent5.map((e) => {
         const d = e.data;
-        const end = d.DateEnd ? formatDate(d.DateEnd) : (locale === "pt" ? "Atual" : locale === "de" ? "Aktuell" : "Current");
-        return `- ${d.Name} at ${d.Organization} (${formatDate(d.DateStart)} to ${end})`;
+        const end = d.DateEnd ? formatDate(d.DateEnd, locale) : (locale === "pt" ? "Atual" : locale === "de" ? "Aktuell" : "Current");
+        return `- ${d.Name} at ${d.Organization} (${formatDate(d.DateStart, locale)} to ${end})`;
       });
 
       const content = [
@@ -900,12 +902,12 @@ function processFAQ() {
       const degreeLines = filteredEdu.map((e) => {
         const d = e.data;
         const location = [...(d.City || []), d.Country || ""].filter(Boolean).join(", ");
-        return `- ${d.Name} at ${d.Organization}, ${location} (${formatDate(d.DateStart)} to ${formatDate(d.DateEnd)})`;
+        return `- ${d.Name} at ${d.Organization}, ${location} (${formatDate(d.DateStart, locale)} to ${formatDate(d.DateEnd, locale)})`;
       });
 
       const scholarshipLines = scholarships.map((e) => {
         const d = e.data;
-        return `- ${d.Name} from ${d.Organization} (${formatDate(d.DateStart)} to ${formatDate(d.DateEnd)})`;
+        return `- ${d.Name} from ${d.Organization} (${formatDate(d.DateStart, locale)} to ${formatDate(d.DateEnd, locale)})`;
       });
 
       const highest = filteredEdu.find((e) =>
@@ -986,13 +988,21 @@ function processFAQ() {
       const content = [
         `URL: ${cvUrl}`,
         "",
-        `# Languages Spoken`,
+        `# ${{ en: "Languages Spoken", pt: "Idiomas", de: "Sprachen" }[locale]}`,
         "",
-        `Daniel Locatelli speaks the following languages:`,
+        {
+          en: `Daniel Locatelli speaks the following languages:`,
+          pt: `Daniel Locatelli fala os seguintes idiomas:`,
+          de: `Daniel Locatelli spricht folgende Sprachen:`,
+        }[locale],
         "",
         ...langLines,
         "",
-        `He also has basic knowledge of Italian and Spanish.`,
+        {
+          en: `He also has basic knowledge of Italian and Spanish.`,
+          pt: `Também tem noções básicas de italiano e espanhol.`,
+          de: `Außerdem hat er Grundkenntnisse in Italienisch und Spanisch.`,
+        }[locale],
       ];
       writeKnowledge(
         `faq-languages-${locale}.md`,
@@ -1010,12 +1020,16 @@ function processFAQ() {
       const content = [
         `URL: ${homeUrl}`,
         "",
-        `# Location and Contact`,
+        `# ${{ en: "Location and Contact", pt: "Localização e contato", de: "Standort und Kontakt" }[locale]}`,
         "",
-        `Daniel Locatelli is currently based in ${city}, ${country}.`,
+        {
+          en: `Daniel Locatelli is currently based in ${city}, ${country}.`,
+          pt: `Daniel Locatelli mora atualmente em ${city}, ${country}.`,
+          de: `Daniel Locatelli lebt derzeit in ${city}, ${country}.`,
+        }[locale],
         "",
-        `Contact information:`,
-        `- Email: contact@daniellocatelli.com`,
+        { en: `Contact information:`, pt: `Contato:`, de: `Kontakt:` }[locale],
+        `- ${{ en: "Email", pt: "E-mail", de: "E-Mail" }[locale]}: contact@daniellocatelli.com`,
         `- Website: https://daniellocatelli.com`,
       ];
       writeKnowledge(
@@ -1034,7 +1048,7 @@ function processFAQ() {
         const authors = d.Authors?.length
           ? d.Authors.map((a: any) => (typeof a === "string" ? a : a.name)).join(", ")
           : "";
-        return `- "${d.Name}"${authors ? ` by ${authors}` : ""} (${formatDate(d.DateStart)})`;
+        return `- "${d.Name}"${authors ? ` by ${authors}` : ""} (${formatDate(d.DateStart, locale)})`;
       });
 
       // Find both undergraduate (bachelor's) and master's theses. Each
@@ -1135,7 +1149,7 @@ function processFAQ() {
       const teachLines = recent5.map((t) => {
         const d = t.data;
         const venue = d.Organization || d.Place || "";
-        return `- ${d.Name}${venue ? ` at ${venue}` : ""} (${formatDate(d.DateStart)})`;
+        return `- ${d.Name}${venue ? ` at ${venue}` : ""} (${formatDate(d.DateStart, locale)})`;
       });
 
       // Collect unique countries
@@ -1200,9 +1214,13 @@ function processFAQ() {
       const content = [
         `URL: ${homeUrl}`,
         "",
-        `# Personal Background`,
+        `# ${{ en: "Personal Background", pt: "Origem", de: "Herkunft" }[locale]}`,
         "",
-        `Daniel Locatelli is Brazilian, originally from Vilhena, Rondonia, Brazil. He moved to Germany in 2019 to pursue his Master's degree at the University of Stuttgart. He later moved to Switzerland for his doctorate at ETH Zurich and is currently based in Zurich, Switzerland.`,
+        {
+          en: `Daniel Locatelli is Brazilian, originally from Vilhena, Rondônia, Brazil. He moved to Germany in 2019 to pursue his Master's degree at the University of Stuttgart. He later moved to Switzerland for his doctorate at ETH Zurich and is currently based in Zurich, Switzerland.`,
+          pt: `Daniel Locatelli é brasileiro, natural de Vilhena, Rondônia. Mudou-se para a Alemanha em 2019 para fazer o mestrado na Universidade de Stuttgart e depois para a Suíça, para o doutorado na ETH Zurique. Hoje mora em Zurique.`,
+          de: `Daniel Locatelli ist Brasilianer und stammt aus Vilhena, Rondônia. 2019 zog er für sein Masterstudium an der Universität Stuttgart nach Deutschland und später für seine Promotion an der ETH Zürich in die Schweiz. Heute lebt er in Zürich.`,
+        }[locale],
       ];
       writeKnowledge(
         `faq-background-${locale}.md`,
@@ -1263,8 +1281,8 @@ const PROFILE_HEADINGS: Record<string, Record<string, string>> = {
     essays: "Ensaios",
     skills: "Competências",
     certifications: "Certificações",
-    courses: "Cursos frequentados",
-    timeline: "Linha do tempo (mais recente primeiro)",
+    courses: "Cursos realizados",
+    timeline: "Linha do tempo (do mais recente ao mais antigo)",
     current: "atual",
     cvOnly: "listado apenas no currículo",
     video: "Vídeo",
@@ -1292,10 +1310,36 @@ const PROFILE_HEADINGS: Record<string, Record<string, string>> = {
 };
 
 /** "Month Year – Month Year" (or "– current" for open-ended roles). */
-function profileDates(data: Record<string, any>, current?: string): string {
+/** The skill files keep Category and Level in English (structural fields); the profile shows them in the reader's language. */
+const SKILL_TERMS: Record<string, Record<string, string>> = {
+  pt: {
+    Database: "Bancos de dados",
+    "Design tool": "Ferramentas de design",
+    Framework: "Frameworks",
+    Language: "Idiomas",
+    Programming: "Programação",
+    Specialization: "Especialidades",
+    Other: "Outros",
+    Advanced: "avançado",
+    Intermediate: "intermediário",
+  },
+  de: {
+    Database: "Datenbanken",
+    "Design tool": "Designwerkzeuge",
+    Framework: "Frameworks",
+    Language: "Sprachen",
+    Programming: "Programmierung",
+    Specialization: "Spezialisierungen",
+    Other: "Sonstiges",
+    Advanced: "fortgeschritten",
+    Intermediate: "mittel",
+  },
+};
+
+function profileDates(data: Record<string, any>, locale: string, current?: string): string {
   if (!data.DateStart) return "";
-  const start = formatDate(data.DateStart);
-  if (data.DateEnd) return `${start} – ${formatDate(data.DateEnd)}`;
+  const start = formatDate(data.DateStart, locale);
+  if (data.DateEnd) return `${start} – ${formatDate(data.DateEnd, locale)}`;
   return current ? `${start} – ${current}` : start;
 }
 
@@ -1376,7 +1420,7 @@ function processChatProfile() {
         const meta = [
           data.Organization,
           placeOf(data),
-          profileDates(data, openEnded ? h.current : undefined),
+          profileDates(data, locale, openEnded ? h.current : undefined),
           link,
         ].filter(Boolean);
         out.push(`### ${data.Name}`, meta.join(" | "));
@@ -1417,7 +1461,7 @@ function processChatProfile() {
           data.Category,
           org,
           placeOf(data),
-          profileDates(data),
+          profileDates(data, locale),
           link,
         ].filter(Boolean);
         out.push(`### ${data.Name}`, meta.join(" | "));
@@ -1437,8 +1481,9 @@ function processChatProfile() {
       for (const { data } of skills.sort(
         (a, b) => (a.data.Order ?? 99) - (b.data.Order ?? 99),
       )) {
-        const cat = data.Category || "Other";
-        const label = data.Level ? `${data.Name} (${data.Level})` : data.Name;
+        const cat = SKILL_TERMS[locale]?.[data.Category || "Other"] ?? data.Category ?? "Other";
+        const level = data.Level ? (SKILL_TERMS[locale]?.[data.Level] ?? data.Level) : "";
+        const label = level ? `${data.Name} (${level})` : data.Name;
         groups.set(cat, [...(groups.get(cat) || []), label]);
       }
       out.push(`## ${h.skills}`, "");
@@ -1454,7 +1499,7 @@ function processChatProfile() {
       out.push(`## ${heading}`, "");
       for (const { data } of entries) {
         out.push(
-          `- ${[data.Name, data.Organization, profileDates(data)].filter(Boolean).join(" | ")}`,
+          `- ${[data.Name, data.Organization, profileDates(data, locale)].filter(Boolean).join(" | ")}`,
         );
       }
       out.push("");

@@ -1,5 +1,5 @@
 ---
-Name: "Código é barato, julgamento não"
+Name: "Código é barato, critério não"
 Description: "Plugins faziam sentido quando software era caro e projeto era barato. O que sobra para arquitetos e engenheiros quando isso se inverte."
 DateStart: "2026-11-30"
 ---

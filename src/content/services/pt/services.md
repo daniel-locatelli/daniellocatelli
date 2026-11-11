@@ -5,7 +5,7 @@ Description: "The services I offer (all but the first were on the homepage until
 
 ## Engenharia de sistemas agênticos
 
-Agentes de IA que trabalham com suas ferramentas e seus dados: servidores MCP que dão aos agentes acesso a softwares e bancos de dados, skills de agentes que codificam conhecimento do domínio e assistentes baseados em LLMs que respondem a partir do seu próprio conteúdo. Desenvolvidos para fluxos de trabalho de arquitetura, engenharia e construção.
+Agentes de IA que trabalham com suas ferramentas e seus dados: servidores MCP que dão aos agentes acesso a softwares e bancos de dados, skills de agentes que reúnem o conhecimento da área e assistentes baseados em LLMs que respondem a partir do seu próprio conteúdo. Desenvolvidos para fluxos de trabalho de arquitetura, engenharia e construção.
 
 ## Plugins
 
@@ -17,12 +17,12 @@ Websites e aplicações web para gestão de projetos, ferramentas colaborativas,
 
 ## Design computacional
 
-Aplicação de estratégias avançadas de design computacional para otimizar e aprimorar processos AEC, aumentando a eficiência em projetos, análises e documentação.
+Uso estratégias avançadas de design computacional para otimizar processos de arquitetura, engenharia e construção e tornar o projeto, a análise e a documentação mais eficientes.
 
 ## Visualização de dados
 
-Criação de dashboards para compreender, interpretar e agir com base em dados complexos de projetos. Desde dashboards online até frameworks corporativos no Power BI.
+Criação de dashboards para compreender, interpretar e agir com base em dados complexos de projetos. De painéis na web a soluções corporativas em Power BI.
 
 ## Fabricação digital
 
-Criação de scripts no Grasshopper para extrair dados a partir de modelos 3D paramétricos complexos para fabricação digital.
+Criação de scripts no Grasshopper que extraem automaticamente dados de fabricação de modelos 3D paramétricos complexos.

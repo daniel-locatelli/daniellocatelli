@@ -1,6 +1,6 @@
 ---
-Name: Bacharel em Arquitetura e Urbanismo
-Description: "Tese: Arquitetura + Biomimética + Algoritmo"
+Name: Bacharelado em Arquitetura e Urbanismo
+Description: "TFG: Arquitetura + Biomimética + Algoritmo"
 DateStart: "2010-01"
 DateEnd: "2016-12"
 Organization: "FAU, Universidade de São Paulo"

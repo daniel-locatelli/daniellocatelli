@@ -1,5 +1,5 @@
 ---
-Name: Bacharel em Arquitetura e Urbanismo (trancado)
+Name: Bacharelado em Arquitetura e Urbanismo (não concluído)
 DateStart: "2007-01"
 DateEnd: "2008-12"
 Organization: UNEMAT

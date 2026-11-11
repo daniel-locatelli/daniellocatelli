@@ -1,8 +1,8 @@
 ---
-Name: CS50 - Introdução à Ciência da Computação
+Name: "CS50: Introdução à Ciência da Computação"
 DateStart: "2023-07"
 DateEnd: "2023-10"
-Organization: Universidade de Harvard
+Organization: Universidade Harvard
 City:
   - Online
 Authors:

@@ -9,6 +9,6 @@ Category: Professional Experience
 Link: "https://gramaziokohler.arch.ethz.ch/"
 ---
 
-- Design computacional para fabricação de sistemas construtivos em placas de madeira.
+- Sistemas construtivos em placas de madeira, do design computacional à fabricação.
 - Parte do projeto CEDD, financiado pelo Fundo Nacional Suíço para a Pesquisa Científica (SNSF).
-- Explorando como a IA (grandes modelos de linguagem e agentes) pode apoiar o processo de projeto, da exploração inicial do design até dados prontos para fabricação.
+- Pesquisa sobre como a IA (grandes modelos de linguagem e agentes) pode apoiar o processo de projeto, da exploração inicial à geração de dados prontos para fabricação.

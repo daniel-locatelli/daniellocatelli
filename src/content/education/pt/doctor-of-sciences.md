@@ -1,6 +1,6 @@
 ---
 Name: Doutorado em Ciências
-Description: Design Computacional para Fabricação de Sistemas Construtivos em Placas de Madeira
+Description: "Sistemas construtivos em placas de madeira: do design computacional à fabricação"
 DateStart: "2026-07"
 Organization: "Gramazio Kohler Research, ETH Zurique"
 City:

@@ -1,5 +1,5 @@
 ---
-Name: Designer Computacional
+Name: Designer computacional
 DateStart: "2021-12"
 DateEnd: "2022-12"
 Organization: ArtEngineering GmbH
@@ -11,7 +11,7 @@ Link: "https://art-engineering.net/"
 ---
 
 - Modelagem algorítmica e análise de elementos finitos de estruturas espaciais complexas e obras de arte.
-- Desenvolvimento de workflow automatizados do design à produção.
-- Auxiliou na análise estrutural de estruturas espaciais complexas.
-- Preparação de documentação técnica meticulosa.
+- Desenvolvimento de fluxos de trabalho automatizados, do projeto à produção.
+- Apoio na análise estrutural de estruturas espaciais complexas.
+- Preparação de documentação técnica detalhada.
 - Criação de desenhos de engenharia precisos e planos de produção.

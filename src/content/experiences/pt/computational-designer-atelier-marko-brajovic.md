@@ -1,5 +1,5 @@
 ---
-Name: Designer Computacional
+Name: Designer computacional
 DateStart: "2015-03"
 DateEnd: "2019-08"
 Organization: Atelier Marko Brajovic
@@ -13,6 +13,6 @@ Link: "https://markobrajovic.com/en"
 *Estagiário até dezembro de 2016*
 
 - Modelagem CAD, BIM e computacional para projetos arquitetônicos.
-- Gerenciamento de projetos e relacionamento com fornecedores.
+- Gestão da comunicação dos projetos e do relacionamento com fornecedores.
 - Desenvolvimento de projetos conceituais e renderizações de alta qualidade.
 - Liderança em iniciativas de prototipagem e fabricação digital.

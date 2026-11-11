@@ -1,6 +1,6 @@
 ---
 Name: Mestrado em Ciências
-Description: Building Across Scales - Sistema Robótico Multiescalar para Madeira Engenheirada
+Description: "Building Across Scales: sistema robótico de fabricação em madeira para colagem sob pressão no canteiro de obras"
 DateStart: "2019-10"
 DateEnd: "2021-10"
 Organization: "ITECH, Universidade de Stuttgart"

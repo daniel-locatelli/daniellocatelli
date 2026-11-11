@@ -1,5 +1,5 @@
 ---
-Name: Electronics in the darkness
+Name: Eletrônica no escuro
 DateStart: "2016-06"
 Organization: Red Bull Station
 City:

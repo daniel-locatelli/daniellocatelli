@@ -6,4 +6,4 @@ Name: Ensino
 
 ---
 
-Minhas palestras, workshops e aulas.
+Minhas palestras, meus workshops e minhas aulas.
