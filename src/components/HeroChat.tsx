@@ -477,6 +477,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
               isLoading={isLoading}
               streamingIndex={streamingIndex}
               disclaimer={labels.disclaimer}
+              imageLabels={{ enlarge: labels.enlargeImage, close: labels.closeImage }}
               onReady={() => scrollPageToBottom("auto")}
             />
           </Suspense>

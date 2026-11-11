@@ -29,6 +29,8 @@ export const t: I18nHome = {
     newChat: "New chat",
     resume: "Continue the conversation",
     jumpToLatest: "Jump to the latest message",
+    enlargeImage: "Enlarge image",
+    closeImage: "Close",
   },
   essays: {
     title: "Essays",

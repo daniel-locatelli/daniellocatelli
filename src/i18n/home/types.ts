@@ -23,6 +23,10 @@ export type I18nHome = {
     newChat: string;
     resume: string;
     jumpToLatest: string;
+    /** Opens the answer's large image full screen. */
+    enlargeImage: string;
+    /** Closes the full-screen image. */
+    closeImage: string;
   };
   essays: {
     title: string;

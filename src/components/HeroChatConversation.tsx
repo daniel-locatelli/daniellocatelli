@@ -176,35 +176,87 @@ function PreviewCard({ preview }: { preview: LinkPreview }) {
   );
 }
 
-/** The first linked page's cover, full width (capped in height on phones). */
-function FeaturedPreview({ preview }: { preview: LinkPreview }) {
+export interface ImageLabels {
+  enlarge: string;
+  close: string;
+}
+
+/**
+ * The first linked page's cover, full width (capped in height on phones),
+ * with its title as a caption underneath. The image opens full screen; the
+ * caption links to the page.
+ */
+function FeaturedPreview({
+  preview,
+  labels,
+}: {
+  preview: LinkPreview;
+  labels: ImageLabels;
+}) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const title = preview.title.trim();
   return (
-    <a
-      href={preview.href ?? `/${preview.slug}`}
-      className="group relative mt-6 block overflow-hidden rounded-xl border border-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
-    >
-      <img
-        src={preview.coverUrl}
-        alt=""
-        width={preview.width}
-        height={preview.height}
-        loading="lazy"
-        className="block h-auto max-h-[75svh] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-      <span className="absolute inset-x-0 bottom-0 p-4 text-base leading-tight font-semibold text-white">
-        {preview.title.trim()}
-      </span>
-    </a>
+    <figure className="mt-6">
+      <button
+        type="button"
+        onClick={() => dialogRef.current?.showModal()}
+        aria-label={`${labels.enlarge}: ${title}`}
+        aria-haspopup="dialog"
+        className="block w-full cursor-zoom-in overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
+      >
+        <img
+          src={preview.coverUrl}
+          alt=""
+          width={preview.width}
+          height={preview.height}
+          loading="lazy"
+          className="block h-auto max-h-[75svh] w-full object-cover"
+        />
+      </button>
+      <figcaption className="mt-2 text-sm text-zinc-400">
+        <a
+          href={preview.href ?? `/${preview.slug}`}
+          className="transition-colors hover:text-green-400 focus-visible:text-green-400"
+        >
+          {title}
+        </a>
+      </figcaption>
+      {/* Native modal: Escape closes it and focus returns to the button. */}
+      <dialog
+        ref={dialogRef}
+        aria-label={title}
+        onClick={() => dialogRef.current?.close()}
+        className="m-0 h-full max-h-none w-full max-w-none cursor-zoom-out items-center justify-center bg-transparent p-0 backdrop:bg-black/90 backdrop:backdrop-blur-sm open:flex"
+      >
+        <button
+          type="button"
+          aria-label={labels.close}
+          className="absolute top-4 right-4 z-10 cursor-pointer text-3xl text-white/70 transition hover:text-white"
+        >
+          &times;
+        </button>
+        <img
+          src={preview.coverUrl}
+          alt={title}
+          className="max-h-[90vh] max-w-[90vw] rounded object-contain"
+        />
+      </dialog>
+    </figure>
   );
 }
 
-function Previews({ list }: { list: LinkPreview[] }) {
+function Previews({
+  list,
+  imageLabels,
+}: {
+  list: LinkPreview[];
+  imageLabels: ImageLabels;
+}) {
   const featured = list.find((p) => p.coverUrl);
   const rest = list.filter((p) => p !== featured);
   return (
     <>
-      {featured && <FeaturedPreview preview={featured} />}
+      {featured && <FeaturedPreview preview={featured} labels={imageLabels} />}
       {rest.length ? (
         <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1">
           {rest.map((p) => (
@@ -224,6 +276,7 @@ export interface HeroChatConversationProps {
   streamingIndex: number;
   /** Shown once, under the latest answer when it has finished. */
   disclaimer: string;
+  imageLabels: ImageLabels;
   /** Called once the view has rendered, so the page can land on the latest message. */
   onReady: () => void;
 }
@@ -234,6 +287,7 @@ export default function HeroChatConversation({
   isLoading,
   streamingIndex,
   disclaimer,
+  imageLabels,
   onReady,
 }: HeroChatConversationProps) {
   useLayoutEffect(() => {
@@ -261,7 +315,7 @@ export default function HeroChatConversation({
           content={msg.content}
           streaming={idx === streamingIndex}
         />
-        {previews[idx]?.length ? <Previews list={previews[idx]} /> : null}
+        {previews[idx]?.length ? <Previews list={previews[idx]} imageLabels={imageLabels} /> : null}
         {showDisclaimer && idx === lastIdx && (
           <p className="mt-6 text-xs leading-relaxed text-zinc-500">
             {disclaimer}

@@ -30,6 +30,8 @@ export const t: I18nHome = {
     newChat: "Neuer Chat",
     resume: "Unterhaltung fortsetzen",
     jumpToLatest: "Zur neuesten Nachricht",
+    enlargeImage: "Bild vergrößern",
+    closeImage: "Schließen",
   },
   essays: {
     title: "Essays",

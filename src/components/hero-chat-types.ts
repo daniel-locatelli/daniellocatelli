@@ -36,4 +36,8 @@ export interface HeroChatLabels {
   resume: string;
   /** Button that scrolls down when the end of the conversation is out of view. */
   jumpToLatest: string;
+  /** Opens the answer's large image full screen. */
+  enlargeImage: string;
+  /** Closes the full-screen image. */
+  closeImage: string;
 }

@@ -68,4 +68,37 @@ test.describe("Homepage", () => {
     await expect(page.getByText("Ask me anything")).toHaveCount(0);
     await expect(page.locator("p", { hasText: "may contain mistakes" })).toBeVisible();
   });
+
+  test("the answer's large image expands, its caption and the cards link", async ({ page }) => {
+    await page.route("**/api/ai", (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({
+          answer:
+            "See [Agent skills](/research/agent-skills) and [this site](/projects/portfolio-website).",
+        }),
+      }),
+    );
+    await page.goto("/");
+    await page.locator("astro-island:not([ssr])").first().waitFor({ state: "attached" });
+    await page.getByRole("button", { name: "What is your PhD about?" }).click();
+
+    const figure = page.locator("figure", { has: page.locator("figcaption") });
+    const enlarge = figure.getByRole("button", { name: /Enlarge image: Agent skills/ });
+    await expect(enlarge).toBeVisible();
+    await expect(enlarge).toHaveCSS("border-top-width", "0px");
+    // The title sits under the image as a link, not over it.
+    await expect(figure.locator("figcaption a")).toHaveAttribute("href", "/research/agent-skills");
+
+    await enlarge.click();
+    const dialog = page.getByRole("dialog", { name: "Agent skills" });
+    await expect(dialog).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+    await expect(page).toHaveURL("/");
+
+    // The other linked pages stay plain link cards.
+    await expect(page.locator('a[href="/projects/portfolio-website"]').last()).toBeVisible();
+  });
 });
