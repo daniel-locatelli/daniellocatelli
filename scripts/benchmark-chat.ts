@@ -198,8 +198,14 @@ const TEST_CASES: TestCase[] = [
     locale: "pt",
   },
   {
-    question: "O que você construiu antes?",
+    question: "Você já participou de quais projetos?",
     expectedPhrases: ["DOKwood"],
+    category: "Portuguese",
+    locale: "pt",
+  },
+  {
+    question: "Quais programas você já desenvolveu?",
+    expectedPhrases: ["DOKwood", "Revit"],
     category: "Portuguese",
     locale: "pt",
   },
