@@ -476,6 +476,7 @@ This paper investigates the potential application of digital tools in designing 
 
 ### Digital Futures 2026: Entre o Prompt e a Obra
 Talk | DigitalFUTURES | April 2026 | /teaching/digital-futures-2026
+Video: https://www.youtube.com/watch?v=E0wMJIbP9r8
 Talk on the journey from biomimicry to systems thinking and what's missing in AI for architecture: the perspective of a Brazilian architect trained and working in Germany.
 
 ### Working with Geographic Data in Grasshopper
@@ -487,6 +488,7 @@ In this talk we presented the results of our thesis project at the ITECH Master 
 
 ### BuildSystems - Smart Sustainability Roadmaps
 Talk | Graphisoft X - Online | Germany | December 2023 | /full-cv (listed on the CV only)
+Video: https://www.youtube.com/watch?v=baVNIbWtMQo
 Learn about Smart Sustainability Roadmaps that enable systemic process innovations in planning. Topics such as demand-oriented and circular design, energy efficiency, life-cycle assessment, certifications, funding, and Pre-BIM Modelling are covered.
 
 ### Computational Architecture in Germany
@@ -503,6 +505,7 @@ A pitch at the Siemens RIE Munich Conference on how computational tools can gene
 
 ### Digital Futures 2023: Novos Hibridismos
 Talk | YouTube - Online | March 2022 | /teaching/digital-futures-2023
+Video: https://www.youtube.com/watch?v=s-hKf0NhooA
 This session, opening the DigitalFutures series in Portuguese, brings together different innovative practices within the scope of computational methodologies applied in architecture and design, where artificial intelligence, generative algorithms, parametric design, robotics manufacturing, materials science, and biomimetics are part of a hybrid repertoire.
 
 ### IntCDC Master’s Thesis Grant 2021 Award Ceremony
@@ -510,6 +513,7 @@ Pitch | Stuttgart, Germany | November 2021 | /full-cv (listed on the CV only)
 
 ### Nature and Digital: Reproducing Natural Processes with Computational Design
 Talk | PUC Minas - Online | Belo Horizonte, Brazil | August 2021 | /teaching/nature-and-digital-reproducing-natural-processes-with-computational-design-at-puc
+Video: https://youtu.be/J303rzg7y0U
 In this talk, I presented my work, the idea of reproducing natural processes with computational design, and key points I learned during my recently concluded master thesis in Germany.
 
 ### Round Table Debater

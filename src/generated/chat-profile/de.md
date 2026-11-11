@@ -476,6 +476,7 @@ Dieses Paper untersucht die mögliche Anwendung digitaler Werkzeuge beim Entwerf
 
 ### Digital Futures 2026: Entre o Prompt e a Obra
 Talk | DigitalFUTURES | April 2026 | /de/teaching/digital-futures-2026
+Video: https://www.youtube.com/watch?v=E0wMJIbP9r8
 Vortrag über den Weg von der Biomimetik zum Systemdenken und was der KI in der Architektur noch fehlt: die Perspektive eines in Deutschland ausgebildeten und tätigen brasilianischen Architekten.
 
 ### Arbeiten mit Geodaten in Grasshopper
@@ -487,6 +488,7 @@ In diesem Vortrag haben wir die Ergebnisse unseres Abschlussprojekts im ITECH-Ma
 
 ### BuildSystems - Smart Sustainability Roadmaps
 Talk | Graphisoft X - Online | Deutschland | December 2023 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Video: https://www.youtube.com/watch?v=baVNIbWtMQo
 Erfahren Sie mehr über Smart Sustainability Roadmaps, die systemische Prozessinnovationen in der Planung ermöglichen. Themen wie bedarfs- und kreislaufgerechte Planung, Energieeffizienz, Ökobilanzierung, Zertifizierungen, Förderungen und Pre-BIM-Modelling werden behandelt.
 
 ### Computergestützte Architektur in Deutschland
@@ -503,6 +505,7 @@ Ein Pitch auf der Siemens RIE München Konferenz darüber, wie computergestützt
 
 ### Digital Futures 2023: Novos Hibridismos
 Talk | YouTube - Online | March 2022 | /de/teaching/digital-futures-2023
+Video: https://www.youtube.com/watch?v=s-hKf0NhooA
 Diese Sitzung, die die DigitalFutures-Reihe auf Portugiesisch eröffnet, vereint verschiedene innovative Praktiken im Bereich computergestützter Methoden in Architektur und Design, in denen künstliche Intelligenz, generative Algorithmen, parametrisches Design, robotergestützte Fertigung, Materialwissenschaft und Biomimetik Teil eines hybriden Repertoires sind.
 
 ### IntCDC Master's Thesis Grant 2021 Preisverleihung
@@ -510,6 +513,7 @@ Pitch | Stuttgart, Deutschland | November 2021 | /de/full-cv (nur im Lebenslauf 
 
 ### Natur und Digital: Reproduktion natürlicher Prozesse mit Computational Design
 Talk | PUC Minas - Online | Belo Horizonte, Brasilien | August 2021 | /de/teaching/nature-and-digital-reproducing-natural-processes-with-computational-design-at-puc
+Video: https://youtu.be/J303rzg7y0U
 In diesem Vortrag an der PUC Minas stellte ich meine Arbeit, die Idee der Reproduktion natürlicher Prozesse mit computergestütztem Design und wichtige Erkenntnisse aus meiner kürzlich abgeschlossenen Masterarbeit vor.
 
 ### Podiumsdiskussion

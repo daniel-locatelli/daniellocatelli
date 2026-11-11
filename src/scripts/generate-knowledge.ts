@@ -1247,6 +1247,7 @@ const PROFILE_HEADINGS: Record<string, Record<string, string>> = {
     timeline: "Timeline (most recent first)",
     current: "current",
     cvOnly: "listed on the CV only",
+    video: "Video",
   },
   pt: {
     title: "Daniel Locatelli: perfil",
@@ -1266,6 +1267,7 @@ const PROFILE_HEADINGS: Record<string, Record<string, string>> = {
     timeline: "Linha do tempo (mais recente primeiro)",
     current: "atual",
     cvOnly: "listado apenas no currículo",
+    video: "Vídeo",
   },
   de: {
     title: "Daniel Locatelli: Profil",
@@ -1285,6 +1287,7 @@ const PROFILE_HEADINGS: Record<string, Record<string, string>> = {
     timeline: "Zeitleiste (neueste zuerst)",
     current: "aktuell",
     cvOnly: "nur im Lebenslauf aufgeführt",
+    video: "Video",
   },
 };
 
@@ -1419,6 +1422,8 @@ function processChatProfile() {
         ].filter(Boolean);
         out.push(`### ${data.Name}`, meta.join(" | "));
         if (data.Tags?.length) out.push(`Tags: ${data.Tags.join(", ")}`);
+        // A talk's recording, so "where can I watch it?" has an answer.
+        if (data.Presentation) out.push(`${h.video}: ${data.Presentation}`);
         const summary = profileSummary(data, body);
         if (summary) out.push(summary);
         out.push("");

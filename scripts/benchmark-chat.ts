@@ -167,6 +167,12 @@ const TEST_CASES: TestCase[] = [
     forbiddenPhrases: ["I don't have information"],
     category: "Teaching",
   },
+  {
+    // The talk's Presentation URL reaches the profile as a "Video:" line.
+    question: "Where can I watch your Digital Futures 2023 talk?",
+    expectedPhrases: ["s-hKf0NhooA"],
+    category: "Teaching",
+  },
 
   // ── Projects ──
   {
