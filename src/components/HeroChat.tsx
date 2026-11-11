@@ -321,7 +321,7 @@ export default function HeroChat({ modelName, labels }: HeroChatProps) {
       newSlugs.map(async (slug) => {
         try {
           const res = await fetch(
-            `/api/page-preview?slug=${encodeURIComponent(slug)}`,
+            `/api/page-preview?slug=${encodeURIComponent(slug)}&locale=${encodeURIComponent(document.documentElement.lang)}`,
           );
           if (!res.ok) return null;
           return (await res.json()) as LinkPreview;

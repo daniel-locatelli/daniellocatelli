@@ -153,7 +153,7 @@ function AssistantMessage({
 function PreviewCard({ preview }: { preview: LinkPreview }) {
   return (
     <a
-      href={`/${preview.slug}`}
+      href={preview.href ?? `/${preview.slug}`}
       className="group relative block h-24 w-36 flex-none overflow-hidden rounded-lg border border-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
     >
       {preview.coverUrl ? (
@@ -173,6 +173,46 @@ function PreviewCard({ preview }: { preview: LinkPreview }) {
         {preview.title.trim()}
       </span>
     </a>
+  );
+}
+
+/** The first linked page's cover, full width (capped in height on phones). */
+function FeaturedPreview({ preview }: { preview: LinkPreview }) {
+  return (
+    <a
+      href={preview.href ?? `/${preview.slug}`}
+      className="group relative mt-6 block overflow-hidden rounded-xl border border-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
+    >
+      <img
+        src={preview.coverUrl}
+        alt=""
+        width={preview.width}
+        height={preview.height}
+        loading="lazy"
+        className="block h-auto max-h-[75svh] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+      <span className="absolute inset-x-0 bottom-0 p-4 text-base leading-tight font-semibold text-white">
+        {preview.title.trim()}
+      </span>
+    </a>
+  );
+}
+
+function Previews({ list }: { list: LinkPreview[] }) {
+  const featured = list.find((p) => p.coverUrl);
+  const rest = list.filter((p) => p !== featured);
+  return (
+    <>
+      {featured && <FeaturedPreview preview={featured} />}
+      {rest.length ? (
+        <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1">
+          {rest.map((p) => (
+            <PreviewCard key={p.slug} preview={p} />
+          ))}
+        </div>
+      ) : null}
+    </>
   );
 }
 
@@ -215,13 +255,7 @@ export default function HeroChatConversation({
           content={msg.content}
           streaming={idx === streamingIndex}
         />
-        {previews[idx]?.length ? (
-          <div className="-mx-1 mt-4 flex gap-2 overflow-x-auto px-1 pb-1">
-            {previews[idx].map((p) => (
-              <PreviewCard key={p.slug} preview={p} />
-            ))}
-          </div>
-        ) : null}
+        {previews[idx]?.length ? <Previews list={previews[idx]} /> : null}
       </div>
     );
 

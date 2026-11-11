@@ -7,6 +7,11 @@ export interface LinkPreview {
   title: string;
   coverUrl: string;
   slug: string;
+  /** Link to the page in the visitor's locale (older stored previews lack it). */
+  href?: string;
+  /** Cover size, so the large image reserves its space before it loads. */
+  width?: number;
+  height?: number;
 }
 
 /** Preview cards keyed by the index of the assistant message that linked them. */
