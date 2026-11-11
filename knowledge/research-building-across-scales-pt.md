@@ -216,11 +216,11 @@ Gostaríamos de agradecer a…
 
 [^kaufmann-2018]: H. Kaufmann, S. Krötsch, and S. Winter, *Manual of multi-storey timber construction*. Munich: Detail Business Information, 2018. ISBN 978-3955533946.
 
-[^un-2019]: United Nations, Department of Economic and Social Affairs, Population Division, *World urbanization prospects: the 2018 revision*, 2019. [Online]. Available: [https://population.un.org/wup/Publications/Files/WUP2018-Report.pdf](https://population.un.org/wup/Publications/Files/WUP2018-Report.pdf) (accessed Feb. 22, 2021). ISBN 978-92-1-148319-2.
+[^un-2019]: United Nations, Department of Economic and Social Affairs, Population Division, *World urbanization prospects: the 2018 revision*, 2019. [Online]. Available: [https://web.archive.org/web/20210207015917/https://population.un.org/wup/Publications/Files/WUP2018-Report.pdf](https://web.archive.org/web/20210207015917/https://population.un.org/wup/Publications/Files/WUP2018-Report.pdf) (accessed Feb. 22, 2021). ISBN 978-92-1-148319-2.
 
 [^petersen-2019]: K. H. Petersen, N. Napp, R. Stuart-Smith, D. Rus, and M. Kovac, "A review of collective robotic construction," *Sci. Robot.*, vol. 4, no. 28, p. eaau8479, Mar. 2019, doi: [10.1126/scirobotics.aau8479](https://doi.org/10.1126/scirobotics.aau8479).
 
-[^barbosa-mckinsey]: F. Barbosa et al., "Reinventing Construction: A Route to Higher Productivity," McKinsey & Company. [Online]. Available: [https://www.mckinsey.com/business-functions/operations/our-insights/reinventing-construction-through-a-productivity-revolution](https://www.mckinsey.com/business-functions/operations/our-insights/reinventing-construction-through-a-productivity-revolution) (accessed Feb. 02, 2021).
+[^barbosa-mckinsey]: F. Barbosa et al., "Reinventing Construction: A Route to Higher Productivity," McKinsey & Company. [Online]. Available: [https://www.mckinsey.com/capabilities/operations/our-insights/reinventing-construction-through-a-productivity-revolution](https://www.mckinsey.com/capabilities/operations/our-insights/reinventing-construction-through-a-productivity-revolution) (accessed Feb. 02, 2021).
 
 [^bock-2015]: T. Bock, "The future of construction automation: Technological disruption and the upcoming ubiquity of robotics," *Autom. Constr.*, vol. 59, pp. 113–121, Nov. 2015, doi: [10.1016/j.autcon.2015.07.022](https://doi.org/10.1016/j.autcon.2015.07.022).
 
@@ -252,7 +252,7 @@ Gostaríamos de agradecer a…
 
 [^schneider-2017]: B. H. Schneider, A. Forrest, Y. Vobis, D. Croteau, and M. Oberholzer, "Development of a Two-way Column-supported Flat Plate in Cross Laminated Timber," in *IABSE Symposium, Vancouver 2017: Engineering the Future*, Vancouver, Canada, 2017, pp. 1957–1964, doi: [10.2749/vancouver.2017.1957](https://doi.org/10.2749/vancouver.2017.1957).
 
-[^swinerton-2020]: "Innovating to Thrive for the Next 130 Years," Swinerton, Oct. 19, 2020. [https://swinerton.com/blog/innovating-to-thrive-for-the-next-130-years/](https://swinerton.com/blog/innovating-to-thrive-for-the-next-130-years/) (accessed Jul. 27, 2021).
+[^swinerton-2020]: "Innovating to Thrive for the Next 130 Years," Swinerton, Oct. 19, 2020. [https://web.archive.org/web/20201203202254/https://swinerton.com/blog/innovating-to-thrive-for-the-next-130-years/](https://web.archive.org/web/20201203202254/https://swinerton.com/blog/innovating-to-thrive-for-the-next-130-years/) (accessed Jul. 27, 2021).
 
 [^leung-2021]: P. Y. V. Leung, A. A. Apolinarska, D. Tanadini, F. Gramazio, and M. Kohler, "Automatic Assembly of Jointed Timber Structure Using Distributed Robotic Clamps," p. 10. [https://doi.org/10.3929/ethz-b-000481928](https://doi.org/10.3929/ethz-b-000481928).
 

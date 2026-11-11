@@ -7,7 +7,7 @@ Tags: Computational design, Form finding
 Authors: Daniel Nunes Locatelli
 Place: Faculdade de Arquitetura e Urbanismo - Universidade de São Paulo
 Date: December 2016
-Link: https://daniellocatelli.com/documents/daniel-locatelli_tfg-fauusp.pdf
+Link: /documents/daniel-locatelli_tfg-fauusp.pdf
 
 ## Zusammenfassung
 
@@ -410,7 +410,7 @@ Die architektonische Praxis verändert sich ständig, und die Notwendigkeit, die
 
 [^fry-2008]: T. Fry, *Design Futuring: Sustainable, Ethics and New Practice*. Oxford: Berg, 2008, S. 2. ISBN 978-1847882189.
 
-[^cnrh-residuos]: "Caderno de Diagnóstico, Resíduos da Construção Civil," Conselho Nacional de Recursos Hídricos. [Online]. Verfügbar: [http://www.cnrh.gov.br/projetos/pnrs/documentos/cadernos/02_CADDIAG_Res_Const_Civil.pdf](http://www.cnrh.gov.br/projetos/pnrs/documentos/cadernos/02_CADDIAG_Res_Const_Civil.pdf) (abgerufen am 18. Nov. 2016).
+[^cnrh-residuos]: "Caderno de Diagnóstico, Resíduos da Construção Civil," Conselho Nacional de Recursos Hídricos. [Online]. Verfügbar: [https://web.archive.org/web/20160801160957/http://www.cnrh.gov.br/projetos/pnrs/documentos/cadernos/02_CADDIAG_Res_Const_Civil.pdf](https://web.archive.org/web/20160801160957/http://www.cnrh.gov.br/projetos/pnrs/documentos/cadernos/02_CADDIAG_Res_Const_Civil.pdf) (abgerufen am 18. Nov. 2016).
 
 [^alves-2016]: M. K. Alves, *Industrialização na Construção Civil: Análise da Possibilidade de Adoção de Ações de um Programa de Desenvolvimento Tecnológico Europeu na Construção Civil Brasileira*. Porto Alegre: UFRGS, 2016, S. 43–47.
 
@@ -422,9 +422,9 @@ Die architektonische Praxis verändert sich ständig, und die Notwendigkeit, die
 
 [^hstdgm-3d-house]: "Primeira casa de 400 m² construída usando uma impressora 3D," HSTDGM. [Online]. Verfügbar: [http://www.hstdgm.com/](http://www.hstdgm.com/) (abgerufen am 18. Nov. 2016).
 
-[^fiesp-deficit]: "Levantamento Inédito Mostra Déficit de 6,2 Milhões de Moradias No Brasil," FIESP. [Online]. Verfügbar: [https://www.fiesp.com.br/noticias/levantamento-inedito-mostra-deficit-de-62-milhoes-de-moradias-no-brasil/](https://www.fiesp.com.br/noticias/levantamento-inedito-mostra-deficit-de-62-milhoes-de-moradias-no-brasil/) (abgerufen am 18. Nov. 2016).
+[^fiesp-deficit]: "Levantamento Inédito Mostra Déficit de 6,2 Milhões de Moradias No Brasil," FIESP. [Online]. Verfügbar: [https://www.fiesp.com.br/observatoriodaconstrucao/noticias/levantamento-inedito-mostra-deficit-de-62-milhoes-de-moradias-no-brasil/](https://www.fiesp.com.br/observatoriodaconstrucao/noticias/levantamento-inedito-mostra-deficit-de-62-milhoes-de-moradias-no-brasil/) (abgerufen am 18. Nov. 2016).
 
-[^allen-2016]: B. Allen, "IT22329: The Future of BIM Will Not Be BIM, and It's Coming Faster than You Think," Autodesk University. [Online]. Verfügbar: [http://au.autodesk.com/au-online/classes-on-demand/class-catalog/2016/revit/it22329](http://au.autodesk.com/au-online/classes-on-demand/class-catalog/2016/revit/it22329) (abgerufen am 16. Nov. 2016).
+[^allen-2016]: B. Allen, "IT22329: The Future of BIM Will Not Be BIM, and It's Coming Faster than You Think," Autodesk University. [Online]. Verfügbar: [https://web.archive.org/web/20181029023356/http://au.autodesk.com/au-online/classes-on-demand/class-catalog/2016/revit/it22329](https://web.archive.org/web/20181029023356/http://au.autodesk.com/au-online/classes-on-demand/class-catalog/2016/revit/it22329) (abgerufen am 16. Nov. 2016).
 
 [^terzidis-2006-p14]: K. Terzidis, *Algorithmic Architecture*. Burlington: Architectural Press (Elsevier), 2006, S. 14.
 
@@ -456,17 +456,17 @@ Die architektonische Praxis verändert sich ständig, und die Notwendigkeit, die
 
 [^otto-lightweight-p40]: "Natural Forms, Architectural Forms," in *Frei Otto: Lightweight Construction, Natural Design*. Basel: Birkhäuser, 2005, S. 40.
 
-[^bonakdar-saraceno]: "Tomas Saraceno," Tanya Bonakdar Gallery. [Online]. Verfügbar: [http://www.tanyabonakdargallery.com/exhibitions/tomas-saraceno_2](http://www.tanyabonakdargallery.com/exhibitions/tomas-saraceno_2) (abgerufen am 2. Dez. 2016).
+[^bonakdar-saraceno]: "Tomas Saraceno," Tanya Bonakdar Gallery. [Online]. Verfügbar: [https://web.archive.org/web/20150906152345/http://www.tanyabonakdargallery.com/exhibitions/tomas-saraceno_2](https://web.archive.org/web/20150906152345/http://www.tanyabonakdargallery.com/exhibitions/tomas-saraceno_2) (abgerufen am 2. Dez. 2016).
 
 [^designboom-saraceno]: "Tomás Saraceno at Venice Art Biennale 2009," Designboom. [Online]. Verfügbar: [http://www.designboom.com/art/tomas-saraceno-at-venice-art-biennale-09/](http://www.designboom.com/art/tomas-saraceno-at-venice-art-biennale-09/) (abgerufen am 2. Dez. 2016).
 
-[^saraceno-3d-web]: Studio Tomás Saraceno, "3D Spider Web Scan." [Online]. Verfügbar: [http://tomassaraceno.com/projects/3d-spider-web-scan/](http://tomassaraceno.com/projects/3d-spider-web-scan/) (abgerufen am 2. Dez. 2016).
+[^saraceno-3d-web]: Studio Tomás Saraceno, "Cosmic Jive: The Spider Sessions." [Online]. Verfügbar: [https://studiotomassaraceno.org/cosmic-jive-the-spider-sessions-2/](https://studiotomassaraceno.org/cosmic-jive-the-spider-sessions-2/) (abgerufen am 9. Nov. 2026).
 
 [^otto-biography]: "Biography," Frei Otto. [Online]. Verfügbar: [http://www.freiotto.com/Biografie.html](http://www.freiotto.com/Biografie.html) (abgerufen am 2. Dez. 2016).
 
-[^menges-bio]: "Achim Menges." [Online]. Verfügbar: [http://www.achimmenges.net/?p=4866](http://www.achimmenges.net/?p=4866) (abgerufen am 2. Dez. 2016).
+[^menges-bio]: "Achim Menges." [Online]. Verfügbar: [https://web.archive.org/web/20170627162952/http://www.achimmenges.net/?p=4866](https://web.archive.org/web/20170627162952/http://www.achimmenges.net/?p=4866) (abgerufen am 2. Dez. 2016).
 
-[^landesgartenschau-2014]: "Landesgartenschau Exhibition Hall," ICD/ITKE/IIGS, Universität Stuttgart, 2014. [Online]. Verfügbar: [http://www.achimmenges.net/?p=5731](http://www.achimmenges.net/?p=5731) (abgerufen am 17. Nov. 2016).
+[^landesgartenschau-2014]: "Landesgartenschau Exhibition Hall," ICD/ITKE/IIGS, Universität Stuttgart, 2014. [Online]. Verfügbar: [https://web.archive.org/web/20170614152713/http://www.achimmenges.net/?p=5731](https://web.archive.org/web/20170614152713/http://www.achimmenges.net/?p=5731) (abgerufen am 17. Nov. 2016).
 
 [^wang-liu-2009]: W. Wang und Y. Liu, "A note on planar hexagonal meshes," in *Nonlinear Computational Geometry*, IMA Volume 151, I. Z. Emiris, F. Sottile und T. Theobald, Hrsg. New York: Springer-Verlag, 2009, S. 221–233. [Online]. Verfügbar: [http://research.microsoft.com/en-us/um/people/yangliu/](http://research.microsoft.com/en-us/um/people/yangliu/) (abgerufen am 2. Dez. 2016).
 
@@ -474,7 +474,7 @@ Die architektonische Praxis verändert sich ständig, und die Notwendigkeit, die
 
 [^nos-art-project]: "Nós Art Project." [Online]. Verfügbar: [https://www.catarse.me/nosartproject](https://www.catarse.me/nosartproject) (abgerufen am 2. Dez. 2016).
 
-[^aa-vitanje-2014]: "AA Visiting School Slovenia, Vitanje 2014." [Online]. Verfügbar: [http://nanotourism.aaschool.ac.uk/15-aavss14/](http://nanotourism.aaschool.ac.uk/15-aavss14/) (abgerufen am 6. Dez. 2016); "Hangout Vitanje, Communal XL Lace Hammock," Archello. [Online]. Verfügbar: [http://www.archello.com/en/project/hangout-vitanje-communal-xl-lace-hammock](http://www.archello.com/en/project/hangout-vitanje-communal-xl-lace-hammock) (abgerufen am 6. Dez. 2016).
+[^aa-vitanje-2014]: "AA Visiting School Slovenia, Vitanje 2014." [Online] (abgerufen am 6. Dez. 2016); "Hangout Vitanje, Communal XL Lace Hammock," Archello. [Online]. Verfügbar: [https://archello.com/project/hangout-vitanje-communal-xl-lace-hammock](https://archello.com/project/hangout-vitanje-communal-xl-lace-hammock) (abgerufen am 6. Dez. 2016).
 
 [^kull-otto-biology]: U. Kull, "Frei Otto and Biology," in *Frei Otto: Lightweight Construction, Natural Design*. Basel: Birkhäuser, 2005, S. 51.
 

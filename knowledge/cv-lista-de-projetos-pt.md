@@ -10,7 +10,7 @@ O DOKwood é uma plataforma web para definir, verificar, versionar e trocar comp
 ### Site Portfólio
 Daniel Locatelli
 April 2024 | Software
-Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, uma esfera geodésica movida pelo scroll, apresentações de slides no navegador e uma superfície pronta para agentes na Cloudflare.
+Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, ensaios, apresentações de slides no navegador e uma superfície pronta para agentes na Cloudflare.
 
 ### Plugin da BuildSystems para o Grasshopper
 BuildSystems

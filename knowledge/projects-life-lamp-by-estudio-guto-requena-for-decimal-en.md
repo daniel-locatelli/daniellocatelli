@@ -10,7 +10,7 @@ Team: Daniel Nunes Locatelli, Vítor Curti
 Client: Decimal
 Organization: Estudio Guto Requena
 Date: May 2018 - May 2018
-Link: https://en.gutorequena.com/lifelamp/
+Link: https://gutorequena.com/en/arquitetura-e-design/life-lamp/
 
 ## Concept
 > Three audio files were used in the programming of its generative design: The audio of a baby´s rapid heartbeat while still in the womb, the heartbeat of a 35-year-old, and finally, the heartbeat of an elder of 80 years old. These data were used as parameters in software that drew them as lines of varied width and branching, shaping the lamp.
@@ -21,10 +21,10 @@ Life Lamp is an offshoot of the Guto Requena Studio’s research that seeks to u
 
 *Estúdio Guto Requena*
 
-[Decimal](https://decimalmade.com/) fabricates and sells lamps from renowned designers worldwide, and they invited Guto Requena to propose a concept for one of their products. Life Lamp represented a dual endeavor, a project, and a research initiative. As a freelancer, I dedicated my afternoons to work with [Estúdio Guto Requena](https://en.gutorequena.com/), contributing to the computational strategy to bring the already established concept to life.
+[Decimal](https://decimalmade.com/) fabricates and sells lamps from renowned designers worldwide, and they invited Guto Requena to propose a concept for one of their products. Life Lamp represented a dual endeavor, a project, and a research initiative. As a freelancer, I dedicated my afternoons to work with [Estúdio Guto Requena](https://gutorequena.com/en/home-en/), contributing to the computational strategy to bring the already established concept to life.
 The design process is a hybrid between a top-down and a bottom-up design approach. We worked both with predefined heart-like 3D models as the design base and with agent-based modeling, widely explored by Craig Reynolds in the 1980s.
 ## Development
 The programming part was developed using Grasshopper, the plugin Culebra v2.0 for the agent-based modeling in conjunction with the plugin Firefly to capture the heartbeats.
 This work became later a paper presented at the eCAADe 2020.
 You can check the paper and the design process here:
-[Life Lamp: Connecting Design and People Through Emotion](https://daniellocatelli.com/publications/life-lamp-connecting-design-and-people-through-emotion/)
+[Life Lamp: Connecting Design and People Through Emotion](/publications/life-lamp-connecting-design-and-people-through-emotion)

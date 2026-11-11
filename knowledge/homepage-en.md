@@ -2,6 +2,6 @@ URL: https://daniellocatelli.com
 
 # Daniel Locatelli
 
-Welcome to my digital office. Here, you will find my work, research, and teachings on architecture, biomimetics, computational design, and software development for the AEC industry.
+I am a doctoral researcher at Gramazio Kohler Research, ETH Zurich. I research how timber plate structures are designed and built, and how AI changes the way architects and engineers work. This homepage has an AI chat about my work and a list of essays.
 
-Welcome to my digital office! Here you will find my work, research, and teachings related to architecture, biomimetics computational design, and software development for the AEC industry. Do you need a service? Let's schedule a call to discuss how I can help you!
+I am a doctoral researcher at Gramazio Kohler Research, ETH Zurich. I research how timber plate structures are designed and built, and how AI changes the way architects and engineers work. The homepage has an AI chat where you can ask about my research, projects, and teaching, and a list of essays on what stays valuable in architecture and engineering once code is cheap.

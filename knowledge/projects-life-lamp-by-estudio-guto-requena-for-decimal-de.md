@@ -10,7 +10,7 @@ Team: Daniel Nunes Locatelli, Vítor Curti
 Client: Decimal
 Organization: Estudio Guto Requena
 Date: May 2018 - May 2018
-Link: https://en.gutorequena.com/lifelamp/
+Link: https://gutorequena.com/en/arquitetura-e-design/life-lamp/
 
 ## Konzept
 > Drei Audiodateien wurden bei der Programmierung des generativen Designs verwendet: Das Audiosignal des schnellen Herzschlags eines Babys noch im Mutterleib, der Herzschlag eines 35-Jährigen und schließlich der Herzschlag eines 80-jährigen älteren Menschen. Diese Daten wurden als Parameter in einer Software verwendet, die sie als Linien unterschiedlicher Breite und Verzweigung zeichnete und so die Lampe formte.
@@ -21,10 +21,10 @@ Life Lamp ist ein Ableger der Forschung des Estúdio Guto Requena, die darauf ab
 
 *Estúdio Guto Requena*
 
-[Decimal](https://decimalmade.com/) fertigt und vertreibt Lampen renommierter Designer weltweit, und sie luden Guto Requena ein, ein Konzept für eines ihrer Produkte vorzuschlagen. Life Lamp war ein doppeltes Unterfangen – ein Projekt und eine Forschungsinitiative. Als Freiberufler widmete ich meine Nachmittage der Arbeit mit [Estúdio Guto Requena](https://en.gutorequena.com/) und trug zur rechnerischen Strategie bei, um das bereits bestehende Konzept zum Leben zu erwecken.
+[Decimal](https://decimalmade.com/) fertigt und vertreibt Lampen renommierter Designer weltweit, und sie luden Guto Requena ein, ein Konzept für eines ihrer Produkte vorzuschlagen. Life Lamp war ein doppeltes Unterfangen – ein Projekt und eine Forschungsinitiative. Als Freiberufler widmete ich meine Nachmittage der Arbeit mit [Estúdio Guto Requena](https://gutorequena.com/en/home-en/) und trug zur rechnerischen Strategie bei, um das bereits bestehende Konzept zum Leben zu erwecken.
 Der Designprozess ist eine Mischung aus einem Top-down- und einem Bottom-up-Designansatz. Wir arbeiteten sowohl mit vordefinierten herzförmigen 3D-Modellen als Designgrundlage als auch mit agentenbasierter Modellierung, die in den 1980er-Jahren maßgeblich von Craig Reynolds erforscht wurde.
 ## Entwicklung
 Die Programmierung erfolgte mit Grasshopper, dem Plugin Culebra v2.0 für die agentenbasierte Modellierung in Verbindung mit dem Plugin Firefly zur Erfassung der Herzschläge.
 Diese Arbeit wurde später als Paper auf der eCAADe 2020 vorgestellt.
 Das Paper und den Designprozess finden Sie hier:
-[Life Lamp: Connecting Design and People Through Emotion](https://daniellocatelli.com/publications/life-lamp-connecting-design-and-people-through-emotion/)
+[Life Lamp: Connecting Design and People Through Emotion](/de/publications/life-lamp-connecting-design-and-people-through-emotion)

@@ -2,6 +2,6 @@ URL: https://daniellocatelli.com/pt
 
 # Daniel Locatelli
 
-Bem-vindo ao meu escritório digital. Aqui, você encontra meu trabalho, pesquisa e ensino sobre arquitetura, biomimética, design computacional e desenvolvimento de software para a indústria AEC.
+Sou doutorando no Gramazio Kohler Research, ETH Zurique. Pesquiso como estruturas de placas de madeira são projetadas e construídas, e como a IA muda a forma como arquitetos e engenheiros trabalham. Esta página inicial tem um chat com IA sobre meu trabalho e uma lista de ensaios.
 
-Bem-vindo ao meu escritório digital! Aqui você encontra meu trabalho, pesquisa e ensino relacionados à arquitetura, biomimética, design computacional e desenvolvimento de software para a indústria AEC. Precisa de um serviço? Vamos marcar uma conversa para discutir como posso ajudar!
+Sou doutorando no Gramazio Kohler Research, ETH Zurique. Pesquiso como estruturas de placas de madeira são projetadas e construídas, e como a IA muda a forma como arquitetos e engenheiros trabalham. A página inicial tem um chat com IA onde você pode perguntar sobre minha pesquisa, projetos e ensino, e uma lista de ensaios sobre o que continua valioso na arquitetura e na engenharia quando o código fica barato.

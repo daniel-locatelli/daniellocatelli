@@ -7,7 +7,7 @@ Tags: Computational design, Agent-based system, Complex networks, Dynamic relaxa
 Authors: Daniel Nunes Locatelli
 Place: Online
 Date: March 2020
-Link: https://daniellocatelli.com/documents/daniel-locatelli_design-computacional-estrategias_1ed.pdf
+Link: /documents/daniel-locatelli_design-computacional-estrategias_1ed.pdf
 Language: Portuguese
 
 Here I present a compilation of strategies I have encountered over the nine years since I started my studies in this fascinating area! Everyone who begins to study computational design learns this compilation of information in one way or another. Some build libraries of links and files; others store them in their heads. However, this is information that everyone learns after many years of research.
