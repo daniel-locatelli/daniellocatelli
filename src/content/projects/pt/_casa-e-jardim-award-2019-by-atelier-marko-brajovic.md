@@ -3,7 +3,7 @@ Name: Prêmio Casa e Jardim 2019
 Description: Arquiteto responsável pelo palco e troféu.
 DateStart: "2019-06-01"
 Organization: "Atelier Marko Brajovic"
-Category: Design Computacional
+Category: Design computacional
 City:
   - Pinacoteca de São Paulo
 Country: "Brasil"

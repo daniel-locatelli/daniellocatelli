@@ -28,7 +28,7 @@ Place: Online
 
 Este é o site que você está lendo agora. Ele começou em abril de 2024 como um pequeno site em Astro e, desde então, virou um campo de testes para o jeito como gosto de construir as coisas: páginas estáticas rápidas, conteúdo fácil de ler tanto para pessoas quanto para ferramentas de IA, e algumas peças interativas para apimentar as&nbsp;coisas.
 
-## Stack Tecnológico
+## Stack tecnológica
 
 - [**Astro**](https://astro.build/) com TypeScript para o site em si, [**React**](https://react.dev/) para as poucas ilhas que precisam de interatividade e [**Tailwind CSS**](https://tailwindcss.com/) para os estilos.
 - [**Astro Content Collections**](https://docs.astro.build/en/guides/content-collections/) para todo o conteúdo, escrito em markdown e MDX com frontmatter tipado e validado no momento do build.

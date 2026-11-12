@@ -6,7 +6,7 @@ Name: "Assistente de Pesquisa em Desenvolvimento Web no ICD"
 Tags:
  - Web Development
 Organization: "ICD - University of Stuttgart"
-Category: Web development
+Category: Desenvolvimento web
 DateStart: "2019-12-20"
 DateEnd: "2020-10-19"
 Director:

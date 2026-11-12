@@ -24,7 +24,7 @@ O Circular Component Creator (CCC) foi um estudo conceitual de design na [BuildS
 
 O conceito evoluiu a partir do [plugin BuildSystems para Grasshopper](/projects/buildsystems-plugin-for-grasshopper), que fornecia dados de Análise de Ciclo de Vida (ACV) dentro do ambiente de design Rhino/Grasshopper. O CCC tinha como objetivo trazer capacidades semelhantes para uma plataforma web independente, tornando a biblioteca de componentes acessível a um público mais amplo, além dos usuários do Grasshopper.
 
-## Arquitetura de Dados
+## Arquitetura de dados
 
 O modelo de dados subjacente segue uma estrutura hierárquica que reflete como componentes construtivos reais são montados. Um Componente é composto por Montagens, que por sua vez consistem em Camadas. Cada camada pode conter Subcamadas, separadas em partes estruturais e de isolamento.
 
@@ -42,7 +42,7 @@ Essa abordagem permitiu que a equipe iterasse rapidamente sobre os padrões de l
 
 ## Mockups no Figma
 
-### Página Inicial
+### Página inicial
 
 O conceito da página inicial apresenta o aplicativo com um corte isométrico de um componente construtivo, mostrando as camadas individuais que compõem uma parede ou laje.
 
@@ -50,7 +50,7 @@ Abaixo, as cinco categorias de componentes dinâmicos são exibidas: paredes ext
 
 ![Mockup no Figma da página inicial mostrando uma corte isométrico do componente e as cinco categorias de componentes dinâmicos.](../../../assets/content/projects/circular-component-creator-by-buildsystems/landing-page-external-walls.png)
 
-### Biblioteca de Componentes
+### Biblioteca de componentes
 
 O conceito da página da biblioteca apresenta todos os componentes disponíveis em um layout de grade. Os usuários poderiam selecionar até três componentes para comparação lado a lado. Cada cartão de componente mostra uma renderização 3D, o identificador do componente e propriedades principais.
 
@@ -62,13 +62,13 @@ Um painel de filtros permitiria aos usuários refinar o catálogo de componentes
 
 ![Mockup no Figma do painel de filtros mostrando opções de material, dimensão e estruturação para refinar a seleção de componentes.](../../../assets/content/projects/circular-component-creator-by-buildsystems/component-library-filters.png)
 
-### Pré-visualização do Componente
+### Pré-visualização do componente
 
 Ao passar o mouse sobre um cartão de componente, uma pré-visualização detalhada seria exibida com as propriedades principais do componente: nome, material, valor U, classificação de resistência ao fogo e mais.
 
 ![Mockup no Figma de um cartão de componente com pré-visualização expandida mostrando propriedades e especificações do material.](../../../assets/content/projects/circular-component-creator-by-buildsystems/component-card-preview.png)
 
-### Página de Detalhes do Componente
+### Página de detalhes do componente
 
 O conceito da página de detalhes oferece uma visão abrangente de um único componente, dividida em três áreas:
 

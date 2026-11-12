@@ -30,7 +30,7 @@ Desenvolvi o site corporativo da [BuildSystems](https://buildsystems.de), uma co
 
 O design foi criado pela [HAND](https://www.hand.international/). Meu papel foi implementar o design e a funcionalidade usando uma stack tecnológica de ponta focada em performance, para garantir um ótimo SEO.
 
-## Stack Tecnológica
+## Stack tecnológica
 
 - [**Astro**](https://astro.build/): Gerador de sites estáticos com TypeScript, escolhido por sua abordagem performance-first e filosofia de zero JavaScript por padrão.
 - [**Tailwind CSS**](https://tailwindcss.com/): Estilização utility-first com variáveis CSS customizadas para tipografia responsiva em quatro breakpoints.
@@ -47,14 +47,14 @@ A camada de CMS começou como um fork do [astro-notion-blog](https://github.com/
 
 ![A seção hero da homepage.](../../../assets/content/projects/buildsystems-website/homepage-screenshot.jpg)
 
-## Principais Recursos
+## Principais recursos
 
 ### Animações CSS-First
 A agência de design havia entregue originalmente o cover da homepage e as seções dos "Três Pilares" com animações Lottie. Após a integração, os scores do Lighthouse caíram bruscamente porque as animações Lottie inflavam o DOM muito além do tamanho recomendado, prejudicando o desempenho de renderização. Reconstruí ambas as animações com `@keyframes` puro de CSS, com os "Três Pilares" adaptados para funcionar em layouts horizontal e vertical. Isso preservou a fidelidade visual e manteve a página leve e performática.
 
 <Video src="/media/projects/buildsystems-website/three-pillars-animation.mp4" caption="Animação da homepage" autoplay /> 
 
-### Carrossel com Arraste
+### Carrossel com arraste
 O carrossel de posts do blog implementa uma interação customizada de arrastar para rolar com física de inércia e scroll-snap suave. Os usuários podem arrastar o carrossel com mouse ou toque, e ele se ajusta suavemente ao card mais próximo quando solto.
 
 <Video src="/media/projects/buildsystems-website/drag-to-scroll-carousel.mp4" caption="Carrossel com arraste" autoplay />
@@ -70,7 +70,7 @@ O projeto segue uma abordagem puramente Astro, sem React ou outros frameworks Ja
 
 Um pipeline de build customizado cuida do cache de conteúdo do Notion. Executando `npm run cache:fetch`, todo o conteúdo e imagens são baixados do Notion, processados com Sharp (removendo dados EXIF e otimizando formatos) e armazenados localmente. Isso garante builds rápidos e evita chamadas desnecessárias à API durante o desenvolvimento.
 
-## Design Responsivo
+## Design responsivo
 
 O site usa CSS Custom Properties para tipografia fluida que escala em quatro breakpoints: mobile, tablet, desktop e ultra-wide.
 

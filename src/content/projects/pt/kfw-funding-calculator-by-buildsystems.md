@@ -7,7 +7,7 @@ Tags:
   - Software Development
   - Web Development
 Organization: "BuildSystems"
-Category: Software Development
+Category: Desenvolvimento de software
 DateStart: "2023-11-20"
 DateEnd: "2024-07-30"
 Link:
@@ -35,7 +35,7 @@ OtherLinks:
 - **Métricas de energia:** Influenciando as possibilidades de subsídio e empréstimo.
 - **Segurança de dados**: Garantindo que todos os dados do usuário estejam seguros e sigam os regulamentos da União Europeia.
 - **Design responsivo**: O aplicativo funciona perfeitamente em todos os dispositivos.
-### Stack de tecnologia
+### Stack tecnológica
 - [**GitHub**](https://github.com/build-systems/toolbox): Para o repositório Git.
 - [**Angular**](https://angular.dev/): Um framework JavaScript moderno apoiado pelo Google e usado para aplicações de grande escala.
 - [**ng2-charts**](https://www.npmjs.com/package/ng2-charts): Wrapper Angular para a biblioteca Chart.js. É usado para criar gráficos responsivos e interativos.
@@ -43,14 +43,14 @@ OtherLinks:
 ## Por que desenvolvemos este app?
 A Alemanha é conhecida por impulsionar tecnologias verdes, como painéis solares e turbinas eólicas, por meio de subsídios públicos. Mas você sabia que também existem muitos subsídios para construções energeticamente eficientes? Embora esses subsídios sejam atrativos, navegar pela burocracia pode ser incrivelmente desafiador.
 Este aplicativo desenvolvido pela [BuildSystems](https://buildsystems.de/) facilita a simulação de um empréstimo do banco nacional [KfW](https://kfw.de/). Ele simplifica o processo ao oferecer uma interface amigável, permitindo que incorporadores imobiliários e proprietários de imóveis entendam suas opções financeiras de forma rápida e fácil.
-## Processo de Desenvolvimento
+## Processo de desenvolvimento
 O desenvolvimento do aplicativo aconteceu em três fases principais: Planejamento e Design, Desenvolvimento Frontend, e Testes e Garantia de Qualidade.
-### Planejamento e Design
+### Planejamento e design
 Para começar o projeto, toda a equipe definiu os requisitos e variáveis para a lógica do aplicativo. Uma vez que isso foi definido, esbocei a arquitetura do frontend e a UI/UX.
 #### Lógica do aplicativo
 Daniel Dieren desenvolveu a lógica do aplicativo no Excel. Minha função era revisá-la, fazer engenharia reversa das fórmulas para garantir que tudo estivesse correto e sugerir melhorias. Esta etapa se sobrepôs a todo o processo de desenvolvimento de software porque, conforme avançávamos, percebíamos que podíamos adicionar mais informações relevantes.
 Criei uma documentação simples no Notion a partir do arquivo do Excel para entender cada fórmula completamente e facilitar a transferência para o TypeScript posteriormente.
-#### Arquitetura do Frontend
+#### Arquitetura do frontend
 Como a equipe já usa o [Figma](https://www.figma.com/), decidi permanecer dentro desse ecossistema. Então, usei o [FigJam](https://www.figma.com/figjam/) para esboçar um diagrama inicial de arquitetura de software, pensando em quais componentes seriam necessários e a relação entre eles.
 ![As rotas no topo se ramificam em cinco componentes Angular: as calculadoras Neubau e Sanierung, cada uma com formulários que alimentam um serviço que gera a saída (dashboard e gráficos) e uma ação de salvar; o Portfólio com uma lista Neubau e uma lista Sanierung; Perfil (alterar senha, excluir conta) e Configurações (alterar tema, alterar idioma). As duas ações de salvar gravam em um banco de dados compartilhado, do qual o Portfólio carrega os projetos salvos.](/assets/content/projects/kfw-funding-calculator-by-buildsystems/frontend-architecture.svg "Esboço da arquitetura do frontend: rotas, cinco componentes, banco de dados compartilhado")
 #### Design de UI e UX
@@ -77,7 +77,7 @@ As estratégias usadas para implementar os recursos também variaram ao longo do
 Isso, no entanto, acabou sendo uma decisão ruim de gerenciamento de produto, porque os recursos já estavam funcionando e, embora o código fosse um pouco confuso, alterar os internos não afetaria o usuário final de forma alguma. Então, para a segunda mudança, que está acontecendo para a segunda versão do aplicativo, não refatorarei o resto do código.
 Se você quiser saber mais sobre como estou implementando os formulários atualmente, confira [este artigo de Zoaib Khan](https://zoaibkhan.com/blog/how-to-use-signals-with-angular-forms/).
 
-### Testes e Garantia de Qualidade
+### Testes e garantia de qualidade
 Eu também mergulhei fundo no tópico de [testes unitários](https://en.m.wikipedia.org/wiki/Unit_testing) usando a ferramenta padrão [Karma](http://karma-runner.github.io/6.4/intro/how-it-works.html).
 Esse tipo de teste verifica pequenas partes (unidades) do software para garantir que cada uma funcione corretamente por si só. Infelizmente, porém, eu só consegui aprender isso em um estágio tardio, o que significou que tive que refatorar o código para permitir que os testes unitários funcionassem.
 Além disso, se eu tivesse que começar de novo, eu concentraria minhas energias em [testes de ponta a ponta](https://en.m.wikipedia.org/w/index.php?title=System_testing&diffonly=true) (E2E) usando [Cypress](https://docs.cypress.io/guides/overview/why-cypress). Este teste verifica todo o sistema simulando a interação do usuário, garantindo que os inputs e outputs correspondam à nossa devida diligência.

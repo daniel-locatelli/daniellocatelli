@@ -7,7 +7,7 @@ Tags:
   - Construção em madeira
   - Desenvolvimento de Software
   - BIM
-Category: Software Development
+Category: Desenvolvimento de software
 Organization:
   - Universidade de Ciências Aplicadas de Munique
   - Universidade de Ciências Aplicadas de Berna

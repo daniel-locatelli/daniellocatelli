@@ -8,7 +8,7 @@ Tags:
   - Software Development
   - Grasshopper3D
 Organization: "BuildSystems"
-Category: Software Development
+Category: Desenvolvimento de software
 DateStart: "2023-11-23"
 Director:
   - Martin Bittmann
