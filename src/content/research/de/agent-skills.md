@@ -88,7 +88,7 @@ Diese bleiben privat, weil sie kodieren, wie ich arbeite, und nicht, wie ein Wer
 
 ### Von dieser Website bereitgestellt
 
-Zwei weitere Skills laufen in die andere Richtung: Sie sind nicht für meinen Agenten, sondern für Ihren. Diese Website veröffentlicht unter `/.well-known/agent-skills/` **portfolio-content** (jede Seite als reines Markdown lesen, in drei Sprachen) und **portfolio-mcp** (Projekte, Forschung, Lehre, Publikationen und CV über den schreibgeschützten MCP-Server der Site abfragen), damit ein Agent, der hier landet, die Site lesen kann, ohne sie zu scrapen. Wie sie gebaut sind, steht auf der Seite [Portfolio-Website](/de/projects/portfolio-website).
+Zwei weitere Skills laufen in die andere Richtung: Sie sind nicht für meinen Agenten, sondern für Ihren. Diese Website veröffentlicht unter `/.well-known/agent-skills/` **portfolio-content** (jede Seite als reines Markdown lesen, in drei Sprachen) und **portfolio-mcp** (Projekte, Forschung, Lehre, Publikationen und CV über den schreibgeschützten MCP-Server der Site abfragen), damit ein Agent, der hier landet, die Site lesen kann, ohne sie zu scrapen. Wie sie gebaut sind, steht auf der Seite [daniellocatelli.com](/de/projects/portfolio-website).
 
 ## Matt Pococks Skills
 
@@ -110,7 +110,7 @@ Skills von Leuten, die ich nicht kenne, über die Community gefunden und behalte
 
 | Skill | Was er tut |
 | --- | --- |
-| **[Diagram Design](https://github.com/cathrynlavery/diagram-design)** | Diagramme in redaktioneller Qualität, etwa das Architekturdiagramm auf der Seite [Portfolio-Website](/de/projects/portfolio-website), von Cathryn Lavery |
+| **[Diagram Design](https://github.com/cathrynlavery/diagram-design)** | Diagramme in redaktioneller Qualität, etwa das Architekturdiagramm auf der Seite [daniellocatelli.com](/de/projects/portfolio-website), von Cathryn Lavery |
 | **[Superpowers](https://github.com/obra/superpowers)** | Die Prozessschicht unter allem anderen, vom Brainstorming bis zur Verifikation, von Jesse Vincent |
 | **frontend-design** | Eigenständiges, bewusstes UI-Design |
 

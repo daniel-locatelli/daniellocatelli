@@ -226,7 +226,7 @@ Software Development | Hochschule München, Berner Fachhochschule, Gumpp & Maier
 Tags: Holzbau, Softwareentwicklung, BIM
 DOKwood ist eine Webplattform zum Definieren, Prüfen, Versionieren und Austauschen mehrschichtiger Holzbau-Aufbauten. Als wissenschaftlicher Mitarbeiter an der Hochschule München habe ich an ihrer Normengrundlage, ihrem bSDD-Datenwörterbuch und ihren Schnittstellen zu Revit, Cadwork und MCP gearbeitet.
 
-### Portfolio-Website
+### daniellocatelli.com
 Software | Daniel Locatelli | April 2024 | /de/projects/portfolio-website
 Tags: Web Development, Astro, TypeScript, Claude, Cloudflare
 Diese Website: eine Astro-Seite, deren Inhalte als reines Markdown vorliegen, damit Claude Code als CMS fungieren kann, mit einem Claude-gestützten Chat, Essays, Folienpräsentationen im Browser und einer agentenfähigen Oberfläche auf Cloudflare.
@@ -365,7 +365,7 @@ Architekt verantwortlich für das Bühnenbild und die Trophäe.
 Architektur | Atelier Marko Brajovic | Paraty, Brasilien | April 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
 
 ### Itaú Rock in Rio
-Bühnenbild | Atelier Marko Brajovic | Archiviert, Brasilien | Februar 2019 – April 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Bühnenbild | Atelier Marko Brajovic | Rio de Janeiro, Brasilien | Februar 2019 – April 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
 
 ### BlastU 2019
 Computational Design | Atelier Marko Brajovic | Ibirapuera Biennale-Pavillon, Brasilien | Januar 2019 – August 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
@@ -389,7 +389,7 @@ Bühnenbild | Atelier Marko Brajovic | MIS - Museum für Bild und Ton, Brasilien
 ### Bar & Bühne Heineken von Atelier Marko Brajovic
 Computational Design | Atelier Marko Brajovic | Inhotim (MG), Maquiné (RS), Recife (PE), São Paulo (SP), Rio de Janeiro (RJ), Brasilien | Juni 2018 – November 2018 | /de/projects/bar-stage-heineken-by-atelier-marko-brajovic-for-sherpa42
 Tags: Parametric Design, Grasshopper, Bamboo
-Verantwortlicher Architekt für parametrisches Design, Produktion und Überwachung der Heineken-Bühne und Bar-Installationen beim MECA Festival 2018. Das Design nutzte den Heineken-Stern als Ausgangspunkt zur Erzeugung dynamischer Bambusoberflächen durch parametrische Software.
+Verantwortlicher Architekt für parametrisches Design, Produktion und Überwachung der Heineken-Bühne und Bar-Installationen beim MECA Festival 2018. Das Design ging vom Heineken-Stern aus: Mit parametrischer Software zeichneten wir aus den Kanten des Sterns dynamische Bambuskonturen.
 
 ### Life Lamp von Estúdio Guto Requena für Decimal
 Product design | Estudio Guto Requena | Mai 2018 – Mai 2018 | /de/projects/life-lamp-by-estudio-guto-requena-for-decimal

@@ -224,57 +224,57 @@ Trata-se de um estudo introdutório em torno das possibilidades da aplicação d
 ### DOKwood
 Desenvolvimento de software | Universidade de Ciências Aplicadas de Munique, Universidade de Ciências Aplicadas de Berna, Gumpp & Maier, Schärholzbau | Online | fevereiro de 2025 – junho de 2026 | /pt/projects/dokwood
 Tags: Construção em madeira, Desenvolvimento de Software, BIM
-O DOKwood é uma plataforma web para definir, verificar, versionar e trocar composições construtivas multicamadas em madeira. Como pesquisador associado na Hochschule München, trabalhei na sua base normativa, no seu dicionário de dados bSDD e nas suas interfaces com Revit, Cadwork e MCP.
+O DOKwood é uma plataforma web para definir, verificar, versionar e trocar composições construtivas multicamadas em madeira. Como pesquisador associado na Hochschule München, trabalhei na base normativa, no dicionário de dados bSDD e nas interfaces com Revit, Cadwork e MCP.
 
-### Site Portfólio
+### daniellocatelli.com
 Software | Daniel Locatelli | abril de 2024 | /pt/projects/portfolio-website
 Tags: Web Development, Astro, TypeScript, Claude, Cloudflare
-Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, ensaios, apresentações de slides no navegador e uma superfície pronta para agentes na Cloudflare.
+Este site: um site em Astro cujo conteúdo vive em markdown puro para que o Claude Code possa atuar como CMS, com um chat baseado no Claude, ensaios, apresentações de slides no navegador e uma camada pronta para agentes na Cloudflare.
 
 ### Plugin da BuildSystems para o Grasshopper
 Desenvolvimento de software | BuildSystems | novembro de 2023 | /pt/projects/buildsystems-plugin-for-grasshopper
 Tags: Software Development, Grasshopper3D
-Plugin desenvolvido para BuildSystems para criar componentes construtivos com base em Declarações Ambientais de Produtos (DAPs). A ideia foi oferecer dados de Análise de Ciclo de Vida (ACV) logo no início do processo de projeto.
+Plugin que desenvolvi para a BuildSystems para criar componentes construtivos a partir de Declarações Ambientais de Produto (DAPs). A ideia era oferecer dados de Avaliação do Ciclo de Vida (ACV) logo no início do processo de projeto.
 
-### Calculadora de financiamento imobiliário da BuildSystems
+### Calculadora de financiamento KfW da BuildSystems
 Desenvolvimento de software | BuildSystems | novembro de 2023 – julho de 2024 | /pt/projects/kfw-funding-calculator-by-buildsystems
 Tags: Software Development, Web Development
-Esta calculadora simula empréstimos e subsídios bancários, tornando construções e reformas sustentáveis acessíveis a incorporadores imobiliários e proprietários de imóveis.
+A calculadora simula empréstimos bancários e subsídios e torna construções e reformas sustentáveis mais acessíveis para incorporadoras e proprietários de imóveis.
 
-### BuildSystems Website
+### Site da BuildSystems
 Software | Online | agosto de 2023 – abril de 2026 | /pt/projects/buildsystems-website
 Tags: Web Development, Astro, Notion API, TypeScript
-Desenvolvimento do site da BuildSystems com o framework Astro, utilizando a API do Notion como CMS.
+Desenvolvi o site da BuildSystems com Astro, usando a API do Notion como CMS.
 
-### Criador de Componentes Circulares por BuildSystems
+### Circular Component Creator por BuildSystems
 Design UI/UX | BuildSystems GmbH | junho de 2023 – julho de 2023 | /pt/projects/circular-component-creator-by-buildsystems
 Tags: Design UI/UX, Figma, Construção Circular
-Estudo conceitual de design para um aplicativo web para navegar, filtrar e comparar componentes construtivos circulares. Desenvolvimento de mockups UI/UX no Figma e definição da arquitetura de dados.
+Estudo conceitual de design para um aplicativo web para navegar, filtrar e comparar componentes construtivos circulares. Desenvolvi os mockups de UI/UX no Figma e defini a arquitetura de dados.
 
 ### Ontologia BuildSystems
 Software | BuildSystems GmbH | Munique, Alemanha | março de 2023 – junho de 2023 | /pt/full-cv (listado apenas no currículo)
 Pesquisa sobre esquemas, modelos de objetos e bancos de dados.
 
-### Visualização de Dados com Power BI
+### Visualização de dados com Power BI
 Visualização de dados | BuildSystems GmbH | Munique, Alemanha | fevereiro de 2023 | /pt/full-cv (listado apenas no currículo)
-Desenvolvimento de um fluxo conectando dados do Grasshopper ao Power BI.
+Desenvolvi um fluxo de trabalho que conecta os dados do Grasshopper ao Power BI.
 
-### Configurador Urbano
+### Configurador urbano
 Design computacional | BuildSystems GmbH | Munique, Alemanha | janeiro de 2023 | /pt/full-cv (listado apenas no currículo)
-Desenvolvimento de um configurador Grasshopper para criar envelopes de edifícios.
+Desenvolvi um configurador no Grasshopper para gerar volumetrias de edifícios.
 
 ### AIDS
 Detalhamento | ArtEngineering GmbH | Em frente ao Stedelijk Museum Amsterdam, Países Baixos | setembro de 2022 | /pt/full-cv (listado apenas no currículo)
 Desenhos técnicos e de fabricação.
 
-### Pesquisa em Madeira
+### Pesquisa em madeira
 Pesquisa | Alfred Rein Ingenieure GmbH | Interno, Alemanha | agosto de 2022 | /pt/full-cv (listado apenas no currículo)
 Pesquisa de tecnologias de ponta para construção em madeira.
 
 ### Breathing earth sphere por ArtEngineering para Olafur Eliasson
 Fabricação digital | ArtEngineering GmbH | Jeolla do Sul, Coreia do Sul | julho de 2022 | /pt/projects/breathing-earth-sphere-by-artengineering-for-olafur-eliasson
 Tags: Computational Engineering, Structural Analysis, Digital Fabrication, Logistics, Grasshopper3D
-Olafur Eliasson comissionou a ArtEngineering para engenharia computacional, fabricação digital e logística.
+Olafur Eliasson contratou a ArtEngineering para a engenharia computacional, a fabricação digital e a logística.
 
 ### Um ciclo harmonioso de agoras interconectados
 Detalhamento | ArtEngineering GmbH | Azabudai Hills Gallery, Japão | julho de 2022 | /pt/full-cv (listado apenas no currículo)
@@ -283,22 +283,22 @@ Escultura de Olafur Eliasson. Apoio no detalhamento e prototipagem; logística p
 ### Common Sky por ArtEngineering para o Studio Other Spaces
 Fabricação digital | ArtEngineering GmbH | Buffalo, EUA | junho de 2022 – junho de 2022 | /pt/projects/common-sky-by-artengineering-for-studio-other-spaces
 Tags: Computational Engineering, Structural Analysis, Digital Fabrication, Logistics, Grasshopper3D
-Studio Other Spaces contratou ArtEngineering para desenvolver a parte de engenharia computacional, fabricação digital e logística. Quando cheguei, o projeto já estava em andamento. Foi esse mesmo projeto que garantiu minha posição na empresa Art Engineering. Inicialmente, precisavam de alguém que exportasse rapidamente cerca de 1,5 mil desenhos 2D do Rhino/Grasshopper para serem enviados para fabricação digital usando um cortador de plasma.
+O Studio Other Spaces contratou a ArtEngineering para a engenharia computacional, a fabricação digital e a logística. Quando cheguei, o projeto já estava em andamento. Foi esse projeto que me garantiu a vaga na ArtEngineering. No começo, precisavam de alguém para exportar rapidamente cerca de 1.500 desenhos 2D do Rhino/Grasshopper para o corte a plasma.
 
 ### ParaPivot
 Detalhamento | ArtEngineering GmbH | Arquivado | maio de 2022 | /pt/full-cv (listado apenas no currículo)
-Escultura de cinco metros, aço e pedra, de Studio Alicja Kwade. Detalhamento da estrutura.
+Escultura de aço e pedra, com cinco metros, do Studio Alicja Kwade. Detalhamento da estrutura.
 
 ### Canyon por ArtEngineering para Katharina Grosse
 Design computacional | ArtEngineering GmbH | Paris, França | janeiro de 2022 – fevereiro de 2022 | /pt/projects/canyon-by-artengineering-for-katharina-grosse
 Tags: Computational Design, Structural Analysis, Digital Fabrication, Grasshopper3D
-Para este projeto, Katharina Grosse escolheu esculpir com couro. O desafio aqui foi o de traduzir as tiras orgânicas de couro em chapas de aço dobradas. A solução foi usar uma estratégia já em uso na produção de barcos há milênios: superfícies desenvolvíveis.
+Para este projeto, Katharina Grosse escolheu esculpir com couro. O desafio era transformar as tiras orgânicas de couro em chapas de aço curvadas. A solução foi usar uma estratégia já em uso na produção de barcos há milênios: superfícies desenvolvíveis.
 
 ### Pavilhão Donum
 Detalhamento | ArtEngineering GmbH | Donum Estate, EUA | janeiro de 2022 | /pt/full-cv (listado apenas no currículo)
 Vertical Panorama Pavilion por Studio Other Spaces. Espaço de degustação de vinhos. Apoio no detalhamento.
 
-### ZERO Posto de Gasolina
+### Posto de gasolina ZERO
 Design computacional | Alfred Rein Ingenieure GmbH | Arquivado | dezembro de 2021 | /pt/full-cv (listado apenas no currículo)
 Tipologia de posto de gasolina. Renderização da proposta.
 
@@ -307,7 +307,7 @@ Detalhamento | ArtEngineering GmbH | Deserto do Qatar, Catar | outubro de 2021 |
 Instalações de arte de Olafur Eliasson. Detalhamento da estrutura de aço.
 
 ### Disney Wonder
-Detalhamento | Alfred Rein Ingenieure GmbH | Cruzeiro | setembro de 2021 – outubro de 2021 | /pt/full-cv (listado apenas no currículo)
+Detalhamento | Alfred Rein Ingenieure GmbH | Navio de cruzeiro | setembro de 2021 – outubro de 2021 | /pt/full-cv (listado apenas no currículo)
 Produção de desenhos para fabricação da membrana.
 
 ### Seilnetz Muttenz
@@ -315,7 +315,7 @@ Design computacional | Alfred Rein Ingenieure GmbH | Muttenz, Suíça | setembro
 Form-finding da estrutura de cabos e levantamento de quantidades.
 
 ### Membranaustausch
-Detalhamento | Alfred Rein Ingenieure GmbH | Schlosses Neuwildenstein, Suíça | julho de 2021 | /pt/full-cv (listado apenas no currículo)
+Detalhamento | Alfred Rein Ingenieure GmbH | Castelo Neuwildenstein, Suíça | julho de 2021 | /pt/full-cv (listado apenas no currículo)
 Desenhos mecânicos e renderização da fachada.
 
 ### MVV Überdachung Vorplatz
@@ -325,7 +325,7 @@ Form-finding de estruturas de membrana usando Kangaroo 2.
 ### Radom Raisting por AR Ingenieure
 Membranas | AR Ingenieure | Raisting, Alemanha | março de 2021 – maio de 2021 | /pt/projects/radom-raisting-by-ar-ingenieure
 Tags: Computational Design, Structural Analysis, Logistics, Grasshopper3D
-Simulação da implantação e prevenção de colisões para um radomo inflável de 48,8m de diâmetro que protege uma antena parabólica na estação terrestre de Raisting.
+Simulação da montagem, sem colisões, de um radomo inflável de 48,8m de diâmetro que protege uma antena parabólica na estação terrestre de Raisting.
 
 ### Padrão de corte automatizado
 Design computacional | Alfred Rein Ingenieure GmbH | Interno, Alemanha | fevereiro de 2021 – junho de 2021 | /pt/full-cv (listado apenas no currículo)
@@ -341,27 +341,27 @@ Desenhos mecânicos e renderização da fachada.
 
 ### Witterungsschutz Römermauer
 Arquitetura | Alfred Rein Ingenieure GmbH | Wiesbaden, Alemanha | janeiro de 2021 | /pt/full-cv (listado apenas no currículo)
-Coordenação do projeto, cobertura de membrana integrando a paisagem.
+Coordenação do projeto, cobertura de membrana integrada à paisagem.
 
-### Bobinamento de filamento de carbono
+### Enrolamento filamentar de fibra de carbono
 Fotogrametria | ICD/ITKE Universidade de Stuttgart | ICD, Alemanha | julho de 2020 | /pt/full-cv (listado apenas no currículo)
-Investigação de gêmeos digitais para bobinamento de fibra de carbono em pequena escala.
+Estudo de gêmeos digitais para o enrolamento filamentar de fibra de carbono em pequena escala.
 
 ### Assistente de pesquisa no ICD como designer computacional
 Design computacional | ICD - University of Stuttgart | Stuttgart, Alemanha | março de 2020 – abril de 2020 | /pt/projects/icd-research-assistant-as-computational-designer
 Tags: Computational Design, Grasshopper3D
 Foi interessante entender a estratégia computacional para gerar a geometria de uma placa de madeira laminada cruzada autocurvante. O truque aqui é trabalhar com cilindros porque a curvatura natural da madeira acontece perpendicularmente à direção das fibras.
 
-### Assistente de Pesquisa em Desenvolvimento Web no ICD
+### Assistente de pesquisa em desenvolvimento web no ICD
 Desenvolvimento web | ICD - University of Stuttgart | dezembro de 2019 – outubro de 2020 | /pt/projects/icd-research-assistant-in-web-development
 Tags: Web Development
-Ajudei a migrar o site do ICD para o template centralizado da Universidade de Stuttgart baseado em OpenCMS. Este projeto me proporcionou meu primeiro contato com a língua alemã e uma profunda admiração pelo portfólio de pesquisa do ICD.
+Ajudei a migrar o site do ICD para o template padrão da Universidade de Stuttgart, em OpenCMS. Foi com esse projeto que tive meu primeiro contato com o alemão e passei a admirar profundamente as pesquisas do ICD.
 
 ### Prêmio Casa e Jardim 2019
 Design computacional | Atelier Marko Brajovic | Pinacoteca de São Paulo, Brasil | junho de 2019 | /pt/full-cv (listado apenas no currículo)
 Arquiteto responsável pelo palco e troféu.
 
-### Ita House
+### Casa Ita
 Arquitetura | Atelier Marko Brajovic | Paraty, Brasil | abril de 2019 | /pt/full-cv (listado apenas no currículo)
 
 ### Itaú Rock in Rio
@@ -371,7 +371,7 @@ Cenografia | Atelier Marko Brajovic | Rio de Janeiro, Brasil | fevereiro de 2019
 Design computacional | Atelier Marko Brajovic | Pavilhão da Bienal do Ibirapuera, Brasil | janeiro de 2019 – agosto de 2019 | /pt/full-cv (listado apenas no currículo)
 Arquiteto responsável pelo projeto e supervisão.
 
-### Embraer Pavilion
+### Pavilhão Embraer
 Arquitetura | Atelier Marko Brajovic | Paris, França | janeiro de 2019 | /pt/full-cv (listado apenas no currículo)
 
 ### Camper Thailand
@@ -381,7 +381,7 @@ Design computacional | Atelier Marko Brajovic | Tailândia | dezembro de 2018 | 
 Arquitetura | Atelier Marko Brajovic | Rio de Janeiro, Brasil | novembro de 2018 – dezembro de 2018 | /pt/full-cv (listado apenas no currículo)
 
 ### The First Blow
-Instalação | Atelier Marko Brajovic | T3 Aeroporto Internacional de Guarulhos, Brasil | novembro de 2018 | /pt/full-cv (listado apenas no currículo)
+Design computacional | Atelier Marko Brajovic | T3 Aeroporto Internacional de Guarulhos, Brasil | novembro de 2018 | /pt/full-cv (listado apenas no currículo)
 
 ### Hitchcock
 Cenografia | Atelier Marko Brajovic | MIS - Museu da Imagem e do Som, Brasil | julho de 2018 – outubro de 2018 | /pt/full-cv (listado apenas no currículo)
@@ -389,12 +389,12 @@ Cenografia | Atelier Marko Brajovic | MIS - Museu da Imagem e do Som, Brasil | j
 ### Bar & Palco Heineken por Atelier Marko Brajovic
 Design computacional | Atelier Marko Brajovic | Inhotim (MG), Maquiné (RS), Recife (PE), São Paulo (SP), Rio de Janeiro (RJ), Brasil | junho de 2018 – novembro de 2018 | /pt/projects/bar-stage-heineken-by-atelier-marko-brajovic-for-sherpa42
 Tags: Parametric Design, Grasshopper, Bamboo
-Arquiteto responsável pelo design paramétrico, produção e supervisão das instalações do palco e bar Heineken no MECA Festival 2018. O projeto utilizou a estrela da Heineken como ponto de partida para gerar superfícies dinâmicas de bambu através de software paramétrico.
+Arquiteto responsável pelo design paramétrico, produção e supervisão das instalações do palco e bar Heineken no MECA Festival 2018. O projeto partiu da estrela da Heineken: com software paramétrico, desenhamos contornos dinâmicos de bambu a partir das arestas da estrela.
 
 ### Life Lamp por Estúdio Guto Requena para Decimal
 Design de produto | Estudio Guto Requena | maio de 2018 – maio de 2018 | /pt/projects/life-lamp-by-estudio-guto-requena-for-decimal
 Tags: Computational Design, Grasshopper3D, Emotional Design
-O processo de design é um híbrido entre uma abordagem de cima para baixo e de baixo para cima. Trabalhamos tanto com modelos 3D predefinidos em forma de coração como base de design quanto com modelagem baseada em agentes, amplamente explorada por Craig Reynolds na década de 1980. A parte de programação foi desenvolvida usando Grasshopper 3D, o plugin Culebra v2.0 de duas semanas para a modelagem baseada em agente em conjunto com o plugin Firefly para capturar os batimentos cardíacos. Este trabalho tornou-se posteriormente um paper apresentado na eCAADe 2020.
+O processo de design é um híbrido entre uma abordagem de cima para baixo e de baixo para cima. Trabalhamos tanto com modelos 3D predefinidos em forma de coração como base de design quanto com modelagem baseada em agentes, amplamente explorada por Craig Reynolds na década de 1980. A parte de programação foi desenvolvida usando Grasshopper 3D, o plugin Culebra v2.0, lançado havia duas semanas, para a modelagem baseada em agentes, junto com o plugin Firefly para capturar os batimentos cardíacos. Mais tarde, o trabalho virou um artigo apresentado no eCAADe 2020.
 
 ### Air Guitar por Atelier Marko Brajovic para Nike
 Instalação | Atelier Marko Brajovic | São Paulo, Brasil | março de 2018 – abril de 2018 | /pt/projects/air-guitar-by-atelier-marko-brajovic-for-nike
@@ -409,23 +409,23 @@ Design de produto | Atelier Marko Brajovic | junho de 2017 | /pt/full-cv (listad
 
 ### Casa Margarita
 Arquitetura | Freelance | São Paulo, Brasil | junho de 2017 – agosto de 2017 | /pt/full-cv (listado apenas no currículo)
-Reforma de uma casa de classe média.
+Reforma completa de uma casa de classe média.
 
 ### Pavilhão O3 por Atelier Marko Brajovic para Docol
 Arquitetura computacional | Atelier Marko Brajovic | São Paulo, Brasil | fevereiro de 2017 – março de 2017 | /pt/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol
 Tags: Computational Design, Grasshopper3D, Logistics
-O Pavilhão O3 foi idealizado pelo Atelier Marko Brajovic na mesma época em que eu dava meus primeiros passos no mundo do design computacional. Eu tinha acabado de me formar na FAU-USP com uma tese onde aprendi todas as ferramentas necessárias para finalizar esse pavilhão: Rhino, Grasshopper 3D e Kangaroo Physics.
+O Pavilhão O3 foi idealizado pelo Atelier Marko Brajovic na mesma época em que eu dava meus primeiros passos no mundo do design computacional. Eu tinha acabado de me formar na FAU-USP com um TFG no qual aprendi todas as ferramentas necessárias para finalizar esse pavilhão: Rhino, Grasshopper 3D e Kangaroo Physics.
 
 ### Restaurante Homa
 Arquitetura | Atelier Marko Brajovic | Pinheiros, Brasil | janeiro de 2017 – dezembro de 2017 | /pt/full-cv (listado apenas no currículo)
 
 ### Live Talks
-Cenografia | Atelier Marko Brajovic | São Paulo, Brasil | outubro de 2016 | /pt/full-cv (listado apenas no currículo)
+Design computacional | Atelier Marko Brajovic | São Paulo, Brasil | outubro de 2016 | /pt/full-cv (listado apenas no currículo)
 
 ### Parada Coca-Cola por Atelier Marko Brajovic
 Instalação | Atelier Marko Brajovic | Rio de Janeiro, Brasil | agosto de 2016 | /pt/projects/parada-coca-cola-by-atelier-marko-brajovic
 Tags: Computational Design, Grasshopper3D, Logistics
-Parada Coca-Cola foi o primeiro projeto em que apliquei design computacional. Esta experiência sensorial foi inspirada na garrafa de Coca-Cola, imitando as bolhas e as cores da bebida.
+A Parada Coca-Cola foi o primeiro projeto em que apliquei design computacional. Esta experiência sensorial foi inspirada na garrafa de Coca-Cola, imitando as bolhas e as cores da bebida.
 
 ### Le Sandwich
 Arquitetura | Freelance | São Paulo, Brasil | junho de 2016 – julho de 2016 | /pt/full-cv (listado apenas no currículo)

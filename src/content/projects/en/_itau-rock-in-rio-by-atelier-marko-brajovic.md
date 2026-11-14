@@ -5,6 +5,6 @@ DateEnd: "2019-04-01"
 Organization: "Atelier Marko Brajovic"
 Category: Scenic design
 City:
-  - Archived
+  - Rio de Janeiro
 Country: "Brazil"
 ---

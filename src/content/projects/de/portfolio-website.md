@@ -1,7 +1,7 @@
 ---
 Cover: /assets/content/projects/portfolio-website/homepage-screenshot-laptop.png
 CoverAlt: "Die Startseite von daniellocatelli.com auf einem Laptop."
-Name: Portfolio-Website
+Name: daniellocatelli.com
 Description: "Diese Website: eine Astro-Seite, deren Inhalte als reines Markdown vorliegen, damit Claude Code als CMS fungieren kann, mit einem Claude-gestützten Chat, Essays, Folienpräsentationen im Browser und einer agentenfähigen Oberfläche auf Cloudflare."
 DateStart: "2024-04-27"
 Updated: "2026-11-11"

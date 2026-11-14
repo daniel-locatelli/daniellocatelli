@@ -46,7 +46,10 @@ import Figure from '@/components/Figure.astro'
 © Vídeo de [Eduardo Ohara](https://www.eduardoohara.com/)
 
 ## Conceito
-> Em homenagem à celebração do Air Max Day, o Atelier Marko Brajovic desenvolveu a instalação site-specific Air Guitar.
+> A coluna metálica conecta o subsolo da cidade à cobertura suspensa e funciona praticamente como uma antena, captando as vibrações da cidade e os campos magnéticos potencializados pelo edifício.
+A obra transforma o elemento arquitetônico em um instrumento musical, para ser tocado pelo público e pela cidade. Uma interface híbrida que gera uma polifonia sensorial entre o metabolismo urbano e as pessoas por meio da vibração do ar.
+
+*Atelier Marko Brajovic*
 
 O Atelier Marko Brajovic desenvolveu esta instalação para celebrar o Air Max Day. Neste projeto, trabalhei de perto com o Marko, dando ideias e apontando onde eu via potencial para uma instalação na [Red Bull Station](https://triptyque.com/en/projeto/redbull-station/). O prédio, recém-reformado, tinha sido uma usina de energia e virou sobretudo um laboratório de música, mas também tinha espaço para outras explorações de arte e tecnologia.
 O Air Max Day foi sobre celebrar os antigos e novos tênis Air Max, ao mesmo tempo em que conectava a Nike com a Red Bull. Essencialmente, era sobre interfaces, mais especificamente interfaces entre o antigo e o novo, design e música.
@@ -54,7 +57,7 @@ Marko desenvolveu dois conceitos, um envolvendo infláveis e o Air Guitar. O pri
 Durante a reunião com a agência de marketing, eles ficaram super animados com a instalação, mas acharam que faltava algo. Foi então que sugeri os LEDs endereçáveis.
 
 <Figure credit={{ name: "Eduardo Ohara", href: "https://www.eduardoohara.com/" }}>
-  ![Três fotos de usuários tocando a guitarra.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/three-photos-of-users-playing-the-guitar.jpeg)
+  ![Três fotos de visitantes tocando a guitarra.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/three-photos-of-users-playing-the-guitar.jpeg)
 </Figure>
 
 ## Desenvolvimento
@@ -66,7 +69,7 @@ Eu também pensei em usar um microfone, mas a sugestão do Lucas de usar captado
 
 <Video src="/media/projects/air-guitar-by-atelier-marko-brajovic-for-nike/first-pickup-test.mp4" caption="Primeiro teste: verificar se um captador captaria a vibração do cabo de aço." />
 
-Inicialmente o conceito era ter os LEDs e os cabos de aço cobrindo toda a altura do pilar. Mas pra fazer isso nós precisaríamos de alguém com licença e equipamento de escalada, o que infelizmente não conseguimos encontrar a tempo, então ficamos limitados à altura que uma plataforma elevatória de trabalho poderia atingir.
+Inicialmente o conceito era ter os LEDs e os cabos de aço cobrindo toda a altura do pilar. Mas, para isso, precisaríamos de alguém com licença e equipamento de escalada, o que infelizmente não conseguimos encontrar a tempo, então ficamos limitados à altura que uma plataforma elevatória de trabalho poderia atingir.
 
 <ImageRow>
   ![Lucas e a plataforma elevatória](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/lucas-and-the-work-platform-lift.jpg)
@@ -77,7 +80,7 @@ Inicialmente o conceito era ter os LEDs e os cabos de aço cobrindo toda a altur
 ### Interatividade
 Cada um dos quatro captadores envia um sinal analógico para o seu próprio Arduino Mega, que transforma esse valor em sinal digital e acende um número específico de LEDs.
 Em teoria, é bem simples, mas na realidade, me fez mergulhar de cabeça na eletrônica, até eu empacar. Montei este circuito, mas, por algum motivo, ele não funcionava direito. O evento estava se aproximando, e a equipe estava ficando ansiosa.
-Uma semana antes do evento, entrei em contato com outro cara, André Biagioni da [Fiozeira](https://fiozera.com.br/). Felizmente, ele concordou em participar. Ele disse que faltava um filtro no circuito e terminou o trabalho. Ele também fez um diagrama do circuito e ajudou na montagem.
+Uma semana antes do evento, entrei em contato com outro cara, André Biagioni da [Fiozeira](https://fiozera.com.br/). Felizmente, ele concordou em participar. Ele viu que faltava um filtro no circuito, terminou o trabalho, desenhou o diagrama e ajudou na montagem.
 
 ![Diagrama de circuito eletrônico.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/electronic-circuit-diagram.jpeg)
 ```cpp
@@ -162,12 +165,12 @@ void loop(){
 ```
 ![Foto da caixa de controle: oito fontes de alimentação, quatro Arduino Mega e espaço para uma bateria de emergência.](../../../assets/content/projects/air-guitar-by-atelier-marko-brajovic-for-nike/control-box.jpg "Caixa de controle, o papel branco representa o espaço restante para a bateria de emergência.")
 ### Depois do Air Max Day
-O pessoal da Red Bull Station gostou tanto da instalação que pediu para mantê-la lá por um mês inteiro. Nesse período, eu ia lá com frequência para conferir se tudo funcionava como esperado. Durante esse tempo, alguns dos LEDs pararam de funcionar no topo da instalação, o que seria muito complicado de substituir. O visual não ficou bom porque perdeu aquela continuidade, parecia que a instalação estava banguela. Então, em vez de substituir os LEDs, eu apenas desliguei os 10 LEDs de cima diretamente no código do Arduino.
+O pessoal da Red Bull Station gostou tanto da instalação que pediu para deixar a instalação lá por um mês inteiro. Nesse período, eu ia lá com frequência para conferir se tudo funcionava como esperado. Durante esse tempo, alguns dos LEDs pararam de funcionar no topo da instalação, o que seria muito complicado de substituir. O visual não ficou bom porque perdeu aquela continuidade, parecia que a instalação estava banguela. Então, em vez de substituir os LEDs, eu apenas desliguei os 10 LEDs de cima diretamente no código do Arduino.
 ### Aprendizados
 Não havia componentes soldados, um erro crasso. Todos os componentes ainda usavam os cabos e conexões de prototipagem do Arduino em breadboards.
-O evento estava lotado, até mesmo com fila do lado de fora. Em algum momento durante o evento a guitarra simplesmente parou de funcionar. Eu tive um mini ataque cardíaco! Lembro claramente até hoje, eu estava na cobertura da Red Bull Station, já no meu terceiro drink, quando me contaram do problema. Fui correndo pelas escadas até chegar na parte posterior do pilar, onde estava a caixa de controle. Desliguei tudo, liguei e… Phew! Alívio! A instalação começou a funcionar novamente.
+O evento estava lotado, até mesmo com fila do lado de fora. Em algum momento durante o evento a guitarra simplesmente parou de funcionar. Quase tive um infarto! Lembro claramente até hoje, eu estava na cobertura da Red Bull Station, já no meu terceiro drink, quando me contaram do problema. Fui correndo pelas escadas até chegar na parte posterior do pilar, onde estava a caixa de controle. Desliguei tudo, liguei e… Phew! Alívio! A instalação começou a funcionar novamente.
 Aprendi muito, mas teria me poupado muita dor de cabeça se tivesse contratado um especialista desde o começo, testado a instalação uma semana antes da entrega e soldado todas as conexões.
-Outra coisa que não esqueço foram os cabos. Exigiu cabos mais longos e grossos do que eu esperava, os LEDs consomem muita energia e precisam de dois cabos para cada tira de LED. Eles precisam ser alimentados na parte inferior e também no meio, caso contrário, os LEDs ficariam mais fracos na metade superior.
-A instalação também exigiu duas fontes de alimentação do tamanho de tijolos para cada configuração Captador-Arduino-LED, ou seja oito fontes de alimentação no total (veja foto acima).
+Outra coisa que não esqueço foram os cabos. Precisei de cabos mais longos e grossos do que esperava, porque os LEDs consomem muita energia e precisam de dois cabos para cada tira de LED. Eles precisam ser alimentados na parte inferior e também no meio, caso contrário, os LEDs ficariam mais fracos na metade superior.
+A instalação também exigiu duas fontes de alimentação do tamanho de tijolos para cada conjunto captador-Arduino-LED, ou seja, oito fontes de alimentação no total (veja foto acima).
 
 <YouTube id="odFFIfzDSzE" title="Instalação Air Guitar Nike, imagens adicionais" />

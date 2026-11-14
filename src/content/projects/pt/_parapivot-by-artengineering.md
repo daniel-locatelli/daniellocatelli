@@ -1,6 +1,6 @@
 ---
 Name: ParaPivot
-Description: "Escultura de cinco metros, aço e pedra, de Studio Alicja Kwade. Detalhamento da estrutura."
+Description: "Escultura de aço e pedra, com cinco metros, do Studio Alicja Kwade. Detalhamento da estrutura."
 DateStart: "2022-05-01"
 Organization: "ArtEngineering GmbH"
 Category: Detalhamento

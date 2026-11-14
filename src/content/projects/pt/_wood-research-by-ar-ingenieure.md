@@ -1,5 +1,5 @@
 ---
-Name: Pesquisa em Madeira
+Name: Pesquisa em madeira
 Description: Pesquisa de tecnologias de ponta para construção em madeira.
 DateStart: "2022-08-01"
 Organization: "Alfred Rein Ingenieure GmbH"

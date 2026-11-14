@@ -2,7 +2,7 @@
 Name: The First Blow
 DateStart: "2018-11-01"
 Organization: "Atelier Marko Brajovic"
-Category: Instalação
+Category: Design computacional
 City:
   - T3 Aeroporto Internacional de Guarulhos
 Country: "Brasil"

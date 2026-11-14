@@ -5,6 +5,6 @@ DateStart: "2021-07-01"
 Organization: "Alfred Rein Ingenieure GmbH"
 Category: Detalhamento
 City:
-  - Schlosses Neuwildenstein
+  - Castelo Neuwildenstein
 Country: "Suíça"
 ---

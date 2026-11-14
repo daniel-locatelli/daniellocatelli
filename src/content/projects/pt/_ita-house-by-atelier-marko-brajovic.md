@@ -1,5 +1,5 @@
 ---
-Name: Ita House
+Name: Casa Ita
 DateStart: "2019-04-01"
 Organization: "Atelier Marko Brajovic"
 Category: Arquitetura

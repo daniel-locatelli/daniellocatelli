@@ -88,7 +88,7 @@ These stay private because they encode how I work rather than how a tool works. 
 
 ### Served by this website
 
-Two more skills run the other way: they are not for my agent but for yours. This site publishes **portfolio-content** (read any page as plain markdown, in three languages) and **portfolio-mcp** (query projects, research, teaching, publications, and CV through the site's read-only MCP server) under `/.well-known/agent-skills/`, so an agent that lands here knows how to read the site without scraping it. How they are built is described on the [portfolio website](/projects/portfolio-website) page.
+Two more skills run the other way: they are not for my agent but for yours. This site publishes **portfolio-content** (read any page as plain markdown, in three languages) and **portfolio-mcp** (query projects, research, teaching, publications, and CV through the site's read-only MCP server) under `/.well-known/agent-skills/`, so an agent that lands here knows how to read the site without scraping it. How they are built is described on the [daniellocatelli.com](/projects/portfolio-website) page.
 
 ## Matt Pocock's skills
 
@@ -110,7 +110,7 @@ Skills written by people I do not know, found through the community and kept bec
 
 | Skill | What it does |
 | --- | --- |
-| **[Diagram Design](https://github.com/cathrynlavery/diagram-design)** | Editorial-quality diagrams, such as the architecture diagram on the [portfolio website](/projects/portfolio-website) page, by Cathryn Lavery |
+| **[Diagram Design](https://github.com/cathrynlavery/diagram-design)** | Editorial-quality diagrams, such as the architecture diagram on the [daniellocatelli.com](/projects/portfolio-website) page, by Cathryn Lavery |
 | **[Superpowers](https://github.com/obra/superpowers)** | The process layer under everything else, from brainstorming to verification, by Jesse Vincent |
 | **frontend-design** | Distinctive, intentional UI design |
 

@@ -1,8 +1,8 @@
 ---
 Cover: /assets/content/projects/icd-research-assistant-in-web-development/homepage-screenshot-laptop.png
 CoverAlt: "Página inicial do site do ICD exibida em um laptop, com o Pavilhão de Fibra BUGA."
-Description: "Ajudei a migrar o site do ICD para o template centralizado da Universidade de Stuttgart baseado em OpenCMS. Este projeto me proporcionou meu primeiro contato com a língua alemã e uma profunda admiração pelo portfólio de pesquisa do ICD."
-Name: "Assistente de Pesquisa em Desenvolvimento Web no ICD"
+Description: "Ajudei a migrar o site do ICD para o template padrão da Universidade de Stuttgart, em OpenCMS. Foi com esse projeto que tive meu primeiro contato com o alemão e passei a admirar profundamente as pesquisas do ICD."
+Name: "Assistente de pesquisa em desenvolvimento web no ICD"
 Tags:
  - Web Development
 Organization: "ICD - University of Stuttgart"
@@ -23,19 +23,19 @@ Link:
 Disclosed: true
 ---
 
-A Universidade de Stuttgart estava implementando um template padronizado em OpenCMS para todos os seus institutos e departamentos. Isso significava pegar o site existente do ICD, rico em anos de projetos de pesquisa, publicações, documentação de pavilhões e perfis da equipe, e reestruturar tudo para se adequar ao layout e modelo de conteúdo do novo template.
+A Universidade de Stuttgart estava implementando um template padronizado em OpenCMS para todos os seus institutos e departamentos. Na prática, era preciso pegar o site atual do ICD, com anos de projetos de pesquisa, publicações, documentação de pavilhões e perfis da equipe, e reorganizar tudo para caber no layout e no modelo de conteúdo do novo template.
 
-O trabalho foi metódico: página por página, migrei textos, imagens e metadados do sistema antigo para a nova estrutura do CMS. Cada projeto de pesquisa precisava ter sua descrição reformatada, suas imagens reenviadas nas dimensões corretas e seus metadados (autores, datas, tags) devidamente categorizados dentro dos tipos de conteúdo do OpenCMS.
+O trabalho foi metódico: página por página, migrei textos, imagens e metadados do sistema antigo para a nova estrutura do CMS. Em cada projeto de pesquisa, era preciso reformatar a descrição, reenviar as imagens nas dimensões certas e classificar os metadados (autores, datas, tags) nos tipos de conteúdo do OpenCMS.
 
 ![Página inicial do site do ICD com o Pavilhão de Fibra BUGA.](../../../assets/content/projects/icd-research-assistant-in-web-development/icd-website-homepage-buga-fibre-pavilion.jpg)
 
-## Aprendendo alemão através da pesquisa
+## Aprender alemão com a pesquisa
 
-O que tornou este projeto pessoalmente especial foi a imersão linguística inesperada. Muitas das descrições de projetos, press releases e páginas administrativas do ICD existiam em alemão. Como brasileiro que havia acabado de chegar à Alemanha para o mestrado, me vi traduzindo e adaptando textos em alemão diariamente, não de um livro didático, mas de documentação real de pesquisa sobre construção em madeira, fabricação robótica e estruturas biomiméticas.
+O que tornou este projeto especial para mim foi a imersão inesperada no idioma. Muitas das descrições de projetos, press releases e páginas administrativas do ICD existiam em alemão. Como brasileiro que havia acabado de chegar à Alemanha para o mestrado, me vi traduzindo e adaptando textos em alemão diariamente, não de um livro didático, mas de documentação real de pesquisa sobre construção em madeira, fabricação robótica e estruturas biomiméticas.
 
 
 ## Aprendizados
 
-Este projeto pode parecer modesto comparado à fabricação robótica ou à geração de formas computacionais, mas me ensinou algo valioso: a importância de como a pesquisa é comunicada. O pavilhão mais inovador ou o método de fabricação mais revolucionário significa pouco se não puder ser encontrado, compreendido e referenciado por outros. Um bom gerenciamento de conteúdo é a infraestrutura que torna o conhecimento acessível.
+Este projeto pode parecer modesto comparado à fabricação robótica ou à busca computacional da forma, mas me ensinou algo valioso: a importância de como a pesquisa é comunicada. O pavilhão mais inovador ou o método de fabricação mais revolucionário vale pouco se ninguém conseguir encontrá-lo, entendê-lo e citá-lo. Um bom gerenciamento de conteúdo é a infraestrutura que torna o conhecimento acessível.
 
-Foi também minha primeira experiência profissional trabalhando com um CMS, uma habilidade que mais tarde se mostraria fundamental quando construí o site da BuildSystems com Astro e a API do Notion, e eventualmente este próprio site de portfólio.
+Foi também minha primeira experiência profissional com um CMS, algo que depois seria fundamental quando desenvolvi o site da BuildSystems com Astro e a API do Notion e, mais tarde, este portfólio.

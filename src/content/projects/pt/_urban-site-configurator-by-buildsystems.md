@@ -1,6 +1,6 @@
 ---
-Name: Configurador Urbano
-Description: Desenvolvimento de um configurador Grasshopper para criar envelopes de edifícios.
+Name: Configurador urbano
+Description: Desenvolvi um configurador no Grasshopper para gerar volumetrias de edifícios.
 DateStart: "2023-01-01"
 Organization: "BuildSystems GmbH"
 Category: Design computacional

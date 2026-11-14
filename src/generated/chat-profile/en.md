@@ -226,7 +226,7 @@ Software Development | Munich University of Applied Sciences, Bern University of
 Tags: Timber construction, Software Development, BIM
 DOKwood is a web platform for defining, verifying, versioning and exchanging multilayer timber buildups. As research associate at Hochschule München I worked on its standards foundation, its bSDD data dictionary, and its Revit, Cadwork and MCP interfaces.
 
-### Portfolio Website
+### daniellocatelli.com
 Software | Daniel Locatelli | April 2024 | /projects/portfolio-website
 Tags: Web Development, Astro, TypeScript, Claude, Cloudflare
 This website: an Astro site whose content lives as plain markdown so that Claude Code can act as the CMS, with a Claude-powered chat, essays, in-browser slide decks, and an agent-ready surface on Cloudflare.
@@ -365,7 +365,7 @@ Architect in charge of the stage design and trophy.
 Architecture | Atelier Marko Brajovic | Paraty, Brazil | April 2019 | /full-cv (listed on the CV only)
 
 ### Itaú Rock in Rio
-Scenic design | Atelier Marko Brajovic | Archived, Brazil | February 2019 – April 2019 | /full-cv (listed on the CV only)
+Scenic design | Atelier Marko Brajovic | Rio de Janeiro, Brazil | February 2019 – April 2019 | /full-cv (listed on the CV only)
 
 ### BlastU 2019
 Computational Design | Atelier Marko Brajovic | Ibirapuera bienal pavilion, Brazil | January 2019 – August 2019 | /full-cv (listed on the CV only)
@@ -389,7 +389,7 @@ Scenic design | Atelier Marko Brajovic | MIS - Museum of Image and Sound, Brazil
 ### Bar & Stage Heineken by Atelier Marko Brajovic
 Computational Design | Atelier Marko Brajovic | Inhotim (MG), Maquiné (RS), Recife (PE), São Paulo (SP), Rio de Janeiro (RJ), Brazil | June 2018 – November 2018 | /projects/bar-stage-heineken-by-atelier-marko-brajovic-for-sherpa42
 Tags: Parametric Design, Grasshopper, Bamboo
-Architect in charge of the parametric design, production and supervision of the Heineken stage and bar installations at the MECA Festival 2018. The design used the Heineken star as the starting point for generating dynamic bamboo surfaces through parametric software.
+Architect in charge of the parametric design, production and supervision of the Heineken stage and bar installations at the MECA Festival 2018. The design started from the Heineken star: with parametric software, we drew dynamic bamboo outlines from the star's edges.
 
 ### Life Lamp by Estúdio Guto Requena for Decimal
 Product design | Estudio Guto Requena | May 2018 – May 2018 | /projects/life-lamp-by-estudio-guto-requena-for-decimal

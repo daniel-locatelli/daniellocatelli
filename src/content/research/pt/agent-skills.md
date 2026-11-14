@@ -88,7 +88,7 @@ Estas permanecem privadas porque codificam como eu trabalho, e não como uma fer
 
 ### Servidas por este site
 
-Mais duas skills funcionam no sentido inverso: não são para o meu agente, mas para o seu. Este site publica **portfolio-content** (ler qualquer página como markdown simples, em três línguas) e **portfolio-mcp** (consultar projetos, pesquisa, ensino, publicações e CV através do servidor MCP somente leitura do site) em `/.well-known/agent-skills/`, para que um agente que chegue aqui saiba ler o site sem o raspar. Como são construídas está descrito na página do [site do portfólio](/pt/projects/portfolio-website).
+Mais duas skills funcionam no sentido inverso: não são para o meu agente, mas para o seu. Este site publica **portfolio-content** (ler qualquer página como markdown simples, em três línguas) e **portfolio-mcp** (consultar projetos, pesquisa, ensino, publicações e CV através do servidor MCP somente leitura do site) em `/.well-known/agent-skills/`, para que um agente que chegue aqui saiba ler o site sem o raspar. Como são construídas está descrito na página [daniellocatelli.com](/pt/projects/portfolio-website).
 
 ## Skills do Matt Pocock
 
@@ -110,7 +110,7 @@ Skills escritas por pessoas que não conheço, encontradas na comunidade e manti
 
 | Skill | O que faz |
 | --- | --- |
-| **[Diagram Design](https://github.com/cathrynlavery/diagram-design)** | Diagramas de qualidade editorial, como o diagrama de arquitetura da página do [site do portfólio](/pt/projects/portfolio-website), de Cathryn Lavery |
+| **[Diagram Design](https://github.com/cathrynlavery/diagram-design)** | Diagramas de qualidade editorial, como o diagrama de arquitetura da página [daniellocatelli.com](/pt/projects/portfolio-website), de Cathryn Lavery |
 | **[Superpowers](https://github.com/obra/superpowers)** | A camada de processo abaixo de tudo, do brainstorming à verificação, de Jesse Vincent |
 | **frontend-design** | Design de UI distinto e intencional |
 
