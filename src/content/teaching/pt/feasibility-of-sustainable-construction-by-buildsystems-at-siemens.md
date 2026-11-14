@@ -3,7 +3,7 @@ Cover: /assets/content/teaching/feasibility-of-sustainable-construction-by-build
 CoverAlt: Daniel Nunes Locatelli apresentando uma das ferramentas utilizadas pela BuildSystems.
 CoverFocal: "65% 50%"
 Description: "Um pitch na Conferência Siemens RIE Munique sobre como ferramentas computacionais podem gerar dados para viabilizar a sustentabilidade na indústria da construção, da análise urbana à avaliação do ciclo de vida."
-Name: Viabilidade de Construções Sustentáveis
+Name: Viabilidade de construções sustentáveis
 Category: Pitch
 City:
   - Munique
@@ -23,12 +23,12 @@ Na Conferência Siemens Research, Innovation & Ecosystem (RIE) de Munique sobre 
 
 ## O pitch
 
-A ideia central foi demonstrar um fluxo de trabalho computacional multinível que conecta a análise em escala urbana até os componentes individuais de um edifício. As ferramentas que desenvolvemos funcionam em um ciclo de retroalimentação fechado:
+A ideia central foi mostrar um fluxo de trabalho computacional em vários níveis, que vai da análise em escala urbana até cada componente do edifício. As ferramentas que desenvolvemos funcionam em um ciclo de retroalimentação fechado:
 
-1. **Ferramenta de Nível Urbano**: avalia a viabilidade de um novo edifício com base nas regulamentações municipais e normas de segurança contra incêndio, determinando a área máxima de construção permitida para cada terreno.
-2. **Ferramenta de Nível do Edifício**: gera um edifício paramétrico baseado em sistemas construtivos comuns, capaz de se adaptar a diferentes dimensões de terreno.
-3. **Biblioteca de Componentes**: alimenta o modelo paramétrico com dados da nossa biblioteca de componentes construtivos, contendo informações sobre quantidades de materiais, pegada de carbono e custo por metro quadrado de construção.
-4. **Nível Econômico**: compara diferentes sistemas construtivos não apenas pelo custo estimado, mas também pelo seu potencial de receber financiamento.
+1. **Ferramenta de escala urbana**: avalia a viabilidade de um novo edifício com base nas regulamentações municipais e normas de segurança contra incêndio, determinando a área máxima de construção permitida para cada terreno.
+2. **Ferramenta de escala do edifício**: gera um edifício paramétrico baseado em sistemas construtivos comuns, capaz de se adaptar a diferentes dimensões de terreno.
+3. **Biblioteca de componentes**: alimenta o modelo paramétrico com dados da nossa biblioteca de componentes construtivos, contendo informações sobre quantidades de materiais, pegada de carbono e custo por metro quadrado de construção.
+4. **Nível econômico**: compara diferentes sistemas construtivos não apenas pelo custo estimado, mas também pelo seu potencial de receber financiamento.
 
 Essas ferramentas funcionam em um ciclo fechado, informando umas às outras constantemente até alcançarem um equilíbrio, tudo orientado por bancos de dados e frameworks de código aberto.
 

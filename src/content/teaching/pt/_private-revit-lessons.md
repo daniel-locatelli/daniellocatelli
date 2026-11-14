@@ -7,7 +7,7 @@ Organization: Aulas particulares
 City:
   - São Paulo
 Category: Course
-Description: Aulas de Revit desde os princípios básicos até técnicas avançadas.
+Description: Aulas de Revit, do básico às técnicas avançadas.
 Authors:
   - Daniel Nunes Locatelli
 ---

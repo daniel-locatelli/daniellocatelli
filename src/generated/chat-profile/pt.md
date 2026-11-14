@@ -477,54 +477,54 @@ Este artigo investiga a potencial aplicação de ferramentas digitais no projeto
 ### Digital Futures 2026: Entre o Prompt e a Obra
 Talk | DigitalFUTURES | abril de 2026 | /pt/teaching/digital-futures-2026
 Vídeo: https://www.youtube.com/watch?v=E0wMJIbP9r8
-Talk sobre a jornada da biomimética ao pensamento sistêmico e o que falta na inteligência artificial para arquitetura: o olhar de um arquiteto brasileiro formado e atuante na Alemanha.
+Palestra sobre o meu percurso da biomimética ao pensamento sistêmico e sobre o que falta à inteligência artificial na arquitetura: o olhar de um arquiteto brasileiro formado e atuante na Alemanha.
 
 ### Trabalhando com dados geográficos no Grasshopper
-Lecture | Universidade de Ciências Applicadas de Munique | Munique | maio de 2025 | /pt/full-cv (listado apenas no currículo)
+Lecture | Universidade de Ciências Aplicadas de Munique | Munique | maio de 2025 | /pt/full-cv (listado apenas no currículo)
 
-### Sistema de fabricação robótica multiescalar para colagem à pressão no canteiro em edifícios de madeira
+### Sistema de fabricação robótica multiescalar para colagem à pressão no canteiro em edifícios de madeira de vários pavimentos
 Talk | Forum Holzbau | Fellbach, Alemanha | julho de 2024 | /pt/full-cv (listado apenas no currículo)
-Nesta palestra, apresentamos os resultados do nosso projeto de tese no Programa de Mestrado ITECH na Universidade de Stuttgart.
+Nesta palestra, apresentamos os resultados da nossa tese de mestrado no ITECH, na Universidade de Stuttgart.
 
 ### BuildSystems - Smart Sustainability Roadmaps
 Talk | Graphisoft X - Online | Alemanha | dezembro de 2023 | /pt/full-cv (listado apenas no currículo)
 Vídeo: https://www.youtube.com/watch?v=baVNIbWtMQo
-Saiba mais sobre Smart Sustainability Roadmaps, que possibilitam inovações sistêmicas de processos no planejamento. Temas como planejamento orientado à demanda e à economia circular, eficiência energética, avaliação do ciclo de vida, certificações, financiamentos e Pre-BIM Modelling são abordados.
+Conheça os Smart Sustainability Roadmaps, que trazem inovação sistêmica aos processos de planejamento. A palestra aborda planejamento orientado à demanda e à economia circular, eficiência energética, avaliação do ciclo de vida, certificações, financiamentos e Pre-BIM Modelling.
 
-### Arquitetura Computacional na Alemanha
+### Arquitetura computacional na Alemanha
 Talk | UFT, Online | Palmas, Brasil | novembro de 2023 | /pt/teaching/computational-architecture-in-germany-uft
-Nesta palestra apresentei as principais tecnologias de design computacional na Alemanha, especialmente o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems, conectando essa trajetória ao meu percurso entre o Atelier Marko Brajovic, o ITECH em Stuttgart e a indústria em Munique.
+Nesta palestra apresentei as principais tecnologias de design computacional na Alemanha, sobretudo o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems, e as relacionei ao meu percurso entre o Atelier Marko Brajovic, o ITECH em Stuttgart e a indústria em Munique.
 
-### Arquitetura Computacional na Alemanha
+### Arquitetura computacional na Alemanha
 Talk | UFT - Online | Palmas, Brasil | novembro de 2023 | /pt/full-cv (listado apenas no currículo)
-Nesta palestra apresentei as tecnologias mais recentes na área de design computacional na Alemanha, especialmente o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems.
+Nesta palestra apresentei as tecnologias mais recentes de design computacional na Alemanha, sobretudo o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems.
 
-### Viabilidade de Construções Sustentáveis
+### Viabilidade de construções sustentáveis
 Pitch | Munich Urban Colab | Munique, Alemanha | março de 2023 | /pt/teaching/feasibility-of-sustainable-construction-by-buildsystems-at-siemens
 Um pitch na Conferência Siemens RIE Munique sobre como ferramentas computacionais podem gerar dados para viabilizar a sustentabilidade na indústria da construção, da análise urbana à avaliação do ciclo de vida.
 
 ### Digital Futures 2023: Novos Hibridismos
 Talk | YouTube - Online | março de 2022 | /pt/teaching/digital-futures-2023
 Vídeo: https://www.youtube.com/watch?v=s-hKf0NhooA
-Esta sessão, abrindo a série DigitalFutures em português, reúne diferentes práticas inovadoras no âmbito de metodologias computacionais aplicadas em arquitetura e design, onde inteligência artificial, algoritmos generativos, design paramétrico, fabricação robótica, ciência dos materiais e biomimética fazem parte de um repertório híbrido.
+Esta sessão, que abre a série DigitalFutures em português, reúne práticas inovadoras de metodologias computacionais aplicadas à arquitetura e ao design, em que inteligência artificial, algoritmos generativos, design paramétrico, fabricação robótica, ciência dos materiais e biomimética fazem parte de um repertório híbrido.
 
-### Cerimônia de Premiação IntCDC Master's Thesis Grant 2021
+### Cerimônia de premiação do IntCDC Master's Thesis Grant 2021
 Pitch | Stuttgart, Alemanha | novembro de 2021 | /pt/full-cv (listado apenas no currículo)
 
 ### Natureza e Digital: reproduzindo processos naturais com design computacional
 Talk | PUC Minas - Online | Belo Horizonte, Brasil | agosto de 2021 | /pt/teaching/nature-and-digital-reproducing-natural-processes-with-computational-design-at-puc
 Vídeo: https://youtu.be/J303rzg7y0U
-Nesta palestra, apresentei meu trabalho, a ideia de reproduzir processos naturais com design computacional e pontos-chave que aprendi durante minha dissertação de mestrado recentemente concluída na Alemanha.
+Nesta palestra, apresentei meu trabalho, a ideia de reproduzir processos naturais com design computacional e as principais lições do mestrado que acabei de concluir na Alemanha.
 
-### Debatedor em Mesa Redonda
+### Debatedor em mesa-redonda
 Round table | FAU-USP - Online | São Paulo, Brasil | maio de 2021 | /pt/full-cv (listado apenas no currículo)
 
-### Design Computacional: Estratégias
+### Design computacional: estratégias
 Talk | UNIP - Online | Brasil | novembro de 2020 | /pt/full-cv (listado apenas no currículo)
 
 ### Arquitetura + Biomimética + Algoritmo
 Talk | IFRO Vilhena | Vilhena, Brasil | agosto de 2019 | /pt/teaching/architecture-biomimicry-algorithm-at-ifro
-Durante minha visita à minha cidade natal eu propus uma palestra ao curso de arquitetura e urbanismo do Instituto Federal de Rondônia - IFRO. Apresentei alguns trabalhos e pesquisas que havia realizado até então e divaguei sobre o futuro da profissão em meio a tantas mudanças tecnológicas.
+Numa visita à minha cidade natal, propus uma palestra para o curso de arquitetura e urbanismo do Instituto Federal de Rondônia (IFRO). Apresentei alguns trabalhos e pesquisas que tinha feito até então e refleti sobre o futuro da profissão em meio a tantas mudanças tecnológicas.
 
 ### Models byNature 2.0
 Workshop | Atelier Marko Brajovic | São Paulo, Brasil | julho de 2019 – julho de 2019 | /pt/teaching/models-bynature-20
@@ -532,19 +532,19 @@ A segunda edição do workshop Models byNature expandiu a primeira com quatro s�
 
 ### Models byNature 1.0
 Workshop | Atelier Marko Brajovic | São Paulo, Brasil | maio de 2019 – junho de 2019 | /pt/teaching/models-bynature-10
-Este workshop buscou conectar práticas de design computacional com fenômenos naturais, abordando tópicos como modelagem associativa, biomimética e linguagem de programação visual.
+Este workshop buscou conectar práticas de design computacional com fenômenos naturais, abordando tópicos como modelagem associativa, biomimética e programação visual.
 
-### Design Emocional e Tecnologia
+### Design emocional e tecnologia
 Talk | MOVELPAR | Arapongas, Brasil | março de 2019 | /pt/full-cv (listado apenas no currículo)
 Tags: Emotional Design, Technology, Furniture Design, Computational Design
-Palestra na MOVELPAR 2019, organizada pelo SEBRAE, sobre como design emocional e tecnologia se cruzam no design contemporâneo de móveis e produtos.
+Palestra na MOVELPAR 2019, organizada pelo SEBRAE, sobre como o design emocional e a tecnologia se encontram no design contemporâneo de móveis e produtos.
 
-### Design Paramétrico Inspirado pela Natureza
+### Design paramétrico inspirado na natureza
 Talk | Museu de Arte Moderna | Rio de Janeiro, Brasil | setembro de 2018 | /pt/teaching/parametric-design-inspired-by-nature-at-semana-design-rio
 Tags: Parametric Design, Biomimetics, Nature, Computational Design
-Palestra na Semana Design Rio 2018 explorando sete princípios da natureza aplicados ao design paramétrico, com estudos de caso de projetos do Atelier Marko Brajovic.
+Palestra na Semana Design Rio 2018 sobre sete princípios da natureza aplicados ao design paramétrico, com estudos de caso de projetos do Atelier Marko Brajovic.
 
-### Geometrias Biomiméticas
+### Geometrias biomiméticas
 Idea exchange | Tátil | Rio de Janeiro, Brasil | agosto de 2018 | /pt/full-cv (listado apenas no currículo)
 
 ### Oficina adaptável de Grasshopper
@@ -553,11 +553,11 @@ Além de aprenderem o básico sobre o Grasshopper para Rhinoceros, os participan
 
 ### Uma década após a UNEMAT
 Lecture | UNEMAT | Barra do Bugres, Brasil | junho de 2018 | /pt/teaching/a-decade-after-unemat
-A UNEMAT foi a primeira universidade onde estudei Arquitetura. Dez anos após o início dos meus estudos lá, apresentei esta palestra sobre toda a minha trajetória, desde minha transferência universitária para a FAU-USP, meu trabalho no Atelier Marko Brajovic e minha recente mudança de carreira, focando mais especificamente em Design Computacional e programação.
+A UNEMAT foi a primeira universidade onde estudei arquitetura. Dez anos depois de começar a estudar lá, apresentei esta palestra sobre a minha trajetória: a transferência para a FAU-USP, o trabalho no Atelier Marko Brajovic e a recente mudança de carreira, com foco em design computacional e programação.
 
-### Workshop de Tensegridade
+### Workshop de tensegridade
 Workshop | Atelier Marko Brajovic | Paraty, Brasil | novembro de 2017 | /pt/teaching/tensegrity-workshop
-Um workshop de team-building onde construímos coletivamente uma estrutura de tensegridade, descobrindo como o equilíbrio de forças na estrutura espelhava nossas próprias dinâmicas colaborativas.
+Um workshop de team-building em que construímos juntos uma estrutura de tensegridade e descobrimos como o equilíbrio de forças da estrutura refletia a nossa própria forma de colaborar.
 
 ### Arquitetura + Biomimética + Algoritmo
 Talk | Istituto Europeo di Design | São Paulo, Brasil | outubro de 2017 | /pt/full-cv (listado apenas no currículo)
@@ -568,9 +568,9 @@ Os alunos aprenderam a trabalhar com sistemas de molas para simular o comportame
 
 ### Aulas particulares de Revit
 Course | Aulas particulares | São Paulo, Brasil | fevereiro de 2017 – março de 2017 | /pt/full-cv (listado apenas no currículo)
-Aulas de Revit desde os princípios básicos até técnicas avançadas.
+Aulas de Revit, do básico às técnicas avançadas.
 
-### Busca pela Forma com Grasshopper
+### Busca pela forma com Grasshopper
 Talk | São Paulo, Brasil | dezembro de 2016 | /pt/full-cv (listado apenas no currículo)
 
 ## Competências
@@ -614,27 +614,27 @@ Talk | São Paulo, Brasil | dezembro de 2016 | /pt/full-cv (listado apenas no cu
 julho de 2026 – Atual | [Trabalho] | Doutorando | Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
 julho de 2026 | [Formação] | Doutorado em Ciências | Gramazio Kohler Research, ETH Zurique | Zurique, Suíça
 abril de 2026 | [Ensino] | Digital Futures 2026: Entre o Prompt e a Obra | DigitalFUTURES
-maio de 2025 | [Ensino] | Trabalhando com dados geográficos no Grasshopper | Universidade de Ciências Applicadas de Munique | Munique
+maio de 2025 | [Ensino] | Trabalhando com dados geográficos no Grasshopper | Universidade de Ciências Aplicadas de Munique | Munique
 fevereiro de 2025 – junho de 2026 | [Trabalho] | Pesquisador associado | Universidade de Ciências Aplicadas de Munique | Munique, Alemanha
-julho de 2024 | [Ensino] | Sistema de fabricação robótica multiescalar para colagem à pressão no canteiro em edifícios de madeira | Forum Holzbau | Fellbach, Alemanha
+julho de 2024 | [Ensino] | Sistema de fabricação robótica multiescalar para colagem à pressão no canteiro em edifícios de madeira de vários pavimentos | Forum Holzbau | Fellbach, Alemanha
 julho de 2024 | [Certificação] | CS50: Introdução à Ciência da Computação | Universidade Harvard & edX.org
 julho de 2024 | [Certificação] | CS50: Introdução a Banco de Dados com SQL | Universidade Harvard & edX.org
 junho de 2024 – julho de 2024 | [Curso] | CS50: Introdução a Banco de Dados com SQL | Universidade Harvard | Online
 janeiro de 2024 – dezembro de 2024 | [Trabalho] | Engenheiro de software AEC | BuildSystems GmbH | Munique, Alemanha
 dezembro de 2023 | [Ensino] | BuildSystems - Smart Sustainability Roadmaps | Graphisoft X - Online | Alemanha
-novembro de 2023 | [Ensino] | Arquitetura Computacional na Alemanha | UFT, Online | Palmas, Brasil
-novembro de 2023 | [Ensino] | Arquitetura Computacional na Alemanha | UFT - Online | Palmas, Brasil
+novembro de 2023 | [Ensino] | Arquitetura computacional na Alemanha | UFT, Online | Palmas, Brasil
+novembro de 2023 | [Ensino] | Arquitetura computacional na Alemanha | UFT - Online | Palmas, Brasil
 julho de 2023 – outubro de 2023 | [Curso] | CS50: Introdução à Ciência da Computação | Universidade Harvard | Online
-março de 2023 | [Ensino] | Viabilidade de Construções Sustentáveis | Munich Urban Colab | Munique, Alemanha
+março de 2023 | [Ensino] | Viabilidade de construções sustentáveis | Munich Urban Colab | Munique, Alemanha
 janeiro de 2023 – dezembro de 2023 | [Trabalho] | Engenheiro de software AEC | Urban Scale Timber, Flügge Funding | Munique, Alemanha
 setembro de 2022 | [Curso] | Workshop COMPAS FoFin | Design Modeling Symposium 2022 | Berlim, Alemanha
 março de 2022 | [Ensino] | Digital Futures 2023: Novos Hibridismos | YouTube - Online
 dezembro de 2021 – dezembro de 2022 | [Trabalho] | Designer computacional | ArtEngineering GmbH | Schorndorf, Alemanha
-novembro de 2021 | [Ensino] | Cerimônia de Premiação IntCDC Master's Thesis Grant 2021 | Stuttgart, Alemanha
+novembro de 2021 | [Ensino] | Cerimônia de premiação do IntCDC Master's Thesis Grant 2021 | Stuttgart, Alemanha
 agosto de 2021 | [Ensino] | Natureza e Digital: reproduzindo processos naturais com design computacional | PUC Minas - Online | Belo Horizonte, Brasil
-maio de 2021 | [Ensino] | Debatedor em Mesa Redonda | FAU-USP - Online | São Paulo, Brasil
+maio de 2021 | [Ensino] | Debatedor em mesa-redonda | FAU-USP - Online | São Paulo, Brasil
 março de 2021 – outubro de 2021 | [Bolsa] | Bolsa de Mestrado IntCDC 2021 | Cluster de Excelência – IntCDC | Stuttgart, Alemanha
-novembro de 2020 | [Ensino] | Design Computacional: Estratégias | UNIP - Online | Brasil
+novembro de 2020 | [Ensino] | Design computacional: estratégias | UNIP - Online | Brasil
 outubro de 2020 – novembro de 2021 | [Trabalho] | Designer computacional | Alfred Rein Ingenieure GmbH | Stuttgart, Alemanha
 junho de 2020 – julho de 2020 | [Curso] | Inteligência | Digital Futures World 2020 | Online
 dezembro de 2019 – outubro de 2020 | [Trabalho] | Assistente de pesquisa | ICD/ITKE, Universidade de Stuttgart | Stuttgart, Alemanha
@@ -642,20 +642,20 @@ outubro de 2019 – outubro de 2021 | [Formação] | Mestrado em Ciências | ITE
 agosto de 2019 | [Ensino] | Arquitetura + Biomimética + Algoritmo | IFRO Vilhena | Vilhena, Brasil
 julho de 2019 – julho de 2019 | [Ensino] | Models byNature 2.0 | Atelier Marko Brajovic | São Paulo, Brasil
 maio de 2019 – junho de 2019 | [Ensino] | Models byNature 1.0 | Atelier Marko Brajovic | São Paulo, Brasil
-março de 2019 | [Ensino] | Design Emocional e Tecnologia | MOVELPAR | Arapongas, Brasil
+março de 2019 | [Ensino] | Design emocional e tecnologia | MOVELPAR | Arapongas, Brasil
 novembro de 2018 | [Curso] | Wiki-House: Geração e Construção Digital-Material | SIGraDi 2018 | São Carlos, Brasil
-setembro de 2018 | [Ensino] | Design Paramétrico Inspirado pela Natureza | Museu de Arte Moderna | Rio de Janeiro, Brasil
+setembro de 2018 | [Ensino] | Design paramétrico inspirado na natureza | Museu de Arte Moderna | Rio de Janeiro, Brasil
 agosto de 2018 | [Certificação] | Introdução à Ciência da Computação e à Programação com Python | MITX & edX.org
-agosto de 2018 | [Ensino] | Geometrias Biomiméticas | Tátil | Rio de Janeiro, Brasil
+agosto de 2018 | [Ensino] | Geometrias biomiméticas | Tátil | Rio de Janeiro, Brasil
 junho de 2018 – junho de 2018 | [Ensino] | Oficina adaptável de Grasshopper | UNEMAT | Barra do Bugres, Brasil
 junho de 2018 | [Ensino] | Uma década após a UNEMAT | UNEMAT | Barra do Bugres, Brasil
-novembro de 2017 | [Ensino] | Workshop de Tensegridade | Atelier Marko Brajovic | Paraty, Brasil
+novembro de 2017 | [Ensino] | Workshop de tensegridade | Atelier Marko Brajovic | Paraty, Brasil
 outubro de 2017 | [Ensino] | Arquitetura + Biomimética + Algoritmo | Istituto Europeo di Design | São Paulo, Brasil
 setembro de 2017 | [Curso] | Interfacing Architecture, Engineering, and Mathematical Optimization | IASS 2017 | Hamburgo, Alemanha
 julho de 2017 | [Curso] | Design Paramétrico com Arduino e Grasshopper | FILE Festival | São Paulo, Brasil
 abril de 2017 | [Ensino] | Workshop de Grasshopper & Kangaroo | PortoFabLab | São Paulo, Brasil
 fevereiro de 2017 – março de 2017 | [Ensino] | Aulas particulares de Revit | Aulas particulares | São Paulo, Brasil
-dezembro de 2016 | [Ensino] | Busca pela Forma com Grasshopper | São Paulo, Brasil
+dezembro de 2016 | [Ensino] | Busca pela forma com Grasshopper | São Paulo, Brasil
 setembro de 2016 | [Curso] | Workshop de Grasshopper com Galapagos | Rhino Day | FAU-Mackenzie, Brasil
 julho de 2016 | [Curso] | Dados no Processo de Design | FILE Festival | São Paulo, Brasil
 julho de 2016 | [Curso] | Theremin Digital com Arduino | FILE Festival | São Paulo, Brasil

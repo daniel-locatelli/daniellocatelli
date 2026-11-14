@@ -2,8 +2,8 @@
 Cover: /assets/content/teaching/computational-architecture-in-germany-uft/uft-cover.jpg
 CoverAlt: Logotipo da UFT (Universidade Federal do Tocantins) ao lado de um retrato circular de Daniel Locatelli.
 CoverFit: contain
-Description: "Nesta palestra apresentei as tecnologias mais recentes na área de design computacional na Alemanha, especialmente o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems."
-Name: Arquitetura Computacional na Alemanha
+Description: "Nesta palestra apresentei as tecnologias mais recentes de design computacional na Alemanha, sobretudo o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems."
+Name: Arquitetura computacional na Alemanha
 Category: Talk
 City:
   - Palmas
@@ -19,4 +19,4 @@ Authors:
   - Daniel Nunes Locatelli
 ---
 
-Nesta palestra apresentei as tecnologias mais recentes na área de design computacional na Alemanha, especialmente o ICD & ITKE da Universidade de Stuttgart e a BuildSystems.
+Nesta palestra apresentei as tecnologias mais recentes de design computacional na Alemanha, sobretudo o ICD & ITKE da Universidade de Stuttgart e a BuildSystems.

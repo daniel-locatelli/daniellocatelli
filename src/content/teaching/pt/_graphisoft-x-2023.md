@@ -1,6 +1,6 @@
 ---
 Name: "BuildSystems - Smart Sustainability Roadmaps"
-Description: "Saiba mais sobre Smart Sustainability Roadmaps, que possibilitam inovações sistêmicas de processos no planejamento. Temas como planejamento orientado à demanda e à economia circular, eficiência energética, avaliação do ciclo de vida, certificações, financiamentos e Pre-BIM Modelling são abordados."
+Description: "Conheça os Smart Sustainability Roadmaps, que trazem inovação sistêmica aos processos de planejamento. A palestra aborda planejamento orientado à demanda e à economia circular, eficiência energética, avaliação do ciclo de vida, certificações, financiamentos e Pre-BIM Modelling."
 Category: Talk
 DateStart: "2023-12-04"
 Place: Graphisoft X - Online

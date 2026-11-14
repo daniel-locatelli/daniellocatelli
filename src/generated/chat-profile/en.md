@@ -501,7 +501,7 @@ In this talk I presented the latest technologies in the computational design fie
 
 ### Feasibility of Sustainable Construction
 Pitch | Munich Urban Colab | Munich, Germany | March 2023 | /teaching/feasibility-of-sustainable-construction-by-buildsystems-at-siemens
-A pitch at the Siemens RIE Munich Conference on how computational tools can generate data to make sense of sustainability in the construction industry, from urban analysis to life-cycle assessment.
+A pitch at the Siemens RIE Munich Conference on how computational tools can generate data to make sustainability feasible in the construction industry, from urban analysis to life-cycle assessment.
 
 ### Digital Futures 2023: Novos Hibridismos
 Talk | YouTube - Online | March 2022 | /teaching/digital-futures-2023

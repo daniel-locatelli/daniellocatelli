@@ -1,5 +1,5 @@
 ---
-Name: "Design Computacional: Estratégias"
+Name: "Design computacional: estratégias"
 Category: Talk
 Country: Brasil
 DateStart: "2020-11-01"

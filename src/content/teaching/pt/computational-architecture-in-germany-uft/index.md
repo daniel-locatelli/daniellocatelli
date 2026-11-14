@@ -1,9 +1,9 @@
 ---
 Cover: /assets/content/teaching/computational-architecture-in-germany-uft/uft-cover.jpg
-CoverAlt: Colagem em cinco faixas verticais de projetos alemães apresentados na palestra, BUGA Wood Pavilion Reuse 2023, ICD/ITKE Research Pavilion 2015-16 e 2016-17, BUGA Fibre Pavilion 2019 e livMatS Biomimetic Shell.
+CoverAlt: "Colagem em cinco faixas verticais de projetos alemães apresentados na palestra: BUGA Wood Pavilion Reuse 2023, ICD/ITKE Research Pavilion 2015-16 e 2016-17, BUGA Fibre Pavilion 2019 e livMatS Biomimetic Shell."
 CoverFit: cover
-Description: "Nesta palestra apresentei as principais tecnologias de design computacional na Alemanha, especialmente o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems, conectando essa trajetória ao meu percurso entre o Atelier Marko Brajovic, o ITECH em Stuttgart e a indústria em Munique."
-Name: Arquitetura Computacional na Alemanha
+Description: "Nesta palestra apresentei as principais tecnologias de design computacional na Alemanha, sobretudo o ICD & ITKE da Universidade de Stuttgart e a empresa BuildSystems, e as relacionei ao meu percurso entre o Atelier Marko Brajovic, o ITECH em Stuttgart e a indústria em Munique."
+Name: Arquitetura computacional na Alemanha
 Category: Talk
 City:
   - Palmas
@@ -19,10 +19,10 @@ Authors:
   - Daniel Nunes Locatelli
 ---
 
-Nesta palestra para a SEMANAU 2023, na Universidade Federal do Tocantins, apresentei o estado da arte do design computacional na Alemanha conectado à minha própria trajetória.
+Nesta palestra para a SEMANAU 2023, na Universidade Federal do Tocantins, apresentei o estado da arte do design computacional na Alemanha a partir da minha própria trajetória.
 
 Comecei pelo Atelier Marko Brajovic, em São Paulo, com o Pavilhão O3, o Nike Air Guitar, os estudos de tensegridades e o workshop Models ByNature, todos exemplos de como o design paramétrico podia entrar no projeto e na fabricação. Em seguida revisitei o TFG na FAUUSP, apresentado em artigo na IASS 2017, e a Luminária Life com o Estudio Guto Requena, publicada na eCAADe 2020.
 
-A segunda parte da palestra foi sobre a Alemanha. Da tese de mestrado no ITECH (Building Across Scales, com Nils Opgenorth, orientação de Achim Menges e Jan Knippers), a um percurso histórico que liga Robert Hooke, Christopher Wren, Antoni Gaudí, Buckminster Fuller e Frei Otto à computação material que se ensina hoje em Stuttgart. Os pavilhões de pesquisa do ICD/ITKE, e mais recentemente o cluster IntCDC, foram apresentados como o ponto em que biomimética, fabricação digital e estrutura passam a ser projetados como um único sistema.
+A segunda parte da palestra foi sobre a Alemanha. Passei pela tese de mestrado no ITECH (Building Across Scales, com Nils Opgenorth, orientação de Achim Menges e Jan Knippers) e por um percurso histórico que liga Robert Hooke, Christopher Wren, Antoni Gaudí, Buckminster Fuller e Frei Otto à computação material que se ensina hoje em Stuttgart. Os pavilhões de pesquisa do ICD/ITKE, e mais recentemente o cluster IntCDC, foram apresentados como o ponto em que biomimética, fabricação digital e estrutura passam a ser projetadas como um único sistema.
 
-Encerrei falando sobre a BuildSystems, em Munique, onde estávamos viabilizando construções sustentáveis com ferramentas de Grasshopper e web apps; e sobre inteligência artificial, com a ressalva de que IA não faz mágica, ela depende de bons dados e de uma representação clara do problema.
+Encerrei falando sobre a BuildSystems, em Munique, onde estávamos viabilizando construções sustentáveis com ferramentas de Grasshopper e web apps, e sobre inteligência artificial, com a ressalva de que a IA não faz mágica: depende de bons dados e de uma representação clara do problema.

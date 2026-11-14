@@ -1,5 +1,5 @@
 ---
-Name: Geometrias Biomiméticas
+Name: Geometrias biomiméticas
 Category: Idea exchange
 Place: Tátil
 Link: "https://site.tatil.com.br/"

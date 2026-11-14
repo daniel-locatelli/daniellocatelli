@@ -1,5 +1,5 @@
 ---
-Name: Busca pela Forma com Grasshopper
+Name: Busca pela forma com Grasshopper
 Category: Talk
 City:
   - São Paulo

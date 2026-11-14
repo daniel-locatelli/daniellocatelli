@@ -1,5 +1,5 @@
 ---
-Name: Debatedor em Mesa Redonda
+Name: Debatedor em mesa-redonda
 Category: Round table
 DateStart: "2021-05-28"
 City:

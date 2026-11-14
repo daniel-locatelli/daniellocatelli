@@ -1,7 +1,7 @@
 ---
 Name: Trabalhando com dados geográficos no Grasshopper
 DateStart: "2025-05"
-Organization: Universidade de Ciências Applicadas de Munique
+Organization: Universidade de Ciências Aplicadas de Munique
 City:
   - Munique
 Category: Lecture
