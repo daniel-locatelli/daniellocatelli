@@ -209,7 +209,7 @@ Filament | ICD – Universität Stuttgart | Stuttgart, Deutschland | Juli 2020 |
 Tags: Coreless Filament Winding, Computational Design, Robotics
 Untersuchung von Berechnungsmethoden zur Vorhersage der Kohlefaserinteraktion beim kernlosen Filamentwickeln. Ich unterstützte Christoph Schlopschnat bei der Harzvorbereitung, physischen Tests im kleinen Maßstab und Photogrammetrie.
 
-### Affektiver Datentisch
+### Affective Data Table
 Computational design | Universidade Estadual de Londrina | Arapongas, Brasilien | März 2019 | /de/research/affective-data-table
 Tags: Grasshopper3D, Emotional Design
 Das emotionale Design in Verbindung mit computergestütztem Design zielt darauf ab, die gesamte industrielle Produktionskette zu überdenken und sich der Industrie 4.0 anzunähern. Eine Transformation, die den gesamten Lebenszyklus des Produkts betrifft: Design, Fertigung und Verbraucherverhalten.

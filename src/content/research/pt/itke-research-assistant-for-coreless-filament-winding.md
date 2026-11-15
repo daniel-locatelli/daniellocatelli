@@ -3,12 +3,12 @@ Cover: /assets/content/research/itke-research-assistant-for-coreless-filament-wi
 CoverAlt: Corpo de prova de fibra natural enrolada fixado com cintas de carga para teste estrutural no ITKE Stuttgart.
 CoverFocal: "85% 50%"
 Description: "Como assistente de pesquisa, ajudei Marta Gil Pérez com os testes de carga de corpos de prova de fibra natural para o Pavilhão livMatS. A principal lição foi sobre a relação entre simulação computacional, experimentos físicos e a intuição do pesquisador."
-Name: Assistente de Pesquisa ITKE para Enrolamento Filamentar sem Núcleo
+Name: "Assistente de pesquisa no ITKE: enrolamento filamentar sem núcleo"
 Tags:
   - Coreless Filament Winding
   - Structural Analysis
   - Structural Test
-Organization: "ITKE - University of Stuttgart"
+Organization: "ITKE – Universidade de Stuttgart"
 Category: Filament
 City:
   - Stuttgart
@@ -32,7 +32,7 @@ OtherLinks:
     Href: "https://www.archdaily.com/966168/livmats-pavilion-icd-itke-university-of-stuttgart"
 ---
 
-O Pavilhão livMatS (uma colaboração entre o ICD, o ITKE e o Cluster de Excelência livMatS da Universidade de Freiburg) expandiu os limites do enrolamento filamentar sem núcleo ao utilizar **fibras naturais** em vez de carbono ou vidro. O pavilhão foi eventualmente instalado no Jardim Botânico de Freiburg, mas antes que isso pudesse acontecer, os componentes estruturais precisavam ser rigorosamente testados.
+O Pavilhão livMatS (uma colaboração entre o ICD, o ITKE e o Cluster de Excelência livMatS da Universidade de Freiburg) expandiu os limites do enrolamento filamentar sem núcleo ao utilizar **fibras naturais** em vez de carbono ou vidro. O pavilhão acabou sendo instalado no Jardim Botânico de Freiburg, mas antes disso os componentes estruturais tiveram de passar por testes rigorosos.
 
 ## O desafio
 
@@ -44,11 +44,11 @@ Como assistente de pesquisa sob a supervisão de Marta Gil Pérez, ajudei a prep
 
 ![Equipe de pesquisa preparando um corpo de prova de fibra natural enrolada para teste de carga no laboratório do ITKE. Um protótipo de torre de fibra de carbono é visível ao fundo.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/load-test-close-up-01.jpg)
 
-![Detalhe do corpo de prova de fibra natural enrolada mostrando o complexo padrão entrelaçado, fixado com cintas de carga laranjas para teste estrutural.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-01.jpg)
+![Detalhe do corpo de prova de fibra natural enrolada mostrando o complexo padrão entrelaçado, fixado com cintas de carga laranja para teste estrutural.](../../../assets/content/research/itke-research-assistant-for-coreless-filament-winding/fiber-specimen-detail-01.jpg)
 
-## Simulação vs. realidade
+## Simulação e realidade
 
-O que tornou essa experiência marcante foi testemunhar em primeira mão a lacuna entre a previsão computacional e o comportamento físico. Pesquisas de ponta como essa ainda não possuem métodos confiáveis de análise estrutural apenas por simulação computacional. Para alcançar um resultado estruturalmente seguro, testes físicos em escala real são essenciais.
+O que tornou essa experiência marcante foi testemunhar em primeira mão a lacuna entre a previsão computacional e o comportamento físico. Em pesquisas de ponta como essa, a simulação computacional sozinha ainda não garante uma análise estrutural confiável. Para alcançar um resultado estruturalmente seguro, testes físicos em escala real são essenciais.
 
 A experiência e a intuição de Marta com estruturas semelhantes foram fundamentais. Após cada teste, ela conseguia identificar quais ajustes deveriam ser feitos no projeto, embasada por uma combinação de dados medidos e anos de experiência prática com compósitos de fibras. Essa interação entre simulação, experimento e intuição é o que torna a pesquisa na fronteira da tecnologia da construção tão fascinante.
 

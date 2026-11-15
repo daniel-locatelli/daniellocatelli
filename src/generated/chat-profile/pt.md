@@ -180,39 +180,39 @@ Tags: Normas, Construção em madeira, Passaporte Digital de Produto
 Uma revisão sistemática das normas ISO, GS1, CEN, DIN, SIA e KBOB que regem a especificação de materiais e composições multicamadas na construção em madeira, do incêndio e da física das construções aos modelos de dados BIM e ao passaporte digital de produto. Pacote de trabalho 1.2 do projeto DOKwood.
 
 ### Building Across Scales
-ITECH - University of Stuttgart | Stuttgart, Alemanha | dezembro de 2024 | /pt/research/building-across-scales
+ITECH – Universidade de Stuttgart | Stuttgart, Alemanha | dezembro de 2024 | /pt/research/building-across-scales
 Tags: Computational design, Form finding, Robotics
 A pesquisa propõe um sistema de construção robótica heterogêneo e multiescalar para ampliar a automação da construção em madeira no canteiro de obras. Mais especificamente, a pesquisa dá o próximo passo na automação da colagem in loco ao introduzir um dispositivo robótico de prensagem, desenvolvido sob medida, para os elementos de madeira. O centro da pesquisa é o desenvolvimento desse dispositivo, parte de uma equipe robótica de construção mais ampla (um braço robótico industrial e um guindaste automatizado), concebida em co-design com o material e o sistema construtivo.
 
 ### Pavilhão Acropora
 ITECH – Universidade de Stuttgart | outubro de 2020 | /pt/research/acropora-pavilion
 Tags: Computational design
-Pavilhão Acropora, projeto desenvolvido para o curso Biomimética do programa de mestrado ITECH do ICD & ITKE da Universidade de Stuttgart. Acropora é um pavilhão inspirado no crescimento dos corais.
+Pavilhão Acropora, projeto desenvolvido para a disciplina de Biomimética do mestrado ITECH, do ICD e do ITKE da Universidade de Stuttgart. Acropora é um pavilhão inspirado no crescimento dos corais.
 
 ### Bambu com flexão ativa
-ITECH – University of Stuttgart | Stuttgart, Alemanha | outubro de 2020 | /pt/research/bending-active-bamboo
+ITECH – Universidade de Stuttgart | Stuttgart, Alemanha | outubro de 2020 | /pt/research/bending-active-bamboo
 Tags: Form finding
-Pesquisa desenvolvida para o curso ITECH Forma e Estrutura. Fomos inspirados no ZCB Bamboo Pavilion, mas criamos nosso próprio fluxo de trabalho usando Grasshopper, Kangaroo Physics e K2Engineering.
+Pesquisa desenvolvida para a disciplina Forma e Estrutura do ITECH. Partimos do ZCB Bamboo Pavilion como inspiração, mas criamos nosso próprio fluxo de trabalho com Grasshopper, Kangaroo Physics e K2Engineering.
 
 ### Crescimento diferencial em corais
-ITECH – University of Stuttgart | Stuttgart, Alemanha | outubro de 2020 | /pt/research/differential-growth-in-corals
+ITECH – Universidade de Stuttgart | Stuttgart, Alemanha | outubro de 2020 | /pt/research/differential-growth-in-corals
 Tags: Computational design, Form finding
-Pesquisa desenvolvida para os cursos Design Computacional e Biomimética do ITECH. Nos inspiramos no crescimento dos corais; o código foi desenvolvido usando Grasshopper e um componente Python personalizado que criamos. Nesse curso nós aprendemos a desenvolver componentes personalizados para o Grasshopper usando Python and C# como linguagem de programação!
+Pesquisa desenvolvida para as disciplinas Design Computacional e Biomimética do ITECH. A inspiração veio do crescimento dos corais; desenvolvemos o código no Grasshopper, com um componente Python que nós mesmos criamos. Na disciplina de Design Computacional, aprendemos a desenvolver componentes personalizados para o Grasshopper em Python e C#.
 
-### Assistente de Pesquisa ITKE para Enrolamento Filamentar sem Núcleo
-Filament | ITKE - University of Stuttgart | Stuttgart, Alemanha | agosto de 2020 – outubro de 2020 | /pt/research/itke-research-assistant-for-coreless-filament-winding
+### Assistente de pesquisa no ITKE: enrolamento filamentar sem núcleo
+Filament | ITKE – Universidade de Stuttgart | Stuttgart, Alemanha | agosto de 2020 – outubro de 2020 | /pt/research/itke-research-assistant-for-coreless-filament-winding
 Tags: Coreless Filament Winding, Structural Analysis, Structural Test
 Como assistente de pesquisa, ajudei Marta Gil Pérez com os testes de carga de corpos de prova de fibra natural para o Pavilhão livMatS. A principal lição foi sobre a relação entre simulação computacional, experimentos físicos e a intuição do pesquisador.
 
-### Assistente de Pesquisa ICD para Enrolamento Filamentar sem Núcleo
+### Assistente de pesquisa no ICD: enrolamento filamentar sem núcleo
 Filament | ICD – Universidade de Stuttgart | Stuttgart, Alemanha | julho de 2020 | /pt/research/icd-research-assistant-for-coreless-filament-winding
 Tags: Coreless Filament Winding, Computational Design, Robotics
 Investigação de métodos computacionais para prever a interação das fibras de carbono durante o enrolamento filamentar sem núcleo. Auxiliei Christoph Schlopschnat na preparação de resina, testes físicos em pequena escala e fotogrametria.
 
-### Mesa de Dados Afetiva
+### Affective Data Table
 Computational design | Universidade Estadual de Londrina | Arapongas, Brasil | março de 2019 | /pt/research/affective-data-table
 Tags: Grasshopper3D, Emotional Design
-O design emocional associado ao design computacional visa repensar toda a cadeia de produção industrial e se aproximar da Indústria 4.0. Uma transformação que afeta todo o ciclo de vida do produto: design, fabricação e comportamento do consumidor.
+Aliado ao design computacional, o design emocional busca repensar toda a cadeia de produção industrial e aproximar essa cadeia da Indústria 4.0, uma transformação que afeta todo o ciclo de vida do produto: design, fabricação e comportamento do consumidor.
 
 ### Arquitetura + Biomimética + Algoritmo
 Faculdade de Arquitetura e Urbanismo - Universidade de São Paulo | dezembro de 2016 | /pt/research/architecture-biomimicry-algorithm
