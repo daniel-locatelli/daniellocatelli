@@ -172,7 +172,7 @@ Uma lista viva das skills de agente de que dependo ao trabalhar com o Claude Cod
 ### Um modelo de dados para composições construtivas em madeira
 Universidade de Ciências Aplicadas de Munique | Munique, Alemanha | fevereiro de 2025 – junho de 2026 | /pt/research/timber-buildup-data-model
 Tags: bSDD, ISO 23387, Modelos de dados, Construção em madeira
-Como uma composição construtiva em madeira se torna legível por máquina: um modelo de dados ISO 23387 que aninha camadas e produtos dentro de uma composição, restringe um modelo de dados em folha de requisitos e a satisfaz com uma folha de dados, publicado como o dicionário versionado hm/dokwood no bSDD e projetado para sustentar as interfaces Revit, Cadwork e MCP do DOKwood e um futuro passaporte digital de produto.
+Como uma composição construtiva em madeira se torna legível por máquina: um modelo de dados ISO 23387 que aninha camadas e produtos dentro de uma composição e permite que um projeto transforme um modelo de dados em folha de requisitos e depois a atenda com uma folha de dados. Ele é publicado como o dicionário versionado hm/dokwood no bSDD e foi projetado para sustentar as interfaces Revit, Cadwork e MCP do DOKwood e um futuro passaporte digital de produto.
 
 ### Normas por trás das composições digitais em madeira
 Universidade de Ciências Aplicadas de Munique | Munique, Alemanha | fevereiro de 2025 – junho de 2026 | /pt/research/timber-construction-standards
