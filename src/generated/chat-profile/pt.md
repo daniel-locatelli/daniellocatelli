@@ -182,7 +182,7 @@ Uma revisão sistemática das normas ISO, GS1, CEN, DIN, SIA e KBOB que regem a 
 ### Building Across Scales
 ITECH - University of Stuttgart | Stuttgart, Alemanha | dezembro de 2024 | /pt/research/building-across-scales
 Tags: Computational design, Form finding, Robotics
-A pesquisa propõe um sistema de construção robótica heterogêneo e multiescalar para ampliar a automação da construção em madeira no canteiro de obras. Especificamente, apresenta o próximo passo na automação da colagem in loco ao introduzir um robô de fixação (clamping) customizado para a prensagem de elementos de madeira. Portanto, o cerne da pesquisa reside no desenvolvimento deste robô como parte de uma equipe robótica de construção mais ampla (incluindo um braço robótico industrial e um guindaste automatizado), operando em co-design com o material e o sistema construtivo.
+A pesquisa propõe um sistema de construção robótica heterogêneo e multiescalar para ampliar a automação da construção em madeira no canteiro de obras. Mais especificamente, a pesquisa dá o próximo passo na automação da colagem in loco ao introduzir um dispositivo robótico de prensagem, desenvolvido sob medida, para os elementos de madeira. O centro da pesquisa é o desenvolvimento desse dispositivo, parte de uma equipe robótica de construção mais ampla (um braço robótico industrial e um guindaste automatizado), concebida em co-design com o material e o sistema construtivo.
 
 ### Pavilhão Acropora
 ITECH – Universidade de Stuttgart | outubro de 2020 | /pt/research/acropora-pavilion
@@ -217,7 +217,7 @@ O design emocional associado ao design computacional visa repensar toda a cadeia
 ### Arquitetura + Biomimética + Algoritmo
 Faculdade de Arquitetura e Urbanismo - Universidade de São Paulo | dezembro de 2016 | /pt/research/architecture-biomimicry-algorithm
 Tags: Computational design, Form finding
-Trata-se de um estudo introdutório em torno das possibilidades da aplicação do design computacional na arquitetura com foco em form finding a busca pela forma. Para tanto, foram levantados estudos de caso com grande relevância histórica, tecnológica e artística com o intuito de analisar seus respectivos processos de concepção através de engenharia reversa usando o software Rhinoceros 3D e seu plug-in Grasshopper. Verificou-se que a biomimética teve papel fundamental nos projetos pesquisados e, portanto, servirá de diretriz neste estudo. Por fim, para consolidar os conhecimentos absorvidos nest…
+Trata-se de um estudo introdutório sobre as possibilidades de aplicação do design computacional na arquitetura com foco em form finding, a busca pela forma. Para tanto, foram levantados estudos de caso com grande relevância histórica, tecnológica e artística com o intuito de analisar seus processos de concepção por meio de engenharia reversa usando o software Rhinoceros 3D e seu plug-in Grasshopper. Verificou-se que a biomimética teve papel fundamental nos projetos pesquisados e, portanto, serviu de diretriz neste estudo. Por fim, para consolidar os conhecimentos absorvidos neste processo, foi…
 
 ## Projetos
 
@@ -445,7 +445,7 @@ Arquitetura | Atelier Marko Brajovic | Brasil | abril de 2015 – fevereiro de 2
 ### Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings
 ITECH - University of Stuttgart | dezembro de 2024 | /pt/full-cv (listado apenas no currículo)
 Tags: Computational design, Form finding, Robotics, Timber construction, On-site fabrication
-Este artigo apresenta um sistema de construção robótica heterogêneo e multiescalar para a construção em madeira no canteiro de obras, introduzindo um robô de fixação customizado para a prensagem de conexões coladas em elementos de madeira como parte de uma equipe robótica de construção mais ampla.
+Este artigo apresenta um sistema de construção robótica heterogêneo e multiescalar para a construção em madeira no canteiro de obras, introduzindo um dispositivo robótico de prensagem, desenvolvido sob medida, para a prensagem de conexões coladas em elementos de madeira como parte de uma equipe robótica de construção mais ampla.
 
 ### Posicionamento automático de pilares
 ICD & ITKE – University of Stuttgart | Tongji, China | junho de 2023 | /pt/publications/automatic-column-placement
@@ -484,7 +484,7 @@ Lecture | Universidade de Ciências Aplicadas de Munique | Munique | maio de 202
 
 ### Sistema de fabricação robótica multiescalar para colagem à pressão no canteiro em edifícios de madeira de vários pavimentos
 Talk | Forum Holzbau | Fellbach, Alemanha | julho de 2024 | /pt/full-cv (listado apenas no currículo)
-Nesta palestra, apresentamos os resultados da nossa tese de mestrado no ITECH, na Universidade de Stuttgart.
+Nesta palestra, apresentamos os resultados da nossa dissertação de mestrado no ITECH, na Universidade de Stuttgart.
 
 ### BuildSystems - Smart Sustainability Roadmaps
 Talk | Graphisoft X - Online | Alemanha | dezembro de 2023 | /pt/full-cv (listado apenas no currículo)

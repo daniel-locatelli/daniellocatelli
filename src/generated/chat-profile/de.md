@@ -182,7 +182,7 @@ Eine systematische Recherche der ISO-, GS1-, CEN-, DIN-, SIA- und KBOB-Normen, d
 ### Building Across Scales
 ITECH - University of Stuttgart | Stuttgart, Deutschland | Dezember 2024 | /de/research/building-across-scales
 Tags: Computational design, Form finding, Robotics
-Die Forschung schlägt ein heterogenes multiskalares robotisches Bausystem zur weiteren Automatisierung des Holzbaus vor Ort vor. Konkret wird der nächste Schritt in der Automatisierung des Klebens vor Ort vorgestellt, indem ein maßgeschneiderter Klemmroboter für das Anpressen von Holzelementen vor Ort eingeführt wird. Im Kern der Forschung steht daher die Entwicklung des Klemmroboters als Teil eines größeren robotischen Bauteams, bestehend aus einem industriellen Roboterarm und einem automatisierten Kran, im Co-Design mit dem Material- und Bausystem.
+Die Forschung schlägt ein heterogenes multiskalares robotisches Bausystem zur weiteren Automatisierung des Holzbaus vor Ort vor. Konkret wird der nächste Schritt in der Automatisierung des Klebens vor Ort vorgestellt, indem ein maßgeschneidertes robotisches Klemmgerät für das Anpressen von Holzelementen vor Ort eingeführt wird. Im Kern der Forschung steht daher die Entwicklung dieses Geräts als Teil eines größeren robotischen Bauteams, bestehend aus einem industriellen Roboterarm und einem automatisierten Kran, im Co-Design mit dem Material- und Bausystem.
 
 ### Acropora-Pavillon
 ITECH – Universität Stuttgart | Oktober 2020 | /de/research/acropora-pavilion
@@ -445,7 +445,7 @@ Architektur | Atelier Marko Brajovic | Brasilien | April 2015 – Februar 2016 |
 ### Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings
 ITECH - University of Stuttgart | Dezember 2024 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Tags: Computational design, Form finding, Robotics, Timber construction, On-site fabrication
-Dieser Artikel stellt ein heterogenes multiskalares robotisches Bausystem für den Holzbau vor Ort vor und führt einen maßgeschneiderten Klemmroboter für das Verpressen von Klebeverbindungen an Holzelementen als Teil eines größeren robotischen Bauteams ein.
+Dieser Artikel stellt ein heterogenes multiskalares robotisches Bausystem für den Holzbau vor Ort vor und führt ein maßgeschneidertes robotisches Klemmgerät für das Verpressen von Klebeverbindungen an Holzelementen als Teil eines größeren robotischen Bauteams ein.
 
 ### Automatische Stützenplatzierung
 ICD & ITKE – University of Stuttgart | Tongji, China | Juni 2023 | /de/publications/automatic-column-placement

@@ -1,7 +1,7 @@
 ---
 Cover: /assets/content/research/building-across-scales/building-across-scales-cover.jpeg
 CoverAlt: Final full-scale demonstrator at night. The holes the slab became lamps.
-Description: "The research proposes a heterogeneous multi-scalar robotic construction system to further automate on-site timber construction. Specifically, it presents the next step in the automation of on-site gluing by introducing a custom clamping robot for the on-site pressuring of timber elements. Therefore, at the core of the research lies the development of the clamping robot as part of a larger robotic construction team, including an industrial robotic arm and an automated crane in co-design with the material and building system."
+Description: "The research proposes a heterogeneous multi-scalar robotic construction system to further automate on-site timber construction. Specifically, it presents the next step in the automation of on-site gluing by introducing a custom robotic clamping device for the on-site pressuring of timber elements. Therefore, at the core of the research lies the development of this device as part of a larger robotic construction team, including an industrial robotic arm and an automated crane in co-design with the material and building system."
 Name: Building Across Scales
 Tags:
   - Computational design
@@ -35,15 +35,15 @@ import YouTube from '@/components/YouTube.astro'
 ## Abstract
 **Building Across Scales: A Robotic Timber Fabrication System for On-Site Press Gluing**
 
-The research proposes a heterogeneous multi-scalar robotic construction system to further automate on-site timber construction. Specifically, it presents the next step in the automation of on-site gluing through the introduction of a custom robotic clamping device for the on-site pressuring of timber elements. Therefore at the core of the research, lies the development of the clamping robot as part of a larger robotic construction team including an industrial robot and crane in co-design with the material and building system.
+The research proposes a heterogeneous multi-scalar robotic construction system to further automate on-site timber construction. Specifically, it presents the next step in the automation of on-site gluing through the introduction of a custom robotic clamping device for the on-site pressuring of timber elements. Therefore at the core of the research, lies the development of this device as part of a larger robotic construction team including an industrial robot and crane in co-design with the material and building system.
 Engineered timber has opened up new possibilities in the way modern timber structures are built and designed. By simply stacking timber planks on top of each other and cross-laminating them together, it is possible to achieve strong bonding between the individual layers. However, due to transportation restrictions these timber elements are limited in size, which therefore produces modular building pieces. As this presents a weak joint between the members on-site, it consequently limits the system to a linear span and results in a grid-based architecture.
-This research introduces an on-site fabrication system as a strategy to go beyond these limitations. Through the integration of construction logics into the material, it presents an approach to achieve high precision during assembly and to automate the operation of a crane. Enabled by the robotic clamp it aims to continue the cross-lamination fabrication logic of engineered timber on-site to create a quasi-monolithic slab. This allows for a point supported timber slab of unlimited dimensions, which opens up for more design flexibility in the floor plan and extends the architectural design space.
+This research introduces an on-site fabrication system as a strategy to go beyond these limitations. Through the integration of construction logics into the material, it presents an approach to achieve high precision during assembly and to automate the operation of a crane. Enabled by the robotic clamping device, it aims to continue the cross-lamination fabrication logic of engineered timber on-site to create a quasi-monolithic slab. This allows for a point supported timber slab of unlimited dimensions, which opens up for more design flexibility in the floor plan and extends the architectural design space.
 
 ## Introduction
-> This research intends to further automate on-site timber construction through the development of a custom **robotic clamping **device for the pressuring of** in-situ glue connections**.
+> This research intends to further automate on-site timber construction through the development of a custom robotic clamping device for the pressuring of in-situ glue connections.
 Engineered timber has opened up new possibilities in the way modern timber structures are built and designed[^kaufmann-2018]. By simply stacking timber planks on top of each other and cross-laminating them together, it is possible to achieve strong bonding between the individual layers. But on-site this logic is broken as the individual elements like beam, slabs and walls are just placed next to each other. Thereby creating weak joints between the members, which limits the system to a linear span resulting in a grid-based architecture.
 Instead, this research continues the fabrication logic of engineered timber. By going up in scale it aims to create a quasi monolithic slab spanning over the entire floor to open up for more architectural freedom.
-As the scale of an entire floor is much bigger than of a single CLT panel there is currently no technology to automate this approach. By developing a custom robotic clamp the intention is to automate this process.
+As the scale of an entire floor is much bigger than of a single CLT panel there is currently no technology to automate this approach. By developing a custom robotic clamping device, the intention is to automate this process.
 
 ### Relevance
 Three forces motivate this research: the rising demand for housing in urban areas, the construction sector's stagnant productivity, and the suitability of timber as a substrate for automated processes. Each is examined below.
@@ -126,8 +126,8 @@ On-site gluing has the possibility to overcome the challenges which derive from 
 </Figure>
 
 ### Scope
-The scope of the thesis is the automation of an in-situ glue joint integrated into a timber building system. Therefore the key aspect of the research is the development of a custom robotic device, which is responsible for the glue pressing of the in-situ connection. The co-design between the robotic clamp and the timber allowed the simplification of the robotic design and the development of a material system, which can take full advantage of the proposed technologies.
-Further discussed is the possibility of automating the entire construction chain, achieved by implementing a cyber-physical timber fabrication platform (TIM) responsible for the prefabrication of on-site timber elements. Embedded sensing strategies in the robotic device allow for real-time localization and monitoring of the assembly process, enabling communication and coordination with a crane to automate the in-situ positioning of prefabricated elements.
+The scope of the thesis is the automation of an in-situ glue joint integrated into a timber building system. Therefore the key aspect of the research is the development of a custom robotic clamping device, which is responsible for the glue pressing of the in-situ connection. The co-design between the device and the timber allowed the simplification of the robotic design and the development of a material system, which can take full advantage of the proposed technologies.
+Further discussed is the possibility of automating the entire construction chain, achieved by implementing a cyber-physical timber fabrication platform (TIM) responsible for the prefabrication of on-site timber elements. Embedded sensing strategies in the device allow for real-time localization and monitoring of the assembly process, enabling communication and coordination with a crane to automate the in-situ positioning of prefabricated elements.
 The scope of the research can be divided into two parts:
 - The investigation of a material system, which uses timber elements and the automation of an in-situ joint.
 - The development of a heterogeneous robotic system, including the coordination between all actors. Starting from on-site fabrication to in-situ joinery.
@@ -220,7 +220,7 @@ The research started investigating academic and industrial actors on-site and co
   ![Figure 23g](../../../assets/content/research/building-across-scales/g.png)
 </Figure>
 Figure 23 - Comparison of different robotic actors on-site.
-#### Custom Robotic Device
+#### Custom Robotic Clamping Device
 Building on top of available construction technology, a new robotic species was proposed for the in-situ connection. The goal was to achieve an in-situ glue connection between the different timber elements. Instead of developing a big machine to screw and achieve the needed pressure as it is being developed by the state-of-the-art “Mass Timber Fastening” (figure 24). Our research follows a direction similar to the other mentioned state-of-the-art project, “Automatic Assembly of Jointed Timber Structure Using Distributed Robotic Clamps”[^leung-2021]. We thought, why not create a smaller device capable of applying the pressure just as well as a collection of screws, but that could be automatically removed afterward (figure 25).
 
 <Figure>
@@ -266,7 +266,7 @@ The paneling logic starts from the center point of each column position. These c
 
 ##### Glue Distribution Logic
 After arriving with the paneling logic, the structural model is reanalyzed to inform the glue distribution logic, which ultimately defines the spacing of the holes of the timber system for the in-situ glue pressing. In this step of the development, a key question was: How can we reduce the glue consumption and minimize the amount of work on-site.
-Since the glue is always stronger than timber and can only transfer forces in the form of shear, the initiation of system failures tends to appear as in-plane shearing-off of timber fibers adjacent to the glue interface. Therefore the cross-sectional stresses flowing from the slab into the column are calculated and divided by the in-plane shear strength of the CLT. This then results in a heat map, which highlights areas in which more glue is needed. Depending on the dimensioning of the custom robotic device, it is possible to calculate the corresponding device force and the resulting area of influence which can be pressurized. With this information, the heat map can then be populated with the right amount of robotic devices so that the required pressure level is met everywhere. The glue lines are then oriented to be later applied on-site to optimize the robotic tool path.
+Since the glue is always stronger than timber and can only transfer forces in the form of shear, the initiation of system failures tends to appear as in-plane shearing-off of timber fibers adjacent to the glue interface. Therefore the cross-sectional stresses flowing from the slab into the column are calculated and divided by the in-plane shear strength of the CLT. This then results in a heat map, which highlights areas in which more glue is needed. Depending on the dimensioning of the robotic clamping device, it is possible to calculate the corresponding device force and the resulting area of influence which can be pressurized. With this information, the heat map can then be populated with the right amount of devices so that the required pressure level is met everywhere. The glue lines are then oriented to be later applied on-site to optimize the robotic tool path.
 
 <Figure>
   ![Figure 35 - Finite element analysis from the paneling.](../../../assets/content/research/building-across-scales/finite-element-analysis-from-the-paneling.png)
@@ -277,7 +277,7 @@ Since the glue is always stronger than timber and can only transfer forces in th
 </Figure>
 
 <Figure>
-  ![Figure 37 - Points to place the holes for the robotic clamps.](../../../assets/content/research/building-across-scales/points-to-place-the-holes-for-the-robotic-clamps.png)
+  ![Figure 37 - Points to place the holes for the robotic clamping devices.](../../../assets/content/research/building-across-scales/points-to-place-the-holes-for-the-robotic-clamps.png)
 </Figure>
 
 ##### Alignment Channels
@@ -297,7 +297,7 @@ The sequence is as follows: first, the plate is lowered until the dowels hit the
 </Figure>
 
 #### Construction Scenario
-Going now on site, the assembly process will be demonstrated. In the first step, the prefabricated timber panels will be prepared for assembly by the mobile robotic platform (TIM) before being placed in situ.
+On site, the assembly follows the steps below. First, the mobile robotic platform (TIM) prepares the prefabricated timber panels, which are then placed in situ.
 
 <Figure>
   ![Figure 41 - Mobile robotic platform setup (TIM).](../../../assets/content/research/building-across-scales/mobile-robotic-platform-setup-tim.png)
@@ -328,7 +328,7 @@ Going now on site, the assembly process will be demonstrated. In the first step,
 </Figure>
 
 <Figure>
-  ![Figure 48 - In the next step, the robotic device would proceed with applying the needed pressure for the glue in situ.](../../../assets/content/research/building-across-scales/in-the-next-step-the-robotic-device-would-proceed-with-applying-the-needed.jpg)
+  ![Figure 48 - In the next step, the robotic clamping device would proceed with applying the needed pressure for the glue in situ.](../../../assets/content/research/building-across-scales/in-the-next-step-the-robotic-device-would-proceed-with-applying-the-needed.jpg)
 </Figure>
 
 <Figure>
@@ -370,8 +370,8 @@ The strength test was repeated with varying contraction lengths, ranging from 5%
 </Figure>
 
 #### Hole Spacing Calculating
-The calculation of the area of influence for the robotic device is based on how the spacing of screws for a glue pressure application is calculated. Everything was calculated using a 200mm thick spruce slab and an adhesive amount of 300 g/m².
-The first study was based on a minimum pressure of 0.1 N/mm², as this is the current requirement of the DIN NORM. By applying different spacings in between the devices, the area of influence changes and therefore also the required force which needs to be applied by each device. This relative needed force then dictates the dimensioning and diameter robotic device.
+The calculation of the area of influence for the robotic clamping device is based on how the spacing of screws for a glue pressure application is calculated. Everything was calculated using a 200mm thick spruce slab and an adhesive amount of 300 g/m².
+The first study was based on a minimum pressure of 0.1 N/mm², as this is the current requirement of the DIN NORM. By applying different spacings in between the devices, the area of influence changes and therefore also the required force which needs to be applied by each device. This relative needed force then dictates the dimensioning and diameter of the device.
 The 2nd study is based on a minimum pressure of 0.03 N/mm², as stated in a paper from the Helsinki University of Technology[^kairi-2000], which conducted tests at this pressure level and wrote that it is possible to accomplish a glue line which shear strength is as good as those pressed at normal pressures. And that the condition for successful gluing is that the glued surfaces are adequately smooth.
 And the final study uses a minimum pressure of 0.01 N/mm², which is more optimistic, but as stated earlier, recent research in material science shows a promising direction. This would already result in an area of influence of 150.000mm² for a device with a diameter of 40mm.
 
@@ -384,7 +384,7 @@ And the final study uses a minimum pressure of 0.01 N/mm², which is more optimi
 </Figure>
 
 #### Alignment Strategy
-While at the current step of development, we focused mainly on the pressurizing mechanism, we also thought about an extension of the device to help with the joining and the assembly of the panels. While the alignment channels in the timber help with the alignment of the panels for the last few centimeters, a camera system could help to navigate the crane during its operation to come into the threshold limit of the alignment channels. This could be done by either extending the robotic device with an embedded camera inside the bottom anchor or designing an additional device with a camera with higher processing power. Additionally, more stable pins could be used to help with the passive alignment of the elements. Alternatively, these could be wooden dowels, which could be left inside of the structure after assembly.
+While at the current step of development, we focused mainly on the pressurizing mechanism, we also thought about an extension of the device to help with the joining and the assembly of the panels. While the alignment channels in the timber help with the alignment of the panels for the last few centimeters, a camera system could help to navigate the crane during its operation to come into the threshold limit of the alignment channels. This could be done by either extending the device with an embedded camera inside the bottom anchor or designing an additional device with a camera with higher processing power. Additionally, more stable pins could be used to help with the passive alignment of the elements. Alternatively, these could be wooden dowels, which could be left inside of the structure after assembly.
 The idea on how the plate would be lowered until the dowels hit the timber structure’s surface, from which then the plate could be dragged along the surface until the wooden dowels slide into the alignment channel. Therefore it would minimize the plate’s movement in one direction; it could then be dragged through the engraved channel until the dowels would slide into their assigned holes.
 
 The alignment channels were tested in two different test setups. The first one consisted of 80x50x2 cm timber plates with 1.5cm thick dowels, and the 2nd one of a 120x80x10 cm CLT plate with 4cm thick dowels. Both tests validated the geometrical concept of the alignment channel as it was possible to assemble the plates in the correct position without any manual adjustments. But the sliding of the dowels was not as straightforward as anticipated, as the friction at the tip of the dowels often let the dowels not to slide along the channel but rather create a rotation point of the plate around the axis of the dowel.
@@ -427,10 +427,10 @@ The panels were milled with a 3-axis CNC machine, which included the drilling of
 <Figure>
   ![Figure 64  - Preparation for transport of the prefabricated timber panels.](../../../assets/content/research/building-across-scales/preparation-for-transport-of-the-prefabricated-timber-panels.jpg)
 </Figure>
-The robotic setup here consisted of TIM a mobile robotic platform tailored towards timber fabrication, a spider crane and our custom device. Additionally an end-effector was designed to help with the automated positioning of the devices and the dowels. Two processes could not be showcased for the final device assembly. On the one side the application of glue was done manually, as at this time the glue-gun of TIM was not operational and M20 bolts were used to apply the pressure in-situ, as only one operational prototype of the robotic device was not sufficient to assemble the entire structure.
+The robotic setup here consisted of TIM a mobile robotic platform tailored towards timber fabrication, a spider crane and our robotic clamping device. Additionally an end-effector was designed to help with the automated positioning of the devices and the dowels. Two processes could not be showcased for the final device assembly. On the one side the application of glue was done manually, as at this time the glue-gun of TIM was not operational and M20 bolts were used to apply the pressure in-situ, as only one operational prototype of the device was not sufficient to assemble the entire structure.
 
 <Figure>
-  ![Figure 65 - Demonstrated construction site setup: mobile robotic platform (TIM), spider crane and the custom device.](../../../assets/content/research/building-across-scales/demonstrated-construction-site-setup-mobile-robotic-platform-tim-spider-crane.jpg)
+  ![Figure 65 - Demonstrated construction site setup: mobile robotic platform (TIM), spider crane and the robotic clamping device.](../../../assets/content/research/building-across-scales/demonstrated-construction-site-setup-mobile-robotic-platform-tim-spider-crane.jpg)
 </Figure>
 
 <Figure>
@@ -442,11 +442,11 @@ The robotic setup here consisted of TIM a mobile robotic platform tailored towar
 </Figure>
 
 <Figure>
-  ![Figure 68 - Robotic device magazine.](../../../assets/content/research/building-across-scales/figure-68-robotic-device-magazine.png)
+  ![Figure 68 - Magazine of robotic clamping devices.](../../../assets/content/research/building-across-scales/figure-68-robotic-device-magazine.png)
 </Figure>
 
 <Figure>
-  ![Figure 69 - Clamping device being placed into the holes.](../../../assets/content/research/building-across-scales/figure-69-clamping-device-being-placed-into-the-holes.png)
+  ![Figure 69 - Robotic clamping device being placed into the holes.](../../../assets/content/research/building-across-scales/figure-69-clamping-device-being-placed-into-the-holes.png)
 </Figure>
 
 <Figure>
@@ -553,13 +553,13 @@ We would like to thank…
 
 ## Appendix
 <Figure>
-  ![Three images of the clamping robot: closed; exploded parts and transparent cover; transparent cover.](../../../assets/content/research/building-across-scales/three-images-of-the-clamping-robot-closed-exploded-parts-and-transparent-cover.jpg)
+  ![Three images of the robotic clamping device: closed; exploded parts and transparent cover; transparent cover.](../../../assets/content/research/building-across-scales/three-images-of-the-clamping-robot-closed-exploded-parts-and-transparent-cover.jpg)
 </Figure>
 <Figure>
-  ![Photo of the clamping robot in action.](../../../assets/content/research/building-across-scales/the-clamping-robot-in-action-01.jpg)
+  ![Photo of the robotic clamping device in action.](../../../assets/content/research/building-across-scales/the-clamping-robot-in-action-01.jpg)
 </Figure>
 <Figure>
-  ![Photo of the pressure robots on the demonstrator.](../../../assets/content/research/building-across-scales/the-pressure-robots-on-the-demonstrator-clamping-robots-on-the-demonstrator-01.jpg "Clamping robots on the demonstrator.")
+  ![Photo of the robotic clamping devices on the demonstrator.](../../../assets/content/research/building-across-scales/the-pressure-robots-on-the-demonstrator-clamping-robots-on-the-demonstrator-01.jpg "Robotic clamping devices on the demonstrator.")
 </Figure>
 <Figure>
   ![Close-up photo of the demonstrator ceiling.](../../../assets/content/research/building-across-scales/close-up-photo-of-the-demonstrator-ceiling-close-up-of-the-demonstrator-ceiling-01.jpg "Close-up of the demonstrator ceiling.")
@@ -574,5 +574,5 @@ We would like to thank…
   ![Photo of the demonstrator finished with the spider crane in the background.](../../../assets/content/research/building-across-scales/the-demonstrator-finished-with-the-spider-crane-in-the-background-01.jpg)
 </Figure>
 <Figure>
-  ![Photo of the demonstrator at night: the holes for the clamping robots are now used for light fixtures.](../../../assets/content/research/building-across-scales/the-demonstrator-at-night-the-holes-for-the-clamping-robots-are-now-used-for.jpg)
+  ![Photo of the demonstrator at night: the holes for the robotic clamping devices are now used for light fixtures.](../../../assets/content/research/building-across-scales/the-demonstrator-at-night-the-holes-for-the-clamping-robots-are-now-used-for.jpg)
 </Figure>

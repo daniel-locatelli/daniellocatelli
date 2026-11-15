@@ -182,7 +182,7 @@ A systematic review of the ISO, GS1, CEN, DIN, SIA and KBOB standards that gover
 ### Building Across Scales
 ITECH - University of Stuttgart | Stuttgart, Germany | December 2024 | /research/building-across-scales
 Tags: Computational design, Form finding, Robotics
-The research proposes a heterogeneous multi-scalar robotic construction system to further automate on-site timber construction. Specifically, it presents the next step in the automation of on-site gluing by introducing a custom clamping robot for the on-site pressuring of timber elements. Therefore, at the core of the research lies the development of the clamping robot as part of a larger robotic construction team, including an industrial robotic arm and an automated crane in co-design with the material and building system.
+The research proposes a heterogeneous multi-scalar robotic construction system to further automate on-site timber construction. Specifically, it presents the next step in the automation of on-site gluing by introducing a custom robotic clamping device for the on-site pressuring of timber elements. Therefore, at the core of the research lies the development of this device as part of a larger robotic construction team, including an industrial robotic arm and an automated crane in co-design with the material and building system.
 
 ### Acropora Pavilion
 ITECH – University of Stuttgart | October 2020 | /research/acropora-pavilion
@@ -445,7 +445,7 @@ Architecture | Atelier Marko Brajovic | Brazil | April 2015 – February 2016 | 
 ### Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings
 ITECH - University of Stuttgart | December 2024 | /full-cv (listed on the CV only)
 Tags: Computational design, Form finding, Robotics, Timber construction, On-site fabrication
-This paper presents a heterogeneous multi-scalar robotic construction system for on-site timber construction, introducing a custom clamping robot for in-situ press gluing of timber elements as part of a larger robotic construction team.
+This paper presents a heterogeneous multi-scalar robotic construction system for on-site timber construction, introducing a custom robotic clamping device for in-situ press gluing of timber elements as part of a larger robotic construction team.
 
 ### Automatic Column Placement
 ICD & ITKE – University of Stuttgart | Tongji, China | June 2023 | /publications/automatic-column-placement
