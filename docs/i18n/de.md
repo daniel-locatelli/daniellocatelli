@@ -36,6 +36,22 @@ de strings in `src/scripts/generate-knowledge.ts`. The house rules in
 | standards (norms) | Normen | confirmed |
 | robotic clamping device (Building Across Scales) | robotisches Klemmgerät | confirmed |
 | published paper titles, certificate and course product names | original language, unchanged | confirmed |
+| biomimicry / biomimetics | Biomimetik (not Biomimikry, not Bionik) | confirmed |
+| mesh | das Mesh (Kugel-Mesh), not Netzfläche | confirmed |
+| flatten (Voronoi panels) | planarisieren; flat plates = ebene Platten | confirmed |
+| alveolar polycarbonate | Polycarbonat-Stegplatten | confirmed |
+| plugin | Plugin (the site's spelling, 58 to 4) | confirmed |
+| cable (tension member) | Seil | confirmed |
+| brief (design brief) | Aufgabenstellung, not Briefing | confirmed |
+| computational (adjective) | computergestützt, never rechnerisch | confirmed |
+| high-tech / low-tech | Hightech / Lowtech | confirmed |
+| mass customization | Mass Customization, not Massenfertigung | confirmed |
+| project, where pt *projeto* means the design | Entwurf | confirmed |
+| technical / site visit | Ortstermin | confirmed |
+| apud | zit. nach | confirmed |
+| urban solid waste | feste Siedlungsabfälle | confirmed |
+| press gluing | Pressverleimung | confirmed |
+| link text to a conference paper | „… auf der <Konferenz>“ | confirmed |
 
 ## Corrections
 
@@ -44,6 +60,14 @@ Decisions from reviews, newest first. An entry records what was wrong, so
 
 | Date | Where | Before | After | Why |
 | --- | --- | --- | --- | --- |
+| 2026-11-16 | High-Low (en, pt, de) | the mason … interleaved battens / o pedreiro … ripas intercaladas / Maurer … Latten; pieces of the base in the general floor plan | the foreman … lay rebars between them / mestre de obras … intercalar vergalhões / Polier … Bewehrungsstäbe; base pieces precisely marked on the plan | Checked against the published SIGraDi 2018 PDF (estante, mestre-de-obras, vergalhões intercalados, indicadas com precisão). |
+| 2026-11-16 | High-Low (en, pt, de) | in Figure 7 / (Figure 6) | in the photo of the finished pavilion below / dropped | Daniel (D1): the site does not number its images. |
+| 2026-11-16 | bobbin lace | Webtechnik / Webmethode / textiler Gewebe | textile Handwerkstechnik / textiler Geflechte | Daniel (D2): Klöppeln is not weaving; de only, en and pt keep the published wording. |
+| 2026-11-16 | Life Lamp | sensibles Objekt | sinnlich erfahrbares Objekt | Daniel (D3): pt objeto sensível means perceptible; sensibel describes a touchy person. |
+| 2026-11-16 | bobbin lace | Kabel / Kabelwiderstandsfähigkeit / Briefing / Netzfläche / Endalgorithmus / Biomimikry | Seil / Steifigkeit der Seile / Aufgabenstellung / Mesh / endgültiger Algorithmus / Biomimetik | Daniel (D4, D5, D6) and the batch B panel. |
+| 2026-11-16 | High-Low | Alveoar-Polycarbonat / Hochtechnologie, Niedrigtechnologie / Fließfähigkeit der Form / abflachen / Projekt (design) / Massenfertigung mit CNC / Entwurfsvermittlung / Vor allem (en: recently) | Polycarbonat-Stegplatten / Hightech, Lowtech / fließender Charakter der Form / planarisieren / Entwurf / Mass Customization / Wandel des Mediums, in dem entworfen wird / In jüngerer Zeit | Portuguese words and false friends; meaning drift. Batch B panel. |
+| 2026-11-16 | publications | Plugin → Plug-in (proposed) | kept Plugin | Panel rejected: the site writes Plugin 58 times against 4. |
+| 2026-11-16 | publications | Opus rewrites of correct sentences (Querschnitt, Avantgarde von Zukünften, Bibliographie, …) | kept | Batch B panel (Opus + Fable reviewers, a judge): 107 edits accepted, 21 rejected as taste or as drifting from the en. |
 | 2026-11-16 | CV, legal, portfolio website, O3 pavilion | strukturelle Probleme / Software-Ingenieur / einiges Graben / Präsentatorfenster / enge, breite Fragen / Explosionsperspektive / Kleinmodell / Schmiede / alle Werkzeuge erlernte / zufällige Schäden / straight quotes | Tragwerksaufgaben / Softwareingenieur / eine genauere Untersuchung / Referentenansicht / eng, weit gefasste Fragen / Explosionsdarstellung / Maßstabsmodell / Metallbauer / den Umgang mit allen Werkzeugen gelernt hatte / Nebenschäden / „…“ | Verification panel (Opus + Fable reviewers, a judge) on batch A: 44 fixes accepted, 7 rejected as taste or as against the site's consistent usage (e.g. „des Computational Design“). |
 | 2026-11-16 | home chat, services | du (Frag, bietest du, deinen Tools) | Sie | Daniel: Sie everywhere (batch A, D1). |
 | 2026-11-16 | experiences (ETH) | grosse Sprachmodelle | große Sprachmodelle | Daniel: keep ß (D2). |

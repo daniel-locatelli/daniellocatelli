@@ -2,7 +2,7 @@
 Cover: /assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/algorithmic-design-for-traditional-bobbin-lace-methods-cover.jpg
 CoverAlt: Daniel Nunes Locatelli präsentiert das Paper auf der IASS 2017 in Hamburg.
 CoverFocal: "65% 50%"
-Description: Dieses Paper untersucht die mögliche Anwendung digitaler Werkzeuge beim Entwerfen und Herstellen textiler Gewebe durch die kombinierte Nutzung von Formfindung und der traditionellen Klöppeltechnik.
+Description: Dieses Paper untersucht, wie sich digitale Werkzeuge beim Entwerfen und Herstellen textiler Geflechte einsetzen lassen, indem Formfindung mit der traditionellen Klöppeltechnik kombiniert wird.
 Name: Algorithmic Design for Traditional Bobbin Lace Methods
 Tags:
   - Conceptual design
@@ -23,34 +23,34 @@ Country: "Deutschland"
 DateStart: "2017-09-01"
 Language: English
 Link:
-  Text: Paper bei IASS 2017
+  Text: Paper auf der IASS 2017
   Href: "https://www.ingentaconnect.com/content/iass/piass/2017/00002017/00000009/art00013"
 Place: IASS 2017
 ---
 
 ## Zusammenfassung
 
-Dieses Paper untersucht die mögliche Anwendung digitaler Werkzeuge beim Entwerfen und Herstellen textiler Gewebe durch die kombinierte Nutzung von Formfindung und der traditionellen Klöppeltechnik. Die Arbeit erforscht, wie eine traditionelle Handwerksmethode zu einem neuen Ansatz im Bereich des parametrischen und generativen Designs in Verbindung mit digitalen Fertigungstechnologien führen könnte. Die gesamte Untersuchung basiert auf mehreren Fallstudien renommierter Architekten, deren Arbeit von der Natur inspiriert ist, wie Buckminster Fuller und Frei Otto. Diese Fallstudien versuchten, deren Arbeit mittels Reverse Engineering unter Verwendung einer populären visuellen Programmiersprache zu analysieren, die für die meisten Fachleute zugänglich ist. Angesichts der wachsenden Bedeutung digitaler Prozesse im Design aufgrund ihrer schnellen und optimierten Ergebnisse ist es unerlässlich, dass sich Architekten an diesen neuen Arbeitsablauf anpassen. Dies ist ein Versuch zu zeigen, wie Computational Design ein traditionelles und unerwartetes Thema mit großer räumlicher Kontrolle einbeziehen kann. Es ist auch eine Einführung in den Prozess der dynamischen Relaxation und eine mögliche Anwendung eines evolutionären Algorithmus in Architektur und Design. Schließlich wurde der entwickelte Algorithmus verwendet, um einen Prototyp eines hängemattenähnlichen Stuhls vorzuschlagen.
+Dieses Paper untersucht, wie sich digitale Werkzeuge beim Entwerfen und Herstellen textiler Geflechte einsetzen lassen, indem Formfindung mit der traditionellen Klöppeltechnik kombiniert wird. Die Arbeit erforscht, wie eine traditionelle Handwerksmethode zu einem neuen Ansatz im Bereich des parametrischen und generativen Designs in Verbindung mit digitalen Fertigungstechnologien führen könnte. Die gesamte Untersuchung basiert auf mehreren Fallstudien zu renommierten Architekten, deren Arbeit von der Natur inspiriert ist, etwa Buckminster Fuller und Frei Otto. In diesen Fallstudien wurde versucht, ihre Arbeiten mit einer verbreiteten visuellen Programmiersprache, die den meisten Fachleuten zugänglich ist, per Reverse Engineering nachzubauen. Da digitale Prozesse wegen ihrer schnellen und optimierten Ergebnisse im Entwurf immer wichtiger werden, ist es unerlässlich, dass sich Architekten auf diese neue Arbeitsweise einstellen. Die Arbeit versucht zu zeigen, wie Computational Design ein traditionelles und unerwartetes Thema mit großer räumlicher Kontrolle einbeziehen könnte. Sie führt außerdem in das Verfahren der dynamischen Relaxation und in eine mögliche Anwendung eines evolutionären Algorithmus in Architektur und Design ein. Mit dem entwickelten Algorithmus wurde schließlich ein Prototyp für einen hängemattenähnlichen Stuhl entworfen.
 
 ## Einleitung
 
-Seit vielen Jahrzehnten nutzt die Stadtentwicklung Rohstoffe in einer Weise, die es nicht erlauben wird, diese Exzesse noch lange aufrechtzuerhalten (Fry [4]). Es wird beispielsweise geschätzt, dass das Bauwesen in Brasilien allein etwa 50 bis 70 % der gesamten Masse an städtischem Festabfall des Landes erzeugt, so Fernandes [3].
+Seit vielen Jahrzehnten verbraucht die Stadtentwicklung Rohstoffe in einem Ausmaß, das sich nicht mehr lange aufrechterhalten lässt (Fry [4]). Schätzungen zufolge erzeugt beispielsweise allein das Bauwesen in Brasilien etwa 50 bis 70 % der gesamten Masse der festen Siedlungsabfälle des Landes, so Fernandes [3].
 
-Wie Kieran und Timberlake [5] in ihrem Buch *Refabricating Architecture* beobachten, gibt es gegenwärtig einen Modus Operandi, der den Prozessen, mit denen die Architektur einer früheren Epoche entwickelt wurde, sehr ähnlich ist. Dies liegt daran, dass laut diesen Autoren die architektonische Produktion heute noch viele Jahre für Entwurf und Bau benötigt. Darüber hinaus erfordert das Bauen immer noch eine enorme Menge an Materialien, was zur Erschöpfung von Ressourcen führen könnte.
+Wie Kieran und Timberlake [5] in ihrem Buch *Refabricating Architecture* beobachten, ähnelt die heutige Arbeitsweise stark den Prozessen, mit denen die Architektur einer früheren Epoche entstand. Denn nach Ansicht dieser Autoren dauern Entwurf und Bau in der Architektur auch heute noch viele Jahre. Darüber hinaus erfordert das Bauen immer noch eine enorme Menge an Materialien, was zur Erschöpfung von Ressourcen führen könnte.
 
-Diese Autoren stellen fest, dass Architekten, die diesen Kontext verstehen können, ihn mit den Fortschritten im Design und der Fertigung von Automobilen, Flugzeugen und Schiffen vergleichen. In diesen Bereichen gibt es enorme Möglichkeiten neuer Materialien und Verfahren, bei denen der Abfall, die Kosten und die Fertigungszeit sinken, während sich die Qualität verbessert.
+Die Autoren stellen fest, dass Architekten, die diesen Zusammenhang erkennen, ihn mit den Fortschritten in Entwurf und Fertigung von Automobilen, Flugzeugen und Schiffen vergleichen. In diesen Bereichen eröffnen neue Materialien und Verfahren enorme Möglichkeiten: Abfall, Kosten und Fertigungszeit sinken, während die Qualität steigt.
 
-Algorithmische Architektur ist ein Bereich in voller Entwicklung, der versucht, diesen Mangel an Technologie in der Architektur-, Ingenieur- und Bauindustrie (AEC) zu beheben. Traditionell bezieht sich das Wort Algorithmus auf den Prozess der Lösung eines Problems durch eine endliche Anzahl von Schritten. Heutzutage kann ein Algorithmus jedoch als Vermittler zwischen dem menschlichen Geist und der Rechenleistung des Computers verstanden werden (Terzidis [9]).
+Algorithmische Architektur ist ein sich rasch entwickelndes Feld, das diesen technologischen Rückstand in der Architektur-, Ingenieur- und Baubranche (AEC) aufholen will. Traditionell bezeichnet das Wort Algorithmus ein Verfahren, das ein Problem in endlich vielen Schritten löst. Heutzutage kann ein Algorithmus jedoch als Vermittler zwischen dem menschlichen Geist und der Rechenleistung des Computers verstanden werden (Terzidis [9]).
 
-In diesem Paper schlagen wir eine Installation an der Fakultät für Architektur und Urbanistik der Universität São Paulo vor, unter Verwendung von Computational-Design-Methoden. Um dies realisierbar zu machen, haben wir ein einfaches Briefing gewählt, das es ermöglichte, im Laufe der Forschung viele Algorithmen zu erstellen und zu verbessern.
+In diesem Paper schlagen wir mit Methoden des Computational Design eine Installation an der Fakultät für Architektur und Städtebau der Universität São Paulo vor. Damit dies umsetzbar blieb, wählten wir eine einfache Aufgabenstellung, sodass im Laufe der Forschung viele Algorithmen entwickelt und verbessert werden konnten.
 
-Die Bibliographie wurde so ausgewählt, dass sie einen Überblick über die neuesten Studien im Bereich der Computational-Design-Technologie ermöglicht. Nach der Recherche von Referenzprojekten wurde festgestellt, dass die meisten Entwürfe mit Biomimikry konvergierten. Folglich entwickelte die vorliegende Studie denselben Ansatz, da sie dieselbe philosophische und logische Grundlage renommierter Architekten einbezieht: Achim Menges, Buckminster Fuller, Frei Otto und Tomas Saraceno.
+Die Bibliographie wurde so ausgewählt, dass sie einen Überblick über die neuesten Studien im Bereich der Computational-Design-Technologie ermöglicht. Bei der Recherche nach Referenzprojekten zeigte sich, dass sich die meisten Entwürfe an der Biomimetik orientierten. Die vorliegende Studie verfolgt daher denselben Ansatz, denn sie stützt sich auf dieselben philosophischen und logischen Grundlagen wie renommierte Architekten: Achim Menges, Buckminster Fuller, Frei Otto und Tomas Saraceno.
 
-Buckminster Fuller und Frei Otto waren für diese Studie besonders wichtig. Buckminster versuchte mit seinen Studien zur synergetischen Geometrie das Potenzial der Optimierung im Design zu erforschen, was zu Erfindungen wie der geodätischen Kuppel und der Jitterbug-Transformation führte, die „mit dem Wenigsten das Meiste erreichen" (Krausse und Lichtenstein [6]). Frei Otto hingegen produzierte seine berühmten Formfindungs-Untersuchungsmodelle, die physikalische Eigenschaften wie Seifenhaut, Gummi und Zugkonstruktionen erforschten (Barthel [1]).
+Buckminster Fuller und Frei Otto waren für diese Studie besonders wichtig. Fuller versuchte mit seinen Studien zur synergetischen Geometrie, das Potenzial der Optimierung im Entwurf zu erforschen, was zu Erfindungen wie der geodätischen Kuppel und der Jitterbug-Transformation führte, die „mit dem Wenigsten das Meiste erreichen“ (Krausse und Lichtenstein [6]). Frei Otto hingegen baute seine berühmten Formfindungsmodelle, mit denen er physikalische Eigenschaften von Seifenhäuten, Gummi und zugbeanspruchten Tragwerken untersuchte (Barthel [1]).
 
 import ImageRow from '@/components/ImageRow.astro'
 
-## Architektur und Biomimikry
+## Architektur und Biomimetik
 
 <ImageRow>
   ![Beispiel für Strukturen in der Natur: Ernst Haeckel - Spumellaria](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/1-haeckel-spumellaria.png)
@@ -58,13 +58,13 @@ import ImageRow from '@/components/ImageRow.astro'
   ![Beispiel für Strukturen in der Natur: Patricia Manzarraga - Spinnennetz](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/2-cobweb-by-patricia-manzarraga.jpg)
 </ImageRow>
 
-Laut Benyus [2] nutzt die Biomimetik die Natur als wichtigste Designrichtlinie und kann in drei Ebenen unterteilt werden. Die erste, oberflächlichere, ist ein Versuch, einfach Formen und Muster der Natur nachzuahmen, unabhängig von der verwendeten Methode. Die zweite Ebene erforscht die Wege, die die Natur durchläuft, bis sie ihr Endergebnis erreicht – den Prozess. Und die dritte und umfassendste Ebene besteht darin, natürliche Ökosysteme nachzuahmen, wobei verstanden wird, dass alle Individuen und Elemente eine einzige nachhaltige, miteinander verbundene und voneinander abhängige Biosphäre bilden.
+Laut Benyus [2] nutzt die Biomimetik die Natur als wichtigste Designrichtlinie und kann in drei Ebenen unterteilt werden. Die erste, eher oberflächliche Ebene versucht lediglich, Formen und Muster der Natur nachzuahmen, unabhängig von der verwendeten Methode. Die zweite Ebene untersucht die Wege, die die Natur bis zu ihrem Endergebnis durchläuft: den Prozess. Die dritte und umfassendste Ebene ahmt natürliche Ökosysteme nach, ausgehend von der Einsicht, dass alle Individuen und Elemente eine einzige nachhaltige, vernetzte und wechselseitig abhängige Biosphäre bilden.
 
-In der Natur werden Strukturen, die so einfach erscheinen wie Spinnennetze, Bienenwaben und Termitenhügel, durch die DNA des Tieres bestimmt, das sie baut, also durch seine genetische Information. Doch selbst in Fällen, in denen es eine klar definierte formale Identität gibt, sind noch spezifische Anpassungen an die unmittelbare Umgebung erforderlich, in der sie installiert wird: Jedes Spinnennetz wird zum Beispiel leicht unterschiedlich von anderen erstellt (Kull [7]).
+In der Natur werden einfach wirkende Strukturen wie Spinnennetze, Bienenwaben und Termitenhügel durch die DNA des Tieres bestimmt, das sie baut, also durch seine genetische Information. Doch selbst dort, wo es eine klar definierte formale Identität gibt, sind noch spezifische Anpassungen an die unmittelbare Umgebung nötig, in der die Struktur gebaut wird: Jedes Spinnennetz fällt zum Beispiel etwas anders aus als die übrigen (Kull [7]).
 
-Algorithmische Architektur funktioniert auf ähnliche Weise und erforscht ebenfalls diese natürlichen Mechanismen, aber anstatt von genetischer Information auszugehen, wird der Entwurf durch einen Algorithmus bestimmt. Kurz gesagt, ein vollständiger Algorithmus würde alle notwendigen Informationen für die Ausführung einer Konstruktion enthalten, einschließlich mehrerer Änderungen, die je nach Briefing erforderlich sind.
+Algorithmische Architektur funktioniert ähnlich und erforscht ebenfalls diese natürlichen Mechanismen; der Entwurf geht jedoch nicht von genetischer Information aus, sondern wird durch einen Algorithmus bestimmt. Kurz gesagt: Ein vollständiger Algorithmus würde alle Informationen enthalten, die für die Ausführung eines Bauwerks nötig sind, einschließlich der verschiedenen Anpassungen, die die jeweilige Aufgabenstellung verlangt.
 
-## Das Briefing
+## Die Aufgabenstellung
 
 <ImageRow>
   ![FAU-USP während der Mittagspause](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/3-fauusp.jpg)
@@ -72,70 +72,70 @@ Algorithmische Architektur funktioniert auf ähnliche Weise und erforscht ebenfa
   ![Improvisierte Hängematte an der FAU-USP](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/4-adapted-hammock-at-fauusp.JPG)
 </ImageRow>
 
-Bei der Erkundung der Räume der FAU-USP wurde deutlich, dass es an Aufenthaltsräumen für Studierende mangelte. Darüber hinaus zeigt die Forschung, dass Studierende die Gewohnheit haben, Hängematten im Gebäude aufzuhängen, um diesem Bedarf nachzukommen. Die Idee, die Art und Weise, wie Hängematten gestaltet werden, umzudenken, bot ein großes Potenzial im Bereich der Formfindung. Durch die Kombination von Computational Design mit einer traditionellen Webmethode entwickelte sich die Richtung des Projekts zu einem neuen Designsystem.
+Bei der Erkundung der Räume der FAU-USP wurde deutlich, dass es an Aufenthaltsräumen für Studierende mangelte. Außerdem zeigt die Untersuchung, dass Studierende im Gebäude regelmäßig Hängematten aufhängen, um diesen Bedarf zu decken. Die Idee, die übliche Gestaltung von Hängematten auf den Kopf zu stellen, bot großes Potenzial im Bereich der Formfindung. Durch die Verbindung von Computational Design mit einer traditionellen textilen Handwerkstechnik verlagerte sich die Ausrichtung des Projekts hin zu einem neuen Entwurfssystem.
 
 Bevor jedoch mit der Studie begonnen wurde, war es wichtig, eine Strategie festzulegen:
 
-### Biomimikry
-Es sollte einen von der Natur inspirierten Ansatz aufweisen, der mindestens der zweiten Ebene der Biomimikry (Prozesse) entspricht.
+### Biomimetik
+Der Entwurf sollte einen von der Natur inspirierten Ansatz verfolgen, der mindestens der zweiten Ebene der Biomimetik (Prozesse) entspricht.
 
 ### Komfort
-Das Endergebnis sollte ein komfortables Material aufweisen und Variationen ermöglichen, sodass Nutzer in verschiedenen Positionen verweilen können: sitzend, angelehnt und liegend.
+Das Endergebnis sollte aus einem bequemen Material bestehen und Variationen zulassen, sodass Nutzer verschiedene Haltungen einnehmen können: sitzend, angelehnt und liegend.
 
 ### Herstellbarkeit
-Es ist wesentlich, dass das Projekt die vorhandenen Maschinen und Werkzeuge der FAU-USP nutzt.
+Entscheidend ist, dass das Projekt die an der FAU-USP vorhandenen Maschinen und Werkzeuge nutzt.
 
 ### Identität
-Das Endergebnis sollte auf das Logo der FAU-USP verweisen, mit der Absicht, es mit einer anderen Denkweise jenseits der etablierten modernistischen Vision zu verbinden.
+Das Endergebnis sollte auf das Logo der FAU-USP verweisen und es mit einer anderen Denkweise jenseits des etablierten Leitbilds der Moderne verbinden.
 
 ![Logo der FAU-USP](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/5-logo-fauusp.png)
 
 ### Standort
-Die vorgeschlagene Fläche besteht aus einem 12 Meter großen Quadrat (144 m²), das mit Rasen bedeckt ist und sich zwischen dem Hauptgebäude der FAU-USP und dem Modell- und Versuchslabor (LAME) befindet.
+Die vorgesehene Fläche ist ein mit Rasen bedecktes Quadrat von 12 Metern Seitenlänge (144 m²) zwischen dem Hauptgebäude der FAU-USP und dem Modell- und Versuchslabor (LAME).
 
 ![FAU-USP links und LAME rechts: Satellitenfoto](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/6-fauusp-satelite.png)
 
 ### Optimierung
-Die Art der Gestaltung muss die Optimierung von Form und Struktur berücksichtigen.
+Der Entwurf muss die Optimierung von Form und Tragwerk berücksichtigen.
 
-### Respekt vor dem historischen Erbe
-Diese Installation muss temporär sein, da die FAU-USP ein denkmalgeschütztes Gebäude ist und daher keine Art von permanenter Intervention erlaubt.
+### Denkmalschutz
+Die Installation muss temporär sein, da das Gebäude der FAU-USP unter Denkmalschutz steht und daher keine dauerhaften Eingriffe zulässt.
 
 ## Technik
 
-Die Hauptsoftware, die für die Entwicklung dieser Studie verwendet wurde, war Rhinoceros 3D und sein Grasshopper-Plug-in. Außerdem war die Verwendung von Plug-ins für Grasshopper wie Kangaroo Physics, Lunchbox, Starling und Weaverbird entscheidend. Galapagos, ein Algorithmus, der auf Darwins Evolutionstheorie basiert, ist weit verbreitet und im Gegensatz zu diesen Plug-ins bereits in Grasshopper integriert.
+Die Studie wurde hauptsächlich mit Rhinoceros 3D und dessen Plugin Grasshopper entwickelt. Entscheidend waren außerdem Grasshopper-Plugins wie Kangaroo Physics, Lunchbox, Starling und Weaverbird. Galapagos, ein Algorithmus, der auf Darwins Evolutionstheorie beruht, ist weit verbreitet und im Gegensatz zu diesen Plugins bereits in Grasshopper integriert.
 
-Der entwickelte Endalgorithmus zielt darauf ab, ein vorbestimmtes Netzflächenmuster zu manipulieren. In diesem Fall wurden für die technische Studie ein kubischer Rahmen und eine kugelförmige Netzfläche verwendet.
+Der endgültige Algorithmus soll ein vorgegebenes Mesh-Muster manipulieren. Für die technische Studie wurden in diesem Fall ein kubischer Rahmen und ein kugelförmiges Mesh verwendet.
 
-![Endalgorithmus unterteilt in 5 Schritte](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/7-grasshopper-algoritmo.png)
+![Der endgültige Algorithmus in fünf Schritten](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/7-grasshopper-algoritmo.png)
 
-Der Algorithmus arbeitet in fünf Schritten. Der erste besteht in der Erstellung eines kubischen Rahmens mit einer Kantenlänge von 1 Meter und der Unterteilung aller Kanten in 116 gleichmäßig verteilte Punkte.
+Der Algorithmus arbeitet in fünf Schritten. Im ersten wird ein kubischer Rahmen mit 1 Meter Kantenlänge erzeugt, und alle Kanten werden in 116 gleichmäßig verteilte Punkte unterteilt.
 
-Der zweite Schritt ist die Auswahl von 1 bis 40 Anker-Eckpunkten aus den 116 anfänglichen Eckpunkten im kubischen Rahmen. Dieser Auswahlprozess wird von Galapagos gesteuert und im letzten Schritt beschrieben.
+Im zweiten Schritt werden aus den 116 Ausgangspunkten des kubischen Rahmens 1 bis 40 Ankerpunkte ausgewählt. Diese Auswahl steuert Galapagos; sie wird im letzten Schritt beschrieben.
 
-In der dritten Stufe wird eine Kugel mit 0,80 Metern Durchmesser erzeugt und ihre Netzfläche verbessert, bis ein bestimmtes vorgegebenes Muster erreicht ist. Für jeden im vorherigen Schritt ausgewählten Anker-Eckpunkt gibt es 16 Verbindungsmöglichkeiten zur Kugelnetzfläche durch Kabel. Aus diesen 16 Optionen wählt Galapagos nur ein einziges Kabel für jeden Anker-Eckpunkt.
+Im dritten Schritt wird eine Kugel mit 0,80 Metern Durchmesser erzeugt und ihr Mesh so lange überarbeitet, bis ein bestimmtes vorgegebenes Muster erreicht ist. Für jeden im vorherigen Schritt ausgewählten Ankerpunkt gibt es 16 Möglichkeiten, ihn über ein Seil mit dem Kugel-Mesh zu verbinden. Aus diesen 16 Optionen wählt Galapagos für jeden Ankerpunkt nur ein einziges Seil.
 
-Im vierten Schritt kann, nachdem die Struktur vorbereitet ist, der Physiksimulator Kangaroo endlich aktiviert werden. Auf diese Weise werden die Linien und die Kugelnetzfläche in elastische Kabel umgewandelt. Mit der angepassten Kabelwiderstandsfähigkeit ist es möglich, das System stabil zu machen. Anschließend werden die Vektordistanzen zwischen den ursprünglichen Eckpunkten der statischen Kugel und den Eckpunkten der „relaxierten" Kugel berechnet.
+Ist die Struktur vorbereitet, kann im vierten Schritt endlich der Physiksimulator Kangaroo aktiviert werden. Dabei werden die Linien und das Kugel-Mesh in elastische Seile umgewandelt. Ist die Steifigkeit der Seile angepasst, lässt sich das System stabilisieren. Anschließend werden die Abstände zwischen den ursprünglichen Eckpunkten der statischen Kugel und den Eckpunkten der „relaxierten“ Kugel berechnet.
 
-![Visuelle Schritte des Endalgorithmus](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/8-visual-steps-of-the-final-algorithm.png)
+![Die Schritte des endgültigen Algorithmus in Bildern](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/8-visual-steps-of-the-final-algorithm.png)
 
-Der fünfte Schritt verwendet Galapagos. Dieser Algorithmus beginnt mit der Erzeugung von 50 möglichen Zufallsergebnissen, das heißt 50 Individuen basierend auf dem Genpool, der in diesem Fall aus den 116 Eckpunkten entlang der kubischen Struktur und den 190 Eckpunkten in der Kugelnetzfläche besteht. Mit diesen Daten ist er in der Lage, unter den 50 anfänglichen Individuen zu suchen und das beste zu bestimmen. Dieser Prozess wird Fitnessfunktion genannt und wählt die Individuen aus, deren Endpunkte den Eckpunkten der ursprünglichen Kugelform am nächsten liegen.
+Im fünften Schritt wird Galapagos eingesetzt. Dieser Algorithmus erzeugt zunächst 50 mögliche Zufallsergebnisse, also 50 Individuen auf Grundlage des Genpools, der hier aus den 116 Punkten entlang des kubischen Rahmens und den 190 Eckpunkten im Kugel-Mesh besteht. Mit diesen Daten kann er unter den 50 anfänglichen Individuen suchen und das beste bestimmen. Dabei kommt die sogenannte Fitnessfunktion zum Einsatz: Sie wählt die Individuen aus, deren Eckpunkte am Ende den Eckpunkten der ursprünglichen Kugelform am nächsten liegen.
 
-![Fünfter Schritt: Galapagos evolutionärer Solver](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/9-fifth-step-galapagos.png)
+![Fünfter Schritt: der evolutionäre Solver Galapagos](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/9-fifth-step-galapagos.png)
 
-Aus der anfänglichen Erzeugung von Datenpunkten kombinieren die optimalen Individuen ihre genetischen Marker, um 50 neue Datenpunkte als eigene eigenständige Generation zu erzeugen. Dies wird wiederholt, bis das günstigste Ergebnis erreicht ist. In diesem Beispiel stabilisierte sich der Algorithmus bei der hundertsten Generation.
+Die besten Individuen der ersten Generation von Datenpunkten kombinieren ihre genetischen Merkmale und erzeugen so 50 neue Datenpunkte, die eine eigene neue Generation bilden. Dies wird wiederholt, bis das günstigste Ergebnis erreicht ist. In diesem Beispiel stabilisierte sich der Algorithmus bei der hundertsten Generation.
 
 ![Formoptimierung mit Galapagos](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/10-galapagos-optimization.png)
 
-Danach wurden sieben weitere Studien entwickelt, bei denen jedoch nur das anfängliche Netzflächenmuster der Kugel geändert und ihr Verhalten analysiert wurde.
+Danach wurden sieben weitere Studien durchgeführt, in denen jedoch nur das anfängliche Mesh-Muster der Kugel geändert und ihr Verhalten analysiert wurde.
 
-![Acht wichtigste Input- und Output-Studien](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/11-eight-most-important-inputs-and-outputs-studies.png)
+![Die acht wichtigsten Studien mit Ein- und Ausgaben](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/11-eight-most-important-inputs-and-outputs-studies.png)
 
-Mit den erzielten Ergebnissen wurde geschlussfolgert, dass die beste Alternative zur Entwicklung des Endvorschlags die „truncierte hexagonale Netzfläche" war, da sie die beste Kontrolle über die Endform bietet und gleichzeitig herstellbar ist.
+Die Ergebnisse führten zu dem Schluss, dass sich das „abgestumpfte hexagonale Mesh“ am besten für die Entwicklung des endgültigen Vorschlags eignet, da es die beste Kontrolle über die endgültige Form bietet und sich zugleich mit vertretbarem Aufwand herstellen lässt.
 
 ## Detaillierung
 
-Um alle im Briefing aufgeführten Punkte zu erfüllen, wurde eine Struktur entwickelt, die direkt auf eines der Module verweist, die das Logo der FAU-USP bilden. Aus diesem Metallskelett aus 4 Stäben wurde ein breites Spektrum von 20 Lösungen erzeugt.
+Um alle Punkte der Aufgabenstellung zu erfüllen, wurde eine Struktur entwickelt, die sich direkt auf eines der Module bezieht, aus denen das Logo der FAU-USP besteht. Ausgehend von diesem Metallskelett aus vier Stäben wurde ein breites Spektrum von 20 Lösungen erzeugt.
 
 ![Konzeptdiagramm: das FAU-USP-Logomuster, die Klöppeltechnik und die Hängematte als Designinspiration](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/concept-diagram-algorithm-lace-hammock.jpg)
 
@@ -143,17 +143,17 @@ Um alle im Briefing aufgeführten Punkte zu erfüllen, wurde eine Struktur entwi
 
 ![Ausschnitt aus dem Spektrum vielfältiger Lösungen](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/13-part-of-the-spectrum-of-solutions.png)
 
-Ähnlich wie bei der Evolution in der Biologie ergibt sich keine „perfekte Lösung", aber das Endziel wird erreicht. Dies ist im Design besonders wichtig, da es zu einem Mittel wird, bei dem Mensch und Computer zusammenarbeiten können. Während Menschen den Algorithmus zusammenstellen, verarbeiten die Computer ihn und bieten eine große Anzahl von Ergebnissen, aus denen ein Mensch dann diejenigen auswählen kann, die Qualitäten respektieren, die schwer im Algorithmus zu spezifizieren sind, wie Ästhetik oder Komfort.
+Wie bei der Evolution in der Biologie entsteht dabei keine „perfekte Lösung“, das Ziel wird aber erreicht. Für den Entwurf ist das besonders wichtig, weil es so zu einem Mittel wird, durch das Mensch und Computer zusammenarbeiten können. Menschen stellen den Algorithmus zusammen, Computer verarbeiten ihn und liefern eine große Zahl von Ergebnissen. Daraus kann ein Mensch dann jene auswählen, die Qualitäten berücksichtigen, die sich im Algorithmus nur schwer festlegen lassen, etwa Ästhetik oder Komfort.
 
 ### Konstruktionsmethode
 
-Um die vorgeschlagene hexagonale Netzfläche herzustellen, wurde die traditionelle Klöppeltechnik übernommen. Die Struktur besteht aus 4 Stahlrohren mit 5 Zentimetern Durchmesser und 2,5 Metern Länge; unter Verwendung von vier vorgefertigten Bogenverbindungen mit Winkeln von 34 und 71,9 Grad.
+Um das vorgeschlagene hexagonale Mesh herzustellen, wurde die traditionelle Klöppeltechnik gewählt. Die Struktur soll aus vier Stahlrohren mit 5 Zentimetern Durchmesser und 2,5 Metern Länge bestehen, verbunden durch vier vorgefertigte Rohrbögen mit Winkeln von 34 und 71,9 Grad.
 
 ### Fertigung
 
-Die Montage würde in 3 Schritten erfolgen: die Herstellung des Netzes, die Montage des strukturellen Skeletts und schließlich die Befestigung des Netzes mit Seilen und seine Spannung. Alle Maße und Befestigungspunkte können mit Grasshopper dokumentiert werden, wodurch Informationsdiskrepanzen vermieden und der Montageprozess beschleunigt wird.
+Die Montage würde in drei Schritten erfolgen: Herstellen des Netzes, Aufbau des tragenden Skeletts und schließlich Befestigen und Spannen des Netzes mit Seilen. Alle Maße und Befestigungspunkte lassen sich mit Grasshopper dokumentieren; so werden widersprüchliche Angaben vermieden und die Montage beschleunigt.
 
-Die Klöppeltechnik besteht aus einer manuellen Stoffherstellung, die es ermöglicht, komplexe Muster mit einfachen Werkzeugen zu entwickeln. Die traditionelle Fertigung besteht aus dem sukzessiven Flechten und Verdrehen von Fadenlängen unter Verwendung von Holzstäben (Klöppeln) zum Handhaben, Nadeln zum Stabilisieren des Musters und einem Stützkissen.
+Klöppeln ist eine textile Handarbeitstechnik, mit der sich komplexe Muster mit einfachsten Werkzeugen herstellen lassen. Traditionell werden dabei Fäden nacheinander verflochten und verdreht: Holzstäbchen (Klöppel) führen die Fäden, Nadeln halten das Muster stabil, und ein Klöppelkissen dient als Unterlage.
 
 <ImageRow>
   ![Klöppelspitzennetz für das Modell](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/14-bobbin-lace-physical-model.jpg)
@@ -161,21 +161,21 @@ Die Klöppeltechnik besteht aus einer manuellen Stoffherstellung, die es ermögl
   ![Fertiges physisches Modell im Maßstab 1:5](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/15-final-physical-model.jpg)
 </ImageRow>
 
-![Rendering einer Einheit mit menschlichem Maßstabsreferenz](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/16-rendering-of-one-unit.png)
+![Rendering einer Einheit mit einer Person als Maßstab](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/16-rendering-of-one-unit.png)
 
-![Rendering des Endvorschlags vor der FAU-USP](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/17-rendering-of-the-final-proposal.jpeg)
+![Rendering des endgültigen Vorschlags vor der FAU-USP](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/17-rendering-of-the-final-proposal.jpeg)
 
-![Draufsicht des Endvorschlags mit den im Kreis angeordneten Modulen entsprechend dem FAU-USP-Logomuster](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/18-top-view-of-final-proposal.png)
+![Draufsicht des endgültigen Vorschlags: Die Module sind im Kreis angeordnet und folgen dem Muster des FAU-USP-Logos](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/18-top-view-of-final-proposal.png)
 
 ## Schlussfolgerung
 
-Diese Studie versuchte, einige Möglichkeiten zu erforschen, eine traditionelle Webtechnik in Computational Design einzubeziehen, mit dem Ziel, einen Prototyp eines hängemattenähnlichen Stuhls zu entwickeln. Der Algorithmus liefert auch einige unerwartete Ergebnisse, die die Vorstellung des Designers vom Endprojekt verändern. Mit anderen Worten: Dieses System ermöglicht es dem Algorithmus und dem Designer, als Team zusammenzuarbeiten.
+Diese Studie wollte einige Möglichkeiten ausloten, eine traditionelle textile Handwerkstechnik in das Computational Design einzubeziehen, um den Prototyp eines hängemattenähnlichen Stuhls zu entwickeln. Der Algorithmus liefert auch einige unerwartete Ergebnisse, die die Vorstellung des Designers vom endgültigen Entwurf verändern. Mit anderen Worten: Dieses System ermöglicht es dem Algorithmus und dem Designer, als Team zusammenzuarbeiten.
 
-Letztendlich funktioniert der Endalgorithmus als kreative Erweiterung des menschlichen Geistes und erzeugt ein Spektrum vielfältiger Lösungen.
+Letztlich wirkt der endgültige Algorithmus als kreative Erweiterung des menschlichen Geistes und erzeugt ein Spektrum vielfältiger Lösungen.
 
 ![Daniel Nunes Locatelli präsentiert das Paper auf der IASS 2017 in Hamburg](../../../assets/content/publications/algorithmic-design-for-traditional-bobbin-lace-methods/presenting-at-iass-2017-hamburg.png)
 
-### Referenzen
+### Literaturverzeichnis
 [1] Barthel R. Natural Forms - Architectural Forms. In: FREI OTTO - *Lightweight Construction*, Natural Design, Birkhauser - Publishers for Architecture, 2005.
 [2] Benyus J. M. *A Biomimicry Primer*. Biomimicry guide, 2009.
 [3] Fernandes J. A. B. *Caderno de Diagnóstico, Resíduos da Construção Civil*. IPEA, 2011.

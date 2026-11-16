@@ -1,8 +1,8 @@
 ---
 Cover: /assets/content/publications/computational-design-strategies/computational-design-strategies-cover.svg
 CoverAlt: "Originalcover des E-Books: das Mesh einer Radiolarie."
-Description: "Hier präsentiere ich eine Zusammenstellung von Strategien, die ich in den neun Jahren seit Beginn meines Studiums in diesem faszinierenden Bereich kennengelernt habe! Jeder, der Computational Design zu studieren beginnt, lernt diese Zusammenstellung von Informationen auf die eine oder andere Weise. Manche bauen Bibliotheken von Links und Dateien auf; andere speichern sie im Kopf. Allerdings sind dies Informationen, die jeder erst nach vielen Jahren der Forschung erlernt."
-Name: Computational Design Strategien
+Description: "Hier präsentiere ich eine Zusammenstellung von Strategien, die ich in den neun Jahren seit Beginn meines Studiums in diesem faszinierenden Bereich kennengelernt habe! Wer beginnt, sich mit Computational Design zu befassen, eignet sich dieses Wissen auf die eine oder andere Weise an. Manche legen Sammlungen von Links und Dateien an, andere behalten alles im Kopf. Dieses Wissen erwirbt allerdings jeder erst nach vielen Jahren der Forschung."
+Name: Computational-Design-Strategien
 Tags:
   - Computational design
   - Agent-based system
@@ -22,5 +22,5 @@ Link:
 Place: Online
 ---
 
-Hier präsentiere ich eine Zusammenstellung von Strategien, die ich in den neun Jahren seit Beginn meines Studiums in diesem faszinierenden Bereich kennengelernt habe! Jeder, der Computational Design zu studieren beginnt, lernt diese Zusammenstellung von Informationen auf die eine oder andere Weise. Manche bauen Bibliotheken von Links und Dateien auf; andere speichern sie im Kopf. Allerdings sind dies Informationen, die jeder erst nach vielen Jahren der Forschung erlernt.
+Hier präsentiere ich eine Zusammenstellung von Strategien, die ich in den neun Jahren seit Beginn meines Studiums in diesem faszinierenden Bereich kennengelernt habe! Wer beginnt, sich mit Computational Design zu befassen, eignet sich dieses Wissen auf die eine oder andere Weise an. Manche legen Sammlungen von Links und Dateien an, andere behalten alles im Kopf. Dieses Wissen erwirbt allerdings jeder erst nach vielen Jahren der Forschung.
 Ich habe diese Publikation ins Englische übersetzt und daraus Seiten auf meiner Plattform ArchCompute gemacht: siehe [Computational Design Strategies](https://archcompute.com/en/strategies).
