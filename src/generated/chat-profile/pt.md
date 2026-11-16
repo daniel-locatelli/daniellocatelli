@@ -443,34 +443,34 @@ Arquitetura | Atelier Marko Brajovic | Brasil | abril de 2015 – fevereiro de 2
 ## Publicações
 
 ### Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings
-ITECH - University of Stuttgart | dezembro de 2024 | /pt/full-cv (listado apenas no currículo)
+ITECH – Universidade de Stuttgart | dezembro de 2024 | /pt/full-cv (listado apenas no currículo)
 Tags: Computational design, Form finding, Robotics, Timber construction, On-site fabrication
-Este artigo apresenta um sistema de construção robótica heterogêneo e multiescalar para a construção em madeira no canteiro de obras, introduzindo um dispositivo robótico de prensagem, desenvolvido sob medida, para a prensagem de conexões coladas em elementos de madeira como parte de uma equipe robótica de construção mais ampla.
+Este artigo apresenta um sistema de construção robótica heterogêneo e multiescalar para a construção em madeira no canteiro de obras. O sistema inclui um dispositivo robótico de prensagem, desenvolvido sob medida, que pressiona os elementos de madeira durante a colagem no próprio local, como parte de uma equipe robótica de construção mais ampla.
 
 ### Posicionamento automático de pilares
-ICD & ITKE – University of Stuttgart | Tongji, China | junho de 2023 | /pt/publications/automatic-column-placement
+ICD e ITKE – Universidade de Stuttgart | Xangai, China | junho de 2023 | /pt/publications/automatic-column-placement
 Tags: Computational design, Column placement, Complex networks, Organization of space, Multi-story buildings
-Este artigo apresenta um método computacional baseado em feedback para o posicionamento de pilares na fase inicial de projeto de prédios. O método integra um algoritmo de agrupamento de círculos, um sistema de molas e simulações de engenharia estrutural em um único script para o arranjo recíproco e informado de colunas no espaço. Ao mesmo tempo que permite que os usuários tenham uma abordagem exploratória, ele capacita diversos potenciais em construções de vários andares, incluindo espaços adicionais em balanço ao redor dos limites, maiores qualidades espaciais com possibilidades de grandes vã…
+Este artigo apresenta um método computacional baseado em feedback para o posicionamento de pilares na fase inicial de projeto de estruturas complexas de vários pavimentos. O método integra um algoritmo de empacotamento de círculos, um sistema de molas e simulações de engenharia estrutural em um único script para o arranjo recíproco e informado de pilares no espaço. Além de permitir uma abordagem exploratória, o método abre diversas possibilidades em edifícios de vários pavimentos: espaços adicionais em balanço no perímetro, mais qualidade espacial graças a grandes vãos, arranjos estruturais mu…
 
-### Life Lamp: Conectando design e pessoas através da emoção
-eCAADe 2020 Anthropologic | Berlin, Alemanha | junho de 2020 | /pt/publications/life-lamp-connecting-design-and-people-through-emotion
+### Life Lamp: Connecting Design and People Through Emotion
+eCAADe 2020 Anthropologic | Berlim, Alemanha | junho de 2020 | /pt/publications/life-lamp-connecting-design-and-people-through-emotion
 Tags: 3D Printing, Agent-based system, Computational design, Emotional design, Mass customisation
-O processo de design é um híbrido entre uma abordagem top-down e uma bottom-up. Trabalhamos tanto com modelos 3D predefinidos em forma de coração quanto com modelagem baseada em agentes, amplamente explorada por Craig Reynolds na década de 1980. A parte de programação foi desenvolvida usando Grasshopper 3D, o plugin Culebra v2.0 de duas semanas para a modelagem baseada em agente em conjunto com o plugin Firefly para capturar os batimentos cardíacos. Este trabalho tornou-se posteriormente um paper apresentado na eCAADe 2020.
+O processo de design é um híbrido entre as abordagens top-down e bottom-up. Trabalhamos tanto com modelos 3D predefinidos em forma de coração, usados como base do design, quanto com modelagem baseada em agentes, amplamente explorada por Craig Reynolds na década de 1980. A programação foi feita no Grasshopper 3D, com o plugin Culebra v2.0, lançado havia duas semanas, para a modelagem baseada em agentes, e com o plugin Firefly para captar os batimentos cardíacos. Mais tarde, o trabalho virou um artigo apresentado no eCAADe 2020.
 
 ### Design Computacional: Estratégias
 Online | março de 2020 | /pt/publications/computational-design-strategies
 Tags: Computational design, Agent-based system, Complex networks, Dynamic relaxation, Evolutionary algorithm, Form finding, Grasshopper3d, Optimization
-Aqui apresento uma compilação de estratégias que encontrei ao longo dos nove anos desde que comecei meus estudos nesta área fascinante! Todo mundo que começa a estudar design computacional aprende essa compilação de informações de uma forma ou de outra. Alguns constroem bibliotecas de links e arquivos; outros os armazenam em suas cabeças. No entanto, esta é uma informação que todos aprendem após muitos anos de pesquisa.
+Aqui apresento uma compilação de estratégias que encontrei ao longo dos nove anos desde que comecei meus estudos nesta área fascinante! Todo mundo que começa a estudar design computacional aprende esse conjunto de informações de uma forma ou de outra. Alguns constroem bibliotecas de links e arquivos; outros guardam tudo na cabeça. Seja como for, é um conhecimento que todos levam muitos anos de pesquisa para adquirir.
 
 ### High-Low como expressão da fabricação digital brasileira
 SIGRADI 2018 Technopolitics | São Carlos, Brasil | novembro de 2018 | /pt/publications/high-low-as-expression-of-the-brazilian-digital-fabrication
 Tags: High-low, File-to-factory, Ephemeral architecture, Computational design
-Este artigo investiga o conceito do high-low: alta tecnologia na fase de projeto com baixa tecnologia na fase de fabricação. A arquitetura efêmera tem potencial para combinar conhecimentos acadêmicos e artísticos na produção comercial brasileira. Um estudo de caso experimental projetado para a Expo Revestir para a Docol em 2017 é apresentado aqui, equilibrando o paradigma do design computacional com o campo acadêmico e aplicações comerciais viáveis.
+Este artigo investiga o conceito do high-low: alta tecnologia na fase de projeto com baixa tecnologia na fase de fabricação. A arquitetura efêmera tem potencial para combinar conhecimentos acadêmicos e artísticos na produção comercial brasileira. Apresentamos aqui um estudo de caso experimental, projetado para a Docol na Expo Revestir 2017, que equilibra o paradigma do design computacional com o campo acadêmico e aplicações comerciais viáveis.
 
-### Processo algorítmico para reproduzir rendas de bobina digitalmente
-IASS 2017 | Hamburg, Alemanha | setembro de 2017 | /pt/publications/algorithmic-design-for-traditional-bobbin-lace-methods
+### Algorithmic Design for Traditional Bobbin Lace Methods
+IASS 2017 | Hamburgo, Alemanha | setembro de 2017 | /pt/publications/algorithmic-design-for-traditional-bobbin-lace-methods
 Tags: Conceptual design, Form finding, Optimization, Dynamic relaxation, Evolutionary algorithm, Computational design, Grasshopper3d
-Este artigo investiga a potencial aplicação de ferramentas digitais no projeto e fabricação de tramas têxteis através do uso combinado de busca de forma (form finding) e da técnica tradicional de renda de bilro.
+Este artigo investiga como ferramentas digitais podem apoiar o projeto e a fabricação de tramas têxteis, combinando a busca da forma (form finding) com a técnica tradicional de renda de bilro.
 
 ## Ensino, workshops e palestras
 

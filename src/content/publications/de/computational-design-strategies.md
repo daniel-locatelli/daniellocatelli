@@ -23,4 +23,4 @@ Place: Online
 ---
 
 Hier präsentiere ich eine Zusammenstellung von Strategien, die ich in den neun Jahren seit Beginn meines Studiums in diesem faszinierenden Bereich kennengelernt habe! Jeder, der Computational Design zu studieren beginnt, lernt diese Zusammenstellung von Informationen auf die eine oder andere Weise. Manche bauen Bibliotheken von Links und Dateien auf; andere speichern sie im Kopf. Allerdings sind dies Informationen, die jeder erst nach vielen Jahren der Forschung erlernt.
-Ich habe diese PDF-Publikation ins Englische übersetzt und auf meiner Website verfügbar gemacht. Besuchen Sie die Seite [Computational Design Strategies](https://archcompute.com/en/strategies) auf meiner Plattform ArchCompute.
+Ich habe diese Publikation ins Englische übersetzt und daraus Seiten auf meiner Plattform ArchCompute gemacht: siehe [Computational Design Strategies](https://archcompute.com/en/strategies).

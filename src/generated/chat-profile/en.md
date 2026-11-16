@@ -448,21 +448,21 @@ Tags: Computational design, Form finding, Robotics, Timber construction, On-site
 This paper presents a heterogeneous multi-scalar robotic construction system for on-site timber construction, introducing a custom robotic clamping device for in-situ press gluing of timber elements as part of a larger robotic construction team.
 
 ### Automatic Column Placement
-ICD & ITKE – University of Stuttgart | Tongji, China | June 2023 | /publications/automatic-column-placement
+ICD & ITKE – University of Stuttgart | Shanghai, China | June 2023 | /publications/automatic-column-placement
 Tags: Computational design, Column placement, Complex networks, Organization of space, Multi-story buildings
 This paper presents a feedback-based computational method for placing columns in the early design phase of complex multi-story structures. The method integrates a circle packing algorithm, a spring system, and structural engineering simulations within a single script for the reciprocal and informed arrangement of columns in the space. While allowing the users to have an explorative approach, it empowers diverse potentials in multi-story constructions, including additional cantilevering spaces around the boundary, increased spatial qualities with large span possibilities, multidirectional struc…
 
 ### Life Lamp: Connecting Design and People Through Emotion
 eCAADe 2020 Anthropologic | Berlin, Germany | June 2020 | /publications/life-lamp-connecting-design-and-people-through-emotion
 Tags: 3D Printing, Agent-based system, Computational design, Emotional design, Mass customisation
-The design process is a hybrid between a top-down and a bottom-up approach. We worked both with predefined heart-like 3D models as the design base and with agent-based modeling, widely explored by Craig Reynolds in the 1980s. The programming part was developed using Grasshopper 3D, the two-week-old plugin Culebra v2.0 for the agent-based modeling in conjunction with the Firefly plugin to capture the heartbeats. This work became later a paper presented at the eCAADe 2020.
+The design process is a hybrid between a top-down and a bottom-up approach. We worked both with predefined heart-like 3D models as the design base and with agent-based modeling, widely explored by Craig Reynolds in the 1980s. The programming part was developed using Grasshopper 3D, the two-week-old plugin Culebra v2.0 for the agent-based modeling in conjunction with the Firefly plugin to capture the heartbeats. This work later became a paper presented at eCAADe 2020.
 
 ### Computational Design Strategies
 Online | March 2020 | /publications/computational-design-strategies
 Tags: Computational design, Agent-based system, Complex networks, Dynamic relaxation, Evolutionary algorithm, Form finding, Grasshopper3d, Optimization
 Here I present a compilation of strategies I have encountered over the nine years since I started my studies in this fascinating area! Everyone who begins to study computational design learns this compilation of information in one way or another. Some build libraries of links and files; others store them in their heads. However, this is information that everyone learns after many years of research.
 
-### High-Low as Expression of the Brazilian Digital Fabrication
+### High-Low como expressão da fabricação digital brasileira [High-Low as Expression of the Brazilian Digital Fabrication]
 SIGRADI 2018 Technopolitics | São Carlos, Brazil | November 2018 | /publications/high-low-as-expression-of-the-brazilian-digital-fabrication
 Tags: High-low, File-to-factory, Ephemeral architecture, Computational design
 This paper investigates the concept of high-low: high technology in the design phase with low technology in the fabrication phase. The ephemeral architecture has the potential to combine academic and artistic knowledge in Brazilian commercial production. One experimental case study designed for Expo Revestir for Docol in 2017 is presented here, balancing the paradigm of computational design with the academic field and viable commercial applications.

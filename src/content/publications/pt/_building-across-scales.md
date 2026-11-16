@@ -1,5 +1,5 @@
 ---
-Description: "Este artigo apresenta um sistema de construção robótica heterogêneo e multiescalar para a construção em madeira no canteiro de obras, introduzindo um dispositivo robótico de prensagem, desenvolvido sob medida, para a prensagem de conexões coladas em elementos de madeira como parte de uma equipe robótica de construção mais ampla."
+Description: "Este artigo apresenta um sistema de construção robótica heterogêneo e multiescalar para a construção em madeira no canteiro de obras. O sistema inclui um dispositivo robótico de prensagem, desenvolvido sob medida, que pressiona os elementos de madeira durante a colagem no próprio local, como parte de uma equipe robótica de construção mais ampla."
 Name: Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings
 Tags:
   - Computational design
@@ -14,14 +14,14 @@ Authors:
   - Hans Jakob Wagner
   - Achim Menges
 DateStart: "2024-12-01"
-Language: English
+Language: Inglês
 Link:
   Text: Artigo no periódico Automation in Construction
   Href: "https://doi.org/10.1016/j.autcon.2024.105774"
 Place: "Automation in Construction, Volume 168, Part A"
-Organization: "ITECH - University of Stuttgart"
+Organization: "ITECH – Universidade de Stuttgart"
 ---
 
-## Building Across Scales: Um sistema robótico para colagem de madeira engenheirada no canteiro
+## Building Across Scales: um sistema robótico de fabricação em madeira para colagem sob pressão no canteiro
 
-A pesquisa propõe um sistema de construção robótica multiescalar heterogêneo para automatizar ainda mais a construção de madeira no canteiro de obras. Especificamente, apresenta o próximo passo na automação da colagem no canteiro de obras por meio da introdução de um dispositivo robótico de prensagem para a colagem da madeira. No cerne da pesquisa está o desenvolvimento desse dispositivo como parte de uma equipe de construção robótica, incluindo robôs industriais e um guindaste em co-design com o material e o sistema de construção.
+A pesquisa propõe um sistema de construção robótica heterogêneo e multiescalar para automatizar ainda mais a construção em madeira no canteiro de obras. Mais especificamente, dá o próximo passo na automação da colagem no canteiro ao introduzir um dispositivo robótico de prensagem, desenvolvido sob medida, que pressiona os elementos de madeira no próprio local. No centro da pesquisa está o desenvolvimento desse dispositivo, parte de uma equipe robótica de construção mais ampla (um robô industrial e um guindaste), concebida em co-design com o material e o sistema construtivo.
