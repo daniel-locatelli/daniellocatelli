@@ -10,8 +10,8 @@ Category: Professional Experience
 Link: "https://art-engineering.net/"
 ---
 
-- Durchführung algorithmischer Modellierung und Finite-Elemente-Analyse komplexer räumlicher Strukturen und Kunstwerke.
+- Algorithmische Modellierung und Finite-Elemente-Analysen komplexer Raumtragwerke und Kunstwerke.
 - Entwicklung automatisierter Design-to-Production-Workflows.
-- Unterstützung bei der Strukturanalyse komplexer räumlicher Strukturen.
-- Erstellung akribischer technischer Dokumentationen.
-- Erstellung präziser Konstruktionszeichnungen und Produktionspläne.
+- Mitarbeit an der Tragwerksanalyse komplexer Raumtragwerke.
+- Sorgfältige technische Dokumentation.
+- Präzise Konstruktionszeichnungen und Fertigungspläne.

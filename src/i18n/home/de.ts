@@ -13,17 +13,17 @@ export const t: I18nHome = {
   },
   chat: {
     suggestions: [
-      "Welche Dienstleistungen bietest du an?",
-      "Worum geht es in deiner Promotion?",
+      "Welche Dienstleistungen bieten Sie an?",
+      "Worum geht es in Ihrer Promotion?",
       "KI-Agent-Skills für Architektur?",
-      "Was hast du vorher gebaut?",
+      "Woran haben Sie vorher gearbeitet?",
     ],
     disclaimer:
-      "Die Antworten werden von KI (Anthropic Claude) generiert und können Fehler enthalten. Bitte überprüfe Wichtiges selbst.",
+      "Die Antworten werden von KI (Anthropic Claude) generiert und können Fehler enthalten. Bitte überprüfen Sie wichtige Angaben selbst.",
     headerTitle: "KI-Assistent",
-    chatPlaceholder: "Frag {model} zu meiner Arbeit...",
+    chatPlaceholder: "Fragen Sie {model} nach meiner Arbeit...",
     errorMessage:
-      "Entschuldigung, es ist ein Fehler aufgetreten. Bitte versuch es später noch einmal.",
+      "Entschuldigung, es ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
     requestQuote: "Angebot anfordern",
     sendEmail: "E-Mail senden",
     back: "Zurück",

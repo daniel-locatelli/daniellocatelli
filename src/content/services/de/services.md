@@ -5,24 +5,24 @@ Description: "The services I offer (all but the first were on the homepage until
 
 ## Agentic Systems Engineering
 
-KI-Agenten, die mit deinen Tools und Daten arbeiten: MCP-Server, die Agenten Zugriff auf Software und Datenbanken geben, Agent Skills, die Fachwissen festhalten, und LLM-gestützte Assistenten, die auf deinen eigenen Inhalten aufbauen. Entwickelt für Arbeitsabläufe in Architektur, Ingenieurwesen und Bau.
+KI-Agenten, die mit Ihren Tools und Daten arbeiten: MCP-Server, die Agenten Zugriff auf Software und Datenbanken geben, Agent Skills, die Fachwissen festhalten, und LLM-gestützte Assistenten, die auf Ihren eigenen Inhalten aufbauen. Entwickelt für Arbeitsabläufe in Architektur, Ingenieurwesen und Bau.
 
 ## Plugin-Entwicklung
 
-Maßgeschneiderte Tools zur Automatisierung von Aufgaben, Integration spezialisierter Analysen oder Erweiterung von Softwarefunktionen. Experte in C# für Rhino/Grasshopper, Revit und AutoCAD.
+Maßgeschneiderte Tools, die Aufgaben automatisieren, spezialisierte Analysen einbinden oder Software um Funktionen erweitern. Schwerpunkt: C# für Rhino/Grasshopper, Revit und AutoCAD.
 
 ## Webanwendungen
 
-Webbasierte Lösungen für Projektmanagement, kollaborative Tools, Finanzsimulatoren und 3D-Visualisierung. Fokus auf React, Astro und PostgreSQL.
+Webbasierte Lösungen für Projektmanagement, kollaborative Tools, Finanzsimulatoren und 3D-Visualisierung. Schwerpunkt auf React, Astro und PostgreSQL.
 
-## Computergestütztes Design
+## Computational Design
 
-Anwendung fortschrittlicher computergestützter Designstrategien zur Optimierung und Verbesserung von AEC-Prozessen, Steigerung der Effizienz in Planung, Analyse und Dokumentation.
+Fortgeschrittene Strategien des Computational Design, die AEC-Prozesse verschlanken und Planung, Analyse und Dokumentation effizienter machen.
 
 ## Datenvisualisierung
 
-Erstellung von Dashboards zum besseren Verständnis, zur Interpretation und zum Handeln auf Basis komplexer Projektdaten. Von webnativen Dashboards bis hin zu Power BI-Frameworks für Unternehmen.
+Dashboards, mit denen sich komplexe Projektdaten besser verstehen, deuten und in Entscheidungen umsetzen lassen. Von webbasierten Dashboards bis zu Power-BI-Lösungen für Unternehmen.
 
-## Digitale Fabrikation
+## Digitale Fertigung
 
-Erstellung von Grasshopper-Skripten zur automatischen Extraktion von Fertigungsdaten aus komplexen, parametrischen 3D-Designs für die digitale Fabrikation.
+Grasshopper-Skripte, die Fertigungsdaten automatisch aus komplexen parametrischen 3D-Modellen ableiten.

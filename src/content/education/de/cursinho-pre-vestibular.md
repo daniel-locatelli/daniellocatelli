@@ -1,5 +1,5 @@
 ---
-Name: Vorbereitungskurs für die Aufnahmeprüfung
+Name: Vorbereitungskurs für die Hochschulaufnahmeprüfung
 DateStart: "2009-01"
 DateEnd: "2009-12"
 Organization: Colégio Nobel

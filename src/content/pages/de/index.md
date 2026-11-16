@@ -1,7 +1,7 @@
 ---
 Cover: "/assets/content/homepage/homepage-cover.jpeg"
-CoverAlt: "Daniels Masterarbeit-Demonstrator."
-Description: "Ich bin Doktorand bei Gramazio Kohler Research, ETH Zürich. Ich erforsche, wie Holzplattentragwerke entworfen und gebaut werden und wie KI die Arbeit von Architekten und Ingenieuren verändert. Diese Startseite hat einen KI-Chat zu meiner Arbeit und eine Liste von Essays."
+CoverAlt: "Der Demonstrator aus Daniels Masterarbeit."
+Description: "Ich bin Doktorand bei Gramazio Kohler Research, ETH Zürich. Ich erforsche, wie Holzplattentragwerke entworfen und gebaut werden und wie KI die Arbeit von Architekten und Ingenieuren verändert. Auf dieser Startseite finden Sie einen KI-Chat zu meiner Arbeit und meine Essays."
 Name: Startseite
 
 ---

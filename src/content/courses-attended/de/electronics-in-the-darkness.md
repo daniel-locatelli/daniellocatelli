@@ -1,5 +1,5 @@
 ---
-Name: Elektronik in der Dunkelheit
+Name: Elektronik im Dunkeln
 DateStart: "2016-06"
 Organization: Red Bull Station
 City:

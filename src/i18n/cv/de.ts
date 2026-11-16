@@ -4,16 +4,16 @@ export const t: I18nCV = {
   meta: {
     titleSimple: "Daniel Locatelli - Lebenslauf",
     descriptionSimple:
-      "Dies ist mein vereinfachter Lebenslauf, einschließlich Hauptarbeit, Ausbildung, Vorträgen, Publikationen, Zertifikaten und Kursen.",
+      "Mein kompakter Lebenslauf: wichtigste Stationen, Ausbildung, Vorträge, Publikationen, Zertifikate und Kurse.",
     titleFull: "Daniel Locatelli - Vollständiger Lebenslauf",
     descriptionFull:
-      "Dies ist mein vollständiger Lebenslauf, einschließlich Arbeit, Ausbildung, Vorträgen, Publikationen, Zertifikaten und mehr.",
+      "Mein vollständiger Lebenslauf: Berufserfahrung, Ausbildung, Vorträge, Publikationen, Zertifikate und mehr.",
     coverAlt: "Daniel Locatelli.",
   },
   ui: {
     title: "Doktorand an der ETH Zürich",
     summary: "Zusammenfassung",
-    skills: "Fähigkeiten",
+    skills: "Kompetenzen",
     programming: "Programmierung",
     frameworks: "Frameworks",
     databases: "Datenbanken",
@@ -38,11 +38,11 @@ export const t: I18nCV = {
     projectsList: "Projektliste",
     current: "Aktuell",
     supervisors: "Betreuer",
-    advisors: "Berater",
+    advisors: "Mitbetreuer",
     validUntil: "Gültig bis",
   },
   quote:
-    '"Architektur ist von Natur aus fachübergreifend. Ihre Zukunft liegt in der Nutzung von computergestütztem Co-Design mit landestypischen Materialien zur Schaffung kreislauffähiger Bausysteme."',
+    "„Architektur ist von Natur aus transdisziplinär. Ihre Zukunft liegt darin, durch computergestütztes Co-Design mit vernakulären Materialien kreislauffähige Bausysteme zu schaffen.“",
   summary:
-    "Doktorand bei Gramazio Kohler Research an der ETH Zürich, mit Forschung zu Computational Design-to-Fabrication für Holzplatten-Bausysteme und dazu, wie KI den Entwurfsprozess unterstützen kann. Hintergrund als Software-Ingenieur und Forscher im Bereich Computational Design mit Spezialisierung auf Holzbau; Expertise in der Verbindung von Design und Technik durch C#, Python und Webtechnologien. M.Sc. vom ITECH (Universität Stuttgart) mit Fokus auf multiskalare Robotersysteme für technisches Holz. Dreisprachiger Fachmann (Englisch, Deutsch und Portugiesisch), der sich der Lösung komplexer struktureller Probleme durch skalierbare Software und datengesteuerte Fertigung widmet.",
+    "Doktorand bei Gramazio Kohler Research an der ETH Zürich. Forscht zur durchgängigen digitalen Kette vom Entwurf bis zur Fertigung (Computational Design-to-Fabrication) für Holzplatten-Bausysteme und dazu, wie KI den Entwurfsprozess unterstützen kann. Zuvor Softwareingenieur und Forscher im Computational Design mit Schwerpunkt Holzbau; verbindet Entwurf und Ingenieurwesen mit C#, Python und Webtechnologien. M.Sc. im ITECH-Programm der Universität Stuttgart mit Schwerpunkt auf maßstabsübergreifenden Robotersystemen für Holzwerkstoffe. Arbeitet dreisprachig (Deutsch, Englisch, Portugiesisch) und löst komplexe Tragwerksaufgaben mit skalierbarer Software und datengetriebener Fertigung.",
 };

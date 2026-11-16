@@ -1,9 +1,9 @@
 ---
-Name: Workshop Grasshopper mit Galapagos
+Name: Grasshopper-Workshop mit Galapagos
 DateStart: "2016-09"
-Organization: Rhino Day
+Organization: Rhino Day, FAU-Mackenzie
 City:
-  - FAU-Mackenzie
+  - São Paulo
 Country: "Brasilien"
 Authors:
   - Victor Calixto

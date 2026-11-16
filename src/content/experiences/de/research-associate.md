@@ -10,7 +10,7 @@ Category: Professional Experience
 Link: "https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html"
 ---
 
-- Wissenschaftlicher Mitarbeiter im Projekt [DOKwood](/de/projects/dokwood): eine Webplattform zur Dokumentation mehrschichtiger Holzbau-Aufbauten, gefördert von ZIM und Innosuisse.
+- Wissenschaftlicher Mitarbeiter im Projekt [DOKwood](/de/projects/dokwood): eine Webplattform zur Dokumentation mehrschichtiger Holzbau-Aufbauten, gefördert vom ZIM und von Innosuisse.
 - Revit-Plugin (C#/.NET) zum Import von DOKwood-Aufbauten als Systemfamilien.
-- Entwicklung eines bSDD (building Smart Data Dictionary) zur Konsolidierung eines semantischen Datenmodells für DOKwood.
-- Forschung an Standards, Datenbanken, CAD- und BIM-Tools mit Fokus auf Holztechnologie. Grundlagen zur Entwicklung der App DOKwood.
+- Entwicklung eines bSDD (buildingSMART Data Dictionary) zur Konsolidierung eines semantischen Datenmodells für DOKwood.
+- Recherche zu Normen, Datenbanken, CAD- und BIM-Werkzeugen im Holzbau als Grundlage für die DOKwood-App.

@@ -23,7 +23,7 @@ Website: <a href="/">daniellocatelli.com</a></p>`,
 <li>HTTP request headers (browser type, operating system, referrer URL)</li>
 <li>Timestamp of access</li>
 </ul>
-<p>This processing is necessary for the delivery of the website (Art. 6(1)(f) GDPR — legitimate interest). Cloudflare Inc. is based in the United States. Data transfers to the US are covered by Cloudflare's Data Processing Addendum and EU Standard Contractual Clauses.</p>
+<p>This processing is necessary for the delivery of the website (Art. 6(1)(f) GDPR, legitimate interest). Cloudflare Inc. is based in the United States. Data transfers to the US are covered by Cloudflare's Data Processing Addendum and EU Standard Contractual Clauses.</p>
 <p>The site also uses Cloudflare Workers KV to store operational data (AI model availability status and daily usage counters). This storage contains no personal data.</p>
 <p>More information: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a></p>`,
       },
@@ -37,7 +37,7 @@ Website: <a href="/">daniellocatelli.com</a></p>`,
 <li>Page-load performance metrics (Core Web Vitals)</li>
 </ul>
 <p>The data is aggregated. Cloudflare Web Analytics sets no cookies, uses no local storage, does not fingerprint your device, and does not track you across websites or build individual profiles.</p>
-<p>Legal basis: Art. 6(1)(f) GDPR — legitimate interest in measuring the use and performance of this website with a privacy-preserving, cookieless tool. Data transfers to the US are covered by Cloudflare's Data Processing Addendum and EU Standard Contractual Clauses.</p>
+<p>Legal basis: Art. 6(1)(f) GDPR, legitimate interest in measuring the use and performance of this website with a privacy-preserving, cookieless tool. Data transfers to the US are covered by Cloudflare's Data Processing Addendum and EU Standard Contractual Clauses.</p>
 <p>More information: <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a> · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a></p>`,
       },
       {
@@ -60,7 +60,7 @@ Website: <a href="/">daniellocatelli.com</a></p>`,
 <li>Viewing behavior and interaction data</li>
 </ul>
 <p>If you are logged into your Google account, YouTube may associate your viewing activity with your profile.</p>
-<p>Legal basis: Art. 6(1)(f) GDPR — legitimate interest in presenting project work through video content. Google LLC is based in the United States. Data transfers are covered by Google's Standard Contractual Clauses.</p>
+<p>Legal basis: Art. 6(1)(f) GDPR, legitimate interest in presenting project work through video content. Google LLC is based in the United States. Data transfers are covered by Google's Standard Contractual Clauses.</p>
 <p>More information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></p>`,
       },
       {
@@ -95,7 +95,7 @@ Website: <a href="/">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Intellectual Property",
-        content: `<p>All content on this website — including but not limited to text, images, graphics, project documentation, code samples, and design — is the intellectual property of Daniel Nunes Locatelli unless otherwise stated. Unauthorized reproduction, distribution, or use of this content is prohibited without prior written permission.</p>`,
+        content: `<p>All content on this website (including but not limited to text, images, graphics, project documentation, code samples, and design) is the intellectual property of Daniel Nunes Locatelli unless otherwise stated. Unauthorized reproduction, distribution, or use of this content is prohibited without prior written permission.</p>`,
       },
       {
         heading: "AI Chat Disclaimer",

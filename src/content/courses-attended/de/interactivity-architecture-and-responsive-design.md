@@ -7,5 +7,5 @@ City:
 Country: "Brasilien"
 Authors:
   - Ruairi Glynn
-  - Masterstudierende vom UCL London
+  - Masterstudierende des UCL London
 ---

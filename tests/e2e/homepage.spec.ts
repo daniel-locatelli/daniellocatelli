@@ -4,7 +4,7 @@ import { LOCALES, localeUrl } from "./fixtures/test-helpers";
 const SUGGESTIONS: Record<string, string[]> = {
   en: ["What is your PhD about?", "AI agent skills for architecture?", "What did you build before?"],
   pt: ["Sobre o que é seu doutorado?", "Quais skills de agentes de IA você já criou?", "Em quais projetos você já trabalhou?"],
-  de: ["Worum geht es in deiner Promotion?", "KI-Agent-Skills für Architektur?", "Was hast du vorher gebaut?"],
+  de: ["Worum geht es in Ihrer Promotion?", "KI-Agent-Skills für Architektur?", "Woran haben Sie vorher gearbeitet?"],
 };
 
 // Each locale's homepage must be rendered by [...locale]/index.astro, not by

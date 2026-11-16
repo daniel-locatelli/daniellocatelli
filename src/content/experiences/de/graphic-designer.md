@@ -10,6 +10,6 @@ Category: Professional Experience
 Link: "https://ww3.icb.usp.br/"
 ---
 
-- Erstellung von Konzeptentwürfen für die wissenschaftliche Kommunikation.
-- Verwaltung von Designprojekt-Workflows.
+- Konzeptentwürfe für die Wissenschaftskommunikation.
+- Steuerung der Abläufe in Designprojekten.
 - Organisation und Unterstützung akademischer Wettbewerbe.

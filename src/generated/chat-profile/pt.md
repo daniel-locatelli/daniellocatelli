@@ -58,7 +58,7 @@ Gramazio Kohler Research, ETH Zurique | Zurique, Suíça | julho de 2026 – atu
 Universidade de Ciências Aplicadas de Munique | Munique, Alemanha | fevereiro de 2025 – junho de 2026 | https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 - Pesquisador associado no projeto [DOKwood](/pt/projects/dokwood): uma plataforma web para documentar composições construtivas multicamadas em madeira, financiada pelo ZIM e pela Innosuisse.
 - Plugin para Revit (C#/.NET) que importa elementos construtivos do DOKwood como famílias de sistema.
-- Desenvolvimento de um bSDD (building Smart Data Dictionary) para consolidar um modelo de dados semântico para o DOKwood.
+- Desenvolvimento de um bSDD (buildingSMART Data Dictionary) para consolidar um modelo de dados semântico para o DOKwood.
 - Pesquisa sobre normas técnicas, bancos de dados e ferramentas CAD e BIM com foco em tecnologia da madeira. Essa pesquisa embasou o desenvolvimento do aplicativo DOKwood.
 
 ### Engenheiro de software AEC
@@ -586,7 +586,7 @@ Talk | São Paulo, Brasil | dezembro de 2016 | /pt/full-cv (listado apenas no cu
 
 - CS50: Introdução à Ciência da Computação | Universidade Harvard & edX.org | julho de 2024
 - CS50: Introdução a Banco de Dados com SQL | Universidade Harvard & edX.org | julho de 2024
-- Introdução à Ciência da Computação e à Programação com Python | MITX & edX.org | agosto de 2018
+- Introdução à Ciência da Computação e à Programação com Python | MITx & edX.org | agosto de 2018
 - Exame de Certificação Profissional Autodesk Revit Architecture | Autodesk University Brasil | setembro de 2015
 - Treinamento de Segurança e Saúde - CAL/OSHA (10 horas) | CAL/OSHA | julho de 2013
 
@@ -599,7 +599,7 @@ Talk | São Paulo, Brasil | dezembro de 2016 | /pt/full-cv (listado apenas no cu
 - Wiki-House: Geração e Construção Digital-Material | SIGraDi 2018 | novembro de 2018
 - Interfacing Architecture, Engineering, and Mathematical Optimization | IASS 2017 | setembro de 2017
 - Design Paramétrico com Arduino e Grasshopper | FILE Festival | julho de 2017
-- Workshop de Grasshopper com Galapagos | Rhino Day | setembro de 2016
+- Workshop de Grasshopper com Galapagos | Rhino Day, FAU-Mackenzie | setembro de 2016
 - Dados no Processo de Design | FILE Festival | julho de 2016
 - Theremin Digital com Arduino | FILE Festival | julho de 2016
 - Arduino & LEDS | Fab Lab Livre SP | junho de 2016
@@ -645,7 +645,7 @@ maio de 2019 – junho de 2019 | [Ensino] | Models byNature 1.0 | Atelier Marko 
 março de 2019 | [Ensino] | Design emocional e tecnologia | MOVELPAR | Arapongas, Brasil
 novembro de 2018 | [Curso] | Wiki-House: Geração e Construção Digital-Material | SIGraDi 2018 | São Carlos, Brasil
 setembro de 2018 | [Ensino] | Design paramétrico inspirado na natureza | Museu de Arte Moderna | Rio de Janeiro, Brasil
-agosto de 2018 | [Certificação] | Introdução à Ciência da Computação e à Programação com Python | MITX & edX.org
+agosto de 2018 | [Certificação] | Introdução à Ciência da Computação e à Programação com Python | MITx & edX.org
 agosto de 2018 | [Ensino] | Geometrias biomiméticas | Tátil | Rio de Janeiro, Brasil
 junho de 2018 – junho de 2018 | [Ensino] | Oficina adaptável de Grasshopper | UNEMAT | Barra do Bugres, Brasil
 junho de 2018 | [Ensino] | Uma década após a UNEMAT | UNEMAT | Barra do Bugres, Brasil
@@ -656,7 +656,7 @@ julho de 2017 | [Curso] | Design Paramétrico com Arduino e Grasshopper | FILE F
 abril de 2017 | [Ensino] | Workshop de Grasshopper & Kangaroo | PortoFabLab | São Paulo, Brasil
 fevereiro de 2017 – março de 2017 | [Ensino] | Aulas particulares de Revit | Aulas particulares | São Paulo, Brasil
 dezembro de 2016 | [Ensino] | Busca pela forma com Grasshopper | São Paulo, Brasil
-setembro de 2016 | [Curso] | Workshop de Grasshopper com Galapagos | Rhino Day | FAU-Mackenzie, Brasil
+setembro de 2016 | [Curso] | Workshop de Grasshopper com Galapagos | Rhino Day, FAU-Mackenzie | São Paulo, Brasil
 julho de 2016 | [Curso] | Dados no Processo de Design | FILE Festival | São Paulo, Brasil
 julho de 2016 | [Curso] | Theremin Digital com Arduino | FILE Festival | São Paulo, Brasil
 junho de 2016 | [Curso] | Arduino & LEDS | Fab Lab Livre SP | São Paulo, Brasil

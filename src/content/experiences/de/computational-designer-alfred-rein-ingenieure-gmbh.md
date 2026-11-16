@@ -10,7 +10,7 @@ Category: Professional Experience
 Link: "https://www.ar-ingenieure.com/"
 ---
 
-- Lobende Erwähnung im Wettbewerb 'Witterungsschutz Römermauer' der Stadt Wiesbaden.
-- Spezialisiert auf computergestützte Formsuche von Zugstrukturen.
-- Simulation des Einsatzes einer aufblasbaren Membranstruktur.
-- Entwicklung eines automatisierten Schnittmuster-Workflows für Membranen.
+- Lobende Erwähnung im Wettbewerb „Witterungsschutz Römermauer“ der Stadt Wiesbaden.
+- Spezialisiert auf computergestützte Formfindung zugbeanspruchter Tragwerke.
+- Simulation der Entfaltung einer aufblasbaren Membranstruktur.
+- Entwicklung eines automatisierten Zuschnitt-Workflows für Membranen.

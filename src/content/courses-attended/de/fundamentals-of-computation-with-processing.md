@@ -1,5 +1,5 @@
 ---
-Name: Grundlagen der Berechnung mit Processing
+Name: Grundlagen der Informatik mit Processing
 DateStart: "2011-08"
 DateEnd: "2011-12"
 Organization: FAU-USP

@@ -58,7 +58,7 @@ Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland | July 2026 – curre
 Munich University of Applied Sciences | Munich, Germany | February 2025 – June 2026 | https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
 - Research associate on the [DOKwood](/projects/dokwood) project: a web platform for documenting multilayer timber buildups, funded by ZIM and Innosuisse.
 - Revit plugin (C#/.NET) importing DOKwood buildups into Revit as System Families.
-- Development of a bSDD (building Smart Data Dictionary) to consolidate a semantic data model for DOKwood.
+- Development of a bSDD (buildingSMART Data Dictionary) to consolidate a semantic data model for DOKwood.
 - Research on standards, databases, CAD and BIM tools with focus on timber technology. Foundations to develop the app DOKwood.
 
 ### AEC Software Engineer
@@ -127,7 +127,7 @@ Biomedical Science Institute - University of São Paulo | São Paulo, Brazil | J
 Gramazio Kohler Research, ETH Zurich | Zurich, Switzerland | July 2026 | https://gramaziokohler.arch.ethz.ch/
 Computational Design-to-Fabrication for Timber Plate Building Systems
 
-### Master of Sciences
+### Master of Science
 ITECH, University of Stuttgart | Stuttgart, Germany | October 2019 – October 2021 | https://www.itech.uni-stuttgart.de/
 Building Across Scales - A Robotic Timber Fabrication System for On-Site Press Gluing
 Supervisors: Prof. Achim Menges, Prof. Jan Knippers
@@ -586,7 +586,7 @@ Talk | São Paulo, Brazil | December 2016 | /full-cv (listed on the CV only)
 
 - CS50's Introduction to Computer Science | Harvard University & edX.org | July 2024
 - CS50's Introduction to Databases with SQL | Harvard University & edX.org | July 2024
-- Intro to Computer Science and Programming Using Python | MITX & edX.org | August 2018
+- Intro to Computer Science and Programming Using Python | MITx & edX.org | August 2018
 - Autodesk Revit Architecture Certified Professional Exam | Autodesk University Brazil | September 2015
 - Safety & Health Training - CAL/OSHA (10 hours) | CAL/OSHA | July 2013
 
@@ -599,7 +599,7 @@ Talk | São Paulo, Brazil | December 2016 | /full-cv (listed on the CV only)
 - Wiki-House: Generation and Digital-Material Construction | SIGraDi 2018 | November 2018
 - Interfacing Architecture, Engineering, and Mathematical Optimization | IASS 2017 | September 2017
 - Parametric Design with Arduino and Grasshopper | FILE Festival | July 2017
-- Workshop Grasshopper with Galapagos | Rhino Day | September 2016
+- Workshop Grasshopper with Galapagos | Rhino Day, FAU-Mackenzie | September 2016
 - Data in the Design Process | FILE Festival | July 2016
 - Digital Theremin with Arduino | FILE Festival | July 2016
 - Arduino & LEDS | Fab Lab Livre SP | June 2016
@@ -638,14 +638,14 @@ November 2020 | [Teaching] | Computational Design: Strategies | UNIP - Online | 
 October 2020 – November 2021 | [Work] | Computational Designer | Alfred Rein Ingenieure GmbH | Stuttgart, Germany
 June 2020 – July 2020 | [Course] | Intelligence | Digital Futures World 2020 | Online
 December 2019 – October 2020 | [Work] | Research Assistant | ICD/ITKE University of Stuttgart | Stuttgart, Germany
-October 2019 – October 2021 | [Education] | Master of Sciences | ITECH, University of Stuttgart | Stuttgart, Germany
+October 2019 – October 2021 | [Education] | Master of Science | ITECH, University of Stuttgart | Stuttgart, Germany
 August 2019 | [Teaching] | Architecture + Biomimicry + Algorithm | IFRO Vilhena | Vilhena, Brazil
 July 2019 – July 2019 | [Teaching] | Models byNature 2.0 | Atelier Marko Brajovic | São Paulo, Brazil
 May 2019 – June 2019 | [Teaching] | Models byNature 1.0 | Atelier Marko Brajovic | São Paulo, Brazil
 March 2019 | [Teaching] | Emotional Design and Technology | MOVELPAR | Arapongas, Brazil
 November 2018 | [Course] | Wiki-House: Generation and Digital-Material Construction | SIGraDi 2018 | São Carlos, Brazil
 September 2018 | [Teaching] | Parametric Design Inspired by Nature | Museu de Arte Moderna | Rio de Janeiro, Brazil
-August 2018 | [Certification] | Intro to Computer Science and Programming Using Python | MITX & edX.org
+August 2018 | [Certification] | Intro to Computer Science and Programming Using Python | MITx & edX.org
 August 2018 | [Teaching] | Biomimetic Geometries | Tátil | Rio de Janeiro, Brazil
 June 2018 – June 2018 | [Teaching] | Adaptive Grasshopper Workshop | UNEMAT | Barra do Bugres, Brazil
 June 2018 | [Teaching] | A Decade After UNEMAT | UNEMAT | Barra do Bugres, Brazil
@@ -656,7 +656,7 @@ July 2017 | [Course] | Parametric Design with Arduino and Grasshopper | FILE Fes
 April 2017 | [Teaching] | Grasshopper & Kangaroo Workshop | PortoFabLab | São Paulo, Brazil
 February 2017 – March 2017 | [Teaching] | Private Revit Lessons | Private Tutoring | São Paulo, Brazil
 December 2016 | [Teaching] | Form-Finding with Grasshopper | São Paulo, Brazil
-September 2016 | [Course] | Workshop Grasshopper with Galapagos | Rhino Day | FAU-Mackenzie, Brazil
+September 2016 | [Course] | Workshop Grasshopper with Galapagos | Rhino Day, FAU-Mackenzie | São Paulo, Brazil
 July 2016 | [Course] | Data in the Design Process | FILE Festival | São Paulo, Brazil
 July 2016 | [Course] | Digital Theremin with Arduino | FILE Festival | São Paulo, Brazil
 June 2016 | [Course] | Arduino & LEDS | Fab Lab Livre SP | São Paulo, Brazil

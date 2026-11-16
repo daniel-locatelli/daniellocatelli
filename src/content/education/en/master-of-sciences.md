@@ -1,5 +1,5 @@
 ---
-Name: Master of Sciences
+Name: Master of Science
 Description: Building Across Scales - A Robotic Timber Fabrication System for On-Site Press Gluing
 DateStart: "2019-10"
 DateEnd: "2021-10"

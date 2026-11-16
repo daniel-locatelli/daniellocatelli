@@ -1,5 +1,5 @@
 ---
-Name: Architektur-Austauschstudent
+Name: Austauschstudium Architektur
 DateStart: "2014-01"
 DateEnd: "2014-12"
 Organization: Auburn University – CADC

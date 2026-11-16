@@ -24,27 +24,27 @@ Kontakt:
 
 ### Agentic Systems Engineering
 
-KI-Agenten, die mit deinen Tools und Daten arbeiten: MCP-Server, die Agenten Zugriff auf Software und Datenbanken geben, Agent Skills, die Fachwissen festhalten, und LLM-gestützte Assistenten, die auf deinen eigenen Inhalten aufbauen. Entwickelt für Arbeitsabläufe in Architektur, Ingenieurwesen und Bau.
+KI-Agenten, die mit Ihren Tools und Daten arbeiten: MCP-Server, die Agenten Zugriff auf Software und Datenbanken geben, Agent Skills, die Fachwissen festhalten, und LLM-gestützte Assistenten, die auf Ihren eigenen Inhalten aufbauen. Entwickelt für Arbeitsabläufe in Architektur, Ingenieurwesen und Bau.
 
 ### Plugin-Entwicklung
 
-Maßgeschneiderte Tools zur Automatisierung von Aufgaben, Integration spezialisierter Analysen oder Erweiterung von Softwarefunktionen. Experte in C# für Rhino/Grasshopper, Revit und AutoCAD.
+Maßgeschneiderte Tools, die Aufgaben automatisieren, spezialisierte Analysen einbinden oder Software um Funktionen erweitern. Schwerpunkt: C# für Rhino/Grasshopper, Revit und AutoCAD.
 
 ### Webanwendungen
 
-Webbasierte Lösungen für Projektmanagement, kollaborative Tools, Finanzsimulatoren und 3D-Visualisierung. Fokus auf React, Astro und PostgreSQL.
+Webbasierte Lösungen für Projektmanagement, kollaborative Tools, Finanzsimulatoren und 3D-Visualisierung. Schwerpunkt auf React, Astro und PostgreSQL.
 
-### Computergestütztes Design
+### Computational Design
 
-Anwendung fortschrittlicher computergestützter Designstrategien zur Optimierung und Verbesserung von AEC-Prozessen, Steigerung der Effizienz in Planung, Analyse und Dokumentation.
+Fortgeschrittene Strategien des Computational Design, die AEC-Prozesse verschlanken und Planung, Analyse und Dokumentation effizienter machen.
 
 ### Datenvisualisierung
 
-Erstellung von Dashboards zum besseren Verständnis, zur Interpretation und zum Handeln auf Basis komplexer Projektdaten. Von webnativen Dashboards bis hin zu Power BI-Frameworks für Unternehmen.
+Dashboards, mit denen sich komplexe Projektdaten besser verstehen, deuten und in Entscheidungen umsetzen lassen. Von webbasierten Dashboards bis zu Power-BI-Lösungen für Unternehmen.
 
-### Digitale Fabrikation
+### Digitale Fertigung
 
-Erstellung von Grasshopper-Skripten zur automatischen Extraktion von Fertigungsdaten aus komplexen, parametrischen 3D-Designs für die digitale Fabrikation.
+Grasshopper-Skripte, die Fertigungsdaten automatisch aus komplexen parametrischen 3D-Modellen ableiten.
 
 ## Berufserfahrung
 
@@ -52,78 +52,78 @@ Erstellung von Grasshopper-Skripten zur automatischen Extraktion von Fertigungsd
 Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz | Juli 2026 – aktuell | https://gramaziokohler.arch.ethz.ch/
 - Computational Design-to-Fabrication für Holzplatten-Bausysteme.
 - Teil des CEDD-Projekts, gefördert durch den Schweizerischen Nationalfonds (SNF).
-- Untersuchung, wie KI (grosse Sprachmodelle und Agenten) den Entwurfsprozess unterstützen kann, von der frühen Entwurfsexploration bis zu fertigungsreifen Daten.
+- Untersuchung, wie KI (große Sprachmodelle und Agenten) den Entwurfsprozess unterstützen kann, von der frühen Entwurfsexploration bis zu fertigungsreifen Daten.
 
 ### Wissenschaftlicher Mitarbeiter
 Hochschule München | München, Deutschland | Februar 2025 – Juni 2026 | https://hm.edu/forschungsprojekte_de/forschungsprojekt_detail_9856.de.html
-- Wissenschaftlicher Mitarbeiter im Projekt [DOKwood](/de/projects/dokwood): eine Webplattform zur Dokumentation mehrschichtiger Holzbau-Aufbauten, gefördert von ZIM und Innosuisse.
+- Wissenschaftlicher Mitarbeiter im Projekt [DOKwood](/de/projects/dokwood): eine Webplattform zur Dokumentation mehrschichtiger Holzbau-Aufbauten, gefördert vom ZIM und von Innosuisse.
 - Revit-Plugin (C#/.NET) zum Import von DOKwood-Aufbauten als Systemfamilien.
-- Entwicklung eines bSDD (building Smart Data Dictionary) zur Konsolidierung eines semantischen Datenmodells für DOKwood.
-- Forschung an Standards, Datenbanken, CAD- und BIM-Tools mit Fokus auf Holztechnologie. Grundlagen zur Entwicklung der App DOKwood.
+- Entwicklung eines bSDD (buildingSMART Data Dictionary) zur Konsolidierung eines semantischen Datenmodells für DOKwood.
+- Recherche zu Normen, Datenbanken, CAD- und BIM-Werkzeugen im Holzbau als Grundlage für die DOKwood-App.
 
-### AEC Software-Ingenieur
+### AEC-Softwareingenieur
 BuildSystems GmbH | München, Deutschland | Januar 2024 – Dezember 2024 | https://buildsystems.de/
 *Zuvor das Startup Urban Scale Timber*
 
 - Entwicklung eines Förderrechners für Neubauten und Sanierungen in Deutschland. Erstellt mit dem Angular-Framework und PostgreSQL (Supabase).
-- Entwicklung der Website von BuildSystems mit dem Astro-Framework unter Nutzung der Notion-API, um Notion als Content-Management-System (CMS) zu verwenden.
+- Entwicklung der BuildSystems-Website mit Astro; über die Notion-API dient Notion als Content-Management-System (CMS).
 
-### AEC Software-Ingenieur
+### AEC-Softwareingenieur
 Urban Scale Timber, Flügge Funding | München, Deutschland | Januar 2023 – Dezember 2023 | https://urbanscaletimber.com/
 *Das Startup ist jetzt BuildSystems GmbH*
 
-- Entwicklung eines Grasshopper-Plugins (C#/.NET) und eines semantischen Datenmodells für die Stadtplanung und Lebenszyklusanalyse von Holzgebäuden (LCA).
+- Entwicklung eines Grasshopper-Plugins (C#/.NET) und eines semantischen Datenmodells für städtebauliche Analysen und die Ökobilanz (LCA) von Holzgebäuden.
 - UI/UX-Prototyp für die Web-App Circular Component Creator in Figma.
-- Datenvisualisierung von Grasshopper zu Power BI für die Entscheidungsfindung.
-- Entwicklung von Grasshopper-Workflows: Stadtplanungswerkzeuge und Holzkomponenten-Konfigurator mit EPD-Daten.
+- Visualisierung von Grasshopper-Daten in Power BI als Entscheidungsgrundlage.
+- Entwicklung von Grasshopper-Workflows: Werkzeuge für städtebauliche Analysen und ein Konfigurator für Holzbauteile mit EPD-Daten.
 
 ### Computational Designer
 ArtEngineering GmbH | Schorndorf, Deutschland | Dezember 2021 – Dezember 2022 | https://art-engineering.net/
-- Durchführung algorithmischer Modellierung und Finite-Elemente-Analyse komplexer räumlicher Strukturen und Kunstwerke.
+- Algorithmische Modellierung und Finite-Elemente-Analysen komplexer Raumtragwerke und Kunstwerke.
 - Entwicklung automatisierter Design-to-Production-Workflows.
-- Unterstützung bei der Strukturanalyse komplexer räumlicher Strukturen.
-- Erstellung akribischer technischer Dokumentationen.
-- Erstellung präziser Konstruktionszeichnungen und Produktionspläne.
+- Mitarbeit an der Tragwerksanalyse komplexer Raumtragwerke.
+- Sorgfältige technische Dokumentation.
+- Präzise Konstruktionszeichnungen und Fertigungspläne.
 
 ### Computational Designer
 Alfred Rein Ingenieure GmbH | Stuttgart, Deutschland | Oktober 2020 – November 2021 | https://www.ar-ingenieure.com/
-- Lobende Erwähnung im Wettbewerb 'Witterungsschutz Römermauer' der Stadt Wiesbaden.
-- Spezialisiert auf computergestützte Formsuche von Zugstrukturen.
-- Simulation des Einsatzes einer aufblasbaren Membranstruktur.
-- Entwicklung eines automatisierten Schnittmuster-Workflows für Membranen.
+- Lobende Erwähnung im Wettbewerb „Witterungsschutz Römermauer“ der Stadt Wiesbaden.
+- Spezialisiert auf computergestützte Formfindung zugbeanspruchter Tragwerke.
+- Simulation der Entfaltung einer aufblasbaren Membranstruktur.
+- Entwicklung eines automatisierten Zuschnitt-Workflows für Membranen.
 
 ### Wissenschaftliche Hilfskraft
 ICD/ITKE Universität Stuttgart | Stuttgart, Deutschland | Dezember 2019 – Oktober 2020 | https://www.icd.uni-stuttgart.de/
-- Durchführung von Strukturtests mit Naturfasern mit Marta Gil Pérez.
+- Belastungsversuche an Naturfasern mit Marta Gil Pérez.
 - Forschung zur Kohlefaserwicklung mit Christoph Schlopschnat.
-- Computational Design eines selbstkrümmenden Holzturms mit Dylan Wood.
+- Computational Design eines Turms aus selbstkrümmendem Holz mit Dylan Wood.
 - Unterstützung bei der Migration der ICD-Website mit Tobias Schwinn.
 
 ### Computational Designer
 Atelier Marko Brajovic | São Paulo, Brasilien | März 2015 – August 2019 | https://markobrajovic.com/en
 *Praktikant bis Dezember 2016*
 
-- Ausführung von CAD-, BIM- und computergestützter Modellierung für Architekturprojekte.
-- Verwaltung der Projektkommunikation und Lieferantenbeziehungen.
+- CAD- und BIM-Modellierung sowie algorithmische Modellierung für Architekturprojekte.
+- Koordination der Projektkommunikation und der Zusammenarbeit mit Lieferanten.
 - Entwicklung von Konzeptentwürfen und hochwertigen Renderings.
-- Leitung von Prototyping- und digitalen Fertigungsinitiativen.
+- Leitung von Prototyping und digitaler Fertigung.
 
-### On-the-job Training
+### On-the-Job-Training
 California State University Long Beach | Long Beach, USA | Juni 2014 – August 2014 | https://www.csulb.edu/college-of-engineering
-- Praktische Erfahrung im Projektmanagement gesammelt.
-- Durchführung von Baustellenbesichtigungen.
-- BIM-Modellierungsfähigkeiten erworben.
-- Abschluss des Sicherheits- und Gesundheitstrainings.
+- Praktische Erfahrung im Projektmanagement.
+- Baustellenbegehungen.
+- Kenntnisse in der BIM-Modellierung.
+- Abschluss der Arbeitsschutzschulung.
 
 ### Grafikdesigner
 Institut für Biomedizinische Wissenschaften - Universität São Paulo | São Paulo, Brasilien | Juni 2011 – August 2013 | https://ww3.icb.usp.br/
-- Erstellung von Konzeptentwürfen für die wissenschaftliche Kommunikation.
-- Verwaltung von Designprojekt-Workflows.
+- Konzeptentwürfe für die Wissenschaftskommunikation.
+- Steuerung der Abläufe in Designprojekten.
 - Organisation und Unterstützung akademischer Wettbewerbe.
 
 ## Ausbildung
 
-### Doctor of Sciences
+### Doktor der Wissenschaften (Dr. sc.)
 Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz | Juli 2026 | https://gramaziokohler.arch.ethz.ch/
 Computational Design-to-Fabrication für Holzplatten-Bausysteme
 
@@ -132,31 +132,31 @@ ITECH, Universität Stuttgart | Stuttgart, Deutschland | Oktober 2019 – Oktobe
 Building Across Scales - Ein robotisches Holzfertigungssystem für die Pressverleimung vor Ort
 Supervisors: Prof. Achim Menges, Prof. Jan Knippers
 
-### Architektur-Austauschstudent
+### Austauschstudium Architektur
 Auburn University – CADC | Auburn, USA | Januar 2014 – Dezember 2014 | https://cadc.auburn.edu/
 
-### Intensives Englischprogramm
+### Intensivkurs Englisch
 Auburn Global | Auburn, USA | August 2013 – Dezember 2013 | https://global.auburn.edu/english/
 
-### Bachelor für Architektur und Stadtplanung
+### Bachelor in Architektur und Städtebau
 FAU, Universität São Paulo | São Paulo, Brasilien | Januar 2010 – Dezember 2016 | https://www.fau.usp.br/
-Thesis: Architektur + Biomimetik + Algorithmus
+Abschlussarbeit: Architektur + Biomimetik + Algorithmus
 Supervisors: Prof. Arthur Lara
 
-### Vorbereitungskurs für die Aufnahmeprüfung
+### Vorbereitungskurs für die Hochschulaufnahmeprüfung
 Colégio Nobel | Londrina, Brasilien | Januar 2009 – Dezember 2009
 
-### Bachelor für Architektur und Stadtplanung (abgebrochen)
+### Bachelor in Architektur und Städtebau (abgebrochen)
 UNEMAT | Barra do Bugres, Brasilien | Januar 2007 – Dezember 2008
 
-### Gymnasialabschluss
+### Schulabschluss
 CEI Anglo | Vilhena, Brasilien | Januar 2004 – Dezember 2006
 
 ## Stipendien und Förderungen
 
 ### IntCDC Master’s Thesis Grant 2021
 Exzellenzcluster – IntCDC | Stuttgart, Deutschland | März 2021 – Oktober 2021 | https://www.intcdc.uni-stuttgart.de/supporting-structures/early-career-and-education/grants-awards-overview/master-thesis-award-2021-1/
-Das Stipendium ermutigt exzellente Masterstudierende, einen ersten Schritt in Richtung einer zukünftigen akademischen Karriere zu machen.
+Das Stipendium ermutigt herausragende Masterstudierende zu einem ersten Schritt in Richtung einer akademischen Laufbahn.
 
 ### Wissenschaft ohne Grenzen
 Brasilianische Bundesregierung | Auburn, USA | August 2013 – Dezember 2014 | https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/ciencia-sem-fronteiras
@@ -312,15 +312,15 @@ Erstellung von Zeichnungen für die Membranfertigung.
 
 ### Seilnetz Muttenz
 Computational Design | Alfred Rein Ingenieure GmbH | Muttenz, Schweiz | September 2021 – Oktober 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Formsuche der Seilnetzstruktur und Massenermittlung.
+Formfindung der Seilnetzstruktur und Massenermittlung.
 
 ### Membranaustausch
 Detailierung | Alfred Rein Ingenieure GmbH | Schloss Neuwildenstein, Schweiz | Juli 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Konstruktionszeichnungen und Rendering der Fassade.
 
-### MVV-Vordach Vorplatz
+### MVV Überdachung Vorplatz
 Computational Design | Alfred Rein Ingenieure GmbH | Mannheim, Deutschland | Juli 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Formsuche von Membranstrukturen mit Kangaroo 2.
+Formfindung von Membranstrukturen mit Kangaroo 2.
 
 ### Radom Raisting von AR Ingenieure
 Membrane | AR Ingenieure | Raisting, Deutschland | März 2021 – Mai 2021 | /de/projects/radom-raisting-by-ar-ingenieure
@@ -414,7 +414,7 @@ Komplette Renovierung eines Mittelklasse-Einfamilienhauses.
 ### O3-Pavillon von Atelier Marko Brajovic für Docol
 Computational architecture | Atelier Marko Brajovic | São Paulo, Brasilien | Februar 2017 – März 2017 | /de/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol
 Tags: Computational Design, Grasshopper3D, Logistics
-Der O3-Pavillon wurde vom Atelier Marko Brajovic zu einer Zeit konzipiert, als ich meine ersten Schritte in der Welt des Computational Design machte. Ich hatte gerade mein Studium an der FAU-USP mit einer Abschlussarbeit beendet, in der ich alle für diesen Pavillon notwendigen Werkzeuge erlernte: Rhino, Grasshopper 3D und Kangaroo Physics.
+Der O3-Pavillon wurde vom Atelier Marko Brajovic zu einer Zeit konzipiert, als ich meine ersten Schritte in der Welt des Computational Design machte. Ich hatte gerade mein Studium an der FAU-USP mit einer Abschlussarbeit beendet, bei der ich den Umgang mit allen für diesen Pavillon nötigen Werkzeugen gelernt hatte: Rhino, Grasshopper 3D und Kangaroo Physics.
 
 ### Restaurant Homa
 Architektur | Atelier Marko Brajovic | Pinheiros, Brasilien | Januar 2017 – Dezember 2017 | /de/full-cv (nur im Lebenslauf aufgeführt)
@@ -584,49 +584,49 @@ Talk | São Paulo, Brasilien | Dezember 2016 | /de/full-cv (nur im Lebenslauf au
 
 ## Zertifizierungen
 
-- CS50's Einführung in die Informatik | Harvard University & edX.org | Juli 2024
-- CS50's Einführung in Datenbanken mit SQL | Harvard University & edX.org | Juli 2024
-- Einführung in die Informatik und Programmierung mit Python | MITX & edX.org | August 2018
-- Autodesk Revit Architecture Zertifizierte Fachprüfung | Autodesk University Brasilien | September 2015
-- Sicherheits- und Gesundheitstraining - CAL/OSHA (10 Stunden) | CAL/OSHA | Juli 2013
+- CS50's Introduction to Computer Science | Harvard University & edX.org | Juli 2024
+- CS50's Introduction to Databases with SQL | Harvard University & edX.org | Juli 2024
+- Intro to Computer Science and Programming Using Python | MITx & edX.org | August 2018
+- Autodesk Revit Architecture Certified Professional Exam | Autodesk University Brasilien | September 2015
+- Arbeitsschutzschulung CAL/OSHA (10 Stunden) | CAL/OSHA | Juli 2013
 
 ## Besuchte Kurse
 
-- CS50's Einführung in Datenbanken mit SQL | Harvard University | Juni 2024 – Juli 2024
-- CS50's Einführung in die Informatik | Harvard University | Juli 2023 – Oktober 2023
+- CS50's Introduction to Databases with SQL | Harvard University | Juni 2024 – Juli 2024
+- CS50's Introduction to Computer Science | Harvard University | Juli 2023 – Oktober 2023
 - COMPAS FoFin Workshop | Design Modeling Symposium 2022 | September 2022
 - Intelligenz | Digital Futures World 2020 | Juni 2020 – Juli 2020
 - Wiki-House: Generierung und digital-materielle Konstruktion | SIGraDi 2018 | November 2018
 - Schnittstelle zwischen Architektur, Ingenieurwesen und mathematischer Optimierung | IASS 2017 | September 2017
 - Parametrisches Design mit Arduino und Grasshopper | FILE Festival | Juli 2017
-- Workshop Grasshopper mit Galapagos | Rhino Day | September 2016
+- Grasshopper-Workshop mit Galapagos | Rhino Day, FAU-Mackenzie | September 2016
 - Daten im Designprozess | FILE Festival | Juli 2016
 - Digitales Theremin mit Arduino | FILE Festival | Juli 2016
 - Arduino & LEDS | Fab Lab Livre SP | Juni 2016
 - Elektronik-Grundlagen | Fab Lab Livre SP | Juni 2016
-- Elektronik in der Dunkelheit | Red Bull Station | Juni 2016
+- Elektronik im Dunkeln | Red Bull Station | Juni 2016
 - Einführung in die Holzbearbeitung | Fab Lab Livre SP | Juni 2016
 - Interaktivität: Architektur und Responsive Design | Fab Lab Livre SP | Mai 2016
-- Grundlagen der Berechnung mit Processing | FAU-USP | August 2011 – Dezember 2011
+- Grundlagen der Informatik mit Processing | FAU-USP | August 2011 – Dezember 2011
 
 ## Zeitleiste (neueste zuerst)
 
 Juli 2026 – Aktuell | [Beruf] | Doktorand | Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
-Juli 2026 | [Bildung] | Doctor of Sciences | Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
+Juli 2026 | [Bildung] | Doktor der Wissenschaften (Dr. sc.) | Gramazio Kohler Research, ETH Zürich | Zürich, Schweiz
 April 2026 | [Lehre] | Digital Futures 2026: Entre o Prompt e a Obra | DigitalFUTURES
 Mai 2025 | [Lehre] | Arbeiten mit Geodaten in Grasshopper | Hochschule München | München
 Februar 2025 – Juni 2026 | [Beruf] | Wissenschaftlicher Mitarbeiter | Hochschule München | München, Deutschland
 Juli 2024 | [Lehre] | Multiskalares Roboterfertigungssystem für Vor-Ort-Pressklebung im mehrgeschossigen Holzbau | Forum Holzbau | Fellbach, Deutschland
-Juli 2024 | [Zertifizierung] | CS50's Einführung in die Informatik | Harvard University & edX.org
-Juli 2024 | [Zertifizierung] | CS50's Einführung in Datenbanken mit SQL | Harvard University & edX.org
-Juni 2024 – Juli 2024 | [Kurs] | CS50's Einführung in Datenbanken mit SQL | Harvard University | Online
-Januar 2024 – Dezember 2024 | [Beruf] | AEC Software-Ingenieur | BuildSystems GmbH | München, Deutschland
+Juli 2024 | [Zertifizierung] | CS50's Introduction to Computer Science | Harvard University & edX.org
+Juli 2024 | [Zertifizierung] | CS50's Introduction to Databases with SQL | Harvard University & edX.org
+Juni 2024 – Juli 2024 | [Kurs] | CS50's Introduction to Databases with SQL | Harvard University | Online
+Januar 2024 – Dezember 2024 | [Beruf] | AEC-Softwareingenieur | BuildSystems GmbH | München, Deutschland
 Dezember 2023 | [Lehre] | BuildSystems - Smart Sustainability Roadmaps | Graphisoft X - Online | Deutschland
 November 2023 | [Lehre] | Computergestützte Architektur in Deutschland | UFT, Online | Palmas, Brasilien
 November 2023 | [Lehre] | Computergestützte Architektur in Deutschland | UFT - Online | Palmas, Brasilien
-Juli 2023 – Oktober 2023 | [Kurs] | CS50's Einführung in die Informatik | Harvard University | Online
+Juli 2023 – Oktober 2023 | [Kurs] | CS50's Introduction to Computer Science | Harvard University | Online
 März 2023 | [Lehre] | Machbarkeit nachhaltigen Bauens | Munich Urban Colab | München, Deutschland
-Januar 2023 – Dezember 2023 | [Beruf] | AEC Software-Ingenieur | Urban Scale Timber, Flügge Funding | München, Deutschland
+Januar 2023 – Dezember 2023 | [Beruf] | AEC-Softwareingenieur | Urban Scale Timber, Flügge Funding | München, Deutschland
 September 2022 | [Kurs] | COMPAS FoFin Workshop | Design Modeling Symposium 2022 | Berlin, Deutschland
 März 2022 | [Lehre] | Digital Futures 2023: Novos Hibridismos | YouTube - Online
 Dezember 2021 – Dezember 2022 | [Beruf] | Computational Designer | ArtEngineering GmbH | Schorndorf, Deutschland
@@ -645,7 +645,7 @@ Mai 2019 – Juni 2019 | [Lehre] | Models byNature 1.0 | Atelier Marko Brajovic 
 März 2019 | [Lehre] | Emotionales Design und Technologie | MOVELPAR | Arapongas, Brasilien
 November 2018 | [Kurs] | Wiki-House: Generierung und digital-materielle Konstruktion | SIGraDi 2018 | São Carlos, Brasilien
 September 2018 | [Lehre] | Parametrisches Design inspiriert durch die Natur | Museu de Arte Moderna | Rio de Janeiro, Brasilien
-August 2018 | [Zertifizierung] | Einführung in die Informatik und Programmierung mit Python | MITX & edX.org
+August 2018 | [Zertifizierung] | Intro to Computer Science and Programming Using Python | MITx & edX.org
 August 2018 | [Lehre] | Biomimetische Geometrien | Tátil | Rio de Janeiro, Brasilien
 Juni 2018 – Juni 2018 | [Lehre] | Adaptiver Grasshopper-Workshop | UNEMAT | Barra do Bugres, Brasilien
 Juni 2018 | [Lehre] | Ein Jahrzehnt nach UNEMAT | UNEMAT | Barra do Bugres, Brasilien
@@ -656,24 +656,24 @@ Juli 2017 | [Kurs] | Parametrisches Design mit Arduino und Grasshopper | FILE Fe
 April 2017 | [Lehre] | Grasshopper & Kangaroo Workshop | PortoFabLab | São Paulo, Brasilien
 Februar 2017 – März 2017 | [Lehre] | Private Revit-Lektionen | Privatunterricht | São Paulo, Brasilien
 Dezember 2016 | [Lehre] | Formfindung mit Grasshopper | São Paulo, Brasilien
-September 2016 | [Kurs] | Workshop Grasshopper mit Galapagos | Rhino Day | FAU-Mackenzie, Brasilien
+September 2016 | [Kurs] | Grasshopper-Workshop mit Galapagos | Rhino Day, FAU-Mackenzie | São Paulo, Brasilien
 Juli 2016 | [Kurs] | Daten im Designprozess | FILE Festival | São Paulo, Brasilien
 Juli 2016 | [Kurs] | Digitales Theremin mit Arduino | FILE Festival | São Paulo, Brasilien
 Juni 2016 | [Kurs] | Arduino & LEDS | Fab Lab Livre SP | São Paulo, Brasilien
 Juni 2016 | [Kurs] | Elektronik-Grundlagen | Fab Lab Livre SP | São Paulo, Brasilien
-Juni 2016 | [Kurs] | Elektronik in der Dunkelheit | Red Bull Station | São Paulo, Brasilien
+Juni 2016 | [Kurs] | Elektronik im Dunkeln | Red Bull Station | São Paulo, Brasilien
 Juni 2016 | [Kurs] | Einführung in die Holzbearbeitung | Fab Lab Livre SP | São Paulo, Brasilien
 Mai 2016 | [Kurs] | Interaktivität: Architektur und Responsive Design | Fab Lab Livre SP | São Paulo, Brasilien
-September 2015 | [Zertifizierung] | Autodesk Revit Architecture Zertifizierte Fachprüfung | Autodesk University Brasilien
+September 2015 | [Zertifizierung] | Autodesk Revit Architecture Certified Professional Exam | Autodesk University Brasilien
 März 2015 – August 2019 | [Beruf] | Computational Designer | Atelier Marko Brajovic | São Paulo, Brasilien
-Juni 2014 – August 2014 | [Beruf] | On-the-job Training | California State University Long Beach | Long Beach, USA
-Januar 2014 – Dezember 2014 | [Bildung] | Architektur-Austauschstudent | Auburn University – CADC | Auburn, USA
-August 2013 – Dezember 2013 | [Bildung] | Intensives Englischprogramm | Auburn Global | Auburn, USA
+Juni 2014 – August 2014 | [Beruf] | On-the-Job-Training | California State University Long Beach | Long Beach, USA
+Januar 2014 – Dezember 2014 | [Bildung] | Austauschstudium Architektur | Auburn University – CADC | Auburn, USA
+August 2013 – Dezember 2013 | [Bildung] | Intensivkurs Englisch | Auburn Global | Auburn, USA
 August 2013 – Dezember 2014 | [Stipendium] | Wissenschaft ohne Grenzen | Brasilianische Bundesregierung | Auburn, USA
-Juli 2013 | [Zertifizierung] | Sicherheits- und Gesundheitstraining - CAL/OSHA (10 Stunden) | CAL/OSHA
-August 2011 – Dezember 2011 | [Kurs] | Grundlagen der Berechnung mit Processing | FAU-USP | São Paulo, Brasilien
+Juli 2013 | [Zertifizierung] | Arbeitsschutzschulung CAL/OSHA (10 Stunden) | CAL/OSHA
+August 2011 – Dezember 2011 | [Kurs] | Grundlagen der Informatik mit Processing | FAU-USP | São Paulo, Brasilien
 Juni 2011 – August 2013 | [Beruf] | Grafikdesigner | Institut für Biomedizinische Wissenschaften - Universität São Paulo | São Paulo, Brasilien
-Januar 2010 – Dezember 2016 | [Bildung] | Bachelor für Architektur und Stadtplanung | FAU, Universität São Paulo | São Paulo, Brasilien
-Januar 2009 – Dezember 2009 | [Bildung] | Vorbereitungskurs für die Aufnahmeprüfung | Colégio Nobel | Londrina, Brasilien
-Januar 2007 – Dezember 2008 | [Bildung] | Bachelor für Architektur und Stadtplanung (abgebrochen) | UNEMAT | Barra do Bugres, Brasilien
-Januar 2004 – Dezember 2006 | [Bildung] | Gymnasialabschluss | CEI Anglo | Vilhena, Brasilien
+Januar 2010 – Dezember 2016 | [Bildung] | Bachelor in Architektur und Städtebau | FAU, Universität São Paulo | São Paulo, Brasilien
+Januar 2009 – Dezember 2009 | [Bildung] | Vorbereitungskurs für die Hochschulaufnahmeprüfung | Colégio Nobel | Londrina, Brasilien
+Januar 2007 – Dezember 2008 | [Bildung] | Bachelor in Architektur und Städtebau (abgebrochen) | UNEMAT | Barra do Bugres, Brasilien
+Januar 2004 – Dezember 2006 | [Bildung] | Schulabschluss | CEI Anglo | Vilhena, Brasilien

@@ -1,5 +1,5 @@
 ---
-Name: Intensives Englischprogramm
+Name: Intensivkurs Englisch
 DateStart: "2013-08"
 DateEnd: "2013-12"
 Organization: Auburn Global

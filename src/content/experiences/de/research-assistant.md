@@ -10,7 +10,7 @@ Category: Professional Experience
 Link: "https://www.icd.uni-stuttgart.de/"
 ---
 
-- Durchführung von Strukturtests mit Naturfasern mit Marta Gil Pérez.
+- Belastungsversuche an Naturfasern mit Marta Gil Pérez.
 - Forschung zur Kohlefaserwicklung mit Christoph Schlopschnat.
-- Computational Design eines selbstkrümmenden Holzturms mit Dylan Wood.
+- Computational Design eines Turms aus selbstkrümmendem Holz mit Dylan Wood.
 - Unterstützung bei der Migration der ICD-Website mit Tobias Schwinn.

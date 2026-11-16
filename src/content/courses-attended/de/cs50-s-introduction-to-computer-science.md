@@ -1,5 +1,5 @@
 ---
-Name: "CS50's Einführung in die Informatik"
+Name: "CS50's Introduction to Computer Science"
 DateStart: "2023-07"
 DateEnd: "2023-10"
 Organization: Harvard University

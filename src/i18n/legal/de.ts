@@ -23,9 +23,9 @@ Website: <a href="/de">daniellocatelli.com</a></p>`,
 <li>HTTP-Anfrage-Header (Browsertyp, Betriebssystem, Referrer-URL)</li>
 <li>Zeitpunkt des Zugriffs</li>
 </ul>
-<p>Diese Verarbeitung ist für die Bereitstellung der Website erforderlich (Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse). Cloudflare Inc. hat seinen Sitz in den Vereinigten Staaten. Datenübermittlungen in die USA werden durch den Auftragsverarbeitungsvertrag von Cloudflare und die EU-Standardvertragsklauseln abgesichert.</p>
+<p>Diese Verarbeitung ist für die Bereitstellung der Website erforderlich (Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse). Cloudflare Inc. hat seinen Sitz in den Vereinigten Staaten. Datenübermittlungen in die USA werden durch den Auftragsverarbeitungsvertrag von Cloudflare und die EU-Standardvertragsklauseln abgesichert.</p>
 <p>Die Website nutzt außerdem Cloudflare Workers KV zur Speicherung betrieblicher Daten (Verfügbarkeitsstatus der KI-Modelle und tägliche Nutzungszähler). Dieser Speicher enthält keine personenbezogenen Daten.</p>
-<p>Weitere Informationen: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Datenschutzrichtlinie</a></p>`,
+<p>Weitere Informationen: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Datenschutzrichtlinie von Cloudflare</a></p>`,
       },
       {
         heading: "Webanalyse (Cloudflare Web Analytics)",
@@ -36,9 +36,9 @@ Website: <a href="/de">daniellocatelli.com</a></p>`,
 <li>Ungefähres Land, abgeleitet aus Ihrer IP-Adresse</li>
 <li>Leistungsmetriken zum Seitenaufbau (Core Web Vitals)</li>
 </ul>
-<p>Die Daten werden aggregiert. Cloudflare Web Analytics setzt keine Cookies, verwendet keinen lokalen Speicher, erstellt keinen Fingerabdruck Ihres Geräts und verfolgt Sie weder über Websites hinweg, noch werden individuelle Profile erstellt.</p>
-<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an der Messung der Nutzung und Leistung dieser Website mit einem datenschutzfreundlichen, cookiefreien Werkzeug. Datenübermittlungen in die USA werden durch den Auftragsverarbeitungsvertrag von Cloudflare und die EU-Standardvertragsklauseln abgesichert.</p>
-<p>Weitere Informationen: <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a> · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Datenschutzrichtlinie</a></p>`,
+<p>Die Daten werden aggregiert. Cloudflare Web Analytics setzt keine Cookies, verwendet keinen lokalen Speicher, erstellt keinen Fingerabdruck Ihres Geräts und verfolgt Sie nicht über Websites hinweg und erstellt keine individuellen Profile.</p>
+<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse an der Messung der Nutzung und Leistung dieser Website mit einem datenschutzfreundlichen, cookiefreien Werkzeug. Datenübermittlungen in die USA werden durch den Auftragsverarbeitungsvertrag von Cloudflare und die EU-Standardvertragsklauseln abgesichert.</p>
+<p>Weitere Informationen: <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener noreferrer">Cloudflare Web Analytics</a> · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Datenschutzrichtlinie von Cloudflare</a></p>`,
       },
       {
         heading: "KI-Chat-Funktion (Anthropic)",
@@ -48,7 +48,7 @@ Website: <a href="/de">daniellocatelli.com</a></p>`,
 </ul>
 <p>Das Gespräch wird im Sitzungsspeicher Ihres Browsers für diesen Tab abgelegt: Es bleibt beim Neuladen der Seite erhalten und wird gelöscht, wenn Sie den Tab schließen oder einen neuen Chat beginnen. Es wird kein Gesprächsverlauf auf einem Server gespeichert.</p>
 <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO, Einwilligung (Sie entscheiden sich aktiv für die Nutzung des Chats). Anthropic hat seinen Sitz in den USA. Datenübermittlungen werden durch die Standardvertragsklauseln von Anthropic abgesichert.</p>
-<p>Weitere Informationen: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Anthropic Datenschutzrichtlinie</a></p>`,
+<p>Weitere Informationen: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener noreferrer">Datenschutzrichtlinie von Anthropic</a></p>`,
       },
       {
         heading: "Eingebettete Videos (YouTube)",
@@ -60,23 +60,23 @@ Website: <a href="/de">daniellocatelli.com</a></p>`,
 <li>Wiedergabeverhalten und Interaktionsdaten</li>
 </ul>
 <p>Wenn Sie in Ihrem Google-Konto angemeldet sind, kann YouTube Ihre Wiedergabeaktivität mit Ihrem Profil verknüpfen.</p>
-<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse an der Darstellung von Projektarbeiten durch Videoinhalte. Google LLC hat seinen Sitz in den Vereinigten Staaten. Datenübermittlungen werden durch die Standardvertragsklauseln von Google abgesichert.</p>
-<p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Datenschutzrichtlinie</a></p>`,
+<p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse an der Darstellung von Projektarbeiten durch Videoinhalte. Google LLC hat seinen Sitz in den Vereinigten Staaten. Datenübermittlungen werden durch die Standardvertragsklauseln von Google abgesichert.</p>
+<p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Datenschutzrichtlinie von Google</a></p>`,
       },
       {
         heading: "Selbst gehostete Schriftarten",
         content: `<p>Diese Website verwendet die Schriftarten Montserrat und Poppins. Alle Schriftdateien werden direkt von dieser Domain ausgeliefert. Es werden keine Anfragen an Google Fonts oder andere Drittanbieter-Schriftdienste gestellt.</p>`,
       },
       {
-        heading: "Keine Cookies oder Tracking",
+        heading: "Keine Cookies, kein Tracking",
         content: `<p>Diese Website setzt keine eigenen Cookies. Es werden keine Werbenetzwerke und kein Tracking eingesetzt, das einzelne Besucher identifiziert. Aggregierte, cookiefreie Analysen werden von Cloudflare Web Analytics bereitgestellt (siehe oben). Beachten Sie, dass eingebettete YouTube-Videos (im erweiterten Datenschutzmodus) Cookies setzen können, wenn Sie diese abspielen.</p>`,
       },
       {
         heading: "Externe Links",
-        content: `<p>Diese Website enthält Links zu externen Diensten wie LinkedIn, GitHub, GitLab, Instagram, Bluesky und ORCID. Wenn Sie diesen Links folgen, verlassen Sie diese Website und die Datenschutzrichtlinie des jeweiligen Dienstes gilt. Der Betreiber dieser Website hat keinen Einfluss auf die Datenverarbeitungspraktiken dieser Drittanbieter.</p>`,
+        content: `<p>Diese Website enthält Links zu externen Diensten wie LinkedIn, GitHub, GitLab, Instagram, Bluesky und ORCID. Wenn Sie diesen Links folgen, verlassen Sie diese Website, und es gilt die Datenschutzrichtlinie des jeweiligen Dienstes. Der Betreiber dieser Website hat keinen Einfluss auf die Datenverarbeitungspraktiken dieser Drittanbieter.</p>`,
       },
       {
-        heading: "Datenspeicherung",
+        heading: "Speicherdauer",
         content: `<p>Diese Website speichert keine personenbezogenen Nutzerdaten dauerhaft. Serverprotokolle und aggregierte Analysedaten, die von Cloudflare verwaltet werden, unterliegen den eigenen Aufbewahrungsrichtlinien von Cloudflare.</p>`,
       },
       {
@@ -91,11 +91,11 @@ Website: <a href="/de">daniellocatelli.com</a></p>`,
     sections: [
       {
         heading: "Geltungsbereich",
-        content: `<p>Diese Nutzungsbedingungen regeln die Nutzung der Website daniellocatelli.com (die „Website"), betrieben von Daniel Nunes Locatelli. Durch den Zugriff auf diese Website stimmen Sie diesen Bedingungen zu.</p>`,
+        content: `<p>Diese Nutzungsbedingungen regeln die Nutzung der Website daniellocatelli.com (die „Website“), betrieben von Daniel Nunes Locatelli. Durch den Zugriff auf diese Website stimmen Sie diesen Bedingungen zu.</p>`,
       },
       {
         heading: "Geistiges Eigentum",
-        content: `<p>Alle Inhalte dieser Website — einschließlich, aber nicht beschränkt auf Texte, Bilder, Grafiken, Projektdokumentation, Codebeispiele und Design — sind geistiges Eigentum von Daniel Nunes Locatelli, sofern nicht anders angegeben. Die unbefugte Vervielfältigung, Verbreitung oder Nutzung dieser Inhalte ist ohne vorherige schriftliche Genehmigung untersagt.</p>`,
+        content: `<p>Alle Inhalte dieser Website (einschließlich, aber nicht beschränkt auf Texte, Bilder, Grafiken, Projektdokumentation, Codebeispiele und Design) sind geistiges Eigentum von Daniel Nunes Locatelli, sofern nicht anders angegeben. Die unbefugte Vervielfältigung, Verbreitung oder Nutzung dieser Inhalte ist ohne vorherige schriftliche Genehmigung untersagt.</p>`,
       },
       {
         heading: "Haftungsausschluss für den KI-Chat",
@@ -119,13 +119,13 @@ Website: <a href="/de">daniellocatelli.com</a></p>`,
       },
       {
         heading: "Haftungsbeschränkung",
-        content: `<p>Diese Website wird „wie besehen" ohne jegliche ausdrückliche oder stillschweigende Gewährleistung bereitgestellt. Daniel Nunes Locatelli übernimmt keine Gewähr dafür, dass:</p>
+        content: `<p>Diese Website wird „wie besehen“ ohne jegliche ausdrückliche oder stillschweigende Gewährleistung bereitgestellt. Daniel Nunes Locatelli übernimmt keine Gewähr dafür, dass:</p>
 <ul>
-<li>Die Website jederzeit unterbrechungsfrei verfügbar ist</li>
-<li>Der Inhalt frei von Fehlern oder Ungenauigkeiten ist</li>
-<li>Die Website frei von Viren oder anderen schädlichen Komponenten ist</li>
+<li>die Website jederzeit unterbrechungsfrei verfügbar ist</li>
+<li>der Inhalt frei von Fehlern oder Ungenauigkeiten ist</li>
+<li>die Website frei von Viren oder anderen schädlichen Komponenten ist</li>
 </ul>
-<p>Im größtmöglichen gesetzlich zulässigen Umfang haftet der Betreiber nicht für direkte, indirekte, zufällige oder Folgeschäden, die sich aus der Nutzung dieser Website ergeben.</p>`,
+<p>Im größtmöglichen gesetzlich zulässigen Umfang haftet der Betreiber nicht für direkte, indirekte, Neben- oder Folgeschäden, die sich aus der Nutzung dieser Website ergeben.</p>`,
       },
       {
         heading: "Externe Links",

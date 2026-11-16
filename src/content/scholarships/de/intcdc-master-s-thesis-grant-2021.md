@@ -1,6 +1,6 @@
 ---
 Name: IntCDC Master’s Thesis Grant 2021
-Description: "Das Stipendium ermutigt exzellente Masterstudierende, einen ersten Schritt in Richtung einer zukünftigen akademischen Karriere zu machen."
+Description: "Das Stipendium ermutigt herausragende Masterstudierende zu einem ersten Schritt in Richtung einer akademischen Laufbahn."
 DateStart: "2021-03"
 DateEnd: "2021-10"
 Organization: Exzellenzcluster – IntCDC

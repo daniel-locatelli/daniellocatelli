@@ -1,6 +1,6 @@
 ---
-Name: Bachelor für Architektur und Stadtplanung
-Description: "Thesis: Architektur + Biomimetik + Algorithmus"
+Name: Bachelor in Architektur und Städtebau
+Description: "Abschlussarbeit: Architektur + Biomimetik + Algorithmus"
 DateStart: "2010-01"
 DateEnd: "2016-12"
 Organization: "FAU, Universität São Paulo"
