@@ -5,7 +5,7 @@ Description: "Ajudei a migrar o site do ICD para o template padrão da Universid
 Name: "Assistente de pesquisa em desenvolvimento web no ICD"
 Tags:
  - Web Development
-Organization: "ICD - University of Stuttgart"
+Organization: "ICD – Universidade de Stuttgart"
 Category: Desenvolvimento web
 DateStart: "2019-12-20"
 DateEnd: "2020-10-19"

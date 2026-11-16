@@ -5,7 +5,7 @@ Description: "Ich half bei der Migration der ICD-Website auf das zentralisierte 
 Name: ICD Wissenschaftliche Hilfskraft in der Webentwicklung
 Tags:
  - Web Development
-Organization: "ICD - University of Stuttgart"
+Organization: "ICD – Universität Stuttgart"
 Category: Web development
 DateStart: "2019-12-20"
 DateEnd: "2020-10-19"

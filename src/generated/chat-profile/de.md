@@ -180,7 +180,7 @@ Tags: Normen, Holzbau, Digitaler Produktpass
 Eine systematische Recherche der ISO-, GS1-, CEN-, DIN-, SIA- und KBOB-Normen, die die Spezifikation von Materialien und mehrschichtigen Aufbauten im Holzbau regeln, von Brandschutz und Bauphysik bis zu BIM-Datenvorlagen und dem digitalen Produktpass. Arbeitspaket 1.2 des Projekts DOKwood.
 
 ### Building Across Scales
-ITECH - University of Stuttgart | Stuttgart, Deutschland | Dezember 2024 | /de/research/building-across-scales
+ITECH – Universität Stuttgart | Stuttgart, Deutschland | Dezember 2024 | /de/research/building-across-scales
 Tags: Computational design, Form finding, Robotics
 Die Forschung schlägt ein heterogenes multiskalares robotisches Bausystem zur weiteren Automatisierung des Holzbaus vor Ort vor. Konkret wird der nächste Schritt in der Automatisierung des Klebens vor Ort vorgestellt, indem ein maßgeschneidertes robotisches Klemmgerät für das Anpressen von Holzelementen vor Ort eingeführt wird. Im Kern der Forschung steht daher die Entwicklung dieses Geräts als Teil eines größeren robotischen Bauteams, bestehend aus einem industriellen Roboterarm und einem automatisierten Kran, im Co-Design mit dem Material- und Bausystem.
 
@@ -190,17 +190,17 @@ Tags: Computational design
 Acropora-Pavillon, ein Projekt für den Kurs Biomimetik des Masterprogramms ITECH am ICD & ITKE der Universität Stuttgart. Acropora ist ein Pavillon, inspiriert vom Wachstum der Korallen.
 
 ### Biegeaktiver Bambus
-ITECH – University of Stuttgart | Stuttgart, Deutschland | Oktober 2020 | /de/research/bending-active-bamboo
+ITECH – Universität Stuttgart | Stuttgart, Deutschland | Oktober 2020 | /de/research/bending-active-bamboo
 Tags: Form finding
 Forschung für den ITECH-Kurs Form und Struktur. Inspiriert vom ZCB Bamboo Pavilion entwickelten wir unseren eigenen Workflow mit Grasshopper, Kangaroo Physics und K2Engineering.
 
 ### Differentielles Wachstum bei Korallen
-ITECH – University of Stuttgart | Stuttgart, Deutschland | Oktober 2020 | /de/research/differential-growth-in-corals
+ITECH – Universität Stuttgart | Stuttgart, Deutschland | Oktober 2020 | /de/research/differential-growth-in-corals
 Tags: Computational design, Form finding
 Forschung für die ITECH-Kurse Computational Design und Biomimetik. Inspiriert vom Wachstum der Korallen; der Code wurde mit Grasshopper und einer selbst erstellten Python-Komponente entwickelt. Im Kurs Computational Design lernten wir, eigene Grasshopper-Komponenten mit Python und C# zu entwickeln.
 
 ### ITKE-Wissenschaftliche Hilfskraft für Kernloses Filamentwickeln
-Filament | ITKE - University of Stuttgart | Stuttgart, Deutschland | August 2020 – Oktober 2020 | /de/research/itke-research-assistant-for-coreless-filament-winding
+Filament | ITKE – Universität Stuttgart | Stuttgart, Deutschland | August 2020 – Oktober 2020 | /de/research/itke-research-assistant-for-coreless-filament-winding
 Tags: Coreless Filament Winding, Structural Analysis, Structural Test
 Als wissenschaftliche Hilfskraft half ich Marta Gil Pérez bei den Belastungstests von Naturfaserprobekörpern für den livMatS-Pavillon. Die wichtigste Erkenntnis betraf die Beziehung zwischen Computersimulation, physischen Experimenten und der Intuition der Forscherin.
 
@@ -348,12 +348,12 @@ Photogrammetrie | ICD/ITKE Universität Stuttgart | ICD, Deutschland | Juli 2020
 Untersuchung von digitalen Zwillingen für das kleinskalige Kohlefaserwickeln.
 
 ### ICD-Forschungsassistent als Computational Designer
-Computational design | ICD - University of Stuttgart | Stuttgart, Deutschland | März 2020 – April 2020 | /de/projects/icd-research-assistant-as-computational-designer
+Computational design | ICD – Universität Stuttgart | Stuttgart, Deutschland | März 2020 – April 2020 | /de/projects/icd-research-assistant-as-computational-designer
 Tags: Computational Design, Grasshopper3D
 Es war spannend, die computergestützte Strategie zur Geometrieerzeugung für eine sich selbst krümmende Brettsperrholzplatte zu verstehen. Der Trick besteht darin, mit Zylindern zu arbeiten, da sich Holz von Natur aus senkrecht zur Faserrichtung krümmt.
 
 ### ICD Wissenschaftliche Hilfskraft in der Webentwicklung
-Web development | ICD - University of Stuttgart | Dezember 2019 – Oktober 2020 | /de/projects/icd-research-assistant-in-web-development
+Web development | ICD – Universität Stuttgart | Dezember 2019 – Oktober 2020 | /de/projects/icd-research-assistant-in-web-development
 Tags: Web Development
 Ich half bei der Migration der ICD-Website auf das zentralisierte OpenCMS-Template der Universität Stuttgart. Dieses Projekt ermöglichte mir meinen ersten Kontakt mit der deutschen Sprache und eine tiefe Wertschätzung für das Forschungsportfolio des ICD.
 
@@ -443,12 +443,12 @@ Architektur | Atelier Marko Brajovic | Brasilien | April 2015 – Februar 2016 |
 ## Publikationen
 
 ### Multi-scalar robotic fabrication system for on-site press gluing in multi-storey timber buildings
-ITECH - University of Stuttgart | Dezember 2024 | /de/full-cv (nur im Lebenslauf aufgeführt)
+ITECH – Universität Stuttgart | Dezember 2024 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Tags: Computational design, Form finding, Robotics, Timber construction, On-site fabrication
 Dieser Artikel stellt ein heterogenes multiskalares robotisches Bausystem für den Holzbau vor Ort vor und führt ein maßgeschneidertes robotisches Klemmgerät für das Verpressen von Klebeverbindungen an Holzelementen als Teil eines größeren robotischen Bauteams ein.
 
 ### Automatische Stützenplatzierung
-ICD & ITKE – University of Stuttgart | Shanghai, China | Juni 2023 | /de/publications/automatic-column-placement
+ICD und ITKE – Universität Stuttgart | Shanghai, China | Juni 2023 | /de/publications/automatic-column-placement
 Tags: Computational design, Column placement, Complex networks, Organization of space, Multi-story buildings
 Dieses Paper präsentiert eine feedbackbasierte rechnerische Methode zur Platzierung von Stützen in der frühen Entwurfsphase komplexer Mehrgeschossbauten. Die Methode integriert einen Circle-Packing-Algorithmus, ein Federsystem und Tragwerksberechnungen in einem einzigen Skript für die reziproke und informierte Anordnung von Stützen im Raum. Während sie den Nutzern einen explorativen Ansatz ermöglicht, erschließt sie vielfältige Potenziale im Mehrgeschossbau, einschließlich zusätzlicher auskragender Flächen am Rand, erhöhter Raumqualitäten mit großen Spannweiten, multidirektionaler Tragwerksano…
 

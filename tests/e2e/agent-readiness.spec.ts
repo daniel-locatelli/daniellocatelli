@@ -1,5 +1,11 @@
 import { test, expect } from "@playwright/test";
 
+// Cloudflare serves public/_headers and the dot-folder public/.well-known;
+// `astro dev` serves neither, so these checks run only against a deployed
+// site: PW_BASE_URL=https://daniellocatelli.com pnpm test:e2e
+const deployOnly = () =>
+  test.skip(!process.env.PW_BASE_URL, "needs a deployed site (PW_BASE_URL)");
+
 test.describe("Agent readiness — llms.txt (English)", () => {
   test("/llms.txt returns text/markdown with portfolio sections", async ({
     request,
@@ -44,6 +50,7 @@ test.describe("Agent readiness — discoverability", () => {
   test("root response includes Link header pointing at sitemap", async ({
     request,
   }) => {
+    deployOnly();
     const res = await request.get("/");
     expect(res.status()).toBe(200);
     const link = res.headers()["link"];
@@ -53,6 +60,7 @@ test.describe("Agent readiness — discoverability", () => {
   });
 
   test("root response includes X-Robots-Tag", async ({ request }) => {
+    deployOnly();
     const res = await request.get("/");
     expect(res.headers()["x-robots-tag"]).toBe("all");
   });
@@ -120,6 +128,7 @@ test.describe("Agent readiness — MCP", () => {
   test("/.well-known/mcp.json declares streamable-http transport and five tools", async ({
     request,
   }) => {
+    deployOnly();
     const res = await request.get("/.well-known/mcp.json");
     expect(res.status()).toBe(200);
     const json = await res.json();
@@ -255,6 +264,7 @@ test.describe("Agent readiness — Agent Skills", () => {
   test("/.well-known/agent-skills/index.json lists skills whose SKILL.md files resolve", async ({
     request,
   }) => {
+    deployOnly();
     const res = await request.get("/.well-known/agent-skills/index.json");
     expect(res.status()).toBe(200);
     const json = await res.json();
@@ -273,6 +283,7 @@ test.describe("Agent readiness — Agent Skills", () => {
   test("/.well-known/api-catalog links the agent-skills index", async ({
     request,
   }) => {
+    deployOnly();
     const res = await request.get("/.well-known/api-catalog");
     const json = await res.json();
     const hrefs = json.linkset[0]["service-desc"].map((d: any) => d.href);

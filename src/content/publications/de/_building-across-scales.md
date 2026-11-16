@@ -19,7 +19,7 @@ Link:
   Text: Artikel in der Zeitschrift Automation in Construction
   Href: "https://doi.org/10.1016/j.autcon.2024.105774"
 Place: "Automation in Construction, Volume 168, Part A"
-Organization: "ITECH - University of Stuttgart"
+Organization: "ITECH – Universität Stuttgart"
 ---
 
 ## Building Across Scales: Ein robotisches Holzfabrikationssystem für das Verpressen von Klebeverbindungen vor Ort

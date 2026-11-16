@@ -348,12 +348,12 @@ Fotogrametria | ICD/ITKE Universidade de Stuttgart | ICD, Alemanha | julho de 20
 Estudo de gêmeos digitais para o enrolamento filamentar de fibra de carbono em pequena escala.
 
 ### Assistente de pesquisa no ICD como designer computacional
-Design computacional | ICD - University of Stuttgart | Stuttgart, Alemanha | março de 2020 – abril de 2020 | /pt/projects/icd-research-assistant-as-computational-designer
+Design computacional | ICD – Universidade de Stuttgart | Stuttgart, Alemanha | março de 2020 – abril de 2020 | /pt/projects/icd-research-assistant-as-computational-designer
 Tags: Computational Design, Grasshopper3D
 Foi interessante entender a estratégia computacional para gerar a geometria de uma placa de madeira laminada cruzada autocurvante. O truque aqui é trabalhar com cilindros porque a curvatura natural da madeira acontece perpendicularmente à direção das fibras.
 
 ### Assistente de pesquisa em desenvolvimento web no ICD
-Desenvolvimento web | ICD - University of Stuttgart | dezembro de 2019 – outubro de 2020 | /pt/projects/icd-research-assistant-in-web-development
+Desenvolvimento web | ICD – Universidade de Stuttgart | dezembro de 2019 – outubro de 2020 | /pt/projects/icd-research-assistant-in-web-development
 Tags: Web Development
 Ajudei a migrar o site do ICD para o template padrão da Universidade de Stuttgart, em OpenCMS. Foi com esse projeto que tive meu primeiro contato com o alemão e passei a admirar profundamente as pesquisas do ICD.
 

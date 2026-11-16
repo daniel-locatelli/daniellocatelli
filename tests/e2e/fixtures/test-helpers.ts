@@ -15,6 +15,7 @@ export const PAGE_NAMES: Record<string, Record<string, string>> = {
 export const KNOWN_SUBPAGE = {
   slug: "projects/buildsystems-website",
   title: "BuildSystems Website",
+  titlePt: "Site da BuildSystems",
 };
 
 export function localeUrl(locale: string, path = "") {

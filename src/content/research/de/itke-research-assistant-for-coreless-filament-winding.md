@@ -8,7 +8,7 @@ Tags:
   - Coreless Filament Winding
   - Structural Analysis
   - Structural Test
-Organization: "ITKE - University of Stuttgart"
+Organization: "ITKE – Universität Stuttgart"
 Category: Filament
 City:
   - Stuttgart

@@ -43,10 +43,12 @@ Ich unterstützte Christoph bei seiner Untersuchung von Berechnungsmethoden zur 
 
 ![Harzvorbereitung für den Kohlefaser-Wickelprozess.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/resin-preparation.jpg)
 
-![Kohlefaser-Wickelproben auf dem Lagerregal, die die komplexen hohlen Geometrien zeigen, die durch kernloses Filamentwickeln erreicht werden.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/carbon-fiber-samples-on-shelf.jpg)
+![Das ICD-Labor vom Eingang aus: Ein Teammitglied im Schutzanzug beobachtet den KUKA-Arm und zwei Kollegen am Wickeldrehtisch, darüber lagern große gewickelte Carbonfaserstrukturen auf der Galerie.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/carbon-fiber-samples-on-shelf.jpg)
 
 ## Erkenntnisse
 
 Der einprägsamste Aspekt dieser Arbeit war der Umgang mit dem Harz. Das Epoxidharz, das in Kohlefaserverbundwerkstoffen verwendet wird, ist hochgiftig und erfordert Ganzkörper-Schutzanzüge, Handschuhe und eine sorgfältige Vorbereitung des Arbeitsbereichs mit Schutzabdeckungen. Es war eine praktische Einführung in die Realitäten der Arbeit mit fortschrittlichen Verbundwerkstoffen, eine ganz andere Welt als die rechnerische Seite der Forschung. Und ehrlich gesagt war die Toxizität des Materials für mich ein großes Abschreckungsmittel, weshalb ich mich schließlich von dieser Forschungsrichtung abwandte. Aber es war eine wertvolle Erfahrung, die mir ein tieferes Verständnis für die Komplexität der Materialwissenschaft in der architektonischen Fertigung gab.
+
+![Daniel Nunes Locatelli im Schutzanzug neben dem KUKA-Roboter im ICD-Labor, darüber gewickelte Carbonfaserstrukturen im Regal.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/daniel-locatelli-with-kuka-robot.jpg)
 
 ![Daniel Nunes Locatelli und Anand Shah in Schutzanzügen im ICD-Labor, mit dem KUKA-Roboter und früheren Filamentwickelproben im Hintergrund.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/daniel-and-anand-in-protective-suits.jpg)

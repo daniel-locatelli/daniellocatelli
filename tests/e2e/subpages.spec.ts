@@ -136,7 +136,7 @@ test.describe("Subpages", () => {
 
   test("Portuguese subpage renders", async ({ page }) => {
     await page.goto(localeUrl("pt", `/${KNOWN_SUBPAGE.slug}`));
-    await expect(page.locator("main h1").first()).toContainText(KNOWN_SUBPAGE.title);
+    await expect(page.locator("main h1").first()).toContainText(KNOWN_SUBPAGE.titlePt);
     await expect(page.locator("html")).toHaveAttribute("lang", "pt");
   });
 

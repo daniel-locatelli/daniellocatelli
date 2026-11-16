@@ -43,10 +43,12 @@ Auxiliei Christoph em sua investigação de métodos computacionais para prever 
 
 ![Preparação da resina para o processo de enrolamento de fibra de carbono.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/resin-preparation.jpg)
 
-![Amostras de enrolamento de fibra de carbono na prateleira de armazenamento, mostrando as complexas geometrias ocas alcançadas pelo enrolamento filamentar sem núcleo.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/carbon-fiber-samples-on-shelf.jpg)
+![O laboratório do ICD visto da entrada: um membro da equipe com traje de proteção observa o braço KUKA e dois colegas junto à mesa giratória de enrolamento, com grandes estruturas de fibra de carbono enroladas guardadas no mezanino acima.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/carbon-fiber-samples-on-shelf.jpg)
 
 ## Aprendizados
 
 O aspecto mais memorável desse trabalho foi o manuseio da resina. A resina epóxi utilizada em compósitos de fibra de carbono é altamente tóxica, exigindo trajes de proteção completos, luvas e preparação cuidadosa do espaço de trabalho com coberturas protetoras. Foi um contato prático com a realidade do trabalho com materiais compósitos avançados, um mundo à parte do lado computacional da pesquisa. E, sinceramente, a toxicidade do material foi algo que me desanimou bastante, razão pela qual acabei me afastando dessa linha de pesquisa. Mas foi uma experiência valiosa que me fez entender melhor a complexidade da ciência dos materiais na fabricação arquitetônica.
+
+![Daniel Nunes Locatelli com traje de proteção ao lado do robô KUKA no laboratório do ICD, com estruturas de fibra de carbono enroladas na prateleira acima.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/daniel-locatelli-with-kuka-robot.jpg)
 
 ![Daniel Nunes Locatelli e Anand Shah com trajes de proteção no laboratório do ICD, com o robô KUKA e amostras anteriores de enrolamento filamentar visíveis ao fundo.](../../../assets/content/research/icd-research-assistant-for-coreless-filament-winding/daniel-and-anand-in-protective-suits.jpg)
