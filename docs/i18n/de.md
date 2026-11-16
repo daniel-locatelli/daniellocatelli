@@ -52,6 +52,13 @@ de strings in `src/scripts/generate-knowledge.ts`. The house rules in
 | urban solid waste | feste Siedlungsabfälle | confirmed |
 | press gluing | Pressverleimung | confirmed |
 | link text to a conference paper | „… auf der <Konferenz>“ | confirmed |
+| mesh vs net (thesis page) | Mesh for digital geometry (Vierecks-Mesh, Dreiecks-Mesh, des Meshes); Netz only for physical nets (Seilnetz, Spinnennetz, Klöppelnetz) | confirmed |
+| form finding (in text) | Formfindung, not *form finding* | confirmed |
+| carbon fibre | Kohlefaser, not Carbonfaser | confirmed |
+| lightweight construction / self-forming / roof plan | Leichtbau / Selbstbildung / Dachaufsicht | confirmed |
+| Grasshopper operations (Remesh, Remap, Relaxation, Mesh Machine) | tool names, unchanged | confirmed |
+| soap film | Seifenfilm (the site's spelling) | confirmed |
+| vertex (CAD) | Scheitelpunkt (pending Daniel: or Knotenpunkt) | proposed |
 
 ## Corrections
 
@@ -60,6 +67,10 @@ Decisions from reviews, newest first. An entry records what was wrong, so
 
 | Date | Where | Before | After | Why |
 | --- | --- | --- | --- | --- |
+| 2026-11-16 | research, half 1 (7 pages) | rechnerisch / computergestütztes Design / Massenanpassung / *form finding* / Quadratisches Netz / Carbonfaser / Abschreckungsmittel / Kuchenseeigel / Pavillonexploration / Designerin von 3,8 Milliarden Jahren / English video captions | computergestützt / Computational Design / Mass Customization / Formfindung / Vierecks-Mesh / Kohlefaser / hat mich abgeschreckt / Schildseeigel / Pavillonstudie / entwirft seit 3,8 Milliarden Jahren / German captions | Batch C panel (Opus + Fable reviewers, a judge): 277 edits accepted, applied by Daniel ("proceed with the fixes"). |
+| 2026-11-16 | ICD, ITKE assistant pages | ICD-Wissenschaftliche Hilfskraft für Kernloses Filamentwickeln | Wissenschaftliche Hilfskraft am ICD: kernloses Filamentwickeln (same for ITKE) | Broken compound, wrong capital. |
+| 2026-11-16 | thesis, Expo 1967 caption | Pole | Masten | The image shows the masts under the mesh. |
+| 2026-11-16 | research, half 1 | Seifenhaut, fingerverzinkt → verzinkt, Masterstudiengang, Rahmen for Struktur, spaced hyphens in captions → colons (proposed) | kept | Batch C panel rejected: site usage, correct terms, or taste. |
 | 2026-11-16 | High-Low (en, pt, de) | the mason … interleaved battens / o pedreiro … ripas intercaladas / Maurer … Latten; pieces of the base in the general floor plan | the foreman … lay rebars between them / mestre de obras … intercalar vergalhões / Polier … Bewehrungsstäbe; base pieces precisely marked on the plan | Checked against the published SIGraDi 2018 PDF (estante, mestre-de-obras, vergalhões intercalados, indicadas com precisão). |
 | 2026-11-16 | High-Low (en, pt, de) | in Figure 7 / (Figure 6) | in the photo of the finished pavilion below / dropped | Daniel (D1): the site does not number its images. |
 | 2026-11-16 | bobbin lace | Webtechnik / Webmethode / textiler Gewebe | textile Handwerkstechnik / textiler Geflechte | Daniel (D2): Klöppeln is not weaving; de only, en and pt keep the published wording. |

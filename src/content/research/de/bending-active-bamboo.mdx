@@ -1,8 +1,8 @@
 ---
 Cover: /assets/content/research/bending-active-bamboo/bending-active-bamboo_bending-forces.png
-CoverAlt: "3D-Modell im Drahtgitter mit Biegekräften am Fallbeispiel, dem ZCB-Pavillon."
+CoverAlt: "3D-Drahtgittermodell mit den Biegekräften am Fallbeispiel, dem ZCB-Pavillon."
 CoverFit: contain
-Description: "Forschung für den ITECH-Kurs Form und Struktur. Inspiriert vom ZCB Bamboo Pavilion entwickelten wir unseren eigenen Workflow mit Grasshopper, Kangaroo Physics und K2Engineering."
+Description: "Forschungsarbeit für den ITECH-Kurs Form und Struktur. Wir ließen uns vom ZCB Bamboo Pavilion inspirieren, entwickelten aber unseren eigenen Workflow mit Grasshopper, Kangaroo Physics und K2Engineering."
 Name: Biegeaktiver Bambus
 Tags:
   - Form finding
@@ -10,7 +10,7 @@ Authors:
   - Lena Strobel
   - Daniel Nunes Locatelli
 Supervisors:
-  - Prof. Dr. Ing. Jan Knippers
+  - Prof. Dr.-Ing. Jan Knippers
 City:
   - Stuttgart
 Country: "Deutschland"
@@ -20,29 +20,29 @@ Organization: "ITECH – Universität Stuttgart"
 
 import Video from '@/components/Video.astro'
 
-<Video autoplay src="/media/research/bending-active-bamboo/form-finding.mp4" caption="Form-finding process." />
+<Video autoplay src="/media/research/bending-active-bamboo/form-finding.mp4" caption="Formfindungsprozess." />
 
-Dies war die Arbeit, die Lena Strobel und ich für den ITECH-Kurs Form und Struktur erstellt haben. Wir ließen uns vom ZCB Bamboo Pavilion inspirieren, entwickelten aber unseren eigenen Workflow mit Grasshopper, Kangaroo Physics und K2Engineering.
+Diese Arbeit haben Lena Strobel und ich für den ITECH-Kurs Form und Struktur erstellt. Wir ließen uns vom ZCB Bamboo Pavilion inspirieren, entwickelten aber unseren eigenen Workflow mit Grasshopper, Kangaroo Physics und K2Engineering.
 
 ## Formfindung
 
-Für den Entwurf der Ausgangsform erstellten wir ein zweidimensionales Balkenlayout in einem Dreiecksgitter. Anschließend verwendeten wir Kangaroo als Feder-Partikel-System mit Lasten, Auflagern und Balken als Biegestab-Randbedingungen. Die Form entsteht, wenn die Balken versuchen, sich zu begradigen.
+Für die Ausgangsform legten wir in einem Dreiecksraster eine ebene Anordnung von Stäben an. Anschließend nutzten wir Kangaroo als Feder-Partikel-System; als Randbedingungen dienten Lasten, Auflager und die Stäbe als Biegestäbe. Die Form entsteht, indem die Stäbe versuchen, sich gerade zu richten.
 
 ![Draufsicht vor der Biegung](../../../assets/content/research/bending-active-bamboo/top-view-before-bending.jpg)
 
-Die ursprüngliche Idee war, den Bambuspavillon mittels Reverse Engineering zu analysieren und dieses Wissen zu nutzen, um die Geometrie in eine andere polygonale Form zu überführen. Die Entwicklung dieser Studie allein erforderte jedoch all unsere Anstrengungen.
+Ursprünglich wollten wir den Bambuspavillon per Reverse Engineering nachvollziehen und mit diesem Wissen die Geometrie auf eine andere polygonale Grundform übertragen. Doch schon diese Studie beanspruchte unsere ganze Kraft.
 
-K2Engineering war entscheidend für die Entwicklung dieser Arbeit. Die Eigenschaften von Bambus konnten als Eingabedaten verwendet werden, um Tragwerksanalysen durchzuführen, die zur Optimierung der Ergebnisse herangezogen wurden.
+K2Engineering war für diese Arbeit entscheidend. Mit den Materialeigenschaften von Bambus als Eingabe ließen sich Tragwerksanalysen durchführen, mit denen wir die Ergebnisse optimierten.
 
 ![Biegekräfte](../../../assets/content/research/bending-active-bamboo/bending-active-bamboo_bending-forces.png)
 
 ![Verschiebungsvisualisierung](../../../assets/content/research/bending-active-bamboo/displacement-visualization.jpg)
 
-Eine große Herausforderung war der Entwurf der Bögen, die die geometrische Ausgangsform strukturierten, und wie sie an den drei kreisförmigen vorbestimmten Auflagern verankert wurden. Außerdem mussten in einer späteren Phase zusätzliche Schnittpunkte hinzugefügt werden, da das anfängliche Ergebnis nicht den strukturellen und ästhetischen Anforderungen entsprach. Es war auch wichtig, Kangaroo Zombie zu verwenden, um die Optimierung zu beschleunigen.
+Eine große Herausforderung bestand darin, die Bögen zu entwerfen, die die geometrische Ausgangsform gliederten, und sie an den drei vorgegebenen kreisförmigen Auflagern zu verankern. Außerdem mussten später zusätzliche Kreuzungspunkte eingefügt werden, weil das erste Ergebnis statisch und ästhetisch nicht den Erwartungen entsprach. Wichtig war auch Kangaroo Zombie, mit dem die Optimierung schneller lief.
 
 ![Seitenansicht](../../../assets/content/research/bending-active-bamboo/side-view.jpg)
 
 Weitere Informationen zum Originalpavillon finden Sie hier: [ZCB Bamboo Pavilion](https://www.archdaily.com/800173/zcb-bamboo-pavilion-the-chinese-university-of-hong-kong-school-of-architecture)
 
-![ZCB Bamboo Pavilion von Michael LAW](../../../assets/content/research/bending-active-bamboo/ZCBBambooPavilion-by-Michael-LAW.jpg)
+![ZCB Bamboo Pavilion, Foto: Michael LAW](../../../assets/content/research/bending-active-bamboo/ZCBBambooPavilion-by-Michael-LAW.jpg)
 

@@ -192,32 +192,32 @@ Acropora-Pavillon, ein Projekt für den Kurs Biomimetik des Masterprogramms ITEC
 ### Biegeaktiver Bambus
 ITECH – Universität Stuttgart | Stuttgart, Deutschland | Oktober 2020 | /de/research/bending-active-bamboo
 Tags: Form finding
-Forschung für den ITECH-Kurs Form und Struktur. Inspiriert vom ZCB Bamboo Pavilion entwickelten wir unseren eigenen Workflow mit Grasshopper, Kangaroo Physics und K2Engineering.
+Forschungsarbeit für den ITECH-Kurs Form und Struktur. Wir ließen uns vom ZCB Bamboo Pavilion inspirieren, entwickelten aber unseren eigenen Workflow mit Grasshopper, Kangaroo Physics und K2Engineering.
 
 ### Differentielles Wachstum bei Korallen
 ITECH – Universität Stuttgart | Stuttgart, Deutschland | Oktober 2020 | /de/research/differential-growth-in-corals
 Tags: Computational design, Form finding
-Forschung für die ITECH-Kurse Computational Design und Biomimetik. Inspiriert vom Wachstum der Korallen; der Code wurde mit Grasshopper und einer selbst erstellten Python-Komponente entwickelt. Im Kurs Computational Design lernten wir, eigene Grasshopper-Komponenten mit Python und C# zu entwickeln.
+Forschungsarbeit für die ITECH-Kurse Computational Design und Biomimetik. Vorbild war das Wachstum der Korallen; den Code entwickelten wir mit Grasshopper und einer eigenen Python-Komponente. Im Kurs Computational Design lernten wir, eigene Grasshopper-Komponenten mit Python und C# zu entwickeln.
 
-### ITKE-Wissenschaftliche Hilfskraft für Kernloses Filamentwickeln
+### Wissenschaftliche Hilfskraft am ITKE: kernloses Filamentwickeln
 Filament | ITKE – Universität Stuttgart | Stuttgart, Deutschland | August 2020 – Oktober 2020 | /de/research/itke-research-assistant-for-coreless-filament-winding
 Tags: Coreless Filament Winding, Structural Analysis, Structural Test
 Als wissenschaftliche Hilfskraft half ich Marta Gil Pérez bei den Belastungstests von Naturfaserprobekörpern für den livMatS-Pavillon. Die wichtigste Erkenntnis betraf die Beziehung zwischen Computersimulation, physischen Experimenten und der Intuition der Forscherin.
 
-### ICD-Wissenschaftliche Hilfskraft für Kernloses Filamentwickeln
+### Wissenschaftliche Hilfskraft am ICD: kernloses Filamentwickeln
 Filament | ICD – Universität Stuttgart | Stuttgart, Deutschland | Juli 2020 | /de/research/icd-research-assistant-for-coreless-filament-winding
 Tags: Coreless Filament Winding, Computational Design, Robotics
-Untersuchung von Berechnungsmethoden zur Vorhersage der Kohlefaserinteraktion beim kernlosen Filamentwickeln. Ich unterstützte Christoph Schlopschnat bei der Harzvorbereitung, physischen Tests im kleinen Maßstab und Photogrammetrie.
+Untersuchung computergestützter Methoden, die das Zusammenwirken der Kohlefasern beim kernlosen Filamentwickeln vorhersagen sollen. Ich unterstützte Christoph Schlopschnat bei der Harzvorbereitung, physischen Tests im kleinen Maßstab und Photogrammetrie.
 
 ### Affective Data Table
 Computational design | Universidade Estadual de Londrina | Arapongas, Brasilien | März 2019 | /de/research/affective-data-table
 Tags: Grasshopper3D, Emotional Design
-Das emotionale Design in Verbindung mit computergestütztem Design zielt darauf ab, die gesamte industrielle Produktionskette zu überdenken und sich der Industrie 4.0 anzunähern. Eine Transformation, die den gesamten Lebenszyklus des Produkts betrifft: Design, Fertigung und Verbraucherverhalten.
+Emotionales Design in Verbindung mit Computational Design zielt darauf ab, die gesamte industrielle Produktionskette zu überdenken und sich der Industrie 4.0 anzunähern: eine Transformation, die den gesamten Lebenszyklus des Produkts betrifft, vom Design über die Fertigung bis zum Verbraucherverhalten.
 
 ### Architektur + Biomimetik + Algorithmus
 Faculdade de Arquitetura e Urbanismo - Universidade de São Paulo | Dezember 2016 | /de/research/architecture-biomimicry-algorithm
 Tags: Computational design, Form finding
-Es handelt sich um eine einführende Studie über die Möglichkeiten der Anwendung von Computational Design in der Architektur mit Schwerpunkt auf Formfindung. Dazu wurden Fallstudien von großer historischer, technologischer und künstlerischer Relevanz herangezogen, um ihre jeweiligen Entwurfsprozesse mittels Reverse Engineering mit der Software Rhinoceros 3D und dem Grasshopper-Plugin zu analysieren. Dabei zeigte sich, dass Biomimetik in den untersuchten Projekten eine grundlegende Rolle spielte und daher als Leitfaden für diese Studie dient. Schließlich wurde ein temporärer Pavillon für die FAU…
+Diese einführende Studie untersucht die Anwendungsmöglichkeiten von Computational Design in der Architektur, mit Schwerpunkt auf der Formfindung. Dazu wurden Fallstudien von großer historischer, technologischer und künstlerischer Relevanz herangezogen, um ihre jeweiligen Entwurfsprozesse mittels Reverse Engineering mit der Software Rhinoceros 3D und dem Grasshopper-Plugin zu analysieren. Dabei zeigte sich, dass die Biomimetik in den untersuchten Projekten eine grundlegende Rolle spielte; sie dient daher als Leitlinie dieser Studie. Schließlich wurde ein temporärer Pavillon für die FAU-USP vorg…
 
 ## Projekte
 
