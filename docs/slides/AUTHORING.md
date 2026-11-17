@@ -381,8 +381,8 @@ The markdown blockquote (`>`) renders as a centered italic Poppins pull quote in
 
 The `copyright` field (on the slide, and on each item inside `images:`) accepts:
 
-- A **plain string**: `copyright: Gui Morelli` renders as `© Gui Morelli`.
-- A **link object** `{ name, href }`: renders the name as an external link. The `©` prefix is auto-prepended unless `name` already starts with `©` or `(c)`.
+- A **plain string**: `copyright: Gui Morelli` renders as `© Gui Morelli`. Write credits without "©" (`pnpm check:credits` enforces it). Public-domain creators listed in `src/lib/credit.ts` get no "©", and a name registered in `src/config/entities.ts` links to its sources page.
+- A **link object** `{ name, href }`: renders the name as an external link, with the same `©` rule.
 - An **array** mixing both forms: each item becomes its own line in the frosted-pill stack.
 
 Link form in YAML:
@@ -624,7 +624,7 @@ images:
 - **Images and GIFs**: under `src/assets/content/...`. Import at the top of `deck.mdx`. Astro processes these (except when accessed via `.src`).
 - **Videos**: under `public/presentations/<deck-slug>/` (or similar) and referenced by URL path. Videos are not bundled by Astro; they are served as static assets from the Cloudflare Worker.
 
-Asset paths under `src/assets/content/teaching/<slug>/` are conventional but not enforced; cross-deck reuse (importing a project asset into a teaching deck) is fine.
+Asset paths under `src/assets/content/teaching/<slug>/` are conventional but not enforced; cross-deck reuse (importing a project asset into a teaching deck) is fine. Third-party images used elsewhere on the site (e.g. Haeckel plates) are imported from `@/assets/content/entities/<entity-slug>/`, never copied; see [`docs/entities.md`](../entities.md).
 
 ## Common pitfalls
 
