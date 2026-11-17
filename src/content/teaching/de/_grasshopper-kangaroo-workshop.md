@@ -1,5 +1,5 @@
 ---
-Description: Die Studierenden lernten, mit Federsystemen zu arbeiten, um ein Stoffverhalten zu simulieren.
+Description: Die Studierenden lernten, mit Federsystemen zu arbeiten, um das Verhalten von Stoff zu simulieren.
 Name: "Grasshopper & Kangaroo Workshop"
 Category: Workshop
 City:

@@ -1,5 +1,5 @@
 ---
-Name: Podiumsdiskussion
+Name: Teilnahme an einer Podiumsdiskussion
 Category: Round table
 DateStart: "2021-05-28"
 City:

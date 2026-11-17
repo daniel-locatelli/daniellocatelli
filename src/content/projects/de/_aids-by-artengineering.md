@@ -3,7 +3,7 @@ Name: AIDS
 Description: Technische und Fertigungszeichnungen.
 DateStart: "2022-09-01"
 Organization: "ArtEngineering GmbH"
-Category: Detailierung
+Category: Detaillierung
 City:
   - Vor dem Stedelijk Museum Amsterdam
 Country: "Niederlande"

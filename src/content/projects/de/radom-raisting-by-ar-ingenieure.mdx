@@ -26,24 +26,24 @@ Team:
 Development:
   - Radom Raisting GmbH
 Link:
-  Text: Radom Raisting at AR Ingenieure
+  Text: Radom Raisting bei AR Ingenieure
   Href: "https://www.ar-ingenieure.com/projects/radom-raisting"
 ---
 
 import Video from '@/components/Video.astro'
 import Figure from '@/components/Figure.astro'
 
-Die Erdfunkstelle Raisting in Bayern beherbergt mehrere große Parabolantennen für den Satellitenempfang. Eine davon benötigte eine Schutzhülle (ein Radom), um sie vor Wind, Regen und Schnee zu schützen. Der Auftraggeber, ITF Technical Fabrics, wandte sich mit der ingenieurtechnischen Herausforderung an AR Ingenieure: eine aufblasbare Membrankuppel zu entwerfen, die per Kran angeliefert und montiert werden kann, ohne mit der zu schützenden Antenne zu kollidieren.
+Die Erdfunkstelle Raisting in Bayern beherbergt mehrere große Parabolantennen für den Satellitenfunk. Eine davon benötigte eine Schutzhülle (ein Radom), um sie vor Wind, Regen und Schnee zu schützen. Der Auftraggeber, ITF Technical Fabrics, wandte sich mit der ingenieurtechnischen Herausforderung an AR Ingenieure: eine aufblasbare Membrankuppel zu entwerfen, die per Kran angeliefert und montiert werden kann, ohne mit der zu schützenden Antenne zu kollidieren.
 
 ## Die Herausforderung
 
-Ein Radom dieser Größenordnung (48,8 Meter Durchmesser und 34 Meter Höhe) wird als pneumatisch vorgespannter Kugelmembranabschnitt konstruiert. Die Membran selbst wird aus mehreren zusammengenähten Bahnen gefertigt, gefaltet und zur Baustelle transportiert. Die entscheidende Frage war: Wie entfaltet man eine riesige Membran um eine empfindliche Antenne, ohne dass der Stoff an der Struktur hängen bleibt?
+Ein Radom dieser Größenordnung (48,8 Meter Durchmesser und 34 Meter Höhe) wird als pneumatisch vorgespannte Membran in Form eines Kugelabschnitts konstruiert. Die Membran selbst wird aus mehreren zusammengenähten Bahnen gefertigt, gefaltet und zur Baustelle transportiert. Die entscheidende Frage war: Wie entfaltet man eine riesige Membran um eine empfindliche Antenne, ohne dass das Gewebe an der Struktur hängen bleibt?
 
 ## Computational Design
 
 Meine Aufgabe war es, die gesamte Montagesequenz mit Kangaroo Physics innerhalb der Rhino/Grasshopper-Umgebung zu simulieren. Die Simulation musste das Verhalten der Membran modellieren, während sie sich von einem kompakten Bündel in ihre endgültige Kugelform entfaltete, und dabei kontinuierlich Kollisionen mit der darunterliegenden Parabolantenne überprüfen.
 
-Die Simulation wurde iterativ durchgeführt, wobei verschiedene Faltmuster und Montagegeschwindigkeiten getestet wurden, um eine Sequenz zu finden, die in jeder Phase einen Kontakt vermied. Die Echtzeit-Physik-Engine von Kangaroo war hierbei unverzichtbar: sie ermöglichte es mir, Parameter interaktiv anzupassen und die Auswirkungen auf das Membranverhalten sofort zu sehen.
+In mehreren Iterationen testete ich verschiedene Faltmuster und Montagegeschwindigkeiten, bis ich eine Sequenz fand, die in keiner Phase zu einem Kontakt führte. Die Echtzeit-Physik-Engine von Kangaroo war hierbei unverzichtbar: Sie ermöglichte es mir, Parameter interaktiv anzupassen und die Auswirkungen auf das Membranverhalten sofort zu sehen.
 
 <Video src="/media/projects/radom-raisting-by-ar-ingenieure/deployment-sequence.mp4" caption="Montagesimulation, die das Entfalten der Membran um die Antenne zeigt." />
 

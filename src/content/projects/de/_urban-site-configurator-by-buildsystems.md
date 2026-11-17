@@ -1,5 +1,5 @@
 ---
-Name: Stadtplanungs-Konfigurator
+Name: Urban Site Configurator
 Description: Entwicklung eines Grasshopper-Konfigurators zur Erstellung von Gebäudehüllen.
 DateStart: "2023-01-01"
 Organization: "BuildSystems GmbH"

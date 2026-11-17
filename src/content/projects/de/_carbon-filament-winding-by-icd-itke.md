@@ -1,6 +1,6 @@
 ---
-Name: Kohlefaser-Filament-Wickeln
-Description: Untersuchung von digitalen Zwillingen für das kleinskalige Kohlefaserwickeln.
+Name: Filamentwickeln mit Kohlefaser
+Description: Untersuchung digitaler Zwillinge für das Kohlefaserwickeln im kleinen Maßstab.
 DateStart: "2020-07-01"
 Organization: "ICD/ITKE Universität Stuttgart"
 Category: Photogrammetrie

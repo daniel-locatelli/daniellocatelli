@@ -1,5 +1,5 @@
 ---
-Name: "Computergestütztes Design: Strategien"
+Name: "Computational Design: Strategien"
 Category: Talk
 Country: Brasilien
 DateStart: "2020-11-01"

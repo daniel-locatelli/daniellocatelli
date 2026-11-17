@@ -3,7 +3,7 @@ Name: Donum Pavilion
 Description: Vertical Panorama Pavilion von Studio Other Spaces. Weinverkostungsraum. Unterstützung bei der Detaillierung.
 DateStart: "2022-01-01"
 Organization: "ArtEngineering GmbH"
-Category: Detailierung
+Category: Detaillierung
 City:
   - Donum Estate
 Country: "USA"

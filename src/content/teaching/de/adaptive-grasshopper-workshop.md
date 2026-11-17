@@ -16,15 +16,15 @@ Authors:
   - Daniel Nunes Locatelli
 ---
 
-Dieser Workshop war Teil der XIV Semana da Arquitetura e Urbanismo (XIV. Architektur- und Urbanismus-Woche) an der UNEMAT in Barra do Bugres, Brasilien. Das Besondere war sein adaptives Format: Anstatt einem starren Lehrplan zu folgen, wählten die Teilnehmer gemeinsam, welche Computational-Design-Strategie sie erkunden wollten.
+Dieser Workshop war Teil der XIV Semana da Arquitetura e Urbanismo (XIV. Woche der Architektur und des Städtebaus) an der UNEMAT in Barra do Bugres, Brasilien. Das Besondere war sein adaptives Format: Anstatt einem starren Lehrplan zu folgen, wählten die Teilnehmer gemeinsam, welche Computational-Design-Strategie sie erkunden wollten.
 
 ## Das Konzept
 
-Ich bereitete mehrere bekannte Computational-Design-Strategien vor (Voronoi, Mesh-Relaxation, Reaktionsdiffusion und andere) und am ersten Tag, nach der Behandlung der Grasshopper-Grundlagen, stimmte die Gruppe ab, welchen Ansatz sie vertiefen wollte. Sie wählten **Exoskeleton**, ein Grasshopper-Plugin, das Drahtgitternetze in massive Rohrstrukturen umwandelt.
+Ich bereitete mehrere bekannte Computational-Design-Strategien vor (Voronoi, Mesh-Relaxation, Reaktions-Diffusion und andere) und am ersten Tag stimmte die Gruppe nach einer Einführung in die Grasshopper-Grundlagen darüber ab, welchen Ansatz sie vertiefen wollte. Die Wahl fiel auf **Exoskeleton**, ein Grasshopper-Plugin, das Drahtgitter-Meshes in massive Rohrstrukturen umwandelt.
 
 ## Tag 1: Grundlagen
 
-Der erste Tag behandelte die Basics: die Grasshopper-Oberfläche, Datentypen, Parameter und wie sich visuelles Programmieren von traditioneller CAD-Modellierung unterscheidet. Jeder Teilnehmer erhielt ein gedrucktes Handout zum Mitarbeiten.
+Der erste Tag behandelte die Grundlagen: die Grasshopper-Oberfläche, Datentypen, Parameter und wie sich visuelles Programmieren von traditioneller CAD-Modellierung unterscheidet. Jeder Teilnehmer erhielt ein gedrucktes Handout zum Mitarbeiten.
 
 ![Student arbeitet an einer Grasshopper-Definition und erstellt eine tunnelartige Struktur mit dem Exoskeleton-Plugin.](../../../assets/content/teaching/adaptive-grasshopper-workshop/student-creating-tunnel-with-exoskeleton.jpg)
 
@@ -32,7 +32,7 @@ Der erste Tag behandelte die Basics: die Grasshopper-Oberfläche, Datentypen, Pa
 
 ## Tag 2: Exoskeleton
 
-Am zweiten Tag konzentrierten wir uns vollständig auf die gewählte Strategie. Die Studierenden erstellten ihre eigenen Grasshopper-Definitionen von Grund auf und experimentierten mit verschiedenen Mesh-Topologien und Rohrdicken. Das Exoskeleton-Plugin nimmt jede Drahtgitter-Eingabe und erzeugt ein glattes, 3D-druckbares Mesh, was es zu einer perfekten Brücke zwischen Computational Design und digitaler Fertigung macht.
+Am zweiten Tag konzentrierten wir uns vollständig auf die gewählte Strategie. Die Studierenden erstellten ihre eigenen Grasshopper-Definitionen von Grund auf und experimentierten mit verschiedenen Mesh-Topologien und Rohrdicken. Das Exoskeleton-Plugin erzeugt aus jedem beliebigen Drahtgitter ein glattes, 3D-druckbares Mesh und ist damit eine ideale Brücke zwischen Computational Design und digitaler Fertigung.
 
 ![Daniel Nunes Locatelli hilft einem Studenten, sein Exoskeleton-Modell zu verfeinern.](../../../assets/content/teaching/adaptive-grasshopper-workshop/student-with-exoskeleton-done.jpg)
 
@@ -40,12 +40,12 @@ Am zweiten Tag konzentrierten wir uns vollständig auf die gewählte Strategie. 
 
 ## Ergebnisse
 
-Am Ende des Workshops hatte jeder Teilnehmer seine eigene einzigartige parametrische Struktur erstellt. Die Vielfalt der Ergebnisse, von organischen korallenartigen Formen bis hin zu architektonischen Tunnelgeometrien, zeigte, wie eine einzige Computational-Design-Strategie je nach Eingabegeometrie und Parametern völlig unterschiedliche Resultate hervorbringen kann.
+Am Ende des Workshops hatte jeder Teilnehmer eine eigene, einzigartige parametrische Struktur erstellt. Die Vielfalt der Ergebnisse, von organischen korallenartigen Formen bis hin zu architektonischen Tunnelgeometrien, zeigte, wie eine einzige Computational-Design-Strategie je nach Eingabegeometrie und Parametern völlig unterschiedliche Resultate hervorbringen kann.
 
 ![Endergebnisse: Nahaufnahme des parametrischen Modells eines Studenten.](../../../assets/content/teaching/adaptive-grasshopper-workshop/student-working-on-a-grasshopper-definition-creating-a-tunnel-like-structure.jpg)
 
 ![Exoskeleton-Ergebnis eines anderen Studenten mit einer komplexen organischen Geometrie.](../../../assets/content/teaching/adaptive-grasshopper-workshop/another-student-s-exoskeleton-result-showing-a-complex-organic-geometry.jpg)
 
-![Daniel Nunes Locatelli präsentiert an der UNEMAT während der Architektur-Woche.](../../../assets/content/teaching/adaptive-grasshopper-workshop/adaptive-workshop_daniel-locatelli_unemat.jpg)
+![Daniel Nunes Locatelli präsentiert an der UNEMAT während der Architekturwoche.](../../../assets/content/teaching/adaptive-grasshopper-workshop/adaptive-workshop_daniel-locatelli_unemat.jpg)
 
 ![Gruppe von Studierenden arbeitet an ihren Grasshopper-Definitionen im Computerraum.](../../../assets/content/teaching/adaptive-grasshopper-workshop/daniel-nunes-locatelli-presenting-at-unemat-during-the-architecture-week.jpg)

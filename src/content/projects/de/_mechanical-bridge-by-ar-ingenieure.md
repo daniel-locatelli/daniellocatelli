@@ -1,5 +1,5 @@
 ---
-Name: Mechanische Brücke
+Name: Bewegliche Brücke
 Description: Simulation des Öffnens und Schließens der Brücke.
 DateStart: "2021-01-01"
 Organization: "Alfred Rein Ingenieure GmbH"

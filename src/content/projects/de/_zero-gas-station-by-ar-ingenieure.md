@@ -1,5 +1,5 @@
 ---
-Name: ZERO Tankstelle
+Name: ZERO-Tankstelle
 Description: Tankstellen-Typologie. Rendering des Entwurfs.
 DateStart: "2021-12-01"
 Organization: "Alfred Rein Ingenieure GmbH"

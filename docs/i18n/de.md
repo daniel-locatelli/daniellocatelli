@@ -59,6 +59,38 @@ de strings in `src/scripts/generate-knowledge.ts`. The house rules in
 | Grasshopper operations (Remesh, Remap, Relaxation, Mesh Machine) | tool names, unchanged | confirmed |
 | soap film | Seifenfilm (the site's spelling) | confirmed |
 | vertex (CAD) | Scheitelpunkt (pending Daniel: or Knotenpunkt) | proposed |
+| material computation (Menges) | Material Computation (term of art, like Computational Design), not materielle Berechnung | proposed |
+| tensegrity | Tensegrity, Tensegrity-Struktur (the site's spelling, 31 to 9), not Tensegrität | proposed |
+| column (structural member) | Stütze; Säule only for classical or stone columns (Güell basalt columns) | proposed |
+| funicular / hanging model | Hängemodell, not Seilmodell | proposed |
+| earth (building material) | Lehm | proposed |
+| Cluster of Excellence | Exzellenzcluster | proposed |
+| fire resistance rating (building component) | Feuerwiderstandsklasse, not Brandschutzklasse | proposed |
+| quantity takeoff | Mengenermittlung | proposed |
+| accidental loads / actions | außergewöhnliche Lasten (Eurocode), not zufällige | proposed |
+| user flow (UX) | User Flow, not Benutzerfluss / Nutzerfluss | proposed |
+| pricing plan (SaaS) | Tarif, not Plan | proposed |
+| research assistant (student job, project pages) | Wissenschaftliche Hilfskraft am ICD: <topic> (as on the research pages) | proposed |
+| link text "X at <org>" | „X bei <org>“ | proposed |
+| shipping container | Seecontainer | proposed |
+| plasma cutter (CNC) | Plasmaschneidanlage (Plasmabrenner is the torch) | proposed |
+| cutting pattern generation (membranes) | Zuschnittsermittlung (extends the Zuschnitt row) | proposed |
+| Detailing (Category) | Detaillierung (spelling) | proposed |
+| panel (prefabricated CLT piece) / paneling logic | Element (BSP-Element) / Elementierung, not Paneel | proposed |
+| linear span (one-way spanning) | einachsige Lastabtragung | proposed |
+| glue drying / dried (structural adhesives) | Aushärten / ausgehärtet | proposed |
+| butt joint | Stumpfstoß | proposed |
+| open time (adhesive) | offene Zeit | proposed |
+| screw-press gluing | Schraubenpressklebung | proposed |
+| mid-span / over the column (slab moments) | Feldmitte / über den Stützen | proposed |
+| strength of a device (a force in N) | Kraft / Zugkraft (Festigkeit only for material properties) | proposed |
+| bolt (through-bolt with nut, timber) | Bolzen | proposed |
+| tower typology | Hochhaustypologie | proposed |
+| citation (reference) | Quellenangabe, not Zitat | proposed |
+| pin (facts, in agent skills) | festschreiben | proposed |
+| pre-standard (prEN) | Normentwurf, not Vornorm | proposed |
+| cohort (ITECH 2021) | Jahrgang, not Klasse | proposed |
+| structural (engineering sense) | statisch / konstruktiv, not strukturell | proposed |
 
 ## Corrections
 
@@ -67,6 +99,16 @@ Decisions from reviews, newest first. An entry records what was wrong, so
 
 | Date | Where | Before | After | Why |
 | --- | --- | --- | --- | --- |
+| Alfred Rein Engineers | Alfred Rein Ingenieure (site usage, 12 to 0 now) | proposed |
+| short slide quotes (Fuller, Gaudí, Menges) | translated into German, like pt; long book quotes in speaker notes stay English, like pt | proposed |
+| 2026-11-17 | teaching (22 pages, both decks) | materielle Berechnung / Tensegrität / Life-Leuchte / Bionik / Form Finding / computergestütztes Design / Schlosser / Säule (timber column) / Seilmodelle / Erde / Netzrelaxation / Parametrizismus / Geodäten / „tensionale Integrität“ / Eulenfalter / Hohlkreis / für euch / Diatomeen (Cyrtoidea plate) / English slide quotes and headings | Material Computation / Tensegrity / Life Lamp / Biomimetik / Formfindung / Computational Design / Metallbauer / Stütze / Hängemodelle / Lehm / Mesh-Relaxation / Parametrismus / geodätische Kuppeln / engl. *tensional integrity* / Bananenfalter / Ring / (no pronoun) / Radiolarien / German | Batch E panel (Opus and Fable reviewers, a judge): 270 edits accepted. |
+| 2026-11-17 | teaching | Linsen der Architektur → Blickwinkel; Stahlblechbiegen; Draufsicht der → auf die; Aufbau → Entwicklung des Algorithmus; Ausführungszeichnungen → -pläne; Frei Otto quote back-translated; Argyris note translated; „soweit wir sie verstehen“ (proposed) | kept | Batch E panel rejected: the image shows literal lenses, standard terms, taste, or a quote that must not be back-translated. |
+| 2026-11-17 | projects (all 37 de files) | rechnerische Strategie / en dashes as dashes / English captions and link texts (at, by, Lucas and the work-platform-lift) / Brandschutzklasse / zufällige Lasten / SOFiSTiK-Netz / Plasmabrenner / Schnittmuster / Massenermittlung / Detailierung / Benutzerfluss / ICD-Forschungsassistent / nationale Bank (KfW) / Kleinmodell / das Stück (artwork) | computergestützte Strategie / colons, commas, parentheses / German captions, „bei“ / Feuerwiderstandsklasse / „außergewöhnliche“ Lasten / SOFiSTiK-Mesh / Plasmaschneidanlage / Zuschnitt, Zuschnittsermittlung / Mengenermittlung / Detaillierung / User Flow / Wissenschaftliche Hilfskraft am ICD: … / staatliche Förderbank / Maßstabsmodell / das Werk | Batch D panel (Opus + Fable reviewers, a judge): 219 edits applied. |
+| 2026-11-17 | Parada Coca-Cola | Kabel (suspension of the acrylic spheres) | Seil | Glossary: cable as tension member (pending Daniel, Q3). |
+| 2026-11-17 | projects | schreibgeschützt (read-only portfolio, MCP server) / „unserer Sorgfaltspflicht entsprechen“ (KfW) / Rhinos nativen Befehl | kept | Panel suggestions not taken: standard IT usage, unclear en, taste. |
+| 2026-11-17 | research, half 2 (4 pages) | Paneel / lineare Spannweiten / getrocknet / Ingenieurholz / rechnerisch / Holzfabrikation / Stoß-an-Stoß / Öffnungszeit / Mittelspannweite / Zugfestigkeitstest / Zitat / Vornormen / Substrat / Abbildung 02 – … / German-translated paper title (Leung et al.) | Element, Elementierung / einachsige Lastabtragung / ausgehärtet / Holzwerkstoffe / computergestützt / Holzfertigung / Stumpfstöße / offene Zeit / Feldmitte / Zugkrafttest / Quellenangabe / Normentwürfe / Grundlage / Abbildung 02: … / English title | Batch C half 2 panel (Opus + Fable reviewers, a judge): 257 edits applied. |
+| 2026-11-17 | research, half 2 | M20-Bolzen → Schrauben, Ausrichtungskanal → Führungsnut, adversariale Prüfung → kritische Gegenprüfung, CPR-2024 → BauPVO in captions, eine DOI → ein DOI, renumbering the second Abbildung 57 | kept | Panel rejected: correct term (Bolzen), taste, Daniel's own term, figure labels, or needs all three locales. |
+| 2026-11-17 | Building Across Scales | Building Across Scales: Ein robotisches Holzfabrikationssystem für das Verpressen von Klebeverbindungen vor Ort | … Ein robotisches Holzfertigungssystem für die Pressverleimung vor Ort | Glossary (Pressverleimung); now identical to the education and publication pages. |
 | 2026-11-16 | research, half 1 (7 pages) | rechnerisch / computergestütztes Design / Massenanpassung / *form finding* / Quadratisches Netz / Carbonfaser / Abschreckungsmittel / Kuchenseeigel / Pavillonexploration / Designerin von 3,8 Milliarden Jahren / English video captions | computergestützt / Computational Design / Mass Customization / Formfindung / Vierecks-Mesh / Kohlefaser / hat mich abgeschreckt / Schildseeigel / Pavillonstudie / entwirft seit 3,8 Milliarden Jahren / German captions | Batch C panel (Opus + Fable reviewers, a judge): 277 edits accepted, applied by Daniel ("proceed with the fixes"). |
 | 2026-11-16 | ICD, ITKE assistant pages | ICD-Wissenschaftliche Hilfskraft für Kernloses Filamentwickeln | Wissenschaftliche Hilfskraft am ICD: kernloses Filamentwickeln (same for ITKE) | Broken compound, wrong capital. |
 | 2026-11-16 | thesis, Expo 1967 caption | Pole | Masten | The image shows the masts under the mesh. |

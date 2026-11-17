@@ -172,17 +172,17 @@ Eine lebende Liste der Agent Skills, auf die ich mich bei der Arbeit mit Claude 
 ### Ein Datenmodell für Holzbau-Aufbauten
 Hochschule München | München, Deutschland | Februar 2025 – Juni 2026 | /de/research/timber-buildup-data-model
 Tags: bSDD, ISO 23387, Datenvorlagen, Holzbau
-Wie ein Holzbau-Aufbau maschinenlesbar wird: ein Datenmodell nach ISO 23387, das Schichten und Produkte in einem Aufbau verschachtelt und es einem Projekt erlaubt, eine Datenvorlage zu einem Anforderungsblatt zu verschärfen und dieses dann mit einem Datenblatt zu beantworten. Es ist als versioniertes Wörterbuch hm/dokwood im bSDD veröffentlicht und darauf ausgelegt, die Revit-, Cadwork- und MCP-Schnittstellen von DOKwood und einen künftigen digitalen Produktpass zu tragen.
+Wie ein Holzbau-Aufbau maschinenlesbar wird: ein Datenmodell nach ISO 23387, das Schichten und Produkte in einem Aufbau verschachtelt und es einem Projekt erlaubt, eine Datenvorlage zu einem Anforderungsblatt zu verschärfen und dieses dann mit einem Datenblatt zu beantworten. Es ist als versioniertes Wörterbuch hm/dokwood im bSDD veröffentlicht und darauf ausgelegt, als Grundlage für die Revit-, Cadwork- und MCP-Schnittstellen von DOKwood und einen künftigen digitalen Produktpass zu dienen.
 
 ### Normen hinter digitalen Holzbau-Aufbauten
 Hochschule München | München, Deutschland | Februar 2025 – Juni 2026 | /de/research/timber-construction-standards
 Tags: Normen, Holzbau, Digitaler Produktpass
-Eine systematische Recherche der ISO-, GS1-, CEN-, DIN-, SIA- und KBOB-Normen, die die Spezifikation von Materialien und mehrschichtigen Aufbauten im Holzbau regeln, von Brandschutz und Bauphysik bis zu BIM-Datenvorlagen und dem digitalen Produktpass. Arbeitspaket 1.2 des Projekts DOKwood.
+Eine systematische Recherche der ISO-, GS1-, CEN-, DIN-, SIA- und KBOB-Normen, die regeln, wie Materialien und mehrschichtige Aufbauten im Holzbau spezifiziert werden, von Brandschutz und Bauphysik bis zu BIM-Datenvorlagen und dem digitalen Produktpass. Arbeitspaket 1.2 des Projekts DOKwood.
 
 ### Building Across Scales
 ITECH – Universität Stuttgart | Stuttgart, Deutschland | Dezember 2024 | /de/research/building-across-scales
 Tags: Computational design, Form finding, Robotics
-Die Forschung schlägt ein heterogenes multiskalares robotisches Bausystem zur weiteren Automatisierung des Holzbaus vor Ort vor. Konkret wird der nächste Schritt in der Automatisierung des Klebens vor Ort vorgestellt, indem ein maßgeschneidertes robotisches Klemmgerät für das Anpressen von Holzelementen vor Ort eingeführt wird. Im Kern der Forschung steht daher die Entwicklung dieses Geräts als Teil eines größeren robotischen Bauteams, bestehend aus einem industriellen Roboterarm und einem automatisierten Kran, im Co-Design mit dem Material- und Bausystem.
+Diese Arbeit schlägt ein heterogenes, maßstabsübergreifendes robotisches Bausystem vor, das den Holzbau auf der Baustelle weiter automatisiert. Als nächsten Schritt in der Automatisierung der Verklebung vor Ort stellt sie ein maßgeschneidertes robotisches Klemmgerät vor, das Holzelemente auf der Baustelle verpresst. Im Mittelpunkt steht daher die Entwicklung dieses Geräts, im Co-Design mit dem Material- und Bausystem, als Teil eines größeren robotischen Bauteams, zu dem ein Industrieroboter und ein automatisierter Kran gehören.
 
 ### Acropora-Pavillon
 ITECH – Universität Stuttgart | Oktober 2020 | /de/research/acropora-pavilion
@@ -229,29 +229,29 @@ DOKwood ist eine Webplattform zum Definieren, Prüfen, Versionieren und Austausc
 ### daniellocatelli.com
 Software | Daniel Locatelli | April 2024 | /de/projects/portfolio-website
 Tags: Web Development, Astro, TypeScript, Claude, Cloudflare
-Diese Website: eine Astro-Seite, deren Inhalte als reines Markdown vorliegen, damit Claude Code als CMS fungieren kann, mit einem Claude-gestützten Chat, Essays, Folienpräsentationen im Browser und einer agentenfähigen Oberfläche auf Cloudflare.
+Diese Website: eine Astro-Seite, deren Inhalte als reines Markdown vorliegen, damit Claude Code als CMS dienen kann; dazu ein Chat auf Basis von Claude, Essays, Folienpräsentationen im Browser und eine agentenfähige Oberfläche auf Cloudflare.
 
 ### BuildSystems-Plugin für Grasshopper
 Software Development | BuildSystems | November 2023 | /de/projects/buildsystems-plugin-for-grasshopper
 Tags: Software Development, Grasshopper3D
-Plugin entwickelt für BuildSystems zur Erstellung von Baukomponenten auf Basis von Umweltproduktdeklarationen (EPDs). Die Idee war, Ökobilanz-Daten (LCA) bereits zu Beginn des Entwurfsprozesses bereitzustellen.
+Ein für BuildSystems entwickeltes Plugin, mit dem sich Baukomponenten auf Basis von Umweltproduktdeklarationen (EPDs) erstellen lassen. Die Idee war, Ökobilanz-Daten (LCA) schon zu Beginn des Entwurfsprozesses bereitzustellen.
 
 ### KfW-Förderrechner von BuildSystems
 Software Development | BuildSystems | November 2023 – Juli 2024 | /de/projects/kfw-funding-calculator-by-buildsystems
 Tags: Software Development, Web Development
-Dieser Rechner simuliert Bankdarlehen und Förderungen und macht nachhaltiges Bauen und Sanieren für Immobilienentwickler und Eigentümer zugänglich.
+Dieser Rechner simuliert Bankdarlehen und Fördermittel und macht nachhaltiges Bauen und Sanieren für Immobilienentwickler und Eigentümer zugänglich.
 
-### BuildSystems Website
+### BuildSystems-Website
 Software | Online | August 2023 – April 2026 | /de/projects/buildsystems-website
 Tags: Web Development, Astro, Notion API, TypeScript
-Entwicklung der BuildSystems-Website mit dem Astro-Framework unter Nutzung der Notion-API als CMS.
+Entwicklung der BuildSystems-Website mit dem Astro-Framework und der Notion-API als CMS.
 
 ### Circular Component Creator von BuildSystems
 UI/UX Design | BuildSystems GmbH | Juni 2023 – Juli 2023 | /de/projects/circular-component-creator-by-buildsystems
 Tags: UI/UX Design, Figma, Zirkuläres Bauen
-Konzeptionelle Designstudie für eine Web-Applikation zum Durchsuchen, Filtern und Vergleichen zirkulärer Baukomponenten. Entwicklung von UI/UX-Mockups in Figma und Definition der Datenarchitektur.
+Konzeptionelle Designstudie für eine Web-Applikation, mit der sich zirkuläre Baukomponenten durchsuchen, filtern und vergleichen lassen. Dafür entwickelte ich UI/UX-Mockups in Figma und legte die zugrunde liegende Datenarchitektur fest.
 
-### BuildSystems Ontologie
+### BuildSystems-Ontologie
 Software | BuildSystems GmbH | München, Deutschland | März 2023 – Juni 2023 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Forschung zu Schemata, Objektmodellen und Datenbanken.
 
@@ -259,12 +259,12 @@ Forschung zu Schemata, Objektmodellen und Datenbanken.
 Datenvisualisierung | BuildSystems GmbH | München, Deutschland | Februar 2023 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Entwicklung eines Workflows, der Grasshopper-Daten mit Power BI verbindet.
 
-### Stadtplanungs-Konfigurator
+### Urban Site Configurator
 Computational Design | BuildSystems GmbH | München, Deutschland | Januar 2023 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Entwicklung eines Grasshopper-Konfigurators zur Erstellung von Gebäudehüllen.
 
 ### AIDS
-Detailierung | ArtEngineering GmbH | Vor dem Stedelijk Museum Amsterdam, Niederlande | September 2022 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Detaillierung | ArtEngineering GmbH | Vor dem Stedelijk Museum Amsterdam, Niederlande | September 2022 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Technische und Fertigungszeichnungen.
 
 ### Holzforschung
@@ -277,48 +277,48 @@ Tags: Computational Engineering, Structural Analysis, Digital Fabrication, Logis
 Olafur Eliasson beauftragte ArtEngineering mit Computational Engineering, digitaler Fertigung und Logistik.
 
 ### A harmonious cycle of interconnected nows
-Detailierung | ArtEngineering GmbH | Azabudai Hills Gallery, Japan | Juli 2022 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Detaillierung | ArtEngineering GmbH | Azabudai Hills Gallery, Japan | Juli 2022 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Skulptur von Olafur Eliasson. Unterstützung bei Detaillierung und Prototyping; Transportlogistik.
 
 ### Common Sky von ArtEngineering für Studio Other Spaces
 Digital Fabrication | ArtEngineering GmbH | Buffalo, USA | Juni 2022 – Juni 2022 | /de/projects/common-sky-by-artengineering-for-studio-other-spaces
 Tags: Computational Engineering, Structural Analysis, Digital Fabrication, Logistics, Grasshopper3D
-Studio Other Spaces beauftragte ArtEngineering mit Computational Engineering, digitaler Fertigung und Logistik. Ich stieg mitten in der Projektentwicklung ein, nachdem die digitale Fertigung bereits begonnen hatte. Es war genau dieses Projekt, das letztlich meine Festanstellung bei ArtEngineering sicherte. Zunächst wurde jemand benötigt, der schnell rund 1.500 2D-Zeichnungen aus Rhino/Grasshopper exportieren konnte, um sie für die digitale Fertigung mit einem Plasmabrenner zu versenden.
+Studio Other Spaces beauftragte ArtEngineering mit Computational Engineering, digitaler Fertigung und Logistik. Ich stieg mitten in der Projektentwicklung ein, nachdem die digitale Fertigung bereits begonnen hatte. Es war genau dieses Projekt, das letztlich meine Festanstellung bei ArtEngineering sicherte. Zunächst wurde jemand benötigt, der schnell rund 1.500 2D-Zeichnungen aus Rhino/Grasshopper exportieren konnte, die dann zur digitalen Fertigung an eine Plasmaschneidanlage gingen.
 
 ### ParaPivot
-Detailierung | ArtEngineering GmbH | Archiviert | Mai 2022 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Detaillierung | ArtEngineering GmbH | Archiviert | Mai 2022 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Fünf Meter hohe Skulptur aus Stahl und Stein von Studio Alicja Kwade. Detaillierung des Tragwerks.
 
 ### Canyon von ArtEngineering für Katharina Grosse
 Computational design | ArtEngineering GmbH | Paris, Frankreich | Januar 2022 – Februar 2022 | /de/projects/canyon-by-artengineering-for-katharina-grosse
 Tags: Computational Design, Structural Analysis, Digital Fabrication, Grasshopper3D
-Für dieses Projekt entschied sich Katharina Grosse, mit Leder zu formen. Die Herausforderung bestand darin, die organischen Lederstreifen in gebogene Stahlplatten zu übertragen. Die Lösung war eine Strategie, die seit Jahrtausenden im Bootsbau verwendet wird: abwickelbare Flächen.
+Für dieses Projekt entschied sich Katharina Grosse, bildhauerisch mit Leder zu arbeiten. Die Herausforderung bestand darin, die organischen Lederstreifen in gebogene Stahlplatten zu übertragen. Die Lösung war eine Strategie, die seit Jahrtausenden im Bootsbau verwendet wird: abwickelbare Flächen.
 
 ### Donum Pavilion
-Detailierung | ArtEngineering GmbH | Donum Estate, USA | Januar 2022 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Detaillierung | ArtEngineering GmbH | Donum Estate, USA | Januar 2022 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Vertical Panorama Pavilion von Studio Other Spaces. Weinverkostungsraum. Unterstützung bei der Detaillierung.
 
-### ZERO Tankstelle
+### ZERO-Tankstelle
 Computational Design | Alfred Rein Ingenieure GmbH | Archiviert | Dezember 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Tankstellen-Typologie. Rendering des Entwurfs.
 
 ### The curious desert
-Detailierung | ArtEngineering GmbH | Katar-Wüste, Katar | Oktober 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Kunstinstallationen von Olafur Eliasson. Detaillierung der Stahlstruktur.
+Detaillierung | ArtEngineering GmbH | Wüste in Katar, Katar | Oktober 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Kunstinstallationen von Olafur Eliasson. Detaillierung der Stahlkonstruktion.
 
 ### Disney Wonder
-Detailierung | Alfred Rein Ingenieure GmbH | Kreuzfahrtschiff | September 2021 – Oktober 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Detaillierung | Alfred Rein Ingenieure GmbH | Kreuzfahrtschiff | September 2021 – Oktober 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Erstellung von Zeichnungen für die Membranfertigung.
 
 ### Seilnetz Muttenz
 Computational Design | Alfred Rein Ingenieure GmbH | Muttenz, Schweiz | September 2021 – Oktober 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Formfindung der Seilnetzstruktur und Massenermittlung.
+Formfindung der Seilnetzstruktur und Mengenermittlung.
 
 ### Membranaustausch
-Detailierung | Alfred Rein Ingenieure GmbH | Schloss Neuwildenstein, Schweiz | Juli 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Detaillierung | Alfred Rein Ingenieure GmbH | Schloss Neuwildenstein, Schweiz | Juli 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Konstruktionszeichnungen und Rendering der Fassade.
 
-### MVV Überdachung Vorplatz
+### Vorplatzüberdachung MVV
 Computational Design | Alfred Rein Ingenieure GmbH | Mannheim, Deutschland | Juli 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Formfindung von Membranstrukturen mit Kangaroo 2.
 
@@ -327,11 +327,11 @@ Membrane | AR Ingenieure | Raisting, Deutschland | März 2021 – Mai 2021 | /de
 Tags: Computational Design, Structural Analysis, Logistics, Grasshopper3D
 Simulation der Montagesequenz und Kollisionsvermeidung für ein aufblasbares Radom mit 48,8 m Durchmesser zum Schutz einer Parabolantenne an der Erdfunkstelle Raisting.
 
-### Automatisches Schnittmuster
+### Automatischer Zuschnitt
 Computational Design | Alfred Rein Ingenieure GmbH | Intern, Deutschland | Februar 2021 – Juni 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Entwicklung automatisierter Schnittmuster für Membranen.
+Entwicklung einer automatisierten Zuschnittsermittlung für Membranen.
 
-### Mechanische Brücke
+### Bewegliche Brücke
 Computational Design | Alfred Rein Ingenieure GmbH | Archiviert | Januar 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Simulation des Öffnens und Schließens der Brücke.
 
@@ -341,25 +341,25 @@ Konstruktionszeichnungen und Rendering der Fassade.
 
 ### Witterungsschutz Römermauer
 Architektur | Alfred Rein Ingenieure GmbH | Wiesbaden, Deutschland | Januar 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Projektkoordination, Membranüberdeckung unter Integration der Landschaft.
+Projektkoordination; Membranüberdachung, die sich in die Landschaft einfügt.
 
-### Kohlefaser-Filament-Wickeln
+### Filamentwickeln mit Kohlefaser
 Photogrammetrie | ICD/ITKE Universität Stuttgart | ICD, Deutschland | Juli 2020 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Untersuchung von digitalen Zwillingen für das kleinskalige Kohlefaserwickeln.
+Untersuchung digitaler Zwillinge für das Kohlefaserwickeln im kleinen Maßstab.
 
-### ICD-Forschungsassistent als Computational Designer
+### Wissenschaftliche Hilfskraft am ICD: Computational Design
 Computational design | ICD – Universität Stuttgart | Stuttgart, Deutschland | März 2020 – April 2020 | /de/projects/icd-research-assistant-as-computational-designer
 Tags: Computational Design, Grasshopper3D
 Es war spannend, die computergestützte Strategie zur Geometrieerzeugung für eine sich selbst krümmende Brettsperrholzplatte zu verstehen. Der Trick besteht darin, mit Zylindern zu arbeiten, da sich Holz von Natur aus senkrecht zur Faserrichtung krümmt.
 
-### ICD Wissenschaftliche Hilfskraft in der Webentwicklung
+### Wissenschaftliche Hilfskraft am ICD: Webentwicklung
 Web development | ICD – Universität Stuttgart | Dezember 2019 – Oktober 2020 | /de/projects/icd-research-assistant-in-web-development
 Tags: Web Development
-Ich half bei der Migration der ICD-Website auf das zentralisierte OpenCMS-Template der Universität Stuttgart. Dieses Projekt ermöglichte mir meinen ersten Kontakt mit der deutschen Sprache und eine tiefe Wertschätzung für das Forschungsportfolio des ICD.
+Ich half, die ICD-Website auf das zentrale OpenCMS-Template der Universität Stuttgart zu migrieren. Durch dieses Projekt kam ich zum ersten Mal mit der deutschen Sprache in Berührung und lernte das Forschungsportfolio des ICD sehr zu schätzen.
 
 ### Casa e Jardim Award 2019
 Computational Design | Atelier Marko Brajovic | Pinacoteca de São Paulo, Brasilien | Juni 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Architekt verantwortlich für das Bühnenbild und die Trophäe.
+Verantwortlicher Architekt für Bühnenbild und Trophäe.
 
 ### Ita House
 Architektur | Atelier Marko Brajovic | Paraty, Brasilien | April 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
@@ -368,8 +368,8 @@ Architektur | Atelier Marko Brajovic | Paraty, Brasilien | April 2019 | /de/full
 Bühnenbild | Atelier Marko Brajovic | Rio de Janeiro, Brasilien | Februar 2019 – April 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
 
 ### BlastU 2019
-Computational Design | Atelier Marko Brajovic | Ibirapuera Biennale-Pavillon, Brasilien | Januar 2019 – August 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Architekt verantwortlich für Entwurf und Bauleitung.
+Computational Design | Atelier Marko Brajovic | Biennale-Pavillon im Ibirapuera-Park, Brasilien | Januar 2019 – August 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Verantwortlicher Architekt für Entwurf und Bauleitung.
 
 ### Embraer-Pavillon
 Architektur | Atelier Marko Brajovic | Paris, Frankreich | Januar 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
@@ -381,7 +381,7 @@ Computational Design | Atelier Marko Brajovic | Thailand | Dezember 2018 | /de/f
 Architektur | Atelier Marko Brajovic | Rio de Janeiro, Brasilien | November 2018 – Dezember 2018 | /de/full-cv (nur im Lebenslauf aufgeführt)
 
 ### The First Blow
-Computational Design | Atelier Marko Brajovic | T3 Internationaler Flughafen Guarulhos, Brasilien | November 2018 | /de/full-cv (nur im Lebenslauf aufgeführt)
+Computational Design | Atelier Marko Brajovic | Terminal 3, Flughafen Guarulhos, Brasilien | November 2018 | /de/full-cv (nur im Lebenslauf aufgeführt)
 
 ### Hitchcock
 Bühnenbild | Atelier Marko Brajovic | MIS - Museum für Bild und Ton, Brasilien | Juli 2018 – Oktober 2018 | /de/full-cv (nur im Lebenslauf aufgeführt)
@@ -389,7 +389,7 @@ Bühnenbild | Atelier Marko Brajovic | MIS - Museum für Bild und Ton, Brasilien
 ### Bar & Bühne Heineken von Atelier Marko Brajovic
 Computational Design | Atelier Marko Brajovic | Inhotim (MG), Maquiné (RS), Recife (PE), São Paulo (SP), Rio de Janeiro (RJ), Brasilien | Juni 2018 – November 2018 | /de/projects/bar-stage-heineken-by-atelier-marko-brajovic-for-sherpa42
 Tags: Parametric Design, Grasshopper, Bamboo
-Verantwortlicher Architekt für parametrisches Design, Produktion und Überwachung der Heineken-Bühne und Bar-Installationen beim MECA Festival 2018. Das Design ging vom Heineken-Stern aus: Mit parametrischer Software zeichneten wir aus den Kanten des Sterns dynamische Bambuskonturen.
+Verantwortlicher Architekt für parametrisches Design, Produktion und Bauleitung der Bühnen- und Bar-Installationen von Heineken beim MECA Festival 2018. Das Design ging vom Heineken-Stern aus: Mit parametrischer Software zeichneten wir aus den Kanten des Sterns dynamische Bambuskonturen.
 
 ### Life Lamp von Estúdio Guto Requena für Decimal
 Product design | Estudio Guto Requena | Mai 2018 – Mai 2018 | /de/projects/life-lamp-by-estudio-guto-requena-for-decimal
@@ -399,7 +399,7 @@ Der Designprozess ist eine Mischung aus Top-down- und Bottom-up-Ansatz. Wir arbe
 ### Air Guitar von Atelier Marko Brajovic für Nike
 Installation | Atelier Marko Brajovic | São Paulo, Brasilien | März 2018 – April 2018 | /de/projects/air-guitar-by-atelier-marko-brajovic-for-nike
 Tags: Electronic, Arduino
-Atelier Marko Brajovic entwickelte diese ortsspezifische Installation zur Feier des Air Max Day. In diesem Projekt arbeitete ich am Konzept und der Koordination. Außerdem konnte ich mit adressierbaren LEDs, Arduino und Bass-Tonabnehmern arbeiten.
+Atelier Marko Brajovic entwickelte diese ortsspezifische Installation zur Feier des Air Max Day. In diesem Projekt arbeitete ich am Konzept und an der Koordination. Außerdem konnte ich mit adressierbaren LEDs, Arduino und Bass-Tonabnehmern arbeiten.
 
 ### Wave
 Koordination | Atelier Marko Brajovic | Design Weekend!, Brasilien | August 2017 | /de/full-cv (nur im Lebenslauf aufgeführt)
@@ -409,7 +409,7 @@ Produktdesign | Atelier Marko Brajovic | Juni 2017 | /de/full-cv (nur im Lebensl
 
 ### Margarita House
 Architekturentwurf | Freiberuflich | São Paulo, Brasilien | Juni 2017 – August 2017 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Komplette Renovierung eines Mittelklasse-Einfamilienhauses.
+Komplettrenovierung eines Wohnhauses der Mittelschicht.
 
 ### O3-Pavillon von Atelier Marko Brajovic für Docol
 Computational architecture | Atelier Marko Brajovic | São Paulo, Brasilien | Februar 2017 – März 2017 | /de/projects/o3-pavilion-by-atelier-marko-brajovic-for-docol
@@ -484,7 +484,7 @@ Lecture | Hochschule München | München | Mai 2025 | /de/full-cv (nur im Lebens
 
 ### Multiskalares Roboterfertigungssystem für Vor-Ort-Pressklebung im mehrgeschossigen Holzbau
 Talk | Forum Holzbau | Fellbach, Deutschland | Juli 2024 | /de/full-cv (nur im Lebenslauf aufgeführt)
-In diesem Vortrag haben wir die Ergebnisse unseres Abschlussprojekts im ITECH-Masterprogramm an der Universität Stuttgart vorgestellt.
+In diesem Vortrag haben wir die Ergebnisse unserer Masterarbeit im ITECH-Masterprogramm an der Universität Stuttgart vorgestellt.
 
 ### BuildSystems - Smart Sustainability Roadmaps
 Talk | Graphisoft X - Online | Deutschland | Dezember 2023 | /de/full-cv (nur im Lebenslauf aufgeführt)
@@ -493,53 +493,53 @@ Erfahren Sie mehr über Smart Sustainability Roadmaps, die systemische Prozessin
 
 ### Computergestützte Architektur in Deutschland
 Talk | UFT, Online | Palmas, Brasilien | November 2023 | /de/teaching/computational-architecture-in-germany-uft
-In diesem Vortrag stellte ich die wichtigsten Technologien des computergestützten Designs in Deutschland vor, insbesondere das ICD & ITKE der Universität Stuttgart und das Unternehmen BuildSystems, und verband diesen Werdegang mit meinem eigenen Weg zwischen dem Atelier Marko Brajovic, dem ITECH in Stuttgart und der Industrie in München.
+In diesem Vortrag stellte ich die wichtigsten Technologien des Computational Design in Deutschland vor, insbesondere das ICD & ITKE der Universität Stuttgart und das Unternehmen BuildSystems, und verband diese Entwicklung mit meinem eigenen Weg zwischen dem Atelier Marko Brajovic, dem ITECH in Stuttgart und der Industrie in München.
 
 ### Computergestützte Architektur in Deutschland
 Talk | UFT - Online | Palmas, Brasilien | November 2023 | /de/full-cv (nur im Lebenslauf aufgeführt)
-In diesem Vortrag präsentierte ich die neuesten Technologien im Bereich computergestütztes Design in Deutschland, speziell das ICD & ITKE an der Universität Stuttgart und die Firma BuildSystems.
+In diesem Vortrag präsentierte ich die neuesten Technologien im Bereich Computational Design in Deutschland, insbesondere das ICD & ITKE an der Universität Stuttgart und die Firma BuildSystems.
 
 ### Machbarkeit nachhaltigen Bauens
 Pitch | Munich Urban Colab | München, Deutschland | März 2023 | /de/teaching/feasibility-of-sustainable-construction-by-buildsystems-at-siemens
-Ein Pitch auf der Siemens RIE München Konferenz darüber, wie computergestützte Werkzeuge Daten generieren können, um Nachhaltigkeit in der Bauindustrie umsetzbar zu machen, von der Stadtanalyse bis zur Ökobilanzierung.
+Ein Pitch auf der Siemens RIE Munich Conference darüber, wie computergestützte Werkzeuge Daten erzeugen können, die Nachhaltigkeit in der Bauindustrie umsetzbar machen, von der städtebaulichen Analyse bis zur Ökobilanz.
 
 ### Digital Futures 2023: Novos Hibridismos
 Talk | YouTube - Online | März 2022 | /de/teaching/digital-futures-2023
 Video: https://www.youtube.com/watch?v=s-hKf0NhooA
 Diese Sitzung, die die DigitalFutures-Reihe auf Portugiesisch eröffnet, vereint verschiedene innovative Praktiken im Bereich computergestützter Methoden in Architektur und Design, in denen künstliche Intelligenz, generative Algorithmen, parametrisches Design, robotergestützte Fertigung, Materialwissenschaft und Biomimetik Teil eines hybriden Repertoires sind.
 
-### IntCDC Master's Thesis Grant 2021 Preisverleihung
+### Preisverleihung des IntCDC Master’s Thesis Grant 2021
 Pitch | Stuttgart, Deutschland | November 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
 
 ### Natur und Digital: Reproduktion natürlicher Prozesse mit Computational Design
 Talk | PUC Minas - Online | Belo Horizonte, Brasilien | August 2021 | /de/teaching/nature-and-digital-reproducing-natural-processes-with-computational-design-at-puc
 Video: https://youtu.be/J303rzg7y0U
-In diesem Vortrag an der PUC Minas stellte ich meine Arbeit, die Idee der Reproduktion natürlicher Prozesse mit computergestütztem Design und wichtige Erkenntnisse aus meiner kürzlich abgeschlossenen Masterarbeit vor.
+In diesem Vortrag an der PUC Minas stellte ich meine Arbeit, die Idee, natürliche Prozesse mit Computational Design zu reproduzieren, und wichtige Erkenntnisse aus meiner kürzlich abgeschlossenen Masterarbeit in Deutschland vor.
 
-### Podiumsdiskussion
+### Teilnahme an einer Podiumsdiskussion
 Round table | FAU-USP - Online | São Paulo, Brasilien | Mai 2021 | /de/full-cv (nur im Lebenslauf aufgeführt)
 
-### Computergestütztes Design: Strategien
+### Computational Design: Strategien
 Talk | UNIP - Online | Brasilien | November 2020 | /de/full-cv (nur im Lebenslauf aufgeführt)
 
 ### Architektur + Biomimetik + Algorithmus
 Talk | IFRO Vilhena | Vilhena, Brasilien | August 2019 | /de/teaching/architecture-biomimicry-algorithm-at-ifro
-Während meines Besuchs in meiner Heimatstadt schlug ich einen Vortrag für den Architektur- und Städtebaukurs des Bundesinstituts von Rondônia - IFRO vor. Ich präsentierte einige Werke und Forschungen, die ich bisher gemacht hatte, und diskutierte die Zukunft des Berufs inmitten so vieler technologischer Veränderungen.
+Während meines Besuchs in meiner Heimatstadt schlug ich dem Studiengang Architektur und Städtebau des Bundesinstituts von Rondônia (IFRO) einen Vortrag vor. Ich stellte einige meiner bisherigen Arbeiten und Forschungsprojekte vor und diskutierte die Zukunft des Berufs angesichts so vieler technologischer Veränderungen.
 
 ### Models byNature 2.0
 Workshop | Atelier Marko Brajovic | São Paulo, Brasilien | Juli 2019 – Juli 2019 | /de/teaching/models-bynature-20
-Die zweite Ausgabe des Workshops Models byNature erweiterte die erste mit vier Samstagen parametrischen Designs mit Grasshopper, inspiriert von der Natur, mit Formfindungsexperimenten, computergestützter Modellierung und Biomimetik im Atelier Marko Brajovic in São Paulo.
+Die zweite Ausgabe des Workshops Models byNature baute auf der ersten auf: vier Samstage naturinspiriertes parametrisches Design mit Grasshopper, mit Formfindungsexperimenten, computergestützter Modellierung und Biomimetik, im Atelier Marko Brajovic in São Paulo.
 
 ### Models byNature 1.0
 Workshop | Atelier Marko Brajovic | São Paulo, Brasilien | Mai 2019 – Juni 2019 | /de/teaching/models-bynature-10
-Ziel dieses Workshops war es, computergestützte Designpraktiken mit natürlichen Phänomenen zu verknüpfen. Dabei wurden Themen wie assoziative Modellierung, Biomimetik und visuelle Programmiersprachen behandelt.
+Ziel dieses Workshops war es, Praktiken des Computational Design mit natürlichen Phänomenen zu verknüpfen. Dabei wurden Themen wie assoziative Modellierung, Biomimetik und visuelle Programmiersprachen behandelt.
 
 ### Emotionales Design und Technologie
 Talk | MOVELPAR | Arapongas, Brasilien | März 2019 | /de/full-cv (nur im Lebenslauf aufgeführt)
 Tags: Emotional Design, Technology, Furniture Design, Computational Design
-Vortrag bei MOVELPAR 2019, organisiert von SEBRAE, über die Verbindung von emotionalem Design und Technologie im zeitgenössischen Möbel- und Produktdesign.
+Vortrag auf der MOVELPAR 2019, organisiert von SEBRAE, über die Verbindung von emotionalem Design und Technologie im zeitgenössischen Möbel- und Produktdesign.
 
-### Parametrisches Design inspiriert durch die Natur
+### Von der Natur inspiriertes parametrisches Design
 Talk | Museu de Arte Moderna | Rio de Janeiro, Brasilien | September 2018 | /de/teaching/parametric-design-inspired-by-nature-at-semana-design-rio
 Tags: Parametric Design, Biomimetics, Nature, Computational Design
 Vortrag bei der Semana Design Rio 2018 über sieben Prinzipien aus der Natur, angewandt auf parametrisches Design, mit Projektbeispielen aus dem Atelier Marko Brajovic.
@@ -553,9 +553,9 @@ Neben dem Erlernen der Grundlagen von Grasshopper für Rhinoceros konnten die Te
 
 ### Ein Jahrzehnt nach UNEMAT
 Lecture | UNEMAT | Barra do Bugres, Brasilien | Juni 2018 | /de/teaching/a-decade-after-unemat
-UNEMAT war die erste Universität, an der ich Architektur studierte. Zehn Jahre nach Beginn meines Studiums hielt ich diesen Vortrag über meinen gesamten Werdegang, von meinem Universitätswechsel zur FAU-USP, meiner Arbeit im Atelier Marko Brajovic und meinem jüngsten Karrierewechsel, der sich speziell auf Computerdesign und Programmierung konzentrierte.
+UNEMAT war die erste Universität, an der ich Architektur studierte. Zehn Jahre nach Beginn meines Studiums hielt ich diesen Vortrag über meinen gesamten Werdegang, vom Wechsel an die FAU-USP über meine Arbeit im Atelier Marko Brajovic bis zu meiner jüngsten beruflichen Neuausrichtung auf Computational Design und Programmierung.
 
-### Tensegrity Workshop
+### Tensegrity-Workshop
 Workshop | Atelier Marko Brajovic | Paraty, Brasilien | November 2017 | /de/teaching/tensegrity-workshop
 Ein Teambuilding-Workshop, bei dem wir gemeinsam eine Tensegrity-Struktur bauten und dabei entdeckten, wie das Kräftegleichgewicht der Struktur unsere eigene Zusammenarbeit widerspiegelte.
 
@@ -564,11 +564,11 @@ Talk | Istituto Europeo di Design | São Paulo, Brasilien | Oktober 2017 | /de/f
 
 ### Grasshopper & Kangaroo Workshop
 Workshop | PortoFabLab | São Paulo, Brasilien | April 2017 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Die Studierenden lernten, mit Federsystemen zu arbeiten, um ein Stoffverhalten zu simulieren.
+Die Studierenden lernten, mit Federsystemen zu arbeiten, um das Verhalten von Stoff zu simulieren.
 
-### Private Revit-Lektionen
+### Revit-Privatunterricht
 Course | Privatunterricht | São Paulo, Brasilien | Februar 2017 – März 2017 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Revit-Lektionen von den Grundprinzipien bis zu fortgeschrittenen Techniken.
+Revit-Unterricht von den Grundlagen bis zu fortgeschrittenen Techniken.
 
 ### Formfindung mit Grasshopper
 Talk | São Paulo, Brasilien | Dezember 2016 | /de/full-cv (nur im Lebenslauf aufgeführt)
@@ -630,11 +630,11 @@ Januar 2023 – Dezember 2023 | [Beruf] | AEC-Softwareingenieur | Urban Scale Ti
 September 2022 | [Kurs] | COMPAS FoFin Workshop | Design Modeling Symposium 2022 | Berlin, Deutschland
 März 2022 | [Lehre] | Digital Futures 2023: Novos Hibridismos | YouTube - Online
 Dezember 2021 – Dezember 2022 | [Beruf] | Computational Designer | ArtEngineering GmbH | Schorndorf, Deutschland
-November 2021 | [Lehre] | IntCDC Master's Thesis Grant 2021 Preisverleihung | Stuttgart, Deutschland
+November 2021 | [Lehre] | Preisverleihung des IntCDC Master’s Thesis Grant 2021 | Stuttgart, Deutschland
 August 2021 | [Lehre] | Natur und Digital: Reproduktion natürlicher Prozesse mit Computational Design | PUC Minas - Online | Belo Horizonte, Brasilien
-Mai 2021 | [Lehre] | Podiumsdiskussion | FAU-USP - Online | São Paulo, Brasilien
+Mai 2021 | [Lehre] | Teilnahme an einer Podiumsdiskussion | FAU-USP - Online | São Paulo, Brasilien
 März 2021 – Oktober 2021 | [Stipendium] | IntCDC Master’s Thesis Grant 2021 | Exzellenzcluster – IntCDC | Stuttgart, Deutschland
-November 2020 | [Lehre] | Computergestütztes Design: Strategien | UNIP - Online | Brasilien
+November 2020 | [Lehre] | Computational Design: Strategien | UNIP - Online | Brasilien
 Oktober 2020 – November 2021 | [Beruf] | Computational Designer | Alfred Rein Ingenieure GmbH | Stuttgart, Deutschland
 Juni 2020 – Juli 2020 | [Kurs] | Intelligenz | Digital Futures World 2020 | Online
 Dezember 2019 – Oktober 2020 | [Beruf] | Wissenschaftliche Hilfskraft | ICD/ITKE Universität Stuttgart | Stuttgart, Deutschland
@@ -644,17 +644,17 @@ Juli 2019 – Juli 2019 | [Lehre] | Models byNature 2.0 | Atelier Marko Brajovic
 Mai 2019 – Juni 2019 | [Lehre] | Models byNature 1.0 | Atelier Marko Brajovic | São Paulo, Brasilien
 März 2019 | [Lehre] | Emotionales Design und Technologie | MOVELPAR | Arapongas, Brasilien
 November 2018 | [Kurs] | Wiki-House: Generierung und digital-materielle Konstruktion | SIGraDi 2018 | São Carlos, Brasilien
-September 2018 | [Lehre] | Parametrisches Design inspiriert durch die Natur | Museu de Arte Moderna | Rio de Janeiro, Brasilien
+September 2018 | [Lehre] | Von der Natur inspiriertes parametrisches Design | Museu de Arte Moderna | Rio de Janeiro, Brasilien
 August 2018 | [Zertifizierung] | Intro to Computer Science and Programming Using Python | MITx & edX.org
 August 2018 | [Lehre] | Biomimetische Geometrien | Tátil | Rio de Janeiro, Brasilien
 Juni 2018 – Juni 2018 | [Lehre] | Adaptiver Grasshopper-Workshop | UNEMAT | Barra do Bugres, Brasilien
 Juni 2018 | [Lehre] | Ein Jahrzehnt nach UNEMAT | UNEMAT | Barra do Bugres, Brasilien
-November 2017 | [Lehre] | Tensegrity Workshop | Atelier Marko Brajovic | Paraty, Brasilien
+November 2017 | [Lehre] | Tensegrity-Workshop | Atelier Marko Brajovic | Paraty, Brasilien
 Oktober 2017 | [Lehre] | Architektur + Biomimetik + Algorithmus | Istituto Europeo di Design | São Paulo, Brasilien
 September 2017 | [Kurs] | Schnittstelle zwischen Architektur, Ingenieurwesen und mathematischer Optimierung | IASS 2017 | Hamburg, Deutschland
 Juli 2017 | [Kurs] | Parametrisches Design mit Arduino und Grasshopper | FILE Festival | São Paulo, Brasilien
 April 2017 | [Lehre] | Grasshopper & Kangaroo Workshop | PortoFabLab | São Paulo, Brasilien
-Februar 2017 – März 2017 | [Lehre] | Private Revit-Lektionen | Privatunterricht | São Paulo, Brasilien
+Februar 2017 – März 2017 | [Lehre] | Revit-Privatunterricht | Privatunterricht | São Paulo, Brasilien
 Dezember 2016 | [Lehre] | Formfindung mit Grasshopper | São Paulo, Brasilien
 September 2016 | [Kurs] | Grasshopper-Workshop mit Galapagos | Rhino Day, FAU-Mackenzie | São Paulo, Brasilien
 Juli 2016 | [Kurs] | Daten im Designprozess | FILE Festival | São Paulo, Brasilien

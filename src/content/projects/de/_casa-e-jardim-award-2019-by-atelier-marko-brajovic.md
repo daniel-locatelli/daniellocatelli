@@ -1,6 +1,6 @@
 ---
 Name: Casa e Jardim Award 2019
-Description: Architekt verantwortlich für das Bühnenbild und die Trophäe.
+Description: Verantwortlicher Architekt für Bühnenbild und Trophäe.
 DateStart: "2019-06-01"
 Organization: "Atelier Marko Brajovic"
 Category: Computational Design
