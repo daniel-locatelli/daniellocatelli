@@ -29,4 +29,12 @@ export type I18nSubpage = {
   watchPresentation: string,
   next: string,
   previous: string,
+  /** Title of the /sources index page. */
+  sources: string,
+  /** Intro of the /sources index page. */
+  sourcesIndexIntro: string,
+  /** Intro of an entity's sources page; {name} is the entity name. */
+  sourcesIntro: string,
+  /** Label on a list item that is a slide deck. */
+  slideDeck: string,
 }

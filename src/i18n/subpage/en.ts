@@ -31,4 +31,8 @@ export const t: I18nSubpage = {
   watchPresentation: "Watch presentation",
   next: "Next",
   previous: "Previous",
+  sources: "Sources",
+  sourcesIndexIntro: "People and archives whose images appear on this site, each with the pages that use them.",
+  sourcesIntro: "Pages on this site that use images by {name}.",
+  slideDeck: "Slide deck",
 }

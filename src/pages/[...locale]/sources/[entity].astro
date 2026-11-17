@@ -1,0 +1,45 @@
+---
+/**
+ * One page per entity (src/config/entities.ts) and locale, listing every page
+ * that uses the entity's images. Generated from the content; nothing to
+ * maintain per entity.
+ */
+import Base from "@/layouts/Base.astro";
+import SourcesList from "@/components/SourcesList.astro";
+import { siteConfig, SUPPORTED_LOCALES } from "@/config/site";
+import { ENTITIES, ENTITY_SLUGS, type EntitySlug } from "@/config/entities";
+import { getEntityUses } from "@/lib/entity-usage";
+import { sourcesHref } from "@/lib/entities";
+import { getI18n } from "src/i18n/utils";
+import type { I18nSubpage } from "src/i18n/subpage/type";
+
+export function getStaticPaths() {
+  return SUPPORTED_LOCALES.flatMap((locale) =>
+    ENTITY_SLUGS.map((entity) => ({
+      params: { locale: locale === siteConfig.defaultLocale ? undefined : locale, entity },
+      props: { locale, entity },
+    })),
+  );
+}
+
+const { locale, entity } = Astro.props as { locale: string; entity: EntitySlug };
+const t = await getI18n<I18nSubpage>("subpage", locale);
+const { name } = ENTITIES[entity];
+const uses = (await getEntityUses(locale)).get(entity) ?? [];
+const intro = t.sourcesIntro.replace("{name}", name);
+---
+
+<Base meta={{ title: name, description: intro, slug: `sources/${entity}` }}>
+  <div class="mx-auto max-w-7xl px-4 pt-12 pb-12 sm:px-6 lg:px-8">
+    <header class="mb-12">
+      <p class="pt-4 text-sm text-zinc-500 sm:pt-12">
+        <a href={sourcesHref("", locale, siteConfig.defaultLocale)} class="hover:text-green-400">
+          {t.sources}
+        </a>
+      </p>
+      <h1 class="mt-2 text-2xl tracking-tight text-white sm:text-3xl">{name}</h1>
+      <p class="mt-4 text-xl text-zinc-400">{intro}</p>
+    </header>
+    <SourcesList uses={uses} deckLabel={t.slideDeck} />
+  </div>
+</Base>

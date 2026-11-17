@@ -1,10 +1,22 @@
 ---
+/**
+ * Privacy-friendly YouTube embed. `credit` (a string or `{ name, href }`)
+ * renders below the player as "© Name", following the same rules as
+ * Credit.astro; it sits under the video rather than over it so it never
+ * covers the player's controls.
+ */
+import type { CreditLine } from "@/components/Credit.astro";
+import { copyrightMark } from "@/lib/credit";
+
 interface Props {
   id: string;
   title?: string;
+  credit?: CreditLine;
 }
 
-const { id, title = "YouTube video" } = Astro.props;
+const { id, title = "YouTube video", credit } = Astro.props;
+const creditName = typeof credit === "string" ? credit : credit?.name;
+const creditHref = typeof credit === "object" ? credit?.href : undefined;
 ---
 
 <figure class="my-6">
@@ -19,4 +31,18 @@ const { id, title = "YouTube video" } = Astro.props;
       allowfullscreen
     ></iframe>
   </div>
+  {
+    creditName && (
+      <figcaption class="mt-2 text-center text-sm text-zinc-400">
+        {copyrightMark(creditName)}
+        {creditHref ? (
+          <a href={creditHref} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2">
+            {creditName}
+          </a>
+        ) : (
+          creditName
+        )}
+      </figcaption>
+    )
+  }
 </figure>

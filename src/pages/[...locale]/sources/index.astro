@@ -1,0 +1,45 @@
+---
+/** Index of all entities (src/config/entities.ts), with how many pages use each. */
+import Base from "@/layouts/Base.astro";
+import { siteConfig } from "@/config/site";
+import { ENTITIES, ENTITY_SLUGS } from "@/config/entities";
+import { getEntityUses } from "@/lib/entity-usage";
+import { sourcesHref } from "@/lib/entities";
+import { getI18n } from "src/i18n/utils";
+import { getLocale } from "src/lib/routes-helpers";
+import type { I18nSubpage } from "src/i18n/subpage/type";
+export { getStaticPaths } from "src/lib/routes-helpers";
+
+const locale = getLocale(Astro.params);
+const t = await getI18n<I18nSubpage>("subpage", locale);
+const uses = await getEntityUses(locale);
+const entities = ENTITY_SLUGS.map((slug) => ({
+  slug,
+  name: ENTITIES[slug].name,
+  count: uses.get(slug)?.length ?? 0,
+})).sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Base meta={{ title: t.sources, description: t.sourcesIndexIntro, slug: "sources" }}>
+  <div class="mx-auto max-w-3xl px-4 pt-12 pb-12 sm:px-6 lg:px-8">
+    <header class="mb-10">
+      <h1 class="pt-4 text-2xl tracking-tight text-white sm:pt-12 sm:text-3xl">{t.sources}</h1>
+      <p class="mt-4 text-xl text-zinc-400">{t.sourcesIndexIntro}</p>
+    </header>
+    <ul class="divide-y divide-zinc-800">
+      {
+        entities.map((e) => (
+          <li>
+            <a
+              href={sourcesHref(e.slug, locale, siteConfig.defaultLocale)}
+              class="flex items-baseline justify-between py-4 text-lg text-white hover:text-green-400"
+            >
+              <span>{e.name}</span>
+              <span class="text-sm text-zinc-500">{e.count}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Base>

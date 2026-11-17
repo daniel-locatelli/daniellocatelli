@@ -19,6 +19,7 @@
     "check:links:external": "lychee --config lychee.toml 'dist/client/**/*.html'",
     "check:links": "pnpm build && pnpm check:links:internal",
     "check:decks": "tsx src/scripts/check-decks.ts",
+    "check:credits": "tsx src/scripts/check-credits.ts",
     "build:skills": "tsx src/scripts/build-agent-skills-index.ts"
   },
   "dependencies": {

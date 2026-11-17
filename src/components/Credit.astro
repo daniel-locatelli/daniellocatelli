@@ -8,8 +8,16 @@
  * consistent.
  *
  * Each credit line can be a plain string or a `{ name, href }` object that
- * renders the name as an external link.
+ * renders the name as an external link. "© " is added in front unless the
+ * line already has it or names a public-domain creator (see lib/credit.ts).
+ * A plain string that names an entity (src/config/entities.ts) links to that
+ * entity's sources page, which lists every page using its images.
  */
+import { copyrightMark } from "@/lib/credit";
+import { entityForCredit, sourcesHref } from "@/lib/entities";
+import { siteConfig } from "@/config/site";
+import { getLocale } from "src/lib/routes-helpers";
+
 export type CreditLink = { name: string; href: string };
 export type CreditLine = string | CreditLink;
 
@@ -24,11 +32,14 @@ function isLink(line: CreditLine): line is CreditLink {
   return typeof line === "object" && line !== null && "href" in line;
 }
 
-function hasCopyrightPrefix(text: string): boolean {
-  return /^\s*(©|\(c\))/i.test(text);
-}
-
-const lines = Array.isArray(credit) ? credit : [credit];
+const locale = getLocale(Astro.params, Astro.url);
+const lines = (Array.isArray(credit) ? credit : [credit]).map((line) => {
+  if (isLink(line)) return { ...line, internal: false };
+  const entity = entityForCredit(line);
+  return entity
+    ? { name: line, href: sourcesHref(entity, locale, siteConfig.defaultLocale), internal: true }
+    : line;
+});
 ---
 
 <div
@@ -39,20 +50,20 @@ const lines = Array.isArray(credit) ? credit : [credit];
 >
   {
     lines.map((line) =>
-      isLink(line) ? (
+      typeof line === "object" ? (
         <p>
-          {hasCopyrightPrefix(line.name) ? "" : "© "}
+          {copyrightMark(line.name)}
           <a
             href={line.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={line.internal ? undefined : "_blank"}
+            rel={line.internal ? undefined : "noopener noreferrer"}
             class="underline decoration-white/30 underline-offset-2 transition-colors hover:text-white hover:decoration-white/60 focus-visible:text-white"
           >
             {line.name}
           </a>
         </p>
       ) : (
-        <p>{hasCopyrightPrefix(line) ? line : `© ${line}`}</p>
+        <p>{`${copyrightMark(line)}${line}`}</p>
       ),
     )
   }
