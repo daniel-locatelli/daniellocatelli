@@ -236,7 +236,7 @@ Software Development | BuildSystems | November 2023 | /de/projects/buildsystems-
 Tags: Software Development, Grasshopper3D
 Ein für BuildSystems entwickeltes Plugin, mit dem sich Baukomponenten auf Basis von Umweltproduktdeklarationen (EPDs) erstellen lassen. Die Idee war, Ökobilanz-Daten (LCA) schon zu Beginn des Entwurfsprozesses bereitzustellen.
 
-### KfW-Förderrechner von BuildSystems
+### KfW-Fördertool von BuildSystems
 Software Development | BuildSystems | November 2023 – Juli 2024 | /de/projects/kfw-funding-calculator-by-buildsystems
 Tags: Software Development, Web Development
 Dieser Rechner simuliert Bankdarlehen und Fördermittel und macht nachhaltiges Bauen und Sanieren für Immobilienentwickler und Eigentümer zugänglich.
@@ -261,7 +261,7 @@ Entwicklung eines Workflows, der Grasshopper-Daten mit Power BI verbindet.
 
 ### Urban Site Configurator
 Computational Design | BuildSystems GmbH | München, Deutschland | Januar 2023 | /de/full-cv (nur im Lebenslauf aufgeführt)
-Entwicklung eines Grasshopper-Konfigurators zur Erstellung von Gebäudehüllen.
+Entwicklung eines Grasshopper-Konfigurators zur Erstellung von Baukörpern.
 
 ### AIDS
 Detaillierung | ArtEngineering GmbH | Vor dem Stedelijk Museum Amsterdam, Niederlande | September 2022 | /de/full-cv (nur im Lebenslauf aufgeführt)

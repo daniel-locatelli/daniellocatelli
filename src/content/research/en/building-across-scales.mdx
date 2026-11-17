@@ -155,7 +155,7 @@ An example of a successful on-site-gluing procedure is the new technology develo
   ![Figure 15 - TS3 Glue being applied (TS3).](../../../assets/content/research/building-across-scales/ts3-glue-being-applied-ts3.jpg)
 </Figure>
 
-An approach to reduce the amount of glue is by using screws (Figure 16). Because by pressurizing the glue during the drying process, it is possible to achieve a strong bonding connection using only a fraction of the glue needed initially[^kairi-2000].
+An approach to reduce the amount of glue is by using screws (Figure 16). Because by pressurizing the glue during the curing process, it is possible to achieve a strong bonding connection using only a fraction of the glue needed initially[^kairi-2000].
 But the downside is that this process is again very laborious. Also, as the screws serve a temporary function, they are usually left in the timber because the labor costs of removing them are much higher than the screw itself.
 
 <Figure>
@@ -188,7 +188,7 @@ An attempt to automate screwing is the project mass timber fastening[^swinerton-
   ![Figure 19 - Mass Timber Fastening (Swinerton’s Innovation, 2021).](../../../assets/content/research/building-across-scales/mass-timber-fastening-swinerton-s-innovation-2021.jpg)
 </Figure>
 
-Each CLT layer comprises 3-ply Black Spruce CLT, measuring 2.4 m by 17.0 m in plan (105mm thick). In the first layer, the CLT slabs are screwed with plywood planks at the seam. The second layer of slabs, which are perpendicular to the first, is joined using the same procedure, then fastened to the layer below with an array of screws. This way, the final product combines CLT panels that are nail laminated together (NLT). Resulting in a roof structure 210 mm thick spanning up to 9m between columns. While this results in an overall small slab thickness and even allows for free column placement, it is structurally limited to a single floor. Moreover, the need for almost 50 screws per square meter lacks scalability.
+Each CLT layer comprises 3-ply Black Spruce CLT, measuring 2.4 m by 17.0 m in plan (105mm thick). In the first layer, the CLT slabs are screwed with plywood planks at the seam. The second layer of slabs, which are perpendicular to the first, is joined using the same procedure, then fastened to the layer below with an array of screws. This way, the final product is a two-layer CLT plate whose panels are screwed together. Resulting in a roof structure 210 mm thick spanning up to 9m between columns. While this results in an overall small slab thickness and even allows for free column placement, it is structurally limited to a single floor. Moreover, the need for almost 50 screws per square meter lacks scalability.
 
 #### Automatic Assembly of Jointed Timber Structure Using Distributed Robotic Clamps
 The project by the ETH in Zurich[^leung-2021] takes a different approach. Instead of trying to develop a big machine to automate a construction task, they use distributed clamps to assemble joints of a complex timber structure (Figure 20). Through the collaboration with an industrial arm these clamps overcome the need to provide large assembly forces and to correct for misalignment during the assembly. But the system lacks scalability as it is still limited to the reachability of an industrial robot.
@@ -230,7 +230,7 @@ Building on top of available construction technology, a new robotic species was 
 <Figure>
   ![Figure 25  - Research proposal.](../../../assets/content/research/building-across-scales/research-proposal.jpg)
 </Figure>
-The idea on how this device works is that you have pre-drilled holes in the timber, through which the device can be inserted on-site and unfold its pressure. For this, it needs to do two things. It needs to clamp itself into the timber, and it needs to apply the pressure required for the glue to dry. After deployment, the device can then relieve its pressure from the hole to fall to the ground. This allows the automation of the in-situ connection.
+The idea on how this device works is that you have pre-drilled holes in the timber, through which the device can be inserted on-site and unfold its pressure. For this, it needs to do two things. It needs to clamp itself into the timber, and it needs to apply the pressure required for the glue to cure. After deployment, the device can then relieve its pressure from the hole to fall to the ground. This allows the automation of the in-situ connection.
 Also, through the reusability of this device, it is possible to leave no metal behind in the structure, opening up more possibilities for an afterlife at the end of a structure’s life. According to Jianmei Wu, the bottleneck of disassembling timber buildings is the removal of the connections. Therefore more time is spent dismantling the structure rather than just tearing it down quickly[^wu-2017].
 
 #### Heterogeneous Robotic System
@@ -332,12 +332,12 @@ On site, the assembly follows the steps below. First, the mobile robotic platfor
 </Figure>
 
 <Figure>
-  ![Figure 49 - And after a certain amount of time, after the glue is dried, the device will be able to relieve its pressure from the hole, allowing it to fall to the ground to be re-feed back into the system.](../../../assets/content/research/building-across-scales/device-falling-from-hole.jpg)
+  ![Figure 49 - And after a certain amount of time, after the glue has cured, the device will be able to relieve its pressure from the hole, allowing it to fall to the ground to be re-feed back into the system.](../../../assets/content/research/building-across-scales/device-falling-from-hole.jpg)
 </Figure>
 
 #### Hardware Development
 The device can be split into four components: The control system and an anchor at the top, the contraction mechanism in the middle, and another anchor at the bottom.
-In general, the device needs to do two things. It needs to clamp itself into the timber, and it needs to apply the pressure required for the glue to dry. One of the main challenges here is that the device needs to be as small as possible while applying as much pressure as possible.
+In general, the device needs to do two things. It needs to clamp itself into the timber, and it needs to apply the pressure required for the glue to cure. One of the main challenges here is that the device needs to be as small as possible while applying as much pressure as possible.
 
 <Figure>
   ![Figure 50 - Robotic clamping device.](../../../assets/content/research/building-across-scales/robotic-clamping-device.jpg)
@@ -347,8 +347,8 @@ Therefore we decided to go for a pneumatic approach, as these systems have an ex
 In our case, we are using a pneumatic muscle, which can be activated to carry out a linear pulling motion. When the muscle inflates, it expands radially and contracts along the axes, producing a pulling force.
 This motion is then coupled with the bottom anchor. Through a spring at the bottom, the first motion of the muscle is converted into a folding motion of the anchor. Which then results in hooking into the timber.
 
-By having both anchors positioned at the outside of the panels, it allows us to reach the biggest possible area. Depending on the depth of the two pressed panels and the strength of the device, the possible area of influence can be calculated with the before explained methods in section 3.2.4. The device itself can be controlled over a wifi connection so that the time and length of inflation can be adjusted depending on the opening and pressing time of the chosen glue.
-After the glue has been dried, the CO2 can be released from the system to relieve the pressure on
+By having both anchors positioned at the outside of the panels, it allows us to reach the biggest possible area. Depending on the depth of the two pressed panels and the force of the device, the possible area of influence can be calculated with the before explained methods in section 3.2.4. The device itself can be controlled over a wifi connection so that the time and length of inflation can be adjusted depending on the opening and pressing time of the chosen glue.
+After the glue has cured, the CO2 can be released from the system to relieve the pressure on
 the anchors so that the device can fall down to the ground for the next operation.
 We have also investigated different possibilities to protect the device during the pressurizing of the glue. These included vaseline, milled edges around the inside of the hole, and other kinds of papers. In the end, we opted for a thin sheet of paper wrapped around the case of the device as it seemed to be the simplest solution. Although depending on the choice of glue, we do not see this as necessary. For example, leaving a one cm gap from the hole border while using a non-foaming glue-like 2K-PUR glue did not end in any bond being pushed into the hole.
 
@@ -357,16 +357,16 @@ We have also investigated different possibilities to protect the device during t
 </Figure>
 
 
-#### Strength Test
-To evaluate the strength of our device, we conducted a tension strength test. This was done by hanging the device between the ceiling and the ground and inflating the muscle with CO2.
-The strength test was repeated with varying contraction lengths, ranging from 5% to 25% overall contraction of the pneumatic muscle. This was done by adjusting the tension on the ropes the muscle was hanging in. In the inflated state with a contraction of 5%, our small muscle reached around 500N, while the big muscle achieved 2000N, which is both times around half of the estimated strength of what should theoretically be possible in an industrial setup. The reason for that is that our CNC milled parts were not 100% airtight, which made it impossible to hold the maximum pressure level of what the pneumatic muscle was rated for. However, we think that with another iteration of the valve design and precise machining, the estimated strength could be matched.
+#### Force Test
+To evaluate the pulling force of our device, we conducted a tensile force test. This was done by hanging the device between the ceiling and the ground and inflating the muscle with CO2.
+The force test was repeated with varying contraction lengths, ranging from 5% to 25% overall contraction of the pneumatic muscle. This was done by adjusting the tension on the ropes the muscle was hanging in. In the inflated state with a contraction of 5%, our small muscle reached around 500N, while the big muscle achieved 2000N, which is both times around half of the estimated strength of what should theoretically be possible in an industrial setup. The reason for that is that our CNC milled parts were not 100% airtight, which made it impossible to hold the maximum pressure level of what the pneumatic muscle was rated for. However, we think that with another iteration of the valve design and precise machining, the estimated strength could be matched.
 
 <Figure>
-  ![Figure 56 - Strength test chart.](../../../assets/content/research/building-across-scales/strength-test-chart.jpg)
+  ![Figure 56 - Force test chart.](../../../assets/content/research/building-across-scales/strength-test-chart.jpg)
 </Figure>
 
 <Figure>
-  ![Figure 57 - Strength test setup.](../../../assets/content/research/building-across-scales/strength-test-setup.png)
+  ![Figure 57 - Force test setup.](../../../assets/content/research/building-across-scales/strength-test-setup.png)
 </Figure>
 
 #### Hole Spacing Calculating
@@ -380,7 +380,7 @@ And the final study uses a minimum pressure of 0.01 N/mm², which is more optimi
 </Figure>
 
 <Figure>
-  ![Figure 57 - Parameters affecting the area of influence.](../../../assets/content/research/building-across-scales/parameters-affecting-the-area-of-influence.jpg)
+  ![Figure 59 - Parameters affecting the area of influence.](../../../assets/content/research/building-across-scales/parameters-affecting-the-area-of-influence.jpg)
 </Figure>
 
 #### Alignment Strategy
@@ -473,7 +473,7 @@ The robotic setup here consisted of TIM a mobile robotic platform tailored towar
   ![Figure 75  - Final demonstrator.](../../../assets/content/research/building-across-scales/final-demonstrator.jpg)
 </Figure>
 ### Discussion
-The assembly of the final demonstrator showcased the potential of the system being applied to a 1:1 scale. While the prototype of the proposed device did not achieve the estimated strength, we see a promising development in this direction. We are optimistic that these strength levels could be reached in further iterations. Another development point of the device presents the falling mechanism. While the mechanism works, we are concerned about the device’s longevity in a real construction scenario. Previous ideas to solve this problem include the development of a damping mechanism at the bottom of the device. Another approach could also be taken conceptionally to reconsider the necessity of the device falling to the ground.
+The assembly of the final demonstrator showcased the potential of the system being applied to a 1:1 scale. While the prototype of the proposed device did not achieve the estimated force, we see a promising development in this direction. We are optimistic that these strength levels could be reached in further iterations. Another development point of the device presents the falling mechanism. While the mechanism works, we are concerned about the device’s longevity in a real construction scenario. Previous ideas to solve this problem include the development of a damping mechanism at the bottom of the device. Another approach could also be taken conceptionally to reconsider the necessity of the device falling to the ground.
 Due to the alignment channels, it was possible to assemble the panels with very high precision without needing to adjust the position of the panels in-situ. An additional side-effect of the dowels was that they allowed the whole structure to be assembled without any scaffold, as they locked the plates in a stable enough position to proceed with the in-situ pressure application. This was especially important as the center of gravity from the leaves was not on top of the main structure at that point, which would have let them tip over otherwise. Concern points such as the dripping of the glue during the panel transportation with the crane did not occur during the assembly.
 ### Outlook
 The proposed timber system shows the potential of creating a quasi-monolithic slab. This allows for a point-supported timber slab of unlimited dimensions, which opens up more design flexibility in the floor plan and extends the architectural design space. But to fully validate it as a working building system, more points, such as acoustic & fire safety and the integration of utilities, need to be considered.

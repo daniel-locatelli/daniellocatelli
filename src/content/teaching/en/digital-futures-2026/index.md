@@ -26,7 +26,7 @@ Event: DigitalFutures
 
 This Digital Futures 2026 session, *Lusophone Diaspora (Academia)*, gathered three Brazilian researchers based abroad: Verônica Natividade (ETH Zürich, PUC Rio), Gabriela Bilá (MIT Media Lab), and myself, presenting the talk *Entre o Prompt e a Obra* (Between the Prompt and the Built Work) from Munich.
 
-I traced my path from biomimicry to systems thinking. At Atelier Marko Brajovic in São Paulo, where I spent almost six years, I learned to read architecture through the three layers of biomimicry described by Janine Benyus: reproducing forms (e.g., the diatom-inspired Porte Monumentale of the 1900 World's Fair), reproducing processes (Gaudí's catenary form finding, material computation), and reproducing ecosystems. The third layer only became clear to me later, in Germany.
+I traced my path from biomimicry to systems thinking. At Atelier Marko Brajovic in São Paulo, where I spent almost six years, I learned to read architecture through the three layers of biomimicry described by Janine Benyus: reproducing forms (e.g., the radiolarian-inspired Porte Monumentale of the 1900 World's Fair), reproducing processes (Gaudí's catenary form finding, material computation), and reproducing ecosystems. The third layer only became clear to me later, in Germany.
 
 At ITECH, I studied with Achim Menges and absorbed the idea of co-design: not just optimizing form, but treating materials, fabrication, and structure as parts of one system. My master's thesis with Nils Opgenorth prototyped a multi-scale robotic system for gluing cross-laminated timber panels directly on site, including a cooperation with a spider-crane automation institute and a study of the pressure required for the glue to cure.
 

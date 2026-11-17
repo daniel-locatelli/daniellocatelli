@@ -41,7 +41,7 @@ Der Vortrag stellte sieben in der Natur beobachtete Schlüsselprinzipien vor und
 
 ## Von der Natur zur Berechnung
 
-Die Präsentation stellte drei komplementäre Entwurfsansätze vor: Behaviorologie (wie Menschen es tun), Phänomenologie (wie die Physik es tut) und Biomimetik (wie die Natur es tut). Anschließend wurde die Rolle der visuellen Programmierung als Brücke zwischen diesen natürlichen Prinzipien und computergestützten Werkzeugen untersucht, mit dem Argument, dass die Natur seit 3,8 Milliarden Jahren entwirft.
+Die Präsentation stellte drei komplementäre Entwurfsansätze vor: Behaviorology (wie Menschen es tun), Phänomenologie (wie die Physik es tut) und Biomimetik (wie die Natur es tut). Anschließend wurde die Rolle der visuellen Programmierung als Brücke zwischen diesen natürlichen Prinzipien und computergestützten Werkzeugen untersucht, mit dem Argument, dass die Natur seit 3,8 Milliarden Jahren entwirft.
 
 ## Projektbeispiele
 

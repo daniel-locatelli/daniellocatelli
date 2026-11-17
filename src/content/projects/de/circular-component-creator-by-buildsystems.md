@@ -22,7 +22,7 @@ Team:
 
 Der Circular Component Creator (CCC) war eine konzeptionelle Designstudie bei [BuildSystems](https://buildsystems.de/) für eine Web-Applikation, die es Nutzern ermöglichen sollte, Baukomponenten für zirkuläres Bauen zu durchsuchen, zu filtern und zu vergleichen. Das Projekt kam bis zu detaillierten Figma-Mockups und einer festgelegten Datenarchitektur, wurde aber nicht als lauffähige Anwendung umgesetzt.
 
-Das Konzept entwickelte sich aus dem [BuildSystems-Plugin für Grasshopper](/projects/buildsystems-plugin-for-grasshopper), das Ökobilanz-Daten (LCA) innerhalb der Rhino/Grasshopper-Designumgebung bereitstellte. Der CCC zielte darauf ab, ähnliche Funktionen auf eine eigenständige Webplattform zu bringen und die Komponentenbibliothek einem breiteren Publikum über Grasshopper-Nutzer hinaus zugänglich zu machen.
+Das Konzept entwickelte sich aus dem [BuildSystems-Plugin für Grasshopper](/de/projects/buildsystems-plugin-for-grasshopper), das Ökobilanz-Daten (LCA) innerhalb der Rhino/Grasshopper-Designumgebung bereitstellte. Der CCC zielte darauf ab, ähnliche Funktionen auf eine eigenständige Webplattform zu bringen und die Komponentenbibliothek einem breiteren Publikum über Grasshopper-Nutzer hinaus zugänglich zu machen.
 
 ## Datenarchitektur
 

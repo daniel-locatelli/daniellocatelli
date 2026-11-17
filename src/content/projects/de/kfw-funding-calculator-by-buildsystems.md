@@ -2,7 +2,7 @@
 Cover: /assets/content/projects/kfw-funding-calculator-by-buildsystems/kfw-funding-calculator-by-buildsystems-cover.png
 CoverAlt: Ein Mann nutzt den Förderrechner auf einem iPad.
 Description: Dieser Rechner simuliert Bankdarlehen und Fördermittel und macht nachhaltiges Bauen und Sanieren für Immobilienentwickler und Eigentümer zugänglich.
-Name: KfW-Förderrechner von BuildSystems
+Name: KfW-Fördertool von BuildSystems
 Tags:
   - Software Development
   - Web Development
@@ -79,7 +79,7 @@ Wenn Sie mehr darüber erfahren möchten, wie ich derzeit die Formulare implemen
 ### Test und Qualitätssicherung
 Außerdem habe ich mich tief in [Unit-Tests](https://en.m.wikipedia.org/wiki/Unit_testing) eingearbeitet, mit dem Standardwerkzeug [Karma](http://karma-runner.github.io/6.4/intro/how-it-works.html).
 Diese Art von Tests prüft kleine Teile (Units) der Software, um sicherzustellen, dass jeder einzelne für sich korrekt funktioniert. Leider lernte ich das erst spät im Projekt, sodass ich den Code refaktorieren musste, damit die Unit-Tests laufen konnten.
-Wenn ich von vorne anfangen müsste, würde ich meine Energie stattdessen auf [End-to-End-Tests](https://en.m.wikipedia.org/w/index.php?title=System_testing&diffonly=true) (E2E) mit [Cypress](https://docs.cypress.io/guides/overview/why-cypress) konzentrieren. Diese Tests prüfen das gesamte System durch Simulation von Benutzerinteraktionen und stellen sicher, dass Ein- und Ausgaben unserer Sorgfaltspflicht entsprechen.
+Wenn ich von vorne anfangen müsste, würde ich meine Energie stattdessen auf [End-to-End-Tests](https://en.m.wikipedia.org/w/index.php?title=System_testing&diffonly=true) (E2E) mit [Cypress](https://docs.cypress.io/guides/overview/why-cypress) konzentrieren. Diese Tests prüfen das gesamte System durch Simulation von Benutzerinteraktionen und stellen sicher, dass Ein- und Ausgaben mit unseren mehrfach manuell geprüften Berechnungen übereinstimmen.
 ## Deployment
 Wir haben die App zunächst auf Netlify bereitgestellt, da die Nutzung dort äußerst reibungslos ist. Das Geschäftsmodell lautet „Pay as you scale“, ohne Anfangskosten. Außerdem ist es eine No-Code-Deployment-Lösung; man verbindet einfach sein GitHub-Repository und Netlify erledigt den Rest!
 Dann berichteten jedoch einige Netlify-Nutzer, wie sie im kostenlosen Tarif plötzlich Rechnungen über Zehntausende Dollar bekamen, in einem Fall sogar [104.000 Dollar in einem Monat](https://www.reddit.com/r/webdev/comments/1b14bty/netlify_just_sent_me_a_104k_bill_for_a_simple/). Und das alles wegen eines DDoS-Angriffs, wie er jeden treffen kann. Da Netlify keinen DDoS-Schutzmechanismus hatte, entschieden wir uns für den Wechsel zu Cloudflare.
