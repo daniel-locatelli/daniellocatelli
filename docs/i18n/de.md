@@ -66,6 +66,12 @@ de strings in `src/scripts/generate-knowledge.ts`. The house rules in
 | earth (building material) | Lehm | proposed |
 | Cluster of Excellence | Exzellenzcluster | proposed |
 | fire resistance rating (building component) | Feuerwiderstandsklasse, not Brandschutzklasse | proposed |
+| property (bSDD, ISO 23386) | Merkmal | proposed |
+| data dictionary | Datenwörterbuch; the German standards say Datenkatalog, named once in brackets | proposed |
+| data template / data sheet / requirement sheet | Datenvorlage / Datenblatt / Anforderungsblatt | proposed |
+| buildup (timber wall, floor, roof) | Aufbau (Bauteilaufbau) | proposed |
+| Construction Products Regulation (EU) 2024/3110 | Bauproduktenverordnung (BauPVO), not Bauprodukteverordnung | proposed |
+| stud spacing | Achsabstand | proposed |
 | quantity takeoff | Mengenermittlung | proposed |
 | accidental loads / actions | außergewöhnliche Lasten (Eurocode), not zufällige | proposed |
 | user flow (UX) | User Flow, not Benutzerfluss / Nutzerfluss | proposed |
@@ -99,6 +105,7 @@ Decisions from reviews, newest first. An entry records what was wrong, so
 
 | Date | Where | Before | After | Why |
 | --- | --- | --- | --- | --- |
+| 2026-11-17 | research (timber buildup data model) | in ihren Begriffen (ETIM) / Brandschutzklassen / feuerbeständige Platte / Wand von höchstens 460 mm / 200 mm breiter Streifen / maschinenlesbarer Nachweis (DPP) / Bauprodukteverordnung / Probestück / R für das Tragen der Last, E …, I … / dann wieder derselbe Holzständer, alle 625 mm / Wert (table row) / Akustik / ISO 12006-3 Rahmen für objektorientierte Informationen / about 45 calques and English-style appositions (fließt nicht, tut es, ist das, was diese Arbeit hinzufügt, In bSDD-Begriffen, benachbarte Normen) | mit den Begriffen von ETIM / Feuerwiderstandsklassen / Brandschutzplatte / Wanddicke von höchstens 460 mm / 200 mm dicke Schicht / maschinenlesbarer Datensatz / Bauproduktenverordnung / Prüfkörper / Tragfähigkeit, Raumabschluss, Wärmedämmung with the plain gloss kept / ein Holzständer derselben Art, im Achsabstand von 625 mm / Datentyp / Schallschutz / Struktur für den objektorientierten Informationsaustausch (DIN EN ISO title) / rewritten from the meaning; class names glossed once (External Wall (Außenwand), Floor (Decke)); Datenkatalog named once | Native and fidelity passes (two agents). Four were meaning errors: ihren read as the makers' own terms, Brandschutz- is a reaction-to-fire class, feuerbeständig is a defined 90-minute level, the 460 mm lost its noun. Kept: F90 (matches the diagrams and en), hat in the composition caption (mirrors has part), Wärmeverlust without unit (as en), the 625 mm in the composition alt (the SVG shows it). |
 | 2026-11-17 | Building Across Scales (en, pt, de) | Nagellaminierung (NLT) / getrocknet (en dried, pt secagem) / strength test (en) / zweite Abbildung 57 | zweilagige, verschraubte BSP-Platte / ausgehärtet (en cured, pt cura) / force test / Abbildung 59 | Daniel: the layers are screwed; glue cures; the device's strength is a force; duplicate figure number. |
 | 2026-11-17 | projects | „unserer Sorgfaltspflicht entsprechen“ (KfW) / Gebäudehüllen (Urban Site Configurator) / KfW-Förderrechner (name) / ozone trioxide (en) | mit unseren mehrfach manuell geprüften Berechnungen übereinstimmen / Baukörper / KfW-Fördertool (BuildSystems' own German name) / ozone molecule | Daniel: the calculations were checked by hand; buildable volume; buildsystems.de calls it Fördertool. Seile for the Parada spheres confirmed (steel cables). |
 | 2026-11-17 | teaching | Diatomeen / Behaviorologie / English quotes and membrane names in the deck notes, Frei Otto slide quote / links without /de/ | Radiolarien (all locales) / Behaviorology / German translations marked „aus dem Englischen übersetzt“ / /de/… and /pt/… links | Daniel: radiolarians per sources on Binet; the most common form; translate; unprefixed links led to the English pages. |

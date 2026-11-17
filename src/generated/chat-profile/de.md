@@ -169,7 +169,7 @@ August 2026 | /de/research/agent-skills
 Tags: Agent Skills, KI-Coding-Agenten
 Eine lebende Liste der Agent Skills, auf die ich mich bei der Arbeit mit Claude Code verlasse: die von mir geschriebenen, Matt Pococks Engineering- und Produktivitäts-Skills und Community-Skills wie Superpowers und Diagram Design.
 
-### Ein Datenmodell für Holzbau-Aufbauten
+### Ein Datenmodell für Bauteilaufbauten im Holzbau
 Hochschule München | München, Deutschland | Februar 2025 – Juni 2026 | /de/research/timber-buildup-data-model
 Tags: bSDD, ISO 23387, Datenvorlagen, Holzbau
 Wie eine Holzwand zu Daten wird, die ein Computer lesen kann: Ein öffentliches Datenwörterbuch im bSDD gibt jeder Angabe eine Adresse, Datenvorlagen nach ISO 23387 beschreiben einen ganzen Aufbau Schicht für Schicht, und Anforderungs- und Datenblätter bereiten die Wand auf den digitalen Produktpass der EU vor.
