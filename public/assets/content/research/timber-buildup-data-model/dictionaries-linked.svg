@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 540" role="img" aria-labelledby="bsdd-dictionaries-linked-title"><title id="bsdd-dictionaries-linked-title">Two data dictionaries side by side. This article's dictionary, hm/dokwood, has one entry for the European fire resistance class EN 13501-2, with the example value REI 90, and a separate entry for the German class DIN 4102-2, with the example value F90; the two are kept apart because the fire tests differ. The ETIM dictionary, used by manufacturers and wholesalers, has its own entries for the same two classes. Each entry has its own web address, and an arrow labelled is equal to links each hm/dokwood entry to its ETIM twin.</title>
+<defs><marker id="bsdd-dictionaries-linked-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<rect x="80" y="30" width="620" height="470" rx="16" fill="rgba(244,244,245,0.02)" stroke="#34d399" stroke-width="1.5"/>
+<text x="110" y="80" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">This article's dictionary</text>
+<text x="110" y="108" fill="#a1a1aa" font-size="15" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">hm/dokwood · timber buildups</text>
+<rect x="110" y="150" width="560" height="112" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="132" y="192" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Fire Resistance EN 13501-2</text>
+<text x="132" y="228" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">.../hm/dokwood/0.13/prop/FireResistanceEN13501-2</text>
+<text x="648" y="192" text-anchor="end" fill="#34d399" font-size="20" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">REI 90</text>
+<rect x="110" y="330" width="560" height="112" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="132" y="372" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Fire Resistance DIN 4102-2</text>
+<text x="132" y="408" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">.../hm/dokwood/0.13/prop/FireResistanceDIN4102-2</text>
+<text x="648" y="372" text-anchor="end" fill="#34d399" font-size="20" font-weight="600" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">F90</text>
+<text x="390" y="302" text-anchor="middle" fill="#71717a" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">kept apart: the two fire tests differ</text>
+<rect x="900" y="30" width="620" height="470" rx="16" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<text x="930" y="80" fill="#f4f4f5" font-size="24" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">ETIM</text>
+<text x="930" y="108" fill="#a1a1aa" font-size="15" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">manufacturers and wholesalers · products</text>
+<rect x="930" y="150" width="560" height="112" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="952" y="192" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Fire resistance class according to EN 13501-2</text>
+<text x="952" y="228" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">.../etim/etim/10.1/prop/EF025876</text>
+<rect x="930" y="330" width="560" height="112" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="952" y="372" fill="#f4f4f5" font-size="19" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Fire resistance class according to DIN 4102-2</text>
+<text x="952" y="408" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">.../etim/etim/10.1/prop/EFDE0021</text>
+<line x1="678" y1="206" x2="920" y2="206" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-dictionaries-linked-arrow)"/>
+<rect x="744.25" y="179" width="109.5" height="22" rx="4" fill="#000000"/>
+<text x="799" y="195" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">is equal to</text>
+<line x1="678" y1="386" x2="920" y2="386" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-dictionaries-linked-arrow)"/>
+<rect x="744.25" y="359" width="109.5" height="22" rx="4" fill="#000000"/>
+<text x="799" y="375" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">is equal to</text>
+</svg>

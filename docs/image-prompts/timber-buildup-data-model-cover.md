@@ -277,9 +277,10 @@ The wall pictured is therefore a real, tested assembly rather than a plausible c
 (<https://www.dataholz.eu/en/components/external-wall/detail/kz/awmohi02a.htm>).
 Variation 04 is the one whose stud-zone insulation is mineral wool, which is also what makes that
 layer photogenic. It declares U = 0.15 W/(m²K), Rw (C;Ctr) 53 (-2;-8) dB and a total of 451.5 mm.
-On fire, the version page reads **REI 60 from inside and outside**, with REI 90 from inside
-available only if the lining is doubled to 2 × 12.5 mm gypsum fibre board, which variation 04 is
-not. An earlier draft of this file said "REI 90 inside / 60 outside"; that was wrong. None of these
+On fire, the version page (rechecked 2026-11-17) gives **REI 90 from inside and REI 60 from
+outside**, classified by HFA. Its separate "Fire performance Germany" block reads REI 60 from inside
+and outside, with REI 90 from inside only if the lining is doubled to 2 × 12.5 mm; an earlier note
+here read that German block as the general classification. None of these
 values appear on the cover; they are recorded so the image stays checkable.
 
 **Verbatim source.** The version page

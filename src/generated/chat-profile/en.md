@@ -172,7 +172,7 @@ A living list of the agent skills I rely on when working with Claude Code: the o
 ### A data model for timber buildups
 Munich University of Applied Sciences | Munich, Germany | February 2025 – June 2026 | /research/timber-buildup-data-model
 Tags: bSDD, ISO 23387, Data templates, Timber construction
-How a timber buildup becomes machine-readable: an ISO 23387 data model that nests layers and products inside a buildup and lets a project tighten a template into a requirement sheet, then answer it with a data sheet. It is published as the versioned hm/dokwood dictionary on bSDD and designed to carry DOKwood's Revit, Cadwork and MCP interfaces and a future digital product passport.
+How a timber wall becomes data a computer can read: a public data dictionary on bSDD gives every fact one address, ISO 23387 data templates describe a whole buildup layer by layer, and requirement and data sheets prepare the wall for the EU digital product passport.
 
 ### Standards behind digital timber buildups
 Munich University of Applied Sciences | Munich, Germany | February 2025 – June 2026 | /research/timber-construction-standards

@@ -14,20 +14,19 @@ const b = [];
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const PROPS = [
-  ["Sound reduction index", "Rw · dB", "59"],
-  ["Fire resistance", "REI · min", "90"],
-  ["Thermal transmittance", "U · W/(m²·K)", "0.14"],
-  ["Thickness", "d · mm", "392"],
-  ["Timber species", "", "spruce"],
+  ["Sound insulation", "Rw · dB", "53"],
+  ["Fire resistance", "REI · inside / outside", "REI 90 / 60"],
+  ["Heat loss", "U · W/(m²·K)", "0.15"],
+  ["Thickness", "d · mm", "451.5"],
+  ["Cladding", "timber species", "larch"],
 ];
 
 const DPP = [
-  ["Identifier", "urn:dokwood:buildup:aw-01@v0.13", "persistent, resolves to this sheet"],
-  ["Property values", "Rw 59 dB → bsdd …/dokwood/0.13/prop/SoundReductionIndex", "every value with its version-pinned bSDD URI"],
-  ["Documents", "certificates · datasheets · EPDs", "attached through the Document class"],
-  ["Lifecycle", "as-designed → as-built", "the sheet carries its state"],
-  ["Data carrier", "QR / RFID on the fabricated item", "scan the wall, get the passport"],
-  ["Format", "JSON-LD", "as CIRPASS-2 recommends"],
+  ["A unique ID", "one code for this wall, for good", "points back to this passport"],
+  ["The values", "53 dB · REI 90 / 60 · 0.15 · 451.5 mm · larch", "already linked to their dictionary entries"],
+  ["The proof", "certificates · test reports · environmental data", "the documents behind the values"],
+  ["Its stage", "designed → built", "the passport follows the wall"],
+  ["A tag on the wall", "QR code or RFID chip", "scan the wall, open its passport"],
 ];
 
 const headH = 96;
@@ -76,11 +75,11 @@ PROPS.forEach(([name, meta, v], i) => {
   if (meta) b.push(`<text x="${x0 + 28}" y="${mid + 16}" fill="${C.dim}" font-size="13" font-family="${MONO}">${esc(meta)}</text>`);
   b.push(`<text x="${x0 + dsW - 28}" y="${mid + 6}" text-anchor="end" fill="${C.accent}" font-size="18" font-weight="600" font-family="${MONO}">${esc(v)}</text>`);
 });
-b.push(`<text x="${x0 + dsW / 2}" y="${dsY + dsH + 30}" text-anchor="middle" fill="${C.dim}" font-size="14" font-family="${MONO}">fabricated buildup · one sheet per instance</text>`);
+b.push(`<text x="${x0 + dsW / 2}" y="${dsY + dsH + 30}" text-anchor="middle" fill="${C.dim}" font-size="14" font-family="${MONO}">dataholz awmohi02a-04 · the wall as built</text>`);
 
 // passport card
 b.push(paper(dppX, dppY, dppW, dppH, C.accent));
-b.push(header(dppX, dppY, dppW, "Digital Product Passport", "EU CPR 2024 / ESPR · mandatory for construction products from about 2028"));
+b.push(header(dppX, dppY, dppW, "Digital Product Passport", "to be required by EU law for construction products"));
 DPP.forEach(([label, value, hint], i) => {
   const ry = dppY + headH + i * rowH;
   const mid = ry + rowH / 2;
@@ -91,7 +90,7 @@ DPP.forEach(([label, value, hint], i) => {
 });
 // a small QR-like glyph next to the data carrier row
 {
-  const i = DPP.findIndex(([l]) => l === "Data carrier");
+  const i = DPP.findIndex(([l]) => l === "A tag on the wall");
   const mid = dppY + headH + i * rowH + rowH / 2;
   const rows = [
     "111111101011",
@@ -125,7 +124,7 @@ const svg = svgDoc({
   w: W,
   h: H,
   id: ID,
-  title: "A filled data sheet of a fabricated buildup, with values such as Rw 59 dB and REI 90, feeds a digital product passport card listing what the passport adds around those values: a persistent identifier, property values with version-pinned bSDD URIs, a document trail of certificates, datasheets and EPDs, a lifecycle state from as-designed to as-built, a data carrier on the fabricated item, and a JSON-LD format",
+  title: "The data sheet of the wall as built, dataholz awmohi02a-04, with values such as sound insulation 53 dB and fire resistance REI 90 from inside and REI 60 from outside, feeds a digital product passport, which keeps those values, each already linked to its dictionary entry, and adds a unique ID, the proof behind them (certificates, test reports, environmental data), the wall's stage from designed to built, and a tag on the wall, a QR code or RFID chip, that opens the passport when scanned",
   body: b,
 });
 write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/timber-buildup-data-model/data-sheet-to-dpp.svg"), svg);

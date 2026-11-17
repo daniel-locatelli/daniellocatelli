@@ -172,7 +172,7 @@ Eine lebende Liste der Agent Skills, auf die ich mich bei der Arbeit mit Claude 
 ### Ein Datenmodell für Holzbau-Aufbauten
 Hochschule München | München, Deutschland | Februar 2025 – Juni 2026 | /de/research/timber-buildup-data-model
 Tags: bSDD, ISO 23387, Datenvorlagen, Holzbau
-Wie ein Holzbau-Aufbau maschinenlesbar wird: ein Datenmodell nach ISO 23387, das Schichten und Produkte in einem Aufbau verschachtelt und es einem Projekt erlaubt, eine Datenvorlage zu einem Anforderungsblatt zu verschärfen und dieses dann mit einem Datenblatt zu beantworten. Es ist als versioniertes Wörterbuch hm/dokwood im bSDD veröffentlicht und darauf ausgelegt, als Grundlage für die Revit-, Cadwork- und MCP-Schnittstellen von DOKwood und einen künftigen digitalen Produktpass zu dienen.
+Wie eine Holzwand zu Daten wird, die ein Computer lesen kann: Ein öffentliches Datenwörterbuch im bSDD gibt jeder Angabe eine Adresse, Datenvorlagen nach ISO 23387 beschreiben einen ganzen Aufbau Schicht für Schicht, und Anforderungs- und Datenblätter bereiten die Wand auf den digitalen Produktpass der EU vor.
 
 ### Normen hinter digitalen Holzbau-Aufbauten
 Hochschule München | München, Deutschland | Februar 2025 – Juni 2026 | /de/research/timber-construction-standards

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" role="img" aria-labelledby="bsdd-composition-title"><title id="bsdd-composition-title">The external wall from the cover as data. The wall, a buildup, has eight layers as parts, from outside to inside: larch cladding, battens, façade membrane, gypsum fibre board, stud zone, solid timber panel, service cavity and inner lining. The stud zone in turn has parts in a pattern that repeats every 625 mm along the wall: timber stud, mineral wool, timber stud. The mineral wool points to one product; both timber studs point to the same timber stud product. The service cavity follows the same pattern and is not drawn.</title>
+<defs><marker id="bsdd-composition-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a1a1aa"/></marker></defs>
+<rect width="100%" height="100%" fill="#000000"/>
+<rect x="580" y="30" width="440" height="84" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<text x="800" y="68" text-anchor="middle" fill="#f4f4f5" font-size="22" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">External Wall</text>
+<text x="800" y="98" text-anchor="middle" fill="#a1a1aa" font-size="14" font-family="ui-sans-serif, system-ui, sans-serif">a buildup · dataholz awmohi02a-04</text>
+<line x1="800" y1="114" x2="800" y2="168" stroke="#a1a1aa" stroke-width="1.5"/>
+<line x1="135" y1="168" x2="1465" y2="168" stroke="#a1a1aa" stroke-width="1.5"/>
+<line x1="135" y1="168" x2="135" y2="206" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="49" y="210" width="172" height="80" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="135" y="244" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Larch</text>
+<text x="135" y="264" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">cladding</text>
+<line x1="325" y1="168" x2="325" y2="206" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="239" y="210" width="172" height="80" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="325" y="254" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Battens</text>
+<line x1="515" y1="168" x2="515" y2="206" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="429" y="210" width="172" height="80" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="515" y="244" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Façade</text>
+<text x="515" y="264" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">membrane</text>
+<line x1="705" y1="168" x2="705" y2="206" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="619" y="210" width="172" height="80" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="705" y="244" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Gypsum</text>
+<text x="705" y="264" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">fibre board</text>
+<line x1="895" y1="168" x2="895" y2="206" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="809" y="210" width="172" height="80" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<text x="895" y="254" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Stud zone</text>
+<line x1="1085" y1="168" x2="1085" y2="206" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="999" y="210" width="172" height="80" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1085" y="244" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Solid timber</text>
+<text x="1085" y="264" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">panel</text>
+<line x1="1275" y1="168" x2="1275" y2="206" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="1189" y="210" width="172" height="80" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1275" y="244" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Service</text>
+<text x="1275" y="264" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">cavity</text>
+<line x1="1465" y1="168" x2="1465" y2="206" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="1379" y="210" width="172" height="80" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="1465" y="244" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Inner</text>
+<text x="1465" y="264" text-anchor="middle" fill="#f4f4f5" font-size="16" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">lining</text>
+<rect x="828" y="128" width="84" height="22" rx="4" fill="#000000"/><text x="870" y="144" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">has part</text>
+<text x="49" y="320" text-anchor="start" fill="#52525b" font-size="14" font-family="ui-sans-serif, system-ui, sans-serif">outside</text>
+<text x="1551" y="320" text-anchor="end" fill="#52525b" font-size="14" font-family="ui-sans-serif, system-ui, sans-serif">inside</text>
+<line x1="895" y1="290" x2="895" y2="344" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="923" y="304" width="84" height="22" rx="4" fill="#000000"/><text x="965" y="320" text-anchor="middle" fill="#71717a" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">has part</text>
+<rect x="644" y="348" width="502" height="92" rx="12" fill="rgba(244,244,245,0.02)" stroke="rgba(244,244,245,0.10)" stroke-width="1.5"/>
+<rect x="658" y="370" width="150" height="56" rx="6" fill="#09090b" stroke="#a1a1aa" stroke-width="1.2"/>
+<text x="733" y="404" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">timber stud</text>
+<rect x="820" y="370" width="150" height="56" rx="6" fill="#09090b" stroke="#a1a1aa" stroke-width="1.2"/>
+<text x="895" y="404" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">mineral wool</text>
+<rect x="982" y="370" width="150" height="56" rx="6" fill="#09090b" stroke="#a1a1aa" stroke-width="1.2"/>
+<text x="1057" y="404" text-anchor="middle" fill="#a1a1aa" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">timber stud</text>
+<text x="624" y="392" text-anchor="end" fill="#71717a" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">the pattern, repeating</text>
+<text x="624" y="414" text-anchor="end" fill="#71717a" font-size="15" font-family="ui-sans-serif, system-ui, sans-serif">every 625 mm along the wall</text>
+<text x="1275" y="320" text-anchor="middle" fill="#52525b" font-size="14" font-family="ui-sans-serif, system-ui, sans-serif">same pattern, not drawn</text>
+<line x1="895" y1="426" x2="895" y2="476" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="800" y="480" width="190" height="64" rx="10" fill="#18181b" stroke="#f4f4f5" stroke-width="1.5"/>
+<text x="895" y="505.5" text-anchor="middle" fill="#f4f4f5" font-size="17" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Mineral wool</text>
+<text x="895" y="530.5" text-anchor="middle" fill="#a1a1aa" font-size="14" font-family="ui-sans-serif, system-ui, sans-serif">product</text>
+<line x1="733" y1="426" x2="733" y2="586" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<line x1="1057" y1="426" x2="1057" y2="586" stroke="#a1a1aa" stroke-width="1.5"  marker-end="url(#bsdd-composition-arrow)"/>
+<rect x="673" y="590" width="444" height="76" rx="10" fill="#18181b" stroke="#34d399" stroke-width="1.5"/>
+<text x="895" y="621.5" text-anchor="middle" fill="#f4f4f5" font-size="17" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Timber stud</text>
+<text x="895" y="646.5" text-anchor="middle" fill="#a1a1aa" font-size="14" font-family="ui-sans-serif, system-ui, sans-serif">one product, repeating along the layer</text>
+</svg>

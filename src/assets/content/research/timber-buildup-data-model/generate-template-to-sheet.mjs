@@ -1,56 +1,57 @@
 // Generates public/assets/content/research/timber-buildup-data-model/template-to-sheet.svg
-// A 2x PNG export (template-to-sheet.png) lives next to it, rendered from the SVG with playwright (@playwright/test, viewport 1600x600, deviceScaleFactor 2).
+// A 2x PNG export (template-to-sheet.png) lives next to it, rendered from the SVG with playwright (@playwright/test, viewport 1600x660, deviceScaleFactor 2).
 // Run: node src/assets/content/research/timber-buildup-data-model/generate-template-to-sheet.mjs
 // Three document cards with the same properties: the data template (no values), the
-// requirement sheet (required values) and the data sheet (declared or measured values).
+// requirement sheet (required values) and the data sheet (values of dataholz awmohi02a-04).
+// The template fills both sheets; the data sheet is checked against the requirement sheet.
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
-import { svgDoc, arrow, write, C, MONO, SANS } from "../../svg-kit.mjs";
+import { svgDoc, arrow, elbow, write, C, MONO, SANS } from "../../svg-kit.mjs";
 
 const ID = "bsdd-template-to-sheet";
 const W = 1600;
-const H = 600;
+const H = 660;
 const b = [];
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const PROPS = [
-  ["Sound reduction index", "Rw", "dB"],
-  ["Fire resistance", "REI", "min"],
-  ["Thermal transmittance", "U", "W/(m²·K)"],
+  ["Sound insulation", "Rw", "dB"],
+  ["Fire resistance", "REI", "inside / outside"],
+  ["Heat loss", "U", "W/(m²·K) · lower is better"],
   ["Thickness", "d", "mm"],
-  ["Timber species", "", ""],
+  ["Cladding", "timber species", ""],
 ];
 
 const COLS = [
   {
     title: "Data template",
     sub: "which properties · no values",
-    who: "company dictionary",
+    who: "timber company",
     values: ["", "", "", "", ""],
     style: "blank",
   },
   {
     title: "Requirement sheet",
     sub: "required values",
-    who: "project, before fabrication",
-    values: ["≥ 56", "≥ 90", "≤ 0.15", "≤ 400", "spruce or fir"],
+    who: "project, before building",
+    values: ["≥ 50", "≥ REI 60", "≤ 0.20", "≤ 460", "larch or spruce"],
     style: "req",
   },
   {
     title: "Data sheet",
-    sub: "declared or measured values",
-    who: "project, fabricated buildup → DPP",
-    values: ["59", "90", "0.14", "392", "spruce"],
+    sub: "values of the wall as built",
+    who: "dataholz awmohi02a-04",
+    values: ["53", "REI 90 / 60", "0.15", "451.5", "larch"],
     style: "val",
     accent: true,
   },
 ];
 
 const cardW = 400;
-const gap = 130;
+const gap = 150;
 const totalW = 3 * cardW + 2 * gap;
 const x0 = (W - totalW) / 2;
-const cardY = 80;
+const cardY = 130;
 const headH = 96;
 const rowH = 62;
 const cardH = headH + PROPS.length * rowH + 24;
@@ -95,20 +96,23 @@ COLS.forEach((col, i) => {
   b.push(card(x, cardY, cardW, cardH, col));
 });
 
-// arrows between cards, at mid height of the rows block
+// arrows: the template fills both sheets; the data sheet is checked against the requirement sheet
 const ay = cardY + headH + (PROPS.length * rowH) / 2;
-for (let i = 0; i < 2; i++) {
-  const x1 = x0 + i * (cardW + gap) + cardW + 10;
-  const x2 = x1 + gap - 22;
-  b.push(arrow(ID, x1, ay, x2, ay, i === 0 ? "tighten" : "satisfy", { labelDy: -14 }));
+const cardX = (i) => x0 + i * (cardW + gap);
+b.push(arrow(ID, cardX(0) + cardW + 10, ay, cardX(1) - 12, ay, "fill", { labelDy: -14 }));
+{
+  const sx = cardX(0) + cardW / 2;
+  const ex = cardX(2) + cardW / 2;
+  const top = cardY - 70;
+  b.push(elbow(ID, [[sx, cardY - 6], [sx, top], [ex, top], [ex, cardY - 8]], "fill", { labelAt: 1, labelDy: -10 }));
 }
-
+b.push(arrow(ID, cardX(2) - 10, ay, cardX(1) + cardW + 12, ay, "checked against", { labelDy: -14 }));
 
 const svg = svgDoc({
   w: W,
   h: H,
   id: ID,
-  title: "Three sheets listing the same five properties: a data template with empty value fields, a requirement sheet with required values such as Rw at least 56 dB and REI at least 90, and a data sheet with declared values such as Rw 59 dB and REI 90; arrows labelled tighten and satisfy connect them",
+  title: "Three sheets with the same five properties: sound insulation, fire resistance, heat loss, thickness and cladding. The data template, made by a timber company, has empty value fields; arrows labelled fill lead from it to both sheets. The requirement sheet of a project holds required values such as sound insulation at least 50 dB and fire resistance at least REI 60; the data sheet of the wall as built, dataholz awmohi02a-04, holds 53 dB, REI 90 from inside and REI 60 from outside, a heat loss of 0.15 and 451.5 mm. An arrow labelled checked against leads from the data sheet to the requirement sheet.",
   body: b,
 });
 write(resolve(dirname(fileURLToPath(import.meta.url)), "../../../../../public/assets/content/research/timber-buildup-data-model/template-to-sheet.svg"), svg);
