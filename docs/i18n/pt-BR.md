@@ -57,6 +57,10 @@ Fixed choices for recurring terms. **Confirmed** entries come from Daniel;
 | form finding | busca da forma | confirmed |
 | robotic clamping device (Building Across Scales) | dispositivo robótico de prensagem, then "o dispositivo" (en: robotic clamping device; de: robotisches Klemmgerät) | confirmed |
 | thesis (undergraduate / master's / doctoral) | TFG (trabalho final de graduação) / dissertação / tese | confirmed |
+| data template (ISO 23387) | modelo de dados; the article's own "data model" becomes "estrutura" where both meet | confirmed |
+| requirement sheet / data sheet (ISO 23387) | folha de requisitos / folha de dados | confirmed |
+| data dictionary (bSDD) | dicionário de dados, an entry is a "verbete" | confirmed |
+| building code | regulamentação de edificações ("norma" is a standard: DIN, EN, ISO) | confirmed |
 
 ## Corrections
 
@@ -66,10 +70,31 @@ an entry whenever Daniel corrects pt wording, in chat or by editing a file
 (see the rule in `CLAUDE.md` and the `reviewing-translations` skill). An entry
 records what was wrong, so "kept" decisions belong here too.
 
-Manual edits harvested through commit: `ceb8c353`
+Manual edits harvested through commit: `35e7c6ce`
 
 | Date | Where | Before | After | Why |
 | --- | --- | --- | --- | --- |
+| 2026-11-18 | research (timber buildup data model) | uma parede de no máximo 460 mm / 451,5 mm (bare) | e espessura de no máximo 460 mm / espessura de 451,5 mm | The noun was missing, so the reader could not tell which dimension; the list also lacked its final "e". |
+| 2026-11-18 | research (timber buildup data model) | O modelo de dados segue a ISO 23387:2025 para modelos de dados | A estrutura deste trabalho segue a ISO 23387:2025 para modelos de dados | "modelo de dados" is the glossary term for data template, so the sentence followed itself. Title kept as is. |
+| 2026-11-18 | research (timber buildup data model) | descrevem o que vendem nos termos dele | descrevem o que vendem com o vocabulário dele | "nos termos de" reads as "in accordance with" (the same slip was found in de). |
+| 2026-11-18 | research (timber buildup data model) | escolhe as que precisa / os ensaios de fogo alemão e europeu diferem | escolhe as de que precisa / o ensaio de fogo alemão e o europeu diferem | Regência of "precisar de"; singular adjectives on a plural noun. |
+| 2026-11-18 | research (timber buildup data model) | Essa lista se chama / de uma vez / num relance / com a definição citada como está escrita | Esse registro se chama / de uma vez por todas / de relance / com a definição no original, em inglês | No list had been named; "de uma vez" reads as "all at once"; "num relance" is pt-PT; students need to know why the row is in English. |
+| 2026-11-18 | research (timber buildup data model) | Para uma pessoa, parece a mesma informação | Para uma pessoa, as três formas parecem dizer a mesma coisa | The sentence had no subject. |
+| 2026-11-18 | research (timber buildup data model) | (quanto mais silencioso fica do outro lado da parede) / atende ao requisito | (quanto maior, mais silencioso fica o outro lado da parede) / atende aos requisitos | Unfinished comparison; four requirements, so plural. |
+| 2026-11-18 | research (timber buildup data model) | se a parede ainda é projeto ou já foi construída / e de como ele se comporta / as provas por trás deles | o estado da parede (em projeto ou já construída) / e de qual é o seu desempenho / os documentos que os comprovam | A bare "se" clause in a list of nouns; "performs" means performance values; calque of "the evidence behind them". |
+| 2026-11-18 | research (timber buildup data model) | Em termos de bSDD / A composição, a cadeia HasPart / a última pública no bSDD / duas normas vizinhas | No bSDD / A estrutura de partes, a cadeia HasPart / a última, publicada no bSDD / duas normas relacionadas | Calques, and "composição" clashed with "composição construtiva" in the same sentence. |
+| 2026-11-18 | research (timber buildup data model) | vale a pena com ou sem o passaporte chegar no prazo | vale a pena, chegue o passaporte no prazo ou não | The clause needs the subjunctive. |
+| 2026-11-18 | research (timber buildup data model) | o forro interior / uma única espessura de materiais alternados / e de novo o mesmo montante | o forro interno / uma única faixa de materiais alternados / e outro montante do mesmo tipo | Match the body; calque; it is a second stud of the same product, not the same stud. |
+| 2026-11-18 | research (timber buildup data model) | não está desenhada / As duas folhas são preenchidas | não aparece no diagrama / As outras duas folhas, abaixo dele, são preenchidas | Alt texts: unclear phrasing; three sheets were named, and en says "below it". |
+| 2026-11-18 | research (timber buildup data model) | External Wall, Internal Wall, Floor e Pitched Roof ... Layer e Product | External Wall (parede externa), Internal Wall (parede interna), Floor (laje) e Pitched Roof (cobertura inclinada) ... Layer (camada) e Product (produto) | Students cannot decode the English class names; glossed once, as in de. |
+| 2026-11-18 | research (timber buildup data model) | Valor (table row) | Tipo de dado | The cell gives a data type; de says "Datentyp". |
+| 2026-11-18 | research (timber buildup data model) | ISO 23387:2025 modelos de dados (and the other link labels) / CIRPASS-2 pilotos de | ISO 23387:2025, modelos de dados / CIRPASS-2: projetos-piloto de | Noun stacks in the link labels. |
+| 2026-11-18 | research (timber buildup data model) | Toda norma de edificação / A antiga norma alemã / uma verificação de incêndio | Toda regulamentação de edificações / A norma alemã mais antiga / uma verificação de segurança contra incêndio | A building code is regulation, not a norma; "antiga" before the noun reads as withdrawn; calque. |
+| 2026-11-18 | research (timber buildup data model) | um endereço / é lançada / dizendo o que | um único endereço / é publicada / que diz o que | en stresses one address; a dictionary version is published; gerund. |
+| 2026-11-18 | research (timber buildup data model) | Para levar modelos e folhas aos modelos BIM, a EN 17549-2:2023 define uma model view ... (CODview2), estendida na sua segunda parte a ... | Para levar modelos de dados e folhas de dados para o BIM, a EN 17549-2:2023 define uma model view ..., a CODview2, que abrange ... | "modelos" meant two things; EN 17549-2 itself is the CODview2 view, so "its second part" was wrong (fixed in en and de too). |
+| 2026-11-18 | research (timber buildup data model) | EUR-Lex links /oj/eng | /oj/por | Link each locale to its own-language Official Journal (de: /oj/deu). |
+| 2026-11-18 | research (timber buildup data model) | perda de calor de 0,15 (no unit) | kept | Daniel: stays plain for students; the specialists' paragraph gives W/(m²K). |
+| 2026-11-18 | research (timber buildup data model) | a cada 625 mm in the composition alt | kept | The SVG shows it; en alt gained it instead. |
 | 2026-11-17 | research (timber buildup data model) | Um projeto brasileiro indica o tempo requerido de resistência ao fogo (TRRF): 90 minutos. / "TRRF 90 min" | Um projeto brasileiro indica apenas o tempo exigido: 90 minutos. / "90 min" | Daniel: Brazilian architecture courses do not teach fire codes, so students will not know TRRF either; give the plain time, as en and de do. |
 | 2026-11-17 | Building Across Scales | processo de secagem / após a secagem da cola / Teste de resistência / laminados por pregação/parafusamento (NLT) / Figura 57 (second) | processo de cura / após a cura da cola / Teste de força / placa de CLT de duas camadas, cujos painéis são parafusados entre si / Figura 59 | Daniel: 2K-PUR glue cures; the device's strength is a force; Chicago Horizon is screwed, not nailed; duplicate figure number. Same in en and de. |
 | 2026-11-17 | teaching decks | Diatomáceas (Haeckel, Porte Monumentale) | Radiolários | Daniel: Binet's gate is based on Haeckel's radiolarians (Cyrtoidea). |
