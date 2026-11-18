@@ -51,8 +51,21 @@ const essays = publishedEssays(await getCollection("essays"), locale);
       >
         Daniel Locatelli
       </h1>
-      <p class="mt-1.5 text-[15px] leading-normal text-zinc-400">
-        {home.intro.role}
+      <p class="mt-1.5 text-[15px] leading-normal text-balance text-zinc-400">
+        {
+          /* Wrap only between the comma-separated parts (role, lab,
+             institution) so a name like "ETH Zurich" never splits or
+             strands one word on its own line. */
+          home.intro.role.split(", ").map((part, i, parts) => (
+            <>
+              <span class="whitespace-nowrap">
+                {part}
+                {i < parts.length - 1 && ","}
+              </span>
+              {i < parts.length - 1 && " "}
+            </>
+          ))
+        }
       </p>
       <p
         class="mt-7 max-w-[36em] text-[17px] leading-relaxed text-pretty text-zinc-100"

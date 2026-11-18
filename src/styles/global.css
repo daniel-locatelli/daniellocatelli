@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@config '../../tailwind.config.ts';
+@config "../../tailwind.config.ts";
 
 /* Streamdown (homepage chat) ships its renderers with Tailwind classes. */
 @source "../../node_modules/streamdown/dist/*.js";
@@ -30,12 +30,29 @@
     @apply scroll-pt-20 bg-black;
   }
 
+  /* Site-wide wrapping defaults so no line ends with a stranded word:
+     headings balance their lines, body text avoids one-word last lines.
+     Utilities (text-balance, text-wrap) still override per element. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dd,
+  dt,
+  blockquote,
   figcaption {
     text-wrap: pretty;
   }
 
   body {
-    @apply mx-auto flex min-h-screen max-w-3xl flex-col bg-black px-8 pt-16 font-body text-sm font-normal text-zinc-200 antialiased;
+    @apply font-body mx-auto flex min-h-screen max-w-3xl flex-col bg-black px-8 pt-16 text-sm font-normal text-zinc-200 antialiased;
   }
 }
 
@@ -174,7 +191,9 @@ a.footnote-ref {
   position: relative;
   display: inline-block;
   vertical-align: baseline;
-  transition: background-color 150ms ease, color 150ms ease;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
 }
 
 a.footnote-ref:hover,
