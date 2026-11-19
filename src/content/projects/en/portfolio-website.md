@@ -4,7 +4,7 @@ CoverAlt: "The homepage of daniellocatelli.com displayed on a laptop."
 Name: daniellocatelli.com
 Description: "This website: an Astro site whose content lives as plain markdown so that Claude Code can act as the CMS, with a Claude-powered chat, essays, in-browser slide decks, and an agent-ready surface on Cloudflare."
 DateStart: "2024-04-27"
-Updated: "2026-11-11"
+Updated: "2026-11-19"
 Organization: "Daniel Locatelli"
 Category: Software
 Tags:
@@ -34,7 +34,7 @@ All the content lives as plain text files (written in [markdown](https://commonm
 
 ![The src/ folder of the repository: assets/ expanded down to the cover image of this page, content/ down to its markdown file, the other folders collapsed.](/assets/content/projects/portfolio-website/src-tree-en.svg)
 
-A content management system (CMS) is the tool you would normally log into to add a page or fix a typo. Here that role is taken by [Claude Code](https://claude.com/claude-code), an AI agent that works directly on the files of a project. Because the content is just files next to the code, it can read, edit, create, and cross-check entries the same way it works on source code. I describe a new project or a correction in a sentence; it writes or updates the files, keeps the headers consistent, and checks the related entries in the other languages; I read the result and decide what gets published. This very page was written that way.
+A content management system (CMS) is the tool you would normally log into to add a page or fix a typo. Here that role is taken by [Claude Code](https://claude.com/claude-code), an AI agent that works directly on the files of a project. Because the content is just files next to the code, it can read, edit, create, and cross-check entries the same way it works on source code. I describe a new project or a correction in a sentence, and it writes or updates the files, keeps the headers consistent, and checks the related entries in the other languages. This very page was written that way. Everything on this site is co-created, from the code to the content.
 
 ## Translation by Claude Code
 
