@@ -76,11 +76,11 @@ Die Präsentationen werden in MDX geschrieben (Markdown, das auch Komponenten au
 
 ## Für Menschen und Agenten gebaut
 
-Die Website hat zwei Arten von Besuchern: Menschen im Browser und KI-Agenten, die sie im Auftrag von jemandem lesen. Für beide braucht es eigene Arbeit, und beide werden mit einem öffentlichen Werkzeug geprüft.
+Die Website hat zwei Arten von Besuchern: Menschen im Browser und KI-Agenten, die sie im Auftrag von jemandem lesen. Für beide braucht es eigene Arbeit, und das Ergebnis wird jeweils mit einem öffentlichen Werkzeug gemessen.
 
 ### Für Menschen: Geschwindigkeit
 
-Astro rendert die Website zu überwiegend statischem HTML, sodass die meisten Seiten überhaupt kein JavaScript brauchen. Der Rest ergibt sich daraus, nichts zu laden, was der Besucher noch nicht braucht:
+Astro rendert die Website zu überwiegend statischem HTML, sodass die meisten Seiten überhaupt kein JavaScript brauchen. Darüber hinaus gilt: nichts laden, was der Besucher noch nicht braucht:
 
 - Bilder werden in responsiven Größen mit expliziten Abmessungen ausgeliefert und erst geladen, kurz bevor sie in den sichtbaren Bereich gelangen; Schriften werden auf die Zeichensätze reduziert, die die Website braucht, und früh geladen.
 - Die Gesprächsansicht des Chats wird erst geladen, wenn ein Besucher Interesse am Chat zeigt (beim Überfahren einer Startfrage oder beim Klick ins Eingabefeld), sodass die Startseite selbst nur wenige Kilobyte JavaScript mitbringt.

@@ -76,11 +76,11 @@ Decks are written in MDX (markdown that can also hold components), with a short 
 
 ## Built for people and agents
 
-The site has two kinds of visitors: people in a browser, and AI agents that read it on someone's behalf. Each is served by its own kind of work, and each is checked with a public tool.
+The site has two kinds of visitors: people in a browser, and AI agents that read it on someone's behalf. Each is served by its own kind of work, and the result of each is measured by a public tool.
 
 ### For people: speed
 
-Astro renders the site to mostly static HTML, so most pages need no JavaScript at all. The rest comes from not loading what the visitor does not need yet:
+Astro renders the site to mostly static HTML, so most pages need no JavaScript at all. Beyond that, the rule is not to load what the visitor does not need yet:
 
 - Images ship in responsive sizes with explicit dimensions, and load just before they scroll into view; fonts are reduced to the character sets the site needs and loaded early.
 - The chat's conversation view is fetched only once a visitor shows intent to chat (hovering a starter question or clicking into the input), so the homepage itself ships a few kilobytes of JavaScript.

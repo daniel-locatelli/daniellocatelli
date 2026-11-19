@@ -26,11 +26,11 @@ OtherLinks:
 Place: Online
 ---
 
-Este é o site que você está lendo agora. Ele começou em abril de 2024 como um site pequeno, e uma decisão orientou tudo o que veio depois: todo o conteúdo fica em arquivos de texto simples, ao lado do código. Por isso um agente de IA consegue editar o site como edita código, traduzi-lo para três idiomas e condensá-lo num perfil que o chat da página inicial usa para responder, e outros agentes de IA conseguem ler o site sem precisar raspar as páginas. Esta página passa por cada uma dessas partes e termina com as ferramentas que estão por baixo.
+Este é o site que você está lendo agora. Ele começou em abril de 2024 como um site pequeno, e uma decisão orientou tudo o que veio depois: todo o conteúdo fica em arquivos de texto simples, ao lado do código. Por isso um agente de IA consegue editar o site como edita código, traduzi-lo para três idiomas e condensá-lo num perfil que o chat da página inicial usa para responder, e outros agentes de IA conseguem ler o site sem precisar fazer scraping das páginas. Esta página passa por cada uma dessas partes e termina com as ferramentas por trás de tudo isso.
 
 ## Claude Code como sistema de gestão de conteúdo
 
-Todo o conteúdo fica em arquivos de texto simples (escritos em [markdown](https://commonmark.org/help/)) no mesmo lugar que o código, o [repositório público no GitHub](https://github.com/daniel-locatelli/daniellocatelli). Há um arquivo pequeno para cada projeto, pesquisa, publicação, aula ou seção do currículo. Cada um começa com um cabeçalho curto que guarda os fatos (título, datas, tags), seguido do texto da página, e existe uma vez em cada idioma. Não há banco de dados nem sistema de conteúdo separado por trás das páginas.
+Todo o conteúdo fica em arquivos de texto simples (escritos em [markdown](https://commonmark.org/help/)) no mesmo lugar que o código, o [repositório público no GitHub](https://github.com/daniel-locatelli/daniellocatelli). Há um arquivo pequeno para cada projeto, pesquisa, publicação, aula ou seção do currículo. Cada um começa com um cabeçalho curto que guarda os fatos (título, datas, tags), seguido do texto da página, e há uma versão dele em cada idioma. Não há banco de dados nem sistema de conteúdo separado por trás das páginas.
 
 ![A pasta src/ do repositório: assets/ expandida até a imagem de capa desta página, content/ até o seu arquivo markdown, as demais pastas recolhidas.](/assets/content/projects/portfolio-website/src-tree-pt.svg)
 
@@ -42,7 +42,7 @@ O site está disponível em inglês, português e alemão. Não há nenhum servi
 
 ![Como uma mudança em um idioma chega aos outros dois: o Claude Code lê a regra do repositório e escreve os arquivos correspondentes, mantendo datas e links idênticos e traduzindo nomes e texto.](/assets/content/projects/portfolio-website/translation-pt.svg)
 
-As traduções partem do sentido, não de cada palavra, e seguem um guia de estilo por idioma que fica no próprio repositório: o tom, um glossário de termos fixos e uma tabela de correções. Sempre que corrijo uma tradução, o antes e o depois entram nessa tabela, e a próxima tradução já começa sabendo o que a anterior errou.
+As traduções partem do sentido, e não palavra por palavra, e seguem um guia de estilo por idioma que fica no próprio repositório: o tom, um glossário de termos fixos e uma tabela de correções. Sempre que corrijo uma tradução, o antes e o depois entram nessa tabela, e a próxima tradução já começa sabendo o que a anterior errou.
 
 ## Chat com IA na página inicial
 
@@ -58,7 +58,7 @@ Por baixo dos panos, um script condensa o site em um perfil por idioma: cada car
 
 Uma versão anterior fazia o contrário: procurava no conteúdo os poucos trechos mais próximos da pergunta e enviava só esses (recuperação, com embeddings da Voyage AI e um banco vetorial no Supabase). Ela respondia bem a perguntas específicas, mas às vezes montava a resposta de uma pergunta ampla em torno de um item secundário, por isso a substituí.
 
-O perfil é regenerado a partir do conteúdo sempre que o site é gerado, então uma página nova chega ao chat na próxima publicação. Depois, um script de benchmark faz ao chat um conjunto fixo de perguntas comuns e confere cada resposta, de modo que uma mudança que estrague alguma delas aparece antes de chegar aos visitantes.
+O perfil é regenerado a partir do conteúdo sempre que o site é gerado, então uma página nova chega ao chat na próxima publicação. Depois, um script de benchmark faz ao chat um conjunto fixo de perguntas comuns e confere cada resposta, de modo que uma mudança que estrague alguma delas é percebida antes que os visitantes a vejam.
 
 ![Diagrama de arquitetura: no build, o conteúdo markdown do site é condensado em um perfil por idioma e empacotado no Worker; em tempo de execução, o perfil do idioma do visitante vai ao Claude junto com a pergunta, com cache de prompt, e o Claude transmite a resposta de volta à página.](/assets/content/projects/portfolio-website/chat-pipeline-pt.svg)
 
@@ -68,7 +68,7 @@ Boa parte do que eu vendia como serviço (plugins, aplicativos web, painéis) ho
 
 ## Modo apresentação
 
-As páginas de aulas podem ter uma apresentação de slides, guardada ao lado da página, na mesma pasta. Para abrir uma, entre em uma página de aula como [Arquitetura computacional na Alemanha](/pt/teaching/computational-architecture-in-germany-uft) e clique no botão verde **Abrir slides**, logo abaixo do título. A apresentação roda no navegador: as setas do teclado passam os slides, **O** mostra uma visão geral de todos eles, **P** abre uma janela do apresentador com as notas, **F** coloca em tela cheia e **?** lista os outros atalhos.
+As páginas de aulas podem ter uma apresentação de slides, guardada ao lado da página, na mesma pasta. Para abrir uma, abra uma página de aula, como [Arquitetura computacional na Alemanha](/pt/teaching/computational-architecture-in-germany-uft), e clique no botão verde **Abrir slides**, logo abaixo do título. A apresentação roda no navegador: as setas do teclado passam os slides, **O** mostra uma visão geral de todos eles, **P** abre uma janela do apresentador com as notas, **F** ativa a tela cheia e **?** lista os outros atalhos.
 
 ![A visão geral de slides da apresentação "Computational Architecture in Germany": uma grade de miniaturas, a primeira destacada em verde, com controles de sair, ajuda e tela cheia no canto superior direito e um contador 1 / 112 no canto inferior.](../../../assets/content/projects/portfolio-website/presentation-deck.png "A visão geral de uma apresentação, aberta com O")
 
@@ -76,11 +76,11 @@ As apresentações são escritas em MDX (markdown que também aceita componentes
 
 ## Feito para pessoas e para agentes
 
-O site recebe dois tipos de visitante: pessoas num navegador e agentes de IA que o leem a pedido de alguém. Cada um pede um tipo de trabalho, e cada um é verificado com uma ferramenta pública.
+O site recebe dois tipos de visitante: pessoas num navegador e agentes de IA que o leem a pedido de alguém. Cada um pede um tipo de trabalho, e o resultado de cada um é medido por uma ferramenta pública.
 
 ### Para pessoas: velocidade
 
-O Astro renderiza o site em HTML majoritariamente estático, então a maioria das páginas não precisa de JavaScript nenhum. O resto vem de não carregar o que o visitante ainda não precisa:
+O Astro renderiza o site em HTML majoritariamente estático, então a maioria das páginas não precisa de JavaScript nenhum. No resto, a regra é não carregar aquilo de que o visitante ainda não precisa:
 
 - As imagens chegam em tamanhos responsivos com dimensões explícitas e carregam pouco antes de entrarem na área visível; as fontes são reduzidas aos conjuntos de caracteres que o site usa e carregadas cedo.
 - A conversa do chat só é baixada quando o visitante demonstra interesse em conversar (ao passar o mouse por uma pergunta sugerida ou clicar no campo de texto), de modo que a página inicial carrega apenas alguns kilobytes de JavaScript.
@@ -116,7 +116,7 @@ O site também hospeda páginas que não aparecem na navegação e existem sobre
 
 - **Prévias de links no build.** Links externos listados em uma página são exibidos como cartões de prévia. Títulos, descrições, imagens e ícones são buscados uma única vez e guardados no repositório, de modo que o build sempre dá o mesmo resultado e nenhuma requisição a terceiros acontece ao carregar a página.
 - **Sem links quebrados.** Todo link interno do site é conferido no build final antes da publicação, de modo que nada quebrado vai para o ar. Links para outros sites são conferidos uma vez por semana e reportados, já que esses quebram no seu próprio ritmo.
-- **Última atualização pelo histórico.** Cada página de conteúdo mostra quando mudou pela última vez, a partir do histórico do repositório, e a mesma data vai para o sitemap e para os metadados da página usados pelos buscadores.
+- **Data de atualização tirada do histórico.** Cada página de conteúdo mostra quando mudou pela última vez, a partir do histórico do repositório, e a mesma data vai para o sitemap e para os metadados da página usados pelos buscadores.
 - **Fontes das imagens num só lugar.** Imagens de terceiros usadas em várias páginas, como as pranchas de Ernst Haeckel, ficam guardadas uma única vez, numa pasta por autor. O build encontra todas as páginas que as usam e gera, para cada autor, uma página de fontes, então a lista nunca precisa ser atualizada à mão; o crédito da imagem leva até ela. Os créditos recebem o © automaticamente, menos as obras em domínio público.
 - **Tooltips em toda parte.** Um único sistema de tooltip atende todos os tooltips do site: as notas de rodapé mostram a nota ao passar o mouse, para que o leitor não precise pular até o fim da página; os ícones sociais do rodapé e do cabeçalho do CV indicam seu destino; e os controles das apresentações de slides mostram seu atalho de teclado.
 - **Markdown para agentes em páginas estáticas.** Entregar markdown a agentes a partir de páginas geradas com antecedência exigiu investigar como a Cloudflare e o Astro tratam as requisições; a solução é um pequeno Snippet da Cloudflare que reescreve o endereço antes de a requisição chegar ao site.
@@ -128,4 +128,4 @@ O site também hospeda páginas que não aparecem na navegação e existem sobre
 - [**Claude**](https://www.anthropic.com/claude) (Anthropic) para o chat da página inicial.
 - [**Cloudflare Workers**](https://workers.cloudflare.com/) com Static Assets para a hospedagem: as páginas geradas com antecedência saem direto da rede da Cloudflare, e o código só roda para o chat e o servidor MCP.
 
-Tudo isso se apoia nos mesmos arquivos de texto. O Claude Code os edita e traduz, o build os condensa para o chat, e os agentes os leem como markdown. Acrescentar uma página ao site continua sendo um arquivo de texto, e o resto vem a partir dele.
+Tudo isso se apoia nos mesmos arquivos de texto. O Claude Code os edita e traduz, o build os condensa para o chat, e os agentes os leem como markdown. Para acrescentar uma página ao site, continua bastando um arquivo de texto, e o resto vem dele.

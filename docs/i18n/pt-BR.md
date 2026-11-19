@@ -70,10 +70,21 @@ an entry whenever Daniel corrects pt wording, in chat or by editing a file
 (see the rule in `CLAUDE.md` and the `reviewing-translations` skill). An entry
 records what was wrong, so "kept" decisions belong here too.
 
-Manual edits harvested through commit: `35e7c6ce`
+Manual edits harvested through commit: `4099481`
 
 | Date | Where | Before | After | Why |
 | --- | --- | --- | --- | --- |
+| 2026-11-19 | portfolio website (project) | e existe uma vez em cada idioma | e há uma versão dele em cada idioma | No clear subject; "existe uma vez" reads oddly. |
+| 2026-11-19 | portfolio website (project) | As traduções partem do sentido, não de cada palavra | As traduções partem do sentido, e não palavra por palavra | The set phrase is "palavra por palavra". |
+| 2026-11-19 | portfolio website (project) | uma mudança que estrague alguma delas aparece antes de chegar aos visitantes | uma mudança que estrague alguma delas é percebida antes que os visitantes a vejam | Read as if the change reaches the visitors. |
+| 2026-11-19 | portfolio website (project) | entre em uma página de aula como [...] e clique | abra uma página de aula, como [...], e clique | An instruction reads as "abra". |
+| 2026-11-19 | portfolio website (project) | **F** coloca em tela cheia | **F** ativa a tela cheia | "Coloca" had no object. |
+| 2026-11-19 | portfolio website (project) | e cada um é verificado com uma ferramenta pública | e o resultado de cada um é medido por uma ferramenta pública | Read as if the visitor is checked; en and de fixed the same way. |
+| 2026-11-19 | portfolio website (project) | O resto vem de não carregar o que o visitante ainda não precisa | No resto, a regra é não carregar aquilo de que o visitante ainda não precisa | Unclear "o resto"; regência of "precisar de". en and de fixed too. |
+| 2026-11-19 | portfolio website (project) | Acrescentar uma página ao site continua sendo um arquivo de texto, e o resto vem a partir dele. | Para acrescentar uma página ao site, continua bastando um arquivo de texto, e o resto vem dele. | Adding a page is not itself a file. |
+| 2026-11-19 | portfolio website (project) | sem precisar raspar as páginas | sem precisar fazer scraping das páginas | "Raspar" is a calque; "scraping" stays in English in pt-BR tech writing. |
+| 2026-11-19 | portfolio website (project) | e termina com as ferramentas que estão por baixo | e termina com as ferramentas por trás de tudo isso | More natural close to the intro. |
+| 2026-11-19 | portfolio website (project) | **Última atualização pelo histórico.** | **Data de atualização tirada do histórico.** | Clearer bold lead. |
 | 2026-11-18 | research (timber buildup data model) | uma parede de no máximo 460 mm / 451,5 mm (bare) | e espessura de no máximo 460 mm / espessura de 451,5 mm | The noun was missing, so the reader could not tell which dimension; the list also lacked its final "e". |
 | 2026-11-18 | research (timber buildup data model) | O modelo de dados segue a ISO 23387:2025 para modelos de dados | A estrutura deste trabalho segue a ISO 23387:2025 para modelos de dados | "modelo de dados" is the glossary term for data template, so the sentence followed itself. Title kept as is. |
 | 2026-11-18 | research (timber buildup data model) | descrevem o que vendem nos termos dele | descrevem o que vendem com o vocabulário dele | "nos termos de" reads as "in accordance with" (the same slip was found in de). |
